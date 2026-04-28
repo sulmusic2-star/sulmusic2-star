@@ -62,7 +62,7 @@ What it demonstrates:
 - AI-assisted operations without reckless auto-sending
 - translating messy service-business leakage into a narrow productized workflow
 
-Public case study coming next.
+Repo: [operator-systems-showcase](https://github.com/sulmusic2-star/operator-systems-showcase)
 
 ### StoryVolt
 
@@ -78,7 +78,7 @@ What it demonstrates:
 - tool orchestration across research, narration, video, and editing
 - judgment about when generated media is worse than real proof
 
-Public sanitized pipeline coming next.
+Repo: [operator-systems-showcase](https://github.com/sulmusic2-star/operator-systems-showcase)
 
 ## How I work
 
