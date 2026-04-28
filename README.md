@@ -2,6 +2,10 @@
 
 I build product systems that turn messy workflows into structured tools, reviewable artifacts, and clear user-facing experiences.
 
+Portfolio site: https://sulmusic2-star.github.io/  
+60-second walkthrough: https://sulmusic2-star.github.io/assets/tim-sullivan-portfolio-walkthrough.mp4  
+Public-safe resume bullets: https://sulmusic2-star.github.io/resume-bullets.md
+
 ## Skills shown in these projects
 
 - **Mobile product development:** React Native, Expo, TypeScript, Firebase-backed app architecture
@@ -45,7 +49,8 @@ What it demonstrates:
 - operational QA / release-gate thinking
 
 Repo: [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground-showcase)  
-Live demo: [sulmusic2-star.github.io/lasting-ground-showcase](https://sulmusic2-star.github.io/lasting-ground-showcase/)
+Live demo: [sulmusic2-star.github.io/lasting-ground-showcase](https://sulmusic2-star.github.io/lasting-ground-showcase/)  
+Sample PDF packet: [lasting-ground-sample-packet.pdf](https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf)
 
 ## Build approach demonstrated here
 
