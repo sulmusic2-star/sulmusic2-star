@@ -6,10 +6,9 @@ I build product systems that turn messy workflows into structured tools, reviewa
 
 - **Mobile product development:** React Native, Expo, TypeScript, Firebase-backed app architecture
 - **Full-stack system design:** frontend, backend, source registries, generated artifacts, validation gates
-- **Workflow automation:** approval-first systems, operator dashboards, review queues, proof surfaces
 - **AI-assisted product operations:** using AI inside constrained workflows rather than as an unchecked black box
 - **Evidence-backed design:** source tracking, claim boundaries, QA checks, and readable public outputs
-- **Product packaging:** screenshots, case studies, docs, release notes, and public-safe technical explanations
+- **Product packaging:** screenshots, demos, case studies, docs, release notes, and public-safe technical explanations
 
 ## Featured builds
 
@@ -29,7 +28,8 @@ What it demonstrates:
 - achievement / retention loops
 - release packaging and public-safe documentation
 
-Repo: [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase)
+Repo: [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase)  
+Live demo: [sulmusic2-star.github.io/squadbrain-showcase](https://sulmusic2-star.github.io/squadbrain-showcase/)
 
 ### Lasting Ground
 
@@ -44,23 +44,8 @@ What it demonstrates:
 - complex domain workflow design with explicit uncertainty handling
 - operational QA / release-gate thinking
 
-Repo: [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground-showcase)
-
-### Queuewell
-
-**Estimate recovery / service-ops system**
-
-Queuewell is an operator workflow for service contractors: stale estimates, follow-up lanes, weekly proof, and approval-first client operations.
-
-What it demonstrates:
-
-- business-process automation
-- client-proof surfaces
-- approval-first workflow design
-- AI-assisted operations with human review gates
-- translating service-business leakage into a narrow productized workflow
-
-Repo: [operator-systems-showcase](https://github.com/sulmusic2-star/operator-systems-showcase)
+Repo: [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground-showcase)  
+Live demo: [sulmusic2-star.github.io/lasting-ground-showcase](https://sulmusic2-star.github.io/lasting-ground-showcase/)
 
 ## Build approach demonstrated here
 
@@ -75,4 +60,3 @@ Repo: [operator-systems-showcase](https://github.com/sulmusic2-star/operator-sys
 
 - [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase) — mobile app/product showcase
 - [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground-showcase) — full-stack evidence/system architecture showcase
-- [operator-systems-showcase](https://github.com/sulmusic2-star/operator-systems-showcase) — business workflow/operator system case study
