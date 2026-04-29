@@ -3,8 +3,16 @@
 I build practical software systems that turn messy workflows into tested code paths, clear tools, reviewable artifacts, and usable product experiences.
 
 Portfolio site: https://sulmusic2-star.github.io/  
+Proof packet: https://sulmusic2-star.github.io/proof/  
+Systems lab: https://sulmusic2-star.github.io/lab/  
 Skills snapshot: https://sulmusic2-star.github.io/resume-bullets.md
-Systems lab: https://sulmusic2-star.github.io/lab/
+
+## Start here
+
+- **Fast evaluation path:** [Proof packet](https://sulmusic2-star.github.io/proof/)
+- **Runnable browser proof:** [Interactive systems lab](https://sulmusic2-star.github.io/lab/)
+- **Case studies:** [SquadBrain](https://sulmusic2-star.github.io/case-studies/squadbrain/) · [Lasting Ground](https://sulmusic2-star.github.io/case-studies/lasting-ground/)
+- **Best public repos:** `squadbrain-showcase`, `lasting-ground-showcase`, `sulmusic2-star.github.io`
 
 ## Skills shown here
 
@@ -36,6 +44,7 @@ What it shows:
 Repo: [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase)  
 Live demo: [sulmusic2-star.github.io/squadbrain-showcase](https://sulmusic2-star.github.io/squadbrain-showcase/)  
 Tested code examples: [ranking, achievements, session state, roster normalization, matchmaking, adaptive practice, result validation](https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples)  
+Evaluator guide: [SquadBrain evaluator guide](https://github.com/sulmusic2-star/squadbrain-showcase/blob/main/docs/evaluator-guide.md)  
 Coverage summary: [SquadBrain coverage](https://github.com/sulmusic2-star/squadbrain-showcase/blob/main/docs/coverage-summary.md)
 
 ### Lasting Ground
@@ -55,6 +64,7 @@ Repo: [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground
 Live demo: [sulmusic2-star.github.io/lasting-ground-showcase](https://sulmusic2-star.github.io/lasting-ground-showcase/)  
 Sample PDF packet: [lasting-ground-sample-packet.pdf](https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf)  
 Tested code examples: [source-lane validation, evidence scoring, support depth, packet composition, packet language](https://github.com/sulmusic2-star/lasting-ground-showcase/tree/main/examples)  
+Evaluator guide: [Lasting Ground evaluator guide](https://github.com/sulmusic2-star/lasting-ground-showcase/blob/main/docs/evaluator-guide.md)  
 Coverage summary: [Lasting Ground coverage](https://github.com/sulmusic2-star/lasting-ground-showcase/blob/main/docs/coverage-summary.md)
 
 ## Interactive proof
