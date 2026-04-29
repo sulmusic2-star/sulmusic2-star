@@ -29,13 +29,13 @@ What it shows:
 - mobile app product design
 - React Native / Expo architecture
 - Firebase-backed competition concepts
-- ranking and leaderboard systems
-- achievement and retention loops
+- ranking, matchmaking, and result-validation systems
+- achievement, adaptive practice, and retention loops
 - release packaging and technical documentation
 
 Repo: [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase)  
 Live demo: [sulmusic2-star.github.io/squadbrain-showcase](https://sulmusic2-star.github.io/squadbrain-showcase/)  
-Tested code examples: [ranking, achievements, session state, roster normalization, matchmaking](https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples)  
+Tested code examples: [ranking, achievements, session state, roster normalization, matchmaking, adaptive practice, result validation](https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples)  
 Coverage summary: [SquadBrain coverage](https://github.com/sulmusic2-star/squadbrain-showcase/blob/main/docs/coverage-summary.md)
 
 ### Lasting Ground
@@ -54,12 +54,12 @@ What it shows:
 Repo: [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground-showcase)  
 Live demo: [sulmusic2-star.github.io/lasting-ground-showcase](https://sulmusic2-star.github.io/lasting-ground-showcase/)  
 Sample PDF packet: [lasting-ground-sample-packet.pdf](https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf)  
-Tested code examples: [source-lane validation, support depth, packet language](https://github.com/sulmusic2-star/lasting-ground-showcase/tree/main/examples)  
+Tested code examples: [source-lane validation, evidence scoring, support depth, packet composition, packet language](https://github.com/sulmusic2-star/lasting-ground-showcase/tree/main/examples)  
 Coverage summary: [Lasting Ground coverage](https://github.com/sulmusic2-star/lasting-ground-showcase/blob/main/docs/coverage-summary.md)
 
 ## Interactive proof
 
-Systems lab: [sulmusic2-star.github.io/lab](https://sulmusic2-star.github.io/lab/) — a browser demo showing roster cleanup, match ranking, source-lane validation, and cautious packet language.
+Systems lab: [sulmusic2-star.github.io/lab](https://sulmusic2-star.github.io/lab/) — a browser demo showing roster cleanup, adaptive practice, result validation, source-lane scoring, and cautious packet language.
 
 ## How I build
 
