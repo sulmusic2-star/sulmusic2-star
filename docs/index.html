@@ -10,7 +10,8 @@
 <body>
   <main class="wrap">
     <nav class="topnav"><a href="https://sulmusic2-star.github.io/proof/">Selected work</a><a href="https://sulmusic2-star.github.io/lab/">Systems lab</a><a href="https://sulmusic2-star.github.io/case-studies/squadbrain/">SquadBrain</a><a href="https://sulmusic2-star.github.io/case-studies/lasting-ground/">Lasting Ground</a><a href="https://github.com/sulmusic2-star">GitHub</a></nav>
-    <section class="hero">
+
+    <section class="hero hero-showcase">
       <div>
         <p class="eyebrow">Product systems portfolio</p>
         <h1>Software systems for complex workflows.</h1>
@@ -22,26 +23,51 @@
           <div class="kicker"><b>CI-backed examples</b><span>Runnable code, coverage, and docs</span></div>
         </div>
       </div>
-      <div class="card metric-card"><div><strong>Product</strong><span>Mobile loops, ranking, adaptive practice, generated artifacts.</span></div><div><strong>Systems</strong><span>Validation gates, source models, review queues, support-depth rules.</span></div><div><strong>Proof</strong><span>Demos, tests, coverage, case studies, sample packets, evaluator guides.</span></div></div>
+
+      <aside class="system-visual" aria-label="Product system map">
+        <div class="system-chip top">inputs</div>
+        <div class="system-node product"><span>01</span><b>Product surface</b><small>mobile UI · demos · packet views</small></div>
+        <div class="system-node logic"><span>02</span><b>Operating logic</b><small>ranking · scoring · validation</small></div>
+        <div class="system-node review"><span>03</span><b>Review layer</b><small>queues · risk flags · support depth</small></div>
+        <div class="system-node artifact"><span>04</span><b>Proof artifact</b><small>tests · PDFs · guides · CI</small></div>
+        <div class="system-line one"></div><div class="system-line two"></div><div class="system-line three"></div>
+        <div class="system-chip bottom">clear output</div>
+      </aside>
+    </section>
+
+    <section class="section capability-section">
+      <div class="section-head"><p class="eyebrow">Capability map</p><h2>The work spans interface, logic, evidence, and delivery.</h2></div>
+      <div class="capability-grid">
+        <article class="capability-card"><span>Surface</span><h3>Product UX</h3><p>Mobile flows, task states, progression loops, demo surfaces, and readable artifacts.</p></article>
+        <article class="capability-card"><span>Logic</span><h3>Decision systems</h3><p>Rules, ranking, scoring, state transitions, validation gates, and confidence boundaries.</p></article>
+        <article class="capability-card"><span>Operations</span><h3>Review workflows</h3><p>Queues, handoffs, source checks, risk flags, and human review points around automation.</p></article>
+        <article class="capability-card"><span>Proof</span><h3>Inspectable delivery</h3><p>Tests, coverage, CI, sample outputs, evaluator docs, screenshots, and working demos.</p></article>
+      </div>
     </section>
 
     <section class="section" id="projects">
-      <p class="eyebrow">Selected projects</p>
-      <h2>Focused builds with inspectable implementation.</h2>
-      <article class="project card">
+      <div class="section-head"><p class="eyebrow">Selected projects</p><h2>Focused builds with inspectable implementation.</h2></div>
+      <article class="project card feature-project">
         <img src="https://sulmusic2-star.github.io/squadbrain-showcase/assets/squadbrain-demo.gif" alt="SquadBrain animated demo" />
-        <div><p class="eyebrow">Mobile product system</p><h3>SquadBrain</h3><p class="muted">A sports roster memorization game built around practice loops, quick-match competition, achievements, leaderboards, adaptive practice, result validation, and mobile/iPad polish.</p><div class="tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">TypeScript</span><span class="tag">Firebase architecture</span></div><p><a href="https://sulmusic2-star.github.io/case-studies/squadbrain/">Case study</a> · <a href="https://sulmusic2-star.github.io/squadbrain-showcase/">Live demo</a> · <a href="https://github.com/sulmusic2-star/squadbrain-showcase">GitHub repo</a></p></div>
+        <div><p class="eyebrow">Mobile product system</p><h3>SquadBrain</h3><p class="muted">A sports roster memorization game built around practice loops, quick-match competition, achievements, leaderboards, adaptive practice, result validation, and mobile/iPad polish.</p><div class="mini-proof"><span>25 tests</span><span>TypeScript</span><span>Adaptive practice</span></div><div class="tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">TypeScript</span><span class="tag">Firebase architecture</span></div><p><a href="https://sulmusic2-star.github.io/case-studies/squadbrain/">Case study</a> · <a href="https://sulmusic2-star.github.io/squadbrain-showcase/">Live demo</a> · <a href="https://github.com/sulmusic2-star/squadbrain-showcase">GitHub repo</a></p></div>
       </article>
-      <article class="project card">
+      <article class="project card feature-project">
         <img src="https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet-cover.png" alt="Lasting Ground packet preview" />
-        <div><p class="eyebrow">Evidence system</p><h3>Lasting Ground</h3><p class="muted">A source-backed property review system that organizes public context into evidence lanes, support-depth decisions, validation gates, packet sections, and a printable sample artifact.</p><div class="tags"><span class="tag">Python</span><span class="tag">Evidence scoring</span><span class="tag">Validation gates</span><span class="tag">Generated packets</span></div><p><a href="https://sulmusic2-star.github.io/case-studies/lasting-ground/">Case study</a> · <a href="https://sulmusic2-star.github.io/lasting-ground-showcase/">Live demo</a> · <a href="https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf">Sample PDF</a> · <a href="https://github.com/sulmusic2-star/lasting-ground-showcase">GitHub repo</a></p></div>
+        <div><p class="eyebrow">Evidence system</p><h3>Lasting Ground</h3><p class="muted">A source-backed property review system that organizes public context into evidence lanes, support-depth decisions, validation gates, packet sections, and a printable sample artifact.</p><div class="mini-proof"><span>18 tests</span><span>Python</span><span>Evidence scoring</span></div><div class="tags"><span class="tag">Python</span><span class="tag">Evidence scoring</span><span class="tag">Validation gates</span><span class="tag">Generated packets</span></div><p><a href="https://sulmusic2-star.github.io/case-studies/lasting-ground/">Case study</a> · <a href="https://sulmusic2-star.github.io/lasting-ground-showcase/">Live demo</a> · <a href="https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf">Sample PDF</a> · <a href="https://github.com/sulmusic2-star/lasting-ground-showcase">GitHub repo</a></p></div>
       </article>
     </section>
 
-    <section class="section card">
+    <section class="section card proof-panel">
       <p class="eyebrow">Engineering proof</p>
       <h2>Code paths a reviewer can inspect.</h2>
       <div class="proof"><p class="muted"><b style="color:var(--ink)">SquadBrain product logic</b><br/><a href="https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples">25 passing tests across ranking, achievements, session state, roster normalization, matchmaking, adaptive practice, and result validation</a>.</p><p class="muted"><b style="color:var(--ink)">Lasting Ground validation</b><br/><a href="https://github.com/sulmusic2-star/lasting-ground-showcase/tree/main/examples">18 passing tests across source-lane validation, evidence scoring, support depth, packet composition, and packet language</a>.</p><p class="muted"><b style="color:var(--ink)">Interactive systems lab</b><br/><a href="https://sulmusic2-star.github.io/lab/">Browser demo</a> showing roster cleanup, adaptive practice, result validation, source-lane scoring, and cautious packet language.</p></div>
+    </section>
+
+    <section class="section delivery-strip">
+      <div><span>1</span><b>Shape the workflow</b><small>inputs, states, rules</small></div>
+      <div><span>2</span><b>Build the surface</b><small>UX, demos, outputs</small></div>
+      <div><span>3</span><b>Add guardrails</b><small>validation, review, risk</small></div>
+      <div><span>4</span><b>Package the proof</b><small>tests, docs, artifacts</small></div>
     </section>
 
     <section class="section card">
