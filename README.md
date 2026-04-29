@@ -4,7 +4,7 @@ I build product systems that turn messy workflows into structured tools, reviewa
 
 Portfolio site: https://sulmusic2-star.github.io/  
 60-second walkthrough: https://sulmusic2-star.github.io/assets/tim-sullivan-portfolio-walkthrough.mp4  
-Public-safe resume bullets: https://sulmusic2-star.github.io/resume-bullets.md
+Resume bullets: https://sulmusic2-star.github.io/resume-bullets.md
 
 ## Skills shown in these projects
 
@@ -12,7 +12,7 @@ Public-safe resume bullets: https://sulmusic2-star.github.io/resume-bullets.md
 - **Full-stack system design:** frontend, backend, source registries, generated artifacts, validation gates
 - **AI-assisted product operations:** using AI inside constrained workflows rather than as an unchecked black box
 - **Evidence-backed design:** source tracking, claim boundaries, QA checks, and readable public outputs
-- **Product packaging:** screenshots, demos, case studies, docs, release notes, and public-safe technical explanations
+- **Product packaging:** screenshots, demos, case studies, docs, release notes, and clear technical explanations
 
 ## Featured builds
 
@@ -30,7 +30,7 @@ What it demonstrates:
 - Firebase-backed competition concepts
 - ELO-style ranking and leaderboard thinking
 - achievement / retention loops
-- release packaging and public-safe documentation
+- release packaging and technical documentation
 
 Repo: [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase)  
 Live demo: [sulmusic2-star.github.io/squadbrain-showcase](https://sulmusic2-star.github.io/squadbrain-showcase/)
@@ -55,7 +55,7 @@ Sample PDF packet: [lasting-ground-sample-packet.pdf](https://sulmusic2-star.git
 ## Build approach demonstrated here
 
 - turn vague workflows into explicit systems
-- separate private implementation from public-safe documentation
+- turn implementation work into reviewable documentation
 - keep claims tied to evidence and constraints
 - build artifacts a reviewer can inspect
 - use automation where it reduces repeated work
