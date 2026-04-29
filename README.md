@@ -3,14 +3,14 @@
 I build practical software systems that turn messy workflows into tested code paths, clear tools, reviewable artifacts, and usable product experiences.
 
 Portfolio site: https://sulmusic2-star.github.io/  
-Proof packet: https://sulmusic2-star.github.io/proof/  
+Selected work: https://sulmusic2-star.github.io/proof/  
 Systems lab: https://sulmusic2-star.github.io/lab/  
 Skills snapshot: https://sulmusic2-star.github.io/resume-bullets.md
 
-## Start here
+## Selected work
 
-- **Fast evaluation path:** [Proof packet](https://sulmusic2-star.github.io/proof/)
-- **Runnable browser proof:** [Interactive systems lab](https://sulmusic2-star.github.io/lab/)
+- **Review path:** [Selected work](https://sulmusic2-star.github.io/proof/)
+- **Interactive demo:** [Systems lab](https://sulmusic2-star.github.io/lab/)
 - **Case studies:** [SquadBrain](https://sulmusic2-star.github.io/case-studies/squadbrain/) · [Lasting Ground](https://sulmusic2-star.github.io/case-studies/lasting-ground/)
 - **Best public repos:** `squadbrain-showcase`, `lasting-ground-showcase`, `sulmusic2-star.github.io`
 
@@ -67,7 +67,7 @@ Tested code examples: [source-lane validation, evidence scoring, support depth, 
 Evaluator guide: [Lasting Ground evaluator guide](https://github.com/sulmusic2-star/lasting-ground-showcase/blob/main/docs/evaluator-guide.md)  
 Coverage summary: [Lasting Ground coverage](https://github.com/sulmusic2-star/lasting-ground-showcase/blob/main/docs/coverage-summary.md)
 
-## Interactive proof
+## Interactive demo
 
 Systems lab: [sulmusic2-star.github.io/lab](https://sulmusic2-star.github.io/lab/) — a browser demo showing roster cleanup, adaptive practice, result validation, source-lane scoring, and cautious packet language.
 
