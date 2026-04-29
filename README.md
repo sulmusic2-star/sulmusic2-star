@@ -1,6 +1,6 @@
 # Tim Sullivan
 
-I build practical software systems that turn messy workflows into clear tools, reviewable artifacts, and usable product experiences.
+I build practical software systems that turn messy workflows into tested code paths, clear tools, reviewable artifacts, and usable product experiences.
 
 Portfolio site: https://sulmusic2-star.github.io/  
 Skills snapshot: https://sulmusic2-star.github.io/resume-bullets.md
@@ -12,6 +12,7 @@ Skills snapshot: https://sulmusic2-star.github.io/resume-bullets.md
 - **AI-assisted operations:** structured outputs, review states, approval points, and evidence-aware workflows
 - **Evidence-backed product design:** source tracking, QA checks, clear uncertainty handling, and readable outputs
 - **Product packaging:** demos, screenshots, sample packets, architecture notes, and project documentation
+- **Testing and CI:** unit-tested examples, type checks, validation tests, and GitHub Actions workflows
 
 ## Featured builds
 
@@ -33,7 +34,7 @@ What it shows:
 
 Repo: [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase)  
 Live demo: [sulmusic2-star.github.io/squadbrain-showcase](https://sulmusic2-star.github.io/squadbrain-showcase/)  
-Code examples: [ranking, achievements, session state](https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples)
+Tested code examples: [ranking, achievements, session state](https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples)
 
 ### Lasting Ground
 
@@ -51,7 +52,7 @@ What it shows:
 Repo: [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground-showcase)  
 Live demo: [sulmusic2-star.github.io/lasting-ground-showcase](https://sulmusic2-star.github.io/lasting-ground-showcase/)  
 Sample PDF packet: [lasting-ground-sample-packet.pdf](https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf)  
-Code examples: [source-lane validation](https://github.com/sulmusic2-star/lasting-ground-showcase/tree/main/examples)
+Tested code examples: [source-lane validation](https://github.com/sulmusic2-star/lasting-ground-showcase/tree/main/examples)
 
 ## How I build
 

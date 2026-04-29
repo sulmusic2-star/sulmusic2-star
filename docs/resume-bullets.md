@@ -1,6 +1,6 @@
 # Skills Snapshot
 
-I build practical product systems: mobile apps, workflow tools, evidence-backed packets, review queues, and demos that make the work easy to understand.
+I build practical product systems: mobile apps, workflow tools, tested code paths, evidence-backed packets, review queues, and demos that make the work easy to understand.
 
 ## Strongest skills
 
@@ -8,7 +8,7 @@ I build practical product systems: mobile apps, workflow tools, evidence-backed 
 - **Full-stack workflow design:** turning scattered inputs into structured states, review queues, backend rules, and usable outputs.
 - **Evidence-backed systems:** source registries, validation gates, support-depth rules, readable proof artifacts, and careful claim handling.
 - **AI-assisted operations:** using AI as part of a controlled workflow with review steps, structured outputs, and human approval where it matters.
-- **Product packaging:** demos, screenshots, sample PDFs, architecture notes, and GitHub case studies that make projects easy to evaluate.
+- **Product packaging:** demos, screenshots, sample PDFs, tests, CI checks, architecture notes, and GitHub case studies that make projects easy to evaluate.
 
 ## Project proof
 
