@@ -34,7 +34,7 @@ What it shows:
 
 Repo: [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase)  
 Live demo: [sulmusic2-star.github.io/squadbrain-showcase](https://sulmusic2-star.github.io/squadbrain-showcase/)  
-Tested code examples: [ranking, achievements, session state](https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples)
+Tested code examples: [ranking, achievements, session state, roster normalization, matchmaking](https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples)
 
 ### Lasting Ground
 
@@ -52,7 +52,7 @@ What it shows:
 Repo: [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground-showcase)  
 Live demo: [sulmusic2-star.github.io/lasting-ground-showcase](https://sulmusic2-star.github.io/lasting-ground-showcase/)  
 Sample PDF packet: [lasting-ground-sample-packet.pdf](https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf)  
-Tested code examples: [source-lane validation](https://github.com/sulmusic2-star/lasting-ground-showcase/tree/main/examples)
+Tested code examples: [source-lane validation, support depth, packet language](https://github.com/sulmusic2-star/lasting-ground-showcase/tree/main/examples)
 
 ## How I build
 
