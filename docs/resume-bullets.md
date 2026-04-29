@@ -8,13 +8,15 @@ I build practical product systems: mobile apps, workflow tools, tested code path
 - **Full-stack workflow design:** turning scattered inputs into structured states, review queues, backend rules, and usable outputs.
 - **Evidence-backed systems:** source registries, validation gates, support-depth rules, readable proof artifacts, and careful claim handling.
 - **AI-assisted operations:** using AI as part of a controlled workflow with review steps, structured outputs, and human approval where it matters.
-- **Product packaging:** demos, screenshots, sample PDFs, unit tests, CI checks, engineering decision notes, and GitHub case studies that make projects easy to evaluate.
+- **Product packaging:** demos, screenshots, sample PDFs, unit tests, coverage summaries, CI checks, engineering decision notes, and GitHub case studies that make projects easy to evaluate.
 
 ## Project proof
 
+- Interactive systems lab: https://sulmusic2-star.github.io/lab/
+
 - Built **SquadBrain**, a mobile sports roster memorization game with practice loops, quick-match competition, achievements, leaderboards, and Firebase-backed product architecture.
 - Built **Lasting Ground**, a source-backed property review system that turns fragmented public/official context into structured packets with validation gates and clear uncertainty handling.
-- Created demos, sample packets, documentation, project pages, tested code examples, and CI checks so the work can be reviewed without needing a long explanation.
+- Created demos, sample packets, documentation, project pages, tested code examples, coverage summaries, CI checks, and an interactive systems lab so the work can be reviewed without needing a long explanation.
 - Designed workflows around queues, decision states, generated artifacts, QA checks, and approval points.
 
 ## Roles this fits

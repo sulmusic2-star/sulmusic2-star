@@ -4,6 +4,7 @@ I build practical software systems that turn messy workflows into tested code pa
 
 Portfolio site: https://sulmusic2-star.github.io/  
 Skills snapshot: https://sulmusic2-star.github.io/resume-bullets.md
+Systems lab: https://sulmusic2-star.github.io/lab/
 
 ## Skills shown here
 
@@ -11,8 +12,8 @@ Skills snapshot: https://sulmusic2-star.github.io/resume-bullets.md
 - **Full-stack workflow design:** frontend, backend, source registries, generated artifacts, validation gates
 - **AI-assisted operations:** structured outputs, review states, approval points, and evidence-aware workflows
 - **Evidence-backed product design:** source tracking, QA checks, clear uncertainty handling, and readable outputs
-- **Product packaging:** demos, screenshots, sample packets, architecture notes, and project documentation
-- **Testing and CI:** unit-tested examples, type checks, validation tests, and GitHub Actions workflows
+- **Product packaging:** demos, screenshots, sample packets, coverage summaries, architecture notes, and project documentation
+- **Testing and CI:** unit-tested examples, type checks, validation tests, coverage summaries, and GitHub Actions workflows
 
 ## Featured builds
 
@@ -34,7 +35,8 @@ What it shows:
 
 Repo: [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase)  
 Live demo: [sulmusic2-star.github.io/squadbrain-showcase](https://sulmusic2-star.github.io/squadbrain-showcase/)  
-Tested code examples: [ranking, achievements, session state, roster normalization, matchmaking](https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples)
+Tested code examples: [ranking, achievements, session state, roster normalization, matchmaking](https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples)  
+Coverage summary: [SquadBrain coverage](https://github.com/sulmusic2-star/squadbrain-showcase/blob/main/docs/coverage-summary.md)
 
 ### Lasting Ground
 
@@ -52,7 +54,12 @@ What it shows:
 Repo: [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground-showcase)  
 Live demo: [sulmusic2-star.github.io/lasting-ground-showcase](https://sulmusic2-star.github.io/lasting-ground-showcase/)  
 Sample PDF packet: [lasting-ground-sample-packet.pdf](https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf)  
-Tested code examples: [source-lane validation, support depth, packet language](https://github.com/sulmusic2-star/lasting-ground-showcase/tree/main/examples)
+Tested code examples: [source-lane validation, support depth, packet language](https://github.com/sulmusic2-star/lasting-ground-showcase/tree/main/examples)  
+Coverage summary: [Lasting Ground coverage](https://github.com/sulmusic2-star/lasting-ground-showcase/blob/main/docs/coverage-summary.md)
+
+## Interactive proof
+
+Systems lab: [sulmusic2-star.github.io/lab](https://sulmusic2-star.github.io/lab/) — a browser demo showing roster cleanup, match ranking, source-lane validation, and cautious packet language.
 
 ## How I build
 
