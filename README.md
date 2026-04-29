@@ -1,35 +1,34 @@
 # Tim Sullivan
 
-I build product systems that turn messy workflows into structured tools, reviewable artifacts, and clear user-facing experiences.
+I build product systems that turn messy workflows into clear tools, reviewable artifacts, and usable product experiences.
 
 Portfolio site: https://sulmusic2-star.github.io/  
-60-second walkthrough: https://sulmusic2-star.github.io/assets/tim-sullivan-portfolio-walkthrough.mp4  
-Resume bullets: https://sulmusic2-star.github.io/resume-bullets.md
+Skills snapshot: https://sulmusic2-star.github.io/resume-bullets.md
 
-## Skills shown in these projects
+## Skills shown here
 
 - **Mobile product development:** React Native, Expo, TypeScript, Firebase-backed app architecture
-- **Full-stack system design:** frontend, backend, source registries, generated artifacts, validation gates
-- **AI-assisted product operations:** using AI inside constrained workflows rather than as an unchecked black box
-- **Evidence-backed design:** source tracking, claim boundaries, QA checks, and readable public outputs
-- **Product packaging:** screenshots, demos, case studies, docs, release notes, and clear technical explanations
+- **Full-stack workflow design:** frontend, backend, source registries, generated artifacts, validation gates
+- **AI-assisted operations:** structured outputs, review states, approval points, and evidence-aware workflows
+- **Evidence-backed product design:** source tracking, QA checks, clear uncertainty handling, and readable outputs
+- **Product packaging:** demos, screenshots, sample packets, architecture notes, and project documentation
 
 ## Featured builds
 
 ### SquadBrain
 
 **Mobile sports roster memorization game**  
-React Native / Expo / TypeScript / Firebase product architecture.
+React Native / Expo / TypeScript / Firebase architecture.
 
-SquadBrain is a mobile game built around roster memory, quick-match competition, achievements, leaderboards, friend challenges, and iPhone/iPad product polish.
+SquadBrain is built around roster memory, practice loops, quick-match competition, achievements, leaderboards, friend challenges, and iPhone/iPad polish.
 
-What it demonstrates:
+What it shows:
 
 - mobile app product design
 - React Native / Expo architecture
 - Firebase-backed competition concepts
-- ELO-style ranking and leaderboard thinking
-- achievement / retention loops
+- ranking and leaderboard systems
+- achievement and retention loops
 - release packaging and technical documentation
 
 Repo: [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase)  
@@ -38,24 +37,23 @@ Live demo: [sulmusic2-star.github.io/squadbrain-showcase](https://sulmusic2-star
 ### Lasting Ground
 
 **Source-backed property resilience review system**  
-Full-stack product/system architecture for turning fragmented public/official property sources into structured homeowner-facing review artifacts.
+Full-stack product/system architecture for turning fragmented public/official property context into structured review packets.
 
-What it demonstrates:
+What it shows:
 
 - source registry and evidence-first system design
 - full-stack architecture across frontend, backend, reports, and validation
-- deterministic rules around what can and cannot be claimed
-- complex domain workflow design with explicit uncertainty handling
-- operational QA / release-gate thinking
+- rules for what can and cannot be claimed
+- complex domain workflow design with uncertainty handling
+- QA gates and generated artifact workflows
 
 Repo: [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground-showcase)  
 Live demo: [sulmusic2-star.github.io/lasting-ground-showcase](https://sulmusic2-star.github.io/lasting-ground-showcase/)  
 Sample PDF packet: [lasting-ground-sample-packet.pdf](https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf)
 
-## Build approach demonstrated here
+## How I build
 
 - turn vague workflows into explicit systems
-- turn implementation work into reviewable documentation
 - keep claims tied to evidence and constraints
 - build artifacts a reviewer can inspect
 - use automation where it reduces repeated work

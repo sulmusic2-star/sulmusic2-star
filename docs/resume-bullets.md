@@ -1,29 +1,32 @@
-# Resume Positioning
+# Skills Snapshot
 
-## Positioning headline
+I build practical product systems: mobile apps, workflow tools, evidence-backed packets, review queues, and demos that make the work easy to understand.
 
-Product systems builder with hands-on experience across mobile apps, full-stack workflow systems, evidence-backed artifact generation, AI-assisted operations, and technical packaging.
+## Strongest skills
 
-## Resume bullets
+- **Mobile product development:** React Native, Expo, TypeScript, mobile UI flows, game loops, progression systems, and Firebase-backed architecture.
+- **Full-stack workflow design:** turning scattered inputs into structured states, review queues, backend rules, and usable outputs.
+- **Evidence-backed systems:** source registries, validation gates, support-depth rules, readable proof artifacts, and careful claim handling.
+- **AI-assisted operations:** using AI as part of a controlled workflow with review steps, structured outputs, and human approval where it matters.
+- **Product packaging:** demos, screenshots, sample PDFs, architecture notes, and GitHub case studies that make projects easy to evaluate.
 
-- Built **SquadBrain**, a mobile sports roster memorization game, with React Native / Expo / TypeScript product architecture, competition loops, achievements, leaderboard concepts, and Firebase-backed app design.
-- Designed **Lasting Ground**, a source-backed property review system that turns fragmented public/official context into structured review packets with source registries, generated artifacts, validation gates, and explicit claim boundaries.
-- Created demos, case-study repositories, sample packets, and walkthrough assets that make technical work easy to evaluate from GitHub.
-- Developed product documentation, architecture explanations, QA checklists, and proof artifacts that make complex systems understandable to non-technical reviewers.
-- Applied AI-assisted workflows inside constrained review systems, emphasizing structured outputs, human approval, source tracking, and operational safety.
-- Turned unclear workflows into explicit queues, review states, decision points, and generated artifacts.
+## Project proof
 
-## Best-fit job titles
+- Built **SquadBrain**, a mobile sports roster memorization game with practice loops, quick-match competition, achievements, leaderboards, and Firebase-backed product architecture.
+- Built **Lasting Ground**, a source-backed property review system that turns fragmented public/official context into structured packets with validation gates and clear uncertainty handling.
+- Created demos, sample packets, documentation, and project pages so the work can be reviewed without needing a long explanation.
+- Designed workflows around queues, decision states, generated artifacts, QA checks, and approval points.
+
+## Roles this fits
 
 - Solutions Engineer
-- Implementation Specialist / Implementation Manager
-- Technical Customer Success Manager
+- Implementation Specialist
+- Technical Customer Success
 - AI Workflow / Automation Specialist
-- Product Operations Associate
+- Product Operations
 - Technical Product Analyst
 - Founder Associate / Technical Operator
-- Customer-Facing Systems Builder
 
-## Capability summary
+## Short summary
 
-I build practical product systems from messy workflows: define the data flow, design the review gates, create usable interfaces or artifacts, and package the result so someone else can understand and evaluate it quickly.
+I’m strongest where product, systems, and operations meet: taking a messy process, designing the workflow, building the tool, and packaging the output so other people can use it and trust it.
