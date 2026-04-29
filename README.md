@@ -1,6 +1,6 @@
 # Tim Sullivan
 
-I build practical software systems that turn messy workflows into tested code paths, clear tools, reviewable artifacts, and usable product experiences.
+I build practical software systems that turn complex workflows into tested code paths, clear tools, reviewable artifacts, and usable product experiences.
 
 Portfolio site: https://sulmusic2-star.github.io/  
 Selected work: https://sulmusic2-star.github.io/proof/  

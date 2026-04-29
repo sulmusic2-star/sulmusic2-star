@@ -1,6 +1,6 @@
 # Skills Snapshot
 
-I build practical product systems: mobile apps, workflow tools, tested code paths, evidence-backed packets, review queues, and demos that make the work easy to understand.
+I build practical product systems: mobile apps, workflow tools, tested code paths, evidence-backed packets, review queues, and demos that make the work easy to evaluate.
 
 ## Strongest skills
 
@@ -31,4 +31,4 @@ I build practical product systems: mobile apps, workflow tools, tested code path
 
 ## Short summary
 
-I’m strongest where product, systems, and operations meet: taking a messy process, designing the workflow, building the tool, and packaging the output so other people can use it and trust it.
+I work best where product, systems, and operations meet: translating complex processes into usable tools, validation logic, and clear artifacts.
