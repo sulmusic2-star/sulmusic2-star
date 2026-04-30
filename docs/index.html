@@ -42,6 +42,43 @@
       <div class="signal-card"><span>Review path</span><b>Demos → cases → code</b><small>Designed so a reviewer can understand the work quickly from public artifacts.</small></div>
     </section>
 
+
+
+    <section class="section proof-workbench" data-proof-console aria-label="Interactive proof console">
+      <div class="workbench-copy">
+        <p class="eyebrow">Interactive proof console</p>
+        <h2><span>A profile that behaves</span><span>like a working system.</span></h2>
+        <p class="muted">Choose a build. Open proof.</p>
+        <div class="workbench-tabs" role="group" aria-label="Proof console tabs">
+          <button type="button" class="active" data-proof-tab="squad" aria-pressed="true">SquadBrain</button>
+          <button type="button" data-proof-tab="lasting" aria-pressed="false">Lasting Ground</button>
+          <button type="button" data-proof-tab="route" aria-pressed="false">Review route</button>
+        </div>
+      </div>
+      <div class="workbench-app">
+        <div class="workbench-top"><span></span><span></span><span></span><b data-proof-eyebrow>Mobile product system</b></div>
+        <div class="workbench-grid">
+          <div class="workbench-readout">
+            <span data-proof-status>React Native / TypeScript</span>
+            <h3 data-proof-title>SquadBrain</h3>
+            <p data-proof-summary>Adaptive practice, matchmaking, and validated results.</p>
+            <div class="state-rail"><i></i><b data-proof-route>Ranking → adaptive queue → result validation</b></div>
+          </div>
+          <div class="workbench-metrics">
+            <div><strong data-proof-metric>25 tests</strong><small>public checks</small></div>
+            <div><strong data-proof-coverage>98.3% coverage</strong><small>coverage artifact</small></div>
+          </div>
+          <ol class="workbench-log" data-proof-log>
+            <li><span>01</span>loaded roster state</li><li><span>02</span>prioritized weak recall</li><li><span>03</span>validated match result</li><li><span>04</span>routed proof artifact</li>
+          </ol>
+        </div>
+        <div class="workbench-actions">
+          <a data-proof-primary href="https://sulmusic2-star.github.io/squadbrain-showcase/">Open SquadBrain demo</a>
+          <a data-proof-code href="https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples">Open examples</a>
+        </div>
+      </div>
+    </section>
+
     <section class="section outcome-preview" aria-label="Outcome evidence preview">
       <div>
         <p class="eyebrow">Outcome evidence</p>
@@ -67,14 +104,14 @@
 
 
 
-    <section class="section profile-command-deck" aria-label="Profile command deck">
+    <section class="section profile-proof-router" aria-label="Public proof router">
       <div>
-        <p class="eyebrow">Profile command deck</p>
-        <h2><span>Make the public profile</span><span>feel like a proof console.</span></h2>
-        <p class="muted">The profile now routes from a high-signal banner into the packet, systems lab, outcome board, and public repos without forcing someone to guess what to inspect.</p>
+        <p class="eyebrow">Public proof router</p>
+        <h2><span>Make the public profile</span><span>feel like a proof surface.</span></h2>
+        <p class="muted">The profile now routes from a high-signal banner into the packet, systems lab, outcome board, and public repos with a clear inspection path.</p>
         <div class="actions"><a class="btn primary" href="https://sulmusic2-star.github.io/diligence/">Open packet</a><a class="btn" href="https://sulmusic2-star.github.io/review/">Evaluator console</a></div>
       </div>
-      <img src="https://sulmusic2-star.github.io/assets/profile-command-deck.svg" alt="Public review command deck graphic" />
+      <img src="https://sulmusic2-star.github.io/assets/profile-proof-router.svg" alt="Public review proof router graphic" />
     </section>
 
 
@@ -158,5 +195,6 @@
     </section>
   </main>
   <footer class="wrap">SquadBrain · Lasting Ground · Product systems · Workflow automation · Evidence-backed artifacts</footer>
+  <script src="site.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # Tim Sullivan
 
-![Tim Sullivan public review command deck](https://sulmusic2-star.github.io/assets/profile-command-deck.svg)
+![Tim Sullivan public review proof router](https://sulmusic2-star.github.io/assets/profile-proof-router.svg)
 
 I build practical software systems that turn complex workflows into tested code paths, clear tools, UX surfaces, reviewable artifacts, and usable product experiences.
 
@@ -9,14 +9,16 @@ I build practical software systems that turn complex workflows into tested code 
 - Selected work: https://sulmusic2-star.github.io/proof/
 - Outcome board: https://sulmusic2-star.github.io/outcomes/
 - Systems lab: https://sulmusic2-star.github.io/lab/
+- Interactive proof console: https://sulmusic2-star.github.io/
 - Skills snapshot: https://sulmusic2-star.github.io/resume-bullets.md
 
 ## Fast review route
 
-1. Open the [diligence packet](https://sulmusic2-star.github.io/diligence/) for the overview.
-2. Use the [outcome board](https://sulmusic2-star.github.io/outcomes/) to see what each build proves.
-3. Run the [systems lab](https://sulmusic2-star.github.io/lab/) for interactive logic.
-4. Inspect the public examples, coverage summaries, and decision records.
+1. Start with the [interactive proof console](https://sulmusic2-star.github.io/) to switch between product logic, evidence logic, and the review path.
+2. Open the [diligence packet](https://sulmusic2-star.github.io/diligence/) for the overview.
+3. Use the [outcome board](https://sulmusic2-star.github.io/outcomes/) to see what each build proves.
+4. Run the [systems lab](https://sulmusic2-star.github.io/lab/) for interactive logic.
+5. Inspect the public examples, coverage summaries, and decision records.
 
 ## Selected work
 
