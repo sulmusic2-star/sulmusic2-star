@@ -86,3 +86,24 @@
     render(root, 'squad');
   });
 })();
+
+(() => {
+  const inspectors = document.querySelectorAll('[data-packet-inspector]');
+  if (!inspectors.length) return;
+
+  inspectors.forEach((root) => {
+    const image = root.querySelector('[data-packet-image]');
+    const title = root.querySelector('[data-packet-title]');
+    const note = root.querySelector('[data-packet-note]');
+
+    root.querySelectorAll('[data-packet-page]').forEach((button) => {
+      button.addEventListener('click', () => {
+        root.querySelectorAll('[data-packet-page]').forEach((tab) => tab.classList.remove('active'));
+        button.classList.add('active');
+        if (image) image.src = button.dataset.packetPage;
+        if (title) title.textContent = button.dataset.packetTitle || button.textContent;
+        if (note) note.textContent = button.dataset.packetNote || '';
+      });
+    });
+  });
+})();
