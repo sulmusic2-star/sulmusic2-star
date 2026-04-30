@@ -129,3 +129,75 @@ body:before{background:
   .system-visual{display:grid;grid-template-columns:1fr;gap:12px;min-height:auto}
   .system-node{min-height:auto}
 }
+
+/* v10 responsive QA: prevent mobile clipping, keep hierarchy readable */
+html,body{max-width:100%;overflow-x:hidden}*,*::before,*::after{min-width:0}img,svg{max-width:100%;height:auto}
+@media(max-width:700px){
+  .wrap{width:100%;max-width:100%;padding-left:22px;padding-right:22px}
+  .topnav{margin-left:-22px;margin-right:-22px;padding:10px 22px 14px;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:8px}
+  .topnav::-webkit-scrollbar{display:none}.topnav a{flex:0 0 auto;white-space:nowrap}
+  .hero,.hero.compact{padding:42px 0 50px;gap:28px}.hero-showcase{align-items:start}
+  h1{font-size:clamp(40px,12.4vw,50px)!important;line-height:.98;letter-spacing:-.058em;word-spacing:.035em;text-wrap:balance;max-width:100%}
+  h2{font-size:clamp(31px,9.8vw,42px)!important;line-height:1.02;letter-spacing:-.055em;max-width:100%}
+  h3{font-size:clamp(22px,6.5vw,28px);line-height:1.08}.lead{font-size:18px;line-height:1.48;max-width:100%}
+  .actions{gap:10px}.btn{padding:11px 15px;max-width:100%}.kicker-row,.signal-board,.proof,.proof.wide,.skills{grid-template-columns:1fr!important}
+  .kicker,.signal-card,.card,.capability-card,.metric-card{width:100%}
+  .system-visual{width:100%;padding:22px;gap:12px;border-radius:28px}.system-node{width:100%;min-height:auto;padding:18px}.system-chip.bottom{justify-self:start}.system-node small{font-size:13px}
+  .visual-proof-wall{margin:48px 0;padding:22px;border-radius:30px}.visual-proof-wall:before{inset:12px;border-radius:22px}.visual-grid{grid-template-columns:1fr;gap:16px}.visual-card{border-radius:24px;padding:10px}.visual-card:before{height:30px}.visual-card:after{left:24px;top:23px}.visual-card figcaption{padding:14px 2px 2px}.visual-card b{font-size:18px}
+  .capability-grid,.delivery-strip,.artifact-rail,.evaluation-board,.matrix-grid,.adr-grid{grid-template-columns:1fr!important}.delivery-strip div,.artifact-rail div,.board-cell{border-right:0!important}
+  .project.card{grid-template-columns:1fr!important;padding:18px;border-radius:28px}.project.card:before{display:none}.project img{width:100%;aspect-ratio:16/10;max-height:300px;object-fit:contain}.project>div{width:100%}
+  .ux-lab-preview,.console-shell,.console-layout,.atlas-map,.risk-table>div{grid-template-columns:1fr!important}.ux-stack div{margin-left:0!important}.lens-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.lens-tabs::-webkit-scrollbar{display:none}.lens-tab{flex:0 0 auto}.lens-output{padding:22px}.lens-output h2{font-size:32px!important;overflow-wrap:normal}.atlas-blueprint{width:100%;padding:18px;border-radius:28px;min-height:auto}.blueprint-top{gap:12px}.blueprint-top b{font-size:11px}.blueprint-core{width:100%;margin:24px 0 16px;padding:20px}.blueprint-core strong{font-size:30px}.blueprint-grid{grid-template-columns:1fr!important;max-width:none}.blueprint-node{min-height:auto}
+}
+
+/* v10.1 mobile hardening: no clipped text, no horizontal layout dependency */
+@media(max-width:700px){
+  .wrap{width:calc(100% - 28px);max-width:calc(100% - 28px);padding-left:0;padding-right:0;overflow:hidden}
+  .topnav{margin-left:0;margin-right:0;padding:10px 0 14px;flex-wrap:wrap;overflow:visible;gap:8px}.topnav a{font-size:13px;padding:8px 11px;max-width:100%}
+  h1{font-size:37px!important;line-height:1;letter-spacing:-.05em;word-spacing:.02em;text-wrap:pretty}.hero .lead{font-size:17px;line-height:1.5}.hero{overflow:hidden}
+  .actions{display:grid;grid-template-columns:1fr;max-width:260px}.actions .btn{width:100%;justify-content:center}.kicker-row{gap:10px}.kicker{padding:13px 14px}
+  .system-visual{box-sizing:border-box;padding:18px;border-radius:24px}.system-node{box-sizing:border-box;padding:17px 18px}.system-node b{font-size:18px}.system-node small{font-size:13px;line-height:1.35}
+  .signal-card{padding:22px}.signal-card b{font-size:26px;line-height:1.04}.signal-card small{font-size:14px}
+  .visual-proof-wall{overflow:hidden}.project.card{overflow:hidden}.project img{max-width:100%}.proof-panel{overflow:hidden}.proof-panel .proof{gap:16px}
+  .blueprint-core strong{font-size:27px}.atlas-blueprint,.lens-output,.risk-table{overflow:hidden}.lens-tabs{flex-wrap:wrap;overflow:visible}.lens-tab{font-size:14px;padding:9px 12px}.lens-output h2{font-size:29px!important;line-height:1.06}.atlas-map p{font-size:15px;overflow-wrap:anywhere}
+}
+
+/* v10.2 diagnostic fix: do not hide mobile layout problems; make content wrap instead */
+@media(max-width:700px){.wrap{overflow:visible}.topnav{overflow:visible}h1,h2,h3,.lead,.signal-card b,.signal-card small,.card,.kicker,.system-node,.blueprint-node{overflow-wrap:break-word}.visual-proof-wall,.project.card,.proof-panel,.atlas-blueprint,.lens-output{overflow:hidden}}
+
+/* v10.3 mobile typography correction: stop oversized headings from being visually clipped */
+@media(max-width:700px){
+  .hero{overflow:visible!important}
+  h1{font-size:31px!important;line-height:1.04!important;letter-spacing:-.035em!important;text-wrap:wrap!important;overflow:visible!important}
+  h2{font-size:30px!important;line-height:1.08!important;letter-spacing:-.035em!important;text-wrap:wrap!important;overflow:visible!important}
+  .visual-proof-wall h2{font-size:30px!important;max-width:100%;overflow-wrap:break-word}.signal-card b{font-size:23px!important;line-height:1.08!important}.project h3{font-size:25px!important}.lead,.muted{overflow-wrap:break-word}.visual-proof-wall{padding:18px}.visual-card img{aspect-ratio:4/3;object-fit:contain}.system-visual{margin-top:12px}
+}
+
+/* v10.4 explicit headline rhythm: avoid mobile crop by controlling line breaks */
+h1 span,h2 span{display:block}
+@media(max-width:700px){h1 span,h2 span{display:block}.signal-card b br{display:block}.visual-proof-wall h2 span{display:block}}
+
+/* v10.5 mobile safe measure: keep text and artifact cards inside a readable 340px column */
+@media(max-width:700px){
+  .hero>div,.hero .lead,.kicker-row,.signal-board,.system-visual,.visual-proof-wall,.capability-section,.project.card,.ux-lab-preview,.proof-panel,.delivery-strip,.section.card,.atlas-blueprint,.architecture-lenses,.lens-output,.distinctive-signals,.risk-table{max-width:340px;margin-left:auto;margin-right:auto;width:100%}
+  .hero .lead{max-width:320px;margin-left:0;margin-right:0}.hero>div{margin-left:0}.kicker-row,.signal-board{margin-left:0}.system-visual{margin-top:18px}.visual-proof-wall{max-width:340px}.visual-card img{max-height:260px}.project img{max-height:240px}.card p,.signal-card small,.kicker span{font-size:14px;line-height:1.45}
+}
+
+/* v10.6 mobile panel alignment: force artifact panels into the viewport column */
+@media(max-width:700px){
+  .system-visual,.visual-proof-wall,.atlas-blueprint,.lens-output,.project.card,.signal-card,.card,.delivery-strip,.artifact-rail,.evaluation-board,.risk-table{width:calc(100vw - 28px)!important;max-width:calc(100vw - 28px)!important;margin-left:0!important;margin-right:0!important;justify-self:start!important;align-self:start!important}
+  .hero>aside{margin-left:0!important;margin-right:0!important}.visual-proof-wall .visual-grid,.atlas-blueprint .blueprint-grid{width:100%;max-width:100%}
+}
+
+/* v10.7 mobile nav: remove clipped pill rows */
+@media(max-width:700px){
+  .topnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}.topnav a{text-align:center;justify-content:center;overflow:hidden;text-overflow:ellipsis}.topnav a:last-child:nth-child(odd){grid-column:1/-1}
+}
+
+/* v10.8 mobile nav label readability */
+@media(max-width:700px){.topnav a{font-size:12px;line-height:1.15;padding:8px 7px;white-space:normal;overflow:visible;text-overflow:clip;min-height:38px;display:flex;align-items:center}}
+
+/* v10.9 final mobile safe layout: full-readable nav and inset panels */
+@media(max-width:700px){
+  .topnav{grid-template-columns:1fr}.topnav a:last-child:nth-child(odd){grid-column:auto}.topnav a{font-size:13px;min-height:36px}
+  .system-visual,.visual-proof-wall,.atlas-blueprint,.lens-output,.project.card,.signal-card,.card,.delivery-strip,.artifact-rail,.evaluation-board,.risk-table{width:100%!important;max-width:330px!important;margin-left:0!important;margin-right:0!important}.kicker-row{max-width:330px}.visual-card{max-width:100%}.visual-card img{width:100%}
+}
