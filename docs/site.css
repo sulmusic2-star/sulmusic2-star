@@ -249,3 +249,6 @@ body{background:radial-gradient(circle at 82% 0,rgba(20,184,166,.16),transparent
 
 /* v16.4 mobile cards stay inside viewport */
 @media(max-width:700px){.review-command,.packet-grid,.signal-board,.inspection-bento{grid-template-columns:minmax(0,1fr)!important;overflow:hidden}.review-command-main,.review-command>a,.packet-card,.signal-card,.inspection-main,.inspection-tile,.outcome-preview,.packet-strip{max-width:calc(100vw - 28px)!important;width:100%!important;min-width:0!important}.review-command-main p,.review-command>a small,.packet-card p,.signal-card small{overflow-wrap:anywhere}}
+
+/* v17 profile command deck: public profile as proof console */
+.profile-command-deck{display:grid;grid-template-columns:.82fr 1.18fr;gap:24px;align-items:center;border:1px solid rgba(185,203,213,.84);border-radius:36px;padding:30px;background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(235,246,249,.82));box-shadow:0 30px 100px rgba(7,17,28,.11)}.profile-command-deck img{display:block;width:100%;border-radius:28px;background:#07111c;box-shadow:0 28px 90px rgba(7,17,28,.18);border:1px solid rgba(111,255,232,.20)}@media(max-width:900px){.profile-command-deck{grid-template-columns:1fr;padding:22px;border-radius:28px}.profile-command-deck img{border-radius:22px}}

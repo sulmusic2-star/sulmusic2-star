@@ -1,11 +1,22 @@
 # Tim Sullivan
 
+![Tim Sullivan public review command deck](https://sulmusic2-star.github.io/assets/profile-command-deck.svg)
+
 I build practical software systems that turn complex workflows into tested code paths, clear tools, UX surfaces, reviewable artifacts, and usable product experiences.
 
-Portfolio site: https://sulmusic2-star.github.io/  
-Selected work: https://sulmusic2-star.github.io/proof/  
-Systems lab: https://sulmusic2-star.github.io/lab/  
-Skills snapshot: https://sulmusic2-star.github.io/resume-bullets.md
+- Portfolio site: https://sulmusic2-star.github.io/
+- Diligence packet: https://sulmusic2-star.github.io/diligence/
+- Selected work: https://sulmusic2-star.github.io/proof/
+- Outcome board: https://sulmusic2-star.github.io/outcomes/
+- Systems lab: https://sulmusic2-star.github.io/lab/
+- Skills snapshot: https://sulmusic2-star.github.io/resume-bullets.md
+
+## Fast review route
+
+1. Open the [diligence packet](https://sulmusic2-star.github.io/diligence/) for the overview.
+2. Use the [outcome board](https://sulmusic2-star.github.io/outcomes/) to see what each build proves.
+3. Run the [systems lab](https://sulmusic2-star.github.io/lab/) for interactive logic.
+4. Inspect the public examples, coverage summaries, and decision records.
 
 ## Selected work
 
