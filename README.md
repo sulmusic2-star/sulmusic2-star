@@ -6,6 +6,7 @@ I build practical software systems that turn complex workflows into tested code 
 
 - Portfolio site: https://sulmusic2-star.github.io/
 - Contact route: https://sulmusic2-star.github.io/contact/
+- Signal room: https://sulmusic2-star.github.io/signal/
 - Diligence packet: https://sulmusic2-star.github.io/diligence/
 - Selected work: https://sulmusic2-star.github.io/proof/
 - Outcome board: https://sulmusic2-star.github.io/outcomes/
@@ -15,12 +16,13 @@ I build practical software systems that turn complex workflows into tested code 
 
 ## Fast review route
 
-1. Use the [contact route](https://sulmusic2-star.github.io/contact/) when the work maps to a role, build, or collaboration.
-2. Start with the [interactive proof console](https://sulmusic2-star.github.io/) to switch between product logic, evidence logic, and the review path.
-3. Open the [diligence packet](https://sulmusic2-star.github.io/diligence/) for the overview.
-4. Use the [outcome board](https://sulmusic2-star.github.io/outcomes/) to see what each build proves.
-5. Run the [systems lab](https://sulmusic2-star.github.io/lab/) for interactive logic.
-6. Inspect the public examples, coverage summaries, and decision records.
+1. Open the [signal room](https://sulmusic2-star.github.io/signal/) for the fastest compressed read on public proof.
+2. Use the [contact route](https://sulmusic2-star.github.io/contact/) when the work maps to a role, build, or collaboration.
+3. Start with the [interactive proof console](https://sulmusic2-star.github.io/) to switch between product logic, evidence logic, and the review path.
+4. Open the [diligence packet](https://sulmusic2-star.github.io/diligence/) for the overview.
+5. Use the [outcome board](https://sulmusic2-star.github.io/outcomes/) to see what each build proves.
+6. Run the [systems lab](https://sulmusic2-star.github.io/lab/) for interactive logic.
+7. Inspect the public examples, coverage summaries, and decision records.
 
 ## Selected work
 
