@@ -1,102 +1,125 @@
+<!-- Profile README — github.com/sulmusic2-star
+     Drop-in replacement for sulmusic2-star/sulmusic2-star/README.md
+     Upgraded 2026.05 — visual hierarchy, real screenshots, audience-focused -->
+
+<div align="center">
+
 # Tim Sullivan
 
-![Tim Sullivan public review proof router](https://sulmusic2-star.github.io/assets/profile-proof-router.svg)
+### Product systems for complex real-world workflows
 
-I build practical software systems that turn complex workflows into tested code paths, clear tools, UX surfaces, reviewable artifacts, and usable product experiences.
+I build software systems where every claim points back to a source.
+Mobile products, evidence-backed review surfaces, AI-assisted operator tooling —
+shipped with tests, decision records, and artifacts a reviewer can inspect.
 
-- Portfolio site: https://sulmusic2-star.github.io/
-- Contact route: https://sulmusic2-star.github.io/contact/
-- Signal room: https://sulmusic2-star.github.io/signal/
-- Diligence packet: https://sulmusic2-star.github.io/diligence/
-- Selected work: https://sulmusic2-star.github.io/proof/
-- Outcome board: https://sulmusic2-star.github.io/outcomes/
-- Systems lab: https://sulmusic2-star.github.io/lab/
-- Interactive proof console: https://sulmusic2-star.github.io/
-- Skills snapshot: https://sulmusic2-star.github.io/resume-bullets.md
+[**lastingground.com**](https://lastingground.com) &nbsp;·&nbsp; [**Portfolio**](https://sulmusic2-star.github.io/) &nbsp;·&nbsp; [**Contact**](https://sulmusic2-star.github.io/contact/)
 
-## Fast review route
+[![Public tests](https://img.shields.io/badge/public_tests-43_passing-2c5b3a?style=flat-square)](https://sulmusic2-star.github.io/)
+[![Coverage](https://img.shields.io/badge/coverage-93%25-2c5b3a?style=flat-square)](https://github.com/sulmusic2-star/lasting-ground-showcase)
+[![Builds](https://img.shields.io/badge/featured_builds-2-1a1a1a?style=flat-square)](#featured-builds)
+[![Massachusetts](https://img.shields.io/badge/region-Massachusetts-4f5944?style=flat-square)](https://lastingground.com)
 
-1. Open the [signal room](https://sulmusic2-star.github.io/signal/) for the fastest compressed read on public proof.
-2. Use the [contact route](https://sulmusic2-star.github.io/contact/) when the work maps to a role, build, or collaboration.
-3. Start with the [interactive proof console](https://sulmusic2-star.github.io/) to switch between product logic, evidence logic, and the review path.
-4. Open the [diligence packet](https://sulmusic2-star.github.io/diligence/) for the overview.
-5. Use the [outcome board](https://sulmusic2-star.github.io/outcomes/) to see what each build proves.
-6. Run the [systems lab](https://sulmusic2-star.github.io/lab/) for interactive logic.
-7. Inspect the public examples, coverage summaries, and decision records.
+</div>
 
-## Selected work
+---
 
-- **Review path:** [Selected work](https://sulmusic2-star.github.io/proof/)
-- **Interactive demo:** [Systems lab](https://sulmusic2-star.github.io/lab/)
-- **Case studies:** [SquadBrain](https://sulmusic2-star.github.io/case-studies/squadbrain/) · [Lasting Ground](https://sulmusic2-star.github.io/case-studies/lasting-ground/)
-- **Best public repos:** `squadbrain-showcase`, `lasting-ground-showcase`, `sulmusic2-star.github.io`
+## What I do
 
-## Skills shown here
+I turn vague workflows into **explicit, inspectable systems** — interfaces paired with rules, review states, validation gates, and artifacts a reviewer can actually open.
 
-- **Mobile product development:** React Native, Expo, TypeScript, Firebase-backed app architecture
-- **Full-stack workflow design:** frontend, backend, source registries, generated artifacts, validation gates
-- **AI-assisted operations:** structured outputs, review states, approval points, and evidence-aware workflows
-- **Evidence-backed product design:** source tracking, QA checks, clear uncertainty handling, and readable outputs
-- **Product packaging:** demos, screenshots, sample packets, coverage summaries, architecture notes, and project documentation
-- **Testing and CI:** unit-tested examples, type checks, validation tests, coverage summaries, and GitHub Actions workflows
+The work spans three surfaces:
+
+| Surface | What it covers |
+|---|---|
+| **Product UX** | Mobile and web interfaces with editorial polish — typography, micro-interactions, accessibility, conversion patterns. |
+| **Operating logic** | Ranking, scoring, validation, support-depth rules, source registries. The deterministic layer underneath the UI. |
+| **Proof artifacts** | Tests, coverage reports, decision records, generated PDFs, evaluator guides — so a reviewer can verify the work without my help. |
+
+---
 
 ## Featured builds
 
-### SquadBrain
+### [Lasting Ground](https://lastingground.com) &nbsp; → &nbsp; [`lasting-ground-showcase`](https://github.com/sulmusic2-star/lasting-ground-showcase)
 
-**Mobile sports roster memorization game**  
-React Native / Expo / TypeScript / Firebase architecture.
+> **Source-backed property review system for Massachusetts.**
+> One address goes in. A four-page, source-dated property check comes back — every line traceable to FEMA, MassGIS, MC-FRM, NOAA, USGS, MassDEP, NHESP, or MACRIS.
 
-SquadBrain is built around roster memory, practice loops, quick-match competition, achievements, leaderboards, friend challenges, and iPhone/iPad polish.
+![Lasting Ground homepage](docs/screenshots/lastingground-home.png)
 
-What it shows:
+**What this build shows**
 
-- mobile app product design
-- React Native / Expo architecture
-- Firebase-backed competition concepts
-- ranking, matchmaking, and result-validation systems
-- achievement, adaptive practice, and retention loops
-- release packaging and technical documentation
+- Full-stack architecture across address resolution, source registry, validation gates, and packet generation
+- Editorial-grade product design (Fraunces / Geist / DM Serif Display, fluid typography, mobile-first responsive)
+- Public-source pipeline — federal + state + town records, normalized into one addressable layer
+- Deterministic validation rules with cautious language patterns ("if the source doesn't support it, the product doesn't claim it")
+- Region/town pack architecture so coastal towns, island towns, and inland cities each surface what's actually relevant
+- Live site, sample PDF, evaluator guide, ADRs, and 93% line coverage in CI
 
-Repo: [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase)  
-Live demo: [sulmusic2-star.github.io/squadbrain-showcase](https://sulmusic2-star.github.io/squadbrain-showcase/)  
-Tested code examples: [ranking, achievements, session state, roster normalization, matchmaking, adaptive practice, result validation](https://github.com/sulmusic2-star/squadbrain-showcase/tree/main/examples)  
-Evaluator guide: [SquadBrain evaluator guide](https://github.com/sulmusic2-star/squadbrain-showcase/blob/main/docs/evaluator-guide.md)  
-Coverage summary: [SquadBrain coverage](https://github.com/sulmusic2-star/squadbrain-showcase/blob/main/docs/coverage-summary.md)
+**[See the live site →](https://lastingground.com)** &nbsp;·&nbsp; **[Read the case study →](https://github.com/sulmusic2-star/lasting-ground-showcase)** &nbsp;·&nbsp; **[Sample PDF →](https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf)**
 
-### Lasting Ground
+---
 
-**Source-backed property resilience review system**  
-Full-stack product/system architecture for turning fragmented public/official property context into structured review packets.
+### [SquadBrain](https://sulmusic2-star.github.io/squadbrain-showcase/) &nbsp; → &nbsp; [`squadbrain-showcase`](https://github.com/sulmusic2-star/squadbrain-showcase)
 
-What it shows:
+> **Mobile sports-learning game built around roster memory.**
+> React Native / Expo / TypeScript / Firebase. Quick-match competition, achievements, ELO movement, friend challenges, cross-device progression.
 
-- source registry and evidence-first system design
-- full-stack architecture across frontend, backend, reports, and validation
-- rules for what can and cannot be claimed
-- complex domain workflow design with uncertainty handling
-- QA gates and generated artifact workflows
+**What this build shows**
 
-Repo: [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground-showcase)  
-Live demo: [sulmusic2-star.github.io/lasting-ground-showcase](https://sulmusic2-star.github.io/lasting-ground-showcase/)  
-Sample PDF packet: [lasting-ground-sample-packet.pdf](https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf)  
-Tested code examples: [source-lane validation, evidence scoring, support depth, packet composition, packet language](https://github.com/sulmusic2-star/lasting-ground-showcase/tree/main/examples)  
-Evaluator guide: [Lasting Ground evaluator guide](https://github.com/sulmusic2-star/lasting-ground-showcase/blob/main/docs/evaluator-guide.md)  
-Coverage summary: [Lasting Ground coverage](https://github.com/sulmusic2-star/lasting-ground-showcase/blob/main/docs/coverage-summary.md)
+- Mobile product design and iteration — onboarding, practice loops, quick-match, leaderboards, achievements
+- Expo / React Native / TypeScript app architecture with Zustand stores and persisted local state
+- Firebase Auth + Firestore + Cloud Functions, with server-side validation patterns for competitive results
+- ELO-style ranking, same-team matchmaking, and adaptive practice queues
+- iPhone + iPad responsive layouts, App Store-ready packaging, legal/privacy screens
+- 25 passing tests, 98.3% line coverage, 81.4% branch coverage in CI
 
-## Interactive demo
+**[Live demo →](https://sulmusic2-star.github.io/squadbrain-showcase/)** &nbsp;·&nbsp; **[Evaluator guide →](https://github.com/sulmusic2-star/squadbrain-showcase/blob/main/docs/evaluator-guide.md)**
 
-Systems lab: [sulmusic2-star.github.io/lab](https://sulmusic2-star.github.io/lab/) — a browser demo showing roster cleanup, adaptive practice, result validation, source-lane scoring, and cautious packet language.
+---
 
 ## How I build
 
-- turn vague workflows into explicit systems
-- keep claims tied to evidence and constraints
-- build artifacts a reviewer can inspect
-- use automation where it reduces repeated work
-- keep human approval around external actions and sensitive decisions
+1. **Turn vague workflows into explicit systems** — name the lanes, name the states, name the failure modes.
+2. **Keep claims tied to evidence** — the system separates source-backed detail, regional defaults, missing evidence, and unsupported claims.
+3. **Build artifacts a reviewer can inspect** — tests, coverage, decision records, sample outputs, evaluator guides.
+4. **Use automation where it reduces repeated work** — but keep human approval around external actions and sensitive decisions.
+5. **Write the careful sentence** — products that touch flood maps, rosters, or operator workflows have to know what they don't know.
 
-## Public repos
+---
 
-- [squadbrain-showcase](https://github.com/sulmusic2-star/squadbrain-showcase) — mobile app/product showcase
-- [lasting-ground-showcase](https://github.com/sulmusic2-star/lasting-ground-showcase) — full-stack evidence/system architecture showcase
+## Capabilities
+
+**Mobile product**
+&nbsp;&nbsp;&nbsp;&nbsp;React Native · Expo · TypeScript · Firebase · App Store packaging · iPad layouts
+
+**Full-stack web product**
+&nbsp;&nbsp;&nbsp;&nbsp;Vanilla HTML/CSS/JS, Python backends, source registries, generated artifacts, validation gates
+
+**Editorial-grade design**
+&nbsp;&nbsp;&nbsp;&nbsp;Variable typography (Fraunces, Geist, DM Serif Display) · fluid responsive systems · accessibility · conversion patterns
+
+**Evidence-first systems**
+&nbsp;&nbsp;&nbsp;&nbsp;Source registries · provenance tracking · support-depth rules · cautious language patterns · QA gates
+
+**AI-assisted operator tooling**
+&nbsp;&nbsp;&nbsp;&nbsp;Structured outputs · review states · approval points · evidence-aware workflows
+
+**Testing + CI**
+&nbsp;&nbsp;&nbsp;&nbsp;Pytest · Vitest · GitHub Actions · coverage reports · ADRs · evaluator guides
+
+---
+
+## Who this is for
+
+- **Engineering teams** evaluating senior product builders who ship working systems with tests, not slide decks
+- **Design and product teams** who want a partner who treats UX, copy, and operating logic as one system
+- **Massachusetts towns and agencies** working on flood, coastal, historic, or wetlands disclosure — Lasting Ground is purpose-built for this
+- **Founders** thinking through evidence-first product architecture for regulated or trust-sensitive domains
+
+---
+
+## Get in touch
+
+[**hello@lastingground.com**](mailto:hello@lastingground.com) &nbsp;·&nbsp; [**Portfolio**](https://sulmusic2-star.github.io/) &nbsp;·&nbsp; [**Contact route**](https://sulmusic2-star.github.io/contact/)
+
+A real person reads every email. Replies are written in plain English.
