@@ -4,7 +4,7 @@
 
 <div align="center">
 
-# Tim Sullivan
+# Timothy Sullivan
 
 ### Product systems for complex real-world workflows
 
