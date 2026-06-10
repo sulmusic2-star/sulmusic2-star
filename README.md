@@ -19,6 +19,8 @@ shipped with tests, decision records, and artifacts a reviewer can inspect.
 
 ---
 
+> **Currently building:** expanding Lasting Ground's flood-insurance + parcel-zoning coverage across Massachusetts · [`agentic-engineering`](https://github.com/sulmusic2-star/agentic-engineering) — how I ship and operate production software with AI agents.
+
 ## What I do
 
 I turn vague workflows into **explicit, inspectable systems** — interfaces paired with rules, review states, validation gates, and artifacts a reviewer can actually open.
@@ -80,6 +82,8 @@ The work spans three surfaces:
 3. **Build artifacts a reviewer can inspect** — tests, coverage, decision records, sample outputs, evaluator guides.
 4. **Use automation where it reduces repeated work** — but keep human approval around external actions and sensitive decisions.
 5. **Write the careful sentence** — products that touch flood maps, rosters, or operator workflows have to know what they don't know.
+
+→ I document this operating model — multi-agent orchestration, review gates, and the judgment about where *not* to use a model — with runnable examples in [`agentic-engineering`](https://github.com/sulmusic2-star/agentic-engineering).
 
 ---
 
