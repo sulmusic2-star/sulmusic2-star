@@ -1,7 +1,3 @@
-<!-- Profile README — github.com/sulmusic2-star
-     Drop-in replacement for sulmusic2-star/sulmusic2-star/README.md
-     Upgraded 2026.05 — visual hierarchy, real screenshots, audience-focused -->
-
 <div align="center">
 
 # Timothy Sullivan
@@ -44,7 +40,7 @@ The work spans three surfaces:
 > **Source-backed property review system for Massachusetts.**
 > One address goes in. A four-page, source-dated property check comes back — every line traceable to FEMA, MassGIS, MC-FRM, NOAA, USGS, MassDEP, NHESP, or MACRIS.
 
-![Lasting Ground homepage](docs/screenshots/lastingground-home.png)
+![Lasting Ground — sample source-dated property-check packet](https://raw.githubusercontent.com/sulmusic2-star/lasting-ground-showcase/main/docs/assets/lasting-ground-sample-packet-cover.png)
 
 **What this build shows**
 
@@ -61,7 +57,7 @@ The work spans three surfaces:
 
 ### [SquadBrain](https://sulmusic2-star.github.io/squadbrain-showcase/) &nbsp; → &nbsp; [`squadbrain-showcase`](https://github.com/sulmusic2-star/squadbrain-showcase)
 
-> **Mobile sports-learning game built around roster memory.**
+> **Mobile sports-learning game built around roster memory — live on the iOS App Store.**
 > React Native / Expo / TypeScript / Firebase. Quick-match competition, achievements, ELO movement, friend challenges, cross-device progression.
 
 **What this build shows**
@@ -70,10 +66,10 @@ The work spans three surfaces:
 - Expo / React Native / TypeScript app architecture with Zustand stores and persisted local state
 - Firebase Auth + Firestore + Cloud Functions, with server-side validation patterns for competitive results
 - ELO-style ranking, same-team matchmaking, and adaptive practice queues
-- iPhone + iPad responsive layouts, App Store-ready packaging, legal/privacy screens
+- iPhone + iPad responsive layouts, shipped to the iOS App Store, legal/privacy screens
 - 25 passing tests, 98.3% line coverage, 81.4% branch coverage in CI
 
-**[Live demo →](https://sulmusic2-star.github.io/squadbrain-showcase/)** &nbsp;·&nbsp; **[Evaluator guide →](https://github.com/sulmusic2-star/squadbrain-showcase/blob/main/docs/evaluator-guide.md)**
+**[📱 App Store →](https://apps.apple.com/us/app/squadbrain/id6756122317)** &nbsp;·&nbsp; **[Live demo →](https://sulmusic2-star.github.io/squadbrain-showcase/)** &nbsp;·&nbsp; **[Evaluator guide →](https://github.com/sulmusic2-star/squadbrain-showcase/blob/main/docs/evaluator-guide.md)**
 
 ---
 
