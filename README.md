@@ -47,7 +47,7 @@ The work spans three surfaces:
 - Full-stack architecture across address resolution, source registry, validation gates, and packet generation
 - Editorial-grade product design (Fraunces / Geist / DM Serif Display, fluid typography, mobile-first responsive)
 - Public-source pipeline — federal + state + town records, normalized into one addressable layer
-- Deterministic validation rules with cautious language patterns ("if the source doesn't support it, the product doesn't claim it")
+- Deliberately deterministic — the compliance-critical answers never run through an LLM (AI agents build and operate the system; the engine keeps the model out of the hot path), with cautious language patterns ("if the source doesn't support it, the product doesn't claim it")
 - Region/town pack architecture so coastal towns, island towns, and inland cities each surface what's actually relevant
 - Live site, sample PDF, evaluator guide, ADRs, and 93% line coverage in CI
 
