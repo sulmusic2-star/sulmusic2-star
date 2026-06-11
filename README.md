@@ -1,125 +1,69 @@
 <div align="center">
 
-# Timothy Sullivan
+# Tim Sullivan
 
-### Product systems for complex real-world workflows
+### Forward-Deployed / Applied AI Engineer
 
-I build software systems where every claim points back to a source.
-Mobile products, evidence-backed review surfaces, AI-assisted operator tooling —
-shipped with tests, decision records, and artifacts a reviewer can inspect.
+I ship and operate production software by orchestrating AI agents. I built and run a live, paid answer engine for public records, and a live iOS app on the App Store, solo.
 
 [**lastingground.com**](https://lastingground.com) &nbsp;·&nbsp; [**Portfolio**](https://sulmusic2-star.github.io/) &nbsp;·&nbsp; [**Contact**](https://sulmusic2-star.github.io/contact/)
 
-[![Public tests](https://img.shields.io/badge/public_tests-43_passing-2c5b3a?style=flat-square)](https://sulmusic2-star.github.io/)
-[![Coverage](https://img.shields.io/badge/coverage-93%25-2c5b3a?style=flat-square)](https://github.com/sulmusic2-star/lasting-ground-showcase)
-[![Builds](https://img.shields.io/badge/featured_builds-2-1a1a1a?style=flat-square)](#featured-builds)
-[![Massachusetts](https://img.shields.io/badge/region-Massachusetts-4f5944?style=flat-square)](https://lastingground.com)
+[![live](https://img.shields.io/badge/live-lastingground.com-34d399?style=flat-square)](https://lastingground.com)
+[![iOS App Store](https://img.shields.io/badge/iOS-SquadBrain-2c5b3a?style=flat-square)](https://apps.apple.com/us/app/squadbrain/id6756122317)
+[![public tests](https://img.shields.io/badge/public_tests-43_passing-2c5b3a?style=flat-square)](https://github.com/sulmusic2-star/lasting-ground-showcase)
+[![coverage](https://img.shields.io/badge/coverage-93%25-1a1a1a?style=flat-square)](https://github.com/sulmusic2-star/lasting-ground-showcase)
 
 </div>
 
----
-
-> **Currently building:** expanding Lasting Ground's flood-insurance + parcel-zoning coverage across Massachusetts · [`agentic-engineering`](https://github.com/sulmusic2-star/agentic-engineering) — how I ship and operate production software with AI agents.
-
-## What I do
-
-I turn vague workflows into **explicit, inspectable systems** — interfaces paired with rules, review states, validation gates, and artifacts a reviewer can actually open.
-
-The work spans three surfaces:
-
-| Surface | What it covers |
-|---|---|
-| **Product UX** | Mobile and web interfaces with editorial polish — typography, micro-interactions, accessibility, conversion patterns. |
-| **Operating logic** | Ranking, scoring, validation, support-depth rules, source registries. The deterministic layer underneath the UI. |
-| **Proof artifacts** | Tests, coverage reports, decision records, generated PDFs, evaluator guides — so a reviewer can verify the work without my help. |
+> **Currently building:** expanding Lasting Ground's flood-insurance and parcel-zoning coverage across Massachusetts, and [`agentic-engineering`](https://github.com/sulmusic2-star/agentic-engineering) — how I ship and operate production software with AI agents.
 
 ---
 
-## Featured builds
+## Lasting Ground — a live answer engine for public records
 
-### [Lasting Ground](https://lastingground.com) &nbsp; → &nbsp; [`lasting-ground-showcase`](https://github.com/sulmusic2-star/lasting-ground-showcase)
+[lastingground.com](https://lastingground.com) &nbsp;·&nbsp; [`lasting-ground-showcase`](https://github.com/sulmusic2-star/lasting-ground-showcase)
 
-> **Source-backed property review system for Massachusetts.**
-> One address goes in. A four-page, source-dated property check comes back — every line traceable to FEMA, MassGIS, MC-FRM, NOAA, USGS, MassDEP, NHESP, or MACRIS.
+Type a Massachusetts address. In seconds, get source-cited answers on flood, zoning, and insurance, assembled live from a dozen-plus official government systems and stamped with the source and date for every line.
 
-![Lasting Ground — sample source-dated property-check packet](https://raw.githubusercontent.com/sulmusic2-star/lasting-ground-showcase/main/docs/assets/lasting-ground-sample-packet-cover.png)
+[![The Lasting Ground answer engine resolving an address into source-cited answers](https://raw.githubusercontent.com/sulmusic2-star/lasting-ground-showcase/main/docs/assets/live-answers.png)](https://lastingground.com)
 
-**What this build shows**
+- A live, **paid** product I designed and operate solo: ~200 backend services (Python / FastAPI), live geospatial queries, a serverless edge front end with Stripe.
+- **Deterministic by design.** The compliance-critical answers never run through a language model, so they stay reproducible and traceable to an official source.
+- I use AI agents to build and run it; the architecture and the judgment are mine.
 
-- Full-stack architecture across address resolution, source registry, validation gates, and packet generation
-- Editorial-grade product design (Fraunces / Geist / DM Serif Display, fluid typography, mobile-first responsive)
-- Public-source pipeline — federal + state + town records, normalized into one addressable layer
-- Deliberately deterministic — the compliance-critical answers never run through an LLM (AI agents build and operate the system; the engine keeps the model out of the hot path), with cautious language patterns ("if the source doesn't support it, the product doesn't claim it")
-- Region/town pack architecture so coastal towns, island towns, and inland cities each surface what's actually relevant
-- Live site, sample PDF, evaluator guide, ADRs, and 93% line coverage in CI
-
-**[See the live site →](https://lastingground.com)** &nbsp;·&nbsp; **[Read the case study →](https://github.com/sulmusic2-star/lasting-ground-showcase)** &nbsp;·&nbsp; **[Sample PDF →](https://sulmusic2-star.github.io/lasting-ground-showcase/assets/lasting-ground-sample-packet.pdf)**
+[See it live →](https://lastingground.com) &nbsp;·&nbsp; [Case study →](https://github.com/sulmusic2-star/lasting-ground-showcase/blob/main/docs/case-study.md)
 
 ---
 
-### [SquadBrain](https://sulmusic2-star.github.io/squadbrain-showcase/) &nbsp; → &nbsp; [`squadbrain-showcase`](https://github.com/sulmusic2-star/squadbrain-showcase)
+## SquadBrain — live on the iOS App Store
 
-> **Mobile sports-learning game built around roster memory — live on the iOS App Store.**
-> React Native / Expo / TypeScript / Firebase. Quick-match competition, achievements, ELO movement, friend challenges, cross-device progression.
+[App Store](https://apps.apple.com/us/app/squadbrain/id6756122317) &nbsp;·&nbsp; [`squadbrain-showcase`](https://github.com/sulmusic2-star/squadbrain-showcase)
 
-**What this build shows**
+A mobile sports-learning game built around roster memory. React Native, Expo, TypeScript, and Firebase, with ELO-style ranking, matchmaking, and server-validated results.
 
-- Mobile product design and iteration — onboarding, practice loops, quick-match, leaderboards, achievements
-- Expo / React Native / TypeScript app architecture with Zustand stores and persisted local state
-- Firebase Auth + Firestore + Cloud Functions, with server-side validation patterns for competitive results
-- ELO-style ranking, same-team matchmaking, and adaptive practice queues
-- iPhone + iPad responsive layouts, shipped to the iOS App Store, legal/privacy screens
-- 25 passing tests, 98.3% line coverage, 81.4% branch coverage in CI
+- Product logic extracted into 7 typed modules with **25 tests at 98.3% line coverage** in CI.
+- Shipped end to end: App Store submission, screenshot pack, published legal and privacy pages.
 
-**[📱 App Store →](https://apps.apple.com/us/app/squadbrain/id6756122317)** &nbsp;·&nbsp; **[Live demo →](https://sulmusic2-star.github.io/squadbrain-showcase/)** &nbsp;·&nbsp; **[Evaluator guide →](https://github.com/sulmusic2-star/squadbrain-showcase/blob/main/docs/evaluator-guide.md)**
+[📱 App Store →](https://apps.apple.com/us/app/squadbrain/id6756122317) &nbsp;·&nbsp; [Case study →](https://github.com/sulmusic2-star/squadbrain-showcase/blob/main/docs/case-study.md)
 
 ---
 
-## How I build
+## How I work
 
-1. **Turn vague workflows into explicit systems** — name the lanes, name the states, name the failure modes.
-2. **Keep claims tied to evidence** — the system separates source-backed detail, regional defaults, missing evidence, and unsupported claims.
-3. **Build artifacts a reviewer can inspect** — tests, coverage, decision records, sample outputs, evaluator guides.
-4. **Use automation where it reduces repeated work** — but keep human approval around external actions and sensitive decisions.
-5. **Write the careful sentence** — products that touch flood maps, rosters, or operator workflows have to know what they don't know.
+I treat Claude Code and OpenAI Codex as a small engineering team: one agent builds, another acts as a review and promotion gate, and nothing ships without passing verification against real sources and tests. The judgment is mine — architecture, what to trust, and where a model belongs versus where it doesn't.
 
-→ I document this operating model — multi-agent orchestration, review gates, and the judgment about where *not* to use a model — with runnable examples in [`agentic-engineering`](https://github.com/sulmusic2-star/agentic-engineering).
+I wrote that operating model up, with a runnable eval harness, an Agent Skill, and an MCP server, in [`agentic-engineering`](https://github.com/sulmusic2-star/agentic-engineering). (A third production app is private.)
 
 ---
 
-## Capabilities
+## Stack
 
-**Mobile product**
-&nbsp;&nbsp;&nbsp;&nbsp;React Native · Expo · TypeScript · Firebase · App Store packaging · iPad layouts
-
-**Full-stack web product**
-&nbsp;&nbsp;&nbsp;&nbsp;Vanilla HTML/CSS/JS, Python backends, source registries, generated artifacts, validation gates
-
-**Editorial-grade design**
-&nbsp;&nbsp;&nbsp;&nbsp;Variable typography (Fraunces, Geist, DM Serif Display) · fluid responsive systems · accessibility · conversion patterns
-
-**Evidence-first systems**
-&nbsp;&nbsp;&nbsp;&nbsp;Source registries · provenance tracking · support-depth rules · cautious language patterns · QA gates
-
-**AI-assisted operator tooling**
-&nbsp;&nbsp;&nbsp;&nbsp;Structured outputs · review states · approval points · evidence-aware workflows
-
-**Testing + CI**
-&nbsp;&nbsp;&nbsp;&nbsp;Pytest · Vitest · GitHub Actions · coverage reports · ADRs · evaluator guides
+- **AI & agents** — Claude Code, OpenAI Codex, MCP, agent skills, eval harnesses, multi-agent orchestration
+- **Backend & data** — Python, FastAPI, REST API design, ETL, GIS / geospatial (ArcGIS REST), real-time multi-source querying, edge caching
+- **Web & payments** — Cloudflare Pages / Functions, Stripe, Google Places, CSP and security headers
+- **Mobile** — React Native, Expo, TypeScript, Firebase (Auth / Firestore / Cloud Functions), Zustand
+- **Practice** — Git, GitHub Actions CI, pytest + Vitest, coverage, ADRs, verify-before-ship
 
 ---
 
-## Who this is for
-
-- **Engineering teams** evaluating senior product builders who ship working systems with tests, not slide decks
-- **Design and product teams** who want a partner who treats UX, copy, and operating logic as one system
-- **Massachusetts towns and agencies** working on flood, coastal, historic, or wetlands disclosure — Lasting Ground is purpose-built for this
-- **Founders** thinking through evidence-first product architecture for regulated or trust-sensitive domains
-
----
-
-## Get in touch
-
-[**hello@lastingground.com**](mailto:hello@lastingground.com) &nbsp;·&nbsp; [**Portfolio**](https://sulmusic2-star.github.io/) &nbsp;·&nbsp; [**Contact route**](https://sulmusic2-star.github.io/contact/)
-
-A real person reads every email. Replies are written in plain English.
+[hello@lastingground.com](mailto:hello@lastingground.com) &nbsp;·&nbsp; [Portfolio](https://sulmusic2-star.github.io/)
