@@ -15,7 +15,7 @@ I ship and operate production software by orchestrating AI agents. I built and r
 
 </div>
 
-> **Currently building:** expanding Lasting Ground's flood-insurance and parcel-zoning coverage across Massachusetts, and [`agentic-engineering`](https://github.com/sulmusic2-star/agentic-engineering) — how I ship and operate production software with AI agents.
+> **Currently building:** expanding deep state-by-state coverage across the U.S. for Lasting Ground, and [`agentic-engineering`](https://github.com/sulmusic2-star/agentic-engineering) — how I ship and operate production software with AI agents.
 
 ---
 
@@ -23,7 +23,7 @@ I ship and operate production software by orchestrating AI agents. I built and r
 
 [lastingground.com](https://lastingground.com) &nbsp;·&nbsp; [`lasting-ground-showcase`](https://github.com/sulmusic2-star/lasting-ground-showcase)
 
-Type a Massachusetts address. In seconds, get source-cited answers on flood, zoning, and insurance, assembled live from a dozen-plus official government systems and stamped with the source and date for every line.
+Type any U.S. property address. In seconds, get source-cited public-records answers, assembled live from a dozen-plus official government systems and stamped with the source and date for every line. Nationwide FEMA flood and address resolution, with deep state-specific source packs live across 20+ states and Washington, DC.
 
 [![The Lasting Ground answer engine resolving an address into source-cited answers](https://raw.githubusercontent.com/sulmusic2-star/lasting-ground-showcase/main/docs/assets/live-answers.png)](https://lastingground.com)
 
