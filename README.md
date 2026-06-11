@@ -23,7 +23,7 @@ I ship and operate production software by orchestrating AI agents. I built and r
 
 [lastingground.com](https://lastingground.com) &nbsp;·&nbsp; [`lasting-ground-showcase`](https://github.com/sulmusic2-star/lasting-ground-showcase)
 
-Type any U.S. property address. In seconds, get source-cited public-records answers, assembled live from a dozen-plus official government systems and stamped with the source and date for every line. Nationwide FEMA flood and address resolution, with deep state-specific source packs live across 20+ states and Washington, DC.
+Type any U.S. property address. In seconds, get source-cited public-records answers, assembled live from a dozen-plus official government systems and stamped with the source and date for every line. Available in every U.S. state and Washington, DC on a nationwide FEMA-flood baseline; covered states add their own official public layers, including local building permits and parcel-level zoning where towns publish them.
 
 [![The Lasting Ground answer engine resolving an address into source-cited answers](https://raw.githubusercontent.com/sulmusic2-star/lasting-ground-showcase/main/docs/assets/live-answers.png)](https://lastingground.com)
 
