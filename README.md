@@ -15,7 +15,21 @@ I ship and operate production software by orchestrating AI agents. I built and r
 
 </div>
 
-> **Currently building:** expanding deep state-by-state coverage across the U.S. for Lasting Ground, and [`agentic-engineering`](https://github.com/sulmusic2-star/agentic-engineering) — how I ship and operate production software with AI agents.
+> **Currently building:** expanding deep state-by-state coverage across the U.S. for Lasting Ground, the [`groundtruth-geo`](https://github.com/sulmusic2-star/groundtruth-geo) benchmark and MCP server over the same engine, and [`agentic-engineering`](https://github.com/sulmusic2-star/agentic-engineering) — how I ship and operate production software with AI agents.
+
+---
+
+## GroundTruth-Geo — a deterministic, government-cited benchmark of parcel-precise property facts
+
+[`groundtruth-geo`](https://github.com/sulmusic2-star/groundtruth-geo)
+
+A machine-gradable benchmark of the exact questions frontier LLMs fail on geography (GPSBench / MapEval: under 25% on parcel geometry, 1–23% city-level localization). 33 questions across 7 states; every answer is a deterministic government record — FEMA / NPS / EPA — carrying an official source URL, a source date, and a reproducible content fingerprint.
+
+- A **deterministic grader** with field-standard factuality metrics ([SimpleQA F1](https://arxiv.org/abs/2411.04368), [AA-Omniscience Index](https://arxiv.org/abs/2511.13029)). No LLM judge — ungameable.
+- A **JSON-RPC stdio MCP server** exposing the records as `lookup_property_truth(address)` and `verify_property_record(record_id)` tools, so a model can be evaluated *with* the verifier and *against* it on the same questions.
+- v1 baseline: a calibrated frontier model abstains on **100%** of these parcel-precise factual questions in the calibrated condition; the Lasting Ground engine answers every one, cited. The closed-book → tool gap is the artifact.
+
+[Repo →](https://github.com/sulmusic2-star/groundtruth-geo) &nbsp;·&nbsp; [Methodology + baseline results →](https://github.com/sulmusic2-star/groundtruth-geo#readme)
 
 ---
 
