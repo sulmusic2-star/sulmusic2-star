@@ -5,11 +5,13 @@ from .base import Adapter
 from .civicclerk import CivicClerkAdapter
 from .civicplus import CivicPlusAdapter
 from .generic import GenericListingAdapter
+from .legistar import LegistarAdapter
 
 REGISTRY: dict[str, type[Adapter]] = {
     CivicPlusAdapter.platform: CivicPlusAdapter,
     CivicClerkAdapter.platform: CivicClerkAdapter,
     GenericListingAdapter.platform: GenericListingAdapter,
+    LegistarAdapter.platform: LegistarAdapter,
 }
 
 __all__ = ["Adapter", "REGISTRY"]

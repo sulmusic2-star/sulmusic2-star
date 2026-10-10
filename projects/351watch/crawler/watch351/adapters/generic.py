@@ -15,8 +15,10 @@ Per listing in towns.json:
       "board_exclude": "subcommittee",           # optional: ...and drop those whose text/row match this
       "context": "block",                        # optional: when a link has no <tr>/<li> parent,
                                                  #   read the date from the nearest small <div>/<p>
-      "date_only_docs": true                     # optional: on an agenda-only page, also keep document
+      "date_only_docs": true,                    # optional: on an agenda-only page, also keep document
                                                  #   links whose text is just a date ("October 6, 2026")
+      "strip_doc_query": true                    # optional: drop "?t=..." cache-busters from .pdf/.docx
+                                                 #   links (Revize file hosts allow only URLs ending .pdf)
     }
 
 `{year}` in the URL is expanded to each calendar year the crawl window touches.
@@ -34,11 +36,19 @@ from .base import Adapter
 
 DEFAULT_EXCLUDE = r"minutes|supporting materials|summary|video|recording"
 _DOC_HREF = re.compile(r"\.pdf\b|\.docx?\b|/DocumentCenter/View/|Archive\.aspx\?ADID=|ViewFile/Agenda|/agenda/|"
-                       r"/agendas/|/files/|/uploads/|download|/node/\d+", re.I)
+                       r"/agendas/|/files/|/uploads/|download|/node/\d+|/d/\d+/", re.I)
 _DATE_ONLY = re.compile(r"^[\W_]*(?:(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?,?\s*)?"
                         r"(?:[A-Za-z]{3,9}\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{2,4}|\d{1,2}[/.\-]\d{1,2}[/.\-]\d{2,4})"
                         r"[\W_]*(?:(?:agenda|meeting|regular|special|revised|amended|joint|pdf|docx?)[\W_]*)*$", re.I)
 _MORE = re.compile(r"^(more|read more|view more|details?)\b", re.I)
+
+
+def strip_doc_query(url: str) -> str:
+    """'.../Agenda 10-5-26.pdf?t=202609301533130' -> '.../Agenda 10-5-26.pdf'."""
+    base, _, query = url.partition("?")
+    if query and re.search(r"\.(pdf|docx?|pptx?)$", base, re.I):
+        return base
+    return url
 
 
 def _small_block(a, limit: int = 300):
@@ -89,6 +99,7 @@ class GenericListingAdapter(Adapter):
         board_ex = re.compile(listing["board_exclude"], re.I) if listing.get("board_exclude") else None
         block_context = listing.get("context") == "block"
         date_docs = bool(listing.get("date_only_docs"))
+        strip_q = bool(listing.get("strip_doc_query"))
         soup = self.soup(resp)
         base_tag = soup.find("base", href=True)
         base = self.abs_url(resp.final_url, base_tag["href"]) if base_tag else resp.final_url
@@ -116,10 +127,13 @@ class GenericListingAdapter(Adapter):
             if when not in window:
                 if not (when is None and undated_rx and undated_rx.search(hay)):
                     continue
+            doc_url = self.abs_url(base, href)
+            if strip_q:
+                doc_url = strip_doc_query(doc_url)
             out.append(AgendaDoc(
                 town=cfg["town"], board=listing["board"], board_key=listing["board_key"],
                 meeting_date=when, title=text or row_text[:120],
-                url=self.abs_url(base, href), listing_url=url,
+                url=doc_url, listing_url=url,
                 resolve_pdf=bool(listing.get("resolve_pdf")),
             ))
         return out

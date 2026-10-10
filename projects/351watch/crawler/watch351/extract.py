@@ -108,6 +108,16 @@ def html_to_text(html: str) -> Extracted:
         tag.decompose()
     main = soup.find("main") or soup.find(id=re.compile("content|main", re.I)) or soup.body or soup
     text = main.get_text("\n", strip=True)
+    if len(text) < 200:
+        # Nearly empty: the id match was a tiny element (a "skip to main content" link) or the
+        # whole page sits inside an ASP.NET <form> (Legistar). Re-read the body keeping forms.
+        soup2 = BeautifulSoup(html, "lxml")
+        for tag in soup2(["script", "style", "noscript", "svg"]):
+            tag.decompose()
+        body = soup2.body or soup2
+        alt = body.get_text("\n", strip=True)
+        if len(alt) > len(text):
+            text = alt
     return Extracted(text, "html")
 
 

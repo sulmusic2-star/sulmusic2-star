@@ -26,8 +26,9 @@ from urllib.parse import urljoin, urlsplit
 
 from bs4 import BeautifulSoup
 
-from .adapters.civicclerk import CivicClerkAdapter
 from .adapters.civicplus import CivicPlusAdapter, _slug
+from .adapters.generic import strip_doc_query
+from .adapters.legistar import LegistarAdapter
 from .boards import BOARD_LABELS, classify_board
 from .dates import first_date, parse_date
 from .fetch import FetchError, PoliteFetcher, Response, RobotsDisallowed
@@ -57,6 +58,7 @@ CMS_SIGS = [
     ("drupal", r"Drupal|/sites/default/files|drupal-settings-json"),
     ("wix", r"wixstatic|wix\.com"),
     ("civiclive", r"civiclive\.com"),
+    ("rocketfusion", r"RocketFusion"),
     ("squarespace", r"squarespace"),
     ("joomla", r"Joomla|/media/jui/"),
 ]
@@ -68,7 +70,7 @@ VENDOR_RX = [
     ("iqm2", r"https?://[a-z0-9-]+\.iqm2\.com[^\s\"'<>]*"),
     ("legistar", r"https?://[a-z0-9-]+\.legistar\.com[^\s\"'<>]*"),
     ("boarddocs", r"https?://go\.boarddocs\.com/ma/[^\s\"'<>]*"),
-    ("heygov", r"https?://(?:app\.|api\.)?heygov\.com[^\s\"'<>]*"),
+    ("heygov", r"https?://(?:[a-z0-9-]+\.)?heygov\.com[^\s\"'<>]*"),
     ("municodemeetings", r"https?://[a-z0-9-]+\.municodemeetings\.com[^\s\"'<>]*"),
     ("civicweb", r"https?://[a-z0-9-]+\.civicweb\.net[^\s\"'<>]*"),
     ("novusagenda", r"https?://[a-z0-9-]+\.novusagenda\.com[^\s\"'<>]*"),
@@ -90,14 +92,16 @@ DOC_STORE_VENDORS = {"laserfiche", "google_drive", "sharepoint", "dropbox"}
 AGENDAISH = re.compile(r"agenda|meeting notice|posted meeting|meeting posting|notice of meeting", re.I)
 MINUTESISH = re.compile(r"minutes|supporting materials|summary|video|recording", re.I)
 DOCLIKE = re.compile(r"\.pdf\b|\.docx?\b|/DocumentCenter/View/|Archive\.aspx\?ADID=|ViewFile/Agenda|"
-                     r"/agenda/|/agendas/|/files/|/uploads/|download|/node/\d+", re.I)
+                     r"/agenda/|/agendas/|/files/|/uploads/|download|/node/\d+|/d/\d+/", re.I)
+# RocketFusion CMS meeting postings: "/d/<id>/<Board>" links whose text is the meeting date
+POSTING_HREF = re.compile(r"/d/\d+/[A-Za-z]", re.I)
 HUB_TEXT = re.compile(r"\bagendas?\b|\bmeetings?\b|\bminutes\b|posted meetings|public notices?|meeting notices?|"
                       r"\bcalendar\b", re.I)
 BOARDS_HUB_TEXT = re.compile(r"boards?(?:\s*,)?\s*(?:&|and)?\s*(?:committees|commissions)|^boards$|"
                              r"government$|boards & committees|committees", re.I)
 SUBPAGE_TEXT = re.compile(r"^(?:20\d\d\s+)?(?:meeting\s+)?agendas?\b|agendas?\s*(?:&|and|/)\s*minutes|^meetings?$|"
                           r"^agenda center|^meeting (?:agendas|notices|schedule)|^(?:posted|public) meetings|"
-                          r"^documents$|^archives?$|^agendas?,", re.I)
+                          r"^documents$|^archives?$|^agendas?,|meeting center|meetings? portal|^meetings? (?:&|and) agendas", re.I)
 WARRANT_TEXT = re.compile(r"warrant", re.I)
 # link text that is just a meeting date ("October 14, 2026", "10/14/26 Regular Meeting")
 DATE_ONLY = re.compile(r"^[\W_]*(?:(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?,?\s*)?"
@@ -276,6 +280,9 @@ def note_vendors(st: TownState, page: Page) -> None:
                 if not any(l.url.startswith(url[:60]) and re.search(r"agenda|meeting", l.text + " " + l.row, re.I)
                            for l in page.links):
                     continue
+            if key == "heygov" and not re.search(r"heygov-(?:event|meeting)|heygov\.com/[^\"'<>]*meeting|"
+                                                 r"data-heygov-(?:meetings|events)", hay, re.I):
+                continue  # HeyGov widget used for forms/payments only
             v = st.vendors.setdefault(key, {"urls": []})
             if url not in v["urls"] and len(v["urls"]) < 5:
                 v["urls"].append(url)
@@ -311,16 +318,22 @@ def dated_agendas(page: Page, window: Window, page_is_agenda: bool,
         hay = f"{l.text} {l.url}"
         named = AGENDAISH.search(hay)
         agendaish = named or (page_is_agenda and DOCLIKE.search(l.url)
-                              and (DATE_ONLY.match(l.text) or re.search(r"meeting|hearing|session", l.text, re.I)))
+                              and (DATE_ONLY.match(l.text) or re.search(r"meeting|hearing|session", l.text, re.I))) \
+            or (POSTING_HREF.search(l.url) and DATE_ONLY.match(l.text))
         if board_key == "town_meeting":
             agendaish = WARRANT_TEXT.search(hay)
-        if not agendaish or MINUTESISH.search(l.text):
+        if not agendaish or MINUTESISH.search(l.text) or CAL_EXPORT.search(l.url):
+            continue
+        if board_key != "town_meeting" and re.search(r"warrant", l.text, re.I):
             continue
         if not named and board_key != "town_meeting" and re.search(r"minutes", f"{l.row} {l.url}", re.I):
             continue
         if board_rx:
-            ctx = f"{hay} {l.row}"
-            if not board_rx[0].search(ctx) or board_rx[1].search(f"{l.text} {l.row}"):
+            # the board must be named by the link itself, or by a short row around it
+            ctx = f"{hay} {l.row}" if len(l.row) <= 160 else hay
+            if not board_rx[0].search(ctx) or board_rx[1].search(f"{l.text} {l.row if len(l.row) <= 160 else ''}"):
+                continue
+            if board_key != "town_meeting" and OTHER_BODY.search(ctx):
                 continue
         if ex and ex.search(f"{l.text} {l.row}"):
             continue
@@ -359,6 +372,28 @@ def revize_leadtime(st: TownState, page: Page, key: str, board: str, board_key_f
         st.leadtime_rows.append({"category": board, "board_key": key, "platform": "revize",
                                  "meeting_date": f["date"], "posted": up.isoformat(),
                                  "posted_kind": "uploaded", "url": f["url"], "title": f["text"]})
+
+
+def docs_fetchable(st: TownState, found: list[dict]) -> bool:
+    """At least one agenda document must be fetchable under robots.txt. Some CMSs keep the files on
+    a separate host: Revize redirects to cms<N>.revize.com, whose robots.txt allows only URLs that
+    end in .pdf, so the '?t=' cache-buster has to go (the generic listing gets strip_doc_query).
+    The first document is actually fetched (and cached for the crawl), redirects included."""
+    blocked_host = None
+    for f in found[:2]:
+        url = strip_doc_query(f["url"]) if REVIZE_TS.search(f["url"]) else f["url"]
+        try:
+            r = st.fetcher.get(url)
+            if r.ok:
+                return True
+        except RobotsDisallowed as e:
+            blocked_host = urlsplit(str(e).split(" ")[0]).netloc or urlsplit(url).netloc
+        except FetchError:
+            continue
+    if blocked_host:
+        st.notes.append(f"DOC_ROBOTS {blocked_host}")
+        return False
+    return True  # unreachable/HTTP errors are not robots blocks; let the crawl report them
 
 
 def page_is_agenda_page(page: Page) -> bool:
@@ -473,14 +508,32 @@ def do_civicplus(st: TownState, website: str) -> bool:
 
 # --------------------------------------------------------------- CivicClerk
 def do_civicclerk(st: TownState, tenant: str) -> None:
-    ad = CivicClerkAdapter(st.fetcher)
-    cfg = {"tenant": tenant, "town": st.muni["town"]}
-    try:
-        events = ad.events(cfg, st.data_window)
-    except (FetchError, RuntimeError, ValueError) as e:
-        st.notes.append(f"CivicClerk API error: {str(e)[:120]}")
-        return
-    st.pages_fetched += 1
+    # The API pages 15 events at a time; ask newest-first so the evidence window
+    # (last 120 / next 120 days) is covered before the page cap, then the past year.
+    api = f"https://{tenant}.api.civicclerk.com/v1/Events"
+    events, seen_ids = [], set()
+    for start, end, cap in ((st.window.start, st.window.end, 30), (st.data_window.start, st.window.start, 25)):
+        url, params = api, {"$filter": f"startDateTime ge {start.isoformat()}T00:00:00Z and "
+                                       f"startDateTime le {end.isoformat()}T23:59:59Z",
+                            "$orderby": "startDateTime desc"}
+        for _ in range(cap):
+            try:
+                resp = st.fetcher.get(url, max_age=LISTING_AGE, params=params)
+            except FetchError as e:
+                st.notes.append(f"CivicClerk API error: {str(e)[:120]}")
+                break
+            st.pages_fetched += 1
+            if not resp.ok:
+                st.notes.append(f"CivicClerk API HTTP {resp.status}")
+                break
+            data = json.loads(resp.text)
+            for ev in data.get("value", []):
+                if ev.get("id") not in seen_ids:
+                    seen_ids.add(ev.get("id"))
+                    events.append(ev)
+            url, params = data.get("@odata.nextLink"), None
+            if not url:
+                break
     per = defaultdict(list)
     for ev in events:
         name = (ev.get("categoryName") or ev.get("eventName") or "").strip()
@@ -511,15 +564,72 @@ def do_civicclerk(st: TownState, tenant: str) -> None:
                 "title": (files[0].get("name") or "")[:120]})
 
 
+# --------------------------------------------------------------- Legistar
+def do_legistar(st: TownState, client: str) -> bool:
+    from zoneinfo import ZoneInfo
+    ad = LegistarAdapter(st.fetcher)
+    cfg = {"client": client, "town": st.muni["town"]}
+    try:
+        events = ad.events(cfg, st.data_window)
+    except (FetchError, RuntimeError, ValueError) as e:
+        st.notes.append(f"Legistar API error: {str(e)[:120]}")
+        return False
+    st.pages_fetched += 1
+    st.vendors["legistar"]["client"] = client
+    per = defaultdict(list)
+    for ev in events:
+        name = (ev.get("EventBodyName") or "").strip()
+        key = classify_board(name)
+        if key and ev.get("EventAgendaFile") and ev.get("EventInSiteURL"):
+            per[(name, key)].append(ev)
+    eastern, found = ZoneInfo("America/New_York"), False
+    for (name, key), evs_all in per.items():
+        evs = [e for e in evs_all if date.fromisoformat(e["EventDate"][:10]) in st.window]
+        cal = f"https://{client}.legistar.com/Calendar.aspx"
+        if evs:
+            st.listings.append({"board": name, "board_key": key, "url": cal, "client": client})
+            found = True
+        record_board(st, key, {"board": name, "source": "legistar", "url": cal, "n_recent": len(evs),
+                               "latest": max(e["EventDate"][:10] for e in evs_all),
+                               "n_past_90": sum(1 for e in evs if 0 <= (st.today - date.fromisoformat(e["EventDate"][:10])).days <= 90)})
+        for e in evs_all:
+            pub = e.get("EventAgendaLastPublishedUTC")
+            if not pub:
+                continue
+            local = datetime.fromisoformat(pub[:19]).replace(tzinfo=timezone.utc).astimezone(eastern)
+            start = None
+            try:
+                start = datetime.strptime(f"{e['EventDate'][:10]} {e.get('EventTime') or ''}".strip(), "%Y-%m-%d %I:%M %p")
+            except ValueError:
+                pass
+            st.leadtime_rows.append({"category": name, "board_key": key, "platform": "legistar",
+                                     "meeting_date": e["EventDate"][:10],
+                                     "meeting_start": start.isoformat() if start else None,
+                                     "posted": local.replace(tzinfo=None).isoformat(timespec="seconds"),
+                                     "posted_kind": "last_published", "url": e["EventInSiteURL"],
+                                     "title": name})
+    return found
+
+
 # --------------------------------------------------------------- generic
-EVENT_PAGE = re.compile(r"Calendar\.aspx\?EID=|/event/|/events?/\d|/calendar/event|eventid=|/node/\d+/?$", re.I)
+# another body's meeting held in the select board room etc. ("Shellfish Advisory Board Meeting,
+# Select Board Meeting Room")
+OTHER_BODY = re.compile(r"\b(?:advisory|shellfish|health|assessors?|library|recreation|cemetery|historical|housing|"
+                        r"finance|school|capital|cultural|agricultural|water|sewer|personnel|licensing|registrars?|"
+                        r"open space|community preservation|parks?|energy|disability|airport|harbor|economic)\s+"
+                        r"(?:\w+\s+){0,2}(?:board|committee|commission|trustees|authority|council)\b|"
+                        r"(?:select ?board|selectmen'?s?|council) (?:meeting )?(?:room|chambers)", re.I)
+CAL_EXPORT = re.compile(r"google\.com/calendar|calendar\.google|outlook\.(?:live|office)|\.ics\b|ical|"
+                        r"addtocalendar|/calendar/render|action=TEMPLATE", re.I)
+EVENT_PAGE = re.compile(r"calendar\.aspx|/events?/|/calendar/event|eventid=|/node/\d+/?$", re.I)
 
 
 def board_candidates(st: TownState, pages: list[Page], key: str) -> list[Link]:
     cands = []
     for p in pages:
         for l in p.links:
-            if not same_site(st, l.url) or EVENT_PAGE.search(l.url) or DOCLIKE.search(l.url.split("?")[0][-6:]):
+            if (not same_site(st, l.url) or EVENT_PAGE.search(l.url) or POSTING_HREF.search(l.url)
+                    or re.search(r"\.(pdf|docx?|xlsx?)$", l.url.split("?")[0], re.I)):
                 continue
             if key == "town_meeting":
                 ok = TOWN_MEETING_TEXT.search(l.text) and not re.search(r"advisory|committee|handbook", l.text, re.I)
@@ -546,20 +656,47 @@ def try_board_page(st: TownState, key: str, url: str, label: str, depth: int = 0
     if page is None:
         return False
     note_vendors(st, page)
+    if re.search(r"/AgendaCenter", page.final_url, re.I):
+        return False  # CivicPlus AgendaCenter is read through its own adapter, never as a plain page
     agenda_page = page_is_agenda_page(page) or bool(AGENDAISH.search(label))
     others = None if key == "town_meeting" else other_boards_rx(key)
-    found = dated_agendas(page, st.window, agenda_page, "town_meeting" if key == "town_meeting" else None,
+    # A page is about this board if its title/heading names the board or its URL carries the
+    # board's slug; otherwise (a site-wide agendas or documents page) every link must name the board.
+    hub_mode = False
+    if key != "town_meeting":
+        inc = re.compile(HUB_BOARD_RX[key][0], re.I)
+        own = inc.search(f"{page.title} {page.h1}") or re.search(SLUG_HINTS[key], urlsplit(page.final_url).path, re.I)
+        hub_mode = not own
+    found = dated_agendas(page, st.window, agenda_page,
+                          "town_meeting" if key == "town_meeting" else (key if hub_mode else None),
                           exclude_rx=others)
+    # a single meeting's page (".../planning-board-meeting-october-13-2026/") is not a listing
+    path = urlsplit(page.final_url).path
+    if key != "town_meeting" and (POSTING_HREF.search(path) or parse_date(path.replace("-", " ").replace("_", " "))
+                                  or re.search(r"/(?:20\d{6}|\d{5,})/?$", path)
+                                  or re.search(r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*[-_]\d{1,2}"
+                                               r"(?:st|nd|rd|th)?(?:[-_/]|$)", path, re.I)):
+        found = []
+    # one lone link only counts if it says it is an agenda
+    if key != "town_meeting" and len(found) == 1 and not AGENDAISH.search(found[0]["text"] + " " + found[0]["url"]):
+        found = []
+    if found and not docs_fetchable(st, found):
+        found = []
     if found:
         dates = [f["date"] for f in found]
         board_name = label if classify_board(label) == key else BOARD_LABELS[key]
         listing = {"board": board_name[:80], "board_key": key, "url": page.final_url,
                    "link_pattern": "warrant" if key == "town_meeting" else "agenda|notice|posting",
                    "context": "block"}
-        if agenda_page and key != "town_meeting":
+        if (agenda_page or any(POSTING_HREF.search(f["url"]) for f in found)) and key != "town_meeting":
             listing["date_only_docs"] = True
+        if any(REVIZE_TS.search(f["url"]) for f in found):
+            listing["strip_doc_query"] = True
         if others:
             listing["board_exclude"] = others
+        if hub_mode:
+            listing["board_pattern"] = HUB_BOARD_RX[key][0]
+            listing["board_exclude"] = "|".join(x for x in (HUB_BOARD_RX[key][1], others) if x)
         if key == "town_meeting":
             listing["accept_undated_if"] = r"warrant.*20(?:26|27)|20(?:26|27).*warrant"
             listing["exclude_pattern"] = r"minutes|results|vote|report|video|recording"
@@ -658,7 +795,7 @@ def hub_agendas(st: TownState, page: Page) -> None:
         if key in st.boards:
             continue
         found = dated_agendas(page, st.window, is_agenda, key)
-        if not found:
+        if not found or not docs_fetchable(st, found):
             continue
         inc, exc = HUB_BOARD_RX[key]
         dates = [f["date"] for f in found]
@@ -667,6 +804,8 @@ def hub_agendas(st: TownState, page: Page) -> None:
                    "board_pattern": inc, "board_exclude": exc, "context": "block"}
         if is_agenda and key != "town_meeting":
             listing["date_only_docs"] = True
+        if any(REVIZE_TS.search(f["url"]) for f in found):
+            listing["strip_doc_query"] = True
         if key == "town_meeting":
             listing["accept_undated_if"] = r"warrant.*20(?:26|27)|20(?:26|27).*warrant"
             listing["exclude_pattern"] = r"minutes|results|vote|report|video|recording"
@@ -682,7 +821,7 @@ def hub_agendas(st: TownState, page: Page) -> None:
 # --------------------------------------------------------------- vendors
 def vendor_status(st: TownState) -> None:
     for key, v in st.vendors.items():
-        if key == "civicclerk":
+        if key == "civicclerk" or (key == "legistar" and v.get("client")):
             v["status"] = "supported"
             continue
         url = v["urls"][0]
@@ -872,6 +1011,11 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
                 break
             if try_board_page(st, key, l.url, l.text):
                 break
+    # Legistar links often sit on the council page, so check after the board pages
+    if "legistar" in st.vendors:
+        m = re.match(r"https?://([a-z0-9-]+)\.legistar\.com", st.vendors["legistar"]["urls"][0], re.I)
+        if m and do_legistar(st, m.group(1).lower()):
+            platforms.append("legistar")
     # CivicClerk tenants are not always linked from pages we read; probe "<town>ma"
     if "civicclerk" not in st.vendors and any(k not in st.boards for k in TRACKED[:4]):
         tenant = re.sub(r"[^a-z]", "", muni["town"].lower()) + "ma"
@@ -901,13 +1045,15 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
         # and record any secondary-platform listings separately.
         primary = rec["platform"]
         src_platform = {"civicplus": "civicplus", "civicclerk": "civicclerk", "generic": "generic",
-                        "generic_hub": "generic"}
+                        "generic_hub": "generic", "legistar": "legistar"}
 
         def plat(l: dict) -> str:
             if "category_id" in l:
                 return "civicplus"
             if "civicclerk.com" in l.get("url", ""):
                 return "civicclerk"
+            if "client" in l:
+                return "legistar"
             return "generic"
 
         # keep only listings that back a board's best evidence (no double-crawling a board)
@@ -927,8 +1073,10 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
             st.listings = [l for l in st.listings if plat(l) == primary]
             rec["boards_by_platform"] = {
                 p: sorted(k for k, b in st.boards.items() if src_platform.get(b["source"]) == p) for p in platforms}
-        if primary == "civicclerk":
+        if "civicclerk" in platforms:
             rec["tenant"] = st.vendors["civicclerk"]["tenant"]
+        if "legistar" in platforms:
+            rec["client"] = st.vendors["legistar"]["client"]
         return finish("automated", None, None)
 
     # not automated: most specific reason first
@@ -947,9 +1095,16 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
         k, v = next(iter(unsupported.items()))
         rec["platform"] = k
         return finish("not_automated", "no_adapter", f"agendas appear to be on {k} ({v['urls'][0][:100]}); no adapter yet")
-    if st.robots_blocked:
+    own_blocked = [u for u in st.robots_blocked if same_site(st, u.split(" ")[0])]
+    if own_blocked:
+        st.robots_blocked = own_blocked
         return finish("not_automated", "robots_disallow_site",
                       f"robots.txt disallows agenda pages on the town site: {st.robots_blocked[0][:140]}")
+    doc_hosts = sorted({n.split(" ", 1)[1] for n in st.notes if n.startswith("DOC_ROBOTS ")})
+    if doc_hosts:
+        return finish("not_automated", "robots_disallow_documents",
+                      f"agenda listings found, but the documents are hosted on {', '.join(doc_hosts)}, "
+                      f"whose robots.txt disallows bots")
     if any("JS-rendered" in n for n in st.notes):
         return finish("not_automated", "js_only",
                       "agenda/document lists are rendered client-side by JavaScript (" +

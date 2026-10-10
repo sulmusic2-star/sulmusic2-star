@@ -472,21 +472,26 @@ def cmd_leadtime(args, fetcher: PoliteFetcher) -> None:
     raw = json.loads(LEADTIME_RAW_FILE.read_text())["rows_by_town"]
     today = _date.today()
     start, end = today - timedelta(days=args.lead_days_back), today - timedelta(days=1)
-    recs = leadtime_records(raw, start, end)
+    all_recs = leadtime_records(raw, start, end)
+    # Legistar exposes only the *last* publish time, which is usually the post-meeting republish,
+    # so it says nothing about lead time; keep those rows out of the summaries.
+    recs = [r for r in all_recs if r["posted_kind"] != "last_published"]
     posted_only = [r for r in recs if r["posted_kind"] in ("posted", "published")]
     summary = {"all_rows": _dist(recs), "first_posting_only": _dist(posted_only)}
     by_board, by_board_posted, by_platform = {}, {}, {}
     for key in ["planning_board", "zoning_board_of_appeals", "conservation_commission", "select_board", "town_meeting"]:
         by_board[key] = _dist([r for r in recs if r["board_key"] == key])
         by_board_posted[key] = _dist([r for r in posted_only if r["board_key"] == key])
-    for plat in sorted({r["platform"] for r in recs}):
-        by_platform[plat] = _dist([r for r in recs if r["platform"] == plat])
+    for plat in sorted({r["platform"] for r in all_recs}):
+        by_platform[plat] = _dist([r for r in all_recs if r["platform"] == plat])
+    by_platform_first = {plat: _dist([r for r in posted_only if r["platform"] == plat])
+                         for plat in sorted({r["platform"] for r in posted_only})}
     # town-level: each town's median, so big posters do not dominate
     per_town = defaultdict(list)
     for r in posted_only:
         per_town[r["town"]].append(r["lead_days"])
     town_medians = [_pct(v, 50) for v in per_town.values() if len(v) >= 3]
-    exact = [r for r in recs if "lead_hours_to_start" in r]
+    exact = [r for r in recs if r["platform"] == "civicclerk" and r.get("lead_hours_to_start") is not None]
     doc = {
         "_about": ("Lead time between when an agenda appeared on the town's agenda platform and the meeting date, "
                    "for meetings already held. CivicPlus AgendaCenter shows 'Posted <timestamp>' (or 'Amended "
@@ -500,21 +505,27 @@ def cmd_leadtime(args, fetcher: PoliteFetcher) -> None:
                                         "meetings start in the evening, adding ~17-19 h)"),
             "lead_hours_to_start": "CivicClerk only: hours from publishOn to the scheduled start time",
             "first_posting_only": "CivicPlus rows marked 'Posted' (not 'Amended') plus all CivicClerk rows",
+            "all_rows": ("also CivicPlus 'Amended' rows and Revize upload stamps (?t=YYYYMMDDhhmmss on each "
+                         "document link), both of which can postdate the first posting"),
         },
         "summary": summary,
         "by_board_all_rows": by_board,
         "by_board_first_posting_only": by_board_posted,
-        "by_platform": by_platform,
+        "by_platform_all_rows": by_platform,
+        "by_platform_first_posting_only": by_platform_first,
+        "excluded": {"legistar_last_published_rows": len(all_recs) - len(recs),
+                     "why": "Legistar's API gives only the last (re)publish time, normally after the meeting"},
         "town_medians": {"towns": len(town_medians), "p10_days": _pct(town_medians, 10),
                          "median_days": _pct(town_medians, 50), "p90_days": _pct(town_medians, 90)},
         "civicclerk_exact_hours_to_start": {"n": len(exact),
                                             "p10": _pct([r["lead_hours_to_start"] for r in exact], 10),
                                             "median": _pct([r["lead_hours_to_start"] for r in exact], 50)},
-        "records": recs,
+        "records": all_recs,
     }
     save_json(LEADTIME_FILE, doc)
     print(json.dumps({k: doc[k] for k in ("meeting_window", "summary", "by_board_first_posting_only",
-                                          "by_platform", "town_medians", "civicclerk_exact_hours_to_start")},
+                                          "by_platform_first_posting_only", "town_medians",
+                                          "civicclerk_exact_hours_to_start")},
                      indent=1))
     print(f"wrote {LEADTIME_FILE}")
 
@@ -528,6 +539,8 @@ def _listing_platform(l: dict) -> str:
         return "civicplus"
     if "civicclerk.com" in l.get("url", ""):
         return "civicclerk"
+    if "client" in l:
+        return "legistar"
     return "generic"
 
 
@@ -548,6 +561,8 @@ def crawl_configs(towns: list[dict]) -> list[dict]:
                 cfg["website"] = f"{parts.scheme}://{parts.netloc}"
             if plat == "civicclerk":
                 cfg["tenant"] = t.get("tenant") or (t.get("vendors", {}).get("civicclerk", {}).get("tenant"))
+            if plat == "legistar":
+                cfg["client"] = ls[0]["client"]
             cfgs.append(cfg)
     return cfgs
 
@@ -671,13 +686,49 @@ def cmd_report(args, fetcher: PoliteFetcher) -> None:
             vend[f"{t.get('reason_code')}:{t.get('platform') or 'town site'}"].append(t["town"])
     out["not_automated_by_vendor"] = {k: {"towns": len(v), "examples": v[:12]} for k, v in
                                       sorted(vend.items(), key=lambda kv: -len(kv[1]))}
+    def group(t: dict) -> str:
+        code, reason = t.get("reason_code") or "", t.get("reason") or ""
+        if code == "waf_block" or (code == "bot_challenge" and "homepage" in reason):
+            return "bot protection on the town website (Cloudflare challenge / WAF 403)"
+        if code == "bot_challenge":
+            return f"bot protection on the agenda vendor ({t.get('platform')})"
+        if code == "vendor_blocked":
+            return f"agenda vendor refuses automated requests ({t.get('platform')})"
+        if code in ("robots_disallow_site", "robots_disallow_documents", "vendor_robots_disallow",
+                    "crawl_delay_exceeds_cap", "robots_unavailable"):
+            return "robots.txt (disallow, crawl-delay above cap, or unavailable)"
+        if code == "js_only":
+            return "JavaScript-only agenda listing (no server HTML / API allowed)"
+        if code == "no_adapter":
+            return f"documents in a store with no adapter ({t.get('platform')})"
+        if code in ("agendas_stale_or_undated", "no_agenda_listing_found"):
+            return "no current, dated agenda listing found (stale page, undated links, or heuristic miss)"
+        return code or "unknown"
+    groups = defaultdict(list)
+    for t in towns:
+        if not t.get("automated"):
+            groups[group(t)].append(t["town"])
+    out["not_automated_groups"] = {k: {"towns": len(v), "pop": sum(pop[x] for x in v), "examples": v[:15]}
+                                   for k, v in sorted(groups.items(), key=lambda kv: -len(kv[1]))}
+    robust = [t for t in auto if any((t.get("board_evidence") or {}).get(k, {}).get("n_recent", 0) >= 2
+                                     for k in MEETING_BOARDS)]
+    out["automated_robust"] = {"towns": len(robust), "pop": sum(pop[t["town"]] for t in robust),
+                               "rule": ">=1 meeting board with >=2 dated agendas in the evidence window"}
+    plat_pop = {k: {"towns": len(v), "pop": sum(pop[x] for x in v)} for k, v in plat.items()}
+    out["automated_towns_using_platform"] = plat_pop
+    boards_robust = {}
+    for key in MEETING_BOARDS:
+        have = [t for t in auto if (t.get("board_evidence") or {}).get(key, {}).get("n_recent", 0) >= 2]
+        boards_robust[key] = len(have)
+    out["boards_robust_n_ge_2"] = boards_robust
     vendors_seen = Counter(k for t in towns for k in (t.get("vendors") or {}))
     out["vendor_links_seen_all_towns"] = dict(vendors_seen.most_common())
     if LEADTIME_FILE.exists():
         lt = json.loads(LEADTIME_FILE.read_text())
         out["leadtime"] = {k: lt[k] for k in ("meeting_window", "summary", "by_board_first_posting_only",
-                                              "by_board_all_rows", "by_platform", "town_medians",
-                                              "civicclerk_exact_hours_to_start") if k in lt}
+                                              "by_board_all_rows", "by_platform_all_rows",
+                                              "by_platform_first_posting_only", "town_medians",
+                                              "civicclerk_exact_hours_to_start", "excluded") if k in lt}
     if HITS_ALL_FILE.exists():
         h = json.loads(HITS_ALL_FILE.read_text())
         out["crawl"] = {k: h.get(k) for k in ("window", "towns_attempted", "documents_scanned",

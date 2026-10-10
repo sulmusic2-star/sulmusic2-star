@@ -1,0 +1,983 @@
+{
+ "generated": "2026-10-10T18:53:18+00:00",
+ "municipalities": 351,
+ "state_pop_2024": 7136171,
+ "websites": {
+  "ok_name_not_found": 1,
+  "ok": 293,
+  "bot_challenge": 36,
+  "waf_block": 12,
+  "robots_disallow_homepage": 7,
+  "ok_name_only": 2
+ },
+ "automated": {
+  "towns": 240,
+  "share": 0.684,
+  "pop": 5193645,
+  "pop_share": 0.728
+ },
+ "automated_by_primary_platform": {
+  "civicplus": 187,
+  "generic": 44,
+  "civicclerk": 7,
+  "legistar": 2
+ },
+ "automated_towns_using_platform": {
+  "civicplus": {
+   "towns": 187,
+   "pop": 3396208
+  },
+  "generic": {
+   "towns": 96,
+   "pop": 1607736
+  },
+  "legistar": {
+   "towns": 2,
+   "pop": 755607
+  },
+  "civicclerk": {
+   "towns": 7,
+   "pop": 323976
+  }
+ },
+ "cms_all_towns": {
+  "civicplus": 214,
+  "(site not read)": 54,
+  "wordpress": 25,
+  "revize": 23,
+  "(none detected)": 18,
+  "rocketfusion": 11,
+  "drupal": 4,
+  "granicus_govaccess": 2,
+  "civiclive": 2,
+  "catalis_govoffice": 1,
+  "wix": 1
+ },
+ "boards": {
+  "planning_board": {
+   "towns": 224,
+   "of": 351,
+   "share": 0.638,
+   "pop": 3950594
+  },
+  "zoning_board_of_appeals": {
+   "towns": 194,
+   "of": 351,
+   "share": 0.553,
+   "pop": 4349065
+  },
+  "conservation_commission": {
+   "towns": 221,
+   "of": 351,
+   "share": 0.63,
+   "pop": 3945881
+  },
+  "select_board": {
+   "towns": 225,
+   "of": 351,
+   "share": 0.641,
+   "pop": 4834309
+  },
+  "town_meeting": {
+   "towns": 92,
+   "of": 292,
+   "share": 0.315,
+   "pop": 1231360
+  }
+ },
+ "all_four_meeting_boards": {
+  "towns": 177,
+  "pop": 3297733
+ },
+ "not_automated": {
+  "bot_challenge": {
+   "towns": 50,
+   "pop": 580561,
+   "examples": [
+    "Aquinnah",
+    "Ashburnham",
+    "Athol",
+    "Barnstable",
+    "Becket",
+    "Berlin",
+    "Bernardston",
+    "Brimfield",
+    "Brookfield",
+    "Brookline",
+    "Buckland",
+    "Chatham"
+   ]
+  },
+  "agendas_stale_or_undated": {
+   "towns": 17,
+   "pop": 141723,
+   "examples": [
+    "Abington",
+    "Acton",
+    "Clarksburg",
+    "Douglas",
+    "Florida",
+    "Georgetown",
+    "Granby",
+    "Greenfield",
+    "Groton",
+    "Groveland",
+    "Hawley",
+    "Millis"
+   ]
+  },
+  "waf_block": {
+   "towns": 11,
+   "pop": 259897,
+   "examples": [
+    "Arlington",
+    "Berkley",
+    "Dedham",
+    "Edgartown",
+    "Fairhaven",
+    "Ludlow",
+    "Marblehead",
+    "Merrimac",
+    "Nahant",
+    "Newton",
+    "Westwood"
+   ]
+  },
+  "js_only": {
+   "towns": 9,
+   "pop": 170451,
+   "examples": [
+    "Ashfield",
+    "Cheshire",
+    "Foxborough",
+    "Lynn",
+    "Medway",
+    "North Reading",
+    "Savoy",
+    "West Brookfield",
+    "Westminster"
+   ]
+  },
+  "robots_disallow_site": {
+   "towns": 6,
+   "pop": 47045,
+   "examples": [
+    "Barre",
+    "Cummington",
+    "Easton",
+    "New Braintree",
+    "Palmer",
+    "Westhampton"
+   ]
+  },
+  "no_adapter": {
+   "towns": 6,
+   "pop": 140095,
+   "examples": [
+    "Everett",
+    "New Ashford",
+    "North Andover",
+    "Reading",
+    "West Springfield",
+    "Windsor"
+   ]
+  },
+  "no_agenda_listing_found": {
+   "towns": 4,
+   "pop": 57454,
+   "examples": [
+    "Hancock",
+    "Monroe",
+    "Peabody",
+    "Worthington"
+   ]
+  },
+  "vendor_blocked": {
+   "towns": 3,
+   "pop": 255249,
+   "examples": [
+    "Cambridge",
+    "Framingham",
+    "Revere"
+   ]
+  },
+  "vendor_robots_disallow": {
+   "towns": 3,
+   "pop": 240446,
+   "examples": [
+    "Hopkinton",
+    "Williamstown",
+    "Worcester"
+   ]
+  },
+  "crawl_delay_exceeds_cap": {
+   "towns": 2,
+   "pop": 49605,
+   "examples": [
+    "Harwich",
+    "Watertown"
+   ]
+  }
+ },
+ "not_automated_by_vendor": {
+  "bot_challenge:town site": {
+   "towns": 36,
+   "examples": [
+    "Aquinnah",
+    "Barnstable",
+    "Becket",
+    "Bernardston",
+    "Brimfield",
+    "Brookline",
+    "Buckland",
+    "Chelsea",
+    "Chesterfield",
+    "Chilmark",
+    "Cohasset",
+    "Danvers"
+   ]
+  },
+  "bot_challenge:mytowngovernment": {
+   "towns": 14,
+   "examples": [
+    "Ashburnham",
+    "Athol",
+    "Berlin",
+    "Brookfield",
+    "Chatham",
+    "Dalton",
+    "Hardwick",
+    "Norfolk",
+    "Orange",
+    "Pelham",
+    "Phillipston",
+    "Royalston"
+   ]
+  },
+  "js_only:heygov": {
+   "towns": 4,
+   "examples": [
+    "Cheshire",
+    "Medway",
+    "Savoy",
+    "West Brookfield"
+   ]
+  },
+  "no_adapter:google_drive": {
+   "towns": 4,
+   "examples": [
+    "Everett",
+    "New Ashford",
+    "West Springfield",
+    "Windsor"
+   ]
+  },
+  "js_only:generic": {
+   "towns": 3,
+   "examples": [
+    "Ashfield",
+    "North Reading",
+    "Westminster"
+   ]
+  },
+  "vendor_blocked:iqm2": {
+   "towns": 3,
+   "examples": [
+    "Cambridge",
+    "Framingham",
+    "Revere"
+   ]
+  },
+  "js_only:town site": {
+   "towns": 2,
+   "examples": [
+    "Foxborough",
+    "Lynn"
+   ]
+  },
+  "no_adapter:laserfiche": {
+   "towns": 2,
+   "examples": [
+    "North Andover",
+    "Reading"
+   ]
+  },
+  "vendor_robots_disallow:granicus": {
+   "towns": 1,
+   "examples": [
+    "Hopkinton"
+   ]
+  },
+  "vendor_robots_disallow:sharepoint": {
+   "towns": 1,
+   "examples": [
+    "Williamstown"
+   ]
+  },
+  "vendor_robots_disallow:primegov": {
+   "towns": 1,
+   "examples": [
+    "Worcester"
+   ]
+  }
+ },
+ "not_automated_groups": {
+  "bot protection on the town website (Cloudflare challenge / WAF 403)": {
+   "towns": 47,
+   "pop": 760715,
+   "examples": [
+    "Aquinnah",
+    "Arlington",
+    "Barnstable",
+    "Becket",
+    "Berkley",
+    "Bernardston",
+    "Brimfield",
+    "Brookline",
+    "Buckland",
+    "Chelsea",
+    "Chesterfield",
+    "Chilmark",
+    "Cohasset",
+    "Danvers",
+    "Dedham"
+   ]
+  },
+  "no current, dated agenda listing found (stale page, undated links, or heuristic miss)": {
+   "towns": 21,
+   "pop": 199177,
+   "examples": [
+    "Abington",
+    "Acton",
+    "Clarksburg",
+    "Douglas",
+    "Florida",
+    "Georgetown",
+    "Granby",
+    "Greenfield",
+    "Groton",
+    "Groveland",
+    "Hancock",
+    "Hawley",
+    "Millis",
+    "Monroe",
+    "Montgomery"
+   ]
+  },
+  "bot protection on the agenda vendor (mytowngovernment)": {
+   "towns": 14,
+   "pop": 79743,
+   "examples": [
+    "Ashburnham",
+    "Athol",
+    "Berlin",
+    "Brookfield",
+    "Chatham",
+    "Dalton",
+    "Hardwick",
+    "Norfolk",
+    "Orange",
+    "Pelham",
+    "Phillipston",
+    "Royalston",
+    "Southampton",
+    "Templeton"
+   ]
+  },
+  "robots.txt (disallow, crawl-delay above cap, or unavailable)": {
+   "towns": 11,
+   "pop": 337096,
+   "examples": [
+    "Barre",
+    "Cummington",
+    "Easton",
+    "Harwich",
+    "Hopkinton",
+    "New Braintree",
+    "Palmer",
+    "Watertown",
+    "Westhampton",
+    "Williamstown",
+    "Worcester"
+   ]
+  },
+  "JavaScript-only agenda listing (no server HTML / API allowed)": {
+   "towns": 9,
+   "pop": 170451,
+   "examples": [
+    "Ashfield",
+    "Cheshire",
+    "Foxborough",
+    "Lynn",
+    "Medway",
+    "North Reading",
+    "Savoy",
+    "West Brookfield",
+    "Westminster"
+   ]
+  },
+  "documents in a store with no adapter (google_drive)": {
+   "towns": 4,
+   "pop": 81919,
+   "examples": [
+    "Everett",
+    "New Ashford",
+    "West Springfield",
+    "Windsor"
+   ]
+  },
+  "agenda vendor refuses automated requests (iqm2)": {
+   "towns": 3,
+   "pop": 255249,
+   "examples": [
+    "Cambridge",
+    "Framingham",
+    "Revere"
+   ]
+  },
+  "documents in a store with no adapter (laserfiche)": {
+   "towns": 2,
+   "pop": 58176,
+   "examples": [
+    "North Andover",
+    "Reading"
+   ]
+  }
+ },
+ "automated_robust": {
+  "towns": 233,
+  "pop": 4993001,
+  "rule": ">=1 meeting board with >=2 dated agendas in the evidence window"
+ },
+ "boards_robust_n_ge_2": {
+  "planning_board": 215,
+  "zoning_board_of_appeals": 177,
+  "conservation_commission": 213,
+  "select_board": 220
+ },
+ "vendor_links_seen_all_towns": {
+  "mytowngovernment": 15,
+  "google_drive": 15,
+  "civicclerk": 13,
+  "iqm2": 6,
+  "heygov": 5,
+  "granicus": 4,
+  "laserfiche": 4,
+  "sharepoint": 4,
+  "legistar": 2,
+  "dropbox": 2,
+  "primegov": 2,
+  "municodemeetings": 1,
+  "boarddocs": 1
+ },
+ "leadtime": {
+  "meeting_window": {
+   "start": "2026-04-13",
+   "end": "2026-10-09"
+  },
+  "summary": {
+   "all_rows": {
+    "n": 6183,
+    "towns": 197,
+    "p10_days": 0.0,
+    "p25_days": 2.0,
+    "median_days": 4.0,
+    "p75_days": 6.0,
+    "p90_days": 11.0,
+    "p10_hours_before_meeting_day": -9.4,
+    "median_hours_before_meeting_day": 87.1,
+    "share_posted_after_meeting_day_start": 0.109,
+    "share_ge_48h_before_meeting_day": 0.721,
+    "share_ge_24h_before_meeting_day": 0.837,
+    "share_ge_7_days": 0.196
+   },
+   "first_posting_only": {
+    "n": 4116,
+    "towns": 103,
+    "p10_days": 2.0,
+    "p25_days": 4.0,
+    "median_days": 5.0,
+    "p75_days": 6.0,
+    "p90_days": 13.0,
+    "p10_hours_before_meeting_day": 33.2,
+    "median_hours_before_meeting_day": 105.3,
+    "share_posted_after_meeting_day_start": 0.041,
+    "share_ge_48h_before_meeting_day": 0.824,
+    "share_ge_24h_before_meeting_day": 0.943,
+    "share_ge_7_days": 0.233
+   }
+  },
+  "by_board_first_posting_only": {
+   "planning_board": {
+    "n": 873,
+    "towns": 96,
+    "p10_days": 2.0,
+    "p25_days": 4.0,
+    "median_days": 5.0,
+    "p75_days": 7.0,
+    "p90_days": 13.0,
+    "p10_hours_before_meeting_day": 37.24,
+    "median_hours_before_meeting_day": 108.9,
+    "share_posted_after_meeting_day_start": 0.033,
+    "share_ge_48h_before_meeting_day": 0.876,
+    "share_ge_24h_before_meeting_day": 0.956,
+    "share_ge_7_days": 0.265
+   },
+   "zoning_board_of_appeals": {
+    "n": 608,
+    "towns": 93,
+    "p10_days": 2.0,
+    "p25_days": 5.0,
+    "median_days": 7.0,
+    "p75_days": 14.0,
+    "p90_days": 21.0,
+    "p10_hours_before_meeting_day": 35.71,
+    "median_hours_before_meeting_day": 152.6,
+    "share_posted_after_meeting_day_start": 0.028,
+    "share_ge_48h_before_meeting_day": 0.845,
+    "share_ge_24h_before_meeting_day": 0.961,
+    "share_ge_7_days": 0.528
+   },
+   "conservation_commission": {
+    "n": 862,
+    "towns": 95,
+    "p10_days": 2.0,
+    "p25_days": 3.0,
+    "median_days": 5.0,
+    "p75_days": 6.0,
+    "p90_days": 8.0,
+    "p10_hours_before_meeting_day": 33.0,
+    "median_hours_before_meeting_day": 107.1,
+    "share_posted_after_meeting_day_start": 0.039,
+    "share_ge_48h_before_meeting_day": 0.773,
+    "share_ge_24h_before_meeting_day": 0.944,
+    "share_ge_7_days": 0.197
+   },
+   "select_board": {
+    "n": 1748,
+    "towns": 99,
+    "p10_days": 2.0,
+    "p25_days": 4.0,
+    "median_days": 4.0,
+    "p75_days": 5.0,
+    "p90_days": 7.0,
+    "p10_hours_before_meeting_day": 32.37,
+    "median_hours_before_meeting_day": 85.5,
+    "share_posted_after_meeting_day_start": 0.046,
+    "share_ge_48h_before_meeting_day": 0.818,
+    "share_ge_24h_before_meeting_day": 0.933,
+    "share_ge_7_days": 0.126
+   },
+   "town_meeting": {
+    "n": 25,
+    "towns": 14,
+    "p10_days": -22.2,
+    "p25_days": 2.0,
+    "median_days": 12.0,
+    "p75_days": 20.0,
+    "p90_days": 38.2,
+    "p10_hours_before_meeting_day": -548.56,
+    "median_hours_before_meeting_day": 274.7,
+    "share_posted_after_meeting_day_start": 0.24,
+    "share_ge_48h_before_meeting_day": 0.72,
+    "share_ge_24h_before_meeting_day": 0.76,
+    "share_ge_7_days": 0.64
+   }
+  },
+  "by_board_all_rows": {
+   "planning_board": {
+    "n": 1327,
+    "towns": 154,
+    "p10_days": 1.0,
+    "p25_days": 3.0,
+    "median_days": 5.0,
+    "p75_days": 6.0,
+    "p90_days": 12.0,
+    "p10_hours_before_meeting_day": 8.86,
+    "median_hours_before_meeting_day": 105.3,
+    "share_posted_after_meeting_day_start": 0.09,
+    "share_ge_48h_before_meeting_day": 0.784,
+    "share_ge_24h_before_meeting_day": 0.868,
+    "share_ge_7_days": 0.228
+   },
+   "zoning_board_of_appeals": {
+    "n": 853,
+    "towns": 130,
+    "p10_days": 2.0,
+    "p25_days": 4.0,
+    "median_days": 6.0,
+    "p75_days": 13.0,
+    "p90_days": 21.0,
+    "p10_hours_before_meeting_day": 32.02,
+    "median_hours_before_meeting_day": 134.8,
+    "share_posted_after_meeting_day_start": 0.055,
+    "share_ge_48h_before_meeting_day": 0.801,
+    "share_ge_24h_before_meeting_day": 0.913,
+    "share_ge_7_days": 0.488
+   },
+   "conservation_commission": {
+    "n": 1292,
+    "towns": 161,
+    "p10_days": 0.0,
+    "p25_days": 2.0,
+    "median_days": 5.0,
+    "p75_days": 6.0,
+    "p90_days": 7.0,
+    "p10_hours_before_meeting_day": -10.29,
+    "median_hours_before_meeting_day": 104.55,
+    "share_posted_after_meeting_day_start": 0.115,
+    "share_ge_48h_before_meeting_day": 0.673,
+    "share_ge_24h_before_meeting_day": 0.833,
+    "share_ge_7_days": 0.166
+   },
+   "select_board": {
+    "n": 2682,
+    "towns": 176,
+    "p10_days": 0.0,
+    "p25_days": 2.0,
+    "median_days": 4.0,
+    "p75_days": 5.0,
+    "p90_days": 6.0,
+    "p10_hours_before_meeting_day": -11.2,
+    "median_hours_before_meeting_day": 81.85,
+    "share_posted_after_meeting_day_start": 0.13,
+    "share_ge_48h_before_meeting_day": 0.687,
+    "share_ge_24h_before_meeting_day": 0.801,
+    "share_ge_7_days": 0.097
+   },
+   "town_meeting": {
+    "n": 29,
+    "towns": 17,
+    "p10_days": -15.4,
+    "p25_days": 0.0,
+    "median_days": 12.0,
+    "p75_days": 20.0,
+    "p90_days": 35.4,
+    "p10_hours_before_meeting_day": -380.32,
+    "median_hours_before_meeting_day": 274.7,
+    "share_posted_after_meeting_day_start": 0.276,
+    "share_ge_48h_before_meeting_day": 0.69,
+    "share_ge_24h_before_meeting_day": 0.724,
+    "share_ge_7_days": 0.621
+   }
+  },
+  "by_platform_all_rows": {
+   "civicclerk": {
+    "n": 331,
+    "towns": 10,
+    "p10_days": 2.0,
+    "p25_days": 4.0,
+    "median_days": 5.0,
+    "p75_days": 6.0,
+    "p90_days": 8.0,
+    "p10_hours_before_meeting_day": 32.5,
+    "median_hours_before_meeting_day": 103.6,
+    "share_posted_after_meeting_day_start": 0.054,
+    "share_ge_48h_before_meeting_day": 0.807,
+    "share_ge_24h_before_meeting_day": 0.918,
+    "share_ge_7_days": 0.172
+   },
+   "civicplus": {
+    "n": 5201,
+    "towns": 172,
+    "p10_days": 0.0,
+    "p25_days": 2.0,
+    "median_days": 4.0,
+    "p75_days": 6.0,
+    "p90_days": 10.0,
+    "p10_hours_before_meeting_day": -10.2,
+    "median_hours_before_meeting_day": 86.8,
+    "share_posted_after_meeting_day_start": 0.115,
+    "share_ge_48h_before_meeting_day": 0.712,
+    "share_ge_24h_before_meeting_day": 0.832,
+    "share_ge_7_days": 0.197
+   },
+   "legistar": {
+    "n": 126,
+    "towns": 2,
+    "p10_days": 0.0,
+    "p25_days": 0.0,
+    "median_days": 0.0,
+    "p75_days": 0.0,
+    "p90_days": 4.0,
+    "p10_hours_before_meeting_day": -13.45,
+    "median_hours_before_meeting_day": -9.3,
+    "share_posted_after_meeting_day_start": 0.77,
+    "share_ge_48h_before_meeting_day": 0.111,
+    "share_ge_24h_before_meeting_day": 0.127,
+    "share_ge_7_days": 0.095
+   },
+   "revize": {
+    "n": 651,
+    "towns": 17,
+    "p10_days": 1.0,
+    "p25_days": 2.0,
+    "median_days": 4.0,
+    "p75_days": 6.0,
+    "p90_days": 13.0,
+    "p10_hours_before_meeting_day": 9.6,
+    "median_hours_before_meeting_day": 87.3,
+    "share_posted_after_meeting_day_start": 0.083,
+    "share_ge_48h_before_meeting_day": 0.748,
+    "share_ge_24h_before_meeting_day": 0.84,
+    "share_ge_7_days": 0.204
+   }
+  },
+  "by_platform_first_posting_only": {
+   "civicclerk": {
+    "n": 331,
+    "towns": 10,
+    "p10_days": 2.0,
+    "p25_days": 4.0,
+    "median_days": 5.0,
+    "p75_days": 6.0,
+    "p90_days": 8.0,
+    "p10_hours_before_meeting_day": 32.5,
+    "median_hours_before_meeting_day": 103.6,
+    "share_posted_after_meeting_day_start": 0.054,
+    "share_ge_48h_before_meeting_day": 0.807,
+    "share_ge_24h_before_meeting_day": 0.918,
+    "share_ge_7_days": 0.172
+   },
+   "civicplus": {
+    "n": 3785,
+    "towns": 95,
+    "p10_days": 2.0,
+    "p25_days": 4.0,
+    "median_days": 5.0,
+    "p75_days": 6.0,
+    "p90_days": 13.0,
+    "p10_hours_before_meeting_day": 33.24,
+    "median_hours_before_meeting_day": 105.5,
+    "share_posted_after_meeting_day_start": 0.039,
+    "share_ge_48h_before_meeting_day": 0.826,
+    "share_ge_24h_before_meeting_day": 0.946,
+    "share_ge_7_days": 0.238
+   }
+  },
+  "town_medians": {
+   "towns": 101,
+   "p10_days": 4.0,
+   "median_days": 5.0,
+   "p90_days": 6.0
+  },
+  "civicclerk_exact_hours_to_start": {
+   "n": 331,
+   "p10": 49.0,
+   "median": 120.9
+  },
+  "excluded": {
+   "legistar_last_published_rows": 126,
+   "why": "Legistar's API gives only the last (re)publish time, normally after the meeting"
+  }
+ },
+ "crawl": {
+  "window": {
+   "start": "2026-09-10",
+   "end": "2026-12-09"
+  },
+  "towns_attempted": 240,
+  "documents_scanned": 2524,
+  "documents_without_text_layer": 641,
+  "documents_ocr": 639,
+  "hits_by_topic": {
+   "zoning_amendment": 357,
+   "solar": 235,
+   "battery_storage": 142,
+   "40b_comprehensive_permit": 115,
+   "moratorium": 77,
+   "clean_energy_siting": 55,
+   "wireless_telecom": 36
+  },
+  "towns_with_hits": 168,
+  "hits_by_board": {
+   "select_board": 340,
+   "planning_board": 263,
+   "town_meeting": 164,
+   "zoning_board_of_appeals": 72,
+   "conservation_commission": 43
+  },
+  "hits_text_source": {
+   "pdf": 674,
+   "ocr": 174,
+   "html": 26,
+   "docx": 8
+  },
+  "hits": 882,
+  "agendas_listed": 2535,
+  "towns_with_errors": 10,
+  "top_towns": {
+   "Whately": {
+    "total": 43,
+    "zoning_amendment": 17,
+    "battery_storage": 8,
+    "moratorium": 7,
+    "solar": 5,
+    "40b_comprehensive_permit": 3,
+    "clean_energy_siting": 2,
+    "wireless_telecom": 1
+   },
+   "Harvard": {
+    "total": 37,
+    "solar": 17,
+    "clean_energy_siting": 7,
+    "battery_storage": 6,
+    "40b_comprehensive_permit": 6,
+    "wireless_telecom": 1
+   },
+   "Pittsfield": {
+    "total": 32,
+    "zoning_amendment": 12,
+    "battery_storage": 11,
+    "solar": 5,
+    "moratorium": 3,
+    "clean_energy_siting": 1
+   },
+   "Wellesley": {
+    "total": 30,
+    "solar": 9,
+    "zoning_amendment": 8,
+    "battery_storage": 5,
+    "clean_energy_siting": 4,
+    "wireless_telecom": 3,
+    "40b_comprehensive_permit": 1
+   },
+   "Plymouth": {
+    "total": 29,
+    "zoning_amendment": 10,
+    "40b_comprehensive_permit": 9,
+    "solar": 5,
+    "moratorium": 4,
+    "battery_storage": 1
+   },
+   "Yarmouth": {
+    "total": 22,
+    "zoning_amendment": 14,
+    "40b_comprehensive_permit": 8
+   },
+   "Westford": {
+    "total": 20,
+    "zoning_amendment": 7,
+    "clean_energy_siting": 6,
+    "solar": 5,
+    "battery_storage": 2
+   },
+   "Milton": {
+    "total": 19,
+    "zoning_amendment": 8,
+    "solar": 6,
+    "battery_storage": 3,
+    "40b_comprehensive_permit": 2
+   },
+   "Leominster": {
+    "total": 18,
+    "battery_storage": 7,
+    "moratorium": 6,
+    "solar": 3,
+    "zoning_amendment": 2
+   },
+   "Easthampton": {
+    "total": 18,
+    "zoning_amendment": 7,
+    "moratorium": 6,
+    "solar": 4,
+    "battery_storage": 1
+   },
+   "Rochester": {
+    "total": 17,
+    "solar": 12,
+    "battery_storage": 5
+   },
+   "Bedford": {
+    "total": 17,
+    "solar": 8,
+    "zoning_amendment": 6,
+    "40b_comprehensive_permit": 2,
+    "battery_storage": 1
+   },
+   "Salem": {
+    "total": 16,
+    "zoning_amendment": 11,
+    "solar": 3,
+    "battery_storage": 2
+   },
+   "Erving": {
+    "total": 16,
+    "zoning_amendment": 5,
+    "solar": 5,
+    "battery_storage": 3,
+    "clean_energy_siting": 1,
+    "wireless_telecom": 1,
+    "40b_comprehensive_permit": 1
+   },
+   "Holliston": {
+    "total": 15,
+    "zoning_amendment": 7,
+    "solar": 5,
+    "40b_comprehensive_permit": 2,
+    "clean_energy_siting": 1
+   },
+   "Carver": {
+    "total": 15,
+    "solar": 11,
+    "battery_storage": 4
+   },
+   "South Hadley": {
+    "total": 13,
+    "zoning_amendment": 12,
+    "moratorium": 1
+   },
+   "Gill": {
+    "total": 13,
+    "battery_storage": 5,
+    "zoning_amendment": 5,
+    "moratorium": 2,
+    "solar": 1
+   },
+   "Uxbridge": {
+    "total": 12,
+    "zoning_amendment": 5,
+    "moratorium": 4,
+    "40b_comprehensive_permit": 3
+   },
+   "Falmouth": {
+    "total": 12,
+    "solar": 7,
+    "40b_comprehensive_permit": 4,
+    "zoning_amendment": 1
+   },
+   "Pepperell": {
+    "total": 11,
+    "40b_comprehensive_permit": 6,
+    "zoning_amendment": 4,
+    "solar": 1
+   },
+   "Amherst": {
+    "total": 11,
+    "zoning_amendment": 5,
+    "solar": 3,
+    "40b_comprehensive_permit": 1,
+    "clean_energy_siting": 1,
+    "battery_storage": 1
+   },
+   "Truro": {
+    "total": 11,
+    "solar": 5,
+    "zoning_amendment": 3,
+    "wireless_telecom": 2,
+    "battery_storage": 1
+   },
+   "Seekonk": {
+    "total": 11,
+    "solar": 4,
+    "zoning_amendment": 4,
+    "40b_comprehensive_permit": 3
+   },
+   "Randolph": {
+    "total": 11,
+    "zoning_amendment": 9,
+    "solar": 2
+   }
+  }
+ }
+}
