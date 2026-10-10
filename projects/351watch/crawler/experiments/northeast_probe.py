@@ -488,9 +488,29 @@ def cmd_crawl(args, fetcher: PoliteFetcher) -> None:
     print(f"fetcher: {fetcher.stats}")
 
 
+def cmd_listings(args, fetcher: PoliteFetcher) -> None:
+    """Dry run: list the agenda documents each adapter finds in the window,
+    without downloading them (one listing request per board)."""
+    conf = load(CONFIG, {"towns": []})
+    today = date.today()
+    window = Window(today - timedelta(days=args.days_back), today + timedelta(days=args.days_ahead))
+    for cfg in select(conf["towns"], args.towns):
+        if not cfg.get("automated"):
+            print(f"{key(cfg)}: NOT automated ({cfg.get('reason')})")
+            continue
+        try:
+            docs = REGISTRY[cfg["platform"]](fetcher).list_agendas(cfg, window)
+        except (FetchError, RuntimeError, ValueError) as e:
+            print(f"{key(cfg)}: listing error {e}")
+            continue
+        print(f"{key(cfg)} [{cfg['platform']}]: {len(docs)} docs")
+        for d in docs[: args.limit]:
+            print(f"   {d.meeting_date} {d.board[:28]:<28} {d.title[:50]:<50} {d.url[:110]}")
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("command", choices=["get", "fingerprint", "crawl"])
+    p.add_argument("command", choices=["get", "fingerprint", "listings", "crawl"])
     p.add_argument("url", nargs="?")
     p.add_argument("--grep")
     p.add_argument("--limit", type=int, default=60)
@@ -506,7 +526,8 @@ def main(argv=None) -> int:
                         format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     logging.getLogger("northeast_probe").setLevel(logging.INFO)
     fetcher = PoliteFetcher()
-    {"get": cmd_get, "fingerprint": cmd_fingerprint, "crawl": cmd_crawl}[args.command](args, fetcher)
+    {"get": cmd_get, "fingerprint": cmd_fingerprint, "listings": cmd_listings,
+     "crawl": cmd_crawl}[args.command](args, fetcher)
     return 0
 
 

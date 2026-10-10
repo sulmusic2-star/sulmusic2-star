@@ -9,7 +9,12 @@ Per listing in towns.json:
       "link_pattern":    "agenda",               # regex on link text OR href
       "exclude_pattern": "minutes|supporting",   # optional
       "resolve_pdf": false,                      # link goes to an HTML page that links the PDF
-      "accept_undated_if": "warrant.*2026"       # optional: keep links with no parseable date
+      "accept_undated_if": "warrant.*2026",      # optional: keep links with no parseable date
+      "board_pattern": "planning board",         # optional: shared all-boards page; keep only
+                                                 #   links whose text/href/row match this regex
+      "board_exclude": "subcommittee",           # optional: ...and drop those whose text/row match this
+      "context": "block"                         # optional: when a link has no <tr>/<li> parent,
+                                                 #   read the date from the nearest small <div>/<p>
     }
 
 `{year}` in the URL is expanded to each calendar year the crawl window touches.
@@ -27,6 +32,20 @@ from .base import Adapter
 
 DEFAULT_EXCLUDE = r"minutes|supporting materials|summary|video|recording"
 _MORE = re.compile(r"^(more|read more|view more|details?)\b", re.I)
+
+
+def _small_block(a, limit: int = 300):
+    """Largest <div>/<p>/<td>/<article> ancestor whose text is still short
+    enough to be one listing row (Drupal views-row, WordPress post blocks...)."""
+    best = None
+    for parent in a.parents:
+        if parent.name in ("body", "html"):
+            break
+        if len(parent.get_text(" ", strip=True)) > limit:
+            break
+        if parent.name in ("div", "p", "td", "article", "section", "dd"):
+            best = parent
+    return best
 
 
 class GenericListingAdapter(Adapter):
@@ -59,6 +78,9 @@ class GenericListingAdapter(Adapter):
         exclude = re.compile(listing.get("exclude_pattern", DEFAULT_EXCLUDE), re.I)
         undated = listing.get("accept_undated_if")
         undated_rx = re.compile(undated, re.I) if undated else None
+        board_rx = re.compile(listing["board_pattern"], re.I) if listing.get("board_pattern") else None
+        board_ex = re.compile(listing["board_exclude"], re.I) if listing.get("board_exclude") else None
+        block_context = listing.get("context") == "block"
         soup = self.soup(resp)
         base_tag = soup.find("base", href=True)
         base = self.abs_url(resp.final_url, base_tag["href"]) if base_tag else resp.final_url
@@ -72,7 +94,13 @@ class GenericListingAdapter(Adapter):
             if not include.search(hay) or exclude.search(text) or _MORE.match(text):
                 continue
             container = a.find_parent(["tr", "li"])
+            if container is None and block_context:
+                container = _small_block(a)
             row_text = " ".join(container.get_text(" ", strip=True).split()) if container else ""
+            if board_rx and not board_rx.search(f"{hay} {row_text}"):
+                continue
+            if board_ex and board_ex.search(f"{text} {row_text}"):
+                continue
             when = first_date(text, href, row_text)
             if when not in window:
                 if not (when is None and undated_rx and undated_rx.search(hay)):
