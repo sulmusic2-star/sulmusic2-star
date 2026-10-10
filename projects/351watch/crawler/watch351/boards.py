@@ -1,4 +1,5 @@
-"""Normalize the many ways Massachusetts towns name the same board."""
+"""Normalize the many ways towns name the same board (Massachusetts first, plus Northeast
+names such as CT zoning commissions, NY town boards and NJ boards of adjustment)."""
 
 from __future__ import annotations
 
@@ -8,20 +9,24 @@ import re
 # exclude pattern (subcommittees, regional bodies, retired categories...).
 BOARD_PATTERNS: dict[str, tuple[str, str]] = {
     "planning_board": (
-        r"\bplanning board\b|community development board",
-        r"sub-?committee|committee|regional|working group|housing|joint",
+        r"\bplanning board\b|community development board|planning (and|&) zoning (commission|board)|"
+        r"\bplanning commission\b|^zoning commission\b|land use (board|commission)|development review board",
+        r"sub-?committee|committee|regional|working group|housing|joint|comprehensive plan|steering|advisory",
     ),
     "zoning_board_of_appeals": (
-        r"zoning board|board of appeals|\bZBA\b|zoning appeals",
-        r"sub-?committee|committee",
+        r"zoning board|board of appeals|\bZBA\b|zoning appeals|board of (zoning )?adjustment|zoning hearing board",
+        r"sub-?committee|committee|building code",
     ),
     "conservation_commission": (
-        r"conservation commission|^conservation$|\bconcom\b",
+        r"conservation commission|^conservation$|\bconcom\b|inland wetlands|"
+        r"wetlands? (and watercourses )?(commission|agency|board)",
         r"sub-?committee|committee|district",
     ),
     "select_board": (
-        r"select ?board|board of selectmen|selectmen|^(city|town) council\b",
-        r"committee|sub-?committee|joint|20\d\d to 20\d\d|housing|ad hoc|rules",
+        r"select ?board|board of selectmen|selectmen|^(city|town|township|borough|village|common) council\b|"
+        r"^town board\b|^township committee\b|^board of (township )?supervisors\b|"
+        r"^board of (mayor and )?alder(men|s)\b",
+        r"committee(?<!township committee)|sub-?committee|joint|20\d\d to 20\d\d|housing|ad hoc|rules",
     ),
     "town_meeting": (
         r"town meeting|warrant",

@@ -21,23 +21,9 @@ Towns the crawler could not read: Becket, Middleborough, Barnstable (Cloudflare 
 - **API:** `GET /api/admin/submissions` with `Authorization: Bearer <ADMIN_TOKEN>`. The token is stored as a sensitive Vercel env var and can't be read back; to get a new one, upsert `ADMIN_TOKEN` on the `351watch` project and redeploy.
 - One test message from `deploy-check@351watch.invalid` is in `contact/` — ignore it.
 
-## Getting the 20 signups (owner tasks)
+## Getting the 20 signups
 
-The page won't get traffic on its own in 30 days. Suggested outreach, all owner-approved:
-
-1. Post the tracker on LinkedIn and in the Northeast Clean Energy Council, SEBANE and MassCEC community channels, framed as a free resource ("every BESS/solar moratorium in Massachusetts, sourced").
-2. Email 30–50 Massachusetts solar/storage developers and land-use attorneys individually (template below). Keep it to a handful a day from a normal mailbox.
-3. Send the tracker to reporters who cover these fights (local papers in Berkshire, Worcester and Plymouth counties).
-
-**Email template**
-
-> Subject: Free tracker — every BESS/solar moratorium in Massachusetts towns
->
-> Hi {name} — I built a free, source-linked tracker of battery storage and solar moratoria, special acts and new consolidated-permit bylaws across Massachusetts towns: {site URL}
->
-> It also reads town board agendas automatically — this week it flagged Fitchburg's proposed BESS moratorium and Pittsfield's BESS zoning amendment before the meetings.
->
-> I'm deciding whether to turn it into daily agenda alerts for the towns you choose. If that would help your team, the waitlist is on the page. Any corrections welcome too.
+No email outreach: that isn't the product. The free tracker and the /proof page are the acquisition channel, so people find 351 Watch through search and shared links to the tracker.
 
 ## Before charging money
 

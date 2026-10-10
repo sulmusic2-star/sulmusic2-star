@@ -43,6 +43,11 @@ TOPICS: dict[str, list[str]] = {
         r"\bmonopoles?\b",
         r"\btelecommunications?\s+(?:towers?|facilit(?:y|ies)|structures?|antennas?|by-?laws?)\b",
     ],
+    "data_center": [
+        r"\bdata[\s-]+cent(?:er|re)s?\b",
+        r"\bhyperscale\b",
+        r"\b(?:crypto(?:currency)?|bitcoin)\s+mining\b",
+    ],
     "zoning_amendment": [
         r"\bzoning\s+(?:by-?law\s+|ordinance\s+|map\s+)?amendments?\b",
         r"\b(?:by-?law|ordinance)\s+amendments?\b",
@@ -57,6 +62,7 @@ TOPIC_LABELS = {
     "clean_energy_siting": "Consolidated permit / 225 CMR 29 / clean energy infrastructure",
     "40b_comprehensive_permit": "40B / comprehensive permit",
     "wireless_telecom": "Wireless / cell tower / telecom",
+    "data_center": "Data center / crypto mining",
     "zoning_amendment": "Zoning / bylaw amendment",
 }
 

@@ -29,9 +29,10 @@ TOPIC_LABELS = {
     "40b_comprehensive_permit": "40B housing",
     "wireless_telecom": "Wireless / cell tower",
     "zoning_amendment": "Zoning amendment",
+    "data_center": "Data center",
 }
 
-ENERGY_TOPICS = {"battery_storage", "solar", "clean_energy_siting"}
+ENERGY_TOPICS = {"battery_storage", "solar", "clean_energy_siting", "data_center"}
 
 BOARD_LABELS = {
     "planning_board": "Planning",
@@ -220,9 +221,9 @@ def build_index(tracker, hits_doc, census, ag):
     body = f"""
 <div class="wrap">
 <section class="hero" aria-labelledby="hero-title">
-  <p class="eyebrow">Massachusetts clean-energy siting</p>
+  <p class="eyebrow">Massachusetts energy and data-center siting</p>
   <h1 id="hero-title">Battery storage and solar moratoria, town by town</h1>
-  <p class="lead">A free, source-linked tracker of local moratoria, special acts and new permit rules for battery storage and solar across Massachusetts — plus live items pulled from town board agendas.</p>
+  <p class="lead">A free, source-linked tracker of local moratoria, special acts and new permit rules for battery storage and solar across Massachusetts — plus live items pulled from town board agendas, now including data-center moratoria and bans.</p>
   <div class="actions"><a class="btn" href="#alerts">Get agenda alerts</a><a class="btn ghost" href="#tracker">Browse the tracker</a></div>
   <div class="stats" role="list">
     <div class="stat" role="listitem"><b>{monitored} of 351</b><span>towns' agendas read automatically</span></div>
@@ -261,7 +262,7 @@ def build_index(tracker, hits_doc, census, ag):
 
 <section id="agendas" aria-labelledby="agendas-title">
   <h2 id="agendas-title">From town agendas</h2>
-  <p class="section-lead">Our crawler read {scanned:,} agendas from {automated} Massachusetts towns (scan of {fmt_date(scan_time) or 'today'}) and flagged items on battery storage, solar, moratoria, consolidated permits, 40B housing, wireless facilities and zoning amendments. Items for meetings still ahead are shown first, with when we first saw them. Subscribers will get these for the towns they choose, every day. <a href="/proof">How we measure this</a>.</p>
+  <p class="section-lead">Our crawler read {scanned:,} agendas from {automated} Massachusetts towns (scan of {fmt_date(scan_time) or 'today'}) and flagged items on battery storage, solar, data centers, moratoria, consolidated permits, 40B housing, wireless facilities and zoning amendments. Items for meetings still ahead are shown first, with when we first saw them. Subscribers will get these for the towns they choose, every day. <a href="/proof">How we measure this</a>.</p>
   <div class="hits">{hit_cards(hits)}</div>
 </section>
 
