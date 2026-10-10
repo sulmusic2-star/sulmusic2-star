@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import re
+import time
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
 from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
@@ -120,6 +123,29 @@ def _dedupe(hits: list[dict]) -> list[dict]:
     return out
 
 
+FIRST_SEEN_FILE = Path(__file__).resolve().parents[2] / "data" / "first_seen.json"
+
+
+def stamp_first_seen(hits: list[dict], fetcher: PoliteFetcher, ledger_path: Path = FIRST_SEEN_FILE) -> None:
+    """Record when each agenda document was first fetched, and how far ahead of the
+    meeting day that was. The ledger survives cache wipes, so "flagged N days before"
+    claims always rest on our own logged time. Meeting times are rarely published, so
+    lead time is measured to the start of the meeting day (UTC), which understates it."""
+    ledger = json.loads(ledger_path.read_text()) if ledger_path.exists() else {}
+    now = time.time()
+    for h in hits:
+        url = h["source_url"]
+        if url not in ledger:
+            ts = fetcher.cached_at(url) or now
+            ledger[url] = datetime.fromtimestamp(ts, timezone.utc).isoformat(timespec="seconds")
+        h["first_seen"] = ledger[url]
+        if h.get("meeting_date"):
+            seen = datetime.fromisoformat(ledger[url])
+            meeting = datetime.fromisoformat(h["meeting_date"]).replace(tzinfo=timezone.utc)
+            h["days_before_meeting"] = round((meeting - seen).total_seconds() / 86400, 1)
+    ledger_path.write_text(json.dumps(ledger, indent=0, sort_keys=True) + "\n")
+
+
 def run_crawl(towns: list[dict], fetcher: PoliteFetcher, days_back: int = 45,
               days_ahead: int = 90, workers: int = 8, today: date | None = None) -> dict:
     today = today or date.today()
@@ -128,6 +154,7 @@ def run_crawl(towns: list[dict], fetcher: PoliteFetcher, days_back: int = 45,
         results = list(pool.map(lambda c: crawl_town(fetcher, c, window), towns))
 
     hits = _dedupe([h for r in results for h in r.hits])
+    stamp_first_seen(hits, fetcher)
     hits.sort(key=lambda h: (h["meeting_date"] or "", h["town"], h["board"]), reverse=True)
     topic_counts = Counter(t for h in hits for t in h["topics"])
     by_platform: dict[str, dict[str, list[str]]] = {}

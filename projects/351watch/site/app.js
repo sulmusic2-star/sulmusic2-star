@@ -62,6 +62,32 @@ function setupForm(form, endpoint, successText) {
   });
 }
 
+function setupCoverage() {
+  const table = document.querySelector('#coverage-table');
+  if (!table) return;
+  const rows = Array.from(table.querySelectorAll('tbody tr'));
+  const status = document.querySelector('#c-status');
+  const search = document.querySelector('#c-search');
+  const count = document.querySelector('#c-count');
+
+  function apply() {
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+    for (const row of rows) {
+      const match = (!status.value || row.dataset.group === status.value) &&
+        (!q || row.textContent.toLowerCase().includes(q));
+      row.hidden = !match;
+      if (match) shown += 1;
+    }
+    count.textContent = `${shown} of ${rows.length} shown`;
+  }
+
+  status.addEventListener('change', apply);
+  search.addEventListener('input', apply);
+  apply();
+}
+
 setupFilters();
+setupCoverage();
 setupForm(document.querySelector('#signup-form'), '/api/waitlist', "You're on the list. We'll email you when alerts open for your towns.");
 setupForm(document.querySelector('#contact-form'), '/api/contact', 'Thanks — your message was received.');

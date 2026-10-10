@@ -1,6 +1,9 @@
-"""Render the static 351 Watch site from data/tracker.json and data/agenda_hits.json.
+"""Render the static 351 Watch site from the data/ files.
 
-Usage: python3 build.py   (writes site/index.html, site/privacy.html, site/data/*.json)
+Inputs: tracker.json, agenda_hits_ma_all.json (falls back to the 30-town agenda_hits.json),
+towns_ma_all.json, ma_census_summary.json, leadtime_ma_all.json, ag_decisions.json.
+Usage: python3 build.py   (writes site/index.html, site/proof.html, site/privacy.html,
+site/robots.txt and site/manifest.txt, the list of files the deploy step fetches)
 """
 
 import json
@@ -29,6 +32,29 @@ TOPIC_LABELS = {
 }
 
 ENERGY_TOPICS = {"battery_storage", "solar", "clean_energy_siting"}
+
+BOARD_LABELS = {
+    "planning_board": "Planning",
+    "zoning_board_of_appeals": "ZBA",
+    "conservation_commission": "Conservation",
+    "select_board": "Select Board / Council",
+    "town_meeting": "Town Meeting",
+}
+
+REASON_LABELS = {
+    "bot_challenge": "Site blocks automated visitors",
+    "waf_block": "Site firewall blocks automated visitors",
+    "agendas_stale_or_undated": "No current dated agendas found online",
+    "js_only": "Agendas load only with JavaScript",
+    "robots_disallow_site": "Site asks crawlers not to visit",
+    "no_adapter": "Agenda platform not supported yet",
+    "no_agenda_listing_found": "No agenda listing found",
+    "vendor_blocked": "Agenda vendor blocks automated visitors",
+    "vendor_robots_disallow": "Agenda vendor asks crawlers not to visit",
+    "crawl_delay_exceeds_cap": "Site asks for slower crawling than we support yet",
+}
+
+STATIC_FILES = ["index.html", "proof.html", "privacy.html", "styles.css", "app.js", "robots.txt"]
 
 
 def load(name, default):
@@ -91,14 +117,30 @@ def framework_cards(framework):
 
 
 def featured_hits(hits, limit):
-    """Most recent clean-energy hits first, one per document, then other land-use hits."""
-    seen, energy, other = set(), [], []
+    """Clean-energy items for meetings still ahead first (soonest first), then the most
+    recent clean-energy items, then other land-use items; one card per document."""
+    seen, upcoming, energy, other = set(), [], [], []
     for h in sorted(hits, key=lambda h: h.get("meeting_date") or "", reverse=True):
         if h["source_url"] in seen:
             continue
         seen.add(h["source_url"])
-        (energy if ENERGY_TOPICS & set(h.get("topics", [])) else other).append(h)
-    return (energy + other)[:limit]
+        if not ENERGY_TOPICS & set(h.get("topics", [])):
+            other.append(h)
+        elif h.get("days_before_meeting", -1) > 0:
+            upcoming.append(h)
+        else:
+            energy.append(h)
+    upcoming.sort(key=lambda h: h.get("meeting_date") or "")
+    return (upcoming + energy + other)[:limit]
+
+
+def lead_note(h):
+    days = h.get("days_before_meeting", -1)
+    if days >= 1:
+        return f'<span class="leadtime">First seen {days:.0f} days before the meeting</span>'
+    if days > 0:
+        return '<span class="leadtime">First seen the day before the meeting</span>'
+    return ""
 
 
 def hit_cards(hits, limit=15):
@@ -113,7 +155,7 @@ def hit_cards(hits, limit=15):
             f"""<article class="hit">
   <header><b>{escape(h['town'])}</b><span class="meta">{escape(h.get('board', ''))} · {when}</span></header>
   <p>“{escape(h.get('snippet', ''))}”</p>
-  <div class="tags">{tags} <a href="{escape(h['source_url'])}" rel="nofollow noopener" target="_blank">Agenda</a></div>
+  <div class="tags">{tags} {lead_note(h)} <a href="{escape(h['source_url'])}" rel="nofollow noopener" target="_blank">Agenda</a></div>
 </article>"""
         )
     return "\n".join(cards)
@@ -141,6 +183,7 @@ def page(title, description, body, path=""):
     <a href="/#tracker">Tracker</a>
     <a href="/#agendas">From town agendas</a>
     <a href="/#rules">State rules</a>
+    <a href="/proof">Proof</a>
     <a class="cta" href="/#alerts">Get alerts</a>
   </nav>
 </div></header>
@@ -149,7 +192,7 @@ def page(title, description, body, path=""):
 </main>
 <footer class="site"><div class="wrap">
   <p>351 Watch compiles public records that Massachusetts towns post under the Open Meeting Law, plus state and legislative sources. It is informational only and not legal advice. Always confirm dates and terms with the town clerk or the cited source.</p>
-  <p><a href="/privacy">Privacy</a> · <a href="/privacy#contact">Corrections and contact</a></p>
+  <p><a href="/proof">Coverage and method</a> · <a href="/privacy">Privacy</a> · <a href="/privacy#contact">Corrections and contact</a></p>
 </div></footer>
 <script src="/app.js" defer></script>
 </body>
@@ -157,9 +200,13 @@ def page(title, description, body, path=""):
 """
 
 
-def build_index(tracker, hits_doc):
+def build_index(tracker, hits_doc, census, ag):
     items = tracker.get("items", [])
     hits = hits_doc.get("hits", [])
+    hit_towns = len({h["town"] for h in hits})
+    upcoming = sum(1 for h in hits if h.get("days_before_meeting", -1) > 0)
+    monitored = census.get("automated", {}).get("towns", 0)
+    struck = ag_moratorium_record(ag)
     groups = {g: sum(1 for i in items if status_group(i) == g) for g in ("active", "pending", "cleared")}
     towns = len({i["town"] for i in items})
     counties = sorted({i.get("county", "") for i in items if i.get("county")})
@@ -178,11 +225,12 @@ def build_index(tracker, hits_doc):
   <p class="lead">A free, source-linked tracker of local moratoria, special acts and new permit rules for battery storage and solar across Massachusetts — plus live items pulled from town board agendas.</p>
   <div class="actions"><a class="btn" href="#alerts">Get agenda alerts</a><a class="btn ghost" href="#tracker">Browse the tracker</a></div>
   <div class="stats" role="list">
-    <div class="stat" role="listitem"><b>{towns}</b><span>towns with tracked actions</span></div>
-    <div class="stat" role="listitem"><b>{groups['pending']}</b><span>pending actions</span></div>
-    <div class="stat" role="listitem"><b>{groups['active']}</b><span>in effect or adopted</span></div>
-    <div class="stat" role="listitem"><b>{len(hits)}</b><span>agenda items flagged in the latest scan</span></div>
+    <div class="stat" role="listitem"><b>{monitored} of 351</b><span>towns' agendas read automatically</span></div>
+    <div class="stat" role="listitem"><b>{len(hits)}</b><span>agenda items flagged in {hit_towns} towns</span></div>
+    <div class="stat" role="listitem"><b>{upcoming}</b><span>flagged for meetings still ahead</span></div>
+    <div class="stat" role="listitem"><b>{struck['disapproved']} of {struck['total']}</b><span>town moratoria struck down by the Attorney General since 2024</span></div>
   </div>
+  <p class="form-note">Every number links to its evidence on the <a href="/proof">coverage and method</a> page.</p>
 </section>
 
 <section id="rules" aria-labelledby="rules-title">
@@ -213,7 +261,7 @@ def build_index(tracker, hits_doc):
 
 <section id="agendas" aria-labelledby="agendas-title">
   <h2 id="agendas-title">From town agendas</h2>
-  <p class="section-lead">Our crawler read {scanned} recent agendas from {automated} of {attempted} sample towns (scan of {fmt_date(scan_time) or 'today'}) and flagged items on battery storage, solar, moratoria, consolidated permits, 40B housing, wireless facilities and zoning amendments. Subscribers will get these for the towns they choose, every day.</p>
+  <p class="section-lead">Our crawler read {scanned:,} agendas from {automated} Massachusetts towns (scan of {fmt_date(scan_time) or 'today'}) and flagged items on battery storage, solar, moratoria, consolidated permits, 40B housing, wireless facilities and zoning amendments. Items for meetings still ahead are shown first, with when we first saw them. Subscribers will get these for the towns they choose, every day. <a href="/proof">How we measure this</a>.</p>
   <div class="hits">{hit_cards(hits)}</div>
 </section>
 
@@ -266,6 +314,146 @@ def build_index(tracker, hits_doc):
     )
 
 
+def ag_moratorium_record(ag, since="2024-01-01"):
+    """Solar/BESS moratorium articles the Attorney General ruled on since `since`."""
+    rows = [r for r in ag if r.get("record_type") == "ag_decision" and r.get("bylaw_type") == "moratorium"
+            and (r.get("decision_date") or "") >= since and r.get("outcome") in ("approved", "disapproved")]
+    articles = lambda r: max(1, r.get("article", "").count(" and ") + 1)  # "Articles 26 and 27" counts 2
+    return {
+        "rows": sorted(rows, key=lambda r: r["decision_date"], reverse=True),
+        "total": sum(articles(r) for r in rows),
+        "disapproved": sum(articles(r) for r in rows if r["outcome"] == "disapproved"),
+        "towns": len({r["town"] for r in rows}),
+    }
+
+
+def pct(x):
+    return f"{x * 100:.0f}%"
+
+
+def coverage_rows(towns):
+    rows = []
+    for t in sorted(towns, key=lambda t: t["town"]):
+        found = set(t.get("boards_found", []))
+        if t.get("automated"):
+            status, cls, group = "Monitored", "cleared", "monitored"
+        else:
+            status, cls, group = REASON_LABELS.get(t.get("reason_code"), "Not yet monitored"), "pending", "not"
+        pills = "".join(
+            f'<span class="pill{" on" if key in found else ""}" title="{label}">{label}</span>'
+            for key, label in BOARD_LABELS.items()
+            if key != "town_meeting" or t.get("has_town_meeting"))
+        pop = t.get("pop_2024_est") or t.get("pop_2020") or 0
+        rows.append(f"""<tr data-group="{group}">
+  <td class="town"><b>{escape(t['town'])}</b><small>{escape(t.get('county', ''))} County</small></td>
+  <td class="num">{pop:,}</td>
+  <td><span class="badge {cls}">{escape(status)}</span></td>
+  <td><div class="pills">{pills}</div></td>
+</tr>""")
+    return "\n".join(rows)
+
+
+def build_proof(census, leadtime, hits_doc, ag, towns_doc):
+    auto = census.get("automated", {})
+    boards = census.get("boards", {})
+    first = leadtime.get("summary", {}).get("first_posting_only", {})
+    by_board = leadtime.get("by_board_first_posting_only", {})
+    window = leadtime.get("meeting_window", {})
+    hits = hits_doc.get("hits", [])
+    ahead = sorted(h["days_before_meeting"] for h in hits if h.get("days_before_meeting", -1) > 0)
+    median_ahead = ahead[len(ahead) // 2] if ahead else 0
+    record = ag_moratorium_record(ag)
+    regulating = [r for r in ag if r.get("record_type") == "ag_decision" and r.get("bylaw_type") != "moratorium"
+                  and r.get("outcome") in ("approved", "approved in part", "disapproved")]
+    reg_ok = sum(1 for r in regulating if r["outcome"] in ("approved", "approved in part"))
+    not_auto = census.get("not_automated", {})
+    blocked = sorted(not_auto.items(), key=lambda kv: -kv[1]["towns"])
+
+    board_rows = "".join(
+        f"<tr><td>{BOARD_LABELS[k]}</td><td class='num'>{v['towns']} of {v['of']}</td><td class='num'>{pct(v['share'])}</td></tr>"
+        for k, v in boards.items() if k in BOARD_LABELS)
+    lead_rows = "".join(
+        f"<tr><td>{BOARD_LABELS.get(k, k)}</td><td class='num'>{v['median_days']:.0f} days</td>"
+        f"<td class='num'>{v['p10_days']:.0f} days</td><td class='num'>{pct(v['share_ge_48h_before_meeting_day'])}</td><td class='num'>{v['n']:,}</td></tr>"
+        for k, v in by_board.items() if k in BOARD_LABELS)
+    blocked_rows = "".join(
+        f"<tr><td>{escape(REASON_LABELS.get(k, k))}</td><td class='num'>{v['towns']}</td><td>{escape(', '.join(v.get('examples', [])[:6]))}</td></tr>"
+        for k, v in blocked)
+    ag_rows = "".join(
+        f"""<tr><td class="town"><b>{escape(r['town'])}</b><small>{escape(r.get('article', ''))}</small></td>
+<td class="when">{fmt_date(r['decision_date'])}</td><td><span class="badge {'active' if r['outcome'] == 'disapproved' else 'cleared'}">{escape(r['outcome'].capitalize())}</span></td>
+<td><a href="{escape(r['letter_url'])}" rel="nofollow noopener" target="_blank">Decision letter, case {escape(str(r.get('case_number', '')))}</a></td></tr>"""
+        for r in record["rows"])
+
+    body = f"""
+<div class="wrap">
+<section class="hero" aria-labelledby="proof-title">
+  <p class="eyebrow">Coverage and method</p>
+  <h1 id="proof-title">What we check, and the evidence behind every number</h1>
+  <p class="lead">Measured on {fmt_date(census.get('generated', '')[:10])} across all 351 Massachusetts cities and towns. Where we can't read a town yet, we say so and why.</p>
+  <div class="stats" role="list">
+    <div class="stat" role="listitem"><b>{auto.get('towns', 0)} of 351</b><span>towns read automatically ({pct(auto.get('share', 0))})</span></div>
+    <div class="stat" role="listitem"><b>{auto.get('pop', 0) / 1e6:.2f}M</b><span>residents covered ({pct(auto.get('pop_share', 0))} of the state)</span></div>
+    <div class="stat" role="listitem"><b>{first.get('median_days', 0):.0f} days</b><span>median time agendas go up before the meeting</span></div>
+    <div class="stat" role="listitem"><b>{record['disapproved']} of {record['total']}</b><span>moratoria struck down by the AG since 2024</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="boards-title">
+  <h2 id="boards-title">Which boards we read</h2>
+  <p class="section-lead">A town counts as monitored when at least one of its boards has a current agenda listing (dated within 120 days) that our crawler can read. {census.get('all_four_meeting_boards', {}).get('towns', 0)} towns have all four boards covered.</p>
+  <div class="table-wrap"><table class="plain"><thead><tr><th scope="col">Board</th><th scope="col" class="num">Towns</th><th scope="col" class="num">Share</th></tr></thead><tbody>{board_rows}</tbody></table></div>
+</section>
+
+<section aria-labelledby="lead-title">
+  <h2 id="lead-title">How far ahead agendas are posted</h2>
+  <p class="section-lead">Massachusetts law requires notice 48 hours before a meeting, not counting weekends and holidays. In practice, across {first.get('n', 0):,} agendas from {first.get('towns', 0)} towns whose platforms publish a posting time (meetings {fmt_date(window.get('start'))} to {fmt_date(window.get('end'))}), the first posting went up a median {first.get('median_days', 0):.0f} days before the meeting; {pct(first.get('share_ge_48h_before_meeting_day', 0))} were online at least 48 hours before the meeting day and {pct(first.get('share_ge_24h_before_meeting_day', 0))} at least 24 hours before. That window is when an alert is useful.</p>
+  <div class="table-wrap"><table class="plain"><thead><tr><th scope="col">Board</th><th scope="col" class="num">Median lead</th><th scope="col" class="num">10th percentile</th><th scope="col" class="num">≥ 48 h before</th><th scope="col" class="num">Agendas</th></tr></thead><tbody>{lead_rows}</tbody></table></div>
+  <p class="form-note">Our own timing: of the {len(hits):,} items flagged in the latest statewide scan, {len(ahead)} were for meetings still ahead, first seen a median {median_ahead:.0f} days before the meeting day. Each item records when we first fetched its agenda.</p>
+</section>
+
+<section aria-labelledby="ag-title">
+  <h2 id="ag-title">Will a moratorium survive? The Attorney General's record</h2>
+  <p class="section-lead">Town bylaws in Massachusetts take effect only after Attorney General review (cities are not reviewed). We read all 2,719 decision letters issued from January 2022 to October 10, 2026. Since 2024 she has ruled on {record['total']} solar or battery-storage moratorium articles in {record['towns']} towns and disapproved {record['disapproved']}, citing the state's zoning protection for solar and storage (G.L. c. 40A, §3). Bylaws that regulate rather than ban fared differently: {reg_ok} of {len(regulating)} were approved in whole or in part. Data-center moratoria have been approved, because data centers aren't a protected use.</p>
+  <div class="table-wrap"><table class="plain"><thead><tr><th scope="col">Town and article</th><th scope="col">Decision</th><th scope="col">Outcome</th><th scope="col">Source</th></tr></thead><tbody>{ag_rows}</tbody></table></div>
+</section>
+
+<section aria-labelledby="gaps-title">
+  <h2 id="gaps-title">Towns we can't read yet, and why</h2>
+  <p class="section-lead">{351 - auto.get('towns', 0)} towns aren't monitored automatically yet. Most block automated visitors or ask crawlers not to visit; we respect that and don't work around it. We'll ask those towns and their vendors for access.</p>
+  <div class="table-wrap"><table class="plain"><thead><tr><th scope="col">Reason</th><th scope="col">Towns</th><th scope="col">Examples</th></tr></thead><tbody>{blocked_rows}</tbody></table></div>
+</section>
+
+<section aria-labelledby="towns-title">
+  <h2 id="towns-title">All 351 cities and towns</h2>
+  <div class="filters">
+    <label>Status<select id="c-status"><option value="">All</option><option value="monitored">Monitored</option><option value="not">Not yet</option></select></label>
+    <label>Search<input id="c-search" type="search" placeholder="Town or county"></label>
+    <span class="count" id="c-count" aria-live="polite"></span>
+  </div>
+  <div class="table-wrap">
+    <table id="coverage-table" class="plain">
+      <thead><tr><th scope="col">Town</th><th scope="col">Population</th><th scope="col">Status</th><th scope="col">Boards read</th></tr></thead>
+      <tbody>
+{coverage_rows(towns_doc.get('towns', []))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="method-title">
+  <h2 id="method-title">How the crawler behaves</h2>
+  <p class="section-lead">It reads only publicly posted agenda pages, identifies itself as 351WatchBot, follows each site's robots.txt (checked again on every redirect), makes at most one request per second per site, never logs in, and never gets around bot protection. Scanned agendas are read with OCR. Every item links to the original agenda so you can check it yourself.</p>
+</section>
+</div>
+"""
+    return page(
+        "Coverage and Method | 351 Watch",
+        "How many Massachusetts towns 351 Watch reads, how far ahead agendas are posted, the Attorney General's record on clean-energy moratoria, and the evidence behind each number.",
+        body,
+    )
+
+
 def build_privacy():
     body = """
 <div class="wrap prose">
@@ -303,8 +491,14 @@ def build_privacy():
 
 def main():
     tracker = load("tracker.json", {"generated": date.today().isoformat(), "framework": [], "items": []})
-    hits = load("agenda_hits.json", {"hits": []})
-    (SITE / "index.html").write_text(build_index(tracker, hits))
+    hits = load("agenda_hits_ma_all.json", None) or load("agenda_hits.json", {"hits": []})
+    census = load("ma_census_summary.json", {})
+    leadtime = load("leadtime_ma_all.json", {})
+    ag = load("ag_decisions.json", [])
+    towns = load("towns_ma_all.json", {"towns": []})
+    (SITE / "index.html").write_text(build_index(tracker, hits, census, ag))
+    (SITE / "proof.html").write_text(build_proof(census, leadtime, hits, ag, towns))
+    (SITE / "manifest.txt").write_text("\n".join(STATIC_FILES) + "\n")
     (SITE / "privacy.html").write_text(build_privacy())
     (SITE / "robots.txt").write_text("User-agent: *\nAllow: /\nDisallow: /api/\n")
     print(f"built: {len(tracker.get('items', []))} tracker rows, {len(hits.get('hits', []))} agenda hits")

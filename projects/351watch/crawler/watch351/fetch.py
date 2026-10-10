@@ -23,7 +23,7 @@ import time
 import urllib.robotparser
 from dataclasses import dataclass
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 
 import requests
 
@@ -65,6 +65,18 @@ class Response:
 
 class FetchError(Exception):
     pass
+
+
+def _looks_like_robots(resp: "Response") -> bool:
+    """Some servers send robots.txt as text/html. Trust the body, not the header:
+    an HTML page (soft 404) is not a robots file, but plain directives are."""
+    if "html" not in resp.content_type.lower():
+        return True
+    head = resp.text.lstrip()[:2000].lower()
+    if head.startswith("<"):
+        return False
+    return any(line.strip().startswith(("user-agent:", "disallow:", "allow:"))
+               for line in head.splitlines())
 
 
 class RobotsDisallowed(FetchError):
@@ -150,7 +162,7 @@ class PoliteFetcher:
             if resp.status >= 500:
                 log.warning("robots.txt %s -> %s; treating host as disallowed", robots_url, resp.status)
                 return None
-            if resp.status >= 400 or "html" in resp.content_type.lower():
+            if resp.status >= 400 or not _looks_like_robots(resp):
                 rp.parse([])  # no usable robots.txt: everything allowed
             else:
                 rp.parse(resp.text.splitlines())
@@ -175,14 +187,16 @@ class PoliteFetcher:
                     time.sleep(wait)
             self._last_hit[host] = time.monotonic()
 
-    def _get_with_retries(self, url: str, host: str, interval: float, attempts: int = 3):
+    def _get_with_retries(self, url: str, host: str, interval: float, attempts: int = 3,
+                          allow_redirects: bool = True):
         """Network GET with a small, bounded retry for transient connection
         failures (resets / TLS timeouts). HTTP error statuses are NOT retried."""
         last_err: Exception | None = None
         for attempt in range(attempts):
             self._throttle(host, interval)
             try:
-                r = self.session.get(url, timeout=self.timeout, stream=True, allow_redirects=True)
+                r = self.session.get(url, timeout=self.timeout, stream=True,
+                                     allow_redirects=allow_redirects)
                 self.stats["network"] += 1
                 chunks, size = [], 0
                 for chunk in r.iter_content(64 * 1024):
@@ -202,6 +216,42 @@ class PoliteFetcher:
         self.stats["errors"] += 1
         raise FetchError(f"{url}: {last_err}") from last_err
 
+    def _interval_for(self, url: str) -> float:
+        """robots.txt check plus per-host interval; raises if the URL is off limits."""
+        rp = self._robots_for(url)
+        if rp is None or not rp.can_fetch(ROBOTS_AGENT, url):
+            self.stats["robots_blocked"] += 1
+            raise RobotsDisallowed(url)
+        delay = rp.crawl_delay(ROBOTS_AGENT)
+        interval = max(self.min_interval, float(delay) if delay else 0.0)
+        # Cap absurd crawl-delays so one host cannot stall the whole run;
+        # if a site asks for more than 10s we skip it instead of hammering.
+        if interval > 10:
+            raise RobotsDisallowed(f"{url} (crawl-delay {interval}s too long for prototype)")
+        return interval
+
+    def _get_following_redirects(self, url: str, max_hops: int = 5):
+        """GET with redirects followed manually, so robots.txt and the rate limit
+        are applied to every hop *before* it is requested."""
+        current = url
+        for _ in range(max_hops + 1):
+            interval = self._interval_for(current)
+            r, body = self._get_with_retries(current, urlsplit(current).netloc, interval,
+                                             allow_redirects=False)
+            location = r.headers.get("Location")
+            if r.status_code in (301, 302, 303, 307, 308) and location:
+                current = urljoin(current, location)
+                continue
+            return r, body, current
+        raise FetchError(f"too many redirects: {url}")
+
+    def cached_at(self, url: str) -> float | None:
+        """When this URL was first stored in the cache (epoch seconds), if ever."""
+        meta_p = self._cache_paths(url)[1]
+        if not meta_p.exists():
+            return None
+        return json.loads(meta_p.read_text()).get("fetched_at")
+
     # -------------------------------------------------------------------- get
     def get(self, url: str, max_age: float | None = None, params: dict | None = None) -> Response:
         """GET a URL politely. `max_age` (seconds) bounds cache freshness;
@@ -215,23 +265,8 @@ class PoliteFetcher:
         if self.offline:
             raise FetchError(f"offline mode and not cached: {url}")
 
-        rp = self._robots_for(url)
-        if rp is None or not rp.can_fetch(ROBOTS_AGENT, url):
-            self.stats["robots_blocked"] += 1
-            raise RobotsDisallowed(url)
-        host = urlsplit(url).netloc
-        delay = rp.crawl_delay(ROBOTS_AGENT)
-        interval = max(self.min_interval, float(delay) if delay else 0.0)
-        # Cap absurd crawl-delays so one host cannot stall the whole run;
-        # if a site asks for more than 10s we skip it instead of hammering.
-        if interval > 10:
-            raise RobotsDisallowed(f"{url} (crawl-delay {interval}s too long for prototype)")
-        r, body = self._get_with_retries(url, host, interval)
-        # A redirect can land on a different host; make sure robots allows it too.
-        if urlsplit(r.url).netloc != host and not self.allowed(r.url):
-            self.stats["robots_blocked"] += 1
-            raise RobotsDisallowed(r.url)
-        resp = Response(url, r.url, r.status_code, r.headers.get("Content-Type", ""), body)
+        r, body, final_url = self._get_following_redirects(url)
+        resp = Response(url, final_url, r.status_code, r.headers.get("Content-Type", ""), body)
         if r.status_code in (200, 404, 410):
             self._write_cache(resp)  # cache successes and definitive misses
         if not resp.ok:
