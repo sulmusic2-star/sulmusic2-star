@@ -41,6 +41,7 @@ WIKIDATA_FILE = DATA / "ma_wikidata_snapshot.json"
 TOWNS_ALL_FILE = DATA / "towns_ma_all.json"
 LEADTIME_FILE = DATA / "leadtime_ma_all.json"
 HITS_ALL_FILE = DATA / "agenda_hits_ma_all.json"
+CENSUS_LOCAL = DATA / "ma_census_sub_est2024.csv"
 
 CENSUS_CSV = ("https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/"
               "cities/totals/sub-est2024_25.csv")
@@ -94,10 +95,16 @@ def is_challenge(status: int, text: str) -> bool:
 # --------------------------------------------------------------------------
 
 def census_rows(fetcher: PoliteFetcher) -> tuple[list[dict], dict[str, str]]:
-    resp = fetcher.get(CENSUS_CSV)
-    if not resp.ok:
-        raise RuntimeError(f"Census CSV HTTP {resp.status}")
-    text = resp.body.decode("latin-1")
+    # www2.census.gov's robots.txt has a "User-agent: *" line that a strict
+    # parser merges into a "Disallow: /" group, so the bot does not fetch it;
+    # the CSV was downloaded once by hand and is read from data/.
+    if CENSUS_LOCAL.exists():
+        text = CENSUS_LOCAL.read_bytes().decode("latin-1")
+    else:
+        resp = fetcher.get(CENSUS_CSV)
+        if not resp.ok:
+            raise RuntimeError(f"Census CSV HTTP {resp.status}")
+        text = resp.body.decode("latin-1")
     rows = list(csv.DictReader(io.StringIO(text)))
     counties = {r["COUNTY"]: r["NAME"].replace(" County", "") for r in rows if r["SUMLEV"] == "050"}
     mcds = [r for r in rows if r["SUMLEV"] == "061"]
