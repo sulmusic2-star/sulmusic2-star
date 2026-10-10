@@ -7,8 +7,15 @@ cleaned) plus every topic that matches inside that snippet.
 
 from __future__ import annotations
 
+import hashlib
 import re
 from dataclasses import dataclass
+from pathlib import Path
+
+# Fingerprint of the matching rules in this file. The daily engine stores it with each
+# indexed document; when it changes, documents whose body is still in the local cache
+# are re-matched (no network), so rule changes reach recent agendas.
+MATCHER_VERSION = hashlib.sha1(Path(__file__).read_bytes()).hexdigest()[:10]
 
 TOPICS: dict[str, list[str]] = {
     "battery_storage": [

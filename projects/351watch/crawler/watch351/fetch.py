@@ -21,6 +21,8 @@ import logging
 import threading
 import time
 import urllib.robotparser
+from collections import Counter
+from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
@@ -102,7 +104,37 @@ class PoliteFetcher:
         self._host_locks: dict[str, threading.Lock] = {}
         self._origin_locks: dict[str, threading.Lock] = {}
         self._locks_guard = threading.Lock()
+        self._stats_lock = threading.Lock()
+        self._ctx = threading.local()
         self.stats = {"network": 0, "cache": 0, "robots_blocked": 0, "errors": 0}
+        # Network requests and bytes by purpose ("robots", "listing", "document", ...),
+        # set per thread with `with fetcher.purpose("listing"): ...`.
+        self.requests_by_purpose: Counter = Counter()
+        self.bytes_by_purpose: Counter = Counter()
+        self.request_log: list[tuple[str, str, int]] = []   # (purpose, url, status)
+
+    # ---------------------------------------------------------------- accounting
+    @contextmanager
+    def purpose(self, kind: str):
+        """Label the network requests made by this thread inside the block."""
+        prev = getattr(self._ctx, "kind", None)
+        self._ctx.kind = kind
+        try:
+            yield
+        finally:
+            self._ctx.kind = prev
+
+    def _count(self, key: str, n: int = 1) -> None:
+        with self._stats_lock:
+            self.stats[key] += n
+
+    def _record(self, url: str, status: int, size: int) -> None:
+        kind = "robots" if url.endswith("/robots.txt") else (getattr(self._ctx, "kind", None) or "other")
+        with self._stats_lock:
+            self.stats["network"] += 1
+            self.requests_by_purpose[kind] += 1
+            self.bytes_by_purpose[kind] += size
+            self.request_log.append((kind, url, status))
 
     # ------------------------------------------------------------------ cache
     def _cache_paths(self, url: str) -> tuple[Path, Path]:
@@ -197,14 +229,16 @@ class PoliteFetcher:
             try:
                 r = self.session.get(url, timeout=self.timeout, stream=True,
                                      allow_redirects=allow_redirects)
-                self.stats["network"] += 1
                 chunks, size = [], 0
-                for chunk in r.iter_content(64 * 1024):
-                    size += len(chunk)
-                    if size > MAX_BYTES:
-                        r.close()
-                        raise FetchError(f"too large (> {MAX_BYTES} bytes): {url}")
-                    chunks.append(chunk)
+                try:
+                    for chunk in r.iter_content(64 * 1024):
+                        size += len(chunk)
+                        if size > MAX_BYTES:
+                            r.close()
+                            raise FetchError(f"too large (> {MAX_BYTES} bytes): {url}")
+                        chunks.append(chunk)
+                finally:
+                    self._record(url, r.status_code, size)
                 return r, b"".join(chunks)
             except (requests.ConnectionError, requests.Timeout) as e:
                 last_err = e
@@ -213,14 +247,14 @@ class PoliteFetcher:
             except requests.RequestException as e:
                 last_err = e
                 break
-        self.stats["errors"] += 1
+        self._count("errors")
         raise FetchError(f"{url}: {last_err}") from last_err
 
     def _interval_for(self, url: str) -> float:
         """robots.txt check plus per-host interval; raises if the URL is off limits."""
         rp = self._robots_for(url)
         if rp is None or not rp.can_fetch(ROBOTS_AGENT, url):
-            self.stats["robots_blocked"] += 1
+            self._count("robots_blocked")
             raise RobotsDisallowed(url)
         delay = rp.crawl_delay(ROBOTS_AGENT)
         interval = max(self.min_interval, float(delay) if delay else 0.0)
@@ -245,6 +279,11 @@ class PoliteFetcher:
             return r, body, current
         raise FetchError(f"too many redirects: {url}")
 
+    def is_cached(self, url: str) -> bool:
+        """True if a body for this URL is in the disk cache (any age)."""
+        body_p, meta_p = self._cache_paths(url)
+        return body_p.exists() and meta_p.exists()
+
     def cached_at(self, url: str) -> float | None:
         """When this URL was first stored in the cache (epoch seconds), if ever."""
         meta_p = self._cache_paths(url)[1]
@@ -260,7 +299,7 @@ class PoliteFetcher:
             url = requests.Request("GET", url, params=params).prepare().url
         cached = self._read_cache(url, max_age)
         if cached is not None:
-            self.stats["cache"] += 1
+            self._count("cache")
             return cached
         if self.offline:
             raise FetchError(f"offline mode and not cached: {url}")
@@ -270,6 +309,6 @@ class PoliteFetcher:
         if r.status_code in (200, 404, 410):
             self._write_cache(resp)  # cache successes and definitive misses
         if not resp.ok:
-            self.stats["errors"] += 1
+            self._count("errors")
         log.debug("GET %s -> %s (%d bytes)", url, r.status_code, len(body))
         return resp

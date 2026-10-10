@@ -1,4 +1,7 @@
-"""Crawl pipeline: towns.json -> adapters -> agenda docs -> text -> topic hits."""
+"""Crawl pipeline: towns.json -> adapters -> agenda docs -> text -> topic hits.
+
+`scan_document` and `town_configs` are shared with the daily engine (daily.py);
+`run_crawl` is the one-shot crawl used by run.py and the census."""
 
 from __future__ import annotations
 
@@ -11,7 +14,7 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 
 from bs4 import BeautifulSoup
 
@@ -121,6 +124,59 @@ def _dedupe(hits: list[dict]) -> list[dict]:
         seen.add(key)
         out.append(h)
     return out
+
+
+# ----------------------------------------------------------------------------
+# Town rows (data/towns_*.json) -> one crawl config per adapter
+# ----------------------------------------------------------------------------
+
+_INFERRED_PLATFORMS = ("civicplus", "civicclerk", "legistar", "generic")
+
+
+def listing_platform(listing: dict, town_platform: str | None = None) -> str:
+    """Which registered adapter reads this listing. An explicit `"platform"` on the
+    listing wins; otherwise the platform is inferred from the listing's fields the
+    way the census writes them; a listing of a town whose platform is some other
+    registered adapter (e.g. "ri_sos") goes to that adapter; the rest is generic."""
+    if listing.get("platform"):
+        return listing["platform"]
+    if "category_id" in listing:
+        return "civicplus"
+    if "civicclerk.com" in listing.get("url", ""):
+        return "civicclerk"
+    if "client" in listing:
+        return "legistar"
+    if town_platform and town_platform not in _INFERRED_PLATFORMS and town_platform in REGISTRY:
+        return town_platform
+    return "generic"
+
+
+def town_configs(town: dict, split_generic: bool = True) -> list[dict]:
+    """Crawl configs for one automated town row: one per (platform), and for the
+    generic adapter one per listing, so one broken board page does not stop the
+    town's other boards. Every town field is passed through, so adapters for new
+    platforms can read their own keys. Platforms without a registered adapter still
+    get a config; the caller reports them."""
+    if not town.get("automated"):
+        return []
+    groups: dict[str, list[dict]] = {}
+    for listing in town.get("listings", []) + town.get("secondary_listings", []):
+        groups.setdefault(listing_platform(listing, town.get("platform")), []).append(listing)
+    cfgs = []
+    for plat, listings in groups.items():
+        base = {k: v for k, v in town.items() if k not in ("listings", "secondary_listings", "board_evidence")}
+        base.update({"platform": plat, "automated": True,
+                     "website": town.get("final_url") or town.get("website") or ""})
+        if plat == "civicplus":
+            parts = urlsplit(base["website"])
+            base["website"] = f"{parts.scheme}://{parts.netloc}"
+        elif plat == "civicclerk":
+            base["tenant"] = town.get("tenant") or town.get("vendors", {}).get("civicclerk", {}).get("tenant")
+        elif plat == "legistar":
+            base["client"] = town.get("client") or listings[0].get("client")
+        chunks = [[l] for l in listings] if (plat == "generic" and split_generic) else [listings]
+        cfgs.extend({**base, "listings": chunk} for chunk in chunks)
+    return cfgs
 
 
 FIRST_SEEN_FILE = Path(__file__).resolve().parents[2] / "data" / "first_seen.json"
