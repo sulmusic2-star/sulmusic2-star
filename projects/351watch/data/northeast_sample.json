@@ -1,0 +1,342 @@
+{
+  "description": "Northeast feasibility sample for the 351 Watch agenda crawler: 6 municipalities per state, prioritizing 2025-2026 solar / battery-storage / data-center siting fights found in news, plus a mix of sizes. Populations are approximate.",
+  "selected": "2026-10-10",
+  "towns": [
+    {
+      "town": "Groton",
+      "state": "CT",
+      "website": "https://www.groton-ct.gov",
+      "why_chosen": "Planning & Zoning Commission adopted a one-year moratorium on data centers over 5,000 sq ft (2026). Mid-size town (~38k).",
+      "source_url": "https://datacenterdynamics.com/en/news/groton-connecticut-announces-year-long-moratorium-on-large-data-centers"
+    },
+    {
+      "town": "New Milford",
+      "state": "CT",
+      "website": "https://www.newmilford.org",
+      "why_chosen": "Town Council legislative moratorium prohibiting commercial BESS / lithium battery storage facilities. Mid-size town (~28k).",
+      "source_url": "https://newmilford.org/filestorage/7526/35379/45161/BESS_Moratorium.pdf"
+    },
+    {
+      "town": "Cornwall",
+      "state": "CT",
+      "website": "https://www.cornwallct.org",
+      "why_chosen": "Planning & Zoning Commission memo (Sept 2026) on prohibiting BESS and data centers. Very small town (~1.5k).",
+      "source_url": "https://cornwallct.org/wp-content/uploads/2026/09/Cornwall-BESS-and-Data-Centers-PROHIBITION-Sept-2026.pdf"
+    },
+    {
+      "town": "Harwinton",
+      "state": "CT",
+      "website": "https://www.harwinton.gov",
+      "why_chosen": "Zoning commission discussed a pause on data centers, battery storage and solar; no existing regulations (2026). Small town (~5.5k).",
+      "source_url": "https://www.nbcconnecticut.com/news/local/harwinton-discusses-pause-on-data-centers-battery-storage-facilities-and-solar/3759109/"
+    },
+    {
+      "town": "New Haven",
+      "state": "CT",
+      "website": "https://www.newhavenct.gov",
+      "why_chosen": "Board of Alders weighed a 12-month data center moratorium (2026). Large city (~135k).",
+      "source_url": "https://hartfordbusiness.com/article/new-haven-weighs-12-month-moratorium-on-data-center-development/"
+    },
+    {
+      "town": "East Lyme",
+      "state": "CT",
+      "website": "https://eltownhall.com",
+      "why_chosen": "Formed a subcommittee to explore a data center moratorium (July 2026). Mid-size town (~19k).",
+      "source_url": "https://www.wfsb.com/2026/07/15/east-lyme-forming-subcommittee-explore-data-center-moratorium-new-york-becomes-first-state-impose-one/"
+    },
+    {
+      "town": "Hopkinton",
+      "state": "RI",
+      "website": "https://www.hopkintonri.gov",
+      "why_chosen": "Residents' group pursuing a Superior Court challenge to 'spot zoning' of industrial solar in residential zones; repeated solar zone-change fights. Small town (~8k).",
+      "source_url": "https://gofundme.com/KeepHopkintonCountry"
+    },
+    {
+      "town": "West Greenwich",
+      "state": "RI",
+      "website": "https://www.wgtownri.org",
+      "why_chosen": "Zoning changes for what was described as the state's largest solar proposal (article date unclear). Small town (~6.5k).",
+      "source_url": "https://www.necn.com/news/local/rhode-island/ri-council-to-consider-60-acre-solar-panel-proposal/15686/?amp=1"
+    },
+    {
+      "town": "Johnston",
+      "state": "RI",
+      "website": "https://www.johnstonri.gov",
+      "why_chosen": "Long-running Winsor Road solar fight (ZBA rejected five proposals 2022; reintroduced 2023; 'Stop Johnston Solar'). Mid-size town (~29k).",
+      "source_url": "https://news.yahoo.com/johnston-solar-farm-fight-reflects-090500731.html"
+    },
+    {
+      "town": "North Kingstown",
+      "state": "RI",
+      "website": "https://www.northkingstownri.gov",
+      "why_chosen": "Residents oppose a solar farm and seek repeal of the Town Council's solar ordinance. Mid-size town (~27k).",
+      "source_url": "https://turnto10.com/news/local/solar-site-north-kingstown-residents-oppose-solar-farm"
+    },
+    {
+      "town": "Portsmouth",
+      "state": "RI",
+      "website": "https://www.portsmouthri.gov",
+      "why_chosen": "Judge reversed the zoning board's approval of a 29-acre solar farm (ruling under review by the town). Mid-size town (~17k).",
+      "source_url": "https://turnto10.com/news/local/judge-rejects-plans-for-portsmouth-solar-farm"
+    },
+    {
+      "town": "Exeter",
+      "state": "RI",
+      "website": "https://www.exeterri.gov",
+      "why_chosen": "Litigation over changing solar ordinances mid-project (Green Development). Small town (~6.5k).",
+      "source_url": "https://www.hinckleyallen.com/case-studies/overcoming-zoning-hurdles-for-renewable-clean-energy/"
+    },
+    {
+      "town": "Bow",
+      "state": "NH",
+      "website": "https://www.bownh.gov",
+      "why_chosen": "Proposed hyperscale data center at the former Merrimack Station; packed selectboard meeting Sept 2026; Governor Ayotte opposes. Small town (~8k).",
+      "source_url": "https://www.nhpr.org/nh-news/2026-09-02/ayotte-opposes-potential-bow-data-center-plans-to-propose-moratorium-on-data-centers-in-state"
+    },
+    {
+      "town": "Nottingham",
+      "state": "NH",
+      "website": "https://www.nottingham-nh.gov",
+      "why_chosen": "Route 4 data center proposal withdrawn after a 20,000-signature petition; voters approved a one-year data center moratorium (Sept 2026). Small town (~5k).",
+      "source_url": "https://www.ctpublic.org/2026-09-09/nottingham-voters-approve-moratorium-data-centers-nh-newhampshire"
+    },
+    {
+      "town": "Rochester",
+      "state": "NH",
+      "website": "https://www.rochesternh.gov",
+      "why_chosen": "City officials moving a zoning law to discourage data centers (2026). Small city (~33k).",
+      "source_url": "https://www.vermontpublic.org/2026-09-23/were-not-willing-to-trade-lower-taxes-for-this-bow-residents-speak-out-against-proposed-data-centers"
+    },
+    {
+      "town": "Wakefield",
+      "state": "NH",
+      "website": "https://www.wakefieldnh.gov",
+      "why_chosen": "Planning Board conditional use permit for a dual-axis solar tracker with battery storage (June 2026 agenda). Small town (~5k).",
+      "source_url": "https://www.wakefieldnh.gov/sites/g/files/vyhlif1366/f/agendas/6-18-2026_pb_agenda_final.pdf"
+    },
+    {
+      "town": "Concord",
+      "state": "NH",
+      "website": "https://www.concordnh.gov",
+      "why_chosen": "State capital city adjoining Bow; size control for the Bow data-center story (~44k).",
+      "source_url": "https://www.vermontpublic.org/2026-09-23/were-not-willing-to-trade-lower-taxes-for-this-bow-residents-speak-out-against-proposed-data-centers"
+    },
+    {
+      "town": "Pembroke",
+      "state": "NH",
+      "website": "https://www.pembroke-nh.com",
+      "why_chosen": "Neighbor of Bow / Merrimack Station; residents of neighboring communities joined the Bow opposition (not named in coverage). Small town (~7.5k).",
+      "source_url": "https://www.vermontpublic.org/2026-09-23/were-not-willing-to-trade-lower-taxes-for-this-bow-residents-speak-out-against-proposed-data-centers"
+    },
+    {
+      "town": "Vergennes",
+      "state": "VT",
+      "website": "https://www.vergennes.org",
+      "why_chosen": "Lightshift 5 MW battery at 99 Panton Rd drew a petition and was paused (June 2026). Small city (~2.5k).",
+      "source_url": "https://www.wcax.com/2026/06/10/neighbors-raise-concerns-over-battery-storage-plan-vergennes/"
+    },
+    {
+      "town": "Vernon",
+      "state": "VT",
+      "website": "https://vernonvt.org",
+      "why_chosen": "Vermont Yankee site redeveloper dropped a data center and now pitches a 110-440 MW battery facility (Sept 2026). Small town (~2k).",
+      "source_url": "https://www.vermontpublic.org/local-news/2026-09-25/energy-development-company-makes-pitch-vermont-yankee-property-vernon"
+    },
+    {
+      "town": "South Burlington",
+      "state": "VT",
+      "website": "https://www.southburlingtonvt.gov",
+      "why_chosen": "Weighed its own data center restrictions after the Governor vetoed a state bill (2026). Small city (~20k).",
+      "source_url": "https://vnews.com/?p=280018"
+    },
+    {
+      "town": "Royalton",
+      "state": "VT",
+      "website": "https://www.royaltonvt.gov",
+      "why_chosen": "Weighed its own data center restrictions (2026). Small town (~2.7k).",
+      "source_url": "https://vnews.com/?p=280018"
+    },
+    {
+      "town": "Essex Junction",
+      "state": "VT",
+      "website": "https://www.essexjunction.gov",
+      "why_chosen": "Hosts an existing Lightshift battery project cited in the Vergennes fight; size/control city (~10k).",
+      "source_url": "https://www.sevendaysvt.com/news/environment-news/proposal-to-construct-giant-battery-in-vergennes-runs-into-resistance/"
+    },
+    {
+      "town": "Northfield",
+      "state": "VT",
+      "website": "https://www.northfield-vt.gov",
+      "why_chosen": "Hosts an existing Lightshift battery project cited in the Vergennes fight; small town (~6k).",
+      "source_url": "https://www.sevendaysvt.com/news/environment-news/proposal-to-construct-giant-battery-in-vergennes-runs-into-resistance/"
+    },
+    {
+      "town": "Brunswick",
+      "state": "ME",
+      "website": "https://www.brunswickme.gov",
+      "why_chosen": "Town Council passed a 180-day data center moratorium (>=1 MW), June 2026. Mid-size town (~22k).",
+      "source_url": "https://www.pressherald.com/2026/06/01/brunswick-passes-data-center-moratorium/"
+    },
+    {
+      "town": "Scarborough",
+      "state": "ME",
+      "website": "https://www.scarboroughmaine.org",
+      "why_chosen": "Town Council unanimously passed a 180-day data center moratorium; proposed data center site (June 2026). Mid-size town (~23k).",
+      "source_url": "https://spectrumlocalnews.com/me/maine/news/2026/06/08/brunswick--scarborough-enact-data-center-moratoriums"
+    },
+    {
+      "town": "Bangor",
+      "state": "ME",
+      "website": "https://www.bangormaine.gov",
+      "why_chosen": "City Council passed a six-month data center ban (2026). City (~32k).",
+      "source_url": "https://themainemonitor.org/maine-considers-data-centers-moratorium/"
+    },
+    {
+      "town": "Westbrook",
+      "state": "ME",
+      "website": "https://www.westbrookmaine.gov",
+      "why_chosen": "Reported to have taken similar data center moratorium action (2026). Small city (~20k).",
+      "source_url": "https://fox23maine.com/news/local/gallery/maine-municipal-leaders-to-vote-on-data-center-moratoriums-amid-concerns-maine-technology-environment-power-gird-quality-of-life-issues?photo=2"
+    },
+    {
+      "town": "Wiscasset",
+      "state": "ME",
+      "website": "https://www.wiscasset.gov",
+      "why_chosen": "Select board paused data center talks after residents raised concerns about a proposed project (Nov 2025). Small town (~3.7k).",
+      "source_url": "https://themainemonitor.org/maine-considers-data-centers-moratorium/"
+    },
+    {
+      "town": "Augusta",
+      "state": "ME",
+      "website": "https://www.augustamaine.gov",
+      "why_chosen": "State capital; size control (~19k) with no specific fight identified.",
+      "source_url": "https://www.augustamaine.gov"
+    },
+    {
+      "town": "Clay",
+      "state": "NY",
+      "website": "https://townofclayny.gov",
+      "why_chosen": "Town Board weighed BESS projects and Local Law 6 of 2026, a moratorium on large data centers/AI. Large town (~60k).",
+      "source_url": "https://www.cnycentral.com/news/local/clay-town-board-to-weigh-battery-storage-projects-aidata-center-moratorium-at-meeting"
+    },
+    {
+      "town": "Lysander",
+      "state": "NY",
+      "website": "https://lysanderny.gov",
+      "why_chosen": "Tier 2 BESS moratorium in place ~2.5 years, further extension considered (June 2026). Mid-size town (~22k).",
+      "source_url": "https://lysanderny.gov/sites/default/files/2026-07/6.18.26_meeting_minutes.pdf"
+    },
+    {
+      "town": "Waterford",
+      "state": "NY",
+      "website": "https://www.townofwaterfordny.gov",
+      "why_chosen": "180-day moratorium on new BESS facilities, public hearing June 2, 2026. Small town (~8k).",
+      "source_url": "https://www.townofwaterfordny.gov/node/6491"
+    },
+    {
+      "town": "LaGrange",
+      "state": "NY",
+      "website": "https://www.lagrangeny.gov",
+      "why_chosen": "Temporary BESS moratorium, public hearing noticed for May 6, 2026. Mid-size town (~15k).",
+      "source_url": "https://www.lagrangeny.gov/wp-content/uploads/2026/03/2026-03-18-NPH-Moratorium-Battery-Storage.pdf"
+    },
+    {
+      "town": "Dover",
+      "state": "NY",
+      "website": "https://www.doverny.gov",
+      "why_chosen": "180-day moratorium on energy, energy storage and data storage facilities, hearing July 29, 2026. Small town (~8k).",
+      "source_url": "https://www.doverny.gov/CivicAlerts.aspx?AID=28"
+    },
+    {
+      "town": "Claverack",
+      "state": "NY",
+      "website": "https://www.claverackny.gov",
+      "why_chosen": "Local law extending a BESS moratorium, hearing Aug 13, 2026. Small town (~6k).",
+      "source_url": "https://www.claverackny.gov/CivicAlerts.aspx?AID=39"
+    },
+    {
+      "town": "Andover Township",
+      "state": "NJ",
+      "website": "https://www.andovertwp.org",
+      "why_chosen": "Township-wide data center ban (May 2026) after reversing course; developer sued. Small township (~6k).",
+      "source_url": "https://www.govtech.com/artificial-intelligence/developer-sues-new-jersey-town-after-data-center-ban"
+    },
+    {
+      "town": "Warren Township",
+      "state": "NJ",
+      "website": "https://www.warrennj.org",
+      "why_chosen": "Township Committee voted to ban data centers (2026). Mid-size township (~16k).",
+      "source_url": "https://newjersey.news12.com/warren-township-committee-votes-to-ban-data-centers"
+    },
+    {
+      "town": "Lopatcong Township",
+      "state": "NJ",
+      "website": "https://www.lopatcongtwp.com",
+      "why_chosen": "Ordinance 26-06 prohibiting data centers as any use; cites BESS and diesel backup (2026). Small township (~8.5k).",
+      "source_url": "https://www.lopatcongtwp.com/home/showpublisheddocument/2850/639197121913970000"
+    },
+    {
+      "town": "Mansfield Township (Warren)",
+      "state": "NJ",
+      "website": "https://www.mansfieldtownship-nj.gov",
+      "why_chosen": "Ordinance 019-2026 prohibiting large-scale data centers in all zones (first reading June 10, 2026). Small township (~7.5k).",
+      "source_url": "https://www.mansfieldtownship-nj.gov/media/attachments/2026/06/11/019-2026a---publication-of-introduction.pdf"
+    },
+    {
+      "town": "Berkeley Heights",
+      "state": "NJ",
+      "website": "https://www.berkeleyheights.gov",
+      "why_chosen": "Ordinance 2026-13 designating data centers a prohibited use in all zones. Mid-size township (~13k).",
+      "source_url": "https://nj21st.com/wp-content/uploads/2026/07/datacenter.pdf"
+    },
+    {
+      "town": "Neptune Township",
+      "state": "NJ",
+      "website": "https://neptunetownship.org",
+      "why_chosen": "Listed among 25+ NJ municipalities with data center bans/restrictions (2026). Larger township (~28k).",
+      "source_url": "https://www.govtech.com/artificial-intelligence/new-jersey-town-to-ban-all-data-centers-after-chaotic-meeting"
+    },
+    {
+      "town": "Upper Burrell Township",
+      "state": "PA",
+      "website": "https://upperburrelltwp.com",
+      "why_chosen": "Data center moratorium, then land development approval for TECfusions; land use appeal pending; Sept 2, 2026 meeting packed. Small township (~2k).",
+      "source_url": "https://penncapital-star.com/energy-environment/upper-burrell-residents-decry-transparency-as-data-center-progresses-despite-moratorium-and-a-lawsuit/"
+    },
+    {
+      "town": "East Whiteland Township",
+      "state": "PA",
+      "website": "https://www.eastwhiteland.org",
+      "why_chosen": "Data center plan sent back by the Planning Commission after overflow opposition (2026). Mid-size township (~13k).",
+      "source_url": "https://6abc.com/amp/post/east-whiteland-twp-residents-oppose-data-center-planners-send-revised-plan-back-review/18698080/"
+    },
+    {
+      "town": "East Vincent Township",
+      "state": "PA",
+      "website": "https://www.eastvincent.org",
+      "why_chosen": "Supervisors shelved a proposed data center ordinance after resident concerns (Dec 2025). Small township (~7k).",
+      "source_url": "https://6abc.com/amp/post/east-vincent-township-shelves-ordinance-proposed-data-center-concern-community/18296886/"
+    },
+    {
+      "town": "Granville Township (Mifflin)",
+      "state": "PA",
+      "website": "https://granvilletwp.org",
+      "why_chosen": "Data center land development plan submitted; ~100 residents urged supervisors to oppose (July 2026). Small township (~5k).",
+      "source_url": "https://www.lewistownsentinel.com/news/local-news/2026/07/granville-receives-data-center-proposal-residents-urge-supervisors-to-oppose-project/"
+    },
+    {
+      "town": "Watts Township (Perry)",
+      "state": "PA",
+      "website": "https://wattstownship.org",
+      "why_chosen": "125+ residents at data center zoning hearing; supervisors delayed hearing (2026). Very small township (~1.3k).",
+      "source_url": "https://penncapital-star.com/energy-environment/township-supervisors-urge-colleagues-to-adopt-zoning-for-data-centers/"
+    },
+    {
+      "town": "Covington Township (Lackawanna)",
+      "state": "PA",
+      "website": "https://covingtontwp.org",
+      "why_chosen": "Adopted data center zoning after a proposal arrived (2026). Small township (~2.3k).",
+      "source_url": "https://penncapital-star.com/energy-environment/township-supervisors-urge-colleagues-to-adopt-zoning-for-data-centers/"
+    }
+  ]
+}

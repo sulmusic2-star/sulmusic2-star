@@ -1,0 +1,1542 @@
+{
+  "towns": [
+    {
+      "town": "Groton",
+      "state": "CT",
+      "website": "https://www.groton-ct.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:36+00:00",
+        "status": 200,
+        "final_url": "https://www.groton-ct.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "ecode360",
+          "revize"
+        ],
+        "vendor_hosts_linked": [
+          "cms9.revize.com",
+          "ecode360.com",
+          "www.revize.com"
+        ]
+      }
+    },
+    {
+      "town": "New Milford",
+      "state": "CT",
+      "website": "https://www.newmilford.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:36+00:00",
+        "error": "RobotsDisallowed: https://www.newmilford.org/ (crawl-delay 15.0s too long for prototype)"
+      },
+      "automated": false,
+      "reason": "homepage not fetchable: RobotsDisallowed: https://www.newmilford.org/ (crawl-delay 15.0s too long for prototype)"
+    },
+    {
+      "town": "Cornwall",
+      "state": "CT",
+      "website": "https://www.cornwallct.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:36+00:00",
+        "status": 403,
+        "final_url": "https://cornwallct.org/",
+        "block_markers": [
+          "cloudflare"
+        ],
+        "platform_markers": [],
+        "vendor_hosts_linked": []
+      },
+      "automated": false,
+      "platform": null,
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+    },
+    {
+      "town": "Harwinton",
+      "state": "CT",
+      "website": "https://www.harwinton.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:36+00:00",
+        "status": 200,
+        "final_url": "https://www.harwinton.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 17,
+        "stock_classifier_boards": [
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "extended_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": [
+          "Inland Wetlands & Watercourses Commission",
+          "Planning Commission",
+          "Zoning Commission"
+        ]
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "Board of Selectmen",
+          "board_key": "select_board",
+          "category_id": "12",
+          "url": "https://www.harwinton.gov/AgendaCenter/Board-of-Selectmen-12",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Inland Wetlands & Watercourses Commission",
+          "board_key": "conservation_commission",
+          "category_id": "9",
+          "url": "https://www.harwinton.gov/AgendaCenter/Inland-Wetlands-Watercourses-Commission-9",
+          "classified_by": "extended"
+        },
+        {
+          "board": "Planning Commission",
+          "board_key": "planning_board",
+          "category_id": "18",
+          "url": "https://www.harwinton.gov/AgendaCenter/Planning-Commission-18",
+          "classified_by": "extended"
+        },
+        {
+          "board": "Zoning Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "17",
+          "url": "https://www.harwinton.gov/AgendaCenter/Zoning-Board-of-Appeals-17",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Zoning Commission",
+          "board_key": "planning_board",
+          "category_id": "20",
+          "url": "https://www.harwinton.gov/AgendaCenter/Zoning-Commission-20",
+          "classified_by": "extended"
+        }
+      ],
+      "boards_found": [
+        "conservation_commission",
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "automated": true
+    },
+    {
+      "town": "New Haven",
+      "state": "CT",
+      "website": "https://www.newhavenct.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:36+00:00",
+        "status": 403,
+        "final_url": "https://www.newhavenct.gov/",
+        "block_markers": [
+          "akamai"
+        ],
+        "platform_markers": [],
+        "vendor_hosts_linked": []
+      },
+      "automated": false,
+      "platform": null,
+      "reason": "akamai bot challenge on homepage (HTTP 403); not bypassed"
+    },
+    {
+      "town": "East Lyme",
+      "state": "CT",
+      "website": "https://eltownhall.com",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:36+00:00",
+        "error": "RobotsDisallowed: https://eltownhall.com/"
+      },
+      "automated": false,
+      "reason": "homepage not fetchable: RobotsDisallowed: https://eltownhall.com/"
+    },
+    {
+      "town": "Hopkinton",
+      "state": "RI",
+      "website": "https://www.hopkintonri.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:36+00:00",
+        "status": 403,
+        "final_url": "https://www.hopkintonri.gov/",
+        "block_markers": [
+          "cloudflare"
+        ],
+        "platform_markers": [],
+        "vendor_hosts_linked": []
+      },
+      "automated": false,
+      "platform": null,
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+    },
+    {
+      "town": "West Greenwich",
+      "state": "RI",
+      "website": "https://www.wgtownri.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:36+00:00",
+        "status": 200,
+        "final_url": "https://www.wgtownri.org/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 1,
+        "stock_classifier_boards": [
+          "select_board"
+        ],
+        "extended_classifier_boards": [
+          "select_board"
+        ],
+        "categories_missed_by_stock_classifier": []
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "Town Council",
+          "board_key": "select_board",
+          "category_id": "2",
+          "url": "https://www.wgtownri.org/AgendaCenter/Town-Council-2",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "select_board"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Johnston",
+      "state": "RI",
+      "website": "https://www.johnstonri.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 200,
+        "final_url": "https://www.johnstonri.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus",
+          "ecode360"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com",
+          "ecode360.com"
+        ],
+        "agendacenter_categories": 0
+      }
+    },
+    {
+      "town": "North Kingstown",
+      "state": "RI",
+      "website": "https://www.northkingstownri.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 200,
+        "final_url": "https://www.northkingstownri.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 31,
+        "stock_classifier_boards": [
+          "conservation_commission",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "extended_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": [
+          "Planning Commission"
+        ]
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "34",
+          "url": "https://www.northkingstownri.gov/AgendaCenter/Board-of-Appeals-34",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Building Code Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "17",
+          "url": "https://www.northkingstownri.gov/AgendaCenter/Building-Code-Board-of-Appeals-17",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Conservation Commission",
+          "board_key": "conservation_commission",
+          "category_id": "8",
+          "url": "https://www.northkingstownri.gov/AgendaCenter/Conservation-Commission-8",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Planning Commission",
+          "board_key": "planning_board",
+          "category_id": "4",
+          "url": "https://www.northkingstownri.gov/AgendaCenter/Planning-Commission-4",
+          "classified_by": "extended"
+        },
+        {
+          "board": "Town Council",
+          "board_key": "select_board",
+          "category_id": "16",
+          "url": "https://www.northkingstownri.gov/AgendaCenter/Town-Council-16",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Zoning Board",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "9",
+          "url": "https://www.northkingstownri.gov/AgendaCenter/Zoning-Board-9",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "conservation_commission",
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Portsmouth",
+      "state": "RI",
+      "website": "https://www.portsmouthri.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 200,
+        "final_url": "https://www.portsmouthri.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus",
+          "ecode360",
+          "ri_sos_opengov"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com",
+          "ecode360.com",
+          "opengov.sos.ri.gov",
+          "www.ecode360.com"
+        ],
+        "agendacenter_categories": 10,
+        "stock_classifier_boards": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "extended_classifier_boards": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": []
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "category_id": "7",
+          "url": "https://www.portsmouthri.gov/AgendaCenter/Planning-Board-7",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Town Council",
+          "board_key": "select_board",
+          "category_id": "8",
+          "url": "https://www.portsmouthri.gov/AgendaCenter/Town-Council-8",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Zoning Board of Review",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "9",
+          "url": "https://www.portsmouthri.gov/AgendaCenter/Zoning-Board-of-Review-9",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Exeter",
+      "state": "RI",
+      "website": "https://www.exeterri.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 403,
+        "final_url": "https://www.exeterri.gov/",
+        "block_markers": [
+          "cloudflare"
+        ],
+        "platform_markers": [],
+        "vendor_hosts_linked": []
+      },
+      "automated": false,
+      "platform": null,
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+    },
+    {
+      "town": "Bow",
+      "state": "NH",
+      "website": "https://www.bownh.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 200,
+        "final_url": "https://www.bownh.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "civicplus.com",
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 27,
+        "stock_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "town_meeting",
+          "zoning_board_of_appeals"
+        ],
+        "extended_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "town_meeting",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": []
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "Board of Selectmen",
+          "board_key": "select_board",
+          "category_id": "4",
+          "url": "https://www.bownh.gov/AgendaCenter/Board-of-Selectmen-4",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Conservation Commission",
+          "board_key": "conservation_commission",
+          "category_id": "12",
+          "url": "https://www.bownh.gov/AgendaCenter/Conservation-Commission-12",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "category_id": "7",
+          "url": "https://www.bownh.gov/AgendaCenter/Planning-Board-7",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Town Meeting",
+          "board_key": "town_meeting",
+          "category_id": "2",
+          "url": "https://www.bownh.gov/AgendaCenter/Town-Meeting-2",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Zoning Board of Adjustment",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "16",
+          "url": "https://www.bownh.gov/AgendaCenter/Zoning-Board-of-Adjustment-16",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "conservation_commission",
+        "planning_board",
+        "select_board",
+        "town_meeting",
+        "zoning_board_of_appeals"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Nottingham",
+      "state": "NH",
+      "website": "https://www.nottingham-nh.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 403,
+        "final_url": "https://www.nottingham-nh.gov/",
+        "block_markers": [
+          "cloudflare"
+        ],
+        "platform_markers": [],
+        "vendor_hosts_linked": []
+      },
+      "automated": false,
+      "platform": null,
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+    },
+    {
+      "town": "Rochester",
+      "state": "NH",
+      "website": "https://www.rochesternh.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 403,
+        "final_url": "https://www.rochesternh.gov/",
+        "block_markers": [
+          "cloudflare"
+        ],
+        "platform_markers": [],
+        "vendor_hosts_linked": []
+      },
+      "automated": false,
+      "platform": null,
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+    },
+    {
+      "town": "Wakefield",
+      "state": "NH",
+      "website": "https://www.wakefieldnh.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 403,
+        "final_url": "https://www.wakefieldnh.gov/",
+        "block_markers": [
+          "cloudflare"
+        ],
+        "platform_markers": [],
+        "vendor_hosts_linked": []
+      },
+      "automated": false,
+      "platform": null,
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+    },
+    {
+      "town": "Concord",
+      "state": "NH",
+      "website": "https://www.concordnh.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 200,
+        "final_url": "https://www.concordnh.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com",
+          "nh-concord2.civicplus.com"
+        ],
+        "agendacenter_categories": 0
+      }
+    },
+    {
+      "town": "Pembroke",
+      "state": "NH",
+      "website": "https://www.pembroke-nh.com",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 200,
+        "final_url": "https://www.pembroke-nh.com/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 18,
+        "stock_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "extended_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": []
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "Board of Selectmen",
+          "board_key": "select_board",
+          "category_id": "13",
+          "url": "https://www.pembroke-nh.com/AgendaCenter/Board-of-Selectmen-13",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Conservation Commission",
+          "board_key": "conservation_commission",
+          "category_id": "17",
+          "url": "https://www.pembroke-nh.com/AgendaCenter/Conservation-Commission-17",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "category_id": "10",
+          "url": "https://www.pembroke-nh.com/AgendaCenter/Planning-Board-10",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Zoning Board of Adjustment",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "20",
+          "url": "https://www.pembroke-nh.com/AgendaCenter/Zoning-Board-of-Adjustment-20",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "conservation_commission",
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Vergennes",
+      "state": "VT",
+      "website": "https://www.vergennes.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 200,
+        "final_url": "https://www.vergennes.org/",
+        "block_markers": [],
+        "platform_markers": [
+          "revize"
+        ],
+        "vendor_hosts_linked": [
+          "cms8.revize.com",
+          "www.revize.com"
+        ]
+      }
+    },
+    {
+      "town": "Vernon",
+      "state": "VT",
+      "website": "https://vernonvt.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 200,
+        "final_url": "https://vernonvt.org/",
+        "block_markers": [],
+        "platform_markers": [
+          "heygov",
+          "townweb"
+        ],
+        "vendor_hosts_linked": []
+      }
+    },
+    {
+      "town": "South Burlington",
+      "state": "VT",
+      "website": "https://www.southburlingtonvt.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 200,
+        "final_url": "https://www.southburlingtonvt.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 20,
+        "stock_classifier_boards": [
+          "select_board"
+        ],
+        "extended_classifier_boards": [
+          "planning_board",
+          "select_board"
+        ],
+        "categories_missed_by_stock_classifier": [
+          "Development Review Board",
+          "Planning Commission"
+        ]
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "City Council",
+          "board_key": "select_board",
+          "category_id": "26",
+          "url": "https://www.southburlingtonvt.gov/AgendaCenter/City-Council-26",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Development Review Board",
+          "board_key": "planning_board",
+          "category_id": "12",
+          "url": "https://www.southburlingtonvt.gov/AgendaCenter/Development-Review-Board-12",
+          "classified_by": "extended"
+        },
+        {
+          "board": "Planning Commission",
+          "board_key": "planning_board",
+          "category_id": "19",
+          "url": "https://www.southburlingtonvt.gov/AgendaCenter/Planning-Commission-19",
+          "classified_by": "extended"
+        }
+      ],
+      "boards_found": [
+        "planning_board",
+        "select_board"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Royalton",
+      "state": "VT",
+      "website": "https://www.royaltonvt.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:37+00:00",
+        "status": 200,
+        "final_url": "https://www.royaltonvt.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "revize"
+        ],
+        "vendor_hosts_linked": [
+          "webgen1.revize.com",
+          "www.revize.com"
+        ]
+      }
+    },
+    {
+      "town": "Essex Junction",
+      "state": "VT",
+      "website": "https://www.essexjunction.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:38+00:00",
+        "status": 200,
+        "final_url": "https://www.essexjunction.gov/",
+        "block_markers": [],
+        "platform_markers": [],
+        "vendor_hosts_linked": []
+      }
+    },
+    {
+      "town": "Northfield",
+      "state": "VT",
+      "website": "https://www.northfield-vt.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:38+00:00",
+        "status": 200,
+        "final_url": "https://www.northfield-vt.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "wix"
+        ],
+        "vendor_hosts_linked": []
+      }
+    },
+    {
+      "town": "Brunswick",
+      "state": "ME",
+      "website": "https://www.brunswickme.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:38+00:00",
+        "status": 200,
+        "final_url": "https://www.brunswickme.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 34,
+        "stock_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "extended_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": []
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "Town Council",
+          "board_key": "select_board",
+          "category_id": "13",
+          "url": "https://www.brunswickme.gov/AgendaCenter/Town-Council-13",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Conservation Commission",
+          "board_key": "conservation_commission",
+          "category_id": "3",
+          "url": "https://www.brunswickme.gov/AgendaCenter/Conservation-Commission-3",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "category_id": "6",
+          "url": "https://www.brunswickme.gov/AgendaCenter/Planning-Board-6",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Zoning Board of Appeals (ZBA)",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "11",
+          "url": "https://www.brunswickme.gov/AgendaCenter/Zoning-Board-of-Appeals-ZBA-11",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "conservation_commission",
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Scarborough",
+      "state": "ME",
+      "website": "https://www.scarboroughmaine.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:39+00:00",
+        "status": 200,
+        "final_url": "https://www.scarboroughmaine.org/",
+        "block_markers": [],
+        "platform_markers": [
+          "diligent"
+        ],
+        "vendor_hosts_linked": [
+          "scarboroughmaine.community.diligentoneplatform.com"
+        ]
+      }
+    },
+    {
+      "town": "Bangor",
+      "state": "ME",
+      "website": "https://www.bangormaine.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:39+00:00",
+        "status": 200,
+        "final_url": "https://www.bangormaine.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com",
+          "me-bangor.civicplus.com"
+        ],
+        "agendacenter_categories": 27,
+        "stock_classifier_boards": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "extended_classifier_boards": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": []
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "6",
+          "url": "https://www.bangormaine.gov/AgendaCenter/Board-of-Appeals-6",
+          "classified_by": "stock"
+        },
+        {
+          "board": "City Council",
+          "board_key": "select_board",
+          "category_id": "2",
+          "url": "https://www.bangormaine.gov/AgendaCenter/City-Council-2",
+          "classified_by": "stock"
+        },
+        {
+          "board": "City Council Workshop",
+          "board_key": "select_board",
+          "category_id": "22",
+          "url": "https://www.bangormaine.gov/AgendaCenter/City-Council-Workshop-22",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "category_id": "15",
+          "url": "https://www.bangormaine.gov/AgendaCenter/Planning-Board-15",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Westbrook",
+      "state": "ME",
+      "website": "https://www.westbrookmaine.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:39+00:00",
+        "status": 200,
+        "final_url": "https://www.westbrookmaine.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 8,
+        "stock_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "extended_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": []
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "City Council",
+          "board_key": "select_board",
+          "category_id": "2",
+          "url": "https://www.westbrookmaine.gov/AgendaCenter/City-Council-2",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "category_id": "4",
+          "url": "https://www.westbrookmaine.gov/AgendaCenter/Planning-Board-4",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Recreation and Conservation Commission",
+          "board_key": "conservation_commission",
+          "category_id": "7",
+          "url": "https://www.westbrookmaine.gov/AgendaCenter/Recreation-and-Conservation-Commission-7",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Zoning Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "3",
+          "url": "https://www.westbrookmaine.gov/AgendaCenter/Zoning-Board-of-Appeals-3",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "conservation_commission",
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Wiscasset",
+      "state": "ME",
+      "website": "https://www.wiscasset.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:40+00:00",
+        "status": 200,
+        "final_url": "https://www.wiscasset.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 9,
+        "stock_classifier_boards": [
+          "planning_board",
+          "select_board"
+        ],
+        "extended_classifier_boards": [
+          "planning_board",
+          "select_board"
+        ],
+        "categories_missed_by_stock_classifier": []
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "1 - Wiscasset Selectboard",
+          "board_key": "select_board",
+          "category_id": "15",
+          "url": "https://www.wiscasset.gov/AgendaCenter/1-Wiscasset-Selectboard-15",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "category_id": "12",
+          "url": "https://www.wiscasset.gov/AgendaCenter/Planning-Board-12",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "planning_board",
+        "select_board"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Augusta",
+      "state": "ME",
+      "website": "https://www.augustamaine.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:40+00:00",
+        "status": 200,
+        "final_url": "https://www.augustamaine.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus",
+          "ecode360"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com",
+          "ecode360.com",
+          "me-augusta.civicplus.com"
+        ],
+        "agendacenter_categories": 4,
+        "stock_classifier_boards": [
+          "planning_board",
+          "select_board"
+        ],
+        "extended_classifier_boards": [
+          "planning_board",
+          "select_board"
+        ],
+        "categories_missed_by_stock_classifier": []
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "City Council",
+          "board_key": "select_board",
+          "category_id": "5",
+          "url": "https://www.augustamaine.gov/AgendaCenter/City-Council-5",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "category_id": "2",
+          "url": "https://www.augustamaine.gov/AgendaCenter/Planning-Board-2",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "planning_board",
+        "select_board"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Clay",
+      "state": "NY",
+      "website": "https://townofclayny.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:40+00:00",
+        "status": 200,
+        "final_url": "https://townofclayny.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "drupal"
+        ],
+        "vendor_hosts_linked": []
+      }
+    },
+    {
+      "town": "Lysander",
+      "state": "NY",
+      "website": "https://lysanderny.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:42+00:00",
+        "status": 200,
+        "final_url": "https://lysanderny.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "ecode360",
+          "drupal"
+        ],
+        "vendor_hosts_linked": [
+          "ecode360.com"
+        ]
+      }
+    },
+    {
+      "town": "Waterford",
+      "state": "NY",
+      "website": "https://www.townofwaterfordny.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:42+00:00",
+        "status": 403,
+        "final_url": "https://www.townofwaterfordny.gov/",
+        "block_markers": [
+          "cloudflare"
+        ],
+        "platform_markers": [],
+        "vendor_hosts_linked": []
+      },
+      "automated": false,
+      "platform": null,
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+    },
+    {
+      "town": "LaGrange",
+      "state": "NY",
+      "website": "https://www.lagrangeny.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:42+00:00",
+        "status": 200,
+        "final_url": "https://www.lagrangeny.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "wordpress"
+        ],
+        "vendor_hosts_linked": []
+      }
+    },
+    {
+      "town": "Dover",
+      "state": "NY",
+      "website": "https://www.doverny.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:43+00:00",
+        "status": 200,
+        "final_url": "https://www.doverny.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus",
+          "civicclerk",
+          "ecode360",
+          "laserfiche"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com",
+          "doverny.portal.civicclerk.com",
+          "ecode360.com",
+          "portal.laserfiche.com"
+        ],
+        "agendacenter_categories": 0,
+        "civicclerk_tenant": "doverny"
+      }
+    },
+    {
+      "town": "Claverack",
+      "state": "NY",
+      "website": "https://www.claverackny.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:43+00:00",
+        "status": 200,
+        "final_url": "https://www.claverackny.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 4,
+        "stock_classifier_boards": [
+          "planning_board",
+          "zoning_board_of_appeals"
+        ],
+        "extended_classifier_boards": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": [
+          "Town Board"
+        ]
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "category_id": "2",
+          "url": "https://www.claverackny.gov/AgendaCenter/Planning-Board-2",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "category_id": "5",
+          "url": "https://www.claverackny.gov/AgendaCenter/Town-Board-5",
+          "classified_by": "extended"
+        },
+        {
+          "board": "Zoning Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "3",
+          "url": "https://www.claverackny.gov/AgendaCenter/Zoning-Board-of-Appeals-3",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Andover Township",
+      "state": "NJ",
+      "website": "https://www.andovertwp.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:43+00:00",
+        "status": 200,
+        "final_url": "https://www.andovertwp.org/",
+        "block_markers": [],
+        "platform_markers": [
+          "ecode360"
+        ],
+        "vendor_hosts_linked": [
+          "www.ecode360.com"
+        ]
+      }
+    },
+    {
+      "town": "Warren Township",
+      "state": "NJ",
+      "website": "https://www.warrennj.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:43+00:00",
+        "status": 200,
+        "final_url": "https://www.warrennj.org/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 14,
+        "stock_classifier_boards": [
+          "planning_board"
+        ],
+        "extended_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": [
+          "Board of Adjustment",
+          "Environmental Commission",
+          "Township Committee"
+        ]
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "Board of Adjustment",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "11",
+          "url": "https://www.warrennj.org/AgendaCenter/Board-of-Adjustment-11",
+          "classified_by": "extended"
+        },
+        {
+          "board": "Environmental Commission",
+          "board_key": "conservation_commission",
+          "category_id": "5",
+          "url": "https://www.warrennj.org/AgendaCenter/Environmental-Commission-5",
+          "classified_by": "extended"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "category_id": "4",
+          "url": "https://www.warrennj.org/AgendaCenter/Planning-Board-4",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Township Committee",
+          "board_key": "select_board",
+          "category_id": "9",
+          "url": "https://www.warrennj.org/AgendaCenter/Township-Committee-9",
+          "classified_by": "extended"
+        }
+      ],
+      "boards_found": [
+        "conservation_commission",
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Lopatcong Township",
+      "state": "NJ",
+      "website": "https://www.lopatcongtwp.com",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:43+00:00",
+        "status": 403,
+        "final_url": "https://www.lopatcongtwp.com/",
+        "block_markers": [
+          "akamai"
+        ],
+        "platform_markers": [],
+        "vendor_hosts_linked": []
+      },
+      "automated": false,
+      "platform": null,
+      "reason": "akamai bot challenge on homepage (HTTP 403); not bypassed"
+    },
+    {
+      "town": "Mansfield Township (Warren)",
+      "state": "NJ",
+      "website": "https://www.mansfieldtownship-nj.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:43+00:00",
+        "status": 200,
+        "final_url": "https://www.mansfieldtownship-nj.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "ecode360"
+        ],
+        "vendor_hosts_linked": [
+          "ecode360.com"
+        ]
+      }
+    },
+    {
+      "town": "Berkeley Heights",
+      "state": "NJ",
+      "website": "https://www.berkeleyheights.gov",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:44+00:00",
+        "status": 200,
+        "final_url": "https://www.berkeleyheights.gov/",
+        "block_markers": [],
+        "platform_markers": [
+          "civicplus"
+        ],
+        "vendor_hosts_linked": [
+          "connect.civicplus.com"
+        ],
+        "agendacenter_categories": 12,
+        "stock_classifier_boards": [
+          "planning_board",
+          "zoning_board_of_appeals"
+        ],
+        "extended_classifier_boards": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": [
+          "Environmental Commission",
+          "Township Council"
+        ]
+      },
+      "platform": "civicplus",
+      "listings": [
+        {
+          "board": "Environmental Commission",
+          "board_key": "conservation_commission",
+          "category_id": "5",
+          "url": "https://www.berkeleyheights.gov/AgendaCenter/Environmental-Commission-5",
+          "classified_by": "extended"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "category_id": "6",
+          "url": "https://www.berkeleyheights.gov/AgendaCenter/Planning-Board-6",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Township Council",
+          "board_key": "select_board",
+          "category_id": "9",
+          "url": "https://www.berkeleyheights.gov/AgendaCenter/Township-Council-9",
+          "classified_by": "extended"
+        },
+        {
+          "board": "Zoning Board of Adjustment",
+          "board_key": "zoning_board_of_appeals",
+          "category_id": "8",
+          "url": "https://www.berkeleyheights.gov/AgendaCenter/Zoning-Board-of-Adjustment-8",
+          "classified_by": "stock"
+        }
+      ],
+      "boards_found": [
+        "conservation_commission",
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "automated": true
+    },
+    {
+      "town": "Neptune Township",
+      "state": "NJ",
+      "website": "https://neptunetownship.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:47+00:00",
+        "status": 200,
+        "final_url": "https://neptunetownship.org/",
+        "block_markers": [],
+        "platform_markers": [
+          "ecode360",
+          "drupal"
+        ],
+        "vendor_hosts_linked": [
+          "www.ecode360.com"
+        ]
+      }
+    },
+    {
+      "town": "Upper Burrell Township",
+      "state": "PA",
+      "website": "https://upperburrelltwp.com",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:48+00:00",
+        "status": 200,
+        "final_url": "https://upperburrelltwp.com/",
+        "block_markers": [],
+        "platform_markers": [
+          "ecode360",
+          "wordpress"
+        ],
+        "vendor_hosts_linked": [
+          "ecode360.com"
+        ]
+      }
+    },
+    {
+      "town": "East Whiteland Township",
+      "state": "PA",
+      "website": "https://www.eastwhiteland.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:49+00:00",
+        "status": 200,
+        "final_url": "https://www.eastwhiteland.org/",
+        "block_markers": [],
+        "platform_markers": [
+          "ecode360",
+          "revize"
+        ],
+        "vendor_hosts_linked": [
+          "cms2.revize.com",
+          "ecode360.com",
+          "www.revize.com"
+        ]
+      }
+    },
+    {
+      "town": "East Vincent Township",
+      "state": "PA",
+      "website": "https://www.eastvincent.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:50+00:00",
+        "error": "RobotsDisallowed: https://www.eastvincent.org/"
+      },
+      "automated": false,
+      "reason": "homepage not fetchable: RobotsDisallowed: https://www.eastvincent.org/"
+    },
+    {
+      "town": "Granville Township (Mifflin)",
+      "state": "PA",
+      "website": "https://granvilletwp.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:50+00:00",
+        "status": 200,
+        "final_url": "https://granvilletwp.org/",
+        "block_markers": [],
+        "platform_markers": [
+          "wordpress"
+        ],
+        "vendor_hosts_linked": []
+      }
+    },
+    {
+      "town": "Watts Township (Perry)",
+      "state": "PA",
+      "website": "https://wattstownship.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:50+00:00",
+        "status": 200,
+        "final_url": "https://wattstownship.org/",
+        "block_markers": [],
+        "platform_markers": [
+          "wordpress"
+        ],
+        "vendor_hosts_linked": []
+      }
+    },
+    {
+      "town": "Covington Township (Lackawanna)",
+      "state": "PA",
+      "website": "https://covingtontwp.org",
+      "fingerprint": {
+        "checked_at": "2026-10-10T15:47:51+00:00",
+        "status": 200,
+        "final_url": "https://covingtontwp.org/",
+        "block_markers": [],
+        "platform_markers": [
+          "wordpress"
+        ],
+        "vendor_hosts_linked": []
+      }
+    }
+  ],
+  "generated": "2026-10-10T15:48:14+00:00"
+}

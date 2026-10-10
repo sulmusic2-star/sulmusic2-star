@@ -1,0 +1,3135 @@
+{
+ "_about": "Wikidata SPARQL snapshot (2026-10-10): items with P31 in {New England town Q2154459, city in the US Q1093829, town in the US Q15127012} and P131 = a county of Massachusetts (Q13410485), with official website (P856). Used only as a cross-check for MMA directory websites. Query text in crawler/watch351/ma_census.py (WIKIDATA_QUERY).",
+ "fetched": "2026-10-10",
+ "rows": [
+  {
+   "item": "http://www.wikidata.org/entity/Q100",
+   "itemLabel": "Boston",
+   "countyLabel": "Suffolk County",
+   "art": "https://en.wikipedia.org/wiki/Boston",
+   "sites": "https://www.boston.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "2507000"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1637790",
+   "itemLabel": "Holyoke",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Holyoke,_Massachusetts",
+   "sites": "http://www.holyoke.org/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-30840"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1650454",
+   "itemLabel": "Chicopee",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Chicopee,_Massachusetts",
+   "sites": "http://www.chicopeema.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-13660"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q127506",
+   "itemLabel": "Taunton",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Taunton,_Massachusetts",
+   "sites": "http://www.taunton-ma.gov",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-69170"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q204373",
+   "itemLabel": "Dover",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Dover,_Massachusetts",
+   "sites": "http://www.doverma.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-17405"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q208193",
+   "itemLabel": "Uxbridge",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Uxbridge,_Massachusetts",
+   "sites": "http://www.uxbridge-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-71620"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1664345",
+   "itemLabel": "Needham",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Needham,_Massachusetts",
+   "sites": "http://www.needhamma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-44105"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1720696",
+   "itemLabel": "Southampton",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Southampton,_Massachusetts",
+   "sites": "https://townofsouthampton.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-62745"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1758615",
+   "itemLabel": "Dedham",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Dedham,_Massachusetts",
+   "sites": "http://www.dedham-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-16530"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q386170",
+   "itemLabel": "Westborough",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Westborough,_Massachusetts",
+   "sites": "http://www.town.westborough.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-75015"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q386437",
+   "itemLabel": "Richmond",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Richmond,_Massachusetts",
+   "sites": "https://www.richmondma.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-56795"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q392598",
+   "itemLabel": "Goshen",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Goshen,_Massachusetts",
+   "sites": "http://www.egoshen.net/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-26290"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302434",
+   "itemLabel": "Chester",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Chester,_Massachusetts",
+   "sites": "http://www.townofchester.net/chestermass/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-13485"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302443",
+   "itemLabel": "Norfolk",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Norfolk,_Massachusetts",
+   "sites": "http://www.virtualnorfolk.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-46050"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302452",
+   "itemLabel": "Ludlow",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Ludlow,_Massachusetts",
+   "sites": "http://www.ludlow.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-37175"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302467",
+   "itemLabel": "Plainfield",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Plainfield,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-54030"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302480",
+   "itemLabel": "East Longmeadow",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/East_Longmeadow,_Massachusetts",
+   "sites": "http://www.eastlongmeadowma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-19645"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302488",
+   "itemLabel": "Longmeadow",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Longmeadow,_Massachusetts",
+   "sites": "http://www.longmeadow.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-36300"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302498",
+   "itemLabel": "Blandford",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Blandford,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-06085"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2427080",
+   "itemLabel": "Lee",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Lee,_Massachusetts",
+   "sites": "http://www.lee.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-34655"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2427167",
+   "itemLabel": "Dunstable",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Dunstable,_Massachusetts",
+   "sites": "http://www.dunstable-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-17825"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2427213",
+   "itemLabel": "Lancaster",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Lancaster,_Massachusetts",
+   "sites": "http://www.ci.lancaster.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-34165"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2427247",
+   "itemLabel": "Sutton",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Sutton,_Massachusetts",
+   "sites": "http://www.suttonma.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-68610"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54179",
+   "itemLabel": "Methuen",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Methuen,_Massachusetts",
+   "sites": "http://www.ci.methuen.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-40710"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54182",
+   "itemLabel": "Fitchburg",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Fitchburg,_Massachusetts",
+   "sites": "http://www.fitchburgma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-23875"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q264512",
+   "itemLabel": "Middleton",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Middleton,_Massachusetts",
+   "sites": "http://www.townofmiddleton.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-41095"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q282802",
+   "itemLabel": "Mattapoisett",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Mattapoisett,_Massachusetts",
+   "sites": "http://www.mattapoisett.net/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-39450"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q304284",
+   "itemLabel": "Freetown",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Freetown,_Massachusetts",
+   "sites": "http://www.freetownma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-25240"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q326295",
+   "itemLabel": "Plymouth",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Plymouth,_Massachusetts",
+   "sites": "http://www.plymouth-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-54310"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49179",
+   "itemLabel": "Worcester",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Worcester,_Massachusetts",
+   "sites": "https://www.worcesterma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-82000"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49186",
+   "itemLabel": "Northampton",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Northampton,_Massachusetts",
+   "sites": "https://www.northamptonma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-46330"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49184",
+   "itemLabel": "Pittsfield",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Pittsfield,_Massachusetts",
+   "sites": "http://www.pittsfield-ma.org/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-53960"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49185",
+   "itemLabel": "North Adams",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/North_Adams,_Massachusetts",
+   "sites": "http://www.northadams-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-46225"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49190",
+   "itemLabel": "Waltham",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Waltham,_Massachusetts",
+   "sites": "https://www.city.waltham.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-72600"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49188",
+   "itemLabel": "Lynn",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Lynn,_Massachusetts",
+   "sites": "http://www.ci.lynn.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-37490"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49194",
+   "itemLabel": "Fall River",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Fall_River,_Massachusetts",
+   "sites": "http://www.fallriverma.org/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-23000"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49193",
+   "itemLabel": "Brockton",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Brockton,_Massachusetts",
+   "sites": "http://www.ci.brockton.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-09000"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49199",
+   "itemLabel": "Somerville",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Somerville,_Massachusetts",
+   "sites": "https://somervillema.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-62535"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49196",
+   "itemLabel": "Newton",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Newton,_Massachusetts",
+   "sites": "https://www.newtonma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-45560"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54134",
+   "itemLabel": "Newburyport",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Newburyport,_Massachusetts",
+   "sites": "http://www.cityofnewburyport.com/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-45245"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54132",
+   "itemLabel": "Haverhill",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Haverhill,_Massachusetts",
+   "sites": "http://www.ci.haverhill.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-29405"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54138",
+   "itemLabel": "Beverly",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Beverly,_Massachusetts",
+   "sites": "http://www.beverlyma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-05595"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54136",
+   "itemLabel": "Peabody",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Peabody,_Massachusetts",
+   "sites": "https://www.peabody-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-52490"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54143",
+   "itemLabel": "Melrose",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Melrose,_Massachusetts",
+   "sites": "http://www.cityofmelrose.org/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-40115"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54140",
+   "itemLabel": "Salem",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Salem,_Massachusetts",
+   "sites": "https://salem.com",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-59105"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54145",
+   "itemLabel": "Medford",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Medford,_Massachusetts",
+   "sites": "http://www.medford.org/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-39835"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q367039",
+   "itemLabel": "Warwick",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Warwick,_Massachusetts",
+   "sites": "http://www.warwickma.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-73265"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q367070",
+   "itemLabel": "Natick",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Natick,_Massachusetts",
+   "sites": "http://www.natickma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-43895"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q370619",
+   "itemLabel": "Andover",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Andover,_Massachusetts",
+   "sites": "http://www.andoverma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-01465"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q372315",
+   "itemLabel": "Carver",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Carver,_Massachusetts",
+   "sites": "http://www.carverma.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-11665"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q375905",
+   "itemLabel": "Deerfield",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Deerfield,_Massachusetts",
+   "sites": "https://www.deerfieldma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-16670"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q376786",
+   "itemLabel": "Ipswich",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Ipswich,_Massachusetts",
+   "sites": "http://www.town.ipswich.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-32310"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2282049",
+   "itemLabel": "Norton",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Norton,_Massachusetts",
+   "sites": "http://www.nortonma.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-49970"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302136",
+   "itemLabel": "Topsfield",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Topsfield,_Massachusetts",
+   "sites": "http://www.topsfield-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-70150"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302147",
+   "itemLabel": "Hadley",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Hadley,_Massachusetts",
+   "sites": "https://www.hadleyma.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-27690"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302156",
+   "itemLabel": "Southwick",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Southwick,_Massachusetts",
+   "sites": "https://www.southwickma.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-65825"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302167",
+   "itemLabel": "North Andover",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/North_Andover,_Massachusetts",
+   "sites": "http://www.northandoverma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-46365"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302275",
+   "itemLabel": "Tisbury",
+   "countyLabel": "Dukes County",
+   "art": "https://en.wikipedia.org/wiki/Tisbury,_Massachusetts",
+   "sites": "http://www.tisburyma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-69940"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302285",
+   "itemLabel": "Newbury",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Newbury,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-45175"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302294",
+   "itemLabel": "Hawley",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Hawley,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-29475"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302305",
+   "itemLabel": "Chilmark",
+   "countyLabel": "Dukes County",
+   "art": "https://en.wikipedia.org/wiki/Chilmark,_Massachusetts",
+   "sites": "http://www.ci.chilmark.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-13800"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302316",
+   "itemLabel": "Merrimac",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Merrimac,_Massachusetts",
+   "sites": "http://www.merrimac01860.info/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-40430"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302325",
+   "itemLabel": "Swansea",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Swansea,_Massachusetts",
+   "sites": "https://www.swanseama.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-68750"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2418408",
+   "itemLabel": "Raynham",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Raynham,_Massachusetts",
+   "sites": "http://www.town.raynham.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-56060"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2418423",
+   "itemLabel": "Easton",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Easton,_Massachusetts",
+   "sites": "http://www.easton.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-20100"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2418436",
+   "itemLabel": "Oak Bluffs",
+   "countyLabel": "Dukes County",
+   "art": "https://en.wikipedia.org/wiki/Oak_Bluffs,_Massachusetts",
+   "sites": "http://www.oakbluffsma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-50390"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2419598",
+   "itemLabel": "Norwell",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Norwell,_Massachusetts",
+   "sites": "http://www.townofnorwell.net/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-50145"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2423149",
+   "itemLabel": "South Hadley",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/South_Hadley,_Massachusetts",
+   "sites": "http://www.southhadley.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-64145"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2426530",
+   "itemLabel": "Acushnet",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Acushnet,_Massachusetts",
+   "sites": "http://www.acushnet.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-00520"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2426601",
+   "itemLabel": "Warren",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Warren,_Massachusetts",
+   "sites": "http://www.warren-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-73090"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2426756",
+   "itemLabel": "Petersham",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Petersham,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-53120"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2426909",
+   "itemLabel": "Wakefield",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Wakefield,_Massachusetts",
+   "sites": "http://www.wakefield.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-72215"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2426959",
+   "itemLabel": "Dudley",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Dudley,_Massachusetts",
+   "sites": "http://www.dudleyma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-17685"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54170",
+   "itemLabel": "Winthrop",
+   "countyLabel": "Suffolk County",
+   "art": "https://en.wikipedia.org/wiki/Winthrop,_Massachusetts",
+   "sites": "http://www.town.winthrop.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-81005"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54174",
+   "itemLabel": "Woburn",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Woburn,_Massachusetts",
+   "sites": "https://woburnma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-81035"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54172",
+   "itemLabel": "Watertown",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Watertown,_Massachusetts",
+   "sites": "http://www.watertown-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-73440"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54176",
+   "itemLabel": "Amesbury",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Amesbury,_Massachusetts",
+   "sites": "http://www.amesburyma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-01260"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q344431",
+   "itemLabel": "Acton",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Acton,_Massachusetts",
+   "sites": "http://www.acton-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-00380"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q351740",
+   "itemLabel": "Adams",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Adams,_Massachusetts",
+   "sites": "http://www.town.adams.ma.us",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-00555"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1811258",
+   "itemLabel": "Dartmouth",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Dartmouth,_Massachusetts",
+   "sites": "https://town.dartmouth.ma.us",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-16425"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1829193",
+   "itemLabel": "Gardner",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Gardner,_Massachusetts",
+   "sites": "http://www.gardner-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-25485"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1900880",
+   "itemLabel": "Townsend",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Townsend,_Massachusetts",
+   "sites": "http://www.townsend.ma.us",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-70360"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1968733",
+   "itemLabel": "Leicester",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Leicester,_Massachusetts",
+   "sites": "http://www.leicesterma.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-34795"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1988974",
+   "itemLabel": "Easthampton",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Easthampton,_Massachusetts",
+   "sites": "http://www.easthampton.org/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-19370"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1996418",
+   "itemLabel": "Abington",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Abington,_Massachusetts",
+   "sites": "http://www.abingtonma.gov",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-00170"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2002947",
+   "itemLabel": "Salisbury",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Salisbury,_Massachusetts",
+   "sites": "http://www.salisburyma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-59245"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2003303",
+   "itemLabel": "West Springfield",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/West_Springfield,_Massachusetts",
+   "sites": "http://www.west-springfield.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-77890"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2049231",
+   "itemLabel": "Wayland",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Wayland,_Massachusetts",
+   "sites": "http://www.wayland.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-73790"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2076150",
+   "itemLabel": "Palmer",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Palmer,_Massachusetts",
+   "sites": "http://www.townofpalmer.com/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-52144"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2076362",
+   "itemLabel": "Lenox",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Lenox,_Massachusetts",
+   "sites": "http://www.townoflenox.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-34970"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2079395",
+   "itemLabel": "Rockport",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Rockport,_Massachusetts",
+   "sites": "http://www.town.rockport.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-57880"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2086267",
+   "itemLabel": "Swampscott",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Swampscott,_Massachusetts",
+   "sites": "http://www.town.swampscott.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-68645"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2086280",
+   "itemLabel": "Bridgewater",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Bridgewater,_Massachusetts",
+   "sites": "http://www.bridgewaterma.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-08130"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2090461",
+   "itemLabel": "Arlington",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Arlington,_Massachusetts",
+   "sites": "http://www.arlingtonma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-01605"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2273666",
+   "itemLabel": "Brimfield",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Brimfield,_Massachusetts",
+   "sites": "https://www.brimfieldma.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-08470"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2282019",
+   "itemLabel": "Essex",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Essex,_Massachusetts",
+   "sites": "http://www.essexma.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-21850"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2282039",
+   "itemLabel": "Bourne",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Bourne,_Massachusetts",
+   "sites": "http://www.townofbourne.com/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-07175"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2418353",
+   "itemLabel": "Gosnold",
+   "countyLabel": "Dukes County",
+   "art": "https://en.wikipedia.org/wiki/Gosnold,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-26325"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2418364",
+   "itemLabel": "West Tisbury",
+   "countyLabel": "Dukes County",
+   "art": "https://en.wikipedia.org/wiki/West_Tisbury,_Massachusetts",
+   "sites": "http://www.westtisbury-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-78235"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2418377",
+   "itemLabel": "Dighton",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Dighton,_Massachusetts",
+   "sites": "http://www.dighton-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-16950"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2418390",
+   "itemLabel": "Bernardston",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Bernardston,_Massachusetts",
+   "sites": "http://www.townofbernardston.org",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-05560"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54151",
+   "itemLabel": "Everett",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Everett,_Massachusetts",
+   "sites": "http://www.cityofeverett.com/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-21990"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54149",
+   "itemLabel": "Malden",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Malden,_Massachusetts",
+   "sites": "http://www.cityofmalden.org/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-37875"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54154",
+   "itemLabel": "Revere",
+   "countyLabel": "Suffolk County",
+   "art": "https://en.wikipedia.org/wiki/Revere,_Massachusetts",
+   "sites": "http://www.revere.org/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-56585"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54156",
+   "itemLabel": "Chelsea",
+   "countyLabel": "Suffolk County",
+   "art": "https://en.wikipedia.org/wiki/Chelsea,_Massachusetts",
+   "sites": "http://www.chelseama.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-13205"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q222705",
+   "itemLabel": "Stockbridge",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Stockbridge,_Massachusetts",
+   "sites": "http://www.townofstockbridge.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-67595"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q257438",
+   "itemLabel": "Saugus",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Saugus,_Massachusetts",
+   "sites": "http://www.saugus-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-60015"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1774812",
+   "itemLabel": "Chatham",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Chatham,_Massachusetts",
+   "sites": "http://www.chatham-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-12995"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1775244",
+   "itemLabel": "Attleboro",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Attleboro,_Massachusetts",
+   "sites": "https://www.cityofattleboro.us/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-02690"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q16101",
+   "itemLabel": "Braintree",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Braintree,_Massachusetts",
+   "sites": "https://braintreema.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-07740"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q27416",
+   "itemLabel": "Marblehead",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Marblehead,_Massachusetts",
+   "sites": "https://www.marblehead.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-38400"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q33180",
+   "itemLabel": "Montague",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Montague,_Massachusetts",
+   "sites": "http://www.montague.net/Pages/index",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-42285"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49111",
+   "itemLabel": "Cambridge",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Cambridge,_Massachusetts",
+   "sites": "https://www.cambridgema.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-11000"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49142",
+   "itemLabel": "Brookline",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Brookline,_Massachusetts",
+   "sites": "https://www.brooklinema.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-09175"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49143",
+   "itemLabel": "Quincy",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Quincy,_Massachusetts",
+   "sites": "http://www.quincyma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-55745"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49147",
+   "itemLabel": "New Bedford",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/New_Bedford,_Massachusetts",
+   "sites": "https://www.newbedford-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-45000"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49154",
+   "itemLabel": "Provincetown",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Provincetown,_Massachusetts",
+   "sites": "http://www.provincetown-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-55500"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49158",
+   "itemLabel": "Springfield",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Springfield,_Massachusetts",
+   "sites": "https://www.springfield-ma.gov",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-67000"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49156",
+   "itemLabel": "Gloucester",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Gloucester,_Massachusetts",
+   "sites": "https://www.gloucester-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-26150"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49162",
+   "itemLabel": "Lowell",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Lowell,_Massachusetts",
+   "sites": "https://www.lowellma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-37000"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49163",
+   "itemLabel": "Lawrence",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Lawrence,_Massachusetts",
+   "sites": "http://www.cityoflawrence.com/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-34550"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q49164",
+   "itemLabel": "Amherst",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Amherst,_Massachusetts",
+   "sites": "https://visithampshirecounty.com/explore/destinations/amherst/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-01370"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q524646",
+   "itemLabel": "Berlin",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Berlin,_Massachusetts",
+   "sites": "http://www.townofberlin.com",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-05490"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q533317",
+   "itemLabel": "Wellesley",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Wellesley,_Massachusetts",
+   "sites": "http://www.wellesleyma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-74175"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q542640",
+   "itemLabel": "Westford",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Westford,_Massachusetts",
+   "sites": "http://www.westford-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-76135"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q543560",
+   "itemLabel": "Hopedale",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Hopedale,_Massachusetts",
+   "sites": "http://www.hopedale-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-30945"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q576891",
+   "itemLabel": "West Newbury",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/West_Newbury,_Massachusetts",
+   "sites": "http://www.town.west-newbury.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-77150"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q577215",
+   "itemLabel": "Agawam",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Agawam,_Massachusetts",
+   "sites": "http://www.agawam.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-00840"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2302509",
+   "itemLabel": "Rowley",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Rowley,_Massachusetts",
+   "sites": "http://www.townofrowley.net/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-58405"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2303096",
+   "itemLabel": "Eastham",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Eastham,_Massachusetts",
+   "sites": "http://www.eastham-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-19295"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2303115",
+   "itemLabel": "Wellfleet",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Wellfleet,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-74385"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2303125",
+   "itemLabel": "Rehoboth",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Rehoboth,_Massachusetts",
+   "sites": "http://www.town.rehoboth.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-56375"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2303624",
+   "itemLabel": "Georgetown",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Georgetown,_Massachusetts",
+   "sites": "http://www.georgetownma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-25625"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2304357",
+   "itemLabel": "Westwood",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Westwood,_Massachusetts",
+   "sites": "http://www.townhall.westwood.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-78690"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2305730",
+   "itemLabel": "Yarmouth",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Yarmouth,_Massachusetts",
+   "sites": "http://www.yarmouth.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-82525"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2305766",
+   "itemLabel": "Kingston",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Kingston,_Massachusetts",
+   "sites": "http://www.kingstonmass.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-33220"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2305776",
+   "itemLabel": "Somerset",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Somerset,_Massachusetts",
+   "sites": "http://www.townofsomerset.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-62430"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2305817",
+   "itemLabel": "Hingham",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Hingham,_Massachusetts",
+   "sites": "http://www.hingham-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-30210"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2306176",
+   "itemLabel": "Sheffield",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Sheffield,_Massachusetts",
+   "sites": "http://www.sheffieldma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-61065"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2309339",
+   "itemLabel": "Gill",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Gill,_Massachusetts",
+   "sites": "http://www.gillmass.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-25730"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2309359",
+   "itemLabel": "Fairhaven",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Fairhaven,_Massachusetts",
+   "sites": "http://www.fairhaven-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-22130"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2316327",
+   "itemLabel": "Wales",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Wales,_Massachusetts",
+   "sites": "http://www.townofwales.net/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-72390"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2431755",
+   "itemLabel": "Tyringham",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Tyringham,_Massachusetts",
+   "sites": "https://www.tyringham-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-71095"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2431830",
+   "itemLabel": "Becket",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Becket,_Massachusetts",
+   "sites": "http://www.townofbecket.org",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-04545"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2431850",
+   "itemLabel": "Sandisfield",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Sandisfield,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-59665"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2431901",
+   "itemLabel": "Alford",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Alford,_Massachusetts",
+   "sites": "http://www.townofalford.org",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-00975"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2432951",
+   "itemLabel": "Pepperell",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Pepperell,_Massachusetts",
+   "sites": "http://www.town.pepperell.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-52805"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2433090",
+   "itemLabel": "Littleton",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Littleton,_Massachusetts",
+   "sites": "https://www.littletonma.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-35950"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2437287",
+   "itemLabel": "Leverett",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Leverett,_Massachusetts",
+   "sites": "http://www.leverett.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-35180"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2437412",
+   "itemLabel": "Charlemont",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Charlemont,_Massachusetts",
+   "sites": "http://www.charlemont-ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-12505"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2534054",
+   "itemLabel": "East Brookfield",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/East_Brookfield,_Massachusetts",
+   "sites": "http://www.eastbrookfieldma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-18560"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2534635",
+   "itemLabel": "North Brookfield",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/North_Brookfield,_Massachusetts",
+   "sites": "http://www.northbrookfield.net/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-47135"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536103",
+   "itemLabel": "Ashfield",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Ashfield,_Massachusetts",
+   "sites": "http://www.ashfield.org",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-02095"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536810",
+   "itemLabel": "Middleborough",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Middleborough,_Massachusetts",
+   "sites": "http://www.middleborough.com",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-40850"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536826",
+   "itemLabel": "Brookfield",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Brookfield,_Massachusetts",
+   "sites": "http://www.brookfieldma.us",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-09105"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536837",
+   "itemLabel": "Lakeville",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Lakeville,_Massachusetts",
+   "sites": "http://www.lakevillema.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-33920"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536847",
+   "itemLabel": "Rockland",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Rockland,_Massachusetts",
+   "sites": "http://www.rockland-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-57775"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q591591",
+   "itemLabel": "Sudbury",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Sudbury,_Massachusetts",
+   "sites": "https://sudbury.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-68260"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q591912",
+   "itemLabel": "Sherborn",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Sherborn,_Massachusetts",
+   "sites": "https://www.sherbornma.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-61380"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q594980",
+   "itemLabel": "Hampden",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Hampden,_Massachusetts",
+   "sites": "http://www.hampden.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-28075"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q596394",
+   "itemLabel": "Holliston",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Holliston,_Massachusetts",
+   "sites": "http://www.townofholliston.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-30700"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q597961",
+   "itemLabel": "Mount Washington",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Mount_Washington,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "2543300"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q610589",
+   "itemLabel": "Millis",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Millis,_Massachusetts",
+   "sites": "https://www.millisma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-41515"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q612187",
+   "itemLabel": "Cheshire",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Cheshire,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-13345"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q612652",
+   "itemLabel": "Mashpee",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Mashpee,_Massachusetts",
+   "sites": "http://www.ci.mashpee.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-39100"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q614143",
+   "itemLabel": "Peru",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Peru,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "2553050"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q652287",
+   "itemLabel": "Northfield",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Northfield,_Massachusetts",
+   "sites": "http://www.northfield.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-47835"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q657748",
+   "itemLabel": "Manchester-by-the-Sea",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Manchester-by-the-Sea,_Massachusetts",
+   "sites": "http://www.manchester.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-37995"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q663035",
+   "itemLabel": "Lincoln",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Lincoln,_Massachusetts",
+   "sites": "http://www.lincolntown.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-35425"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q665011",
+   "itemLabel": "Bedford",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Bedford,_Massachusetts",
+   "sites": "http://www.town.bedford.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-04615"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q665163",
+   "itemLabel": "Nahant",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Nahant,_Massachusetts",
+   "sites": "http://www.nahant.org/default.shtml",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-43580"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q672025",
+   "itemLabel": "Ashburnham",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Ashburnham,_Massachusetts",
+   "sites": "https://www.ashburnham-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-01885"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q684535",
+   "itemLabel": "Maynard",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Maynard,_Massachusetts",
+   "sites": "http://www.townofmaynard-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-39625"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q739428",
+   "itemLabel": "Milton",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Milton,_Massachusetts",
+   "sites": "https://www.townofmilton.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-41690"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q782882",
+   "itemLabel": "Dracut",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Dracut,_Massachusetts",
+   "sites": "http://www.dracut-ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-17475"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q808535",
+   "itemLabel": "Barnstable",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Barnstable,_Massachusetts",
+   "sites": "https://town.barnstable.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-03690"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2317792",
+   "itemLabel": "Hancock",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Hancock,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-28180"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2318103",
+   "itemLabel": "Shirley",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Shirley,_Massachusetts",
+   "sites": "http://www.shirley-ma.gov",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-61590"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2318167",
+   "itemLabel": "Hinsdale",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Hinsdale,_Massachusetts",
+   "sites": "http://hinsdale-mass.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-30315"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536854",
+   "itemLabel": "New Marlborough",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/New_Marlborough,_Massachusetts",
+   "sites": "http://www.new-marlborough.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-45420"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536859",
+   "itemLabel": "Stoughton",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Stoughton,_Massachusetts",
+   "sites": "http://www.stoughton-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-67945"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536864",
+   "itemLabel": "Pelham",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Pelham,_Massachusetts",
+   "sites": "http://www.townofpelham.org",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-52560"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536875",
+   "itemLabel": "Pembroke",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Pembroke,_Massachusetts",
+   "sites": "http://www.townofpembrokemass.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-52630"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536885",
+   "itemLabel": "Wrentham",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Wrentham,_Massachusetts",
+   "sites": "http://wrentham.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-82315"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536890",
+   "itemLabel": "Westhampton",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Westhampton,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-76380"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536900",
+   "itemLabel": "Whitman",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Whitman,_Massachusetts",
+   "sites": "http://www.whitman-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-79530"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536927",
+   "itemLabel": "Seekonk",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Seekonk,_Massachusetts",
+   "sites": "https://www.seekonk-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-60645"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536948",
+   "itemLabel": "Medway",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Medway,_Massachusetts",
+   "sites": "http://www.townofmedway.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-39975"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536955",
+   "itemLabel": "Huntington",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Huntington,_Massachusetts",
+   "sites": "http://www.huntingtonma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-31785"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536964",
+   "itemLabel": "Middlefield",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Middlefield,_Massachusetts",
+   "sites": "http://www.middlefieldma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-40990"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536981",
+   "itemLabel": "Plainville",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Plainville,_Massachusetts",
+   "sites": "https://www.plainville.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-54100"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q816096",
+   "itemLabel": "Belmont",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Belmont,_Massachusetts",
+   "sites": "http://www.town.belmont.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-05070"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q830669",
+   "itemLabel": "Foxborough",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Foxborough,_Massachusetts",
+   "sites": "https://www.foxboroughma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-24820"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q911438",
+   "itemLabel": "Brewster",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Brewster,_Massachusetts",
+   "sites": "http://www.town.brewster.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-07980"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q912750",
+   "itemLabel": "Wilbraham",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Wilbraham,_Massachusetts",
+   "sites": "http://www.wilbraham-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-79740"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q919097",
+   "itemLabel": "Cummington",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Cummington,_Massachusetts",
+   "sites": "http://www.cummington-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-16040"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q926146",
+   "itemLabel": "Sandwich",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Sandwich,_Massachusetts",
+   "sites": "http://www.sandwichmass.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-59735"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q929667",
+   "itemLabel": "Lexington",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Lexington,_Massachusetts",
+   "sites": "https://www.lexingtonma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-35215"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q942254",
+   "itemLabel": "Franklin",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Franklin,_Massachusetts",
+   "sites": "http://franklinma.virtualtownhall.net/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-25172"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q945957",
+   "itemLabel": "Ayer",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Ayer,_Massachusetts",
+   "sites": "http://www.ayer.ma.us",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-03005"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q951490",
+   "itemLabel": "Monroe",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Monroe,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-42040"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q951779",
+   "itemLabel": "Lynnfield",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Lynnfield,_Massachusetts",
+   "sites": "http://www.town.lynnfield.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-37560"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2318398",
+   "itemLabel": "Chelmsford",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Chelmsford,_Massachusetts",
+   "sites": "http://www.townofchelmsford.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-13135"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2318445",
+   "itemLabel": "Lanesborough",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Lanesborough,_Massachusetts",
+   "sites": "http://www.lanesborough-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-34340"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2318577",
+   "itemLabel": "Dalton",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Dalton,_Massachusetts",
+   "sites": "http://www.dalton-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-16180"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2536988",
+   "itemLabel": "Plympton",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Plympton,_Massachusetts",
+   "sites": "http://town.plympton.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-54415"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2537019",
+   "itemLabel": "Hubbardston",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Hubbardston,_Massachusetts",
+   "sites": "http://www.hubbardstonma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-31435"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2539175",
+   "itemLabel": "Mendon",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Mendon,_Massachusetts",
+   "sites": "http://www.mendonma.net/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-40255"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2539237",
+   "itemLabel": "Paxton",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Paxton,_Massachusetts",
+   "sites": "http://www.townofpaxton.net/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-52420"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2549311",
+   "itemLabel": "Worthington",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Worthington,_Massachusetts",
+   "sites": "http://www.worthington-ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-82175"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2557377",
+   "itemLabel": "Heath",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Heath,_Massachusetts",
+   "sites": "http://www.townofheath.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-29650"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2559500",
+   "itemLabel": "Boylston",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Boylston,_Massachusetts",
+   "sites": "http://www.boylston-ma.gov",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-07525"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2559543",
+   "itemLabel": "Charlton",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Charlton,_Massachusetts",
+   "sites": "http://www.townofcharlton.net/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-12715"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2559640",
+   "itemLabel": "Templeton",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Templeton,_Massachusetts",
+   "sites": "http://www.templeton1.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-69275"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2559706",
+   "itemLabel": "Hanover",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Hanover,_Massachusetts",
+   "sites": "http://www.hanover-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-28285"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2559758",
+   "itemLabel": "Westminster",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Westminster,_Massachusetts",
+   "sites": "http://www.westminster-ma.gov",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-77010"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2559867",
+   "itemLabel": "Holden",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Holden,_Massachusetts",
+   "sites": "http://www.townofholden.net",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-30560"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2559909",
+   "itemLabel": "Shrewsbury",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Shrewsbury,_Massachusetts",
+   "sites": "http://www.shrewsbury-ma.gov",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-61800"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2559976",
+   "itemLabel": "Upton",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Upton,_Massachusetts",
+   "sites": "http://www.upton.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-71480"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2560012",
+   "itemLabel": "Southborough",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Southborough,_Massachusetts",
+   "sites": "http://www.southboroughtown.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-63165"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2560090",
+   "itemLabel": "Athol",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Athol,_Massachusetts",
+   "sites": "http://www.athol-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-02480"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2560271",
+   "itemLabel": "Bolton",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Bolton,_Massachusetts",
+   "sites": "http://www.townofbolton.com",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-06365"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2560349",
+   "itemLabel": "New Braintree",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/New_Braintree,_Massachusetts",
+   "sites": "http://www.newbraintree.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-45105"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q403428",
+   "itemLabel": "Billerica",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Billerica,_Massachusetts",
+   "sites": "http://www.town.billerica.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-05805"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q425586",
+   "itemLabel": "Millbury",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Millbury,_Massachusetts",
+   "sites": "http://www.millbury-ma.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-41340"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q426209",
+   "itemLabel": "Clinton",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Clinton,_Massachusetts",
+   "sites": "http://www.clintonma.gov",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-14395"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q432359",
+   "itemLabel": "Westport",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Westport,_Massachusetts",
+   "sites": "http://www.westport-ma.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-77570"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q513332",
+   "itemLabel": "Millville",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Millville,_Massachusetts",
+   "sites": "http://www.millvillema.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-41585"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q521279",
+   "itemLabel": "Bellingham",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Bellingham,_Massachusetts",
+   "sites": "http://www.bellighamma.org",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-04930"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q523240",
+   "itemLabel": "Concord",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Concord,_Massachusetts",
+   "sites": "https://www.concordma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-15060"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2427326",
+   "itemLabel": "Douglas",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Douglas,_Massachusetts",
+   "sites": "http://www.douglasma.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-17300"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2427371",
+   "itemLabel": "North Reading",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/North_Reading,_Massachusetts",
+   "sites": "http://www.northreadingma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-48955"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2427398",
+   "itemLabel": "Oxford",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Oxford,_Massachusetts",
+   "sites": "http://www.town.oxford.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-51825"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2429617",
+   "itemLabel": "Hanson",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Hanson,_Massachusetts",
+   "sites": "http://www.hanson-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-28495"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2429627",
+   "itemLabel": "Duxbury",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Duxbury,_Massachusetts",
+   "sites": "http://www.town.duxbury.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-17895"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2429639",
+   "itemLabel": "Avon",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Avon,_Massachusetts",
+   "sites": "http://www.avonmass.org",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-02935"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2429659",
+   "itemLabel": "East Bridgewater",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/East_Bridgewater,_Massachusetts",
+   "sites": "http://www.eastbridgewaterma.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-18455"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2429670",
+   "itemLabel": "Canton",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Canton,_Massachusetts",
+   "sites": "http://www.town.canton.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-11315"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2429681",
+   "itemLabel": "Cohasset",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Cohasset,_Massachusetts",
+   "sites": "http://www.townofcohasset.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-14640"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2431273",
+   "itemLabel": "Otis",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Otis,_Massachusetts",
+   "sites": "http://www.townofotisma.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-51580"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2431309",
+   "itemLabel": "West Stockbridge",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/West_Stockbridge,_Massachusetts",
+   "sites": "http://www.weststockbridge-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-77990"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2431405",
+   "itemLabel": "Savoy",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Savoy,_Massachusetts",
+   "sites": "https://townofsavoy.com",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-60225"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2431532",
+   "itemLabel": "Washington",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Washington,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-73335"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2431621",
+   "itemLabel": "Egremont",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Egremont,_Massachusetts",
+   "sites": "http://www.egremont-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-21360"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3974584",
+   "itemLabel": "Stow",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Stow,_Massachusetts",
+   "sites": "http://www.stow-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-68050"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3976365",
+   "itemLabel": "Sturbridge",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Sturbridge,_Massachusetts",
+   "sites": "http://www.town.sturbridge.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-68155"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q4020333",
+   "itemLabel": "Winchendon",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Winchendon,_Massachusetts",
+   "sites": "http://www.townofwinchendon.com/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-80405"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q4020379",
+   "itemLabel": "Windsor",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Windsor,_Massachusetts",
+   "sites": "http://windsormass.com",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-80685"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q18372627",
+   "itemLabel": "Nantucket",
+   "countyLabel": "Nantucket County",
+   "art": "https://en.wikipedia.org/wiki/Nantucket,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-43790"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54185",
+   "itemLabel": "Leominster",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Leominster,_Massachusetts",
+   "sites": "http://www.leominster-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-35075"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54191",
+   "itemLabel": "Randolph",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Randolph,_Massachusetts",
+   "sites": "http://www.randolph-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-56000"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54189",
+   "itemLabel": "Marlborough",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Marlborough,_Massachusetts",
+   "sites": "http://www.marlborough-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-38715"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q54195",
+   "itemLabel": "Weymouth",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Weymouth,_Massachusetts",
+   "sites": "http://www.weymouth.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-78972"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1362648",
+   "itemLabel": "Auburn",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Auburn,_Massachusetts",
+   "sites": "https://www.auburnma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-02760"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1362736",
+   "itemLabel": "Ashland",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Ashland,_Massachusetts",
+   "sites": "https://www.ashlandmass.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-02130"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1523514",
+   "itemLabel": "Falmouth",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Falmouth,_Massachusetts",
+   "sites": "http://www.falmouthmass.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-23105"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1530814",
+   "itemLabel": "Erving",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Erving,_Massachusetts",
+   "sites": "http://www.erving-ma.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-21780"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1530924",
+   "itemLabel": "Greenfield",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Greenfield,_Massachusetts",
+   "sites": "http://www.townofgreenfield.org/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-27060"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1547816",
+   "itemLabel": "Groveland",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Groveland,_Massachusetts",
+   "sites": "http://www.grovelandma.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-27620"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1587876",
+   "itemLabel": "Harvard",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Harvard,_Massachusetts",
+   "sites": "http://www.harvard.ma.us",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-28950"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q951858",
+   "itemLabel": "Wilmington",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Wilmington,_Massachusetts",
+   "sites": "https://www.wilmingtonma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-80230"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q957421",
+   "itemLabel": "Rutland",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Rutland,_Massachusetts",
+   "sites": "https://www.townofrutland.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-58825"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q962640",
+   "itemLabel": "West Brookfield",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/West_Brookfield,_Massachusetts",
+   "sites": "http://www.wbrookfield.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-75400"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q962807",
+   "itemLabel": "Wareham",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Wareham,_Massachusetts",
+   "sites": "http://www.wareham.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-72985"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q971430",
+   "itemLabel": "Harwich",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Harwich,_Massachusetts",
+   "sites": "http://harwichma.virtualtownhall.net/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-29020"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q983837",
+   "itemLabel": "Williamstown",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Williamstown,_Massachusetts",
+   "sites": "http://williamstown.ws/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-79985"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q985233",
+   "itemLabel": "Edgartown",
+   "countyLabel": "Dukes County",
+   "art": "https://en.wikipedia.org/wiki/Edgartown,_Massachusetts",
+   "sites": "http://www.edgartown-ma.us/cms/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-21150"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q988568",
+   "itemLabel": "Framingham",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Framingham,_Massachusetts",
+   "sites": "http://www.framinghamma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-24960"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q990137",
+   "itemLabel": "Walpole",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Walpole,_Massachusetts",
+   "sites": "http://www.walpole-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-72495"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q991443",
+   "itemLabel": "Winchester",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Winchester,_Massachusetts",
+   "sites": "https://www.winchester.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-80510"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q995255",
+   "itemLabel": "Burlington",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Burlington,_Massachusetts",
+   "sites": "http://www.burlington.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-09840"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q997147",
+   "itemLabel": "Orleans",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Orleans,_Massachusetts",
+   "sites": "http://www.town.orleans.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-51440"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2318684",
+   "itemLabel": "Reading",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Reading,_Massachusetts",
+   "sites": "http://www.ci.reading.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-56130"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2329666",
+   "itemLabel": "Truro",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Truro,_Massachusetts",
+   "sites": "http://www.truro-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "2570605"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2414159",
+   "itemLabel": "Marshfield",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Marshfield,_Massachusetts",
+   "sites": "http://www.townofmarshfield.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-38855"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2414172",
+   "itemLabel": "Marion",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Marion,_Massachusetts",
+   "sites": "http://www.marionma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-38540"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2414193",
+   "itemLabel": "Hull",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Hull,_Massachusetts",
+   "sites": "http://www.town.hull.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-31645"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2414206",
+   "itemLabel": "Chesterfield",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Chesterfield,_Massachusetts",
+   "sites": "http://www.townofchesterfieldma.com/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-13590"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2414217",
+   "itemLabel": "Hatfield",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Hatfield,_Massachusetts",
+   "sites": "http://www.townofhatfield.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-29265"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2414308",
+   "itemLabel": "Belchertown",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Belchertown,_Massachusetts",
+   "sites": "http://www.belchertown.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-04825"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2414325",
+   "itemLabel": "Ware",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Ware,_Massachusetts",
+   "sites": "http://www.townofware.com/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-72880"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2414338",
+   "itemLabel": "Holbrook",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Holbrook,_Massachusetts",
+   "sites": "http://holbrookma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-30455"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2414374",
+   "itemLabel": "Williamsburg",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Williamsburg,_Massachusetts",
+   "sites": "http://www.burgy.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-79915"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2562317",
+   "itemLabel": "Royalston",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Royalston,_Massachusetts",
+   "sites": "http://www.royalston-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-58580"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2562576",
+   "itemLabel": "West Boylston",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/West_Boylston,_Massachusetts",
+   "sites": "http://www.westboylston.com",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-75155"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2565620",
+   "itemLabel": "Weston",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Weston,_Massachusetts",
+   "sites": "http://weston.govoffice.com/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-77255"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2577594",
+   "itemLabel": "Ashby",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Ashby,_Massachusetts",
+   "sites": "http://www.ci.ashby.ma.us",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-01955"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2577621",
+   "itemLabel": "Tyngsboro",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Tyngsborough,_Massachusetts",
+   "sites": "http://www.tyngsboroughma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-71025"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2887479",
+   "itemLabel": "Monterey",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Monterey,_Massachusetts",
+   "sites": "https://www.montereyma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-42460"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2901023",
+   "itemLabel": "Stoneham",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Stoneham,_Massachusetts",
+   "sites": "http://www.ci.stoneham.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-67665"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3493021",
+   "itemLabel": "Spencer",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Spencer,_Massachusetts",
+   "sites": "http://www.spencerma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-66105"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3567036",
+   "itemLabel": "Webster",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Webster,_Massachusetts",
+   "sites": "http://www.webster-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-73895"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3635167",
+   "itemLabel": "Barre",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Barre,_Massachusetts",
+   "sites": "http://www.townofbarre.com",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-03740"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3640815",
+   "itemLabel": "Blackstone",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Blackstone,_Massachusetts",
+   "sites": "http://www.townofblackstone.org",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-06015"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1114007",
+   "itemLabel": "Sharon",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Sharon,_Massachusetts",
+   "sites": "http://www.townofsharon.net/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-60785"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1114083",
+   "itemLabel": "Southbridge",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Southbridge,_Massachusetts",
+   "sites": "http://www.ci.southbridge.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-63345"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1118954",
+   "itemLabel": "Rochester",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Rochester,_Massachusetts",
+   "sites": "http://townofrochestermass.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-57600"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1144518",
+   "itemLabel": "Great Barrington",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Great_Barrington,_Massachusetts",
+   "sites": "http://www.townofgb.org/Pages/index",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-26815"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1193955",
+   "itemLabel": "Mansfield",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Mansfield,_Massachusetts",
+   "sites": "https://www.mansfieldma.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-38225"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1193968",
+   "itemLabel": "Hamilton",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Hamilton,_Massachusetts",
+   "sites": "http://www.hamiltonma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-27900"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416465",
+   "itemLabel": "New Salem",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/New_Salem,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-45490"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416473",
+   "itemLabel": "Colrain",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Colrain,_Massachusetts",
+   "sites": "http://colrain-ma.gov",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-14885"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416483",
+   "itemLabel": "Sunderland",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Sunderland,_Massachusetts",
+   "sites": "http://www.townofsunderland.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-68400"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416490",
+   "itemLabel": "Buckland",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Buckland,_Massachusetts",
+   "sites": "http://www.town.buckland.ma.us",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-09595"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416502",
+   "itemLabel": "Conway",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Conway,_Massachusetts",
+   "sites": "http://townofconway.com/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-15200"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416514",
+   "itemLabel": "Orange",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Orange,_Massachusetts",
+   "sites": "http://townoforange.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-51265"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416688",
+   "itemLabel": "Shutesbury",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Shutesbury,_Massachusetts",
+   "sites": "http://www.shutesbury.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-61905"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416696",
+   "itemLabel": "Rowe",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Rowe,_Massachusetts",
+   "sites": "http://www.rowe-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-58335"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416708",
+   "itemLabel": "Shelburne",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Shelburne,_Massachusetts",
+   "sites": "http://www.townofshelburne.com/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-61135"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2418318",
+   "itemLabel": "Aquinnah",
+   "countyLabel": "Dukes County",
+   "art": "https://en.wikipedia.org/wiki/Aquinnah,_Massachusetts",
+   "sites": "http://www.aquinnah-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-01585"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2418332",
+   "itemLabel": "Boxford",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Boxford,_Massachusetts",
+   "sites": "http://www.town.boxford.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-07420"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2418343",
+   "itemLabel": "Wenham",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Wenham,_Massachusetts",
+   "sites": "http://www.wenhamma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-74595"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3878560",
+   "itemLabel": "Northborough",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Northborough,_Massachusetts",
+   "sites": "https://www.town.northborough.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-46820"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3878561",
+   "itemLabel": "Northbridge",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Northbridge,_Massachusetts",
+   "sites": "http://www.northbridgemass.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-46925"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3880363",
+   "itemLabel": "Oakham",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Oakham,_Massachusetts",
+   "sites": "http://www.oakham-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-50670"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3901563",
+   "itemLabel": "Phillipston",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Phillipston,_Massachusetts",
+   "sites": "https://www.phillipston-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-53225"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3921977",
+   "itemLabel": "Princeton",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Princeton,_Massachusetts",
+   "sites": "http://town.princeton.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-55395"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1009192",
+   "itemLabel": "Hopkinton",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Hopkinton,_Massachusetts",
+   "sites": "http://www.hopkinton.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-31085"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1009209",
+   "itemLabel": "Dennis",
+   "countyLabel": "Barnstable County",
+   "art": "https://en.wikipedia.org/wiki/Dennis,_Massachusetts",
+   "sites": "http://www.town.dennis.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-16775"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1019248",
+   "itemLabel": "Halifax",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Halifax,_Massachusetts",
+   "sites": "http://www.town.halifax.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "2527795"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1021588",
+   "itemLabel": "Tewksbury",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Tewksbury,_Massachusetts",
+   "sites": "http://www.tewksbury-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-69415"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1023503",
+   "itemLabel": "Hudson",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Hudson,_Massachusetts",
+   "sites": "http://www.townofhudson.org/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-31540"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1023511",
+   "itemLabel": "Grafton",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Grafton,_Massachusetts",
+   "sites": "http://www.grafton-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-26430"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1023553",
+   "itemLabel": "Sterling",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Sterling,_Massachusetts",
+   "sites": "http://www.sterling-ma.gov",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-67385"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1041805",
+   "itemLabel": "Carlisle",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Carlisle,_Massachusetts",
+   "sites": "http://www.carlislema.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-11525"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1055854",
+   "itemLabel": "Westfield",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Westfield,_Massachusetts",
+   "sites": "http://www.cityofwestfield.org",
+   "types": "http://www.wikidata.org/entity/Q1093829",
+   "fips": "25-76030"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1066487",
+   "itemLabel": "Danvers",
+   "countyLabel": "Essex County",
+   "art": "https://en.wikipedia.org/wiki/Danvers,_Massachusetts",
+   "sites": "https://www.danversma.gov",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-16250"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1112732",
+   "itemLabel": "Florida",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Florida,_Massachusetts",
+   "sites": "https://www.townofflorida.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-24120"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q1113265",
+   "itemLabel": "Berkley",
+   "countyLabel": "Bristol County",
+   "art": "https://en.wikipedia.org/wiki/Berkley,_Massachusetts",
+   "sites": "http://www.townofberkley-ma.org",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-05280"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2415851",
+   "itemLabel": "Medfield",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Medfield,_Massachusetts",
+   "sites": "http://www.town.medfield.net/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-39765"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2415866",
+   "itemLabel": "Montgomery",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Montgomery,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-42530"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2415879",
+   "itemLabel": "Granville",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Granville,_Massachusetts",
+   "sites": "http://www.townofgranville.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-26675"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2415892",
+   "itemLabel": "Norwood",
+   "countyLabel": "Norfolk County",
+   "art": "https://en.wikipedia.org/wiki/Norwood,_Massachusetts",
+   "sites": "http://www.norwoodma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-50250"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2415925",
+   "itemLabel": "Monson",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Monson,_Massachusetts",
+   "sites": "http://www.monson-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-42145"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2415936",
+   "itemLabel": "Scituate",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/Scituate,_Massachusetts",
+   "sites": "http://www.scituatema.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-60330"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2415954",
+   "itemLabel": "Whately",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Whately,_Massachusetts",
+   "sites": "http://www.whately.org/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-79110"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2415977",
+   "itemLabel": "Tolland",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Tolland,_Massachusetts",
+   "sites": "http://www.tolland-ma.gov/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-70045"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2415991",
+   "itemLabel": "Russell",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Russell,_Massachusetts",
+   "sites": "http://www.townofrussell.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-58650"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416009",
+   "itemLabel": "Holland",
+   "countyLabel": "Hampden County",
+   "art": "https://en.wikipedia.org/wiki/Holland,_Massachusetts",
+   "sites": "http://town.holland.ma.us",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-30665"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416252",
+   "itemLabel": "Granby",
+   "countyLabel": "Hampshire County",
+   "art": "https://en.wikipedia.org/wiki/Granby,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-26535"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416264",
+   "itemLabel": "West Bridgewater",
+   "countyLabel": "Plymouth County",
+   "art": "https://en.wikipedia.org/wiki/West_Bridgewater,_Massachusetts",
+   "sites": "http://www.town.west-bridgewater.ma.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-75260"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416397",
+   "itemLabel": "Leyden",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Leyden,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-35285"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q2416408",
+   "itemLabel": "Wendell",
+   "countyLabel": "Franklin County",
+   "art": "https://en.wikipedia.org/wiki/Wendell,_Massachusetts",
+   "sites": "http://www.wendellmass.us/",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-74525"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3643258",
+   "itemLabel": "Boxborough",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Boxborough,_Massachusetts",
+   "sites": "http://www.boxborough-ma.gov",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-07350"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3679152",
+   "itemLabel": "Clarksburg",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/Clarksburg,_Massachusetts",
+   "sites": "http://www.clarksburgma.us/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-14010"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3776991",
+   "itemLabel": "Groton",
+   "countyLabel": "Middlesex County",
+   "art": "https://en.wikipedia.org/wiki/Groton,_Massachusetts",
+   "sites": "http://www.townofgroton.org",
+   "types": "http://www.wikidata.org/entity/Q2154459",
+   "fips": "25-27480"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3783358",
+   "itemLabel": "Hardwick",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Hardwick,_Massachusetts",
+   "sites": "http://www.townofhardwick.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-28740"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3840692",
+   "itemLabel": "Lunenburg",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Lunenburg,_Massachusetts",
+   "sites": "http://www.lunenburgonline.com/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-37420"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3857885",
+   "itemLabel": "Milford",
+   "countyLabel": "Worcester County",
+   "art": "https://en.wikipedia.org/wiki/Milford,_Massachusetts",
+   "sites": "https://www.milfordma.gov/",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-41165"
+  },
+  {
+   "item": "http://www.wikidata.org/entity/Q3875189",
+   "itemLabel": "New Ashford",
+   "countyLabel": "Berkshire County",
+   "art": "https://en.wikipedia.org/wiki/New_Ashford,_Massachusetts",
+   "types": "http://www.wikidata.org/entity/Q15127012",
+   "fips": "25-44385"
+  }
+ ]
+}
