@@ -4,7 +4,6 @@ Usage: python3 build.py   (writes site/index.html, site/privacy.html, site/data/
 """
 
 import json
-import shutil
 from datetime import date, datetime
 from html import escape
 from pathlib import Path
@@ -150,7 +149,7 @@ def page(title, description, body, path=""):
 </main>
 <footer class="site"><div class="wrap">
   <p>351 Watch compiles public records that Massachusetts towns post under the Open Meeting Law, plus state and legislative sources. It is informational only and not legal advice. Always confirm dates and terms with the town clerk or the cited source.</p>
-  <p><a href="/data/tracker.json">Download the tracker data (JSON)</a> · <a href="/privacy">Privacy</a> · <a href="/privacy#contact">Corrections and contact</a></p>
+  <p><a href="/privacy">Privacy</a> · <a href="/privacy#contact">Corrections and contact</a></p>
 </div></footer>
 <script src="/app.js" defer></script>
 </body>
@@ -305,11 +304,8 @@ def build_privacy():
 def main():
     tracker = load("tracker.json", {"generated": date.today().isoformat(), "framework": [], "items": []})
     hits = load("agenda_hits.json", {"hits": []})
-    (SITE / "data").mkdir(exist_ok=True)
     (SITE / "index.html").write_text(build_index(tracker, hits))
     (SITE / "privacy.html").write_text(build_privacy())
-    if (DATA / "tracker.json").exists():
-        shutil.copyfile(DATA / "tracker.json", SITE / "data" / "tracker.json")
     (SITE / "robots.txt").write_text("User-agent: *\nAllow: /\nDisallow: /api/\n")
     print(f"built: {len(tracker.get('items', []))} tracker rows, {len(hits.get('hits', []))} agenda hits")
 
