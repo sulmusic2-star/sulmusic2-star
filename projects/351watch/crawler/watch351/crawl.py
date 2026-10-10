@@ -56,6 +56,12 @@ def _resolve_pdf(fetcher: PoliteFetcher, resp: Response) -> Response:
 
 def scan_document(fetcher: PoliteFetcher, doc: AgendaDoc) -> tuple[list[dict], Extracted]:
     """Fetch + extract one agenda; return its keyword hits and the extraction."""
+    hits, ex, _ = scan_document_full(fetcher, doc)
+    return hits, ex
+
+
+def scan_document_full(fetcher: PoliteFetcher, doc: AgendaDoc) -> tuple[list[dict], Extracted, str]:
+    """scan_document plus the URL the hits cite (the resolved PDF for landing pages)."""
     resp = fetcher.get(doc.url)  # agenda documents are cached indefinitely
     if not resp.ok:
         raise FetchError(f"HTTP {resp.status}: {doc.url}")
@@ -80,7 +86,7 @@ def scan_document(fetcher: PoliteFetcher, doc: AgendaDoc) -> tuple[list[dict], E
             "text_source": "ocr" if ex.ocr else ex.kind,
             "_context": h.context,
         })
-    return hits, ex
+    return hits, ex, source_url
 
 
 def crawl_town(fetcher: PoliteFetcher, cfg: dict, window: Window) -> TownResult:

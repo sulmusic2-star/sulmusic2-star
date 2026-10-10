@@ -317,7 +317,7 @@ def bootstrap(cache_dir: Path, data_dir: Path = DATA, workers: int = 4, today: d
     """
     from . import extract
     from .adapters import REGISTRY
-    from .crawl import scan_document, town_configs
+    from .crawl import scan_document_full, town_configs
     from .current import load_towns
     from .fetch import FetchError, PoliteFetcher
     from .models import Window
@@ -394,13 +394,12 @@ def bootstrap(cache_dir: Path, data_dir: Path = DATA, workers: int = 4, today: d
                 counts["listed_not_cached"] += 1
             return
         try:
-            hits, ex = scan_document(fetcher, d)
+            hits, ex, source_url = scan_document_full(fetcher, d)
         except FetchError as e:
             index.put(make_record(d, state, first_seen=first_seen_for(d.url, None), today=seen_day, hits=[],
                                   status="error", error=str(e), attempts=1))
             counts["error"] += 1
             return
-        source_url = hits[0]["source_url"] if hits else (fetcher.get(d.url).final_url if d.resolve_pdf else d.url)
         status = "needs_ocr" if (ex.scanned and not ex.ocr) else "ok"
         index.put(make_record(d, state, first_seen=first_seen_for(d.url, source_url), today=seen_day,
                               hits=hits, ex=ex, source_url=source_url, status=status,

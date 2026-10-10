@@ -109,8 +109,8 @@ def legacy_agenda_hits(data_dir: Path = DATA) -> list[dict]:
     return out
 
 
-def index_agenda_hits(data_dir: Path = DATA) -> list[dict] | None:
-    """Agenda hits from the incremental document index, or None if there is none yet."""
+def index_agenda_hits(data_dir: Path = DATA) -> tuple[list[dict], set[str]] | None:
+    """(hits, states indexed) from the incremental document index, or None if there is none yet."""
     try:
         from .state import DocIndex
     except ImportError:
@@ -118,7 +118,8 @@ def index_agenda_hits(data_dir: Path = DATA) -> list[dict] | None:
     root = data_dir / "state" / "docs"
     if not root.exists() or not any(root.rglob("*.jsonl")):
         return None
-    return DocIndex(root).current_hits()
+    index = DocIndex(root)
+    return index.current_hits(), index.states()
 
 
 def other_hits(data_dir: Path = DATA, include_states: set[str] | None = None) -> list[dict]:
@@ -223,18 +224,20 @@ def archive_hits(hits: list[dict], archive_dir: Path) -> int:
 
 
 def build(data_dir: Path = DATA, today: date | None = None, archive: bool = True,
-          agenda_hits: list[dict] | None = None) -> dict:
+          agenda_hits: list[dict] | None = None, indexed_states: set[str] | None = None) -> dict:
     today = today or datetime.now(timezone.utc).date()
     start, end = today - timedelta(days=WINDOW_DAYS), today + timedelta(days=WINDOW_DAYS)
     towns = load_towns(data_dir)
     counties = county_lookup(towns)
     if agenda_hits is None:
-        agenda_hits = index_agenda_hits(data_dir)
-    if agenda_hits is None:
-        agenda_hits = legacy_agenda_hits(data_dir)
-    # The index/census covers the states crawled by this engine; per-state files
+        from_index = index_agenda_hits(data_dir)
+        if from_index is not None:
+            agenda_hits, indexed_states = from_index
+        else:
+            agenda_hits = legacy_agenda_hits(data_dir)
+    # The index (or census) covers the states crawled by this engine; per-state files
     # from other workstreams fill in states the index does not hold yet.
-    indexed_states = {(h.get("state") or "MA").upper() for h in agenda_hits}
+    indexed_states = set(indexed_states or ()) | {(h.get("state") or "MA").upper() for h in agenda_hits}
     raw = agenda_hits + [h for h in other_hits(data_dir)
                          if not (h["source"] == "agenda" and h["state"] in indexed_states)]
 
@@ -321,9 +324,9 @@ def write(doc: dict, path: Path) -> None:
 
 
 def rebuild(data_dir: Path = DATA, today: date | None = None, archive: bool = True,
-            agenda_hits: list[dict] | None = None) -> dict:
+            agenda_hits: list[dict] | None = None, indexed_states: set[str] | None = None) -> dict:
     """Build, validate and write data/hits_current.json; returns the document."""
-    doc = build(data_dir, today, archive, agenda_hits)
+    doc = build(data_dir, today, archive, agenda_hits, indexed_states)
     errs = validate(doc)
     if errs:
         raise ValueError(f"hits_current.json failed validation ({len(errs)}): " + "; ".join(errs[:10]))

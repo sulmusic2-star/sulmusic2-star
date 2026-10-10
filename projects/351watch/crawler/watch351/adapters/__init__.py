@@ -15,3 +15,4 @@ REGISTRY: dict[str, type[Adapter]] = {
 }
 
 __all__ = ["Adapter", "REGISTRY"]
+from .ri_sos import RISOSAdapter; REGISTRY[RISOSAdapter.platform] = RISOSAdapter  # RI Secretary of State Open Meetings portal
