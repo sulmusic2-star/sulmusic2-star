@@ -94,7 +94,7 @@ DOCLIKE = re.compile(r"\.pdf\b|\.docx?\b|/DocumentCenter/View/|Archive\.aspx\?AD
 HUB_TEXT = re.compile(r"\bagendas?\b|\bmeetings?\b|\bminutes\b|posted meetings|public notices?|meeting notices?|"
                       r"\bcalendar\b", re.I)
 BOARDS_HUB_TEXT = re.compile(r"boards?(?:\s*,)?\s*(?:&|and)?\s*(?:committees|commissions)|^boards$|"
-                             r"^government$|boards & committees|committees", re.I)
+                             r"government$|boards & committees|committees", re.I)
 SUBPAGE_TEXT = re.compile(r"^(?:20\d\d\s+)?(?:meeting\s+)?agendas?\b|agendas?\s*(?:&|and|/)\s*minutes|^meetings?$|"
                           r"^agenda center|^meeting (?:agendas|notices|schedule)|^(?:posted|public) meetings|"
                           r"^documents$|^archives?$|^agendas?,", re.I)
@@ -580,7 +580,8 @@ def try_board_page(st: TownState, key: str, url: str, label: str, depth: int = 0
     if depth == 0:
         here = page.final_url.split("#")[0].rstrip("/")
         subs = [l for l in page.links if same_site(st, l.url) and SUBPAGE_TEXT.search(l.text)
-                and l.url.split("#")[0].rstrip("/") != here and not EVENT_PAGE.search(l.url)]
+                and l.url.split("#")[0].rstrip("/") != here and not EVENT_PAGE.search(l.url)
+                and not re.search(r"\.(pdf|docx?|xlsx?)$", l.url.split("?")[0], re.I)]
         if key == "town_meeting":
             subs = [l for l in page.links if same_site(st, l.url) and WARRANT_TEXT.search(l.text)
                     and not re.search(r"\.(pdf|docx?)$", l.url.split("?")[0], re.I)] + subs
@@ -696,9 +697,10 @@ def vendor_status(st: TownState) -> None:
                     v["status"] = "vendor_challenge"
                     v["detail"] = f"{urlsplit(url).netloc} serves a Cloudflare-style bot challenge (HTTP {r.status}); not bypassed"
                     continue
-                if r.status in (401, 403):
+                if r.status in (401, 403, 429):
                     v["status"] = "vendor_blocked"
-                    v["detail"] = f"{urlsplit(url).netloc} answers HTTP {r.status} to automated requests"
+                    v["detail"] = (f"{urlsplit(url).netloc} answers HTTP {r.status}"
+                                   f"{' Too Many Requests' if r.status == 429 else ''} to automated requests")
                     continue
             except RobotsDisallowed:
                 allowed = False
@@ -715,6 +717,22 @@ def vendor_status(st: TownState) -> None:
             v["status"] = "robots_disallow"
             v["detail"] = f"robots.txt on {urlsplit(url).netloc} disallows 351WatchBot"
             continue
+        if key == "mytowngovernment":
+            # the canonical host serves a Cloudflare challenge; some towns link an http://www. variant
+            # that answers without one. Using it would sidestep the vendor's bot protection.
+            zip_ = re.search(r"/(\d{5})", url)
+            canon = f"https://mytowngovernment.org/{zip_.group(1)}" if zip_ else "https://mytowngovernment.org/"
+            try:
+                r = st.fetcher.get(canon, max_age=LISTING_AGE)
+                chal = is_challenge(r.status, r.text)
+            except FetchError:
+                chal = True
+            if chal:
+                v["status"] = "vendor_challenge"
+                v["detail"] = ("mytowngovernment.org serves a Cloudflare bot challenge (HTTP 403); not bypassed "
+                               "(an http://www. alias some towns link answers without it, but using it would "
+                               "sidestep the vendor's bot protection)")
+                continue
         if key == "boarddocs":
             try:
                 r = st.fetcher.get(url, max_age=LISTING_AGE)
@@ -769,15 +787,45 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
     website = website.rstrip("/")
     rec["website"] = website
     st.pages_fetched += 1
-    try:
-        home_resp = fetcher.get(website + "/", max_age=LISTING_AGE)
-    except RobotsDisallowed as e:
-        return finish("not_automated", "robots_disallow_site", f"robots.txt on the town site disallows 351WatchBot ({str(e)[:80]})")
-    except FetchError as e:
-        return finish("not_automated", "unreachable", f"homepage unreachable: {str(e)[:160]}")
+    # https first: some hosts (Revize on AWS ELB) answer 403 to plain http but 200 over https
+    variants = [re.sub(r"^http://", "https://", website)] + ([website] if website.startswith("http://") else [])
+    home_resp, err = None, None
+    for v in variants:
+        try:
+            home_resp = fetcher.get(v + "/", max_age=LISTING_AGE)
+        except RobotsDisallowed as e:
+            parts_ = urlsplit(v)
+            origin_ = f"{parts_.scheme}://{parts_.netloc}"
+            if "crawl-delay" in str(e):
+                err = ("crawl_delay_exceeds_cap", "robots.txt asks for a Crawl-delay above the crawler's 10 s cap "
+                       f"({str(e)[-40:].strip('() ')}); host skipped (a slower production schedule could honor it)")
+            elif fetcher._robots.get(origin_, "missing") is None:
+                err = ("robots_unavailable", "robots.txt answered 5xx / timed out, which RFC 9309 treats as "
+                       "'disallow all' for this run; host skipped")
+            else:
+                err = ("robots_disallow_site", f"robots.txt on the town site disallows 351WatchBot ({str(e)[:100]})")
+            home_resp = None
+            continue
+        except FetchError as e:
+            err = ("unreachable", f"homepage unreachable: {str(e)[:160]}")
+            home_resp = None
+            continue
+        if home_resp.ok:
+            website = v
+            break
+    if home_resp is None:
+        return finish("not_automated", *err)
+    rec["website"] = website
     if is_challenge(home_resp.status, home_resp.text):
         return finish("not_automated", "bot_challenge",
                       f"bot challenge (HTTP {home_resp.status}, Cloudflare-style) on the homepage; not bypassed")
+    if home_resp.status in (401, 403, 429):
+        akamai = re.search(r"edgesuite|AkamaiGHost", home_resp.text[:5000], re.I)
+        cf = re.search(r"cloudflare", home_resp.text[:8000], re.I)
+        who = "Akamai" if akamai else ("Cloudflare" if cf else "the site's firewall")
+        return finish("not_automated", "waf_block",
+                      f"HTTP {home_resp.status} '{'Access Denied' if akamai else 'Forbidden'}' from {who} on every "
+                      f"request (bot/IP filtering); not bypassed")
     if not home_resp.ok:
         return finish("not_automated", "http_error", f"homepage HTTP {home_resp.status}")
     home = parse_page(home_resp)
@@ -800,6 +848,9 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
     hub_pages = []
     for l in agenda_hubs[:2] + board_hubs[:1]:
         if "civicplus" in platforms and re.search(r"AgendaCenter", l.url, re.I):
+            continue
+        if re.search(r"DocumentCenter/Index/\d+", l.url) and re.search(r"agenda", l.text, re.I):
+            st.notes.append(f"JS-rendered document list (Document Center folder) linked as '{l.text}' from homepage")
             continue
         p = get_page(st, l.url)
         if p:

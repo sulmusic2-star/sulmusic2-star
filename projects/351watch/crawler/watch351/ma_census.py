@@ -149,7 +149,7 @@ def mma_community(fetcher: PoliteFetcher, url: str) -> dict:
 def normalize_site(url: str | None) -> str | None:
     if not url:
         return None
-    url = url.strip()
+    url = re.sub(r"^(https?://)+(https?://)", r"\2", url.strip(), flags=re.I)  # "http://https://x"
     if not re.match(r"^https?://", url, re.I):
         url = "http://" + url
     parts = urlsplit(url)
@@ -188,13 +188,31 @@ def check_site(fetcher: PoliteFetcher, url: str, town: str) -> dict:
     if is_challenge(r.status, text):
         res["result"] = "bot_challenge"
         return res
+    if r.status in (401, 403, 429):
+        res["result"] = "waf_block" if re.search(r"Access Denied|edgesuite|Request blocked|Forbidden",
+                                                 text[:5000], re.I) else f"http_{r.status}"
+        return res
     if not r.ok:
         res["result"] = f"http_{r.status}"
         return res
     name_rx = re.compile(r"\b" + re.escape(town).replace(r"\ ", r"[\s\-]+") + r"\b", re.I)
-    head = title + " " + soup.get_text(" ", strip=True)[:20000]
+    body_text = soup.get_text(" ", strip=True)
+    head = title + " " + body_text[:30000]
     res["name_match"] = bool(name_rx.search(head))
-    res["result"] = "ok" if res["name_match"] else "ok_name_not_found"
+    res["ma_match"] = bool(re.search(r"Massachusetts|\bMA\b|\bMass\.?\b|, ?MA\s+0\d{4}", head))
+    parked = (len(body_text) < 200 and re.search(r"location\.href|/lander|refresh", text[:3000], re.I)) or \
+        re.search(r"domain (?:is )?for sale|buy this domain|parked free|hugedomains", head, re.I)
+    tourism = re.search(r"\b(?:hotels?|lodging|vacation rentals?|things to do)\b", title, re.I)
+    if parked:
+        res["result"] = "parked_or_redirect_stub"
+    elif tourism:
+        res["result"] = "not_official_site"
+    elif res["name_match"] and res["ma_match"]:
+        res["result"] = "ok"
+    elif res["name_match"]:
+        res["result"] = "ok_name_only"
+    else:
+        res["result"] = "ok_name_not_found"
     return res
 
 
@@ -235,11 +253,25 @@ def build_one(fetcher: PoliteFetcher, r: dict, counties: dict, directory: dict, 
         nu = normalize_site(u)
         if nu and nu not in [c[1] for c in cands]:
             cands.append((src, nu))
-    checks = [dict(check_site(fetcher, u, name), source=src) for src, u in cands]
+    checks = []
+    for src, u in cands:
+        # many directory entries are http://; some hosts (Revize on AWS ELB) answer 403 to
+        # plain http but 200 over https, so try https first and fall back to the listed URL
+        variants = [re.sub(r"^http://", "https://", u)] + ([u] if u.startswith("http://") else [])
+        for v in variants:
+            c = dict(check_site(fetcher, v, name), source=src)
+            checks.append(c)
+            if c["result"] in ("ok", "ok_name_only", "bot_challenge"):
+                break
     chosen = next((c for c in checks if c["result"] == "ok"), None)
     if chosen is None:
-        chosen = next((c for c in checks if c["result"] in ("bot_challenge", "ok_name_not_found",
-                                                             "robots_disallow_homepage")), None)
+        # the directory's site exists but refuses us (challenge / WAF / robots): that is the
+        # answer for this town; do not go guessing other domains
+        chosen = next((c for c in checks if c["result"] in ("bot_challenge", "waf_block", "http_403", "http_401",
+                                                             "http_429", "robots_disallow_homepage",
+                                                             "ok_name_only")), None)
+    if chosen is None:
+        chosen = next((c for c in checks if c["result"] == "ok_name_not_found" and c["source"] == "mma"), None)
     if chosen is None:
         slug = re.sub(r"[^a-z]", "", name.lower())
         for pat in GUESS_PATTERNS:
@@ -248,7 +280,7 @@ def build_one(fetcher: PoliteFetcher, r: dict, counties: dict, directory: dict, 
             if c["result"] == "dns_fail":
                 continue
             checks.append(c)
-            if c["result"] in ("ok", "bot_challenge"):
+            if c["result"] == "ok":
                 chosen = c
                 break
     website = None
