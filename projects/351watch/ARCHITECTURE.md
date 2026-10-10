@@ -37,7 +37,7 @@ Read this before changing anything. Several workstreams build in parallel; these
       "source_url": "https://…/Agenda/_10062026-5418",
       "listing_url": "https://…",
       "document_title": "…",
-      "text_source": "pdf|ocr|html",
+      "text_source": "pdf|ocr|html|docx",
       "first_seen": "2026-10-10T15:11:10+00:00",
       "days_before_meeting": 3.2,
       "source": "agenda|massdep_wetlands|…"
@@ -46,6 +46,7 @@ Read this before changing anything. Several workstreams build in parallel; these
 }
 ```
 
+- `meeting_date` may be `null` (e.g., undated town-meeting warrants); then `days_before_meeting` is omitted.
 - `board_key` ∈ `planning_board, zoning_board_of_appeals, conservation_commission, select_board, town_meeting` (outside MA, map local names onto these: NY Town Board → `select_board`, NJ Board of Adjustment → `zoning_board_of_appeals`, CT Zoning Commission → `planning_board`, CT Inland Wetlands → `conservation_commission`).
 - `topics` keys: `battery_storage, solar, data_center, moratorium, clean_energy_siting, 40b_comprehensive_permit, wireless_telecom, zoning_amendment` (+ `wetlands_filing` for MassDEP-sourced items). New topics must be added here first.
 - Window: meetings from 120 days back to 120 days ahead; older items move to `data/state/hits_archive/YYYY-MM.jsonl`.
