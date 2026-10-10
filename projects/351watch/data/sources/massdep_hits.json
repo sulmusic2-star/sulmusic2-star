@@ -1,0 +1,16 @@
+{
+ "generated": "2026-10-10T23:45:54+00:00",
+ "source": "massdep_wetlands",
+ "source_name": "MassDEP Wetlands Protection Act filings (EEA Data Portal, WIRe)",
+ "window": {
+  "start": "2026-10-05",
+  "end": "2026-10-09"
+ },
+ "states": [
+  "MA"
+ ],
+ "filings_total": 8,
+ "hits_count": 0,
+ "notes": "meeting_date is the DEP filing date (the API has no hearing date); the Conservation Commission must open its hearing within 21 days of filing (310 CMR 10.05(5)(b)). Extra per-hit fields are under 'details'.",
+ "hits": []
+}

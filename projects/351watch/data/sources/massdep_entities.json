@@ -1,0 +1,17 @@
+{
+ "generated": "2026-10-10T23:45:54+00:00",
+ "source": "massdep_wetlands",
+ "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
+ "link_types": {
+  "applicant_name": "applicant name contains a known developer's name",
+  "care_of": "applicant listed 'c/o' a company",
+  "payor": "fee check paid by a different company that is not an engineer, consultant or law firm",
+  "self": "applicant is the known developer itself",
+  "same_applicant_other_filing": "the same applicant's other filing has a direct link",
+  "shared_contact": "same applicant contact person (stored only as a hash) as a linked filing",
+  "same_site": "same town and street address as a linked filing (weakest)"
+ },
+ "parents": [],
+ "applicants": [],
+ "top_third_party_payors_all_filings": []
+}
