@@ -268,13 +268,248 @@ def fingerprint_town(fetcher: PoliteFetcher, sample: dict, cur: dict) -> dict:
     return cfg
 
 
+# --------------------------------------------------------------------------
+# Hand-curated facts from manual inspection (2026-10-10), applied on top of
+# the automatic fingerprint. `listings` here are watch351 "generic" adapter
+# listings unless the platform says otherwise. Every reason below was
+# observed with 351WatchBot through PoliteFetcher.
+def _gl(board, key_, url, pattern, exclude=None, resolve=False):
+    d = {"board": board, "board_key": key_, "url": url, "link_pattern": pattern}
+    if exclude:
+        d["exclude_pattern"] = exclude
+    if resolve:
+        d["resolve_pdf"] = True
+    return d
+
+
+_AS = "https://www.agendasuite.org/iip/groton"
+_VG = "https://www.vergennes.org/government"
+_EJ = "https://www.essexjunction.gov/meeting-calendar"
+_CLAY = "https://townofclayny.gov/minutes-agendas?field_board_value="
+_EW = "https://www.eastwhiteland.org/government/agenda_minutes/"
+_UB = "https://upperburrelltwp.com/"
+_NEP = "https://neptunetownship.org/agendas-minutes/"
+_COV = "https://covingtontwp.org/document-category/2026-meeting-agendas/"
+
+CURATED: dict[str, dict] = {
+    # ---------------- CT
+    "Groton, CT": {"platform": "generic", "agenda_platform": "AgendaSuite IIP (Provox Systems)", "automated": True,
+                   "note": "Agendas live on agendasuite.org/iip/groton. Only the portal homepage links meetings with "
+                           "dated link text (about one week either side of today); the full meeting list uses "
+                           "'Details' links that the generic adapter deliberately skips. Documents are HTML "
+                           "meeting pages with the agenda outline.",
+                   "listings": [
+                       _gl("Planning & Zoning Commission", "planning_board", _AS, r"for Planning & Zoning Commission"),
+                       _gl("Zoning Board of Appeals", "zoning_board_of_appeals", _AS, r"for Zoning Board of Appeals"),
+                       _gl("Inland Wetlands Agency", "conservation_commission", _AS, r"for Inland Wetlands Agency"),
+                       _gl("Conservation Commission", "conservation_commission", _AS, r"for Conservation Commission"),
+                       _gl("Town Council", "select_board", _AS, r"for Town Council(?! Committee)"),
+                   ]},
+    "New Milford, CT": {"automated": False, "agenda_platform": "unknown (site not fetched)",
+                        "reason": "robots.txt sets Crawl-delay: 15 for all agents; watch351.fetch skips hosts asking "
+                                  "for more than 10 s. Technically automatable at 1 request per 15 s if the cap is raised."},
+    "Cornwall, CT": {"agenda_platform": "WordPress (behind Cloudflare)"},
+    "New Haven, CT": {"agenda_platform": "Legistar (Board of Alders) + city site behind Akamai",
+                      "reason": "newhavenct.gov returns HTTP 403 'Access Denied' (Akamai edge) to 351WatchBot; "
+                                "newhavenct.legistar.com/Calendar.aspx returned a 19-byte empty body. Not bypassed."},
+    "East Lyme, CT": {"agenda_platform": "WordPress (eltownhall.com)",
+                      "reason": "robots.txt allows only named bots (Bingbot, Googlebot, ...) and ends with "
+                                "'User-agent: * / Disallow: /'."},
+    # ---------------- RI
+    "Hopkinton, RI": {"agenda_platform": "unknown (Cloudflare); agendas are also filed on the RI SOS Open Meetings portal"},
+    "Exeter, RI": {"agenda_platform": "unknown (Cloudflare); agendas are also filed on the RI SOS Open Meetings portal"},
+    "Johnston, RI": {"platform": "clerkbase", "agenda_platform": "ClerkBase (clerkshq.com/johnston-ri)", "automated": False,
+                     "reason": "Town site (CivicPlus CMS, no AgendaCenter) links Town Council, Planning Board and Zoning "
+                               "Board agendas to ClerkBase, whose browse tree is loaded by JavaScript; no static listing "
+                               "for the generic adapter. Needs a ClerkBase adapter (or the RI SOS portal)."},
+    "West Greenwich, RI": {"note": "AgendaCenter has only a Town Council category; Planning Board / ZBA agendas are "
+                                   "posted only to the RI SOS Open Meetings portal."},
+    "North Kingstown, RI": {"drop_listings": r"Building Code"},
+    # ---------------- NH
+    "Concord, NH": {"platform": "generic", "agenda_platform": "Legistar (City Council) + CivicPlus CMS without AgendaCenter",
+                    "automated": True,
+                    "note": "Legistar Calendar.aspx lists every body on one page; the generic adapter cannot split "
+                            "bodies, so all are labeled City Council. CivicPlus Archive Center (AMID=46) stopped in 2015.",
+                    "listings": [_gl("City Council (Legistar calendar)", "select_board",
+                                     "https://concordnh.legistar.com/Calendar.aspx", r"M=A&ID=")]},
+    "Wakefield, NH": {"agenda_platform": "Granicus govAccess (vyhlif) behind Cloudflare"},
+    # ---------------- VT
+    "Vergennes, VT": {"platform": "generic_revize", "agenda_platform": "Revize", "automated": True,
+        "note": "Revize: www host 302-redirects documents to cms*.revize.com, whose robots.txt allows only URLs ending in .pdf; Revize links carry a ?t= cache-buster, so the stock generic adapter is refused by robots (verified 2026-10-10 on Vergennes). Crawled with the probe shim generic_revize, which drops ?t=.", 
+                      "listings": [
+                          _gl("City Council", "select_board", f"{_VG}/city_council/city_council_agendas_and_minutes.php", r"^Agenda\b"),
+                          _gl("Development Review Board", "planning_board",
+                              f"{_VG}/development_review_board/development_review_board_agendas_and_minutes.php", r"agenda"),
+                      ]},
+    "Vernon, VT": {"platform": "heygov", "agenda_platform": "TownWeb site + HeyGov meetings widget", "automated": False,
+                   "reason": "/meetings is rendered client-side from api.heygov.com, whose robots.txt is "
+                             "'User-agent: * Disallow: /' (served as text/html, which watch351.fetch would wrongly "
+                             "treat as allow-all; honored here)."},
+    "Royalton, VT": {"platform": "generic", "agenda_platform": "Revize", "automated": False,
+                     "reason": "No agendas online: Selectboard page says notices are posted on bulletin boards at the "
+                               "Town Office, laundromat and Royalton Academy; Planning Commission page has only the Town Plan."},
+    "Essex Junction, VT": {"platform": "generic", "agenda_platform": "TYPO3 CMS (fileadmin) meeting pages", "automated": True,
+                           "note": "Meeting calendar shows upcoming meetings only; each meeting page links the agenda PDF.",
+                           "listings": [
+                               _gl("City Council", "select_board", _EJ, r"^City Council \d", resolve=True),
+                               _gl("Planning Commission", "planning_board", _EJ, r"^Planning Commission \d", resolve=True),
+                               _gl("Development Review Board", "planning_board", _EJ, r"^Development Review Board \d", resolve=True),
+                           ]},
+    "Northfield, VT": {"platform": "generic", "agenda_platform": "Wix", "automated": False,
+                       "reason": "Wix site; 'Select Board Agendas & Minutes' page links dated PDFs but none from 2026 "
+                                 "(latest 2025, and they are minutes); no current agenda listing in static HTML."},
+    "South Burlington, VT": {},
+    # ---------------- ME
+    "Scarborough, ME": {"platform": "diligent", "agenda_platform": "Diligent Community (iCompass)", "automated": False,
+                        "reason": "Agendas are on scarboroughmaine.community.diligentoneplatform.com, whose robots.txt "
+                                  "disallows 351WatchBot."},
+    # ---------------- NY
+    "Clay, NY": {"platform": "generic", "agenda_platform": "Drupal", "automated": True,
+                 "note": "The ?field_board_value filter does not filter the 'recent agendas' block, so each listing "
+                         "also matches on the board name in the file name.",
+                 "listings": [
+                     _gl("Planning Board", "planning_board", _CLAY + "Planning%20Board", r"View Agenda.*Planning"),
+                     _gl("Zoning Board of Appeals", "zoning_board_of_appeals", _CLAY + "Zoning%20Board%20of%20Appeals",
+                         r"View Agenda.*(Zoning|ZBA)"),
+                     _gl("Town Board", "select_board", _CLAY + "Town%20Board", r"View Agenda.*Town"),
+                 ]},
+    "Lysander, NY": {"platform": "generic", "agenda_platform": "Drupal", "automated": True,
+                     "note": "One /board-meetings page mixes Town Board, Planning Board and ZBA agendas; several file "
+                             "names carry no separators (a10082026pb_0.pdf, 100526zbaagenda.pdf) so their dates do not parse.",
+                     "listings": [_gl("Board Meetings (Town Board / Planning / ZBA)", "mixed",
+                                      "https://lysanderny.gov/board-meetings", r"agenda", r"minutes|materials")]},
+    "Waterford, NY": {"agenda_platform": "Drupal (behind Cloudflare)"},
+    "LaGrange, NY": {"platform": "generic", "agenda_platform": "WordPress", "automated": False,
+                     "reason": "Board pages' 'Agendas' link is a HubSpot email-tracking redirect (hs-sales-engage.com) "
+                               "to an external host, not an agenda listing; no agenda files on the town site."},
+    "Dover, NY": {"platform": "civicclerk", "tenant": "doverny", "agenda_platform": "CivicClerk (+ CivicPlus CMS)"},
+    # ---------------- NJ
+    "Andover Township, NJ": {"platform": "ecode360", "agenda_platform": "eCode360 document hosting (General Code)",
+                             "automated": False,
+                             "reason": "Agendas are hosted under ecode360.com/documents/pub/AN2011/Agendas/, and ecode360.com "
+                                       "robots.txt disallows /documents for all agents."},
+    "Lopatcong Township, NJ": {"agenda_platform": "Granicus govAccess-style CMS behind Akamai"},
+    "Mansfield Township (Warren), NJ": {"platform": "generic", "agenda_platform": "Joomla", "automated": True,
+                                        "listings": [
+                                            _gl("Township Committee", "select_board",
+                                                "https://www.mansfieldtownship-nj.gov/index.php/government/agendas-minutes-bill-list",
+                                                r"^Agenda\b"),
+                                            _gl("Land Use Board", "planning_board",
+                                                "https://www.mansfieldtownship-nj.gov/index.php/boards-committees/land-use-board",
+                                                r"agenda"),
+                                        ]},
+    "Neptune Township, NJ": {"platform": "generic", "agenda_platform": "Drupal", "automated": True,
+                             "note": "Link text is month and day only ('January 28'); dates come from file names "
+                                     "when they include a year. Some agendas are legacy .doc files (not extractable).",
+                             "listings": [
+                                 _gl("Planning Board", "planning_board", _NEP + "planning-board", r"agenda"),
+                                 _gl("Zoning Board of Adjustment", "zoning_board_of_appeals", _NEP + "zoning-board-adjustment", r"agenda"),
+                                 _gl("Township Committee", "select_board", _NEP + "township-committee", r"agenda"),
+                                 _gl("Environmental and Shade Tree Commission", "conservation_commission",
+                                     _NEP + "environmental-and-shade-tree-commission", r"agenda"),
+                             ]},
+    # ---------------- PA
+    "Upper Burrell Township, PA": {"platform": "generic", "agenda_platform": "WordPress", "automated": True,
+                                   "listings": [
+                                       _gl("Board of Supervisors", "select_board", _UB + "supervisors/", r"agenda"),
+                                       _gl("Planning Commission", "planning_board", _UB + "planning-commission/", r"agenda"),
+                                       _gl("Zoning Hearing Board", "zoning_board_of_appeals", _UB + "zoning-hearing-board/", r"agenda"),
+                                   ]},
+    "East Whiteland Township, PA": {"platform": "generic_revize", "agenda_platform": "Revize", "automated": True,
+        "note": "Revize: www host 302-redirects documents to cms*.revize.com, whose robots.txt allows only URLs ending in .pdf; Revize links carry a ?t= cache-buster, so the stock generic adapter is refused by robots (verified 2026-10-10 on Vergennes). Crawled with the probe shim generic_revize, which drops ?t=.", 
+                                    "listings": [
+                                        _gl("Board of Supervisors", "select_board", _EW + "board_of_supervisors.php", r"^Agenda\b"),
+                                        _gl("Planning Commission", "planning_board", _EW + "planning_commission.php", r"^Agenda\b"),
+                                        _gl("Zoning Hearing Board", "zoning_board_of_appeals", _EW + "zoning_hearing_board.php", r"agenda"),
+                                        _gl("Environmental Advisory Council", "conservation_commission",
+                                            _EW + "environmental_advisory_council.php", r"agenda"),
+                                    ]},
+    "East Vincent Township, PA": {"agenda_platform": "unknown (site not fetched)",
+                                  "reason": "robots.txt: named search bots get narrow rules, then 'User-agent: * Disallow: /'."},
+    "Granville Township (Mifflin), PA": {"platform": "generic", "agenda_platform": "WordPress + FileBird Document Library",
+                                         "automated": False,
+                                         "reason": "Minutes & Agendas page is an empty shell filled client-side by the "
+                                                   "FileBird Document Library block (wp-json/filebird/v1); no links in "
+                                                   "static HTML. Data-center ZHB appeal files are in a SharePoint folder."},
+    "Watts Township (Perry), PA": {"platform": "generic", "agenda_platform": "WordPress + FileBird Document Library",
+                                   "automated": False,
+                                   "reason": "Meeting Agendas and Planning Commission Agendas pages are rendered "
+                                             "client-side by the FileBird Document Library block; no links in static HTML."},
+    "Covington Township (Lackawanna), PA": {"platform": "generic", "agenda_platform": "WordPress (document categories)",
+                                            "automated": True,
+                                            "listings": [
+                                                _gl("Board of Supervisors", "select_board", _COV, r"BOS|Supervisors"),
+                                                _gl("Planning Commission", "planning_board", _COV, r"Planning Commission"),
+                                            ]},
+}
+
+
+class RevizeQueryStripAdapter(REGISTRY["generic"]):
+    """PROBE SHIM, not part of watch351. Revize serves documents from
+    cms*.revize.com, whose robots.txt allows only URLs ending in .pdf/.doc
+    (`Allow: /*.pdf$` then `Disallow: /`). Revize page links append a
+    `?t=<timestamp>` cache-buster, so the stock generic adapter's document
+    requests are (correctly) refused by robots. Dropping the cache-buster
+    yields the robots-allowed canonical URL."""
+    platform = "generic_revize"
+
+    def list_agendas(self, cfg, window):
+        docs = super().list_agendas(cfg, window)
+        for d in docs:
+            d.url = re.sub(r"\?t=\d+$", "", d.url)
+        return docs
+
+
+REGISTRY.setdefault("generic_revize", RevizeQueryStripAdapter)
+
+
+def apply_curated(fetcher: PoliteFetcher, cfg: dict) -> dict:
+    cur = CURATED.get(key(cfg), {})
+    drop = cur.get("drop_listings")
+    cfg.update({k: v for k, v in cur.items() if k != "drop_listings"})
+    if drop:
+        cfg["listings"] = [l for l in cfg.get("listings", []) if not re.search(drop, l["board"], re.I)]
+        cfg["dropped_listings_pattern"] = drop
+    if cfg.get("reason") and "automated" not in cur:
+        cfg["automated"] = False
+    if cfg.get("platform") == "civicplus":
+        cfg.setdefault("agenda_platform", "CivicPlus AgendaCenter")
+        if not cfg.get("listings"):
+            cfg.update(automated=False, reason=cfg.get("reason") or "CivicPlus site without AgendaCenter listings")
+    if cfg.get("platform") == "civicclerk" and cfg.get("tenant"):
+        from watch351.adapters.civicclerk import CivicClerkAdapter
+        cc = CivicClerkAdapter(fetcher)
+        today = date.today()
+        try:
+            evs = cc.events(cfg, Window(today - timedelta(days=365), today + timedelta(days=90)))
+        except (FetchError, RuntimeError) as e:
+            cfg.update(automated=False, reason=f"CivicClerk API error: {e}")
+            return cfg
+        names = sorted({(e.get("categoryName") or e.get("eventName") or "").strip() for e in evs})
+        cfg.setdefault("fingerprint", {})["civicclerk_categories"] = names
+        cfg["fingerprint"]["stock_classifier_boards"] = sorted({classify_board(n) for n in names if classify_board(n)})
+        cfg["fingerprint"]["categories_missed_by_stock_classifier"] = [n for n in names if classify_ext(n) and not classify_board(n)]
+        cfg["listings"] = [{"board": n, "board_key": classify_board(n) or classify_ext(n),
+                            "url": f"https://{cfg['tenant']}.portal.civicclerk.com",
+                            "classified_by": "stock" if classify_board(n) else "extended"}
+                           for n in names if classify_board(n) or classify_ext(n)]
+        cfg["automated"] = bool(cfg["listings"])
+        cfg.pop("reason", None)
+    if not cfg.get("agenda_platform"):
+        fp = cfg.get("fingerprint", {})
+        if fp.get("block_markers"):
+            cfg["agenda_platform"] = "unknown (blocked)"
+    return cfg
+
+
 def cmd_fingerprint(args, fetcher: PoliteFetcher) -> None:
     sample = load(SAMPLE, {"towns": []})["towns"]
     conf = load(CONFIG, {"towns": []})
     by_key = {key(t): t for t in conf["towns"]}
     todo = select(sample, args.towns)
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        out = list(pool.map(lambda s: fingerprint_town(fetcher, s, by_key.get(key(s), {})), todo))
+        out = list(pool.map(lambda s: fingerprint_town(fetcher, s, {}), todo))
+    out = [apply_curated(fetcher, c) for c in out]
     for c in out:
         by_key[key(c)] = c
     order = [key(s) for s in sample]

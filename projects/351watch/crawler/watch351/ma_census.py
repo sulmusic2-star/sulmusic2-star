@@ -41,6 +41,7 @@ WIKIDATA_FILE = DATA / "ma_wikidata_snapshot.json"
 TOWNS_ALL_FILE = DATA / "towns_ma_all.json"
 LEADTIME_FILE = DATA / "leadtime_ma_all.json"
 HITS_ALL_FILE = DATA / "agenda_hits_ma_all.json"
+LEADTIME_RAW_FILE = DATA / "leadtime_rows_ma_all.json"
 CENSUS_LOCAL = DATA / "ma_census_sub_est2024.csv"
 
 CENSUS_CSV = ("https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/"
@@ -292,6 +293,72 @@ def cmd_municipalities(args, fetcher: PoliteFetcher) -> None:
     print(f"{doc['count']} municipalities, population {doc['population_2024_est_total']:,}")
     print("website status:", dict(c))
     print(f"wrote {MUNI_FILE}")
+
+
+# --------------------------------------------------------------------------
+# 2. discovery over all municipalities
+# --------------------------------------------------------------------------
+
+def load_munis(names: str | None = None) -> list[dict]:
+    munis = json.loads(MUNI_FILE.read_text())["municipalities"]
+    if names:
+        wanted = {n.strip().lower() for n in names.split(",")}
+        munis = [m for m in munis if m["town"].lower() in wanted]
+    return munis
+
+
+def cmd_discover(args, fetcher: PoliteFetcher) -> None:
+    from collections import Counter
+    from .discover_census import discover_municipality
+    munis = load_munis(args.towns)
+
+    def one(m: dict) -> dict:
+        try:
+            return discover_municipality(fetcher, m)
+        except Exception as e:  # noqa: BLE001 - one bad site must not stop the census
+            log.exception("%s: discovery crashed", m["town"])
+            return {"town": m["town"], "website": m.get("website"), "automated": False,
+                    "status": "not_automated", "reason_code": "discovery_error",
+                    "reason": f"discovery crashed: {type(e).__name__}: {str(e)[:160]}", "listings": [],
+                    "pop_2024_est": m.get("pop_2024_est"), "pop_2020": m.get("pop_2020"),
+                    "county": m.get("county"), "kind": m.get("kind"),
+                    "legislative_body": m.get("legislative_body"), "_leadtime_rows": []}
+
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        recs = list(pool.map(one, munis))
+    # merge into an existing census file when running a subset
+    existing = {}
+    if args.towns and TOWNS_ALL_FILE.exists():
+        existing = {t["town"]: t for t in json.loads(TOWNS_ALL_FILE.read_text())["towns"]}
+    raw_rows = {}
+    if args.towns and LEADTIME_RAW_FILE.exists():
+        raw_rows = json.loads(LEADTIME_RAW_FILE.read_text())["rows_by_town"]
+    for r in recs:
+        raw_rows[r["town"]] = r.pop("_leadtime_rows", [])
+        existing[r["town"]] = r
+    towns = sorted(existing.values(), key=lambda t: t["town"])
+    doc = {
+        "_about": ("351 Watch census of all 351 Massachusetts municipalities: agenda platform, crawlable "
+                   "listing per tracked board (with evidence: agendas dated within the last 365 / next 120 days), "
+                   "or the precise reason a town is not automated. Same per-town schema as data/towns.json; "
+                   "built by `python3 -m watch351.ma_census discover`."),
+        "generated": now_iso(),
+        "boards_tracked": ["planning_board", "zoning_board_of_appeals", "conservation_commission",
+                           "select_board", "town_meeting"],
+        "evidence_rule": "board automated only if its listing shows >=1 agenda dated in [today-365d, today+120d]",
+        "count": len(towns),
+        "automated": sum(1 for t in towns if t.get("automated")),
+        "towns": towns,
+    }
+    save_json(TOWNS_ALL_FILE, doc)
+    save_json(LEADTIME_RAW_FILE, {"_about": "Raw agenda rows with platform posted/published timestamps, "
+                                  "collected during census discovery (CivicPlus AgendaCenter search, CivicClerk API).",
+                                  "generated": now_iso(), "rows_by_town": raw_rows})
+    c = Counter(t.get("reason_code") or "automated" for t in towns)
+    print(f"{doc['automated']}/{len(towns)} automated; {dict(c.most_common())}")
+    for r in recs:
+        print(f"{r['town']:<22} {str(r.get('platform')):<11} {'AUTO' if r.get('automated') else '----'} "
+              f"{','.join(r.get('boards_found', [])):<80} {(r.get('reason') or '')[:110]}")
 
 
 # --------------------------------------------------------------------------

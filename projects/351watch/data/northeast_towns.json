@@ -5,7 +5,7 @@
       "state": "CT",
       "website": "https://www.groton-ct.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:36+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 200,
         "final_url": "https://www.groton-ct.gov/",
         "block_markers": [],
@@ -18,25 +18,62 @@
           "ecode360.com",
           "www.revize.com"
         ]
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "AgendaSuite IIP (Provox Systems)",
+      "automated": true,
+      "note": "Agendas live on agendasuite.org/iip/groton. Only the portal homepage links meetings with dated link text (about one week either side of today); the full meeting list uses 'Details' links that the generic adapter deliberately skips. Documents are HTML meeting pages with the agenda outline.",
+      "listings": [
+        {
+          "board": "Planning & Zoning Commission",
+          "board_key": "planning_board",
+          "url": "https://www.agendasuite.org/iip/groton",
+          "link_pattern": "for Planning & Zoning Commission"
+        },
+        {
+          "board": "Zoning Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://www.agendasuite.org/iip/groton",
+          "link_pattern": "for Zoning Board of Appeals"
+        },
+        {
+          "board": "Inland Wetlands Agency",
+          "board_key": "conservation_commission",
+          "url": "https://www.agendasuite.org/iip/groton",
+          "link_pattern": "for Inland Wetlands Agency"
+        },
+        {
+          "board": "Conservation Commission",
+          "board_key": "conservation_commission",
+          "url": "https://www.agendasuite.org/iip/groton",
+          "link_pattern": "for Conservation Commission"
+        },
+        {
+          "board": "Town Council",
+          "board_key": "select_board",
+          "url": "https://www.agendasuite.org/iip/groton",
+          "link_pattern": "for Town Council(?! Committee)"
+        }
+      ]
     },
     {
       "town": "New Milford",
       "state": "CT",
       "website": "https://www.newmilford.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:36+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "error": "RobotsDisallowed: https://www.newmilford.org/ (crawl-delay 15.0s too long for prototype)"
       },
       "automated": false,
-      "reason": "homepage not fetchable: RobotsDisallowed: https://www.newmilford.org/ (crawl-delay 15.0s too long for prototype)"
+      "reason": "robots.txt sets Crawl-delay: 15 for all agents; watch351.fetch skips hosts asking for more than 10 s. Technically automatable at 1 request per 15 s if the cap is raised.",
+      "agenda_platform": "unknown (site not fetched)"
     },
     {
       "town": "Cornwall",
       "state": "CT",
       "website": "https://www.cornwallct.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:36+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 403,
         "final_url": "https://cornwallct.org/",
         "block_markers": [
@@ -47,14 +84,15 @@
       },
       "automated": false,
       "platform": null,
-      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed",
+      "agenda_platform": "WordPress (behind Cloudflare)"
     },
     {
       "town": "Harwinton",
       "state": "CT",
       "website": "https://www.harwinton.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:36+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 200,
         "final_url": "https://www.harwinton.gov/",
         "block_markers": [],
@@ -125,14 +163,15 @@
         "select_board",
         "zoning_board_of_appeals"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "New Haven",
       "state": "CT",
       "website": "https://www.newhavenct.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:36+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 403,
         "final_url": "https://www.newhavenct.gov/",
         "block_markers": [
@@ -143,25 +182,27 @@
       },
       "automated": false,
       "platform": null,
-      "reason": "akamai bot challenge on homepage (HTTP 403); not bypassed"
+      "reason": "newhavenct.gov returns HTTP 403 'Access Denied' (Akamai edge) to 351WatchBot; newhavenct.legistar.com/Calendar.aspx returned a 19-byte empty body. Not bypassed.",
+      "agenda_platform": "Legistar (Board of Alders) + city site behind Akamai"
     },
     {
       "town": "East Lyme",
       "state": "CT",
       "website": "https://eltownhall.com",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:36+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "error": "RobotsDisallowed: https://eltownhall.com/"
       },
       "automated": false,
-      "reason": "homepage not fetchable: RobotsDisallowed: https://eltownhall.com/"
+      "reason": "robots.txt allows only named bots (Bingbot, Googlebot, ...) and ends with 'User-agent: * / Disallow: /'.",
+      "agenda_platform": "WordPress (eltownhall.com)"
     },
     {
       "town": "Hopkinton",
       "state": "RI",
       "website": "https://www.hopkintonri.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:36+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 403,
         "final_url": "https://www.hopkintonri.gov/",
         "block_markers": [
@@ -172,14 +213,15 @@
       },
       "automated": false,
       "platform": null,
-      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed",
+      "agenda_platform": "unknown (Cloudflare); agendas are also filed on the RI SOS Open Meetings portal"
     },
     {
       "town": "West Greenwich",
       "state": "RI",
       "website": "https://www.wgtownri.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:36+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 200,
         "final_url": "https://www.wgtownri.org/",
         "block_markers": [],
@@ -211,14 +253,16 @@
       "boards_found": [
         "select_board"
       ],
-      "automated": true
+      "automated": true,
+      "note": "AgendaCenter has only a Town Council category; Planning Board / ZBA agendas are posted only to the RI SOS Open Meetings portal.",
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Johnston",
       "state": "RI",
       "website": "https://www.johnstonri.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 200,
         "final_url": "https://www.johnstonri.gov/",
         "block_markers": [],
@@ -231,14 +275,18 @@
           "ecode360.com"
         ],
         "agendacenter_categories": 0
-      }
+      },
+      "platform": "clerkbase",
+      "agenda_platform": "ClerkBase (clerkshq.com/johnston-ri)",
+      "automated": false,
+      "reason": "Town site (CivicPlus CMS, no AgendaCenter) links Town Council, Planning Board and Zoning Board agendas to ClerkBase, whose browse tree is loaded by JavaScript; no static listing for the generic adapter. Needs a ClerkBase adapter (or the RI SOS portal)."
     },
     {
       "town": "North Kingstown",
       "state": "RI",
       "website": "https://www.northkingstownri.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 200,
         "final_url": "https://www.northkingstownri.gov/",
         "block_markers": [],
@@ -271,13 +319,6 @@
           "board_key": "zoning_board_of_appeals",
           "category_id": "34",
           "url": "https://www.northkingstownri.gov/AgendaCenter/Board-of-Appeals-34",
-          "classified_by": "stock"
-        },
-        {
-          "board": "Building Code Board of Appeals",
-          "board_key": "zoning_board_of_appeals",
-          "category_id": "17",
-          "url": "https://www.northkingstownri.gov/AgendaCenter/Building-Code-Board-of-Appeals-17",
           "classified_by": "stock"
         },
         {
@@ -315,14 +356,16 @@
         "select_board",
         "zoning_board_of_appeals"
       ],
-      "automated": true
+      "automated": true,
+      "dropped_listings_pattern": "Building Code",
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Portsmouth",
       "state": "RI",
       "website": "https://www.portsmouthri.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 200,
         "final_url": "https://www.portsmouthri.gov/",
         "block_markers": [],
@@ -379,14 +422,15 @@
         "select_board",
         "zoning_board_of_appeals"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Exeter",
       "state": "RI",
       "website": "https://www.exeterri.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 403,
         "final_url": "https://www.exeterri.gov/",
         "block_markers": [
@@ -397,14 +441,15 @@
       },
       "automated": false,
       "platform": null,
-      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed",
+      "agenda_platform": "unknown (Cloudflare); agendas are also filed on the RI SOS Open Meetings portal"
     },
     {
       "town": "Bow",
       "state": "NH",
       "website": "https://www.bownh.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 200,
         "final_url": "https://www.bownh.gov/",
         "block_markers": [],
@@ -477,14 +522,15 @@
         "town_meeting",
         "zoning_board_of_appeals"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Nottingham",
       "state": "NH",
       "website": "https://www.nottingham-nh.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 403,
         "final_url": "https://www.nottingham-nh.gov/",
         "block_markers": [
@@ -495,14 +541,15 @@
       },
       "automated": false,
       "platform": null,
-      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed",
+      "agenda_platform": "unknown (blocked)"
     },
     {
       "town": "Rochester",
       "state": "NH",
       "website": "https://www.rochesternh.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 403,
         "final_url": "https://www.rochesternh.gov/",
         "block_markers": [
@@ -513,14 +560,15 @@
       },
       "automated": false,
       "platform": null,
-      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed",
+      "agenda_platform": "unknown (blocked)"
     },
     {
       "town": "Wakefield",
       "state": "NH",
       "website": "https://www.wakefieldnh.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 403,
         "final_url": "https://www.wakefieldnh.gov/",
         "block_markers": [
@@ -531,14 +579,15 @@
       },
       "automated": false,
       "platform": null,
-      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed",
+      "agenda_platform": "Granicus govAccess (vyhlif) behind Cloudflare"
     },
     {
       "town": "Concord",
       "state": "NH",
       "website": "https://www.concordnh.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 200,
         "final_url": "https://www.concordnh.gov/",
         "block_markers": [],
@@ -550,14 +599,26 @@
           "nh-concord2.civicplus.com"
         ],
         "agendacenter_categories": 0
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "Legistar (City Council) + CivicPlus CMS without AgendaCenter",
+      "automated": true,
+      "note": "Legistar Calendar.aspx lists every body on one page; the generic adapter cannot split bodies, so all are labeled City Council. CivicPlus Archive Center (AMID=46) stopped in 2015.",
+      "listings": [
+        {
+          "board": "City Council (Legistar calendar)",
+          "board_key": "select_board",
+          "url": "https://concordnh.legistar.com/Calendar.aspx",
+          "link_pattern": "M=A&ID="
+        }
+      ]
     },
     {
       "town": "Pembroke",
       "state": "NH",
       "website": "https://www.pembroke-nh.com",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:34+00:00",
         "status": 200,
         "final_url": "https://www.pembroke-nh.com/",
         "block_markers": [],
@@ -619,14 +680,15 @@
         "select_board",
         "zoning_board_of_appeals"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Vergennes",
       "state": "VT",
       "website": "https://www.vergennes.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:57:20+00:00",
         "status": 200,
         "final_url": "https://www.vergennes.org/",
         "block_markers": [],
@@ -637,14 +699,32 @@
           "cms8.revize.com",
           "www.revize.com"
         ]
-      }
+      },
+      "platform": "generic_revize",
+      "agenda_platform": "Revize",
+      "automated": true,
+      "note": "Revize: www host 302-redirects documents to cms*.revize.com, whose robots.txt allows only URLs ending in .pdf; Revize links carry a ?t= cache-buster, so the stock generic adapter is refused by robots (verified 2026-10-10 on Vergennes). Crawled with the probe shim generic_revize, which drops ?t=.",
+      "listings": [
+        {
+          "board": "City Council",
+          "board_key": "select_board",
+          "url": "https://www.vergennes.org/government/city_council/city_council_agendas_and_minutes.php",
+          "link_pattern": "^Agenda\\b"
+        },
+        {
+          "board": "Development Review Board",
+          "board_key": "planning_board",
+          "url": "https://www.vergennes.org/government/development_review_board/development_review_board_agendas_and_minutes.php",
+          "link_pattern": "agenda"
+        }
+      ]
     },
     {
       "town": "Vernon",
       "state": "VT",
       "website": "https://vernonvt.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:35+00:00",
         "status": 200,
         "final_url": "https://vernonvt.org/",
         "block_markers": [],
@@ -653,14 +733,18 @@
           "townweb"
         ],
         "vendor_hosts_linked": []
-      }
+      },
+      "platform": "heygov",
+      "agenda_platform": "TownWeb site + HeyGov meetings widget",
+      "automated": false,
+      "reason": "/meetings is rendered client-side from api.heygov.com, whose robots.txt is 'User-agent: * Disallow: /' (served as text/html, which watch351.fetch would wrongly treat as allow-all; honored here)."
     },
     {
       "town": "South Burlington",
       "state": "VT",
       "website": "https://www.southburlingtonvt.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:35+00:00",
         "status": 200,
         "final_url": "https://www.southburlingtonvt.gov/",
         "block_markers": [],
@@ -711,14 +795,15 @@
         "planning_board",
         "select_board"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Royalton",
       "state": "VT",
       "website": "https://www.royaltonvt.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:37+00:00",
+        "checked_at": "2026-10-10T15:55:35+00:00",
         "status": 200,
         "final_url": "https://www.royaltonvt.gov/",
         "block_markers": [],
@@ -729,27 +814,58 @@
           "webgen1.revize.com",
           "www.revize.com"
         ]
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "Revize",
+      "automated": false,
+      "reason": "No agendas online: Selectboard page says notices are posted on bulletin boards at the Town Office, laundromat and Royalton Academy; Planning Commission page has only the Town Plan."
     },
     {
       "town": "Essex Junction",
       "state": "VT",
       "website": "https://www.essexjunction.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:38+00:00",
+        "checked_at": "2026-10-10T15:55:35+00:00",
         "status": 200,
         "final_url": "https://www.essexjunction.gov/",
         "block_markers": [],
         "platform_markers": [],
         "vendor_hosts_linked": []
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "TYPO3 CMS (fileadmin) meeting pages",
+      "automated": true,
+      "note": "Meeting calendar shows upcoming meetings only; each meeting page links the agenda PDF.",
+      "listings": [
+        {
+          "board": "City Council",
+          "board_key": "select_board",
+          "url": "https://www.essexjunction.gov/meeting-calendar",
+          "link_pattern": "^City Council \\d",
+          "resolve_pdf": true
+        },
+        {
+          "board": "Planning Commission",
+          "board_key": "planning_board",
+          "url": "https://www.essexjunction.gov/meeting-calendar",
+          "link_pattern": "^Planning Commission \\d",
+          "resolve_pdf": true
+        },
+        {
+          "board": "Development Review Board",
+          "board_key": "planning_board",
+          "url": "https://www.essexjunction.gov/meeting-calendar",
+          "link_pattern": "^Development Review Board \\d",
+          "resolve_pdf": true
+        }
+      ]
     },
     {
       "town": "Northfield",
       "state": "VT",
       "website": "https://www.northfield-vt.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:38+00:00",
+        "checked_at": "2026-10-10T15:55:35+00:00",
         "status": 200,
         "final_url": "https://www.northfield-vt.gov/",
         "block_markers": [],
@@ -757,14 +873,18 @@
           "wix"
         ],
         "vendor_hosts_linked": []
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "Wix",
+      "automated": false,
+      "reason": "Wix site; 'Select Board Agendas & Minutes' page links dated PDFs but none from 2026 (latest 2025, and they are minutes); no current agenda listing in static HTML."
     },
     {
       "town": "Brunswick",
       "state": "ME",
       "website": "https://www.brunswickme.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:38+00:00",
+        "checked_at": "2026-10-10T15:55:35+00:00",
         "status": 200,
         "final_url": "https://www.brunswickme.gov/",
         "block_markers": [],
@@ -826,14 +946,15 @@
         "select_board",
         "zoning_board_of_appeals"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Scarborough",
       "state": "ME",
       "website": "https://www.scarboroughmaine.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:39+00:00",
+        "checked_at": "2026-10-10T15:55:37+00:00",
         "status": 200,
         "final_url": "https://www.scarboroughmaine.org/",
         "block_markers": [],
@@ -843,14 +964,18 @@
         "vendor_hosts_linked": [
           "scarboroughmaine.community.diligentoneplatform.com"
         ]
-      }
+      },
+      "platform": "diligent",
+      "agenda_platform": "Diligent Community (iCompass)",
+      "automated": false,
+      "reason": "Agendas are on scarboroughmaine.community.diligentoneplatform.com, whose robots.txt disallows 351WatchBot."
     },
     {
       "town": "Bangor",
       "state": "ME",
       "website": "https://www.bangormaine.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:39+00:00",
+        "checked_at": "2026-10-10T15:55:37+00:00",
         "status": 200,
         "final_url": "https://www.bangormaine.gov/",
         "block_markers": [],
@@ -910,14 +1035,15 @@
         "select_board",
         "zoning_board_of_appeals"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Westbrook",
       "state": "ME",
       "website": "https://www.westbrookmaine.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:39+00:00",
+        "checked_at": "2026-10-10T15:55:37+00:00",
         "status": 200,
         "final_url": "https://www.westbrookmaine.gov/",
         "block_markers": [],
@@ -979,14 +1105,15 @@
         "select_board",
         "zoning_board_of_appeals"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Wiscasset",
       "state": "ME",
       "website": "https://www.wiscasset.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:40+00:00",
+        "checked_at": "2026-10-10T15:55:37+00:00",
         "status": 200,
         "final_url": "https://www.wiscasset.gov/",
         "block_markers": [],
@@ -1028,14 +1155,15 @@
         "planning_board",
         "select_board"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Augusta",
       "state": "ME",
       "website": "https://www.augustamaine.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:40+00:00",
+        "checked_at": "2026-10-10T15:55:37+00:00",
         "status": 200,
         "final_url": "https://www.augustamaine.gov/",
         "block_markers": [],
@@ -1080,14 +1208,15 @@
         "planning_board",
         "select_board"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Clay",
       "state": "NY",
       "website": "https://townofclayny.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:40+00:00",
+        "checked_at": "2026-10-10T15:57:20+00:00",
         "status": 200,
         "final_url": "https://townofclayny.gov/",
         "block_markers": [],
@@ -1095,14 +1224,38 @@
           "drupal"
         ],
         "vendor_hosts_linked": []
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "Drupal",
+      "automated": true,
+      "note": "The ?field_board_value filter does not filter the 'recent agendas' block, so each listing also matches on the board name in the file name.",
+      "listings": [
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "url": "https://townofclayny.gov/minutes-agendas?field_board_value=Planning%20Board",
+          "link_pattern": "View Agenda.*Planning"
+        },
+        {
+          "board": "Zoning Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://townofclayny.gov/minutes-agendas?field_board_value=Zoning%20Board%20of%20Appeals",
+          "link_pattern": "View Agenda.*(Zoning|ZBA)"
+        },
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://townofclayny.gov/minutes-agendas?field_board_value=Town%20Board",
+          "link_pattern": "View Agenda.*Town"
+        }
+      ]
     },
     {
       "town": "Lysander",
       "state": "NY",
       "website": "https://lysanderny.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:42+00:00",
+        "checked_at": "2026-10-10T15:55:39+00:00",
         "status": 200,
         "final_url": "https://lysanderny.gov/",
         "block_markers": [],
@@ -1113,14 +1266,27 @@
         "vendor_hosts_linked": [
           "ecode360.com"
         ]
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "Drupal",
+      "automated": true,
+      "note": "One /board-meetings page mixes Town Board, Planning Board and ZBA agendas; several file names carry no separators (a10082026pb_0.pdf, 100526zbaagenda.pdf) so their dates do not parse.",
+      "listings": [
+        {
+          "board": "Board Meetings (Town Board / Planning / ZBA)",
+          "board_key": "mixed",
+          "url": "https://lysanderny.gov/board-meetings",
+          "link_pattern": "agenda",
+          "exclude_pattern": "minutes|materials"
+        }
+      ]
     },
     {
       "town": "Waterford",
       "state": "NY",
       "website": "https://www.townofwaterfordny.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:42+00:00",
+        "checked_at": "2026-10-10T15:55:40+00:00",
         "status": 403,
         "final_url": "https://www.townofwaterfordny.gov/",
         "block_markers": [
@@ -1131,14 +1297,15 @@
       },
       "automated": false,
       "platform": null,
-      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed"
+      "reason": "cloudflare bot challenge on homepage (HTTP 403); not bypassed",
+      "agenda_platform": "Drupal (behind Cloudflare)"
     },
     {
       "town": "LaGrange",
       "state": "NY",
       "website": "https://www.lagrangeny.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:42+00:00",
+        "checked_at": "2026-10-10T15:55:40+00:00",
         "status": 200,
         "final_url": "https://www.lagrangeny.gov/",
         "block_markers": [],
@@ -1146,14 +1313,18 @@
           "wordpress"
         ],
         "vendor_hosts_linked": []
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "WordPress",
+      "automated": false,
+      "reason": "Board pages' 'Agendas' link is a HubSpot email-tracking redirect (hs-sales-engage.com) to an external host, not an agenda listing; no agenda files on the town site."
     },
     {
       "town": "Dover",
       "state": "NY",
       "website": "https://www.doverny.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:43+00:00",
+        "checked_at": "2026-10-10T15:55:40+00:00",
         "status": 200,
         "final_url": "https://www.doverny.gov/",
         "block_markers": [],
@@ -1170,15 +1341,51 @@
           "portal.laserfiche.com"
         ],
         "agendacenter_categories": 0,
-        "civicclerk_tenant": "doverny"
-      }
+        "civicclerk_tenant": "doverny",
+        "civicclerk_categories": [
+          "Planning Board",
+          "Town Board",
+          "Zoning Board of Appeals"
+        ],
+        "stock_classifier_boards": [
+          "planning_board",
+          "zoning_board_of_appeals"
+        ],
+        "categories_missed_by_stock_classifier": [
+          "Town Board"
+        ]
+      },
+      "platform": "civicclerk",
+      "tenant": "doverny",
+      "agenda_platform": "CivicClerk (+ CivicPlus CMS)",
+      "listings": [
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "url": "https://doverny.portal.civicclerk.com",
+          "classified_by": "stock"
+        },
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://doverny.portal.civicclerk.com",
+          "classified_by": "extended"
+        },
+        {
+          "board": "Zoning Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://doverny.portal.civicclerk.com",
+          "classified_by": "stock"
+        }
+      ],
+      "automated": true
     },
     {
       "town": "Claverack",
       "state": "NY",
       "website": "https://www.claverackny.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:43+00:00",
+        "checked_at": "2026-10-10T15:55:41+00:00",
         "status": 200,
         "final_url": "https://www.claverackny.gov/",
         "block_markers": [],
@@ -1231,14 +1438,15 @@
         "select_board",
         "zoning_board_of_appeals"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Andover Township",
       "state": "NJ",
       "website": "https://www.andovertwp.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:43+00:00",
+        "checked_at": "2026-10-10T15:55:41+00:00",
         "status": 200,
         "final_url": "https://www.andovertwp.org/",
         "block_markers": [],
@@ -1248,14 +1456,18 @@
         "vendor_hosts_linked": [
           "www.ecode360.com"
         ]
-      }
+      },
+      "platform": "ecode360",
+      "agenda_platform": "eCode360 document hosting (General Code)",
+      "automated": false,
+      "reason": "Agendas are hosted under ecode360.com/documents/pub/AN2011/Agendas/, and ecode360.com robots.txt disallows /documents for all agents."
     },
     {
       "town": "Warren Township",
       "state": "NJ",
       "website": "https://www.warrennj.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:43+00:00",
+        "checked_at": "2026-10-10T15:55:41+00:00",
         "status": 200,
         "final_url": "https://www.warrennj.org/",
         "block_markers": [],
@@ -1318,14 +1530,15 @@
         "select_board",
         "zoning_board_of_appeals"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Lopatcong Township",
       "state": "NJ",
       "website": "https://www.lopatcongtwp.com",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:43+00:00",
+        "checked_at": "2026-10-10T15:55:42+00:00",
         "status": 403,
         "final_url": "https://www.lopatcongtwp.com/",
         "block_markers": [
@@ -1336,14 +1549,15 @@
       },
       "automated": false,
       "platform": null,
-      "reason": "akamai bot challenge on homepage (HTTP 403); not bypassed"
+      "reason": "akamai bot challenge on homepage (HTTP 403); not bypassed",
+      "agenda_platform": "Granicus govAccess-style CMS behind Akamai"
     },
     {
       "town": "Mansfield Township (Warren)",
       "state": "NJ",
       "website": "https://www.mansfieldtownship-nj.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:43+00:00",
+        "checked_at": "2026-10-10T15:55:42+00:00",
         "status": 200,
         "final_url": "https://www.mansfieldtownship-nj.gov/",
         "block_markers": [],
@@ -1353,14 +1567,31 @@
         "vendor_hosts_linked": [
           "ecode360.com"
         ]
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "Joomla",
+      "automated": true,
+      "listings": [
+        {
+          "board": "Township Committee",
+          "board_key": "select_board",
+          "url": "https://www.mansfieldtownship-nj.gov/index.php/government/agendas-minutes-bill-list",
+          "link_pattern": "^Agenda\\b"
+        },
+        {
+          "board": "Land Use Board",
+          "board_key": "planning_board",
+          "url": "https://www.mansfieldtownship-nj.gov/index.php/boards-committees/land-use-board",
+          "link_pattern": "agenda"
+        }
+      ]
     },
     {
       "town": "Berkeley Heights",
       "state": "NJ",
       "website": "https://www.berkeleyheights.gov",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:44+00:00",
+        "checked_at": "2026-10-10T15:55:42+00:00",
         "status": 200,
         "final_url": "https://www.berkeleyheights.gov/",
         "block_markers": [],
@@ -1423,14 +1654,15 @@
         "select_board",
         "zoning_board_of_appeals"
       ],
-      "automated": true
+      "automated": true,
+      "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
       "town": "Neptune Township",
       "state": "NJ",
       "website": "https://neptunetownship.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:47+00:00",
+        "checked_at": "2026-10-10T15:55:45+00:00",
         "status": 200,
         "final_url": "https://neptunetownship.org/",
         "block_markers": [],
@@ -1441,14 +1673,44 @@
         "vendor_hosts_linked": [
           "www.ecode360.com"
         ]
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "Drupal",
+      "automated": true,
+      "note": "Link text is month and day only ('January 28'); dates come from file names when they include a year. Some agendas are legacy .doc files (not extractable).",
+      "listings": [
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "url": "https://neptunetownship.org/agendas-minutes/planning-board",
+          "link_pattern": "agenda"
+        },
+        {
+          "board": "Zoning Board of Adjustment",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://neptunetownship.org/agendas-minutes/zoning-board-adjustment",
+          "link_pattern": "agenda"
+        },
+        {
+          "board": "Township Committee",
+          "board_key": "select_board",
+          "url": "https://neptunetownship.org/agendas-minutes/township-committee",
+          "link_pattern": "agenda"
+        },
+        {
+          "board": "Environmental and Shade Tree Commission",
+          "board_key": "conservation_commission",
+          "url": "https://neptunetownship.org/agendas-minutes/environmental-and-shade-tree-commission",
+          "link_pattern": "agenda"
+        }
+      ]
     },
     {
       "town": "Upper Burrell Township",
       "state": "PA",
       "website": "https://upperburrelltwp.com",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:48+00:00",
+        "checked_at": "2026-10-10T15:55:45+00:00",
         "status": 200,
         "final_url": "https://upperburrelltwp.com/",
         "block_markers": [],
@@ -1459,14 +1721,37 @@
         "vendor_hosts_linked": [
           "ecode360.com"
         ]
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "WordPress",
+      "automated": true,
+      "listings": [
+        {
+          "board": "Board of Supervisors",
+          "board_key": "select_board",
+          "url": "https://upperburrelltwp.com/supervisors/",
+          "link_pattern": "agenda"
+        },
+        {
+          "board": "Planning Commission",
+          "board_key": "planning_board",
+          "url": "https://upperburrelltwp.com/planning-commission/",
+          "link_pattern": "agenda"
+        },
+        {
+          "board": "Zoning Hearing Board",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://upperburrelltwp.com/zoning-hearing-board/",
+          "link_pattern": "agenda"
+        }
+      ]
     },
     {
       "town": "East Whiteland Township",
       "state": "PA",
       "website": "https://www.eastwhiteland.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:49+00:00",
+        "checked_at": "2026-10-10T15:57:20+00:00",
         "status": 200,
         "final_url": "https://www.eastwhiteland.org/",
         "block_markers": [],
@@ -1479,25 +1764,56 @@
           "ecode360.com",
           "www.revize.com"
         ]
-      }
+      },
+      "platform": "generic_revize",
+      "agenda_platform": "Revize",
+      "automated": true,
+      "note": "Revize: www host 302-redirects documents to cms*.revize.com, whose robots.txt allows only URLs ending in .pdf; Revize links carry a ?t= cache-buster, so the stock generic adapter is refused by robots (verified 2026-10-10 on Vergennes). Crawled with the probe shim generic_revize, which drops ?t=.",
+      "listings": [
+        {
+          "board": "Board of Supervisors",
+          "board_key": "select_board",
+          "url": "https://www.eastwhiteland.org/government/agenda_minutes/board_of_supervisors.php",
+          "link_pattern": "^Agenda\\b"
+        },
+        {
+          "board": "Planning Commission",
+          "board_key": "planning_board",
+          "url": "https://www.eastwhiteland.org/government/agenda_minutes/planning_commission.php",
+          "link_pattern": "^Agenda\\b"
+        },
+        {
+          "board": "Zoning Hearing Board",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://www.eastwhiteland.org/government/agenda_minutes/zoning_hearing_board.php",
+          "link_pattern": "agenda"
+        },
+        {
+          "board": "Environmental Advisory Council",
+          "board_key": "conservation_commission",
+          "url": "https://www.eastwhiteland.org/government/agenda_minutes/environmental_advisory_council.php",
+          "link_pattern": "agenda"
+        }
+      ]
     },
     {
       "town": "East Vincent Township",
       "state": "PA",
       "website": "https://www.eastvincent.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:50+00:00",
+        "checked_at": "2026-10-10T15:55:48+00:00",
         "error": "RobotsDisallowed: https://www.eastvincent.org/"
       },
       "automated": false,
-      "reason": "homepage not fetchable: RobotsDisallowed: https://www.eastvincent.org/"
+      "reason": "robots.txt: named search bots get narrow rules, then 'User-agent: * Disallow: /'.",
+      "agenda_platform": "unknown (site not fetched)"
     },
     {
       "town": "Granville Township (Mifflin)",
       "state": "PA",
       "website": "https://granvilletwp.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:50+00:00",
+        "checked_at": "2026-10-10T15:55:48+00:00",
         "status": 200,
         "final_url": "https://granvilletwp.org/",
         "block_markers": [],
@@ -1505,14 +1821,18 @@
           "wordpress"
         ],
         "vendor_hosts_linked": []
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "WordPress + FileBird Document Library",
+      "automated": false,
+      "reason": "Minutes & Agendas page is an empty shell filled client-side by the FileBird Document Library block (wp-json/filebird/v1); no links in static HTML. Data-center ZHB appeal files are in a SharePoint folder."
     },
     {
       "town": "Watts Township (Perry)",
       "state": "PA",
       "website": "https://wattstownship.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:50+00:00",
+        "checked_at": "2026-10-10T15:55:48+00:00",
         "status": 200,
         "final_url": "https://wattstownship.org/",
         "block_markers": [],
@@ -1520,14 +1840,18 @@
           "wordpress"
         ],
         "vendor_hosts_linked": []
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "WordPress + FileBird Document Library",
+      "automated": false,
+      "reason": "Meeting Agendas and Planning Commission Agendas pages are rendered client-side by the FileBird Document Library block; no links in static HTML."
     },
     {
       "town": "Covington Township (Lackawanna)",
       "state": "PA",
       "website": "https://covingtontwp.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:47:51+00:00",
+        "checked_at": "2026-10-10T15:55:48+00:00",
         "status": 200,
         "final_url": "https://covingtontwp.org/",
         "block_markers": [],
@@ -1535,8 +1859,25 @@
           "wordpress"
         ],
         "vendor_hosts_linked": []
-      }
+      },
+      "platform": "generic",
+      "agenda_platform": "WordPress (document categories)",
+      "automated": true,
+      "listings": [
+        {
+          "board": "Board of Supervisors",
+          "board_key": "select_board",
+          "url": "https://covingtontwp.org/document-category/2026-meeting-agendas/",
+          "link_pattern": "BOS|Supervisors"
+        },
+        {
+          "board": "Planning Commission",
+          "board_key": "planning_board",
+          "url": "https://covingtontwp.org/document-category/2026-meeting-agendas/",
+          "link_pattern": "Planning Commission"
+        }
+      ]
     }
   ],
-  "generated": "2026-10-10T15:48:14+00:00"
+  "generated": "2026-10-10T15:57:20+00:00"
 }
