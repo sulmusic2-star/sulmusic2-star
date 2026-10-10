@@ -13,8 +13,10 @@ Per listing in towns.json:
       "board_pattern": "planning board",         # optional: shared all-boards page; keep only
                                                  #   links whose text/href/row match this regex
       "board_exclude": "subcommittee",           # optional: ...and drop those whose text/row match this
-      "context": "block"                         # optional: when a link has no <tr>/<li> parent,
+      "context": "block",                        # optional: when a link has no <tr>/<li> parent,
                                                  #   read the date from the nearest small <div>/<p>
+      "date_only_docs": true                     # optional: on an agenda-only page, also keep document
+                                                 #   links whose text is just a date ("October 6, 2026")
     }
 
 `{year}` in the URL is expanded to each calendar year the crawl window touches.
@@ -31,6 +33,11 @@ from ..models import AgendaDoc, Window
 from .base import Adapter
 
 DEFAULT_EXCLUDE = r"minutes|supporting materials|summary|video|recording"
+_DOC_HREF = re.compile(r"\.pdf\b|\.docx?\b|/DocumentCenter/View/|Archive\.aspx\?ADID=|ViewFile/Agenda|/agenda/|"
+                       r"/agendas/|/files/|/uploads/|download|/node/\d+", re.I)
+_DATE_ONLY = re.compile(r"^[\W_]*(?:(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?,?\s*)?"
+                        r"(?:[A-Za-z]{3,9}\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{2,4}|\d{1,2}[/.\-]\d{1,2}[/.\-]\d{2,4})"
+                        r"[\W_]*(?:(?:agenda|meeting|regular|special|revised|amended|joint|pdf|docx?)[\W_]*)*$", re.I)
 _MORE = re.compile(r"^(more|read more|view more|details?)\b", re.I)
 
 
@@ -81,6 +88,7 @@ class GenericListingAdapter(Adapter):
         board_rx = re.compile(listing["board_pattern"], re.I) if listing.get("board_pattern") else None
         board_ex = re.compile(listing["board_exclude"], re.I) if listing.get("board_exclude") else None
         block_context = listing.get("context") == "block"
+        date_docs = bool(listing.get("date_only_docs"))
         soup = self.soup(resp)
         base_tag = soup.find("base", href=True)
         base = self.abs_url(resp.final_url, base_tag["href"]) if base_tag else resp.final_url
@@ -91,7 +99,10 @@ class GenericListingAdapter(Adapter):
                 continue
             text = " ".join(a.get_text(" ", strip=True).split())
             hay = f"{text} {href}"
-            if not include.search(hay) or exclude.search(text) or _MORE.match(text):
+            matched = include.search(hay) or (
+                date_docs and _DOC_HREF.search(href)
+                and (_DATE_ONLY.match(text) or re.search(r"meeting|hearing|session", text, re.I)))
+            if not matched or exclude.search(text) or _MORE.match(text):
                 continue
             container = a.find_parent(["tr", "li"])
             if container is None and block_context:

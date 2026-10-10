@@ -8,8 +8,10 @@ data/towns.json schema (`town`, `website`, `platform`, `listings`,
 census fields (`status`, `reason_code`, `board_evidence`, `cms`, `vendors`...).
 
 Evidence rule: a board counts as automated only if its listing shows at least
-one agenda whose meeting date falls within the last 365 days or the next 120
-days. A town counts as automated if at least one tracked board does.
+one agenda whose meeting date falls within the last 120 days or the next 120
+days (a listing whose newest agenda is older is treated as stale). A town counts
+as automated if at least one meeting board (planning, ZBA, conservation, select
+board / council) does; Town Meeting warrants alone do not count.
 """
 
 from __future__ import annotations
@@ -35,7 +37,8 @@ log = logging.getLogger(__name__)
 
 TRACKED = ["planning_board", "zoning_board_of_appeals", "conservation_commission",
            "select_board", "town_meeting"]
-EVIDENCE_BACK = 365
+EVIDENCE_BACK = 120     # board is "active" only with an agenda dated in the last 120 days...
+DATA_BACK = 365         # ...but platform timestamps are collected for a full year (lead time)
 EVIDENCE_AHEAD = 120
 LISTING_AGE = 24 * 3600
 MAX_PAGES = 28          # network-page budget per town for discovery
@@ -53,6 +56,7 @@ CMS_SIGS = [
     ("wordpress", r"wp-content|wp-includes"),
     ("drupal", r"Drupal|/sites/default/files|drupal-settings-json"),
     ("wix", r"wixstatic|wix\.com"),
+    ("civiclive", r"civiclive\.com"),
     ("squarespace", r"squarespace"),
     ("joomla", r"Joomla|/media/jui/"),
 ]
@@ -74,7 +78,6 @@ VENDOR_RX = [
     ("agendasuite", r"https?://(?:www\.)?agendasuite\.org/iip/[a-z0-9-]+[^\s\"'<>]*"),
     ("meetingportal", r"https?://[a-z0-9-]+\.(?:meetingportal|onbaseonline)\.com[^\s\"'<>]*"),
     ("mytowngovernment", r"https?://(?:www\.)?mytowngovernment\.org/[0-9]{5}[^\s\"'<>]*"),
-    ("opengov_ma", r"https?://[a-z0-9-]+\.opengov\.com[^\s\"'<>]*"),
     ("laserfiche", r"https?://[^\s\"'<>]*/WebLink/[^\s\"'<>]*"),
     ("google_drive", r"https?://(?:drive|docs)\.google\.com/(?:drive/folders|document|file)/[^\s\"'<>]*"),
     ("sharepoint", r"https?://[a-z0-9-]+\.sharepoint\.com/[^\s\"'<>]*"),
@@ -92,10 +95,14 @@ HUB_TEXT = re.compile(r"\bagendas?\b|\bmeetings?\b|\bminutes\b|posted meetings|p
                       r"\bcalendar\b", re.I)
 BOARDS_HUB_TEXT = re.compile(r"boards?(?:\s*,)?\s*(?:&|and)?\s*(?:committees|commissions)|^boards$|"
                              r"^government$|boards & committees|committees", re.I)
-SUBPAGE_TEXT = re.compile(r"^(?:meeting\s+)?agendas?\b|agendas?\s*(?:&|and|/)\s*minutes|^meetings?$|"
+SUBPAGE_TEXT = re.compile(r"^(?:20\d\d\s+)?(?:meeting\s+)?agendas?\b|agendas?\s*(?:&|and|/)\s*minutes|^meetings?$|"
                           r"^agenda center|^meeting (?:agendas|notices|schedule)|^(?:posted|public) meetings|"
                           r"^documents$|^archives?$|^agendas?,", re.I)
 WARRANT_TEXT = re.compile(r"warrant", re.I)
+# link text that is just a meeting date ("October 14, 2026", "10/14/26 Regular Meeting")
+DATE_ONLY = re.compile(r"^[\W_]*(?:(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?,?\s*)?"
+                       r"(?:[A-Za-z]{3,9}\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{2,4}|\d{1,2}[/.\-]\d{1,2}[/.\-]\d{2,4})"
+                       r"[\W_]*(?:(?:agenda|meeting|regular|special|revised|amended|joint|pdf|docx?)[\W_]*)*$", re.I)
 TOWN_MEETING_TEXT = re.compile(r"town meeting", re.I)
 YEAR_RECENT = re.compile(r"20(?:25|26|27)|\b(?:25|26|27)\b")
 
@@ -172,6 +179,10 @@ class TownState:
     @property
     def window(self) -> Window:
         return Window(self.today - timedelta(days=EVIDENCE_BACK), self.today + timedelta(days=EVIDENCE_AHEAD))
+
+    @property
+    def data_window(self) -> Window:
+        return Window(self.today - timedelta(days=DATA_BACK), self.today + timedelta(days=EVIDENCE_AHEAD))
 
 
 def _row_text(a) -> str:
@@ -299,7 +310,8 @@ def dated_agendas(page: Page, window: Window, page_is_agenda: bool,
     for l in page.links:
         hay = f"{l.text} {l.url}"
         named = AGENDAISH.search(hay)
-        agendaish = named or (page_is_agenda and DOCLIKE.search(l.url))
+        agendaish = named or (page_is_agenda and DOCLIKE.search(l.url)
+                              and (DATE_ONLY.match(l.text) or re.search(r"meeting|hearing|session", l.text, re.I)))
         if board_key == "town_meeting":
             agendaish = WARRANT_TEXT.search(hay)
         if not agendaish or MINUTESISH.search(l.text):
@@ -320,8 +332,33 @@ def dated_agendas(page: Page, window: Window, page_is_agenda: bool,
         if when is None or when not in window or l.url in seen:
             continue
         seen.add(l.url)
-        out.append({"url": l.url, "text": l.text[:120], "date": when.isoformat()})
+        item = {"url": l.url, "text": l.text[:120], "date": when.isoformat()}
+        m = REVIZE_TS.search(l.url)
+        if m:
+            item["uploaded"] = m.group(1)
+        out.append(item)
     return out
+
+
+REVIZE_TS = re.compile(r"[?&]t=(20\d{12})\d*")
+
+
+def revize_leadtime(st: TownState, page: Page, key: str, board: str, board_key_filter: str | None = None,
+                    exclude_rx: str | None = None, page_is_agenda: bool = False) -> None:
+    """Revize CMS stamps every document link with its upload time (?t=YYYYMMDDhhmmss).
+    Record those as a (proxy) posted time for lead-time analysis."""
+    if key == "town_meeting":
+        return
+    for f in dated_agendas(page, st.data_window, page_is_agenda, board_key_filter, exclude_rx):
+        if not f.get("uploaded"):
+            continue
+        try:
+            up = datetime.strptime(f["uploaded"], "%Y%m%d%H%M%S")
+        except ValueError:
+            continue
+        st.leadtime_rows.append({"category": board, "board_key": key, "platform": "revize",
+                                 "meeting_date": f["date"], "posted": up.isoformat(),
+                                 "posted_kind": "uploaded", "url": f["url"], "title": f["text"]})
 
 
 def page_is_agenda_page(page: Page) -> bool:
@@ -401,7 +438,7 @@ def do_civicplus(st: TownState, website: str) -> bool:
     if not tracked:
         st.notes.append("AgendaCenter has no tracked-board categories")
         return True
-    w = st.window
+    w = st.data_window
     st.pages_fetched += 1
     try:
         resp = st.fetcher.get(f"{website}/AgendaCenter/Search/", max_age=LISTING_AGE, params={
@@ -419,16 +456,17 @@ def do_civicplus(st: TownState, website: str) -> bool:
     for r in rows:
         by_cat[r["category"].lower()].append(r)
     for cid, name, key in tracked:
-        rs = [r for r in by_cat.get(name.lower(), []) if r["meeting_date"]]
+        rs_all = [r for r in by_cat.get(name.lower(), []) if r["meeting_date"]]
+        rs = [r for r in rs_all if date.fromisoformat(r["meeting_date"]) in st.window]
         listing = {"board": name, "board_key": key, "category_id": cid,
                    "url": f"{website}/AgendaCenter/{_slug(name)}-{cid}"}
         ev = {"board": name, "source": "civicplus", "url": listing["url"], "n_recent": len(rs),
-              "latest": max((r["meeting_date"] for r in rs), default=None),
+              "latest": max((r["meeting_date"] for r in rs_all), default=None),
               "n_past_90": sum(1 for r in rs if 0 <= (st.today - date.fromisoformat(r["meeting_date"])).days <= 90)}
         if rs:
             st.listings.append(listing)
         record_board(st, key, ev)
-        for r in rs:
+        for r in rs_all:
             st.leadtime_rows.append(dict(r, board_key=key, platform="civicplus"))
     return True
 
@@ -438,7 +476,7 @@ def do_civicclerk(st: TownState, tenant: str) -> None:
     ad = CivicClerkAdapter(st.fetcher)
     cfg = {"tenant": tenant, "town": st.muni["town"]}
     try:
-        events = ad.events(cfg, st.window)
+        events = ad.events(cfg, st.data_window)
     except (FetchError, RuntimeError, ValueError) as e:
         st.notes.append(f"CivicClerk API error: {str(e)[:120]}")
         return
@@ -453,13 +491,16 @@ def do_civicclerk(st: TownState, tenant: str) -> None:
         if not files:
             continue
         per[(name, key)].append((ev, files))
-    for (name, key), evs in per.items():
-        dates = [ev["startDateTime"][:10] for ev, _ in evs]
-        st.listings.append({"board": name, "board_key": key, "url": f"https://{tenant}.portal.civicclerk.com"})
+    for (name, key), evs_all in per.items():
+        evs = [(ev, f) for ev, f in evs_all if date.fromisoformat(ev["startDateTime"][:10]) in st.window]
+        dates = [ev["startDateTime"][:10] for ev, _ in evs] or [None]
+        if evs:
+            st.listings.append({"board": name, "board_key": key, "url": f"https://{tenant}.portal.civicclerk.com"})
         record_board(st, key, {"board": name, "source": "civicclerk", "url": f"https://{tenant}.portal.civicclerk.com",
-                               "n_recent": len(evs), "latest": max(dates),
-                               "n_past_90": sum(1 for d in dates if 0 <= (st.today - date.fromisoformat(d)).days <= 90)})
-        for ev, files in evs:
+                               "n_recent": len(evs), "latest": max(d for d in dates) if evs else
+                               max(ev["startDateTime"][:10] for ev, _ in evs_all),
+                               "n_past_90": sum(1 for d in dates if d and 0 <= (st.today - date.fromisoformat(d)).days <= 90)})
+        for ev, files in evs_all:
             pub = min((f.get("publishOn") for f in files if f.get("publishOn")), default=None)
             st.leadtime_rows.append({
                 "category": name, "board_key": key, "platform": "civicclerk",
@@ -489,8 +530,8 @@ def board_candidates(st: TownState, pages: list[Page], key: str) -> list[Link]:
             if ok:
                 cands.append(l)
     # prefer links to the board's agenda page, then shorter text; unique URLs
-    cands.sort(key=lambda l: (0 if (AGENDAISH.search(l.text) or re.search(r"agenda", l.url, re.I)) else 1,
-                              len(l.text)))
+    cands.sort(key=lambda l: (0 if (AGENDAISH.search(l.text) or re.search(r"agenda", l.url, re.I)) else
+                              1 if re.search(r"meeting", l.url, re.I) else 2, len(l.text)))
     out, seen = [], set()
     for l in cands:
         u = l.url.split("#")[0]
@@ -513,9 +554,10 @@ def try_board_page(st: TownState, key: str, url: str, label: str, depth: int = 0
         dates = [f["date"] for f in found]
         board_name = label if classify_board(label) == key else BOARD_LABELS[key]
         listing = {"board": board_name[:80], "board_key": key, "url": page.final_url,
-                   "link_pattern": ("warrant" if key == "town_meeting" else
-                                    ("agenda|notice|posting|" + DOCLIKE.pattern if agenda_page else "agenda|notice|posting")),
+                   "link_pattern": "warrant" if key == "town_meeting" else "agenda|notice|posting",
                    "context": "block"}
+        if agenda_page and key != "town_meeting":
+            listing["date_only_docs"] = True
         if others:
             listing["board_exclude"] = others
         if key == "town_meeting":
@@ -526,6 +568,9 @@ def try_board_page(st: TownState, key: str, url: str, label: str, depth: int = 0
               "n_past_90": sum(1 for d in dates if 0 <= (st.today - date.fromisoformat(d)).days <= 90)}
         before = st.boards.get(key)
         record_board(st, key, ev)
+        if any(f.get("uploaded") for f in found):
+            revize_leadtime(st, page, key, listing["board"], "town_meeting" if key == "town_meeting" else None,
+                            others, agenda_page)
         if st.boards.get(key) is ev:
             if before is not None:
                 st.listings = [l for l in st.listings if not (l["board_key"] == key and l.get("url") == before.get("url"))]
@@ -539,20 +584,37 @@ def try_board_page(st: TownState, key: str, url: str, label: str, depth: int = 0
         if key == "town_meeting":
             subs = [l for l in page.links if same_site(st, l.url) and WARRANT_TEXT.search(l.text)
                     and not re.search(r"\.(pdf|docx?)$", l.url.split("?")[0], re.I)] + subs
-        # prefer the board's own agenda page over a site-wide one
+        # CivicPlus Archive Center modules ("Most Recent Agenda | View All" -> Archive.aspx?AMID=n)
+        subs += [l for l in page.links if same_site(st, l.url) and re.search(r"Archive\.aspx\?AMID=\d+$", l.url, re.I)
+                 and re.search(r"agenda", f"{l.text} {l.row}", re.I) and not re.search(r"minutes", l.text, re.I)]
+        if key != "town_meeting":
+            subs += [l for l in page.links if same_site(st, l.url) and classify_board(l.text) == key
+                     and re.search(r"agenda|meeting", l.url, re.I) and not EVENT_PAGE.search(l.url)
+                     and l.url.split("#")[0].rstrip("/") != here]
+        # prefer this year's folder, then the board's own agenda page over a site-wide one
         slug_rx = re.compile(SLUG_HINTS.get(key, r"town[-_ ]?meeting|warrant"), re.I)
-        subs.sort(key=lambda l: 0 if slug_rx.search(urlsplit(l.url).path.replace("%20", " ")) else 1)
+        yr = str(st.today.year)
+        subs.sort(key=lambda l: (0 if l.text.startswith(yr) else (2 if re.match(r"20\d\d", l.text) else 1),
+                                 0 if slug_rx.search(urlsplit(l.url).path.replace("%20", " ")) else 1))
         subs = list({l.url.split("#")[0].rstrip("/"): l for l in subs}.values())
         for l in subs[:3]:
             if try_board_page(st, key, l.url, l.text, depth=1):
                 return True
     else:
         return False
+    note = "board page found, no dated agenda links in window"
+    if JS_LIST.search(page.html):
+        note = "board page found; its document list is rendered client-side by JavaScript"
+        st.notes.append(f"JS-rendered document list on {page.final_url}")
+    elif any(re.search(r"DocumentCenter/Index/\d+", l.url) and re.search(r"agenda", l.text, re.I) for l in page.links):
+        note = "agendas kept in a CivicPlus Document Center folder (folder contents load by JavaScript)"
+        st.notes.append(f"JS-rendered document list (Document Center folder) linked from {page.final_url}")
     st.stale.setdefault(key, {"board": label[:80], "source": "generic", "url": page.final_url, "n_recent": 0,
-                              "latest": None, "note": "board page found, no dated agenda links in window"})
+                              "latest": None, "note": note})
     return False
 
 
+JS_LIST = re.compile(r"ContentItemListData|reactPortletLoader|ng-app=|data-reactroot|__NEXT_DATA__", re.I)
 NEWS_PAGE = re.compile(r"CivicAlerts\.aspx|/news/|/blog/|/post/|[?&]p=\d+|/\d{4}/\d{2}/\d{2}/", re.I)
 
 
@@ -564,7 +626,7 @@ def hub_links(st: TownState, page: Page) -> tuple[list[Link], list[Link]]:
             continue
         if re.search(r"AgendaCenter", l.url) and st.boards:
             continue
-        if HUB_TEXT.search(l.text) and not re.search(r"minutes$", l.text, re.I):
+        if HUB_TEXT.search(l.text) and not re.fullmatch(r"\W*(?:meeting\s+)?minutes\W*", l.text, re.I):
             agendas.append(l)
         elif BOARDS_HUB_TEXT.search(l.text):
             boards.append(l)
@@ -600,11 +662,15 @@ def hub_agendas(st: TownState, page: Page) -> None:
         inc, exc = HUB_BOARD_RX[key]
         dates = [f["date"] for f in found]
         listing = {"board": BOARD_LABELS[key], "board_key": key, "url": page.final_url,
-                   "link_pattern": "warrant" if key == "town_meeting" else ("agenda|notice|posting|" + DOCLIKE.pattern if is_agenda else "agenda|notice|posting"),
+                   "link_pattern": "warrant" if key == "town_meeting" else "agenda|notice|posting",
                    "board_pattern": inc, "board_exclude": exc, "context": "block"}
+        if is_agenda and key != "town_meeting":
+            listing["date_only_docs"] = True
         if key == "town_meeting":
             listing["accept_undated_if"] = r"warrant.*20(?:26|27)|20(?:26|27).*warrant"
             listing["exclude_pattern"] = r"minutes|results|vote|report|video|recording"
+        if any(f.get("uploaded") for f in found):
+            revize_leadtime(st, page, key, BOARD_LABELS[key], key, None, is_agenda)
         record_board(st, key, {"board": BOARD_LABELS[key], "source": "generic_hub", "url": page.final_url,
                                "n_recent": len(found), "latest": max(dates), "examples": found[:3],
                                "n_past_90": sum(1 for d in dates if 0 <= (st.today - date.fromisoformat(d)).days <= 90)})
@@ -755,6 +821,20 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
                 break
             if try_board_page(st, key, l.url, l.text):
                 break
+    # CivicClerk tenants are not always linked from pages we read; probe "<town>ma"
+    if "civicclerk" not in st.vendors and any(k not in st.boards for k in TRACKED[:4]):
+        tenant = re.sub(r"[^a-z]", "", muni["town"].lower()) + "ma"
+        try:
+            r = fetcher.get(f"https://{tenant}.api.civicclerk.com/v1/Events", max_age=7 * 24 * 3600,
+                            params={"$top": "1"})
+            if r.ok and json.loads(r.text).get("value"):
+                st.vendors["civicclerk"] = {"urls": [f"https://{tenant}.portal.civicclerk.com"], "tenant": tenant,
+                                            "found_by": "tenant probe"}
+                do_civicclerk(st, tenant)
+                if any(b.get("source") == "civicclerk" for b in st.boards.values()) and "civicclerk" not in platforms:
+                    platforms.append("civicclerk")
+        except (FetchError, ValueError):
+            pass
     if any(b["source"].startswith("generic") for b in st.boards.values()):
         platforms.append("generic")
     vendor_status(st)
@@ -778,6 +858,19 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
             if "civicclerk.com" in l.get("url", ""):
                 return "civicclerk"
             return "generic"
+
+        # keep only listings that back a board's best evidence (no double-crawling a board)
+        def backs_best(l: dict) -> bool:
+            ev = st.boards.get(l["board_key"])
+            if ev is None:
+                return False
+            if plat(l) != src_platform.get(ev["source"]):
+                return False
+            return plat(l) != "generic" or l["url"] == ev["url"]
+        st.listings = [l for l in st.listings if backs_best(l)]
+        platforms = [p_ for p_ in platforms if any(plat(l) == p_ for l in st.listings)]
+        rec["platforms"] = platforms
+        rec["platform"] = primary = platforms[0]
         if len(platforms) > 1:
             rec["secondary_listings"] = [l for l in st.listings if plat(l) != primary]
             st.listings = [l for l in st.listings if plat(l) == primary]
@@ -806,6 +899,10 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
     if st.robots_blocked:
         return finish("not_automated", "robots_disallow_site",
                       f"robots.txt disallows agenda pages on the town site: {st.robots_blocked[0][:140]}")
+    if any("JS-rendered" in n for n in st.notes):
+        return finish("not_automated", "js_only",
+                      "agenda/document lists are rendered client-side by JavaScript (" +
+                      next(n for n in st.notes if "JS-rendered" in n)[:160] + ")")
     if st.stale:
         k, v = next(iter(st.stale.items()))
         return finish("not_automated", "agendas_stale_or_undated",

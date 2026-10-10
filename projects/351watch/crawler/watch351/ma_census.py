@@ -350,13 +350,14 @@ def cmd_discover(args, fetcher: PoliteFetcher) -> None:
     towns = sorted(existing.values(), key=lambda t: t["town"])
     doc = {
         "_about": ("351 Watch census of all 351 Massachusetts municipalities: agenda platform, crawlable "
-                   "listing per tracked board (with evidence: agendas dated within the last 365 / next 120 days), "
+                   "listing per tracked board (with evidence: agendas dated within the last 120 / next 120 days), "
                    "or the precise reason a town is not automated. Same per-town schema as data/towns.json; "
                    "built by `python3 -m watch351.ma_census discover`."),
         "generated": now_iso(),
         "boards_tracked": ["planning_board", "zoning_board_of_appeals", "conservation_commission",
                            "select_board", "town_meeting"],
-        "evidence_rule": "board automated only if its listing shows >=1 agenda dated in [today-365d, today+120d]",
+        "evidence_rule": ("board automated only if its listing shows >=1 agenda dated in [today-120d, today+120d]; "
+                          "town automated if >=1 meeting board is (warrants alone do not count)"),
         "count": len(towns),
         "automated": sum(1 for t in towns if t.get("automated")),
         "towns": towns,
