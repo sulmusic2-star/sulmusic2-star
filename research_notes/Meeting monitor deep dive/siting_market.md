@@ -15,13 +15,13 @@ A ban-only product is too narrow. In our 24-town crawl, moratoria were **8 of 59
 | ISO-NE active MA queue (transmission-level) | **25 projects**: 17 standalone BESS (4,430 MW), 4 offshore wind (3,191 MW), 1 hydro+battery, 3 transmission. **No active MA solar.** 184 MA projects withdrew since Jan 1, 2025. | ISO-NE IRTT, downloaded Oct 10, 2026 |
 | EFSB open dockets | **12** (2 BESS certificates, 5 utility substation/line, 1 offshore wind transmission, others). **Zero** consolidated-permit applications as of Aug 10, 2026. | EFSB open dockets and permitting dashboard, Oct 2026 |
 | Wetlands filings statewide (NOI + buffer zone + ANRAD) | **4,770 in 2025**; 5,257 in 2024; 3,631 Jan 1–Oct 9, 2026 | MassDEP WIRe data via EEA Data Portal, Oct 10, 2026 |
-| Solar/BESS wetlands filings statewide, trailing 12 months | see section 2c | MassDEP WIRe detail records |
-| **EST** distinct solar/storage projects going before a local board each year | **~150–300** | section 2d |
-| **EST** solar/storage agenda appearances per year (all boards, with continuances) | **~900–1,200** | section 2d |
+| Commercial solar/BESS wetlands filings statewide, trailing 12 months | **36 filings in 24 towns** (0.8% of 4,612): 28 solar, 5 solar+BESS, 3 standalone BESS. **New Leaf Energy is behind at least 9 of them.** | MassDEP WIRe detail records, Oct 1, 2025–Sep 30, 2026 |
+| **EST** distinct solar/storage projects going before a local board each year (about a quarter to a third are modifications or extensions) | **~120–250** | section 2d |
+| **EST** solar/storage agenda appearances per year (all boards, with continuances) | **~800–1,200** | section 2d |
 | **EST** municipalities holding energy-siting bylaw hearings in the next 12 months (driven by 225 CMR 29) | **~100–250** | section 2b |
 | Municipalities with data-center moratoria, bans or zoning in 2026 (identified, a floor) | **19** | crawler and press, section 3 |
 | MBTA Communities | 177 communities; **157 compliant**, 9 interim, 2 conditional, 9 noncompliant | EOHLC compliance sheet, Aug 31, 2026 |
-| Target-customer list | **see `ma_target_companies.csv`** | section 4 |
+| Target-customer list | **92 companies**: 63 solar/storage (54 of them with 3+ MA siting-relevant projects), 14 data center, 4 attorneys, 6 consultants, 4 transmission/wind, 1 tower company | `ma_target_companies.csv`, section 4 |
 
 ---
 
@@ -73,7 +73,7 @@ Both are linked from `https://www.mass.gov/info-details/lists-of-qualified-gener
 - **SMART 1.0/2.0: 355 projects, 985 MW, in 145 towns.** 289 are approved/operating; 66 are still in the pipeline (qualified, under review or waitlisted, 165 MW). Commercial-operation years run 2018 to 2026, peaking at 78 projects in 2021.
 - **SMART 3.0: 1,091 applications, 505 of them large (267 MW). 78 are siting-relevant (187 MW, 60 towns).** Of the 78, 40 are 2 MW or larger and 56 have a storage adder. There are also 11 large building-mounted projects of 900 kW AC or more.
 - Top siting-relevant towns, SMART 1.0/2.0: Carver 13; Southbridge, Westport and Wareham 9 each; Ware and Acushnet 8 each. SMART 3.0: Carver 7.
-- **Distinct names:** 259 applicant names and 475 company names across applicant, installer and owner in SMART 1.0/2.0 siting-relevant projects; 49 applicant names in SMART 3.0. Many are single-project LLCs. Normalized to parent companies, about 60 firms have 3 or more projects (see the CSV).
+- **Distinct names:** 259 applicant names and 475 company names across applicant, installer and owner in SMART 1.0/2.0 siting-relevant projects; 49 applicant names in SMART 3.0. Many are single-project LLCs. Normalized to parent companies across SMART, CPS and wetlands filings, 54 firms have 3 or more siting-relevant projects (see the CSV).
 
 **Largest names in siting-relevant SMART projects** (normalized; counts combine applicant, installer and owner roles):
 - Nexamp; Borrego (now New Leaf Energy for development); NextGrid; Grid Builders; BlueWave; Clearway; Kearsarge; Syncarpha; ZPT/Zero-Point; American Renewables Construction; ENGIE; Parallel Products Solar Energy; Ameresco; Conti Solar; Navisun; CVE North America; ReWild Renewables; Dynamic Energy; Agilitas; Citizens Enterprises.
@@ -189,8 +189,8 @@ Sources: `https://www.mass.gov/info-details/efsb-and-dpu-siting-open-dockets` an
 3. **Convert a 52-day snapshot of projects into annual projects:** local permitting runs 3–6 months with continuances, so a project shows up in about 2–3 consecutive windows. Divide by 2–3.
 
 **Results (all EST):**
-- **Solar/BESS projects at a local board:** 14 / 0.15–0.20 = 70–93 active statewide in any 52-day window. Times 7, divided by 2–3, gives **~160–330 distinct projects a year**; I use **~150–300**.
-- **Solar/BESS agenda appearances:** 25 hits / 0.15–0.20 × 7 = **~900–1,200 a year** across planning boards, ZBAs, ConComs and councils.
+- **Solar/BESS projects at a local board:** 14 / 0.15–0.20 = 70–93 active statewide in any 52-day window. Times 7, divided by 2–3, gives **~160–330 distinct projects a year**. Four of the 14 sample projects were post-permit items (extension, minor modification, field change, transformer containment), so roughly 110–230 of these are new applications.
+- **Solar/BESS agenda appearances:** 25 hits / 0.15–0.20 × 7 = **~875–1,170 a year** across planning boards, ZBAs, ConComs and councils. Agenda and minutes for the same meeting can both count, so I round to **~800–1,200**.
 - **Energy-siting bylaw hearings:** 11 of 24 sample towns (46%) had one in this window, pushed by the Oct 1, 2026 225 CMR 29 deadline. Discounting 30–50% for the energy-heavy sample, I estimate **~100–250 municipalities** hold such hearings over the next 12 months. This is a one-time wave that should fade in 2027. Each bylaw takes 2–5 meetings (planning board hearing, council or town-meeting vote, AG review), so expect **~300–900 bylaw agenda items**.
 - **BESS moratoria:** 3 in this window. The project tracker (`data/tracker.json`, verified Oct 10, 2026) lists 11 moratoria plus 2 special acts in 26 towns. The AG has disapproved most of them under c. 40A §3 (Becket, Worthington, Carver, Ware, Northfield). Moratoria are high-signal but few, consistent with the national decline (Sabin Center: 165 new restrictions in 2023, 112 in 2024, 70 in 2025).
 - **40B:** 8 projects with hearings in 4 of 24 towns; 8 / 0.10 = ~80 active statewide per window. Hearings run up to 180 days, so divide by about 3: **~150–250 comprehensive-permit projects a year with hearings**. I could not find a published statewide count to check this against.
@@ -203,7 +203,29 @@ Sources: `https://www.mass.gov/info-details/efsb-and-dpu-siting-open-dockets` an
 - **Statewide filings** (NOI + buffer-zone-only + ANRAD): 2021: 6,040 · 2022: 5,496 · 2023: 5,077 · 2024: 5,257 · **2025: 4,770** · 2026 through Oct 9: 3,631 · **trailing 12 months (Oct 1, 2025–Sep 30, 2026): 4,614**.
 - **Name-based lower bound** (applicant or company name contains solar, storage, renewable or a known developer): 28 in 2024, 51 in 2025, 24 in 2026 to date, in 18–36 towns a year.
 - **Utility filings:** Eversource 25 and National Grid 48 in 2025, which is the transmission/substation channel.
-- **Description-based count** from the detail records: WETLANDS_RESULT_PLACEHOLDER
+- **Description-based count** from the detail records: I fetched all 4,614 trailing-12-month detail records (2 errors) and keyword-matched the description field.
+
+| Topic | Filings, Oct 2025–Sep 2026 | Share of all filings | Towns | Notes |
+|---|---|---|---|---|
+| Solar or BESS | 41 | 0.9% | | |
+| of which commercial-scale | **36** | 0.8% | **24** | 26 full NOIs, 10 buffer-zone-only |
+| of which residential | 4 | | | |
+| of which false positive | 1 | | | |
+| Standalone BESS (within the 36) | 3 | | 3 | Oakham (Moraga Storage); Bellingham (5 MW, ZPB 2020-030 c/o Zero Point Development); Swansea (4.9 MW, Old Warren Road Development II) |
+| Solar + BESS (within the 36) | 5 | | | Carver Golden Pond floating PV; Rochester Walnut Plain Rd and High St; Southampton agrivoltaic; Upton; Swansea NextGrid canopy |
+| Transmission/substation/utility poles | 25 | 0.54% | 23 | |
+| Wireless towers | 5 | 0.11% | 5 | Wireless Edge Towers in Cohasset; Vertex Towers in Holbrook and Monson; SBA in Gardner; one in Charlton |
+| 40B/affordable housing (in description) | 4 | | | |
+| EV charging | 1 | | | Bourne, Boston Gas |
+| Data centers | 0 | | | |
+
+- **Who files and who pays the check** (company names only; individuals omitted). The fee-check "payor" field identifies the firm behind single-project LLCs:
+  - **New Leaf Energy** is the applicant or payor on at least 9 of the 36: Golden Pond Solar 1, Federal Furnace Road Solar 1 (two filings), Wareham Street Solar 2, Walnut Plain Road Solar 1, High Street Solar 1/2 (two filings), and New Leaf in its own name in Carver. Several of these are the Carver and Plymouth items our crawler saw.
+  - **Beals and Thomas** is payor on 4: Federal Pond Solar, Tremont Street Solar 1, and Stone Street Solar twice.
+  - **Farland Corp** is payor on 3 Parallel Products Solar Energy canopy filings.
+  - **Kimley-Horn** is payor for ReWild's Bishops Highway Solar.
+  - **Black Swan Dev Corp** is payor for Old Warren Road Development (Swansea).
+- **What this shows:** wetlands filings are a narrow but high-value slice, about 36 a year, each typically heard at 2–4 ConCom sessions. The SPV-to-parent link in the payor field is exactly what a monitor needs to tie anonymous LLC agenda items to a paying customer.
 
 ### 2d. Triangulated estimate for solar and storage (EST)
 
@@ -211,8 +233,8 @@ Sources: `https://www.mass.gov/info-details/efsb-and-dpu-siting-open-dockets` an
 |---|---|
 | Crawler extrapolation (2b) | ~160–330 |
 | SMART 3.0 pipeline: 78 siting-relevant + 11 large rooftop applications so far, plus SMART 1/2 projects still in the pipeline (66), plus standalone BESS outside SMART (CPS adds ~20–30 units ≥1 MW a year; 17 ISO-NE BESS) | ~120–200 entering permitting per year |
-| Wetlands: WETLANDS_TRIANGULATION_PLACEHOLDER | |
-| **Working estimate** | **~150–300 projects/yr; ~900–1,200 agenda appearances/yr; ~100–250 towns with energy-bylaw hearings in the next year** |
+| Wetlands: 36 commercial solar/BESS filings a year. In the crawl sample, about 5 of 14 projects (~35%) had a wetlands filing, so 25–40% of projects need one. | ~90–145 new projects per year |
+| **Working estimate** | **~120–250 projects a year before a local board (about a quarter to a third are modifications or extensions); ~800–1,200 agenda appearances a year; ~100–250 towns with energy-bylaw hearings in the next year** |
 
 ---
 
@@ -224,7 +246,7 @@ Sources: `https://www.mass.gov/info-details/efsb-and-dpu-siting-open-dockets` an
 | **MBTA Communities (§3A)** | 177 communities: 157 compliant, 9 interim, 2 conditional, 9 noncompliant (Aug 31, 2026). The rezoning wave is mostly over. What remains is as-of-right multifamily site plan reviews inside 3A districts, plus amendments and litigation in noncompliant towns. | Multifamily developers, land-use attorneys, housing consultants | Not counted (~100+ MA multifamily developers, **EST**) |
 | **40B comprehensive permits** | Crawl: 8 projects in 4 of 24 towns per window. **EST ~150–250 projects a year with ZBA hearings** statewide. Also "safe harbor" fights (Plymouth). | 40B developers, abutter-side attorneys, peer-review engineers, municipalities | Not counted; dozens of active developers (**EST**) |
 | **Wireless / small cell / towers** | Crawl: 2 events in 2 towns (Andover small cell; Great Barrington 5G bylaw). Wetlands: ~0.1% of filings. **EST ~50–150 local items a year**, low confidence. | Tower companies, carriers, site-acquisition firms | Concentrated: about 10–20 firms (American Tower, Crown Castle, SBA, Vertical Bridge, Verizon, AT&T, T-Mobile, plus site-acquisition contractors). Many already have national tools. Low priority. |
-| **EV charging hubs** | Crawl: 0 (no keyword). Wetlands: WETLANDS_EV_PLACEHOLDER. Mostly by-right or site plan review. | Charging networks, fleet depots | Small; not a launch segment |
+| **EV charging hubs** | Crawl: 0 (no keyword). Wetlands: 1 filing in 12 months (Bourne). Mostly by-right or site plan review. | Charging networks, fleet depots | Small; not a launch segment |
 | **Transmission / substations** | EFSB: 5 open utility dockets (Plymouth/Wareham, Dartmouth, Blandford, Falmouth, the 17-town NGrid rebuild) plus 1 offshore wind. Wetlands: Eversource ~25 and NGrid ~48 filings in 2025 (~0.5–0.6% of all filings). | Utilities (2 investor-owned plus 41 municipal light plants), offshore wind developers, their consultants | Few buyers but high-value. Eversource, National Grid, SouthCoast Wind and Commonwealth Wind (Avangrid) are listed in the CSV. |
 
 ---
@@ -235,15 +257,29 @@ Sources: `https://www.mass.gov/info-details/efsb-and-dpu-siting-open-dockets` an
 - **Contents:** company names and public URLs only; no personal contact data.
 - **What `approx_ma_projects` means:** siting-relevant MA projects in the public lists, combining SMART 1/2 and 3.0 projects of at least 500 kW that are not rooftop, CPS QESS of at least 1 MW, and energy-named wetlands NOIs from 2024–2026. Applicant, installer and owner roles are combined, so EPCs and long-term owners are counted alongside developers.
 - **Who is excluded:** residential installers (Sunrun, Tesla and similar), because their projects need only building permits, and single-project LLCs whose parent I could not identify.
-- **Row counts by segment:** CSV_SEGMENT_PLACEHOLDER
+- **Row counts by segment (92 rows):**
+
+| Segment | Rows |
+|---|---|
+| solar | 30 |
+| solar; storage | 19 |
+| storage | 12 |
+| storage; solar | 2 |
+| data center | 14 |
+| consultant | 6 |
+| attorney | 4 |
+| transmission/utility | 4 |
+| wireless (other) | 1 |
+
+  **54 solar/storage firms have 3 or more siting-relevant MA projects.** The largest by project count are Nexamp 63, Borrego 43, NextGrid 34, BlueWave 28, Grid Builders 28, Clearway 26, Kearsarge 26, AES 23, Syncarpha 20, ZPT/Zero-Point 14, ENGIE 13, Parallel Products 13, American Renewables Construction 13, New Leaf ~10, Ameresco 10, Navisun 10, CVE 10, ReWild 10, Conti 10.
 
 **Priority buyers for a pilot:**
 1. Developers with active SMART 3.0 or BESS pipelines that are in front of local boards now: Kearsarge, NextGrid, BlueWave, Nexamp, New Leaf, Parallel Products, Solect, ReWild, Agilitas, AES, Syncarpha, Lodestar, PureSky, CVE, Valta, Greenskies, EDF/PowerFlex.
-2. Land-use and energy counsel and wetlands/civil consultants who appear for them: Foley Hoag, Pierce Atwood, Nutter, Bacon Wilson, Beals and Thomas, Weston & Sampson, Horsley Witten. This segment is under-sampled; see the gaps below.
+2. Land-use and energy counsel and wetlands/civil consultants who appear for them: Foley Hoag, Pierce Atwood, Nutter, Bacon Wilson, Beals and Thomas, Farland Corp, Kimley-Horn, Weston & Sampson, Horsley Witten. This segment is under-sampled; see the gaps below.
 3. Large-BESS and transmission players, where one missed hearing is expensive: Hecate, Moraga/Hillman parents, Medway Grid, Cranberry Point, Eversource, National Grid.
 4. Data-center developers and operators.
 
-**Illustrative revenue size (EST, not a forecast):** about 60–120 paying organizations in MA (out of ~60 developers/EPCs with 3+ projects, ~20 data-center firms, ~15–40 law/consulting firms, and a handful of utilities and wind companies) at $200–600 a month comes to **~$150k–$850k ARR** in MA alone.
+**Illustrative revenue size (EST, not a forecast):** about 60–120 paying organizations in MA (out of 54 developers/EPCs with 3+ projects, ~20 data-center firms, ~15–40 law/consulting firms, and a handful of utilities and wind companies) at $200–600 a month comes to **~$150k–$850k ARR** in MA alone.
 
 ---
 
@@ -300,4 +336,6 @@ Sources: `https://www.mass.gov/info-details/efsb-and-dpu-siting-open-dockets` an
 - **Company names:** normalized by keyword (for example, "BWC … LLC" maps to BlueWave, "NextGrid <tree> LLC" to NextGrid). Single-project LLCs without an obvious parent were dropped, so per-company counts are lower bounds.
 - **Borrego:** counts are mostly from the SMART 1.0/2.0 era. Its development business now operates as New Leaf Energy (background knowledge).
 - **Utility DG interconnection queues** (Eversource, National Grid, Unitil) would add distribution-level BESS that is in no state list yet. Not pulled this session.
-- **Search budget:** about 9 web searches; the rest came from direct file and API downloads.
+- **Attorneys and consultants are under-sampled.** Only firms with a public MA siting trace this session are listed: 4 law firms and 6 consultants. The full MA land-use bar and civil/wetlands engineering field is likely 100+ firms (**EST**). Next step: parse the "on behalf of" and representative fields across all ConCom, PB and ZBA agendas in a full crawl, and the payor field across all wetlands filings, not just energy ones.
+- **Personal data:** check payors and applicants that are individuals were left out of the CSV.
+- **Search budget:** 8 web searches. The rest came from direct file and API downloads (ISO-NE table; three DOER workbooks; EFSB, MBTA and SMART pages; MassDEP Data Lake API with 4,614 detail records) and 8 page fetches.

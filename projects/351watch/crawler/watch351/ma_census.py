@@ -487,6 +487,180 @@ def cmd_leadtime(args, fetcher: PoliteFetcher) -> None:
 
 
 # --------------------------------------------------------------------------
+# 4. crawl every automated town
+# --------------------------------------------------------------------------
+
+def _listing_platform(l: dict) -> str:
+    if "category_id" in l:
+        return "civicplus"
+    if "civicclerk.com" in l.get("url", ""):
+        return "civicclerk"
+    return "generic"
+
+
+def crawl_configs(towns: list[dict]) -> list[dict]:
+    """One crawl config per (town, platform): crawl.py runs one adapter per config."""
+    cfgs = []
+    for t in towns:
+        if not t.get("automated"):
+            continue
+        groups: dict[str, list] = {}
+        for l in t.get("listings", []) + t.get("secondary_listings", []):
+            groups.setdefault(_listing_platform(l), []).append(l)
+        for plat, ls in groups.items():
+            cfg = {"town": t["town"], "website": t.get("final_url") or t["website"], "platform": plat,
+                   "automated": True, "listings": ls}
+            if plat == "civicplus":
+                parts = urlsplit(cfg["website"])
+                cfg["website"] = f"{parts.scheme}://{parts.netloc}"
+            if plat == "civicclerk":
+                cfg["tenant"] = t.get("tenant") or (t.get("vendors", {}).get("civicclerk", {}).get("tenant"))
+            cfgs.append(cfg)
+    return cfgs
+
+
+def cmd_crawl(args, fetcher: PoliteFetcher) -> None:
+    from collections import Counter, defaultdict
+    from . import extract
+    from .crawl import run_crawl
+    extract.OCR_MAX_PAGES = 6     # census crawl: OCR only the first 6 pages of a scan
+    towns = json.loads(TOWNS_ALL_FILE.read_text())["towns"]
+    if args.towns:
+        wanted = {n.strip().lower() for n in args.towns.split(",")}
+        towns = [t for t in towns if t["town"].lower() in wanted]
+    cfgs = crawl_configs(towns)
+    report = run_crawl(cfgs, fetcher, days_back=args.days_back, days_ahead=args.days_ahead,
+                       workers=args.workers)
+    # merge per-(town, platform) entries back into one row per town
+    merged: dict[str, dict] = {}
+    for row in report["towns"]:
+        m = merged.setdefault(row["town"], {"town": row["town"], "platforms": [], "agendas_listed": 0,
+                                            "documents_scanned": 0, "documents_without_text_layer": 0,
+                                            "documents_ocr": 0, "hits": row["hits"], "errors": []})
+        m["platforms"].append(row["platform"])
+        for k in ("agendas_listed", "documents_scanned", "documents_without_text_layer", "documents_ocr"):
+            m[k] += row[k]
+        m["errors"].extend(row["errors"])
+    for m in merged.values():
+        m["errors"] = m["errors"][:10]
+    hits = report["hits"]
+    by_town_topic: dict[str, Counter] = defaultdict(Counter)
+    for h in hits:
+        for tp in h["topics"]:
+            by_town_topic[h["town"]][tp] += 1
+    report.update({
+        "_about": ("Census crawl of every automated Massachusetts municipality (data/towns_ma_all.json): "
+                   "agendas for meetings in the window, text-extracted (OCR limited to the first 6 pages of "
+                   "image-only PDFs) and matched against the 351 Watch topic keywords."),
+        "towns_attempted": len(merged),
+        "towns_automated": len(merged),
+        "crawl_configs": len(cfgs),
+        "towns": sorted(merged.values(), key=lambda m: m["town"]),
+        "hits_by_town": {t: {"total": sum(c.values()), **dict(c.most_common())}
+                         for t, c in sorted(by_town_topic.items(), key=lambda kv: -sum(kv[1].values()))},
+        "towns_with_hits": len(by_town_topic),
+        "hits_by_board": dict(Counter(h["board_key"] for h in hits).most_common()),
+        "hits_text_source": dict(Counter(h.get("text_source") for h in hits).most_common()),
+    })
+    report.pop("towns_by_platform", None)
+    report["towns_by_platform"] = dict(Counter(c["platform"] for c in cfgs))
+    save_json(HITS_ALL_FILE, report)
+    print(f"towns {len(merged)}, configs {len(cfgs)}, documents scanned {report['documents_scanned']} "
+          f"({report['documents_without_text_layer']} without text layer, {report['documents_ocr']} OCR), "
+          f"hits {len(hits)} in {len(by_town_topic)} towns")
+    for topic, n in report["hits_by_topic"].items():
+        print(f"  {topic:<26} {n}")
+    print(f"fetcher: {fetcher.stats}")
+    print(f"wrote {HITS_ALL_FILE}")
+
+
+# --------------------------------------------------------------------------
+# 5. summary tables
+# --------------------------------------------------------------------------
+
+SUMMARY_FILE = DATA / "ma_census_summary.json"
+MEETING_BOARDS = ["planning_board", "zoning_board_of_appeals", "conservation_commission", "select_board"]
+
+
+def _pct_of(n: int, d: int) -> str:
+    return f"{100 * n / d:.0f}%" if d else "-"
+
+
+def cmd_report(args, fetcher: PoliteFetcher) -> None:
+    from collections import Counter, defaultdict
+    munis = json.loads(MUNI_FILE.read_text())["municipalities"]
+    towns = json.loads(TOWNS_ALL_FILE.read_text())["towns"]
+    state_pop = sum(m["pop_2024_est"] for m in munis)
+    pop = {m["town"]: m["pop_2024_est"] for m in munis}
+    auto = [t for t in towns if t.get("automated")]
+    out: dict = {"generated": now_iso(), "municipalities": len(munis), "state_pop_2024": state_pop}
+    out["websites"] = dict(Counter(m["website_status"] for m in munis))
+    out["automated"] = {"towns": len(auto), "share": round(len(auto) / len(munis), 3),
+                        "pop": sum(pop[t["town"]] for t in auto),
+                        "pop_share": round(sum(pop[t["town"]] for t in auto) / state_pop, 3)}
+    # platforms: every platform a town's automated boards come from
+    plat = defaultdict(list)
+    for t in auto:
+        for p_ in t.get("platforms") or [t.get("platform")]:
+            plat[p_].append(t["town"])
+    primary = Counter(t.get("platform") for t in auto)
+    out["automated_by_primary_platform"] = dict(primary.most_common())
+    out["automated_towns_using_platform"] = {k: len(v) for k, v in sorted(plat.items(), key=lambda kv: -len(kv[1]))}
+    cms = Counter()
+    for t in towns:
+        for c in (t.get("cms") or ["(none detected)"] if t.get("final_url") else ["(site not read)"]):
+            cms[c] += 1
+    out["cms_all_towns"] = dict(cms.most_common())
+    # boards
+    boards = {}
+    tm_towns = [t for t in towns if t.get("has_town_meeting")]
+    for key in MEETING_BOARDS + ["town_meeting"]:
+        have = [t for t in towns if t.get("automated") and key in (t.get("boards_found") or [])]
+        if key == "town_meeting":
+            have = [t for t in tm_towns if "town_meeting" in (t.get("board_evidence") or {})]
+        denom = len(tm_towns) if key == "town_meeting" else len(munis)
+        boards[key] = {"towns": len(have), "of": denom, "share": round(len(have) / denom, 3) if denom else None,
+                       "pop": sum(pop[t["town"]] for t in have)}
+    out["boards"] = boards
+    four = [t for t in auto if all(k in (t.get("boards_found") or []) for k in MEETING_BOARDS)]
+    out["all_four_meeting_boards"] = {"towns": len(four), "pop": sum(pop[t["town"]] for t in four)}
+    # reasons
+    reasons = defaultdict(list)
+    for t in towns:
+        if not t.get("automated"):
+            reasons[t.get("reason_code") or "unknown"].append(t["town"])
+    out["not_automated"] = {k: {"towns": len(v), "pop": sum(pop[x] for x in v), "examples": v[:12]}
+                            for k, v in sorted(reasons.items(), key=lambda kv: -len(kv[1]))}
+    vend = defaultdict(list)
+    for t in towns:
+        if not t.get("automated") and t.get("reason_code") in ("vendor_robots_disallow", "vendor_blocked",
+                                                              "bot_challenge", "js_only", "no_adapter"):
+            vend[f"{t.get('reason_code')}:{t.get('platform') or 'town site'}"].append(t["town"])
+    out["not_automated_by_vendor"] = {k: {"towns": len(v), "examples": v[:12]} for k, v in
+                                      sorted(vend.items(), key=lambda kv: -len(kv[1]))}
+    vendors_seen = Counter(k for t in towns for k in (t.get("vendors") or {}))
+    out["vendor_links_seen_all_towns"] = dict(vendors_seen.most_common())
+    if LEADTIME_FILE.exists():
+        lt = json.loads(LEADTIME_FILE.read_text())
+        out["leadtime"] = {k: lt[k] for k in ("meeting_window", "summary", "by_board_first_posting_only",
+                                              "by_board_all_rows", "by_platform", "town_medians",
+                                              "civicclerk_exact_hours_to_start") if k in lt}
+    if HITS_ALL_FILE.exists():
+        h = json.loads(HITS_ALL_FILE.read_text())
+        out["crawl"] = {k: h.get(k) for k in ("window", "towns_attempted", "documents_scanned",
+                                              "documents_without_text_layer", "documents_ocr",
+                                              "hits_by_topic", "towns_with_hits", "hits_by_board",
+                                              "hits_text_source")}
+        out["crawl"]["hits"] = len(h["hits"])
+        out["crawl"]["agendas_listed"] = sum(t["agendas_listed"] for t in h["towns"])
+        out["crawl"]["towns_with_errors"] = sum(1 for t in h["towns"] if t["errors"])
+        out["crawl"]["top_towns"] = dict(list(h["hits_by_town"].items())[:25])
+    save_json(SUMMARY_FILE, out)
+    print(json.dumps(out, indent=1)[:20000])
+    print(f"wrote {SUMMARY_FILE}")
+
+
+# --------------------------------------------------------------------------
 # CLI
 # --------------------------------------------------------------------------
 

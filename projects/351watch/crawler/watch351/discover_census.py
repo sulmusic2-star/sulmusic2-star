@@ -761,7 +761,10 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
     rec["platforms"] = platforms
     rec["platform"] = platforms[0] if platforms else None
 
-    tracked_found = [k for k in tracked if k in st.boards]
+    # a town counts as automated only through a meeting board (planning, ZBA,
+    # ConCom, select board/council); warrants alone (1-3 a year) do not count
+    tracked_found = [k for k in TRACKED[:4] if k in st.boards]
+    rec["warrants_found"] = "town_meeting" in st.boards
     if tracked_found:
         # crawl.py dispatches one adapter per town; keep the listings of the primary platform
         # and record any secondary-platform listings separately.
