@@ -61,12 +61,12 @@
       "state": "CT",
       "website": "https://www.newmilford.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:55:34+00:00",
+        "checked_at": "2026-10-10T16:02:31+00:00",
         "error": "RobotsDisallowed: https://www.newmilford.org/ (crawl-delay 15.0s too long for prototype)"
       },
       "automated": false,
       "reason": "robots.txt sets Crawl-delay: 15 for all agents; watch351.fetch skips hosts asking for more than 10 s. Technically automatable at 1 request per 15 s if the cap is raised.",
-      "agenda_platform": "unknown (site not fetched)"
+      "agenda_platform": "QScend CMS (per robots.txt paths; site not fetched)"
     },
     {
       "town": "Cornwall",
@@ -221,7 +221,7 @@
       "state": "RI",
       "website": "https://www.wgtownri.org",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:55:34+00:00",
+        "checked_at": "2026-10-10T16:05:10+00:00",
         "status": 200,
         "final_url": "https://www.wgtownri.org/",
         "block_markers": [],
@@ -254,7 +254,7 @@
         "select_board"
       ],
       "automated": true,
-      "note": "AgendaCenter has only a Town Council category; Planning Board / ZBA agendas are posted only to the RI SOS Open Meetings portal.",
+      "note": "AgendaCenter has only a Town Council category (no agendas in the window); Planning Board / ZBA agendas are not on the town site (presumably only on the RI SOS Open Meetings portal; not verified).",
       "agenda_platform": "CivicPlus AgendaCenter"
     },
     {
@@ -1538,7 +1538,7 @@
       "state": "NJ",
       "website": "https://www.lopatcongtwp.com",
       "fingerprint": {
-        "checked_at": "2026-10-10T15:55:42+00:00",
+        "checked_at": "2026-10-10T16:02:31+00:00",
         "status": 403,
         "final_url": "https://www.lopatcongtwp.com/",
         "block_markers": [
@@ -1550,7 +1550,7 @@
       "automated": false,
       "platform": null,
       "reason": "akamai bot challenge on homepage (HTTP 403); not bypassed",
-      "agenda_platform": "Granicus govAccess-style CMS behind Akamai"
+      "agenda_platform": "Vision / Granicus govAccess CMS (showpublisheddocument URLs) behind Akamai"
     },
     {
       "town": "Mansfield Township (Warren)",
@@ -1879,5 +1879,5 @@
       ]
     }
   ],
-  "generated": "2026-10-10T15:57:20+00:00"
+  "generated": "2026-10-10T16:05:10+00:00"
 }

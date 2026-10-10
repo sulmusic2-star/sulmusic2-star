@@ -73,12 +73,16 @@ VENDOR_RX = [
     ("diligent", r"https?://[a-z0-9-]+\.community\.diligentoneplatform\.com[^\s\"'<>]*"),
     ("agendasuite", r"https?://(?:www\.)?agendasuite\.org/iip/[a-z0-9-]+[^\s\"'<>]*"),
     ("meetingportal", r"https?://[a-z0-9-]+\.(?:meetingportal|onbaseonline)\.com[^\s\"'<>]*"),
+    ("mytowngovernment", r"https?://(?:www\.)?mytowngovernment\.org/[0-9]{5}[^\s\"'<>]*"),
+    ("opengov_ma", r"https?://[a-z0-9-]+\.opengov\.com[^\s\"'<>]*"),
     ("laserfiche", r"https?://[^\s\"'<>]*/WebLink/[^\s\"'<>]*"),
     ("google_drive", r"https?://(?:drive|docs)\.google\.com/(?:drive/folders|document|file)/[^\s\"'<>]*"),
+    ("sharepoint", r"https?://[a-z0-9-]+\.sharepoint\.com/[^\s\"'<>]*"),
+    ("dropbox", r"https?://(?:www\.)?dropbox\.com/(?:sh|scl)/[^\s\"'<>]*"),
 ]
 # vendors that are document stores, not meeting platforms: count only when the
 # link text says agendas
-DOC_STORE_VENDORS = {"laserfiche", "google_drive"}
+DOC_STORE_VENDORS = {"laserfiche", "google_drive", "sharepoint", "dropbox"}
 
 AGENDAISH = re.compile(r"agenda|meeting notice|posted meeting|meeting posting|notice of meeting", re.I)
 MINUTESISH = re.compile(r"minutes|supporting materials|summary|video|recording", re.I)
@@ -467,11 +471,14 @@ def do_civicclerk(st: TownState, tenant: str) -> None:
 
 
 # --------------------------------------------------------------- generic
+EVENT_PAGE = re.compile(r"Calendar\.aspx\?EID=|/event/|/events?/\d|/calendar/event|eventid=|/node/\d+/?$", re.I)
+
+
 def board_candidates(st: TownState, pages: list[Page], key: str) -> list[Link]:
     cands = []
     for p in pages:
         for l in p.links:
-            if not same_site(st, l.url):
+            if not same_site(st, l.url) or EVENT_PAGE.search(l.url) or DOCLIKE.search(l.url.split("?")[0][-6:]):
                 continue
             if key == "town_meeting":
                 ok = TOWN_MEETING_TEXT.search(l.text) and not re.search(r"advisory|committee|handbook", l.text, re.I)
@@ -481,8 +488,9 @@ def board_candidates(st: TownState, pages: list[Page], key: str) -> list[Link]:
                     and len(l.text) < 60 and not re.search(r"minutes", l.text, re.I))
             if ok:
                 cands.append(l)
-    # prefer links that say agenda, then shorter text; unique URLs
-    cands.sort(key=lambda l: (0 if AGENDAISH.search(l.text) else 1, len(l.text)))
+    # prefer links to the board's agenda page, then shorter text; unique URLs
+    cands.sort(key=lambda l: (0 if (AGENDAISH.search(l.text) or re.search(r"agenda", l.url, re.I)) else 1,
+                              len(l.text)))
     out, seen = [], set()
     for l in cands:
         u = l.url.split("#")[0]
@@ -525,12 +533,17 @@ def try_board_page(st: TownState, key: str, url: str, label: str, depth: int = 0
         return True
     # one level down: an "Agendas" / "Agendas & Minutes" sub-page of the board page
     if depth == 0:
+        here = page.final_url.split("#")[0].rstrip("/")
         subs = [l for l in page.links if same_site(st, l.url) and SUBPAGE_TEXT.search(l.text)
-                and l.url.split("#")[0] != page.final_url.split("#")[0]]
+                and l.url.split("#")[0].rstrip("/") != here and not EVENT_PAGE.search(l.url)]
         if key == "town_meeting":
             subs = [l for l in page.links if same_site(st, l.url) and WARRANT_TEXT.search(l.text)
-                    and not DOCLIKE.search(l.url)] + subs
-        for l in subs[:2]:
+                    and not re.search(r"\.(pdf|docx?)$", l.url.split("?")[0], re.I)] + subs
+        # prefer the board's own agenda page over a site-wide one
+        slug_rx = re.compile(SLUG_HINTS.get(key, r"town[-_ ]?meeting|warrant"), re.I)
+        subs.sort(key=lambda l: 0 if slug_rx.search(urlsplit(l.url).path.replace("%20", " ")) else 1)
+        subs = list({l.url.split("#")[0].rstrip("/"): l for l in subs}.values())
+        for l in subs[:3]:
             if try_board_page(st, key, l.url, l.text, depth=1):
                 return True
     else:
@@ -540,10 +553,14 @@ def try_board_page(st: TownState, key: str, url: str, label: str, depth: int = 0
     return False
 
 
+NEWS_PAGE = re.compile(r"CivicAlerts\.aspx|/news/|/blog/|/post/|[?&]p=\d+|/\d{4}/\d{2}/\d{2}/", re.I)
+
+
 def hub_links(st: TownState, page: Page) -> tuple[list[Link], list[Link]]:
     agendas, boards = [], []
     for l in page.links:
-        if not same_site(st, l.url) or len(l.text) > 60:
+        if (not same_site(st, l.url) or len(l.text) > 45 or EVENT_PAGE.search(l.url)
+                or NEWS_PAGE.search(l.url) or re.search(r"\.(pdf|docx?)$", l.url.split("?")[0], re.I)):
             continue
         if re.search(r"AgendaCenter", l.url) and st.boards:
             continue
@@ -552,18 +569,20 @@ def hub_links(st: TownState, page: Page) -> tuple[list[Link], list[Link]]:
         elif BOARDS_HUB_TEXT.search(l.text):
             boards.append(l)
 
-    def score(l: Link) -> int:
+    def score(l: Link) -> tuple:
         t = l.text.lower()
         s = 0
         if "agenda" in t:
-            s -= 5
+            s -= 6
         if "minutes" in t:
             s -= 2
         if "meeting" in t:
             s -= 2
+        if "notice" in t or "posting" in t:
+            s -= 1
         if "calendar" in t:
-            s += 2
-        return s
+            s += 3
+        return (s, len(t))
     agendas.sort(key=score)
     uniq = lambda ls: list({l.url.split("#")[0]: l for l in ls}.values())
     return uniq(agendas)[:3], uniq(boards)[:2]
@@ -604,6 +623,23 @@ def vendor_status(st: TownState) -> None:
             allowed = st.fetcher.allowed(url)
         except Exception:  # noqa: BLE001
             allowed = False
+        if allowed and key not in ("heygov", "boarddocs"):
+            try:
+                r = st.fetcher.get(url, max_age=LISTING_AGE)
+                if is_challenge(r.status, r.text):
+                    v["status"] = "vendor_challenge"
+                    v["detail"] = f"{urlsplit(url).netloc} serves a Cloudflare-style bot challenge (HTTP {r.status}); not bypassed"
+                    continue
+                if r.status in (401, 403):
+                    v["status"] = "vendor_blocked"
+                    v["detail"] = f"{urlsplit(url).netloc} answers HTTP {r.status} to automated requests"
+                    continue
+            except RobotsDisallowed:
+                allowed = False
+            except FetchError as e:
+                v["status"] = "unreachable"
+                v["detail"] = str(e)[:120]
+                continue
         if key == "heygov":
             api_ok = st.fetcher.allowed("https://api.heygov.com/")
             v["status"] = "robots_disallow" if not api_ok else "js_only"
@@ -749,13 +785,14 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
         return finish("automated", None, None)
 
     # not automated: most specific reason first
-    blocked = {k: v for k, v in st.vendors.items() if v.get("status") in ("robots_disallow", "vendor_blocked", "js_only")}
+    blocked = {k: v for k, v in st.vendors.items()
+               if v.get("status") in ("robots_disallow", "vendor_blocked", "vendor_challenge", "js_only")}
     if any("bot challenge" in n for n in st.notes):
         return finish("not_automated", "bot_challenge", "; ".join(n for n in st.notes if "bot challenge" in n)[:240])
     if blocked:
         k, v = next(iter(blocked.items()))
         code = {"robots_disallow": "vendor_robots_disallow", "vendor_blocked": "vendor_blocked",
-                "js_only": "js_only"}[v["status"]]
+                "vendor_challenge": "bot_challenge", "js_only": "js_only"}[v["status"]]
         rec["platform"] = k
         return finish("not_automated", code, f"agendas on {k}: {v.get('detail')}")
     unsupported = {k: v for k, v in st.vendors.items() if v.get("status") == "no_adapter"}

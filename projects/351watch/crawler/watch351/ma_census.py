@@ -203,72 +203,83 @@ GUESS_PATTERNS = ["https://www.{s}ma.gov", "https://{s}ma.gov", "https://www.{s}
                   "https://www.cityof{s}.org", "https://www.{s}ma.org"]
 
 
-def build_municipalities(fetcher: PoliteFetcher, workers: int = 16) -> dict:
+def load_sources(fetcher: PoliteFetcher):
     mcds, counties = census_rows(fetcher)
     directory = mma_directory(fetcher)
     wd = {}
     if WIKIDATA_FILE.exists():
         for row in json.loads(WIKIDATA_FILE.read_text())["rows"]:
             wd.setdefault((norm_name(row["itemLabel"]), row["countyLabel"].replace(" County", "")), row)
+    return mcds, counties, directory, wd
 
-    def one(r: dict) -> dict:
-        raw = r["NAME"]
-        name = re.sub(r"\s+(Town city|city|town)$", "", raw)
-        kind = "city" if raw.endswith(" city") else "town"
-        county = counties.get(r["COUNTY"], r["COUNTY"])
-        key = norm_name(name)
-        mrec = directory.get(key, {})
-        mma = mma_community(fetcher, mrec["_mma_url"]) if mrec.get("_mma_url") else {}
-        w = wd.get((key, county)) or {}
-        cands = []
-        for src, u in (("mma", mma.get("website")), ("wikidata", (w.get("sites") or "").split("|")[0] or None)):
-            nu = normalize_site(u)
-            if nu and nu not in [c[1] for c in cands]:
-                cands.append((src, nu))
-        checks = [dict(check_site(fetcher, u, name), source=src) for src, u in cands]
-        chosen = next((c for c in checks if c["result"] == "ok"), None)
-        if chosen is None:
-            chosen = next((c for c in checks if c["result"] in ("bot_challenge", "ok_name_not_found",
-                                                                 "robots_disallow_homepage")), None)
-        if chosen is None:
-            slug = re.sub(r"[^a-z]", "", name.lower())
-            for pat in GUESS_PATTERNS:
-                u = pat.format(s=slug)
-                c = dict(check_site(fetcher, u, name), source="guess")
-                if c["result"] == "dns_fail":
-                    continue
-                checks.append(c)
-                if c["result"] in ("ok", "bot_challenge"):
-                    chosen = c
-                    break
-        website = None
-        if chosen:
-            website = normalize_site(chosen.get("final_url") or chosen["url"])
-            # keep the scheme+host only when the final URL is a deep link (e.g. /index.php)
-            parts = urlsplit(website)
-            if parts.path and not re.search(r"/(town|city|ma|government)?$", parts.path, re.I):
-                website = f"{parts.scheme}://{parts.netloc}"
-        return {
-            "town": name,
-            "kind": kind,
-            "county": county,
-            "census_cousub": f"25{r['COUNTY']}{r['COUSUB']}",
-            "pop_2020": int(r["ESTIMATESBASE2020"]),
-            "pop_2024_est": int(r["POPESTIMATE2024"]),
-            "legislative_body": mrec.get("Legislative Body"),
-            "form_of_government": mrec.get("Form of Government"),
-            "website": website,
-            "website_verified": bool(chosen and chosen["result"] == "ok"),
-            "website_status": chosen["result"] if chosen else (checks[-1]["result"] if checks else "no_candidate"),
-            "website_sources": {"mma": normalize_site(mma.get("website")),
-                                "wikidata": normalize_site((w.get("sites") or "").split("|")[0] or None)},
-            "website_checks": checks,
-            "mma_page": mrec.get("_mma_url"),
-            "wikidata": w.get("item"),
-        }
 
+def build_municipalities(fetcher: PoliteFetcher, workers: int = 16) -> dict:
+    mcds, counties, directory, wd = load_sources(fetcher)
+    one = lambda r: build_one(fetcher, r, counties, directory, wd)  # noqa: E731
     with ThreadPoolExecutor(max_workers=workers) as pool:
         munis = list(pool.map(one, mcds))
+    return package_munis(munis)
+
+
+def build_one(fetcher: PoliteFetcher, r: dict, counties: dict, directory: dict, wd: dict) -> dict:
+    raw = r["NAME"]
+    name = re.sub(r"\s+(Town city|city|town)$", "", raw)
+    kind = "city" if raw.endswith(" city") else "town"
+    county = counties.get(r["COUNTY"], r["COUNTY"])
+    key = norm_name(name)
+    mrec = directory.get(key, {})
+    mma = mma_community(fetcher, mrec["_mma_url"]) if mrec.get("_mma_url") else {}
+    w = wd.get((key, county)) or {}
+    cands = []
+    for src, u in (("mma", mma.get("website")), ("wikidata", (w.get("sites") or "").split("|")[0] or None)):
+        nu = normalize_site(u)
+        if nu and nu not in [c[1] for c in cands]:
+            cands.append((src, nu))
+    checks = [dict(check_site(fetcher, u, name), source=src) for src, u in cands]
+    chosen = next((c for c in checks if c["result"] == "ok"), None)
+    if chosen is None:
+        chosen = next((c for c in checks if c["result"] in ("bot_challenge", "ok_name_not_found",
+                                                             "robots_disallow_homepage")), None)
+    if chosen is None:
+        slug = re.sub(r"[^a-z]", "", name.lower())
+        for pat in GUESS_PATTERNS:
+            u = pat.format(s=slug)
+            c = dict(check_site(fetcher, u, name), source="guess")
+            if c["result"] == "dns_fail":
+                continue
+            checks.append(c)
+            if c["result"] in ("ok", "bot_challenge"):
+                chosen = c
+                break
+    website = None
+    if chosen:
+        website = normalize_site(chosen.get("final_url") or chosen["url"])
+        # keep the scheme+host only when the final URL is a deep link (e.g. /index.php)
+        parts = urlsplit(website)
+        if parts.path and not re.search(r"/(town|city|ma|government)?$", parts.path, re.I):
+            website = f"{parts.scheme}://{parts.netloc}"
+    return {
+        "town": name,
+        "kind": kind,
+        "county": county,
+        "census_cousub": f"25{r['COUNTY']}{r['COUSUB']}",
+        "pop_2020": int(r["ESTIMATESBASE2020"]),
+        "pop_2024_est": int(r["POPESTIMATE2024"]),
+        "legislative_body": mrec.get("Legislative Body"),
+        "form_of_government": mrec.get("Form of Government"),
+        "website": website,
+        "website_verified": bool(chosen and chosen["result"] == "ok"),
+        "website_status": chosen["result"] if chosen else (checks[-1]["result"] if checks else "no_candidate"),
+        "website_sources": {"mma": normalize_site(mma.get("website")),
+                            "wikidata": normalize_site((w.get("sites") or "").split("|")[0] or None)},
+        "website_checks": checks,
+        "mma_page": mrec.get("_mma_url"),
+        "wikidata": w.get("item"),
+    }
+
+
+
+def package_munis(munis: list[dict]) -> dict:
     munis.sort(key=lambda m: m["town"])
     return {
         "_about": ("All 351 Massachusetts cities and towns (Census county subdivisions, state FIPS 25) "
@@ -362,6 +373,120 @@ def cmd_discover(args, fetcher: PoliteFetcher) -> None:
 
 
 # --------------------------------------------------------------------------
+# 3. lead time: agenda posted vs meeting date
+# --------------------------------------------------------------------------
+
+def _pct(xs: list[float], q: float) -> float | None:
+    """Linear-interpolated percentile (q in 0..100)."""
+    if not xs:
+        return None
+    xs = sorted(xs)
+    k = (len(xs) - 1) * q / 100
+    lo, hi = int(k), min(int(k) + 1, len(xs) - 1)
+    return round(xs[lo] + (xs[hi] - xs[lo]) * (k - lo), 2)
+
+
+def _dist(rows: list[dict], field: str = "lead_days") -> dict:
+    xs = [r[field] for r in rows]
+    if not xs:
+        return {"n": 0}
+    hours = [r["lead_hours_to_day_start"] for r in rows]
+    return {
+        "n": len(xs),
+        "towns": len({r["town"] for r in rows}),
+        "p10_days": _pct(xs, 10), "p25_days": _pct(xs, 25), "median_days": _pct(xs, 50),
+        "p75_days": _pct(xs, 75), "p90_days": _pct(xs, 90),
+        "p10_hours_before_meeting_day": _pct(hours, 10), "median_hours_before_meeting_day": _pct(hours, 50),
+        "share_posted_after_meeting_day_start": round(sum(1 for h in hours if h <= 0) / len(xs), 3),
+        "share_ge_48h_before_meeting_day": round(sum(1 for h in hours if h >= 48) / len(xs), 3),
+        "share_ge_24h_before_meeting_day": round(sum(1 for h in hours if h >= 24) / len(xs), 3),
+        "share_ge_7_days": round(sum(1 for x in xs if x >= 7) / len(xs), 3),
+    }
+
+
+def leadtime_records(raw: dict, start, end) -> list[dict]:
+    from datetime import date as _date
+    out = []
+    seen = set()
+    for town, rows in raw.items():
+        for r in rows:
+            if not r.get("posted") or not r.get("meeting_date"):
+                continue
+            md = _date.fromisoformat(r["meeting_date"])
+            if not (start <= md <= end):
+                continue
+            key = (town, r["url"])
+            if key in seen:
+                continue
+            seen.add(key)
+            posted = datetime.fromisoformat(r["posted"])
+            day_start = datetime(md.year, md.month, md.day)
+            rec = {"town": town, "board_key": r["board_key"], "category": r["category"],
+                   "platform": r["platform"], "posted_kind": r.get("posted_kind"),
+                   "meeting_date": r["meeting_date"], "posted": r["posted"], "url": r["url"],
+                   "lead_days": (md - posted.date()).days,
+                   "lead_hours_to_day_start": round((day_start - posted).total_seconds() / 3600, 1)}
+            if r.get("meeting_start"):
+                ms = datetime.fromisoformat(r["meeting_start"][:19])
+                rec["lead_hours_to_start"] = round((ms - posted).total_seconds() / 3600, 1)
+            out.append(rec)
+    return out
+
+
+def cmd_leadtime(args, fetcher: PoliteFetcher) -> None:
+    from collections import defaultdict
+    from datetime import date as _date, timedelta
+    raw = json.loads(LEADTIME_RAW_FILE.read_text())["rows_by_town"]
+    today = _date.today()
+    start, end = today - timedelta(days=args.lead_days_back), today - timedelta(days=1)
+    recs = leadtime_records(raw, start, end)
+    posted_only = [r for r in recs if r["posted_kind"] in ("posted", "published")]
+    summary = {"all_rows": _dist(recs), "first_posting_only": _dist(posted_only)}
+    by_board, by_board_posted, by_platform = {}, {}, {}
+    for key in ["planning_board", "zoning_board_of_appeals", "conservation_commission", "select_board", "town_meeting"]:
+        by_board[key] = _dist([r for r in recs if r["board_key"] == key])
+        by_board_posted[key] = _dist([r for r in posted_only if r["board_key"] == key])
+    for plat in sorted({r["platform"] for r in recs}):
+        by_platform[plat] = _dist([r for r in recs if r["platform"] == plat])
+    # town-level: each town's median, so big posters do not dominate
+    per_town = defaultdict(list)
+    for r in posted_only:
+        per_town[r["town"]].append(r["lead_days"])
+    town_medians = [_pct(v, 50) for v in per_town.values() if len(v) >= 3]
+    exact = [r for r in recs if "lead_hours_to_start" in r]
+    doc = {
+        "_about": ("Lead time between when an agenda appeared on the town's agenda platform and the meeting date, "
+                   "for meetings already held. CivicPlus AgendaCenter shows 'Posted <timestamp>' (or 'Amended "
+                   "<timestamp>' after an edit, which replaces the original time, so amended rows understate lead "
+                   "time); CivicClerk's public API gives publishOn per agenda file and the meeting start time."),
+        "generated": now_iso(),
+        "meeting_window": {"start": start.isoformat(), "end": end.isoformat()},
+        "method": {
+            "lead_days": "meeting date minus the calendar date the agenda was posted",
+            "lead_hours_to_day_start": ("hours from posting to 00:00 on the meeting day (a lower bound: most "
+                                        "meetings start in the evening, adding ~17-19 h)"),
+            "lead_hours_to_start": "CivicClerk only: hours from publishOn to the scheduled start time",
+            "first_posting_only": "CivicPlus rows marked 'Posted' (not 'Amended') plus all CivicClerk rows",
+        },
+        "summary": summary,
+        "by_board_all_rows": by_board,
+        "by_board_first_posting_only": by_board_posted,
+        "by_platform": by_platform,
+        "town_medians": {"towns": len(town_medians), "p10_days": _pct(town_medians, 10),
+                         "median_days": _pct(town_medians, 50), "p90_days": _pct(town_medians, 90)},
+        "civicclerk_exact_hours_to_start": {"n": len(exact),
+                                            "p10": _pct([r["lead_hours_to_start"] for r in exact], 10),
+                                            "median": _pct([r["lead_hours_to_start"] for r in exact], 50)},
+        "records": recs,
+    }
+    save_json(LEADTIME_FILE, doc)
+    print(json.dumps({k: doc[k] for k in ("meeting_window", "summary", "by_board_first_posting_only",
+                                          "by_platform", "town_medians", "civicclerk_exact_hours_to_start")},
+                     indent=1))
+    print(f"wrote {LEADTIME_FILE}")
+
+
+# --------------------------------------------------------------------------
 # CLI
 # --------------------------------------------------------------------------
 
@@ -373,6 +498,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--days-back", type=int, default=30)
     p.add_argument("--days-ahead", type=int, default=60)
     p.add_argument("--offline", action="store_true")
+    p.add_argument("--lead-days-back", type=int, default=180, help="leadtime: meetings held in the last N days")
     p.add_argument("-v", "--verbose", action="store_true")
     args = p.parse_args(argv)
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO,

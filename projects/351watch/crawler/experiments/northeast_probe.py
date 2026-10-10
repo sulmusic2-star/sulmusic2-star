@@ -305,7 +305,7 @@ CURATED: dict[str, dict] = {
                        _gl("Conservation Commission", "conservation_commission", _AS, r"for Conservation Commission"),
                        _gl("Town Council", "select_board", _AS, r"for Town Council(?! Committee)"),
                    ]},
-    "New Milford, CT": {"automated": False, "agenda_platform": "unknown (site not fetched)",
+    "New Milford, CT": {"automated": False, "agenda_platform": "QScend CMS (per robots.txt paths; site not fetched)",
                         "reason": "robots.txt sets Crawl-delay: 15 for all agents; watch351.fetch skips hosts asking "
                                   "for more than 10 s. Technically automatable at 1 request per 15 s if the cap is raised."},
     "Cornwall, CT": {"agenda_platform": "WordPress (behind Cloudflare)"},
@@ -322,8 +322,9 @@ CURATED: dict[str, dict] = {
                      "reason": "Town site (CivicPlus CMS, no AgendaCenter) links Town Council, Planning Board and Zoning "
                                "Board agendas to ClerkBase, whose browse tree is loaded by JavaScript; no static listing "
                                "for the generic adapter. Needs a ClerkBase adapter (or the RI SOS portal)."},
-    "West Greenwich, RI": {"note": "AgendaCenter has only a Town Council category; Planning Board / ZBA agendas are "
-                                   "posted only to the RI SOS Open Meetings portal."},
+    "West Greenwich, RI": {"note": "AgendaCenter has only a Town Council category (no agendas in the window); "
+                                   "Planning Board / ZBA agendas are not on the town site (presumably only on the "
+                                   "RI SOS Open Meetings portal; not verified)."},
     "North Kingstown, RI": {"drop_listings": r"Building Code"},
     # ---------------- NH
     "Concord, NH": {"platform": "generic", "agenda_platform": "Legistar (City Council) + CivicPlus CMS without AgendaCenter",
@@ -388,7 +389,7 @@ CURATED: dict[str, dict] = {
                              "automated": False,
                              "reason": "Agendas are hosted under ecode360.com/documents/pub/AN2011/Agendas/, and ecode360.com "
                                        "robots.txt disallows /documents for all agents."},
-    "Lopatcong Township, NJ": {"agenda_platform": "Granicus govAccess-style CMS behind Akamai"},
+    "Lopatcong Township, NJ": {"agenda_platform": "Vision / Granicus govAccess CMS (showpublisheddocument URLs) behind Akamai"},
     "Mansfield Township (Warren), NJ": {"platform": "generic", "agenda_platform": "Joomla", "automated": True,
                                         "listings": [
                                             _gl("Township Committee", "select_board",
