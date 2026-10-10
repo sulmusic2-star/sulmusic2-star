@@ -1,0 +1,2985 @@
+{
+  "generated": "2026-10-10T15:11:10+00:00",
+  "window": {
+    "start": "2026-08-26",
+    "end": "2027-01-08"
+  },
+  "towns_attempted": 30,
+  "towns_automated": 24,
+  "documents_scanned": 338,
+  "documents_without_text_layer": 93,
+  "documents_ocr": 93,
+  "hits_by_topic": {
+    "zoning_amendment": 66,
+    "solar": 47,
+    "battery_storage": 44,
+    "40b_comprehensive_permit": 25,
+    "moratorium": 20,
+    "clean_energy_siting": 15,
+    "wireless_telecom": 4
+  },
+  "towns_by_platform": {
+    "civicplus": {
+      "automated": [
+        "Lee",
+        "Pittsfield",
+        "Great Barrington",
+        "Northampton",
+        "Amherst",
+        "Westfield",
+        "Sturbridge",
+        "Sutton",
+        "Shrewsbury",
+        "Westborough",
+        "Grafton",
+        "Charlton",
+        "Leominster",
+        "Fitchburg",
+        "Westford",
+        "Billerica",
+        "Andover",
+        "Wakefield",
+        "Plymouth",
+        "Carver",
+        "Dartmouth"
+      ],
+      "not_automated": []
+    },
+    "unknown": {
+      "automated": [],
+      "not_automated": [
+        "Becket",
+        "Middleborough"
+      ]
+    },
+    "generic": {
+      "automated": [
+        "Sudbury",
+        "Fall River"
+      ],
+      "not_automated": [
+        "Worthington",
+        "Barnstable"
+      ]
+    },
+    "granicus": {
+      "automated": [],
+      "not_automated": [
+        "Framingham"
+      ]
+    },
+    "civicclerk": {
+      "automated": [
+        "Bridgewater"
+      ],
+      "not_automated": []
+    },
+    "heygov": {
+      "automated": [],
+      "not_automated": [
+        "Medway"
+      ]
+    }
+  },
+  "towns": [
+    {
+      "town": "Lee",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 8,
+      "documents_scanned": 8,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 0,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Becket",
+      "platform": null,
+      "automated": false,
+      "agendas_listed": 0,
+      "documents_scanned": 0,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 0,
+      "errors": [],
+      "reason": "Cloudflare bot challenge (HTTP 403, cf-mitigated: challenge) on every page of townofbecket.org; not bypassed. becketma.gov is a parked domain."
+    },
+    {
+      "town": "Worthington",
+      "platform": "generic",
+      "automated": false,
+      "agendas_listed": 0,
+      "documents_scanned": 0,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 0,
+      "errors": [],
+      "reason": "WordPress site has no agenda listing: board pages link only to minutes (Google Drive / ASUS WebStorage folders). Agendas appear to be posted physically at Town Hall."
+    },
+    {
+      "town": "Pittsfield",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 20,
+      "documents_scanned": 20,
+      "documents_without_text_layer": 17,
+      "documents_ocr": 17,
+      "hits": 25,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Great Barrington",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 24,
+      "documents_scanned": 23,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 7,
+      "errors": [
+        "offline mode and not cached: https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586"
+      ],
+      "reason": null
+    },
+    {
+      "town": "Northampton",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 12,
+      "documents_scanned": 12,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 8,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Amherst",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 14,
+      "documents_scanned": 14,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 11,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Westfield",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 15,
+      "documents_scanned": 15,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 6,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Sturbridge",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 7,
+      "documents_scanned": 7,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 3,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Sutton",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 10,
+      "documents_scanned": 10,
+      "documents_without_text_layer": 10,
+      "documents_ocr": 10,
+      "hits": 1,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Shrewsbury",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 12,
+      "documents_scanned": 12,
+      "documents_without_text_layer": 1,
+      "documents_ocr": 1,
+      "hits": 2,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Westborough",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 20,
+      "documents_scanned": 20,
+      "documents_without_text_layer": 3,
+      "documents_ocr": 3,
+      "hits": 1,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Grafton",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 15,
+      "documents_scanned": 15,
+      "documents_without_text_layer": 11,
+      "documents_ocr": 11,
+      "hits": 0,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Charlton",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 11,
+      "documents_scanned": 11,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 6,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Leominster",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 19,
+      "documents_scanned": 19,
+      "documents_without_text_layer": 15,
+      "documents_ocr": 15,
+      "hits": 13,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Fitchburg",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 11,
+      "documents_scanned": 11,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 6,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Framingham",
+      "platform": "granicus",
+      "automated": false,
+      "agendas_listed": 0,
+      "documents_scanned": 0,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 0,
+      "errors": [],
+      "reason": "CivicPlus AgendaCenter is empty; agendas live on Granicus (framinghamma.granicus.com/ViewPublisher.php?view_id=24), whose robots.txt disallows all user agents except named search engines. Older documents are in Laserfiche WebLink."
+    },
+    {
+      "town": "Sudbury",
+      "platform": "generic",
+      "automated": true,
+      "agendas_listed": 11,
+      "documents_scanned": 11,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 3,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Westford",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 18,
+      "documents_scanned": 18,
+      "documents_without_text_layer": 7,
+      "documents_ocr": 7,
+      "hits": 17,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Billerica",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 13,
+      "documents_scanned": 13,
+      "documents_without_text_layer": 10,
+      "documents_ocr": 10,
+      "hits": 2,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Andover",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 15,
+      "documents_scanned": 15,
+      "documents_without_text_layer": 15,
+      "documents_ocr": 15,
+      "hits": 3,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Wakefield",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 13,
+      "documents_scanned": 13,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 4,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Plymouth",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 20,
+      "documents_scanned": 20,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 32,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Carver",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 19,
+      "documents_scanned": 19,
+      "documents_without_text_layer": 1,
+      "documents_ocr": 1,
+      "hits": 14,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Middleborough",
+      "platform": null,
+      "automated": false,
+      "agendas_listed": 0,
+      "documents_scanned": 0,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 0,
+      "errors": [],
+      "reason": "Cloudflare 'Attention Required' block (HTTP 403) on middleboroughma.gov; legacy middleborough.com unreachable (upstream 502). Not bypassed."
+    },
+    {
+      "town": "Bridgewater",
+      "platform": "civicclerk",
+      "automated": true,
+      "agendas_listed": 10,
+      "documents_scanned": 10,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 1,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Medway",
+      "platform": "heygov",
+      "automated": false,
+      "agendas_listed": 0,
+      "documents_scanned": 0,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 0,
+      "errors": [],
+      "reason": "Agendas & Minutes page (/meetings) is rendered client-side from api.heygov.com, and that API's robots.txt disallows all crawling. Would need a headless browser plus permission."
+    },
+    {
+      "town": "Fall River",
+      "platform": "generic",
+      "automated": true,
+      "agendas_listed": 3,
+      "documents_scanned": 3,
+      "documents_without_text_layer": 3,
+      "documents_ocr": 3,
+      "hits": 0,
+      "errors": [],
+      "reason": null
+    },
+    {
+      "town": "Barnstable",
+      "platform": "generic",
+      "automated": false,
+      "agendas_listed": 0,
+      "documents_scanned": 0,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 0,
+      "errors": [],
+      "reason": "barnstable.gov sits behind a Cloudflare bot challenge. The legacy host tobweb.town.barnstable.ma.us serves the same board pages without it, but crawling that would sidestep the town's bot protection, so it is disabled pending permission. Listings below are ready to enable."
+    },
+    {
+      "town": "Dartmouth",
+      "platform": "civicplus",
+      "automated": true,
+      "agendas_listed": 19,
+      "documents_scanned": 19,
+      "documents_without_text_layer": 0,
+      "documents_ocr": 0,
+      "hits": 13,
+      "errors": [],
+      "reason": null
+    }
+  ],
+  "hits": [
+    {
+      "town": "Northampton",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-29",
+      "topics": [
+        "moratorium",
+        "zoning_amendment"
+      ],
+      "snippet": "St, Northampton (Teleconference available for Viewing when feasible) 7:00 PM Proposed zoning ordinance amendments to establish definition of data centers and to impose a 365 day temporary moratorium on establishment of a data center by",
+      "source_url": "https://www.northamptonma.gov/AgendaCenter/ViewFile/Agenda/_10292026-9422",
+      "listing_url": "https://www.northamptonma.gov/AgendaCenter/Planning-Board-44",
+      "document_title": "City Council Committee on Legislative Matters and Planning Board Joint Hearing Notice",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "Community Development Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-20",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Community Development Board 10/6/2026 10/1 0 FET / 20950 CITY OF PITTSFIELD NOTICE OF ZONING AMENDMENT PUBLIC HEARING PITTSFIELD COMMUNITY DEVELOPMENT BOARD The City of Pittsfield in accordance with the provision of M.G.L Chapter 40A",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1011",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/Community-Development-Board-6",
+      "document_title": "Community Development Board Public Hearings (PDF)",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "Community Development Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-20",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "23-2 Section 2.2 \"Glossary,\" and to amend Article 23-4 Section 4.313 \"Conversions\" to amend the Zoning Ordinance to clarify and modernize conversion requirements for buildings in Pittsfield. The required public hearing will be held on",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1011",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/Community-Development-Board-6",
+      "document_title": "Community Development Board Public Hearings (PDF)",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "Community Development Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-20",
+      "topics": [
+        "moratorium",
+        "zoning_amendment"
+      ],
+      "snippet": "2.2 \"Glossary,\" and to create Article 23-4 Section 4.332 \"Data Centers, Temporary Moratorium\" to amend the Zoning Ordinance to impose a temporary moratorium on Data Centers in Pittsfield. The required public hearing will be held on",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1011",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/Community-Development-Board-6",
+      "document_title": "Community Development Board Public Hearings (PDF)",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-20",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Fines for Regulations of the Board of Health and Board of Public Works Personnel Bylaw Amendment – New Position General Bylaw Amendment – Chapter 315, Section 6 (Snow to be Removed from Sidewalks) Amendment to Fines for Domestic Animal",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_10202026-5883",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Select-Board-25",
+      "document_title": "2026 Fall Annual Town Meeting Warrant and Packet",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-20",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "relative thereto. Sponsor: Board of Health & Board of Public Works ARTICLE 14: PERSONNEL BYLAW AMENDMENT – NEW POSITION To see if the Town will vote to amend, pursuant to the provisions of Massachusetts General Laws, Chapter 40, Section",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_10202026-5883",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Select-Board-25",
+      "document_title": "2026 Fall Annual Town Meeting Warrant and Packet",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-20",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "action relative thereto. Sponsor: Board of Parks & Recreation 12 ARTICLE 15: GENERAL BYLAW AMENDMENT – CHAPTER 315, SECTION 6 (SNOW TO BE REMOVED FROM SIDEWALKS) To see if the Town will vote to delete Section 315-6 of the Town's General",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_10202026-5883",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Select-Board-25",
+      "document_title": "2026 Fall Annual Town Meeting Warrant and Packet",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-20",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "If approved, it provides a reasonable alternative to the proposed 40B development known as the Residences at Hawthorn. ARTICLE 2: APPROPRIATION TO THE STABILIZATION FUND Recommend: 7-0-0 This article proposes an appropriation of $250,000",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_10202026-5883",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Select-Board-25",
+      "document_title": "2026 Fall Annual Town Meeting Warrant and Packet",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-15",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "of the City Council to adopt zoning regulations for clean energy systems, including BESS. Access the full petition at the City Clerk's Office (City Hall) or at: www.cityofwestfield.org/applications",
+      "source_url": "https://www.cityofwestfield.org/AgendaCenter/ViewFile/Agenda/_10152026-8687",
+      "listing_url": "https://www.cityofwestfield.org/AgendaCenter/City-Council-1",
+      "document_title": "Notice of City Council Public Hearing to Consider a Petition of the City Council to Adopt Zoning Regulations for Clean Energy Systems, including BESS",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Great Barrington",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-15",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "929 205 6099 Webinar ID: 829 4947 0990 AGENDA 1. CALL TO ORDER / ATTENDANCE ROLL CALL 2. ZONING AMENDMENTS, PUBLIC HEARING: public hearing pursuant to MGL Ch. 40A, s. 5 to hear public comment on proposed zoning amendments. a. Vote to open",
+      "source_url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10152026-2608",
+      "listing_url": "https://www.townofgbma.gov/AgendaCenter/Planning-Board-8",
+      "document_title": "Planning Board Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Sudbury",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-14",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "Sudbivision Bond Request Bonnie Brook Estates - Bylaw Change Section 3423 Noise - Battery Energy Storage System Bylaw - Adoption of the Walkway Request Policy - Master Plan Implementation - Citizens' Comments on Items Not on Agenda – No",
+      "source_url": "https://cdn.sudbury.ma.us/wp-content/uploads/sites/328/2026/10/PlanningBoard_2026_Oct_14_agenda.pdf?version=d43792501acae3b43f2fa5ee39865c33",
+      "listing_url": "https://sudbury.ma.us/planning/meetings/",
+      "document_title": "Agenda for meeting at Wed, October 14, 2026 (7:30 pm)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Amherst",
+      "board": "Conservation Commission",
+      "board_key": "conservation_commission",
+      "meeting_date": "2026-10-14",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "approved transformer containment system on two equipment pads associated with the solar facility at 191 West Pomeroy Lane (Map 19D, Lot 10). c. 7:25 PM Request for Determination - Bacon Wilson, P.C. on behalf of Barry Roberts requesting",
+      "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_10142026-160",
+      "listing_url": "https://www.amherstma.gov/AgendaCenter/Conservation-Commission-18",
+      "document_title": "Conservation Commission Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westford",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "clean_energy_siting",
+        "zoning_amendment"
+      ],
+      "snippet": "Review warrant articles Articles to be reviewed by the Select Board Amend Zoning Bylaw, to create a new Section 6.6: Small Clean Energy Infrastructure Facilities (SCEIF), and to modify Section 3.2.3: General Accessory Uses, Section 5.3.5",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_10132026-6982",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Select-Board-3",
+      "document_title": "Select Board",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westford",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Site Plan Review of Exempt Religious, Educational, Child Care Uses, and Large Scale Solar Uses, Section 9.4.6(3): General Review Standards relative to Large Scale Solar Energy Uses, Section 10.2: General Definitions, and Appendices A and B",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_10132026-6982",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Select-Board-3",
+      "document_title": "Select Board",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "Jenkins, North Andover, represents Blue Sky Utility and gave a quick synopsis about battery storage energy system. Rebecca Thompson, Pittsfield is here to speak to the importance of the Office of Diversity, Equity and Inclusion. She took",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10132026-1026",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "City Council Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "battery_storage",
+        "zoning_amendment"
+      ],
+      "snippet": "on a report from the Ordinances and Rules Committee on a petition for the proposed \"Battery Energy Storage Systems\" Zoning Amendment, recommending to approve as amended 5/0. City Planner Kevin Rayner spoke on behalf of the petitioner. This",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10132026-1026",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "City Council Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "Councilor Cunningham inquired about the range for small, medium and large BESS. He questioned what kilowatt hour we want to say is safe. He said there should be a lower bound to what a small BESS is and change the definition to not include",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10132026-1026",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "City Council Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "company that manufactures radiation hardened photonic smart coatings for use in space solar panels. Introduction by Mass Executive Office of Economic Development, interested in site for manufacturing solar space panels for satellites",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10132026-1026",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "City Council Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Rules Committee A report on a public hearing for the proposed \"Westside Form Base Code\" Zoning Amendment, recommending to approve 5/0 A petition from the Community Development Board requesting to amend City Code Chapter 23, Article 23-2",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10132026-1026",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "City Council Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "moratorium"
+      ],
+      "snippet": "and Art;cle 23-4 Section 4 to create Article 23-4 Section 4.332 \"Data Center, Temporary Moratorium\" At 8:36 p.m. Councilor White moved to adjourn, carried by a unanimous vote of the eleven members present. A true record, attest: Michele M.",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10132026-1026",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "City Council Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Policy SKM_C650i24061214200 (1 ).pdf Traffic Safety Equipment Quotes (1) SMART 18 w-Solar 6-3-2026_V1 .pdf SKM_C651i26060314450.pdf Risk Assessment RISK ASSESMENT.pdf Additional Materials Statistics. pdf Senior Agency Official Signature As",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10132026-1026",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "City Council Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Leominster",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "one new 45ft H | Mid Span Pole, numbered P56-50, on Willard St to provide power for solar battery project at 526 Willard St. Location approximately as shown on plan attached Wherefore it prays that after due notice and hearing as provided",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_10132026-2156",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/City-Council-3",
+      "document_title": "CITY COUNCIL AGENDA",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Carver",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "2. November and December meeting schedule Public Hearing Cont'd: 3. Federal Pond Solar, LLC, requesting a Special Permit and Site Plan Review pursuant to Section 290-3-1, 290-3-6 and 290-5-3 of the Carver Zoning By Law, located at 104",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_10132026-616",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "October 13, 2026 - PB Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "Construction, installation and operation of ground-mounted solar and dual-use photovoltaic systems and coupled BESS with associated site work and interconnection. – Applicant has requested a continuance to October 27, 2026 Public Hearing",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_10132026-616",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "October 13, 2026 - PB Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-13",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Parallel Products Solar Energy, LLC. requesting a Special Permit and Site Plan Review pursuant to Section 290-3-6.3 and 290-2-2.3(C) and 290-3-6.7 of the Carver Zoning By Law, located at 235 Main Street in Carver, MA (Assessor's Map 87 Lot",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_10132026-616",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "October 13, 2026 - PB Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Northampton",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-08",
+      "topics": [
+        "clean_energy_siting"
+      ],
+      "snippet": "Proposed package zoning and other code amendments to incorporate mandatory standards for consolidated local permitting of Small Clean Energy Infrastructure Facilities in compliance with 225 CMR 29.00. Changes affect 350-2.1, 11.3, 11.5",
+      "source_url": "https://www.northamptonma.gov/AgendaCenter/ViewFile/Agenda/_10082026-9442",
+      "listing_url": "https://www.northamptonma.gov/AgendaCenter/Planning-Board-44",
+      "document_title": "Oct 8 Planning Board and Legislative Matters Joint Hearing and Planning Board Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Great Barrington",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-08",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "continue or close public hearing h. Discussion/vote to grant/deny the Special Permit 4. ZONING AMENDMENTS: Discussion of possible zoning amendments including a. Hotel/motel room limits b. Housatonic Mill Revitalization overlay district 5.",
+      "source_url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10082026-2597",
+      "listing_url": "https://www.townofgbma.gov/AgendaCenter/Planning-Board-8",
+      "document_title": "Planning Board Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Great Barrington",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-08",
+      "topics": [
+        "wireless_telecom"
+      ],
+      "snippet": "on undersized lots); Clean energy siting - 11/12/26: Meat processing - 12/10/26: 5G / small cell wireless telecommunications (non-zoning) 6. BOARD & SUBCOMMITTEE UPDATES / ISSUES & CONCERNS: 7. CITIZEN'S SPEAK TIME: This is an opportunity",
+      "source_url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10082026-2597",
+      "listing_url": "https://www.townofgbma.gov/AgendaCenter/Planning-Board-8",
+      "document_title": "Planning Board Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Charlton",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-07",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Block A, Parcels 1, 1.1, and 1.2 and is zoned Business Enterprise Park (BEP). Proposed Amendments to the Charlton Zoning Bylaw - (1) Amend § 200-2.1, Uses and Structures, to add a definition of \"Data center\"; (2) amend § 200-3.2B, Use",
+      "source_url": "https://www.townofcharlton.net/AgendaCenter/ViewFile/Agenda/_10072026-4700",
+      "listing_url": "https://www.townofcharlton.net/AgendaCenter/Planning-Board-38",
+      "document_title": "Planning Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Conservation Commission",
+      "board_key": "conservation_commission",
+      "meeting_date": "2026-10-07",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "Room #1 at the Carver Town Hall to hear the Notice of Intent submitted by Federal Pond Solar, LLC, to construct a dual-use agriculture/solar array and ground-mounted solar arrays with coupled battery storage, associated site work, and",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_10072026-609",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Conservation-Commission-12",
+      "document_title": "Conservation Commission Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Bridgewater",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-07",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "D-FY26-014: Amendments to Central Business District Regulations Ordinance D-FY26-016: Zoning Ordinance Amendment – High Intensity Data Centers Planning Board Agenda III. ANR – Application Not Required a. 10 and 25 Hampden Avenue – (Map 75",
+      "source_url": "https://bridgewaterma.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=9002,plainText=false)",
+      "listing_url": "https://bridgewaterma.portal.civicclerk.com/event/5310/files",
+      "document_title": "Planning Board Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westfield",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-06",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "of the City Council to adopt zoning regulations for clean energy systems, including BESS. Access the full petition at the City Clerk's Office (City Hall) or at: www.cityofwestfield.org/applications  OTHER BUSINESS - Review of ADU &",
+      "source_url": "https://www.cityofwestfield.org/AgendaCenter/ViewFile/Agenda/_10062026-8678",
+      "listing_url": "https://www.cityofwestfield.org/AgendaCenter/Planning-Board-15",
+      "document_title": "Notice of Planning Board Public Hearings and Meeting Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westborough",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-06",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Municipal Building, Great Hall, 45 West Main St., Westborough, MA regarding the proposed zoning amendment under Article entitled \"Amend Zoning Bylaw - Downtown Business (BB) Zoning District\". The Article will appear on the Warrant for the",
+      "source_url": "https://www.westboroughma.gov/AgendaCenter/ViewFile/Agenda/_10062026-2501",
+      "listing_url": "https://www.westboroughma.gov/AgendaCenter/Planning-Board-22",
+      "document_title": "Planning Board Legal Notice 10-06-2026",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Wakefield",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-06",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "– September 22, 2026 ITEM 3 | Data Center Background Prep for Public Forum ITEM 4 | Zoning Bylaw Amendments for Town Meeting - Discussion/Set Public Hearing ITEM 5 | Items Not Anticipated by Chair ITEM 6 | Adjournment",
+      "source_url": "https://www.wakefieldma.gov/AgendaCenter/ViewFile/Agenda/_10062026-2067",
+      "listing_url": "https://www.wakefieldma.gov/AgendaCenter/Planning-Board-29",
+      "document_title": "Planning Board",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-06",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "and its successors and assigns (\"Developer\"). WITNESSETH: WHEREAS, pursuant to G.L. c. 40B, §§ 20-23 (the \"Act\") and the final report of the Special Legislative Commission Relative to Low- and Moderate-Income Housing Provisions issued in",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-3949",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-06",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "the Local Initiative Program (\"LIP\") and Comprehensive Permit Guidelines: M.G.L. Chapter 40B Comprehensive Permit Projects - Subsidized Housing Inventory have been issued thereunder (the \"Guidelines\"); WHEREAS, the Developer intends to",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-3949",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-06",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "The Board will vote to execute the solar alternative on-bill credit (AOBC) agreement between the Town of Plymouth and Kearsarge Solar LLC. Roll Call Vote 5-0: Iaquinto—Yes, Quintal—Yes, Canty—Yes, Golden—Yes, Keohan—Yes – PASSED Public",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-3949",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-06",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "language and supported the article, noting the neighborhood's unique situation with a 40B development. Chair Iaquinto reluctantly supported it due to the 40B development. Selectman Golden made a motion to amend Article 8 to include raise",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-3949",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-06",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "organizations to proactively recruit/retain businesses and market available spaces. E-2. Amend zoning bylaw to increase viability of a range of light industrial uses as well as research and development uses not involving hazardous",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-3949",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Fitchburg",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-06",
+      "topics": [
+        "battery_storage",
+        "moratorium"
+      ],
+      "snippet": "to amend Chapter 181 of the Fitchburg Zoning Code to establish a temporary zoning moratorium on Locally Regulated Commercial Battery Energy Storage Systems (LRC-BESS). 160-26. Paula Caron, Chair, Fitchburg Planning Board, request to amend",
+      "source_url": "https://www.fitchburgma.gov/AgendaCenter/ViewFile/Agenda/_10062026-5418",
+      "listing_url": "https://www.fitchburgma.gov/AgendaCenter/City-Council-15",
+      "document_title": "City Council Meeting Agenda, October 6, 2026",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Fitchburg",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-06",
+      "topics": [
+        "moratorium"
+      ],
+      "snippet": "request to amend Chapter 181 of the Fitchburg Zoning Code to add a temporary zoning moratorium on large-scale data centers. Public Works Committee Meeting of September 29, 2026 Oral Report 151-26. Vice President Cruz, on behalf of the",
+      "source_url": "https://www.fitchburgma.gov/AgendaCenter/ViewFile/Agenda/_10062026-5418",
+      "listing_url": "https://www.fitchburgma.gov/AgendaCenter/City-Council-15",
+      "document_title": "City Council Meeting Agenda, October 6, 2026",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-06",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Appropriation, Relocation of Town-owned fiber lines, Revolving Funds, Purchase of Solar Credits, Cease transfers to Middle High School Stabilization Fund, Conservation Commission Alternate Members, 40R Smart Growth District 8:05PM",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_10062026-610",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Select-Board-22",
+      "document_title": "10/6/26 Agenda",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Westford",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-05",
+      "topics": [
+        "clean_energy_siting",
+        "zoning_amendment"
+      ],
+      "snippet": "Drive) not to be heard prior to 8:00 p.m. Open Forum Public Hearings 1. PB 2612 ZNG - Amend Zoning Bylaw, to create a new Section 6.6: Small Clean Energy Infrastructure Facilities (SCEIF), to modify Section 3.2.3: General Accessory Uses",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_10052026-6968",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Planning-Board-30",
+      "document_title": "Planning Board",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Westford",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-05",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Site Plan Review of Exempt Religious, Educational, Child Care Uses, and Large Scale Solar Uses, and Section 9.4.6(3): General Review Standards relative to Large Scale Solar Energy Uses To see if the Town will vote to add a new Section 6.6",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_10052026-6968",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Planning-Board-30",
+      "document_title": "Planning Board",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Westford",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-05",
+      "topics": [
+        "battery_storage",
+        "clean_energy_siting"
+      ],
+      "snippet": "standards related to the installation, maintenance, and decommissioning of Small Clean Energy Infrastructure Facilities, such as Battery Energy Storage Systems (BESS), to be consistent with the MA 2024 Clean Energy Act, and any related",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_10052026-6968",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Planning-Board-30",
+      "document_title": "Planning Board",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-05",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "Update IV. Proposed Town Projects Next Update- October 26, 2026 V. Old Business: 40B Update Lake Noquochoke Municipal Broadband Annual Operating Budget VI. Minutes: VII. Select Board Updates: VIII. Information: Invited Attendees: Board of",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_10052026-5878",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Select-Board-25",
+      "document_title": "Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Amherst",
+      "board": "Town Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-10-05",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Referral of Proposed Zoning Bylaw Amendments regarding Data Centers: Article 12 – Definitions and Section 3.3 – Use Classifications and Standards - 9.a.1-3. Approval of Town Manager Appointments to Amherst Black Reparations Committee",
+      "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_10052026-140",
+      "listing_url": "https://www.amherstma.gov/AgendaCenter/Town-Council-39",
+      "document_title": "Town Council",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Shrewsbury",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-10-01",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "703-715 Hartford Turnpike 7.​ New Business a.​ Discuss Special Town Meeting Proposed Zoning Bylaw Amendments Page 1 of 2 Agenda Shrewsbury Planning Board October 1, 2026 b.​ Discuss and Vote on the Decision for 882 Boston Turnpike Special",
+      "source_url": "https://www.shrewsburyma.gov/AgendaCenter/ViewFile/Agenda/_10012026-5538",
+      "listing_url": "https://www.shrewsburyma.gov/AgendaCenter/Planning-Board-21",
+      "document_title": "Regular Planning Board Meeting",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Andover",
+      "board": "Zoning Board of Appeals",
+      "board_key": "zoning_board_of_appeals",
+      "meeting_date": "2026-10-01",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "84 & 88 ANDOVER STREET- TRAILSIDE ANDOVER DEVELOPMENT LLC-ZBA-26-29 Comprehensive Permit under M.G.L., Chapter Ch 40B to construct 40 ownership condominium homes. NEW HEARINGS: 3 TORR STREET- JARED AND SARAH FOLEY-ZBA-26-30 Variance from",
+      "source_url": "https://andoverma.gov/AgendaCenter/ViewFile/Agenda/_10012026-7784",
+      "listing_url": "https://andoverma.gov/AgendaCenter/Zoning-Board-of-Appeals-5",
+      "document_title": "Zoning Board of Appeals",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Westfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-30",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Submitting an Ordinance Amendment Chapter 16, Article II, Division 3, Section 16107: Temporary repairs on private ways. 8. Submitting a Resolution to set forth a petition to the Senate and House of Representatives of the General Court of",
+      "source_url": "https://www.cityofwestfield.org/AgendaCenter/ViewFile/Agenda/_09302026-8685",
+      "listing_url": "https://www.cityofwestfield.org/AgendaCenter/City-Council-1",
+      "document_title": "Notice of City Council Special Meeting and Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Amherst",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-30",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Update on continued work for potential zoning amendment intended to allow for housing in the Professional and Research Park (PRP) zoning district. b. Update on a potential Campus Adjacent Zone 5. Old Business - Topics Not Anticipated by",
+      "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_09302026-134",
+      "listing_url": "https://www.amherstma.gov/AgendaCenter/Planning-Board-44",
+      "document_title": "Planning Board Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-29",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "– Memorandum of Agreement and Letter of Support for Affordable Housing Development / Comprehensive Permit Rick Vayo, 120 Carver LLC *Vote Anticipated Town Manager's Report - - - - Operations Upcoming Events Projects & Infrastructure",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09292026-3930",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-29",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Develop Municipal Solar Program Page 2 of 4 Strengthen Town's Workforce 1. 2. 3. 4. 5. Develop a plan to recruit and retain police officers Complete Classification and Compensation study Develop co-op programs with educational institutions",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09292026-3930",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-29",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "disorder and the benefits of outdoor exercise in winter, proposing the addition of solar-powered lights to the courts, playgrounds, and walkways at Stephens Field to extend usable hours. Board members praised her initiative and",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09292026-3930",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-29",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Unified Complexes Bylaw Amending Zoning Bylaw §203-1.D to Clarify Perimeter Setback and Vegetated Buffer Protections in Plymouth, MA Purpose & Strategic Context Restoring the original intent of Plymouth's Lot Regulations: Encouraging",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09292026-3930",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-29",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "– Memorandum of Agreement and Letter of Support for Affordable Housing Development / Comprehensive Permit REQUESTED BY: PROPOSED MOTION: NOTES: ACTION TAKEN: Moved: Seconded: Condition(s): VOTED: Yea ______ Nay ______ Abstain ______ TOWN",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09292026-3930",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-29",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "This endorsement does not supersede the local comprehensive permit process, and the project will still undergo thorough public hearings before the local Zoning Board of Appeals. Thank you for your consideration. Sincerely, Deborah Iaquinto",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09292026-3930",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-29",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Wareham Street Solar 2, LLC. requesting a minor modification to Special Permit and Site Plan Review located at 0 Wareham Street (Assessor's Map 134 Lots 4-2A and 4-3) located in the Residential Agricultural Zoning District (RA). –",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_09292026-574",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "9/29/2026 PB Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-29",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "District (RA). – Discussion and possible vote Public Hearing Cont'd: 3. Golden Pond Solar 1, LLC. requesting a Special Permit and Site Plan Review pursuant to Section 290-3-6 and Section 290-3-1.3 of the Carver Zoning by Law, on property",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_09292026-574",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "9/29/2026 PB Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-29",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "for the construction of a floating solar array with a utility interconnection and batter energy storage component in a Residential-Agricultural (RA) Zoning District and Water Resource Protection Overlay District. – Discussion and possible",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_09292026-574",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "9/29/2026 PB Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Wakefield",
+      "board": "Town Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "To see if the Town will vote to amend the Zoning Bylaw, Chapter 190-15 Table of Use Regulations, by striking certain use regulations abbreviations, using red strikethrough text, and replacing with the appropriate abbreviations, using red",
+      "source_url": "https://www.wakefieldma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2060",
+      "listing_url": "https://www.wakefieldma.gov/AgendaCenter/Town-Council-33",
+      "document_title": "Town Council",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Wakefield",
+      "board": "Town Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "To see if the Town will vote to amend the Zoning Bylaw, Chapter 190-33 Off-site Parking and Loading, Chapter 190-44 Open Space Development, Chapter 190-60 Special Permits, and Chapter 190-61 by adding language, shown in red inserted text",
+      "source_url": "https://www.wakefieldma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2060",
+      "listing_url": "https://www.wakefieldma.gov/AgendaCenter/Town-Council-33",
+      "document_title": "Town Council",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Wakefield",
+      "board": "Town Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "To see if the Town will vote to amend the Zoning Bylaw, Chapter 190-43 Multifamily Dwellings and Mixed Use Development and Chapter 190-45 Housing Affordability by striking certain language relative to the Inclusionary Zoning calculation",
+      "source_url": "https://www.wakefieldma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2060",
+      "listing_url": "https://www.wakefieldma.gov/AgendaCenter/Town-Council-33",
+      "document_title": "Town Council",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Sturbridge",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "solar",
+        "zoning_amendment"
+      ],
+      "snippet": "space/dispatch use for Coastal Medical Transportation. 6:50 PM Public Hearing - Proposed Zoning Amendments to the Solar Bylaw - Amend §300-2.2 Terms defined. By inserting a new definition for Site Footprint, Solar Energy Facility, Solar",
+      "source_url": "https://www.sturbridge.gov/AgendaCenter/ViewFile/Agenda/_09282026-413",
+      "listing_url": "https://www.sturbridge.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "Planning Board Meeting Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Sturbridge",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "allowed by Special Permit use into the Groundwater Protection District regulations for Solar and BESS. - Amend Article X Solar Energy Facilities. By updating §300-10.1 through §300-10.12 and to establish a new §300-10.13 and §300-10.14 to",
+      "source_url": "https://www.sturbridge.gov/AgendaCenter/ViewFile/Agenda/_09282026-413",
+      "listing_url": "https://www.sturbridge.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "Planning Board Meeting Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Sturbridge",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "battery_storage",
+        "clean_energy_siting"
+      ],
+      "snippet": "to insert language to accommodate Battery Energy Storage Systems (BESS) and the consolidated local permit guidelines per recent changes to Massachusetts General Laws. - Town Planner Update - Sturbridge Plaza - Village Pizza - Hobbs Brook",
+      "source_url": "https://www.sturbridge.gov/AgendaCenter/ViewFile/Agenda/_09282026-413",
+      "listing_url": "https://www.sturbridge.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "Planning Board Meeting Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Leominster",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "one new 45ft H 1 Mid Span Pole, numbered P56-50, on Willard St to provide power for solar battery project at 526 Willard St. Location approximately as shown on plan attached Wherefore it prays that after due notice and hearing as provided",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2143",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/City-Council-3",
+      "document_title": "City Council Meeting",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Leominster",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "battery_storage",
+        "moratorium"
+      ],
+      "snippet": "02-27 Claire Freda, Councilor At Large, Request that the City Council adopt a temporary moratorium on Battery Storage Systems (BESS). The moratorium will be in effect starting upon adoption by the Leominster City Council. The moratorium",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2143",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/City-Council-3",
+      "document_title": "City Council Meeting",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Leominster",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "moratorium"
+      ],
+      "snippet": "03-27 Claire Freda, Councilor At Large, Request that the City Council enact a temporary moratorium on the application to build new data centers. The moratorium will be in effect starting upon adoption by the Leominster City Council. The",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2143",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/City-Council-3",
+      "document_title": "City Council Meeting",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Leominster",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "2/3 Vote) 67-26 Donna Molet of 58 Sky Lane Leominster respectfully requests to amend the Leominster Zoning Ordinance. in accordance with Section 22-14, on behalf of the 10 registered voters. as follows: Modify \"Section 22-4 Definitions\" of",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2143",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/City-Council-3",
+      "document_title": "City Council Meeting",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "III. Town Administrator Update IV. Proposed Town Projects V. Old Business: 40B Update Bliss Corner Lake Noquochoke Municipal Broadband Annual Operating Budget VI. Minutes: August 31, 2026 VII. Select Board Updates: Please Note: The lists",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_09282026-5868",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Select-Board-25",
+      "document_title": "Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Andover",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "wireless_telecom"
+      ],
+      "snippet": "and/or explosives: | Andover MCB LLC: 142 0 2 D, 20 New England Center Drive . Small Cell Wireless Installation (3'! Reading — hearing to be continued without discussion) Board to review and consider voting on applications by New Cingular",
+      "source_url": "https://andoverma.gov/AgendaCenter/ViewFile/Agenda/_09282026-7798",
+      "listing_url": "https://andoverma.gov/AgendaCenter/Select-Board-13",
+      "document_title": "Select Board Meeting",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Amherst",
+      "board": "Town Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-28",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Referral of Proposed Zoning Bylaw Amendments to address concerns regarding Accessory Dwelling Units (ADUs): Section 5.0112 Gross Floor Area, Section 6.18 Minimum or Maximum Floors, and Article 12 Definitions c. Referral of Proposed East",
+      "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_09282026-130",
+      "listing_url": "https://www.amherstma.gov/AgendaCenter/Town-Council-39",
+      "document_title": "Town Council",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Northampton",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-24",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "(Teleconference available for Viewing when feasible) 7:00 PM Proposed package of zoning ordinance amendments to revise the entire sign ordinance Chapter 350 section 7.0 to bring the code into compliance with constitution rulings by the US",
+      "source_url": "https://www.northamptonma.gov/AgendaCenter/ViewFile/Agenda/_09242026-9384",
+      "listing_url": "https://www.northamptonma.gov/AgendaCenter/Planning-Board-44",
+      "document_title": "2026-09-24 Planning Board Hearing Notice",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Northampton",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-24",
+      "topics": [
+        "clean_energy_siting"
+      ],
+      "snippet": "Proposed package zoning and other code amendments to incorporate mandatory standards for consolidated local permitting of Small Clean Energy Infrastructure Facilities in compliance with 225 CMR 29.00. Changes affect 350-2.1, 11.3, 11.5",
+      "source_url": "https://www.northamptonma.gov/AgendaCenter/ViewFile/Agenda/_09242026-9384",
+      "listing_url": "https://www.northamptonma.gov/AgendaCenter/Planning-Board-44",
+      "document_title": "2026-09-24 Planning Board Hearing Notice",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Amherst",
+      "board": "Zoning Board of Appeals",
+      "board_key": "zoning_board_of_appeals",
+      "meeting_date": "2026-09-24",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "Request pertains to the previously granted Comprehensive Permit at 31 South East Street (Map 15A, Parcel 20) and 70 Belchertown Road (Map-Parcel: 15C-58, 15C-59, 15C-60). 3. Public Hearing a. ZBA FY2027-04 – 28 Shays Street: To amend an",
+      "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_09242026-120",
+      "listing_url": "https://www.amherstma.gov/AgendaCenter/Zoning-Board-of-Appeals-46",
+      "document_title": "Zoning Board of Appeals Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Sudbury",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-23",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "Farms Lease of Unit - 115 Brimstone Lane – Stormwater Management Bond Release Request - Battery Energy Storage System Bylaw - Master Plan Implementation - Citizens' Comments on Items Not on Agenda – No Comments Received - Minutes for",
+      "source_url": "https://cdn.sudbury.ma.us/wp-content/uploads/sites/328/2026/09/PlanningBoard_2026_Sep_23_agenda.pdf?version=b447963056b6e38a8a7bf989b493ef2b",
+      "listing_url": "https://sudbury.ma.us/planning/meetings/",
+      "document_title": "Agenda for meeting at Wed, September 23, 2026 (7:30 pm)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-23",
+      "topics": [
+        "moratorium",
+        "zoning_amendment"
+      ],
+      "snippet": "Chair Announcements Public Hearing Data Centers Zoning The intent of this article is to amend the Zoning Bylaw, §201-3, Definitions, by adding a definition for \"Data Center\", and by creating a new section, §207-12, Temporary Moratorium on",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09232026-3910",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "Planning Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-23",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Meeting, all by inserting the underlined as documented on file with the Town Clerk, \"Zoning Bylaw Amendment – Data Centers Zoning\", or take any other action relative thereto. Unified Complexes – Citizen's Petition The intent of this",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09232026-3910",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "Planning Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Amherst",
+      "board": "Conservation Commission",
+      "board_key": "conservation_commission",
+      "meeting_date": "2026-09-23",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "approved transformer containment system on two equipment pads associated with the solar facility at 191 West Pomeroy Lane (Map 19D, Lot 10). 6. Conservation Land Management Policy and Regulations Discussion a. Review final clean updated",
+      "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_09232026-123",
+      "listing_url": "https://www.amherstma.gov/AgendaCenter/Conservation-Commission-18",
+      "document_title": "Conservation Commission Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westford",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Meghan O'Connell provided comments related to the Specialized Energy Code General Bylaw amendment and the Robinson School Base Repairs 5. 7:10 PM Consent Agenda – Request to approve the following: i. Banner Requests a. Event: State",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09222026-6950",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Select-Board-3",
+      "document_title": "ACTION TAKEN",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westford",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "the October 26, 2026 Special Town Meeting Warrant regarding the Specialized Code General Bylaw amendment - Mike Berlinski, Chair Approved 5-0 with January 1, 2028 effective date 15. 9:00 PM Special Town Meeting A. Review proposed warrant",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09222026-6950",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Select-Board-3",
+      "document_title": "ACTION TAKEN",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westford",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "clean_energy_siting",
+        "zoning_amendment"
+      ],
+      "snippet": "recommendations Articles to be reviewed by the Select Board Planning Board Article 1 Amend Zoning Bylaw, to create a new Section 6.6: Small Clean Energy Infrastructure Facilities (SCEIF), and to modify Section 3.2.3: General Accessory",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09222026-6950",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Select-Board-3",
+      "document_title": "ACTION TAKEN",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westford",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Site Plan Review of Exempt Religious, Educational, Child Care Uses, and Large Scale Solar Uses, Section 9.4.6(3): General Review Standards relative to Large Scale Solar Energy Uses, Section 10.2: General Definitions, and Appendices A and B",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09222026-6950",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Select-Board-3",
+      "document_title": "ACTION TAKEN",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westford",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "for Energy Management Services Agreement and Solar Power Purchase Agreement as requested by the Town Manager's Office vii. Amendment to the Town of Westford's Chapter 90 contract with the Massachusetts Department of Transportation",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09222026-6950",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Select-Board-3",
+      "document_title": "ACTION TAKEN",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westford",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "the October 26, 2026 Special Town Meeting Warrant regarding the Specialized Code General Bylaw amendment - Mike Berlinski, Chair Select Board Agenda 09/22/2026 Page 2 of 6 15. 9:00 PM Special Town Meeting A. Review proposed warrant",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09222026-6939",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Select-Board-3",
+      "document_title": "Select Board",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "5-0 (Iaquinto-Yes, Quintal-Yes, Canty-Yes, Golden-Yes, Keohan-Yes) — PASSED ARTICLE 14: Zoning Bylaw Amendment – Senior Housing Deputy Director of Planning and Development Michael Silveira presented Article 14, a Planning Board proposal to",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09222026-3909",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "4-1 (Iaquinto-Yes, Quintal-Yes, Canty-Yes, Golden-No, Keohan-Yes) — PASSED ARTICLE 15: Zoning Bylaw Amendment – Industrial Zoning Update Mr. Silveira presented Article 15, proposing zoning changes based on an industrial area evaluation",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09222026-3909",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "Keohan asked about zoning for battery storage facilities, and Silveira explained that while currently protected under state law, the town could consider specific zoning in the future. Quintal stated he would abstain from the vote as he",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09222026-3909",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "moratorium",
+        "zoning_amendment"
+      ],
+      "snippet": "Quintal-Abstain, Canty-Yes, Golden-Yes, Keohan-Yes) — PASSED Page 5 of 7 ARTICLE 16: Zoning Bylaw Amendment – Data Centers Zoning Mr. Silveira presented Article 16, proposing a one-year temporary moratorium on data centers from October 17",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09222026-3909",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "moratorium"
+      ],
+      "snippet": "Golden expressed support for the moratorium, noting his research indicated large server farms can cause water quality issues and increase electricity costs for neighboring communities. Selectman Canty made a motion to include Article 16 in",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09222026-3909",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Executive and Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Conservation Commission",
+      "board_key": "conservation_commission",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "097-000-016-000U, 013 and 097-000-015-000 PCC-26-93 Federal Furnace Road Solar 1, LLC Beals & Thomas A Notice of Intent for construction of solar arrays including floating arrays, canopy arrays, and groundmounted arrays. Plymouth",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09222026-3902",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Conservation-Commission-12",
+      "document_title": "Conservation Commission Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "CITY COUNCIL, 70 ALLEN STREET, PITTSFIELD, MA 01201 CITY OF PITTSFIELD NOTICE OF ZONING AMENDMENT PUBLIC HEARING PITTSFIELD CITY COUNCIL The City of Pittsfield in accordance with the provision of M.G.L Chapter 40A, Section 5, as amended",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-963",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "Notice of Zoning Amendment Public Hearing Pittsfield City Council (PDF)",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "City Code Chapter 23, Article 23-2 Section 2.2 \"Glossary\" Article 23-3 Section 3.218 \"BESS-OD Battery Energy Storage System Overlay District,\" Article 23-4 Section 4.202 \"Use Table,\" Article 23-4 Section 4.331, \"Battery Energy Storage",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-963",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "Notice of Zoning Amendment Public Hearing Pittsfield City Council (PDF)",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "battery_storage",
+        "zoning_amendment"
+      ],
+      "snippet": "7.8 \"Conditional Uses Subject to Special Requirements\" and Article 23-9 Section 9.5, \"Battery Energy Storage Systems\" to amend the Zoning Ordinance to revise regulations regarding the operation of Battery Energy Storage Systems (BESS) in",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-963",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "Notice of Zoning Amendment Public Hearing Pittsfield City Council (PDF)",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "battery_storage",
+        "zoning_amendment"
+      ],
+      "snippet": "communication from the Community Development Board on a petition for the proposed \"Battery Energy Storage Systems\" Zoning Amendment having considered the same, report and recommend that approve. 5/0 Respectfully submitted, Dina Lampiasi",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-983",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "Pittsfield City Council Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "battery_storage",
+        "zoning_amendment"
+      ],
+      "snippet": "8th, 2026 To the Honorable Members Of the City Council Of the City of Pittsfield Re: Battery Energy Storage Systems Proposed Zoning Amendment Dear Councilors: The Community Development Board held its required public hearing for the",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-983",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "Pittsfield City Council Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "(413) 395-0 l 52 CITY OF PITTSFIELD NOTICE OF ZONING AMENDMENT PUBLIC HEARINGS PITTSFIELD COMMUNITY DEVELOPMENT BOARD AND PITTSFIELD CITY COUNCIL The City of Pittsfield in accordance with the provision ofM.G.L Chapter 40A, Section 5, as",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-983",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "Pittsfield City Council Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "City Council as the Special Permit Granting Authority for Commercial/Industrial Scale Battery Energy Storage Systems and Facilities. RATIONALE: This is one of those rare uses that the public oversight would be best served by having the",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-983",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "Pittsfield City Council Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "It may be a primary use or an Accessory Use to a solar generating facility, power generation facllity, electrical substation, or other similar uses. BESS are classified as Small Scale, Medium Scale, and Large Scale, as follows: I. Small",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-983",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "Pittsfield City Council Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "developed within or directly adjacent to the boundaries of an existing or proposed solar photovoltaic installation, power generating station, electrical substation, or similar facility. Buildin!!-Integrated BESS: A BESS facility that is",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-983",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "Pittsfield City Council Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "clean_energy_siting"
+      ],
+      "snippet": "it were located on the parcel through which primary access for the site is located. 12. Consolidated Permit Process: Applicants may elect to follow the consolidated ~ proeesspennit process as outlined in the adhere to the Department of",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-983",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "Pittsfield City Council Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "Accessory Medium Scale BESS are encouraged to be Co-Located with approved GroundMounted Solar installations. 4. All Accessory Medium Scale accessory EESS installationBESSs located in the B-C or BG District shall be sited no less than fifty",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-983",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/City-Council-16",
+      "document_title": "Pittsfield City Council Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Fitchburg",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Zoning Act – To consider amendments to the Fitchburg Zoning Ordinance per a petition submitted to City Council to amend Section 181.313 Table of Principal Use Regulations by amending the following principal uses in the Commercial",
+      "source_url": "https://www.fitchburgma.gov/AgendaCenter/ViewFile/Agenda/_09222026-5400",
+      "listing_url": "https://www.fitchburgma.gov/AgendaCenter/Planning-Board-10",
+      "document_title": "Planning Board Regular Meeting Agenda September 22, 2026",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Fitchburg",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Large Scale Ground-Mounted Solar Photovoltaic Facilities; Renewable or alternative energy, renewable or alternative fuels research, development or manufacturing facilities. (Continued from 8-25-26) *Please note: Massachusetts Open Meeting",
+      "source_url": "https://www.fitchburgma.gov/AgendaCenter/ViewFile/Agenda/_09222026-5400",
+      "listing_url": "https://www.fitchburgma.gov/AgendaCenter/Planning-Board-10",
+      "document_title": "Planning Board Regular Meeting Agenda September 22, 2026",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Charlton",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "And 12:00 Noon Acceptance Of Ashley Road and Amber Road as Public Ways Amend Zoning Bylaws - Chapter 200, Section 2 – Definitions, §200-2.1 Uses and Structures (Planning Board) Amend Zoning Bylaws - Chapter 200, Section 3 - Use and",
+      "source_url": "https://www.townofcharlton.net/AgendaCenter/ViewFile/Agenda/_09222026-4686",
+      "listing_url": "https://www.townofcharlton.net/AgendaCenter/Select-Board-8",
+      "document_title": "Select Board Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Charlton",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-22",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "§200-5.23 Data Centers (Planning Board) Zoning Map Amendment, Change 269 Worcester Road (Property Owner) Citizens' Petition - Automated License Plate Reader Surveillance Any potential articles not listed Vote to post STM Warrant with Town",
+      "source_url": "https://www.townofcharlton.net/AgendaCenter/ViewFile/Agenda/_09222026-4686",
+      "listing_url": "https://www.townofcharlton.net/AgendaCenter/Select-Board-8",
+      "document_title": "Select Board Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Leominster",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-21",
+      "topics": [
+        "battery_storage",
+        "moratorium"
+      ],
+      "snippet": "Claire Freda, Councilor At Large, Request that the City Council adopt a temporary moratorium on Battery Storage Systems (BESS). The moratorium will be in effect starting upon adoption by the Leominster City Council. The moratorium will be",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09212026-2137",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/Planning-Board-5",
+      "document_title": "Planning Board Meeting",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Leominster",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-21",
+      "topics": [
+        "moratorium"
+      ],
+      "snippet": "Claire Freda, Councilor At Large, Request that the City Council enact a temporary moratorium on the application to build new data centers. The moratorium will be in effect starting upon adoption by the Leominster City Council. The",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09212026-2137",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/Planning-Board-5",
+      "document_title": "Planning Board Meeting",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Leominster",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-21",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "of approval for Site Plan Application: 259 Lancaster Street, Map 484, Parcel 10, 11; Battery Energy Storage System: Decommissioning Bond: Board to vote to allow Director to get bids for peer review of decommissioning plan and bond amount.",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09212026-2137",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/Planning-Board-5",
+      "document_title": "Planning Board Meeting",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Westfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-17",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "position of Economic Development Director. Legislative and Ordinance Committee 15. An Ordinance Amendment to the Code of Ordinances, City of Westfield, Chapter 12, Sec. 12-4, Advertising Municipal Positions, and Sec. 12-7, Unclassified",
+      "source_url": "https://www.cityofwestfield.org/AgendaCenter/ViewFile/Agenda/_09172026-8671",
+      "listing_url": "https://www.cityofwestfield.org/AgendaCenter/City-Council-1",
+      "document_title": "Notice of City Council Meeting and Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-17",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "to fund the position of Economic Development Director which is being created by Ordinance amendment in Article IV: Community Development and Planning, Division 1, Chapter 13. 18. A Resolution which would allow the city to enter into a",
+      "source_url": "https://www.cityofwestfield.org/AgendaCenter/ViewFile/Agenda/_09172026-8671",
+      "listing_url": "https://www.cityofwestfield.org/AgendaCenter/City-Council-1",
+      "document_title": "Notice of City Council Meeting and Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westfield",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-17",
+      "topics": [
+        "battery_storage",
+        "zoning_amendment"
+      ],
+      "snippet": "Motion of Councilors Fanion and Mello to amend the zoning ordinance to regulate clean energy systems, including BESS. Refer to Planning Board and schedule a public hearing.",
+      "source_url": "https://www.cityofwestfield.org/AgendaCenter/ViewFile/Agenda/_09172026-8671",
+      "listing_url": "https://www.cityofwestfield.org/AgendaCenter/City-Council-1",
+      "document_title": "Notice of City Council Meeting and Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Northampton",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-17",
+      "topics": [
+        "clean_energy_siting"
+      ],
+      "snippet": "Government Representative and the Planning Board as permit granting authority for Small Clean Energy Infrastructure Facilities (SCEIF), respectively. The City Council will hear all persons who wish to be heard thereon. 4. PUBLIC COMMENT 5.",
+      "source_url": "https://www.northamptonma.gov/AgendaCenter/ViewFile/Agenda/_09172026-9405",
+      "listing_url": "https://www.northamptonma.gov/AgendaCenter/City-Council-157",
+      "document_title": "Final (#2) City Council Agenda for September 17, 2026",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Board of Appeals",
+      "board_key": "zoning_board_of_appeals",
+      "meeting_date": "2026-09-17",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "Town Office Building, 400 Slocum Road, Dartmouth, MA ***The Hathaway 40B will begin at 5:00 P.M.*** **THIS MEETING IS BEING RECORDED BY DARTMOUTH COMMUNITY MEDIA** Open Meeting- Pledge the Flag - Moment of Silence 5:00 PM Public Hearing",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_09172026-5853",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Board-of-Appeals-21",
+      "document_title": "Zoning Board of Appeals",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Board of Appeals",
+      "board_key": "zoning_board_of_appeals",
+      "meeting_date": "2026-09-17",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "The petitioner The Hathaway Dartmouth, LLC is seeking a Comprehensive Permit pursuant to MGL, Chapter 40B, Sections 20-23, the Comprehensive Permit Guidelines 760 CMR 56.00 from the Massachusetts General Laws and Dartmouth Zoning by-law",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_09172026-5853",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Board-of-Appeals-21",
+      "document_title": "Zoning Board of Appeals",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "Zoning Board of Appeals",
+      "board_key": "zoning_board_of_appeals",
+      "meeting_date": "2026-09-16",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "New/Old Business Discussion/Updates — Zoning Amendments -- Meeting Schedules Adjourn",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09162026-968",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/Zoning-Board-of-Appeals-10",
+      "document_title": "Pittsfield Zoning Board of Appeals Agenda (PDF)",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Charlton",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-16",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Sturbridge Road Solar Farm, LLC Field Change Request-Vegetative Planting and Screening changes proposed (14-B-7 & 11.1) 100 Worcester Rd – SPA Waiver Request – Applicant is changing use from mixed use to residential in the CB zoning",
+      "source_url": "https://www.townofcharlton.net/AgendaCenter/ViewFile/Agenda/_09162026-4678",
+      "listing_url": "https://www.townofcharlton.net/AgendaCenter/Planning-Board-38",
+      "document_title": "Planning Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Charlton",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-16",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Nextera Energy-261 North Sturbridge Road Solar Facility (12-B7&11.1) Planning Board Review and Acceptance of the Town of Charlton-Housing Production Plan Planning Director Report Other Business-Unknown at time of posting/Adjourn Adjourn",
+      "source_url": "https://www.townofcharlton.net/AgendaCenter/ViewFile/Agenda/_09162026-4678",
+      "listing_url": "https://www.townofcharlton.net/AgendaCenter/Planning-Board-38",
+      "document_title": "Planning Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Amherst",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-16",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Update on continued work for potential zoning amendment intended to allow for housing in the Professional and Research Park (PRP) zoning district. b. Update on a potential Campus Adjacent Zone 4. Old Business - Topics Not Anticipated by",
+      "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_09162026-104",
+      "listing_url": "https://www.amherstma.gov/AgendaCenter/Planning-Board-44",
+      "document_title": "Planning Board",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "water main replacements, pedestrian safety, and the town's strategy regarding Chapter 40B developments. Mr. Canty noted the Board's proactive steps to achieve safe harbor to prevent hostile 40B developments, and Mr. Golden expressed that",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09152026-3880",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "Mike Angerame of Atlantic Avenue urged the town to work with state legislators to change 40B laws and build a coalition with other towns. He also supported implementing speed zones on Route 3A. 7:01 p.m. Select Board Discussion – New",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09152026-3880",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "a letter to neighboring towns to build a coalition to pressure state legislators on 40B reform. Selectman Keohan agreed to work with him on an internal working group for the effort. Selectman Keohan also suggested revisiting the naming of",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09152026-3880",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "disorder and the benefits of outdoor exercise in winter, proposing the addition of solar-powered lights to the courts, playgrounds, and walkways at Stephens Field to extend usable hours. Board members praised her initiative and",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09152026-3880",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "Community Development Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "within the Floodplain District. ZONING- SPECIAL PERMITS: 1. None Submitted. Page | of 2 ZONING AMENDMENTS 1. Public Hearing, Continued: Petition by the Community Development Board for an amendment to City Code Chapter 23, Zoning, Article",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09152026-962",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/Community-Development-Board-6",
+      "document_title": "Community Development Board Agenda (PDF)",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "Community Development Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "moratorium"
+      ],
+      "snippet": "23, Zoning, Article 23-4 Section 4 to create Section 4.332, Data Centers, Temporary Moratorium in order to temporarily prevent the development of data centers in Pittsfield. 3. Request for the Community Development Board become the",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09152026-962",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/Community-Development-Board-6",
+      "document_title": "Community Development Board Agenda (PDF)",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Fitchburg",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "battery_storage",
+        "moratorium"
+      ],
+      "snippet": "to amend Chapter 181 of the Fitchburg Zoning Code to establish a temporary zoning moratorium on Locally Regulated Commercial Battery Energy Storage Systems (LRC-BESS). (Legislative Affairs) 160-26. Paula Caron, Chair, Fitchburg Planning",
+      "source_url": "https://www.fitchburgma.gov/AgendaCenter/ViewFile/Agenda/_09152026-5385",
+      "listing_url": "https://www.fitchburgma.gov/AgendaCenter/City-Council-15",
+      "document_title": "City Council Meeting Agenda, September 15, 2026",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Fitchburg",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "moratorium"
+      ],
+      "snippet": "request to amend chapter 181 of the Fitchburg zoning code to add a temporary zoning moratorium on large-scale data centers. (Legislative Affairs) Page 3 161-26. City Councilor Bernie Schultz, on behalf of Wayne Shaw of 508 Milk Street, to",
+      "source_url": "https://www.fitchburgma.gov/AgendaCenter/ViewFile/Agenda/_09152026-5385",
+      "listing_url": "https://www.fitchburgma.gov/AgendaCenter/City-Council-15",
+      "document_title": "City Council Meeting Agenda, September 15, 2026",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Request for extension for Special Permit – Atwood Solar Project – 223 Meadow Street Assessor's Map 82 Lot 1-1 in a Residential Agricultural (RA) District. – Discussion and possible vote Minor Modification: 3. Meadow Solar 1, LLC. c/o New",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_09152026-531",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "9/15/2026 PB Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "a General Business (GB) Zoning District. – Discussion and possible vote 7. Golden Pond Solar 1, LLC. requesting a Special Permit and Site Plan Review pursuant to Section 290-3-6, Section 290-3-6 and Section 290-3-1.3 of the Carver Zoning",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_09152026-531",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "9/15/2026 PB Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "MA (Assessor's Map 131 Lot 1-3 and 134 Lot 4-3) for the construction of a floating solar array with a utility interconnection and batter energy storage component in a Residential-Agricultural (RA) Zoning District and Water Resource",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_09152026-531",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "9/15/2026 PB Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Billerica",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "WARRANT ARTICLE 42 —- RT 3 CORRIDOR OVERLAY Public hearing to amend Zoning Bylaws to adopt Section 11.12 — Rt 3 Corridor Overlay District Board Discussion 2. Comprehensive Plan Steeting Committee Board discussion and possible vote to amend",
+      "source_url": "https://billerica.gov/AgendaCenter/ViewFile/Agenda/_09152026-5965",
+      "listing_url": "https://billerica.gov/AgendaCenter/Planning-Board-1",
+      "document_title": "Planning Board Agenda September 15, 2026",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Billerica",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-15",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Road, Billerica, MA, Room 205 on September 15, 2026, at 7:00pm for Warrant Article 42 to amend the Zoning Bylaws to adopt Section 11.12 — Route 3 Corridor Overlay and to amend the Zoning Map with such a district to include the Parcels",
+      "source_url": "https://billerica.gov/AgendaCenter/ViewFile/Agenda/_09152026-5944",
+      "listing_url": "https://billerica.gov/AgendaCenter/Planning-Board-1",
+      "document_title": "Planning Board Public Hearing Notice September 15, 2026",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Westford",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-14",
+      "topics": [
+        "clean_energy_siting",
+        "zoning_amendment"
+      ],
+      "snippet": "_ bee iF Open Forum SEP 11°26 ex loss G al Busin Public Hearings 1. PB 2612 ZNG - Amend Zoning Bylaw, to create a new Section 6.6: Small Clean Energy Infrastructure Facilities (SCEIF), to modify Section 3.2.3: General Accessory Uses",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09142026-6916",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Planning-Board-30",
+      "document_title": "Planning Board",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Westford",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-14",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "Site Plan Review of Exempt Religious, Educational, Child Care Uses, and Large Scale Solar Uses, and Section 9.4.6(3): General Review Standards relative to Large Scale Solar Energy Uses To see if the Town will vote to add a new Section 6.6",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09142026-6916",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Planning-Board-30",
+      "document_title": "Planning Board",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Westford",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-14",
+      "topics": [
+        "battery_storage",
+        "clean_energy_siting"
+      ],
+      "snippet": "standards related to the installation, maintenance and decommissioning of Small Clean Energy Infrastructure Facilities, such as Battery Energy Storage Systems (BESS), to be consistent with the MA 2024 Clean Energy Act, and any related",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09142026-6916",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Planning-Board-30",
+      "document_title": "Planning Board",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Sutton",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-14",
+      "topics": [
+        "battery_storage",
+        "moratorium"
+      ],
+      "snippet": "Uxbridge — temporary moratorium on data centers b. Northbridge — prohibition on data centers c. Uxbridge — battery energy storage system Correspondence a. Wilkinsonville Water District - Draft Water Management Act Permit for 100k more flow",
+      "source_url": "https://www.suttonma.gov/AgendaCenter/ViewFile/Agenda/_09142026-453",
+      "listing_url": "https://www.suttonma.gov/AgendaCenter/Planning-Board-11",
+      "document_title": "Planning Board Agenda",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Leominster",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-14",
+      "topics": [
+        "battery_storage",
+        "moratorium"
+      ],
+      "snippet": "02-27 Claire Freda, Councilor At Large, Request that the City Council adopt a temporary moratorium on Battery Storage Systems (BESS). The moratorium will be in effect starting upon adoption by the Leominster City Council. The moratorium",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09142026-2125",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/City-Council-3",
+      "document_title": "City Council Agenda",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Leominster",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-14",
+      "topics": [
+        "moratorium"
+      ],
+      "snippet": "03-27 Claire Freda, Councilor At Large, Request that the City Council enact a temporary moratorium on the application to build new data centers. The moratorium will be in effect starting upon adoption by the Leominster City Council. The",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09142026-2125",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/City-Council-3",
+      "document_title": "City Council Agenda",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Leominster",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-14",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "one new 45ft H 1 Mid Span Pole, numbered P56-50, on Willard St to provide power for solar battery project at 526 Willard St. Location approximately as shown on plan attached Wherefore it prays that after due notice and hearing as provided",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09142026-2125",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/City-Council-3",
+      "document_title": "City Council Agenda",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Leominster",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-14",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "AFFAIRS, cont'd 67-26 Donna Molet of 58 Sky Lane Leominster respectfully requests to amend the Leominster Zoning Ordinance, in accordance with Section 22-14, on behalf of the 10 registered voters, as follows: Modify \"Section 22-4",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09142026-2125",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/City-Council-3",
+      "document_title": "City Council Agenda",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-14",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "Presentation III. Town Administrator Update IV. Proposed Town Projects V. Old Business: 40B Update Bliss Corner Lake Noquochoke Municipal Broadband Annual Operating Budget VI. Minutes: August 3, 2026 VII. Select Board Updates: VIII.",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_09142026-5845",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Select-Board-25",
+      "document_title": "Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Amherst",
+      "board": "Town Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-14",
+      "topics": [
+        "clean_energy_siting",
+        "zoning_amendment"
+      ],
+      "snippet": "Proposed Zoning Bylaw Article 18 To consider amending the Zoning Bylaw by adopting Article 18 Clean Energy Infrastructure and associated amendments to Zoning Section 3 Use Classifications and Standards, 5.11 Renewable Energy Accessory",
+      "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_09142026-97",
+      "listing_url": "https://www.amherstma.gov/AgendaCenter/Town-Council-39",
+      "document_title": "Town Council",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Amherst",
+      "board": "Town Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-14",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "to Zoning Section 3 Use Classifications and Standards, 5.11 Renewable Energy Accessory Solar Photovoltaic Installations/Battery Energy Storage Systems Uses, 6.2 Fences, and Article 12 Definitions – Second Read & Vote 9. Appointments a.",
+      "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_09142026-97",
+      "listing_url": "https://www.amherstma.gov/AgendaCenter/Town-Council-39",
+      "document_title": "Town Council",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Great Barrington",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-10",
+      "topics": [
+        "wireless_telecom",
+        "zoning_amendment"
+      ],
+      "snippet": "AGENDA 1. CALL TO ORDER / ATTENDANCE ROLL CALL 2. MINUTES: August 27, 2026 meeting 3. BYLAW AMENDMENTS: Discuss non-zoning general bylaw amendments including 5G / small cell wireless telecommunications regulations and abandoned building",
+      "source_url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09102026-2549",
+      "listing_url": "https://www.townofgbma.gov/AgendaCenter/Planning-Board-8",
+      "document_title": "Planning Board Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Great Barrington",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-10",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "amendments to comply with siting and permitting rules for clean energy facilities and battery energy storage facilities c. Discuss animal processing operations d. Campus Overlay District at Simon's Rock (zoning section 9.15) 5. TOWN",
+      "source_url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09102026-2549",
+      "listing_url": "https://www.townofgbma.gov/AgendaCenter/Planning-Board-8",
+      "document_title": "Planning Board Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Andover",
+      "board": "Zoning Board of Appeals",
+      "board_key": "zoning_board_of_appeals",
+      "meeting_date": "2026-09-10",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "84 & 88 ANDOVER STREET- TRAILSIDE ANDOVER DEVELOPMENT LLC-ZBA-26-29 Comprehensive Permit under M.G.L., Chapter Ch 40B to construct 40 ownership condominium homes. CONTINUED DELIBERATIONS: 85 SUNSET ROCK- SAMANTHA LADUC- ZBA-26-21 Variances",
+      "source_url": "https://andoverma.gov/AgendaCenter/ViewFile/Agenda/_09102026-7761",
+      "listing_url": "https://andoverma.gov/AgendaCenter/Zoning-Board-of-Appeals-5",
+      "document_title": "ZBA Agenda Revised",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Westford",
+      "board": "Conservation Commission",
+      "board_key": "conservation_commission",
+      "meeting_date": "2026-09-09",
+      "topics": [
+        "battery_storage",
+        "solar",
+        "clean_energy_siting",
+        "zoning_amendment"
+      ],
+      "snippet": "Gust Memorial Bench Update Discussion of Planning Board Zoning Amendment Small Clean Energy Infrastructure Facilities (SCEIF) (e.g., Battery Energy Storage Systems, Solar) Review Interview Questions for Residents Interested in Serving on",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09092026-6903",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Conservation-Commission-18",
+      "document_title": "Conservation Commission",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Sudbury",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-09",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "Lot Release Request Landon Estates Lot 2- 21 Nolan Circle (Assessors Map B09-0012) - Battery Energy Storage System Bylaw - Master Plan Implementation - Citizens' Comments on Items Not on Agenda – No Comments Received - Minutes for",
+      "source_url": "https://cdn.sudbury.ma.us/wp-content/uploads/sites/328/2026/09/PlanningBoard_2026_Sep_09_agenda.pdf?version=6e65054560cc2c6d48d9819391d59976",
+      "listing_url": "https://sudbury.ma.us/planning/meetings/",
+      "document_title": "Agenda for meeting at Wed, September 9, 2026 (7:30 pm)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Amherst",
+      "board": "Conservation Commission",
+      "board_key": "conservation_commission",
+      "meeting_date": "2026-09-09",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "approved transformer containment system on two equipment pads associated with the solar facility at 191 West Pomeroy Lane (Map 19D, Lot 10). 6. Conservation Land Management Policy and Regulations Discussion a. Review final clean updated",
+      "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_09092026-89",
+      "listing_url": "https://www.amherstma.gov/AgendaCenter/Conservation-Commission-18",
+      "document_title": "Conservation Commission",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westford",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "the October 26, 2026 Special Town Meeting Warrant regarding the Specialized Code General Bylaw amendment ACTION TAKEN Select Board Agenda 09/08/2026 Page 2 of 5 7. 7:42 PM Presentation from the Water Department, Board of Water",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09082026-6911",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Select-Board-3",
+      "document_title": "ACTION TAKEN",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Westford",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "the October 26, 2026 Special Town Meeting Warrant regarding the Specialized Code General Bylaw amendment 7. 7:42 PM Presentation from the Water Department, Board of Water Commissioners and the Board of Health to request that the Select",
+      "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_09082026-6902",
+      "listing_url": "https://www.westfordma.gov/AgendaCenter/Select-Board-3",
+      "document_title": "Select Board",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Shrewsbury",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "in honor of former Town employee Dawn Shannon 10.​Review and act to refer proposed Zoning Bylaw Amendments to the Planning Board for public hearings 11.​Review and act to authorize Amendment No. 1 to the Intermunicipal Agreement with the",
+      "source_url": "https://www.shrewsburyma.gov/AgendaCenter/ViewFile/Agenda/_09082026-5498",
+      "listing_url": "https://www.shrewsburyma.gov/AgendaCenter/Select-Board-35",
+      "document_title": "Select Board Meeting Agenda- September 8, 2026",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "The Board will vote to execute the solar alternative on-bill credit (AOBC) agreement between the Town of Plymouth and Kearsarge Solar LLC. Public Comment Agenda Special Municipal Employee Application Review *Vote Anticipated - Airport",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09082026-3855",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "conditions in the Shallow Ponds neighborhood, which he stated were exacerbated by a new 40B development, and urged the Board to address the residents' burden. Selectman Keohan advocated for reserving an article for the fall town meeting to",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09082026-3855",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "She discussed the importance of maintaining \"safe harbor\" status to prevent hostile 40B developments and outlined potential strategies, including friendly 40B projects and missing middle housing. Steve Bolotin, Chair of the Planning Board",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09082026-3855",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "announced a Q&A session on July 21 regarding traffic concerns for the Pasture Hill 40B project. He noted the Earth Removal Bylaw Committee executed a contract with Horsley Witten Group, publicly thanked the Plymouth Public Library",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09082026-3855",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "SB VOTE TO APPROVE SOLAR ALTERNATIVE ON-BILL CREDIT AGREEMENT DATE: AUGUST 28, 2026 The Town of Plymouth has engaged in discussions with Kearsarge Solar LLC, to enter a solar alternative on-bill credit (AOBC) agreement. This AOBC agreement",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09082026-3855",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "negotiate and enter into one or more energy contracts for the purchase of solar credits generated by any solar photovoltaic facilities located in or outside the Town of Plymouth, each of which energy contract shall be for a term of up to",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09082026-3855",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "Grid-interconnected, solar photovoltaic (PV) and energy storage system Anticipated Construction Start Date: April 2026 Effective Date: As defined on the first page of these Special Conditions Anticipated Commercial Operation Date: February",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09082026-3855",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Unified Complexes Bylaw Amending Zoning Bylaw §203-1.D to Clarify Perimeter Setback and Vegetated Buffer Protections in Plymouth, MA Purpose & Strategic Context Restoring the original intent of Plymouth's Lot Regulations: Encouraging",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09082026-3855",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Select-Board-21",
+      "document_title": "Select Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Charlton",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "& Vote – Take action to set an implementation date of October 1 for consolidated Solar Applications 5. Board Deliberation & Vote – Timeline for action on proposed Senior Center 6. Board Deliberation & Vote – Process for changing fees for",
+      "source_url": "https://www.townofcharlton.net/AgendaCenter/ViewFile/Agenda/_09082026-4663",
+      "listing_url": "https://www.townofcharlton.net/AgendaCenter/Select-Board-8",
+      "document_title": "Select Board 9-9-2026 (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-08",
+      "topics": [
+        "solar"
+      ],
+      "snippet": "on Chapter 61A with intent to de-classify a portion of said lands to Commercial Use of a Solar Farm Development: 0 Wareham Street, parcel #'s 134-4-3 and 134-4-2A 6:50PM Discussion and possible vote to approve the Energy credit purchase",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_09082026-518",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Select-Board-22",
+      "document_title": "9/8/26 Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Northampton",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-03",
+      "topics": [
+        "clean_energy_siting"
+      ],
+      "snippet": "Government Representative and the Planning Board as permit granting authority for Small Clean Energy Infrastructure Facilities (SCEIF), respectively. Instructions for accessing the hearing remotely may be found on the September 17, 2026",
+      "source_url": "https://www.northamptonma.gov/AgendaCenter/ViewFile/Agenda/_09032026-9379",
+      "listing_url": "https://www.northamptonma.gov/AgendaCenter/City-Council-157",
+      "document_title": "Final (#2) City Council Agenda for September 3, 2026",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Northampton",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-03",
+      "topics": [
+        "clean_energy_siting"
+      ],
+      "snippet": "Review as Part of Consolidated SCEIF Permit (For additional details about the Small Clean Energy Infrastructure Facility consolidated permitting process, see DOER FAQ) B. 26.122 An Ordinance to Amend 281-3E to Allow Stormwater Review as",
+      "source_url": "https://www.northamptonma.gov/AgendaCenter/ViewFile/Agenda/_09032026-9379",
+      "listing_url": "https://www.northamptonma.gov/AgendaCenter/City-Council-157",
+      "document_title": "Final (#2) City Council Agenda for September 3, 2026",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Northampton",
+      "board": "City Council",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-03",
+      "topics": [
+        "moratorium"
+      ],
+      "snippet": "26.125 Data Center Moratorium 13. ORDINANCES 14. ZONING ORDINANCES 15. RESOLUTIONS A. 26.131 A Resolution to Form Select Committee to Study Data Centers 16. INFORMATION REQUESTS (CHARTER PROVISION 2-7) AND COMMITTEE STUDY REQUESTS 17. NEW",
+      "source_url": "https://www.northamptonma.gov/AgendaCenter/ViewFile/Agenda/_09032026-9379",
+      "listing_url": "https://www.northamptonma.gov/AgendaCenter/City-Council-157",
+      "document_title": "Final (#2) City Council Agenda for September 3, 2026",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Conservation Commission",
+      "board_key": "conservation_commission",
+      "meeting_date": "2026-09-02",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "Room #1 at the Carver Town Hall to hear the Notice of Intent submitted by Federal Pond Solar, LLC, to construct a dual-use agriculture/solar array and ground-mounted solar arrays with coupled battery storage, associated site work, and",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_09022026-514",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Conservation-Commission-12",
+      "document_title": "Conservation Commission Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Carver",
+      "board": "Conservation Commission",
+      "board_key": "conservation_commission",
+      "meeting_date": "2026-09-02",
+      "topics": [
+        "battery_storage",
+        "solar"
+      ],
+      "snippet": "Room #1 at the Carver Town Hall to hear the Notice of Intent submitted by Golden Pond Solar 1, LLC, to construct a floating solar photovoltaic system on a humanmade reservoir with coupled battery storage, associated site work, and",
+      "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_09022026-514",
+      "listing_url": "https://www.carverma.gov/AgendaCenter/Conservation-Commission-12",
+      "document_title": "Conservation Commission Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Amherst",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-09-02",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "Update regarding work for potential zoning amendment to allow for housing in the Professional and Research Park (PRP) zoning district. 4. Old Business - Topics Not Anticipated by the Chair 48 Hours in Advance of the Meeting 5. New Business",
+      "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_09022026-76",
+      "listing_url": "https://www.amherstma.gov/AgendaCenter/Planning-Board-44",
+      "document_title": "Planning Board Agenda",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Great Barrington",
+      "board": "Selectboard",
+      "board_key": "select_board",
+      "meeting_date": "2026-09-01",
+      "topics": [
+        "wireless_telecom"
+      ],
+      "snippet": "E(1) Aviation fields, public or private; E(3) Freight terminals, truck or rail; E(6) Personal wireless tower or structure. (e) Subsections F(2) Gravel, loam, sand and stone removal for commercial purposes; F(3) Light Manufacturing; F(4)",
+      "source_url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09012026-2543",
+      "listing_url": "https://www.townofgbma.gov/AgendaCenter/Selectboard-2",
+      "document_title": "Great Barrington Selectboard Policy Sub-Committee Agenda (PDF) DRAFT 189",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Select Board",
+      "board_key": "select_board",
+      "meeting_date": "2026-08-31",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "Hours III. Town Administrator Update IV. Proposed Town Projects V. Old Business: 40B Update Bliss Corner Lake Noquochoke Municipal Broadband Annual Operating Budget VI. Minutes: VII. Select Board Updates: VIII. Information: Invited",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_08312026-5817",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Select-Board-25",
+      "document_title": "Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Great Barrington",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-08-27",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "Amendments to comply with siting and permitting rules for clean energy facilities and battery energy storage facilities c. Hotel/motel room limits (zoning bylaw section 7.10) d. Housatonic Mills Revitalization Overlay District / Rising",
+      "source_url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_08272026-2536",
+      "listing_url": "https://www.townofgbma.gov/AgendaCenter/Planning-Board-8",
+      "document_title": "Planning Board Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Board of Appeals",
+      "board_key": "zoning_board_of_appeals",
+      "meeting_date": "2026-08-27",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "MEDIA** Open Meeting- Pledge the Flag - Moment of Silence 5:00 PM Public Hearing: Comprehensive Permit ZCMP-25-3 continued from August 13, 2026 Petitioner/Applicant/ Representative:Philip Cordeiro on behalf of The Hathaway Dartmouth LLC",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_08272026-5816",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Board-of-Appeals-21",
+      "document_title": "Zoning Board of Appeals",
+      "text_source": "docx"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Board of Appeals",
+      "board_key": "zoning_board_of_appeals",
+      "meeting_date": "2026-08-27",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "The petitioner The Hathaway Dartmouth, LLC is seeking a Comprehensive Permit pursuant to MGL, Chapter 40B, Sections 20-23, the Comprehensive Permit Guidelines 760 CMR 56.00 from the Massachusetts General Laws and Dartmouth Zoning by-law",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_08272026-5816",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Board-of-Appeals-21",
+      "document_title": "Zoning Board of Appeals",
+      "text_source": "docx"
+    },
+    {
+      "town": "Dartmouth",
+      "board": "Board of Appeals",
+      "board_key": "zoning_board_of_appeals",
+      "meeting_date": "2026-08-27",
+      "topics": [
+        "40b_comprehensive_permit"
+      ],
+      "snippet": "(484 Russells Mills Road) Minutes-continued to August 13, 2024 Review and Approval of Comprehensive Permit ZCMP-25-2 Minutes- (498 Old Westport Rd)-continued to August 13, 2026 Review and Approval of Review and Approval of Comprehensive",
+      "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_08272026-5816",
+      "listing_url": "https://www.dartmouthma.gov/AgendaCenter/Board-of-Appeals-21",
+      "document_title": "Zoning Board of Appeals",
+      "text_source": "docx"
+    },
+    {
+      "town": "Plymouth",
+      "board": "Planning Board",
+      "board_key": "planning_board",
+      "meeting_date": "2026-08-26",
+      "topics": [
+        "moratorium"
+      ],
+      "snippet": "Use Table, or take any other action relative thereto. 3. Zoning Discussion - Data Center Moratorium Article Page 1 of 1",
+      "source_url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_08262026-3821",
+      "listing_url": "https://www.plymouth-ma.gov/AgendaCenter/Planning-Board-19",
+      "document_title": "Planning Board Regular Meeting Agenda (PDF)",
+      "text_source": "pdf"
+    },
+    {
+      "town": "Pittsfield",
+      "board": "Zoning Board of Appeals",
+      "board_key": "zoning_board_of_appeals",
+      "meeting_date": "2026-08-26",
+      "topics": [
+        "zoning_amendment"
+      ],
+      "snippet": "of an existing nonconforming two-sided roof sign above the eave line. New/Old Business: Ordinance Amendment - Update Adjourn Page 1 of 1",
+      "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_08262026-943",
+      "listing_url": "https://www.pittsfieldma.gov/AgendaCenter/Zoning-Board-of-Appeals-10",
+      "document_title": "Pittsfield Zoning Board of Appeals Agenda (PDF)",
+      "text_source": "ocr"
+    },
+    {
+      "town": "Leominster",
+      "board": "Zoning Board of Appeals",
+      "board_key": "zoning_board_of_appeals",
+      "meeting_date": "2026-08-26",
+      "topics": [
+        "battery_storage"
+      ],
+      "snippet": "LLC, 5 Chestnut Street — Administrative Appeal regarding the proposed construction of a Battery Energy Storage System (BESS). The applicant is appealing the Building Commissioner's determination that the proposed BESS use is prohibited",
+      "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_08262026-2118",
+      "listing_url": "https://www.leominster-ma.gov/AgendaCenter/Zoning-Board-of-Appeals-4",
+      "document_title": "Zoning Board of Appeals",
+      "text_source": "ocr"
+    }
+  ]
+}

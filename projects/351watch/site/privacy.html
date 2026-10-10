@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy and contact | 351 Watch</title>
+<meta name="description" content="How 351 Watch handles waitlist information, and how to send corrections.">
+<meta property="og:title" content="Privacy and contact | 351 Watch">
+<meta property="og:description" content="How 351 Watch handles waitlist information, and how to send corrections.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5f4a'/%3E%3Ctext x='16' y='21' font-family='Arial' font-size='13' font-weight='700' fill='white' text-anchor='middle'%3E351%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/">351<span>Watch</span></a>
+  <nav class="top" aria-label="Main">
+    <a href="/#tracker">Tracker</a>
+    <a href="/#agendas">From town agendas</a>
+    <a href="/#rules">State rules</a>
+    <a class="cta" href="/#alerts">Get alerts</a>
+  </nav>
+</div></header>
+<main id="main">
+
+<div class="wrap prose">
+<h1>Privacy and contact</h1>
+<p>351 Watch is a new service. This note explains what we collect and why.</p>
+<h2>What we collect</h2>
+<p>If you join the waitlist, we store the email address, role, organization, towns and notes you enter, and the time you signed up. If you send a correction or message, we store your email and message.</p>
+<h2>How we use it</h2>
+<p>Only to contact you about 351 Watch — mainly to tell you when alerts open for your towns — and to decide which towns and topics to cover first. We don't sell or share it, and we don't add you to anyone else's mailing list.</p>
+<h2>Where it's kept</h2>
+<p>Submissions are stored in private, access-controlled cloud storage at our hosting provider, Vercel. They are not publicly viewable.</p>
+<h2>How long we keep it</h2>
+<p>Until you ask us to delete it, or for 12 months if the paid service doesn't launch, whichever comes first.</p>
+<h2>About the data on this site</h2>
+<p>The tracker uses public records: agendas and warrants that towns must post under the Massachusetts Open Meeting Law, legislative records, and news reports. Our crawler reads only publicly posted pages, identifies itself, follows robots.txt and limits how often it visits each town's website.</p>
+<h2 id="contact">Corrections, removal requests and contact</h2>
+<form id="contact-form" class="signup" novalidate>
+  <label>Your email<input name="email" type="email" autocomplete="email" required></label>
+  <label>Type of request
+    <select name="kind">
+      <option value="correction">Correction to the tracker</option>
+      <option value="removal">Delete my waitlist data</option>
+      <option value="message">Other message</option>
+    </select>
+  </label>
+  <label>Message<textarea name="message" required></textarea></label>
+  <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+  <button class="btn" type="submit">Send</button>
+  <p class="form-status" role="status" aria-live="polite"></p>
+</form>
+</div>
+
+</main>
+<footer class="site"><div class="wrap">
+  <p>351 Watch compiles public records that Massachusetts towns post under the Open Meeting Law, plus state and legislative sources. It is informational only and not legal advice. Always confirm dates and terms with the town clerk or the cited source.</p>
+  <p><a href="/data/tracker.json">Download the tracker data (JSON)</a> · <a href="/privacy">Privacy</a> · <a href="/privacy#contact">Corrections and contact</a></p>
+</div></footer>
+<script src="/app.js" defer></script>
+</body>
+</html>
