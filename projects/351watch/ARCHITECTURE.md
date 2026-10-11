@@ -61,7 +61,7 @@ Read this before changing anything. Several workstreams build in parallel; these
 
 ## Deploys
 
-- Static pages and data are fetched at build time from this repo's tarball at a commit (`site/fetch-static.sh`, run as the build command `SITE_REF=<sha> sh fetch-static.sh`, output `public`). API functions are uploaded with the deployment; a redeploy (same deployment id) with a new `SITE_REF` refreshes pages/data without re-uploading functions.
+- Every deployment is built from git at one commit: the project's build command pipes `site/vercel-build.sh` from raw.githubusercontent.com at `<sha>` with `SITE_REF=<sha>`, which downloads that commit's tarball and writes a Build Output API v3 bundle (`.vercel/output`: static pages and data, one Node function per `site/api/**/*.js`, routing headers, clean URLs and the daily cron). The deployment upload itself is a one-line `package.json`. Steps: `OPERATIONS.md`.
 - Only the coordinator deploys to production.
 
 ## Crawler rules (non-negotiable)
