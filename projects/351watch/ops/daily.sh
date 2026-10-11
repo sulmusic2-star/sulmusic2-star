@@ -9,7 +9,7 @@
 # poppler-utils + tesseract-ocr if missing (OCR is optional: without it, image-only PDFs are
 # recorded as needs_ocr and retried on a later run); run the incremental crawl, which skips
 # every document already in data/state/ and downloads only listing pages plus new agendas;
-# rebuild the site; commit data/ and site/ (never the crawler cache) only when something
+# refresh MassDEP wetlands filings (best effort); rebuild the site; commit data/ and site/ (never the crawler cache) only when something
 # changed; push to the current branch with 4 retries (2s/4s/8s/16s backoff).
 # The LAST line printed is the resulting commit SHA (HEAD).
 set -euo pipefail
@@ -62,6 +62,8 @@ if [ ${#APT_PKGS[@]} -gt 0 ]; then
 fi
 
 # ------------------------------------------------------------------ crawl + build
+log "wetlands filings (MassDEP)"
+(cd crawler && python3 -m watch351.sources.massdep) || log "MassDEP refresh failed; keeping yesterday's wetlands data"
 log "crawl"
 (cd crawler && python3 -m watch351.daily "${DAILY_ARGS[@]+"${DAILY_ARGS[@]}"}")
 log "build site"
