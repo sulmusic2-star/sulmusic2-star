@@ -34,6 +34,8 @@ log = logging.getLogger(__name__)
 USER_AGENT = "351WatchBot/0.1 (+contact: hello@351watch.example)"
 ROBOTS_AGENT = "351WatchBot"
 DEFAULT_CACHE_DIR = Path(__file__).resolve().parent.parent / ".cache"
+# Hosts that rate-limit below our default 1 request/second (seconds between requests).
+HOST_MIN_INTERVAL = {"opengov.sos.ri.gov": 2.5}
 MAX_BYTES = 40 * 1024 * 1024  # skip anything bigger than 40 MB
 
 
@@ -230,6 +232,11 @@ class PoliteFetcher:
                 r = self.session.get(url, timeout=self.timeout, stream=True,
                                      allow_redirects=allow_redirects)
                 chunks, size = [], 0
+                declared = r.headers.get("Content-Length", "")
+                if declared.isdigit() and int(declared) > MAX_BYTES:
+                    r.close()  # don't stream 40 MB of a packet we will discard anyway
+                    self._record(url, r.status_code, 0)
+                    raise FetchError(f"too large ({declared} > {MAX_BYTES} bytes): {url}")
                 try:
                     for chunk in r.iter_content(64 * 1024):
                         size += len(chunk)
@@ -257,7 +264,8 @@ class PoliteFetcher:
             self._count("robots_blocked")
             raise RobotsDisallowed(url)
         delay = rp.crawl_delay(ROBOTS_AGENT)
-        interval = max(self.min_interval, float(delay) if delay else 0.0)
+        interval = max(self.min_interval, HOST_MIN_INTERVAL.get(urlsplit(url).netloc, 0.0),
+                       float(delay) if delay else 0.0)
         # Cap absurd crawl-delays so one host cannot stall the whole run;
         # if a site asks for more than 10s we skip it instead of hammering.
         if interval > 10:

@@ -110,7 +110,7 @@ def legacy_agenda_hits(data_dir: Path = DATA) -> list[dict]:
 
 
 def index_agenda_hits(data_dir: Path = DATA) -> tuple[list[dict], set[str]] | None:
-    """(hits, states indexed) from the incremental document index, or None if there is none yet."""
+    """(hits, document URLs indexed) from the incremental document index, or None if there is none yet."""
     try:
         from .state import DocIndex
     except ImportError:
@@ -119,7 +119,7 @@ def index_agenda_hits(data_dir: Path = DATA) -> tuple[list[dict], set[str]] | No
     if not root.exists() or not any(root.rglob("*.jsonl")):
         return None
     index = DocIndex(root)
-    return index.current_hits(), index.states()
+    return index.current_hits(), index.urls()
 
 
 def other_hits(data_dir: Path = DATA, include_states: set[str] | None = None) -> list[dict]:
@@ -224,7 +224,7 @@ def archive_hits(hits: list[dict], archive_dir: Path) -> int:
 
 
 def build(data_dir: Path = DATA, today: date | None = None, archive: bool = True,
-          agenda_hits: list[dict] | None = None, indexed_states: set[str] | None = None) -> dict:
+          agenda_hits: list[dict] | None = None, indexed_urls: set[str] | None = None) -> dict:
     today = today or datetime.now(timezone.utc).date()
     start, end = today - timedelta(days=WINDOW_DAYS), today + timedelta(days=WINDOW_DAYS)
     towns = load_towns(data_dir)
@@ -232,14 +232,15 @@ def build(data_dir: Path = DATA, today: date | None = None, archive: bool = True
     if agenda_hits is None:
         from_index = index_agenda_hits(data_dir)
         if from_index is not None:
-            agenda_hits, indexed_states = from_index
+            agenda_hits, indexed_urls = from_index
         else:
             agenda_hits = legacy_agenda_hits(data_dir)
-    # The index (or census) covers the states crawled by this engine; per-state files
-    # from other workstreams fill in states the index does not hold yet.
-    indexed_states = set(indexed_states or ()) | {(h.get("state") or "MA").upper() for h in agenda_hits}
+    # The index is authoritative for every document it holds (its hits are re-matched
+    # and deduplicated); per-state hit files from other workstreams contribute hits
+    # only from documents the index does not hold (e.g. older than the daily window).
+    indexed_urls = set(indexed_urls or ()) | {h.get("source_url") for h in agenda_hits}
     raw = agenda_hits + [h for h in other_hits(data_dir)
-                         if not (h["source"] == "agenda" and h["state"] in indexed_states)]
+                         if not (h["source"] == "agenda" and h.get("source_url") in indexed_urls)]
 
     seen: dict[str, dict] = {}
     for h in raw:
@@ -324,9 +325,9 @@ def write(doc: dict, path: Path) -> None:
 
 
 def rebuild(data_dir: Path = DATA, today: date | None = None, archive: bool = True,
-            agenda_hits: list[dict] | None = None, indexed_states: set[str] | None = None) -> dict:
+            agenda_hits: list[dict] | None = None, indexed_urls: set[str] | None = None) -> dict:
     """Build, validate and write data/hits_current.json; returns the document."""
-    doc = build(data_dir, today, archive, agenda_hits, indexed_states)
+    doc = build(data_dir, today, archive, agenda_hits, indexed_urls)
     errs = validate(doc)
     if errs:
         raise ValueError(f"hits_current.json failed validation ({len(errs)}): " + "; ".join(errs[:10]))

@@ -44,6 +44,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import html
 import json
 import logging
 import os
@@ -390,7 +391,7 @@ KNOWN: list[dict] = [
     {"name": "The Davis Companies", "kind": "datacenter", "pure": False, "pattern": r"\bDAVIS\s+COMPANIES\b"},
     # ---- utilities, transmission, wind, towers
     {"name": "National Grid (New England Power / Mass. Electric)", "kind": "utility", "pure": False,
-     "pattern": r"\bNATIONAL\s+GRID\b|\bNEW\s+ENGLAND\s+POWER\b|\bMASS(?:ACHUSETTS)?\.?\s+ELECTRIC\b|\bNANTUCKET\s+ELECTRIC\b|\bBOSTON\s+GAS\b|\bNGRID\b"},
+     "pattern": r"\bNATIONAL\s+GRID\b|\bNEW\s+ENGLAND\s+POWER\b|\bNEP\b|\bMECO\b|\bMASS(?:ACHUSETTS)?\.?\s+ELECTRIC\b|\bNANTUCKET\s+ELECTRIC\b|\bBOSTON\s+GAS\b|\bNGRID\b"},
     {"name": "Eversource (NSTAR Electric)", "kind": "utility", "pure": False,
      "pattern": r"\bEVERSOURCE\b|\bNSTAR\b|\bWESTERN\s+MASS(?:ACHUSETTS)?\.?\s+ELECTRIC\b|\bYANKEE\s+GAS\b"},
     {"name": "Unitil", "kind": "utility", "pure": False, "pattern": r"\bUNITIL\b|\bFITCHBURG\s+GAS\b"},
@@ -416,7 +417,7 @@ _STORAGE_ONLY = {"Stem Inc.", "SYSO Technologies", "Hecate Energy", "Cranberry P
                  "East Point Energy", "Enel X", "S&C Electric"}
 for _k in KNOWN:
     _k["rx"] = re.compile(_k["pattern"])
-    _k["topic"] = {"datacenter": "data_center", "wind": "clean_energy_siting", "utility": "clean_energy_siting",
+    _k["topic"] = {"datacenter": "data_center", "wind": "wetlands_filing", "utility": "wetlands_filing",
                    "tower": "wireless_telecom"}.get(_k["kind"],
                                                     "battery_storage" if _k["name"] in _STORAGE_ONLY else "solar")
 
@@ -467,6 +468,33 @@ def looks_org(name: str | None) -> bool:
     return bool(ORG_RX.search(u) or known_match(u) or CONSULTANT_RX.search(u))
 
 
+_PERSON_LAST_FIRST = re.compile(r"^[A-Z][A-Z'\-]+,\s*[A-Z][A-Z'\-\.]*(?:\s+[A-Z][A-Z'\-\.]*){0,2}(?:\s*[/&]\s*[A-Z'\-\.\s]+)?$", re.I)
+
+
+def org_only(name: str | None, lenient: bool = False) -> str:
+    """Keep only the organization part of a name field; '' when it names a private person.
+    Drops 'ATTN: <person>', 'c/o <person>' and the person in 'TYRRELL (NEP) MICHAEL'."""
+    n = clean(name)
+    if not n:
+        return ""
+    n = re.sub(r"\s*\bATTN\b:?.*$", "", n, flags=re.I).strip(" ,")
+    m = re.match(r"^[A-Z'\-]+\s*\(([^)]+)\)\s*[A-Z'\-\.]+$", n, re.I)
+    if m:
+        return m.group(1).strip() if looks_org(m.group(1)) else ""
+    co = re.search(r"\s*,?\s*\bC\s*/\s*O\b\s*(.+)$", n, re.I)
+    if co and not looks_org(co.group(1)):
+        n = n[:co.start()].strip(" ,")
+    if looks_org(n):
+        parts = [x.strip() for x in re.split(r"\s*[,;]\s*|\s+/\s+", n) if x.strip()]
+        if len(parts) > 1 and not all(looks_org(x) or len(x) <= 4 for x in parts):
+            kept = [x for x in parts if looks_org(x) or (len(x) <= 4 and x.upper() in {"INC", "LLC", "LP", "CO"})]
+            return ", ".join(kept)
+        return n
+    if lenient and not _PERSON_LAST_FIRST.match(n) and len(n.split()) >= 3:
+        return n                                             # company field without a marker ("MASS AUDUBON SOCIETY")
+    return ""
+
+
 def is_consultant(name: str | None) -> bool:
     if not name:
         return False
@@ -479,7 +507,9 @@ def is_consultant(name: str | None) -> bool:
 
 # ============================================================================ normalization
 def clean(s: str | None) -> str:
-    return re.sub(r"\s+", " ", (s or "").replace(" ", " ")).strip()
+    s = html.unescape(html.unescape(s or ""))                # descriptions sometimes carry "&AMP;"
+    s = re.sub(r"&AMP;", "&", s, flags=re.I)
+    return re.sub(r"\s+", " ", s.replace("\u00a0", " ").replace("\u00ad", "")).strip()
 
 
 def clean_address(s: str | None) -> str:
@@ -503,9 +533,12 @@ CHECK_RX = re.compile(
     r"CERTIFIED\s+CHECK|TREASURER'?S?\s+CHECK)\s*S?\s*(?:NO\.?|NUMBER)?\s*[#:]?\s*"
     r"(?P<nums>[A-Z]{0,3}[0-9][0-9A-Z\-]*(?:\s*(?:[,&+/]|AND)\s*#?\s*[A-Z]{0,3}[0-9][0-9A-Z\-]*)*|"
     r"(?:INFO\s+)?NOT\s+PROVIDED|N/?A|UNKNOWN)\s*"
-    r"(?:[-:,]\s*)?(?:FROM\s+|BY\s+|PAID\s+BY\s+)?(?P<payor>.*)", re.I)
+    r"(?:[-:,]\s*)?(?:FROM\s+|BY\s+|PAID\s+BY\s+|PAYOR\s*:?\s*)?(?P<payor>.*)", re.I)
+# Placeholder text DEP's system puts in the description field before staff fill it in.
+PLACEHOLDER_RX = re.compile(r"^(?:SYSTEM\s+GENERATED\s+TASK|WAITING\s+FOR\s+(?:FEE|PAYMENT)\b.*|PAYMENT\s+NOT\s+RECEIVED\b.*|"
+                            r"FEE\s+NOT\s+(?:YET\s+)?RECEIVED\b.*|N/?A|NONE|TBD)\.?$", re.I)
 # "//"-separated note segments that are bookkeeping, not project description.
-ADMIN_RX = re.compile(r"^(?:#\s*[A-Z0-9][A-Z0-9\-]*\b.*|[A-Z]{1,4}\d?[A-Z]?-\d+-\d+\b.*|APPROX\.?\s+LAT.*|(?:OOC|ORAD|NOI|DOA|COC)?\s*DEP\s+TRANSACTION\s+ID\b.*|"
+ADMIN_RX = re.compile(r"^(?:#\s*[A-Z0-9][A-Z0-9\-]*\b.*|[A-Z]{1,4}\d?[A-Z]?-\d+-\d+\b.*|APPROX\.?\s+LAT.*|[A-Z]{0,5}\s*DEP\s+TRANSACTION\s+ID\b.*|"
                       r"P(?:AI)?D\s+ON[\s-]?LINE.*|E[\s-]?PAY.*|FEE\s+(?:WAIVED|EXEMPT).*|(?:FEE\s+)?EXEMPT\b.*|"
                       r"NO\s+FEE\b.*|MUNICIPAL(?:LY)?\s+EXEMPT.*|(?:CK|CHECK)\s+INFO.*)$", re.I)
 
@@ -529,7 +562,8 @@ def split_comments(comments: str | None) -> tuple[str, str | None, list[str]]:
             admin.append(seg)          # internal codes ("#WC-52-21"), eDEP transaction ids, online payment
         else:
             desc_parts.append(seg)
-    return clean(" // ".join(desc_parts)), payor, admin
+    desc = clean(" // ".join(p for p in desc_parts if not PLACEHOLDER_RX.match(p.strip())))
+    return desc, payor, admin
 
 
 def contact_key(person: str | None) -> str | None:
@@ -552,18 +586,18 @@ def build_record(row: dict, detail: dict | None, towns: dict[str, dict]) -> dict
     detail = detail or {}
     t = towns.get(clean(row.get("TownName")).upper(), {})
     town = t.get("town") or clean(row.get("TownName")).title()
-    company = clean(row.get("Company"))
+    company = org_only(clean(row.get("Company")), lenient=True)
     person = clean(row.get("ApplicantName"))
     info = clean(detail.get("ApplicantInformation"))
-    applicant = company or (info if looks_org(info) else "") or (person if looks_org(person) else "")
-    is_indiv = not applicant and bool(person or info)
+    applicant = company or org_only(info) or org_only(person)
+    is_indiv = not applicant and bool(person or info or clean(row.get("Company")))
     description, payor_raw, admin = split_comments(detail.get("Comments"))
-    payor = payor_raw
+    payor = org_only(payor_raw) if payor_raw else None
     payor_indiv = False
-    if payor:
-        if norm_name(payor) and norm_name(payor) == norm_name(applicant):
+    if payor_raw:
+        if payor and norm_name(payor) and norm_name(payor) == norm_name(applicant):
             payor = applicant
-        elif not looks_org(payor):
+        elif not payor:
             payor, payor_indiv = INDIVIDUAL, True
     ftype_raw = clean(detail.get("FilingType"))
     ptypes = []
@@ -576,7 +610,9 @@ def build_record(row: dict, detail: dict | None, towns: dict[str, dict]) -> dict
              if clean(a.get("ResourceAreaName"))]
     dep_no = clean(row.get("NOINum") or detail.get("NOINum")) or None
     issued = (row.get("OOCDate") or detail.get("OOCDate") or "")[:10] or None
-    if issued:
+    if re.search(r"\bWITHDRAWN\b", description or "", re.I):
+        status = "withdrawn"
+    elif issued:
         status = "decision_issued"
     elif dep_no:
         status = "file_number_issued"
@@ -622,7 +658,8 @@ _SOLAR_NOT = re.compile(r"\bsolar[\s-]+(?:powered|power(?:ed)?\s+(?:lights?|pump
                         r"pumps?|compactors?|bollards?|aerat\w*|fountains?|signs?|beacons?|gates?|cameras?|"
                         r"(?:weather|monitoring)\s+stations?|charg\w+|panel\s+(?:on|for)\s+(?:the\s+)?(?:pump|gate|sign|light)\w*)"
                         r"|\bsolar\s+(?:way|ave(?:nue)?|drive|dr|road|rd|street|st|lane|ln|circle|cir|terrace)\b", re.I)
-_BESS = re.compile(r"\bBESS\b|\bbattery\s+(?:energy\s+)?storage\b|\benergy\s+storage\b|\bbatter(?:y|ies)\b", re.I)
+_STORAGE_WORD = r"(?:storage|stroage|storgae|sotrage|strorage)"          # DEP data-entry typos seen in the data
+_BESS = re.compile(rf"\bBESS\b|\bbattery\s+(?:energy\s+)?{_STORAGE_WORD}\b|\benergy\s+{_STORAGE_WORD}\b|\bbatter(?:y|ies)\b", re.I)
 _BATTERY_CONTEXT = re.compile(r"storage|\bMWh?\b|\bkWh?\b|megawatt|substation|interconnect|solar|energy|"
                               r"containers?|enclosures?|inverters?", re.I)
 _BATTERY_NOT = re.compile(r"battery\s+(?:st(?:reet)?|road|rd|wharf|march|lane|ln|park|point|hill|terrace|way|ave)\b|"
@@ -635,7 +672,8 @@ _SUBSTATION = re.compile(r"\bsub[\s-]?stations?\b|\bswitch(?:ing)?\s+stations?\b
 _SUBSTATION_NOT = re.compile(r"\b(?:fire|police|ems|ambulance|pump(?:ing)?|sewer|water|wastewater|lift|"
                              r"public\s+safety|highway|dpw)\s+sub[\s-]?stations?\b", re.I)
 _TRANSMISSION = re.compile(r"\btransmission\s+(?:lines?|structures?|towers?|corridors?|right[\s-]of[\s-]ways?|"
-                           r"ROW|system|project|upgrades?|rebuilds?|poles?|circuits?|facilit(?:y|ies)|cables?)\b|"
+                           r"ROW|system|project|upgrades?|rebuilds?|poles?|circuits?|facilit(?:y|ies)|cables?|"
+                           r"infrastructure|structure\s+replacements?)\b|"
                            r"\breconductor\w*|\b(?:69|115|230|345)\s*-?\s*kV\b|\bkilovolt", re.I)
 _TRANSMISSION_NOT = re.compile(r"\b(?:water|sewer|gas|force)\s+(?:transmission\s+)?mains?\b|\bwater\s+transmission\b|"
                                r"\btransmission\s+mains?\b|\bgas\s+transmission\b", re.I)
@@ -644,24 +682,30 @@ _UTILITY_ROUTINE = re.compile(r"\b(?:utility\s+)?poles?\b|\bvegetation\s+managem
                               r"\bunderground\s+(?:cable|conduit|electric)|\bmanholes?\b|\bgas\s+(?:main|service|line)s?\b|"
                               r"\bhazard\s+tree|\btree\s+(?:removal|trimming|pruning)", re.I)
 _WIND = re.compile(r"\bwind\s+(?:turbines?|farm|energy\s+(?:facility|project|area)|project|power\s+project)\b|"
-                   r"\boffshore\s+wind\b|\bexport\s+cables?\b|\bcable\s+landfall\b", re.I)
+                   r"\boffshore\s+wind\b|\bexport\s+cables?\b|\bcable\s+landfall\b|"
+                   r"\b(?:wave|tidal)\s+energy\b|\bhydrokinetic\b", re.I)
 _EV = re.compile(r"\bEV\s+charg\w*|\belectric\s+vehicle\s+(?:charg\w*|supply)|\bcharging\s+stations?\b", re.I)
 _SIZE = re.compile(r"\b(\d{1,4}(?:[.,]\d+)?)\s*-?\s*(MW|megawatts?|kW|kilowatts?)(?:\s*(?:AC|DC))?\b", re.I)
 _COMMERCIAL_SOLAR = re.compile(
     r"\bsolar\s+(?:farm|facility|facilities|field|project|garden|canopy|canopies|carports?|park|plant|"
     r"generating|electric\s+generat\w+|energy\s+(?:facility|project|generat\w+))|"
     r"\bcommunity\s+solar\b|\butility[\s-]scale\b|\bagri-?voltaic|\bfloating\s+solar\b|\bdual[\s-]use\s+solar\b|"
-    r"\bcanop(?:y|ies)\b|\bcarports?\b|\b\d+(?:\.\d+)?\s*(?:\+/-\s*)?acres?\b|\bsolar\s+photovoltaic\s+facility\b|"
+    r"\bcanop(?:y|ies)\s+(?:solar|array|PV|over\s+(?:the\s+)?(?:existing\s+)?(?:parking|lot|canal))|"
+    r"\bparking\s+(?:lot\s+|area\s+)?canop|\bcarports?\b|\b\d+(?:\.\d+)?\s*(?:\+/-\s*)?acres?\b|\bsolar\s+photovoltaic\s+facility\b|"
     r"\binterconnect\w*|\bmegawatt|\bmw\b", re.I)
 _WEAK_COMMERCIAL_SOLAR = re.compile(r"\b(?:ground|pole)[\s-]+mounted\s+(?:solar|photovoltaic|PV)\b|"
-                                    r"\bsolar\s+(?:array|arrays|panels?|system|installation|energy\s+system)\b", re.I)
+                                    r"\b(?:solar|photovoltaic|PV)\s+(?:array|arrays|panels?|systems?|installation|"
+                                    r"facility|energy\s+system)\b|\btransformers?\b", re.I)
 _RESIDENTIAL = re.compile(r"\bsingle[\s-]family\b|\bSFH\b|\bSFD\b|\bdwelling\b|\bhouse\b|\bhome\b|\bresiden\w+|"
                           r"\bgarage\b|\bdeck\b|\bporch\b|\bshed\b|\bpool\b|\baddition\b|\bbackyard\b|"
                           r"\bseptic\b|\bcottage\b", re.I)
 _ROOFTOP = re.compile(r"\broof\b|\broof[\s-]?(?:top|mounted)\b|\brooftop\b", re.I)
 # Energy words in applicant/payor names. Bare "STORAGE" is excluded (self-storage LLCs are common).
 _ENERGY_NAME = re.compile(r"\bSOLAR\b|\bPHOTOVOLTAIC\b|\bENERGY\s+STORAGE\b|\bBATTERY\b|\bBESS\b"
-                          r"|\bRENEWABLES?\b|\bDATA\s+CENT(?:ER|RE)\b")
+                          r"|\bRENEWABLES?\b|\bDATA\s+CENT(?:ER|RE)\b|\bWIND\s+(?:LLC|INC|ENERGY|POWER|FARM|PROJECT)\b")
+# Utility work in a transmission right-of-way (structure replacements) is transmission, not distribution.
+_UTILITY_TRANSMISSION = re.compile(r"\bROW\b|\bright[\s-]of[\s-]ways?\b|\bstructure\s+replacements?\b|"
+                                   r"\btransmission\b|\bsub[\s-]?stations?\b", re.I)
 
 
 def _hits(rx: re.Pattern, text: str, not_rx: re.Pattern | None = None, window: int = 0) -> list[str]:
@@ -773,7 +817,7 @@ def classify(rec: dict) -> dict:
             scale, why = "residential", "house/roof wording, private applicant or residential installer"
         elif roof:
             scale, why = "rooftop", "roof-mounted on a non-residential building"
-        elif named or weak or (battery and not solar):
+        elif named or weak or battery:
             scale, why = "commercial", "developer/energy name or ground-mount wording"
         else:
             scale, why = "unclear", "no scale cue"
@@ -793,31 +837,54 @@ def classify(rec: dict) -> dict:
         if size_kw is not None:
             signals.append(f"size_kw:{size_kw:g}")
 
+    line_work = re.search(r"structure|\blines?\b|maintenance|improvement|access\s+road|work\s+pad|refurbish|"
+                          r"rebuild|upgrade|reconstruct", text, re.I)
+    if utility and not (substation or transmission) and _UTILITY_TRANSMISSION.search(text) and line_work \
+            and not _UTILITY_ROUTINE.search(text.replace("structure", "")):
+        transmission = [m.group(0) for m in _UTILITY_TRANSMISSION.finditer(text)]
+    elif utility and not (substation or transmission) and re.search(r"\bNEW\s+ENGLAND\s+POWER\b", applicant.upper()) \
+            and _UTILITY_TRANSMISSION.search(text) and line_work:
+        transmission = [m.group(0) for m in _UTILITY_TRANSMISSION.finditer(text)]      # NEP is National Grid's transmission company
+    if not (substation or transmission):
+        transmission = [m.group(0) for m in re.finditer(
+            r"\belectric(?:al)?\s+(?:utility\s+|transmission\s+)?(?:ROW|right[\s-]of[\s-]ways?)\b", text, re.I)]
     if (substation or transmission) and not hit:
         category, hit, confidence = "transmission_substation", True, "high" if substation else "medium"
-        topics.append("clean_energy_siting")
         signals += [f"desc:{h}" for h in substation + transmission]
     elif (substation or transmission) and hit:
         signals += [f"desc:{h}" for h in substation + transmission]
 
     if wind and not hit:
-        category, hit, confidence = "wind", True, "medium"
-        topics.append("clean_energy_siting")
+        category, hit, confidence = "wind_or_marine", True, "medium"
         signals += [f"desc:{h}" for h in wind]
 
     if not hit and not category and dev and dev["pure"] and dev["kind"] in ("developer", "wind"):
-        category = "developer_other" if dev["kind"] == "developer" else "wind"
+        category = "developer_other" if dev["kind"] == "developer" else "wind_or_marine"
         hit, confidence = True, "medium"
         topics.append(dev["topic"])
         signals.append(f"name:{dev['name']}")
         note = "known energy developer; description has no energy keyword"
     elif not hit and not category and name_energy:
-        category, hit, confidence = "energy_name_only", True, "low"
-        topics.append("battery_storage" if re.search(r"STORAGE|BATTERY|BESS", " ".join(name_energy)) else
-                      "data_center" if "DATA" in " ".join(name_energy) else "solar")
+        joined = " ".join(name_energy)
+        strong_name = re.search(r"SOLAR|PHOTOVOLTAIC|STORAGE|BATTERY|BESS|DATA|WIND", joined)
+        category, hit, confidence = "energy_name_only", True, "medium" if strong_name else "low"
+        name_topic = ("battery_storage" if re.search(r"STORAGE|BATTERY|BESS", joined) else
+                      "data_center" if "DATA" in joined else
+                      "solar" if re.search(r"SOLAR|PHOTOVOLTAIC", joined) else None)
+        if name_topic:
+            topics.append(name_topic)
         signals += [f"name:{n}" for n in name_energy]
         note = "energy word in applicant/payor name only"
 
+    if not hit and not category and utility and not re.search(r"\bGAS\b", applicant.upper()) \
+            and rec.get("status") != "withdrawn" and not _UTILITY_ROUTINE.search(text):
+        nep = re.search(r"NEW\s+ENGLAND\s+POWER|\bNEP\b", applicant.upper())
+        anrad = (rec.get("filing_type") or "").startswith("ANRAD")
+        if nep or anrad:
+            category, hit, confidence = "transmission_substation", True, "low"
+            signals.append("name:New England Power (transmission owner)" if nep else "utility ANRAD")
+            note = ("filing by National Grid's transmission company; no line/substation keyword in the description yet"
+                    if nep else "electric utility resource-area delineation (often ahead of a substation or line project)")
     if not category and ev:
         category = "ev_charging"
         note = "EV charging; not tracked as a siting topic"
@@ -889,6 +956,12 @@ def resolve_links(records: list[dict]) -> dict[str, dict]:
         if r.get("applicant") and not r["applicant_is_individual"]:
             by_applicant[norm_name(r["applicant"])].append(r)
 
+    by_depno = {r["dep_file_number"]: r for r in records if r.get("dep_file_number")}
+    by_family: dict[str, list[dict]] = defaultdict(list)
+    for r in records:
+        if r.get("applicant") and not r["applicant_is_individual"]:
+            by_family[_family_key(r["applicant"])].append(r)
+
     def resolved(r2: dict) -> tuple[str, str] | None:
         l2 = out.get(r2["noi_id"])
         if l2 and l2.get("parent") and l2["link"] in ("applicant_name", "care_of", "payor", "self"):
@@ -903,7 +976,19 @@ def resolve_links(records: list[dict]) -> dict[str, dict]:
             link = out[r["noi_id"]]
             if link.get("parent"):
                 continue
-            for r2 in by_applicant.get(norm_name(r.get("applicant") or ""), []):
+            for ref in re.findall(r"\b(\d{3}-\d{4})\b", r.get("description") or ""):
+                r2 = by_depno.get(ref)
+                if r2 and r2["noi_id"] != r["noi_id"] and resolved(r2):
+                    p, kind = resolved(r2)
+                    link.update(parent=p, parent_kind=kind, link="references_filing", confidence="high",
+                                evidence=f"description cites DEP file {ref} ({r2['town']}, '{r2.get('applicant')}'), "
+                                         f"which links to {p}")
+                    break
+            if link.get("parent"):
+                continue
+            fam = [x for x in by_family.get(_family_key(r.get("applicant") or ""), [])
+                   if norm_name(x.get("applicant") or "") != norm_name(r.get("applicant") or "")]
+            for r2 in by_applicant.get(norm_name(r.get("applicant") or ""), []) + fam:
                 if r2["noi_id"] != r["noi_id"] and resolved(r2):
                     p, kind = resolved(r2)
                     link.update(parent=p, parent_kind=kind, link="same_applicant_other_filing", confidence="high",
@@ -922,6 +1007,11 @@ def resolve_links(records: list[dict]) -> dict[str, dict]:
                     break
             if link.get("parent"):
                 continue
+            k_desc = known_match(r.get("description") or "", ("developer", "utility", "datacenter", "wind"))
+            if k_desc:
+                link.update(parent=k_desc["name"], parent_kind=k_desc["kind"], link="description_mention",
+                            confidence="medium", evidence=f"project description names {k_desc['name']}")
+                continue
             for r2 in by_site.get((r["town"], _site_key(r.get("project_address") or "")), []):
                 if r2["noi_id"] != r["noi_id"] and resolved(r2):
                     p, kind = resolved(r2)
@@ -930,6 +1020,13 @@ def resolve_links(records: list[dict]) -> dict[str, dict]:
                                          f"by '{r2.get('applicant')}'")
                     break
     return out
+
+
+def _family_key(name: str) -> str:
+    """'OLD WARREN ROAD DEVELOPMENT II, LLC' and 'OLD WARREN ROAD DEVELOPMENT, LLC' -> same family."""
+    n = norm_name(name)
+    n = re.sub(r"(?:\s+(?:I{1,3}|IV|V|VI{0,3}|\d{1,2}))+$", "", n)
+    return n if len(n) >= 8 else f"~{norm_name(name)}"
 
 
 def _site_key(addr: str) -> str:
@@ -1354,8 +1451,11 @@ def run(args: argparse.Namespace) -> dict:
             "care_of": "applicant listed 'c/o' a company",
             "payor": "fee check paid by a different company that is not an engineer, consultant or law firm",
             "self": "applicant is the known developer itself",
-            "same_applicant_other_filing": "the same applicant's other filing has a direct link",
+            "same_applicant_other_filing": "the same applicant (or a numbered sibling LLC such as 'X II, LLC') has a "
+                                           "directly linked filing",
+            "references_filing": "the description cites another DEP file number whose filing is linked",
             "shared_contact": "same applicant contact person (stored only as a hash) as a linked filing",
+            "description_mention": "the project description names a known developer or utility (e.g. NEP, MECO)",
             "same_site": "same town and street address as a linked filing (weakest)",
         },
         **ent,

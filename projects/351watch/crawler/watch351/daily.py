@@ -45,7 +45,7 @@ from .fetch import DEFAULT_CACHE_DIR, FetchError, PoliteFetcher
 from .keywords import MATCHER_VERSION
 from .models import AgendaDoc, Window
 from .state import (DATA, MAX_ATTEMPTS, DocIndex, iso_from_epoch, load_health, make_record, now_iso,
-                    update_ledger, write_json)
+                    update_ledger, write_health, write_json)
 
 log = logging.getLogger("watch351.daily")
 
@@ -233,14 +233,23 @@ class DailyRun:
         update_ledger(self.index, self.data_dir / "first_seen.json")
         prev = self._previous_ids()
         doc = current.rebuild(self.data_dir, today=self.today, agenda_hits=self.index.current_hits(),
-                              indexed_states=self.index.states())
+                              indexed_urls=self.index.urls())
         pruned = self.index.prune(self.today)
         if pruned:
             self.index.save()
         new_ids = [h for h in doc["hits"] if h["id"] not in prev] if prev is not None else []
         self._update_health(outcomes)
         report = self._report(outcomes, doc, new_ids, len(pruned))
-        write_json(self.data_dir / "state" / "runs" / f"{self.today.isoformat()}.json", report)
+        path = self.data_dir / "state" / "runs" / f"{self.today.isoformat()}.json"
+        try:  # a second run on the same day keeps the earlier runs' summaries
+            earlier = json.loads(path.read_text())
+            report["previous_runs_today"] = earlier.pop("previous_runs_today", []) + [
+                {k: earlier.get(k) for k in ("started", "duration_seconds", "states", "towns_attempted",
+                                              "towns_succeeded", "new_documents", "new_hits")}
+                | {"requests": earlier.get("network", {}).get("requests")}]
+        except (OSError, ValueError, AttributeError):
+            pass
+        write_json(path, report)
         return report
 
     def _previous_ids(self) -> set[str] | None:
@@ -257,7 +266,7 @@ class DailyRun:
         for o in outcomes:
             h = health.setdefault(o.key, {"last_success": None, "last_error": None,
                                           "consecutive_failures": 0, "boards_ok": []})
-            h["last_attempt"] = self.started
+            h.pop("last_attempt", None)
             h["status"] = o.status
             if o.status != "failed":
                 h["last_success"] = self.started
@@ -270,7 +279,7 @@ class DailyRun:
                 h["last_error_at"] = self.started
             h["boards_ok"] = sorted(o.boards_ok)
             h["boards_failed"] = sorted(o.boards_failed)
-        write_json(path, health)
+        write_health(path, health)
 
     def _report(self, outcomes: list[TownOutcome], doc: dict, new_ids: list[dict], pruned: int) -> dict:
         f = self.fetcher

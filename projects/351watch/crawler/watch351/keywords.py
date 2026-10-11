@@ -95,6 +95,9 @@ _FALSE_POSITIVE = [
     # "PV" inside a list of zoning-district abbreviations: "(RR, SR, PV, WSP)"
     (re.compile(r"PV", re.I),
      lambda t, m: re.search(r"[,(&/]\s*PV\s*[,)&/]", _around(t, m, 3, 3), re.I)),
+    # "Solar Salt" (road/water-softener salt bids)
+    (re.compile(r"solar", re.I),
+     lambda t, m: re.match(r"solar\s+salt\b", t[m.start():m.start() + 20], re.I)),
     # bond / contract boilerplate: "bankruptcy, insolvency, reorganization, moratorium"
     (re.compile(r"morator(?:ium|ia|iums)", re.I),
      lambda t, m: re.search(r"bankruptcy|insolvency|reorganization|creditors", _around(t, m, 60, 60), re.I)),

@@ -285,7 +285,7 @@ def cmd_crawl(args, fetcher: PoliteFetcher) -> None:
         wanted = {t.strip().lower() for t in args.towns.split(",")}
         towns = [t for t in towns if t["town"].lower() in wanted]
     county = {t["town"]: t.get("county") for t in towns}
-    today = date.today()
+    today = date.fromisoformat(args.today) if args.today else date.today()
     window = Window(today - timedelta(days=args.days_back), today + timedelta(days=args.days_ahead))
     ad = RISOSAdapter(fetcher)
     cfgs = [c for t in towns for c in town_configs(t)]
@@ -394,7 +394,8 @@ def main(argv=None) -> int:
     p.add_argument("--days-back", type=int, default=45)
     p.add_argument("--days-ahead", type=int, default=90)
     p.add_argument("--workers", type=int, default=4)
-    p.add_argument("--offline", action="store_true")
+    p.add_argument("--offline", action="store_true", help="serve only from crawler/.cache (re-match, recompute stats)")
+    p.add_argument("--today", help="pin the window's reference date (YYYY-MM-DD), e.g. to re-run a crawl offline")
     p.add_argument("--out", default=str(HITS_FILE))
     p.add_argument("-v", "--verbose", action="store_true")
     args = p.parse_args(argv)

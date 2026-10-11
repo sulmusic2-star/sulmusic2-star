@@ -1,6 +1,6 @@
 {
   "_about": "351 Watch New York pilot: agenda platform and crawlable listing per tracked board, or the precise reason a town is not automated. Same per-town schema as towns_ma_all.json plus state, agenda_platform and why the town was chosen (selection_reason / selection_source_url). Built by `python3 experiments/ny_pilot.py discover` (watch351.discover_census with NY board names) and hand curation (CURATED in experiments/ny_pilot.py). Listings with \"platform\": \"generic_ny\" or \"escribe\" use the adapters added for this pilot.",
-  "generated": "2026-10-11T00:05:40+00:00",
+  "generated": "2026-10-11T00:12:48+00:00",
   "state": "NY",
   "boards_tracked": [
     "planning_board",
@@ -579,41 +579,12 @@
       ],
       "platform": "escribe",
       "warrants_found": false,
-      "status": "automated",
-      "reason_code": null,
-      "reason": null,
-      "automated": true,
-      "listings": [
-        {
-          "board": "Town Board",
-          "board_key": "select_board",
-          "url": "https://pub-southamptonny.escribemeetings.com/",
-          "platform": "escribe",
-          "meeting_type": "^Town Board",
-          "format": "html"
-        },
-        {
-          "board": "Planning Board",
-          "board_key": "planning_board",
-          "url": "https://pub-southamptonny.escribemeetings.com/",
-          "platform": "escribe",
-          "meeting_type": "^Planning Board",
-          "format": "html"
-        },
-        {
-          "board": "Conservation Board",
-          "board_key": "conservation_commission",
-          "url": "https://pub-southamptonny.escribemeetings.com/",
-          "platform": "escribe",
-          "meeting_type": "^Conservation Board",
-          "format": "html"
-        }
-      ],
-      "boards_found": [
-        "conservation_commission",
-        "planning_board",
-        "select_board"
-      ],
+      "status": "not_automated",
+      "reason_code": "vendor_blocked",
+      "reason": "eSCRIBE agenda downloads return a browser-verification challenge; we don't read around it (the HTML agenda view is not used).",
+      "automated": false,
+      "listings": [],
+      "boards_found": [],
       "boards_missing": [
         "zoning_board_of_appeals"
       ],
@@ -1473,11 +1444,11 @@
         }
       ],
       "boards_found": [
-        "select_board"
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
       ],
       "boards_missing": [
-        "planning_board",
-        "zoning_board_of_appeals",
         "conservation_commission"
       ],
       "board_evidence": {
@@ -2693,11 +2664,11 @@
         }
       ],
       "boards_found": [
-        "select_board"
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
       ],
       "boards_missing": [
-        "planning_board",
-        "zoning_board_of_appeals",
         "conservation_commission"
       ],
       "board_evidence": {},
@@ -3621,11 +3592,11 @@
         }
       ],
       "boards_found": [
-        "select_board"
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
       ],
       "boards_missing": [
-        "planning_board",
-        "zoning_board_of_appeals",
         "conservation_commission"
       ],
       "board_evidence": {
@@ -4027,13 +3998,12 @@
         }
       ],
       "boards_found": [
-        "select_board"
-      ],
-      "boards_missing": [
+        "conservation_commission",
         "planning_board",
-        "zoning_board_of_appeals",
-        "conservation_commission"
+        "select_board",
+        "zoning_board_of_appeals"
       ],
+      "boards_missing": [],
       "board_evidence": {
         "planning_board": {
           "board": "Planning Board",

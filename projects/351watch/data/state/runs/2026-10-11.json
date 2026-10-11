@@ -5,65 +5,100 @@
    "new_hits": 0,
    "towns_attempted": 240,
    "towns_succeeded": 240
+  },
+  "NY": {
+   "new_documents": 143,
+   "new_hits": 20,
+   "towns_attempted": 34,
+   "towns_succeeded": 34
   }
  },
  "date": "2026-10-11",
- "document_errors": 0,
- "documents_already_indexed": 2480,
+ "document_errors": 4,
+ "documents_already_indexed": 2497,
  "documents_deferred": 0,
- "documents_listed": 2481,
- "documents_needing_ocr": 1,
+ "documents_listed": 2644,
+ "documents_needing_ocr": 0,
  "documents_rematched": 0,
- "documents_retried": 1,
- "duration_seconds": 195.9,
- "errors": [],
- "errors_total": 0,
- "finished": "2026-10-11T00:06:13+00:00",
- "hits_current": 979,
+ "documents_retried": 0,
+ "duration_seconds": 218.7,
+ "errors": [
+  {
+   "error": "document: too large (> 41943040 bytes): https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf",
+   "town": "NY:Cortlandt"
+  },
+  {
+   "error": "document: too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114",
+   "town": "NY:Glenville"
+  },
+  {
+   "error": "document: too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109",
+   "town": "NY:Glenville"
+  },
+  {
+   "error": "document: too large (> 41943040 bytes): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166",
+   "town": "NY:Kent"
+  }
+ ],
+ "errors_total": 4,
+ "finished": "2026-10-11T00:10:14+00:00",
+ "hits_current": 998,
  "index": {
   "by_state": {
    "MA": 2671,
-   "NY": 16
+   "NY": 163
   },
   "by_status": {
-   "error": 10,
+   "error": 14,
    "needs_ocr": 3,
-   "ok": 2674
+   "ok": 2817
   },
   "by_text_source": {
-   "docx": 15,
-   "html": 138,
-   "none": 10,
-   "ocr": 697,
-   "pdf": 1827
+   "docx": 16,
+   "html": 147,
+   "none": 14,
+   "ocr": 712,
+   "pdf": 1945
   },
-  "documents": 2687,
-  "hits": 1073,
+  "documents": 2834,
+  "hits": 1093,
   "pruned": 0,
-  "towns": 244,
-  "with_hits": 568
+  "towns": 269,
+  "with_hits": 581
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 1798,
-   "listing": 90741356,
-   "robots": 418025
+   "document": 168034304,
+   "listing": 29605745
   },
-  "cache_hits": 22,
+  "cache_hits": 394,
   "errors": 0,
-  "requests": 639,
+  "requests": 247,
   "requests_by_purpose": {
-   "document": 1,
-   "listing": 394,
-   "robots": 244
+   "document": 4,
+   "listing": 243
   },
   "robots_blocked": 0
  },
- "new_alert_items": 0,
- "new_alert_items_by_topic": {},
- "new_documents": 0,
- "new_hits": 0,
- "new_hits_by_topic": {},
+ "new_alert_items": 19,
+ "new_alert_items_by_topic": {
+  "battery_storage": 4,
+  "data_center": 1,
+  "moratorium": 1,
+  "solar": 8,
+  "wireless_telecom": 5,
+  "zoning_amendment": 1
+ },
+ "new_documents": 143,
+ "new_hits": 20,
+ "new_hits_by_topic": {
+  "battery_storage": 5,
+  "data_center": 1,
+  "moratorium": 1,
+  "solar": 8,
+  "wireless_telecom": 5,
+  "zoning_amendment": 1
+ },
  "options": {
   "matcher_version": "77ae3c6f23",
   "no_network_docs": false,
@@ -72,14 +107,15 @@
   "tesseract": true,
   "workers": 16
  },
- "started": "2026-10-11T00:02:57+00:00",
+ "started": "2026-10-11T00:06:36+00:00",
  "states": [
-  "MA"
+  "MA",
+  "NY"
  ],
- "towns_attempted": 240,
+ "towns_attempted": 274,
  "towns_failed": [],
  "towns_partial": [],
- "towns_succeeded": 240,
+ "towns_succeeded": 274,
  "window": {
   "end": "2027-02-08",
   "start": "2026-09-11"

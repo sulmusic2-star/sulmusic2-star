@@ -1,6 +1,6 @@
 {
  "_about": "351 Watch Rhode Island: all 39 municipalities via the RI Secretary of State Open Meetings portal (https://opengov.sos.ri.gov), where every public body must file notices and agendas 48 hours ahead (R.I. Gen. Laws 42-46-6). platform 'ri_sos' -> watch351/adapters/ri_sos.py. Each listing is one portal public body (entity_id); board names are the portal's minus the town. Built by `python3 experiments/ri_sos_build.py discover`.",
- "generated": "2026-10-10T23:52:41+00:00",
+ "generated": "2026-10-11T00:37:07+00:00",
  "state": "RI",
  "source": "https://opengov.sos.ri.gov/GOVDirectoryPublic/OfficialSearch?topmenuId=105&page=IdxMuni",
  "boards_tracked": 5,
@@ -4449,20 +4449,11 @@
      ]
     }
    },
-   "board_stale": {
-    "planning_board": [
-     {
-      "entity_id": 7256,
-      "entity_name": "North Smithfield Planning Department",
-      "latest": null,
-      "note": "no meeting filed since ever"
-     }
-    ]
-   },
+   "board_stale": {},
    "vendors": {},
    "robots_blocked": [],
    "notes": [
-    "31 other public bodies filed under North Smithfield, Town of on the portal (not tracked)"
+    "32 other public bodies filed under North Smithfield, Town of on the portal (not tracked)"
    ],
    "untracked_bodies": [
     "North Smithfield Board of Assessment Review",
@@ -4488,6 +4479,7 @@
     "North Smithfield School Funding Work Group",
     "North Smithfield Sewer Commission",
     "North Smithfield Water Advisory Sub-Committee",
+    "North Smithfield Planning Department",
     "North Smithfield Senior Citizen Advisory Committee",
     "North Smithfield Halliwell Review Committee",
     "North Smithfield Water Supply Review Committee",
@@ -4497,7 +4489,7 @@
     "North Smithfield Charter Review Committee",
     "North Smithfield Public Art Advisory Committee"
    ],
-   "discovered_at": "2026-10-10T23:49:16+00:00"
+   "discovered_at": "2026-10-11T00:37:07+00:00"
   },
   {
    "town": "Pawtucket",

@@ -126,6 +126,15 @@ class DocIndex:
     def states(self) -> set[str]:
         return {r["state"] for r in self.records()}
 
+    def urls(self) -> set[str]:
+        """Every indexed document URL, plus the resolved URLs its hits cite."""
+        out = set()
+        for r in self.records():
+            out.add(r["url"])
+            if r.get("source_url"):
+                out.add(r["source_url"])
+        return out
+
     def touch(self, url: str, today: date, meta: dict | None = None) -> None:
         """The document is on a listing again: refresh last_seen_in_listing (at most
         weekly) and fill metadata fields that were missing."""
@@ -274,6 +283,16 @@ def update_ledger(index: DocIndex, path: Path = LEDGER_FILE) -> int:
         tmp.write_text(json.dumps(ledger, indent=0, sort_keys=True) + "\n")
         tmp.replace(path)
     return added
+
+
+def write_health(path: Path, health: dict) -> None:
+    """town_health.json, one town per line ({"MA:Amherst": {last_success, last_error,
+    consecutive_failures, boards_ok, ...}}), so a daily diff is one line per town."""
+    lines = [f"{json.dumps(k)}: {json.dumps(health[k], ensure_ascii=False, sort_keys=True)}" for k in sorted(health)]
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".json.tmp")
+    tmp.write_text("{\n" + ",\n".join(lines) + "\n}\n")
+    tmp.replace(path)
 
 
 def load_health(path: Path = HEALTH_FILE) -> dict:

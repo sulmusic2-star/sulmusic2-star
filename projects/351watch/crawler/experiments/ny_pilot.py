@@ -606,7 +606,8 @@ def apply_curated(raw: dict) -> dict:
             rec["secondary_listings"] = sec
         rec["boards_by_platform"] = {p_: sorted({l["board_key"] for l in listings if listing_platform(l) == p_})
                                      for p_ in rec["platforms"]}
-        rec["boards_found"] = sorted({l["board_key"] for l in listings})
+        rec["boards_found"] = sorted({l["board_key"] for l in listings} |
+                                     {k for l in listings for _, _, k in l.get("board_rules", [])})
         rec["boards_missing"] = [k for k in dc.TRACKED[:4] if k not in rec["boards_found"]]
     else:
         rec.update(status="not_automated", automated=False, listings=[])
@@ -906,8 +907,9 @@ def cmd_crawl(args, fetcher: PoliteFetcher) -> None:
     # ... and a year of platform history gathered during discovery.
     history = []
     lead_rows = load(SCRATCH / "leadtime_rows.json", {})
+    keep = {t["town"] for t in towns}
     for town, rows in lead_rows.items():
-        if args.towns and town.lower() not in {n.strip().lower() for n in args.towns.split(",")}:
+        if town not in keep:
             continue
         for row in rows:
             if row.get("posted") and row.get("meeting_date") and row.get("posted_kind") != "amended":
@@ -922,6 +924,20 @@ def cmd_crawl(args, fetcher: PoliteFetcher) -> None:
     upcoming = [h["days_before_meeting"] for h in hits if h["days_before_meeting"] is not None
                 and h["meeting_date"] >= today.isoformat()]
 
+    def stamp_stats(xs: list[float]) -> dict:
+        """dist() plus the 72-hour check. Lead is measured to 00:00 of the meeting day; most NY town boards
+        meet at 6-7:30 pm, so lead >= 2.21 d to midnight is >= 72 h before a 7 pm meeting."""
+        out = dist(xs)
+        if xs:
+            out["share_after_meeting_day"] = round(sum(1 for x in xs if x < -1) / len(xs), 3)
+            pre = [x for x in xs if x >= -1]
+            out["share_ge_72h_before_7pm_meeting_of_preposted"] = (
+                round(sum(1 for x in pre if x >= 2.21) / len(pre), 3) if pre else None)
+            out["median_of_preposted"] = round(statistics.median(pre), 2) if pre else None
+        return out
+
+    first_post = [x for x in history if x["platform"] == "civicplus" and x["kind"] == "posted"]
+    republish = [x for x in history if x not in first_post]
     by_platform = defaultdict(lambda: {"automated": [], "not_automated": []})
     for r, cfg in zip(results, towns):
         by_platform[cfg.get("platform") or "none (" + str(cfg.get("reason_code")) + ")"][
@@ -939,18 +955,23 @@ def cmd_crawl(args, fetcher: PoliteFetcher) -> None:
         "hits_by_board": dict(Counter(h["board_key"] for h in hits).most_common()),
         "towns_by_platform": dict(by_platform),
         "lead_time": {
-            "note": "days from a timestamp to 00:00 of the meeting day (an underestimate for evening meetings). "
-                    "platform_window: CivicPlus 'Posted' / CivicClerk publishOn stamps for agendas in the crawl "
-                    "window; platform_365d: same stamps for every agenda of the past year seen during discovery; "
-                    "pdf_proxy: PDF ModDate/CreationDate (when the file was last saved, not posted); "
-                    "first_seen_upcoming: our own first fetch vs. meeting day, upcoming meetings only.",
-            "platform_window": dist([x["lead_days"] for x in lead_window]),
-            "platform_365d": dist([x["lead_days"] for x in history]),
-            "platform_365d_by_platform": {p: dist([x["lead_days"] for x in history if x["platform"] == p])
-                                          for p in sorted({x["platform"] for x in history})},
-            "platform_365d_by_town": {t: dist([x["lead_days"] for x in history if x["town"] == t])
-                                      for t in sorted({x["town"] for x in history})},
-            "pdf_proxy": dist([x["lead_days"] for x in proxy]),
+            "note": "Days from a timestamp to 00:00 of the meeting day (an underestimate: most NY town boards meet "
+                    "6-7:30 pm). Only CivicPlus AgendaCenter 'Posted' stamps are first-posting times. CivicClerk "
+                    "publishOn and Revize '?t=' upload stamps are LAST (re)publish times: many fall after the meeting "
+                    "(agenda re-uploaded with resolutions/minutes), so they bound posting only when they precede it. "
+                    "pdf_proxy is the PDF's ModDate/CreationDate (when the file was last saved). first_seen_upcoming "
+                    "is our own first fetch, upcoming meetings only (bounded by when this pilot ran, not by the town).",
+            "civicplus_first_posted_365d": stamp_stats([x["lead_days"] for x in first_post]),
+            "civicplus_first_posted_365d_by_town": {t: stamp_stats([x["lead_days"] for x in first_post if x["town"] == t])
+                                                    for t in sorted({x["town"] for x in first_post})},
+            "republish_stamps_365d_by_platform": {
+                p_: stamp_stats([x["lead_days"] for x in republish if x["platform"] == p_])
+                for p_ in sorted({x["platform"] for x in republish})},
+            "republish_stamps_365d_by_town": {
+                f"{t} ({p_})": stamp_stats([x["lead_days"] for x in republish if x["town"] == t and x["platform"] == p_])
+                for t, p_ in sorted({(x["town"], x["platform"]) for x in republish})},
+            "window_platform_stamps": stamp_stats([x["lead_days"] for x in lead_window]),
+            "pdf_proxy": stamp_stats([x["lead_days"] for x in proxy]),
             "first_seen_upcoming": dist(upcoming),
         },
         "towns": [{k: v for k, v in r.items() if k not in ("hits", "docs")}
@@ -965,7 +986,7 @@ def cmd_crawl(args, fetcher: PoliteFetcher) -> None:
           f"{report['documents_scanned']} (no text {report['documents_without_text_layer']}, ocr "
           f"{report['documents_ocr']}) hits {len(hits)}")
     print("topics", report["hits_by_topic"])
-    print("lead", json.dumps(report["lead_time"]["platform_window"]), json.dumps(report["lead_time"]["platform_365d"]))
+    print("lead civicplus", json.dumps(report["lead_time"]["civicplus_first_posted_365d"]))
     for r in report["towns"]:
         if r["automated"]:
             print(f"  {r['town']:<16} listed {r['agendas_listed']:>3} scanned {r['documents_scanned']:>3} "

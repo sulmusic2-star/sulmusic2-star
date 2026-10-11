@@ -1,41 +1,173 @@
 {
  "coverage": {
-  "from": "2026-10-05",
-  "to": "2026-10-09"
+  "from": "2025-10-10",
+  "to": "2026-10-10"
  },
  "source": "massdep_wetlands",
  "api": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire",
  "cursor": {
-  "max_filing_date": "2026-10-05",
-  "max_noi_id": 213416
+  "max_filing_date": "2026-10-09",
+  "max_noi_id": 213499
  },
  "lookback_days": 45,
  "last_run": {
-  "at": "2026-10-10T23:45:54+00:00",
-  "offline": false,
+  "at": "2026-10-11T01:08:41+00:00",
+  "offline": true,
   "blocked": null,
-  "rebuilt_from_cache": 0,
-  "listed": 87,
-  "details_needed": 87,
-  "new": 8,
-  "details_fetched": 8,
-  "http_requests": 11
+  "rebuilt_from_cache": 4609
  },
  "summary": {
-  "filings_total": 8,
+  "filings_total": 4609,
   "filings_by_type": {
-   "Notice of Intent": 5,
-   "Notice of Intent (buffer zone only)": 3
+   "Notice of Intent": 2447,
+   "Notice of Intent (buffer zone only)": 1961,
+   "ANRAD (resource area delineation)": 201
   },
-  "energy_hits": 0,
-  "energy_by_category": {},
-  "energy_by_topic": {},
-  "energy_by_filing_type": {},
-  "energy_by_confidence": {},
-  "energy_towns": 0,
-  "all_categories_incl_excluded": {},
-  "energy_with_parent": 0,
-  "top_parents": []
+  "energy_hits": 76,
+  "energy_by_category": {
+   "solar": 27,
+   "transmission_substation": 26,
+   "developer_other": 7,
+   "solar_and_storage": 6,
+   "energy_name_only": 6,
+   "battery_storage": 3,
+   "wind_or_marine": 1
+  },
+  "energy_by_topic": {
+   "solar": 43,
+   "clean_energy_siting": 28,
+   "battery_storage": 11
+  },
+  "energy_by_filing_type": {
+   "Notice of Intent": 53,
+   "Notice of Intent (buffer zone only)": 18,
+   "ANRAD (resource area delineation)": 5
+  },
+  "energy_by_confidence": {
+   "high": 42,
+   "medium": 34
+  },
+  "energy_towns": 57,
+  "all_categories_incl_excluded": {
+   "utility_routine": 50,
+   "solar": 27,
+   "transmission_substation": 26,
+   "developer_other": 7,
+   "solar_and_storage": 6,
+   "energy_name_only": 6,
+   "solar_residential": 4,
+   "battery_storage": 3,
+   "ev_charging": 1,
+   "wind_or_marine": 1
+  },
+  "energy_with_parent": 54,
+  "top_parents": [
+   {
+    "parent": "National Grid (New England Power / Mass. Electric)",
+    "kind": "utility",
+    "filings": 18,
+    "sites": 18,
+    "towns": 16
+   },
+   {
+    "parent": "New Leaf Energy",
+    "kind": "developer",
+    "filings": 8,
+    "sites": 7,
+    "towns": 3
+   },
+   {
+    "parent": "NextGrid",
+    "kind": "developer",
+    "filings": 5,
+    "sites": 5,
+    "towns": 5
+   },
+   {
+    "parent": "Parallel Products Solar Energy",
+    "kind": "developer",
+    "filings": 5,
+    "sites": 4,
+    "towns": 4
+   },
+   {
+    "parent": "Eversource (NSTAR Electric)",
+    "kind": "utility",
+    "filings": 4,
+    "sites": 4,
+    "towns": 4
+   },
+   {
+    "parent": "BlueWave",
+    "kind": "developer",
+    "filings": 3,
+    "sites": 3,
+    "towns": 2
+   },
+   {
+    "parent": "Black Swan Dev Corp",
+    "kind": "developer",
+    "filings": 2,
+    "sites": 1,
+    "towns": 1
+   },
+   {
+    "parent": "All Energy Solar",
+    "kind": "developer",
+    "filings": 1,
+    "sites": 1,
+    "towns": 1
+   },
+   {
+    "parent": "Ameresco",
+    "kind": "developer",
+    "filings": 1,
+    "sites": 1,
+    "towns": 1
+   },
+   {
+    "parent": "EDF Renewables / PowerFlex",
+    "kind": "developer",
+    "filings": 1,
+    "sites": 1,
+    "towns": 1
+   },
+   {
+    "parent": "Hillman Energy Center LLC",
+    "kind": "developer",
+    "filings": 1,
+    "sites": 1,
+    "towns": 1
+   },
+   {
+    "parent": "Moraga Storage LLC",
+    "kind": "developer",
+    "filings": 1,
+    "sites": 1,
+    "towns": 1
+   },
+   {
+    "parent": "ReWild Renewables",
+    "kind": "developer",
+    "filings": 1,
+    "sites": 1,
+    "towns": 1
+   },
+   {
+    "parent": "Solect Energy",
+    "kind": "developer",
+    "filings": 1,
+    "sites": 1,
+    "towns": 1
+   },
+   {
+    "parent": "Unitil",
+    "kind": "utility",
+    "filings": 1,
+    "sites": 1,
+    "towns": 1
+   }
+  ]
  },
  "runs": [
   {
@@ -47,6 +179,26 @@
    "changed": 0,
    "details_fetched": 8,
    "hits": 0
+  },
+  {
+   "at": "2026-10-10T23:46:13+00:00",
+   "offline": false,
+   "blocked": null,
+   "listed": 4609,
+   "new": 4601,
+   "changed": 0,
+   "details_fetched": 4601,
+   "hits": 73
+  },
+  {
+   "at": "2026-10-11T01:08:41+00:00",
+   "offline": true,
+   "blocked": null,
+   "listed": 0,
+   "new": 0,
+   "changed": 0,
+   "details_fetched": 0,
+   "hits": 76
   }
  ]
 }
