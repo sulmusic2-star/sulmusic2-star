@@ -1,6 +1,6 @@
 {
-  "_about": "351 Watch New York pilot: agenda platform and crawlable listing per tracked board (with evidence: agendas dated within the last 120 / next 120 days), or the precise reason a town is not automated. Same per-town schema as towns_ma_all.json plus state and why the town was chosen. Built by `python3 experiments/ny_pilot.py discover` (watch351.discover_census with NY board names: Town Board -> select_board, Conservation Advisory Council/Board -> conservation_commission).",
-  "generated": "2026-10-10T22:24:01+00:00",
+  "_about": "351 Watch New York pilot: agenda platform and crawlable listing per tracked board, or the precise reason a town is not automated. Same per-town schema as towns_ma_all.json plus state, agenda_platform and why the town was chosen (selection_reason / selection_source_url). Built by `python3 experiments/ny_pilot.py discover` (watch351.discover_census with NY board names) and hand curation (CURATED in experiments/ny_pilot.py). Listings with \"platform\": \"generic_ny\" or \"escribe\" use the adapters added for this pilot.",
+  "generated": "2026-10-11T00:05:40+00:00",
   "state": "NY",
   "boards_tracked": [
     "planning_board",
@@ -14,9 +14,9 @@
     "Zoning Board of Appeals": "zoning_board_of_appeals",
     "Conservation Advisory Council / Conservation Board": "conservation_commission"
   },
-  "evidence_rule": "board automated only if its listing shows >=1 agenda dated in [today-120d, today+120d]",
+  "evidence_rule": "discovery: board automated only if its listing shows >=1 agenda dated in [today-120d, today+120d]; curated listings were checked by hand",
   "count": 57,
-  "automated": 21,
+  "automated": 34,
   "towns": [
     {
       "town": "Southold",
@@ -38,13 +38,6 @@
       ],
       "platform": "civicplus",
       "warrants_found": false,
-      "secondary_listings": [
-        {
-          "board": "Town Board",
-          "board_key": "select_board",
-          "url": "https://southoldny.portal.civicclerk.com"
-        }
-      ],
       "boards_by_platform": {
         "civicplus": [
           "planning_board",
@@ -123,6 +116,14 @@
       ],
       "pages_fetched": 11,
       "discovered_at": "2026-10-10T22:23:05+00:00",
+      "secondary_listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://southoldny.portal.civicclerk.com"
+        }
+      ],
+      "agenda_platform": "CivicPlus AgendaCenter",
       "selection_reason": "BESS moratorium ACTIVE, expires 2027-04-11 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -140,20 +141,38 @@
       "cms": [
         "wordpress"
       ],
-      "platforms": [],
-      "platform": null,
+      "platforms": [
+        "generic_ny"
+      ],
+      "platform": "generic_ny",
       "warrants_found": false,
-      "status": "not_automated",
-      "reason_code": "agendas_stale_or_undated",
-      "reason": "agenda listing pages found (e.g. https://oysterbaytown.com/departments/planning-and-development/division-of-administration-of-board-of-appeals/) but no agenda dated within the last 120 days or next 120 days could be read from them",
-      "automated": false,
-      "listings": [],
-      "boards_found": [],
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://oysterbaytown.com/calendars/town-board-meetings/",
+          "link_pattern": "^(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\\.? \\d{1,2}, 20\\d\\d\\b",
+          "platform": "generic_ny"
+        },
+        {
+          "board": "Zoning Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://oysterbaytown.com/calendars/zoning-board-of-appeals/",
+          "link_pattern": "^(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\\.? \\d{1,2}, 20\\d\\d\\b",
+          "platform": "generic_ny"
+        }
+      ],
+      "boards_found": [
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
       "boards_missing": [
         "planning_board",
-        "zoning_board_of_appeals",
-        "conservation_commission",
-        "select_board"
+        "conservation_commission"
       ],
       "board_evidence": {},
       "board_stale": {
@@ -179,6 +198,15 @@
       "notes": [],
       "pages_fetched": 5,
       "discovered_at": "2026-10-10T22:22:42+00:00",
+      "agenda_platform": "WordPress (date-linked PDFs)",
+      "note": "No Planning Board: site plans and zoning go to the Town Board. Town Board rows also link 'Adopted Resolutions' and 'Minutes'; only the date-named calendar PDF is taken.",
+      "boards_by_platform": {
+        "generic_ny": [
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE, expires 2027-04-30 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -246,6 +274,12 @@
       "notes": [],
       "pages_fetched": 9,
       "discovered_at": "2026-10-10T22:22:45+00:00",
+      "boards_by_platform": {
+        "civicclerk": [
+          "select_board"
+        ]
+      },
+      "agenda_platform": "CivicClerk",
       "selection_reason": "BESS moratorium ACTIVE, expires 2026-11-18 (Carina) - extension/replacement law due this fall",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -347,6 +381,14 @@
       "notes": [],
       "pages_fetched": 15,
       "discovered_at": "2026-10-10T22:23:16+00:00",
+      "boards_by_platform": {
+        "civicclerk": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "CivicClerk",
       "selection_reason": "BESS moratorium ACTIVE, expires 2026-10-20 (Carina) - extension or BESS code due now",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -362,7 +404,7 @@
       "has_town_meeting": false,
       "status": "not_automated",
       "reason_code": "bot_challenge",
-      "reason": "bot challenge (HTTP 403, Cloudflare-style) on the homepage; not bypassed",
+      "reason": "Cloudflare bot challenge ('Just a moment...', HTTP 403) on the town site for 351WatchBot; not bypassed",
       "automated": false,
       "platform": null,
       "listings": [],
@@ -380,6 +422,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:22:31+00:00",
+      "agenda_platform": "unknown (behind Cloudflare)",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE, expired/extended 2026-09-30 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -398,7 +442,8 @@
         "civicplus"
       ],
       "platforms": [
-        "civicplus"
+        "civicplus",
+        "generic_ny"
       ],
       "platform": "civicplus",
       "warrants_found": false,
@@ -415,11 +460,11 @@
         }
       ],
       "boards_found": [
-        "select_board"
+        "select_board",
+        "zoning_board_of_appeals"
       ],
       "boards_missing": [
         "planning_board",
-        "zoning_board_of_appeals",
         "conservation_commission"
       ],
       "board_evidence": {
@@ -457,6 +502,26 @@
       ],
       "pages_fetched": 7,
       "discovered_at": "2026-10-10T22:22:56+00:00",
+      "agenda_platform": "CivicPlus AgendaCenter (Town Board) + CivicPlus pages (BZA hearing calendars)",
+      "note": "Planning Board page lists members only (no agendas).",
+      "secondary_listings": [
+        {
+          "board": "Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://hempsteadny.gov/509/Board-of-Appeals",
+          "link_pattern": "^Hearing - \\d",
+          "platform": "generic_ny"
+        }
+      ],
+      "boards_by_platform": {
+        "civicplus": [
+          "select_board"
+        ],
+        "generic_ny": [
+          "zoning_board_of_appeals"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-08-25 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -472,7 +537,7 @@
       "has_town_meeting": false,
       "status": "not_automated",
       "reason_code": "crawl_delay_exceeds_cap",
-      "reason": "robots.txt asks for a Crawl-delay above the crawler's 10 s cap (rawl-delay 15.0s too long for prototype); host skipped (a slower production schedule could honor it)",
+      "reason": "huntingtonny.gov robots.txt sets Crawl-delay: 15 for all agents; 351WatchBot skips hosts asking for more than 10 s. Automatable at 1 request per 15 s if the cap is raised.",
       "automated": false,
       "platform": null,
       "listings": [],
@@ -490,6 +555,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:22:31+00:00",
+      "agenda_platform": "unknown (site not fetched)",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-06-30 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -508,21 +575,47 @@
         "civicplus"
       ],
       "platforms": [
-        "civicplus"
+        "escribe"
       ],
-      "platform": "iqm2",
+      "platform": "escribe",
       "warrants_found": false,
-      "status": "not_automated",
-      "reason_code": "vendor_blocked",
-      "reason": "agendas on iqm2: southamptonny.iqm2.com answers HTTP 429 Too Many Requests to automated requests",
-      "automated": false,
-      "listings": [],
-      "boards_found": [],
-      "boards_missing": [
-        "planning_board",
-        "zoning_board_of_appeals",
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://pub-southamptonny.escribemeetings.com/",
+          "platform": "escribe",
+          "meeting_type": "^Town Board",
+          "format": "html"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "url": "https://pub-southamptonny.escribemeetings.com/",
+          "platform": "escribe",
+          "meeting_type": "^Planning Board",
+          "format": "html"
+        },
+        {
+          "board": "Conservation Board",
+          "board_key": "conservation_commission",
+          "url": "https://pub-southamptonny.escribemeetings.com/",
+          "platform": "escribe",
+          "meeting_type": "^Conservation Board",
+          "format": "html"
+        }
+      ],
+      "boards_found": [
         "conservation_commission",
+        "planning_board",
         "select_board"
+      ],
+      "boards_missing": [
+        "zoning_board_of_appeals"
       ],
       "board_evidence": {},
       "board_stale": {
@@ -582,6 +675,16 @@
       ],
       "pages_fetched": 17,
       "discovered_at": "2026-10-10T22:23:31+00:00",
+      "agenda_platform": "eSCRIBE (pub-southamptonny.escribemeetings.com)",
+      "note": "Agendas are on eSCRIBE (new adapter `escribe`, upcoming meetings only). eSCRIBE's PDF downloads (FileStream.ashx) answer HTTP 403 with a 'Verifying your browser' challenge, which is not solved; the portal's own HTML agenda view (Meeting.aspx?...&Agenda=Agenda) is served without a challenge and is read instead (flagged for review). The older iQM2 portal answers HTTP 429 to automated requests and is not used. The Zoning Board of Appeals is not published on eSCRIBE.",
+      "boards_by_platform": {
+        "escribe": [
+          "conservation_commission",
+          "planning_board",
+          "select_board"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-06-30 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -670,6 +773,14 @@
       ],
       "pages_fetched": 6,
       "discovered_at": "2026-10-10T22:22:53+00:00",
+      "boards_by_platform": {
+        "civicplus": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "CivicPlus AgendaCenter",
       "selection_reason": "BESS moratorium ACTIVE through 2026-07-01 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -685,7 +796,7 @@
       "has_town_meeting": false,
       "status": "not_automated",
       "reason_code": "bot_challenge",
-      "reason": "bot challenge (HTTP 403, Cloudflare-style) on the homepage; not bypassed",
+      "reason": "Cloudflare bot challenge ('Just a moment...', HTTP 403) on the town site for 351WatchBot; not bypassed. Its data-center moratorium (Intro LL 11 of 2026) cannot be followed from the town site.",
       "automated": false,
       "platform": null,
       "listings": [],
@@ -703,6 +814,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:22:31+00:00",
+      "agenda_platform": "CivicPlus (behind Cloudflare)",
+      "curated": true,
       "selection_reason": "Data-center moratorium: Introductory Local Law 11 of 2026 (new Chapter 17), hearing 2026-07-16",
       "selection_source_url": "https://www.brookhavenny.gov/CivicAlerts.aspx?AID=4859"
     },
@@ -731,7 +844,7 @@
       "automated": true,
       "listings": [
         {
-          "board": "FOR A FULL LIST OF PLANNING BOARD MEETING SCHEDULES",
+          "board": "Planning Board",
           "board_key": "planning_board",
           "url": "https://www.townofcortlandtny.gov/cn/Meetings/?TID=20&TPID=2449",
           "link_pattern": "agenda|notice|posting",
@@ -826,6 +939,13 @@
       ],
       "pages_fetched": 9,
       "discovered_at": "2026-10-10T22:22:54+00:00",
+      "boards_by_platform": {
+        "generic": [
+          "planning_board",
+          "select_board"
+        ]
+      },
+      "agenda_platform": "town website (civicplus)",
       "selection_reason": "BESS moratorium; 2026-07-21 hearing to extend it to 2026-12-31 (Carina: expires 2026-07-31)",
       "selection_source_url": "https://www.townofcortlandtny.gov/documents/PH-%20Battery%20Storage%20Moratorium%20for%207-21-2026.pdf"
     },
@@ -927,6 +1047,15 @@
       ],
       "pages_fetched": 4,
       "discovered_at": "2026-10-10T22:22:40+00:00",
+      "boards_by_platform": {
+        "civicplus": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "CivicPlus AgendaCenter",
       "selection_reason": "BESS moratorium ACTIVE through 2026-08-17 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -947,11 +1076,11 @@
       "platforms": [
         "civicplus"
       ],
-      "platform": "civicplus",
+      "platform": "ecode360",
       "warrants_found": false,
       "status": "not_automated",
-      "reason_code": "no_agenda_listing_found",
-      "reason": "site reachable, but discovery found no agenda listing for the tracked boards (agendas may be posted only physically, only as minutes, or on pages the heuristics missed)",
+      "reason_code": "vendor_robots_disallow",
+      "reason": "Agendas, minutes and packets are hosted on eCode360 (ecode360.com/documents/pub/NE0395/Agendas/), whose robots.txt disallows /documents for all agents (verified with 351WatchBot 2026-10-10).",
       "automated": false,
       "listings": [],
       "boards_found": [],
@@ -971,6 +1100,8 @@
       ],
       "pages_fetched": 2,
       "discovered_at": "2026-10-10T22:23:19+00:00",
+      "agenda_platform": "CivicPlus CMS + eCode360 document hosting (General Code)",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-08-17 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -985,8 +1116,8 @@
       "legislative_body": "Town Board",
       "has_town_meeting": false,
       "status": "not_automated",
-      "reason_code": "robots_unavailable",
-      "reason": "robots.txt answered 5xx / timed out, which RFC 9309 treats as 'disallow all' for this run; host skipped",
+      "reason_code": "tls_error",
+      "reason": "carmelny.org serves a TLS certificate that does not match the host (hostname mismatch), so robots.txt cannot be read over a verified connection; host skipped (TLS verification is never disabled).",
       "automated": false,
       "platform": null,
       "listings": [],
@@ -1004,6 +1135,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:22:48+00:00",
+      "agenda_platform": "unknown (site not fetched)",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE, no end date listed (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -1101,6 +1234,14 @@
       ],
       "pages_fetched": 8,
       "discovered_at": "2026-10-10T22:22:45+00:00",
+      "boards_by_platform": {
+        "civicplus": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "CivicPlus AgendaCenter",
       "selection_reason": "BESS moratorium ACTIVE through 2026-08-31 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -1118,20 +1259,39 @@
       "cms": [
         "wordpress"
       ],
-      "platforms": [],
-      "platform": null,
+      "platforms": [
+        "generic_ny"
+      ],
+      "platform": "generic_ny",
       "warrants_found": false,
-      "status": "not_automated",
-      "reason_code": "no_agenda_listing_found",
-      "reason": "site reachable, but discovery found no agenda listing for the tracked boards (agendas may be posted only physically, only as minutes, or on pages the heuristics missed)",
-      "automated": false,
-      "listings": [],
-      "boards_found": [],
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://www.putnamvalley.gov/agenda-documents/",
+          "link_pattern": "Town Board",
+          "platform": "generic_ny"
+        },
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://www.putnamvalley.gov/town-board-pv/",
+          "link_pattern": "Town Board.*(?:Agenda|MEETING|WORK SESSION|Session)",
+          "platform": "generic_ny",
+          "doc_href": "\\.pdf"
+        }
+      ],
+      "boards_found": [
+        "select_board"
+      ],
       "boards_missing": [
         "planning_board",
         "zoning_board_of_appeals",
-        "conservation_commission",
-        "select_board"
+        "conservation_commission"
       ],
       "board_evidence": {},
       "board_stale": {},
@@ -1140,6 +1300,14 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:22:37+00:00",
+      "agenda_platform": "WordPress",
+      "note": "Town Board agenda packets ('with supporting documents') only; Planning Board and ZBA pages post application files, not agendas.",
+      "boards_by_platform": {
+        "generic_ny": [
+          "select_board"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-06-30 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -1156,9 +1324,9 @@
       "final_url": "https://www.stonypointny.gov/",
       "cms": [],
       "platforms": [
-        "generic"
+        "generic_ny"
       ],
-      "platform": "generic",
+      "platform": "generic_ny",
       "warrants_found": false,
       "status": "automated",
       "reason_code": null,
@@ -1166,13 +1334,13 @@
       "automated": true,
       "listings": [
         {
-          "board": "Town Board Agendas",
+          "board": "Town Board",
           "board_key": "select_board",
-          "url": "https://www.stonypointny.gov/meeting-agendas",
-          "link_pattern": "agenda|notice|posting",
-          "context": "block",
-          "date_only_docs": true,
-          "board_exclude": "\\bplanning board\\b|community development board|\\bplanning\\s*(?:&|and)\\s*zoning (?:board|commission)|zoning board|board of appeals|\\bZBA\\b|zoning appeals|conservation commission|\\bconcom\\b|\\bconservation\\b|\\bCAC\\b|environmental (?:conservation )?(?:commission|board|council)"
+          "url": "https://www.stonypointny.gov/meeting-agendas?m={m}&y={y}",
+          "link_pattern": "^(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\\.? \\d{1,2}, 20\\d\\d\\b",
+          "platform": "generic_ny",
+          "months": true,
+          "doc_href": "/userfiles/"
         }
       ],
       "boards_found": [
@@ -1233,41 +1401,143 @@
       "notes": [],
       "pages_fetched": 6,
       "discovered_at": "2026-10-10T22:22:41+00:00",
+      "agenda_platform": "custom CMS (month-paged agenda list)",
+      "note": "Only Town Board packets are posted; Planning Board and ZBA appear only on the calendar.",
+      "boards_by_platform": {
+        "generic_ny": [
+          "select_board"
+        ]
+      },
+      "curated": true,
       "selection_reason": "Eight-month BESS moratorium, public hearing 2026-06-23",
       "selection_source_url": "https://www.stonypointny.gov/userfiles/notice_of_public_hearing_61026_0282.pdf"
     },
     {
-      "town": "Chester",
+      "town": "Warwick",
       "state": "NY",
-      "website": "https://www.thetownofchester.org",
+      "website": "https://townofwarwickny.gov",
       "county": "Orange",
       "kind": "town",
       "pop_2020": null,
       "pop_2024_est": null,
       "legislative_body": "Town Board",
       "has_town_meeting": false,
-      "status": "not_automated",
-      "reason_code": "http_error",
-      "reason": "homepage HTTP 404",
-      "automated": false,
-      "platform": null,
-      "listings": [],
-      "boards_found": [],
+      "final_url": "https://townofwarwickny.gov/",
+      "cms": [
+        "wordpress"
+      ],
+      "platforms": [
+        "generic_ny"
+      ],
+      "platform": "generic_ny",
+      "warrants_found": false,
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://townofwarwickny.gov/",
+          "link_pattern": "agenda|ZBA LEGAL NOTICE",
+          "platform": "generic_ny",
+          "resolve_pdf": true,
+          "board_rules": [
+            [
+              "ZBA|zoning board",
+              "Zoning Board of Appeals",
+              "zoning_board_of_appeals"
+            ],
+            [
+              "planning board",
+              "Planning Board",
+              "planning_board"
+            ],
+            [
+              "agenda",
+              "Town Board",
+              "select_board"
+            ]
+          ],
+          "doc_href": "townofwarwickny\\.gov/(?!events)"
+        },
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://townofwarwickny.gov/tb-agendas/",
+          "link_pattern": "agenda",
+          "platform": "generic_ny",
+          "resolve_pdf": true,
+          "doc_href": "/tb-agendas/.+"
+        }
+      ],
+      "boards_found": [
+        "select_board"
+      ],
       "boards_missing": [
         "planning_board",
         "zoning_board_of_appeals",
-        "conservation_commission",
-        "select_board"
+        "conservation_commission"
       ],
-      "board_evidence": {},
+      "board_evidence": {
+        "select_board": {
+          "board": "Select Board / Council",
+          "source": "generic_hub",
+          "url": "https://townofwarwickny.gov/important-notices/tentative-agenda-7-9-26/",
+          "n_recent": 1,
+          "latest": "2026-10-08",
+          "examples": [
+            {
+              "url": "https://townofwarwickny.gov/uncategorized/town-board-tentative-agenda-10-8-26/",
+              "text": "Town Board Tentative Agenda 10-8-26",
+              "date": "2026-10-08"
+            }
+          ],
+          "n_past_90": 1
+        },
+        "zoning_board_of_appeals": {
+          "board": "ZBA LEGAL NOTICE FOR 9-28-26 MEETING",
+          "source": "generic",
+          "url": "https://townofwarwickny.gov/important-notices/zba-legal-notice-for-9-28-26-meeting/",
+          "n_recent": 3,
+          "latest": "2026-09-28",
+          "examples": [
+            {
+              "url": "https://townofwarwickny.gov/wp-content/uploads/2026/09/ZBA-LEGAL-NOTICE-FOR-9-28-26-MEETING.pdf",
+              "text": "ZBA LEGAL NOTICE FOR 9-28-26 MEETING",
+              "date": "2026-09-28"
+            },
+            {
+              "url": "https://townofwarwickny.gov/tb-agendas/tentative-tb-agenda-9-24-26/",
+              "text": "Tentative TB Agenda 9-24-26",
+              "date": "2026-09-24"
+            },
+            {
+              "url": "https://townofwarwickny.gov/important-notices/tentative-tb-agenda-8-13-26/",
+              "text": "Tentative TB Agenda 8-13-26",
+              "date": "2026-08-13"
+            }
+          ],
+          "n_past_90": 3
+        }
+      },
       "board_stale": {},
       "vendors": {},
       "robots_blocked": [],
       "notes": [],
-      "pages_fetched": 1,
-      "discovered_at": "2026-10-10T22:22:39+00:00",
-      "selection_reason": "BESS moratorium ACTIVE through 2026-08-26 (Carina)",
-      "selection_source_url": "https://carina.energy/bess-moratoriums/"
+      "pages_fetched": 5,
+      "discovered_at": "2026-10-10T23:51:51+00:00",
+      "agenda_platform": "WordPress (posts per agenda / legal notice)",
+      "note": "Tentative Town Board agendas and ZBA legal notices are WordPress posts; the post page is read (or its PDF, when it links one).",
+      "boards_by_platform": {
+        "generic_ny": [
+          "select_board"
+        ]
+      },
+      "curated": true,
+      "selection_reason": "Draft BESS local law (rev. 2026-06-30) after the 2025 BESS moratorium (Carina: expired 2025-06-03)",
+      "selection_source_url": "https://townofwarwickny.gov/t-warwick-bess-law-rek-rev-06302026-draft-docx/"
     },
     {
       "town": "Gardiner",
@@ -1282,11 +1552,11 @@
       "final_url": "https://townofgardinerny.gov/",
       "cms": [],
       "platforms": [],
-      "platform": null,
+      "platform": "heygov",
       "warrants_found": false,
       "status": "not_automated",
-      "reason_code": "no_agenda_listing_found",
-      "reason": "site reachable, but discovery found no agenda listing for the tracked boards (agendas may be posted only physically, only as minutes, or on pages the heuristics missed)",
+      "reason_code": "vendor_robots_disallow",
+      "reason": "Agendas & Minutes (/agendas-minutes) is a HeyGov widget rendered client-side from api.heygov.com, whose robots.txt disallows all bots.",
       "automated": false,
       "listings": [],
       "boards_found": [],
@@ -1303,6 +1573,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:22:45+00:00",
+      "agenda_platform": "TownWeb site + HeyGov meetings",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-07-13 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -1318,7 +1590,7 @@
       "has_town_meeting": false,
       "status": "not_automated",
       "reason_code": "bot_challenge",
-      "reason": "bot challenge (HTTP 403, Cloudflare-style) on the homepage; not bypassed",
+      "reason": "Cloudflare bot challenge ('Just a moment...', HTTP 403) on the town site for 351WatchBot; not bypassed",
       "automated": false,
       "platform": null,
       "listings": [],
@@ -1336,6 +1608,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:22:51+00:00",
+      "agenda_platform": "unknown",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-06-30 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -1351,7 +1625,7 @@
       "has_town_meeting": false,
       "status": "not_automated",
       "reason_code": "bot_challenge",
-      "reason": "bot challenge (HTTP 403, Cloudflare-style) on the homepage; not bypassed",
+      "reason": "Cloudflare bot challenge ('Just a moment...', HTTP 403) on the town site for 351WatchBot; not bypassed",
       "automated": false,
       "platform": null,
       "listings": [],
@@ -1369,6 +1643,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:22:43+00:00",
+      "agenda_platform": "unknown",
+      "curated": true,
       "selection_reason": "Temporary BESS moratorium approved late July 2026",
       "selection_source_url": "https://wjffradio.org/2026/07/27/"
     },
@@ -1387,11 +1663,11 @@
         "wordpress"
       ],
       "platforms": [],
-      "platform": null,
+      "platform": "generic",
       "warrants_found": false,
       "status": "not_automated",
-      "reason_code": "agendas_stale_or_undated",
-      "reason": "agenda listing pages found (e.g. https://townofhighlandny.gov/boards-meetings/planning-board/) but no agenda dated within the last 120 days or next 120 days could be read from them",
+      "reason_code": "no_agendas_online",
+      "reason": "Board pages (Town, Planning, Zoning) post no agendas: Town Board meetings appear only as 'hybrid meeting information' news posts and the site keeps minutes only.",
       "automated": false,
       "listings": [],
       "boards_found": [],
@@ -1433,6 +1709,8 @@
       "notes": [],
       "pages_fetched": 11,
       "discovered_at": "2026-10-10T22:23:04+00:00",
+      "agenda_platform": "WordPress",
+      "curated": true,
       "selection_reason": "12-month data-center moratorium enacted 2026 (extendable to 24 months)",
       "selection_source_url": "https://townofhighlandny.gov/?p=6403"
     },
@@ -1450,21 +1728,56 @@
       "cms": [
         "wordpress"
       ],
-      "platforms": [],
-      "platform": null,
-      "warrants_found": false,
-      "status": "not_automated",
-      "reason_code": "agendas_stale_or_undated",
-      "reason": "agenda listing pages found (e.g. https://stanfordny.gov/advisory-committees/town-laws/minsagenda/planning-board-agendas-archives/) but no agenda dated within the last 120 days or next 120 days could be read from them",
-      "automated": false,
-      "listings": [],
-      "boards_found": [],
-      "boards_missing": [
-        "planning_board",
-        "zoning_board_of_appeals",
-        "conservation_commission",
-        "select_board"
+      "platforms": [
+        "generic_ny"
       ],
+      "platform": "generic_ny",
+      "warrants_found": false,
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://stanfordny.gov/advisory-committees/town-laws/minsagenda/agenda-archives/",
+          "link_pattern": "^20\\d\\d-\\d\\d-\\d\\d",
+          "platform": "generic_ny",
+          "strip_query": true
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "url": "https://stanfordny.gov/advisory-committees/town-laws/minsagenda/planning-board-agendas-archives/",
+          "link_pattern": "^20\\d\\d-\\d\\d-\\d\\d",
+          "platform": "generic_ny",
+          "strip_query": true
+        },
+        {
+          "board": "Zoning Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://stanfordny.gov/advisory-committees/town-laws/minsagenda/zba-agenda-archives/",
+          "link_pattern": "^20\\d\\d-\\d\\d-\\d\\d",
+          "platform": "generic_ny",
+          "strip_query": true
+        },
+        {
+          "board": "Conservation Advisory Commission",
+          "board_key": "conservation_commission",
+          "url": "https://stanfordny.gov/advisory-committees/town-laws/minsagenda/conservation-advisory-committee-archives/",
+          "link_pattern": "^20\\d\\d-\\d\\d-\\d\\d",
+          "platform": "generic_ny",
+          "strip_query": true
+        }
+      ],
+      "boards_found": [
+        "conservation_commission",
+        "planning_board",
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "boards_missing": [],
       "board_evidence": {},
       "board_stale": {
         "planning_board": {
@@ -1507,6 +1820,17 @@
       ],
       "pages_fetched": 15,
       "discovered_at": "2026-10-10T22:23:07+00:00",
+      "agenda_platform": "WordPress + Download Monitor",
+      "note": "Download links carry a per-page-load '?tmstv=' cache-buster, stripped so documents cache.",
+      "boards_by_platform": {
+        "generic_ny": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-07-01 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -1634,6 +1958,13 @@
       "notes": [],
       "pages_fetched": 11,
       "discovered_at": "2026-10-10T22:23:06+00:00",
+      "boards_by_platform": {
+        "generic": [
+          "planning_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "town website (wordpress)",
       "selection_reason": "Proposed 2026 local law: temporary battery-storage moratorium",
       "selection_source_url": "https://townofbeekman.gov/wp-content/uploads/2026/01/2026-OBS-Local-Law-Battery-Storage-Moratorium.pdf"
     },
@@ -1746,6 +2077,14 @@
       "notes": [],
       "pages_fetched": 9,
       "discovered_at": "2026-10-10T22:23:08+00:00",
+      "note": "Town Board agendas on the town page stop in April 2026; later ones are on Granicus (eastfishkillny.granicus.com), whose robots.txt disallows 351WatchBot. Only the ZBA is read.",
+      "boards_by_platform": {
+        "generic": [
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "town website (wordpress)",
+      "curated": true,
       "selection_reason": "Three-year data-center freeze adopted June 2026 after Treetop Development's hyperscale proposal",
       "selection_source_url": "https://www.wamc.org/2026-06-26/east-fishkill-passes-3-year-data-center-freeze"
     },
@@ -1855,6 +2194,14 @@
       "notes": [],
       "pages_fetched": 10,
       "discovered_at": "2026-10-10T22:23:04+00:00",
+      "boards_by_platform": {
+        "civicclerk": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "CivicClerk",
       "selection_reason": "Northeast feasibility pilot town (CivicClerk); BESS/solar siting activity in eastern Dutchess",
       "selection_source_url": "research_notes/Meeting monitor deep dive/northeast_feasibility.md (CivicClerk tenant doverny)"
     },
@@ -1943,24 +2290,36 @@
       ],
       "pages_fetched": 4,
       "discovered_at": "2026-10-10T22:22:56+00:00",
+      "boards_by_platform": {
+        "civicplus": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "CivicPlus AgendaCenter",
       "selection_reason": "BESS moratorium (Local Law 2 of 2025), ACTIVE through 2026-06-11 (Carina); solar tracker site plans",
       "selection_source_url": "https://www.claverackny.gov/DocumentCenter/View/276/75-TOC-LL2-of-2025-BESS-Moratorium-PDF"
     },
     {
       "town": "Livingston",
       "state": "NY",
-      "website": "https://www.livingstonny.us",
+      "website": "https://townoflivingston.org",
       "county": "Columbia",
       "kind": "town",
       "pop_2020": null,
       "pop_2024_est": null,
       "legislative_body": "Town Board",
       "has_town_meeting": false,
-      "status": "not_automated",
-      "reason_code": "robots_unavailable",
-      "reason": "robots.txt answered 5xx / timed out, which RFC 9309 treats as 'disallow all' for this run; host skipped",
-      "automated": false,
+      "final_url": "https://townoflivingston.org/",
+      "cms": [],
+      "platforms": [],
       "platform": null,
+      "warrants_found": false,
+      "status": "not_automated",
+      "reason_code": "undecodable_response",
+      "reason": "townoflivingston.org (Sucuri + Cloudflare front end) returns a body that is not decodable HTML to 351WatchBot; no agenda listing could be read. Not pursued.",
+      "automated": false,
       "listings": [],
       "boards_found": [],
       "boards_missing": [
@@ -1975,7 +2334,9 @@
       "robots_blocked": [],
       "notes": [],
       "pages_fetched": 1,
-      "discovered_at": "2026-10-10T22:23:09+00:00",
+      "discovered_at": "2026-10-10T23:51:45+00:00",
+      "agenda_platform": "unknown",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-06-01 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -2022,7 +2383,7 @@
           "context": "block"
         },
         {
-          "board": "Select Board / Council",
+          "board": "Town Board",
           "board_key": "select_board",
           "url": "https://cliftonparkny.gov/services",
           "link_pattern": "agenda|notice|posting",
@@ -2102,6 +2463,14 @@
       "notes": [],
       "pages_fetched": 4,
       "discovered_at": "2026-10-10T22:23:12+00:00",
+      "boards_by_platform": {
+        "generic": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "town website (joomla)",
       "selection_reason": "BESS moratorium (Carina, through 2026-07-19) and a 12-month data storage center moratorium, hearing 2026-07-07",
       "selection_source_url": "https://cliftonparkny.gov/notice-of-public-hearing-to-consider-a-local-law-establishing-12-month-moratorium-on-the-acceptance-review-and-approval-of-data-storage-center-applications-in-the-town-of-clifton-park"
     },
@@ -2117,7 +2486,7 @@
       "has_town_meeting": false,
       "status": "not_automated",
       "reason_code": "bot_challenge",
-      "reason": "bot challenge (HTTP 403, Cloudflare-style) on the homepage; not bypassed",
+      "reason": "Cloudflare bot challenge ('Just a moment...', HTTP 403) on the town site for 351WatchBot; not bypassed",
       "automated": false,
       "platform": null,
       "listings": [],
@@ -2135,6 +2504,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:05+00:00",
+      "agenda_platform": "unknown",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-08-31 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -2153,17 +2524,30 @@
         "revize",
         "squarespace"
       ],
-      "platforms": [],
-      "platform": null,
+      "platforms": [
+        "generic_ny"
+      ],
+      "platform": "generic_ny",
       "warrants_found": false,
-      "status": "not_automated",
-      "reason_code": "no_agenda_listing_found",
-      "reason": "site reachable, but discovery found no agenda listing for the tracked boards (agendas may be posted only physically, only as minutes, or on pages the heuristics missed)",
-      "automated": false,
-      "listings": [],
-      "boards_found": [],
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "url": "https://www.miltonny.gov/supervisor___town_boards/planning_board/meeting_schedules_agenda___minutes.php",
+          "link_pattern": "Planning Board Agenda",
+          "platform": "generic_ny",
+          "strip_query": true,
+          "posted_regex": "document date (\\d{2}-\\d{2}-20\\d\\d)"
+        }
+      ],
+      "boards_found": [
+        "planning_board"
+      ],
       "boards_missing": [
-        "planning_board",
         "zoning_board_of_appeals",
         "conservation_commission",
         "select_board"
@@ -2175,6 +2559,14 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:06+00:00",
+      "agenda_platform": "Revize",
+      "note": "Planning Board agendas only. Town Board folders hold minutes and resolutions, ZBA folders hold project files, no agendas. Rows show a 'document date', kept as the posted date.",
+      "boards_by_platform": {
+        "generic_ny": [
+          "planning_board"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-07-29 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -2190,20 +2582,48 @@
       "has_town_meeting": false,
       "final_url": "https://townofwilton.ny.gov/",
       "cms": [],
-      "platforms": [],
-      "platform": null,
+      "platforms": [
+        "generic_ny"
+      ],
+      "platform": "generic_ny",
       "warrants_found": false,
-      "status": "not_automated",
-      "reason_code": "no_agenda_listing_found",
-      "reason": "site reachable, but discovery found no agenda listing for the tracked boards (agendas may be posted only physically, only as minutes, or on pages the heuristics missed)",
-      "automated": false,
-      "listings": [],
-      "boards_found": [],
-      "boards_missing": [
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://townofwilton.ny.gov/government/meeting-agendas/?board=Town-Board",
+          "link_pattern": "^(?:Agenda|Document|Public Hearing) ",
+          "platform": "generic_ny",
+          "resolve_pdf": true
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "url": "https://townofwilton.ny.gov/government/meeting-agendas/?board=Planning-Board",
+          "link_pattern": "^(?:Agenda|Document|Public Hearing) ",
+          "platform": "generic_ny",
+          "resolve_pdf": true
+        },
+        {
+          "board": "Zoning Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://townofwilton.ny.gov/government/meeting-agendas/?board=Zoning-Board-of-Appeals",
+          "link_pattern": "^(?:Agenda|Document|Public Hearing) ",
+          "platform": "generic_ny",
+          "resolve_pdf": true
+        }
+      ],
+      "boards_found": [
         "planning_board",
-        "zoning_board_of_appeals",
-        "conservation_commission",
-        "select_board"
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "boards_missing": [
+        "conservation_commission"
       ],
       "board_evidence": {},
       "board_stale": {},
@@ -2212,6 +2632,15 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:12+00:00",
+      "agenda_platform": "custom CMS (agenda attachment pages)",
+      "boards_by_platform": {
+        "generic_ny": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2027-06-15 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -2227,20 +2656,49 @@
       "has_town_meeting": false,
       "final_url": "https://townofcorinthny.gov/",
       "cms": [],
-      "platforms": [],
-      "platform": null,
+      "platforms": [
+        "generic_ny"
+      ],
+      "platform": "generic_ny",
       "warrants_found": false,
-      "status": "not_automated",
-      "reason_code": "js_only",
-      "reason": "homepage renders client-side (no server HTML to read)",
-      "automated": false,
-      "listings": [],
-      "boards_found": [],
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://townofcorinthny.gov/en/",
+          "link_pattern": "Meeting|Agenda|Workshop|Hearing",
+          "platform": "generic_ny",
+          "doc_href": "/images/document/",
+          "board_rules": [
+            [
+              "planning",
+              "Planning Board",
+              "planning_board"
+            ],
+            [
+              "zoning",
+              "Zoning Board of Appeals",
+              "zoning_board_of_appeals"
+            ],
+            [
+              "town board",
+              "Town Board",
+              "select_board"
+            ]
+          ]
+        }
+      ],
+      "boards_found": [
+        "select_board"
+      ],
       "boards_missing": [
         "planning_board",
         "zoning_board_of_appeals",
-        "conservation_commission",
-        "select_board"
+        "conservation_commission"
       ],
       "board_evidence": {},
       "board_stale": {},
@@ -2249,6 +2707,14 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:11+00:00",
+      "agenda_platform": "custom CMS (homepage meeting list)",
+      "note": "The bare homepage is a JavaScript language redirect to /en/; /en/ lists upcoming meetings with their agenda PDFs.",
+      "boards_by_platform": {
+        "generic_ny": [
+          "select_board"
+        ]
+      },
+      "curated": true,
       "selection_reason": "One-year BESS moratorium, public hearing 2026-07-09",
       "selection_source_url": "https://townofcorinthny.gov/images/document/26230944/BESSNoticeofPublicHearing2026--gOfTXl_Tk2dv5-s2NVtEw.pdf"
     },
@@ -2350,6 +2816,15 @@
       ],
       "pages_fetched": 3,
       "discovered_at": "2026-10-10T22:23:18+00:00",
+      "boards_by_platform": {
+        "civicplus": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "CivicPlus AgendaCenter",
       "selection_reason": "BESS moratorium (Carina, ACTIVE, dated 2025-10-16)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -2365,7 +2840,7 @@
       "has_town_meeting": false,
       "status": "not_automated",
       "reason_code": "bot_challenge",
-      "reason": "bot challenge (HTTP 403, Cloudflare-style) on the homepage; not bypassed",
+      "reason": "Cloudflare bot challenge ('Just a moment...', HTTP 403) on the town site for 351WatchBot; not bypassed",
       "automated": false,
       "platform": null,
       "listings": [],
@@ -2383,6 +2858,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:26+00:00",
+      "agenda_platform": "unknown",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE, no end date listed (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -2401,11 +2878,11 @@
         "wordpress"
       ],
       "platforms": [],
-      "platform": null,
+      "platform": "generic",
       "warrants_found": false,
       "status": "not_automated",
-      "reason_code": "no_agenda_listing_found",
-      "reason": "site reachable, but discovery found no agenda listing for the tracked boards (agendas may be posted only physically, only as minutes, or on pages the heuristics missed)",
+      "reason_code": "no_agendas_online",
+      "reason": "Town Board page posts resolutions and annual documents; Planning and Zoning pages post minutes only. No agendas online.",
       "automated": false,
       "listings": [],
       "boards_found": [],
@@ -2422,6 +2899,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:18+00:00",
+      "agenda_platform": "WordPress",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-11-06 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -2617,6 +3096,15 @@
       "notes": [],
       "pages_fetched": 7,
       "discovered_at": "2026-10-10T22:23:41+00:00",
+      "boards_by_platform": {
+        "generic": [
+          "conservation_commission",
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "town website (revize)",
       "selection_reason": "Town board weighing a data-center moratorium (July 2026)",
       "selection_source_url": "https://spectrumlocalnews.com/nys/capital-region/business/2026/07/09/east-greenbush-exploring-moratorium-on-data-center-development"
     },
@@ -2750,24 +3238,36 @@
       "notes": [],
       "pages_fetched": 4,
       "discovered_at": "2026-10-10T22:23:31+00:00",
+      "boards_by_platform": {
+        "generic": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "town website (wordpress)",
       "selection_reason": "BESS moratorium ACTIVE (Carina 'Amsterdam, Montgomery County'); town BESS hearing notice 2026",
       "selection_source_url": "https://www.townofamsterdam.org/?p=1590"
     },
     {
       "town": "Perth",
       "state": "NY",
-      "website": "https://www.townofperth.org",
+      "website": "https://www.perthny.gov",
       "county": "Fulton",
       "kind": "town",
       "pop_2020": null,
       "pop_2024_est": null,
       "legislative_body": "Town Board",
       "has_town_meeting": false,
-      "status": "not_automated",
-      "reason_code": "robots_unavailable",
-      "reason": "robots.txt answered 5xx / timed out, which RFC 9309 treats as 'disallow all' for this run; host skipped",
-      "automated": false,
+      "final_url": "https://www.perthny.gov/",
+      "cms": [],
+      "platforms": [],
       "platform": null,
+      "warrants_found": false,
+      "status": "not_automated",
+      "reason_code": "js_only",
+      "reason": "the Agendas & Minutes page is a JavaScript-built document module (page sections are filled client-side from JSON; the server HTML has no agenda links or dates)",
+      "automated": false,
       "listings": [],
       "boards_found": [],
       "boards_missing": [
@@ -2781,10 +3281,12 @@
       "vendors": {},
       "robots_blocked": [],
       "notes": [],
-      "pages_fetched": 1,
-      "discovered_at": "2026-10-10T22:23:24+00:00",
-      "selection_reason": "BESS moratorium ACTIVE through 2027-01-21 (Carina)",
-      "selection_source_url": "https://carina.energy/bess-moratoriums/"
+      "pages_fetched": 4,
+      "discovered_at": "2026-10-10T23:51:47+00:00",
+      "agenda_platform": "JavaScript CMS (agendasandminutes module)",
+      "curated": true,
+      "selection_reason": "BESS moratorium ACTIVE through 2027-01-21 (Carina); Fulton County Planning Board 239 review of the Perth renewable-energy/BESS moratorium, 2026-01-20",
+      "selection_source_url": "https://www.fultoncountyny.gov/sites/default/files/_planning/PB-2026-01-20.pdf"
     },
     {
       "town": "Horicon",
@@ -2798,7 +3300,7 @@
       "has_town_meeting": false,
       "status": "not_automated",
       "reason_code": "bot_challenge",
-      "reason": "bot challenge (HTTP 403, Cloudflare-style) on the homepage; not bypassed",
+      "reason": "Cloudflare bot challenge ('Just a moment...', HTTP 403) on the town site for 351WatchBot; not bypassed",
       "automated": false,
       "platform": null,
       "listings": [],
@@ -2816,6 +3318,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:11+00:00",
+      "agenda_platform": "unknown",
+      "curated": true,
       "selection_reason": "BESS moratorium public hearing 2026-05-21",
       "selection_source_url": "https://www.horiconny.gov/media/2546"
     },
@@ -2834,11 +3338,11 @@
         "wordpress"
       ],
       "platforms": [],
-      "platform": null,
+      "platform": "generic",
       "warrants_found": false,
       "status": "not_automated",
-      "reason_code": "agendas_stale_or_undated",
-      "reason": "agenda listing pages found (e.g. https://townofwinfieldny.gov/town-board-meeting-minutes/) but no agenda dated within the last 120 days or next 120 days could be read from them",
+      "reason_code": "no_agendas_online",
+      "reason": "Only Town Board minutes are posted (no agendas); the data-center moratorium appears as a public-hearing notice post.",
       "automated": false,
       "listings": [],
       "boards_found": [],
@@ -2864,6 +3368,8 @@
       "notes": [],
       "pages_fetched": 3,
       "discovered_at": "2026-10-10T22:23:18+00:00",
+      "agenda_platform": "WordPress",
+      "curated": true,
       "selection_reason": "Local Law 2 of 2026: 12-month data-center moratorium (>=500 kW peak demand)",
       "selection_source_url": "https://townofwinfieldny.gov/wp-content/uploads/2026/06/Local-Law-No.-2-of-2026_-Data-Center-Moratorium-1.pdf"
     },
@@ -2881,20 +3387,39 @@
       "cms": [
         "wordpress"
       ],
-      "platforms": [],
-      "platform": null,
+      "platforms": [
+        "generic_ny"
+      ],
+      "platform": "generic_ny",
       "warrants_found": false,
-      "status": "not_automated",
-      "reason_code": "agendas_stale_or_undated",
-      "reason": "agenda listing pages found (e.g. https://townofleydenny.gov/meetings/meetings/Planning%20Board/2026) but no agenda dated within the last 120 days or next 120 days could be read from them",
-      "automated": false,
-      "listings": [],
-      "boards_found": [],
-      "boards_missing": [
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://townofleydenny.gov/meetings/meetings/Town%20Board/{year}",
+          "link_pattern": "^[A-Z][a-z]+ \\d{1,2}, 20\\d\\d:",
+          "platform": "generic_ny",
+          "exclude_pattern": "minutes|assessment review"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "url": "https://townofleydenny.gov/meetings/meetings/Planning%20Board/{year}",
+          "link_pattern": "^[A-Z][a-z]+ \\d{1,2}, 20\\d\\d:",
+          "platform": "generic_ny"
+        }
+      ],
+      "boards_found": [
         "planning_board",
-        "zoning_board_of_appeals",
-        "conservation_commission",
         "select_board"
+      ],
+      "boards_missing": [
+        "zoning_board_of_appeals",
+        "conservation_commission"
       ],
       "board_evidence": {},
       "board_stale": {
@@ -2920,6 +3445,15 @@
       "notes": [],
       "pages_fetched": 10,
       "discovered_at": "2026-10-10T22:23:28+00:00",
+      "agenda_platform": "custom CMS (meeting detail pages)",
+      "note": "Each meeting has an HTML detail page; the page text is scanned.",
+      "boards_by_platform": {
+        "generic_ny": [
+          "planning_board",
+          "select_board"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS law public hearing 2026-06-09; BESS moratorium ACTIVE through 2026-09-30 (Carina)",
       "selection_source_url": "https://townofleydenny.gov/application/files/3517/7931/3704/Public_Hearing_Battery_Energy_Storage_Law.pdf"
     },
@@ -3021,11 +3555,18 @@
       "notes": [],
       "pages_fetched": 6,
       "discovered_at": "2026-10-10T22:23:19+00:00",
-      "selection_reason": "Local Law 4 of 2026 (BESS siting) hearing; ZBA setback variance for BESS (Micron host town)",
-      "selection_source_url": "https://www.cnycentral.com/news/local/clay-to-hold-public-hearing-on-battery-storage-law",
       "agenda_platform": "Drupal",
       "note": "?field_board_value does not filter the 'recent agendas' block; each listing also matches the board name in the file name.",
-      "curated": true
+      "boards_by_platform": {
+        "generic": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "curated": true,
+      "selection_reason": "Local Law 4 of 2026 (BESS siting) hearing; ZBA setback variance for BESS (Micron host town)",
+      "selection_source_url": "https://www.cnycentral.com/news/local/clay-to-hold-public-hearing-on-battery-storage-law"
     },
     {
       "town": "Lysander",
@@ -3042,9 +3583,9 @@
         "drupal"
       ],
       "platforms": [
-        "generic"
+        "generic_ny"
       ],
-      "platform": "generic",
+      "platform": "generic_ny",
       "warrants_found": false,
       "status": "automated",
       "reason_code": null,
@@ -3052,14 +3593,31 @@
       "automated": true,
       "listings": [
         {
-          "board": "Select Board / Council",
+          "board": "Town Board",
           "board_key": "select_board",
           "url": "https://lysanderny.gov/board-meetings",
-          "link_pattern": "agenda|notice|posting",
-          "board_pattern": "select ?board|board of selectmen|selectmen|select men|(?:city|town) council|\\btown board\\b",
-          "board_exclude": "sub-?committee|committee|joint|council on aging|youth council|cultural council|arts council|school council|town board (?:meeting )?(?:room|chambers)",
-          "context": "block",
-          "date_only_docs": true
+          "link_pattern": "agenda",
+          "platform": "generic_ny",
+          "exclude_pattern": "minutes|materials",
+          "compact_dates": true,
+          "board_rules_field": "href",
+          "board_rules": [
+            [
+              "zba",
+              "Zoning Board of Appeals",
+              "zoning_board_of_appeals"
+            ],
+            [
+              "pb",
+              "Planning Board",
+              "planning_board"
+            ],
+            [
+              "agenda",
+              "Town Board",
+              "select_board"
+            ]
+          ]
         }
       ],
       "boards_found": [
@@ -3098,6 +3656,14 @@
       "notes": [],
       "pages_fetched": 4,
       "discovered_at": "2026-10-10T22:23:26+00:00",
+      "agenda_platform": "Drupal",
+      "note": "One /board-meetings page mixes Town Board, Planning Board and ZBA agendas with no headings; boards are told apart by file name (pb / zba, otherwise Town Board) and dates read from compact names (a10082026pb_0.pdf). A file named only '91426agenda.pdf' cannot be assigned reliably and is labeled Town Board.",
+      "boards_by_platform": {
+        "generic_ny": [
+          "select_board"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-12-19 (Carina); data-center moratorium extension hearing 2026-11-05",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -3113,7 +3679,7 @@
       "has_town_meeting": false,
       "status": "not_automated",
       "reason_code": "crawl_delay_exceeds_cap",
-      "reason": "robots.txt asks for a Crawl-delay above the crawler's 10 s cap (rawl-delay 20.0s too long for prototype); host skipped (a slower production schedule could honor it)",
+      "reason": "ciceronewyork.net robots.txt sets Crawl-delay: 20 for all agents; 351WatchBot skips hosts asking for more than 10 s.",
       "automated": false,
       "platform": null,
       "listings": [],
@@ -3131,6 +3697,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:14+00:00",
+      "agenda_platform": "WordPress (site not fetched)",
+      "curated": true,
       "selection_reason": "Local Law 2 of 2026: moratorium on large-scale data centers / AI computing / crypto mining, hearing 2026-07-22",
       "selection_source_url": "https://ciceronewyork.net/?p=28237"
     },
@@ -3147,11 +3715,11 @@
       "final_url": "https://www.townofcamillus.gov/",
       "cms": [],
       "platforms": [],
-      "platform": null,
+      "platform": "generic",
       "warrants_found": false,
       "status": "not_automated",
-      "reason_code": "no_agenda_listing_found",
-      "reason": "site reachable, but discovery found no agenda listing for the tracked boards (agendas may be posted only physically, only as minutes, or on pages the heuristics missed)",
+      "reason_code": "no_agendas_online",
+      "reason": "Town site calendar lists Town Board, Planning Board and ZBA meetings as events with no agenda files; no agenda listing found on the pages reached.",
       "automated": false,
       "listings": [],
       "boards_found": [],
@@ -3168,6 +3736,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:21+00:00",
+      "agenda_platform": "custom ASP.NET CMS",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2027-03-10 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -3196,7 +3766,7 @@
       "automated": true,
       "listings": [
         {
-          "board": "View Planning Board Meeting Minutes",
+          "board": "Planning Board",
           "board_key": "planning_board",
           "url": "http://townofmarcellusny.gov/town/planning-zoning/planning-board-meeting-minutes/",
           "link_pattern": "agenda|notice|posting",
@@ -3205,7 +3775,7 @@
           "board_exclude": "zoning board|board of appeals|\\bZBA\\b|zoning appeals|conservation commission|\\bconcom\\b|\\bconservation\\b|\\bCAC\\b|environmental (?:conservation )?(?:commission|board|council)|select ?board|board of selectmen|selectmen|select men|(?:city|town) council|\\btown board\\b"
         },
         {
-          "board": "Town Board Meeting Minutes & Agendas",
+          "board": "Town Board",
           "board_key": "select_board",
           "url": "http://townofmarcellusny.gov/town/town-board/town-board-minutes-agendas/",
           "link_pattern": "agenda|notice|posting",
@@ -3289,24 +3859,35 @@
       "notes": [],
       "pages_fetched": 9,
       "discovered_at": "2026-10-10T22:23:34+00:00",
+      "boards_by_platform": {
+        "generic": [
+          "planning_board",
+          "select_board"
+        ]
+      },
+      "agenda_platform": "town website (wordpress)",
       "selection_reason": "BESS moratorium through 2027-05-06 (Carina); proposed Local Law C-2026 BESS regulations, hearing 2026-10-07",
       "selection_source_url": "https://townofmarcellusny.gov/?p=9134"
     },
     {
       "town": "Spafford",
       "state": "NY",
-      "website": "https://www.townofspafford.org",
+      "website": "https://www.townofspaffordny.gov",
       "county": "Onondaga",
       "kind": "town",
       "pop_2020": null,
       "pop_2024_est": null,
       "legislative_body": "Town Board",
       "has_town_meeting": false,
-      "status": "not_automated",
-      "reason_code": "robots_unavailable",
-      "reason": "robots.txt answered 5xx / timed out, which RFC 9309 treats as 'disallow all' for this run; host skipped",
-      "automated": false,
+      "final_url": "https://www.townofspaffordny.gov/",
+      "cms": [],
+      "platforms": [],
       "platform": null,
+      "warrants_found": false,
+      "status": "not_automated",
+      "reason_code": "js_only",
+      "reason": "the Agendas & Minutes page is a JavaScript-built document module (page sections are filled client-side from JSON; the server HTML has no agenda links or dates)",
+      "automated": false,
       "listings": [],
       "boards_found": [],
       "boards_missing": [
@@ -3316,12 +3897,39 @@
         "select_board"
       ],
       "board_evidence": {},
-      "board_stale": {},
+      "board_stale": {
+        "planning_board": {
+          "board": "Planning Board",
+          "source": "generic",
+          "url": "https://www.townofspaffordny.gov/planningboard",
+          "n_recent": 0,
+          "latest": null,
+          "note": "board page found, no dated agenda links in window"
+        },
+        "zoning_board_of_appeals": {
+          "board": "Zoning Board of Appeals",
+          "source": "generic",
+          "url": "https://www.townofspaffordny.gov/zba",
+          "n_recent": 0,
+          "latest": null,
+          "note": "board page found, no dated agenda links in window"
+        },
+        "select_board": {
+          "board": "Town Council",
+          "source": "generic",
+          "url": "https://www.townofspaffordny.gov/towncouncil",
+          "n_recent": 0,
+          "latest": null,
+          "note": "board page found, no dated agenda links in window"
+        }
+      },
       "vendors": {},
       "robots_blocked": [],
       "notes": [],
-      "pages_fetched": 1,
-      "discovered_at": "2026-10-10T22:23:34+00:00",
+      "pages_fetched": 6,
+      "discovered_at": "2026-10-10T23:51:49+00:00",
+      "agenda_platform": "JavaScript CMS (agendasandminutes module)",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2027-06-09 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -3337,7 +3945,7 @@
       "has_town_meeting": false,
       "status": "not_automated",
       "reason_code": "crawl_delay_exceeds_cap",
-      "reason": "robots.txt asks for a Crawl-delay above the crawler's 10 s cap (rawl-delay 15.0s too long for prototype); host skipped (a slower production schedule could honor it)",
+      "reason": "lansingtownny.gov robots.txt sets Crawl-delay: 15 for all agents; 351WatchBot skips hosts asking for more than 10 s. Automatable at 1 request per 15 s if the cap is raised.",
       "automated": false,
       "platform": null,
       "listings": [],
@@ -3355,39 +3963,182 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:18+00:00",
+      "agenda_platform": "unknown (site not fetched)",
+      "curated": true,
       "selection_reason": "AI data center proposed at the former Cayuga coal plant; town-wide zoning moratorium debate",
       "selection_source_url": "https://www.wskg.org/regional-news/2025-10-15/lansing-town-board-to-discuss-zoning-moratorium-amid-controversy-over-data-center"
     },
     {
       "town": "Geneva",
       "state": "NY",
-      "website": "https://www.townofgeneva.com",
+      "website": "https://townofgenevany.gov",
       "county": "Ontario",
       "kind": "town",
       "pop_2020": null,
       "pop_2024_est": null,
       "legislative_body": "Town Board",
       "has_town_meeting": false,
-      "status": "not_automated",
-      "reason_code": "robots_unavailable",
-      "reason": "robots.txt answered 5xx / timed out, which RFC 9309 treats as 'disallow all' for this run; host skipped",
-      "automated": false,
-      "platform": null,
-      "listings": [],
-      "boards_found": [],
+      "final_url": "https://townofgenevany.gov/",
+      "cms": [
+        "revize"
+      ],
+      "platforms": [
+        "generic_ny"
+      ],
+      "platform": "generic_ny",
+      "warrants_found": false,
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://townofgenevany.gov/departments_and_services/agendas_minutes.php",
+          "link_pattern": "agenda",
+          "platform": "generic_ny",
+          "exclude_pattern": "minutes",
+          "strip_query": true,
+          "doc_href": "\\.pdf",
+          "date_regex": "(?P<y>20\\d\\d)\\.\\d\\d (?P<m>[A-Za-z]+) (?P<d>\\d{1,2})\\b",
+          "board_rules": [
+            [
+              "planning",
+              "Planning Board",
+              "planning_board"
+            ],
+            [
+              "zoning|ZBA",
+              "Zoning Board of Appeals",
+              "zoning_board_of_appeals"
+            ],
+            [
+              "conservation",
+              "Conservation Board",
+              "conservation_commission"
+            ],
+            [
+              "town board",
+              "Town Board",
+              "select_board"
+            ]
+          ]
+        }
+      ],
+      "boards_found": [
+        "select_board"
+      ],
       "boards_missing": [
         "planning_board",
         "zoning_board_of_appeals",
-        "conservation_commission",
-        "select_board"
+        "conservation_commission"
       ],
-      "board_evidence": {},
+      "board_evidence": {
+        "planning_board": {
+          "board": "Planning Board",
+          "source": "generic_hub",
+          "url": "https://townofgenevany.gov/departments_and_services/agendas_minutes.php",
+          "n_recent": 5,
+          "latest": "2026-10-20",
+          "examples": [
+            {
+              "url": "https://townofgenevany.gov/Documents/Departments and Services/Agendas & Minutes/Planning Board Agendas/2026.06.16 Planning Board Agenda_amended.pdf?t=202606091459220",
+              "text": "2026 June 16 Planning Board Meeting Agenda",
+              "date": "2026-06-16",
+              "uploaded": "20260609145922"
+            },
+            {
+              "url": "https://townofgenevany.gov/Documents/Departments and Services/Agendas & Minutes/Planning Board Agendas/2026.07.21 Planning Board Agenda.pdf?t=202607061017250",
+              "text": "2026 July 21 Planning Board Meeting Agenda",
+              "date": "2026-07-21",
+              "uploaded": "20260706101725"
+            },
+            {
+              "url": "https://townofgenevany.gov/Documents/Departments and Services/Agendas & Minutes/Planning Board Agendas/2026.08.18 Planning Board Agenda_amended.pdf?t=202608101016150",
+              "text": "2026 August 18 Planning Board Meeting Agenda",
+              "date": "2026-08-18",
+              "uploaded": "20260810101615"
+            }
+          ],
+          "n_past_90": 3
+        },
+        "select_board": {
+          "board": "Select Board / Council",
+          "source": "generic_hub",
+          "url": "https://townofgenevany.gov/departments_and_services/agendas_minutes.php",
+          "n_recent": 5,
+          "latest": "2026-10-13",
+          "examples": [
+            {
+              "url": "https://townofgenevany.gov/Documents/Departments and Services/Agendas & Minutes/Town Board Meeting Agendas/2026 July 14 agenda and public hearing.pdf?t=202607140716230",
+              "text": "2026 July 14 Town Board Meeting Agenda",
+              "date": "2026-07-14",
+              "uploaded": "20260714071623"
+            },
+            {
+              "url": "https://townofgenevany.gov/Documents/Departments and Services/Agendas & Minutes/Town Board Meeting Agendas/2026.08.11 Town Board Meeting Agenda.pdf?t=202608110924430",
+              "text": "2026 August 11 Town Board Meeting Agenda",
+              "date": "2026-08-11",
+              "uploaded": "20260811092443"
+            },
+            {
+              "url": "https://townofgenevany.gov/Documents/Departments and Services/Agendas & Minutes/Town Board Meeting Agendas/2026.09.08 Town Board Meeting Agenda.pdf?t=202609080903110",
+              "text": "2026 September 8 Town Board Meeting Agenda",
+              "date": "2026-09-08",
+              "uploaded": "20260908090311"
+            }
+          ],
+          "n_past_90": 4
+        },
+        "zoning_board_of_appeals": {
+          "board": "Zoning Board of Appeals",
+          "source": "generic_hub",
+          "url": "https://townofgenevany.gov/departments_and_services/agendas_minutes.php",
+          "n_recent": 2,
+          "latest": "2026-08-25",
+          "examples": [
+            {
+              "url": "https://townofgenevany.gov/Documents/Departments and Services/Agendas & Minutes/Zoning Board Agendas/2026.06.22 Zoning Board Agenda - June.pdf?t=202606080823380",
+              "text": "2026 June 22 Zoning Board of Appeals Meeting Agenda",
+              "date": "2026-06-22",
+              "uploaded": "20260608082338"
+            },
+            {
+              "url": "https://townofgenevany.gov/Documents/Departments and Services/Agendas & Minutes/Zoning Board Agendas/2026.08.25 Zoning Board Agenda - August.pdf?t=202608110937320",
+              "text": "2026 August 25 Zoning Board of Appeals Meeting Agenda",
+              "date": "2026-08-25",
+              "uploaded": "20260811093732"
+            }
+          ],
+          "n_past_90": 1
+        }
+      },
       "board_stale": {},
-      "vendors": {},
+      "vendors": {
+        "civicclerk": {
+          "urls": [
+            "https://genevama.portal.civicclerk.com"
+          ],
+          "tenant": "genevama",
+          "found_by": "tenant probe",
+          "status": "supported"
+        }
+      },
       "robots_blocked": [],
-      "notes": [],
-      "pages_fetched": 1,
-      "discovered_at": "2026-10-10T22:24:01+00:00",
+      "notes": [
+        "CivicClerk API HTTP 404",
+        "CivicClerk API HTTP 404"
+      ],
+      "pages_fetched": 5,
+      "discovered_at": "2026-10-10T23:51:52+00:00",
+      "agenda_platform": "Revize",
+      "boards_by_platform": {
+        "generic_ny": [
+          "select_board"
+        ]
+      },
+      "curated": true,
       "selection_reason": "New BESS law, public hearing 2026-09-08",
       "selection_source_url": "https://www.fltimes.com/classifieds/community/announcements/legal/legal-notice-town-of-geneva-notice-of-public-hearing-please-take-notice/ad_8b62553a-333f-5736-93a2-456a9978e496.html"
     },
@@ -3405,20 +4156,48 @@
       "cms": [
         "revize"
       ],
-      "platforms": [],
-      "platform": null,
+      "platforms": [
+        "generic_ny"
+      ],
+      "platform": "generic_ny",
       "warrants_found": false,
-      "status": "not_automated",
-      "reason_code": "no_agenda_listing_found",
-      "reason": "site reachable, but discovery found no agenda listing for the tracked boards (agendas may be posted only physically, only as minutes, or on pages the heuristics missed)",
-      "automated": false,
-      "listings": [],
-      "boards_found": [],
-      "boards_missing": [
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://www.penfieldny.gov/online_documents/agendas,_minutes_and_notices/town_board.php",
+          "link_pattern": "agenda",
+          "platform": "generic_ny",
+          "strip_query": true
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "url": "https://www.penfieldny.gov/online_documents/agendas,_minutes_and_notices/planning_board.php",
+          "link_pattern": "agenda",
+          "platform": "generic_ny",
+          "strip_query": true
+        },
+        {
+          "board": "Zoning Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://www.penfieldny.gov/online_documents/agendas,_minutes_and_notices/zoning_board.php",
+          "link_pattern": "agenda",
+          "platform": "generic_ny",
+          "strip_query": true
+        }
+      ],
+      "boards_found": [
         "planning_board",
-        "zoning_board_of_appeals",
-        "conservation_commission",
-        "select_board"
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "boards_missing": [
+        "conservation_commission"
       ],
       "board_evidence": {},
       "board_stale": {},
@@ -3427,6 +4206,15 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:35+00:00",
+      "agenda_platform": "Revize",
+      "boards_by_platform": {
+        "generic_ny": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-06-30 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -3445,11 +4233,11 @@
         "wix"
       ],
       "platforms": [],
-      "platform": null,
+      "platform": "generic",
       "warrants_found": false,
       "status": "not_automated",
-      "reason_code": "agendas_stale_or_undated",
-      "reason": "agenda listing pages found (e.g. https://www.yorkny.gov/planning-board) but no agenda dated within the last 120 days or next 120 days could be read from them",
+      "reason_code": "no_agendas_online",
+      "reason": "Wix site: Town Board, Planning Board and ZBA pages post annual meeting-date schedules, forms and occasional hearing notices, but no agendas.",
       "automated": false,
       "listings": [],
       "boards_found": [],
@@ -3491,6 +4279,8 @@
       "notes": [],
       "pages_fetched": 8,
       "discovered_at": "2026-10-10T22:23:36+00:00",
+      "agenda_platform": "Wix",
+      "curated": true,
       "selection_reason": "Local Law 3 of 2026: 12-month data-center moratorium, hearing 2026-07-14",
       "selection_source_url": "https://www.yorkny.gov/_files/ugd/80e0ed_4d3d2702e62f4be6a44a538127f0dc2b.pdf"
     },
@@ -3591,6 +4381,14 @@
       "notes": [],
       "pages_fetched": 18,
       "discovered_at": "2026-10-10T22:23:42+00:00",
+      "boards_by_platform": {
+        "civicclerk": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "agenda_platform": "CivicClerk",
       "selection_reason": "Zoning text amendment ZTA-2026-01 for battery energy storage systems, hearing 2026-07-06",
       "selection_source_url": "https://www.amherst.ny.us/pdf/planning/dev_proj_pending/other/ZTA-2026-01-report-3e4h2h2ke6.pdf"
     },
@@ -3606,20 +4404,42 @@
       "has_town_meeting": false,
       "final_url": "https://www.townofconcordny.gov/",
       "cms": [],
-      "platforms": [],
-      "platform": null,
+      "platforms": [
+        "generic_ny"
+      ],
+      "platform": "generic_ny",
       "warrants_found": false,
-      "status": "not_automated",
-      "reason_code": "agendas_stale_or_undated",
-      "reason": "agenda listing pages found (e.g. https://www.townofconcordny.gov/planning-board.php) but no agenda dated within the last 120 days or next 120 days could be read from them",
-      "automated": false,
-      "listings": [],
-      "boards_found": [],
-      "boards_missing": [
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://www.townofconcordny.gov/town_board_min.php",
+          "link_pattern": "^Agenda",
+          "platform": "generic_ny",
+          "month_only": true,
+          "doc_href": "\\.pdf"
+        },
+        {
+          "board": "Planning Board",
+          "board_key": "planning_board",
+          "url": "https://www.townofconcordny.gov/planning_board_min.php",
+          "link_pattern": "^Agenda",
+          "platform": "generic_ny",
+          "month_only": true,
+          "doc_href": "\\.pdf"
+        }
+      ],
+      "boards_found": [
         "planning_board",
-        "zoning_board_of_appeals",
-        "conservation_commission",
         "select_board"
+      ],
+      "boards_missing": [
+        "zoning_board_of_appeals",
+        "conservation_commission"
       ],
       "board_evidence": {},
       "board_stale": {
@@ -3653,6 +4473,15 @@
       "notes": [],
       "pages_fetched": 4,
       "discovered_at": "2026-10-10T22:23:31+00:00",
+      "agenda_platform": "custom PHP site",
+      "note": "Most 2026 agenda files are named by month only ('September 2026.pdf'): those are kept with no meeting date. ZBA page posts no documents.",
+      "boards_by_platform": {
+        "generic_ny": [
+          "planning_board",
+          "select_board"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS moratorium (Carina, through 2026-06-12) and Proposed Local Law 4: one-year data-center moratorium, hearing 2026-07-15",
       "selection_source_url": "https://www.townofconcordny.gov/files/Public Hearing Data Center 2026.pdf"
     },
@@ -3668,20 +4497,51 @@
       "has_town_meeting": false,
       "final_url": "https://www.townofaurorany.gov",
       "cms": [],
-      "platforms": [],
-      "platform": null,
+      "platforms": [
+        "generic_ny"
+      ],
+      "platform": "generic_ny",
       "warrants_found": false,
-      "status": "not_automated",
-      "reason_code": "no_agenda_listing_found",
-      "reason": "site reachable, but discovery found no agenda listing for the tracked boards (agendas may be posted only physically, only as minutes, or on pages the heuristics missed)",
-      "automated": false,
-      "listings": [],
-      "boards_found": [],
-      "boards_missing": [
+      "status": "automated",
+      "reason_code": null,
+      "reason": null,
+      "automated": true,
+      "listings": [
+        {
+          "board": "Town Board",
+          "board_key": "select_board",
+          "url": "https://www.townofaurorany.gov/meetings-and-minutes/",
+          "link_pattern": "^AGENDA\\b",
+          "platform": "generic_ny",
+          "scope": "^Town Board Meetings & Work Sessions$",
+          "assume_year": 2026
+        },
+        {
+          "board": "Planning and Conservation Board",
+          "board_key": "planning_board",
+          "url": "https://www.townofaurorany.gov/meetings-and-minutes/",
+          "link_pattern": "^AGENDA\\b",
+          "platform": "generic_ny",
+          "scope": "^Planning Board Meetings$",
+          "assume_year": 2026
+        },
+        {
+          "board": "Zoning Board of Appeals",
+          "board_key": "zoning_board_of_appeals",
+          "url": "https://www.townofaurorany.gov/meetings-and-minutes/",
+          "link_pattern": "^AGENDA\\b",
+          "platform": "generic_ny",
+          "scope": "^Zoning Board of Appeals Meetings$",
+          "assume_year": 2026
+        }
+      ],
+      "boards_found": [
         "planning_board",
-        "zoning_board_of_appeals",
-        "conservation_commission",
-        "select_board"
+        "select_board",
+        "zoning_board_of_appeals"
+      ],
+      "boards_missing": [
+        "conservation_commission"
       ],
       "board_evidence": {},
       "board_stale": {},
@@ -3690,6 +4550,16 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:32+00:00",
+      "agenda_platform": "Concrete CMS (download_file links in yearly tables)",
+      "note": "One '2026 Meeting Schedule & Documents' page with a table per board; rows give month and day only.",
+      "boards_by_platform": {
+        "generic_ny": [
+          "planning_board",
+          "select_board",
+          "zoning_board_of_appeals"
+        ]
+      },
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-06-09 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -3709,8 +4579,8 @@
       "platform": null,
       "warrants_found": false,
       "status": "not_automated",
-      "reason_code": "no_agenda_listing_found",
-      "reason": "site reachable, but discovery found no agenda listing for the tracked boards (agendas may be posted only physically, only as minutes, or on pages the heuristics missed)",
+      "reason_code": "js_only",
+      "reason": "the Agendas & Minutes page is a JavaScript-built document module (page sections are filled client-side from JSON; the server HTML has no agenda links or dates)",
       "automated": false,
       "listings": [],
       "boards_found": [],
@@ -3727,6 +4597,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:33+00:00",
+      "agenda_platform": "JavaScript CMS (agendasandminutes module)",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-12-03 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     },
@@ -3760,6 +4632,8 @@
       "notes": [],
       "pages_fetched": 1,
       "discovered_at": "2026-10-10T22:23:27+00:00",
+      "agenda_platform": "unknown",
+      "curated": true,
       "selection_reason": "BESS moratorium ACTIVE through 2026-08-31 (Carina)",
       "selection_source_url": "https://carina.energy/bess-moratoriums/"
     }

@@ -108,8 +108,9 @@ NY_TOWNS: list[dict] = [
     T("Stony Point", "Rockland", "https://www.stonypointny.gov",
       "Eight-month BESS moratorium, public hearing 2026-06-23",
       "https://www.stonypointny.gov/userfiles/notice_of_public_hearing_61026_0282.pdf"),
-    T("Chester", "Orange", "https://www.thetownofchester.org",
-      "BESS moratorium ACTIVE through 2026-08-26 (Carina)", CARINA),
+    T("Warwick", "Orange", "https://townofwarwickny.gov",
+      "Draft BESS local law (rev. 2026-06-30) after the 2025 BESS moratorium (Carina: expired 2025-06-03)",
+      "https://townofwarwickny.gov/t-warwick-bess-law-rek-rev-06302026-draft-docx/"),
     # ---- Mid-Hudson / Catskills
     T("Gardiner", "Ulster", "https://www.townofgardiner.org",
       "BESS moratorium ACTIVE through 2026-07-13 (Carina)", CARINA),
@@ -134,7 +135,7 @@ NY_TOWNS: list[dict] = [
     T("Claverack", "Columbia", "https://www.claverackny.gov",
       "BESS moratorium (Local Law 2 of 2025), ACTIVE through 2026-06-11 (Carina); solar tracker site plans",
       "https://www.claverackny.gov/DocumentCenter/View/276/75-TOC-LL2-of-2025-BESS-Moratorium-PDF"),
-    T("Livingston", "Columbia", "https://www.livingstonny.us",
+    T("Livingston", "Columbia", "https://townoflivingston.org",
       "BESS moratorium ACTIVE through 2026-06-01 (Carina)", CARINA),
     # ---- Capital Region / Saratoga / Mohawk Valley
     T("Clifton Park", "Saratoga", "https://cliftonparkny.gov",
@@ -161,8 +162,9 @@ NY_TOWNS: list[dict] = [
     T("Amsterdam", "Montgomery", "https://www.townofamsterdam.org",
       "BESS moratorium ACTIVE (Carina 'Amsterdam, Montgomery County'); town BESS hearing notice 2026",
       "https://www.townofamsterdam.org/?p=1590"),
-    T("Perth", "Fulton", "https://www.townofperth.org",
-      "BESS moratorium ACTIVE through 2027-01-21 (Carina)", CARINA),
+    T("Perth", "Fulton", "https://www.perthny.gov",
+      "BESS moratorium ACTIVE through 2027-01-21 (Carina); Fulton County Planning Board 239 review of the Perth renewable-energy/BESS moratorium, 2026-01-20",
+      "https://www.fultoncountyny.gov/sites/default/files/_planning/PB-2026-01-20.pdf"),
     T("Horicon", "Warren", "https://www.horiconny.gov",
       "BESS moratorium public hearing 2026-05-21", "https://www.horiconny.gov/media/2546"),
     T("Winfield", "Herkimer", "https://townofwinfieldny.gov",
@@ -186,12 +188,12 @@ NY_TOWNS: list[dict] = [
     T("Marcellus", "Onondaga", "https://townofmarcellusny.gov",
       "BESS moratorium through 2027-05-06 (Carina); proposed Local Law C-2026 BESS regulations, hearing 2026-10-07",
       "https://townofmarcellusny.gov/?p=9134"),
-    T("Spafford", "Onondaga", "https://www.townofspafford.org",
+    T("Spafford", "Onondaga", "https://www.townofspaffordny.gov",
       "BESS moratorium ACTIVE through 2027-06-09 (Carina)", CARINA),
     T("Lansing", "Tompkins", "https://www.lansingtownny.gov",
       "AI data center proposed at the former Cayuga coal plant; town-wide zoning moratorium debate",
       "https://www.wskg.org/regional-news/2025-10-15/lansing-town-board-to-discuss-zoning-moratorium-amid-controversy-over-data-center"),
-    T("Geneva", "Ontario", "https://www.townofgeneva.com",
+    T("Geneva", "Ontario", "https://townofgenevany.gov",
       "New BESS law, public hearing 2026-09-08",
       "https://www.fltimes.com/classifieds/community/announcements/legal/legal-notice-town-of-geneva-notice-of-public-hearing-please-take-notice/ad_8b62553a-333f-5736-93a2-456a9978e496.html"),
     T("Penfield", "Monroe", "https://www.penfield.org",
@@ -302,7 +304,158 @@ def _gl(board, key_, url, pattern, exclude=None, **kw):
 
 
 _CLAY = "https://townofclayny.gov/minutes-agendas?field_board_value="
+_MDY = r"^(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.? \d{1,2}, 20\d\d\b"
+_STAN = "https://stanfordny.gov/advisory-committees/town-laws/minsagenda/"
+_WIL = "https://townofwilton.ny.gov/government/meeting-agendas/?board="
+_AUR = "https://www.townofaurorany.gov/meetings-and-minutes/"
+_ESC = "https://pub-southamptonny.escribemeetings.com/"
+_PEN = "https://www.penfieldny.gov/online_documents/agendas,_minutes_and_notices/"
+_JS_MW = ("the Agendas & Minutes page is a JavaScript-built document module (page sections are filled client-side "
+          "from JSON; the server HTML has no agenda links or dates)")
+
+
+def _ny(board, key_, url, pattern, **kw):
+    """A generic_ny listing (see watch351/adapters/generic_ny.py)."""
+    return _gl(board, key_, url, pattern, platform="generic_ny", **kw)
+
+
+def _not(code, reason, platform=None, agenda_platform=None):
+    d = {"automated": False, "reason_code": code, "reason": reason}
+    if platform:
+        d["platform"] = platform
+    if agenda_platform:
+        d["agenda_platform"] = agenda_platform
+    return d
+
+
+CF = "Cloudflare bot challenge ('Just a moment...', HTTP 403) on the town site for 351WatchBot; not bypassed"
 CURATED: dict[str, dict] = {
+    # ---------------- Long Island
+    "Oyster Bay": {"automated": True, "agenda_platform": "WordPress (date-linked PDFs)",
+                   "note": "No Planning Board: site plans and zoning go to the Town Board. Town Board rows also "
+                           "link 'Adopted Resolutions' and 'Minutes'; only the date-named calendar PDF is taken.",
+                   "listings": [
+                       _ny("Town Board", "select_board", "https://oysterbaytown.com/calendars/town-board-meetings/", _MDY),
+                       _ny("Zoning Board of Appeals", "zoning_board_of_appeals",
+                           "https://oysterbaytown.com/calendars/zoning-board-of-appeals/", _MDY)]},
+    "Hempstead": {"agenda_platform": "CivicPlus AgendaCenter (Town Board) + CivicPlus pages (BZA hearing calendars)",
+                  "note": "Planning Board page lists members only (no agendas).",
+                  "add_listings": [_ny("Board of Appeals", "zoning_board_of_appeals",
+                                       "https://hempsteadny.gov/509/Board-of-Appeals", r"^Hearing - \d")]},
+    "Southampton": {"automated": True, "platform": "escribe", "agenda_platform": "eSCRIBE (pub-southamptonny.escribemeetings.com)",
+                    "note": "Agendas are on eSCRIBE (new adapter `escribe`, upcoming meetings only). eSCRIBE's PDF "
+                            "downloads (FileStream.ashx) answer HTTP 403 with a 'Verifying your browser' challenge, "
+                            "which is not solved; the portal's own HTML agenda view (Meeting.aspx?...&Agenda=Agenda) "
+                            "is served without a challenge and is read instead (flagged for review). The older iQM2 "
+                            "portal answers HTTP 429 to automated requests and is not used. The Zoning Board of "
+                            "Appeals is not published on eSCRIBE.",
+                    "listings": [
+                        {"board": "Town Board", "board_key": "select_board", "url": _ESC, "platform": "escribe",
+                         "meeting_type": r"^Town Board", "format": "html"},
+                        {"board": "Planning Board", "board_key": "planning_board", "url": _ESC, "platform": "escribe",
+                         "meeting_type": r"^Planning Board", "format": "html"},
+                        {"board": "Conservation Board", "board_key": "conservation_commission", "url": _ESC,
+                         "platform": "escribe", "meeting_type": r"^Conservation Board", "format": "html"}]},
+    "Huntington": _not("crawl_delay_exceeds_cap", "huntingtonny.gov robots.txt sets Crawl-delay: 15 for all agents; "
+                       "351WatchBot skips hosts asking for more than 10 s. Automatable at 1 request per 15 s if the cap "
+                       "is raised.", agenda_platform="unknown (site not fetched)"),
+    "Islip": _not("bot_challenge", CF, agenda_platform="unknown (behind Cloudflare)"),
+    "Brookhaven": _not("bot_challenge", CF + ". Its data-center moratorium (Intro LL 11 of 2026) cannot be followed "
+                       "from the town site.", agenda_platform="CivicPlus (behind Cloudflare)"),
+    # ---------------- Westchester / Putnam / Rockland / Orange
+    "New Castle": _not("vendor_robots_disallow",
+                       "Agendas, minutes and packets are hosted on eCode360 (ecode360.com/documents/pub/NE0395/Agendas/), "
+                       "whose robots.txt disallows /documents for all agents (verified with 351WatchBot 2026-10-10).",
+                       platform="ecode360", agenda_platform="CivicPlus CMS + eCode360 document hosting (General Code)"),
+    "Carmel": _not("tls_error",
+                   "carmelny.org serves a TLS certificate that does not match the host (hostname mismatch), so "
+                   "robots.txt cannot be read over a verified connection; host skipped (TLS verification is never disabled).",
+                   agenda_platform="unknown (site not fetched)"),
+    "Putnam Valley": {"automated": True, "platform": "generic_ny", "agenda_platform": "WordPress",
+                      "note": "Town Board agenda packets ('with supporting documents') only; Planning Board and ZBA pages "
+                              "post application files, not agendas.",
+                      "listings": [
+                          _ny("Town Board", "select_board", "https://www.putnamvalley.gov/agenda-documents/", r"Town Board"),
+                          _ny("Town Board", "select_board", "https://www.putnamvalley.gov/town-board-pv/",
+                              r"Town Board.*(?:Agenda|MEETING|WORK SESSION|Session)", doc_href=r"\.pdf")]},
+    "Stony Point": {"automated": True, "platform": "generic_ny", "agenda_platform": "custom CMS (month-paged agenda list)",
+                    "note": "Only Town Board packets are posted; Planning Board and ZBA appear only on the calendar.",
+                    "listings": [_ny("Town Board", "select_board",
+                                     "https://www.stonypointny.gov/meeting-agendas?m={m}&y={y}", _MDY,
+                                     months=True, doc_href=r"/userfiles/")]},
+    "Warwick": {"automated": True, "platform": "generic_ny", "agenda_platform": "WordPress (posts per agenda / legal notice)",
+                "note": "Tentative Town Board agendas and ZBA legal notices are WordPress posts; the post page is read "
+                        "(or its PDF, when it links one).",
+                "listings": [
+                    _ny("Town Board", "select_board", "https://townofwarwickny.gov/", r"agenda|ZBA LEGAL NOTICE",
+                        resolve_pdf=True, board_rules=[[r"ZBA|zoning board", "Zoning Board of Appeals", "zoning_board_of_appeals"],
+                                                       [r"planning board", "Planning Board", "planning_board"],
+                                                       [r"agenda", "Town Board", "select_board"]],
+                        doc_href=r"townofwarwickny\.gov/(?!events)"),
+                    _ny("Town Board", "select_board", "https://townofwarwickny.gov/tb-agendas/", r"agenda",
+                        resolve_pdf=True, doc_href=r"/tb-agendas/.+")]},
+    # ---------------- Mid-Hudson
+    "Gardiner": _not("vendor_robots_disallow",
+                     "Agendas & Minutes (/agendas-minutes) is a HeyGov widget rendered client-side from api.heygov.com, "
+                     "whose robots.txt disallows all bots.", platform="heygov",
+                     agenda_platform="TownWeb site + HeyGov meetings"),
+    "Hurley": _not("bot_challenge", CF), "Wawarsing": _not("bot_challenge", CF),
+    "Highland": _not("no_agendas_online",
+                     "Board pages (Town, Planning, Zoning) post no agendas: Town Board meetings appear only as "
+                     "'hybrid meeting information' news posts and the site keeps minutes only.",
+                     platform="generic", agenda_platform="WordPress"),
+    "Stanford": {"automated": True, "platform": "generic_ny", "agenda_platform": "WordPress + Download Monitor",
+                 "note": "Download links carry a per-page-load '?tmstv=' cache-buster, stripped so documents cache.",
+                 "listings": [
+                     _ny("Town Board", "select_board", _STAN + "agenda-archives/", r"^20\d\d-\d\d-\d\d", strip_query=True),
+                     _ny("Planning Board", "planning_board", _STAN + "planning-board-agendas-archives/", r"^20\d\d-\d\d-\d\d",
+                         strip_query=True),
+                     _ny("Zoning Board of Appeals", "zoning_board_of_appeals", _STAN + "zba-agenda-archives/",
+                         r"^20\d\d-\d\d-\d\d", strip_query=True),
+                     _ny("Conservation Advisory Commission", "conservation_commission",
+                         _STAN + "conservation-advisory-committee-archives/", r"^20\d\d-\d\d-\d\d", strip_query=True)]},
+    "East Fishkill": {"note": "Town Board agendas on the town page stop in April 2026; later ones are on Granicus "
+                              "(eastfishkillny.granicus.com), whose robots.txt disallows 351WatchBot. Only the ZBA is read."},
+    "Livingston": _not("undecodable_response",
+                       "townoflivingston.org (Sucuri + Cloudflare front end) returns a body that is not decodable HTML "
+                       "to 351WatchBot; no agenda listing could be read. Not pursued.", agenda_platform="unknown"),
+    # ---------------- Capital Region / Saratoga / Mohawk
+    "Halfmoon": _not("bot_challenge", CF), "Duanesburg": _not("bot_challenge", CF), "Horicon": _not("bot_challenge", CF),
+    "Milton": {"automated": True, "platform": "generic_ny", "agenda_platform": "Revize",
+               "note": "Planning Board agendas only. Town Board folders hold minutes and resolutions, ZBA folders hold "
+                       "project files, no agendas. Rows show a 'document date', kept as the posted date.",
+               "listings": [_ny("Planning Board", "planning_board",
+                                "https://www.miltonny.gov/supervisor___town_boards/planning_board/meeting_schedules_agenda___minutes.php",
+                                r"Planning Board Agenda", strip_query=True,
+                                posted_regex=r"document date (\d{2}-\d{2}-20\d\d)")]},
+    "Wilton": {"automated": True, "platform": "generic_ny", "agenda_platform": "custom CMS (agenda attachment pages)",
+               "listings": [
+                   _ny("Town Board", "select_board", _WIL + "Town-Board", r"^(?:Agenda|Document|Public Hearing) ", resolve_pdf=True),
+                   _ny("Planning Board", "planning_board", _WIL + "Planning-Board", r"^(?:Agenda|Document|Public Hearing) ",
+                       resolve_pdf=True),
+                   _ny("Zoning Board of Appeals", "zoning_board_of_appeals", _WIL + "Zoning-Board-of-Appeals",
+                       r"^(?:Agenda|Document|Public Hearing) ", resolve_pdf=True)]},
+    "Corinth": {"automated": True, "platform": "generic_ny", "agenda_platform": "custom CMS (homepage meeting list)",
+                "note": "The bare homepage is a JavaScript language redirect to /en/; /en/ lists upcoming meetings with "
+                        "their agenda PDFs.",
+                "listings": [_ny("Town Board", "select_board", "https://townofcorinthny.gov/en/",
+                                 r"Meeting|Agenda|Workshop|Hearing", doc_href=r"/images/document/",
+                                 board_rules=[[r"planning", "Planning Board", "planning_board"],
+                                              [r"zoning", "Zoning Board of Appeals", "zoning_board_of_appeals"],
+                                              [r"town board", "Town Board", "select_board"]])]},
+    "Berne": _not("no_agendas_online", "Town Board page posts resolutions and annual documents; Planning and Zoning "
+                  "pages post minutes only. No agendas online.", platform="generic", agenda_platform="WordPress"),
+    "Perth": _not("js_only", _JS_MW, agenda_platform="JavaScript CMS (agendasandminutes module)"),
+    "Winfield": _not("no_agendas_online", "Only Town Board minutes are posted (no agendas); the data-center "
+                     "moratorium appears as a public-hearing notice post.", platform="generic", agenda_platform="WordPress"),
+    "Leyden": {"automated": True, "platform": "generic_ny", "agenda_platform": "custom CMS (meeting detail pages)",
+               "note": "Each meeting has an HTML detail page; the page text is scanned.",
+               "listings": [
+                   _ny("Town Board", "select_board", "https://townofleydenny.gov/meetings/meetings/Town%20Board/{year}",
+                       r"^[A-Z][a-z]+ \d{1,2}, 20\d\d:", exclude_pattern=r"minutes|assessment review"),
+                   _ny("Planning Board", "planning_board",
+                       "https://townofleydenny.gov/meetings/meetings/Planning%20Board/{year}", r"^[A-Z][a-z]+ \d{1,2}, 20\d\d:")]},
+    # ---------------- Central NY / Finger Lakes
     "Clay": {"platform": "generic", "agenda_platform": "Drupal", "automated": True,
              "note": "?field_board_value does not filter the 'recent agendas' block; each listing also matches "
                      "the board name in the file name.",
@@ -312,6 +465,69 @@ CURATED: dict[str, dict] = {
                      r"View Agenda.*(Zoning|ZBA)"),
                  _gl("Town Board", "select_board", _CLAY + "Town%20Board", r"View Agenda.*Town"),
              ]},
+    "Lysander": {"platform": "generic_ny", "agenda_platform": "Drupal", "automated": True,
+                 "note": "One /board-meetings page mixes Town Board, Planning Board and ZBA agendas with no headings; "
+                         "boards are told apart by file name (pb / zba, otherwise Town Board) and dates read from "
+                         "compact names (a10082026pb_0.pdf). A file named only '91426agenda.pdf' cannot be assigned "
+                         "reliably and is labeled Town Board.",
+                 "listings": [_ny("Town Board", "select_board", "https://lysanderny.gov/board-meetings", r"agenda",
+                                  exclude_pattern=r"minutes|materials", compact_dates=True, board_rules_field="href",
+                                  board_rules=[[r"zba", "Zoning Board of Appeals", "zoning_board_of_appeals"],
+                                               [r"pb", "Planning Board", "planning_board"],
+                                               [r"agenda", "Town Board", "select_board"]])]},
+    "Camillus": _not("no_agendas_online", "Town site calendar lists Town Board, Planning Board and ZBA meetings as "
+                     "events with no agenda files; no agenda listing found on the pages reached.",
+                     platform="generic", agenda_platform="custom ASP.NET CMS"),
+    "Spafford": _not("js_only", _JS_MW, agenda_platform="JavaScript CMS (agendasandminutes module)"),
+    "Geneva": {"automated": True, "platform": "generic_ny", "agenda_platform": "Revize",
+               "listings": [_ny("Town Board", "select_board",
+                                "https://townofgenevany.gov/departments_and_services/agendas_minutes.php", r"agenda",
+                                exclude_pattern=r"minutes", strip_query=True, doc_href=r"\.pdf",
+                                date_regex=r"(?P<y>20\d\d)\.\d\d (?P<m>[A-Za-z]+) (?P<d>\d{1,2})\b",
+                                board_rules=[[r"planning", "Planning Board", "planning_board"],
+                                             [r"zoning|ZBA", "Zoning Board of Appeals", "zoning_board_of_appeals"],
+                                             [r"conservation", "Conservation Board", "conservation_commission"],
+                                             [r"town board", "Town Board", "select_board"]])]},
+    "Penfield": {"automated": True, "platform": "generic_ny", "agenda_platform": "Revize",
+                 "listings": [
+                     _ny("Town Board", "select_board",
+                         _PEN + "town_board.php", r"agenda",
+                         strip_query=True),
+                     _ny("Planning Board", "planning_board",
+                         _PEN + "planning_board.php", r"agenda",
+                         strip_query=True),
+                     _ny("Zoning Board of Appeals", "zoning_board_of_appeals",
+                         _PEN + "zoning_board.php",
+                         r"agenda", strip_query=True)]},
+    "York": _not("no_agendas_online", "Wix site: Town Board, Planning Board and ZBA pages post annual meeting-date "
+                 "schedules, forms and occasional hearing notices, but no agendas.", platform="generic",
+                 agenda_platform="Wix"),
+    "Cicero": _not("crawl_delay_exceeds_cap", "ciceronewyork.net robots.txt sets Crawl-delay: 20 for all agents; "
+                   "351WatchBot skips hosts asking for more than 10 s.", agenda_platform="WordPress (site not fetched)"),
+    "Lansing": _not("crawl_delay_exceeds_cap", "lansingtownny.gov robots.txt sets Crawl-delay: 15 for all agents; "
+                    "351WatchBot skips hosts asking for more than 10 s. Automatable at 1 request per 15 s if the cap "
+                    "is raised.", agenda_platform="unknown (site not fetched)"),
+    # ---------------- Western NY
+    "Concord": {"automated": True, "platform": "generic_ny", "agenda_platform": "custom PHP site",
+                "note": "Most 2026 agenda files are named by month only ('September 2026.pdf'): those are kept with "
+                        "no meeting date. ZBA page posts no documents.",
+                "listings": [
+                    _ny("Town Board", "select_board", "https://www.townofconcordny.gov/town_board_min.php", r"^Agenda",
+                        month_only=True, doc_href=r"\.pdf"),
+                    _ny("Planning Board", "planning_board", "https://www.townofconcordny.gov/planning_board_min.php",
+                        r"^Agenda", month_only=True, doc_href=r"\.pdf")]},
+    "Aurora": {"automated": True, "platform": "generic_ny", "agenda_platform": "Concrete CMS (download_file links in yearly tables)",
+               "note": "One '2026 Meeting Schedule & Documents' page with a table per board; rows give month and day only.",
+               "listings": [
+                   _ny("Town Board", "select_board", _AUR, r"^AGENDA\b", scope=r"^Town Board Meetings & Work Sessions$",
+                       assume_year=2026),
+                   _ny("Planning and Conservation Board", "planning_board", _AUR, r"^AGENDA\b",
+                       scope=r"^Planning Board Meetings$", assume_year=2026),
+                   _ny("Zoning Board of Appeals", "zoning_board_of_appeals", _AUR, r"^AGENDA\b",
+                       scope=r"^Zoning Board of Appeals Meetings$", assume_year=2026)]},
+    "Boston": _not("js_only", _JS_MW, agenda_platform="JavaScript CMS (agendasandminutes module)"),
+    "Newfane": _not("waf_block", "HTTP 403 'Forbidden' from the site's firewall on every request (bot/IP filtering); "
+                    "not bypassed", agenda_platform="unknown"),
 }
 
 
@@ -337,27 +553,70 @@ def now_iso() -> str:
 
 
 # ------------------------------------------------------------------ discover
-def apply_curated(rec: dict) -> dict:
+NY_LABELS = {"planning_board": "Planning Board", "zoning_board_of_appeals": "Zoning Board of Appeals",
+             "conservation_commission": "Conservation Advisory Council", "select_board": "Town Board"}
+
+
+def listing_platform(l: dict) -> str:
+    if l.get("platform"):
+        return l["platform"]
+    if "category_id" in l:
+        return "civicplus"
+    if "civicclerk.com" in l.get("url", ""):
+        return "civicclerk"
+    if "client" in l:
+        return "legistar"
+    return "generic"
+
+
+def apply_curated(raw: dict) -> dict:
+    """Discovery result + hand-curated facts -> the towns_ny.json row."""
+    rec = json.loads(json.dumps(raw))
     cur = CURATED.get(rec["town"], {})
-    if not cur:
-        return rec
-    rec.update({k: v for k, v in cur.items() if k not in ("listings", "drop_listings", "add_listings")})
+    for k in ("agenda_platform", "note", "platform", "reason_code", "reason", "automated", "tenant"):
+        if k in cur:
+            rec[k] = cur[k]
+    listings = rec.get("listings", []) + rec.pop("secondary_listings", [])
     if "listings" in cur:
-        rec["listings"] = cur["listings"]
-    if cur.get("add_listings"):
-        have = {(l["board_key"], l["url"]) for l in rec.get("listings", [])}
-        rec["listings"] = rec.get("listings", []) + [l for l in cur["add_listings"]
-                                                      if (l["board_key"], l["url"]) not in have]
+        listings = list(cur["listings"])
+    listings += cur.get("add_listings", [])
     if cur.get("drop_listings"):
-        rec["listings"] = [l for l in rec.get("listings", []) if not re.search(cur["drop_listings"], l["board"], re.I)]
-    if rec.get("automated"):
-        rec["status"], rec["reason_code"], rec["reason"] = "automated", None, None
-        rec["boards_found"] = sorted({l["board_key"] for l in rec.get("listings", [])})
+        listings = [l for l in listings if not re.search(cur["drop_listings"], l["board"], re.I)]
+    for l in listings:   # discovery labels generic listings with link text ("View Planning Board Meeting Minutes")
+        if listing_platform(l) in ("generic", "generic_ny") and (
+                re.search(r"minutes|view|click|full list|select board", l["board"], re.I) or len(l["board"]) > 40):
+            l["board"] = NY_LABELS.get(l["board_key"], l["board"])
+    if cur.get("automated") is False:
+        rec.update(status="not_automated", automated=False, listings=[])
+        rec.pop("boards_by_platform", None)
+        if listings:
+            rec["listings_found_not_crawled"] = listings
+    elif listings and (cur.get("automated") or rec.get("automated")):
+        rec.update(status="automated", automated=True, reason_code=None, reason=None)
+        plats = []
+        for l in listings:
+            if listing_platform(l) not in plats:
+                plats.append(listing_platform(l))
+        primary = rec.get("platform") if rec.get("platform") in plats else plats[0]
+        rec["platform"] = primary
+        rec["platforms"] = [primary] + [p_ for p_ in plats if p_ != primary]
+        rec["listings"] = [l for l in listings if listing_platform(l) == primary]
+        sec = [l for l in listings if listing_platform(l) != primary]
+        if sec:
+            rec["secondary_listings"] = sec
+        rec["boards_by_platform"] = {p_: sorted({l["board_key"] for l in listings if listing_platform(l) == p_})
+                                     for p_ in rec["platforms"]}
+        rec["boards_found"] = sorted({l["board_key"] for l in listings})
         rec["boards_missing"] = [k for k in dc.TRACKED[:4] if k not in rec["boards_found"]]
     else:
-        rec["status"] = "not_automated"
-        rec["listings"] = []
-    rec["curated"] = True
+        rec.update(status="not_automated", automated=False, listings=[])
+    if not rec.get("agenda_platform"):
+        plat = rec.get("platform")
+        rec["agenda_platform"] = {"civicplus": "CivicPlus AgendaCenter", "civicclerk": "CivicClerk",
+                                  "generic": "town website (" + (", ".join(rec.get("cms") or []) or "custom CMS") + ")",
+                                  "legistar": "Legistar"}.get(plat, plat or "unknown")
+    if cur:
+        rec["curated"] = True
     return rec
 
 
@@ -374,49 +633,96 @@ def discover_one(fetcher: PoliteFetcher, t: dict) -> dict:
                "automated": False, "listings": [], "_leadtime_rows": []}
     lead = rec.pop("_leadtime_rows", [])
     rec = {"town": rec["town"], "state": STATE, **{k: v for k, v in rec.items() if k != "town"}}
-    rec["selection_reason"] = t["why"]
-    rec["selection_source_url"] = t["src"]
-    rec = apply_curated(rec)
     return rec | {"_lead": lead}
 
 
-def cmd_discover(args, fetcher: PoliteFetcher) -> None:
-    ny_patches()
-    conf = load(CONFIG, {"towns": []})
-    by_town = {t["town"]: t for t in conf.get("towns", [])}
-    todo = select(NY_TOWNS, args.towns)
-    with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        out = list(pool.map(lambda t: discover_one(fetcher, t), todo))
-    lead_all = load(SCRATCH / "leadtime_rows.json", {})
-    for rec in out:
-        lead_all[rec["town"]] = rec.pop("_lead")
-        by_town[rec["town"]] = rec
-    save(SCRATCH / "leadtime_rows.json", lead_all)
-    rows = [by_town[t["town"]] for t in NY_TOWNS if t["town"] in by_town]
+RAW = SCRATCH / "discovered_raw.json"
+
+
+def write_config(raw_by_town: dict) -> dict:
+    rows = []
+    for t in NY_TOWNS:
+        if t["town"] not in raw_by_town:
+            continue
+        rec = apply_curated(raw_by_town[t["town"]])
+        rec["selection_reason"] = t["why"]
+        rec["selection_source_url"] = t["src"]
+        rows.append(rec)
     conf = {
-        "_about": "351 Watch New York pilot: agenda platform and crawlable listing per tracked board (with "
-                  "evidence: agendas dated within the last 120 / next 120 days), or the precise reason a town is "
-                  "not automated. Same per-town schema as towns_ma_all.json plus state and why the town was "
-                  "chosen. Built by `python3 experiments/ny_pilot.py discover` (watch351.discover_census with NY "
-                  "board names: Town Board -> select_board, Conservation Advisory Council/Board -> "
-                  "conservation_commission).",
+        "_about": "351 Watch New York pilot: agenda platform and crawlable listing per tracked board, or the precise "
+                  "reason a town is not automated. Same per-town schema as towns_ma_all.json plus state, "
+                  "agenda_platform and why the town was chosen (selection_reason / selection_source_url). Built by "
+                  "`python3 experiments/ny_pilot.py discover` (watch351.discover_census with NY board names) and "
+                  "hand curation (CURATED in experiments/ny_pilot.py). Listings with \"platform\": \"generic_ny\" or "
+                  "\"escribe\" use the adapters added for this pilot.",
         "generated": now_iso(),
         "state": STATE,
         "boards_tracked": dc.TRACKED[:4],
         "board_key_mapping": {"Town Board": "select_board", "Planning Board": "planning_board",
                               "Zoning Board of Appeals": "zoning_board_of_appeals",
                               "Conservation Advisory Council / Conservation Board": "conservation_commission"},
-        "evidence_rule": "board automated only if its listing shows >=1 agenda dated in [today-120d, today+120d]",
+        "evidence_rule": "discovery: board automated only if its listing shows >=1 agenda dated in "
+                         "[today-120d, today+120d]; curated listings were checked by hand",
         "count": len(rows),
         "automated": sum(1 for r in rows if r.get("automated")),
         "towns": rows,
     }
     save(CONFIG, conf)
-    for r in out:
+    return conf
+
+
+def cmd_discover(args, fetcher: PoliteFetcher) -> None:
+    ny_patches()
+    raw = load(RAW, {})
+    todo = select(NY_TOWNS, args.towns)
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        out = list(pool.map(lambda t: discover_one(fetcher, t), todo))
+    lead_all = load(SCRATCH / "leadtime_rows.json", {})
+    for rec in out:
+        lead_all[rec["town"]] = rec.pop("_lead")
+        raw[rec["town"]] = rec
+    save(SCRATCH / "leadtime_rows.json", lead_all)
+    save(RAW, raw)
+    conf = write_config(raw)
+    for r in conf["towns"]:
+        if args.towns and r["town"] not in {t["town"] for t in todo}:
+            continue
         print(f"{r['town']:<16} {str(r.get('platform')):<11} {'AUTO' if r.get('automated') else 'no  '} "
-              f"boards={r.get('boards_found')} cms={r.get('cms')} vend={list((r.get('vendors') or {}).keys())} "
-              f"{'' if r.get('automated') else (r.get('reason_code') or '') + ': ' + str(r.get('reason'))[:150]}")
+              f"boards={r.get('boards_found')} {'' if r.get('automated') else (r.get('reason_code') or '') + ': ' + str(r.get('reason'))[:150]}")
     print(f"automated {conf['automated']}/{conf['count']}")
+
+
+def cmd_curate(args, fetcher: PoliteFetcher) -> None:
+    conf = write_config(load(RAW, {}))
+    for r in conf["towns"]:
+        print(f"{r['town']:<16} {str(r.get('platform')):<11} {'AUTO' if r.get('automated') else 'no  '} "
+              f"{r.get('agenda_platform')!s:<40.40} boards={r.get('boards_found')} "
+              f"{'' if r.get('automated') else (r.get('reason_code') or '') + ': ' + str(r.get('reason'))[:90]}")
+    print(f"automated {conf['automated']}/{conf['count']}")
+
+
+def crawl_configs(towns: list[dict]) -> list[dict]:
+    """One crawl config per (town, platform): each adapter reads its own listings."""
+    cfgs = []
+    for t in towns:
+        if not t.get("automated"):
+            cfgs.append(t)
+            continue
+        groups: dict[str, list] = {}
+        for l in t.get("listings", []) + t.get("secondary_listings", []):
+            groups.setdefault(listing_platform(l), []).append(l)
+        for plat, ls in groups.items():
+            cfg = {"town": t["town"], "county": t.get("county"), "website": t.get("final_url") or t["website"],
+                   "platform": plat, "automated": True, "listings": ls}
+            if plat == "civicplus":
+                parts = urlsplit(cfg["website"])
+                cfg["website"] = f"{parts.scheme}://{parts.netloc}"
+            if plat == "civicclerk":
+                cfg["tenant"] = t.get("tenant") or (t.get("vendors", {}).get("civicclerk", {}).get("tenant"))
+            if plat == "legistar":
+                cfg["client"] = ls[0]["client"]
+            cfgs.append(cfg)
+    return cfgs
 
 
 # ------------------------------------------------------------------ crawl
@@ -474,11 +780,17 @@ def crawl_one(fetcher: PoliteFetcher, cfg: dict, window: Window) -> dict:
     for doc in docs:
         rec = {"board": doc.board, "board_key": doc.board_key,
                "meeting_date": doc.meeting_date.isoformat() if doc.meeting_date else None,
-               "title": doc.title, "url": doc.url, "listing_url": doc.listing_url}
+               "title": doc.title, "url": doc.url, "listing_url": doc.listing_url, "platform": cfg["platform"]}
         rec.update(stamps.get(doc.url, {}))
-        m = dc.REVIZE_TS.search(doc.url)
-        if m:
-            rec["uploaded"] = datetime.strptime(m.group(1), "%Y%m%d%H%M%S").isoformat()
+        up = doc.extra.get("uploaded") or (dc.REVIZE_TS.search(doc.url).group(1) if dc.REVIZE_TS.search(doc.url) else None)
+        if up:
+            rec["uploaded"] = datetime.strptime(up[:14], "%Y%m%d%H%M%S").isoformat()
+        if doc.extra.get("posted"):
+            try:
+                rec["posted"] = datetime.strptime(doc.extra["posted"], "%m-%d-%Y").isoformat()
+                rec["posted_kind"] = "document_date"
+            except ValueError:
+                pass
         try:
             hits, ex = scan_document(fetcher, doc)
         except FetchError as e:
@@ -550,7 +862,19 @@ def cmd_crawl(args, fetcher: PoliteFetcher) -> None:
     today = date.today()
     window = Window(today - timedelta(days=args.days_back), today + timedelta(days=args.days_ahead))
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        results = list(pool.map(lambda c: crawl_one(fetcher, c, window), towns))
+        parts = list(pool.map(lambda c: crawl_one(fetcher, c, window), crawl_configs(towns)))
+    results = []
+    for t in towns:   # merge the per-platform results back into one row per town
+        ps = [p_ for p_ in parts if p_["town"] == t["town"]]
+        r = dict(ps[0])
+        r["platform"] = t.get("platform")
+        r["platforms"] = sorted({p_["platform"] for p_ in ps if p_["platform"]})
+        r["reason_code"], r["reason"] = t.get("reason_code"), t.get("reason")
+        for k in ("agendas_listed", "documents_scanned", "documents_without_text_layer", "documents_ocr"):
+            r[k] = sum(p_[k] for p_ in ps)
+        for k in ("errors", "docs", "hits"):
+            r[k] = [x for p_ in ps for x in p_[k]]
+        results.append(r)
     county = {r["town"]: r.get("county") for r in towns}
     hits = _dedupe([h for r in results for h in r["hits"]])
     hits = [finalize_hit(h, county.get(h["town"])) for h in hits]
@@ -600,7 +924,7 @@ def cmd_crawl(args, fetcher: PoliteFetcher) -> None:
 
     by_platform = defaultdict(lambda: {"automated": [], "not_automated": []})
     for r, cfg in zip(results, towns):
-        by_platform[cfg.get("platform") or cfg.get("reason_code") or "unknown"][
+        by_platform[cfg.get("platform") or "none (" + str(cfg.get("reason_code")) + ")"][
             "automated" if r["automated"] else "not_automated"].append(r["town"])
     report = {
         "generated": now_iso(),
@@ -653,7 +977,7 @@ def cmd_listings(args, fetcher: PoliteFetcher) -> None:
     conf = load(CONFIG, {"towns": []})
     today = date.today()
     window = Window(today - timedelta(days=args.days_back), today + timedelta(days=args.days_ahead))
-    for cfg in select(conf["towns"], args.towns):
+    for cfg in crawl_configs(select(conf["towns"], args.towns)):
         if not cfg.get("automated"):
             print(f"{cfg['town']}: NOT automated ({cfg.get('reason')})")
             continue
@@ -669,7 +993,7 @@ def cmd_listings(args, fetcher: PoliteFetcher) -> None:
 
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("command", choices=["get", "discover", "listings", "crawl"])
+    p.add_argument("command", choices=["get", "discover", "curate", "listings", "crawl"])
     p.add_argument("url", nargs="?")
     p.add_argument("--grep")
     p.add_argument("--limit", type=int, default=60)
@@ -688,7 +1012,8 @@ def main(argv=None) -> int:
     if args.command == "get":
         nep.cmd_get(args, fetcher)
     else:
-        {"discover": cmd_discover, "listings": cmd_listings, "crawl": cmd_crawl}[args.command](args, fetcher)
+        {"discover": cmd_discover, "curate": cmd_curate, "listings": cmd_listings,
+         "crawl": cmd_crawl}[args.command](args, fetcher)
     return 0
 
 

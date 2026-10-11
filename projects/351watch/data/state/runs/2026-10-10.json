@@ -1,0 +1,106 @@
+{
+ "by_state": {
+  "MA": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 240,
+   "towns_succeeded": 239
+  }
+ },
+ "date": "2026-10-10",
+ "document_errors": 0,
+ "documents_already_indexed": 2519,
+ "documents_deferred": 0,
+ "documents_listed": 2522,
+ "documents_needing_ocr": 3,
+ "documents_rematched": 0,
+ "documents_retried": 3,
+ "duration_seconds": 195.6,
+ "errors": [
+  {
+   "error": "listing civicplus: https://orleansma.gov/AgendaCenter/Search/?term=&CIDs=18%2C34%2C46%2C51%2C&startDate=09%2F10%2F2026&endDate=02%2F07%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='orleansma.gov', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Orleans"
+  },
+  {
+   "error": "listing civicplus: https://www.plymouth-ma.gov/AgendaCenter/Search/?term=&CIDs=12%2C19%2C21%2C24%2C&startDate=09%2F10%2F2026&endDate=02%2F07%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='www.plymouth-ma.gov', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Plymouth"
+  },
+  {
+   "error": "listing civicplus: https://www.washington-ma.gov/AgendaCenter/Search/?term=&CIDs=13%2C9%2C10%2C&startDate=09%2F10%2F2026&endDate=02%2F07%2F2027&dateRange=&dateSelector=: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+   "town": "MA:Washington"
+  },
+  {
+   "error": "listing generic: https://www.wellesleyma.gov/2685/November-2026-Special-Town-Meeting: HTTPSConnectionPool(host='www.wellesleyma.gov', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Wellesley"
+  }
+ ],
+ "errors_total": 4,
+ "finished": "2026-10-11T00:02:31+00:00",
+ "hits_current": 979,
+ "index": {
+  "by_state": {
+   "MA": 2671,
+   "NY": 16
+  },
+  "by_status": {
+   "error": 10,
+   "needs_ocr": 3,
+   "ok": 2674
+  },
+  "by_text_source": {
+   "docx": 15,
+   "html": 138,
+   "none": 10,
+   "ocr": 697,
+   "pdf": 1827
+  },
+  "documents": 2687,
+  "hits": 1073,
+  "pruned": 0,
+  "towns": 244,
+  "with_hits": 568
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "listing": 82417368
+  },
+  "cache_hits": 43,
+  "errors": 4,
+  "requests": 373,
+  "requests_by_purpose": {
+   "listing": 373
+  },
+  "robots_blocked": 0
+ },
+ "new_alert_items": 0,
+ "new_alert_items_by_topic": {},
+ "new_documents": 0,
+ "new_hits": 0,
+ "new_hits_by_topic": {},
+ "options": {
+  "matcher_version": "77ae3c6f23",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-10-10T23:59:15+00:00",
+ "states": [
+  "MA"
+ ],
+ "towns_attempted": 240,
+ "towns_failed": [
+  "MA:Washington"
+ ],
+ "towns_partial": [
+  "MA:Orleans",
+  "MA:Plymouth",
+  "MA:Wellesley"
+ ],
+ "towns_succeeded": 239,
+ "window": {
+  "end": "2027-02-07",
+  "start": "2026-09-10"
+ }
+}

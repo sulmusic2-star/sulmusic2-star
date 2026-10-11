@@ -55,7 +55,7 @@ export async function POST(request) {
   try {
     if (event.type === 'checkout.session.completed') {
       await setPlan(obj.client_reference_id || meta.watchlist_id, {
-        plan: meta.plan || 'town',
+        plan: meta.plan || 'paid',
         billing: { status: 'active', customer: obj.customer || null, subscription: obj.subscription || null, event: event.id },
       });
     } else if (event.type === 'customer.subscription.updated' || event.type === 'customer.subscription.deleted') {

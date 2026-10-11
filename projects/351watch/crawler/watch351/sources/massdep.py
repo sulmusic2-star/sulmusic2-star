@@ -86,6 +86,7 @@ MIN_INTERVAL = 1.05          # seconds between requests to the host (<= 1 reques
 PAGE = 200                   # list page size
 CHUNK_DAYS = 7               # list queries are split into week-long filing-date windows
 LOOKBACK_DAYS = 45           # incremental runs re-list this many days before the cursor
+DESCRIPTION_WAIT_DAYS = 30   # re-fetch details (every 2+ days) of recent filings still lacking a description
 SOURCE = "massdep_wetlands"
 BOARD = "Conservation Commission (wetlands filing)"
 BOARD_KEY = "conservation_commission"
@@ -369,7 +370,9 @@ KNOWN: list[dict] = [
     {"name": "Blue Sky Utility", "kind": "developer", "pure": True, "pattern": r"\bBLUE\s+SKY\s+UTILITY\b"},
     {"name": "East Point Energy", "kind": "developer", "pure": True, "pattern": r"\bEAST\s+POINT\s+ENERGY\b"},
     {"name": "SunPower / Sunrun / Tesla (residential installers)", "kind": "residential_installer", "pure": False,
-     "pattern": r"\bSUNRUN\b|\bSUNPOWER\b|\bTESLA\b|\bVIVINT\s+SOLAR\b|\bREVOLUSUN\b|\bSUNNOVA\b|\bTRINITY\s+SOLAR\b|\bSUNBUG\b"},
+     "pattern": r"\bSUNRUN\b|\bSUNPOWER\b|\bTESLA\b|\bVIVINT\s+SOLAR\b|\bREVOLUSUN\b|\bSUNNOVA\b|\bTRINITY\s+SOLAR\b|"
+                r"\bSUNBUG\b|\bFREEDOM\s+FOREVER\b|\bION\s+SOLAR\b|\bPALMETTO\b|\bSOLARCITY\b|\bMOMENTUM\s+SOLAR\b|"
+                r"\bPOWERHOME\b|\bBOSTON\s+SOLAR\b|\bSUNPRO\b|\bADT\s+SOLAR\b|\bSUNWORKS\b"},
     # ---- data-center operators / developers
     {"name": "Digital Realty", "kind": "datacenter", "pure": True, "pattern": r"\bDIGITAL\s+REALTY\b"},
     {"name": "Centersquare (incl. Cyxtera)", "kind": "datacenter", "pure": True, "pattern": r"\bCENTERSQUARE\b|\bCYXTERA\b"},
@@ -408,12 +411,18 @@ KNOWN: list[dict] = [
     {"name": "Nutter McClennen & Fish LLP", "kind": "attorney", "pure": False, "pattern": r"\bNUTTER\b"},
     {"name": "Bacon Wilson, P.C.", "kind": "attorney", "pure": False, "pattern": r"\bBACON\s+WILSON\b"},
 ]
+_STORAGE_ONLY = {"Stem Inc.", "SYSO Technologies", "Hecate Energy", "Cranberry Point Energy Storage LLC",
+                 "Medway Grid LLC", "Moraga Storage LLC", "Hillman Energy Center LLC", "Blue Sky Utility",
+                 "East Point Energy", "Enel X", "S&C Electric"}
 for _k in KNOWN:
     _k["rx"] = re.compile(_k["pattern"])
+    _k["topic"] = {"datacenter": "data_center", "wind": "clean_energy_siting", "utility": "clean_energy_siting",
+                   "tower": "wireless_telecom"}.get(_k["kind"],
+                                                    "battery_storage" if _k["name"] in _STORAGE_ONLY else "solar")
 
 # Generic markers for payors that are engineers / consultants / law firms (agents, not parents).
 CONSULTANT_RX = re.compile(
-    r"\bENGINEER|\bCONSULT|\bSURVEY|\bENVIRONMENTAL\b|\bECOLOG|\bWETLAND|\bLAND\s+(?:DESIGN|PLANNING|SURVEY|USE)|"
+    r"\bENGINEER|\bENG\b|\bENGRG?\b|\bCONSULT|\bSURVEY|\bSVY\b|\bASSOC\b|\bENV\b|\bENVIRO\b|\bENVIRONMENTAL\b|\bECOLOG|\bWETLAND|\bLAND\s+(?:DESIGN|PLANNING|SURVEY|USE)|"
     r"\bCIVIL\b|\bDESIGN\b|\bPLANNING\b|\bARCHITECT|\bASSOCIATES\b|\bGEOTECH|\bHYDRO(?:LOGIC|GEOLOGIC)|"
     r"\bBSC\s+GROUP\b|\bVHB\b|\bTIGHE\s*&\s*BOND\b|\bGZA\b|\bSTANTEC\b|\bTETRA\s+TECH\b|\bHALEY\b|\bNITSCH\b|"
     r"\bMERIDIAN\b|\bLEC\b|\bEBI\b|\bWSP\b|\bBOWMAN\b|\bEPSILON\b|\bESS\s+GROUP\b|\bGOULET\b|\bHANCOCK\s+ASSOC|"
@@ -475,7 +484,7 @@ def clean(s: str | None) -> str:
 
 def clean_address(s: str | None) -> str:
     # The portal appends internal markers ("**", "**#", "*") to addresses.
-    return clean(re.sub(r"[*#]+\s*$", "", clean(s)))
+    return clean(re.sub(r"[*#^]+\s*$", "", clean(s)))
 
 
 def norm_name(s: str | None) -> str:
@@ -492,8 +501,13 @@ def norm_name(s: str | None) -> str:
 CHECK_RX = re.compile(
     r"(?:^|[\s/;,(])(?:CK|CHK|CHECK|CHECKS|CKS|CK\.|M\.?O\.?|MONEY\s+ORDER|BANK\s+CHECK|CASHIERS?\s+CHECK|"
     r"CERTIFIED\s+CHECK|TREASURER'?S?\s+CHECK)\s*S?\s*(?:NO\.?|NUMBER)?\s*[#:]?\s*"
-    r"(?P<nums>[0-9][0-9A-Z\-]*(?:\s*(?:[,&+/]|AND)\s*#?\s*[0-9][0-9A-Z\-]*)*)\s*"
-    r"(?:[-:,]\s*)?(?:FROM\s+|BY\s+|PAID\s+BY\s+)?(?P<payor>[^/]*)", re.I)
+    r"(?P<nums>[A-Z]{0,3}[0-9][0-9A-Z\-]*(?:\s*(?:[,&+/]|AND)\s*#?\s*[A-Z]{0,3}[0-9][0-9A-Z\-]*)*|"
+    r"(?:INFO\s+)?NOT\s+PROVIDED|N/?A|UNKNOWN)\s*"
+    r"(?:[-:,]\s*)?(?:FROM\s+|BY\s+|PAID\s+BY\s+)?(?P<payor>.*)", re.I)
+# "//"-separated note segments that are bookkeeping, not project description.
+ADMIN_RX = re.compile(r"^(?:#\s*[A-Z0-9][A-Z0-9\-]*\b.*|[A-Z]{1,4}\d?[A-Z]?-\d+-\d+\b.*|APPROX\.?\s+LAT.*|(?:OOC|ORAD|NOI|DOA|COC)?\s*DEP\s+TRANSACTION\s+ID\b.*|"
+                      r"P(?:AI)?D\s+ON[\s-]?LINE.*|E[\s-]?PAY.*|FEE\s+(?:WAIVED|EXEMPT).*|(?:FEE\s+)?EXEMPT\b.*|"
+                      r"NO\s+FEE\b.*|MUNICIPAL(?:LY)?\s+EXEMPT.*|(?:CK|CHECK)\s+INFO.*)$", re.I)
 
 
 def split_comments(comments: str | None) -> tuple[str, str | None, list[str]]:
@@ -511,8 +525,8 @@ def split_comments(comments: str | None) -> tuple[str, str | None, list[str]]:
                 desc_parts.append(before)
             p = clean(m.group("payor")).strip(" -;,.:")
             payor = p or None
-        elif re.fullmatch(r"#?\s*[A-Z]{1,4}[-\s]?\d[\d\-]*", seg, re.I):
-            admin.append(seg)                                # internal codes such as "#WC-52-21"
+        elif ADMIN_RX.match(seg):
+            admin.append(seg)          # internal codes ("#WC-52-21"), eDEP transaction ids, online payment
         else:
             desc_parts.append(seg)
     return clean(" // ".join(desc_parts)), payor, admin
@@ -635,15 +649,18 @@ _EV = re.compile(r"\bEV\s+charg\w*|\belectric\s+vehicle\s+(?:charg\w*|supply)|\b
 _SIZE = re.compile(r"\b(\d{1,4}(?:[.,]\d+)?)\s*-?\s*(MW|megawatts?|kW|kilowatts?)(?:\s*(?:AC|DC))?\b", re.I)
 _COMMERCIAL_SOLAR = re.compile(
     r"\bsolar\s+(?:farm|facility|facilities|field|project|garden|canopy|canopies|carports?|park|plant|"
-    r"generating|electric\s+generat\w+|energy\s+(?:facility|system|project|generat\w+))|"
-    r"\b(?:ground|pole)[\s-]+mounted\s+(?:solar|photovoltaic|PV)\b|\bcommunity\s+solar\b|\butility[\s-]scale\b|"
-    r"\bagri-?voltaic|\bfloating\s+solar\b|\bdual[\s-]use\s+solar\b|\bcanop(?:y|ies)\b|\bcarports?\b|\bacres?\b|"
-    r"\bsolar\s+photovoltaic\s+(?:facility|system|array)\b|\binterconnect", re.I)
-_RESIDENTIAL = re.compile(r"\bsingle[\s-]family\b|\bdwelling\b|\bhouse\b|\bhome\b|\bresiden\w+|\bgarage\b|"
-                          r"\broof\b|\broof[\s-]?(?:top|mounted)\b|\brooftop\b|\bdeck\b|\bporch\b|\bshed\b|\bpool\b|"
-                          r"\baddition\b|\bbackyard\b|\byard\b|\bdriveway\b|\bseptic\b", re.I)
+    r"generating|electric\s+generat\w+|energy\s+(?:facility|project|generat\w+))|"
+    r"\bcommunity\s+solar\b|\butility[\s-]scale\b|\bagri-?voltaic|\bfloating\s+solar\b|\bdual[\s-]use\s+solar\b|"
+    r"\bcanop(?:y|ies)\b|\bcarports?\b|\b\d+(?:\.\d+)?\s*(?:\+/-\s*)?acres?\b|\bsolar\s+photovoltaic\s+facility\b|"
+    r"\binterconnect\w*|\bmegawatt|\bmw\b", re.I)
+_WEAK_COMMERCIAL_SOLAR = re.compile(r"\b(?:ground|pole)[\s-]+mounted\s+(?:solar|photovoltaic|PV)\b|"
+                                    r"\bsolar\s+(?:array|arrays|panels?|system|installation|energy\s+system)\b", re.I)
+_RESIDENTIAL = re.compile(r"\bsingle[\s-]family\b|\bSFH\b|\bSFD\b|\bdwelling\b|\bhouse\b|\bhome\b|\bresiden\w+|"
+                          r"\bgarage\b|\bdeck\b|\bporch\b|\bshed\b|\bpool\b|\baddition\b|\bbackyard\b|"
+                          r"\bseptic\b|\bcottage\b", re.I)
 _ROOFTOP = re.compile(r"\broof\b|\broof[\s-]?(?:top|mounted)\b|\brooftop\b", re.I)
-_ENERGY_NAME = re.compile(r"\bSOLAR\b|\bPHOTOVOLTAIC\b|\bENERGY\s+STORAGE\b|\bBATTERY\b|\bBESS\b|\bSTORAGE\s+(?:LLC|INC)\b"
+# Energy words in applicant/payor names. Bare "STORAGE" is excluded (self-storage LLCs are common).
+_ENERGY_NAME = re.compile(r"\bSOLAR\b|\bPHOTOVOLTAIC\b|\bENERGY\s+STORAGE\b|\bBATTERY\b|\bBESS\b"
                           r"|\bRENEWABLES?\b|\bDATA\s+CENT(?:ER|RE)\b")
 
 
@@ -698,7 +715,10 @@ def classify(rec: dict) -> dict:
 
     solar = _hits(_SOLAR, text, _SOLAR_NOT)
     battery = [h for h in _hits(_BESS, text) if not re.fullmatch(r"batter(?:y|ies)", h, re.I)]
+    covered = [(m.start(), m.end()) for m in _BESS.finditer(text) if not re.fullmatch(r"batter(?:y|ies)", m.group(0), re.I)]
     for m in re.finditer(r"\bbatter(?:y|ies)\b", text, re.I):     # bare "battery" needs storage context
+        if any(a <= m.start() < b for a, b in covered):
+            continue
         ctx = text[max(0, m.start() - 80):m.end() + 80]
         if _BATTERY_CONTEXT.search(ctx) and not _BATTERY_NOT.search(text[max(0, m.start() - 60):m.end() + 60]):
             battery.append(m.group(0))
@@ -729,31 +749,47 @@ def classify(rec: dict) -> dict:
         signals += [f"desc:{h}" for h in solar]
 
     if solar or battery:
-        commercial = bool(_COMMERCIAL_SOLAR.search(text)) or (size_kw is not None and size_kw >= 100) \
-            or bool(name_energy) or (dev is not None and dev["kind"] == "developer") or bool(battery and not solar)
-        residential = rec.get("applicant_is_individual") or bool(_RESIDENTIAL.search(text)) \
-            or (size_kw is not None and size_kw < 50) \
-            or bool(known_match(applicant, ("residential_installer",)))
-        rooftop = bool(_ROOFTOP.search(text)) and not _COMMERCIAL_SOLAR.search(text)
-        if size_kw is not None and size_kw >= 250:
-            residential = False
+        # Scale decides whether this is a siting item. Precedence: stated size, then strong
+        # commercial wording, then residential cues, then weaker commercial cues.
+        strong = _COMMERCIAL_SOLAR.search(text)
+        weak = _WEAK_COMMERCIAL_SOLAR.search(text)
+        house = _RESIDENTIAL.search(text)
+        roof = _ROOFTOP.search(text)
+        installer = known_match(applicant, ("residential_installer",)) or known_match(payor, ("residential_installer",))
+        named = bool(name_energy) or (dev is not None and dev["kind"] == "developer")
         if battery and not solar:
-            category = category or "battery_storage"
+            base = "battery_storage"
         elif battery and solar:
-            category = category or "solar_and_storage"
+            base = "solar_and_storage"
         else:
-            category = category or "solar"
-        if commercial and not (residential and rooftop and size_kw is None):
-            hit = True
-            confidence = "high" if (_COMMERCIAL_SOLAR.search(text) or name_energy or dev or battery
-                                    or (size_kw or 0) >= 250) else "medium"
-        elif residential:
-            category = "solar_residential" if not battery else "storage_residential"
+            base = "solar"
+        if size_kw is not None and size_kw >= 250:
+            scale, why = "commercial", f"stated size {size_kw:g} kW"
+        elif size_kw is not None and size_kw < 50:
+            scale, why = "residential", f"stated size {size_kw:g} kW"
+        elif strong:
+            scale, why = "commercial", f"'{strong.group(0)}'"
+        elif house or rec.get("applicant_is_individual") or installer:
+            scale, why = "residential", "house/roof wording, private applicant or residential installer"
+        elif roof:
+            scale, why = "rooftop", "roof-mounted on a non-residential building"
+        elif named or weak or (battery and not solar):
+            scale, why = "commercial", "developer/energy name or ground-mount wording"
+        else:
+            scale, why = "unclear", "no scale cue"
+        if scale == "residential":
+            category = category or ("solar_residential" if not battery else "storage_residential")
             topics = [t for t in topics if t not in ("solar", "battery_storage")]
-            note = "residential/rooftop scale; not a siting item"
+            note = f"residential scale ({why}); not a siting item"
         else:
-            hit, confidence = True, "low"
-            note = "solar/storage mentioned; scale unclear"
+            category = category or (base if scale != "rooftop" else "solar_rooftop_commercial")
+            hit = True
+            if scale == "commercial":
+                confidence = "high" if (strong or named or (size_kw or 0) >= 250 or (battery and not solar)) else "medium"
+            else:
+                confidence = "low" if scale == "unclear" else "medium"
+                note = f"{scale} ({why})"
+        signals.append(f"scale:{scale}")
         if size_kw is not None:
             signals.append(f"size_kw:{size_kw:g}")
 
@@ -769,11 +805,12 @@ def classify(rec: dict) -> dict:
         topics.append("clean_energy_siting")
         signals += [f"desc:{h}" for h in wind]
 
-    if not hit and not category and dev and dev["pure"] and dev["kind"] == "developer":
-        category, hit, confidence = "developer_other", True, "medium"
-        topics.append("solar")
+    if not hit and not category and dev and dev["pure"] and dev["kind"] in ("developer", "wind"):
+        category = "developer_other" if dev["kind"] == "developer" else "wind"
+        hit, confidence = True, "medium"
+        topics.append(dev["topic"])
         signals.append(f"name:{dev['name']}")
-        note = "known solar/storage developer; description has no energy keyword"
+        note = "known energy developer; description has no energy keyword"
     elif not hit and not category and name_energy:
         category, hit, confidence = "energy_name_only", True, "low"
         topics.append("battery_storage" if re.search(r"STORAGE|BATTERY|BESS", " ".join(name_energy)) else
@@ -781,12 +818,13 @@ def classify(rec: dict) -> dict:
         signals += [f"name:{n}" for n in name_energy]
         note = "energy word in applicant/payor name only"
 
-    if not category and utility:
-        category = "utility_routine" if _UTILITY_ROUTINE.search(text) or True else None
-        note = "utility filing without substation/transmission keywords"
     if not category and ev:
         category = "ev_charging"
         note = "EV charging; not tracked as a siting topic"
+    if not category and utility:
+        category = "utility_routine"
+        note = ("utility maintenance (poles, cables, vegetation, gas)" if _UTILITY_ROUTINE.search(text)
+                else "utility filing without substation/transmission keywords")
 
     if dev and f"name:{dev['name']}" not in signals:
         signals.append(f"name:{dev['name']}")
@@ -941,10 +979,12 @@ def build_entities(records: list[dict], links: dict[str, dict], targets: dict[st
         if link.get("parent"):
             pname = canonical_parent(link["parent"])
             p = parents.setdefault(pname, {"parent": pname, "kind": link.get("parent_kind"), "filings": 0,
-                                           "project_applicants": set(), "towns": set(), "categories": Counter(),
+                                           "project_applicants": set(), "sites": set(), "towns": set(),
+                                           "categories": Counter(),
                                            "links": Counter(), "consultants": set(), "dep_files": []})
             p["filings"] += 1
             p["project_applicants"].add(app)
+            p["sites"].add(f"{r['town']}: {_site_key(r.get('project_address') or '') or '?'}")
             p["towns"].add(r["town"])
             p["categories"][r["classification"]["category"]] += 1
             p["links"][link.get("link")] += 1
@@ -965,13 +1005,24 @@ def build_entities(records: list[dict], links: dict[str, dict], targets: dict[st
     parent_rows = []
     for p in parents.values():
         finish(p)
-        p["project_count"] = len(p["project_applicants"])
+        p["distinct_applicants"] = len(p["project_applicants"])
+        p["distinct_sites"] = len(p["sites"])
         t = targets.get(p["parent"])
         p["in_target_list"] = bool(t)
         if t:
             p["target_segment"] = t.get("segment")
         parent_rows.append(p)
     parent_rows.sort(key=lambda p: (-p["filings"], p["parent"]))
+    # applicants that share a (hashed) contact person: clusters of project LLCs run by the same people
+    contact_apps: dict[str, set] = defaultdict(set)
+    for r in records:
+        if r.get("contact_key") and r.get("applicant") and not r["applicant_is_individual"]:
+            contact_apps[r["contact_key"]].add(r["applicant"])
+    for r in energy:
+        a = applicants.get(norm_name(r["applicant"] or "(none)") or (r["applicant"] or "(none)"))
+        if a is not None and r.get("contact_key"):
+            others = {x for x in contact_apps[r["contact_key"]] if norm_name(x) != norm_name(a["applicant"])}
+            a.setdefault("shares_contact_with", set()).update(others)
     app_rows = [finish(a) for a in applicants.values()]
     app_rows.sort(key=lambda a: (a["parent"] is None, -(a["filings"]), a["applicant"]))
 
@@ -1002,20 +1053,45 @@ def load_targets() -> dict[str, dict]:
 def title_case(s: str | None) -> str:
     if not s:
         return ""
-    keep = {"LLC", "LP", "LLP", "INC", "II", "III", "IV", "BESS", "MW", "KW", "MWH", "KWH", "PV", "DC", "AC",
+    keep = {"LLC", "LP", "LLP", "II", "III", "IV", "BESS", "MW", "KW", "MWH", "KWH", "PV", "DC", "AC",
             "NSTAR", "DPW", "MA", "USA", "US", "NOI", "ANRAD", "ROW", "EV", "AES", "EDF", "CVE", "ZPT", "BWC",
             "DCR", "MBTA", "KV", "BVW", "BLSF", "LUW", "LSCSF", "OOC", "RFA", "ZPB", "REDP", "SPV", "AKA"}
     out = []
     for w in re.split(r"(\s+)", s):
         core = re.sub(r"[^A-Za-z]", "", w).upper()
-        if core in keep:
+        if core in keep or (w.startswith("(") and w.endswith(")") and len(core) <= 5):
             out.append(w.upper().replace("KW", "kW").replace("KV", "kV") if core in ("KW", "KV", "MWH", "KWH")
                        else w.upper())
         elif re.match(r"^\d", w):
             out.append(w.lower())
         else:
             out.append(w[:1].upper() + w[1:].lower() if w.isupper() or w.islower() else w)
-    return "".join(out)
+    return re.sub(r"\bC/[Oo]\b", "c/o", "".join(out))
+
+
+_UNITS = {"KW": "kW", "MW": "MW", "KWH": "kWh", "MWH": "MWh", "KV": "kV", "AC": "AC", "DC": "DC", "SF": "SF"}
+_ACRONYMS = {"BESS", "PV", "BVW", "BLSF", "LSCSF", "LUW", "ROW", "RFA", "ACR", "NOI", "ANRAD", "ORAD", "OOC", "SFH",
+             "SW", "DEP", "MA", "US", "EV", "HVAC", "LLC", "INC", "NHESP", "DPW", "MBTA", "MASSDOT", "DCR", "II", "III",
+             "FEMA", "BFE", "NSTAR", "NECO", "CMR", "MGL", "PVC", "LED", "ADA", "UST", "HDD", "I/A", "IA", "WL", "NGRID"}
+
+
+def sentence_case(s: str | None) -> str:
+    """DEP descriptions are all caps; make them readable but keep units, acronyms and codes."""
+    if not s:
+        return ""
+    out = []
+    for tok in re.split(r"(\W+)", s):
+        u = tok.upper()
+        if not tok or not re.search(r"[A-Za-z]", tok):
+            out.append(tok)
+        elif u in _UNITS:
+            out.append(_UNITS[u])
+        elif u in _ACRONYMS or (re.search(r"\d", tok) and re.search(r"[A-Za-z]", tok)):
+            out.append(u)
+        else:
+            out.append(tok.lower())
+    text = "".join(out)
+    return text[:1].upper() + text[1:]
 
 
 def snippet_for(r: dict, link: dict) -> str:
@@ -1024,8 +1100,7 @@ def snippet_for(r: dict, link: dict) -> str:
     who = title_case(r["applicant"]) if r.get("applicant") and not r["applicant_is_individual"] else "private applicant"
     if r.get("payor") and not r["payor_is_individual"] and norm_name(r["payor"]) != norm_name(r.get("applicant") or ""):
         who += f" (fee paid by {title_case(r['payor'])})"
-    desc = (r.get("description") or "").strip()
-    desc = desc[:1].upper() + desc[1:].lower() if desc else "no description"
+    desc = sentence_case((r.get("description") or "").strip().rstrip(".")) or "no description"
     addr = title_case(r.get("project_address")) or "address not given"
     s = f"{ftype}, {who}: {desc}. {addr}."
     if len(s) > 240:
@@ -1050,7 +1125,6 @@ def build_hits(records: list[dict], links: dict[str, dict]) -> list[dict]:
             days_before = round((md - fs).total_seconds() / 86400, 1)
         except (TypeError, ValueError):
             days_before = None
-        qs = urlencode({"TownId": "", "FromFilingDate": meeting_date, "ToFilingDate": meeting_date})
         hits.append({
             "id": hashlib.sha1(f"{r['source_url']}|{snippet}".encode()).hexdigest()[:12],
             "state": "MA",
@@ -1093,7 +1167,6 @@ def build_hits(records: list[dict], links: dict[str, dict]) -> list[dict]:
                 "api_url": r["api_url"],
             },
         })
-        del qs
     hits.sort(key=lambda h: (h["meeting_date"], h["town"]), reverse=True)
     return hits
 
@@ -1161,6 +1234,7 @@ def rebuild_from_cache(recs: dict[str, dict], towns: dict[str, dict], now: str) 
             continue
         old = recs.get(c["noi_id"])
         new = build_record(c["list"], c.get("detail"), towns)
+        new["detail_fetched_at"] = c.get("fetched_at")
         if old:
             new["first_seen"] = old.get("first_seen") or now
             if old.get("last_changed"):
@@ -1199,6 +1273,8 @@ def run(args: argparse.Namespace) -> dict:
             rows = list_filings(client, since, until)
             stats["listed"] = len(rows)
             todo = []
+            recent = (today - timedelta(days=DESCRIPTION_WAIT_DAYS)).isoformat()
+            stale = (utcnow() - timedelta(days=2)).isoformat()
             for row in rows:
                 nid = str(row["NOIId"])
                 old = recs.get(nid)
@@ -1206,6 +1282,10 @@ def run(args: argparse.Namespace) -> dict:
                     todo.append(row)
                 elif args.refresh_pending and old.get("status") != "decision_issued":
                     todo.append(row)
+                elif (not old.get("description") and (old.get("received_date") or "") >= recent
+                      and (old.get("detail_fetched_at") or "") < stale):
+                    todo.append(row)                         # DEP often adds the description days later
+                    stats["refetch_no_description"] += 1
             todo.sort(key=lambda r: r.get("FilingDate") or "")
             stats["details_needed"] = len(todo)
             log.info("%d listed, %d need detail requests (~%.0f min)", len(rows), len(todo), len(todo) * MIN_INTERVAL / 60)
@@ -1221,6 +1301,7 @@ def run(args: argparse.Namespace) -> dict:
                 elif old.get("list_sig") != list_sig(row):
                     stats["changed"] += 1
                 recs[nid] = merge(old, build_record(row, detail, towns), now)
+                recs[nid]["detail_fetched_at"] = now
                 stats["details_fetched"] += 1
                 if i % 200 == 0:
                     log.info("details %d/%d", i, len(todo))
@@ -1313,8 +1394,8 @@ def summarize(records: list[dict], hits: list[dict], ent: dict) -> dict:
         "energy_towns": len({r["town"] for r in energy}),
         "all_categories_incl_excluded": dict(cat.most_common()),
         "energy_with_parent": sum(1 for r in energy if r.get("parent")),
-        "top_parents": [{"parent": p["parent"], "filings": p["filings"], "projects": p["project_count"],
-                         "towns": len(p["towns"])} for p in ent["parents"][:15]],
+        "top_parents": [{"parent": p["parent"], "kind": p["kind"], "filings": p["filings"],
+                         "sites": p["distinct_sites"], "towns": len(p["towns"])} for p in ent["parents"][:15]],
     }
 
 

@@ -101,7 +101,8 @@ function ics(wl, items, base, generated) {
     .sort((a, b) => a[1][0].meeting_date.localeCompare(b[1][0].meeting_date) || a[0].localeCompare(b[0]))
     .map(([key, group]) => {
       const h = group[0];
-      const topics = [...new Set(group.flatMap((g) => g.topics || []))].map((t) => TOPICS[t] || t);
+      const wanted = new Set(wl.topics);
+      const topics = [...new Set(group.flatMap((g) => g.topics || []))].filter((t) => wanted.has(t)).map((t) => TOPICS[t] || t);
       const agendas = [...new Set(group.map((g) => g.source_url))];
       const description = [
         ...group.map((g) => `• ${g.snippet}`),
@@ -155,7 +156,8 @@ export default async function handler(req, res) {
     const doc = await loadHits(req);
     const base = publicBase(req);
     const items = matchItems(doc.hits, wl);
-    res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=300');
+    // Feed readers get a short shared cache; the watchlist page asks for fresh=1 so edits show at once.
+    res.setHeader('Cache-Control', req.query?.fresh === '1' ? 'no-store' : 'public, max-age=300, s-maxage=300');
 
     if (format === 'rss') {
       res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');

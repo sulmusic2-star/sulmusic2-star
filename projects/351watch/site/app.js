@@ -1,4 +1,4 @@
-// Table filtering and form submission for the 351 Watch tracker page.
+// Shared behavior on every 351 Watch page: table filters and the corrections form.
 
 function setupFilters() {
   const table = document.querySelector('#tracker-table');
@@ -30,38 +30,6 @@ function setupFilters() {
   apply();
 }
 
-function setupForm(form, endpoint, successText) {
-  if (!form) return;
-  const status = form.querySelector('.form-status');
-  const button = form.querySelector('button[type="submit"]');
-
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    status.className = 'form-status';
-    status.textContent = '';
-    button.disabled = true;
-
-    const payload = Object.fromEntries(new FormData(form).entries());
-    try {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
-      form.reset();
-      status.classList.add('ok');
-      status.textContent = successText;
-    } catch (err) {
-      status.classList.add('err');
-      status.textContent = err.message;
-    } finally {
-      button.disabled = false;
-    }
-  });
-}
-
 function setupCoverage() {
   const table = document.querySelector('#coverage-table');
   if (!table) return;
@@ -87,7 +55,99 @@ function setupCoverage() {
   apply();
 }
 
+// <div class="filters" data-filters="G"> with <select data-key="k"> filters rows of every
+// table[data-filter-group="G"] by their data-k attribute; [data-search] matches row text.
+function setupGenericFilters() {
+  for (const bar of document.querySelectorAll('.filters[data-filters]')) {
+    const group = bar.dataset.filters;
+    const rows = Array.from(document.querySelectorAll(`table[data-filter-group="${group}"] tbody tr`));
+    const text = rows.map((r) => r.textContent.toLowerCase());
+    const selects = Array.from(bar.querySelectorAll('select[data-key]'));
+    const search = bar.querySelector('[data-search]');
+    const count = bar.querySelector('[data-count]');
+
+    const apply = () => {
+      const q = search ? search.value.trim().toLowerCase() : '';
+      let shown = 0;
+      rows.forEach((row, i) => {
+        const match = selects.every((s) => !s.value || row.dataset[s.dataset.key] === s.value) && (!q || text[i].includes(q));
+        row.hidden = !match;
+        if (match) shown += 1;
+      });
+      for (const table of document.querySelectorAll(`table[data-filter-group="${group}"]`)) {
+        const section = table.closest('section');
+        if (section && !section.contains(bar)) section.hidden = !table.querySelector('tbody tr:not([hidden])');
+      }
+      if (count) count.textContent = `${shown} of ${rows.length} shown`;
+    };
+    for (const s of selects) s.addEventListener('change', apply);
+    if (search) search.addEventListener('input', apply);
+    apply();
+  }
+}
+
+function setupContactForm() {
+  const form = document.querySelector('#contact-form');
+  if (!form) return;
+  const status = form.querySelector('.form-status');
+  const button = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    status.className = 'form-status';
+    status.textContent = '';
+    button.disabled = true;
+    const payload = { ...Object.fromEntries(new FormData(form).entries()), page: document.referrer.slice(0, 200) };
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
+      form.reset();
+      status.classList.add('ok');
+      status.textContent = 'Thanks, your message was received.';
+    } catch (err) {
+      status.classList.add('err');
+      status.textContent = err.message;
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+
+// Watchlist links made or opened in this browser (a per-viewer convenience; may be unavailable).
+const LISTS_KEY = '351watch:lists';
+window.w351 = {
+  recall() {
+    try {
+      const lists = JSON.parse(localStorage.getItem(LISTS_KEY) || '[]');
+      return Array.isArray(lists) ? lists.filter((l) => l && typeof l.id === 'string') : [];
+    } catch {
+      return [];
+    }
+  },
+  remember(id, name) {
+    try {
+      const lists = this.recall().filter((l) => l.id !== id);
+      lists.unshift({ id, name: name || '', at: new Date().toISOString() });
+      localStorage.setItem(LISTS_KEY, JSON.stringify(lists.slice(0, 20)));
+    } catch {
+      /* storage unavailable */
+    }
+  },
+  forget(id) {
+    try {
+      localStorage.setItem(LISTS_KEY, JSON.stringify(this.recall().filter((l) => l.id !== id)));
+    } catch {
+      /* storage unavailable */
+    }
+  },
+};
+
 setupFilters();
 setupCoverage();
-setupForm(document.querySelector('#signup-form'), '/api/waitlist', "You're on the list. We'll email you when alerts open for your towns.");
-setupForm(document.querySelector('#contact-form'), '/api/contact', 'Thanks — your message was received.');
+setupGenericFilters();
+setupContactForm();

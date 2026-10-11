@@ -40,6 +40,8 @@ from __future__ import annotations
 
 import logging
 import re
+import threading
+import time
 from datetime import date, datetime, timedelta
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
@@ -55,6 +57,16 @@ BASE = "https://opengov.sos.ri.gov"
 ET = ZoneInfo("America/New_York")
 MUNICIPAL_INDEX_URL = f"{BASE}/GOVDirectoryPublic/OfficialSearch?topmenuId=105&page=IdxMuni"
 ACTIVE_DAYS = 730   # a body with no meeting in two years (and none upcoming) is not listed
+# The portal sits behind Cloudflare, which answered HTTP 429 to a 1 req/s discovery
+# run after ~200 requests. Listing and detail requests made by this adapter are
+# spaced at least PORTAL_INTERVAL seconds apart (on top of the fetcher's per-host
+# limit), and a 429 gets one retry after a long pause. Agenda files are fetched by
+# crawl.scan_document through the shared fetcher, so run the crawl with
+# PoliteFetcher(min_interval=PORTAL_INTERVAL) or a per-host override.
+PORTAL_INTERVAL = 2.5
+BACKOFF_429 = 90.0
+_gate = threading.Lock()
+_last_network = [0.0]
 
 
 def dashboard_url(entity_id: int | str) -> str:
@@ -91,7 +103,7 @@ _RI_EXCLUDE = re.compile(
 
 _RI_BOARDS: list[tuple[str, re.Pattern]] = [
     ("planning_board", re.compile(
-        r"^(?:city\s+)?plan(?:ning)?\s+(?:board|commission)\b|^planning\b", re.I)),
+        r"^(?:city\s+)?plan(?:ning)?\s+(?:board|commission)\b", re.I)),
     ("zoning_board_of_appeals", re.compile(
         r"^zoning\s+(?:board|review|appeals?)\b|^(?:zoning\s+)?board\s+of\s+(?:zoning\s+)?(?:review|appeals)\b", re.I)),
     ("select_board", re.compile(r"^(?:town|city)\s+council\b", re.I)),
@@ -112,6 +124,8 @@ def strip_town(name: str, town: str) -> str:
 def classify_ri_body(name: str, town: str) -> str | None:
     """Board key for a portal body name of `town`, or None if 351 Watch does not track it."""
     rest = strip_town(name, town)
+    if re.fullmatch(r"conservation\s+committee", rest, re.I):
+        return "conservation_commission"   # Exeter's conservation body
     if _RI_EXCLUDE.search(rest):
         return None
     for key, rx in _RI_BOARDS:
@@ -307,6 +321,27 @@ def business_hours_between(start: datetime, end: datetime) -> float:
 
 class RISOSAdapter(Adapter):
     platform = "ri_sos"
+    min_interval = PORTAL_INTERVAL   # hint for callers that build the fetcher
+
+    def _get(self, url: str, max_age: float | None):
+        """fetcher.get, spaced PORTAL_INTERVAL apart when it goes to the network,
+        with one retry after BACKOFF_429 seconds on HTTP 429."""
+        with _gate:
+            for attempt in (0, 1):
+                wait = PORTAL_INTERVAL - (time.monotonic() - _last_network[0])
+                if wait > 0:
+                    time.sleep(wait)
+                resp = self.fetcher.get(url, max_age=max_age)
+                if not resp.from_cache:
+                    _last_network[0] = time.monotonic()
+                if resp.status != 429 or attempt:
+                    return resp
+                log.warning("RI SOS portal HTTP 429; pausing %.0fs before one retry", BACKOFF_429)
+                time.sleep(BACKOFF_429)
+        return resp
+
+    def get_listing(self, url: str, **kw):
+        return self._get(url, kw.get("max_age", LISTING_MAX_AGE))
 
     # -- discovery -------------------------------------------------------
     def municipalities(self) -> list[dict]:
@@ -316,14 +351,15 @@ class RISOSAdapter(Adapter):
         return parse_municipal_index(self.soup(resp))
 
     def website(self, entity_id: int) -> str | None:
-        resp = self.fetcher.get(directory_url(entity_id), max_age=7 * 24 * 3600)
+        resp = self._get(directory_url(entity_id), max_age=7 * 24 * 3600)
         if not resp.ok:
             return None
         soup = self.soup(resp)
         for td in soup.find_all(string=re.compile(r"^\s*Web:\s*$")):
             a = td.find_next("a", href=True)
             if a and a["href"].startswith("http"):
-                return a["href"].strip()
+                # the directory holds values like "http://https://www.cranstonri.gov"
+                return re.sub(r"^https?://(?=https?://)", "", a["href"].strip(), flags=re.I)
         return None
 
     def child_bodies(self, entity_id: int) -> list[dict]:
@@ -386,7 +422,7 @@ class RISOSAdapter(Adapter):
         url = detail_url(meeting_id)
         ts = self.fetcher.cached_at(url)
         final = ts is not None and datetime.fromtimestamp(ts, ET).date() > meeting_date
-        resp = self.fetcher.get(url, max_age=None if final else LISTING_MAX_AGE)
+        resp = self._get(url, max_age=None if final else LISTING_MAX_AGE)
         if not resp.ok:
             raise FetchError(f"RI SOS meeting {meeting_id} HTTP {resp.status}")
         return parse_meeting_detail(self.soup(resp))

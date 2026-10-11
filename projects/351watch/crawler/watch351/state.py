@@ -221,8 +221,8 @@ class DocIndex:
         return {
             "documents": len(recs),
             "by_state": dict(Counter(r["state"] for r in recs)),
-            "by_status": dict(Counter(r.get("status") for r in recs)),
-            "by_text_source": dict(Counter(r.get("text_source") for r in recs)),
+            "by_status": dict(Counter(r.get("status") or "none" for r in recs)),
+            "by_text_source": dict(Counter(r.get("text_source") or "none" for r in recs)),
             "with_hits": sum(1 for r in recs if r.get("hits")),
             "hits": sum(len(r.get("hits") or []) for r in recs),
             "towns": len({(r["state"], r["town"]) for r in recs}),

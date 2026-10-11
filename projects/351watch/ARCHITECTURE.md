@@ -61,7 +61,7 @@ Read this before changing anything. Several workstreams build in parallel; these
 
 ## Deploys
 
-- Static pages and data are fetched at build time from this repo at a commit (`site/fetch-static.sh` + `site/manifest.txt`). API functions are uploaded with the deployment; a redeploy with a new `SITE_REF` refreshes pages/data without re-uploading functions.
+- Static pages and data are fetched at build time from this repo's tarball at a commit (`site/fetch-static.sh`, run as the build command `SITE_REF=<sha> sh fetch-static.sh`, output `public`). API functions are uploaded with the deployment; a redeploy (same deployment id) with a new `SITE_REF` refreshes pages/data without re-uploading functions.
 - Only the coordinator deploys to production.
 
 ## Crawler rules (non-negotiable)

@@ -14,10 +14,16 @@ export function clean(value, max) {
 }
 
 export function readBody(req) {
-  if (typeof req.body === 'object' && req.body !== null && !Buffer.isBuffer(req.body)) return req.body;
-  if (typeof req.body === 'string' && req.body.length < 20000) {
+  let raw;
+  try {
+    raw = req.body; // Vercel parses lazily and throws on malformed JSON
+  } catch {
+    return {};
+  }
+  if (typeof raw === 'object' && raw !== null && !Buffer.isBuffer(raw)) return raw;
+  if (typeof raw === 'string' && raw.length < 20000) {
     try {
-      const parsed = JSON.parse(req.body);
+      const parsed = JSON.parse(raw);
       return typeof parsed === 'object' && parsed !== null ? parsed : {};
     } catch {
       return {};

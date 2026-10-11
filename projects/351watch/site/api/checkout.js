@@ -1,13 +1,15 @@
-// Stripe Checkout for paid plans. Disabled (503 {beta: true}) unless STRIPE_SECRET_KEY and the
-// plan's price id (STRIPE_PRICE_TOWN / STRIPE_PRICE_STATEWIDE) are set. Calls Stripe's REST API directly.
+// Stripe Checkout for paid plans. Disabled (503 {beta: true}) unless STRIPE_SECRET_KEY and the plan's
+// price id (STRIPE_PRICE_SITING_DESK / STRIPE_PRICE_COUNSEL / STRIPE_PRICE_DATACENTER) are set.
+// Calls Stripe's REST API directly. Billing intervals come from the Stripe price objects.
 // GET  -> { enabled, plans }            (the pricing page uses this to activate its buttons)
 // POST { plan, watchlist_id } -> { url } (redirect the browser to Stripe)
 import { allow, bodySize, clean, noStore, readBody, throttled } from './_store.js';
 import { loadWatchlist, publicBase, validId } from './_watch.js';
 
 export const PLANS = {
-  town: { name: 'Town pack', price_env: 'STRIPE_PRICE_TOWN', monthly_usd: 79 },
-  statewide: { name: 'Statewide', price_env: 'STRIPE_PRICE_STATEWIDE', monthly_usd: 299 },
+  siting_desk: { name: 'Siting Desk', price_env: 'STRIPE_PRICE_SITING_DESK', price: '$349/mo billed annually' },
+  counsel: { name: 'Counsel', price_env: 'STRIPE_PRICE_COUNSEL', price: '$1,500/yr' },
+  datacenter: { name: 'Data-Center Local Action Feed', price_env: 'STRIPE_PRICE_DATACENTER', price: '$499/mo' },
 };
 
 const configured = (plan) => Boolean(process.env.STRIPE_SECRET_KEY && process.env[PLANS[plan].price_env]);
@@ -17,7 +19,7 @@ export default async function handler(req, res) {
   if (!allow(req, res, ['GET', 'POST'])) return;
 
   if (req.method === 'GET') {
-    const plans = Object.fromEntries(Object.keys(PLANS).map((k) => [k, { name: PLANS[k].name, monthly_usd: PLANS[k].monthly_usd, enabled: configured(k) }]));
+    const plans = Object.fromEntries(Object.keys(PLANS).map((k) => [k, { name: PLANS[k].name, price: PLANS[k].price, enabled: configured(k) }]));
     return res.status(200).json({ ok: true, enabled: Object.values(plans).some((p) => p.enabled), plans });
   }
 

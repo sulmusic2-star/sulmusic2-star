@@ -1,0 +1,87 @@
+{
+ "by_state": {
+  "MA": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 240,
+   "towns_succeeded": 240
+  }
+ },
+ "date": "2026-10-11",
+ "document_errors": 0,
+ "documents_already_indexed": 2480,
+ "documents_deferred": 0,
+ "documents_listed": 2481,
+ "documents_needing_ocr": 1,
+ "documents_rematched": 0,
+ "documents_retried": 1,
+ "duration_seconds": 195.9,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-10-11T00:06:13+00:00",
+ "hits_current": 979,
+ "index": {
+  "by_state": {
+   "MA": 2671,
+   "NY": 16
+  },
+  "by_status": {
+   "error": 10,
+   "needs_ocr": 3,
+   "ok": 2674
+  },
+  "by_text_source": {
+   "docx": 15,
+   "html": 138,
+   "none": 10,
+   "ocr": 697,
+   "pdf": 1827
+  },
+  "documents": 2687,
+  "hits": 1073,
+  "pruned": 0,
+  "towns": 244,
+  "with_hits": 568
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 1798,
+   "listing": 90741356,
+   "robots": 418025
+  },
+  "cache_hits": 22,
+  "errors": 0,
+  "requests": 639,
+  "requests_by_purpose": {
+   "document": 1,
+   "listing": 394,
+   "robots": 244
+  },
+  "robots_blocked": 0
+ },
+ "new_alert_items": 0,
+ "new_alert_items_by_topic": {},
+ "new_documents": 0,
+ "new_hits": 0,
+ "new_hits_by_topic": {},
+ "options": {
+  "matcher_version": "77ae3c6f23",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-10-11T00:02:57+00:00",
+ "states": [
+  "MA"
+ ],
+ "towns_attempted": 240,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 240,
+ "window": {
+  "end": "2027-02-08",
+  "start": "2026-09-11"
+ }
+}
