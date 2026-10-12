@@ -154,7 +154,10 @@
     if (p.get("topic")) parts.push(`about ${label("topic", p.get("topic")).toLowerCase()}`);
     if (p.get("board")) parts.push(`from the ${label("board", p.get("board")).toLowerCase()}`);
     const towns = p.getAll("town").filter(Boolean);
-    if (towns.length) parts.push(`in ${towns.map((t) => label("town", t)).join(", ").replace(/, ([^,]*)$/, " and $1")}`);
+    if (towns.length) {
+      const names = towns.map((t) => label("town", t)); // "Carver, MA" already holds a comma
+      parts.push(`in ${names.length > 1 ? names.slice(0, -1).join("; ") + " and " + names[names.length - 1] : names[0]}`);
+    }
     else if (p.get("state")) parts.push(`in ${label("state", p.get("state"))}`);
     return parts.length ? " " + parts.join(" ") : "";
   }
