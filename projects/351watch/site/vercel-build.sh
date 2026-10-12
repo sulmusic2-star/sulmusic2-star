@@ -118,6 +118,7 @@ const config = {
     { src: '^/data/(.*)$', headers: { 'Cache-Control': 'public, max-age=300, s-maxage=300' }, continue: true },
     { src: '^/(.+)\\.html$', status: 308, headers: { Location: '/$1' } },
     { handle: 'filesystem' },
+    { src: '^/\\.well-known/http-message-signatures-directory/?$', dest: '/api/key-directory' },
     { src: '^/w/[^/]*/?$', dest: '/w' },
   ],
   overrides,

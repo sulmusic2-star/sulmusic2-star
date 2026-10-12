@@ -29,9 +29,11 @@ from urllib.parse import urljoin, urlsplit
 
 import requests
 
+from .botauth import signer_from_env
+
 log = logging.getLogger(__name__)
 
-USER_AGENT = "351WatchBot/0.1 (+contact: hello@351watch.example)"
+USER_AGENT = "351WatchBot/0.1 (+https://351watch.vercel.app/bot)"
 ROBOTS_AGENT = "351WatchBot"
 DEFAULT_CACHE_DIR = Path(__file__).resolve().parent.parent / ".cache"
 # Hosts that rate-limit below our default 1 request/second (seconds between requests).
@@ -229,8 +231,11 @@ class PoliteFetcher:
         for attempt in range(attempts):
             self._throttle(host, interval)
             try:
+                # Web Bot Auth headers, signed per attempt (they expire after a minute).
+                signer = signer_from_env()
                 r = self.session.get(url, timeout=self.timeout, stream=True,
-                                     allow_redirects=allow_redirects)
+                                     allow_redirects=allow_redirects,
+                                     headers=signer.headers(url) if signer else None)
                 chunks, size = [], 0
                 declared = r.headers.get("Content-Length", "")
                 if declared.isdigit() and int(declared) > MAX_BYTES:
