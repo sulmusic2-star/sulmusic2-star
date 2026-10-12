@@ -3,14 +3,56 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Our crawler moved | Agenda Ahead</title>
-<meta name="robots" content="noindex">
-<link rel="canonical" href="https://agendaahead.vercel.app/how-it-works">
-<script src="/redirect.js" data-to="/how-it-works" data-default="#crawler" data-map="{}"></script>
-<meta http-equiv="refresh" content="0; url=/how-it-works#crawler">
+<title>351WatchBot, our crawler | 351 Watch</title>
+<meta name="description" content="What 351WatchBot reads, how often it visits, how it identifies itself, and how to block it or slow it down.">
+<link rel="canonical" href="https://351watch-sulmusic2-4637s-projects.vercel.app/bot">
+<meta property="og:title" content="351WatchBot, our crawler | 351 Watch">
+<meta property="og:description" content="What 351WatchBot reads, how often it visits, how it identifies itself, and how to block it or slow it down.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="light dark">
+<link rel="preload" href="/fonts/public-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/besley-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%231b4f8a'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='12.5' font-weight='700' fill='white' text-anchor='middle'%3E351%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-<main id="main"><div class="wrap narrow"><p class="lead">This page moved to <a href="/how-it-works#crawler">How Agenda Ahead works</a>.</p></div></main>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/">351 Watch</a>
+  <nav class="top" aria-label="Main">
+    <a href="/towns">Towns</a><a href="/topics">Topics</a><a href="/#tracker">Tracker</a><a href="/attorney-general">AG decisions</a><a href="/proof">Coverage</a>
+    <a class="cta" href="/watch">Create a watchlist</a>
+  </nav>
+</div></header>
+<main id="main">
+
+<div class="wrap"><div class="prose">
+<h1>351WatchBot</h1>
+<p>351WatchBot is the crawler behind 351 Watch. It reads the meeting agendas, warrants and notices that towns and counties post on their own websites, and flags items about solar, battery storage, data centers, moratoria, zoning changes and similar land-use decisions.</p>
+<h2>How it identifies itself</h2>
+<p>Every request carries this User-Agent:</p>
+<pre><code>351WatchBot/0.1 (+https://351watch.vercel.app/bot)</code></pre>
+<p>Requests are also signed with <a href="https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/">Web Bot Auth</a> (HTTP Message Signatures, Ed25519). The public key is at <a href="/.well-known/http-message-signatures-directory">/.well-known/http-message-signatures-directory</a>, and each request names that directory in a <code>Signature-Agent</code> header.</p>
+<h2>What it does and doesn't do</h2>
+<ul>
+<li>Checks robots.txt before every request, including each redirect, and skips anything disallowed for <code>351WatchBot</code> or <code>*</code>.</li>
+<li>Makes at most one request per second to a host, or waits longer if robots.txt sets a <code>Crawl-delay</code>.</li>
+<li>Reads each meeting listing about once a day and downloads each agenda document once.</li>
+<li>Reads only public pages. It never logs in, never submits forms and never tries to get past a CAPTCHA or other bot check.</li>
+<li>Skips files larger than 40 MB.</li>
+</ul>
+<h2>Blocking it or slowing it down</h2>
+<p>To stop it, add this to your robots.txt. It takes effect on the next visit.</p>
+<pre><code>User-agent: 351WatchBot
+Disallow: /</code></pre>
+<p>To slow it down, add a <code>Crawl-delay</code> line giving the number of seconds to wait between requests. If you run a town or county website and want a different arrangement, or think the crawler misbehaved, <a href="/privacy#contact">send us a note</a> with your site's address.</p>
+</div></div>
+
+</main>
+<footer class="site"><div class="wrap">
+  <p>351 Watch compiles public records: agendas and warrants that towns post under state open meeting laws, Attorney General decision letters, court rulings and legislative records. It is informational only and is not legal advice. Confirm dates and terms with the town clerk or the linked source before relying on them.</p>
+  <ul class="foot-links"><li><a href="/watch">Create a watchlist</a></li><li><a href="/towns">All towns</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">Attorney General decisions</a></li><li><a href="/proof">Coverage and method</a></li><li><a href="/pricing">Free during the beta</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/bot">Our crawler</a></li><li><a href="/privacy#contact">Corrections and contact</a></li></ul>
+</div></footer>
+<script src="/app.js" defer></script>
 </body>
 </html>

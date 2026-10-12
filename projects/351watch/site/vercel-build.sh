@@ -7,7 +7,7 @@
 # SHA ships everything (including API changes) without re-uploading code.
 #
 #   static/     every committed page and asset under projects/351watch/site (minus api and tooling)
-#               plus data/hits_current.json for the feeds and data/neighbors.json (free watchlist area)
+#               plus data/hits_current.json for the feeds
 #   static/pagefind/  the /search index, built from data/search by search/build-index.mjs
 #   functions/  one Node function per api/**/*.js that isn't a _helper; each bundles the whole
 #               api/ tree (for relative imports) and @vercel/blob
@@ -22,7 +22,7 @@ trap 'rm -rf "$TMP"' EXIT
 curl -fsSL --retry 3 --retry-delay 2 "$URL" -o "$TMP/repo.tgz"
 TOP="$(tar -tzf "$TMP/repo.tgz" | head -n 1 | cut -d/ -f1)"
 tar -xzf "$TMP/repo.tgz" -C "$TMP" "$TOP/projects/351watch/site" "$TOP/projects/351watch/data/hits_current.json" \
-  "$TOP/projects/351watch/data/neighbors.json" "$TOP/projects/351watch/data/search" "$TOP/projects/351watch/search"
+  "$TOP/projects/351watch/data/search" "$TOP/projects/351watch/search"
 SRC="$TMP/$TOP/projects/351watch"
 
 rm -rf "$OUT"
@@ -36,8 +36,7 @@ mkdir -p "$OUT/static/data" "$OUT/functions"
   --exclude=./dev-server.mjs --exclude='./*.md' --exclude=./data/hits_current.json \
   .) | (cd "$OUT/static" && tar -xf -)
 cp "$SRC/data/hits_current.json" "$OUT/static/data/hits_current.json"
-cp "$SRC/data/neighbors.json" "$OUT/static/data/neighbors.json"  # free watchlist area: a town plus its neighbors
-for required in index.html watch.html w.html data/towns.json data/hits_current.json data/neighbors.json; do
+for required in index.html watch.html w.html data/towns.json data/hits_current.json; do
   [ -s "$OUT/static/$required" ] || { echo "vercel-build: missing $required at ${REF}" >&2; exit 1; }
 done
 
