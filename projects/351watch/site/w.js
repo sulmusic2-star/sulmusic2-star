@@ -49,7 +49,7 @@
     const res = await fetch(url, { method, cache: 'no-store', headers: { Accept: 'application/json' } });
     const data = await res.json().catch(() => ({}));
     if (!res.ok || data.ok === false) {
-      const err = new Error(data.error || 'Something went wrong. Please try again.');
+      const err = new Error(data.error || 'The server did not answer as expected. Try again in a minute.');
       err.status = res.status;
       throw err;
     }
@@ -77,22 +77,37 @@
     return button;
   }
 
+  // The meeting date as a small calendar block; same markup as date_block() in build.py.
+  function dateBlock(iso) {
+    const d = iso ? new Date(`${iso.slice(0, 10)}T12:00:00Z`) : null;
+    if (!d || Number.isNaN(d.getTime())) return el('p', { class: 'hit-date nodate', text: iso || 'No date listed' });
+    const part = (opts) => d.toLocaleDateString('en-US', { ...opts, timeZone: 'UTC' });
+    return el('p', { class: 'hit-date' },
+      el('time', { datetime: iso.slice(0, 10) },
+        el('span', { class: 'dow', text: part({ weekday: 'short' }) }), ' ',
+        el('span', { class: 'mon', text: part({ month: 'short' }) }), ' ',
+        el('span', { class: 'day', text: String(d.getUTCDate()) }), ' ',
+        el('span', { class: 'yr', text: String(d.getUTCFullYear()) })));
+  }
+
+  // One agenda item; same markup as hit_card() in build.py.
   function card(item) {
     const upcoming = item.meeting_date && item.meeting_date >= today;
-    const when = fmtDate(item.meeting_date) || 'Date not listed';
+    const when = fmtDate(item.meeting_date) || 'date not listed';
     const days = item.days_before_meeting;
     const lead = typeof days === 'number' && days > 0
       ? el('span', { class: 'leadtime', text: days >= 1.5 ? `First seen ${Math.round(days)} days before the meeting` : 'First seen the day before the meeting' })
       : null;
     const agenda = el('a', { href: item.source_url, rel: 'nofollow noopener', target: '_blank' }, 'Agenda',
       el('span', { class: 'sr-only', text: ` for ${item.town} ${item.board}, ${when}` }));
-    return el('article', { class: 'hit' },
-      el('header', {},
-        el('b', {}, el('a', { href: townPath(item.town_url), text: item.town })),
-        el('span', { class: 'meta', text: `${item.board} · ${when}` }),
-        upcoming ? el('span', { class: 'badge pending', text: 'Upcoming' }) : null),
-      el('p', { text: `“${item.snippet}”` }),
-      el('div', { class: 'tags' }, ...item.topics.map((t) => el('span', { class: 'tag', text: topicLabel(t) })), lead, agenda));
+    return el('article', { class: upcoming ? 'hit is-upcoming' : 'hit' },
+      dateBlock(item.meeting_date),
+      el('div', { class: 'hit-body' },
+        el('p', { class: 'hit-where' },
+          el('b', {}, el('a', { href: townPath(item.town_url), text: item.town })), ' ',
+          el('span', { class: 'board', text: item.board })),
+        el('blockquote', { class: 'snippet', cite: item.source_url, text: item.snippet }),
+        el('p', { class: 'hit-meta' }, ...item.topics.map((t) => el('span', { class: 'tag', text: topicLabel(t) })), lead, agenda)));
   }
 
   function renderItems(items) {
@@ -175,7 +190,7 @@
 
   function renderManage(wl) {
     const plan = PLANS[wl.plan] || wl.plan;
-    $('plan-line').replaceChildren(`Plan: ${plan}. `, el('a', { href: `/pricing?id=${wl.id}`, text: 'See planned plans' }), '.');
+    $('plan-line').replaceChildren(`Plan: ${plan}. `, el('a', { href: `/pricing?id=${wl.id}`, text: 'About the beta' }), '.');
     $('edit-link').href = `/watch?edit=${wl.id}`;
     const start = $('delete-start');
     const confirmBox = $('delete-confirm');
@@ -198,7 +213,7 @@
         $('wl-summary').textContent = 'Its page and feeds no longer work.';
         const box = $('wl-error');
         box.className = 'notice ok';
-        box.replaceChildren('Deleted. ', el('a', { href: '/watch', text: 'Create a new watchlist' }));
+        box.replaceChildren(el('a', { href: '/watch', text: 'Create a new watchlist' }));
         box.hidden = false;
         box.setAttribute('tabindex', '-1');
         box.focus();
@@ -231,8 +246,8 @@
     $('wl-title').textContent = name;
     const townNames = wl.towns.map((t) => t.split(':').slice(1).join(':'));
     const shownTowns = townNames.slice(0, 8).join(', ') + (townNames.length > 8 ? ` and ${townNames.length - 8} more` : '');
-    $('wl-summary').textContent = `${plural(wl.towns.length, 'town')} (${shownTowns}) · ${wl.topics.map(topicLabel).join(', ')}. Created ${fmtDate(wl.created_at)}.`;
-    $('items-lead').textContent = `${plural(feed.count, 'item')} match${feed.count === 1 ? 'es' : ''} in the current data${feed.generated ? `, updated ${fmtDate(feed.generated)}` : ''}. Upcoming meetings come first.`;
+    $('wl-summary').textContent = `${plural(wl.towns.length, 'town')}: ${shownTowns}. Topics: ${wl.topics.map(topicLabel).join(', ')}. Created ${fmtDate(wl.created_at)}.`;
+    $('items-lead').textContent = `${plural(feed.count, 'item')} match${feed.count === 1 ? 'es' : ''} this watchlist in the current data${feed.generated ? `, updated ${fmtDate(feed.generated)}` : ''}.`;
     window.w351.remember(wl.id, wl.name);
     $('wl-body').hidden = false;
 

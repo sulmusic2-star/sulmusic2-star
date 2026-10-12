@@ -29,10 +29,14 @@ from urllib.parse import urljoin, urlsplit
 
 import requests
 
+from .botauth import signer_from_env
+
 log = logging.getLogger(__name__)
 
-USER_AGENT = "351WatchBot/0.1 (+contact: hello@351watch.example)"
-ROBOTS_AGENT = "351WatchBot"
+USER_AGENT = "AgendaAheadBot/0.1 (+https://agendaahead.vercel.app/bot)"
+ROBOTS_AGENT = "AgendaAheadBot"
+# Earlier name of the same crawler; robots.txt rules written for it are still obeyed.
+FORMER_ROBOTS_AGENTS = ("351WatchBot",)
 DEFAULT_CACHE_DIR = Path(__file__).resolve().parent.parent / ".cache"
 # Hosts that rate-limit below our default 1 request/second (seconds between requests).
 HOST_MIN_INTERVAL = {"opengov.sos.ri.gov": 2.5}
@@ -231,8 +235,11 @@ class PoliteFetcher:
         for attempt in range(attempts):
             self._throttle(host, interval)
             try:
+                # Web Bot Auth headers, signed per attempt (they expire after a minute).
+                signer = signer_from_env()
                 r = self.session.get(url, timeout=self.timeout, stream=True,
-                                     allow_redirects=allow_redirects)
+                                     allow_redirects=allow_redirects,
+                                     headers=signer.headers(url) if signer else None)
                 chunks, size = [], 0
                 declared = r.headers.get("Content-Length", "")
                 if declared.isdigit() and int(declared) > MAX_BYTES:
@@ -262,10 +269,12 @@ class PoliteFetcher:
     def _interval_for(self, url: str) -> float:
         """robots.txt check plus per-host interval; raises if the URL is off limits."""
         rp = self._robots_for(url)
-        if rp is None or not rp.can_fetch(ROBOTS_AGENT, url):
+        agents = (ROBOTS_AGENT, *FORMER_ROBOTS_AGENTS)
+        if rp is None or not all(rp.can_fetch(a, url) for a in agents):
             self._count("robots_blocked")
             raise RobotsDisallowed(url)
-        delay = rp.crawl_delay(ROBOTS_AGENT)
+        delays = [float(d) for d in (rp.crawl_delay(a) for a in agents) if d]
+        delay = max(delays) if delays else None
         interval = max(self.min_interval, HOST_MIN_INTERVAL.get(urlsplit(url).netloc, 0.0),
                        float(delay) if delay else 0.0)
         # Cap absurd crawl-delays so one host cannot stall the whole run;

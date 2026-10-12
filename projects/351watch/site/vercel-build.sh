@@ -8,6 +8,7 @@
 #
 #   static/     every committed page and asset under projects/351watch/site (minus api and tooling)
 #               plus data/hits_current.json for the feeds
+#   static/pagefind/  the /search index, built from data/search by search/build-index.mjs
 #   functions/  one Node function per api/**/*.js that isn't a _helper; each bundles the whole
 #               api/ tree (for relative imports) and @vercel/blob
 #   config.json headers, clean URLs (overrides), the /w/:id rewrite and the daily cron
@@ -20,7 +21,8 @@ trap 'rm -rf "$TMP"' EXIT
 
 curl -fsSL --retry 3 --retry-delay 2 "$URL" -o "$TMP/repo.tgz"
 TOP="$(tar -tzf "$TMP/repo.tgz" | head -n 1 | cut -d/ -f1)"
-tar -xzf "$TMP/repo.tgz" -C "$TMP" "$TOP/projects/351watch/site" "$TOP/projects/351watch/data/hits_current.json"
+tar -xzf "$TMP/repo.tgz" -C "$TMP" "$TOP/projects/351watch/site" "$TOP/projects/351watch/data/hits_current.json" \
+  "$TOP/projects/351watch/data/search" "$TOP/projects/351watch/search"
 SRC="$TMP/$TOP/projects/351watch"
 
 rm -rf "$OUT"
@@ -37,6 +39,11 @@ cp "$SRC/data/hits_current.json" "$OUT/static/data/hits_current.json"
 for required in index.html watch.html w.html data/towns.json data/hits_current.json; do
   [ -s "$OUT/static/$required" ] || { echo "vercel-build: missing $required at ${REF}" >&2; exit 1; }
 done
+
+# ---- full-text search index (Pagefind, version pinned by search/package-lock.json) -> static/pagefind
+(cd "$SRC/search" && npm ci --no-audit --no-fund --loglevel=error >/dev/null)
+node "$SRC/search/build-index.mjs" "$SRC/data/search" "$OUT/static/pagefind"
+[ -s "$OUT/static/pagefind/pagefind.js" ] || { echo "vercel-build: search index missing at ${REF}" >&2; exit 1; }
 
 # ---- function dependencies (installed once, copied into each function)
 BLOB_VERSION="$(sed -n 's/.*"@vercel\/blob": *"\([^"]*\)".*/\1/p' "$SRC/site/package.json")"
@@ -107,7 +114,7 @@ const security = {
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'X-Frame-Options': 'DENY',
-  'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'",
+  'Content-Security-Policy': "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'",
 };
 const config = {
   version: 3,
@@ -118,6 +125,7 @@ const config = {
     { src: '^/data/(.*)$', headers: { 'Cache-Control': 'public, max-age=300, s-maxage=300' }, continue: true },
     { src: '^/(.+)\\.html$', status: 308, headers: { Location: '/$1' } },
     { handle: 'filesystem' },
+    { src: '^/\\.well-known/http-message-signatures-directory/?$', dest: '/api/key-directory' },
     { src: '^/w/[^/]*/?$', dest: '/w' },
   ],
   overrides,

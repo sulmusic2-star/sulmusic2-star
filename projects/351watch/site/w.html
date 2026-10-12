@@ -10,29 +10,31 @@
 <meta property="og:description" content="A private 351 Watch watchlist of town agenda items.">
 <meta property="og:type" content="website">
 <meta name="color-scheme" content="light dark">
+<link rel="preload" href="/fonts/public-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/besley-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5f4a'/%3E%3Ctext x='16' y='21' font-family='Arial' font-size='13' font-weight='700' fill='white' text-anchor='middle'%3E351%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%231b4f8a'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='12.5' font-weight='700' fill='white' text-anchor='middle'%3E351%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap">
-  <a class="brand" href="/">351<span>Watch</span></a>
+  <a class="brand" href="/">351 Watch</a>
   <nav class="top" aria-label="Main">
-    <a href="/towns">Towns</a><a href="/topics">Topics</a><a href="/attorney-general">AG rulings</a><a href="/#tracker">Tracker</a><a href="/proof">Proof</a><a href="/pricing">Pricing</a>
-    <a class="cta" href="/watch">Watch towns</a>
+    <a href="/towns">Towns</a><a href="/topics">Topics</a><a href="/#tracker">Tracker</a><a href="/attorney-general">AG decisions</a><a href="/proof">Coverage</a>
+    <a class="cta" href="/watch">Create a watchlist</a>
   </nav>
 </div></header>
 <main id="main">
 
 <div class="wrap" id="wl-app" data-topics="{&quot;battery_storage&quot;: &quot;Battery storage&quot;, &quot;solar&quot;: &quot;Solar&quot;, &quot;data_center&quot;: &quot;Data centers&quot;, &quot;moratorium&quot;: &quot;Moratoria&quot;, &quot;clean_energy_siting&quot;: &quot;Consolidated permit&quot;, &quot;40b_comprehensive_permit&quot;: &quot;40B housing&quot;, &quot;wireless_telecom&quot;: &quot;Wireless / cell towers&quot;, &quot;zoning_amendment&quot;: &quot;Zoning amendments&quot;, &quot;wetlands_filing&quot;: &quot;Wetlands filings (MassDEP)&quot;}">
 <section class="hero compact" aria-labelledby="wl-title">
-  <p class="eyebrow">Watchlist</p>
+  <p class="crumbs">Watchlist</p>
   <h1 id="wl-title">Loading watchlist…</h1>
   <p class="lead" id="wl-summary"></p>
 </section>
 <div class="notice err" id="wl-error" role="alert" hidden></div>
 <div id="wl-body" hidden>
-  <p class="notice"><b>This page's link is the key to this watchlist.</b> Anyone with it can view, change or delete the watchlist, so share it only with people you trust, and bookmark it now: we can't recover lost links. <button type="button" class="btn small ghost" id="copy-page">Copy link</button></p>
+  <p class="notice"><b>Bookmark this page.</b> Its link is the only key to this watchlist: anyone who has it can view, change or delete the watchlist, and we can't recover a lost link. <button type="button" class="btn small ghost" id="copy-page">Copy link</button></p>
   <p class="notice ok" id="checkout-banner" hidden></p>
 
   <section aria-labelledby="items-title">
@@ -56,7 +58,7 @@
 
   <section aria-labelledby="feeds-title">
     <h2 id="feeds-title">Feeds</h2>
-    <p class="section-lead">Use these in a feed reader, a spreadsheet or your own tools. They update once a day after the agenda scan.</p>
+    <p class="section-lead">Paste these into a feed reader, a spreadsheet or your own scripts. They update once a day, after the agenda scan.</p>
     <div class="feed-rows" id="feed-rows"></div>
     <p><a class="btn ghost small" id="webcal-link" href="#">Subscribe in your calendar app</a></p>
   </section>
@@ -76,8 +78,8 @@
       <button type="button" class="btn ghost danger" id="delete-start">Delete watchlist</button>
     </div>
     <div class="confirm" id="delete-confirm" hidden>
-      <p><b>Delete this watchlist?</b> Its page and feeds stop working right away. This can't be undone.</p>
-      <div class="actions"><button type="button" class="btn danger" id="delete-yes">Delete permanently</button><button type="button" class="btn ghost" id="delete-no">Cancel</button></div>
+      <p><b>Delete this watchlist?</b> Its page and feeds stop working right away, and you can't undo it.</p>
+      <div class="actions"><button type="button" class="btn danger" id="delete-yes">Delete watchlist</button><button type="button" class="btn ghost" id="delete-no">Keep it</button></div>
     </div>
     <p class="form-status" id="manage-status" role="status" aria-live="polite"></p>
   </section>
@@ -86,8 +88,8 @@
 
 </main>
 <footer class="site"><div class="wrap">
-  <p>351 Watch compiles public records that towns post under state open meeting laws, plus state and legislative sources. It is informational only and not legal advice. Always confirm dates and terms with the town clerk or the cited source.</p>
-  <p><a href="/watch">Watch towns</a> · <a href="/towns">All towns</a> · <a href="/topics">Topics</a> · <a href="/attorney-general">Attorney General rulings</a> · <a href="/pricing">Pricing</a> · <a href="/proof">Coverage and method</a> · <a href="/privacy">Privacy</a> · <a href="/privacy#contact">Corrections and contact</a></p>
+  <p>351 Watch compiles public records: agendas and warrants that towns post under state open meeting laws, Attorney General decision letters, court rulings and legislative records. It is informational only and is not legal advice. Confirm dates and terms with the town clerk or the linked source before relying on them.</p>
+  <ul class="foot-links"><li><a href="/watch">Create a watchlist</a></li><li><a href="/towns">All towns</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">Attorney General decisions</a></li><li><a href="/proof">Coverage and method</a></li><li><a href="/pricing">Free during the beta</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/bot">Our crawler</a></li><li><a href="/privacy#contact">Corrections and contact</a></li></ul>
 </div></footer>
 <script src="/app.js" defer></script>
 <script src="/w.js" defer></script>

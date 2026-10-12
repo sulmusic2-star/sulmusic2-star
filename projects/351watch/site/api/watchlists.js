@@ -3,9 +3,11 @@
 // No accounts: the random id is the credential. Stored as private blobs at watchlists/<id>.json.
 import { allow, bodySize, clean, noStore, readBody, removeJSON, throttled } from './_store.js';
 import {
-  MAX_BODY_BYTES, buildPayload, loadHits, loadTownIndex, loadWatchlist, matchItems, newId, parseWebhook,
-  postWebhook, publicBase, publicView, saveWatchlist, topicSet, validId, validateConfig, webhookKind,
+  MAX_BODY_BYTES, buildPayload, ensureFeedId, feedIndexPath, loadHits, loadTownIndex, matchItems, newId,
+  parseWebhook, postWebhook, publicBase, publicView, readonlyView, resolveWatchlist, saveWatchlist, shareId,
+  topicSet, validateConfig, webhookKind,
 } from './_watch.js';
+import { writeJSON } from './_store.js';
 
 const HOUR = 60 * 60 * 1000;
 
@@ -27,6 +29,7 @@ async function create(req, res, body) {
   const now = new Date().toISOString();
   const wl = {
     id: newId(),
+    feed_id: newId(),
     version: 1,
     name: value.name,
     towns: value.towns,
@@ -41,6 +44,7 @@ async function create(req, res, body) {
     last_delivery: null,
   };
   await saveWatchlist(wl);
+  await writeJSON(feedIndexPath(wl.feed_id), { watchlist_id: wl.id });
   return res.status(201).json({ ok: true, id: wl.id, watchlist: publicView(wl, publicBase(req)) });
 }
 
@@ -85,7 +89,7 @@ async function sendTest(req, res, body, saved) {
   } catch {
     sample = [];
   }
-  const link = saved ? `${base}/w/${saved.id}` : `${base}/watch`;
+  const link = saved ? `${base}/w/${shareId(saved)}` : `${base}/watch`;
   const intro = sample.length
     ? `Test message: webhook delivery works. New items will look like ${sample.length === 1 ? 'this one' : 'these'} (already in your watchlist, shown as a sample).`
     : 'Test message: webhook delivery works. New agenda items for your towns and topics will arrive here once a day.';
@@ -114,14 +118,19 @@ export default async function handler(req, res) {
     if (req.method === 'POST' && !id && action !== 'test') return await create(req, res, body);
     if (req.method === 'POST' && action === 'test' && !id) return await sendTest(req, res, body, null);
 
-    if (!validId(id)) return fail(res, 404, 'Watchlist not found.');
-    const wl = await loadWatchlist(id);
+    const { wl, readonly } = await resolveWatchlist(id);
     if (!wl) return fail(res, 404, 'Watchlist not found. It may have been deleted.');
 
-    if (req.method === 'GET') return res.status(200).json({ ok: true, watchlist: publicView(wl, publicBase(req)) });
+    if (req.method === 'GET') {
+      if (readonly) return res.status(200).json({ ok: true, watchlist: readonlyView(wl, publicBase(req)) });
+      await ensureFeedId(wl); // watchlists made before read-only links existed get one now
+      return res.status(200).json({ ok: true, watchlist: publicView(wl, publicBase(req)) });
+    }
+    if (readonly) return fail(res, 403, 'This is a read-only link. Use the private link to change this watchlist.');
     if (req.method === 'PATCH') return await update(req, res, wl, body);
     if (req.method === 'DELETE') {
       await removeJSON(`watchlists/${wl.id}.json`);
+      if (wl.feed_id) await removeJSON(feedIndexPath(wl.feed_id));
       return res.status(200).json({ ok: true, deleted: true });
     }
     if (req.method === 'POST' && action === 'test') return await sendTest(req, res, body, wl);

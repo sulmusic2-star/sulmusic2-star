@@ -3,7 +3,7 @@
 // The iCalendar feed has one all-day event per upcoming meeting with matched items.
 import { createHash } from 'node:crypto';
 import { allow, noStore } from './_store.js';
-import { TOPICS, fmtDate, loadHits, loadWatchlist, matchItems, publicBase, publicItem, validId } from './_watch.js';
+import { TOPICS, fmtDate, loadHits, matchItems, publicBase, publicItem, resolveWatchlist, shareId } from './_watch.js';
 
 const RSS_LIMIT = 100;
 const JSON_LIMIT = 500;
@@ -44,7 +44,7 @@ ${(h.topics || []).map((t) => `<category>${xml(TOPICS[t] || t)}</category>`).joi
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
 <title>${xml(`351 Watch: ${wl.name || 'watchlist'}`)}</title>
-<link>${xml(`${base}/w/${wl.id}`)}</link>
+<link>${xml(`${base}/w/${shareId(wl)}`)}</link>
 <atom:link href="${xml(feedUrl)}" rel="self" type="application/rss+xml"/>
 <description>${xml(describe(wl))}</description>
 <language>en-us</language>
@@ -108,7 +108,7 @@ function ics(wl, items, base, generated) {
         ...group.map((g) => `• ${g.snippet}`),
         '',
         ...agendas.map((u) => `Agenda: ${u}`),
-        `Watchlist: ${base}/w/${wl.id}`,
+        `Watchlist: ${base}/w/${shareId(wl)}`,
         'Confirm the time and place with the town; agendas can change.',
       ].join('\n');
       const uid = createHash('sha1').update(`${wl.id}|${key}`).digest('hex').slice(0, 20);
@@ -148,7 +148,7 @@ export default async function handler(req, res) {
   const format = ['json', 'rss', 'ics'].includes(req.query?.format) ? req.query.format : 'json';
 
   try {
-    const wl = validId(id) ? await loadWatchlist(id) : null;
+    const { wl } = await resolveWatchlist(id);
     if (!wl) {
       noStore(res);
       return res.status(404).json({ ok: false, error: 'Watchlist not found.' });
@@ -161,7 +161,7 @@ export default async function handler(req, res) {
 
     if (format === 'rss') {
       res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
-      return res.status(200).send(rss(wl, items, base, `${base}/api/feed?id=${wl.id}&format=rss`, doc.generated));
+      return res.status(200).send(rss(wl, items, base, `${base}/api/feed?id=${shareId(wl)}&format=rss`, doc.generated));
     }
     if (format === 'ics') {
       res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
@@ -170,7 +170,7 @@ export default async function handler(req, res) {
     }
     return res.status(200).json({
       ok: true,
-      watchlist: { id: wl.id, name: wl.name || '', towns: wl.towns, topics: wl.topics, page: `${base}/w/${wl.id}` },
+      watchlist: { name: wl.name || '', towns: wl.towns, topics: wl.topics, page: `${base}/w/${shareId(wl)}` },
       generated: doc.generated || null,
       window: doc.window || null,
       count: items.length,
