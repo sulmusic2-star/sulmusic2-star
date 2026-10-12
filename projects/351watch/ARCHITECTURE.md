@@ -13,7 +13,8 @@ Read this before changing anything. Several workstreams build in parallel; these
 | Second sources | `crawler/watch351/sources/` (e.g. `massdep.py`), outputs in `data/sources/` | Source workstreams. |
 | Searchable document text | `data/search/` (written by `crawler/watch351/fulltext.py`) | Search workstream. Contract below. |
 | Search index (Pagefind) + `/search` script | `search/build-index.mjs` → `/pagefind/` at deploy time; `site/search.js` | Search workstream. The `/search` page markup comes from `build.py`. |
-| Site generator | `build.py` → `site/` | Web app workstream. |
+| Site generator | `build.py` → `site/` | Web app workstream. The product name is `SITE_NAME` in `build.py` (the wordmark is plain text); the canonical base is `BASE_URL`. Pages: `/` (town box, map, next agendas), `/<state>/<town>`, `/towns`, `/topics`, `/search`, `/watch` (alert setup: home town plus neighbors from `/data/neighbors.json`), `/w/<key>`, `/how-it-works` (coverage, timing, AG record, crawler, privacy, contact), `/attorney-general`, `/pricing`. `/proof`, `/privacy` and `/bot` are redirect pages to `/how-it-works`. |
+| Dot-map points | `geo/town_points.json` (from `geo/match_points.py`) | Web app workstream. One Census 2024 Gazetteer centroid per town; `build.py` draws the maps from it and writes `site/maps/*.svg`. Add rows when a state is added. |
 | Web app API (Vercel functions) | `site/api/` | Web app workstream. |
 | Daily runbook | `ops/daily.sh` | Daily engine. |
 
