@@ -13,6 +13,7 @@ Read this before changing anything. Several workstreams build in parallel; these
 | Second sources | `crawler/watch351/sources/` (e.g. `massdep.py`), outputs in `data/sources/` | Source workstreams. |
 | Searchable document text | `data/search/` (written by `crawler/watch351/fulltext.py`) | Search workstream. Contract below. |
 | Search index (Pagefind) + `/search` script | `search/build-index.mjs` → `/pagefind/` at deploy time; `site/search.js` | Search workstream. The `/search` page markup comes from `build.py`. |
+| Trending stories (ranked, with headlines) | `trending.py` → `data/trending.json` | Trending workstream (data side). Contract below; the page is the web app's. |
 | Site generator | `build.py` → `site/` | Web app workstream. |
 | Web app API (Vercel functions) | `site/api/` | Web app workstream. |
 | Daily runbook | `ops/daily.sh` | Daily engine. |
@@ -53,6 +54,89 @@ Read this before changing anything. Several workstreams build in parallel; these
 - `topics` keys: `battery_storage, solar, data_center, moratorium, clean_energy_siting, 40b_comprehensive_permit, wireless_telecom, zoning_amendment` (+ `wetlands_filing` for MassDEP-sourced items). New topics must be added here first.
 - Window: meetings from 120 days back to 120 days ahead; older items move to `data/state/hits_archive/YYYY-MM.jsonl`.
 - Town slug: lowercase, spaces → `-`, apostrophes dropped; URL path `/{state}/{slug}` e.g. `/ma/great-barrington`.
+
+## `data/trending.json` (Trending page contract)
+
+`python3 trending.py` (standard library only) reads `hits_current.json`, `data/search/` (agenda text), `data/state/hits_archive/`, `tracker.json` and `ag_decisions.json`, groups hits into stories, scores them and writes the top 100. `ops/daily.sh` runs it after the crawl and before `build.py`; a failure keeps yesterday's file. Tests: `python3 tools/test_trending.py`. Preview: `python3 trending.py --dry-run --print 40` (add `--towns MA:Carver --topics solar` to see the page's re-ranking).
+
+```json
+{
+  "generated": "2026-10-12T21:07:34+00:00",
+  "window": {"start": "2026-10-12", "end": "2027-02-09"},
+  "personalize": {"in_my_towns": 2.0, "in_neighbor_towns": 1.0, "topic_match": 0.5},
+  "stories": [
+    {
+      "id": "3f219af9840f",
+      "score": 31.05,
+      "headline": "Plymouth Town Meeting takes up a one-year data-center moratorium",
+      "dek": "Plymouth's Town Meeting is Saturday, Oct 17. The warrant lists an article proposing a temporary moratorium on data centers.",
+      "quote": "…\"Data Center\", and by creating a new section, §207-12, Temporary Moratorium on Data Centers, which would enact a one-year temporary moratorium from October 17, 2026…",
+      "reasons": ["Moratorium vote", "Data-center item", "3 boards", "Town Meeting on Saturday", "First seen Oct 10"],
+      "topics": ["data_center", "moratorium", "zoning_amendment"],
+      "state": "MA", "town": "Plymouth", "county": "Plymouth", "towns": ["MA:Plymouth"],
+      "board": "Town Meeting", "board_key": "town_meeting",
+      "meeting_date": "2026-10-17", "meeting_date_source": "warrant", "days_until": 5,
+      "first_seen": "2026-10-10T14:41:39+00:00", "is_new": true,
+      "source_url": "https://www.plymouth-ma.gov/DocumentCenter/View/11128/…",
+      "town_path": "/ma/plymouth",
+      "action": "moratorium",
+      "boards": [{"town": "Plymouth", "board": "Town Meeting", "board_key": "town_meeting", "meeting_date": "2026-10-17"}, "…"],
+      "hit_ids": ["203c7e1a696a", "…"]
+    }
+  ]
+}
+```
+
+- `stories` is sorted by `score`, highest first, at most 100. `window.start` is the day the file was built (Boston time); `window.end` is the hits window end.
+- A story is one project or one local rule: hits share a story when they are the same agenda item, the same town + board + meeting + topic family (data centers; energy = solar, battery storage, clean energy siting, wind; zoning; 40B; wireless), the same named applicant (LLC names join across towns; utilities and carriers never do), the same site address in a town, or the same town's moratorium or bylaw on one energy or data-center subject (so the Planning Board hearing and the City Council referral are one story).
+- Only stories with a live item are kept: a meeting today or later, an undated fall Town Meeting warrant, or a MassDEP filing from the last 14 days. Past meetings drop off; hits from the last 60 days still count as momentum. The lead hit (headline, dek, quote, `board`, `meeting_date`, `source_url`) is the story's highest-scoring live hit.
+- `headline` (≤ 84 characters, sentence case, present tense), `dek` (one or two sentences, ≤ 26 words) and `reasons` come from fixed templates filled only with words found in the agenda: board, date, applicant name, site address, sizes, durations. When a template's fact is missing, a plainer template is used, down to "Holyoke Planning Board agenda mentions battery storage". Nothing claims an outcome or a position. `quote` is the shortest clean agenda sentence holding the subject or project name (≤ 200 characters, OCR noise removed, `…` where cut); render it in `<q>` or `<blockquote>`.
+- `towns` are site town ids (`MA:Carver`), every town involved; `town`/`state`/`county`/`town_path` are the lead's. `boards` lists each board once (next upcoming meeting, else latest past one).
+- `meeting_date_source`: `agenda`, `warrant` (read from an undated Town Meeting warrant's first pages; `meeting_date` is null when the warrant gives none) or `filing` (MassDEP filing date). `days_until` is counted from `window.start`; the page should recompute it from `meeting_date` and hide stories whose meeting has passed.
+- `is_new`: the story's earliest `first_seen` is within 72 hours of `generated`.
+- `action` is one of `moratorium, ban, adopt, town_meeting, bylaw_hearing, project_hearing, rezoning, warrant_review, filing, bylaw_draft, project, deal, process, discussion, mention, continuance, minutes, withdrawn, cancelled` (`minutes` = narrative minutes of an earlier meeting printed in the packet).
+- Publishing: the page needs the file at `/data/trending.json`; copy it in the deploy the way `hits_current.json` is copied.
+
+### Score
+
+`score = (topic points × action multiplier + bonuses × routine − vague) × timing`, rounded to 2 places. All weights are constants at the top of `trending.py`.
+
+| Part | Values |
+|---|---|
+| Topic points | data center 10; battery storage 8; moratorium or ban on any siting subject at least 7; large solar (ground-mounted, large-scale, MW, acres, dual-use) 6; wind 5; clean energy siting 5; zoning change 4; 40B 3.5; other solar (carport, rooftop, municipal) 3.5; cell tower 3; wetlands filing 1.5; non-zoning bylaw or non-siting moratorium 1 |
+| Action multiplier | moratorium or ban 1.6 (+0.1 for a vote, hearing or Town Meeting article; 1.2 when tentative, "moratorium?"); adoption vote 1.5; Town Meeting article 1.4; bylaw hearing 1.4; public hearing on a project 1.3; rezoning 1.2; warrant review 1.1; filing, draft bylaw, project application 1.0; lease or contract 0.8; consolidated-permit process 0.7; discussion 0.55; mention 0.5; continuance 0.35; minutes 0.35; withdrawn 0.25; canceled 0.15. Conservation Commission project items × 0.85 (wetlands review only) |
+| Scale (largest one, project items only) | MW ≥50: 3, ≥10: 2.5, ≥2: 2, ≥0.5: 1; MWh ≥200: 3, ≥40: 2.5, ≥8: 2, ≥1: 1; units ≥200: 2.5, ≥100: 2, ≥40: 1.5, ≥10: 1; acres ≥50: 2, ≥20: 1.5, ≥5: 1; dollars ≥$10M: 2, ≥$1M: 1.5, ≥$100k: 0.5; sq ft ≥200k: 2.5, ≥50k: 1.5, ≥10k: 1 |
+| First in town | +2 data center, battery storage, moratorium; +1.5 wind; +1 solar, clean energy, 40B, cell tower. Only when no earlier dated (or any undated) hit on that topic exists for the town and we hold 30+ days of its agendas before the story |
+| Momentum | +2.5 per extra board, +3 per extra town (each capped at 3 extra); +1 per extra meeting (max 2) when the board count is 1 |
+| Other bonuses | +1 first seen in the last 72 hours; +1 town has a pending item on `tracker.json` for the subject; +1.5 the AG disapproved the town's bylaw on the subject in the last 365 days |
+| Routine | bonuses × min(1, action multiplier ÷ 0.8), so momentum cannot lift a mention or minutes above a real hearing |
+| Vague | −1.5 for a long snippet with no project name that is only a mention or discussion, or one that is mostly OCR noise |
+| Timing | meeting in 0–1 days 1.5; 2–7 days 1.35; 8–14 days 1.2; 15–30 days 0.9; 31–60 days 0.7; later 0.5; undated fall warrant 0.75; MassDEP filing 0.8; past 0 |
+
+### Personalization (the page, in the browser, no account)
+
+The visitor picks towns (site ids such as `MA:Carver`) and optionally topics. The page loads `/data/trending.json` and `/data/neighbors.json` and re-ranks:
+
+```
+personal = score × (1 + 2·in_my_towns + 1·in_neighbor_towns) × (1 + 0.5·topic_match)
+```
+
+- `in_my_towns` = 1 if any of the story's `towns` is a chosen town, else 0.
+- `in_neighbor_towns` = 1 if any of the story's `towns` is in `neighbors[t]` for a chosen town `t` and is not itself chosen, else 0. Both can be 1 (a story in my town and the next town over gets × 4).
+- `topic_match` = 1 if the story's `topics` share a key with the chosen topics, else 0 (no topics chosen: always 0).
+- Sort by `personal`, highest first; ties keep the file's order. The three constants are also in the file's `personalize` key; `trending.personalize()` is the reference implementation.
+
+Worked example, from the Oct 12, 2026 file, for a visitor who picks Carver and the topic `solar` (Carver's neighbors are Kingston, Middleborough, Plymouth, Plympton and Wareham):
+
+| Story | score | my town | neighbor | topic | personal |
+|---|---|---|---|---|---|
+| Plymouth Town Meeting takes up a one-year data-center moratorium | 31.05 | 0 | 1 | 0 | 31.05 × 2 × 1 = 62.10 |
+| Harvard Town Meeting takes up solar and battery storage rules | 21.84 | 0 | 0 | 1 | 21.84 × 1 × 1.5 = 32.76 |
+| Federal Pond Solar asks Carver planners for continuance to Oct 27 | 6.50 | 1 | 0 | 1 | 6.50 × 3 × 1.5 = 29.25 |
+| Boxborough weighs a data-center moratorium | 27.00 | 0 | 0 | 0 | 27.00 |
+| Wareham Town Meeting takes up zoning changes | 7.92 | 0 | 1 | 0 | 7.92 × 2 = 15.84 |
+
+Sorted, the Carver visitor's list starts: Plymouth 62.10, Harvard 32.76, Geneva 31.50 (its story also carries `solar`), Rochester 31.28, the Carver continuance 29.25, then Swansea 28.89 and Boxborough 27.00. Their own town's routine item climbs from #73 to #5 but still does not outrank a neighbor's moratorium vote. `python3 trending.py --dry-run --print 10 --towns MA:Carver --topics solar` prints this list.
 
 ## `data/search/` (full-text search contract)
 
