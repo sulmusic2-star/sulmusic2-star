@@ -1,0 +1,45 @@
+state,feed,url,type,result_2026_10_11,machine_readable,current,label
+NV,Nevada Public Notice Website (all public bodies; NRS 241.020(4)(b)),https://notice.nv.gov/,statewide meeting notices,200; robots 404; home lists upcoming meetings with Date Posted; most rows link to body's own agenda page,HTML,yes (Oct 2026 postings),verified
+UT,Utah Public Notice Website,https://www.utah.gov/pmn/,statewide meeting notices + hosted agenda files,200; robots allow; GET list endpoints /pmn/list/entities|publicBodies|notices.html; files /pmn/files/<id>.pdf,HTML+PDF,yes (Millard Co. Oct 2026),verified
+VT,Act 250 Agenda (daily aggregate of noticed/decided projects),https://anrweb.vt.gov/ANR/Act250/agenda.aspx,state land-use permits,200; 61 projects in 3-week window,HTML table,yes (daily),verified
+VT,ePUC (Section 248 cases),https://epuc.vermont.gov/,state siting docket,200 home page,not tested,not tested,verified (reachability only)
+MN,EQB Monitor (weekly environmental review notices),https://content.govdelivery.com/accounts/MNEQB/bulletins/42d3d41,statewide EAW/AUAR/EIS notices,200; Vol 50 No 40 Oct 6 2026,structured HTML,yes (weekly),verified
+MN,PUC eDockets,https://www.edockets.state.mn.us/,state siting docket,403,n/a,n/a,verified (blocked)
+NY,DEC DART on data.ny.gov,https://data.ny.gov/resource/mbk7-f2r2.json,state permit applications (incl. wetlands),200 Socrata API; newest date_received 2026-09-21 seen,JSON API,yes,verified
+DE,DNREC Storm Water NOIs on data.delaware.gov,https://data.delaware.gov/resource/3s4n-3up9.json,construction stormwater NOIs,200 Socrata API; newest datereceived 2024-04-17,JSON API,no (stale since Apr 2024),verified
+DE,Delaware Public Meeting Calendar,https://publicmeetings.delaware.gov/,meeting calendar,Angular app; /assets/ config disallowed by robots,n/a,n/a,verified (blocked)
+GA,DCA DRI submissions,https://apps.dca.ga.gov/DRI/Submissions.aspx,regional-impact development filings (incl. data centers),robots Disallow: /,n/a,n/a,verified (blocked)
+GA,Atlanta Regional Commission DRI page,https://atlantaregional.org/what-we-do/community-development/developments-of-regional-impact/,regional DRI reviews,200 (WordPress; feed),not tested,not tested,verified (reachability only)
+MI,EGLE MiEnviro (permits & public notices),https://mienviro.michigan.gov/ncore/external/publicnotice/search,state environmental permits,robots Disallow: /,n/a,n/a,verified (blocked)
+MI,MPSC site,https://www.mpsc.michigan.gov/,state siting (PA 233),robots disallow,n/a,n/a,verified (blocked)
+MI,Michigan Townships Association directory,https://michigantownships.org/find-a-township/?fips=69240,township directory (website field),200; ~10 s/page server latency,HTML,yes,verified
+PA,DEP eFACTS,https://www.ahs.dep.pa.gov/eFACTSWeb/,state permits,robots disallow,n/a,n/a,verified (blocked)
+PA,PA Code & Bulletin,https://www.pacodeandbulletin.gov/,weekly DEP permit notices,robots disallow,n/a,n/a,verified (blocked)
+PA,data.pa.gov (Socrata),https://api.us.socrata.com/api/catalog/v1?domains=data.pa.gov&q=permit,open data,no permit-application dataset found (mining permits only),JSON API,n/a,verified
+NJ,NJDEP DataMiner,https://njems.nj.gov/DataMiner/,state permits (land use),robots disallow,n/a,n/a,verified (blocked)
+NJ,NJ DOS statewide legal-notice directory,https://www.nj.gov/state/statewide-legal-notices-list.shtml,list of each entity's notice page,200,HTML list,yes,verified
+NH,NHDES OneStop,https://www4.des.state.nh.us/DESOnestop/BasicSearch.aspx,wetlands / AoT permits,Akamai 403,n/a,n/a,verified (blocked)
+VA,DEQ public notices,https://www.deq.virginia.gov/permits/public-notices,state permits (incl. data-center air),Akamai 403,n/a,n/a,verified (blocked)
+VA,SCC docket search,https://www.scc.virginia.gov/docketsearch,state utility docket,robots disallow,n/a,n/a,verified (blocked)
+NC,NCUC dockets,https://starw1.ncuc.gov/NCUC/page/Dockets/portal.aspx,state utility docket,Cloudflare challenge,n/a,n/a,verified (blocked)
+SC,PSC DMS,https://dms.psc.sc.gov/,state utility docket,robots disallow,n/a,n/a,verified (blocked)
+WI,PSC ERF,https://apps.psc.wi.gov/ERF/ERFsearch/default.aspx,state siting docket,Cloudflare challenge,n/a,n/a,verified (blocked)
+NM,PRC eDocket,https://edocket.nmprc.state.nm.us/,state utility docket,robots disallow,n/a,n/a,verified (blocked)
+CO,PUC e-filings,https://puc.colorado.gov/e-filings,state utility docket,CloudFront 403,n/a,n/a,verified (blocked)
+TX,ERCOT GIS report downloads,https://www.ercot.com/mp/data-products/data-product-details?id=PG7-200-ER,interconnection queue,product page 200 but /misdownload and /misapp robots-disallowed,n/a,n/a,verified (blocked)
+TX,Comptroller JETI,https://comptroller.texas.gov/economy/development/jeti/,tax-incentive applications,robots disallow,n/a,n/a,verified (blocked)
+TX,TCEQ permitting,https://www.tceq.texas.gov/permitting,state permits,200 home page,not tested,not tested,verified (reachability only)
+OH,PUCO/OPSB DIS,https://dis.puc.state.oh.us/,state siting docket,200,not tested,not tested,verified (reachability only)
+IL,ICC e-docket,https://www.icc.illinois.gov/docket/,state utility docket,200,not tested,not tested,verified (reachability only)
+IN,IURC portal,https://iurc.portal.in.gov/,state utility docket,200,not tested,not tested,verified (reachability only)
+IA,IUC EFS,https://efs.iowa.gov/,state utility docket,200,not tested,not tested,verified (reachability only)
+AZ,ACC eDocket,https://edocket.azcc.gov/,state utility docket,200,not tested,not tested,verified (reachability only)
+GA,PSC search,https://psc.ga.gov/search/,state utility docket,200,not tested,not tested,verified (reachability only)
+KY,PSC,https://psc.ky.gov/,state siting board docket,200,not tested,not tested,verified (reachability only)
+MD,PSC DMS,https://webpscxb.psc.state.md.us/DMS/,state CPCN docket,200,not tested,not tested,verified (reachability only)
+CT,Siting Council pending matters,https://portal.ct.gov/csc/1_applications-and-other-pending-matters/pending-matters,state siting docket,200,HTML,not tested,verified (reachability only)
+national,SPP active GI queue CSV,https://opsportal.spp.org/Studies/GenerateActiveCSV,interconnection queue (county),200 CSV; Last Updated 10/9/2026,CSV,yes,verified
+national,MISO GI queue API,https://www.misoenergy.org/api/giqueue/getprojects,interconnection queue,Cloudflare challenge,n/a,n/a,verified (blocked)
+national,PJM serial service request page,https://www.pjm.com/planning/service-requests/serial-service-request-status,interconnection queue,200 page (data tool not tested),not tested,not tested,verified (reachability only)
+national,EIA-860M,https://www.eia.gov/electricity/data/eia860m/,monthly generator inventory incl. planned,200; xlsx downloads OK,XLSX,yes (monthly),verified
+national,FAA OE/AAA,https://oeaaa.faa.gov/oeaaa/external/portal.jsp,tall-structure filings (wind),200 (JS app),not tested,not tested,verified (reachability only)
