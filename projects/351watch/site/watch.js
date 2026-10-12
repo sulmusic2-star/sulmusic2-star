@@ -1,7 +1,9 @@
 // /watch and /alerts-for-groups: set up alerts, or edit them with ?edit=<private key>.
-// Screen 1 asks for the town; screen 2 shows what the alerts would have sent lately, one ticked box
-// for the towns next door, the subjects, and an email address (when /api/status says email is on).
-// /alerts-for-groups (form data-mode="groups") adds per-town boxes, a chat webhook and a name.
+// Screen 1 asks for the town; screen 2 shows what the alerts would have sent lately, one box for all
+// the towns next door (and "Choose which towns" for each one), the topics (solar, battery storage and data
+// centers to start, or the topic the visitor came from), and an email address (when /api/status says
+// email is on). /alerts-for-groups (form data-mode="groups") adds a chat webhook, tested before saving,
+// and a name.
 // Free alerts cover one home town plus the towns next to it (/data/neighbors.json), every topic.
 // Screen 1 also takes a line such as "battery storage in Carver, Plympton and Wareham": the first
 // town is the home town, other typed towns narrow the neighbors, typed topics narrow the topics.
@@ -29,6 +31,8 @@
   const email = $('email');
   const removeEmail = $('email-remove');
   const DEFAULT_READ = read.textContent;
+  const PRESET = topicBoxes.filter((t) => t.checked).map((t) => t.value); // as build.py ticks them
+  let testedUrl = ''; // the webhook URL that last passed a test message
 
   let towns = []; // [{id, state, town, county, monitored}]
   const byId = new Map();
@@ -232,10 +236,16 @@
       return;
     }
     const near = area(id);
-    const first = checkbox('home', id, `${label(id)} (your town${notRead(id) ? ', not read yet' : ''})`, true);
+    const first = checkbox('home', id, `${label(id)} (your town${notRead(id) ? ', can’t check yet' : ''})`, true);
     first.querySelector('input').disabled = true;
     nearList.replaceChildren(first, ...near.map((n) => checkbox('towns', n,
-      `${label(n, id)} (next to ${label(id)}${notRead(n) ? ', not read yet' : ''})`, checkedNear ? checkedNear.includes(n) : true)));
+      `${label(n, id)}${notRead(n) ? ' (can’t check yet)' : ''}`, checkedNear ? checkedNear.includes(n) : true)));
+    const cant = [id, ...near].filter(notRead);
+    $('cant-note').textContent = cant.length
+      ? `We can’t check ${joinAnd(cant.map((n) => label(n, id)))} yet, so these alerts can’t include ${cant.length === 1 ? 'it' : 'them'} until we can. `
+        + 'The town clerk can tell you what’s coming up there.'
+      : '';
+    $('cant-note').hidden = !cant.length;
     const chosen = checkedNear ? near.filter((n) => checkedNear.includes(n)) : near;
     $('near-all-text').textContent = `Also include ${chosen.length === 1 ? 'the town' : 'towns'} next to ${label(id)}: ${joinAnd((groups ? near : chosen).map((n) => label(n, id)))}`;
     $('near-all-row').hidden = !near.length;
@@ -269,7 +279,7 @@
       topicsFromText = true;
       fieldError('topics', '');
     } else if (topicsFromText) {
-      for (const t of topicBoxes) t.checked = true;
+      for (const t of topicBoxes) t.checked = PRESET.includes(t.value);
       topicsFromText = false;
     }
     topicSummary();
@@ -332,10 +342,10 @@
       nodes.push(el('p', 'notice', `We can’t check ${label(homeId)}’s agendas yet, so for now these alerts come from the towns next to it.`));
     }
     if (!past && !ahead.length) {
-      nodes.push(el('p', '', `Nothing about these subjects in ${where} in the last 30 days. You’ll hear from us when something comes up.`));
+      nodes.push(el('p', '', `Nothing on these topics in ${where} in the last 30 days. You’ll hear from us when something comes up.`));
     } else {
       const lead = el('p');
-      lead.append(`In the last 30 days, ${where} had `, el('b', '', plural(past, 'meeting')), ' about these subjects. ',
+      lead.append(`In the last 30 days, ${where} had `, el('b', '', plural(past, 'meeting')), ' on these topics. ',
         ahead.length ? (ahead.length > 3 ? `${ahead.length} more are coming up. The next 3:` : 'Coming up next:') : 'Nothing else is on an agenda yet.');
       nodes.push(lead);
       if (ahead.length) {
@@ -347,8 +357,9 @@
           head.append(el('span', 'meet-day', dayLabel(m.d)));
           // The most specific sentence: one that names an action first, a bare "mentions …" last.
           const said = m.ids.map((id) => (lines.lines[id] || [])[0]).filter(Boolean);
-          const rank = (s) => (s.includes(' will ') ? 0 : s.includes(' mentions ') ? 2 : 1);
-          const best = said.sort((a, b) => rank(a) - rank(b) || b.length - a.length)[0] || 'Agenda item';
+          const rank = (id) => Number(((lines.lines[id] || [])[6]) ?? 60);
+          const bestId = m.ids.slice().sort((a, b) => rank(a) - rank(b))[0];
+          const best = (lines.lines[bestId] || [])[0] || said[0] || 'Agenda item';
           const others = new Set(said).size - 1;
           li.append(head, el('p', 'line-say', best));
           if (others > 0) li.append(el('p', 'meet-found', `and ${plural(others, 'more item')}`));
@@ -430,7 +441,7 @@
       ok = false;
     }
     if (!data.topics.length) {
-      fieldError('topics', 'Tick at least one subject.');
+      fieldError('topics', 'Choose at least one topic.');
       ok = false;
     }
     if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
@@ -473,6 +484,21 @@
       return;
     }
     submit.disabled = true;
+    if (data.webhook_url && data.webhook_url !== testedUrl) {
+      setStatus(status, 'Checking the webhook with a test message…');
+      try {
+        await send('POST', '/api/watchlists?action=test', data);
+        testedUrl = data.webhook_url;
+        setStatus(testStatus, 'Test message sent. Check your channel.', 'ok');
+      } catch (err) {
+        const why = (err.fields && err.fields.webhook_url) || err.message;
+        fieldError('webhook_url', `We couldn’t post to that webhook: ${why} Check the link, or clear it to save without chat posts.`);
+        setStatus(status, 'Not saved yet. Fix the webhook link, or clear it, then try again.', 'err');
+        submit.disabled = false;
+        webhook.focus();
+        return;
+      }
+    }
     setStatus(status, editId ? 'Saving…' : 'Setting up your alerts…');
     try {
       const result = editId
@@ -498,6 +524,7 @@
     }
   });
 
+  if (webhook) webhook.addEventListener('input', () => { fieldError('webhook_url', ''); });
   if ($('send-test')) $('send-test').addEventListener('click', async (event) => {
     const button = event.currentTarget;
     const url = webhook.value.trim();
@@ -513,10 +540,12 @@
       const data = payload();
       if (url) await send('POST', '/api/watchlists?action=test', { ...data, webhook_url: url });
       else await send('POST', `/api/watchlists?id=${encodeURIComponent(editId)}&action=test`, {});
+      if (url) testedUrl = url;
       setStatus(testStatus, 'Test message sent. Check your channel.', 'ok');
     } catch (err) {
-      if (err.fields && err.fields.webhook_url) fieldError('webhook_url', err.fields.webhook_url);
-      setStatus(testStatus, err.message, 'err');
+      if (url) testedUrl = '';
+      fieldError('webhook_url', `We couldn’t post to that webhook: ${(err.fields && err.fields.webhook_url) || err.message}`);
+      setStatus(testStatus, 'The test message didn’t go through. Check the link and try again.', 'err');
     } finally {
       button.disabled = false;
     }

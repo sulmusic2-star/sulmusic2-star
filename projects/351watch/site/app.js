@@ -143,6 +143,13 @@ function setupContactForm() {
   if (!form) return;
   const status = form.querySelector('.form-status');
   const button = form.querySelector('button[type="submit"]');
+  const about = new URLSearchParams(location.search).get('about');
+  if (about) {
+    form.elements.kind.value = 'correction';
+    form.elements.message.value = `About: ${about.slice(0, 300)}\n\nWhat’s wrong: `;
+    const details = form.closest('details');
+    if (details) details.open = true;
+  }
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -224,12 +231,23 @@ function trimToSentence(node) {
 function setupSearchResults() {
   const list = document.getElementById('search-results');
   if (!list || !window.MutationObserver) return;
+  const form = document.getElementById('search-form');
+  const seen = new Set();
   const dress = (li) => {
     if (li.dataset.dressed) return;
     li.dataset.dressed = '1';
+    // The same agenda can come back twice (two copies of one document): show it once.
+    const title = li.querySelector('.result-title');
+    const meta = li.querySelector('.result-meta');
+    const key = `${title ? title.textContent : ''}|${meta ? meta.textContent : ''}`;
+    if (seen.has(key) || (title && seen.has(title.href))) {
+      li.hidden = true;
+      return;
+    }
+    seen.add(key);
+    if (title) seen.add(title.href);
     const snippet = li.querySelector('.result-snippet');
     if (snippet) trimToSentence(snippet);
-    const meta = li.querySelector('.result-meta');
     if (meta && meta.textContent.includes(' · ')) { // slop-lint: ignore (splits search.js's dot-joined meta)
       meta.replaceChildren(...meta.textContent.split(' · ').map((part) => { // slop-lint: ignore
         const span = document.createElement('span');
@@ -245,26 +263,158 @@ function setupSearchResults() {
       }));
     }
   };
+
+  // Towns: chips with hidden name="town" inputs. search.js keeps one value per name when it reads the
+  // form, so this page sends the query itself (several town= params) and lets search.js run it.
+  const pick = document.getElementById('town-pick');
+  const chips = document.getElementById('town-chips');
+  const add = document.getElementById('town-add');
+  const addError = document.getElementById('town-add-error');
+  const options = pick ? Array.from(pick.querySelectorAll('#search-towns option')) : [];
+  const nameOf = (id) => {
+    const o = options.find((x) => x.dataset.id === id);
+    return o ? o.value : id.split(':').slice(1).join(':');
+  };
+  const chosen = () => (chips ? Array.from(chips.querySelectorAll('input[name="town"]')).map((i) => i.value) : []);
+  const chip = (id) => {
+    const li = document.createElement('li');
+    const box = document.createElement('input');
+    box.type = 'hidden';
+    box.name = 'town';
+    box.value = id;
+    const x = document.createElement('button');
+    x.type = 'button';
+    x.className = 'chip-x';
+    x.textContent = '×';
+    x.setAttribute('aria-label', `Remove ${nameOf(id)}`);
+    x.addEventListener('click', () => {
+      li.remove();
+      submit();
+      add.focus();
+    });
+    li.append(document.createTextNode(nameOf(id)), box, x);
+    return li;
+  };
+  const setTowns = (ids) => {
+    if (!chips) return;
+    chips.replaceChildren(...[...new Set(ids)].filter(Boolean).map(chip));
+  };
+  function params() {
+    const p = new URLSearchParams();
+    for (const [k, v] of new FormData(form)) {
+      const value = String(v).trim();
+      if (!value) continue;
+      if (k === 'town') p.append(k, value);
+      else p.set(k, value);
+    }
+    return p;
+  }
+  function submit() {
+    const qs = params().toString();
+    if (qs !== location.search.slice(1)) history.pushState(null, '', location.pathname + (qs ? `?${qs}` : ''));
+    window.dispatchEvent(new PopStateEvent('popstate')); // search.js runs the query in the address bar
+    syncAlert();
+  }
+  function addTyped() {
+    const want = norm(add.value);
+    if (!want) return false;
+    const o = options.find((x) => norm(x.value) === want) || options.find((x) => norm(x.value.split(',')[0]) === want);
+    if (!o) {
+      addError.textContent = 'We don’t know that town. Pick it from the list as you type.';
+      addError.hidden = false;
+      return false;
+    }
+    addError.hidden = true;
+    if (!chosen().includes(o.dataset.id)) chips.append(chip(o.dataset.id));
+    add.value = '';
+    return true;
+  }
+  if (pick && form) {
+    setTowns(new URLSearchParams(location.search).getAll('town').flatMap((v) => v.split(',')));
+    document.getElementById('town-add-btn').addEventListener('click', () => { if (addTyped()) submit(); });
+    add.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && add.value.trim()) {
+        event.preventDefault();
+        if (addTyped()) submit();
+      }
+    });
+    add.addEventListener('change', () => { if (options.some((x) => x.value === add.value) && addTyped()) submit(); });
+    // Runs before search.js's own submit handler (capture on document) and stops it.
+    document.addEventListener('submit', (event) => {
+      if (event.target !== form) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (add.value.trim()) addTyped();
+      submit();
+    }, true);
+    window.addEventListener('popstate', () => setTowns(new URLSearchParams(location.search).getAll('town')));
+    const mine = window.w351 && window.w351.areas ? window.w351.areas() : null;
+    const mineBtn = document.getElementById('my-towns-btn');
+    if (mine && mine.towns.length && mineBtn) {
+      mineBtn.textContent = `Search my towns (${mine.towns.slice(0, 3).map(nameOf).join(', ')}${mine.towns.length > 3 ? ` and ${mine.towns.length - 3} more` : ''})`;
+      mineBtn.hidden = false;
+      mineBtn.addEventListener('click', () => {
+        setTowns(mine.towns);
+        submit();
+      });
+    }
+  }
+
   // "Get these by email" right above the results, carrying the town and topic filters to /watch.
   const alert = document.getElementById('search-alert');
-  const form = document.getElementById('search-form');
-  const syncAlert = () => {
+  function syncAlert() {
     if (!alert || !form) return;
-    const town = form.elements.town && form.elements.town.value;
+    const towns = chosen();
     const topic = form.elements.topic && form.elements.topic.value;
     const q = new URLSearchParams();
-    if (town) q.set('town', town);
+    if (towns.length) q.set('town', towns.join(','));
     if (topic) q.set('topic', topic);
     const link = alert.querySelector('a');
     link.href = `/watch${q.toString() ? `?${q}` : ''}`;
-    const name = town ? form.elements.town.selectedOptions[0].textContent : '';
-    link.textContent = name ? `Get ${name} alerts by email` : 'Get alerts for your town by email';
-    alert.hidden = !list.querySelector('li.result');
-  };
+    const names = towns.map((t) => nameOf(t).split(',')[0]);
+    link.textContent = names.length ? `Get alerts for ${names.length > 2 ? `${names[0]} and ${names.length - 1} more towns` : names.join(' and ')} by email`
+      : 'Get alerts for your town by email';
+    alert.hidden = !list.querySelector('li.result:not([hidden])');
+  }
+
+  // A name of two or more words with no exact match in the results: say so, and offer the quoted search.
+  const exact = document.getElementById('search-exact');
+  const input = document.getElementById('search-q');
+  function checkExact() {
+    if (!exact || !input) return;
+    const q = input.value.trim();
+    const words = q.split(/\s+/).filter((w) => w.length > 1);
+    const results = Array.from(list.querySelectorAll('li.result:not([hidden])'));
+    if (/["“”]/.test(q) || words.length < 2 || !results.length) {
+      exact.hidden = true;
+      return;
+    }
+    const phrase = norm(q);
+    const found = results.some((li) => norm(li.textContent).includes(phrase));
+    if (found) {
+      exact.hidden = true;
+      return;
+    }
+    const again = document.createElement('button');
+    again.type = 'button';
+    again.className = 'link-btn';
+    again.textContent = `Search for "${q}" as an exact phrase`;
+    again.addEventListener('click', () => {
+      input.value = `"${q}"`;
+      submit();
+    });
+    exact.replaceChildren(`No exact match for “${q}”. The results below have these words, but not together. `, again, '.');
+    exact.hidden = false;
+  }
+
   if (form) form.addEventListener('change', syncAlert);
+  let pending = 0;
   new MutationObserver((changes) => {
     for (const c of changes) for (const n of c.addedNodes) if (n.nodeType === 1 && n.matches('li.result')) dress(n);
+    if (!list.querySelector('li.result')) seen.clear();
     syncAlert();
+    clearTimeout(pending);
+    pending = setTimeout(checkExact, 150);
   }).observe(list, { childList: true });
   syncAlert();
 }
@@ -280,11 +430,12 @@ function setupEmailNotes() {
 }
 
 // "Request this town" for towns we can't read yet: a message through the contact endpoint.
-async function requestTown(id, name) {
+async function requestTown(id, name, email) {
+  const reply = email ? ` Tell me when it's added: ${email}` : '';
   const res = await fetch('/api/contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ kind: 'message', message: `Please add ${name} (${id}). We can't check its agendas yet.`, page: location.pathname }),
+    body: JSON.stringify({ kind: 'message', message: `Please add ${name} (${id}). We can't get its agendas yet.${reply}`, page: location.pathname }),
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok || !data.ok) throw new Error(data.error || 'The request didn’t go through. Try again in a minute.');
@@ -293,14 +444,23 @@ function setupRequestButtons() {
   for (const box of document.querySelectorAll('[data-request-town]')) {
     const button = box.querySelector('button');
     const out = box.querySelector('.form-status');
+    const email = box.querySelector('input[type="email"]');
     button.addEventListener('click', async () => {
+      const address = email ? email.value.trim() : '';
+      if (address && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address)) {
+        out.className = 'form-status err';
+        out.textContent = 'Check the email address. It should look like name@example.com, or leave it empty.';
+        email.focus();
+        return;
+      }
       button.disabled = true;
       out.className = 'form-status';
       out.textContent = 'Sending…';
       try {
-        await requestTown(box.dataset.requestTown, box.dataset.townName);
+        await requestTown(box.dataset.requestTown, box.dataset.townName, address);
         out.classList.add('ok');
-        out.textContent = 'Thanks. We’ve got your request and will ask the town hall.';
+        out.textContent = address ? 'Thanks. We’ll ask the town hall, and email you when the town is added.'
+          : 'Thanks. We’ve got your request and will ask the town hall.';
       } catch (err) {
         out.classList.add('err');
         out.textContent = err.message;
@@ -380,6 +540,23 @@ window.w351 = {
       return null;
     }
   },
+  // "My towns" from a town page: added to the same saved towns (the first one stays the home town).
+  addTown(id) {
+    const doc = this.areas();
+    const towns = doc ? doc.towns : [];
+    if (!towns.includes(id)) this.saveAreas(doc ? doc.home_town : id, [...towns, id], doc && doc.topics);
+  },
+  removeTown(id) {
+    const doc = this.areas();
+    if (!doc) return;
+    const towns = doc.towns.filter((t) => t !== id);
+    try {
+      if (!towns.length) localStorage.removeItem(AREAS_KEY);
+      else this.saveAreas(towns[0], towns, doc.topics);
+    } catch {
+      /* storage unavailable */
+    }
+  },
   relDates,
   forget(id) {
     try {
@@ -389,6 +566,33 @@ window.w351 = {
     }
   },
 };
+
+function setupMyTown() {
+  for (const box of document.querySelectorAll('[data-my-town]')) {
+    const id = box.dataset.myTown;
+    const name = box.dataset.townName;
+    const button = box.querySelector('button');
+    const note = document.createElement('span');
+    note.className = 'form-note';
+    note.setAttribute('role', 'status');
+    const has = () => {
+      const doc = window.w351.areas();
+      return Boolean(doc && doc.towns.includes(id));
+    };
+    const show = () => {
+      button.textContent = has() ? `Remove ${name} from my towns` : `Add ${name} to my towns`;
+    };
+    button.addEventListener('click', () => {
+      if (has()) window.w351.removeTown(id);
+      else window.w351.addTown(id);
+      show();
+      note.textContent = has() ? ` Saved in this browser. Biggest stories, Search and alerts start from your towns.` : ' Removed.';
+    });
+    box.append(note);
+    show();
+    box.hidden = false;
+  }
+}
 
 // Meeting days said the way people say them: "Today, Oct 12", "Tomorrow, Oct 13", "Saturday, Oct 17",
 // counted in Boston time; a story whose meeting has passed is hidden.
@@ -411,7 +615,8 @@ function relDates(root = document) {
   }
 }
 
-// "Copy citation" and "Share this meeting": buttons that need JavaScript, so they start hidden.
+// "Copy citation" and "Share this meeting": buttons that need JavaScript, so they start hidden. Share
+// opens the phone's share sheet, or copies the text and link (ready to paste into Facebook).
 async function copyText(text) {
   try {
     await navigator.clipboard.writeText(text);
@@ -452,7 +657,8 @@ function setupCopyAndShare() {
       }
       return;
     }
-    flash(share, (await copyText(data.url)) ? 'Link copied' : 'Couldn’t copy the link');
+    const post = data.text ? `${data.text}\n${data.url}` : data.url;
+    flash(share, (await copyText(post)) ? 'Copied, ready to paste' : 'Couldn’t copy');
   });
   for (const b of document.querySelectorAll('[data-copy][hidden], [data-share][hidden]')) b.hidden = false;
 }
@@ -468,4 +674,5 @@ setupEmailNotes();
 setupRequestButtons();
 setupDisclosure();
 setupCopyAndShare();
+setupMyTown();
 relDates();

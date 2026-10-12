@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Get free alerts for your town | Agenda Ahead</title>
 <meta name="description" content="Free email alerts when solar, battery storage, data centers or zoning come up on your town&#x27;s agendas and the towns next to it. No account needed.">
-<link rel="canonical" href="https://351watch-sulmusic2-4637s-projects.vercel.app/watch">
+<link rel="canonical" href="https://agendaahead.vercel.app/watch">
 <meta property="og:title" content="Get free alerts for your town">
 <meta property="og:description" content="Free email alerts when solar, battery storage, data centers or zoning come up on your town&#x27;s agendas and the towns next to it. No account needed.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Agenda Ahead">
-<meta property="og:url" content="https://351watch-sulmusic2-4637s-projects.vercel.app/watch">
-<meta property="og:image" content="https://351watch-sulmusic2-4637s-projects.vercel.app/og.png">
+<meta property="og:url" content="https://agendaahead.vercel.app/watch">
+<meta property="og:image" content="https://agendaahead.vercel.app/og.png">
 <meta property="og:image:alt" content="Agenda Ahead: what's coming up at your town meetings">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
@@ -24,7 +24,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap">
   <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span>Agenda Ahead</a>
-  <nav class="top" aria-label="Main"><ul><li><a href="/towns">Towns</a></li><li><a href="/trending">Trending</a></li><li><a href="/search">Search</a></li><li><a href="/watch" aria-current="page">Get alerts</a></li></ul></nav>
+  <nav class="top" aria-label="Main"><ul><li><a href="/towns">Towns</a></li><li><a href="/trending">Biggest stories</a></li><li><a href="/search">Search</a></li><li><a href="/watch" aria-current="page">Get alerts</a></li></ul></nav>
 </div></header>
 <main id="main">
 
@@ -58,11 +58,19 @@
       <label class="check big" id="near-all-row"><input type="checkbox" id="near-all" checked> <span id="near-all-text">Also include the towns next to <span id="home-name">your town</span></span></label>
       <p class="field-error" id="near-error" hidden></p>
       <p class="form-note" id="near-note" hidden></p>
-      <div hidden><ul id="near-list"></ul><div id="extra-wrap"><ul id="extra-list"></ul></div></div>
+      <p class="form-note cant-note" id="cant-note" hidden></p>
+      <details class="disclose" id="near-details"><summary>Choose which towns</summary>
+        <ul class="check-cols" id="near-list"></ul>
+        <div id="extra-wrap" hidden>
+          <p class="form-note">Also in these alerts:</p>
+          <ul class="check-cols" id="extra-list"></ul>
+        </div>
+      </details>
     </fieldset>
     <fieldset class="near" id="topics-step">
       <legend class="big-legend">Send me alerts about</legend>
-      <ul class="check-cols topic-list" id="topics-details"><li><label class="check"><input type="checkbox" name="topics" value="solar" checked><span>Solar</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="battery_storage" checked><span>Battery storage</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="data_center" checked><span>Data centers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="moratorium" checked><span>Moratoriums</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="clean_energy_siting" checked><span>Clean-energy permit rules</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="zoning_amendment" checked><span>Zoning changes</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="40b_comprehensive_permit" checked><span>Affordable housing</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wireless_telecom" checked><span>Cell towers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wetlands_filing" checked><span>Wetlands filings</span></label></li></ul>
+      <p class="form-note">We picked the three most people ask for. Add or remove any.</p>
+      <ul class="check-cols topic-list" id="topics-details"><li><label class="check"><input type="checkbox" name="topics" value="solar" checked><span>Solar</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="battery_storage" checked><span>Battery storage</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="data_center" checked><span>Data centers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="moratorium"><span>Moratoriums (temporary bans)</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="clean_energy_siting"><span>Clean-energy permit rules</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="zoning_amendment"><span>Zoning changes</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="40b_comprehensive_permit"><span>Affordable housing (40B)</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wireless_telecom"><span>Cell towers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wetlands_filing"><span>Wetlands filings</span></label></li></ul>
       <p class="field-error" id="topics-error" hidden></p>
     </fieldset>
 
@@ -85,7 +93,7 @@
   </div>
 </form>
 <p class="form-note">For a business or group? <a href="/alerts-for-groups">Alerts for businesses and groups</a> can post to Slack, Teams or Discord.</p>
-<p class="owner">Agenda Ahead is an independent service from OWNER_NAME_TBD, Massachusetts. We’re not connected to any town, developer or advocacy group.</p>
+
 
 <section id="my-lists" aria-labelledby="my-lists-title" hidden>
   <h2 id="my-lists-title">Alerts you set up on this device</h2>
@@ -95,9 +103,9 @@
 
 </main>
 <footer class="site"><div class="wrap">
-  <p>Agenda Ahead is an independent service from OWNER_NAME_TBD, Massachusetts. We’re not connected to any town, developer or advocacy group.</p>
-  <p>We check the agendas towns post online. This isn’t legal advice. Check dates with the town clerk.</p>
-  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">Attorney General reviews of town bylaws</a></li><li><a href="/pricing">Is it free?</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#crawler">How we collect agendas</a></li><li><a href="/how-it-works#contact">Contact us</a></li></ul>
+  
+  <p>We read the agendas towns post online. This isn’t legal advice; confirm dates with the town clerk.</p>
+  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">Massachusetts Attorney General rulings</a></li><li><a href="/pricing">Free alerts</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#contact">Contact us</a></li></ul>
 </div></footer>
 <script src="/app.js" defer></script>
 <script src="/watch.js" defer></script>

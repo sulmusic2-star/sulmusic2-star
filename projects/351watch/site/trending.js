@@ -52,12 +52,20 @@
       tools.append(d);
     }
     if (st.source_url) {
-      const link = el('a', 'item-link', 'Open the agenda');
+      const link = el('a', 'item-link', st.warrant ? 'Open the warrant' : 'Open the agenda');
       link.href = st.source_url;
       link.rel = 'nofollow noopener';
       link.target = '_blank';
       tools.append(link);
     }
+    // Share: the day, the headline and the summary, ready to paste (app.js handles the click).
+    const share = el('button', 'link-btn', 'Share');
+    share.type = 'button';
+    share.dataset.share = '';
+    share.dataset.url = new URL(st.href, location.origin).href;
+    share.dataset.title = st.headline;
+    share.dataset.text = `${st.meeting_date ? `${dayLabel(st.meeting_date)}: ` : ''}${st.headline}. ${st.dek}`;
+    tools.append(share);
     li.append(tools);
     return li;
   }

@@ -629,3 +629,27 @@ details.disclose[open] { padding-bottom: var(--s4); }
 .group-box legend { font-weight: 600; padding: 0 var(--s1); }
 .watch .submit-row { margin-top: var(--s5); }
 .watch #email-option .field { margin-top: 0; }
+
+/* Value-test round: town summary, "Can I speak?", report links, my towns, several towns in search */
+.town-summary { margin: var(--s3) 0 var(--s4); padding: var(--s3) var(--s4); border-left: 4px solid var(--mark); background: var(--mark-wash); max-width: 70ch; }
+.town-summary p { margin: 0 0 var(--s2); }
+.town-summary p:last-child { margin-bottom: 0; }
+.line-note p { margin: 0; }
+.speak > summary { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; text-decoration: underline; text-underline-offset: 0.18em; cursor: pointer; }
+.speak p { margin: var(--s1) 0 var(--s2); max-width: 70ch; }
+.report-link { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: var(--t-sm); }
+.boards .checked { color: var(--muted); font-size: var(--t-sm); }
+.my-town { margin: 0 0 var(--s2); }
+.my-town .form-note { margin-left: var(--s2); }
+.cant-note { color: var(--warn); }
+.town-pick { display: flex; flex-direction: column; gap: var(--s1); font-size: var(--t-sm); flex-basis: 100%; }
+.town-pick .field-row { display: flex; gap: var(--s2); }
+.town-pick input { flex: 1; min-width: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: var(--s2); margin: 0; padding: 0; list-style: none; }
+.chips:empty { display: none; }
+.chips li { display: inline-flex; align-items: center; gap: var(--s1); padding: 0 0 0 var(--s3); border: 1px solid var(--rule-strong); border-radius: 999px; font-size: var(--t-body); }
+.chip-x { min-width: 44px; min-height: 44px; border: 0; background: none; color: var(--ink); font: inherit; font-size: 1.25rem; cursor: pointer; }
+#search-exact .link-btn { display: inline; min-height: 0; }
+@media (max-width: 640px) {
+  .search-filters .town-pick { grid-column: 1 / -1; }
+}
