@@ -1,5 +1,5 @@
 // Stores corrections, data-removal requests and general messages as private blobs.
-// No email address is collected: 351 Watch does not send email.
+// The form collects no email address (email alerts are separate: see _email_alerts.js).
 import { bodySize, clean, noStore, readBody, save, postOnly, throttled } from './_store.js';
 
 const KINDS = new Set(['correction', 'removal', 'message']);

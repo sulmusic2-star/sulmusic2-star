@@ -153,7 +153,11 @@
     const parts = [];
     if (p.get("topic")) parts.push(`about ${label("topic", p.get("topic")).toLowerCase()}`);
     if (p.get("board")) parts.push(`from the ${label("board", p.get("board")).toLowerCase()}`);
-    if (p.get("town")) parts.push(`in ${label("town", p.get("town"))}`);
+    const towns = p.getAll("town").filter(Boolean);
+    if (towns.length) {
+      const names = towns.map((t) => label("town", t)); // "Carver, MA" already holds a comma
+      parts.push(`in ${names.length > 1 ? names.slice(0, -1).join("; ") + " and " + names[names.length - 1] : names[0]}`);
+    }
     else if (p.get("state")) parts.push(`in ${label("state", p.get("state"))}`);
     return parts.length ? " " + parts.join(" ") : "";
   }
@@ -168,7 +172,11 @@
     const gen = ++generation;
     const q = (p.get("q") || "").replace(/[“”„]/g, '"').trim(); // phrase search takes straight quotes
     const filters = {};
-    for (const f of FILTERS) if (p.get(f)) filters[f] = p.get(f);
+    for (const f of FILTERS) {
+      const values = p.getAll(f).filter(Boolean);
+      if (values.length === 1) filters[f] = values[0];
+      else if (values.length > 1) filters[f] = { any: values }; // several towns: ?town=MA:Carver&town=MA:Plymouth
+    }
     const upcoming = p.get("upcoming") === "1";
     const narrowed = Boolean(q || Object.keys(filters).length);
     list.replaceChildren();
