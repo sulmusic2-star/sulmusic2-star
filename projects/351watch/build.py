@@ -34,6 +34,7 @@ from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
 import trending as TR  # the Trending page's classifier: one reading of each agenda item for every page
+import briefs as BR  # written briefs: storage, loading and the verifier (tools/verify_briefs.py)
 
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
@@ -392,6 +393,29 @@ class Ctx:
                 h["meeting_date"] = a["date"].isoformat()  # read from the warrant, as Trending does
         # Minutes of an earlier meeting printed in an agenda packet aren't agenda items.
         self.hits = [h for h in self.hits if (ANALYSIS.get(h["id"]) or {}).get("action") != "minutes"]
+        # A warrant dated from its own text, older than the hits window, is an old warrant the town's site
+        # still lists (Whately's 2012 to 2019 warrants), not an item for these pages.
+        win_start = (self.hits_doc.get("window") or {}).get("start") or ""
+        self.hits = [h for h in self.hits if not (win_start and (ANALYSIS.get(h["id"]) or {}).get("date_source") == "warrant"
+                                                  and (h.get("meeting_date") or "") < win_start)]
+        # Written briefs: only those the verifier passed, checked again here against the agenda text, so
+        # nothing unverified renders.
+        self.briefs_dropped = 0
+        hit_by_id = {h["id"]: h for h in self.hits}
+        town_dates = defaultdict(set)
+        for st, town, _, d in self.tr_inputs.get("history") or []:
+            if d:
+                town_dates[f"{st}:{town}"].add(d.isoformat())
+        for bid, b in BR.load_briefs(str(DATA), verified_only=True).items():
+            h = hit_by_id.get(bid)
+            if not h:
+                continue
+            doc = (self.tr_inputs.get("docs") or {}).get(h["source_url"]) or {}
+            wrong_doc = bool(b.get("source_url")) and b["source_url"] != h["source_url"]
+            if wrong_doc or BR.verify(b, doc.get("text") or "", town_dates.get(f"{h['state']}:{h['town']}", set())):
+                self.briefs_dropped += 1
+                continue
+            BRIEFS[bid] = b
         for h in self.hits:
             h["topics"] = item_topics(h)
         # The meeting date of each document, also for warrants dated from their own text (as Trending does).
@@ -889,16 +913,65 @@ def project_phrase(topics, name, company, addr):
 
 
 def item_text(h):
-    """One plain sentence for one agenda item, from the shared reading (analysis_text) when there is one."""
+    """One plain sentence for one agenda item: a verified written brief when there is one, else the shared
+    reading (analysis_text), else the older rules."""
     a = ANALYSIS.get(h.get("id"))
     if a:
-        return analysis_text(h, a)
-    t = item_text_rules(h)
-    t.setdefault("key", "")
-    t["quote"] = "" if junk_quote(clean_quote(h.get("snippet"), 600)) else clean_quote(h.get("snippet"), 600)
-    t["no"] = ""
-    t["rank"] = 30 if t["kind"] == "act" else 70
-    return t
+        t = analysis_text(h, a)
+    else:
+        t = item_text_rules(h)
+        t.setdefault("key", "")
+        t["quote"] = "" if junk_quote(clean_quote(h.get("snippet"), 600)) else clean_quote(h.get("snippet"), 600)
+        t["no"] = ""
+        t["rank"] = 30 if t["kind"] == "act" else 70
+    b = BRIEFS.get(h.get("id"))
+    return brief_text(t, b) if b else t
+
+
+# Labels for a brief's facts, in the order they show. An empty label is a plain paragraph (the brief's
+# one-sentence "what"). The content research can rename these here; w.js and trending.js read them
+# from lines.json and trending.json.
+BRIEF_LABELS = {"what": "", "where": "Where", "size": "Size", "who": "Who", "next": "Next", "history": "Earlier",
+                "can_speak": "Can I speak?", "quote": "Exact agenda wording"}
+BRIEF_SPEAK = {True: "Yes. This is a public hearing: anyone can attend and ask to speak, and you can send written "
+                     "comments to the board through the town clerk before the meeting.",
+               False: "The agenda doesn’t list public comment on this item. Ask the town clerk whether you can."}
+BRIEF_RANK = {"vote": 10, "adopted": 10, "hearing": 20, "continued": 20, "other": 40, "discussion": 40, "withdrawn": 50}
+
+
+def brief_text(base, b):
+    """The item's line from a verified written brief: the brief's one-liner as the heading, its facts, and
+    its own quote as the agenda wording. The shared reading still supplies the item key and number."""
+    say = (b.get("line") or b.get("what") or base["say"]).strip()
+    return {**base, "say": say, "kind": "brief", "note": "", "quote": b.get("quote") or base.get("quote", ""),
+            "brief": b, "rank": BRIEF_RANK.get(b.get("action") or "other", 40) + SUBJECT_RANK.get(base.get("subj", ""), 8)}
+
+
+def brief_facts_html(b, clerk="", skip_what=False):
+    """The brief's facts that exist, labeled from BRIEF_LABELS: the "what" sentence as a paragraph (unless
+    it repeats the line), then a <dl> of Where, Size, Who, Next, Earlier and "Can I speak?"."""
+    parts = []
+    rows = []
+    same = quote_key(b.get("what") or "") == quote_key(b.get("line") or "")
+    for key, label in BRIEF_LABELS.items():
+        if key == "quote":
+            continue
+        v = b.get(key)
+        extra = ""
+        if key == "can_speak":
+            v = BRIEF_SPEAK.get(v) if v in (True, False) else None
+            if b.get("can_speak") is True and clerk:
+                extra = f" {clerk}"
+        if v in (None, "", False):
+            continue
+        if not label:
+            if not (key == "what" and (same or skip_what)):
+                parts.append(f'<p class="brief-what">{e(str(v))}</p>')
+            continue
+        rows.append(f'<div class="fact"><dt>{e(label)}</dt><dd>{e(str(v))}{extra}</dd></div>')
+    if rows:
+        parts.append(f'<dl class="brief-facts">{"".join(rows)}</dl>')
+    return "".join(parts)
 
 
 def item_text_rules(h):
@@ -967,6 +1040,7 @@ def item_text_rules(h):
 # counts and the Trending page all use that one reading. ANALYSIS is filled by Ctx.
 
 ANALYSIS = {}
+BRIEFS = {}  # hit id -> verified written brief (briefs.py); filled by Ctx, shown instead of the rules-based line
 SUBJECT_NOUN = {"data_center": "data centers", "battery_storage": "battery storage", "solar": "solar",
                 "wind": "wind energy", "clean_energy_siting": "small clean-energy projects", "zoning_amendment": "zoning",
                 "general_bylaw": "town rules", "40b_comprehensive_permit": "affordable housing",
@@ -1471,7 +1545,7 @@ def group_meetings(ctx, hits):
         entry = m["lines"].setdefault(t["say"], {"quotes": [], "new": False, "topics": [], "note": t["note"], "kind": t["kind"],
                                                  "key": t.get("key") or (name or find_address(h.get("snippet") or "")).lower(),
                                                  "who": who_label(h), "no": t.get("no", ""), "hit": h["id"], "rank": t.get("rank", 60),
-                                                 "subj": t.get("subj", ""),
+                                                 "subj": t.get("subj", ""), "brief": t.get("brief"),
                                                  "seen": h.get("first_seen") or "", "url": h["source_url"]})
         entry["topics"] += [x for x in item_topics(h) if x not in entry["topics"]]
         q = t.get("quote")
@@ -1523,7 +1597,7 @@ def tidy_lines(lines, town_meeting=False):
                 .replace(" will vote on ", " will discuss ").replace("zoning ordinance", "zoning bylaw"))
     named = {}
     groups = defaultdict(list)
-    for k in sorted(lines, key=lambda k: (lines[k]["rank"], lines[k]["kind"] != "act", -len(k))):
+    for k in sorted(lines, key=lambda k: (lines[k]["rank"], lines[k]["kind"] != "brief", lines[k]["kind"] != "act", -len(k))):
         if lines[k]["key"]:
             groups[lines[k]["key"]].append(k)
         else:
@@ -1533,7 +1607,7 @@ def tidy_lines(lines, town_meeting=False):
         say = keys[0]
         # "...review a Town Meeting article about solar rules" and "...about clean-energy permit rules" for
         # one article: one line about both.
-        lead = re.match(r"^(.* about )([^“:]+)\.$", say)
+        lead = None if best["kind"] == "brief" else re.match(r"^(.* about )([^“:]+)\.$", say)
         if lead:
             subjects = [lead.group(2)]
             for k in keys[1:]:
@@ -1549,9 +1623,9 @@ def tidy_lines(lines, town_meeting=False):
         if k not in named or named[k]["rank"] >= 10:
             continue
         for other in [o for o in named if o != k and named[o]["rank"] >= 10 and named[o].get("subj") == named[k].get("subj")
-                      and named[o]["kind"] != "list"]:
+                      and named[o]["kind"] not in ("list", "brief")]:
             merge_entry(named[k], named.pop(other))
-    acts = [k for k in named if named[k]["kind"] != "mention"]
+    acts = [k for k in named if named[k]["kind"] not in ("mention", "brief")]
     for short in sorted(acts, key=lambda k: (len(core(k)), " will vote on " in k)):
         longer = next((k for k in acts if k != short and k in named and core(short) in core(k)), None)
         if longer and short in named:
@@ -1681,6 +1755,15 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4):
     def line(text, entry):
         new = '<span class="badge-new">New</span> ' if entry["new"] else ""
         tags = tag_text(entry["topics"])
+        tags_html = f'<p class="item-tags">{e(tags)}</p>' if tags else ""
+        copy = f'<button type="button" class="link-btn" data-copy="{e(citation(ctx, m, entry))}" hidden>Copy citation</button>'
+        b = entry.get("brief")
+        if b:
+            words = (f'<details class="item-words"><summary>{e(BRIEF_LABELS["quote"])}</summary>'
+                     f'<p class="item-from">Quoted from {source}:</p><blockquote class="item-quote">{e(b["quote"])}</blockquote></details>'
+                     if b.get("quote") else "")
+            return (f'<li class="line brief">{tags_html}<p class="line-say">{new}{e(text)}</p>{brief_facts_html(b, clerk)}'
+                    f'<div class="line-tools">{words}{copy}{report_link(m, text)}</div></li>')
         inline = quote_key(text)
         quotes = "".join(f'<blockquote class="item-quote">{e(q)}</blockquote>' for q in entry["quotes"][:3]
                          if quote_key(q)[:60] not in inline)
@@ -1692,8 +1775,6 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4):
                     f'<p>{SPEAK_TEXT}</p>{f"<p>{clerk}</p>" if clerk else ""}</details></div>')
         elif entry["note"]:
             note = f'<p class="line-note">{e(entry["note"])}</p>'
-        copy = f'<button type="button" class="link-btn" data-copy="{e(citation(ctx, m, entry))}" hidden>Copy citation</button>'
-        tags_html = f'<p class="item-tags">{e(tags)}</p>' if tags else ""
         return (f'<li class="line">{tags_html}<p class="line-say">{new}{e(text)}</p>{note}'
                 f'<div class="line-tools">{words}{copy}{report_link(m, text)}</div></li>')
 
@@ -1977,6 +2058,7 @@ def trending_stories(ctx):
             "href": (st.get("town_path") or town_path(st.get("state", "MA"), st.get("town", ""))) + anchor,
             "meeting_date": d, "source_url": st.get("source_url", ""),
             "new": any(ctx.is_new(hits_by_id[i]) for i in st.get("hit_ids", []) if i in hits_by_id),
+            "brief": next((BRIEFS[i] for i in st.get("hit_ids", []) if i in BRIEFS), None),
         })
     return out, doc.get("personalize") or {"in_my_towns": 2.0, "in_neighbor_towns": 1.0, "topic_match": 0.5}
 
@@ -2012,23 +2094,30 @@ def story_chips(st):
 
 
 def story_html(ctx, st, level=3):
+    """One story. With a verified brief on its lead item, the brief's line is the heading, its "what" the
+    summary, then its facts and exact wording."""
+    b = st.get("brief")
+    headline = (b.get("line") or st["headline"]) if b else st["headline"]
+    dek = (b.get("what") or st["dek"]) if b else st["dek"]
     when = (f'<time datetime="{st["meeting_date"]}" data-rel>{day_label(st["meeting_date"], ctx)}</time>'
             if st["meeting_date"] else '<span>Date not set yet</span>')
     town = f'{e(st["town"])}{", " + e(st["state"]) if st["state"] != "MA" else ""}'
     new = '<span class="badge-new">New</span> ' if st["new"] else ""
     why = "".join(f"<span>{e(r)}</span>" for r in st["reasons"])
-    quote = (f'<details class="item-words"><summary>Show the agenda text</summary>'
-             f'<p class="item-from">Quoted from the agenda:</p><blockquote class="item-quote">{e(st["quote"])}</blockquote></details>'
-             if st["quote"] else "")
+    quote_text = (b.get("quote") or "") if b else st["quote"]
+    quote = (f'<details class="item-words"><summary>{e(BRIEF_LABELS["quote"]) if b else "Show the agenda text"}</summary>'
+             f'<p class="item-from">Quoted from the {"warrant" if st.get("warrant") else "agenda"}:</p><blockquote class="item-quote">{e(quote_text)}</blockquote></details>'
+             if quote_text else "")
     agenda = (f'<a class="item-link" href="{e(st["source_url"])}" rel="nofollow noopener" target="_blank">Open the {"warrant" if st.get("warrant") else "agenda"}'
-              f'<span class="sr-only">: {e(st["headline"])}</span></a>') if st["source_url"] else ""
+              f'<span class="sr-only">: {e(headline)}</span></a>') if st["source_url"] else ""
     day = day_label(st["meeting_date"], ctx) if st["meeting_date"] else ""
-    share = (f'<button type="button" class="link-btn" data-share data-url="{e(BASE_URL + st["href"])}" data-title="{e(st["headline"])}" '
-             f'data-text="{e((day + ": " if day else "") + st["headline"] + ". " + st["dek"])}" hidden>Share</button>')
-    return f"""<li class="story" data-id="{e(st['id'])}">
+    share = (f'<button type="button" class="link-btn" data-share data-url="{e(BASE_URL + st["href"])}" data-title="{e(headline)}" '
+             f'data-text="{e((day + ": " if day else "") + headline + ". " + dek)}" hidden>Share</button>')
+    facts = brief_facts_html(b, skip_what=True) if b else ""
+    return f"""<li class="story{' brief' if b else ''}" data-id="{e(st['id'])}">
   <p class="story-when" data-slop-ignore>{when}<span class="story-town">{town}</span></p>
-  <h{level} class="story-head" data-slop-ignore><a href="{e(st['href'])}">{new}{e(st['headline'])}</a></h{level}>
-  <p class="story-dek">{e(st['dek'])}</p>
+  <h{level} class="story-head" data-slop-ignore><a href="{e(st['href'])}">{new}{e(headline)}</a></h{level}>
+  <p class="story-dek">{e(dek)}</p>{facts}
   {f'<p class="story-why" data-slop-ignore>{why}</p>' if why else ''}
   <div class="line-tools">{quote}{agenda}{share}</div>
 </li>"""
@@ -2036,7 +2125,9 @@ def story_html(ctx, st, level=3):
 
 def trending_json(stories, weights):
     """site/data/trending.json: the stories still ahead, with only what the page needs."""
-    return json.dumps({"personalize": weights, "stories": stories}, separators=(",", ":"), ensure_ascii=False)
+    return json.dumps({"personalize": weights, "brief_labels": BRIEF_LABELS,
+                       "brief_speak": {"true": BRIEF_SPEAK[True], "false": BRIEF_SPEAK[False]}, "stories": stories},
+                      separators=(",", ":"), ensure_ascii=False)
 
 
 def build_trending(ctx):
@@ -2492,7 +2583,7 @@ def build_topics_index(ctx):
 <p class="actions"><a class="btn" href="/watch">Get alerts</a></p>
 </div>
 """
-    return page(ctx, f"Topics: solar, battery storage, data centers, moratoriums | {SITE_NAME}",
+    return page(ctx, f"Topics: solar, battery storage, data centers | {SITE_NAME}",
                 "What town agendas say about solar, battery storage, data centers, moratoriums, clean-energy permit rules, "
                 "zoning changes, affordable housing and cell towers.",
                 body, "/topics")
@@ -3166,6 +3257,9 @@ def lines_json(ctx):
         "at": at,
         "new": [h["id"] for h in ctx.hits if ctx.is_new(h)],
         "first_sweep": ctx.first_sweep,
+        "briefs": {h["id"]: BRIEFS[h["id"]] for h in ctx.hits if h["id"] in BRIEFS},
+        "brief_labels": BRIEF_LABELS,
+        "brief_speak": {"true": BRIEF_SPEAK[True], "false": BRIEF_SPEAK[False]},
         "recent": recent,
     }, separators=(",", ":"), ensure_ascii=False)
 
@@ -3254,7 +3348,8 @@ def main():
 
     print(f"built {len(pages)} pages ({len(ctx.towns)} town pages, {thin} thin/noindex), "
           f"{len(ctx.tracker.get('items', []))} tracker rows, {len(ctx.hits)} agenda hits, "
-          f"{len(ctx.ag)} AG rows, {len(ctx.points)} map points, town health {'present' if ctx.health is not None else 'absent'}")
+          f"{len(ctx.ag)} AG rows, {len(ctx.points)} map points, town health {'present' if ctx.health is not None else 'absent'}, "
+          f"{len(BRIEFS)} written briefs shown ({ctx.briefs_dropped} not verified)")
 
 
 if __name__ == "__main__":

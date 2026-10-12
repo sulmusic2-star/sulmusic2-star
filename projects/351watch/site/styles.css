@@ -653,3 +653,16 @@ details.disclose[open] { padding-bottom: var(--s4); }
 @media (max-width: 640px) {
   .search-filters .town-pick { grid-column: 1 / -1; }
 }
+
+/* Written briefs: the one-line heading, the "what" sentence, then labeled facts */
+.line.brief .line-say, .story.brief .story-head { font-weight: 600; }
+.brief-what { margin: var(--s1) 0 0; max-width: 70ch; }
+.brief-facts { display: grid; grid-template-columns: max-content 1fr; gap: var(--s1) var(--s3); margin: var(--s2) 0 0; max-width: 70ch; font-size: var(--t-sm); }
+.brief-facts .fact { display: contents; }
+.brief-facts dt { font-weight: 600; color: var(--muted); }
+.brief-facts dd { margin: 0; }
+.story .brief-facts { margin-bottom: var(--s2); }
+@media (max-width: 480px) {
+  .brief-facts { grid-template-columns: 1fr; gap: 0; }
+  .brief-facts dd { margin-bottom: var(--s2); }
+}

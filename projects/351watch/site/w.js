@@ -18,7 +18,8 @@
   const id = pathId || params.get('id') || '';
   const SITE = document.title.split(' | ').pop(); // the product name, from the title build.py wrote
   let homeTown = null; // the alert list's home town, when the API reports it
-  let LINES = {}; // /data/lines.json: {lines: {id: [line, quote, note, kind, key, board, rank, number, subject]}, new: [id, ...]}
+  let LINES = {}; // /data/lines.json: {lines: {id: [line, quote, note, kind, key, board, rank, number, subject]}, briefs: {id: brief}, new: [id, ...]}
+  const BRIEF_RANK = { vote: 10, adopted: 10, hearing: 20, continued: 20, other: 40, discussion: 40, withdrawn: 50 };
   let NEW = new Set();
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 
@@ -76,6 +77,11 @@
   // item newer than that file says which topic its agenda mentions, with its own agenda text.
   function lineFor(it) {
     const known = LINES.lines && LINES.lines[it.id];
+    const b = LINES.briefs && LINES.briefs[it.id];
+    if (b && known) { // a verified written brief, as brief_text() in build.py
+      return { say: (b.line || b.what || known[0]).trim(), quote: b.quote || known[1], note: '', kind: 'brief', key: known[4] || '',
+        who: known[5] || '', rank: BRIEF_RANK[b.action || 'other'] || 40, no: known[7] || '', subj: known[8] || '', brief: b };
+    }
     if (known) {
       return { say: known[0], quote: known[1], note: known[2] || '', kind: known[3] || 'act', key: known[4] || '', who: known[5] || '',
         rank: Number(known[6] ?? 60), no: known[7] || '', subj: known[8] || '' };
@@ -118,7 +124,7 @@
       const t = lineFor(it);
       if (!m.lines.has(t.say)) {
         m.lines.set(t.say, { quotes: [], topics: [], isNew: false, note: t.note, kind: t.kind, key: t.key, who: t.who, rank: t.rank,
-          no: t.no, subj: t.subj, seen: it.first_seen || '', url: it.source_url });
+          no: t.no, subj: t.subj, seen: it.first_seen || '', url: it.source_url, brief: t.brief || null });
       }
       const entry = m.lines.get(t.say);
       const all = [...m.lines.values()].flatMap((v) => v.quotes);
@@ -147,6 +153,7 @@
       into.note = into.note || e.note;
     };
     const sorted = [...lines.keys()].sort((a, b) => lines.get(a).rank - lines.get(b).rank
+      || (lines.get(a).kind !== 'brief') - (lines.get(b).kind !== 'brief')
       || (lines.get(a).kind !== 'act') - (lines.get(b).kind !== 'act') || b.length - a.length);
     const named = new Map();
     const groups = new Map();
@@ -162,7 +169,7 @@
     for (const keys of groups.values()) {
       const best = lines.get(keys[0]);
       let say = keys[0];
-      const lead = say.match(ABOUT);
+      const lead = best.kind === 'brief' ? null : say.match(ABOUT);
       if (lead) {
         const subjects = [lead[2]];
         for (const k of keys.slice(1)) {
@@ -178,13 +185,13 @@
       if (!named.has(k) || named.get(k).rank >= 10) continue;
       for (const o of [...named.keys()]) {
         const v = named.get(o);
-        if (o !== k && v.rank >= 10 && v.subj === named.get(k).subj && v.kind !== 'list') {
+        if (o !== k && v.rank >= 10 && v.subj === named.get(k).subj && v.kind !== 'list' && v.kind !== 'brief') {
           merge(named.get(k), v);
           named.delete(o);
         }
       }
     }
-    const acts = [...named.keys()].filter((k) => named.get(k).kind !== 'mention');
+    const acts = [...named.keys()].filter((k) => named.get(k).kind !== 'mention' && named.get(k).kind !== 'brief');
     for (const short of acts.sort((a, b) => core(a).length - core(b).length)) {
       const longer = acts.find((k) => k !== short && named.has(k) && core(k).includes(core(short)));
       if (longer && named.has(short)) {
@@ -257,7 +264,41 @@
       }
       return e.note ? el('p', { class: 'line-note', text: e.note }) : null;
     };
+    // A brief's facts, labeled from lines.json's brief_labels (as brief_facts_html() in build.py).
+    const factsNodes = (b, skipWhat) => {
+      const labels = LINES.brief_labels || {};
+      const speak = LINES.brief_speak || {};
+      const out = [];
+      const rows = [];
+      const same = normQ(b.what || '') === normQ(b.line || '');
+      for (const [key, label] of Object.entries(labels)) {
+        if (key === 'quote') continue;
+        let v = b[key];
+        if (key === 'can_speak') v = v === true ? speak.true : v === false ? speak.false : null;
+        if (v === null || v === undefined || v === '' || v === false) continue;
+        if (!label) {
+          if (!(key === 'what' && (same || skipWhat))) out.push(el('p', { class: 'brief-what', text: String(v) }));
+          continue;
+        }
+        rows.push(el('div', { class: 'fact' }, el('dt', { text: label }), el('dd', { text: String(v) })));
+      }
+      if (rows.length) out.push(el('dl', { class: 'brief-facts' }, ...rows));
+      return out;
+    };
     const lineNode = ([text, e]) => {
+      if (e.brief) {
+        const b = e.brief;
+        const labels = LINES.brief_labels || {};
+        return el('li', { class: 'line brief' },
+          tagText(e.topics) ? el('p', { class: 'item-tags', text: tagText(e.topics) }) : null,
+          el('p', { class: 'line-say' }, e.isNew ? el('span', { class: 'badge-new', text: 'New' }) : null, e.isNew ? ' ' : null, text),
+          ...factsNodes(b, false),
+          el('div', { class: 'line-tools' },
+            b.quote ? el('details', { class: 'item-words' }, el('summary', { text: labels.quote || 'Exact agenda wording' }),
+              el('p', { class: 'item-from', text: `Quoted from ${source}:` }), el('blockquote', { class: 'item-quote', text: b.quote })) : null,
+            el('button', { type: 'button', class: 'link-btn', 'data-copy': citation(m, e), text: 'Copy citation' }),
+            el('a', { class: 'report-link', href: reportHref(m, text), text: 'Report a problem' })));
+      }
       const inline = normQ(text);
       const quotes = e.quotes.slice(0, 3).filter((q) => !inline.includes(normQ(q).slice(0, 60)));
       return el('li', { class: 'line' },

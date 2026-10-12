@@ -315,6 +315,35 @@ class FallbackTests(unittest.TestCase):
                                  "9:00 AM for the Fall Annual Town Meeting.", "FINAL 2026 Fall Annual Town Meeting")
         self.assertEqual(d, date(2026, 10, 17))
 
+    def test_warrant_date_prefers_the_titles_month_over_a_body_date(self):
+        text = ("TOWN OF HOLLISTON WARRANT. Article 1: To see if the Town will vote to appropriate funds for the fiscal "
+                "year beginning July 1, 2026 for the Town Meeting budget. ... The inhabitants are hereby notified to meet "
+                "at the High School on Monday, October 19, 2026 at 7:00 PM for the Special Town Meeting.")
+        d, _ = T.warrant_date(text, "October 2026 Town Meeting Warrant - Text")
+        self.assertEqual(d, date(2026, 10, 19))
+        d, _ = T.warrant_date(text.replace("October 19, 2026", "November 2, 2026"), "Fall 2026 Town Meeting Warrant")
+        self.assertEqual(d, date(2026, 11, 2))
+
+    def test_warrant_date_prefers_the_heading_then_the_window(self):
+        head = "TOWN OF MARSHFIELD SPECIAL & ANNUAL TOWN MEETING WARRANT MONDAY, APRIL 27, 2026 at 7:00 P.M. "
+        body = ("Index. " * 120 + "Budget items will be postponed until Monday, June 15, 2026 when Town Meeting "
+                "reconvenes.")
+        d, _ = T.warrant_date(head + body, "STM ATM 2026 WARRANT", (date(2026, 6, 14), date(2027, 2, 9)))
+        self.assertEqual(d, date(2026, 4, 27), "the heading's date, in capitals, beats a later date inside the window")
+        text = ("Town Meeting warrant. " + "Index. " * 120 + "The Annual Town Meeting held on Tuesday, May 5, 2026 "
+                "adjourned. The inhabitants are to meet at the Town Hall on Monday, October 26, 2026 for the Special Town Meeting.")
+        d, _ = T.warrant_date(text, "Warrant", (date(2026, 6, 14), date(2027, 2, 9)))
+        self.assertEqual(d, date(2026, 10, 26), "neither date in the heading: the one inside the window")
+        d, _ = T.warrant_date(text, "Warrant")
+        self.assertEqual(d, date(2026, 5, 5), "with no window, the date nearest the top")
+
+    def test_warrant_date_gives_no_date_rather_than_a_wrong_month(self):
+        text = ("October 2026 Town Meeting Warrant. FINANCE COMMITTEE COMMENTS: The balance of the General "
+                "Stabilization Fund as of July 1, 2026 was $2.1 million for the Town Meeting.")
+        d, hint = T.warrant_date(text, "October 2026 Town Meeting Warrant - Text")
+        self.assertIsNone(d)
+        self.assertEqual(hint, "fall")
+
 
 class TextTests(unittest.TestCase):
     def test_quote_is_short_and_clean(self):
