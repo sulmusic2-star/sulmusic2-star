@@ -201,9 +201,28 @@ function setupSearchResults() {
       }));
     }
   };
+  // "Get these by email" right above the results, carrying the town and topic filters to /watch.
+  const alert = document.getElementById('search-alert');
+  const form = document.getElementById('search-form');
+  const syncAlert = () => {
+    if (!alert || !form) return;
+    const town = form.elements.town && form.elements.town.value;
+    const topic = form.elements.topic && form.elements.topic.value;
+    const q = new URLSearchParams();
+    if (town) q.set('town', town);
+    if (topic) q.set('topic', topic);
+    const link = alert.querySelector('a');
+    link.href = `/watch${q.toString() ? `?${q}` : ''}`;
+    const name = town ? form.elements.town.selectedOptions[0].textContent : '';
+    link.textContent = name ? `Get ${name} alerts by email` : 'Get alerts for your town by email';
+    alert.hidden = !list.querySelector('li.result');
+  };
+  if (form) form.addEventListener('change', syncAlert);
   new MutationObserver((changes) => {
     for (const c of changes) for (const n of c.addedNodes) if (n.nodeType === 1 && n.matches('li.result')) dress(n);
+    syncAlert();
   }).observe(list, { childList: true });
+  syncAlert();
 }
 
 // "(starting soon)" notes next to email: hidden once /api/status reports email alerts are on.
@@ -277,6 +296,7 @@ function followOldAnchors() {
 // Alert lists made or opened in this browser (a per-viewer convenience; may be unavailable).
 // Entries keep the private key when this browser has it, so the owner can find the manage page again.
 const LISTS_KEY = '351watch:lists';
+const AREAS_KEY = 'agendaahead:areas';
 window.w351 = {
   recall() {
     try {
@@ -296,6 +316,24 @@ window.w351 = {
     }
   },
   requestTown,
+  // The visitor's own towns (home town first), saved when they set up alerts. Pages may use them to
+  // put those towns first; nothing leaves the browser.
+  saveAreas(homeTown, towns) {
+    try {
+      const list = [homeTown, ...(towns || []).filter((t) => t !== homeTown)].filter((t) => typeof t === 'string' && t.includes(':'));
+      if (list.length) localStorage.setItem(AREAS_KEY, JSON.stringify({ home_town: list[0], towns: list.slice(0, 40) }));
+    } catch {
+      /* storage unavailable */
+    }
+  },
+  areas() {
+    try {
+      const doc = JSON.parse(localStorage.getItem(AREAS_KEY) || 'null');
+      return doc && typeof doc.home_town === 'string' && Array.isArray(doc.towns) ? doc : null;
+    } catch {
+      return null;
+    }
+  },
   forget(id) {
     try {
       localStorage.setItem(LISTS_KEY, JSON.stringify(this.recall().filter((l) => l.id !== id)));

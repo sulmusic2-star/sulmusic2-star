@@ -14,6 +14,8 @@
   const id = pathId || params.get('id') || '';
   const SITE = document.title.split(' | ').pop(); // the product name, from the title build.py wrote
   let homeTown = null; // the alert list's home town, when the API reports it
+  let LINES = {}; // /data/lines.json: {lines: {id: [line, quote]}, new: [id, ...]}
+  let NEW = new Set();
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 
   const el = (tag, attrs = {}, ...children) => {
@@ -39,7 +41,6 @@
   };
   const plural = (n, word) => `${n.toLocaleString('en-US')} ${word}${n === 1 ? '' : 's'}`;
   const joinAnd = (parts) => (parts.length < 3 ? parts.join(' and ') : `${parts.slice(0, -1).join(', ')} and ${parts[parts.length - 1]}`);
-  const topicLabel = (t) => (TOPICS[t] ? TOPICS[t][0] : t);
   const townPath = (url) => {
     try {
       return new URL(url).pathname;
@@ -48,77 +49,132 @@
     }
   };
 
-  // Same wording as sentence() in build.py.
+  // Same wording as board_label() and short_topics() in build.py.
   function boardLabel(item) {
     if (item.board_key === 'town_meeting') return 'town meeting';
     let b = String(item.board || '').replace(/\s*\([^)]*\)/g, '').replace(/\s+[-–]\s+.*$/, '').replace(/^The\s+/, '').replace(/\s+Meetings?$/, '').trim();
     if (b && b === b.toUpperCase()) b = b.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
     return b || 'town board';
   }
-  function topicPhrase(topics) {
+  function meetingBoard(m) {
+    if (m.source === 'massdep_wetlands') return 'Wetlands filing to the state';
+    if (m.board_key === 'town_meeting') return 'Town meeting warrant';
+    return m.board.charAt(0).toUpperCase() + m.board.slice(1);
+  }
+  function shortTopics(topics) {
     const idx = (t) => (ORDER.includes(t) ? ORDER.indexOf(t) : 99);
     let ts = [...new Set(topics)].sort((a, b) => idx(a) - idx(b));
     const noWet = ts.filter((t) => t !== 'wetlands_filing');
     if (noWet.length) ts = noWet;
-    const phrases = ts.map((t) => (TOPICS[t] ? [TOPICS[t][1], TOPICS[t][2]] : [t.replace(/_/g, ' '), false]));
-    let words = phrases.map((p) => p[0]);
-    if (words.length > 3) words = [...words.slice(0, 3), 'more'];
-    return [joinAnd(words), words.length > 1 || Boolean(phrases[0] && phrases[0][1])];
-  }
-  function sentence(g, withTown) {
-    const [low] = topicPhrase(g.topics);
-    let s;
-    if (g.source === 'massdep_wetlands') s = `wetlands filing for ${low} went to the state.`;
-    else if (g.board_key === 'town_meeting') s = `town meeting warrant mentions ${low}.`;
-    else s = `${boardLabel(g)} agenda mentions ${low}.`;
-    if (!withTown) return [s.charAt(0).toUpperCase() + s.slice(1)];
-    const town = el('a', { class: 'item-town', href: townPath(g.town_url), text: g.town + (g.state && g.state !== 'MA' ? `, ${g.state}` : '') });
-    const id = `${g.state}:${g.town}`;
-    const next = homeTown && id !== homeTown ? ` (next to ${homeTown.split(':').slice(1).join(':')})` : '';
-    return [town, `${next}: ${s}`];
+    const words = ts.map((t) => (t === 'moratorium' ? 'moratorium' : (TOPICS[t] ? TOPICS[t][1] : t.replace(/_/g, ' ')))).map((w) => w.replace(/^a /, ''));
+    return joinAnd(words.slice(0, 3));
   }
 
-  // Group items by agenda document and meeting, as merge_agendas() does in build.py.
-  function merge(items) {
-    const groups = new Map();
+  // The plain line for one item (from /data/lines.json, written by agenda_line() in build.py). An
+  // item newer than that file gets "Mentions …" and its own agenda text.
+  function lineFor(it) {
+    const known = LINES.lines && LINES.lines[it.id];
+    if (known) return { line: known[0], quote: known[1] };
+    const words = shortTopics(it.topics || []);
+    return { line: `Mentions ${words}`, quote: String(it.snippet || '').slice(0, 200) };
+  }
+
+  // Items grouped by meeting (town, board, day), as group_meetings() does in build.py: one line per
+  // distinct line, the "Mentions …" lines folded into one, one link per agenda document.
+  function group(items) {
+    const meetings = new Map();
     for (const it of items) {
-      const key = `${it.source_url}|${it.meeting_date || ''}|${it.state}:${it.town}`;
-      const g = groups.get(key);
-      if (!g) groups.set(key, { ...it, topics: [...it.topics], snippets: [it.snippet] });
-      else {
-        for (const t of it.topics) if (!g.topics.includes(t)) g.topics.push(t);
-        if (it.snippet && !g.snippets.includes(it.snippet)) g.snippets.push(it.snippet);
+      const d = (it.meeting_date || '').slice(0, 10);
+      const dep = it.source === 'massdep_wetlands';
+      const key = `${it.state}:${it.town}|${dep}|${it.board_key || boardLabel(it)}|${d}`;
+      if (!meetings.has(key)) {
+        meetings.set(key, { state: it.state, town: it.town, town_url: it.town_url, board: boardLabel(it), board_key: it.board_key,
+          source: it.source, date: d, lines: new Map(), docs: [], found: it.first_seen || '' });
+      }
+      const m = meetings.get(key);
+      const { line, quote } = lineFor(it);
+      if (!m.lines.has(line)) m.lines.set(line, { quotes: [], topics: [], isNew: false });
+      const entry = m.lines.get(line);
+      if (quote && !entry.quotes.includes(quote)) entry.quotes.push(quote);
+      for (const t of it.topics || []) if (!entry.topics.includes(t)) entry.topics.push(t);
+      entry.isNew = entry.isNew || NEW.has(it.id);
+      if (!m.docs.some((x) => x.url === it.source_url)) {
+        m.docs.push({ url: it.source_url, pdf: /\.pdf$/i.test(String(it.source_url).split('?')[0]) || /\(pdf\)/i.test(it.document_title || '') });
+      }
+      if (it.first_seen && (!m.found || it.first_seen < m.found)) m.found = it.first_seen;
+    }
+    for (const m of meetings.values()) m.lines = tidy(m.lines);
+    return [...meetings.values()];
+  }
+
+  function tidy(lines) {
+    const core = (s) => s.toLowerCase().replace(' (continued)', '');
+    const merge = (into, e) => {
+      for (const q of e.quotes) if (!into.quotes.includes(q)) into.quotes.push(q);
+      for (const t of e.topics) if (!into.topics.includes(t)) into.topics.push(t);
+      into.isNew = into.isNew || e.isNew;
+    };
+    const named = new Map([...lines].filter(([k]) => !k.startsWith('Mentions ')));
+    for (const short of [...named.keys()].sort((a, b) => a.length - b.length)) {
+      const longer = [...named.keys()].find((k) => k !== short && k.length > short.length && core(k).includes(core(short)));
+      if (longer) {
+        merge(named.get(longer), named.get(short));
+        named.delete(short);
       }
     }
-    return [...groups.values()];
+    const mentions = [...lines].filter(([k]) => k.startsWith('Mentions ')).map(([, v]) => v);
+    if (!mentions.length) return named;
+    const all = { quotes: [], topics: [], isNew: false };
+    for (const v of mentions) merge(all, v);
+    const said = [...named.keys()].map(core).join(' ');
+    const left = all.topics.filter((t) => !said.includes(shortTopics([t]).toLowerCase().replace(/s$/, '')));
+    if (left.length) named.set(`${named.size ? 'Also mentions' : 'Mentions'} ${shortTopics(left)}`, all);
+    return named;
   }
 
-  // One agenda, as item_html() renders it in build.py.
-  function itemNode(g) {
-    const iso = (g.meeting_date || '').slice(0, 10);
-    const dep = g.source === 'massdep_wetlands';
-    const pdf = /\.pdf$/i.test(g.source_url.split('?')[0]) || /\(pdf\)/i.test(g.document_title || '');
-    const label = dep ? 'Filing' : (pdf ? 'Agenda (PDF)' : 'Agenda');
-    const source = dep ? 'the state filing' : (g.board_key === 'town_meeting' ? 'the warrant' : 'the agenda');
-    return el('li', { class: 'item' },
-      el('p', { class: 'item-date' }, iso ? el('time', { datetime: iso, text: dayLabel(iso) }) : 'No date'),
-      el('div', { class: 'item-main' },
-        el('p', { class: 'item-say' }, ...sentence(g, true)),
-        el('div', { class: 'item-actions' },
-          el('a', { class: 'item-link', href: g.source_url, rel: 'nofollow noopener', target: '_blank' }, label,
-            el('span', { class: 'sr-only', text: `: ${g.town} ${boardLabel(g)}, ${fmtDate(iso) || 'no date'}` })),
-          el('details', { class: 'item-words' }, el('summary', { text: 'Agenda wording' }),
-            el('p', { class: 'item-from', text: `Quoted from ${source}:` }),
-            ...g.snippets.slice(0, 3).map((q) => el('blockquote', { class: 'item-quote', cite: g.source_url, text: q }))))));
+  function foundText(m) {
+    if (!m.found) return '';
+    const found = m.found.slice(0, 10);
+    let text = `We found it ${new Date(`${found}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}`;
+    if (m.date && m.date > found) {
+      const days = Math.round((Date.parse(`${m.date}T12:00:00Z`) - Date.parse(`${found}T12:00:00Z`)) / 86400000);
+      text += `, ${plural(days, 'day')} before the meeting`;
+    }
+    return `${text}.`;
   }
 
-  // The first few agendas, the rest behind one "Show more", as item_list() does in build.py.
-  function itemList(groups, shown, more) {
-    const nodes = [el('ol', { class: 'items' }, ...groups.slice(0, shown).map(itemNode))];
-    const rest = groups.slice(shown);
+  // One meeting, as meeting_html() renders it in build.py.
+  function meetingNode(m) {
+    const dep = m.source === 'massdep_wetlands';
+    const source = dep ? 'the state filing' : (m.board_key === 'town_meeting' ? 'the warrant' : 'the agenda');
+    const what = dep ? 'filing' : (m.board_key === 'town_meeting' ? 'warrant' : 'agenda');
+    const tid = `${m.state}:${m.town}`;
+    const next = homeTown && tid !== homeTown ? ` (next to ${homeTown.split(':').slice(1).join(':')})` : '';
+    const head = el('h3', { class: 'meet-head', 'data-slop-ignore': '' },
+      el('span', { class: 'meet-town' }, el('a', { href: townPath(m.town_url), text: m.town + (m.state && m.state !== 'MA' ? `, ${m.state}` : '') }), next), ' ',
+      el('span', { class: 'meet-board', text: meetingBoard(m) }), ' ',
+      m.date ? el('span', { class: 'meet-day' }, el('time', { datetime: m.date, text: dayLabel(m.date) })) : null);
+    const lineNode = ([text, e]) => el('li', { class: 'line' },
+      el('p', { class: 'line-say' }, e.isNew ? el('span', { class: 'badge-new', text: 'New' }) : null, e.isNew ? ' ' : null, text),
+      e.quotes.length ? el('details', { class: 'item-words' }, el('summary', { text: 'See the agenda wording' }),
+        el('p', { class: 'item-from', text: `Quoted from ${source}:` }),
+        ...e.quotes.slice(0, 3).map((q) => el('blockquote', { class: 'item-quote', text: q }))) : null);
+    const where = `${m.town} ${meetingBoard(m)}, ${fmtDate(m.date) || 'no date'}`;
+    const links = m.docs.map((d, i) => el('a', { class: 'item-link', href: d.url, rel: 'nofollow noopener', target: '_blank' },
+      `${i ? `Another version of the ${what}` : `Open the ${what}`}${d.pdf ? ' (PDF)' : ''}`, el('span', { class: 'sr-only', text: `: ${where}` })));
+    const found = foundText(m);
+    return el('li', { class: 'meeting' }, head,
+      el('ul', { class: 'lines' }, ...[...m.lines].map(lineNode)),
+      el('p', { class: 'meet-src' }, ...links, found ? el('span', { class: 'meet-found', text: found }) : null));
+  }
+
+  // The first few meetings, the rest behind one "Show more", as meeting_list() does in build.py.
+  function meetingList(meetings, shown, more) {
+    const nodes = [el('ol', { class: 'meetings' }, ...meetings.slice(0, shown).map(meetingNode))];
+    const rest = meetings.slice(shown);
     if (rest.length) {
       nodes.push(el('details', { class: 'more' }, el('summary', { text: `${more} (${rest.length})` }),
-        el('ol', { class: 'items' }, ...rest.map(itemNode))));
+        el('ol', { class: 'meetings' }, ...rest.map(meetingNode))));
     }
     return nodes;
   }
@@ -172,16 +228,17 @@
   }
 
   function renderItems(items) {
-    const up = merge(items.filter((i) => i.meeting_date && i.meeting_date >= today).sort((a, b) => a.meeting_date.localeCompare(b.meeting_date)));
-    const past = merge(items.filter((i) => i.meeting_date && i.meeting_date < today).sort((a, b) => b.meeting_date.localeCompare(a.meeting_date)));
-    const undated = merge(items.filter((i) => !i.meeting_date));
-    $('items-upcoming').replaceChildren(...(up.length ? itemList(up, 5, 'Show more')
-      : [el('p', { class: 'empty', text: 'Nothing coming up yet. New items show up here and in your calendar.' })]));
-    $('items-lead').textContent = up.length ? `${plural(up.length, 'agenda')} coming up.` : '';
-    $('items-past').replaceChildren(...itemList(past, 10, 'Show older'));
-    $('past-summary').textContent = `Show past items (${past.length})`;
+    const byDate = (dir) => (a, b) => dir * a.meeting_date.localeCompare(b.meeting_date) || a.town.localeCompare(b.town);
+    const up = group(items.filter((i) => i.meeting_date && i.meeting_date >= today).sort(byDate(1)));
+    const past = group(items.filter((i) => i.meeting_date && i.meeting_date < today).sort(byDate(-1)));
+    const undated = group(items.filter((i) => !i.meeting_date));
+    $('items-upcoming').replaceChildren(...(up.length ? meetingList(up, 5, 'More coming up')
+      : [el('p', { class: 'empty', text: 'Nothing on the agenda about these topics right now. New items show up here and in your calendar.' })]));
+    $('items-lead').textContent = up.length ? `${plural(up.length, 'meeting')} with items on these topics.` : '';
+    $('items-past').replaceChildren(...meetingList(past, 5, 'Show older'));
+    $('past-summary').textContent = `Earlier meetings (${past.length})`;
     $('past-wrap').hidden = !past.length;
-    $('items-undated').replaceChildren(...itemList(undated, 10, 'Show more'));
+    $('items-undated').replaceChildren(...meetingList(undated, 5, 'Show more'));
     $('undated-wrap').hidden = !undated.length;
   }
 
@@ -323,6 +380,8 @@
     let feed;
     const status = fetch('/api/status', { headers: { Accept: 'application/json' } })
       .then((r) => r.json().catch(() => ({})).then((d) => (r.ok ? d : {}))).catch(() => ({}));
+    const linesDoc = fetch('/data/lines.json')
+      .then((r) => r.json().catch(() => ({})).then((d) => (r.ok ? d : {}))).catch(() => ({}));
     try {
       [{ watchlist: wl }, feed] = await Promise.all([
         api('GET', `/api/watchlists?id=${encodeURIComponent(id)}`),
@@ -344,6 +403,8 @@
     $('wl-body').hidden = false;
 
     renderFeeds(wl.links);
+    LINES = (await linesDoc) || {};
+    NEW = new Set(Array.isArray(LINES.new) ? LINES.new : []);
     renderItems(feed.items);
     if (readonly) {
       $('readonly-banner').hidden = false;

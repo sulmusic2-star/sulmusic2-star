@@ -20,19 +20,19 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap">
   <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span>Agenda Ahead</a>
-  <nav class="top" aria-label="Main"><ul><li><a href="/towns">Towns</a></li><li><a href="/search">Search</a></li><li><a href="/watch" aria-current="page">Alerts</a></li><li><a href="/how-it-works">How it works</a></li></ul></nav>
+  <nav class="top" aria-label="Main"><ul><li><a href="/towns">Towns</a></li><li><a href="/topics">Topics</a></li><li><a href="/search">Search</a></li><li><a href="/watch" aria-current="page">Get alerts</a></li></ul></nav>
 </div></header>
 <main id="main">
 
-<div class="wrap narrow">
-<h1 id="watch-title">Get alerts</h1>
-<p class="lead">Free for your town and the towns next to it. No account needed.</p>
+<div class="wrap narrow watch">
 <p class="notice" id="edit-banner" hidden>Editing <b id="edit-name">your alert list</b>. <a href="/watch">Start a new one instead</a></p>
 <p class="notice err" id="watch-error" role="alert" hidden></p>
+<h1 id="watch-title" tabindex="-1">Get free alerts</h1>
 <form id="watch-form" class="watch-form" novalidate>
-  <div class="step">
-    <h2 class="step-head"><span class="step-n" aria-hidden="true">1</span> <label for="home-town">Your town</label></h2>
-    <input id="home-town" class="big-input" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" aria-describedby="home-read towns-error">
+  <div class="step" id="step-town">
+    <label for="home-town" class="big-q">Which town?</label>
+    <p class="form-note" id="town-help">Alerts are free for your town and the towns next to it.</p>
+    <input id="home-town" class="big-input" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" aria-describedby="town-help home-read towns-error">
     <datalist id="town-names"></datalist>
     <p class="form-note" id="home-read" aria-live="polite">Pick it from the list as you type.</p>
     <div class="request" id="home-request" hidden>
@@ -41,35 +41,43 @@
       <p class="form-status" id="home-request-status" role="status" aria-live="polite"></p>
     </div>
     <p class="field-error" id="towns-error" hidden></p>
+    <div class="actions"><button type="button" class="btn" id="town-next">Continue</button></div>
   </div>
 
-  <fieldset class="step" id="near-step" hidden>
-    <legend class="step-head"><span class="step-n" aria-hidden="true">2</span> <span>Towns next to <span id="home-name">your town</span></span></legend>
-    <p class="form-note" id="near-note">Pick your town first.</p>
-    <ul class="check-cols" id="near-list"></ul>
-    <div id="extra-wrap" hidden>
-      <p class="form-note">Also in this alert list:</p>
-      <ul class="check-cols" id="extra-list"></ul>
-    </div>
-    <details class="disclose" id="topics-details"><summary>Topics: all</summary>
-      <ul class="check-cols topic-list"><li><label class="check"><input type="checkbox" name="topics" value="solar" checked><span>Solar</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="battery_storage" checked><span>Battery storage</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="data_center" checked><span>Data centers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="moratorium" checked><span>Moratoriums</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="clean_energy_siting" checked><span>Clean-energy permit rules</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="zoning_amendment" checked><span>Zoning changes</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="40b_comprehensive_permit" checked><span>Affordable housing</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wireless_telecom" checked><span>Cell towers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wetlands_filing" checked><span>Wetlands filings</span></label></li></ul>
-    </details>
-    <p class="field-error" id="topics-error" hidden></p>
-  </fieldset>
+  <div class="step" id="step-send" hidden>
+    <p class="back"><button type="button" class="link-btn" id="change-town">Change town</button></p>
+    <div class="preview" id="preview" aria-live="polite"></div>
+    <fieldset class="near" id="near-step">
+      <legend class="sr-only">Towns</legend>
+      <label class="check big" id="near-all-row"><input type="checkbox" id="near-all" checked> <span id="near-all-text">Also watch the towns next to <span id="home-name">your town</span></span></label>
+      <p class="field-error" id="near-error" hidden></p>
+      <details class="disclose" id="near-details"><summary>See or change the towns</summary>
+        <p class="form-note" id="near-note"></p>
+        <ul class="check-cols" id="near-list"></ul>
+        <div id="extra-wrap" hidden>
+          <p class="form-note">Also in this alert list:</p>
+          <ul class="check-cols" id="extra-list"></ul>
+        </div>
+      </details>
+      <details class="disclose" id="topics-details"><summary>Topics: all</summary>
+        <ul class="check-cols topic-list"><li><label class="check"><input type="checkbox" name="topics" value="solar" checked><span>Solar</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="battery_storage" checked><span>Battery storage</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="data_center" checked><span>Data centers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="moratorium" checked><span>Moratoriums</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="clean_energy_siting" checked><span>Clean-energy permit rules</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="zoning_amendment" checked><span>Zoning changes</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="40b_comprehensive_permit" checked><span>Affordable housing</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wireless_telecom" checked><span>Cell towers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wetlands_filing" checked><span>Wetlands filings</span></label></li></ul>
+      </details>
+      <p class="field-error" id="topics-error" hidden></p>
+    </fieldset>
 
-  <fieldset class="step">
-    <legend class="step-head"><span class="step-n" aria-hidden="true">3</span> <span>How to get them</span></legend>
-    <p>You get a calendar link and an RSS link on the next page.</p>
     <div id="email-option" hidden>
-      <label class="field">Email <small>(optional)</small><input name="email" id="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" aria-describedby="email-help"></label>
-      <p class="form-note" id="email-help">We send a link to confirm it first. Then at most one email a day.</p>
+      <label class="field big-label">Your email address<input name="email" id="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" aria-describedby="email-help"></label>
+      <p class="form-note" id="email-help">We email you a link to confirm it. After that, at most one email a day, only when something new comes up.</p>
       <label class="check" id="email-remove-row" hidden><input type="checkbox" id="email-remove"> Stop emails and remove the address</label>
       <p class="field-error" id="email-error" hidden></p>
     </div>
+    <p class="form-note" id="no-email" hidden>Email alerts are starting soon. For now, the next page gives you a calendar link and an RSS feed.</p>
+
     <details class="disclose" id="hook-details">
-      <summary>Post to Slack, Discord or Teams</summary>
-      <label class="field">Webhook URL<input name="webhook_url" id="webhook-url" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://hooks.slack.com/services/…" aria-describedby="webhook-help"></label>
-      <p class="form-note" id="webhook-help">Use a Slack, Discord or Teams (Workflows) webhook URL. We post once a day.</p>
+      <summary>Other ways to get alerts</summary>
+      <p>The next page has a calendar link and an RSS feed, with or without email. You can also post alerts to a chat channel.</p>
+      <label class="field">Slack, Discord or Teams webhook URL <small>(optional)</small><input name="webhook_url" id="webhook-url" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://hooks.slack.com/services/…" aria-describedby="webhook-help"></label>
+      <p class="form-note" id="webhook-help">For Teams, use a Workflows webhook URL. We post once a day.</p>
       <label class="check" id="webhook-remove-row" hidden><input type="checkbox" id="webhook-remove"> Remove the saved webhook</label>
       <label class="field">Message format
         <select name="webhook_format"><option value="auto">Match the service</option><option value="json">Plain JSON</option></select>
@@ -82,14 +90,14 @@
       <summary>Name this list</summary>
       <label class="field">Name <small>(optional)</small><input name="name" maxlength="80" autocomplete="off" placeholder="Carver and neighbors"></label>
     </details>
-  </fieldset>
 
-  <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
-  <div class="submit-row">
-    <button class="btn" type="submit" id="watch-submit">Create alerts</button>
-    <p class="form-status" id="watch-status" role="status" aria-live="polite"></p>
+    <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+    <div class="submit-row">
+      <button class="btn" type="submit" id="watch-submit">Get alerts</button>
+      <p class="form-status" id="watch-status" role="status" aria-live="polite"></p>
+    </div>
+    <p class="form-note">No account. <a href="/how-it-works#privacy">What we store</a></p>
   </div>
-  <p class="form-note"><a href="/how-it-works#privacy">What we store</a></p>
 </form>
 
 <section id="my-lists" aria-labelledby="my-lists-title" hidden>
@@ -101,7 +109,7 @@
 </main>
 <footer class="site"><div class="wrap">
   <p>Agenda Ahead reads the agendas towns post online. It is not legal advice. Check dates with the town clerk.</p>
-  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">State rulings on moratoriums</a></li><li><a href="/pricing">What’s free</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#crawler">Our crawler</a></li><li><a href="/how-it-works#contact">Send a correction</a></li></ul>
+  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/attorney-general">State rulings on moratoriums</a></li><li><a href="/pricing">What’s free</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#crawler">Our crawler</a></li><li><a href="/how-it-works#contact">Send a correction</a></li></ul>
 </div></footer>
 <script src="/app.js" defer></script>
 <script src="/watch.js" defer></script>
