@@ -53,7 +53,7 @@ async function confirm(req, res, token) {
 
   if (req.method === 'GET') {
     return linkPage(res, 200, 'Confirm email alerts',
-      `Confirming starts a daily email to ${masked} about new agenda items for ${watchlistLabel(wl)}.`,
+      `Confirming starts a daily email to ${masked} about new items on town agendas for ${watchlistLabel(wl)}.`,
       { form: { action: formAction('confirm', token), token, button: `Confirm alerts for ${masked}` } });
   }
   if (!wl.email.confirmed && !(await confirmAddress(wl))) {
@@ -139,7 +139,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ ok: false, error: 'Unknown action.' });
   } catch (err) {
     console.error('email action failed', action, err);
-    if (action !== 'resend') return linkPage(res, 500, 'Something went wrong', 'Please open the link again in a few minutes.');
-    return res.status(500).json({ ok: false, error: 'Something went wrong. Please try again.' });
+    if (action !== 'resend') return linkPage(res, 500, 'Something went wrong', 'Open the link again in a few minutes.');
+    return res.status(500).json({ ok: false, error: 'Something went wrong. Try again.' });
   }
 }

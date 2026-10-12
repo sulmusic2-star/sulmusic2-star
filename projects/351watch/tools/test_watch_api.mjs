@@ -178,7 +178,7 @@ await test('create outside the free area fails with fields.towns and the plain m
   assert.equal(r.status, 400);
   assert.equal(r.json.code, 'free_area');
   assert.equal(r.json.fields.towns, W.FREE_AREA_MESSAGE);
-  assert.equal(r.json.error, 'Free alerts cover one town and the towns next to it. Need more places? Tell us at /privacy#contact.');
+  assert.equal(r.json.error, 'Free alerts cover one town and the towns next to it. Need more places? Use the contact form on the How it works page.');
   const halifax = await make({ home_town: 'MA:Carver', towns: ['MA:Carver', 'MA:Halifax'] });
   assert.equal(halifax.status, 400, 'Halifax does not touch Carver');
 });
@@ -343,7 +343,7 @@ await test('confirm: GET shows a button and changes nothing; POST confirms and r
 
   const page = keepPage(await api('GET', url));
   assert.equal(page.status, 200);
-  assert.match(page.text, /Confirming starts a daily email to J\*\*\*@example\.com about new agenda items for Carver email\./);
+  assert.match(page.text, /Confirming starts a daily email to J\*\*\*@example\.com about new items on town agendas for Carver email\./);
   const action = page.text.match(/<form method="post" action="([^"]+)">/)?.[1]?.replace(/&amp;/g, '&');
   assert.ok(action, 'a plain POST form');
   assert.equal(new URL(action, ORIGIN).searchParams.get('t'), token, 'the form posts the token back');
@@ -414,7 +414,7 @@ await test('digest: nothing before new items; then only items first seen since t
   assert.equal(digests.length, 1);
   const d = digests[0];
   assert.equal(d.subject, 'Agenda Ahead: 2 new items for Carver email');
-  assert.match(d.text, /^Agenda Ahead found 2 new agenda items for Carver email since you signed up\./);
+  assert.match(d.text, /^2 new items on town agendas for Carver email since you signed up\./);
   assert.match(d.text, /NEW ITEM ONE/);
   assert.match(d.text, /NEW ITEM TWO/);
   assert.ok(!/BOSTON ITEM|TOWER ITEM/.test(d.text), 'only matching towns and topics');

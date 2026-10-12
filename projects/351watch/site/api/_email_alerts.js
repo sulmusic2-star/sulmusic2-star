@@ -321,7 +321,7 @@ export function digestMessage(wl, items, more, base) {
   const total = items.length + more;
   const subject = `${SITE_NAME}: ${plural(total, 'new item')} for ${label}`;
   const since = wl.email.last_email?.ok ? 'since the last email' : 'since you signed up';
-  const lead = `${SITE_NAME} found ${plural(total, 'new agenda item')} for ${label} ${since}.`;
+  const lead = `${plural(total, 'new item')} on town agendas for ${label} ${since}.`;
   const why = `You get this email because ${maskEmail(wl.email.address)} confirmed daily alerts for these towns. Days without new items get no email. Agendas can change: confirm the time and place with the town.`;
 
   const textItems = items.map((h) => [

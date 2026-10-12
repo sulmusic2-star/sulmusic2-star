@@ -252,7 +252,7 @@ function toList(value) {
 }
 
 export const FREE_AREA_MESSAGE =
-  'Free alerts cover one town and the towns next to it. Need more places? Tell us at /privacy#contact.';
+  'Free alerts cover one town and the towns next to it. Need more places? Use the contact form on the How it works page.';
 
 // Returns { value, errors, code }. With `partial` (PATCH), absent fields are left out of `value`
 // and `current` is the stored watchlist. code is 'free_area' when the towns go past the free area,

@@ -5,7 +5,7 @@
 // Email: an optional `email` field starts double opt-in (_email_alerts.js); confirm, unsubscribe and
 // resend live in email.js.
 import { allow, bodySize, clean, noStore, readBody, removeJSON, throttled, writeJSON } from './_store.js';
-import {
+import { SITE_NAME,
   MAX_BODY_BYTES, buildPayload, ensureFeedId, feedIndexPath, loadHits, loadNeighbors, loadTownIndex, matchItems,
   newId, parseWebhook, postWebhook, publicBase, publicView, readonlyView, resolveWatchlist, saveWatchlist, shareId,
   topicSet, validateConfig, webhookKind,
@@ -176,8 +176,8 @@ async function sendTest(req, res, body, saved) {
   }
   const link = saved ? `${base}/w/${shareId(saved)}` : `${base}/watch`;
   const intro = sample.length
-    ? `Test message: webhook delivery works. New items will look like ${sample.length === 1 ? 'this one' : 'these'} (already on your alerts page, shown as a sample).`
-    : 'Test message: webhook delivery works. New agenda items for your towns and topics will arrive here once a day.';
+    ? `Test message from ${SITE_NAME}: this channel is connected. New items will look like ${sample.length === 1 ? 'this one' : 'these'} (a sample from your alerts page).`
+    : `Test message from ${SITE_NAME}: this channel is connected. New items for your towns and topics will arrive here once a day.`;
   const payload = buildPayload(webhookKind(webhook), { wl, items: sample, link, intro, test: true });
   const result = await postWebhook(webhook.url, payload);
   if (!result.ok) {
@@ -223,6 +223,6 @@ export default async function handler(req, res) {
     return fail(res, 400, 'Unknown action.');
   } catch (err) {
     console.error('watchlists failed', err);
-    return fail(res, 500, 'Something went wrong. Please try again.');
+    return fail(res, 500, 'Something went wrong. Try again.');
   }
 }

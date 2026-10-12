@@ -165,7 +165,7 @@ export default async function handler(req, res) {
     }
     if (format === 'ics') {
       res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
-      res.setHeader('Content-Disposition', 'inline; filename="351watch.ics"');
+      res.setHeader('Content-Disposition', 'inline; filename="agenda-ahead.ics"');
       return res.status(200).send(ics(wl, items, base, doc.generated));
     }
     return res.status(200).json({
