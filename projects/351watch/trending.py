@@ -90,14 +90,14 @@ LOOKBACK_DAYS = 60         # past hits within this window still add momentum
 FIRST_POINTS = {"data_center": 2.0, "battery_storage": 2.0, "moratorium": 2.0, "wind": 1.5,
                 "clean_energy_siting": 1.0, "solar": 1.0, "40b_comprehensive_permit": 1.0,
                 "wireless_telecom": 1.0}
-FIRST_MIN_HISTORY_DAYS = 30   # claim "first" only when we hold this much earlier agenda history
+FIRST_MIN_HISTORY_DAYS = 60   # claim "first time" only with this much earlier agenda history for the town
 MOMENTUM_BOARD = 2.5          # per extra board (cap MOMENTUM_CAP)
 MOMENTUM_TOWN = 3.0           # per extra town
 MOMENTUM_MEETING = 1.0        # per extra meeting date when the board count does not grow
 MOMENTUM_CAP = 3
 NEW_POINTS = 1.0
 NEW_HOURS = 72
-TRACKER_POINTS = 1.0
+TRACKER_POINTS = 1.0         # the town already voted on this subject (tracker.json)
 AG_POINTS = 1.5
 AG_DAYS = 365
 VAGUE_PENALTY = 1.5
@@ -1287,17 +1287,8 @@ SUBJECT_WORDS = {
     "40b_comprehensive_permit": ("40B housing", "40B", "40B rules", "40B housing plan"),
     "wireless_telecom": ("a cell tower", "cell tower", "cell tower rules", "cell tower"),
     "wetlands_filing": ("a wetlands filing", "wetlands", "wetlands rules", "wetlands filing"),
-    "other": ("a moratorium", "local", "local rules", "local item"),
+    "other": ("a moratorium", "moratorium", "local rules", "local item"),
 }
-ITEM_WORD = {"data_center": "data-center item", "battery_storage": "battery storage item", "solar": "solar item",
-             "wind": "wind energy item", "clean_energy_siting": "clean energy siting item",
-             "40b_comprehensive_permit": "40B item", "wireless_telecom": "cell tower item",
-             "moratorium": "moratorium item"}
-SUBJECT_REASON = {"data_center": "Data-center item", "battery_storage": "Battery storage item",
-                  "solar_large": "Large solar project", "solar": "Solar item", "wind": "Wind energy item",
-                  "clean_energy_siting": "Clean energy siting", "zoning_amendment": "Zoning change",
-                  "40b_comprehensive_permit": "40B housing", "wireless_telecom": "Cell tower",
-                  "wetlands_filing": "Wetlands filing", "general_bylaw": "Bylaw change", "other": "Other item"}
 
 
 def words_for(a):
@@ -1533,9 +1524,8 @@ def make_headline(story):
         options.append(f"{T} {B} {v('cancel')} {when}hearing on {rules}")
     elif act == "withdrawn":
         options.append(f"{T} {Bp} agenda lists withdrawal of {name or with_article(proj)}")
-    if act == "minutes":
-        options.append(f"{T} {Bp} packet mentions {noun}")
-    options.append(f"{T} {Bp} {'warrant' if a['board_key'] == 'town_meeting' else 'agenda'} mentions {noun}")
+    # last resort: "Battery storage item on Holyoke Planning Board agenda"
+    options.append(f"{first_cap(adj)} item on {T} {Bp} {'warrant' if a['board_key'] == 'town_meeting' else 'agenda'}")
     for o in options:
         o = re.sub(r"\s+", " ", o).strip()
         if len(o) <= HEADLINE_MAX:
@@ -1634,27 +1624,23 @@ def make_dek(story):
     elif act == "cancelled":
         whats.append("a notice that the hearing is canceled")
 
-    if act == "minutes":
-        s2 = f"The packet includes minutes of an earlier meeting that mention {noun}."
-    elif act == "filing":
+    if act == "filing":
         s2 = next((f"The filing describes {w}." for w in whats
                    if len((s1 + " The filing describes " + w).split()) <= DEK_MAIN_WORDS), "")
     elif whats:
         s2 = next((f"The {src} lists {w}." for w in whats
                    if len((s1 + f" The {src} lists " + w).split()) <= DEK_MAIN_WORDS), f"The {src} lists {whats[-1]}.")
     else:
-        s2 = f"The {src} mentions {noun}."
+        s2 = f"The {src} lists an item on {noun}."
     dek = (s1 + " " + s2).strip()
-    other = [b for b in story["boards"] if (b["town"], b["board"]) != (T, a["board"])]
+    other = [b for b in story["boards"] if (b["town"], b["board"]) != (T, a["board"]) and not b["minutes_only"]]
     if other:
         b = other[0]
         where = f"the {b['town']} {b['board']}" if b["town"] != T else f"the {b['board']}"
         doc = "warrant" if b["board_key"] == "town_meeting" else "agenda"
         if b["board_key"] == "town_meeting":
             where = f"{b['town']}'s Town Meeting" if b["town"] != T else "the Town Meeting"
-        if b["date"] and b["minutes_only"]:
-            extra = f"Minutes in {where} packet for {short_date(b['date'])} also mention it."
-        elif b["date"] and b["date"] >= story["today"]:
+        if b["date"] and b["date"] >= story["today"]:
             extra = f"It is also on {where} {doc} for {short_date(b['date'])}."
         elif b["date"]:
             extra = f"It was on {where} {doc} {short_date(b['date'])}."
@@ -1718,20 +1704,22 @@ def is_first(story, inputs, hist):
     return topic
 
 
-TRACKER_PENDING = {"Proposed", "Hearing held", "On warrant", "Pending at Legislature"}
+TRACKER_VOTED = {"Adopted", "Approved by AG", "Disapproved by AG", "In effect", "Expired", "Pending at Legislature",
+                 "Rejected", "Enacted"}
 AG_TECH = {"BESS": {"battery_storage"}, "solar": {"solar"}, "both": {"battery_storage", "solar"}}
 
 
 def tracker_reason(story, inputs):
+    """'Town has an earlier vote on this' when tracker.json records a vote by the town on the same subject."""
     a = story["lead"]
     if a["state"] != "MA":
         return None
     for t in inputs["tracker"]:
-        if t.get("town") != a["town"] or t.get("status") not in TRACKER_PENDING:
+        if t.get("town") != a["town"] or t.get("status") not in TRACKER_VOTED:
             continue
         topic = (t.get("topic") or "").lower()
         if any(SUBJECT_RE[s].search(topic) for s in (a["subjects"] or [a["subject"]]) if s in SUBJECT_RE):
-            return f"On our tracker: {topic} {(t.get('action') or '').lower()}, {t['status'].lower()}".replace("  ", " ")
+            return "Town has an earlier vote on this"
     return None
 
 
@@ -1756,32 +1744,35 @@ def ag_reason(story, inputs, today):
 
 
 ACTION_REASON = {
-    "town_meeting": "Town Meeting vote", "adopt": "Adoption vote", "bylaw_hearing": "Bylaw hearing",
-    "bylaw_draft": "Draft bylaw", "project_hearing": "Hearing on a specific project", "rezoning": "Rezoning request",
-    "warrant_review": "Town Meeting article", "project": "Project application", "filing": "Wetlands filing",
-    "deal": "Town contract or lease", "process": "Permit process item", "discussion": "Discussion only",
-    "mention": "Mention only", "continuance": "Continuance only", "minutes": "From earlier minutes",
-    "cancelled": "Hearing canceled", "withdrawn": "Withdrawn",
-}
+    "town_meeting": "Town Meeting vote", "adopt": "Adoption vote", "bylaw_hearing": "Public hearing",
+    "bylaw_draft": "Draft rules", "project_hearing": "Public hearing", "rezoning": "Rezoning request",
+    "warrant_review": "Town Meeting article", "project": "Permit application", "filing": "State wetlands filing",
+    "continuance": "Continuance requested", "cancelled": "Hearing canceled", "withdrawn": "Withdrawn",
+}  # discussion, mention and process items get no action reason
 
 
 def action_reason(a):
+    """What is happening, in a reader's words ('Moratorium vote', 'Public hearing')."""
     act, f = a["action"], a["flags"]
     if act == "moratorium":
         if f["tentative"]:
             return "Possible moratorium"
-        return "Moratorium " + ("vote" if f["vote"] or a["board_key"] == "town_meeting" else
-                                "hearing" if f["hearing"] else "proposal")
+        if f["vote"] or a["board_key"] == "town_meeting":
+            return "Moratorium vote"
+        return "Moratorium hearing" if f["hearing"] else "Proposed moratorium"
     if act == "ban":
-        return "Hearing on a proposed ban" if f["hearing"] else "Proposed ban"
-    if act == "bylaw_hearing":
-        return {"law": "Local law hearing", "ordinance": "Ordinance hearing"}.get(law_word(a), "Bylaw hearing")
+        return "Public hearing on a ban" if f["hearing"] else "Proposed ban"
     if act == "project_hearing" and f["continued"]:
-        return "Continued hearing on a specific project"
+        return "Continued public hearing"
+    if act == "deal":
+        kind = deal_kind(a["item"])
+        return {"lease": "Town lease", "lease amendment": "Town lease", "contract": "Town contract",
+                "easement": "Easement"}.get(kind, "")
     return ACTION_REASON.get(act, "")
 
 
-def timing_reason(a, today):
+def timing_reason(a):
+    """'Hearing Oct 20', 'Town Meeting Oct 17', 'Filed Sep 30': a date, never 'tomorrow' (the page adds that)."""
     if a["date_source"] == "filing":
         return f"Filed {short_date(a['date'])}" if a["date"] else None
     if a["date"] is None:
@@ -1795,14 +1786,37 @@ def timing_reason(a, today):
         event = "Hearing"
     else:
         event = "Meeting"
-    days = a["days"]
-    if days == 0:
-        return f"{event} today"
-    if days == 1:
-        return f"{event} tomorrow"
-    if days <= 6:
-        return f"{event} on {a['date'].strftime('%A')}"
     return f"{event} {short_date(a['date'])}"
+
+
+def momentum_reasons(story, lead, inputs):
+    """'3 town boards', 'Neighboring towns too' or 'Also in Plympton', 'Also on the Sep 23 agenda'."""
+    out = []
+    towns = [t for t in story["towns"] if t != f"{lead['state']}:{lead['town']}"]
+    if towns:
+        near = set((inputs.get("neighbors") or {}).get(f"{lead['state']}:{lead['town']}", []))
+        if all(t in near for t in towns):
+            out.append("Neighboring towns too" if len(towns) > 1 else f"Neighboring {towns[0].split(':', 1)[1]} too")
+        elif len(towns) == 1:
+            out.append(f"Also in {towns[0].split(':', 1)[1]}")
+        else:
+            out.append(f"Also in {len(towns)} other towns")
+    boards = [b for b in story["boards"] if b["town"] == lead["town"] and not b["minutes_only"]]
+    if len(boards) > 1:
+        city = any(re.search(r"\bcity\b", b["board"], re.I) for b in boards)
+        out.append(f"{len(boards)} {'city' if city else 'town'} boards")
+    elif not towns:
+        other = sorted({x["date"] for x in story["hits"] if x["date"] and x["date"] != lead["date"]
+                        and x["status"] != "stale" and x["action"] != "minutes" and x["source"] == "agenda"
+                        and (x["town"], x["board_key"]) == (lead["town"], lead["board_key"])},
+                       key=lambda d: abs((d - (lead["date"] or d)).days))
+        if other:
+            out.append(f"Also on the {short_date(other[0])} agenda")
+    filings = sorted(x["date"] for x in story["hits"] if x["source"] != "agenda" and x["date"] and x is not lead
+                     and x["status"] != "stale")
+    if filings:
+        out.append(f"State wetlands filing {short_date(filings[-1])}")
+    return out
 
 
 def build_story(hits, inputs, hist, today, now):
@@ -1820,6 +1834,8 @@ def build_story(hits, inputs, hist, today, now):
         cancelled = next(a for a in same_meeting if a["action"] == "cancelled")
         lead = dict(lead, action="cancelled", base=lead["base"] / ACTION_MULT[lead["action"]] * ACTION_MULT["cancelled"],
                     item=cancelled["item"], snippet=cancelled["snippet"])
+    if lead["action"] == "minutes":
+        return None  # minutes of an earlier meeting printed in a packet only count toward other stories
     story = {"lead": lead, "hits": hits, "today": today}
 
     # one entry per board: its next upcoming meeting, else its latest past one; minutes_only marks a board
@@ -1837,8 +1853,9 @@ def build_story(hits, inputs, hist, today, now):
             boards[k]["minutes_only"] = False
     story["boards"] = list(boards.values())
     towns = sorted({f"{a['state']}:{a['town']}" for a in hits if a["status"] != "stale"})
-    meetings = {(a["town"], a["board_key"], a["date"]) for a in hits if a["status"] != "stale"}
-    story["n_boards"] = len(boards)
+    meetings = {(a["town"], a["board_key"], a["date"]) for a in hits
+                if a["status"] != "stale" and a["action"] != "minutes" and a["source"] == "agenda"}
+    story["n_boards"] = sum(1 for b in boards.values() if not b["minutes_only"])
     story["n_towns"] = len(towns)
     story["towns"] = towns
 
@@ -1853,12 +1870,9 @@ def build_story(hits, inputs, hist, today, now):
     reasons, bonus = [], 0.0
     reasons.append(action_reason(lead))
     first = is_first(story, inputs, hist)
-    subj_key = lead["points_key"]
     if first:
         bonus += FIRST_POINTS[first]
-        reasons.append(f"First {ITEM_WORD[first]} in {lead['town']}")
-    else:
-        reasons.append(SUBJECT_REASON.get(subj_key, ""))
+        reasons.append(f"First time this has come up in {lead['town']}")
     if scale and lead["action"] not in ("continuance", "minutes", "cancelled", "withdrawn"):
         bonus += scale[0][0]
         reasons.append(first_cap(scale[0][1]))
@@ -1866,13 +1880,8 @@ def build_story(hits, inputs, hist, today, now):
     extra_t = min(MOMENTUM_CAP, story["n_towns"] - 1)
     extra_m = min(2, len(meetings) - 1) if extra_b == 0 else 0
     bonus += extra_b * MOMENTUM_BOARD + extra_t * MOMENTUM_TOWN + extra_m * MOMENTUM_MEETING
-    if extra_t:
-        reasons.append(f"{story['n_towns']} towns")
-    if extra_b:
-        reasons.append(f"{story['n_boards']} boards")
-    elif extra_m:
-        reasons.append(f"{len(meetings)} meetings")
-    tr = timing_reason(lead, today)
+    reasons.extend(momentum_reasons(story, lead, inputs))
+    tr = timing_reason(lead)
     if tr:
         reasons.append(tr)
     seen = [parse_ts(a["first_seen"]) for a in hits if a["first_seen"]]
@@ -1880,8 +1889,7 @@ def build_story(hits, inputs, hist, today, now):
     first_seen = min(seen) if seen else None
     is_new = bool(first_seen and (now - first_seen) <= timedelta(hours=NEW_HOURS))
     if is_new:
-        bonus += NEW_POINTS
-        reasons.append(f"First seen {short_date(first_seen.astimezone(TZ).date())}")
+        bonus += NEW_POINTS  # no reason line: the page shows how new an item is
     trk = tracker_reason(story, inputs)
     if trk:
         bonus += TRACKER_POINTS

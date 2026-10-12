@@ -81,7 +81,7 @@ class GroupingTests(unittest.TestCase):
         stories = build(hits, docs=docs)
         self.assertEqual(len(stories), 1)
         self.assertEqual(len(stories[0]["hit_ids"]), 2)
-        self.assertIn("2 boards", stories[0]["reasons"])
+        self.assertIn("2 town boards", stories[0]["reasons"])
 
     def test_same_address_is_one_story(self):
         pb = "https://x.gov/upton-pb"
@@ -129,10 +129,12 @@ class GroupingTests(unittest.TestCase):
                     "Kestrel Ridge Storage, LLC requesting a special permit for a battery energy storage system on", a),
                 hit("Plympton", "Zoning Board of Appeals", "zoning_board_of_appeals", "2026-10-16", ["battery_storage"],
                     "Kestrel Ridge Storage, LLC requesting a special permit for a battery energy storage system access", b)]
-        stories = build(hits, docs=docs)
+        stories = build(hits, docs=docs, neighbors={"MA:Carver": ["MA:Plympton"], "MA:Plympton": ["MA:Carver"]})
         self.assertEqual(len(stories), 1)
         self.assertEqual(stories[0]["towns"], ["MA:Carver", "MA:Plympton"])
-        self.assertIn("2 towns", stories[0]["reasons"])
+        self.assertIn("Neighboring Plympton too", stories[0]["reasons"])
+        apart = build(hits, docs=docs)  # without neighbor data the reason names the town
+        self.assertIn("Also in Plympton", apart[0]["reasons"])
 
     def test_utility_name_does_not_join_towns(self):
         a, b = "https://a.gov/2", "https://b.gov/2"
@@ -167,14 +169,14 @@ class ScoringTests(unittest.TestCase):
                     "Public hearing on a new Battery Energy Storage Systems zoning bylaw", "https://x.gov/b")]
         stories = build(hits)
         self.assertEqual([s["town"] for s in stories], ["Lakeville", "Lenox"])
-        self.assertIn("Hearing on Thursday", stories[0]["reasons"])
+        self.assertIn("Hearing Oct 15", stories[0]["reasons"])  # a date; the page shows "in 3 days"
 
     def test_past_meetings_drop_off(self):
         hits = [hit("Lakeville", "Planning Board", "planning_board", "2026-10-01", ["battery_storage"],
                     "Public hearing on a new Battery Energy Storage Systems zoning bylaw", "https://x.gov/a")]
         self.assertEqual(build(hits), [])
 
-    def test_minutes_rank_below_a_hearing(self):
+    def test_minutes_alone_never_make_a_story(self):
         mins = ("Minutes of September 22. Councilor White made a motion to ordain. Councilor Cunningham inquired about "
                 "the range for small, medium and large BESS. He questioned what kilowatt hour is safe.")
         m, hr = "https://x.gov/minutes", "https://x.gov/hearing"
@@ -183,21 +185,19 @@ class ScoringTests(unittest.TestCase):
                 hit("Lakeville", "Planning Board", "planning_board", "2026-10-22", ["battery_storage"],
                     "Public hearing on a new Battery Energy Storage Systems zoning bylaw", hr)]
         stories = build(hits, docs={m: mins})
-        self.assertEqual(stories[0]["town"], "Lakeville")
-        self.assertEqual(stories[1]["action"], "minutes")
-        self.assertIn("packet mentions", stories[1]["headline"])
+        self.assertEqual([s["town"] for s in stories], ["Lakeville"])  # minutes only count toward other stories
 
     def test_first_in_town_needs_history(self):
         h = hit("Burrillville", "Town Council", "select_board", "2026-10-14", ["data_center"],
                 "Consider and act on a petition to prohibit data centers; or take any other action thereon.",
                 "https://x.gov/b")
         with_history = build([h], coverage={("MA", "Burrillville"): date(2026, 7, 1)})
-        self.assertIn("First data-center item in Burrillville", with_history[0]["reasons"])
-        no_history = build([h], coverage={("MA", "Burrillville"): date(2026, 10, 1)})
-        self.assertFalse(any(r.startswith("First data") for r in no_history[0]["reasons"]))
+        self.assertIn("First time this has come up in Burrillville", with_history[0]["reasons"])
+        no_history = build([h], coverage={("MA", "Burrillville"): date(2026, 9, 1)})  # 43 days is too little
+        self.assertFalse(any(r.startswith("First time") for r in no_history[0]["reasons"]))
         earlier = build([h], coverage={("MA", "Burrillville"): date(2026, 7, 1)},
                         history=[("MA", "Burrillville", "data_center", date(2026, 9, 1))])
-        self.assertFalse(any(r.startswith("First data") for r in earlier[0]["reasons"]))
+        self.assertFalse(any(r.startswith("First time") for r in earlier[0]["reasons"]))
 
     def test_stated_scale_adds_points(self):
         big = hit("Saugus", "Board of Appeals", "zoning_board_of_appeals", "2026-10-15", ["40b_comprehensive_permit"],
@@ -237,7 +237,7 @@ class HeadlineTests(unittest.TestCase):
                        "Federal Pond Solar, LLC, requesting a Special Permit and Site Plan Review", url)],
                   docs={url: CARVER_TEXT})[0]
         self.assertEqual(s["headline"], "Federal Pond Solar asks Carver planners for continuance to Oct 27")
-        self.assertIn("Continuance only", s["reasons"])
+        self.assertIn("Continuance requested", s["reasons"])
 
     def test_petition_to_prohibit(self):
         s = build([hit("Burrillville", "Town Council", "select_board", "2026-10-14", ["data_center"],
@@ -282,8 +282,8 @@ class FallbackTests(unittest.TestCase):
         s = build([hit("Holyoke", "Planning Board", "planning_board", "2026-10-13", ["battery_storage"],
                        "Short Term Rentals, ZC Tiny Homes, SPR BESS Agilitas, PH SP Fence Rafael",
                        "https://x.gov/h")])[0]
-        self.assertEqual(s["headline"], "Holyoke Planning Board agenda mentions battery storage")
-        self.assertEqual(s["dek"], "The Planning Board meets Tuesday, Oct 13. The agenda mentions battery storage.")
+        self.assertEqual(s["headline"], "Battery storage item on Holyoke Planning Board agenda")
+        self.assertEqual(s["dek"], "The Planning Board meets Tuesday, Oct 13. The agenda lists an item on battery storage.")
 
     def test_project_without_name_or_address(self):
         s = build([hit("Clay", "Zoning Board of Appeals", "zoning_board_of_appeals", "2026-10-14", ["battery_storage"],
@@ -297,7 +297,7 @@ class FallbackTests(unittest.TestCase):
                        f"Public hearing: {long_name} LLC requesting a special permit for a ground-mounted solar array",
                        "https://x.gov/w")])[0]
         self.assertLessEqual(len(s["headline"]), T.HEADLINE_MAX)
-        self.assertTrue(s["headline"].startswith("Westborough Conservation Commission"))
+        self.assertIn("Westborough Conservation Commission", s["headline"])
 
     def test_undated_fall_warrant(self):
         url = "https://x.gov/holliston"
@@ -396,6 +396,11 @@ def load_linter():
     return mod
 
 
+READER_BANNED = re.compile(r"\bpacket\b|\bmention|\bflagged\b|\bmatched\b|\bhits?\b|\btracker\b|first seen|"
+                           r"\btoday\b|\btomorrow\b", re.I)
+REASON_BANNED = re.compile(r"\b(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day\b|\bitem\b")  # dates, not days; no topic echo
+
+
 class CopyLintTests(unittest.TestCase):
     """Every template, filled with sample words, passes the de-slop linter's word rules."""
 
@@ -447,6 +452,31 @@ class CopyLintTests(unittest.TestCase):
                 if re.search(pat, line, re.I):
                     hits.append((rid, line))
         self.assertEqual(hits, [])
+
+    def test_no_system_words_or_relative_days(self):
+        """Readers never see 'packet', 'mentions', 'hits', 'tracker' or 'tomorrow'; reasons give dates."""
+        url = "https://x.gov/n"
+        samples = [
+            hit("Northampton", "Planning Board", "planning_board", "2026-10-13", ["moratorium", "data_center"],
+                "Public hearing to impose a 365 day temporary moratorium on data centers", url),
+            hit("Holyoke", "Planning Board", "planning_board", "2026-10-12", ["battery_storage"],
+                "Short Term Rentals, ZC Tiny Homes, SPR BESS Agilitas, PH SP Fence Rafael", "https://x.gov/h"),
+            hit("Westfield", "City Council", "select_board", "2026-10-15", ["battery_storage"],
+                "public hearing to consider a petition to adopt zoning regulations for battery storage",
+                "https://x.gov/w"),
+            hit("Pittsfield", "City Council", "select_board", "2026-10-13", ["battery_storage"],
+                "Councilor Cunningham inquired about the range for small, medium and large BESS. He said no.",
+                "https://x.gov/p"),
+        ]
+        tracker = [{"town": "Westfield", "topic": "Battery storage", "action": "Moratorium", "status": "Expired"}]
+        out = T.build(inputs(samples, tracker=tracker), TODAY, NOW)
+        westfield = next(s for s in out["stories"] if s["town"] == "Westfield")
+        self.assertIn("Town has an earlier vote on this", westfield["reasons"])
+        for s in out["stories"]:
+            for line in [s["headline"], s["dek"]] + s["reasons"]:
+                self.assertNotRegex(line, READER_BANNED)
+            for r in s["reasons"]:
+                self.assertNotRegex(r, REASON_BANNED)
 
 
 if __name__ == "__main__":
