@@ -83,6 +83,10 @@ async function outbox() {
 const mailTo = async (address) => (await outbox()).filter((m) => m.to[0].toLowerCase() === address.toLowerCase());
 const indexOf = (address) => getBlob(`emails/${createHash('sha256').update(address.toLowerCase()).digest('hex')}.json`);
 const PAGES = [];
+const formBody = (fields) => ({
+  body: new URLSearchParams(fields).toString(),
+  headers: { 'content-type': 'application/x-www-form-urlencoded' },
+});
 const keepPage = (r) => { PAGES.push(r.text); return r; };
 const linkIn = (text, action) => new URL(text.match(new RegExp(`https?://\\S+/api/email\\?action=${action}&t=\\S+`))[0]);
 const cron = () => api('POST', '/api/cron/dispatch', { headers: { authorization: 'Bearer test-secret' } });
@@ -327,17 +331,34 @@ await test('read-only key and feeds show nothing about email', async () => {
   }
 });
 
-await test('confirmation link confirms and redirects to the private page; bad token fails', async () => {
+await test('confirm: GET shows a button and changes nothing; POST confirms and redirects', async () => {
   const [mail] = await mailTo(A_STORED);
   const link = linkIn(mail.text, 'confirm');
-  const bad = keepPage(await api('GET', `${link.pathname}${link.search.slice(0, -2)}xx`));
+  const url = link.pathname + link.search;
+  const token = link.searchParams.get('t');
+  const bad = keepPage(await api('GET', `${url.slice(0, -2)}xx`));
   assert.equal(bad.status, 404);
   assert.match(bad.text, /no longer works/);
-  const r = await api('GET', link.pathname + link.search);
+  assert.equal((await api('POST', `${url.slice(0, -2)}xx`, formBody({ t: 'x' }))).status, 404);
+
+  const page = keepPage(await api('GET', url));
+  assert.equal(page.status, 200);
+  assert.match(page.text, /Confirming starts a daily email to J\*\*\*@example\.com about new agenda items for Carver email\./);
+  const action = page.text.match(/<form method="post" action="([^"]+)">/)?.[1]?.replace(/&amp;/g, '&');
+  assert.ok(action, 'a plain POST form');
+  assert.equal(new URL(action, ORIGIN).searchParams.get('t'), token, 'the form posts the token back');
+  assert.match(page.text, /<button type="submit" class="btn">Confirm alerts for J\*\*\*@example\.com<\/button>/);
+  assert.ok(!/<script/i.test(page.text), 'no script, so the site CSP allows it');
+  for (const method of ['GET', 'GET', 'HEAD']) await api(method, url);
+  const still = await getBlob(`watchlists/${listA.id}.json`);
+  assert.equal(still.email.confirmed, false, 'GET and HEAD change nothing');
+  assert.equal((await indexOf(A)).watchlists[listA.id].confirmed, false);
+
+  const r = await api('POST', action, formBody({ t: token }));
   assert.equal(r.status, 303);
   assert.equal(r.headers.get('location'), `/w/${listA.id}?email=confirmed`);
-  const again = await api('GET', link.pathname + link.search);
-  assert.equal(again.status, 303, 'a second click still lands on the page');
+  const again = await api('POST', action, formBody({ t: token }));
+  assert.equal(again.status, 303, 'a second press still lands on the page');
   const v = await api('GET', `/api/watchlists?id=${listA.id}`);
   assert.equal(v.json.watchlist.email.confirmed, true);
   assert.equal(v.json.watchlist.email.status, 'confirmed');
@@ -431,27 +452,52 @@ await test('subjects read naturally for unnamed lists', async () => {
 });
 
 // ---------- unsubscribe ----------
-await test('unsubscribe link removes the address at once (GET page, POST one-click)', async () => {
+await test('unsubscribe: GET shows a button and changes nothing; the form POST unsubscribes', async () => {
   const d = (await mailTo(A_STORED)).find((m) => /: \d+ new items?/.test(m.subject));
   const link = linkIn(d.text, 'unsubscribe');
-  const r = keepPage(await api('GET', link.pathname + link.search));
+  const url = link.pathname + link.search;
+  const page = keepPage(await api('GET', url));
+  assert.equal(page.status, 200);
+  assert.match(page.text, /This stops the daily emails to J\*\*\*@example\.com for Carver email/);
+  assert.match(page.text, /<form method="post" action="[^"]*action=unsubscribe&amp;t=[^"]+">/);
+  assert.match(page.text, /<button type="submit" class="btn">Unsubscribe J\*\*\*@example\.com<\/button>/);
+  await api('GET', url);
+  await api('HEAD', url);
+  const v0 = await api('GET', `/api/watchlists?id=${listA.id}`);
+  assert.equal(v0.json.watchlist.email.configured, true, 'GET and HEAD change nothing');
+  assert.equal(v0.json.watchlist.email.confirmed, true);
+
+  const r = keepPage(await api('POST', url, formBody({ t: link.searchParams.get('t') })));
   assert.equal(r.status, 200);
-  assert.match(r.text, /You are unsubscribed/);
-  assert.match(r.text, /J\*\*\*@example\.com/);
+  assert.match(r.text, /You(&#39;|')re unsubscribed/);
+  assert.match(r.text, /J\*\*\*@example\.com will get no more emails from this watchlist\./);
+  assert.ok(r.text.includes(`href="/w/${listA.id}"`), 'links to the watchlist page to sign up again');
   const v = await api('GET', `/api/watchlists?id=${listA.id}`);
   assert.equal(v.json.watchlist.email.configured, false);
   assert.equal((await getBlob(`watchlists/${listA.id}.json`)).email, null);
   assert.equal((await indexOf(A))?.watchlists?.[listA.id], undefined);
-  const again = keepPage(await api('GET', link.pathname + link.search));
+  const again = keepPage(await api('GET', url));
   assert.match(again.text, /not on the list/);
+  assert.ok(!/<form/.test(again.text), 'no button once the address is gone');
+});
 
-  const c = await make({ home_town: 'MA:Carver', towns: ['MA:Carver'], email: 'one.click@example.org' });
-  const [mail] = await mailTo('one.click@example.org');
-  const u = linkIn(mail.text, 'unsubscribe');
-  const post = await api('POST', u.pathname + u.search, { body: 'List-Unsubscribe=One-Click', headers: { 'content-type': 'application/x-www-form-urlencoded' } });
-  assert.equal(post.status, 200);
-  assert.deepEqual(post.json, { ok: true, unsubscribed: true });
-  assert.equal((await getBlob(`watchlists/${c.json.id}.json`)).email, null);
+await test('unsubscribe: RFC 8058 one-click POST (urlencoded and multipart) works at once', async () => {
+  const encodings = [
+    ['one.click@example.org', { body: 'List-Unsubscribe=One-Click', headers: { 'content-type': 'application/x-www-form-urlencoded' } }],
+    ['multi.part@example.org', {
+      body: '--XyZ\r\nContent-Disposition: form-data; name="List-Unsubscribe"\r\n\r\nOne-Click\r\n--XyZ--\r\n',
+      headers: { 'content-type': 'multipart/form-data; boundary=XyZ' },
+    }],
+  ];
+  for (const [address, request] of encodings) {
+    const c = await make({ home_town: 'MA:Carver', towns: ['MA:Carver'], email: address });
+    const [mail] = await mailTo(address);
+    const u = new URL(mail.headers['List-Unsubscribe'].slice(1, -1));
+    const post = await api('POST', u.pathname + u.search, request);
+    assert.equal(post.status, 200, post.text);
+    assert.deepEqual(post.json, { ok: true, unsubscribed: true });
+    assert.equal((await getBlob(`watchlists/${c.json.id}.json`)).email, null, address);
+  }
 });
 
 // ---------- limits ----------

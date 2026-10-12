@@ -53,7 +53,7 @@ Email is off until both `RESEND_API_KEY` and `EMAIL_FROM` are set on the Vercel 
 3. Add a DMARC record for the domain: TXT at `_dmarc.agendaahead.com` with `v=DMARC1; p=none; rua=mailto:dmarc@agendaahead.com` (any mailbox you read). Gmail and Yahoo require DMARC from bulk senders. After a few weeks of clean reports, tighten to `p=quarantine`.
 4. Create an API key in Resend with "Sending access" for that domain only.
 5. On the Vercel project (Production): `RESEND_API_KEY` = the key (sensitive), `EMAIL_FROM` = `Agenda Ahead <alerts@agendaahead.com>` (the address must be on the verified domain), and `PUBLIC_BASE_URL` = `https://agendaahead.com` once the domain serves the site, so links in emails use it. Redeploy.
-6. Check: `/api/status` shows `email_alerts: true`; create a test watchlist with your address on `/watch`; confirm from the email; delete the test watchlist from its page.
+6. Check: `/api/status` shows `email_alerts: true`; create a test watchlist with your address on `/watch`; open the link in the email and press Confirm; delete the test watchlist from its page.
 
 Limits to watch: Resend's free plan allows 100 emails a day and 3,000 a month (check the current plan); each confirmed address can get one digest a day, and each sign-up sends one confirmation. Resend suppresses addresses that hard-bounce or mark mail as spam; those sends then show up as failures in the logs.
 
