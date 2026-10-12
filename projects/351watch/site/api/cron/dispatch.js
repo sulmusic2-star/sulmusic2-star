@@ -4,7 +4,7 @@
 // to the data snapshot time. A failed delivery leaves the cursor alone so the items are retried.
 import { timingSafeEqual } from 'node:crypto';
 import { allow, listPathnames, noStore, readJSON } from '../_store.js';
-import { buildPayload, loadHits, matchItems, postWebhook, publicBase, saveWatchlist, webhookKind } from '../_watch.js';
+import { buildPayload, loadHits, matchItems, postWebhook, publicBase, saveWatchlist, shareId, webhookKind } from '../_watch.js';
 
 const MAX_ITEMS = 20;
 const CONCURRENCY = 4;
@@ -27,7 +27,7 @@ async function dispatchOne(path, hitsDoc, base) {
 
   const items = fresh.slice(0, MAX_ITEMS);
   const more = fresh.length - items.length;
-  const link = `${base}/w/${wl.id}`;
+  const link = `${base}/w/${shareId(wl)}`;
   const result = await postWebhook(wl.webhook.url, buildPayload(webhookKind(wl.webhook), { wl, items, more, link }));
   const at = new Date().toISOString();
   wl.last_delivery = { at, ok: result.ok, status: result.status, sent: items.length, more, ...(result.error ? { error: result.error } : {}) };

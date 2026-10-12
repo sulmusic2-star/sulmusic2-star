@@ -28,6 +28,32 @@ export const blobPath = (id) => `watchlists/${id}.json`;
 export const loadWatchlist = (id) => (validId(id) ? readJSON(blobPath(id)) : Promise.resolve(null));
 export const saveWatchlist = (wl) => writeJSON(blobPath(wl.id), wl);
 
+// Each watchlist has two keys. Its id is the private key that can edit or delete it. Its feed_id
+// is a read-only key used in feed, calendar and share links, so publishing a calendar link never
+// hands out edit rights. feeds/<feed_id>.json points back to the watchlist.
+export const feedIndexPath = (feedId) => `feeds/${feedId}.json`;
+
+export async function ensureFeedId(wl) {
+  if (wl.feed_id) return false;
+  wl.feed_id = newId();
+  await writeJSON(feedIndexPath(wl.feed_id), { watchlist_id: wl.id });
+  await saveWatchlist(wl);
+  return true;
+}
+
+// Resolve an id from a link: the private key gives { wl, readonly: false }, a feed key { wl, readonly: true }.
+export async function resolveWatchlist(id) {
+  if (!validId(id)) return { wl: null, readonly: true };
+  const own = await readJSON(blobPath(id));
+  if (own) return { wl: own, readonly: false };
+  const ref = await readJSON(feedIndexPath(id));
+  if (!ref?.watchlist_id || !validId(ref.watchlist_id)) return { wl: null, readonly: true };
+  const wl = await readJSON(blobPath(ref.watchlist_id));
+  return wl && wl.feed_id === id ? { wl, readonly: true } : { wl: null, readonly: true };
+}
+
+export const shareId = (wl) => wl.feed_id || wl.id;
+
 export function townSlug(name) {
   return String(name).toLowerCase().replace(/['’]/g, '').replace(/\s+/g, '-');
 }
@@ -153,7 +179,8 @@ export function fmtDate(iso) {
 const WEBHOOK_HOSTS = [
   { kind: 'slack', test: (h) => h === 'hooks.slack.com' },
   { kind: 'teams', test: (h) => h === 'outlook.office.com' || h.endsWith('.webhook.office.com') },
-  { kind: 'teams_workflow', test: (h) => h.endsWith('.logic.azure.com') },
+  // Teams "Workflows" (Power Automate) webhooks, which replaced the retired Office 365 connectors.
+  { kind: 'teams_workflow', test: (h) => h.endsWith('.logic.azure.com') || h.endsWith('.api.powerplatform.com') },
   { kind: 'discord', test: (h, path) => h === 'discord.com' && path.startsWith('/api/webhooks/') },
 ];
 export const WEBHOOK_FORMATS = new Set(['auto', 'json']);
@@ -173,7 +200,7 @@ export function parseWebhook(raw) {
   const host = u.hostname.toLowerCase();
   const match = WEBHOOK_HOSTS.find((h) => h.test(host, u.pathname));
   if (!match) {
-    return { error: 'Use a Slack, Microsoft Teams, Power Automate (logic.azure.com) or Discord webhook URL.' };
+    return { error: 'Use a Slack, Discord or Microsoft Teams (Workflows) webhook URL.' };
   }
   u.hash = '';
   return { url: u.toString(), kind: match.kind };
@@ -240,6 +267,7 @@ export function validateConfig(body, { towns, topics }, { partial = false } = {}
 export function publicView(wl, base) {
   const kind = webhookKind(wl.webhook);
   return {
+    readonly: false,
     id: wl.id,
     name: wl.name || '',
     towns: wl.towns,
@@ -254,10 +282,32 @@ export function publicView(wl, base) {
     last_delivery: wl.last_delivery || null,
     links: {
       page: `${base}/w/${wl.id}`,
-      json: `${base}/api/feed?id=${wl.id}&format=json`,
-      rss: `${base}/api/feed?id=${wl.id}&format=rss`,
-      ics: `${base}/api/feed?id=${wl.id}&format=ics`,
+      ...feedLinks(wl, base),
     },
+  };
+}
+
+// Feed and share links carry only the read-only key.
+function feedLinks(wl, base) {
+  const fid = shareId(wl);
+  return {
+    share: `${base}/w/${fid}`,
+    json: `${base}/api/feed?id=${fid}&format=json`,
+    rss: `${base}/api/feed?id=${fid}&format=rss`,
+    ics: `${base}/api/feed?id=${fid}&format=ics`,
+  };
+}
+
+// What a read-only link may see: no private key, no webhook details, no delivery log.
+export function readonlyView(wl, base) {
+  return {
+    readonly: true,
+    name: wl.name || '',
+    towns: wl.towns,
+    topics: wl.topics,
+    created_at: wl.created_at,
+    updated_at: wl.updated_at,
+    links: feedLinks(wl, base),
   };
 }
 
