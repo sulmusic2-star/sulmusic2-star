@@ -223,7 +223,8 @@
     $('links-section').hidden = false;
   }
 
-  // Email (private view only): {configured, confirmed, masked}. Offer to add one only when email is on.
+  // Email (private view only): {configured, available, confirmed, masked, status, resend_available_at}.
+  // Offer to add one only when email alerts are on.
   function renderEmail(wl, emailOn) {
     const out = $('email-status');
     const mail = wl.email;
@@ -234,7 +235,27 @@
         ? `Daily email goes to ${mail.masked}, only on days with something new. `
         : `We sent a confirmation link to ${mail.masked}. Emails start once you click it. `, edit, '.');
       out.hidden = false;
-    } else if (emailOn) {
+      const at = mail.resend_available_at ? Date.parse(mail.resend_available_at) : NaN;
+      if (!mail.confirmed && !Number.isNaN(at) && at <= Date.now()) {
+        const button = el('button', { type: 'button', class: 'btn small quiet', text: 'Send the confirmation email again' });
+        const said = el('span', { class: 'form-status', role: 'status' });
+        button.addEventListener('click', async () => {
+          button.disabled = true;
+          said.className = 'form-status';
+          said.textContent = ' Sending…';
+          try {
+            await api('POST', `/api/email?action=resend&id=${encodeURIComponent(wl.id)}`);
+            said.classList.add('ok');
+            said.textContent = ' Sent. Check your inbox and spam folder.';
+          } catch (err) {
+            said.classList.add('err');
+            said.textContent = ` ${err.message}`;
+            button.disabled = false;
+          }
+        });
+        out.append(' ', button, said);
+      }
+    } else if (emailOn || (mail && mail.available)) {
       edit.textContent = 'Add an email address';
       out.replaceChildren('No email set up. ', edit, '.');
       out.hidden = false;
@@ -353,7 +374,7 @@
     renderWebhook(wl);
     renderEmail(wl, (await status).email_alerts === true);
     renderManage(wl);
-    const unconfirmed = params.get('email') === '1' || (wl.email && wl.email.configured && !wl.email.confirmed);
+    const unconfirmed = params.get('email') === '1' && !(wl.email && wl.email.confirmed);
     if (params.get('new') === '1' || (params.get('email') === '1' && unconfirmed)) {
       const banner = $('created-banner');
       if (params.get('new') !== '1') banner.querySelector('b').textContent = 'Changes saved.';
@@ -361,6 +382,13 @@
       banner.hidden = false;
       banner.focus();
       $('get-title').closest('section').before($('links-section'));
+    }
+    if (params.get('email') === 'confirmed') {
+      const banner = $('created-banner');
+      banner.replaceChildren(el('b', { text: 'Email confirmed.' }),
+        ` Alerts for this list will come to ${wl.email && wl.email.masked ? wl.email.masked : 'your inbox'} once a day, only when there’s something new.`);
+      banner.hidden = false;
+      banner.focus();
     }
     if (params.get('checkout') === 'success') {
       const banner = $('created-banner');

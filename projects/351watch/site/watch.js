@@ -33,9 +33,11 @@
   let topicsFromText = false;
   const plain = (s) => String(s || '').toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
   const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const label = (id) => {
+  const label = (id, ref) => {
     const t = byId.get(id);
-    return t ? `${t.town}${t.state !== 'MA' ? `, ${t.state}` : ''}` : id.split(':').slice(1).join(':');
+    if (!t) return id.split(':').slice(1).join(':');
+    const base = typeof ref === 'string' ? ref.split(':')[0] : 'MA';
+    return `${t.town}${t.state !== base ? `, ${t.state}` : ''}`;
   };
   const joinAnd = (parts) => (parts.length < 3 ? parts.join(' and ') : `${parts.slice(0, -1).join(', ')} and ${parts[parts.length - 1]}`);
 
@@ -143,7 +145,7 @@
     return li;
   }
 
-  const area = (id) => (neighbors && neighbors[id]) || [];
+  const area = (id) => (neighbors && !id.startsWith('_') && Array.isArray(neighbors[id]) ? neighbors[id] : []).filter((n) => byId.has(n));
   const notRead = (id) => byId.has(id) && byId.get(id).monitored === false;
 
   // A home town we can't read yet: say so, and offer to ask for it.
@@ -186,12 +188,12 @@
     const first = checkbox('home', id, `${label(id)} (your town${notRead(id) ? ', not read yet' : ''})`, true);
     first.querySelector('input').disabled = true;
     nearList.replaceChildren(first, ...near.map((n) => checkbox('towns', n,
-      `${label(n)} (next to ${label(id)}${notRead(n) ? ', not read yet' : ''})`, checkedNear ? checkedNear.includes(n) : true)));
+      `${label(n, id)} (next to ${label(id)}${notRead(n) ? ', not read yet' : ''})`, checkedNear ? checkedNear.includes(n) : true)));
     showRequest(id);
     nearNote.textContent = near.length
       ? `${label(id)} and the ${near.length === 1 ? 'town' : `${near.length} towns`} next to it are included. Untick any you don’t want.`
       : (neighbors && Object.keys(neighbors).length
-        ? `We don’t have neighbors listed for ${label(id)}, so these alerts cover ${label(id)} only.`
+        ? `${label(id)} has no towns next to it on our map (islands, for example), so these alerts cover ${label(id)}.`
         : `We couldn’t load the towns next to ${label(id)} right now. These alerts will cover ${label(id)}; you can add its neighbors later by editing them.`);
     fieldError('towns', '');
   }
@@ -235,14 +237,14 @@
         : joinAnd(chosenTopics.map((t) => t.closest('label').querySelector('span').firstChild.textContent.trim().toLowerCase()));
       const near = Array.from(nearList.querySelectorAll('input[name="towns"]:checked')).map((x) => x.value);
       const where = others.length
-        ? joinAnd([first, ...others.filter((o) => near.includes(o))].map(label))
+        ? joinAnd([first, ...others.filter((o) => near.includes(o))].map((x) => label(x)))
         : (near.length ? `${label(first)} and the ${near.length === 1 ? 'town' : `${near.length} towns`} next to it` : label(first));
       parts.push('Alerts for ', b(what), ' in ', b(where), '.');
     } else {
       parts.push('Pick your town from the list.');
     }
     if (outside.length) {
-      parts.push(` ${joinAnd(outside.map(label))} ${outside.length === 1 ? 'isn’t' : 'aren’t'} next to ${label(first)}. Free alerts cover one town and the towns next to it.`);
+      parts.push(` ${joinAnd(outside.map((x) => label(x)))} ${outside.length === 1 ? 'isn’t' : 'aren’t'} next to ${label(first)}. Free alerts cover one town and the towns next to it.`);
     }
     if (left.length) parts.push(` We didn’t find a town or topic called “${left.slice(0, 3).join('”, “')}”. Check the spelling.`);
     read.replaceChildren(...parts.map((p) => (typeof p === 'string' ? document.createTextNode(p) : p)));
@@ -299,8 +301,12 @@
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok || data.ok === false) {
-      const err = new Error(data.error || 'The server didn’t answer as expected. Try again in a minute.');
+      const err = new Error(data.error || (res.status === 503
+        ? 'Alerts can’t be saved right now. Try again in a few minutes.'
+        : 'The server didn’t answer as expected. Try again in a minute.'));
       err.fields = data.fields || {};
+      err.code = data.code || '';
+      err.status = res.status;
       throw err;
     }
     return data;
@@ -330,6 +336,8 @@
       location.assign(`/w/${id}${flags ? `?${flags}` : ''}`);
     } catch (err) {
       for (const [field, message] of Object.entries(err.fields || {})) fieldError(field === 'home_town' ? 'towns' : field, message);
+      if (err.code === 'free_area' && !err.fields.towns && !err.fields.home_town) fieldError('towns', err.message);
+      if (err.code === 'free_area' || err.fields.towns || err.fields.home_town) $('home-town').scrollIntoView({ block: 'center' });
       setStatus(status, err.message, 'err');
       submit.disabled = false;
     }
