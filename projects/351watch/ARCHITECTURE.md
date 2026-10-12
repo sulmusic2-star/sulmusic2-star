@@ -71,6 +71,10 @@ The crawler cache (`crawler/.cache`, raw bodies) is lost with the container and 
 - `<p id="search-status" aria-live="polite"></p>` and `<ol id="search-results"></ol>`; load `/search.js` (classic script, `defer`).
 - Each result: `<li class="result" data-topics="solar,moratorium">` with `<a class="result-title" href=SOURCE>`, `<p class="result-meta">` (town, state · board · date, "(upcoming)" when today or later), `<p class="result-snippet">` (matches in `<mark>`) and `<a class="result-town" href="/ma/carver">`. A `<button class="search-more">` (10 more results) is inserted after the list.
 
+## Agenda version archive
+
+- `data/archive/<ST>/<YYYY-MM>.jsonl`: when a document's text changes after we first read it (an amended agenda, OCR replacing a scan), the earlier text is appended here with `first_seen`, `superseded_at` and `text_sha256` before `data/search` is rewritten. Append-only; never pruned. It is the dated record of what each agenda said before its meeting.
+
 ## Watchlists (web app; no email, no passwords)
 
 - A watchlist is created on `/watch`: chosen towns (`"MA:Amherst"`), topics, optional name, optional Slack, Discord, Teams (Workflows: `*.logic.azure.com`, `*.api.powerplatform.com`) or generic webhook URL.
