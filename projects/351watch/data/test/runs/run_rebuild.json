@@ -1,0 +1,174 @@
+{
+ "by_state": {
+  "MI": {
+   "new_documents": 158,
+   "new_hits": 244,
+   "towns_attempted": 48,
+   "towns_succeeded": 48
+  },
+  "VA": {
+   "new_documents": 161,
+   "new_hits": 233,
+   "towns_attempted": 30,
+   "towns_succeeded": 30
+  }
+ },
+ "date": "2026-10-12",
+ "document_errors": 19,
+ "documents_already_indexed": 0,
+ "documents_deferred": 0,
+ "documents_listed": 338,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 0,
+ "documents_retried": 0,
+ "duration_seconds": 102.6,
+ "errors": [
+  {
+   "error": "document: too large (166555093 > 41943040 bytes): https://www.brightontwp.com/AgendaCenter/ViewFile/Agenda/_09232026-2300",
+   "town": "MI:Brighton Township"
+  },
+  {
+   "error": "document: too large (59470705 > 41943040 bytes): https://cms9files.revize.com/deltatwpmi/September 21, 2026 Agenda Packet.pdf",
+   "town": "MI:Delta Charter Township"
+  },
+  {
+   "error": "document: too large (45442601 > 41943040 bytes): https://cms9files.revize.com/deltatwpmi/Document_Center/Township Board Agendas and Minutes/2026/September 8, 2026 Agenda Packet.pdf",
+   "town": "MI:Delta Charter Township"
+  },
+  {
+   "error": "document: too large (77012685 > 41943040 bytes): https://howelltownshipmi.org/wp-content/uploads/2026/10/Board-Packet-10.13.2026.pdf",
+   "town": "MI:Howell Township"
+  },
+  {
+   "error": "document: too large (88435734 > 41943040 bytes): https://media-002-us.cdn.govstack.com/meridian-us/media/huzpupyf/september-21-2026-planning-commission-packet.pdf",
+   "town": "MI:Meridian Charter Township"
+  },
+  {
+   "error": "document: too large (45811353 > 41943040 bytes): https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_10012026-1019",
+   "town": "MI:Pittsfield Charter Township"
+  },
+  {
+   "error": "document: too large (49909170 > 41943040 bytes): https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_09172026-1016",
+   "town": "MI:Pittsfield Charter Township"
+  },
+  {
+   "error": "document: too large (184898982 > 41943040 bytes): https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_09032026-1011",
+   "town": "MI:Pittsfield Charter Township"
+  },
+  {
+   "error": "document: extract failed (pdftotext exit 1): https://portlandmi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=104,plainText=false)",
+   "town": "MI:Portland Township"
+  },
+  {
+   "error": "document: extract failed (pdftotext exit 1): https://portlandmi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=107,plainText=false)",
+   "town": "MI:Portland Township"
+  },
+  {
+   "error": "document: extract failed (pdftotext exit 1): https://portlandmi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=109,plainText=false)",
+   "town": "MI:Portland Township"
+  },
+  {
+   "error": "document: too large (90117081 > 41943040 bytes): https://superiortownship.org/wp-content/uploads/2026/09/9.-September-21-2026-Board-Packet.pdf",
+   "town": "MI:Superior Township"
+  },
+  {
+   "error": "document: too large (141670572 > 41943040 bytes): https://files.ypsitownship.org/Documents/Government/Boards-Commissions/Planning-Commission/2026/Packet/2026-10-13-Planning-Commission-Packet-Revised-2026-10-09.pdf",
+   "town": "MI:Ypsilanti Charter Township"
+  },
+  {
+   "error": "document: too large (47934438 > 41943040 bytes): https://files.ypsitownship.org/Documents/Government/Boards-Commissions/Zoning-Board-of-Appeals/2026/Packet/2026-09-02-Zoning-Board-of-Appeals-Packet-Final.pdf",
+   "town": "MI:Ypsilanti Charter Township"
+  },
+  {
+   "error": "document: too large (46433239 > 41943040 bytes): https://cms7files.revize.com/greensvillecountyva25/Documents Center/Agenda & Minutes/Board of Supervisors/2026/Agenda/Board of Supervisors Agenda - 10052026.pdf",
+   "town": "VA:Greensville County"
+  },
+  {
+   "error": "document: too large (241819661 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_10052026-790",
+   "town": "VA:Halifax County"
+  },
+  {
+   "error": "document: too large (265614350 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_09082026-774",
+   "town": "VA:Halifax County"
+  },
+  {
+   "error": "document: https://cms8.revize.com/revize/nottowaycountyva/Agenda BoS Special Meeting September 30, 2026.docx",
+   "town": "VA:Nottoway County"
+  },
+  {
+   "error": "document: https://cms8.revize.com/revize/nottowaycountyva/Agenda BoS Worksession September 10, 2026.docx",
+   "town": "VA:Nottoway County"
+  }
+ ],
+ "errors_total": 19,
+ "finished": "2026-10-12T19:37:37+00:00",
+ "hits_current": 449,
+ "index": {
+  "by_state": {
+   "MI": 172,
+   "VA": 166
+  },
+  "by_status": {
+   "error": 19,
+   "ok": 319
+  },
+  "by_text_source": {
+   "docx": 6,
+   "html": 13,
+   "none": 19,
+   "ocr": 37,
+   "pdf": 263
+  },
+  "documents": 338,
+  "hits": 477,
+  "pruned": 0,
+  "towns": 74,
+  "with_hits": 141
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 53364224
+  },
+  "cache_hits": 472,
+  "errors": 0,
+  "requests": 26,
+  "requests_by_purpose": {
+   "document": 26
+  },
+  "robots_blocked": 2
+ },
+ "new_alert_items": 0,
+ "new_alert_items_by_topic": {},
+ "new_documents": 319,
+ "new_hits": 477,
+ "new_hits_by_topic": {
+  "battery_storage": 49,
+  "clean_energy_siting": 65,
+  "data_center": 126,
+  "moratorium": 45,
+  "solar": 96,
+  "wireless_telecom": 20,
+  "zoning_amendment": 187
+ },
+ "options": {
+  "matcher_version": "b83673ebe8",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-10-12T19:35:54+00:00",
+ "states": [
+  "MI",
+  "VA"
+ ],
+ "towns_attempted": 78,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 78,
+ "window": {
+  "end": "2027-02-09",
+  "start": "2026-08-28"
+ }
+}

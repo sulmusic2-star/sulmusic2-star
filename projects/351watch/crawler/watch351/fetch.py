@@ -47,6 +47,7 @@ class Response:
     content_type: str
     body: bytes
     from_cache: bool = False
+    last_modified: str | None = None   # the server's Last-Modified header, when it sent one
 
     @property
     def ok(self) -> bool:
@@ -153,7 +154,7 @@ class PoliteFetcher:
             return None
         return Response(url=url, final_url=meta["final_url"], status=meta["status"],
                         content_type=meta["content_type"], body=body_p.read_bytes(),
-                        from_cache=True)
+                        from_cache=True, last_modified=meta.get("last_modified"))
 
     def _write_cache(self, resp: Response) -> None:
         body_p, meta_p = self._cache_paths(resp.url)
@@ -162,6 +163,7 @@ class PoliteFetcher:
         meta_p.write_text(json.dumps({
             "url": resp.url, "final_url": resp.final_url, "status": resp.status,
             "content_type": resp.content_type, "fetched_at": time.time(),
+            **({"last_modified": resp.last_modified} if resp.last_modified else {}),
         }))
 
     # ----------------------------------------------------------------- robots
@@ -313,7 +315,8 @@ class PoliteFetcher:
             raise FetchError(f"offline mode and not cached: {url}")
 
         r, body, final_url = self._get_following_redirects(url)
-        resp = Response(url, final_url, r.status_code, r.headers.get("Content-Type", ""), body)
+        resp = Response(url, final_url, r.status_code, r.headers.get("Content-Type", ""), body,
+                        last_modified=r.headers.get("Last-Modified"))
         if r.status_code in (200, 404, 410):
             self._write_cache(resp)  # cache successes and definitive misses
         if not resp.ok:

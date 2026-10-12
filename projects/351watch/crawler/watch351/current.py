@@ -71,16 +71,35 @@ def town_files(data_dir: Path = DATA) -> list[Path]:
     return sorted(data_dir.glob("towns_*.json"))
 
 
-def load_towns(data_dir: Path = DATA) -> list[dict]:
-    """All town rows from data/towns_*.json; rows default to state MA."""
+def gated_state(doc, path: Path) -> str | None:
+    """A towns file marked {"gated": true} (a state under test, e.g. MI or VA) returns its
+    state code: such a state is crawled and published only when named explicitly."""
+    if isinstance(doc, dict) and doc.get("gated"):
+        return (doc.get("state") or path.stem.rsplit("_", 1)[-1]).upper()
+    return None
+
+
+def load_towns(data_dir: Path = DATA, include_gated: set[str] | None = None) -> list[dict]:
+    """All town rows from data/towns_*.json; rows default to state MA. Files marked
+    "gated" are skipped unless their state is in `include_gated` (daily.py passes the
+    states named with --states), so the default production run never picks them up."""
     rows = []
+    allowed = {s.upper() for s in (include_gated or ())}
     for p in town_files(data_dir):
         doc = _load(p)
+        gated = gated_state(doc, p)
+        if gated and gated not in allowed:
+            continue
         towns = doc.get("towns", []) if isinstance(doc, dict) else (doc if isinstance(doc, list) else [])
         for t in towns:
             if isinstance(t, dict) and t.get("town"):
                 rows.append({**t, "state": (t.get("state") or "MA").upper()})
     return rows
+
+
+def gated_states(data_dir: Path = DATA) -> set[str]:
+    """State codes whose towns file is gated (not part of the production run)."""
+    return {st for p in town_files(data_dir) if (st := gated_state(_load(p), p))}
 
 
 def county_lookup(towns: list[dict]) -> dict[tuple[str, str], str]:
@@ -224,10 +243,13 @@ def archive_hits(hits: list[dict], archive_dir: Path) -> int:
 
 
 def build(data_dir: Path = DATA, today: date | None = None, archive: bool = True,
-          agenda_hits: list[dict] | None = None, indexed_urls: set[str] | None = None) -> dict:
+          agenda_hits: list[dict] | None = None, indexed_urls: set[str] | None = None,
+          towns: list[dict] | None = None) -> dict:
+    """`towns`: the town rows to report (default: load_towns(data_dir), i.e. every
+    non-gated state); a test run of gated states passes its own rows."""
     today = today or datetime.now(timezone.utc).date()
     start, end = today - timedelta(days=WINDOW_DAYS), today + timedelta(days=WINDOW_DAYS)
-    towns = load_towns(data_dir)
+    towns = load_towns(data_dir) if towns is None else towns
     counties = county_lookup(towns)
     if agenda_hits is None:
         from_index = index_agenda_hits(data_dir)
@@ -325,13 +347,15 @@ def write(doc: dict, path: Path) -> None:
 
 
 def rebuild(data_dir: Path = DATA, today: date | None = None, archive: bool = True,
-            agenda_hits: list[dict] | None = None, indexed_urls: set[str] | None = None) -> dict:
-    """Build, validate and write data/hits_current.json; returns the document."""
-    doc = build(data_dir, today, archive, agenda_hits, indexed_urls)
+            agenda_hits: list[dict] | None = None, indexed_urls: set[str] | None = None,
+            towns: list[dict] | None = None, out_name: str = "hits_current.json") -> dict:
+    """Build, validate and write data/hits_current.json (or `out_name` in `data_dir`);
+    returns the document."""
+    doc = build(data_dir, today, archive, agenda_hits, indexed_urls, towns)
     errs = validate(doc)
     if errs:
-        raise ValueError(f"hits_current.json failed validation ({len(errs)}): " + "; ".join(errs[:10]))
-    write(doc, data_dir / "hits_current.json")
+        raise ValueError(f"{out_name} failed validation ({len(errs)}): " + "; ".join(errs[:10]))
+    write(doc, data_dir / out_name)
     return doc
 
 

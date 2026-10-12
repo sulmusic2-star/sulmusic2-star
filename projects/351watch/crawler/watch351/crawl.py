@@ -54,14 +54,17 @@ def _resolve_pdf(fetcher: PoliteFetcher, resp: Response) -> Response:
     return fetcher.get(urljoin(resp.final_url, best["href"]))
 
 
-def scan_document(fetcher: PoliteFetcher, doc: AgendaDoc) -> tuple[list[dict], Extracted]:
+def scan_document(fetcher: PoliteFetcher, doc: AgendaDoc, state: str | None = None) -> tuple[list[dict], Extracted]:
     """Fetch + extract one agenda; return its keyword hits and the extraction."""
-    hits, ex, _ = scan_document_full(fetcher, doc)
+    hits, ex, _ = scan_document_full(fetcher, doc, state)
     return hits, ex
 
 
-def scan_document_full(fetcher: PoliteFetcher, doc: AgendaDoc) -> tuple[list[dict], Extracted, str]:
-    """scan_document plus the URL the hits cite (the resolved PDF for landing pages)."""
+def scan_document_full(fetcher: PoliteFetcher, doc: AgendaDoc,
+                       state: str | None = None) -> tuple[list[dict], Extracted, str]:
+    """scan_document plus the URL the hits cite (the resolved PDF for landing pages).
+    `state` turns on that state's extra keyword patterns (keywords.STATE_TOPICS); None
+    keeps the shared matcher (Massachusetts, NY, RI)."""
     resp = fetcher.get(doc.url)  # agenda documents are cached indefinitely
     if not resp.ok:
         raise FetchError(f"HTTP {resp.status}: {doc.url}")
@@ -72,7 +75,7 @@ def scan_document_full(fetcher: PoliteFetcher, doc: AgendaDoc) -> tuple[list[dic
     if ex.error and not ex.text:
         raise FetchError(f"extract failed ({ex.error}): {doc.url}")
     hits = []
-    for h in find_hits(ex.text):
+    for h in find_hits(ex.text, state=state):
         hits.append({
             "town": doc.town,
             "board": doc.board,
@@ -180,7 +183,7 @@ def town_configs(town: dict, split_generic: bool = True) -> list[dict]:
             base["tenant"] = town.get("tenant") or town.get("vendors", {}).get("civicclerk", {}).get("tenant")
         elif plat == "legistar":
             base["client"] = town.get("client") or listings[0].get("client")
-        chunks = [[l] for l in listings] if (plat == "generic" and split_generic) else [listings]
+        chunks = [[l] for l in listings] if (plat in ("generic", "agenda_page") and split_generic) else [listings]
         cfgs.extend({**base, "listings": chunk} for chunk in chunks)
     return cfgs
 

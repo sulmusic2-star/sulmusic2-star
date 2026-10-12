@@ -1,0 +1,193 @@
+{
+ "by_state": {
+  "MI": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 48,
+   "towns_succeeded": 48
+  },
+  "VA": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 30,
+   "towns_succeeded": 30
+  }
+ },
+ "date": "2026-10-12",
+ "document_errors": 0,
+ "documents_already_indexed": 19,
+ "documents_deferred": 0,
+ "documents_listed": 338,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 319,
+ "documents_retried": 0,
+ "duration_seconds": 111.2,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-10-12T20:14:43+00:00",
+ "hits_current": 429,
+ "index": {
+  "by_state": {
+   "MI": 174,
+   "VA": 166
+  },
+  "by_status": {
+   "error": 19,
+   "ok": 321
+  },
+  "by_text_source": {
+   "docx": 6,
+   "html": 13,
+   "none": 19,
+   "ocr": 38,
+   "pdf": 264
+  },
+  "documents": 340,
+  "hits": 456,
+  "pruned": 0,
+  "towns": 74,
+  "with_hits": 136
+ },
+ "network": {
+  "bytes_by_purpose": {},
+  "cache_hits": 474,
+  "errors": 0,
+  "requests": 0,
+  "requests_by_purpose": {},
+  "robots_blocked": 0
+ },
+ "new_alert_items": 1,
+ "new_alert_items_by_topic": {
+  "wireless_telecom": 1
+ },
+ "new_documents": 0,
+ "new_hits": 0,
+ "new_hits_by_topic": {},
+ "options": {
+  "matcher_version": "042871934b",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "previous_runs_today": [
+  {
+   "duration_seconds": 102.6,
+   "new_documents": 319,
+   "new_hits": 477,
+   "requests": 26,
+   "started": "2026-10-12T19:35:54+00:00",
+   "states": [
+    "MI",
+    "VA"
+   ],
+   "towns_attempted": 78,
+   "towns_succeeded": 78
+  },
+  {
+   "duration_seconds": 71.6,
+   "new_documents": 0,
+   "new_hits": 0,
+   "requests": 3,
+   "started": "2026-10-12T19:47:39+00:00",
+   "states": [
+    "MI",
+    "VA"
+   ],
+   "towns_attempted": 78,
+   "towns_succeeded": 78
+  },
+  {
+   "duration_seconds": 71.1,
+   "new_documents": 2,
+   "new_hits": 1,
+   "requests": 237,
+   "started": "2026-10-12T19:49:07+00:00",
+   "states": [
+    "MI",
+    "VA"
+   ],
+   "towns_attempted": 78,
+   "towns_succeeded": 78
+  },
+  {
+   "duration_seconds": 91.9,
+   "new_documents": 0,
+   "new_hits": 0,
+   "requests": 1,
+   "started": "2026-10-12T19:51:28+00:00",
+   "states": [
+    "MI",
+    "VA"
+   ],
+   "towns_attempted": 78,
+   "towns_succeeded": 78
+  },
+  {
+   "duration_seconds": 90.6,
+   "new_documents": 0,
+   "new_hits": 0,
+   "requests": 0,
+   "started": "2026-10-12T19:53:53+00:00",
+   "states": [
+    "MI",
+    "VA"
+   ],
+   "towns_attempted": 78,
+   "towns_succeeded": 78
+  },
+  {
+   "duration_seconds": 92.1,
+   "new_documents": 0,
+   "new_hits": 0,
+   "requests": 0,
+   "started": "2026-10-12T19:56:26+00:00",
+   "states": [
+    "MI",
+    "VA"
+   ],
+   "towns_attempted": 78,
+   "towns_succeeded": 78
+  },
+  {
+   "duration_seconds": 91.1,
+   "new_documents": 0,
+   "new_hits": 0,
+   "requests": 0,
+   "started": "2026-10-12T20:03:28+00:00",
+   "states": [
+    "MI",
+    "VA"
+   ],
+   "towns_attempted": 78,
+   "towns_succeeded": 78
+  },
+  {
+   "duration_seconds": 98.5,
+   "new_documents": 0,
+   "new_hits": 0,
+   "requests": 15,
+   "started": "2026-10-12T20:08:07+00:00",
+   "states": [
+    "MI",
+    "VA"
+   ],
+   "towns_attempted": 78,
+   "towns_succeeded": 78
+  }
+ ],
+ "started": "2026-10-12T20:12:52+00:00",
+ "states": [
+  "MI",
+  "VA"
+ ],
+ "towns_attempted": 78,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 78,
+ "window": {
+  "end": "2027-02-09",
+  "start": "2026-08-28"
+ }
+}

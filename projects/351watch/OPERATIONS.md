@@ -29,6 +29,10 @@
 4. Verify: deployment READY; `https://351watch-sulmusic2-4637s-projects.vercel.app/data/hits_current.json` shows today's `generated`.
 5. Watch `data/state/town_health.json` for towns with `consecutive_failures` ≥ 3 and `data/state/runs/<date>.json` for errors.
 
+## Test states (Michigan, Virginia)
+
+`data/towns_mi.json` and `data/towns_va.json` are gated (see ARCHITECTURE.md): the daily refresh above never reads them. To re-run the test: `cd crawler && python3 experiments/mi_va_test.py crawl` (writes only `data/test/`), then `analyze`. Do not pass `--states MI,VA` to `ops/daily.sh`; `watch351.daily` refuses gated states without `--output-dir`.
+
 ## Webhook delivery
 
 Vercel Cron calls `/api/cron/dispatch` daily at 13:30 UTC (after the refresh) with `CRON_SECRET`; it posts items first seen since each watchlist's last delivery.

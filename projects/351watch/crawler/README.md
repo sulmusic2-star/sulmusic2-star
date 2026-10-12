@@ -16,6 +16,12 @@ crawler/watch351/
     civicplus.py           CivicPlus "Agenda Center" (/AgendaCenter)
     civicclerk.py          CivicClerk portal (public read-only OData API)
     generic.py             any plain HTML page that lists agenda links (Revize, WordPress, ASP...)
+    agenda_page.py         general agenda-page reader: no per-site regex; classifies each document link
+                           (agenda / packet / notice / minutes), dates it from text, file name, row or
+                           heading, follows year folders and per-meeting pages (MI/VA test, 2026-10)
+  discover_sites.py      site-level discovery outside MA (CivicPlus, CivicClerk, eSCRIBE, closed-vendor
+                         detection, agenda pages) -> data/towns_mi.json, data/towns_va.json
+  attribution.py         Michigan county planning commission hits -> the township the item names
   discover.py            platform fingerprinting + listing discovery -> towns.json
   extract.py             PDF (pdftotext, tesseract OCR fallback) / HTML / DOCX -> text
   keywords.py            topic regexes, false-positive guards, snippet extraction

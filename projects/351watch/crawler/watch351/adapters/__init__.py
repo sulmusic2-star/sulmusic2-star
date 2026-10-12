@@ -17,3 +17,4 @@ REGISTRY: dict[str, type[Adapter]] = {
 __all__ = ["Adapter", "REGISTRY"]
 from .ri_sos import RISOSAdapter; REGISTRY[RISOSAdapter.platform] = RISOSAdapter  # RI Secretary of State Open Meetings portal
 from .generic_ny import GenericNYAdapter; from .escribe import EscribeAdapter; REGISTRY.update({GenericNYAdapter.platform: GenericNYAdapter, EscribeAdapter.platform: EscribeAdapter})  # NY pilot: hand listings with month pages / compact dates; eSCRIBE portals
+from .agenda_page import AgendaPageAdapter; REGISTRY[AgendaPageAdapter.platform] = AgendaPageAdapter  # MI/VA test: general agenda-page reader (WordPress, Revize, CivicPlus documents, Municode Meetings, plain pages)

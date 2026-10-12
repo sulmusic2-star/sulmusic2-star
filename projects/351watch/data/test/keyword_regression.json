@@ -1,0 +1,683 @@
+{
+ "documents": {
+  "matched": 3105,
+  "text_pdf": 2211,
+  "text_docx": 16,
+  "text_ocr": 732,
+  "text_html": 146,
+  "skipped_not_ok": 17
+ },
+ "records": 3122,
+ "hit_counts": {
+  "old": {
+   "MA:40b_comprehensive_permit": 129,
+   "MA:battery_storage": 175,
+   "MA:clean_energy_siting": 62,
+   "MA:data_center": 148,
+   "MA:hits": 1063,
+   "MA:moratorium": 96,
+   "MA:solar": 271,
+   "MA:wireless_telecom": 43,
+   "MA:zoning_amendment": 399,
+   "NY:battery_storage": 8,
+   "NY:data_center": 4,
+   "NY:hits": 28,
+   "NY:moratorium": 5,
+   "NY:solar": 8,
+   "NY:wireless_telecom": 5,
+   "NY:zoning_amendment": 2,
+   "RI:40b_comprehensive_permit": 20,
+   "RI:data_center": 11,
+   "RI:hits": 109,
+   "RI:moratorium": 2,
+   "RI:solar": 17,
+   "RI:wireless_telecom": 3,
+   "RI:zoning_amendment": 60
+  },
+  "new": {
+   "MA:40b_comprehensive_permit": 129,
+   "MA:battery_storage": 175,
+   "MA:clean_energy_siting": 62,
+   "MA:data_center": 148,
+   "MA:hits": 1063,
+   "MA:moratorium": 96,
+   "MA:solar": 271,
+   "MA:wireless_telecom": 43,
+   "MA:zoning_amendment": 399,
+   "NY:battery_storage": 8,
+   "NY:data_center": 4,
+   "NY:hits": 28,
+   "NY:moratorium": 5,
+   "NY:solar": 8,
+   "NY:wireless_telecom": 5,
+   "NY:zoning_amendment": 2,
+   "RI:40b_comprehensive_permit": 20,
+   "RI:data_center": 11,
+   "RI:hits": 109,
+   "RI:moratorium": 2,
+   "RI:solar": 17,
+   "RI:wireless_telecom": 3,
+   "RI:zoning_amendment": 60
+  },
+  "new_mi": {
+   "MA:battery_storage": 177,
+   "MA:clean_energy_siting": 118,
+   "MA:data_center": 148,
+   "MA:hits": 920,
+   "MA:moratorium": 95,
+   "MA:solar": 257,
+   "MA:wireless_telecom": 45,
+   "MA:zoning_amendment": 349,
+   "NY:battery_storage": 9,
+   "NY:clean_energy_siting": 3,
+   "NY:data_center": 4,
+   "NY:hits": 30,
+   "NY:moratorium": 5,
+   "NY:solar": 8,
+   "NY:wireless_telecom": 5,
+   "NY:zoning_amendment": 3,
+   "RI:clean_energy_siting": 8,
+   "RI:data_center": 11,
+   "RI:hits": 83,
+   "RI:moratorium": 2,
+   "RI:solar": 17,
+   "RI:wireless_telecom": 3,
+   "RI:zoning_amendment": 50
+  },
+  "new_va": {
+   "MA:battery_storage": 177,
+   "MA:clean_energy_siting": 118,
+   "MA:data_center": 148,
+   "MA:hits": 920,
+   "MA:moratorium": 95,
+   "MA:solar": 257,
+   "MA:wireless_telecom": 45,
+   "MA:zoning_amendment": 349,
+   "NY:battery_storage": 9,
+   "NY:clean_energy_siting": 3,
+   "NY:data_center": 4,
+   "NY:hits": 30,
+   "NY:moratorium": 5,
+   "NY:solar": 8,
+   "NY:wireless_telecom": 5,
+   "NY:zoning_amendment": 3,
+   "RI:clean_energy_siting": 8,
+   "RI:data_center": 11,
+   "RI:hits": 83,
+   "RI:moratorium": 2,
+   "RI:solar": 17,
+   "RI:wireless_telecom": 3,
+   "RI:zoning_amendment": 50
+  }
+ },
+ "documents_with_changed_hits": 0,
+ "diffs": [],
+ "ma_examples_if_mi_patterns_were_enabled": [
+  {
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_08272026-2536",
+   "added_with_MI_patterns": [
+    [
+     [
+      "battery_storage",
+      "clean_energy_siting"
+     ],
+     "Amendments to comply with siting and permitting rules for clean energy facilities and battery energy storage facilities c. Hotel/motel room limits (zoning bylaw section 7.10) d. Housatonic Mills Revitalization Overlay District / Rising"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.sturbridge.gov/AgendaCenter/ViewFile/Agenda/_08272026-381",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "7) Continue the public hearing for the Amendment of Local Notice of Intent for Transmission Line 301. Applicant: New England Power Company, Representative: Eileen Piskura, BSC Group. SCC File #25-17 – Proposed project: Additional 10,087"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.ayer.ma.us/AgendaCenter/ViewFile/Agenda/_09152026-695",
+   "added_with_MI_patterns": [
+    [
+     [
+      "moratorium",
+      "data_center"
+     ],
+     "Program Manager - lnclusionary Housing Bylaw Amendment and Danny Ruiz, Town Planner - Data Center Moratorium 6:35 PM Presentation on Proposed General Bylaw Warrant Article for Prohibition of Crypto Currency Machines - For Fall Special Town"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_09142026-2734",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting",
+      "zoning_amendment"
+     ],
+     "Approval X Article X Zoning Bylaw Amendment- Small Clean Energy Facilities To determine whether the Town will vote to X or pass any vote or take any action relative thereto. EXPLANATION This article proposes. This article requires simple"
+    ],
+    [
+     [
+      "data_center",
+      "zoning_amendment"
+     ],
+     "X 10 Town of Bedford, Massachusetts—Special Town Meeting—November 16, 2026 Article X Zoning Bylaw Amendment- Data Center To determine whether the Town will vote to X or pass any vote or take any action relative thereto. EXPLANATION This"
+    ],
+    [
+     [
+      "solar"
+     ],
+     "Arts Center/Theatre, Bedford TV office/studio needs. Link to Fire Station Re-Use Page 4. Solar Photovoltaic on Municipal Buildings The Town continued evaluating opportunities to expand solar photovoltaic installations on municipal"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_09222026-2742",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting",
+      "data_center"
+     ],
+     "variance application for 104A Page Road on ADU ownership Dark Sky lighting, Small Clean Energy Facility and Data Center permitting, Residential Sign regulations 340 Great Road Planning Board Liaison to Boards and Committee Reports Staff"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.belchertown.org/AgendaCenter/ViewFile/Agenda/_09142026-2228",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Requests for Certificates of Compliance o E5/F6 Transmission Line Right-of-Way: DEP#104-1119 o 54 Dressel Avenue: DEP#104-0462 - Bills o JM Mileage: $ 50.16 o MACC Associate Member Dues: $65.00 o PVPC: $7,178.30 - Minutes o 9/22/2025"
+    ],
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Inter-basin Transfer Application 9/30 11AM Town Hall Auditorium o FEIR National Grid Transmission Lines E5/F6 Project and MEPA filing -draft comment letter - Mail - Emergency Certificates - Violations o 281 Chauncey Walker Street: Pine"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.burlington.org/AgendaCenter/ViewFile/Agenda/_09102026-3384",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Eversource Burlington Energy Project – Presentation as part of Energy Facilities Siting Board Permit process 17. Administration a. Planning Board comments b. Subcommittee & staff reports and updates c. Other business d. Upcoming meetings"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.townofcharlton.net/AgendaCenter/ViewFile/Agenda/_09232026-4690",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "29 Snake Hill – The applicant has filed a Notice of Intent for the construction of a new substation to provide power to an Amazon warehouse within the 100-ft buffer zone a to Bordering Vegetated Wetland e. 6:30 PM Notice of Intent (NOI)"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.chicopeema.gov/AgendaCenter/ViewFile/Agenda/_09152026-2914",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Definitions (Wind Systems) Building Integrated Wind Energy System: A building-mounted wind energy conversion system that has a manufacturer's rating of 10 kW or less and projects no more than fifteen (15) feet above the highest point on"
+    ],
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "This definition also covers, for the purposes of this zoning provision, other wind energy systems primarily used for land-based applications which may be permanently mounted and operated on a building. Utility-Scale Wind Energy Facility: A"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_09152026-5844",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "NEW PUBLIC HEARING NOI FILE #15-2837 (Eversource Substation; 630 Fisher Rd; M:32/L:45) a. Owner: Commonwealth Electric Company b. Representative: Dorothy Lawrence (VHB) c. Proposed Project: For proposed electric facility expansion to the"
+    ],
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "For proposed electric facility expansion to the Fisher Road Substation, including installation of new electrical equipment, underground conduits, stormwater infrastructure, fencing, vegetation removal, grading, and landscaping. d. Resource"
+    ]
+   ]
+  },
+  {
+   "url": "https://easthamptonma.gov/AgendaCenter/ViewFile/Agenda/_09162026-3655",
+   "added_with_MI_patterns": [
+    [
+     [
+      "zoning_amendment"
+     ],
+     "Councilor Jadczak Request is hereby made for consideration of the following: x General Ordinance Amendment Traffic Rules & Orders Amendment Zoning Ordinance Amendment (for referral to committee to discuss; will need to come back to council"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09102026-2549",
+   "added_with_MI_patterns": [
+    [
+     [
+      "battery_storage",
+      "clean_energy_siting"
+     ],
+     "designation, and amendments to comply with siting and permitting rules for clean energy facilities and battery energy storage facilities c. Discuss animal processing operations d. Campus Overlay District at Simon's Rock (zoning section"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.harvard-ma.gov/AgendaCenter/ViewFile/Agenda/_09152026-1646",
+   "added_with_MI_patterns": [
+    [
+     [
+      "battery_storage",
+      "solar",
+      "clean_energy_siting"
+     ],
+     "Insert a new §125-53 titled \"Clean Energy Facilities,\" as set forth in the document on file with the Town Clerk, incorporating standards for Solar Photovoltaic Installations, Battery Energy Storage Systems, and Consolidated Local"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.harvard-ma.gov/AgendaCenter/ViewFile/Agenda/_09282026-1671",
+   "added_with_MI_patterns": [
+    [
+     [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "Amend §125-53 by replacing the Large-Scale Ground-Mounted Solar Photovoltaic Facilities Overlay District in its entirety with a new Clean Energy Facilities Bylaw, establishing local siting standards and permitting procedures for solar"
+    ],
+    [
+     [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "Amend §125-53 by replacing the Large-Scale Ground-Mounted Solar Photovoltaic Facilities Overlay District in its entirety with a new Clean Energy Facilities Bylaw - Amend §125-60, MBTA Communities Multi-Family Overlay District - *Details"
+    ],
+    [
+     [
+      "wireless_telecom"
+     ],
+     "Silos, chimneys, ventilators, antennas (except for wireless communications towers and antennas), spires, and similar unoccupied projections above the roof are not included in building height. (3) Commercial District. Height in the"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.cityoflawrence.com/AgendaCenter/ViewFile/Agenda/_09152026-1949",
+   "added_with_MI_patterns": [
+    [
+     [
+      "zoning_amendment"
+     ],
+     "Fidelina Santiago 46/25 Rezoning a Portion of City Land off of Bay State Road and Jordan Street from General Industrial (I-2) to Open Space Recreation (OCR) – Dan McCarthy, Acting Planning Director 1 341/26 An Act Compelling City Agencies"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.cityoflawrence.com/AgendaCenter/ViewFile/Agenda/_09242026-1962",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Merrimack Street and South Canal Substation #1 Applicant: Andrew Cole for MECO Owner: Mass Electric Co. Old Business Notice of Intent Site Locus: 264-272 Lowell Street and adjacent parcels Applicant: Civil Design Consultants Inc. For"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.lunenburgma.gov/AgendaCenter/ViewFile/Agenda/_09162026-8015",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "(Continued from 08/05/26) Notice of Intent by Unitil for the construction of a new substation and replacement of utility poles c. 701 Reservoir Road: NOI-26-21 (Continued from 09/0226) Notice of Intent by the Reservoir Recreational Trust"
+    ]
+   ]
+  },
+  {
+   "url": "https://middlefield-ma.gov/AgendaCenter/ViewFile/Agenda/_09122026-599",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "the Clean Energy Siting and Consolidated Permitting regulations. 9:30 AM The Prefiling Process: Timelines and Deadlines Handouts: Pre-filing guidelines (PDF); Prefiling Submission Flowchart (PDF); Public Health, Safety, Environmental"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.pembroke-ma.gov/AgendaCenter/ViewFile/Agenda/_09212026-374",
+   "added_with_MI_patterns": [
+    [
+     [
+      "battery_storage"
+     ],
+     "4-6 weeks prior) Public Hearing Special Permit 447 Washington Street | Public Hearing BESS Bylaw Amendment October 26, 2026 — TBD (deadline: September 14, 2026 — September 28, 2026 | at least 4-6 weeks prior) Post online 9.17.26"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_09222026-983",
+   "added_with_MI_patterns": [
+    [
+     [
+      "battery_storage",
+      "clean_energy_siting"
+     ],
+     "BESS systerAs over I0OMWh shall be subject to the jurisdiction of the Energy Facilities Siting Board (EFSB). Decommissioning shall be amended to BESS Decommissioning AMEND - Commissioning to BESS Commissioning Lot Coverage: The portion of"
+    ],
+    [
+     [
+      "battery_storage",
+      "solar",
+      "clean_energy_siting"
+     ],
+     "developed within or directly adjacent to the boundaries of an existing or proposed solar photovoltaic installation, power generating station, electrical substation, or similar facility. Buildin!!-Integrated BESS: A BESS facility that is"
+    ],
+    [
+     [
+      "battery_storage",
+      "clean_energy_siting"
+     ],
+     "BESS 8yslemBESSs over IOOMWh are subject to review by the Energy Facilities Siting Board (EFSB). 10. Applicants shall receive all necessary approvals from the Pittsfield Conservation Commission and MassDEP prior to the submission of a"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09012026-3844",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "acres Plymouth & 61 acres Bourne) - Signed P&S ($ 6.25 M) - Closing: December 2027 - Wind turbine lease excluded (stays with seller). - Buildings included (two houses and farm buildings). savebuzzardsbay.org Project Approach Components"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09082026-3855",
+   "added_with_MI_patterns": [
+    [
+     [
+      "zoning_amendment"
+     ],
+     "Unified Complexes Bylaw Amending Zoning Bylaw §203-1.D to Clarify Perimeter Setback and Vegetated Buffer Protections in Plymouth, MA Purpose & Strategic Context Restoring the original intent of Plymouth's Lot Regulations: Encouraging"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.quincyma.gov/Agendas and Minutes/City Council/City Council/Agendas/Council_2026_09_22.pdf",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "provides for the sale of electric energy from the Project which is an alternative energy facility under Section 7701(e)(3)(D) of the Internal Revenue Code of 1986 as amended, this Agreement is a service contract within the meaning of"
+    ],
+    [
+     [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "with the generation of a megawatt-hour (MWh) from a renewable energy source by a renewable energy Project. \"SMART 3.0\" means the third iteration of the Solar Massachusetts Renewable Target program under development by the Massachusetts"
+    ],
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "provides for the sale of electric energy from the Project which is an alternative energy facility under Section 7701(e)(3)(D) of the Internal Revenue Code of 1986 as amended, this Agreement is a service contract within the meaning of"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.quincyma.gov/Agendas and Minutes/City Council/City Council/Agendas/Council_2026_09_22_Amended_2.pdf",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "provides for the sale of electric energy from the Project which is an alternative energy facility under Section 7701(e)(3)(D) of the Internal Revenue Code of 1986 as amended, this Agreement is a service contract within the meaning of"
+    ],
+    [
+     [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "with the generation of a megawatt-hour (MWh) from a renewable energy source by a renewable energy Project. \"SMART 3.0\" means the third iteration of the Solar Massachusetts Renewable Target program under development by the Massachusetts"
+    ],
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "provides for the sale of electric energy from the Project which is an alternative energy facility under Section 7701(e)(3)(D) of the Internal Revenue Code of 1986 as amended, this Agreement is a service contract within the meaning of"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.salemma.gov/AgendaCenter/ViewFile/Agenda/_09102026-8411",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "was referred the matter of an Ordinance Relative to Zoning on the matter of Roof-Mounted Wind Energy Systems. Page 12 of 171 13 CITY OF SALEM September 10, 2026 REGULAR MEETING Has considered said matter and would recommend to refer the"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.sandwichmass.org/AgendaCenter/ViewFile/Agenda/_09102026-4410",
+   "added_with_MI_patterns": [
+    [
+     [
+      "battery_storage",
+      "clean_energy_siting"
+     ],
+     "Their proposal for the canal plant is for a Battery Energy Storage System (BESS), and they are willing to explore additional community investment as well as develop an associated PILOT and community benefits agreement. The batteries would"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.spencerma.gov/AgendaCenter/ViewFile/Agenda/_09152026-438",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Proposed construction and installation of certain substation-related equipment and facilities at its existing electric substation. The property is located within the Rural Residential (RR) and Commercial (C) zoning districts. 5."
+    ]
+   ]
+  },
+  {
+   "url": "https://www.sturbridge.gov/AgendaCenter/ViewFile/Agenda/_09282026-413",
+   "added_with_MI_patterns": [
+    [
+     [
+      "solar",
+      "clean_energy_siting",
+      "zoning_amendment"
+     ],
+     "space/dispatch use for Coastal Medical Transportation. 6:50 PM Public Hearing - Proposed Zoning Amendments to the Solar Bylaw - Amend §300-2.2 Terms defined. By inserting a new definition for Site Footprint, Solar Energy Facility, Solar"
+    ],
+    [
+     [
+      "battery_storage",
+      "solar",
+      "clean_energy_siting"
+     ],
+     "allowed by Special Permit use into the Groundwater Protection District regulations for Solar and BESS. - Amend Article X Solar Energy Facilities. By updating §300-10.1 through §300-10.12 and to establish a new §300-10.13 and §300-10.14 to"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.wellesleyma.gov/AgendaCenter/ViewFile/Agenda/_09292026-9651",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "preferred approach—constructing a new headquarters (Station 1), upgrading Station 2 as a substation, and planning for a future third station—was determined to be the most effective and costefficient strategy to address both current"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_09222026-1581",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "pole or tower and, along with other generating and electrical storage equipment, forms a wind energy conversion system. YARD - A space on the same lot with a building YARD, FRONT - A space on the same lot with the building, between the"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.wendellmass.us/meetings/planning-board-meeting-new-public-hearing-and-continued-public-hearing/#tab-agenda",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "the re-building and expansion of the existing electric substation known as Wendell Depot Substation No. 705 located at the property known and numbered as 427 and 431 Wendell Depot Road in Wendell. Applicable Zoning Bylaw Section(s)"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.wendellmass.us/meetings/planning-board-meeting-new-public-hearing-and-continued-public-hearing/#tab-agenda-packet",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "the re-building and expansion of the existing electric substation known as Wendell Depot Substation No. 705 located at the property known and numbered as 427 and 431 Wendell Depot Road in Wendell. Applicable Zoning Bylaw Section(s)"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.wendellmass.us/meetings/planning-board-september-28-2026/#tab-agenda",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "the re-building and expansion of the existing electric substation known as Wendell Depot Substation No. 705 located at the property known and numbered as 427 and 431 Wendell Depot Road in Wendell. Applicable Zoning Bylaw Section(s)"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.wendellmass.us/meetings/planning-board-september-28-2026/#tab-agenda-packet",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "the re-building and expansion of the existing electric substation known as Wendell Depot Substation No. 705 located at the property known and numbered as 427 and 431 Wendell Depot Road in Wendell. Applicable Zoning Bylaw Section(s)"
+    ]
+   ]
+  },
+  {
+   "url": "https://townofwinchendon.com/AgendaCenter/ViewFile/Agenda/_09152026-3424",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Power Company proposes construction and installation of related equipment related to the substation upgrade to per Section 300-12.2, 12.6. 12.10 and 5.2 of the Town of Winchendon Zoning Bylaws and Section 6 of the Storinwater Management"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_10142026-160",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "246 College Street 17k Substation (089-0719) d. Request to Amend Order of Conditions i. 30 Wildflower Drive (DEP#089-0757) ii. 37 Bay Road (DEP#089-0689) e. Monitoring Reports 8. Public Comment 9. Topics Not Anticipated by the Chair 48"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10052026-2757",
+   "added_with_MI_patterns": [
+    [
+     [
+      "solar"
+     ],
+     "consideration of a parking lot solar canopy as the preferred direction for future solar planning. Current Eversource hosting capacity allows for only ONE solar project at JGMS. A canopy would allow more solar generation while preserving"
+    ],
+    [
+     [
+      "solar"
+     ],
+     "It would also provide covered parking and a net positive return on investment. The solar proposals in the presentation use older assumptions and will be refreshed before a final comparison or commitment. We seek the Town Manager and Select"
+    ],
+    [
+     [
+      "battery_storage"
+     ],
+     "lights, solar lights, strings of lights, or any type of light that is operated with a battery or battery pack. No shepherd hooks or other items are allowed that would compromise the safety of the ground crew as maintenance routines are"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10132026-2768",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting",
+      "data_center"
+     ],
+     "concept for State Surplus Land BUSINESS SESSION Dark Sky lighting, Small Clean Energy Facility and Data Center permitting, Residential Sign regulations Planning Board Liaison to Boards and Committee Reports Staff Updates Minutes 9:00PM"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.chicopeema.gov/AgendaCenter/ViewFile/Agenda/_10012026-2919",
+   "added_with_MI_patterns": [
+    [
+     [
+      "battery_storage"
+     ],
+     "Amendment – Chapter 275-71 Renewable Energy – Add to the definition of Renewable Energy Storage Language and Battery Energy Storage System Language to Sections 275-71(a)(4), (b)(1), (c)(2), (d), and change 275-71(h) to 275-71(i), 275-71(i)"
+    ]
+   ]
+  },
+  {
+   "url": "https://easthamptonma.gov/AgendaCenter/ViewFile/Agenda/_10072026-3682",
+   "added_with_MI_patterns": [
+    [
+     [
+      "zoning_amendment"
+     ],
+     "(9-2-26) (12-1-26) Review and Revise Zoning Ordinance Pertaining to Signs 2 1. General Ordinance Amendment Ch. 8, Article V, Signs (8-5-26)(11-3-26) 2. Zoning Ordinance Amendment, Sec. 10.0 Signs (8-5-26) (11-3-26) City Council Action"
+    ],
+    [
+     [
+      "moratorium",
+      "data_center",
+      "zoning_amendment"
+     ],
+     "AN AMENDMENT TO THE CITY OF EASTHAMPTON ZONING ORDINANCE ESTABLISHING A TEMPORARY MORATORIUM ON DATA CENTERS WHEREAS, pursuant to M.G.L. Chapter 40A, Section 5, the City Council has considered a proposed amendment to the Easthampton Zoning"
+    ]
+   ]
+  }
+ ]
+}

@@ -64,6 +64,16 @@ Read this before changing anything. Several workstreams build in parallel; these
 - Every deployment is built from git at one commit: the project's build command pipes `site/vercel-build.sh` from raw.githubusercontent.com at `<sha>` with `SITE_REF=<sha>`, which downloads that commit's tarball and writes a Build Output API v3 bundle (`.vercel/output`: static pages and data, one Node function per `site/api/**/*.js`, routing headers, clean URLs and the daily cron). The deployment upload itself is a one-line `package.json`. Steps: `OPERATIONS.md`.
 - Only the coordinator deploys to production.
 
+## States under test (gated)
+
+- A `data/towns_<st>.json` with `"gated": true` (Michigan and Virginia since Oct 12, 2026) is **not** part of the production run: `current.load_towns` skips it, so `ops/daily.sh` → `watch351.daily` (no `--states`) never crawls it and `data/hits_current.json` never lists it.
+- It is crawled only when named explicitly, into a separate output directory: `python3 -m watch351.daily --states MI,VA --output-dir ../data/test --hits-name hits_mi_va.json`. Naming a gated state without `--output-dir` exits with an error before any request. Test output (index, ledger, health, run reports, hits file in this contract's shape) lives in `data/test/`.
+- To promote a state: remove `"gated"` from its towns file (after site support for its board names exists).
+- Board names outside New England: `boards.classify_board(name, state)` adds per-state aliases (MI township board / board of trustees / city commission → `select_board`, planning commission → `planning_board`, ZBA → `zoning_board_of_appeals`; VA board of supervisors → `select_board`, BZA → `zoning_board_of_appeals`). Without a state the classifier is unchanged.
+- Keywords: `keywords.find_hits(text, state=...)` adds that state's patterns (`STATE_TOPICS`: PA 233 / CREO, special land use, 2232 review, siting agreements, wind / WECS, transmission and substations, rezoning to industrial, comprehensive-plan amendments), mapped onto the existing topic keys, plus false-positive rules for the shared topics (`STATE_FALSE_POSITIVE`: use tables and tables of contents, invoices and permit logs, non-zoning ordinance amendments, non-land-use moratoria, event flyers, rooftop / solar-powered equipment) from the hand check in `research_notes/Expansion/test_mi_va.md`. Without a state (MA, NY, RI) matching is unchanged; `experiments/keyword_regression.py` proves it on the cached MA/NY/RI documents.
+- Michigan county planning commission rows carry `"attribute_townships": true`: a hit is filed under the township its agenda item names (`town`), with the county body kept as `board` ("Monroe County Planning Commission"), see `watch351/attribution.py`.
+- `adapters/agenda_page.py` is the general agenda-page reader (WordPress, Revize, CivicPlus document pages, Municode Meetings, plain pages); `watch351/discover_sites.py` finds its listings and records closed vendors (Granicus, iQM2, PrimeGov, iCompass/Diligent, BoardDocs, Destiny) as `vendor_blocked` with the platform name.
+
 ## Crawler rules (non-negotiable)
 
 Identify as 351WatchBot; obey robots.txt on every host and redirect hop; ≤1 request/second/host; no logins; never solve or bypass bot challenges; respect crawl-delay (skip hosts asking >10 s).
