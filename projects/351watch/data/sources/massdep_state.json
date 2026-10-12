@@ -1,7 +1,7 @@
 {
  "coverage": {
   "from": "2025-10-10",
-  "to": "2026-10-10"
+  "to": "2026-10-12"
  },
  "source": "massdep_wetlands",
  "api": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire",
@@ -11,10 +11,13 @@
  },
  "lookback_days": 45,
  "last_run": {
-  "at": "2026-10-11T01:08:41+00:00",
-  "offline": true,
+  "at": "2026-10-12T12:55:57+00:00",
+  "offline": false,
   "blocked": null,
-  "rebuilt_from_cache": 4609
+  "rebuilt_from_cache": 4609,
+  "listed": 644,
+  "details_needed": 0,
+  "http_requests": 9
  },
  "summary": {
   "filings_total": 4609,
@@ -23,10 +26,10 @@
    "Notice of Intent (buffer zone only)": 1961,
    "ANRAD (resource area delineation)": 201
   },
-  "energy_hits": 76,
+  "energy_hits": 90,
   "energy_by_category": {
+   "transmission_substation": 40,
    "solar": 27,
-   "transmission_substation": 26,
    "developer_other": 7,
    "solar_and_storage": 6,
    "energy_name_only": 6,
@@ -35,23 +38,23 @@
   },
   "energy_by_topic": {
    "solar": 43,
-   "clean_energy_siting": 28,
    "battery_storage": 11
   },
   "energy_by_filing_type": {
-   "Notice of Intent": 53,
-   "Notice of Intent (buffer zone only)": 18,
-   "ANRAD (resource area delineation)": 5
+   "Notice of Intent": 62,
+   "Notice of Intent (buffer zone only)": 21,
+   "ANRAD (resource area delineation)": 7
   },
   "energy_by_confidence": {
    "high": 42,
-   "medium": 34
+   "medium": 34,
+   "low": 14
   },
-  "energy_towns": 57,
+  "energy_towns": 68,
   "all_categories_incl_excluded": {
-   "utility_routine": 50,
+   "transmission_substation": 40,
+   "utility_routine": 36,
    "solar": 27,
-   "transmission_substation": 26,
    "developer_other": 7,
    "solar_and_storage": 6,
    "energy_name_only": 6,
@@ -60,14 +63,14 @@
    "ev_charging": 1,
    "wind_or_marine": 1
   },
-  "energy_with_parent": 54,
+  "energy_with_parent": 68,
   "top_parents": [
    {
     "parent": "National Grid (New England Power / Mass. Electric)",
     "kind": "utility",
-    "filings": 18,
-    "sites": 18,
-    "towns": 16
+    "filings": 31,
+    "sites": 30,
+    "towns": 27
    },
    {
     "parent": "New Leaf Energy",
@@ -75,6 +78,13 @@
     "filings": 8,
     "sites": 7,
     "towns": 3
+   },
+   {
+    "parent": "Eversource (NSTAR Electric)",
+    "kind": "utility",
+    "filings": 5,
+    "sites": 5,
+    "towns": 5
    },
    {
     "parent": "NextGrid",
@@ -87,13 +97,6 @@
     "parent": "Parallel Products Solar Energy",
     "kind": "developer",
     "filings": 5,
-    "sites": 4,
-    "towns": 4
-   },
-   {
-    "parent": "Eversource (NSTAR Electric)",
-    "kind": "utility",
-    "filings": 4,
     "sites": 4,
     "towns": 4
    },
@@ -199,6 +202,16 @@
    "changed": 0,
    "details_fetched": 0,
    "hits": 76
+  },
+  {
+   "at": "2026-10-12T12:55:57+00:00",
+   "offline": false,
+   "blocked": null,
+   "listed": 644,
+   "new": 0,
+   "changed": 0,
+   "details_fetched": 0,
+   "hits": 90
   }
  ]
 }

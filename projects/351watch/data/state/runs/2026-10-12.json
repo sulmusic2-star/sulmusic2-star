@@ -1,0 +1,142 @@
+{
+ "by_state": {
+  "MA": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 240,
+   "towns_succeeded": 238
+  },
+  "NY": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 33,
+   "towns_succeeded": 33
+  },
+  "RI": {
+   "new_documents": 290,
+   "new_hits": 109,
+   "towns_attempted": 39,
+   "towns_succeeded": 39
+  }
+ },
+ "date": "2026-10-12",
+ "document_errors": 0,
+ "documents_already_indexed": 21,
+ "documents_deferred": 0,
+ "documents_listed": 2898,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 2587,
+ "documents_retried": 0,
+ "duration_seconds": 921.1,
+ "errors": [
+  {
+   "error": "listing generic: https://townofblandford.com/document-category/selectboard-agendas/",
+   "town": "MA:Blandford"
+  },
+  {
+   "error": "listing generic: https://www.boylston-ma.gov/government/board_of_selectman/agendas_minutes.php: Response ended prematurely",
+   "town": "MA:Boylston"
+  },
+  {
+   "error": "listing civicplus: https://easthamptonma.gov/AgendaCenter/Search/?term=&CIDs=41%2C11%2C28%2C&startDate=09%2F12%2F2026&endDate=02%2F09%2F2027&dateRange=&dateSelector=",
+   "town": "MA:Easthampton"
+  },
+  {
+   "error": "listing generic: https://www.northadams-ma.gov/document_center/index.php: Response ended prematurely",
+   "town": "MA:North Adams"
+  },
+  {
+   "error": "listing generic: https://www.northadams-ma.gov/document_center/index.php: Response ended prematurely",
+   "town": "MA:North Adams"
+  },
+  {
+   "error": "listing generic: https://www.northadams-ma.gov/document_center/index.php: Response ended prematurely",
+   "town": "MA:North Adams"
+  }
+ ],
+ "errors_total": 6,
+ "finished": "2026-10-12T13:11:37+00:00",
+ "hits_current": 1169,
+ "index": {
+  "by_state": {
+   "MA": 2671,
+   "NY": 161,
+   "RI": 290
+  },
+  "by_status": {
+   "error": 14,
+   "needs_ocr": 3,
+   "ok": 3105
+  },
+  "by_text_source": {
+   "docx": 16,
+   "html": 145,
+   "none": 14,
+   "ocr": 732,
+   "pdf": 2215
+  },
+  "documents": 3122,
+  "hits": 1200,
+  "pruned": 0,
+  "towns": 307,
+  "with_hits": 645
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 90397,
+   "listing": 132593891,
+   "robots": 452021
+  },
+  "cache_hits": 3091,
+  "errors": 6,
+  "requests": 949,
+  "requests_by_purpose": {
+   "document": 1,
+   "listing": 670,
+   "robots": 278
+  },
+  "robots_blocked": 2
+ },
+ "new_alert_items": 4,
+ "new_alert_items_by_topic": {
+  "wetlands_filing": 4
+ },
+ "new_documents": 290,
+ "new_hits": 109,
+ "new_hits_by_topic": {
+  "40b_comprehensive_permit": 20,
+  "data_center": 11,
+  "moratorium": 2,
+  "solar": 17,
+  "wireless_telecom": 3,
+  "zoning_amendment": 60
+ },
+ "options": {
+  "matcher_version": "7898926b43",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-10-12T12:56:16+00:00",
+ "states": [
+  "MA",
+  "NY",
+  "RI"
+ ],
+ "towns_attempted": 312,
+ "towns_failed": [
+  "MA:Easthampton",
+  "MA:North Adams"
+ ],
+ "towns_partial": [
+  "MA:Blandford",
+  "MA:Boylston"
+ ],
+ "towns_succeeded": 310,
+ "window": {
+  "end": "2027-02-09",
+  "start": "2026-09-12"
+ }
+}

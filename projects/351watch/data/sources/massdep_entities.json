@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-11T01:08:41+00:00",
+ "generated": "2026-10-12T12:55:57+00:00",
  "source": "massdep_wetlands",
  "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
  "link_types": {
@@ -17,67 +17,132 @@
   {
    "parent": "National Grid (New England Power / Mass. Electric)",
    "kind": "utility",
-   "filings": 18,
+   "filings": 31,
    "project_applicants": [
     "MASSACHUSETTS ELECTRIC COMPANY",
+    "NEP",
     "NEW ENGLAND POWER CO AND MASSACHUSETTS ELECTRIC COMPANY",
     "NEW ENGLAND POWER COMPANY",
     "NEW ENGLAND POWER COMPANY (NEP)",
+    "OTIS LAND MANAGEMENT LLC / NEW ENGLAND POWER",
     "[individual]"
    ],
    "sites": [
     "Ayer: K137E L138E 337 TRANSMISSION LINE ROW",
     "Berlin: W 23 ROW",
+    "Billerica: K137E L138E 337 TRANSMISSION LINE ROW",
+    "Boxford: VARIOUS",
     "Buckland: 71 CONWAY ST",
+    "Charlton: 125 SOUTHBRIDGE RD SOUTHBRIDGE RD",
     "Charlton: 29 SNAKE HILL RD",
     "Charlton: CARPENTER HILL RD",
+    "Chelmsford: K137E L138E 337 TRANSMISSION LINE ROW",
+    "Georgetown: 394 AND B154 C155 TAP TRANSMISSION LINE ROW",
+    "Groveland: 209 KING ST",
     "Hanover: 191 WATER ST",
     "Leicester: 408 STAFFORD ST",
     "Littleton: K137E L138E 337 TRANSMISSION LINE ROW",
+    "Lowell: READ ST TO 105 WEST ST",
+    "Marlborough: 365 SOUTH ST",
     "Millbury: E5 F6 TRANSMISSION LINES RIGHT OF WAY",
     "North Brookfield: 39 EAST BROOKFIELD RD",
+    "Northborough: EXISTING UTILITY RIGHT OF WAY",
     "Palmer: EXISTING TRANSMISSION LINE RIGHT OF WAY",
     "Royalston: 95 SOUTH ROYALSTON RD",
     "Shirley: EXISTING UTILITY ROW",
+    "Shutesbury: E5 F6 TRANSMISSION LINE RIGHT OF WAY",
     "Southbridge: SNOW ST",
     "Spencer: 7 5 MEADOW RD 9 MEADOW RD",
     "Ware: 33 GILBERTVILLE RD O15N TRANSMISSION LINE",
     "Wendell: 431 WENDELL DEPOT RD",
-    "Wendell: A127 WENDELL DEPOT TAP TRANSMISSION LINE ROW"
+    "Wendell: A127 WENDELL DEPOT TAP TRANSMISSION LINE ROW",
+    "West Newbury: 394 AND B154 C155 TAP TRANSMISSION LINE ROW",
+    "Westford: K137E L138E 337 TRANSMISSION LINE RIGHT OF WAY"
    ],
    "towns": [
     "Ayer",
     "Berlin",
+    "Billerica",
+    "Boxford",
     "Buckland",
     "Charlton",
+    "Chelmsford",
+    "Georgetown",
+    "Groveland",
     "Hanover",
     "Leicester",
     "Littleton",
+    "Lowell",
+    "Marlborough",
     "Millbury",
     "North Brookfield",
+    "Northborough",
     "Palmer",
     "Royalston",
     "Shirley",
+    "Shutesbury",
     "Southbridge",
     "Spencer",
     "Ware",
-    "Wendell"
+    "Wendell",
+    "West Newbury",
+    "Westford"
    ],
    "categories": {
-    "transmission_substation": 18
+    "transmission_substation": 31
    },
    "links": {
-    "applicant_name": 17,
+    "applicant_name": 30,
     "description_mention": 1
    },
    "consultants": [],
    "dep_files": [
+    {
+     "dep_file_number": "078-0795",
+     "town": "West Newbury",
+     "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
+     "received_date": "2025-10-24",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/208975",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": "161-0962",
+     "town": "Georgetown",
+     "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
+     "received_date": "2025-11-03",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209071",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": "212-1298",
+     "town": "Marlborough",
+     "applicant": "NEW ENGLAND POWER COMPANY",
+     "received_date": "2025-11-05",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209104",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": "114-1435",
+     "town": "Boxford",
+     "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
+     "received_date": "2025-11-13",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209207",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)"
+    },
     {
      "dep_file_number": "291-0538",
      "town": "Southbridge",
      "applicant": "NEW ENGLAND POWER COMPANY",
      "received_date": "2025-11-18",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209274",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Southbridge",
+     "applicant": "NEW ENGLAND POWER COMPANY",
+     "received_date": "2025-11-20",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209437",
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
     },
     {
@@ -97,11 +162,35 @@
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)"
     },
     {
+     "dep_file_number": "030-0498",
+     "town": "Groveland",
+     "applicant": "NEW ENGLAND POWER COMPANY",
+     "received_date": "2026-02-19",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210372",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
      "dep_file_number": "100-0501",
      "town": "Ayer",
      "applicant": "NEW ENGLAND POWER COMPANY",
      "received_date": "2026-03-12",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210674",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": "109-1623",
+     "town": "Billerica",
+     "applicant": "NEW ENGLAND POWER COMPANY",
+     "received_date": "2026-03-23",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210801",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": "129-0980",
+     "town": "Chelmsford",
+     "applicant": "NEW ENGLAND POWER COMPANY",
+     "received_date": "2026-03-26",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210840",
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
     },
     {
@@ -111,6 +200,14 @@
      "received_date": "2026-03-26",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210841",
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": "334-1892",
+     "town": "Westford",
+     "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
+     "received_date": "2026-04-01",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210910",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)"
     },
     {
      "dep_file_number": "031-1319",
@@ -143,6 +240,14 @@
      "received_date": "2026-06-17",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211893",
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": "128-2017",
+     "town": "Charlton",
+     "applicant": "OTIS LAND MANAGEMENT LLC / NEW ENGLAND POWER",
+     "received_date": "2026-07-02",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212115",
+     "evidence": "applicant name 'OTIS LAND MANAGEMENT LLC / NEW ENGLAND POWER' matches National Grid (New England Power / Mass. Electric)"
     },
     {
      "dep_file_number": "197-0753",
@@ -215,10 +320,34 @@
      "received_date": "2026-09-14",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213179",
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Lowell",
+     "applicant": "NEW ENGLAND POWER COMPANY",
+     "received_date": "2026-09-28",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213321",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Northborough",
+     "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
+     "received_date": "2026-10-01",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213381",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Shutesbury",
+     "applicant": "NEP",
+     "received_date": "2026-10-08",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213464",
+     "evidence": "applicant name 'NEP' matches National Grid (New England Power / Mass. Electric)"
     }
    ],
-   "distinct_applicants": 5,
-   "distinct_sites": 18,
+   "distinct_applicants": 7,
+   "distinct_sites": 30,
    "in_target_list": true,
    "target_segment": "transmission/utility"
   },
@@ -328,6 +457,85 @@
    "distinct_sites": 7,
    "in_target_list": true,
    "target_segment": "solar; storage"
+  },
+  {
+   "parent": "Eversource (NSTAR Electric)",
+   "kind": "utility",
+   "filings": 5,
+   "project_applicants": [
+    "EVERSOURCE ENERGY SERVICE COMPANY",
+    "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
+    "NSTAR ELECTRIC DBA EVERSOURCE"
+   ],
+   "sites": [
+    "Blandford: 79 NORTH BLANDFORD RD 103 NORTH BLANDFORD RD",
+    "Cummington: ROW EASEMENTS OF PORTER HILL RD MOUGIN RD OLD ROUTE 9 BERKSHIRE TRAIL ROUTE 9",
+    "Dartmouth: 630 FISHER RD",
+    "Wareham: N A LINEAR PROJECT",
+    "Weymouth: BROAD ST"
+   ],
+   "towns": [
+    "Blandford",
+    "Cummington",
+    "Dartmouth",
+    "Wareham",
+    "Weymouth"
+   ],
+   "categories": {
+    "transmission_substation": 5
+   },
+   "links": {
+    "applicant_name": 5
+   },
+   "consultants": [
+    "VHB"
+   ],
+   "dep_files": [
+    {
+     "dep_file_number": "111-0065",
+     "town": "Blandford",
+     "applicant": "EVERSOURCE ENERGY SERVICE COMPANY",
+     "received_date": "2026-03-31",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210898",
+     "evidence": "applicant name 'EVERSOURCE ENERGY SERVICE COMPANY' matches Eversource (NSTAR Electric)"
+    },
+    {
+     "dep_file_number": "139-0068",
+     "town": "Cummington",
+     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
+     "received_date": "2026-07-20",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212312",
+     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
+    },
+    {
+     "dep_file_number": "081-1345",
+     "town": "Weymouth",
+     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
+     "received_date": "2026-08-07",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212590",
+     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
+    },
+    {
+     "dep_file_number": "015-2837",
+     "town": "Dartmouth",
+     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
+     "received_date": "2026-08-25",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212831",
+     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
+    },
+    {
+     "dep_file_number": "076-2971",
+     "town": "Wareham",
+     "applicant": "NSTAR ELECTRIC DBA EVERSOURCE",
+     "received_date": "2026-09-01",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212966",
+     "evidence": "applicant name 'NSTAR ELECTRIC DBA EVERSOURCE' matches Eversource (NSTAR Electric)"
+    }
+   ],
+   "distinct_applicants": 3,
+   "distinct_sites": 5,
+   "in_target_list": true,
+   "target_segment": "transmission/utility"
   },
   {
    "parent": "NextGrid",
@@ -485,81 +693,13 @@
    "target_segment": "solar"
   },
   {
-   "parent": "Eversource (NSTAR Electric)",
-   "kind": "utility",
-   "filings": 4,
-   "project_applicants": [
-    "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
-    "NSTAR ELECTRIC DBA EVERSOURCE"
-   ],
-   "sites": [
-    "Cummington: ROW EASEMENTS OF PORTER HILL RD MOUGIN RD OLD ROUTE 9 BERKSHIRE TRAIL ROUTE 9",
-    "Dartmouth: 630 FISHER RD",
-    "Wareham: N A LINEAR PROJECT",
-    "Weymouth: BROAD ST"
-   ],
-   "towns": [
-    "Cummington",
-    "Dartmouth",
-    "Wareham",
-    "Weymouth"
-   ],
-   "categories": {
-    "transmission_substation": 4
-   },
-   "links": {
-    "applicant_name": 4
-   },
-   "consultants": [
-    "VHB"
-   ],
-   "dep_files": [
-    {
-     "dep_file_number": "139-0068",
-     "town": "Cummington",
-     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
-     "received_date": "2026-07-20",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212312",
-     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
-    },
-    {
-     "dep_file_number": "081-1345",
-     "town": "Weymouth",
-     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
-     "received_date": "2026-08-07",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212590",
-     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
-    },
-    {
-     "dep_file_number": "015-2837",
-     "town": "Dartmouth",
-     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
-     "received_date": "2026-08-25",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212831",
-     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
-    },
-    {
-     "dep_file_number": "076-2971",
-     "town": "Wareham",
-     "applicant": "NSTAR ELECTRIC DBA EVERSOURCE",
-     "received_date": "2026-09-01",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212966",
-     "evidence": "applicant name 'NSTAR ELECTRIC DBA EVERSOURCE' matches Eversource (NSTAR Electric)"
-    }
-   ],
-   "distinct_applicants": 2,
-   "distinct_sites": 4,
-   "in_target_list": true,
-   "target_segment": "transmission/utility"
-  },
-  {
    "parent": "BlueWave",
    "kind": "developer",
    "filings": 3,
    "project_applicants": [
     "BWC CUSHMAN BROOK, LLC",
     "BWC WADES STREAM, LLC",
-    "WARD STREAM, LLC"
+    "LLC"
    ],
    "sites": [
     "Becket: 509 QUARRY RD",
@@ -591,7 +731,7 @@
     {
      "dep_file_number": "350-0068",
      "town": "Worthington",
-     "applicant": "WARD STREAM, LLC",
+     "applicant": "LLC",
      "received_date": "2026-06-11",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211833",
      "evidence": "same applicant contact person as filing 350-0069 by 'BWC WADES STREAM, LLC' (Worthington)"
@@ -836,7 +976,7 @@
    "kind": "developer",
    "filings": 1,
    "project_applicants": [
-    "BISHOPS HIGHWAY SOLAR, LLC C/O REWILD RENEWABLES, LLC, PO BOX 1320"
+    "BISHOPS HIGHWAY SOLAR, LLC C/O REWILD RENEWABLES, LLC"
    ],
    "sites": [
     "Plympton: BROOK ST ROUTE 44"
@@ -857,10 +997,10 @@
     {
      "dep_file_number": "266-0243",
      "town": "Plympton",
-     "applicant": "BISHOPS HIGHWAY SOLAR, LLC C/O REWILD RENEWABLES, LLC, PO BOX 1320",
+     "applicant": "BISHOPS HIGHWAY SOLAR, LLC C/O REWILD RENEWABLES, LLC",
      "received_date": "2026-03-10",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210640",
-     "evidence": "applicant name 'BISHOPS HIGHWAY SOLAR, LLC C/O REWILD RENEWABLES, LLC, PO BOX 1320' matches ReWild Renewables"
+     "evidence": "applicant name 'BISHOPS HIGHWAY SOLAR, LLC C/O REWILD RENEWABLES, LLC' matches ReWild Renewables"
     }
    ],
    "distinct_applicants": 1,
@@ -980,13 +1120,18 @@
    "parent_kind": "utility",
    "link": "applicant_name",
    "confidence": "high",
-   "filings": 11,
+   "filings": 17,
    "towns": [
     "Ayer",
     "Berlin",
+    "Billerica",
     "Buckland",
     "Charlton",
+    "Chelmsford",
+    "Groveland",
     "Littleton",
+    "Lowell",
+    "Marlborough",
     "Millbury",
     "North Brookfield",
     "Palmer",
@@ -996,9 +1141,19 @@
    "payors": [],
    "consultants": [],
    "categories": {
-    "transmission_substation": 11
+    "transmission_substation": 17
    },
    "evidence": [
+    {
+     "dep_file_number": "212-1298",
+     "town": "Marlborough",
+     "received_date": "2025-11-05",
+     "filing_type": "ANRAD (resource area delineation)",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209104"
+    },
     {
      "dep_file_number": "291-0538",
      "town": "Southbridge",
@@ -1008,6 +1163,16 @@
      "link": "applicant_name",
      "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209274"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Southbridge",
+     "received_date": "2025-11-20",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209437"
     },
     {
      "dep_file_number": "128-1998",
@@ -1020,6 +1185,16 @@
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209440"
     },
     {
+     "dep_file_number": "030-0498",
+     "town": "Groveland",
+     "received_date": "2026-02-19",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210372"
+    },
+    {
      "dep_file_number": "100-0501",
      "town": "Ayer",
      "received_date": "2026-03-12",
@@ -1028,6 +1203,26 @@
      "link": "applicant_name",
      "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210674"
+    },
+    {
+     "dep_file_number": "109-1623",
+     "town": "Billerica",
+     "received_date": "2026-03-23",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210801"
+    },
+    {
+     "dep_file_number": "129-0980",
+     "town": "Chelmsford",
+     "received_date": "2026-03-26",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210840"
     },
     {
      "dep_file_number": "204-1033",
@@ -1108,6 +1303,16 @@
      "link": "applicant_name",
      "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213179"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Lowell",
+     "received_date": "2026-09-28",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213321"
     }
    ],
    "shares_contact_with": [
@@ -1115,6 +1320,104 @@
     "NATIONAL GRID",
     "NEW ENGLAND POWER CO AND MASSACHUSETTS ELECTRIC COMPANY",
     "NEW ENGLAND POWER COMPANY (NEP)"
+   ]
+  },
+  {
+   "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
+   "parent": "National Grid (New England Power / Mass. Electric)",
+   "parent_kind": "utility",
+   "link": "applicant_name",
+   "confidence": "high",
+   "filings": 7,
+   "towns": [
+    "Boxford",
+    "Georgetown",
+    "Northborough",
+    "Shirley",
+    "Wendell",
+    "West Newbury",
+    "Westford"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "transmission_substation": 7
+   },
+   "evidence": [
+    {
+     "dep_file_number": "078-0795",
+     "town": "West Newbury",
+     "received_date": "2025-10-24",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/208975"
+    },
+    {
+     "dep_file_number": "161-0962",
+     "town": "Georgetown",
+     "received_date": "2025-11-03",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209071"
+    },
+    {
+     "dep_file_number": "114-1435",
+     "town": "Boxford",
+     "received_date": "2025-11-13",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209207"
+    },
+    {
+     "dep_file_number": "284-0519",
+     "town": "Shirley",
+     "received_date": "2026-02-11",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210267"
+    },
+    {
+     "dep_file_number": "334-1892",
+     "town": "Westford",
+     "received_date": "2026-04-01",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210910"
+    },
+    {
+     "dep_file_number": "325-0060",
+     "town": "Wendell",
+     "received_date": "2026-05-22",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211586"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Northborough",
+     "received_date": "2026-10-01",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213381"
+    }
+   ],
+   "shares_contact_with": [
+    "NATIONAL GRID",
+    "NEW ENGLAND POWER COMPANY"
    ]
   },
   {
@@ -1270,6 +1573,60 @@
     }
    ],
    "shares_contact_with": []
+  },
+  {
+   "applicant": "LLC",
+   "parent": "BlueWave",
+   "parent_kind": "developer",
+   "link": "shared_contact",
+   "confidence": "medium",
+   "filings": 3,
+   "towns": [
+    "Hadley",
+    "Southampton",
+    "Worthington"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "solar": 2,
+    "solar_and_storage": 1
+   },
+   "evidence": [
+    {
+     "dep_file_number": "170-0311",
+     "town": "Hadley",
+     "received_date": "2025-11-11",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "unresolved",
+     "how": null,
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209177"
+    },
+    {
+     "dep_file_number": "289-0255",
+     "town": "Southampton",
+     "received_date": "2025-12-04",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "unresolved",
+     "how": null,
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209470"
+    },
+    {
+     "dep_file_number": "350-0068",
+     "town": "Worthington",
+     "received_date": "2026-06-11",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "shared_contact",
+     "how": "same applicant contact person as filing 350-0069 by 'BWC WADES STREAM, LLC' (Worthington)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211833"
+    }
+   ],
+   "shares_contact_with": [
+    "BWC WADES STREAM, LLC"
+   ]
   },
   {
    "applicant": "LUDLOW MA WEST ST SOLAR LLC",
@@ -1507,45 +1864,6 @@
    ]
   },
   {
-   "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
-   "parent": "National Grid (New England Power / Mass. Electric)",
-   "parent_kind": "utility",
-   "link": "applicant_name",
-   "confidence": "high",
-   "filings": 2,
-   "towns": [
-    "Shirley",
-    "Wendell"
-   ],
-   "payors": [],
-   "consultants": [],
-   "categories": {
-    "transmission_substation": 2
-   },
-   "evidence": [
-    {
-     "dep_file_number": "284-0519",
-     "town": "Shirley",
-     "received_date": "2026-02-11",
-     "filing_type": "Notice of Intent",
-     "payor": null,
-     "link": "applicant_name",
-     "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210267"
-    },
-    {
-     "dep_file_number": "325-0060",
-     "town": "Wendell",
-     "received_date": "2026-05-22",
-     "filing_type": "Notice of Intent",
-     "payor": null,
-     "link": "applicant_name",
-     "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211586"
-    }
-   ]
-  },
-  {
    "applicant": "[individual]",
    "parent": "National Grid (New England Power / Mass. Electric)",
    "parent_kind": "utility",
@@ -1614,7 +1932,7 @@
    "shares_contact_with": []
   },
   {
-   "applicant": "BISHOPS HIGHWAY SOLAR, LLC C/O REWILD RENEWABLES, LLC, PO BOX 1320",
+   "applicant": "BISHOPS HIGHWAY SOLAR, LLC C/O REWILD RENEWABLES, LLC",
    "parent": "ReWild Renewables",
    "parent_kind": "developer",
    "link": "applicant_name",
@@ -1640,7 +1958,7 @@
      "filing_type": "Notice of Intent",
      "payor": "KIMLEY-HORN & ASSOC",
      "link": "applicant_name",
-     "how": "applicant name 'BISHOPS HIGHWAY SOLAR, LLC C/O REWILD RENEWABLES, LLC, PO BOX 1320' matches ReWild Renewables",
+     "how": "applicant name 'BISHOPS HIGHWAY SOLAR, LLC C/O REWILD RENEWABLES, LLC' matches ReWild Renewables",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210640"
     }
    ]
@@ -1702,8 +2020,37 @@
     }
    ],
    "shares_contact_with": [
-    "WARD STREAM, LLC"
+    "LLC"
    ]
+  },
+  {
+   "applicant": "EVERSOURCE ENERGY SERVICE COMPANY",
+   "parent": "Eversource (NSTAR Electric)",
+   "parent_kind": "utility",
+   "link": "applicant_name",
+   "confidence": "high",
+   "filings": 1,
+   "towns": [
+    "Blandford"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "transmission_substation": 1
+   },
+   "evidence": [
+    {
+     "dep_file_number": "111-0065",
+     "town": "Blandford",
+     "received_date": "2026-03-31",
+     "filing_type": "ANRAD (resource area delineation)",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'EVERSOURCE ENERGY SERVICE COMPANY' matches Eversource (NSTAR Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210898"
+    }
+   ],
+   "shares_contact_with": []
   },
   {
    "applicant": "FEDERAL FURNACE ROAD SOLAR 1, LLC",
@@ -1858,6 +2205,34 @@
    "shares_contact_with": []
   },
   {
+   "applicant": "NEP",
+   "parent": "National Grid (New England Power / Mass. Electric)",
+   "parent_kind": "utility",
+   "link": "applicant_name",
+   "confidence": "high",
+   "filings": 1,
+   "towns": [
+    "Shutesbury"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "transmission_substation": 1
+   },
+   "evidence": [
+    {
+     "dep_file_number": null,
+     "town": "Shutesbury",
+     "received_date": "2026-10-08",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEP' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213464"
+    }
+   ]
+  },
+  {
    "applicant": "NEW LEAF ENERGY, INC",
    "parent": "New Leaf Energy",
    "parent_kind": "developer",
@@ -1983,6 +2358,34 @@
    "shares_contact_with": []
   },
   {
+   "applicant": "OTIS LAND MANAGEMENT LLC / NEW ENGLAND POWER",
+   "parent": "National Grid (New England Power / Mass. Electric)",
+   "parent_kind": "utility",
+   "link": "applicant_name",
+   "confidence": "high",
+   "filings": 1,
+   "towns": [
+    "Charlton"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "transmission_substation": 1
+   },
+   "evidence": [
+    {
+     "dep_file_number": "128-2017",
+     "town": "Charlton",
+     "received_date": "2026-07-02",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'OTIS LAND MANAGEMENT LLC / NEW ENGLAND POWER' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212115"
+    }
+   ]
+  },
+  {
    "applicant": "POWERFLEX EDF RENEWABLES",
    "parent": "EDF Renewables / PowerFlex",
    "parent_kind": "developer",
@@ -2098,37 +2501,6 @@
     }
    ],
    "shares_contact_with": []
-  },
-  {
-   "applicant": "WARD STREAM, LLC",
-   "parent": "BlueWave",
-   "parent_kind": "developer",
-   "link": "shared_contact",
-   "confidence": "medium",
-   "filings": 1,
-   "towns": [
-    "Worthington"
-   ],
-   "payors": [],
-   "consultants": [],
-   "categories": {
-    "solar": 1
-   },
-   "evidence": [
-    {
-     "dep_file_number": "350-0068",
-     "town": "Worthington",
-     "received_date": "2026-06-11",
-     "filing_type": "Notice of Intent",
-     "payor": null,
-     "link": "shared_contact",
-     "how": "same applicant contact person as filing 350-0069 by 'BWC WADES STREAM, LLC' (Worthington)",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211833"
-    }
-   ],
-   "shares_contact_with": [
-    "BWC WADES STREAM, LLC"
-   ]
   },
   {
    "applicant": "WAREHAM STREET SOLAR 2, LLC",
@@ -2382,7 +2754,7 @@
    ]
   },
   {
-   "applicant": "LATHROP COMMUNITY, INC",
+   "applicant": "INC",
    "parent": null,
    "parent_kind": null,
    "link": null,
@@ -2406,34 +2778,6 @@
      "link": "unresolved",
      "how": null,
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211072"
-    }
-   ]
-  },
-  {
-   "applicant": "MANHAN RIVER, LLC",
-   "parent": null,
-   "parent_kind": null,
-   "link": null,
-   "confidence": null,
-   "filings": 1,
-   "towns": [
-    "Southampton"
-   ],
-   "payors": [],
-   "consultants": [],
-   "categories": {
-    "solar_and_storage": 1
-   },
-   "evidence": [
-    {
-     "dep_file_number": "289-0255",
-     "town": "Southampton",
-     "received_date": "2025-12-04",
-     "filing_type": "Notice of Intent",
-     "payor": null,
-     "link": "unresolved",
-     "how": null,
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209470"
     }
    ]
   },
@@ -2550,34 +2894,6 @@
     }
    ],
    "shares_contact_with": []
-  },
-  {
-   "applicant": "NORTH MAPLE STREET, LLC",
-   "parent": null,
-   "parent_kind": null,
-   "link": null,
-   "confidence": null,
-   "filings": 1,
-   "towns": [
-    "Hadley"
-   ],
-   "payors": [],
-   "consultants": [],
-   "categories": {
-    "solar": 1
-   },
-   "evidence": [
-    {
-     "dep_file_number": "170-0311",
-     "town": "Hadley",
-     "received_date": "2025-11-11",
-     "filing_type": "Notice of Intent",
-     "payor": null,
-     "link": "unresolved",
-     "how": null,
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209177"
-    }
-   ]
   },
   {
    "applicant": "PETTIBONE BROOK LLC",
@@ -2812,6 +3128,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "GRADY CONSULTING",
+   "filings": 14,
+   "towns": 10,
+   "kind": "consultant"
+  },
+  {
    "payor": "COLLINS CIVIL ENG",
    "filings": 13,
    "towns": 8,
@@ -2821,12 +3143,6 @@
    "payor": "FORESIGHT ENG",
    "filings": 13,
    "towns": 6,
-   "kind": "consultant"
-  },
-  {
-   "payor": "GRADY CONSULTING",
-   "filings": 13,
-   "towns": 9,
    "kind": "consultant"
   },
   {
@@ -2980,6 +3296,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "LLC",
+   "filings": 4,
+   "towns": 4,
+   "kind": "company"
+  },
+  {
    "payor": "GORODETSKY ENG",
    "filings": 4,
    "towns": 2,
@@ -3085,12 +3407,6 @@
    "payor": "FIELD ENG",
    "filings": 2,
    "towns": 1,
-   "kind": "consultant"
-  },
-  {
-   "payor": "J.M. O'REILLY & ASSOC",
-   "filings": 2,
-   "towns": 2,
    "kind": "consultant"
   }
  ]

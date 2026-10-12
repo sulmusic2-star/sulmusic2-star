@@ -1,8 +1,8 @@
 {
- "generated": "2026-10-11T12:46:39+00:00",
+ "generated": "2026-10-12T13:11:37+00:00",
  "window": {
-  "start": "2026-06-13",
-  "end": "2027-02-08"
+  "start": "2026-06-14",
+  "end": "2027-02-09"
  },
  "states": [
   "MA",
@@ -3464,6 +3464,26 @@
    "source": "agenda"
   },
   {
+   "id": "fa7081adbde9",
+   "state": "MA",
+   "town": "Shutesbury",
+   "county": "Franklin",
+   "board": "Conservation Commission (wetlands filing)",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-10-08",
+   "topics": [
+    "wetlands_filing"
+   ],
+   "snippet": "NOI, Nep: no description. E5/f6 Transmission Line Right-of-way (ROW).",
+   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213464",
+   "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
+   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent, Shutesbury",
+   "text_source": "api",
+   "first_seen": "2026-10-10T23:46:13+00:00",
+   "days_before_meeting": -3.0,
+   "source": "massdep_wetlands"
+  },
+  {
    "id": "5b1691617888",
    "state": "MA",
    "town": "Sandwich",
@@ -3931,7 +3951,7 @@
    "state": "NY",
    "town": "Marcellus",
    "county": "Onondaga",
-   "board": "Town Board Meeting Minutes & Agendas",
+   "board": "Town Board",
    "board_key": "select_board",
    "meeting_date": "2026-10-07",
    "topics": [
@@ -3952,7 +3972,7 @@
    "state": "NY",
    "town": "Marcellus",
    "county": "Onondaga",
-   "board": "Town Board Meeting Minutes & Agendas",
+   "board": "Town Board",
    "board_key": "select_board",
    "meeting_date": "2026-10-07",
    "topics": [
@@ -5510,26 +5530,6 @@
    "source": "agenda"
   },
   {
-   "id": "143ace80bbed",
-   "state": "MA",
-   "town": "Medfield",
-   "county": "Norfolk",
-   "board": "Select Board",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-06",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "Mid-American Salt b.​ Solar Salt: Primary Bidder: Mid-American Salt; Secondary Bidder: Eastern Minerals, Inc. c.​ Treated Salt: Primary Bidder: Mid-American Salt; Secondary Bidder: Morton Salt Co., Inc. d.​ and vote to sign the contract",
-   "source_url": "https://www.town.medfield.net/AgendaCenter/ViewFile/Agenda/_10062026-5037",
-   "listing_url": "https://www.town.medfield.net/AgendaCenter/Select-Board-18",
-   "document_title": "Select Board Meeting Agenda",
-   "text_source": "pdf",
-   "first_seen": "2026-10-10T18:42:36+00:00",
-   "days_before_meeting": -4.8,
-   "source": "agenda"
-  },
-  {
    "id": "c4b382bb71ea",
    "state": "MA",
    "town": "Marion",
@@ -6067,7 +6067,7 @@
    "snippet": "Thursday –'27 Budget Public Hearing Thursday – Public Hearing on proposed Local Law #4 – Battery Energy Storage Systems Proposed Local Law for Veterans Exemption Purple Heart Proclamation Accept Will Moriarty's resignation from the",
    "source_url": "https://stanfordny.gov/download/11000/",
    "listing_url": "https://stanfordny.gov/advisory-committees/town-laws/minsagenda/agenda-archives/",
-   "document_title": "2026-10-05 ( 150 downloads )",
+   "document_title": "2026-10-05 ( 196 downloads )",
    "text_source": "docx",
    "first_seen": "2026-10-11T00:06:44+00:00",
    "days_before_meeting": -6.0,
@@ -7515,7 +7515,7 @@
    "state": "NY",
    "town": "Lysander",
    "county": "Onondaga",
-   "board": "Select Board / Council",
+   "board": "Town Board",
    "board_key": "select_board",
    "meeting_date": "2026-10-01",
    "topics": [
@@ -7536,7 +7536,7 @@
    "state": "NY",
    "town": "Lysander",
    "county": "Onondaga",
-   "board": "Select Board / Council",
+   "board": "Town Board",
    "board_key": "select_board",
    "meeting_date": "2026-10-01",
    "topics": [
@@ -7691,6 +7691,26 @@
    "first_seen": "2026-10-10T18:43:25+00:00",
    "days_before_meeting": -9.8,
    "source": "agenda"
+  },
+  {
+   "id": "fd5d04c78608",
+   "state": "MA",
+   "town": "Northborough",
+   "county": "Worcester",
+   "board": "Conservation Commission (wetlands filing)",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-10-01",
+   "topics": [
+    "wetlands_filing"
+   ],
+   "snippet": "Buffer-zone NOI, New England Power Company (NEP): no description. Existing Utility Right-of-way.",
+   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213381",
+   "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
+   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent (buffer zone only), Northborough",
+   "text_source": "api",
+   "first_seen": "2026-10-10T23:46:13+00:00",
+   "days_before_meeting": -10.0,
+   "source": "massdep_wetlands"
   },
   {
    "id": "2f388b3fc322",
@@ -8823,26 +8843,6 @@
    "source": "agenda"
   },
   {
-   "id": "c7511bd8c620",
-   "state": "RI",
-   "town": "South Kingstown",
-   "county": "Washington",
-   "board": "Town Council",
-   "board_key": "select_board",
-   "meeting_date": "2026-09-28",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "an award to Mid-American Salt, LLC, 4528 Hillegas Rd, Fort Wayne, IN 46818 for Solar Salt, at the unit price of $77.17 per ton, from the Streets & Highway Division's Road Salt account (10130003-540023), as further described in a purchasing",
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C3943%5C2026%5C567329.pdf",
-   "listing_url": "https://opengov.sos.ri.gov/OpenMeetingsPublic/MeetingInformation?MeetingID=1093945",
-   "document_title": "South Kingstown Town Council 2026-09-28 agenda (filed 2026-09-24 15:40 ET)",
-   "text_source": "pdf",
-   "first_seen": "2026-10-11T00:21:33+00:00",
-   "days_before_meeting": -13.0,
-   "source": "agenda"
-  },
-  {
    "id": "a093f1bca599",
    "state": "RI",
    "town": "South Kingstown",
@@ -9588,6 +9588,26 @@
    "first_seen": "2026-10-10T18:43:32+00:00",
    "days_before_meeting": -12.8,
    "source": "agenda"
+  },
+  {
+   "id": "9f3bb27cab6b",
+   "state": "MA",
+   "town": "Lowell",
+   "county": "Middlesex",
+   "board": "Conservation Commission (wetlands filing)",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-09-28",
+   "topics": [
+    "wetlands_filing"
+   ],
+   "snippet": "NOI, New England Power Company: no description. Read Street To 105 West Street.",
+   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213321",
+   "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
+   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent, Lowell",
+   "text_source": "api",
+   "first_seen": "2026-10-10T23:46:13+00:00",
+   "days_before_meeting": -13.0,
+   "source": "massdep_wetlands"
   },
   {
    "id": "e6c2f65fa062",
@@ -11593,7 +11613,7 @@
    "state": "NY",
    "town": "Stony Point",
    "county": "Rockland",
-   "board": "Town Board Agendas",
+   "board": "Town Board",
    "board_key": "select_board",
    "meeting_date": "2026-09-22",
    "topics": [
@@ -11601,7 +11621,7 @@
    ],
    "snippet": "of South Liberty Partners, LP for a Variance from the Residential Development Moratorium OCANOARWN >= Executive Session - If Necessary TOWN OF STONY POINT NOTICE OF PUBLIC HEARING NOTICE IS HEREBY GIVEN that a Public Hearing will be held",
    "source_url": "https://www.stonypointny.gov/userfiles/september_22nd_town_board_packet_9444.pdf",
-   "listing_url": "https://www.stonypointny.gov/meeting-agendas",
+   "listing_url": "https://www.stonypointny.gov/meeting-agendas?m=9&y=2026",
    "document_title": "September 22, 2026",
    "text_source": "ocr",
    "first_seen": "2026-10-10T22:22:39+00:00",
@@ -20696,6 +20716,26 @@
    "text_source": "api",
    "first_seen": "2026-10-10T23:46:13+00:00",
    "days_before_meeting": -83.0,
+   "source": "massdep_wetlands"
+  },
+  {
+   "id": "71a138e3d79d",
+   "state": "MA",
+   "town": "Charlton",
+   "county": "Worcester",
+   "board": "Conservation Commission (wetlands filing)",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-07-02",
+   "topics": [
+    "wetlands_filing"
+   ],
+   "snippet": "NOI, Otis Land Management LLC / New England Power: Removal of fill material ,placed beyond property boundary within utility ROW. stabilization and seeding also proposed. work within buffer zone and o… 125 Southbridge Rd / 0 Southbridge Rd.",
+   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212115",
+   "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
+   "document_title": "MassDEP wetlands filing 128-2017 — Notice of Intent, Charlton",
+   "text_source": "api",
+   "first_seen": "2026-10-10T23:46:13+00:00",
+   "days_before_meeting": -101.0,
    "source": "massdep_wetlands"
   },
   {
