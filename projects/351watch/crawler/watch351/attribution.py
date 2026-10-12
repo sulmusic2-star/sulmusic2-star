@@ -148,6 +148,41 @@ def split_items(hits: list[dict], raw_text: str, row: dict, known: dict[str, str
     return out
 
 
+COVERAGE_NOTE = "Zoning changes reach us through the {body}; project permits may not."
+# Counties where the county itself administers zoning for many townships: its planning commission
+# also hears their special approvals (Huron County's Pinesap Solar SAP), so the line says so.
+COUNTY_COVERAGE_NOTE = {
+    "Huron": ("Zoning changes reach us through the {body}, and so do special approvals where the county "
+              "administers zoning; other project permits may not."),
+}
+
+
+def coverage_modes(rows: list[dict]) -> dict[str, dict]:
+    """How each Michigan township is covered, for its page on the site:
+
+    direct      - we read the township's own agendas (its row is automated)
+    via_county  - we do not, but we read its county planning commission, which reviews the
+                  township's zoning amendments (MCL 125.3307): zoning changes reach us, project
+                  permits (special land use, site plans) and other township business may not
+    none        - neither
+
+    Returns town -> {"coverage", "coverage_county_body", "coverage_note"}; the county body is
+    named for direct townships too (both routes apply)."""
+    county_pc = {r.get("county"): r for r in rows
+                 if r.get("kind") == "county" and r.get("attribute_townships") and r.get("automated")}
+    out = {}
+    for r in rows:
+        if r.get("kind") != "township":
+            continue
+        cpc = county_pc.get(r.get("county"))
+        body = f"{r.get('county')} County Planning Commission" if cpc else None
+        mode = "direct" if r.get("automated") else ("via_county" if cpc else "none")
+        out[r["town"]] = {"coverage": mode, "coverage_county_body": body,
+                          "coverage_note": COUNTY_COVERAGE_NOTE.get(r.get("county"), COVERAGE_NOTE).format(body=body)
+                          if mode == "via_county" else None}
+    return out
+
+
 def known_townships(rows: list[dict], county: str) -> dict[str, str]:
     """normalized short name -> row name, for monitored townships in `county` (only townships:
     "Marshall Township" is not the City of Marshall)."""

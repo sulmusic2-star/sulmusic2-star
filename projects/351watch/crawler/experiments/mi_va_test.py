@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections import Counter
 import logging
 import subprocess
 import sys
@@ -164,6 +165,7 @@ def cmd_discover(args) -> None:
         prev[r["town"]] = r
     order = [t["town"] for t in targets]
     rows = [prev[n] for n in order if n in prev]
+    annotate_coverage(st, rows)
     doc = {
         "_about": ABOUT[st].format(n=len(rows)),
         "generated": now_iso(), "state": st, "gated": True,
@@ -184,6 +186,29 @@ def cmd_discover(args) -> None:
         print(f"  {r['town']:<34} {str(r.get('platform') or '-'):<18} {len(r.get('listings') or []):>2} "
               f"{'AUTO' if r.get('automated') else r.get('reason_code')}: "
               f"{'' if r.get('automated') else (r.get('reason') or '')[:110]}")
+
+
+def annotate_coverage(st: str, rows: list[dict]) -> None:
+    """Michigan townships: `coverage` (direct / via_county / none), `coverage_county_body` and, for
+    via_county, `coverage_note` (the line a township page shows), from attribution.coverage_modes."""
+    if st != "MI":
+        return
+    from watch351.attribution import coverage_modes
+    modes = coverage_modes(rows)
+    for r in rows:
+        if r["town"] in modes:
+            r.update(modes[r["town"]])
+
+
+def cmd_annotate(args) -> None:
+    """Re-derive the coverage fields in data/towns_mi.json without any discovery request."""
+    st = args.state.upper()
+    path = DATA / f"towns_{st.lower()}.json"
+    doc = json.loads(path.read_text())
+    annotate_coverage(st, doc["towns"])
+    save(path, doc)
+    c = Counter(r.get("coverage") for r in doc["towns"] if r.get("kind") == "township")
+    print(st, "township coverage:", dict(c))
 
 
 # ------------------------------------------------------------------ crawl
@@ -208,7 +233,7 @@ def cmd_crawl(args) -> None:
 
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("command", choices=["discover", "crawl", "analyze", "sample", "rss"])
+    p.add_argument("command", choices=["discover", "annotate", "crawl", "analyze", "sample", "rss"])
     p.add_argument("--state", default="MI")
     p.add_argument("--places")
     p.add_argument("--workers", type=int, default=16)
@@ -231,6 +256,8 @@ def main(argv=None) -> int:
     logging.getLogger("urllib3").setLevel(logging.WARNING)
     if args.command == "discover":
         cmd_discover(args)
+    elif args.command == "annotate":
+        cmd_annotate(args)
     elif args.command == "crawl":
         cmd_crawl(args)
     elif args.command == "analyze":

@@ -148,7 +148,10 @@ class DailyRun:
 
     def process_doc(self, doc: AgendaDoc, state: str, out: TownOutcome, row: dict | None = None) -> None:
         if row is not None and row.get("attribute_townships") and "county" not in doc.board.lower():
-            doc.board = f"{row.get('county')} County {doc.board}"   # "Monroe County Planning Commission"
+            # "Calhoun County Planning Commission" (a Michigan county planning commission under the
+            # MZEA, whatever the listing's own label), so a township page can name the body
+            label = "Planning Commission" if doc.board_key == "planning_board" else doc.board
+            doc.board = f"{row.get('county')} County {label}"
         out.listed += 1
         if not self._claim(doc.url):
             out.already_indexed += 1

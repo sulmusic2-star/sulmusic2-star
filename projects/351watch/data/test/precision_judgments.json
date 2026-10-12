@@ -8144,6 +8144,1054 @@
      "text_source": "pdf"
     }
    ]
+  },
+  {
+   "round": 6,
+   "matcher": "round-6 fixes for the round-5 false-positive families: fiber and right-of-way agreements, job descriptions / services proposals and blank forms, map legends and spec sheets, routine work on existing utility lines; nothing else changed before the draw",
+   "sample": "fresh and out of sample, Michigan only: a seeded simple random sample (seed 2027) of 60 from the 142 unjudged Michigan hits in documents outside the rounds 1-4 index (extended crawl, re-matched with the round-6 matcher), excluding every hit judged in rounds 1-5",
+   "worksheet": "extended/precision_worksheet_r6.json",
+   "summary": {
+    "MI": {
+     "judged": 60,
+     "tp": 56,
+     "precision": 0.933,
+     "all_tags_right": 55,
+     "precision_all_tags_right": 0.917
+    }
+   },
+   "items": [
+    {
+     "n": 1,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public hearing: temporary moratorium ordinance",
+     "id": "3cb79c20a090",
+     "state": "MI",
+     "town": "Augusta Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-15",
+     "topics": [
+      "moratorium"
+     ],
+     "snippet": "None. Absent: Woods, Woolf Motion carries unanimously. 6. Public Hearing a. Temporary Moratorium Ordinance Review Planner Pezzotti explained the Ordinance. Establish a process to enact a moratorium on certain land use or topics that need",
+     "source_url": "https://augustatownship.org/wp-content/uploads/2026/07/July-15-2026-PC-Meeting-Agenda-Website.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 2,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "draft ordinance: accessory BESS standards",
+     "id": "537cf6d65fae",
+     "state": "MI",
+     "town": "Augusta Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-15",
+     "topics": [
+      "battery_storage"
+     ],
+     "snippet": "or site orientations to local fire, police, and emergency medical services. 4. Battery Energy Storage Systems (if provided) a) Battery Energy Storage Systems (BESS) shall be permitted as an accessory component to the principal use of the",
+     "source_url": "https://augustatownship.org/wp-content/uploads/2026/07/July-15-2026-PC-Meeting-Agenda-Website.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 3,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "HRDF / data center ordinance purpose",
+     "id": "c2e9f662e420",
+     "state": "MI",
+     "town": "Augusta Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-19",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "design, operation, and decommissioning of High Resource Demand Facilities, which include Data Centers and Data Processing Centers, in order to balance local economic benefits with protection of public health, safety, welfare, natural",
+     "source_url": "https://augustatownship.org/wp-content/uploads/2026/08/August-2026-PC-Packet-Website.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 4,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "planner to bring back data center and high-demand facility ordinance versions",
+     "id": "d26cb1f49139",
+     "state": "MI",
+     "town": "Augusta Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-15",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Pezzotti informed the Commission that he will be bringing back different versions of data center ordinance and high demand facility ordinance. Chairman Yurk commented on questions asked by public. 10. Adjournment Motion by Witt 2nd by",
+     "source_url": "https://augustatownship.org/wp-content/uploads/2026/07/July-15-2026-PC-Meeting-Agenda-Website.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 5,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "ZBA plan sheet: 195-ft monopole tower",
+     "id": "3e224ac46e8a",
+     "state": "MI",
+     "town": "Bedford Charter Township",
+     "board": "Zoning Board of Appeals",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "wireless_telecom"
+     ],
+     "snippet": "423-843-9509 EXISTING CONTOUR LINE (TYP.) 6'-0\" TALL WOOD FENCE - @ 220 L.F. 195'-0\" MONOPOLE TOWER W/4'-0\" LIGHTNING ROD -TOTAL TOWER HEIGHT 199'-0\" CONTRACTOR SHALL RAISE OR GRADE SITE TO ENSURE POSITIVE DRAINAGE AWAY FROM TOWER & PAD",
+     "source_url": "https://www.bedfordchartertwpmi.gov/7.13.26 Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 6,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "fire chief's report on emergency preparedness for a solar facility being built (operations, not land use)",
+     "id": "6c75aaa80f98",
+     "state": "MI",
+     "town": "Bedford Charter Township",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-08-11",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "The Chief provided an update on emergency preparedness activities related to the nearby solar facility, noting that construction is nearing completion and that additional training and emergency response exercises will be conducted once the",
+     "source_url": "https://www.bedfordchartertwpmi.gov/Aug2026Packet.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 7,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "ZBA variance: setback for a 199-ft wireless tower",
+     "id": "7e95c2695a4d",
+     "state": "MI",
+     "town": "Bedford Charter Township",
+     "board": "Zoning Board of Appeals",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "wireless_telecom"
+     ],
+     "snippet": "of up to 83' setback from the north property line thereby allowing construction of a wireless telecommunications tower to be 199' in height, where the total setback should be 298.5 feet from the north property line as required by Section",
+     "source_url": "https://www.bedfordchartertwpmi.gov/7.13.26 Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 8,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "ZBA plan sheet: Verizon monopole lease area",
+     "id": "863f9fb02d3f",
+     "state": "MI",
+     "town": "Bedford Charter Township",
+     "board": "Zoning Board of Appeals",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "wireless_telecom"
+     ],
+     "snippet": "LEASE AREA VERIZON WIRELESS 4'-0\"X9'-6\" CONCRETE GENERATOR PAD APPARENT ⅊ 195'-0\" MONOPOLE TOWER W/4'-0\" LIGHTNING ROD -TOTAL TOWER HEIGHT 199'-0\" VERIZON WIRELESS 6'-6 1/2\"X10'-6 1/2\" RADIO EQUIPMENT CANOPY VERIZON WIRELESS 7'-6\"X11'-6\"",
+     "source_url": "https://www.bedfordchartertwpmi.gov/7.13.26 Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 9,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "attorney feedback on the PC's proposed data center ordinances",
+     "id": "1627df7074c9",
+     "state": "MI",
+     "town": "Bridgewater Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-08-06",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "consulted with the Township Attorney regarding the Commission's proposed ordinances on data centers. The attorney's feedback was positive regarding permitting small personal sized data centers, vs large corporate installations. He plans to",
+     "source_url": "https://twp-bridgewater.org/wp-content/uploads/2026/08/08062026_Board_Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 10,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "resolution amending the zoning ordinance on special land uses (moratorium ordinance)",
+     "id": "7efc34f5275c",
+     "state": "MI",
+     "town": "Conway Township",
+     "board": "2026 Conway Township Planning Commission Regular Meeting Dates",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "moratorium",
+      "zoning_amendment"
+     ],
+     "snippet": "7 16 Ordinance to amend the zoning ordinance regarding special land uses (Moratorium Ordinance) 17 MTA Annual Dues - Motion to adopt Resolution 20260616-1 to amend the zoning ordinance regarding special land uses by S. Porter. Second by D.",
+     "source_url": "https://www.conwaymi.gov/vimages/shared/vnews/stories/67574b0f3ba7f/07-13-26 PC Mtg Pckt.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 11,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "special land use permit: solar energy system at Delta Energy Park",
+     "id": "37b7f07abffa",
+     "state": "MI",
+     "town": "Delta Charter Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "Director Menser introduced the SLUP for the proposed construction of a solar energy system to the board. He went over the parcel and location of the proposed site at the Delta Energy Park (formerly called the Erickson Power Station). He",
+     "source_url": "https://www.deltami.gov/Document_Center/Committee Agendas and Minutes/PC/2026/July 13 2026 PC Meeting Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 12,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board action: SLUP #PSL2026-0001 (EDF solar)",
+     "id": "489d50994319",
+     "state": "MI",
+     "town": "Delta Charter Township",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-07-06",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "PERFORMANCE PERIOD. TRUSTEE LYMAN SUPPORTED THE MOTION. THE MOTION PASSED 70. 11. Special Land Use Permit #PSL2026-0001 (EDF Power Solutions), construct a solar energy system at 3725 S. Canal Road (Parcel #040034-300-013-00) Peter Menser",
+     "source_url": "https://www.deltami.gov/Document_Center/Township Board Agendas and Minutes/2026/July 6, 2026 Agenda Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 13,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "site plan review: BWL solar energy system",
+     "id": "4e7529c9a15e",
+     "state": "MI",
+     "town": "Delta Charter Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-08-10",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "Site Plan Review #PFSP2026-0009 (Lansing Board of Water & Light), construct a solar energy system at 3725 S. Canal Road (Parcel #040-034-300-013-00). The Lansing Board of Water & Light (LBWL) is seeking Site Plan Review approval to",
+     "source_url": "https://www.deltami.gov/Document_Center/Committee Agendas and Minutes/PC/2026/August 10 2026 PC mtg packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 14,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "SLUP findings: solar energy system standards met",
+     "id": "6667371bc39b",
+     "state": "MI",
+     "town": "Delta Charter Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "as described in Case No. #PSL2026-0001 for the following reasons: 1. The Special Land Use Permit standards outlined in Section 7.03 of the zoning ordinance have been met. 2. The Specific Use Standards for Solar Energy Systems in Section",
+     "source_url": "https://www.deltami.gov/Document_Center/Committee Agendas and Minutes/PC/2026/July 13 2026 PC Meeting Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 15,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "applicant presentation at the solar SLUP hearing",
+     "id": "97ed39754e66",
+     "state": "MI",
+     "town": "Delta Charter Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "He explained the setup of the solar panels, how they work and how they are maintained. He said that there would be no negative effects on the community as there is no noise, and no emissions. He explained that their site plan was designed",
+     "source_url": "https://www.deltami.gov/Document_Center/Committee Agendas and Minutes/PC/2026/July 13 2026 PC Meeting Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 16,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public comment on the data center rezoning",
+     "id": "fefbcb099f26",
+     "state": "MI",
+     "town": "Delta Charter Township",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-07-06",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Faye Norris, 616 Kenway Drive – Spoke regarding the data center rezoning. Michelle Hart, 4509 Meaford Street – Spoke regarding the administration building elevator renovation project. Mia Keefer, 10758 Countryside Drive – Spoke regarding",
+     "source_url": "https://www.deltami.gov/Document_Center/Township Board Agendas and Minutes/2026/July 6, 2026 Agenda Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 17,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "county PC: DeWitt Charter Township ordinance amendment placed on file (OCR)",
+     "id": "1bee8e849037",
+     "state": "MI",
+     "town": "Dewitt Township",
+     "board": "Clinton County Planning Commission",
+     "meeting_date": "2026-08-13",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "[Vote of 7-0, 7 in favor, 0 opposed.] ¢ Dewitt Charter Township Ordinance Amendment No. 26-1 PLANNING COMMISSION ACTION: Brian Byars moved to accept and place on file the Dewitt Charter Township Ordinance Amendment No. 26-1, supported by",
+     "source_url": "https://www.clinton-county.org/AgendaCenter/ViewFile/Agenda/_08132026-2034",
+     "text_source": "ocr"
+    },
+    {
+     "n": 18,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public comment against data centers (township moratorium in place) (OCR)",
+     "id": "f72a2e527c1a",
+     "state": "MI",
+     "town": "Frenchtown Township",
+     "board": "Township Board",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "One person is not in favor of the use of AI or data centers. MOTION #26.210 — AFG GRANT SUBMISSION FOR THE FIRE DEPARTMENT: Motion made by Mr. Klemz; seconded by Mrs. Ellison to authorize the Fire Chief to apply for a AFG grant and if",
+     "source_url": "https://frenchtownmi.gov/AgendaCenter/ViewFile/Agenda/_07212026-225",
+     "text_source": "ocr"
+    },
+    {
+     "n": 19,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "moratorium extension for a noise study before zoning amendments",
+     "id": "40a7852ad841",
+     "state": "MI",
+     "town": "Genoa Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-08-17",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "extension is necessary to complete a comprehensive noise study and ensure the resulting Zoning Ordinance amendments are fully enforceable and legally sound before final adoption. The Board of Trustees adopted a temporary six-month",
+     "source_url": "https://www.genoa.org/dbfiles/download/boardmeetings/packet1/2668",
+     "text_source": "pdf"
+    },
+    {
+     "n": 20,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "resident comments on the draft data center ordinance",
+     "id": "9fcfcd078d65",
+     "state": "MI",
+     "town": "Genoa Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-08-17",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "A township resident who works for Memtech contacted the township after reading the draft data center ordinance, noting that many of the provisions that are in there are not enforceable. Mr. Reiber questioned why Phase 2 is not being done.",
+     "source_url": "https://www.genoa.org/dbfiles/download/boardmeetings/packet1/2668",
+     "text_source": "pdf"
+    },
+    {
+     "n": 21,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC agenda: data centers discussion with the township planner",
+     "id": "541b573c87d0",
+     "state": "MI",
+     "town": "Grass Lake Charter Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-07-16",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Old Business – Discussion on Data Center's 8. New Business * Discussion on Data Center's Featured Speaker - Township Planner Adam Young from Wade Trim 9. Citizens Wishing to Address the Commission 10. Proposed Business for Next Regular",
+     "source_url": "https://www.grasslaketownship.gov/wp-content/uploads/2026/07/July-2026-PC-Meeting-agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 22,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "zoning text amendment: crematoriums",
+     "id": "e2c0c4b48197",
+     "state": "MI",
+     "town": "Hamburg Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-08-19",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Discussion of Zoning Text Amendment: Crematoriums. Chair Muck opened the meeting to a guest speaker, Todd Borek. He came up to the podium to talk on this topic. Todd explained that he had come before the PC board 34 years ago to propose",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Packet-45e959902bef49da9b5984194d1f4eb3.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 23,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "list of reference checklists ('Checklist ... for Adoption of a Zoning Ordinance Amendment')",
+     "id": "1560a04acdca",
+     "state": "MI",
+     "town": "Hartland Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-10-08",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "for Adoption of a Zoning Ordinance Amendment (Including PUD) in Michigan\" Land Use Series, \"Checklist #5: for Processing a Special Use Permit (Including PUD) Application in Michigan.\" Land Use Series, \"Checklist #6: for Processing a Zoning",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-2717c5be74d044a5afad18da291ff8be.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 24,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "draft zoning ordinance amendment: backyard chickens in residential districts",
+     "id": "5921979d8239",
+     "state": "MI",
+     "town": "Hartland Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-07-09",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "The ORC has proposed a draft ordinance amendment that would permit \"Backyard Chickens\" or poultry in all single-family residential districts. The draft ordinance would also eliminate roosters and reduce the setbacks for structures housing",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-865de95555ac47d4a7c7bc2daad9574f.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 25,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC discussion: backyard chickens ordinance amendment",
+     "id": "95593063b147",
+     "state": "MI",
+     "town": "Hartland Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-07-09",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Backyard Chickens/Poultry Ordinance Amendment Director Langer outlined the draft ordinance from the Ordinance Review Committee. Items discussed included the following: - Zoning districts that would permit backyard chickens - Minimum Lot",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-865de95555ac47d4a7c7bc2daad9574f.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 26,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "master plan five-year review scope ('zoning amendments ... since adoption'), not an amendment item",
+     "id": "c9d20fa1c81b",
+     "state": "MI",
+     "town": "Hartland Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-10-08",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "5 Year Review September 29, 2026 Page 2 -Recent development and redevelopment activity; -Zoning Amendments and other land use decisions since the adoption of the Comprehensive Development Plan; -Current and anticipated infrastructure and",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-2717c5be74d044a5afad18da291ff8be.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 27,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public comment on BESS; draft data center ordinance research report",
+     "id": "1d3da93068b1",
+     "state": "MI",
+     "town": "Howell Township",
+     "board": "Planning Commission Minutes",
+     "meeting_date": "2026-07-28",
+     "topics": [
+      "battery_storage",
+      "data_center"
+     ],
+     "snippet": "CALL TO THE PUBLIC Kristin Dennison, 7196 Manor Lane- Spoke on battery energy storage systems Draft Data Center Ordinance A. Resident Research Committee- Report Overview: Research Committee member Kristin Dennison compiled a list of",
+     "source_url": "https://howelltownshipmi.org/wp-content/uploads/2026/08/PC-Packet-7.28.26.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 28,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "rezoning request IFZ to NSC",
+     "id": "46b73cbaa090",
+     "state": "MI",
+     "town": "Howell Township",
+     "board": "Planning Commission Minutes",
+     "meeting_date": "2026-08-25",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Nabil Bazzi, Request to Rezone Parcel # 4706-21-300-028, Vacant Land, W. Grand River Ave. from Industrial Flex Zone (IFZ) to Neighborhood Service Commercial (NSC) 11. Other Matters to be Reviewed by the Planning Commission: A. MSU",
+     "source_url": "https://howelltownshipmi.org/wp-content/uploads/2026/08/2026.8.25-PC-Agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 29,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board report: data center subcommittee meeting",
+     "id": "bba2f6fc7524",
+     "state": "MI",
+     "town": "Howell Township",
+     "board": "Board of Trustees Minutes",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Trustee Boal reported that the May Planning Commission meeting was cancelled and a data center subcommittee meeting was held. I. ZONING BOARD OF APPEALS (ZBA): No report J. WWTP: Clerk Daus reported that Board approval is required for the",
+     "source_url": "https://howelltownshipmi.org/wp-content/uploads/2026/08/Board-Packet-7.13.2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 30,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC agenda: data centers",
+     "id": "34bc48a2d6b3",
+     "state": "MI",
+     "town": "Lake Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-12",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Provisions Side Yard Setbacks Recreational Vehicles Responsibility for Administration Data Centers Public Comments Closing Remarks Adjourn",
+     "source_url": "https://www.laketownship.net/download/21799/pc-agenda-08122026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 31,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "county PC: Leroy Township zoning map amendment",
+     "id": "0c87e7e5759f",
+     "state": "MI",
+     "town": "Leroy Township",
+     "board": "Calhoun County Planning Commission",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Plan 9. Township Planning & Zoning Coordination a. 07-26-01, Leroy Township: Zoning Map Amendment b. 07-26-02, Sheridan Township: Zoning Map Amendment c. 07-26-03, Eckford Township: Master Land Use Plan d. 07-26-04, Clarence Township: PA",
+     "source_url": "https://www.calhouncountymi.gov/Planning/PC Agendas & Minutes/CCPC 7.13.26 Agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 32,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC: hyper-scale data center ordinance updates",
+     "id": "31959cdd0e76",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "1) DISCUSSION OF HYPER SCALE DATA CENTER ORDINANCE UPDATES Bruce Powelson discussed different lighting options for parking lots. Bruce recommended a 6000k lighting option instead of the 5000k. Scott Lloyd said that 6000k would be too",
+     "source_url": "https://www.mariontownship.com/e/pcpacketjuly212026.pdf?1784120786",
+     "text_source": "pdf"
+    },
+    {
+     "n": 33,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "staff memo: rezoning criteria for allowing data centers",
+     "id": "3fdd19628ec6",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-25",
+     "topics": [
+      "data_center",
+      "zoning_amendment"
+     ],
+     "snippet": "and/or programs that might reasonably be required in the future if the proposed rezoning is approved? What would be the impact be on providing adequate public services now and into the future if Data Centers are allowed in either Rural",
+     "source_url": "https://www.mariontownship.com/e/august2026pcpacket.pdf?1787081647",
+     "text_source": "pdf"
+    },
+    {
+     "n": 34,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "staff memo: rezoning criteria for allowing data centers",
+     "id": "40eec93a784b",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-25",
+     "topics": [
+      "data_center",
+      "zoning_amendment"
+     ],
+     "snippet": "Does the requested rezoning adversely affect environmental conditions, or the value of the surrounding property? How does allowing Data Centers in either Rural Residential, in an Overlay District, or in Industrial/Commerical districts",
+     "source_url": "https://www.mariontownship.com/e/august2026pcpacket.pdf?1787081647",
+     "text_source": "pdf"
+    },
+    {
+     "n": 35,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "county planner's considerations for the data center ordinance",
+     "id": "429d25178d9c",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-25",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Martha Haglund with the LCPD provided some considerations for the Township's Data Center Ordinance. Data Center Sizes: Martha explained that the Planning Commission should consider creating different languages for different sized data",
+     "source_url": "https://www.mariontownship.com/e/august2026pcpacket.pdf?1787081647",
+     "text_source": "pdf"
+    },
+    {
+     "n": 36,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board agenda: data center moratorium ordinance (OCR)",
+     "id": "4a13f5c39568",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-07-23",
+     "topics": [
+      "moratorium",
+      "data_center"
+     ],
+     "snippet": "July 15, 2026 HAFA Agenda/Minutes June 2026 Livingston County Sheriff Report Bos 3) Data Center Moratorium Ordinance 4) Planning Commission Appointment Correspondence and Updates Public Comment Adjournment **Next Board Packet will be ready",
+     "source_url": "https://www.mariontownship.com/e/botjuly232026agenda.pdf?1784222289",
+     "text_source": "ocr"
+    },
+    {
+     "n": 37,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC: battery storage only as a principal use in the data center ordinance",
+     "id": "4d4a8e10b073",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-25",
+     "topics": [
+      "battery_storage"
+     ],
+     "snippet": "Minutes DRAFT Lighting: The Commissioners discussed different lighting regulations. Battery Storage: Scott Lloyd said that it should not be permitted as an accessory use, but only as a principal use. Parking: Larry and Scott Llyod",
+     "source_url": "https://www.mariontownship.com/e/august2026pcpacket.pdf?1787081647",
+     "text_source": "pdf"
+    },
+    {
+     "n": 38,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public question on a data center in Marion; PC response",
+     "id": "7cb981abc3a7",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Erin Derry is a Marion Township resident and asked if someone is trying to put in a data center in Marion Township. Larry Fillinger said that no one has applied to put in a data center in Marion Township, however the Planning Commission is",
+     "source_url": "https://www.mariontownship.com/e/pcpacketjuly212026.pdf?1784120786",
+     "text_source": "pdf"
+    },
+    {
+     "n": 39,
+     "verdict": "TP",
+     "tags_ok": false,
+     "reason": "data center ordinance: substation setbacks (CES tag secondary)",
+     "id": "bf1339c6b35b",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "by an auditory expert to ensure compliance with applicable sound standards. 12. Utility Substations: Utility substations shall be located within the landscape buffer and shall be at least five hundred (500) feet from any adjacent",
+     "source_url": "https://www.mariontownship.com/e/pcpacketjuly212026.pdf?1784120786",
+     "text_source": "pdf"
+    },
+    {
+     "n": 40,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public hearing notice: proposed zoning amendment",
+     "id": "8b1bdb2e828b",
+     "state": "MI",
+     "town": "Meridian Charter Township",
+     "board": "Township Board",
+     "meeting_date": "2026-07-07",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Room, 5151 Marsh Road, Okemos, MI, 48864 to hear all persons interested in a proposed zoning amendment. The Meridian Township Planning Commission has proposed to amend several sections of Article VIII of the Zoning Ordinance to include a",
+     "source_url": "https://media-002-us.cdn.govstack.com/meridian-us/media/ys0hqklj/070726-board-packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 41,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board action: zoning amendment #2026-05",
+     "id": "dd26bd61c767",
+     "state": "MI",
+     "town": "Meridian Charter Township",
+     "board": "Township Board",
+     "meeting_date": "2026-07-07",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Controller Purchase Agreement with Brightline Technologies 10. BOARD ACTION ITEMS A. Zoning Amendment #2026-05 - Backyard Chicken and Rabbits Update – RECONSIDERATION B. Sanctuary #2 Public Streetlighting Improvement Special Assessment",
+     "source_url": "https://media-002-us.cdn.govstack.com/meridian-us/media/zsjhlro4/070726-final-agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 42,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC agenda: gas power plant ordinance, battery storage ordinance",
+     "id": "3be4bfa860e8",
+     "state": "MI",
+     "town": "Milan Township",
+     "board": "Planning Commission Meeting Information",
+     "meeting_date": "2026-08-11",
+     "topics": [
+      "battery_storage",
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "Report from Chairman: Report from BOT Liaison: Public Comment: (2 min) – New Business: Gas Power Plant Ordinance Unfinished Business: Battery Storage Ordinance Residential Solar (on hold) Comments from Commissioners: Public Comment (5",
+     "source_url": "https://milantownship.org/wp-content/uploads/2026/09/PC-agenda-8-11-26-approved-agenda.docx",
+     "text_source": "docx"
+    },
+    {
+     "n": 43,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC agenda: zoning ordinance amendment discussion",
+     "id": "667848b9fdf1",
+     "state": "MI",
+     "town": "Oceola Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-08-18",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Section 12.23.2 - Signage: Section 13.08 Permanent Signs Permitted in the AR District - Zoning Ordinance Amendment Discussion: Definition of Lot Area 1|P a g e Oceola Township Planning Commission Meeting Agenda – August 18, 2026 - Special",
+     "source_url": "https://www.oceolatwp.org/s/8-18-26-PC-agenda-gg94.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 44,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board list: amend zoning ordinance (accessory buildings)",
+     "id": "928ab2e26e7b",
+     "state": "MI",
+     "town": "Oceola Township",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-08-11",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "to expire 8/31/2029 Land Division Ordinance Accessory Buildings and Use Standards – Amend zoning ordinance Repair Facility Zoning and Municipal Approval Form – For review Truck Route Ordinance Township Cart Path – Golf carts, electric",
+     "source_url": "https://www.oceolatwp.org/s/Twp-Board-Meeting-August-11-2026.docx",
+     "text_source": "docx"
+    },
+    {
+     "n": 45,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "rezoning Z-26-02 A-1 to M-1 (OCR)",
+     "id": "4f7956505b43",
+     "state": "MI",
+     "town": "Richland Township",
+     "board": "Audio from 6-2-21 Planning Commission",
+     "meeting_date": "2026-08-05",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Z-26-02 —- DC HSC Holdings, LLC of Corning, New York, is requesting to rezone 39.90: acres of land located at the northwest corner of N. Orr Road and O'Hara Road from A-1, Agricultural - Farmland Preservation to M-1, Industrial.",
+     "source_url": "https://www.richlandtownship.com/Planning Commission Agenda 8-5-26.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 46,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "rezoning Z-26-01 A-1 to M-1 (OCR)",
+     "id": "50938733ab97",
+     "state": "MI",
+     "town": "Richland Township",
+     "board": "Audio from 6-2-21 Planning Commission",
+     "meeting_date": "2026-08-05",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Z-26-01 — Bruce & Peggy Shepherd of Hemlock, Michigan is requesting to rezone 39.90 acres of land located at the northwest corner of N. Orr Road and O'Hara Road from A-1, Agricultural — Farmland Preservation to M-1, Industrial.",
+     "source_url": "https://www.richlandtownship.com/Planning Commission Agenda 8-5-26.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 47,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "county PC: Riley Township map amendment hearing (OCR)",
+     "id": "a256cac4d897",
+     "state": "MI",
+     "town": "Riley Township",
+     "board": "Clinton County Planning Commission",
+     "meeting_date": "2026-07-09",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "opposed] Page {3 ROLL CALL VOTE (PC-07-26) (OR-204- 26) Application far a Map Amendment/rezoning PUBLIC HEARING PLANNING COMMISSION ACTION Rebecca Batterbee ~ Yes Kim Wieber — Yes Jan Motz ~— Yes Dawn Levey — Yes Zach Rudat - Yes Brian",
+     "source_url": "https://www.clinton-county.org/AgendaCenter/ViewFile/Agenda/_07092026-2017",
+     "text_source": "ocr"
+    },
+    {
+     "n": 48,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC agenda: moratorium resolution",
+     "id": "1b650eebf714",
+     "state": "MI",
+     "town": "Saline Township",
+     "board": "Planning Commission",
+     "meeting_date": null,
+     "topics": [
+      "moratorium"
+     ],
+     "snippet": "KBK Landscaping, 8685 W Michigan Ave.​ ​b. Discussion: Noise Ordinance.​ ​c. Discussion: Moratorium Resolution.​ ​VIII. UNFINISHED BUSINESS​ ​a. Legislative Updates.​ ​IX. PUBLIC COMMENTS (Comments on non-agenda items)​ ​X. ADJOURNMENT​",
+     "source_url": "https://salinetownship.org/wp-content/uploads/2026/07/PC-June-2026-Agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 49,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "joint board / PC special meeting agenda: Washtenaw Solar",
+     "id": "75cd6080cffe",
+     "state": "MI",
+     "town": "Saline Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-07-16",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "1. Call to order 2. Roll Call 3. Pledge of Allegiance 4. Agenda Approval 5. Washtenaw Solar 6. K & S 7. Noise Ordinance 8. Planning Commission to consider site plan approval for the buildings for the fire department on the Jupiter site. 9.",
+     "source_url": "https://salinetownship.org/wp-content/uploads/2026/09/1784051924_Special-Meeting-July-16-2026-Agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 50,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "county PC: Sheridan Township zoning map amendment",
+     "id": "babda56e540c",
+     "state": "MI",
+     "town": "Sheridan Township",
+     "board": "Calhoun County Planning Commission",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "b. 07-26-02, Sheridan Township: Zoning Map Amendment",
+     "source_url": "https://www.calhouncountymi.gov/Planning/PC Agendas & Minutes/CCPC 7.13.26 Agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 51,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "proposed amendments incl. temporary moratorium procedures",
+     "id": "a66d6ac4ccf1",
+     "state": "MI",
+     "town": "Superior Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-07-20",
+     "topics": [
+      "moratorium"
+     ],
+     "snippet": "Discussion included proposed amendments related to temporary moratorium procedures, industrial zoning standards, impervious surface coverage requirements, accessory dwelling units, emergency access standards, farm-based tourism activities",
+     "source_url": "https://superiortownship.org/wp-content/uploads/2026/07/7.-July-20-2026-Board-Packet-1.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 52,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC: proposed zoning ordinance amendments",
+     "id": "bba6a6769bba",
+     "state": "MI",
+     "town": "Sylvan Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-16",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "meeting, the Planning Commission held a public discussion regarding several proposed amendments to the Township Zoning Ordinance, including: A. Riparian Access to Waterbodies (Sections 28-47 through 28-53): Proposed keyholing regulations.",
+     "source_url": "https://sylvantownshipmi.gov/wp-content/uploads/2026/07/PC-Packet-7_16_2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 53,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "ZTA26-002 sent to public hearing",
+     "id": "d945763151df",
+     "state": "MI",
+     "town": "Sylvan Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-20",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Pacheco to incorporate edits from tonight's meeting and return ZTA26-002 to the Planning Commission for a Public Hearing and possible approval at the August 20, 2026 PC meeting. i. New Business None j. Comments/concerns of the Planning",
+     "source_url": "https://sylvantownshipmi.gov/wp-content/uploads/2026/08/PC-Packet-8-20-2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 54,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "zoning text amendment ZTA26-002",
+     "id": "df0135b0cd0d",
+     "state": "MI",
+     "town": "Sylvan Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-16",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Initial review and discussion on a proposed zoning text amendment (ZTA26-002) regarding; riparian access (chapter 28); code clean ups to the application of zoning regulations (Section 30-182) regarding definitions of lot lines, and",
+     "source_url": "https://sylvantownshipmi.gov/wp-content/uploads/2026/07/PC-Packet-7_16_2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 55,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "PC bylaws boilerplate on hearing notices",
+     "id": "2fe47f8bb360",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-14",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Notice of public hearings for the purposes of presenting proposed amendments to the Zoning Ordinance or Zoning Map; obtaining public opinion on a variance, special approval use, planned unit development, private road, shared driveway",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/07/PC-Packet-071426.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 56,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC: standard rezoning request",
+     "id": "4fdad2116ecd",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-26",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Ortega reminded the Planning Commission that the current request involved a standard rezoning rather than a conditional rezoning. He explained that approval of the zoning amendment would authorize any use permitted within the M-1 District",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/08/PC-Packet-082626.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 57,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC agenda: data centers",
+     "id": "5273823a5dde",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-26",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "7/14/26 Planning Commission Meeting CALL TO THE PUBLIC: NEW BUSINESS: OLD BUSINESS: 1. Data Centers 2. MMMA CALL TO THE PUBLIC: MISCELLANEOUS BUSINESS: ADJOURNMENT: APPROVAL OF THE MINUTES 1. 2. 3. 4. 4/29/26 Planning Commission Special",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/08/PC-Packet-082626.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 58,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "county PC: Tyrone Township rezoning FR to M1",
+     "id": "5c8fd8cdc599",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Livingston County Planning Commission",
+     "meeting_date": "2026-07-15",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "D. Z-19-26: Tyrone Township Rezoning, Section 17, FR Farming Residential to M1 Light Manufacturing Administration Building 304",
+     "source_url": "https://milivcounty.gov/wp-content/uploads/Agenda_7_15_26.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 59,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "memo: revised data center zoning ordinance amendments",
+     "id": "81b426dc02b4",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-14",
+     "topics": [
+      "data_center",
+      "zoning_amendment"
+     ],
+     "snippet": "July 8, 2026 Please find attached a revised draft of zoning ordinance amendments for data centers based upon comments from the June 24, 2026, meeting. These revisions include: - - - - - - - Section 2.05.D on page 1's hyperscale data center",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/07/PC-Packet-071426.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 60,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public hearing: zoning amendments to permit data centers",
+     "id": "653dc4b05d37",
+     "state": "MI",
+     "town": "Williamstown Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-07-22",
+     "topics": [
+      "data_center",
+      "zoning_amendment"
+     ],
+     "snippet": "The purpose of the hearing is to take public comments on proposed amendments to the Zoning Ordinance to permit data centers in certain locations within the Township under specific regulations. Data centers are facilities that are designed",
+     "source_url": "https://williamstownmi.gov/wp-content/uploads/2026/06/Hrg-Notice-Data-Center-Regs-for-Display-7-22-26-1.pdf",
+     "text_source": "pdf"
+    }
+   ]
   }
  ]
 }

@@ -61,13 +61,13 @@
   },
   "new_mi": {
    "MA:battery_storage": 158,
-   "MA:clean_energy_siting": 110,
+   "MA:clean_energy_siting": 109,
    "MA:data_center": 146,
-   "MA:hits": 880,
+   "MA:hits": 873,
    "MA:moratorium": 95,
-   "MA:solar": 238,
+   "MA:solar": 236,
    "MA:wireless_telecom": 43,
-   "MA:zoning_amendment": 343,
+   "MA:zoning_amendment": 342,
    "NY:battery_storage": 9,
    "NY:clean_energy_siting": 3,
    "NY:data_center": 4,
@@ -86,13 +86,13 @@
   },
   "new_va": {
    "MA:battery_storage": 158,
-   "MA:clean_energy_siting": 110,
+   "MA:clean_energy_siting": 109,
    "MA:data_center": 146,
-   "MA:hits": 880,
+   "MA:hits": 873,
    "MA:moratorium": 95,
-   "MA:solar": 238,
+   "MA:solar": 236,
    "MA:wireless_telecom": 43,
-   "MA:zoning_amendment": 343,
+   "MA:zoning_amendment": 342,
    "NY:battery_storage": 9,
    "NY:clean_energy_siting": 3,
    "NY:data_center": 4,
@@ -617,17 +617,6 @@
    ]
   },
   {
-   "url": "https://townofwinchendon.com/AgendaCenter/ViewFile/Agenda/_09152026-3424",
-   "added_with_MI_patterns": [
-    [
-     [
-      "clean_energy_siting"
-     ],
-     "Power Company proposes construction and installation of related equipment related to the substation upgrade to per Section 300-12.2, 12.6. 12.10 and 5.2 of the Town of Winchendon Zoning Bylaws and Section 6 of the Storinwater Management"
-    ]
-   ]
-  },
-  {
    "url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_10142026-160",
    "added_with_MI_patterns": [
     [
@@ -682,6 +671,25 @@
       "solar"
      ],
      "of Intent submitted by Federal Pond Solar, LLC, to construct a dual-use agriculture/solar array and ground-mounted solar arrays with coupled battery storage, associated site work, and interconnection within Bordering Land Subject to"
+    ]
+   ]
+  },
+  {
+   "url": "https://easthamptonma.gov/AgendaCenter/ViewFile/Agenda/_10072026-3682",
+   "added_with_MI_patterns": [
+    [
+     [
+      "zoning_amendment"
+     ],
+     "(9-2-26) (12-1-26) Review and Revise Zoning Ordinance Pertaining to Signs 2 1. General Ordinance Amendment Ch. 8, Article V, Signs (8-5-26)(11-3-26) 2. Zoning Ordinance Amendment, Sec. 10.0 Signs (8-5-26) (11-3-26) City Council Action"
+    ],
+    [
+     [
+      "moratorium",
+      "data_center",
+      "zoning_amendment"
+     ],
+     "AN AMENDMENT TO THE CITY OF EASTHAMPTON ZONING ORDINANCE ESTABLISHING A TEMPORARY MORATORIUM ON DATA CENTERS WHEREAS, pursuant to M.G.L. Chapter 40A, Section 5, the City Council has considered a proposed amendment to the Easthampton Zoning"
     ]
    ]
   }

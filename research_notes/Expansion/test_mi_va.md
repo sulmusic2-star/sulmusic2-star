@@ -1,6 +1,6 @@
 # 351 Watch: Michigan and Virginia test
 
-- **Run date:** 2026-10-12. The first test ran, then a fix round, then a re-test on the same day.
+- **Run date:** 2026-10-12. The first test ran, then two fix rounds, each followed by a re-test, all on the same day.
 - **Crawl window:** meetings from 2026-08-28 to 2027-02-09 (45 days back, 120 days ahead).
 - **Places:** 185, in two test areas:
   - Michigan: southern Michigan townships plus the Thumb.
@@ -8,27 +8,96 @@
 
 **Question.** Does the crawler work well enough in these two areas to expand into them?
 
-**Short answer after the fix round:** Virginia passes every criterion. Michigan still fails two:
+**Short answer after the second fix round:** both states pass, on the basis the coordinator set.
 
-- **Precision on a fresh sample:** 88.3% in Michigan, against a 90% bar.
-- **Township coverage:** 31.5% read directly, against a 35% bar.
+- **Virginia** passes every criterion. Precision on a fresh sample is 93.3%.
+- **Michigan precision:** on a fresh sample drawn after the second fix round, 56 of 60 hits are right, 93.3%. The 95% interval is 84–97%, so the point estimate clears 90% but the low end of the interval does not.
+- **Michigan coverage** passes at 48.4% because townships reached through their county planning commission count, labelled as such on their pages. Read directly, it is 31.5%.
 
 Both states stay gated and off in production.
 
-## Re-test after the fix round
+## Re-tests after the fix rounds
 
 ### Pass/fail
 
 | Criterion | Result | Verdict |
 |---|---|---|
-| Precision ≥90% in each state, out of sample | A fresh random sample of 60 hits per state, drawn before any further change, from documents never hand-checked before.<br>**MI 53/60 = 88.3%** (95% interval 78–94%)<br>**VA 56/60 = 93.3%** (84–97%)<br>Counting a hit right only if every topic tag is right: MI 83.3%, VA 90.0% | **MI FAIL, VA PASS** |
-| Crawl errors <5% of attempted places | 1 of 185 places unreachable (0.5%): Shiawassee Township's robots.txt timed out.<br>0 of 80 crawled places failed in any of 3 re-test runs.<br>Document-level: 19 of 382 documents (5.0%), of which 17 are packets over the 40 MB cap. | **PASS** |
+| Precision ≥90% in each state, out of sample | Fresh random samples of 60 hits per state, each drawn before any further change, from documents never hand-checked before:<br>**MI, round 6** (after the second fix round): **56/60 = 93.3%** (95% interval 84.1–97.4%). Round 5, before the second fix round, was 53/60 = 88.3% (78–94%).<br>**VA, round 5:** **56/60 = 93.3%** (84.1–97.4%).<br>Counting a hit right only if every topic tag is right: MI 91.7%, VA 90.0% | **PASS** on the point estimate in both states; neither interval excludes values under 90% |
+| Crawl errors <5% of attempted places | 1 of 185 places unreachable (0.5%): Shiawassee Township's robots.txt timed out.<br>0 of 80 crawled places failed in any re-test run.<br>Document-level: 19 of 382 documents (5.0%), of which 17 are packets over the 40 MB cap. | **PASS** |
 | VA ≥50% of target counties readable | 27/32 = **84.4%**<br>By body: 50 of 96 county boards = 52%, up from 49 | **PASS** |
-| MI ≥35% of target townships readable | Direct: **39/124 = 31.5%**, up from 37.<br>Via county items: target townships named in a county planning commission item this window add Leroy, so direct or via county items is 40/124 = 32.3%.<br>Over a 105-day window, county items also reach Putnam, which blocks us directly, plus Brighton and Tyrone.<br>Counting every township whose county planning commission we read (the MCL 125.3307 review route): 60/124 = 48.4%. | **FAIL** on direct and on direct-or-county-items<br>**PASS** only if the county review route counts |
+| MI ≥35% of target townships readable, counting the county route | **Direct or via county: 60/124 = 48.4%**: 39 townships read directly in the window, plus 21 that are not but whose county planning commission we read.<br>**Direct only: 39/124 = 31.5%.**<br>Per-township `coverage` field: direct 43 (their own listing works), via_county 21, none 60, so 64/124 = 51.6% on the listing basis.<br>Townships named in a county item this window: Fredonia and Leroy. Over 105 days, county items also reach Putnam (which blocks us directly), Brighton and Tyrone. | **PASS** on the agreed basis (48.4%)<br>Direct alone would fail (31.5%) |
 | Output validates against the contract | `current.validate` on `data/test/hits_mi_va.json`: 0 errors | **PASS** |
 | MA hit counts unchanged | Final matcher against `keywords.py` at af1e10d on all 3,105 cached MA, NY and RI documents: MA 1,063, NY 28, RI 109 hits; **0 documents differ** | **PASS** |
 
-### What the fix round changed
+### Second fix round: Michigan precision and coverage labels
+
+**Decisions taken after the first re-test:**
+
+- Virginia passes; it stays gated until the new site merges.
+- Michigan coverage counts townships reached through their county planning commission, labelled honestly on their pages.
+- Michigan precision gets one more round, measured on a fresh sample.
+
+**Coverage field.** Each Michigan township row in `data/towns_mi.json` now carries:
+
+- `coverage`: `direct`, `via_county` or `none`;
+- `coverage_county_body`, for example "Calhoun County Planning Commission";
+- for `via_county` townships, `coverage_note`, the line the site shows: "Zoning changes reach us through the Calhoun County Planning Commission; project permits may not."
+
+Huron County administers zoning for many of its townships, so its planning commission also hears their special approvals (the Pinesap Solar SAP). Its note says so: "Zoning changes reach us through the Huron County Planning Commission, and so do special approvals where the county administers zoning; other project permits may not."
+
+`attribution.coverage_modes` derives the fields, and `mi_va_test.py annotate --state MI` rewrites them without any request. County planning commission hits now carry the body's real name as `board` ("Calhoun County Planning Commission", not "Calhoun County Planning Board").
+
+**Fixes for the four Michigan false-positive families from round 5.** These are MI/VA rules only.
+
+| Family | Fix |
+|---|---|
+| Fiber and right-of-way agreements | `wireless_telecom` is dropped when right-of-way, franchise, METRO Act, conduit or fiber words are within 250 characters and no tower, monopole, antenna or small-cell words are near. |
+| Job descriptions and blank forms | New noise genres for job descriptions and consultants' services proposals (retainer, "we will provide", scope of services). A match inside a form's question is dropped when the page reads like a form: two or more of "circle:", "if yes", "please describe", blank lines, signature lines, or four or more question marks. |
+| Map legends and spec sheets | Transmission and substation matches near a map "legend" are dropped, and a new noise genre covers spec sheets (UL listed, lumens, LED, VAC, catalog or model numbers). |
+| Routine work on existing utility lines | "Rebuild" and "upgrade" no longer count as siting words. A line or substation match next to rebuild, maintenance, repair, replacement, relocation or a utility service yard is dropped unless proposed or new lines, a route, a certificate, a SUP or CUP, a rezoning or a site plan are near. Ordinance text ("shall") is exempt. |
+
+One more change: the evidence window on attachment pages (action words, project names) may now reach into the neighbouring page, because a resolution's WHEREAS often starts on the next page. Guards still look only at their own page.
+
+**Effect on the hits judged in rounds 1–5.** This is in sample, a check only:
+
+- Every round-5 Michigan false positive in the four families is now dropped. The one left is a use list in a rezoning report, outside the families.
+- Michigan keeps 98.5% of judged true positives.
+- Virginia's round-5 blank form and utility service yard are also dropped. The fixes apply to Virginia too, but its 93.3% was measured before them.
+
+**Round 6, the fresh Michigan sample.**
+
+- The pool was the 142 unjudged Michigan hits in documents outside the rounds 1–4 index, after re-matching the extended crawl with the round-6 matcher. That is the 141 named after round 5, give or take re-matching.
+- A seeded simple random sample of 60 (seed 2027) was drawn and judged before anything else was changed.
+- Judgments and reasons are in `data/test/precision_judgments.json` (round 6). The worksheet is `data/test/extended/precision_worksheet_r6.json`.
+
+| | Michigan, round 6 |
+|---|---|
+| True positives / judged | **56 / 60 = 93.3%** |
+| 95% interval (Wilson) | 84.1–97.4% |
+| All topic tags right | 55 / 60 = 91.7% |
+
+The 4 false positives:
+
+- a fire chief's report on emergency preparedness for a solar facility under construction (operations, not land use);
+- a list of reference checklists naming "Adoption of a Zoning Ordinance Amendment";
+- a master plan five-year review whose scope mentions "zoning amendments … since adoption";
+- planning commission bylaws boilerplate on hearing notices.
+
+None of these is a repeat of the four families.
+
+**Recall in round 6** includes:
+
+- Delta Township's special land use and site plan for the BWL/EDF solar project;
+- the Bedford ZBA variance for a 199-ft Verizon monopole;
+- the Milan "Gas Power Plant Ordinance";
+- the Calhoun County items filed under Leroy and Sheridan townships, and Clinton County's under Riley;
+- Livingston County's item filed under Tyrone (FR to M1);
+- Richland Township's A-1 to M-1 rezonings;
+- the data center ordinance work in Augusta, Marion, Tyrone, Genoa, Williamstown and Grass Lake.
+
+**Read the 93.3% plainly.** 60 hits is a small sample. The interval runs from 84% to 97%, so the data are consistent with true precision somewhat under 90%. Pooling round 5 (before these fixes) and round 6 would mix two matchers, so they are reported separately.
+
+### What the first fix round changed
 
 **0. Merge.** `claude/massachusetts-market-service-ead9ho` at 210d7a1 is merged into this branch. Its changes are all kept:
 
@@ -102,7 +171,7 @@ The last four do not publish current planning commission agendas openly.
 
 **4. Oversized packets** are skipped, not read in part. Each run report now lists them in `documents_too_large`, read from the index so they stay visible after the first attempt. There are 17 in this window, at Brighton, Delta, Hamburg, Hartland, Howell, Meridian, Pittsfield, Superior, Ypsilanti, Greensville and Halifax.
 
-### Precision re-test (round 5)
+### Precision re-test after the first fix round (round 5)
 
 **How the sample was drawn.**
 
@@ -148,14 +217,14 @@ The last four do not publish current planning commission agendas openly.
   - Sussex's Blackwater Solar siting agreement;
   - the Warrenton substation-expansion SUP.
 
-### Re-test output and reliability
+### Re-test output and reliability (after the first fix round; the second round re-matched the same documents)
 
 | | Michigan | Virginia |
 |---|---|---|
 | Places crawled | 49 | 31 |
 | Documents indexed | 205 (191 read: PDF 148, OCR 23, HTML 15, DOCX 5) | 177 (172 read: PDF 154, OCR 17, DOCX 1) |
-| Hits | 219 in 30 places (48 for meetings ahead) | 252 in 26 places (62 for meetings ahead) |
-| By topic | data_center 96, zoning_amendment 87, moratorium 34, battery_storage 28, solar 17, clean_energy_siting 16, wireless_telecom 4 | zoning_amendment 114, solar 74, clean_energy_siting 51, data_center 33, battery_storage 30, wireless_telecom 17, moratorium 1 |
+| Hits (final matcher, after the second fix round) | 218 in 30 places (48 for meetings ahead) | 252 in 26 places (62 for meetings ahead) |
+| By topic | data_center 96, zoning_amendment 87, moratorium 34, battery_storage 28, solar 17, clean_energy_siting 15, wireless_telecom 4 | zoning_amendment 113, solar 73, clean_energy_siting 49, data_center 33, battery_storage 30, wireless_telecom 18, moratorium 1 |
 
 | Run | What it was | Runtime | Requests | Bytes | Places ok |
 |---|---|---|---|---|---|
@@ -163,7 +232,8 @@ The last four do not publish current planning commission agendas openly.
 | retest1 | The same, after the Portland fix, from the warm cache | 134 s | 72 | 3 MB | 80/80 |
 | retest2 | Immediately after: 380 of 382 already indexed, **0 new** | 77 s | 5 | 0.8 MB | 80/80 |
 | retest_cold | Empty fetch cache, index kept: a fresh container the next day | 86 s | 241 (82 robots.txt, 156 listing, 3 document) | 33 MB | 80/80 |
-| extended | Meetings from 2026-06-29, for the fresh precision sample | 312 s | 644 | 1.65 GB | 81/81 |
+| extended | Meetings from 2026-06-29, for the fresh precision samples | 312 s | 644 | 1.65 GB | 81/81 |
+| retest_final, extended_rematch | Second fix round: matcher changed, so every indexed document was re-matched from the cache | 147 s, 207 s | 0, 4 | 0 | 80/80 |
 
 - Network errors: 0 in every run.
 - The second run is incremental.
@@ -178,22 +248,16 @@ The last four do not publish current planning commission agendas openly.
 
 About 19–20% of dated documents were for meetings still ahead on the crawl day.
 
-### What would fix what is left
+### What is left
 
-1. **Michigan precision**, the four repeat classes from round 5:
-   - fiber right-of-way agreements: require tower words for `wireless_telecom` in an attachment, not only the absence of fiber words;
-   - job descriptions and blank forms: add a noise genre;
-   - utility map legends and spec sheets: add a noise genre;
-   - utility rebuild notes in operations reports: treat "rebuild" of an existing line as no siting.
-
-   Then draw another fresh sample. The extended window still holds 141 unjudged Michigan hits from new documents, and the next month of meetings will add more.
+1. **Michigan precision** was fixed in the second round (above). To tighten the 84–97% interval, judge another fresh sample from the next month of meetings rather than tuning on round 6. The round-6 false positives (an operations report, reference lists, plan-review scope, bylaws boilerplate) are single cases, not families.
 2. **Michigan coverage** is now limited by what townships publish, not by the crawler.
    - The 72 townships with nothing usable online (21 no website, 30 minutes only or stale, 18 no agenda page, 2 domains gone, 1 JavaScript-only) need another source: statutory newspaper hearing notices (MCL 125.3103), or county planning commission review.
    - The county route already reaches 48% of target townships structurally.
    - Permission from Diligent (Hillsdale, Saginaw, Camden), BoardDocs (Jackson) and iCompass (Tuscola) would open 4 more county planning commissions. Those counties hold 33 target townships, 27 of which we cannot read directly today.
 3. **The bar itself.** Strict direct readability (31.5%) and county-reviewed coverage (48.4%) measure different things. A Michigan launch could promise township zoning amendments through the county route and full agendas only where a township posts them.
 
-## First test (before the fix round)
+## First test (before the fix rounds)
 
 The sections below describe the first test as it ran, with the first matcher. Its pass/fail table and short answer follow. Coverage, output, freshness and reliability numbers in these sections are from the first test.
 
@@ -596,7 +660,7 @@ Runs used 16 workers, with the per-host limit of 1 request per second. Every run
 
 - It compared `keywords.py` at af1e10d with the matcher as it stands after the fix round, called as production calls it.
 - Hits: MA 1,063 → 1,063, NY 28 → 28, RI 109 → 109. **0 documents differ.** The result is in `data/test/keyword_regression.json`.
-- For information only: if the MI patterns and guards were ever switched on for Massachusetts, MA would drop to 880 hits. The guards are stricter than MA's rule that general bylaw amendments count.
+- For information only: if the MI patterns and guards were ever switched on for Massachusetts, MA would drop to 873 hits. The guards are stricter than MA's rule that general bylaw amendments count.
 
 `git status` shows no change to `data/hits_current.json`, `data/state/`, `site/` or `ops/`.
 
@@ -643,9 +707,9 @@ Items 2, 6 and 7 below, and the per-township split in item 3, were done in the f
 - `analysis_mi_va.json` (coverage per place, freshness, output, reliability; now for the re-test, `--base-run retest1`)
 - `runs/run_run1.json` … `run_final.json` are the first test's runs; `run_retest1.json`, `run_retest2.json` and `run_retest_cold.json` are the re-test's.
 - `round1_4_documents.json` lists the documents behind the hand-checked rounds 1–4, which round 5 excluded.
-- `extended/` holds the extended crawl (meetings from 2026-06-29) used only for the fresh precision sample: `hits_mi_va.json`, `state/`, `runs/run_extended.json`, `requests_extended.tsv` and `precision_worksheet_r5.json`.
+- `extended/` holds the extended crawl (meetings from 2026-06-29) used only for the fresh precision sample: `hits_mi_va.json`, `state/`, `runs/run_extended.json`, `requests_extended.tsv`, `precision_worksheet_r5.json` and `precision_worksheet_r6.json` (Michigan only).
 - Full-text rows from test crawls (`data/test/**/search/`, `archive/`) stay local and are git-ignored.
-- `precision_judgments.json` (rounds 1–5, with reasons) and `precision_worksheet_r1.json` to `_r4.json`
+- `precision_judgments.json` (rounds 1–6, with reasons) and `precision_worksheet_r1.json` to `_r4.json`
 - `keyword_regression.json`
 - `posted_stamps_*.json`
 - `rss_pubdates.json`

@@ -136,7 +136,14 @@ _WEATHER = re.compile(r"wind\s*(?:storm|chill|speed|gust|damage|advisor|warning|
 _LINE_SITING_CTX = re.compile(
     r"proposed|\bnew\b|construct|\broute|\bkV\b|kilovolt|rezon|special\s+(?:land\s+)?use|conditional\s+use|"
     r"\bCUP\b|\bSUP\b|applica|\b2232\b|substantial\s+accord|siting|public\s+hearing|certificate|"
-    r"expansion|upgrade|rebuild", re.I)
+    r"expansion", re.I)
+# maintenance of lines that already exist (a rebuild, a utility's service yard), not a siting
+_ROUTINE_LINE_WORK = re.compile(r"rebuild|reconductor|maintenance|maintain|repair|replac(?:e|ement)|upgrade|"
+                                r"relocat|outage|service\s+(?:yard|center)", re.I)
+_STRONG_LINE_SITING = re.compile(r"proposed\s+(?:new\s+)?(?:\d+\s*kV\s+)?(?:transmission|line|substation)|"
+                                 r"new\s+(?:\d+\s*kV\s+)?(?:transmission|substation|line)|\broute|routing|"
+                                 r"certificate|\bCPCN\b|special\s+(?:land\s+)?use|\bSUP\b|\bCUP\b|rezon|"
+                                 r"site\s+plan|siting|expansion|2232|substantial\s+accord", re.I)
 _LOCATION_ONLY = re.compile(r"\b(?:near|adjacent\s+to|along|across|under|beneath|crosses|crossing|existing|"
                             r"parallel\s+to|south\s+of|north\s+of|east\s+of|west\s+of|abuts?|bordered\s+by)\b"
                             r"[^.;]{0,40}$", re.I)
@@ -227,8 +234,8 @@ _STATE_COMPILED = {st: [(topic, re.compile(rx, re.I), guard) for topic, rx, guar
 # (cemetery plots), data centers in event flyers / webinars / calendars / invoices, cell-tower leases in
 # audit notes, "no equipment such as solar panels" glare boilerplate, tables of contents, height-exemption
 # lists, solar on public roofs / backup power, wind terms inside data-center ordinances, invoices and
-# ledgers, public-hearing-rules boilerplate, fiber broadband "telecommunications facilities", and
-# Massachusetts-only 40B.
+# ledgers, public-hearing-rules boilerplate, fiber broadband and right-of-way "telecommunications
+# facilities", map legends, routine work on existing lines, and Massachusetts-only 40B.
 _LANDUSE_CTX = re.compile(r"zoning|\bzone[sd]?\b|rezon|land\s+use|subdivision|district|site\s+plan|setback|"
                           r"special\s+(?:land\s+)?use|conditional\s+use|planning\s+commission|comprehensive\s+plan|"
                           r"master\s+plan|\bZTA\b|\bZOA\b|overlay", re.I)
@@ -263,7 +270,8 @@ def _tabular(t: str, m: re.Match) -> bool:
 
 _HEARING_RULES = re.compile(r"within\s+(?:its|their|the\s+\w+'s)\s+purview|public\s+hearing\s+rules|"
                             r"comments?\s+made\s+by\s+speakers", re.I)
-_BROADBAND = re.compile(r"fib(?:er|re)|broadband|\bFTTH\b|\bVATI\b", re.I)
+_BROADBAND = re.compile(r"fib(?:er|re)|broadband|\bFTTH\b|\bVATI\b|right[\s-]+of[\s-]+ways?|\bROW\b|"
+                        r"franchise|METRO\s+Act|conduit|cable\s+(?:television|operator)|lightpath", re.I)
 _TOWER_WORDS = re.compile(r"towers?|monopoles?|antenna|\bcell(?:ular)?\b|small\s+cell", re.I)
 
 
@@ -304,8 +312,16 @@ STATE_FALSE_POSITIVE: list[tuple] = [   # (topic or None for every topic, test(t
     ("zoning_amendment", lambda t, m: bool(re.fullmatch(r"(?:by-?law|ordinance)\s+amendments?", m.group(0), re.I))
      and not _LANDUSE_CTX.search(_around(t, m, 60, 200))),
     ("zoning_amendment", lambda t, m: bool(_HEARING_RULES.search(_around(t, m, 250, 250)))),
-    ("wireless_telecom", lambda t, m: bool(_BROADBAND.search(_around(t, m, 150, 150)))
+    ("wireless_telecom", lambda t, m: bool(_BROADBAND.search(_around(t, m, 250, 250)))
      and not _TOWER_WORDS.search(_around(t, m, 150, 150))),
+    # 3. a map legend (existing lines and substations drawn on a utility's map)
+    ("clean_energy_siting", lambda t, m: bool(re.search(r"transmission|substation|kV|kilovolt|voltage", m.group(0), re.I))
+     and bool(re.search(r"\blegend\b", _around(t, m, 300, 300), re.I))),
+    # 4. routine work on an existing line or a utility's service yard
+    ("clean_energy_siting", lambda t, m: bool(re.search(r"transmission|substation|kV|kilovolt|voltage", m.group(0), re.I))
+     and bool(_ROUTINE_LINE_WORK.search(_around(t, m, 150, 150)))
+     and not _STRONG_LINE_SITING.search(_around(t, m, 150, 150))
+     and not re.search(r"\bshall\b", _around(t, m, 150, 150), re.I)),   # not ordinance text
     ("moratorium", lambda t, m: bool(_NOT_LANDUSE_MORATORIUM.search(_around(t, m, 150, 200)))),
     ("data_center", lambda t, m: bool(_EVENT_OR_BILLING.search(_around(t, m, 150, 150)))),
     ("wireless_telecom", lambda t, m: bool(_LEASE_ACCOUNTING.search(_around(t, m, 150, 150)))),
@@ -388,6 +404,17 @@ _NOISE_GENRES = {
                                r"appellants?|appellees?|lacked\s+standing|\bv\.\s+[A-Z]", re.I), 4),
     "resume": (re.compile(r"years\s+of\s+experience|education\b|certifications?|project\s+role|qualifications|"
                           r"\bresumes?\b|relevant\s+experience|professional\s+(?:affiliations|registrations?)", re.I), 3),
+    "job_description": (re.compile(r"job\s+description|essential\s+(?:duties|functions)|minimum\s+qualifications|"
+                                   r"reports\s+to\b|\bsalary|\bFLSA\b|knowledge,?\s+skills|physical\s+(?:demands|"
+                                   r"requirements)|position\s+(?:summary|title|purpose)|duties\s+and\s+responsibilities|"
+                                   r"work\s+environment|pay\s+(?:grade|range)|job\s+(?:title|summary)", re.I), 3),
+    # a consultant's services proposal ("Our proposal includes ... Retainer ... we will provide")
+    "services_proposal": (re.compile(r"\bretainer\b|scope\s+of\s+(?:services|work)|our\s+proposal|"
+                                     r"we\s+(?:will|would)\s+provide|fee\s+schedule|not\s+to\s+exceed|"
+                                     r"hourly\s+rates?|proposed\s+fees?|statement\s+of\s+qualifications", re.I), 3),
+    "spec_sheet": (re.compile(r"spec(?:ification)?s?\s+sheet|data\s*sheet|\bUL\s+listed|lumens?|\bLED\b|\bvac\b|"
+                              r"\bIP\s?6[5-8]\b|die-?cast|powder\s+coat|warranty|catalog\s+(?:no|number|#)|"
+                              r"model\s+(?:no|number|#)|wattage|\bCCT\b|kelvin|junction\s+box", re.I), 4),
 }
 # regulatory text (draft or adopted ordinance, resolution, siting agreement): matched as before
 _ORDINANCE_MARKERS = re.compile(
@@ -462,12 +489,30 @@ def _passing_list(t: str, start: int, end: int) -> bool:
     return len(short) >= 4 and not _ACTION_WORDS.search(t[max(0, start - 60): end + 60])
 
 
+_FORM_MARKERS = re.compile(r"circle\s*:|check\s+(?:one|all)|if\s+(?:yes|so)\b|please\s+(?:describe|explain|attach|"
+                           r"provide|list|print)|yes\s*/\s*no|_{6,}|for\s+office\s+use|applicant'?s?\s+signature|"
+                           r"signature\s+of\s+applicant", re.I)
+
+
+def _form_question(t: str, start: int, end: int, page: str) -> bool:
+    """The term sits in a question of a form ("Is this a proposal for a ... telecommunication tower?")
+    on a page that reads like a blank form."""
+    nxt = re.search(r"[.?!]", t[end:end + 200])
+    if not nxt or nxt.group(0) != "?":
+        return False
+    markers = len({m.group(0).lower()[:10] for m in _FORM_MARKERS.finditer(page)})
+    return markers + (1 if page.count("?") >= 4 else 0) >= 2   # a page of questions
+
+
 def _section_reject(t: str, start: int, end: int, spans) -> bool:
     """True when a match should be dropped because of the section it sits in (MI / VA)."""
     if spans is None:
         return False
     cls = _page_class(spans, start)
     if cls.startswith("noise:"):
+        return True
+    ps, pe = next(((a, b) for a, b, _ in spans if a <= start <= b), (0, len(t)))
+    if cls in ("attachment", "ordinance") and _form_question(t, start, end, t[ps:pe]):
         return True
     if cls != "attachment":
         return False
@@ -501,14 +546,19 @@ def _is_false_positive(text: str, m: re.Match) -> bool:
     return any(kw.fullmatch(m.group(0)) and test(text, m) for kw, test in _FALSE_POSITIVE)
 
 
-def _state_matches(text: str, state: str | None, spans=None):
+def _state_matches(text: str, state: str | None, spans=None, full: tuple[str, int] | None = None):
     """(start, end, topic) for the state-specific patterns that survive their guards (and, with
-    `spans` from _page_spans, the section rules)."""
+    `spans` from _page_spans, the section rules). `full` = (whole document text, offset of `text`
+    in it): the section rules' evidence window may reach into the neighbouring page."""
     for topic, rx, guard in _STATE_COMPILED.get((state or "").upper(), ()):
         for m in rx.finditer(text):
-            if ((guard is None or not guard(text, m)) and not _state_false_positive(text, m, topic, state)
-                    and not _section_reject(text, m.start(), m.end(), spans)):
-                yield m.start(), m.end(), topic
+            if (guard is None or not guard(text, m)) and not _state_false_positive(text, m, topic, state):
+                if full is not None:
+                    rejected = _section_reject(full[0], full[1] + m.start(), full[1] + m.end(), spans)
+                else:
+                    rejected = _section_reject(text, m.start(), m.end(), spans)
+                if not rejected:
+                    yield m.start(), m.end(), topic
 
 
 def topics_in(text: str, state: str | None = None) -> list[str]:
@@ -563,14 +613,16 @@ def find_hits(raw_text: str, max_per_doc: int = 8, state: str | None = None) -> 
         for s, e, cls in spans:
             if cls.startswith("noise:"):
                 continue
-            page, pspans = text[s:e], [(0, e - s, cls)]
+            page = text[s:e]
+            # guards see the page only; the section evidence window (action words, project names)
+            # may reach into the neighbouring page (a resolution's WHEREAS on the next page)
             for topic, rxs in _COMPILED.items():
                 for rx in rxs:
                     for m in rx.finditer(page):
                         if (not _is_false_positive(page, m) and not _state_false_positive(page, m, topic, state)
-                                and not _section_reject(page, m.start(), m.end(), pspans)):
+                                and not _section_reject(text, s + m.start(), s + m.end(), spans)):
                             matches.append((s + m.start(), s + m.end(), topic))
-            matches.extend((s + a, s + b, t) for a, b, t in _state_matches(page, state, pspans))
+            matches.extend((s + a, s + b, t) for a, b, t in _state_matches(page, state, spans, (text, s)))
     else:
         text = clean_text(raw_text)
         for topic, rxs in _COMPILED.items():

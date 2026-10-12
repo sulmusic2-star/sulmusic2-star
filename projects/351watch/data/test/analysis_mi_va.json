@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T21:16:23+00:00",
+ "generated": "2026-10-12T22:08:26+00:00",
  "crawl_day": "2026-10-12",
  "window": {
   "end": "2027-02-09",
@@ -91,7 +91,7 @@
        "Livingston"
       ],
       "direct_readable": 39,
-      "direct_readable_share": 0.325,
+      "direct_readable_share": 0.315,
       "via_county_items": 2,
       "via_county_items_towns": [
        "Fredonia Township",
@@ -101,7 +101,13 @@
        "Leroy Township"
       ],
       "direct_or_via_county_items": 40,
-      "direct_or_via_county_items_share": 0.333
+      "direct_or_via_county_items_share": 0.323,
+      "coverage_field": {
+       "none": 60,
+       "direct": 43,
+       "via_county": 21
+      },
+      "coverage_field_direct_or_via_county_share": 0.516
      }
     },
     "by_selection_group": {
@@ -2898,18 +2904,18 @@
      "ocr": 23,
      "docx": 5
     },
-    "hits": 219,
+    "hits": 218,
     "hits_by_topic": {
      "data_center": 96,
      "zoning_amendment": 87,
      "moratorium": 34,
      "battery_storage": 28,
      "solar": 17,
-     "clean_energy_siting": 16,
+     "clean_energy_siting": 15,
      "wireless_telecom": 4
     },
     "hits_by_board": {
-     "select_board": 90,
+     "select_board": 89,
      "planning_board": 128,
      "zoning_board_of_appeals": 1
     },
@@ -3883,12 +3889,12 @@
     },
     "hits": 252,
     "hits_by_topic": {
-     "zoning_amendment": 114,
-     "solar": 74,
-     "clean_energy_siting": 51,
+     "zoning_amendment": 113,
+     "solar": 73,
+     "clean_energy_siting": 49,
      "data_center": 33,
      "battery_storage": 30,
-     "wireless_telecom": 17,
+     "wireless_telecom": 18,
      "moratorium": 1
     },
     "hits_by_board": {
@@ -4141,6 +4147,29 @@
    "new_hits": 0,
    "hits_current": 471,
    "errors_total": 2
+  },
+  "retest_final": {
+   "duration_seconds": 147.1,
+   "towns_attempted": 80,
+   "towns_succeeded": 80,
+   "towns_failed": [],
+   "towns_partial": [],
+   "documents_listed": 382,
+   "documents_already_indexed": 19,
+   "new_documents": 0,
+   "documents_retried": 0,
+   "document_errors": 0,
+   "network": {
+    "bytes_by_purpose": {},
+    "cache_hits": 538,
+    "errors": 0,
+    "requests": 0,
+    "requests_by_purpose": {},
+    "robots_blocked": 0
+   },
+   "new_hits": 0,
+   "hits_current": 470,
+   "errors_total": 0
   },
   "run1": {
    "duration_seconds": 193.9,

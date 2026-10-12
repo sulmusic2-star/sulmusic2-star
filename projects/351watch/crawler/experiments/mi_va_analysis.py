@@ -125,19 +125,28 @@ def coverage(st: str, rows: list[dict], docs: list[dict], health: dict, hits_doc
     if st == "MI" and hits_doc:
         # townships reached through county items in this window: a county planning commission hit
         # filed under a target township (attribution.attribute / split_items)
-        targets = {p["town"] for p in per if p["kind"] == "township"}
-        direct = {p["town"] for p in per if p["kind"] == "township" and p["class"] == "readable"}
+        # rows, not names: four township names occur in two counties each (Brookfield, Bingham...)
+        twp_rows = [p for p in per if p["kind"] == "township"]
+        targets = {p["town"] for p in twp_rows}
+        direct = {p["town"] for p in twp_rows if p["class"] == "readable"}
         named = {h["town"] for h in hits_doc["hits"]
                  if h["state"] == st and "county" in (h.get("board") or "").lower() and h["town"] in targets}
         tw = by_kind.setdefault("township", {})
-        n = len(targets) or 1
-        tw["direct_readable"] = len(direct)
-        tw["direct_readable_share"] = round(len(direct) / n, 3)
+        n = len(twp_rows) or 1
+        n_direct = sum(p["class"] == "readable" for p in twp_rows)
+        n_either = sum(p["class"] == "readable" or p["town"] in named for p in twp_rows)
+        tw["direct_readable"] = n_direct
+        tw["direct_readable_share"] = round(n_direct / n, 3)
         tw["via_county_items"] = len(named)
         tw["via_county_items_towns"] = sorted(named)
         tw["via_county_items_not_direct"] = sorted(named - direct)
-        tw["direct_or_via_county_items"] = len(direct | named)
-        tw["direct_or_via_county_items_share"] = round(len(direct | named) / n, 3)
+        tw["direct_or_via_county_items"] = n_either
+        tw["direct_or_via_county_items_share"] = round(n_either / n, 3)
+        # the per-township coverage field the site shows (attribution.coverage_modes)
+        modes = Counter(r.get("coverage") or "none" for r in rows if r.get("kind") == "township")
+        tw["coverage_field"] = dict(modes)
+        tw["coverage_field_direct_or_via_county_share"] = round(
+            (modes.get("direct", 0) + modes.get("via_county", 0)) / n, 3)
     by_group = {}
     for g in sorted({p["group"] or "-" for p in per}):
         ps = [p for p in per if (p["group"] or "-") == g]

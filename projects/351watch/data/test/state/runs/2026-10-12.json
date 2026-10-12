@@ -14,12 +14,12 @@
   }
  },
  "date": "2026-10-12",
- "document_errors": 2,
- "documents_already_indexed": 380,
+ "document_errors": 0,
+ "documents_already_indexed": 19,
  "documents_deferred": 0,
  "documents_listed": 382,
  "documents_needing_ocr": 0,
- "documents_rematched": 0,
+ "documents_rematched": 363,
  "documents_retried": 0,
  "documents_too_large": [
   {
@@ -142,20 +142,11 @@
    "url": "https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_10052026-790"
   }
  ],
- "duration_seconds": 86.0,
- "errors": [
-  {
-   "error": "document: https://cms8.revize.com/revize/nottowaycountyva/Agenda BoS Special Meeting September 30, 2026.docx",
-   "town": "VA:Nottoway County"
-  },
-  {
-   "error": "document: https://cms8.revize.com/revize/nottowaycountyva/Agenda BoS Worksession September 10, 2026.docx",
-   "town": "VA:Nottoway County"
-  }
- ],
- "errors_total": 2,
- "finished": "2026-10-12T21:16:14+00:00",
- "hits_current": 471,
+ "duration_seconds": 147.1,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-10-12T22:07:19+00:00",
+ "hits_current": 470,
  "index": {
   "by_state": {
    "MI": 205,
@@ -173,34 +164,29 @@
    "pdf": 302
   },
   "documents": 382,
-  "hits": 501,
+  "hits": 500,
   "pruned": 0,
   "towns": 76,
   "with_hits": 145
  },
  "network": {
-  "bytes_by_purpose": {
-   "document": 1411787,
-   "listing": 31651957,
-   "robots": 138437
-  },
-  "cache_hits": 18,
-  "errors": 1,
-  "requests": 241,
-  "requests_by_purpose": {
-   "document": 3,
-   "listing": 156,
-   "robots": 82
-  },
-  "robots_blocked": 2
+  "bytes_by_purpose": {},
+  "cache_hits": 538,
+  "errors": 0,
+  "requests": 0,
+  "requests_by_purpose": {},
+  "robots_blocked": 0
  },
- "new_alert_items": 0,
- "new_alert_items_by_topic": {},
+ "new_alert_items": 2,
+ "new_alert_items_by_topic": {
+  "data_center": 1,
+  "wireless_telecom": 1
+ },
  "new_documents": 0,
  "new_hits": 0,
  "new_hits_by_topic": {},
  "options": {
-  "matcher_version": "bc455928b9",
+  "matcher_version": "f19d64a142",
   "no_network_docs": false,
   "ocr_max_pages": 6,
   "pdftotext": true,
@@ -233,9 +219,22 @@
    ],
    "towns_attempted": 80,
    "towns_succeeded": 80
+  },
+  {
+   "duration_seconds": 86.0,
+   "new_documents": 0,
+   "new_hits": 0,
+   "requests": 241,
+   "started": "2026-10-12T21:14:48+00:00",
+   "states": [
+    "MI",
+    "VA"
+   ],
+   "towns_attempted": 80,
+   "towns_succeeded": 80
   }
  ],
- "started": "2026-10-12T21:14:48+00:00",
+ "started": "2026-10-12T22:04:52+00:00",
  "states": [
   "MI",
   "VA"
