@@ -69,7 +69,7 @@ def run_reports() -> dict:
 
 
 # ------------------------------------------------------------------ coverage
-def coverage(st: str, rows: list[dict], docs: list[dict], health: dict) -> dict:
+def coverage(st: str, rows: list[dict], docs: list[dict], health: dict, hits_doc: dict | None = None) -> dict:
     ok_by_town_board = defaultdict(set)
     for d in docs:
         if d.get("status") == "ok":
@@ -122,6 +122,22 @@ def coverage(st: str, rows: list[dict], docs: list[dict], health: dict) -> dict:
         by_kind["township"]["readable_or_county_reviewed_share"] = round(
             (sum(p["class"] == "readable" for p in twp) + len(via)) / len(twp), 3) if twp else None
         by_kind["township"]["counties_with_readable_planning_commission"] = sorted(county_ok)
+    if st == "MI" and hits_doc:
+        # townships reached through county items in this window: a county planning commission hit
+        # filed under a target township (attribution.attribute / split_items)
+        targets = {p["town"] for p in per if p["kind"] == "township"}
+        direct = {p["town"] for p in per if p["kind"] == "township" and p["class"] == "readable"}
+        named = {h["town"] for h in hits_doc["hits"]
+                 if h["state"] == st and "county" in (h.get("board") or "").lower() and h["town"] in targets}
+        tw = by_kind.setdefault("township", {})
+        n = len(targets) or 1
+        tw["direct_readable"] = len(direct)
+        tw["direct_readable_share"] = round(len(direct) / n, 3)
+        tw["via_county_items"] = len(named)
+        tw["via_county_items_towns"] = sorted(named)
+        tw["via_county_items_not_direct"] = sorted(named - direct)
+        tw["direct_or_via_county_items"] = len(direct | named)
+        tw["direct_or_via_county_items_share"] = round(len(direct | named) / n, 3)
     by_group = {}
     for g in sorted({p["group"] or "-" for p in per}):
         ps = [p for p in per if (p["group"] or "-") == g]
@@ -279,7 +295,7 @@ def analyze(args) -> None:
     from watch351.current import validate
     hits_doc = json.loads((TEST / "hits_mi_va.json").read_text())
     reps = run_reports()
-    rep1 = reps.get("run1", {})
+    rep1 = reps.get(getattr(args, "base_run", None) or "run1", {})
     health = json.loads((TEST / "state" / "town_health.json").read_text())
     crawl_day = date.fromisoformat(rep1.get("date") or hits_doc["generated"][:10])
     w = rep1.get("window") or {"start": (crawl_day - timedelta(days=45)).isoformat(),
@@ -290,7 +306,7 @@ def analyze(args) -> None:
     for st in STATES:
         rows, docs = load_rows(st), load_docs(st)
         res["states"][st] = {
-            "coverage": coverage(st, rows, docs, health),
+            "coverage": coverage(st, rows, docs, health, hits_doc),
             "output": output(st, docs, hits_doc, rep1),
             "freshness": freshness(st, rows, docs, crawl_day, window),
         }
@@ -331,12 +347,21 @@ def sample(args) -> None:
     --exclude FILE leaves out hits judged before (a worksheet or precision_judgments.json)."""
     hits_doc = json.loads((TEST / "hits_mi_va.json").read_text())
     ex_ids, ex_keys = _judged_keys(Path(args.exclude)) if getattr(args, "exclude", None) else (set(), set())
+    # documents already in another test's index (the hand-checked pool): only hits from new documents
+    seen_docs: set[str] = set()
+    if getattr(args, "exclude_docs_from", None):   # a JSON list of document URLs
+        seen_docs = set(json.loads(Path(args.exclude_docs_from).read_text()))
     out = []
     for st in STATES:
         hits = sorted((h for h in hits_doc["hits"] if h["state"] == st
-                       and h["id"] not in ex_ids and (h["source_url"], h["snippet"][:80]) not in ex_keys),
+                       and h["id"] not in ex_ids and (h["source_url"], h["snippet"][:80]) not in ex_keys
+                       and h["source_url"] not in seen_docs),
                       key=lambda h: h["id"])
-        if len(hits) > args.per_state:
+        if len(hits) > args.per_state and getattr(args, "random", None) is not None:
+            # simple random sample of hits (every hit equally likely), seeded so it can be redrawn
+            import random
+            hits = sorted(random.Random(args.random).sample(hits, args.per_state), key=lambda h: (h["town"], h["id"]))
+        elif len(hits) > args.per_state:
             by_town = defaultdict(list)
             for h in hits:
                 by_town[h["town"]].append(h)

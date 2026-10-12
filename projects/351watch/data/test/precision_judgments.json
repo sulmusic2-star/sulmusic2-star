@@ -6040,6 +6040,2110 @@
      "text_source": "pdf"
     }
    ]
+  },
+  {
+   "round": 5,
+   "matcher": "fix round: page sections (agenda / minutes / ordinance / attachment / noise), item splitting for county planning commissions, gas power plants under clean_energy_siting; drawn before any further change",
+   "sample": "fresh and out of sample: a seeded simple random sample (seed 2026), 60 hits per state, from hits in documents that were not in the rounds 1-4 index (extended crawl, meetings 2026-06-29 to 2027-02-09), excluding every hit judged before",
+   "worksheet": "extended/precision_worksheet_r5.json",
+   "summary": {
+    "MI": {
+     "judged": 60,
+     "tp": 53,
+     "precision": 0.883,
+     "all_tags_right": 50,
+     "precision_all_tags_right": 0.833
+    },
+    "VA": {
+     "judged": 60,
+     "tp": 56,
+     "precision": 0.933,
+     "all_tags_right": 54,
+     "precision_all_tags_right": 0.9
+    }
+   },
+   "items": [
+    {
+     "n": 1,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "draft ordinance: accessory BESS standards",
+     "id": "2f166d0dd865",
+     "state": "MI",
+     "town": "Augusta Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-19",
+     "topics": [
+      "battery_storage"
+     ],
+     "snippet": "or site orientations to local fire, police, and emergency medical services. 4. Battery Energy Storage Systems (if provided) a) Battery Energy Storage Systems (BESS) shall be permitted as an accessory component to the principal use of the",
+     "source_url": "https://augustatownship.org/wp-content/uploads/2026/08/August-2026-PC-Packet-Website.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 2,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "rezoning staff report's list of permitted uses ('Wireless communication facilities Large Solar Energy Systems')",
+     "id": "48ef2ad245a5",
+     "state": "MI",
+     "town": "Augusta Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-19",
+     "topics": [
+      "solar",
+      "wireless_telecom"
+     ],
+     "snippet": "station, receiving or broadcasting towers, towers/facilities excluding wireless/cellular Wireless communication facilities Large Solar Energy Systems The applicant is not required to submit a development proposal as part of the rezoning",
+     "source_url": "https://augustatownship.org/wp-content/uploads/2026/08/August-2026-PC-Packet-Website.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 3,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "draft ordinance: BESS emergency plan, on-site substation screening",
+     "id": "69267c0afc05",
+     "state": "MI",
+     "town": "Augusta Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-19",
+     "topics": [
+      "battery_storage"
+     ],
+     "snippet": "e) Applicant shall include a BESS-specific emergency response plan and data sheet package. 5. On-Site Substation/Switchyard (if provided) a) Shall be located to minimize visual and noise impacts; and shall provide evergreen screening and",
+     "source_url": "https://augustatownship.org/wp-content/uploads/2026/08/August-2026-PC-Packet-Website.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 4,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC minutes: moratorium timeline, recommends zoning text amendment 2026-04",
+     "id": "7fbd85b10419",
+     "state": "MI",
+     "town": "Augusta Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-15",
+     "topics": [
+      "moratorium"
+     ],
+     "snippet": "Commissioner Hamill discussed the timeline for moratorium. Motion by Gipfert, 2nd by Hamill to send a recommendation of approval of 2026-04 Zoning Ordinance Text Amendment to the Augusta Township Board of Trustees. Roll Call: Aye: DeSanto",
+     "source_url": "https://augustatownship.org/wp-content/uploads/2026/07/July-15-2026-PC-Meeting-Agenda-Website.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 5,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "draft ordinance: BESS emergency plan, on-site substation screening",
+     "id": "ba9457ac7384",
+     "state": "MI",
+     "town": "Augusta Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-15",
+     "topics": [
+      "battery_storage"
+     ],
+     "snippet": "e) Applicant shall include a BESS-specific emergency response plan and data sheet package. 5. On-Site Substation/Switchyard (if provided) a) Shall be located to minimize visual and noise impacts; and shall provide evergreen screening and",
+     "source_url": "https://augustatownship.org/wp-content/uploads/2026/07/July-15-2026-PC-Meeting-Agenda-Website.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 6,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "temporary moratorium on data center applications",
+     "id": "9c60ae57a6d9",
+     "state": "MI",
+     "town": "Bedford Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-12",
+     "topics": [
+      "moratorium",
+      "data_center"
+     ],
+     "snippet": "and welfare by establishing a temporary moratorium on considering applications for Data Centers within the Township, while the Bedford Charter Township Planning Commission completes a study of the Ordinances and regulations pertaining",
+     "source_url": "https://www.bedfordchartertwpmi.gov/Agenda 8-12-2026_Merged (1).pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 7,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "attorney on adopting the moratorium by ordinance (OCR minutes)",
+     "id": "dd28c4e1e56f",
+     "state": "MI",
+     "town": "Bedford Charter Township",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-07-14",
+     "topics": [
+      "moratorium"
+     ],
+     "snippet": "Staib explained that moratoriums must be adopted by ordinance and are intended to provide time for research and ordinance development rather than to permanently prohibit a use. He discussed procedural requirements, public engagement",
+     "source_url": "https://www.bedfordchartertwpmi.gov/July26Packet.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 8,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "county PC agenda: Brighton Township rezoning (and Tyrone rezoning to M1)",
+     "id": "1ef5f9bddb56",
+     "state": "MI",
+     "town": "Brighton Township",
+     "board": "Livingston County Planning Commission",
+     "meeting_date": "2026-07-15",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Brighton Township Rezoning, Section 4, B-2 General Business to R-2 Residential Single Family D. Z-19-26: Tyrone Township Rezoning, Section 17, FR Farming Residential to M1 Light Manufacturing Administration Building 304 E. Grand River Ave.",
+     "source_url": "https://milivcounty.gov/wp-content/uploads/Agenda_7_15_26.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 9,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "utility map legend (existing substations and lines) in a will-serve letter",
+     "id": "e1392393fef8",
+     "state": "MI",
+     "town": "Brighton Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-07-06",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "Single Phase Electric Proposed Site -M 138/46 kV Distribution Substation MIN 138 kV Distribution Substation Proposed Site Single Phase Electric Distribution Lines 46 kV Distribution Substation 138 kV Lines 46 kV Lines Three Phase Electric",
+     "source_url": "https://www.brightontwp.com/AgendaCenter/ViewFile/Agenda/_07062026-2259",
+     "text_source": "pdf"
+    },
+    {
+     "n": 10,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "county PC recommends a zoning map amendment",
+     "id": "cc33e06f0c78",
+     "state": "MI",
+     "town": "Clinton County",
+     "board": "Clinton County Planning Commission",
+     "meeting_date": "2026-07-09",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "approval to the Board of Commissioners, supported by Dawn Levey, of the petition to amend the Zoning Map from MR, Mineral Resource Extraction to A-2, General Agriculture (PC-06-26) (OR-203-26) for approximately 67.32 acres located at 7575",
+     "source_url": "https://www.clinton-county.org/AgendaCenter/ViewFile/Agenda/_07092026-2017",
+     "text_source": "ocr"
+    },
+    {
+     "n": 11,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board discussion of moratorium length",
+     "id": "637384cb2013",
+     "state": "MI",
+     "town": "Conway Township",
+     "board": "2026 Conway Township Planning Commission Regular Meeting Dates",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "moratorium"
+     ],
+     "snippet": "It was confirmed that a moratorium could last for an initial six months and be extended to a total of 18 months. The board discussed renewing its annual Michigan Townships Association (MTA) membership. After downgrading from \"Premium\" to",
+     "source_url": "https://www.conwaymi.gov/vimages/shared/vnews/stories/67574b0f3ba7f/07-13-26 PC Mtg Pckt.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 12,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC agenda: crypto mining facilities and data centers",
+     "id": "794def9f7966",
+     "state": "MI",
+     "town": "Conway Township",
+     "board": "2026 Conway Township Planning Commission Regular Meeting Dates",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Cryptocurrency Data Mining Facilities and Data Centers c. Essential Services Ordinance 8. NEW BUSINESS a. b. 9. PLANNING COMMISSION MEMBER DISCUSSION 10. 2nd CALL TO THE PUBLIC 11. ADJOURNMENT Any person may speak for up to 3 minutes",
+     "source_url": "https://www.conwaymi.gov/vimages/shared/vnews/stories/67574b0f3ba7f/07-13-26 PC Mtg Pckt.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 13,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "rezoning findings",
+     "id": "30e2e2a9da4e",
+     "state": "MI",
+     "town": "Delta Charter Township",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-07-06",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "REQUEST MEETS THE CRITERIA SPECIFIED FOR REZONING IN SECTION 16.04 (CRITERIA FOR AMENDMENT TO THE OFFICIAL ZONING MAP) OF THE DELTA TOWNSHIP ZONING ORDINANCE. 2. THE SUBJECT SITE MEETS THE MINIMUM STANDARDS FOR LOT AREA AND LOT WIDTH OF",
+     "source_url": "https://www.deltami.gov/Document_Center/Township Board Agendas and Minutes/2026/July 6, 2026 Agenda Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 14,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "site plan review: BWL ground-mounted solar on 37 acres",
+     "id": "60a438624beb",
+     "state": "MI",
+     "town": "Delta Charter Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-08-10",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "Site Plan Review #PFSP2026-0009 (Lansing Board of Water & Light), install ground-mounted solar energy system on 37 acres in northwest corner of Delta Energy Park at 3725 S. Canal Road (Parcel #040-034-300-013-00). PUBLIC COMMENTS PLANNING",
+     "source_url": "https://www.deltami.gov/Document_Center/Committee Agendas and Minutes/PC/2026/August 10 2026 PC mtg packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 15,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public comment on data centers",
+     "id": "7fd1b24aa5bd",
+     "state": "MI",
+     "town": "Delta Charter Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-08-10",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Berquist expressed concerns about data centers. He gave two examples of cities with data centers: Dafter, Michigan and Kenosha, Wisconsin. XI. PLANNING DIRECTOR COMMENTS Director Menser thanked OHM, and the Planning Department. A",
+     "source_url": "https://www.deltami.gov/Document_Center/Committee Agendas and Minutes/PC/2026/August 10 2026 PC mtg packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 16,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "solar special land use application plan sheet",
+     "id": "c57ee6d9a6eb",
+     "state": "MI",
+     "town": "Delta Charter Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-08-10",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "SOLAR ARRAY (TYPICAL) 05/08/26 871 RAILROAD TRACKS 3 EDGE OF WATER OWNER REVIEW - SPECIAL LAND USE APPLICATION. EDGE OF GRAVEL DELTA TOWNSHIP - SPECIAL LAND USE APPLICATION WETLANDS JPR WET REV REMOVE EXISTING TREES 870 REMOVE EXISTING",
+     "source_url": "https://www.deltami.gov/Document_Center/Committee Agendas and Minutes/PC/2026/August 10 2026 PC mtg packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 17,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "county PC: DeWitt Charter Township zoning ordinance amendment",
+     "id": "73580b4b7718",
+     "state": "MI",
+     "town": "Dewitt Township",
+     "board": "Clinton County Planning Commission",
+     "meeting_date": "2026-07-09",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Communications — ¢ Dewitt Charter Township Ordinance Amendment No. 26-1 7. Public Comments — 8. Old Business — A. Zoning Ordinance Amendments Status Update i. Storage facilities in A-2 zoning district 9. New Business — (PC-02-26) Special",
+     "source_url": "https://www.clinton-county.org/AgendaCenter/ViewFile/Agenda/_07092026-2017",
+     "text_source": "ocr"
+    },
+    {
+     "n": 18,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "second reading of zoning ordinance amendment 300-20 (OCR)",
+     "id": "232af8eb6f58",
+     "state": "MI",
+     "town": "Frenchtown Township",
+     "board": "Township Board",
+     "meeting_date": "2026-08-25",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "(See page #3 for Details) Discussion — 2™ Reading of Zoning Ordinance Amendment No. 300-20 — Off-Street Parking Development Discussion — Special Use Approval Request — Open-Air Contractor's Yard - Hidden Cove-003-002-00 Discussion — Review",
+     "source_url": "https://frenchtownmi.gov/AgendaCenter/ViewFile/Agenda/_08252026-233",
+     "text_source": "ocr"
+    },
+    {
+     "n": 19,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "resident comments on the draft data center ordinance",
+     "id": "106509b2af7d",
+     "state": "MI",
+     "town": "Genoa Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-07-06",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "A township resident who works for Memtech contacted the township after reading the draft data center ordinance, noting that many of the provisions that are in there are not enforceable. Mr. Reiber questioned why Phase 2 is not being done.",
+     "source_url": "https://www.genoa.org/dbfiles/download/boardmeetings/packet1/2660",
+     "text_source": "pdf"
+    },
+    {
+     "n": 20,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "resolution extending the data center moratorium",
+     "id": "f0346ca395a9",
+     "state": "MI",
+     "town": "Genoa Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-08-17",
+     "topics": [
+      "moratorium",
+      "data_center"
+     ],
+     "snippet": "11) Consideration of Resolution 260817B to extend the temporary Moratorium on the Acceptance and Approval of Applications for Data Centers and Cryptocurrency Mining Facilities within Genoa Charter Township for an additional six (6) months.",
+     "source_url": "https://www.genoa.org/government/boardmeetingagenda/2668",
+     "text_source": "html"
+    },
+    {
+     "n": 21,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC agenda: data centers (old business)",
+     "id": "a4d81226456f",
+     "state": "MI",
+     "town": "Grass Lake Charter Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-08-20",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Old Business – Data Centers 8. New Business A. None 9. Citizens Wishing to Address the Commission 10. Proposed Business for Next Regular Meeting and Meeting Date 9/17/2026 11. General Discussion 12. Adjournment",
+     "source_url": "https://www.grasslaketownship.gov/wp-content/uploads/2026/08/August-20-2026-PC-Meeting-Agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 22,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "light-fixture spec sheet ('solar power battery available')",
+     "id": "8c1ea79ca2c8",
+     "state": "MI",
+     "town": "Hamburg Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-08-19",
+     "topics": [
+      "battery_storage",
+      "solar"
+     ],
+     "snippet": "Optional Solar Powered Solar power battery available J u n c t i o n B o x Aluminum Case LED Driver m Die-casting aluminum alloy m New heat sink dissipation design m UL Listed C: \\U m Powder coating m 100-277vac se rs\\ mg hu s\\O m 1-10VDC",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Packet-45e959902bef49da9b5984194d1f4eb3.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 23,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC memo: initiate zoning ordinance amendment (backyard chickens in residential districts)",
+     "id": "50264391d093",
+     "state": "MI",
+     "town": "Hartland Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-07-09",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "July 2, 2026 Recommended Action Move to Initiate Ordinance Amendment regarding Backyard Chickens/Poultry. Discussion This memorandum is intended as a follow up from the on-going discussion of the Planning Commission and the Township Board",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-865de95555ac47d4a7c7bc2daad9574f.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 24,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public comment on solar development",
+     "id": "2900643c886f",
+     "state": "MI",
+     "town": "Howell Township",
+     "board": "Planning Commission Minutes",
+     "meeting_date": "2026-07-28",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "presented.\" Motion carried. CALL TO THE PUBLIC: John Mills, 1750 Oak Grove Rd.: Spoke on solar development, requested any present candidates running for any Township position to introduce themselves. John Marhofer, 3363 Byron Rd.",
+     "source_url": "https://howelltownshipmi.org/wp-content/uploads/2026/08/PC-Packet-7.28.26.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 25,
+     "verdict": "TP",
+     "tags_ok": false,
+     "reason": "data-center ordinance discussion; transmission lines incidental (CES tag secondary)",
+     "id": "4d764e51f57e",
+     "state": "MI",
+     "town": "Howell Township",
+     "board": "Planning Commission Minutes",
+     "meeting_date": "2026-07-28",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "Utility and power discussions included utility and electrical transmission lines. Construction related topics included lighting and photometric diagram requirements and construction hours. Maintenance of equipment and monitoring, which",
+     "source_url": "https://howelltownshipmi.org/wp-content/uploads/2026/08/PC-Packet-7.28.26.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 26,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board agenda: zoning amendment, Article 3 footnote 6A",
+     "id": "7543f1d1b46e",
+     "state": "MI",
+     "town": "Lake Township",
+     "board": "Select Board / Council",
+     "meeting_date": null,
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "June 1, 2026 letter from AVS Tech Team Petitions/ Public Comments Old Business: - Zoning Amendment – Article 3 Footnote 6A - Trades Inspectors New Business: - Road Work - Zoning Board of Appeals (ZBA) Application Checklist - Siver/Kapa",
+     "source_url": "https://www.laketownship.net/download/18992/june-2026-agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 27,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board agenda: data center moratorium ordinance",
+     "id": "b5c13f7a4814",
+     "state": "MI",
+     "town": "Lake Township",
+     "board": "Select Board / Council",
+     "meeting_date": null,
+     "topics": [
+      "moratorium",
+      "data_center"
+     ],
+     "snippet": "Petitions/ Public Comments Old Business: - Electrical/Mechanical/Plumbing Inspections - Data Center Moratorium Ordinance New Business: - Trustee request to remove Siver from PC - Camping Ordinance - First Quarter Budget Review Payment of",
+     "source_url": "https://www.laketownship.net/download/19927/july-2026-agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 28,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "draft data center zoning text amendment",
+     "id": "30ca83e1fa38",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "data_center",
+      "zoning_amendment"
+     ],
+     "snippet": "Red, strikenthrough text to be deleted.] 30 Data centers Draft DATA CENTER Zoning Text amendment 2 3. AMENDMENT OF ARTICLE X: INDUSTRIAL DISTRICTS SECTION 10.01(D)(5) OF THE ZONING ORDINANCE IS HEREBY AMENDED TO READ AS FOLLOWS: [Red",
+     "source_url": "https://www.mariontownship.com/e/pcpacketjuly212026.pdf?1784120786",
+     "text_source": "pdf"
+    },
+    {
+     "n": 29,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "staff memo: rezoning criteria for data center locations",
+     "id": "395275ec3a08",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-25",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Planning staff encourages the commissioners to consider utilizing Section 20.05 Rezoning Criteria and analyze how each scenario (Rural Residential, Overlay District, or Industrial/Commerical areas) relates to the following questions. 1.",
+     "source_url": "https://www.mariontownship.com/e/august2026pcpacket.pdf?1787081647",
+     "text_source": "pdf"
+    },
+    {
+     "n": 30,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "first reading: hyper-scale data center ordinance",
+     "id": "7a714c251427",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-25",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "First reading of V1 and V2 drafts of Hyper-Scale Data Center Ordinance NEW BUSINESS 1. Preliminary Review of SUP#01-26 D2 Contracting, 2320 Pingree Rd 2. Preliminary Review of SUP#02-26 Legacy Acres, 775 Sexton Rd CORRESPONDENCE AND",
+     "source_url": "https://www.mariontownship.com/e/agenda08-25-2026pcregular.pdf?1787081719",
+     "text_source": "pdf"
+    },
+    {
+     "n": 31,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "draft data center zoning text amendment",
+     "id": "912a0371a1ed",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "data_center",
+      "zoning_amendment"
+     ],
+     "snippet": "County, Michigan Draft for Planning Commission review 15 20 25 Draft DATA CENTER Zoning Text amendment 1 MARION TOWNSHIP ZONING ORDINANCE TEXT AMENDMENT DATA CENTERS 5 An amendment to the Marion Township Zoning Ordinance to amend",
+     "source_url": "https://www.mariontownship.com/e/pcpacketjuly212026.pdf?1784120786",
+     "text_source": "pdf"
+    },
+    {
+     "n": 32,
+     "verdict": "TP",
+     "tags_ok": false,
+     "reason": "draft data center ordinance (solar roof option is secondary)",
+     "id": "9ab937521680",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "solar",
+      "data_center",
+      "zoning_amendment"
+     ],
+     "snippet": "(50,000) square feet shall have a roof with white or lot colors, planted green roof, or solar panels. Draft DATA CENTER Zoning Text amendment 5 c. Mechanical Equipment: Roof-mounted mechanical equipment shall be fully screened to the",
+     "source_url": "https://www.mariontownship.com/e/pcpacketjuly212026.pdf?1784120786",
+     "text_source": "pdf"
+    },
+    {
+     "n": 33,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "work session: hyper-scale data center ordinance",
+     "id": "adca78912948",
+     "state": "MI",
+     "town": "Marion Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Work Session on Hyper-Scale Data Center Ordinance a. No Decisions will take place at this meeting. NEW BUSINESS CORRESPONDENCE AND UPDATES PUBLIC COMMENT ADJOURNMENT Next Meeting is scheduled for August 10, 2026, at 7:30 PM Marion Township",
+     "source_url": "https://www.mariontownship.com/e/agenda7-21-2026pcregular.pdf?1784120772",
+     "text_source": "pdf"
+    },
+    {
+     "n": 34,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "legal notice: zoning amendment #2026-05",
+     "id": "530ccca5abac",
+     "state": "MI",
+     "town": "Meridian Charter Township",
+     "board": "Township Board",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Backyard Chicken and Rabbit Regulations Update CHARTER TOWNSHIP OF MERIDIAN LEGAL NOTICE Zoning Amendment #2026-05 (Backyard Chicken and Rabbits Update) The Township Board at its regular meeting on July 7, 2026 reconsidered the previously",
+     "source_url": "https://media-002-us.cdn.govstack.com/meridian-us/media/34fbvzfe/072126-board-packet-1.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 35,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board action: zoning amendment #2026-05 reconsideration",
+     "id": "69fef4a7846e",
+     "state": "MI",
+     "town": "Meridian Charter Township",
+     "board": "Township Board",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Trezise, and Trustee Wilson. NAYS: NONE Motion carried: 6-0 10. BOARD ACTION ITEMS A. Zoning Amendment #2026-05 – Backyard Chicken and Rabbits Update – RECONSIDERATION Director Schmitt explained that after Ordinance 2026-05 was approved, a",
+     "source_url": "https://media-002-us.cdn.govstack.com/meridian-us/media/34fbvzfe/072126-board-packet-1.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 36,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "staff recommends a proposed zoning amendment",
+     "id": "8a56affe6ddb",
+     "state": "MI",
+     "town": "Meridian Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-10",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "as written, recommend approval of a revised version, or recommend denial of the proposed zoning amendment. At this time, Staff would recommend approval of the proposed ordinance changes. A resolution to recommend approval of the proposed",
+     "source_url": "https://media-002-us.cdn.govstack.com/meridian-us/media/co2hi4cz/august-10-2026-planning-commission-packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 37,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC discussion of a possible zoning amendment (mass timber)",
+     "id": "bb93c402fd41",
+     "state": "MI",
+     "town": "Meridian Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-27",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "CIA asked to discuss mass timber construction with Staff and discuss the possibility of amending the zoning ordinance to encourage developers to use mass timber in their developments in the Grand River corridor. Staff discussed Mass Timber",
+     "source_url": "https://media-002-us.cdn.govstack.com/meridian-us/media/5vfo0rnr/july-27-2026-planning-commission-packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 38,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board adopts zoning amendment #2026-5",
+     "id": "bbe5794aa91b",
+     "state": "MI",
+     "town": "Meridian Charter Township",
+     "board": "Township Board",
+     "meeting_date": "2026-08-06",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Trustee Sundland, Trustee Trezise, and Trustee Wilson. NAYS: NONE Motion carried: 7-0 D. Zoning Amendment #2026-5 – Backyard Chicken and Rabbits Update – Adoption Director Schmitt gave an overview of the update to the zoning amendment to",
+     "source_url": "https://media-002-us.cdn.govstack.com/meridian-us/media/wapd1ona/080626-final-packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 39,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC discussion of a possible zoning amendment (mass timber)",
+     "id": "c157b9879943",
+     "state": "MI",
+     "town": "Meridian Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-10",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "CIA asked to discuss mass timber construction with Staff and discuss the possibility of amending the zoning ordinance to encourage developers to use mass timber in their developments in the Grand River corridor. Staff discussed Mass Timber",
+     "source_url": "https://media-002-us.cdn.govstack.com/meridian-us/media/co2hi4cz/august-10-2026-planning-commission-packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 40,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public hearing: proposed zoning ordinance amendments",
+     "id": "6a886e0cbad6",
+     "state": "MI",
+     "town": "Oceola Township",
+     "board": "Planning Board",
+     "meeting_date": "2026-08-18",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Public Hearing Proposed Zoning Ordinance Amendments: - Private Road Standards: Section 12.20 - Consolidation of District Water and Sewer Requirements: Section 3.02 – 3.06, Section 12.33 Public Water & Sewer - Requirement for PUD Approval",
+     "source_url": "https://www.oceolatwp.org/s/8-18-26-PC-agenda-gg94.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 41,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "right-of-way telecom permit form (fiber provider), not tower siting",
+     "id": "2fdda569bbe3",
+     "state": "MI",
+     "town": "Pittsfield Charter Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-07-08",
+     "topics": [
+      "wireless_telecom"
+     ],
+     "snippet": "_ _ _ _ _ _ _ __ 1.8 In the past three (3) years, has Applicant had a permit to install telecommunications facilities in the public right of way revoked by any Michigan municipality? Circle: Yes ~ If 'yes,\" please describe the",
+     "source_url": "https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_07082026-1002",
+     "text_source": "pdf"
+    },
+    {
+     "n": 42,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "Lightpath fiber right-of-way agreement ('telecommunications facilities')",
+     "id": "f3e7048f8560",
+     "state": "MI",
+     "town": "Pittsfield Charter Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-07-08",
+     "topics": [
+      "wireless_telecom"
+     ],
+     "snippet": "Lightpath LLC, (\"Lightpath\") for the installation, operation, and maintenance of telecommunications facilities within the public rights-of-way of the Pittsfield Charter Township, as requested by Washtenaw County Road Commission. Lightpath",
+     "source_url": "https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_07082026-1002",
+     "text_source": "pdf"
+    },
+    {
+     "n": 43,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "county PC: Putnam Township moratorium text amendment",
+     "id": "767f9cbb4144",
+     "state": "MI",
+     "town": "Putnam Township",
+     "board": "Livingston County Planning Commission",
+     "meeting_date": "2026-08-19",
+     "topics": [
+      "moratorium"
+     ],
+     "snippet": "D. Z-23-26: Putnam Township Text Amendments, Section 180.1 Moratoriums",
+     "source_url": "https://milivcounty.gov/wp-content/uploads/Agenda_8_19_26.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 44,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "county PC: Putnam Township moratorium text amendment",
+     "id": "7b70206280ec",
+     "state": "MI",
+     "town": "Putnam Township",
+     "board": "Livingston County Planning Commission",
+     "meeting_date": "2026-08-19",
+     "topics": [
+      "moratorium"
+     ],
+     "snippet": "Putnam Township Text Amendments, Section 180.1 Moratoriums E. Z-24-26: Putnam Township Text Amendments, Multiple Sections, District Regulations F. Z-25-26: Putnam Township Text Amendments, Section 19, Accessory Structures 8. Old Business",
+     "source_url": "https://milivcounty.gov/wp-content/uploads/Agenda_8_19_26.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 45,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "ordinance rezoning 39.9 acres A-1 to M-1 (OCR)",
+     "id": "84563a1bba84",
+     "state": "MI",
+     "town": "Richland Township",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-08-11",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "2026-01 — Motion to Approve Ordinance Number 2026-01 Rezoning 39.90 acres of land located in northwest corner of N. Orr Road and O'Hara Road from A-1, Agricultural - Farmland Preservation to M-1 Industrial. Parcel 22-12-2-13-4003-003. Ord.",
+     "source_url": "https://www.richlandtownship.com/Twp Board Agenda 8-11-26.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 46,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "resolution responding to the state's data center tax incentives",
+     "id": "30c767a446ea",
+     "state": "MI",
+     "town": "Superior Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-07-20",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "as Well as the Water Environment Federation, in Response to the State of Michigan's Data Center Tax Incentives. C. Resolution 2026-34, Resolution to Approve Server Replacement and Technology Upgrades with TAZ Networks Inc. 12. DISCUSSION",
+     "source_url": "https://superiortownship.org/wp-content/uploads/2026/07/7.-July-20-2026-Regular-Meeting-Agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 47,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "ordinance amending the zoning map",
+     "id": "adffc5f5be20",
+     "state": "MI",
+     "town": "Superior Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-08-17",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "205 – Ordinance to Amend the Zoning Map of Charter Township of Superior and to Approve the Area Plan Amendment for STPC 25-09, Clay Hill Farm and Market D. Resolution 2026-36, Resolution of Support for the Submission of a Washtenaw County",
+     "source_url": "https://superiortownship.org/wp-content/uploads/2026/08/8.-August-17-2026-Regular-Meeting-Agenda.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 48,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "zoning text amendment ZTA26-002",
+     "id": "97ad0b4246e4",
+     "state": "MI",
+     "town": "Sylvan Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-16",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Continued review and discussion on a proposed zoning text amendment (ZTA26-002) regarding i. riparian access (chapter 28); ii. application of zoning regulations (Section 30-182) regarding definitions of lot lines, and measuring lot widths",
+     "source_url": "https://sylvantownshipmi.gov/wp-content/uploads/2026/07/PC-Packet-7_16_2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 49,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public comment on the extended moratorium and data center ordinance",
+     "id": "06ddafedc10e",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-26",
+     "topics": [
+      "moratorium",
+      "data_center"
+     ],
+     "snippet": "expressing concern that the Township continued to consider revisions after an extended moratorium period. He further suggested the Planning Commission should first review the Master Plan before discussing ordinance language related to data",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/08/PC-Packet-082626.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 50,
+     "verdict": "TP",
+     "tags_ok": false,
+     "reason": "data center ordinance discussion (solar tag secondary)",
+     "id": "87fd9c7d8bbe",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-26",
+     "topics": [
+      "solar",
+      "data_center"
+     ],
+     "snippet": "Reader explained that data center buildings differ from solar energy systems, wind energy facilities, and extractive industries because the structures themselves may remain suitable for future industrial or commercial reuse after",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/08/PC-Packet-082626.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 51,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC agenda: data centers",
+     "id": "98cb37e43d49",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-14",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "MINUTES: Not Available CALL TO THE PUBLIC: NEW BUSINESS: 1) PC Bylaws OLD BUSINESS: 1) Data Centers 2) MMMA CALL TO THE PUBLIC: MISCELLANEOUS BUSINESS: ADJOURNMENT: NEW BUSINESS #1 PC Bylaws TYRONE TOWNSHIP PLANNING COMMISSION BYLAWS The",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/07/PC-Packet-071426.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 52,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC minutes: data center compatibility provisions",
+     "id": "998ff88897e5",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-26",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "discussed numerous provisions intended to ensure compatibility between potential data center developments and surrounding land uses. Particular attention was given to screening requirements, noise generated by cooling equipment and backup",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/08/PC-Packet-082626.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 53,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board minutes: PC work on the data center ordinance",
+     "id": "ac53fd69b889",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Township Board",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Trustee Tucker told the Board the Planning Commission continued to work on the data center ordinance and that he thought two board members who attended the Planning Commission meeting stepped over a line. The township attorney stated board",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/07/Board-Packet-072126.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 54,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "revised draft data center ordinance presented",
+     "id": "ce2e4cfcf2f9",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-26",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Support was received by Mike Amberg. Motion carried unanimously. OLD BUSINESS 1. Data Center Ordinance Planning consultant Mario Ortega presented a revised draft of the proposed Data Center Ordinance, incorporating comments received during",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/08/PC-Packet-082626.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 55,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "memo: data center zoning ordinance amendments",
+     "id": "ee47b8608fbc",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-14",
+     "topics": [
+      "data_center",
+      "zoning_amendment"
+     ],
+     "snippet": "Commission Bylaws Last revised and adopted 2/13/2018 Page 5 of 5 OLD BUSINESS #1 Data Centers Memorandum Ross Nicholson TO: Director of Planning & Zoning FROM: Mario A. Ortega, AICP SUBJECT: Data Center Zoning Ordinance Amendments –",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/07/PC-Packet-071426.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 56,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board minutes: data center ordinance revisions",
+     "id": "fe565a7711ea",
+     "state": "MI",
+     "town": "Tyrone Township",
+     "board": "Township Board",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "minor revisions were requested to be reviewed at the next available meeting. 2) Data Centers: Mario Ortega summarized the latest revisions to the draft ordinance text. The Planning Commission went through the draft ordinance structure",
+     "source_url": "https://www.tyronetownship.us/wp-content/uploads/2026/07/Board-Packet-072126.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 57,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "job description ('legal notices for rezoning, ordinance amendments')",
+     "id": "0256648d809f",
+     "state": "MI",
+     "town": "Ypsilanti Charter Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Advise staff with public hearing and legal notices for rezoning, Ordinance amendments, and conditional land uses. 6. Assist applicants in completing and filing applications for ZBA, rezoning, site plans, etc. by telephone consultation",
+     "source_url": "https://ypsitownship.org/Documents/Government/Boards-Commissions/Board-of-Trustees/2026/Packet/2026-07-21-Packet-Township-Board-Meeting-Revised-2026-07-20.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 58,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "work session to introduce a zoning text amendment",
+     "id": "29abf37df631",
+     "state": "MI",
+     "town": "Ypsilanti Charter Township",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-14",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "A work session was scheduled to introduce a zoning text amendment. There were four categories of ordinances under work. There were no items scheduled for the July meetings, but there were many site plans and proposals in the queue. D The",
+     "source_url": "https://ypsitownship.org/Documents/Government/Boards-Commissions/Planning-Commission/2026/Packet/2026-07-14-Planning-Commission-Packet-Revised.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 59,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "hydro-operations note: ITC will rebuild an existing line; no local siting action",
+     "id": "862278314446",
+     "state": "MI",
+     "town": "Ypsilanti Charter Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "DTE/ITC Power Line Rebuild- ITC is planning a rebuild of the transmission line along Bridge Road. Project is planned in 2027 will likely take a couple of months to complete. We don't know how this will impact Hydro's operations. DTE Gas",
+     "source_url": "https://ypsitownship.org/Documents/Government/Boards-Commissions/Board-of-Trustees/2026/Packet/2026-07-21-Packet-Township-Board-Meeting-Revised-2026-07-20.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 60,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "supervisor report on the data center fight (U-M / Los Alamos)",
+     "id": "b3362db687dc",
+     "state": "MI",
+     "town": "Ypsilanti Charter Township",
+     "board": "Board of Trustees",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "and helpful for residents to be informed, especially as we continue our battle with the data center/computational center with the University of Michigan and Los Alamos. We have frankly been consumed by the data center issue and have not",
+     "source_url": "https://ypsitownship.org/Documents/Government/Boards-Commissions/Board-of-Trustees/2026/Packet/2026-07-21-Packet-Township-Board-Meeting-Revised-2026-07-20.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 61,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "joint public hearing: BESS ordinance",
+     "id": "00fb03c118f0",
+     "state": "VA",
+     "town": "Amelia County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-27",
+     "topics": [
+      "battery_storage"
+     ],
+     "snippet": "Joint Public Hearing – Battery Energy Storage Projects - Mr. Mitchell provided the Planning Commission and Board of Supervisors with the staff report. He explained that the ordinance adds additional regulations concerning battery energy",
+     "source_url": "https://www.ameliacova.com/Planning Commission/Meetings/Packets/July 27, 2026 PC Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 62,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "BESS ordinance updates",
+     "id": "20888f2ff490",
+     "state": "VA",
+     "town": "Amelia County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-27",
+     "topics": [
+      "battery_storage"
+     ],
+     "snippet": "The ordinance also updates regulations for accessory battery energy storage projects in accordance with new legislation passed by the General Assembly. - Commissioner Harding asked about any current battery energy storage in the county. He",
+     "source_url": "https://www.ameliacova.com/Planning Commission/Meetings/Packets/July 27, 2026 PC Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 63,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "joint public hearing: BESS regulation",
+     "id": "34caf3d29aac",
+     "state": "VA",
+     "town": "Amelia County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-07-22",
+     "topics": [
+      "battery_storage"
+     ],
+     "snippet": " Public Hearing for Regulation of Battery Energy Storage 1. Chairman Felts Chairman Felts called to order the Joint Public Hearing of the Amelia County Board of Supervisors and Planning Commission for the purpose of receiving public",
+     "source_url": "https://www.ameliacova.com/Board of Supervisors/BOS Meetings/Packets/July Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 64,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public hearing: conditional rezoning RZN26-02",
+     "id": "b48dbc69a0bb",
+     "state": "VA",
+     "town": "Amelia County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-08-26",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Public Hearing- Conditional Rezoning Request RZN26-02 - Windswept Development, LLC (RR-3 to R1) | Action o Austin Mitchell provided a staff report regarding the conditional rezoning request. Mr. Mitchell confirmed Supervisor Easter's",
+     "source_url": "https://www.ameliacova.com/Board of Supervisors/BOS Meetings/Packets/August Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 65,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "planning report: BESS ordinance approved, rezonings",
+     "id": "bdaf4c383454",
+     "state": "VA",
+     "town": "Amelia County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-07-22",
+     "topics": [
+      "battery_storage",
+      "clean_energy_siting",
+      "zoning_amendment"
+     ],
+     "snippet": "Battery Energy Storage Projects and Facilities (Approved 6/24/2026) o Special Exceptions o Rezonings 1. RZN26-01 Kelly Todd Copeland (RR-3 to R-3) a. Approved March 25, 2026 2. RZN26-02 Windswept Development LLC (RR-3 to R-1) a. PC",
+     "source_url": "https://www.ameliacova.com/Board of Supervisors/BOS Meetings/Packets/July Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 66,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "site plan in review: Amelia Energy Facility",
+     "id": "dcf068efe93d",
+     "state": "VA",
+     "town": "Amelia County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-07-22",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "Site plan approved March 30, 2026 o SPA25-02 Amelia Energy Facility - Site plan submitted June 30, 2025, still in review. o SPA25-04 Amelia County Animal Shelter - Site plan approved January 15, 2026 o SPA25-06 Amelia Family Campground",
+     "source_url": "https://www.ameliacova.com/Board of Supervisors/BOS Meetings/Packets/July Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 67,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC: proposed amendment vs the county's opposition to the 765 kV line",
+     "id": "6eb212791787",
+     "state": "VA",
+     "town": "Buckingham County",
+     "board": "Planning Commission Packet/Minutes",
+     "meeting_date": "2026-08-24",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "stands in direct contradiction to the county's posture opposing the Joshua Falls 765 kV transmission line, the original proposed amendment also includes vague language that is problematic and a notification process that was incomplete.",
+     "source_url": "https://www.buckinghamcountyva.org/Document_Center/Agenda & Minutes/Planning Commission/2026/PC Meeting 8-24-2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 68,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public comment on the Valley Link 765 kV line",
+     "id": "7ecf56972920",
+     "state": "VA",
+     "town": "Buckingham County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "I'm here to speak about the Valley Link Joshua Falls to Yeat 765 kilovolt transmission line. You've heard me speak about this topic before, and I will continue to speak out until Dominion Energy and Valley Link pack up their toys and go",
+     "source_url": "https://www.buckinghamcountyva.org/july13 2026 bos pckt online version.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 69,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "zoning map amendment 26ZMA366",
+     "id": "85d3b6d5b4fc",
+     "state": "VA",
+     "town": "Buckingham County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Case 26ZMA366 The applicant is Dickerson Surveying LLC, and the request was to obtain a Zoning Map Amendment from A-1 to R-2 Residential for the development of a 12 lot major subdivision, and the property on which the request was being",
+     "source_url": "https://www.buckinghamcountyva.org/july13 2026 bos pckt online version.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 70,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "public comment on transmission lines; 'data centers' rhetorical (wrong topic)",
+     "id": "a9319c280287",
+     "state": "VA",
+     "town": "Buckingham County",
+     "board": "Planning Commission Packet/Minutes",
+     "meeting_date": "2026-08-24",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "I think everybody knows the electrical demands of AI are fierce, and they are building data centers as hard as they can go. They're going to be building BUCKINGHAM COUNTY PLANNING COMMISSION July 27, 2026 3 more of these transmission",
+     "source_url": "https://www.buckinghamcountyva.org/Document_Center/Agenda & Minutes/Planning Commission/2026/PC Meeting 8-24-2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 71,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "comprehensive plan: transmission corridors of 150 kV or more",
+     "id": "d6bc9f4214b3",
+     "state": "VA",
+     "town": "Buckingham County",
+     "board": "Planning Commission Packet/Minutes",
+     "meeting_date": "2026-07-27",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "include in its Comprehensive Plan the \"designation of corridors or routes for electric transmission lines of 150 kilovolts or more.\" Once adopted, such designations carry real evidentiary weight before the State Corporation Commission",
+     "source_url": "https://www.buckinghamcountyva.org/Document_Center/Agenda & Minutes/Planning Commission/2026/PC Meeting 7-27-2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 72,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC discussion of notice for SUP and zoning map amendment applicants",
+     "id": "dba17c55db82",
+     "state": "VA",
+     "town": "Buckingham County",
+     "board": "Planning Commission Packet/Minutes",
+     "meeting_date": "2026-07-27",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "there have been a handful of applicants in the last 2 years um applicants for SUPs and zoning map amendments through the zoning office that have received additional correspondence by email because of course everything within their",
+     "source_url": "https://www.buckinghamcountyva.org/Document_Center/Agenda & Minutes/Planning Commission/2026/PC Meeting 7-27-2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 73,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "comprehensive plan amendments: utility-scale solar",
+     "id": "e1ea44bfde5c",
+     "state": "VA",
+     "town": "Buckingham County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "solar",
+      "clean_energy_siting",
+      "zoning_amendment"
+     ],
+     "snippet": "ordinance standards, formal findings, and clear Comprehensive Plan support. INTEGRATED COMPREHENSIVE PLAN AMENDMENTS Buckingham County Comprehensive Plan 2025-2030 CHAPTER V - LAND USE to amend and include Utility Scale Solar Energy",
+     "source_url": "https://www.buckinghamcountyva.org/july13 2026 bos pckt online version.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 74,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "comprehensive plan policy area mirroring solar energy development",
+     "id": "e53d7564f7b2",
+     "state": "VA",
+     "town": "Buckingham County",
+     "board": "Planning Commission Packet/Minutes",
+     "meeting_date": "2026-07-20",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "and, in particular, to mirror the structure of the existing Chapter VI Policy Area #6 (Solar Energy Development). Source materials referenced in the policy area include the HIFLD Electric Power Transmission Lines dataset and companion",
+     "source_url": "https://www.buckinghamcountyva.org/Document_Center/Agenda & Minutes/Planning Commission/2026/PC Meeting 7-20-2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 75,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "ordinance amendments on solar, energy storage, utilities",
+     "id": "5fabb50ccfa4",
+     "state": "VA",
+     "town": "Caroline County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-06-29",
+     "topics": [
+      "battery_storage",
+      "solar"
+     ],
+     "snippet": "The amendments address provisions relating to solar, energy storage, utilities, and power generation, storage, transmission and distribution, including uses, structures, equipment, and devices. Requesting Department Planning and Community",
+     "source_url": "https://co.caroline.va.us/AgendaCenter/ViewFile/Agenda/_06292026-557",
+     "text_source": "pdf"
+    },
+    {
+     "n": 76,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public hearing scheduled: CUP 26-03 Cumberland Energy Facility",
+     "id": "02a9b0d0dcbd",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-10",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "Adjourn to the Public Hearing for CUP 26-03 Cumberland Energy Facility scheduled for August 31, 2026, at 6:30 p.m. in the Cumberland Middle/High School Cafetorium located at 16 School Road, Cumberland, Virginia",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_08102026-771",
+     "text_source": "pdf"
+    },
+    {
+     "n": 77,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "planning report: cell tower project (Trents Mill Road)",
+     "id": "1eeff7ca960b",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-07-14",
+     "topics": [
+      "wireless_telecom"
+     ],
+     "snippet": "acres owned by Johnnie Asal along the James River Arcola Towers TBD Trents Mill Road Cell Tower Residential Erosion and Sediment Control Permits issued: 10 Potential Code Amendments Erosion & Sediment Control*** Agricultural and",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_07142026-765",
+     "text_source": "pdf"
+    },
+    {
+     "n": 78,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public comment on data centers and the Dominion project",
+     "id": "6b2b3dab3bf4",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-08-11",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "She also mentioned her concern regarding data centers growing in other counties and her concern of the future of Cumberland. Dan Pempel spoke on his concerns regarding the Dominion project and questioned why there are no public",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_08112026-772",
+     "text_source": "pdf"
+    },
+    {
+     "n": 79,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "PC agenda: solar update",
+     "id": "83f5b663408e",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-10",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "a. Potential Code Amendments b. Solar Update c. BOOMS Study Visioning Tour – September 10, 2026 (pg. 1-3) Discussion 9. New",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_08102026-771",
+     "text_source": "pdf"
+    },
+    {
+     "n": 80,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "combined-cycle power station project (siting)",
+     "id": "89d1190ef58b",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-07-14",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "located in the County upon which the Company proposes to construct and operate a combined cycle power station (the \"Project\"). An important factor in the Company's decision to locate the Project in the County was the potential for the",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_07142026-765",
+     "text_source": "pdf"
+    },
+    {
+     "n": 81,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "E&S permits: 3 MW AC solar projects",
+     "id": "95a2ef0c81eb",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-10",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "Erosion and Sediment Control Permits Open Summit Ridge Energy Behind 1671 3MW AC Solar Project (SRE)/DunnCumberland Road – TBD Cumberland Road Summit Ridge Energy Behind 1650 Site 1 – 3MW AC Solar Project (SRE)/Rowlette (Site 1 Cumberland",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_08102026-771",
+     "text_source": "pdf"
+    },
+    {
+     "n": 82,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "blank application-form questions ('telecommunication tower?', 'zoning amendment proposed?')",
+     "id": "df2c3c530ed7",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-07-14",
+     "topics": [
+      "wireless_telecom",
+      "zoning_amendment"
+     ],
+     "snippet": "site plan attached to this application? Is this a proposal for a shopping center or telecommunication tower? If so, additional information and conditions may apply. Is an amendment to the subdivision or zoning ordinance proposed as part of",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_07142026-765",
+     "text_source": "pdf"
+    },
+    {
+     "n": 83,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "pending CUPs and rezonings",
+     "id": "f1402bdafa20",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-08-11",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Pending Zoning Questions and Requests CUP's and Rezoning Requests CUP 25-04 Camp Parsons CUP 26-02 Firefly Point Event Facility REZ 24-02 Cumberland Industrial Park M-1 to M-2 REZ 26-01 Dover Johnston – R-3 to A-2 REZ 26-02 Daniel Layman –",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_08112026-772",
+     "text_source": "pdf"
+    },
+    {
+     "n": 84,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "SUP for a public utility service yard; 'transmission line' only describes the use",
+     "id": "2ace52d48ed1",
+     "state": "VA",
+     "town": "Greensville County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-14",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "vehicles and materials related to the maintenance, construction, and repair of a utility transmission line, substation service line and other such facilities. Mr. Pope stated that after reviewing the Zoning Ordinance and the Comprehensive",
+     "source_url": "https://www.greensvillecountyva.gov/PC Agenda 7-14-2026.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 85,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "SUP conditions for a telecommunications tower (OCR)",
+     "id": "7bab111bd351",
+     "state": "VA",
+     "town": "Greensville County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-11",
+     "topics": [
+      "wireless_telecom"
+     ],
+     "snippet": "set forth in Article 19 of the Greensville County Zoning Ordinance. 4. Should the telecommunications tower subject of this request become completely inoperable for a period of time, meeting or exceeding twenty-four (24) months, such tower",
+     "source_url": "https://www.greensvillecountyva.gov/Planning Commission Agenda - 08112026.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 86,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "zoning amendment: family lot",
+     "id": "2632e072bf0f",
+     "state": "VA",
+     "town": "Hanover County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-07-22",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "as Suburban Neighborhood Residential (1.5 to 3 dwelling units per acre). The proposed zoning amendment would permit the creation of one (1) additional building lot for a family member. (PUBLIC HEARING) Magisterial District: Cold Harbor",
+     "source_url": "https://hanovercova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5702,plainText=false)",
+     "text_source": "pdf"
+    },
+    {
+     "n": 87,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "proposed zoning amendment to allow data centers",
+     "id": "c142a5fdb5f3",
+     "state": "VA",
+     "town": "Hanover County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-20",
+     "topics": [
+      "data_center",
+      "zoning_amendment"
+     ],
+     "snippet": "The proposed zoning amendment would allow data centers and accessory uses. (PUBLIC HEARING) Magisterial District: Beaverdam Hanover County Planning Commission Public Hearing Rules The purpose of public hearings is to allow the public an",
+     "source_url": "https://hanovercova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5745,plainText=false)",
+     "text_source": "pdf"
+    },
+    {
+     "n": 88,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "Blunts Bridge Solar CUP",
+     "id": "d8c2bbe32af9",
+     "state": "VA",
+     "town": "Hanover County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-08-26",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "Blunts Bridge Solar, L.L.C./Hexagon Energy, L.L.C. 1. Request a Conditional Use Permit in accordance with Section 26-20.38 of the Hanover County Zoning Ordinance to permit a principal small scale solar energy facility on GPIN",
+     "source_url": "https://hanovercova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5773,plainText=false)",
+     "text_source": "pdf"
+    },
+    {
+     "n": 89,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "zoning amendment: conceptual plan and access",
+     "id": "fc6b6176d9c0",
+     "state": "VA",
+     "town": "Hanover County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-16",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "is designated on the General Land Use Plan Map as Rural/Agricultural. The proposed zoning amendment would allow for the amendment of the approved conceptual plan and access location on Ashland Road. (PUBLIC HEARING) Magisterial District",
+     "source_url": "https://hanovercova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5678,plainText=false)",
+     "text_source": "pdf"
+    },
+    {
+     "n": 90,
+     "verdict": "FP",
+     "tags_ok": false,
+     "reason": "parks plan: data-center proffers as a funding source (passing mention)",
+     "id": "247d39fa8d2d",
+     "state": "VA",
+     "town": "King George County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-11",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Proffers made by both data center and residential developers over the past five years have the potential to provide the foundation for funding. Using proffer funding as matching 13 Construction of Cedell Brooks, Jr. Park funds when",
+     "source_url": "https://www.king-george.va.us/AgendaCenter/ViewFile/Agenda/_08112026-1530",
+     "text_source": "pdf"
+    },
+    {
+     "n": 91,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "pending: Daisy Lane Solar special exception",
+     "id": "ebe3ed26de5a",
+     "state": "VA",
+     "town": "King George County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-11",
+     "topics": [
+      "solar",
+      "clean_energy_siting",
+      "zoning_amendment"
+     ],
+     "snippet": "July 2023 493 24.65 July 2024 371 18.55 July 2025 348 16.01 July 2026 425 19.97 Current Rezoning Requests & Special Exceptions Applications: Davis Hill Development/Daisy Lane Solar, Tax Map 15, Parcel 16. Application is for a Special",
+     "source_url": "https://www.king-george.va.us/AgendaCenter/ViewFile/Agenda/_08112026-1530",
+     "text_source": "pdf"
+    },
+    {
+     "n": 92,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public hearing: Oral Oaks Solar CUP and siting agreement modifications",
+     "id": "30ff7e7a5c73",
+     "state": "VA",
+     "town": "Lunenburg County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-08-13",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "for safety at the Complex. Community/Economic Development/Planning – - Oral Oaks Solar, LLC's requested modifications to their CUP and Siting Agreement is on the agenda for public hearing. - VA's Heartland Regional Industrial Facility",
+     "source_url": "https://lunenburgva.gov/August 13, 2026 Board Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 93,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "administrator calendar: Strata / Vega Solar meeting, PC BESS presentation",
+     "id": "36216149a0ee",
+     "state": "VA",
+     "town": "Lunenburg County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-07-09",
+     "topics": [
+      "battery_storage",
+      "solar"
+     ],
+     "snippet": "June 1 – Social Services Director Check-in June 2 – Strata Solar preliminary meeting – Vega Solar June 3 – Pipeline safety training June 4 – BOS Public Hearing 6pm June 4 – Planning Commission – Battery Energy Storage presentation 7pm June",
+     "source_url": "https://lunenburgva.gov/July 9, 2026 Board Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 94,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "ZOA-07-26-02 cottage food sales",
+     "id": "86befad8fc81",
+     "state": "VA",
+     "town": "Madison County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-22",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "The proposed ordinance is ready for review by the Planning Commission. - (Case No. ZOA-07-26-02) Cottage Food Sales (First Workshop) At the July 1, 2026 joint meeting of the Planning Commission and Board of Supervisors, public comment was",
+     "source_url": "https://www.madisonco.virginia.gov/AgendaCenter/ViewFile/Agenda/_07222026-455",
+     "text_source": "pdf"
+    },
+    {
+     "n": 95,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "board directs PC to review an ordinance amendment (cottage bakery)",
+     "id": "b21a8158e046",
+     "state": "VA",
+     "town": "Madison County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-07-28",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "NEW BUSINESS (E) Directing the Planning Commission to review a potential ordinance amendment regarding cottage bakery INFORMATION/CORRESPONDENCE (F) Discussion of the County's 250th Anniversary celebration (G) Announcement of a Special",
+     "source_url": "https://www.madisonco.virginia.gov/AgendaCenter/ViewFile/Agenda/_07282026-456",
+     "text_source": "pdf"
+    },
+    {
+     "n": 96,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "ZOA-05-26-02 site plan ordinance amendment",
+     "id": "d04967b5f8c0",
+     "state": "VA",
+     "town": "Madison County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-07-01",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "signs, particularly on County-owned property. Upcoming PC Workshop Items - (Case No. ZOA-05-26-02) Site Plan Ordinance Amendment (September Public Hearing) Staff has proposed an amendment to the Madison County Code of Ordinances, Appendix",
+     "source_url": "https://www.madisonco.virginia.gov/AgendaCenter/ViewFile/Agenda/_07012026-449",
+     "text_source": "pdf"
+    },
+    {
+     "n": 97,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "economic development report: call with Cenergy Solar/Battery",
+     "id": "c71c9feec21a",
+     "state": "VA",
+     "town": "Mecklenburg County",
+     "board": "Board of Supervisors Monthly Meetings",
+     "meeting_date": "2026-07-13",
+     "topics": [
+      "battery_storage",
+      "solar"
+     ],
+     "snippet": "Participated in a call with Cenergy Solar/Battery along with Josh and Lucky - Followed up with Towns on video input - Began reading the Business Plan for a potential prospect - Reached out to videographer with changes to our marketing",
+     "source_url": "https://www.mecklenburgva.com/AgendaCenter/ViewFile/Agenda/_07132026-232",
+     "text_source": "pdf"
+    },
+    {
+     "n": 98,
+     "verdict": "TP",
+     "tags_ok": false,
+     "reason": "agenda: rezoning hearings (CES tag from a guest-house special exception is wrong)",
+     "id": "e5fb865ff28c",
+     "state": "VA",
+     "town": "Nottoway County",
+     "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+     "meeting_date": "2026-07-16",
+     "topics": [
+      "clean_energy_siting",
+      "zoning_amendment"
+     ],
+     "snippet": "of Agenda C. Approval of Minutes D. Delegations from the Public E. Public Hearings 1. Rezoning – Rhonda and Fred Ware 2. Special Exception – Guest House/Home Business, Rhonda and Fred Ware 3. Rezoning – Shirley N. Fowlkes Family, LLC 4.",
+     "source_url": "https://nottoway.org/Agenda BoS July 16, 2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 99,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "resolution initiating ZTA 26-02",
+     "id": "9a7d375caee9",
+     "state": "VA",
+     "town": "Orange County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-08-25",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Resolution to Initiate Planning Commission Action on ZTA 26-02 (Amendments to Agricultural Zoning District): Chairman Nicol MATTERS FOR DISCUSSION OR CONSIDERATION DEPARTMENT DIRECTOR / CONSTITUTIONAL OFFICER REPORTS COUNTY ATTORNEY'S",
+     "source_url": "https://orangecova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1110,plainText=false)",
+     "text_source": "ocr"
+    },
+    {
+     "n": 100,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "rezoning to light industrial",
+     "id": "2d000c5171ce",
+     "state": "VA",
+     "town": "Powhatan County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-04",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "& Otterdale Venture LLC (District 1/Flat Rock) Request to rezone ± 10.5 acres on portions of Tax Maps 41-12B, 41-10, and 41-6F from Commerce Center (CC) and Agricultural-10 (A-10) to Commerce Center (CC) and Light Industrial (I-1). The",
+     "source_url": "https://www.powhatanva.gov/AgendaCenter/ViewFile/Agenda/_08042026-1466",
+     "text_source": "pdf"
+    },
+    {
+     "n": 101,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "rezoning resolution",
+     "id": "424bba5b8dd3",
+     "state": "VA",
+     "town": "Powhatan County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-07",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "of the Code of Virginia, 1950, as amended, enables a local governing body to adopt and amend zoning ordinances; and, WHEREAS, the Planning Commission advertised and held a public hearing on the proposed rezoning on July 5, 2023, and all of",
+     "source_url": "https://www.powhatanva.gov/AgendaCenter/ViewFile/Agenda/_07072026-1459",
+     "text_source": "pdf"
+    },
+    {
+     "n": 102,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "26-01-OA zoning ordinance amendment",
+     "id": "e2897401e2e5",
+     "state": "VA",
+     "town": "Powhatan County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-04",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Hughes AYE. Winall and Hatcher NAY. MOTION PASSED VOTE 3-2 e. 26-01-OA: Countywide Zoning Ordinance Amendment – Lot Area Calculation: An Ordinance amending Chapter 83 (Zoning Ordinance), Section 83-521 (Definitions) to revise the",
+     "source_url": "https://www.powhatanva.gov/AgendaCenter/ViewFile/Agenda/_08042026-1466",
+     "text_source": "pdf"
+    },
+    {
+     "n": 103,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "CUP 2026-02: 20 MWac solar with 8 MW / 32 MWh BESS",
+     "id": "05368adc31dd",
+     "state": "VA",
+     "town": "Southampton County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-09-10",
+     "topics": [
+      "battery_storage",
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "CUP 2026-02 Application by William Pham – Cenergy Power/BAP Power L.L.C. requesting a conditional use permit for construction and operation of a 20 MWac Utility-Scale Solar Facility with an 8MW/32 MWh Battery Energy Storage System in",
+     "source_url": "https://www.southamptoncounty.org/Planning Commission Agendas/2026/Sept 2026/Adjacent Properties Listing 08-06.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 104,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "CUP staff review: BESS area NFPA 855 (OCR)",
+     "id": "8a6f818d77b2",
+     "state": "VA",
+     "town": "Southampton County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-16",
+     "topics": [
+      "battery_storage",
+      "clean_energy_siting"
+     ],
+     "snippet": "wire to encompass the facility to comply with National Electric Code requirements. The Battery Energy Storage System area will comply with NEPA 855 design requirements. CONDITIONAL USE PERMIT Issues to be considered Sec, 18-512 of the",
+     "source_url": "https://www.southamptoncounty.org/Planning Commission Agendas/2026/July 2026/REVISED_Staff Report REZ-CUP 2026-02 White Solar Energy.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 105,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "solar plus storage interconnection waiver",
+     "id": "8d0e5867e56a",
+     "state": "VA",
+     "town": "Southampton County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-09-10",
+     "topics": [
+      "battery_storage",
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "due to underground faults, thereby ensuring a more efficient connection of the solar and battery storage to the grid. This waiver request applies only to on-site segments; the new interconnection circuit from Watkins Corner Substation is",
+     "source_url": "https://www.southamptoncounty.org/Planning Commission Agendas/2026/Sept 2026/White_CUP_Revisions_Summary_Packet_8.19.2026 (003).pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 106,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "White Solar Plus Storage project application",
+     "id": "8fb036e2d3c7",
+     "state": "VA",
+     "town": "Southampton County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-16",
+     "topics": [
+      "battery_storage",
+      "solar"
+     ],
+     "snippet": "The purpose of the application is to develop The White Solar Plus Solar Project described as a 20 MWac Utility-Scale Solar Facility with an 8MW/32 MWh Battery Energy Storage System in accordance with Section 18-622.A. of Southampton County",
+     "source_url": "https://www.southamptoncounty.org/Planning Commission Agendas/2026/July 2026/Public Hearing Notice-PC-July 16 2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 107,
+     "verdict": "TP",
+     "tags_ok": false,
+     "reason": "draft data center ordinance definitions (CES tag secondary)",
+     "id": "9a59729b5423",
+     "state": "VA",
+     "town": "Southampton County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-08",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "and accessory infrastructure to the extent required by this article, the approved conditional use permit, the approved decommissioning plan, or other applicable law. 28 29 30 31 Disturbance zone means the area of land within the site or",
+     "source_url": "https://www.southamptoncounty.org/Planning Commission Agendas/2026/October 2026/ARTICLE XXIV - Data Center ORDINANCE -Draft 10-2-2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 108,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "zoning map amendment and CUP application: White Solar Plus Storage",
+     "id": "a12c14529a24",
+     "state": "VA",
+     "town": "Southampton County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-09-10",
+     "topics": [
+      "solar",
+      "clean_energy_siting",
+      "zoning_amendment"
+     ],
+     "snippet": "Aliso Viejo Parkway, Suite 100, Aliso Viejo, CA 92656 18 of 34 ​ Page 21 of 318 317 Zoning Map Amendment & Conditional Use Permit Application White Solar Plus Storage Project BAP Power LLC, dba Cenergy Power X. SEC. 18-631.A. ADDITIONAL",
+     "source_url": "https://www.southamptoncounty.org/Planning Commission Agendas/2026/Sept 2026/White_CUP_Revisions_Summary_Packet_8.19.2026 (003).pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 109,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "solar application narrative: wetlands (OCR)",
+     "id": "c35c1e4c251f",
+     "state": "VA",
+     "town": "Southampton County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-07-16",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "Noise: Safety: There are minimal wetlands on the property within the construction area. Solar Panel installation will occur to avoid impacts to the environmentally sensitive area. Stormwater Management/Erosion and Sediment Control measures",
+     "source_url": "https://www.southamptoncounty.org/Planning Commission Agendas/2026/July 2026/REVISED_Staff Report REZ-CUP 2026-02 White Solar Energy.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 110,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "draft data center regulations",
+     "id": "f41816065e8c",
+     "state": "VA",
+     "town": "Southampton County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-08-20",
+     "topics": [
+      "data_center",
+      "zoning_amendment"
+     ],
+     "snippet": "2 3 4 The data center regulations shall apply to all properties seeking a zoning map amendment or conditional use permit to construct a data center in the unincorporated portions of Southampton County. 5 6 Sec. 18-840.C.- District",
+     "source_url": "https://www.southamptoncounty.org/Planning Commission Agendas/2026/August 2026/ARTICLE XXIV - Data Center ORDINANCE -Draft 8-17-2026.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 111,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "utility-scale solar CUP with proffers (OCR)",
+     "id": "fad41a03c5a3",
+     "state": "VA",
+     "town": "Southampton County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-09-10",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "Utility Scale Solar Ordinance and seek Conditional Use Permit in accordance with 18-282(a)(15.1) of Southampton County Zoning Ordinance. The applicant has voluntarily offered proffers associated with proposal, therefore, it is considered a",
+     "source_url": "https://www.southamptoncounty.org/Planning Commission Agendas/2026/Sept 2026/PC Staff Report REZ-CUP 2026-03 Matthew Roberts.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 112,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "agenda: data center development report",
+     "id": "a30d397257b3",
+     "state": "VA",
+     "town": "Spotsylvania County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-08-11",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Virginia Presentations Reports by Others 1. Residential Refuse Center Updates 2. Data Center Development 3. 2026 Bond Referendum Public Outreach Plan 4. State Bonus Information Board Reports County Administrator / County Attorney Report 1.",
+     "source_url": "https://spotsylvaniacova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2773,plainText=false)",
+     "text_source": "pdf"
+    },
+    {
+     "n": 113,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "public hearing: Blackwater Solar siting agreement",
+     "id": "6425cd31133c",
+     "state": "VA",
+     "town": "Sussex County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-07-16",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "Action, if any Siting Agreement for Consideration - Blackwater Solar, LLC A. Open Public Hearing 1. Public Comments 2. Board Comments B. Close Public Hearing C. Action, if any 5. 5.01 5.02 Appointments Appointment to the Planning",
+     "source_url": "https://sussexcountyva.gov/wp-content/uploads/2026/07/7-16-2026-Board-Packet.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 114,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "solar ordinance amendments for new state law (OCR)",
+     "id": "70acf18381a4",
+     "state": "VA",
+     "town": "Sussex County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-06-30",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "Collectively, these laws establish a more uniform regulatory framework for solar energy projects and limit certain aspects of local discretion in the review and approval process. As a result, amendments to the County's solar ordinance will",
+     "source_url": "https://sussexcountyva.gov/wp-content/uploads/2026/06/Zoning-Text-Amendment-2026-03.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 115,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "accessory BESS amendments memo (OCR)",
+     "id": "ae3e0513f5cf",
+     "state": "VA",
+     "town": "Sussex County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-06-30",
+     "topics": [
+      "battery_storage"
+     ],
+     "snippet": "Development Linds Edwards, ENV SP, Planner Il Date: June 23, 2026 Subject: Accessory Battery Energy Storage Facilities Amendments Overview The Virginia General Assembly recently enacted legislation defining the role and authority of local",
+     "source_url": "https://sussexcountyva.gov/wp-content/uploads/2026/06/Zoning-Text-Amendment-2026-03.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 116,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "accessory BESS on approved solar parcels (OCR)",
+     "id": "fc857a12e96f",
+     "state": "VA",
+     "town": "Sussex County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-06-30",
+     "topics": [
+      "battery_storage",
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "storage systems are deemed a permitted accessory use in any zoning district where a solar facility has already received special exception approval, provided the system is located on the same parcel. As a result, these facilities do not",
+     "source_url": "https://sussexcountyva.gov/wp-content/uploads/2026/06/Zoning-Text-Amendment-2026-03.pdf",
+     "text_source": "ocr"
+    },
+    {
+     "n": 117,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "zoning map amendment ZMA 2026-02",
+     "id": "9246433bf0f8",
+     "state": "VA",
+     "town": "Town of Warrenton",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-08-11",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Kevin Ash, is seeking a Zoning Map Amendment (ZMA) of 10 Hotel Street (ZMA 2026- 02) from Public-Semi-Public (PSP) to Central Business District (CBD) zoning per Article 11-3.9 of the Zoning Ordinance. The proposal includes redevelopment of",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Agenda-c809b625c7de47a989a67cd61a59258e.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 118,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "SUP for a substation expansion in R-10",
+     "id": "a4f60e05cf14",
+     "state": "VA",
+     "town": "Town of Warrenton",
+     "board": "Planning Board",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "Zoning Ordinance (ZO) allows for substations within R-10 with the approval of a Special Use Permit by Town Council. 4. SUP 26-3: PlayVerse LLC - The Applicant is requesting approval of a Special Use Permit (SUP) to allow for an active",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Agenda-e569ea84751c4c8db428f602831bfb93.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 119,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "zoning map amendment justification",
+     "id": "c5f3ecac04f2",
+     "state": "VA",
+     "town": "Town of Warrenton",
+     "board": "Planning Board",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Statement of Justiﬁcation for Zoning Map Amendment 18 Court Street, Warrenton, Virginia 20186 This application requests a zoning map amendment for the property located at 18 Court Street in Warrenton, Virginia, to change the current zoning",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Packet-e569ea84751c4c8db428f602831bfb93.pdf",
+     "text_source": "pdf"
+    },
+    {
+     "n": 120,
+     "verdict": "TP",
+     "tags_ok": true,
+     "reason": "zoning map amendments ZMA 2026-01/02",
+     "id": "dd09dba3f82d",
+     "state": "VA",
+     "town": "Town of Warrenton",
+     "board": "Planning Board",
+     "meeting_date": "2026-07-21",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Kevin Ash, is seeking a Zoning Map Amendment (ZMA) of two parcels, 18 Court Street (ZMA 2026-01) and 10 Hotel Street (ZMA 2026-02) from Public-Semi-Public (PSP) to Central Business District (CBD) zoning per Article 11-3.9 of the Zoning",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Agenda-e569ea84751c4c8db428f602831bfb93.pdf",
+     "text_source": "pdf"
+    }
+   ]
   }
  ]
 }

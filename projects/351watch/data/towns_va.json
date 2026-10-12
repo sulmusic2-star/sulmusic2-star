@@ -1,6 +1,6 @@
 {
  "_about": "351 Watch Virginia test (2026-10): 37 Southside and Piedmont counties (Board of Supervisors, Planning Commission, BZA) plus key towns (energy_siting_hotspots.md areas 2 and 9). Same row shape as towns_ma_all.json plus state, kind, selection_group / selection_reason / selection_source. Built by `python3 experiments/mi_va_test.py discover --state VA`.",
- "generated": "2026-10-12T15:10:25+00:00",
+ "generated": "2026-10-12T20:57:44+00:00",
  "state": "VA",
  "gated": true,
  "gate_note": "Test state: not part of the production daily run. Crawled only by `python3 -m watch351.daily --states MI,VA --output-dir ../data/test --hits-name hits_mi_va.json`.",
@@ -16,7 +16,7 @@
  },
  "evidence_rule": "a board is automated only if its listing shows >=1 agenda/packet/notice dated within [today-120d, today+120d] and the first such document is fetchable under robots.txt",
  "count": 37,
- "automated": 30,
+ "automated": 31,
  "towns": [
   {
    "town": "Pittsylvania County",
@@ -610,6 +610,12 @@
      "url": "https://www.co.prince-edward.va.us/Government/Board-of-Supervisors/Board-Meeting-Agendas-and-Meeting-Minutes",
      "platform": "agenda_page",
      "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "platform": "agenda_page",
+     "url": "https://www.co.prince-edward.va.us/Departments/Community-Development/Planning-Zoning/Planning-Commission-Meetings"
     }
    ],
    "boards_tracked": [
@@ -658,7 +664,9 @@
    "robots_blocked": [],
    "notes": [],
    "pages_fetched": 15,
-   "discovered_at": "2026-10-12T15:08:23+00:00"
+   "discovered_at": "2026-10-12T20:54:04+00:00",
+   "curation_note": "Planning Commission packets page, added by hand",
+   "curated": true
   },
   {
    "town": "Appomattox County",
@@ -1170,6 +1178,12 @@
      "url": "https://www.southamptoncounty.org/departments/board_of_supervisors/bos_agendas_2026.php",
      "platform": "agenda_page",
      "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "platform": "agenda_page",
+     "url": "https://www.southamptoncounty.org/departments/planning/year_{year}.php"
     }
    ],
    "boards_tracked": [
@@ -1236,7 +1250,9 @@
    "robots_blocked": [],
    "notes": [],
    "pages_fetched": 32,
-   "discovered_at": "2026-10-12T15:08:49+00:00"
+   "discovered_at": "2026-10-12T20:54:10+00:00",
+   "curation_note": "Planning Commission meeting pages (year_{year}.php), added by hand",
+   "curated": true
   },
   {
    "town": "Dinwiddie County",
@@ -2609,9 +2625,15 @@
    "selection_group": "piedmont",
    "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9)",
    "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.fluvanna.gov/",
+   "cms": [
+    "municode_web",
+    "drupal"
+   ],
+   "platform": null,
    "status": "not_automated",
-   "reason_code": "crawl_delay_exceeds_cap",
-   "reason": "robots.txt asks for a Crawl-delay above the 10 s cap (15.0s too long for prototype); host skipped",
+   "reason_code": "documents_blocked",
+   "reason": "documents on www.fluvannacounty.org need a crawl delay above the 10 s document cap",
    "automated": false,
    "listings": [],
    "boards_tracked": [
@@ -2626,12 +2648,50 @@
     "zoning_board_of_appeals"
    ],
    "board_evidence": {},
-   "board_stale": {},
+   "board_stale": {
+    "select_board": {
+     "board": "Agenda Submittal Information",
+     "source": "agenda_page",
+     "url": "https://www.fluvanna.gov/bos/page/board-supervisors-agenda-submittal-information",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "planning_board": {
+     "board": "Planning & Zoning",
+     "source": "agenda_page",
+     "url": "https://www.fluvanna.gov/planning",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Details/Audio",
+     "source": "agenda_page",
+     "url": "https://www.fluvanna.gov/bc-bza/page/board-zoning-appeals-september-15-2026-meeting",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
    "vendors": {},
    "robots_blocked": [],
-   "notes": [],
-   "pages_fetched": 0,
-   "discovered_at": "2026-10-12T15:09:10+00:00"
+   "notes": [
+    "DOCS documents on www.fluvannacounty.org need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvannacounty.org need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvannacounty.org need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap"
+   ],
+   "pages_fetched": 34,
+   "discovered_at": "2026-10-12T20:57:44+00:00"
   },
   {
    "town": "King George County",
@@ -2869,41 +2929,105 @@
    "cms": [
     "civicplus"
    ],
-   "platform": "municode_meetings",
-   "status": "not_automated",
-   "reason_code": "crawl_delay_exceeds_cap",
-   "reason": "agendas on municode_meetings: robots.txt on warrenton-va.municodemeetings.com asks for a crawl delay above the 10 s cap (15.0s too long for p)",
-   "automated": false,
-   "listings": [],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://warrenton-va.municodemeetings.com/",
+     "platform": "agenda_page",
+     "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "vendor": "municode_meetings"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://warrenton-va.municodemeetings.com/",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+commission|\\bPC\\b",
+     "board_exclude": "planning\\s+district|regional|emergency\\s+planning|committee|\\bPDC\\b|board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "vendor": "municode_meetings"
+    }
+   ],
    "boards_tracked": [
     "select_board",
     "planning_board",
     "zoning_board_of_appeals"
    ],
-   "boards_found": [],
-   "boards_missing": [
-    "select_board",
+   "boards_found": [
     "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
     "zoning_board_of_appeals"
    ],
-   "board_evidence": {},
-   "board_stale": {
-    "select_board": {
-     "board": "Town Council",
-     "source": "agenda_page",
-     "url": "https://www.warrentonva.gov/286/Town-Council",
-     "n_recent": 0,
-     "latest": null,
-     "note": "board page found, no dated agendas in window"
-    },
+   "board_evidence": {
     "planning_board": {
-     "board": "Planning Commission",
+     "board": "Planning Board",
      "source": "agenda_page",
-     "url": "https://www.warrentonva.gov/303/Planning-Commission",
-     "n_recent": 0,
-     "latest": null,
-     "note": "board page found, no dated agendas in window"
+     "url": "https://warrenton-va.municodemeetings.com/",
+     "n_recent": 6,
+     "latest": "2026-08-18",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-08-18",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Agenda-2867e7419c154f4baec27a819830f359.pdf",
+       "title": "PDF Agenda for Planning Commission Regular Meeting - 08/18/2026 - 7:00pm"
+      },
+      {
+       "date": "2026-08-18",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Packet-2867e7419c154f4baec27a819830f359.pdf",
+       "title": "PDF Agenda Packet for Planning Commission Regular Meeting - 08/18/2026 - 7:00pm"
+      },
+      {
+       "date": "2026-07-21",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Agenda-e569ea84751c4c8db428f602831bfb93.pdf",
+       "title": "PDF Agenda for Planning Commission Regular Meeting - 07/21/2026 - 7:00pm"
+      }
+     ]
     },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://warrenton-va.municodemeetings.com/",
+     "n_recent": 10,
+     "latest": "2026-10-13",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-13",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Agenda-8440fd5a85d641a798587f4cdae0d3c6.pdf",
+       "title": "PDF Agenda for Town Council Regular Meeting - 10/13/2026 - 9:00am"
+      },
+      {
+       "date": "2026-10-13",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Packet-8440fd5a85d641a798587f4cdae0d3c6.pdf",
+       "title": "PDF Agenda Packet for Town Council Regular Meeting - 10/13/2026 - 9:00am"
+      },
+      {
+       "date": "2026-09-08",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Agenda-bcc38a552688441db32f628328799daa.pdf",
+       "title": "PDF Agenda for Town Council Regular Meeting - 09/08/2026 - 9:00am"
+      }
+     ]
+    }
+   },
+   "board_stale": {
     "zoning_board_of_appeals": {
      "board": "Board of Zoning Appeals",
      "source": "agenda_page",
@@ -2918,14 +3042,13 @@
      "urls": [
       "https://warrenton-va.municodemeetings.com/"
      ],
-     "status": "crawl_delay_over_cap",
-     "detail": "robots.txt on warrenton-va.municodemeetings.com asks for a crawl delay above the 10 s cap (15.0s too long for p)"
+     "status": "open"
     }
    },
    "robots_blocked": [],
    "notes": [],
-   "pages_fetched": 34,
-   "discovered_at": "2026-10-12T15:10:20+00:00"
+   "pages_fetched": 37,
+   "discovered_at": "2026-10-12T20:54:13+00:00"
   },
   {
    "town": "Town of Farmville",

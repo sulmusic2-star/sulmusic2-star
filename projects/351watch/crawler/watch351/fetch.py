@@ -7,7 +7,8 @@ the politeness rules live in exactly one place:
 * obeys robots.txt (RFC 9309 semantics: 4xx on robots.txt = allow all,
   5xx / network failure = disallow the host for this run)
 * waits at least `min_interval` seconds between requests to the same host
-  (or the robots.txt Crawl-delay, whichever is larger)
+  (or the robots.txt Crawl-delay, whichever is larger); a host asking for more than
+  CRAWL_DELAY_CAP (10 s) is skipped, or LISTING_CRAWL_DELAY_CAP (20 s) for listing pages
 * caches every response body under crawler/.cache/ so re-runs are cheap
 * never logs in, never sends cookies it was not given, never retries a
   403/429 aggressively
@@ -41,6 +42,12 @@ DEFAULT_CACHE_DIR = Path(__file__).resolve().parent.parent / ".cache"
 # Hosts that rate-limit below our default 1 request/second (seconds between requests).
 HOST_MIN_INTERVAL = {"opengov.sos.ri.gov": 2.5}
 MAX_BYTES = 40 * 1024 * 1024  # skip anything bigger than 40 MB
+# Longest robots.txt Crawl-delay we honour (seconds). A host asking for more is skipped.
+# Listing pages (a few requests per host per day) may wait up to 20 s; documents and
+# everything else keep the 10 s cap.
+CRAWL_DELAY_CAP = 10.0
+LISTING_CRAWL_DELAY_CAP = 20.0
+LISTING_PURPOSES = frozenset({"listing"})
 
 
 @dataclass
@@ -213,7 +220,7 @@ class PoliteFetcher:
 
     def allowed(self, url: str) -> bool:
         rp = self._robots_for(url)
-        return rp is not None and rp.can_fetch(ROBOTS_AGENT, url)
+        return rp is not None and all(rp.can_fetch(a, url) for a in (ROBOTS_AGENT, *FORMER_ROBOTS_AGENTS))
 
     # --------------------------------------------------------------- throttle
     def _throttle(self, host: str, interval: float) -> None:
@@ -277,9 +284,11 @@ class PoliteFetcher:
         delay = max(delays) if delays else None
         interval = max(self.min_interval, HOST_MIN_INTERVAL.get(urlsplit(url).netloc, 0.0),
                        float(delay) if delay else 0.0)
-        # Cap absurd crawl-delays so one host cannot stall the whole run;
-        # if a site asks for more than 10s we skip it instead of hammering.
-        if interval > 10:
+        # Cap absurd crawl-delays so one host cannot stall the whole run; if a site asks
+        # for more than the cap we skip it instead of hammering. Listing pages (purpose
+        # "listing") may wait longer than documents.
+        cap = LISTING_CRAWL_DELAY_CAP if getattr(self._ctx, "kind", None) in LISTING_PURPOSES else CRAWL_DELAY_CAP
+        if interval > cap:
             raise RobotsDisallowed(f"{url} (crawl-delay {interval}s too long for prototype)")
         return interval
 

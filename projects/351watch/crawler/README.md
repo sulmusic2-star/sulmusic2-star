@@ -53,7 +53,7 @@ A full crawl of the 30 towns takes a few minutes on a cold cache. Most of that i
 ## Politeness rules (all in `fetch.py`)
 
 - User-Agent: `351WatchBot/0.1 (+contact: hello@351watch.example)`. The contact is a placeholder; swap in a real address before any wider run.
-- `robots.txt` is obeyed for every host, including hosts reached by redirect. A 4xx on robots.txt means "allow". A 5xx or unreachable robots.txt means skip the host for this run. A `Crawl-delay` is honored, and a host asking for more than 10 s is skipped.
+- `robots.txt` is obeyed for every host, including hosts reached by redirect. A 4xx on robots.txt means "allow". A 5xx or unreachable robots.txt means skip the host for this run. A `Crawl-delay` is honored, and a host asking for more than 10 s is skipped (listing pages may wait up to 20 s; documents keep the 10 s cap).
 - At most 1 request per second per host, enforced with a per-host lock, so parallel town workers cannot exceed it.
 - Timeouts are 10 s to connect and 45 s to read. Connection errors get up to 2 retries with backoff. HTTP errors are never retried.
 - Downloads are capped at 40 MB.

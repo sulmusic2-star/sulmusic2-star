@@ -67,7 +67,7 @@ VENDOR_RX = [
     ("heygov", r"https?://(?:[a-z0-9-]+\.)?heygov\.com/[^\s\"'<>]*meeting[^\s\"'<>]*"),
     ("laserfiche", r"https?://[^\s\"'<>]*/WebLink/[^\s\"'<>]*"),
 ]
-# Platforms whose robots.txt or firewall refuses 351WatchBot (coverage_feasibility.md Q3):
+# Platforms whose robots.txt or firewall refuses AgendaAheadBot (coverage_feasibility.md Q3):
 # never crawled, recorded as vendor_blocked with the platform name.
 CLOSED = {"granicus", "iqm2", "primegov", "boarddocs", "icompass_civicweb", "diligent_community", "destiny"}
 OPEN_READABLE = {"municode_meetings", "novusagenda", "agendasuite", "boardbook"}
@@ -353,6 +353,10 @@ def do_civicclerk(st: SiteState, tenant: str, found_by: str) -> bool:
     events = civicclerk_events(st, tenant)
     if events is None:
         return False
+    if (found_by == "tenant probe" and st.row.get("kind") == "township" and events
+            and not any("township" in json.dumps(ev).lower() for ev in events)):
+        st.notes.append(f"CivicClerk tenant {tenant} never says 'township': another body's portal, not used")
+        return False
     st.vendors.setdefault("civicclerk", {"urls": [f"https://{tenant}.portal.civicclerk.com"]})
     st.vendors["civicclerk"].update(tenant=tenant, found_by=found_by, status="supported")
     per: dict = {}
@@ -388,7 +392,8 @@ def civicclerk_guesses(row: dict, state: str) -> list[str]:
             return [f"{n}comi", f"{n}countymi"]
         if kind == "city":
             return [f"{n}mi", f"cityof{n}mi"]
-        return [f"{n}twpmi", f"{n}townshipmi", f"{n}mi"]
+        # not "<name>mi": that is the city's tenant pattern (portlandmi is the City of Portland)
+        return [f"{n}twpmi", f"{n}townshipmi", f"{n}chartertwpmi"]
     return []
 
 
@@ -451,7 +456,7 @@ def vendor_status(st: SiteState) -> None:
             allowed = False
         if not allowed:
             v["status"] = "vendor_blocked"
-            v["detail"] = f"robots.txt on {urlsplit(url).netloc} disallows 351WatchBot"
+            v["detail"] = f"robots.txt on {urlsplit(url).netloc} disallows AgendaAheadBot"
             continue
         if key in CLOSED or key in OPEN_READABLE or key in ("escribe", "heygov", "legistar"):
             try:
@@ -459,10 +464,10 @@ def vendor_status(st: SiteState) -> None:
             except RobotsDisallowed as e:
                 if "crawl-delay" in str(e):
                     v["status"] = "crawl_delay_over_cap"
-                    v["detail"] = (f"robots.txt on {urlsplit(url).netloc} asks for a crawl delay above the 10 s cap "
+                    v["detail"] = (f"robots.txt on {urlsplit(url).netloc} asks for a crawl delay above the 20 s listing cap "
                                    f"({str(e).rsplit('crawl-delay', 1)[-1].strip(' )')[:20]})")
                 else:
-                    v["status"], v["detail"] = "vendor_blocked", f"robots.txt on {urlsplit(url).netloc} disallows 351WatchBot"
+                    v["status"], v["detail"] = "vendor_blocked", f"robots.txt on {urlsplit(url).netloc} disallows AgendaAheadBot"
                 continue
             except FetchError as e:
                 v["status"], v["detail"] = "unreachable", str(e)[:120]
@@ -470,7 +475,7 @@ def vendor_status(st: SiteState) -> None:
             if is_challenge(r.status, r.text):
                 v["status"], v["detail"] = "vendor_blocked", f"{urlsplit(url).netloc} serves a bot challenge (HTTP {r.status})"
             elif r.status in (401, 403, 429):
-                v["status"], v["detail"] = "vendor_blocked", f"{urlsplit(url).netloc} answers HTTP {r.status} to 351WatchBot"
+                v["status"], v["detail"] = "vendor_blocked", f"{urlsplit(url).netloc} answers HTTP {r.status} to AgendaAheadBot"
             elif key in CLOSED:
                 v["status"], v["detail"] = "vendor_closed", f"{key} pages answer, but the platform is on the closed list"
             else:
@@ -535,13 +540,15 @@ def try_listing(st: SiteState, key: str, url: str, label: str, hub: bool, extra:
     blocked = None
     for d in docs[:2]:
         try:
-            r = st.fetcher.get(d.url)
+            with st.fetcher.purpose("document"):
+                r = st.fetcher.get(d.url)
             if r.ok:
                 blocked = None
                 break
             blocked = f"HTTP {r.status} {d.url}"
-        except RobotsDisallowed:
-            blocked = f"robots.txt disallows documents on {urlsplit(d.url).netloc}"
+        except RobotsDisallowed as e:
+            blocked = (f"documents on {urlsplit(d.url).netloc} need a crawl delay above the 10 s document cap"
+                       if "crawl-delay" in str(e) else f"robots.txt disallows documents on {urlsplit(d.url).netloc}")
         except FetchError as e:
             blocked = f"document fetch error: {str(e)[:80]}"
     if blocked:
@@ -648,13 +655,13 @@ def _fetch_home(st: SiteState, website: str) -> tuple[Response | None, tuple | N
             parts = urlsplit(v)
             origin = f"{parts.scheme}://{parts.netloc}"
             if "crawl-delay" in str(e):
-                err = ("crawl_delay_exceeds_cap", f"robots.txt asks for a Crawl-delay above the 10 s cap "
+                err = ("crawl_delay_exceeds_cap", f"robots.txt asks for a Crawl-delay above the 20 s listing cap "
                        f"({str(e)[-30:].strip('() ')}); host skipped")
             elif st.fetcher._robots.get(origin, "missing") is None:
                 err = ("unreachable", "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for "
                        "this run); host skipped")
             else:
-                err = ("robots_disallow", f"robots.txt on the site disallows 351WatchBot ({str(e)[:90]})")
+                err = ("robots_disallow", f"robots.txt on the site disallows AgendaAheadBot ({str(e)[:90]})")
             continue
         except FetchError as e:
             err = ("unreachable", f"homepage unreachable: {str(e)[:150]}")
@@ -673,7 +680,7 @@ def _fetch_home(st: SiteState, website: str) -> tuple[Response | None, tuple | N
         if resp.status in (401, 403, 429):
             akamai = re.search(r"edgesuite|AkamaiGHost|Reference\s*#\d", resp.text[:5000], re.I)
             who = "Akamai" if akamai else ("Cloudflare" if re.search(r"cloudflare", resp.text[:8000], re.I) else "the site's firewall")
-            err = ("waf_block", f"HTTP {resp.status} from {who} to 351WatchBot; not bypassed")
+            err = ("waf_block", f"HTTP {resp.status} from {who} to AgendaAheadBot; not bypassed")
             continue
         err = ("http_error", f"homepage HTTP {resp.status}")
     return None, err
@@ -681,7 +688,15 @@ def _fetch_home(st: SiteState, website: str) -> tuple[Response | None, tuple | N
 
 def discover_place(fetcher: PoliteFetcher, row: dict, state: str, tracked: list[str],
                    today: date | None = None) -> dict:
-    """Discovery record for one place, in the towns_*.json row shape."""
+    """Discovery record for one place, in the towns_*.json row shape. Pages are read as
+    listing pages (crawl-delay cap 20 s); the probe of a listed document uses the document
+    rules (cap 10 s), as the daily run does."""
+    with fetcher.purpose("listing"):
+        return _discover_place(fetcher, row, state, tracked, today)
+
+
+def _discover_place(fetcher: PoliteFetcher, row: dict, state: str, tracked: list[str],
+                    today: date | None = None) -> dict:
     today = today or date.today()
     st = SiteState(row=dict(row), state=state, fetcher=fetcher, today=today, tracked=tracked)
     rec = st.row

@@ -1,6 +1,6 @@
 # 351 Watch: Michigan and Virginia test
 
-- **Run date:** 2026-10-12.
+- **Run date:** 2026-10-12. The first test ran, then a fix round, then a re-test on the same day.
 - **Crawl window:** meetings from 2026-08-28 to 2027-02-09 (45 days back, 120 days ahead).
 - **Places:** 185, in two test areas:
   - Michigan: southern Michigan townships plus the Thumb.
@@ -8,7 +8,196 @@
 
 **Question.** Does the crawler work well enough in these two areas to expand into them?
 
-**Short answer:** Virginia yes, Michigan only partly. Precision is close to the bar but not over it in either state.
+**Short answer after the fix round:** Virginia passes every criterion. Michigan still fails two:
+
+- **Precision on a fresh sample:** 88.3% in Michigan, against a 90% bar.
+- **Township coverage:** 31.5% read directly, against a 35% bar.
+
+Both states stay gated and off in production.
+
+## Re-test after the fix round
+
+### Pass/fail
+
+| Criterion | Result | Verdict |
+|---|---|---|
+| Precision ≥90% in each state, out of sample | A fresh random sample of 60 hits per state, drawn before any further change, from documents never hand-checked before.<br>**MI 53/60 = 88.3%** (95% interval 78–94%)<br>**VA 56/60 = 93.3%** (84–97%)<br>Counting a hit right only if every topic tag is right: MI 83.3%, VA 90.0% | **MI FAIL, VA PASS** |
+| Crawl errors <5% of attempted places | 1 of 185 places unreachable (0.5%): Shiawassee Township's robots.txt timed out.<br>0 of 80 crawled places failed in any of 3 re-test runs.<br>Document-level: 19 of 382 documents (5.0%), of which 17 are packets over the 40 MB cap. | **PASS** |
+| VA ≥50% of target counties readable | 27/32 = **84.4%**<br>By body: 50 of 96 county boards = 52%, up from 49 | **PASS** |
+| MI ≥35% of target townships readable | Direct: **39/124 = 31.5%**, up from 37.<br>Via county items: target townships named in a county planning commission item this window add Leroy, so direct or via county items is 40/124 = 32.3%.<br>Over a 105-day window, county items also reach Putnam, which blocks us directly, plus Brighton and Tyrone.<br>Counting every township whose county planning commission we read (the MCL 125.3307 review route): 60/124 = 48.4%. | **FAIL** on direct and on direct-or-county-items<br>**PASS** only if the county review route counts |
+| Output validates against the contract | `current.validate` on `data/test/hits_mi_va.json`: 0 errors | **PASS** |
+| MA hit counts unchanged | Final matcher against `keywords.py` at af1e10d on all 3,105 cached MA, NY and RI documents: MA 1,063, NY 28, RI 109 hits; **0 documents differ** | **PASS** |
+
+### What the fix round changed
+
+**0. Merge.** `claude/massachusetts-market-service-ead9ho` at 210d7a1 is merged into this branch. Its changes are all kept:
+
+- Web Bot Auth signing (`botauth.py`, hooked into `fetch.py`);
+- the AgendaAheadBot rename, with robots.txt rules for 351WatchBot still obeyed;
+- full-text persistence (`fulltext.py`, the `daily.py` and `ops/daily.sh` hooks);
+- `data/archive`.
+
+The only conflict was in `OPERATIONS.md`, where both new sections were kept.
+
+One small fix rides along. `PoliteFetcher.allowed()`, which discovery uses, now checks the 351WatchBot rules too, as fetching already did. Test crawls write their full-text rows to `data/test/**/search/`, which is git-ignored.
+
+**1. Precision: sections before matching** (`keywords.py`; Michigan and Virginia only, so Massachusetts is unaffected).
+
+- **Page classes.** Each page (pdftotext and tesseract separate pages with a form feed) is classified and matched on its own:
+  - **agenda:** agenda markers, or a page right after an agenda page that still carries one;
+  - **minutes:** motion, seconded, roll call vote, "stated that", "discussed";
+  - **ordinance:** sections, definitions, "shall", whereas / be it resolved;
+  - **noise:** newsletter, invoice or ledger, permit or inspection log, assessor card, audit, case-law digest, resume, or use table;
+  - **attachment:** everything else.
+- **Rules by class.**
+  - Noise pages are skipped.
+  - On attachment pages a match needs action or regulatory words, or a project name, nearby. It must also not be one entry in a comma list of unrelated topics, as in an administrator's report.
+  - Agenda, minutes and ordinance pages are matched as before.
+  - Guards now look only within the page, so a newsletter on the next page no longer cancels a real agenda item.
+- **Gas-fired power plants** being sited map to `clean_energy_siting`. The pattern covers combined-cycle stations, gas-fired power plants, peaker plants and power-plant ordinances. Guards require siting words nearby and drop a utility's fleet descriptions. ARCHITECTURE requires site support before any new topic key.
+- **In sample** (the 350 hits judged in rounds 1–4, on which these rules were designed):
+
+  | | MI | VA |
+  |---|---|---|
+  | Precision | 98.0% | 95.3% |
+  | True positives kept | 97.3% | 94.7% |
+
+  These numbers overstate. The out-of-sample result in the pass/fail table is the one that counts.
+
+**2. Michigan coverage**
+
+- **County items split per township** (`attribution.split_items`). A county planning commission's item list ("a. 08-26-01, Fredonia Township: Zoning Text Amendment b. 08-26-02, Marshall Township: Zoning Map Amendment …") now gives one hit per named township. The county body stays as `board`.
+  - In this window the Calhoun County agendas give hits for Fredonia, Marshall, Leroy, Emmett (two items) and Marengo townships.
+  - Over the extended window, Livingston County's agendas add Brighton, Tyrone and Putnam rezonings and moratorium text amendments.
+  - A township mention is now mapped only to a township row. "Marshall Township" was being filed under the City of Marshall.
+- **Crawl-delay cap of 20 s for listing pages only** (`fetch.LISTING_CRAWL_DELAY_CAP`). This applies wherever the fetch purpose is "listing", including site discovery. Documents keep the 10 s cap: a listing that a slow host serves is used only when its documents live on another host, or on a host within 10 s. Of the 6 places blocked by crawl-delay:
+
+  | Place | Crawl-delay | Result |
+  |---|---|---|
+  | Hartland Township | 15 s | Readable |
+  | Hamburg Township (Municode Meetings) | 15 s | Readable |
+  | Town of Warrenton (Municode Meetings) | 15 s | Readable |
+  | Cato Township | 20 s | Still blocked: documents on the same host need more than 10 s |
+  | Fluvanna County | 15 s | Still blocked: documents on the same host need more than 10 s |
+  | Washtenaw County | 20 s | Homepage renders client-side; its CivicClerk portal has no planning commission |
+
+  This cap is a production change too: an MA, NY or RI listing host asking for 10–20 s would now be read rather than skipped. All configured production listings already worked under 10 s.
+- **A bug found and fixed.** Portland Township had been given the City of Portland's CivicClerk portal (`portlandmi`), whose files come back empty. Discovery no longer guesses `<name>mi` for a township, and it rejects a probed tenant whose events never say "township". Portland is now `no_recent_agendas`.
+- **Not posting.** Monroe, Lenawee and Eaton counties keep CivicClerk portals with no planning commission, and Washtenaw's has none either. Their planning commission agendas are not published openly.
+
+**3. Virginia Planning Commissions** in the 8 counties where only the Board of Supervisors was readable:
+
+| County | Finding |
+|---|---|
+| Southampton | **Now read.** The planning commission posts one page per meeting under a page per year (`year_{year}.php`): staff reports, CUP applications, a draft data center ordinance. Added by hand. The reader now also skips a `{year}` page that does not exist yet, instead of failing. |
+| Prince Edward | **Listing added.** The packets page sits under Community Development, which discovery's hub search did not reach. The latest packet is for August 18, just before the window. |
+| Amelia | Listing works; no meeting since July 27. |
+| Appomattox | Listing works (CivicClerk): the August 12 meeting falls before the window and September was cancelled. |
+| Lunenburg | Last posted planning commission agenda is from May 2025. |
+| Nottoway | Last posted is from March 2026. Planning commission minutes appear inside Board of Supervisors packets, which we read. |
+| Sussex | Last posted is from December 2024. |
+| Surry | No planning commission agendas on its CivicClerk portal or its AgendaCenter. |
+
+The last four do not publish current planning commission agendas openly.
+
+**4. Oversized packets** are skipped, not read in part. Each run report now lists them in `documents_too_large`, read from the index so they stay visible after the first attempt. There are 17 in this window, at Brighton, Delta, Hamburg, Hartland, Howell, Meridian, Pittsfield, Superior, Ypsilanti, Greensville and Halifax.
+
+### Precision re-test (round 5)
+
+**How the sample was drawn.**
+
+- An extended crawl read meetings from 2026-06-29, 105 days back, into `data/test/extended/`.
+- The sample came from hits in documents that were not in the rounds 1–4 index, excluding every hit judged before. That leaves 201 Michigan and 333 Virginia hits.
+- It is a seeded simple random sample (seed 2026) of 60 per state, drawn before any change. Every hit was equally likely; rounds 1–4 had sampled round-robin over towns.
+- Each hit was judged from about 1,500 characters of document context, under the same strict definition as before. The definition is in the precision section of the first test, below.
+- Judgments and one-line reasons are in `data/test/precision_judgments.json` (round 5). The worksheet is `data/test/extended/precision_worksheet_r5.json`.
+
+| | MI | VA |
+|---|---|---|
+| True positives / judged | 53 / 60 | 56 / 60 |
+| Precision | **88.3%** | **93.3%** |
+| All topic tags right | 50 / 60 = 83.3% | 54 / 60 = 90.0% |
+
+**False positives in round 5, the next fix list:**
+
+- **Michigan:**
+  - two fiber right-of-way permits ("telecommunications facilities"; Lightpath), where no fiber word sits near the term;
+  - a rezoning staff report's list of permitted uses;
+  - a utility's map legend of existing substations;
+  - a light-fixture spec sheet ("solar power battery available");
+  - a job description ("legal notices for rezoning, ordinance amendments");
+  - a hydro-operations note that ITC will rebuild an existing line. This note was also a false positive in round 2.
+- **Virginia:**
+  - a public comment where "data centers" is rhetorical;
+  - a blank application form's questions;
+  - a public-utility service yard SUP, where "transmission line" only describes the use;
+  - a parks plan naming data-center proffers as a funding source.
+
+**Recall of real items held.** The re-test still finds:
+
+- **Michigan:**
+  - the Huron County Pinesap Solar special approval;
+  - the Genoa, Gilford, Brighton, Bedford, Lake and Milan moratoria;
+  - the Marshall Solar special land use;
+  - the BWL 37-acre solar site plan in Delta Township.
+- **Virginia:**
+  - Southampton's White Solar Plus Storage CUP (20 MWac with 8 MW / 32 MWh of storage) and its draft data center ordinance;
+  - Cumberland's 3 GW gas plant CUP and 15.2-2232 finding, now under `clean_energy_siting`;
+  - Hanover's proposed zoning amendment to allow data centers;
+  - the Blunts Bridge Solar CUP;
+  - Sussex's Blackwater Solar siting agreement;
+  - the Warrenton substation-expansion SUP.
+
+### Re-test output and reliability
+
+| | Michigan | Virginia |
+|---|---|---|
+| Places crawled | 49 | 31 |
+| Documents indexed | 205 (191 read: PDF 148, OCR 23, HTML 15, DOCX 5) | 177 (172 read: PDF 154, OCR 17, DOCX 1) |
+| Hits | 219 in 30 places (48 for meetings ahead) | 252 in 26 places (62 for meetings ahead) |
+| By topic | data_center 96, zoning_amendment 87, moratorium 34, battery_storage 28, solar 17, clean_energy_siting 16, wireless_telecom 4 | zoning_amendment 114, solar 74, clean_energy_siting 51, data_center 33, battery_storage 30, wireless_telecom 17, moratorium 1 |
+
+| Run | What it was | Runtime | Requests | Bytes | Places ok |
+|---|---|---|---|---|---|
+| retest (first pass) | Index wiped and re-crawled with the fix-round code | 150 s | 143 (72 listing, 70 document) | 261 MB | 81/81 |
+| retest1 | The same, after the Portland fix, from the warm cache | 134 s | 72 | 3 MB | 80/80 |
+| retest2 | Immediately after: 380 of 382 already indexed, **0 new** | 77 s | 5 | 0.8 MB | 80/80 |
+| retest_cold | Empty fetch cache, index kept: a fresh container the next day | 86 s | 241 (82 robots.txt, 156 listing, 3 document) | 33 MB | 80/80 |
+| extended | Meetings from 2026-06-29, for the fresh precision sample | 312 s | 644 | 1.65 GB | 81/81 |
+
+- Network errors: 0 in every run.
+- The second run is incremental.
+- Hosts on the 15–20 s listing delay did not lengthen the daily pass noticeably: the cold run takes 86 s.
+
+**Freshness.** On first-publish sources, the median posting lead is:
+
+| Source | MI | VA |
+|---|---|---|
+| CivicPlus "Posted" stamps | 3.5 days | 4.2 days |
+| CivicClerk `publishOn` | 2.4 days | 4.5 days |
+
+About 19–20% of dated documents were for meetings still ahead on the crawl day.
+
+### What would fix what is left
+
+1. **Michigan precision**, the four repeat classes from round 5:
+   - fiber right-of-way agreements: require tower words for `wireless_telecom` in an attachment, not only the absence of fiber words;
+   - job descriptions and blank forms: add a noise genre;
+   - utility map legends and spec sheets: add a noise genre;
+   - utility rebuild notes in operations reports: treat "rebuild" of an existing line as no siting.
+
+   Then draw another fresh sample. The extended window still holds 141 unjudged Michigan hits from new documents, and the next month of meetings will add more.
+2. **Michigan coverage** is now limited by what townships publish, not by the crawler.
+   - The 72 townships with nothing usable online (21 no website, 30 minutes only or stale, 18 no agenda page, 2 domains gone, 1 JavaScript-only) need another source: statutory newspaper hearing notices (MCL 125.3103), or county planning commission review.
+   - The county route already reaches 48% of target townships structurally.
+   - Permission from Diligent (Hillsdale, Saginaw, Camden), BoardDocs (Jackson) and iCompass (Tuscola) would open 4 more county planning commissions. Those counties hold 33 target townships, 27 of which we cannot read directly today.
+3. **The bar itself.** Strict direct readability (31.5%) and county-reviewed coverage (48.4%) measure different things. A Michigan launch could promise township zoning amendments through the county route and full agendas only where a township posts them.
+
+## First test (before the fix round)
+
+The sections below describe the first test as it ran, with the first matcher. Its pass/fail table and short answer follow. Coverage, output, freshness and reliability numbers in these sections are from the first test.
+
+**Short answer (first test):** Virginia yes, Michigan only partly. Precision was close to the bar but not over it in either state.
 
 - **Virginia reads well.**
   - 27 of 32 target counties are readable (84%), and so are 3 of 5 towns.
@@ -40,7 +229,7 @@
   - Output goes only to `data/test/`.
   - Keyword matching on the 3,105 cached MA, NY and RI documents is identical before and after the change: 0 documents differ.
 
-## Pass/fail
+### Pass/fail (first test)
 
 | Criterion | Result | Verdict |
 |---|---|---|
@@ -405,13 +594,16 @@ Runs used 16 workers, with the per-host limit of 1 request per second. Every run
 
 `experiments/keyword_regression.py` matched every MA, NY and RI document in the production index whose body is in the fetch cache: 3,105 documents (PDF 2,211, OCR 732, HTML 146, DOCX 16). It read the cache offline and re-ran no OCR.
 
-- It compared `keywords.py` at af1e10d with the final matcher, called as production calls it.
+- It compared `keywords.py` at af1e10d with the matcher as it stands after the fix round, called as production calls it.
 - Hits: MA 1,063 → 1,063, NY 28 → 28, RI 109 → 109. **0 documents differ.** The result is in `data/test/keyword_regression.json`.
-- For information only: if the MI patterns and guards were ever switched on for Massachusetts, MA would drop to 920 hits. The guards are stricter than MA's rule that general bylaw amendments count.
+- For information only: if the MI patterns and guards were ever switched on for Massachusetts, MA would drop to 880 hits. The guards are stricter than MA's rule that general bylaw amendments count.
 
 `git status` shows no change to `data/hits_current.json`, `data/state/`, `site/` or `ops/`.
 
-## What would raise coverage most
+## What would raise coverage most (first test)
+
+Items 2, 6 and 7 below, and the per-township split in item 3, were done in the fix round. The current list is under "What would fix what is left" at the top.
+
 
 1. **Vendor permission, or vendor feeds, for closed platforms.** Diligent Community covers Hillsdale County, Saginaw County and Camden Township. BoardDocs covers Jackson County and the Town of Culpeper. iCompass/CivicWeb covers Tuscola County. iQM2 covers the City of Monroe.
    - That is 7 places, 4 of them county planning commissions.
@@ -448,8 +640,12 @@ Runs used 16 workers, with the per-host limit of 1 request per second. Every run
 - `first_seen.json`
 - `runs/`
 - `requests_*.tsv`
-- `analysis_mi_va.json` (coverage per place, freshness, output, reliability)
-- `precision_judgments.json` and `precision_worksheet_r1.json` to `_r4.json`
+- `analysis_mi_va.json` (coverage per place, freshness, output, reliability; now for the re-test, `--base-run retest1`)
+- `runs/run_run1.json` … `run_final.json` are the first test's runs; `run_retest1.json`, `run_retest2.json` and `run_retest_cold.json` are the re-test's.
+- `round1_4_documents.json` lists the documents behind the hand-checked rounds 1–4, which round 5 excluded.
+- `extended/` holds the extended crawl (meetings from 2026-06-29) used only for the fresh precision sample: `hits_mi_va.json`, `state/`, `runs/run_extended.json`, `requests_extended.tsv` and `precision_worksheet_r5.json`.
+- Full-text rows from test crawls (`data/test/**/search/`, `archive/`) stay local and are git-ignored.
+- `precision_judgments.json` (rounds 1–5, with reasons) and `precision_worksheet_r1.json` to `_r4.json`
 - `keyword_regression.json`
 - `posted_stamps_*.json`
 - `rss_pubdates.json`

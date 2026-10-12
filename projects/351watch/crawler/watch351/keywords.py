@@ -176,6 +176,13 @@ _STATE_SHARED = _WIND + [
                             r"(?:transmission\s+)?lines?\b|\btransmission\s+lines?\b|\bsubstations?\b",
      lambda t, m: bool(_LOCATION_ONLY.search(t[max(0, m.start() - 45):m.start()]))
      or not _LINE_SITING_CTX.search(_around(t, m, 80, 120))),
+    # gas-fired power plants being sited (no topic key of their own yet: clean_energy_siting until the
+    # site supports a new topic). Needs siting words nearby; a utility's fleet description is not a siting.
+    ("clean_energy_siting", r"\b(?:natural\s+)?gas[\s-]+(?:fired\s+)?(?:power|generat\w*|electric\w*)\s+"
+                            r"(?:plants?|stations?|facilit(?:y|ies)|projects?)\b|\bcombined[\s-]+cycle\b|"
+                            r"\bpeak(?:er|ing)\s+(?:power\s+)?plants?\b|\bpower\s+plant\s+ordinances?\b",
+     lambda t, m: not _SITING_CTX.search(_around(t, m, 250, 250))
+     or bool(re.search(r"portfolio|fleet|our\s+customers|headquartered", _around(t, m, 200, 200), re.I))),
     # PILOT / payment in lieu of taxes / tax abatement for an energy facility
     ("clean_energy_siting", r"(?-i:\bPILOT\b)|\bpayments?\s+in\s+lieu\s+of\s+taxes?\b|\btax\s+abatements?\b",
      _near(_ENERGY_CTX, 200, 200)),
@@ -327,6 +334,148 @@ def _state_false_positive(text: str, m: re.Match, topic: str, state: str | None)
         return False
     return any((tp is None or tp == topic) and test(text, m) for tp, test in STATE_FALSE_POSITIVE)
 
+
+# ----------------------------------------------------------------------------
+# Sections (MI / VA): an agenda packet is an agenda, then minutes of earlier meetings, then
+# attachments (staff reports, draft ordinances, applications) and, often, things that are not
+# about any item at all (newsletters, invoices, permit logs, assessor cards, audits, case-law
+# digests, consultants' resumes). Each page (pdftotext and tesseract separate pages with a form
+# feed) is classified on its own text:
+#   agenda   - agenda markers (call to order, public hearing, new business, adjourn...), or a
+#              page right after an agenda page that still carries one marker
+#   minutes  - a record of a meeting (motion, seconded, carried, roll call vote, "stated that",
+#              "discussed"), or a page after a minutes page that still carries one marker
+#   noise    - one of the genres above, a ledger (8+ dollar amounts) or a use table (40+ P/S/A
+#              cells): every match on the page is dropped (checked after agenda, before minutes)
+#   ordinance - regulatory text (sections, definitions, "shall", whereas / be it resolved): as agenda
+#   attachment - anything else: a match must carry stronger evidence nearby (action / regulatory
+#              words or a project name) and must not be one entry in a list of unrelated topics
+# Agenda and minutes pages are matched as before. Single-page HTML / DOCX documents are classified
+# the same way.
+# ----------------------------------------------------------------------------
+_AGENDA_MARKERS = re.compile(
+    r"call\s+to\s+order|roll\s+call|pledge\s+of\s+allegiance|(?:approval|adoption)\s+of\s+(?:the\s+)?agenda|"
+    r"public\s+comments?|call\s+to\s+the\s+public|citizens?'?\s+comments?|old\s+business|unfinished\s+business|"
+    r"new\s+business|adjourn|consent\s+(?:agenda|items)|public\s+hearings?|invocation|announcements|"
+    r"board\s+(?:member\s+)?comments|closed\s+session|items?\s+for\s+(?:discussion|action)|"
+    r"(?:approval|adoption)\s+of\s+(?:the\s+)?minutes", re.I)
+_MINUTES_MARKERS = re.compile(
+    r"\bminutes\b|motion\s+(?:by|made|carried|passed|failed|to\s+\w+)|seconded|supported\s+by|roll\s+call\s+vote|"
+    r"\bayes?\b|\bnays?\b|\bpresent:|\babsent:|voice\s+vote|motion\s+carried|vote\s+\d-\d|\(\d-\d\)|"
+    r"unanimous(?:ly)?|stated\s+that|\basked\s+(?:whether|about|if|that)|\bdiscussed\b|explained\s+that|"
+    r"\bcommented\b|\breported\s+(?:that|on)", re.I)
+_NOISE_GENRES = {
+    "newsletter": (re.compile(r"newsletter|webinar|register\s+(?:now|today|here|online|at)|\be-?news\b|"
+                              r"township\s+(?:focus|insights)|michigan\s+townships\s+association|subscribe|"
+                              r"save\s+the\s+date|upcoming\s+(?:events|workshops)|virginia\s+association\s+of\s+"
+                              r"counties|\bVACo\b|member\s+(?:benefits|services)|\bMTA\b|e-?blast|"
+                              r"members?[\s-]+only|\bFAQs?\b|frequently\s+asked", re.I), 3),
+    "invoice": (re.compile(r"invoice|amount\s+due|balance\s+due|remit|statement\s+of\s+account|billing|"
+                           r"\bexpenses\b|\d{1,2}/\d{1,2}\s*-\s*\d{1,2}/\d{1,2}|"
+                           r"\bhours?\b\s+@|@\s*\$?\d+(?:\.\d\d)?\s*/\s*hr|\brate\b|professional\s+services\s+rendered|"
+                           r"check\s+(?:register|number|no\.?)|\bvendor\b|accounts\s+payable|\bwarrants?\b\s+list",
+                           re.I), 3),
+    "permit_log": (re.compile(r"\b(?:FINAL|ROUGH[\s-]?IN|FOOTING|FRAMING|INSULATION|PERM\s+SERVICE|TEMP\s+SERVICE|"
+                              r"NEW\s+SFD|LOT\s+CLEARING)\b|permits?\s+issued|inspections?\s+(?:performed|completed)|"
+                              r"est(?:imated)?\.?\s+value", re.I), 6),
+    "assessor": (re.compile(r"not\s+available|extra\s+(?:toilet|sink)|double\s+hung|horiz\.?\s+slide|"
+                            r"(?:vinyl|metal)\s+sash|treated\s+wood|below\s+grade|assessed\s+value|taxable\s+value|"
+                            r"\bSEV\b|property\s+class|school\s+district:|year\s+built", re.I), 4),
+    "audit": (re.compile(r"\bGASB\b|statement\s+of\s+net\s+position|fund\s+balance|independent\s+auditor|"
+                         r"management'?s\s+discussion|deferred\s+(?:inflows?|outflows?)|net\s+pension|"
+                         r"notes\s+to\s+(?:the\s+)?financial\s+statements", re.I), 3),
+    "case_digest": (re.compile(r"court\s+of\s+appeals|supreme\s+court|circuit\s+court|plaintiffs?|defendants?|"
+                               r"appellants?|appellees?|lacked\s+standing|\bv\.\s+[A-Z]", re.I), 4),
+    "resume": (re.compile(r"years\s+of\s+experience|education\b|certifications?|project\s+role|qualifications|"
+                          r"\bresumes?\b|relevant\s+experience|professional\s+(?:affiliations|registrations?)", re.I), 3),
+}
+# regulatory text (draft or adopted ordinance, resolution, siting agreement): matched as before
+_ORDINANCE_MARKERS = re.compile(
+    r"\bsec(?:tion|\.)\s*\d|\barticle\s+(?:[IVX]+|\d+)\b|\bdefinitions?\b|intent\s+and\s+purpose|\bpurpose\b|"
+    r"\bsubsection|\bwhereas\b|be\s+it\s+(?:further\s+)?(?:resolved|ordained)|\bordinance\s+no\.|"
+    r"\bagreement\b|\bthe\s+parties\b|applicability", re.I)
+_ACTION_WORDS = re.compile(
+    r"public\s+hearing|\bhearing\b|application|applicant|petition|request(?:ed|s|ing)?\b|propos(?:ed|al|es)|"
+    r"ordinance|amend|rezon|special\s+(?:land\s+)?use|special\s+exception|conditional\s+use|\b(?:SUP|CUP|SLU|SAP|PUD)\b|"
+    r"site\s+plan|siting\s+agreement|resolution|moratori|whereas|be\s+it\s+(?:further\s+)?resolved|approv|adopt|"
+    r"\bden(?:y|ied|ial)\b|recommend|\bmotion\b|\bvote\b|tabled?\b|postpone|draft|setbacks?|\bdistricts?\b|overlay|"
+    r"zoning|\bshall\b|decommission|substantial\s+accord|2232|staff\s+report|planning\s+commission|"
+    r"board\s+of\s+(?:supervisors|trustees|zoning\s+appeals)|township\s+board|notice\s+is\s+hereby|permit\b|"
+    r"\bcase\b|consider(?:ation)?", re.I)
+_PROJECT_NAME = re.compile(
+    r"\b(?!Dominion\b|Consumers\b|DTE\b|Appalachian\b)[A-Z][\w&'-]+(?:\s+[A-Z][\w&'-]+){0,3}\s+"
+    r"(?:Solar|Energy|Storage|Wind|Power|Renewables|Data\s+Centers?|Campus)\b|"
+    r"\b(?:SLU|SUP|CUP|ZTA|ZOA|REZ|RZ|SE|PC|SP|SAP|Z)[-#\s]?\d{2,}")
+
+
+def _page_spans(raw_text: str) -> tuple[str, list[tuple[int, int, str]]]:
+    """Clean text (as clean_text, pages joined by a space) and [(start, end, class)] per page."""
+    pages = [clean_text(p) for p in raw_text.split("\f")]
+    pages = [p for p in pages if p]
+    text, spans, pos, prev = [], [], 0, None
+    for i, p in enumerate(pages):
+        n_ag = len({m.group(0).lower()[:12] for m in _AGENDA_MARKERS.finditer(p)})
+        n_min = len({m.group(0).lower()[:10] for m in _MINUTES_MARKERS.finditer(p)})
+        has_agenda_word = bool(re.search(r"\bagenda\b", p, re.I))
+        n_ord = len({m.group(0).lower()[:10] for m in _ORDINANCE_MARKERS.finditer(p)})
+        n_shall = len(re.findall(r"\bshall\b", p, re.I))
+        noise = None
+        for genre, (rx, need) in _NOISE_GENRES.items():
+            if len({m.group(0).lower()[:14] for m in rx.finditer(p)}) >= need:
+                noise = genre
+                break
+        if noise is None and len(re.findall(r"\$\s?\d[\d,]*\.\d\d", p)) >= 8:
+            noise = "ledger"
+        if noise is None and len(re.findall(r"(?<![\w.-])[PSCXA](?![\w.-])", p)) >= 40:
+            noise = "use_table"
+        if (has_agenda_word and n_ag >= 2) or n_ag >= 4 or (prev == "agenda" and n_ag >= 1):
+            cls = "agenda"
+        elif noise:
+            cls = "noise:" + noise
+        elif n_min >= 3 or (prev == "minutes" and n_min + n_ag >= 1):
+            cls = "minutes"
+        elif n_ord >= 3 or n_shall >= 4:
+            cls = "ordinance"
+        else:
+            cls = "attachment"
+        spans.append((pos, pos + len(p), cls))
+        text.append(p)
+        pos += len(p) + 1
+        prev = cls
+    return " ".join(text), spans
+
+
+def _page_class(spans: list[tuple[int, int, str]], offset: int) -> str:
+    for s, e, cls in spans:
+        if s <= offset <= e:
+            return cls
+    return "attachment"
+
+
+def _passing_list(t: str, start: int, end: int) -> bool:
+    """The term is one entry in a comma list of short unrelated entries (a report's topic list)."""
+    w = t[max(0, start - 160): end + 160]
+    parts = [x.strip() for x in w.split(",")]
+    if len(parts) < 6:
+        return False
+    short = [x for x in parts[1:-1] if len(x) <= 40]
+    return len(short) >= 4 and not _ACTION_WORDS.search(t[max(0, start - 60): end + 60])
+
+
+def _section_reject(t: str, start: int, end: int, spans) -> bool:
+    """True when a match should be dropped because of the section it sits in (MI / VA)."""
+    if spans is None:
+        return False
+    cls = _page_class(spans, start)
+    if cls.startswith("noise:"):
+        return True
+    if cls != "attachment":
+        return False
+    if _passing_list(t, start, end):
+        return True
+    w = t[max(0, start - 200): end + 200]
+    return not (_ACTION_WORDS.search(w) or _PROJECT_NAME.search(w))
+
 SNIPPET_MAX = 240
 CONTINUATION_GAP = 150  # chars after a snippet in which a same-topic match may be the same item
 # Agenda item numbering ("161-26.", "7.", "b)", "IV.") marks the start of a new item.
@@ -352,11 +501,13 @@ def _is_false_positive(text: str, m: re.Match) -> bool:
     return any(kw.fullmatch(m.group(0)) and test(text, m) for kw, test in _FALSE_POSITIVE)
 
 
-def _state_matches(text: str, state: str | None):
-    """(start, end, topic) for the state-specific patterns that survive their guards."""
+def _state_matches(text: str, state: str | None, spans=None):
+    """(start, end, topic) for the state-specific patterns that survive their guards (and, with
+    `spans` from _page_spans, the section rules)."""
     for topic, rx, guard in _STATE_COMPILED.get((state or "").upper(), ()):
         for m in rx.finditer(text):
-            if (guard is None or not guard(text, m)) and not _state_false_positive(text, m, topic, state):
+            if ((guard is None or not guard(text, m)) and not _state_false_positive(text, m, topic, state)
+                    and not _section_reject(text, m.start(), m.end(), spans)):
                 yield m.start(), m.end(), topic
 
 
@@ -404,15 +555,31 @@ class Hit:
 def find_hits(raw_text: str, max_per_doc: int = 8, state: str | None = None) -> list[Hit]:
     """Hits in one document. `state` adds that state's patterns (STATE_TOPICS); without
     it the result is exactly the shared matcher's."""
-    text = clean_text(raw_text)
     matches: list[tuple[int, int, str]] = []
-    for topic, rxs in _COMPILED.items():
-        for rx in rxs:
-            for m in rx.finditer(text):
-                if not _is_false_positive(text, m) and not _state_false_positive(text, m, topic, state):
-                    matches.append((m.start(), m.end(), topic))
-    if state:
-        matches.extend(_state_matches(text, state))
+    if (state or "").upper() in STATE_TOPICS:
+        # MI / VA: each page is classified (agenda, minutes, ordinance, attachment, noise) and matched
+        # on its own, so a guard's look-around never reaches into the next page
+        text, spans = _page_spans(raw_text)
+        for s, e, cls in spans:
+            if cls.startswith("noise:"):
+                continue
+            page, pspans = text[s:e], [(0, e - s, cls)]
+            for topic, rxs in _COMPILED.items():
+                for rx in rxs:
+                    for m in rx.finditer(page):
+                        if (not _is_false_positive(page, m) and not _state_false_positive(page, m, topic, state)
+                                and not _section_reject(page, m.start(), m.end(), pspans)):
+                            matches.append((s + m.start(), s + m.end(), topic))
+            matches.extend((s + a, s + b, t) for a, b, t in _state_matches(page, state, pspans))
+    else:
+        text = clean_text(raw_text)
+        for topic, rxs in _COMPILED.items():
+            for rx in rxs:
+                for m in rx.finditer(text):
+                    if not _is_false_positive(text, m) and not _state_false_positive(text, m, topic, state):
+                        matches.append((m.start(), m.end(), topic))
+        if state:
+            matches.extend(_state_matches(text, state))
     matches.sort()
     hits: list[Hit] = []
     covered_until = -1

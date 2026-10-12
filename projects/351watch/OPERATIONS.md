@@ -60,4 +60,4 @@ Registration (owner, Cloudflare dashboard): Manage Account → Configurations �
 
 ## Crawler rules
 
-Identify as AgendaAheadBot (`AgendaAheadBot/0.1 (+https://agendaahead.vercel.app/bot)`; robots.txt rules for the former name 351WatchBot are also obeyed, Web Bot Auth signature when the key is present); obey robots.txt on every host and redirect; ≤1 request/second/host (2.5 s for `opengov.sos.ri.gov`); no logins; never solve or bypass bot challenges; skip hosts asking for crawl-delay > 10 s.
+Identify as AgendaAheadBot (`AgendaAheadBot/0.1 (+https://agendaahead.vercel.app/bot)`; robots.txt rules for the former name 351WatchBot are also obeyed, Web Bot Auth signature when the key is present); obey robots.txt on every host and redirect; ≤1 request/second/host (2.5 s for `opengov.sos.ri.gov`); no logins; never solve or bypass bot challenges; skip hosts asking for crawl-delay > 10 s (listing pages: > 20 s).

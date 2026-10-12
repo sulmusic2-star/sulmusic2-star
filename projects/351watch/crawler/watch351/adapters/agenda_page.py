@@ -248,8 +248,16 @@ class AgendaPageAdapter(Adapter):
     def list_agendas(self, cfg: dict, window: Window) -> list[AgendaDoc]:
         docs: dict[str, AgendaDoc] = {}
         for listing in cfg.get("listings", []):
-            for url in self.expand(listing["url"], window):
-                for doc in self.page_docs(cfg, listing, url, window):
+            urls = self.expand(listing["url"], window)
+            for url in urls:
+                try:
+                    found = self.page_docs(cfg, listing, url, window)
+                except RuntimeError:
+                    # a {year} page for a year the site has not created yet (year_2027.php: 404)
+                    if len(urls) > 1 and url != urls[0] and str(date.today().year) not in url:
+                        continue
+                    raise
+                for doc in found:
                     docs.setdefault(doc.url, doc)
         return list(docs.values())
 
@@ -260,7 +268,8 @@ class AgendaPageAdapter(Adapter):
         from ..extract import extract
         from ..fetch import FetchError
         try:
-            resp = self.fetcher.get(url)
+            with self.fetcher.purpose("document"):   # a document: document rules (crawl-delay cap 10 s)
+                resp = self.fetcher.get(url)
         except FetchError:
             return None
         if not resp.ok:

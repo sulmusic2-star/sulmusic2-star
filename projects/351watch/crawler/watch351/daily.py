@@ -183,8 +183,15 @@ class DailyRun:
             with self.fetcher.purpose("document"):
                 hits, ex, source_url = scan_document_full(self.fetcher, doc, state)
             if row is not None and row.get("attribute_townships"):
-                # county planning commission items -> the township they name (attribution.py)
-                attribution.attribute(hits, ex.text, row, self._attribution_names(row))
+                # county planning commission items -> the township they name (attribution.py),
+                # one hit per township-named item
+                names = self._attribution_names(row)
+                attribution.attribute(hits, ex.text, row, names)
+                base = {"town": doc.town, "board": doc.board, "board_key": doc.board_key,
+                        "meeting_date": doc.meeting_date.isoformat() if doc.meeting_date else None,
+                        "source_url": source_url, "listing_url": doc.listing_url, "document_title": doc.title,
+                        "text_source": "ocr" if ex.ocr else ex.kind}
+                hits.extend(attribution.split_items(hits, ex.text, {**row, "state": state}, names, base))
         except Exception as e:  # noqa: BLE001 - one bad document must not stop the town
             msg = f"{type(e).__name__}: {e}" if not isinstance(e, FetchError) else str(e)
             if rematch:  # keep the good record; re-matching is best effort
@@ -343,6 +350,15 @@ class DailyRun:
             "documents_needing_ocr": sum(o.needs_ocr for o in outcomes),
             "documents_deferred": sum(o.deferred for o in outcomes),
             "document_errors": sum(o.doc_errors for o in outcomes),
+            # packets over the download cap are skipped, not read in part (a PDF needs the whole file);
+            # listed here from the index on every run so they stay visible after the first attempt
+            "documents_too_large": sorted(
+                ({"town": r["town"], "state": r["state"], "url": r["url"], "meeting_date": r.get("meeting_date"),
+                  "error": r.get("error", "")[:120]}
+                 for r in self.index.records()
+                 if r.get("status") == "error" and "too large" in (r.get("error") or "")
+                 and r.get("state") in by_state),
+                key=lambda x: (x["state"], x["town"], x["url"])),
             "new_hits": sum(len(o.new_hits) for o in outcomes),
             "new_hits_by_topic": dict(raw_topics.most_common()),
             "new_alert_items": len(new_ids),

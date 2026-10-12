@@ -3,68 +3,204 @@
   "MI": {
    "new_documents": 0,
    "new_hits": 0,
-   "towns_attempted": 48,
-   "towns_succeeded": 48
+   "towns_attempted": 49,
+   "towns_succeeded": 49
   },
   "VA": {
    "new_documents": 0,
    "new_hits": 0,
-   "towns_attempted": 30,
-   "towns_succeeded": 30
+   "towns_attempted": 31,
+   "towns_succeeded": 31
   }
  },
  "date": "2026-10-12",
- "document_errors": 0,
- "documents_already_indexed": 19,
+ "document_errors": 2,
+ "documents_already_indexed": 380,
  "documents_deferred": 0,
- "documents_listed": 338,
+ "documents_listed": 382,
  "documents_needing_ocr": 0,
- "documents_rematched": 319,
+ "documents_rematched": 0,
  "documents_retried": 0,
- "duration_seconds": 111.2,
- "errors": [],
- "errors_total": 0,
- "finished": "2026-10-12T20:14:43+00:00",
- "hits_current": 429,
+ "documents_too_large": [
+  {
+   "error": "too large (166555093 > 41943040 bytes): https://www.brightontwp.com/AgendaCenter/ViewFile/Agenda/_09232026-2300",
+   "meeting_date": "2026-09-23",
+   "state": "MI",
+   "town": "Brighton Township",
+   "url": "https://www.brightontwp.com/AgendaCenter/ViewFile/Agenda/_09232026-2300"
+  },
+  {
+   "error": "too large (45442601 > 41943040 bytes): https://cms9files.revize.com/deltatwpmi/Document_Center/Township Board Agendas an",
+   "meeting_date": "2026-09-08",
+   "state": "MI",
+   "town": "Delta Charter Township",
+   "url": "https://www.deltami.gov/Document_Center/Township Board Agendas and Minutes/2026/September 8, 2026 Agenda Packet.pdf"
+  },
+  {
+   "error": "too large (59470705 > 41943040 bytes): https://cms9files.revize.com/deltatwpmi/September 21, 2026 Agenda Packet.pdf",
+   "meeting_date": "2026-09-21",
+   "state": "MI",
+   "town": "Delta Charter Township",
+   "url": "https://www.deltami.gov/September 21, 2026 Agenda Packet.pdf"
+  },
+  {
+   "error": "too large (55651232 > 41943040 bytes): https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Packet-e1951",
+   "meeting_date": "2026-10-14",
+   "state": "MI",
+   "town": "Hamburg Township",
+   "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Packet-e1951b5ac9ed49708b1aee9bee3133e8.pdf"
+  },
+  {
+   "error": "too large (62965199 > 41943040 bytes): https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-3beb2",
+   "meeting_date": "2026-09-01",
+   "state": "MI",
+   "town": "Hartland Township",
+   "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-3beb2cb48f17442b941af2432ae5463b.pdf"
+  },
+  {
+   "error": "too large (58142375 > 41943040 bytes): https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-457f1",
+   "meeting_date": "2026-10-06",
+   "state": "MI",
+   "town": "Hartland Township",
+   "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-457f140f78e749a9ba0ca922a0a35954.pdf"
+  },
+  {
+   "error": "too large (77012685 > 41943040 bytes): https://howelltownshipmi.org/wp-content/uploads/2026/10/Board-Packet-10.13.2026.p",
+   "meeting_date": "2026-10-13",
+   "state": "MI",
+   "town": "Howell Township",
+   "url": "https://howelltownshipmi.org/wp-content/uploads/2026/10/Board-Packet-10.13.2026.pdf"
+  },
+  {
+   "error": "too large (88435734 > 41943040 bytes): https://media-002-us.cdn.govstack.com/meridian-us/media/huzpupyf/september-21-202",
+   "meeting_date": "2026-09-21",
+   "state": "MI",
+   "town": "Meridian Charter Township",
+   "url": "https://media-002-us.cdn.govstack.com/meridian-us/media/huzpupyf/september-21-2026-planning-commission-packet.pdf"
+  },
+  {
+   "error": "too large (184898982 > 41943040 bytes): https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_09032026-1011",
+   "meeting_date": "2026-09-03",
+   "state": "MI",
+   "town": "Pittsfield Charter Township",
+   "url": "https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_09032026-1011"
+  },
+  {
+   "error": "too large (49909170 > 41943040 bytes): https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_09172026-1016",
+   "meeting_date": "2026-09-17",
+   "state": "MI",
+   "town": "Pittsfield Charter Township",
+   "url": "https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_09172026-1016"
+  },
+  {
+   "error": "too large (45811353 > 41943040 bytes): https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_10012026-1019",
+   "meeting_date": "2026-10-01",
+   "state": "MI",
+   "town": "Pittsfield Charter Township",
+   "url": "https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_10012026-1019"
+  },
+  {
+   "error": "too large (90117081 > 41943040 bytes): https://superiortownship.org/wp-content/uploads/2026/09/9.-September-21-2026-Boar",
+   "meeting_date": "2026-09-21",
+   "state": "MI",
+   "town": "Superior Township",
+   "url": "https://superiortownship.org/wp-content/uploads/2026/09/9.-September-21-2026-Board-Packet.pdf"
+  },
+  {
+   "error": "too large (141670572 > 41943040 bytes): https://files.ypsitownship.org/Documents/Government/Boards-Commissions/Planning-",
+   "meeting_date": "2026-10-13",
+   "state": "MI",
+   "town": "Ypsilanti Charter Township",
+   "url": "https://ypsitownship.org/Documents/Government/Boards-Commissions/Planning-Commission/2026/Packet/2026-10-13-Planning-Commission-Packet-Revised-2026-10-09.pdf"
+  },
+  {
+   "error": "too large (47934438 > 41943040 bytes): https://files.ypsitownship.org/Documents/Government/Boards-Commissions/Zoning-Boa",
+   "meeting_date": "2026-09-02",
+   "state": "MI",
+   "town": "Ypsilanti Charter Township",
+   "url": "https://ypsitownship.org/Documents/Government/Boards-Commissions/Zoning-Board-of-Appeals/2026/Packet/2026-09-02-Zoning-Board-of-Appeals-Packet-Final.pdf"
+  },
+  {
+   "error": "too large (46433239 > 41943040 bytes): https://cms7files.revize.com/greensvillecountyva25/Documents Center/Agenda & Minu",
+   "meeting_date": "2026-10-05",
+   "state": "VA",
+   "town": "Greensville County",
+   "url": "https://www.greensvillecountyva.gov/Documents Center/Agenda & Minutes/Board of Supervisors/2026/Agenda/Board of Supervisors Agenda - 10052026.pdf"
+  },
+  {
+   "error": "too large (265614350 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_09082026-774",
+   "meeting_date": "2026-09-08",
+   "state": "VA",
+   "town": "Halifax County",
+   "url": "https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_09082026-774"
+  },
+  {
+   "error": "too large (241819661 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_10052026-790",
+   "meeting_date": "2026-10-05",
+   "state": "VA",
+   "town": "Halifax County",
+   "url": "https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_10052026-790"
+  }
+ ],
+ "duration_seconds": 86.0,
+ "errors": [
+  {
+   "error": "document: https://cms8.revize.com/revize/nottowaycountyva/Agenda BoS Special Meeting September 30, 2026.docx",
+   "town": "VA:Nottoway County"
+  },
+  {
+   "error": "document: https://cms8.revize.com/revize/nottowaycountyva/Agenda BoS Worksession September 10, 2026.docx",
+   "town": "VA:Nottoway County"
+  }
+ ],
+ "errors_total": 2,
+ "finished": "2026-10-12T21:16:14+00:00",
+ "hits_current": 471,
  "index": {
   "by_state": {
-   "MI": 174,
-   "VA": 166
+   "MI": 205,
+   "VA": 177
   },
   "by_status": {
    "error": 19,
-   "ok": 321
+   "ok": 363
   },
   "by_text_source": {
    "docx": 6,
-   "html": 13,
+   "html": 15,
    "none": 19,
-   "ocr": 38,
-   "pdf": 264
+   "ocr": 40,
+   "pdf": 302
   },
-  "documents": 340,
-  "hits": 456,
+  "documents": 382,
+  "hits": 501,
   "pruned": 0,
-  "towns": 74,
-  "with_hits": 136
+  "towns": 76,
+  "with_hits": 145
  },
  "network": {
-  "bytes_by_purpose": {},
-  "cache_hits": 474,
-  "errors": 0,
-  "requests": 0,
-  "requests_by_purpose": {},
-  "robots_blocked": 0
+  "bytes_by_purpose": {
+   "document": 1411787,
+   "listing": 31651957,
+   "robots": 138437
+  },
+  "cache_hits": 18,
+  "errors": 1,
+  "requests": 241,
+  "requests_by_purpose": {
+   "document": 3,
+   "listing": 156,
+   "robots": 82
+  },
+  "robots_blocked": 2
  },
- "new_alert_items": 1,
- "new_alert_items_by_topic": {
-  "wireless_telecom": 1
- },
+ "new_alert_items": 0,
+ "new_alert_items_by_topic": {},
  "new_documents": 0,
  "new_hits": 0,
  "new_hits_by_topic": {},
  "options": {
-  "matcher_version": "042871934b",
+  "matcher_version": "bc455928b9",
   "no_network_docs": false,
   "ocr_max_pages": 6,
   "pdftotext": true,
@@ -73,119 +209,41 @@
  },
  "previous_runs_today": [
   {
-   "duration_seconds": 102.6,
-   "new_documents": 319,
-   "new_hits": 477,
-   "requests": 26,
-   "started": "2026-10-12T19:35:54+00:00",
+   "duration_seconds": 133.6,
+   "new_documents": 363,
+   "new_hits": 501,
+   "requests": 72,
+   "started": "2026-10-12T21:11:09+00:00",
    "states": [
     "MI",
     "VA"
    ],
-   "towns_attempted": 78,
-   "towns_succeeded": 78
+   "towns_attempted": 80,
+   "towns_succeeded": 80
   },
   {
-   "duration_seconds": 71.6,
+   "duration_seconds": 76.7,
    "new_documents": 0,
    "new_hits": 0,
-   "requests": 3,
-   "started": "2026-10-12T19:47:39+00:00",
+   "requests": 5,
+   "started": "2026-10-12T21:13:23+00:00",
    "states": [
     "MI",
     "VA"
    ],
-   "towns_attempted": 78,
-   "towns_succeeded": 78
-  },
-  {
-   "duration_seconds": 71.1,
-   "new_documents": 2,
-   "new_hits": 1,
-   "requests": 237,
-   "started": "2026-10-12T19:49:07+00:00",
-   "states": [
-    "MI",
-    "VA"
-   ],
-   "towns_attempted": 78,
-   "towns_succeeded": 78
-  },
-  {
-   "duration_seconds": 91.9,
-   "new_documents": 0,
-   "new_hits": 0,
-   "requests": 1,
-   "started": "2026-10-12T19:51:28+00:00",
-   "states": [
-    "MI",
-    "VA"
-   ],
-   "towns_attempted": 78,
-   "towns_succeeded": 78
-  },
-  {
-   "duration_seconds": 90.6,
-   "new_documents": 0,
-   "new_hits": 0,
-   "requests": 0,
-   "started": "2026-10-12T19:53:53+00:00",
-   "states": [
-    "MI",
-    "VA"
-   ],
-   "towns_attempted": 78,
-   "towns_succeeded": 78
-  },
-  {
-   "duration_seconds": 92.1,
-   "new_documents": 0,
-   "new_hits": 0,
-   "requests": 0,
-   "started": "2026-10-12T19:56:26+00:00",
-   "states": [
-    "MI",
-    "VA"
-   ],
-   "towns_attempted": 78,
-   "towns_succeeded": 78
-  },
-  {
-   "duration_seconds": 91.1,
-   "new_documents": 0,
-   "new_hits": 0,
-   "requests": 0,
-   "started": "2026-10-12T20:03:28+00:00",
-   "states": [
-    "MI",
-    "VA"
-   ],
-   "towns_attempted": 78,
-   "towns_succeeded": 78
-  },
-  {
-   "duration_seconds": 98.5,
-   "new_documents": 0,
-   "new_hits": 0,
-   "requests": 15,
-   "started": "2026-10-12T20:08:07+00:00",
-   "states": [
-    "MI",
-    "VA"
-   ],
-   "towns_attempted": 78,
-   "towns_succeeded": 78
+   "towns_attempted": 80,
+   "towns_succeeded": 80
   }
  ],
- "started": "2026-10-12T20:12:52+00:00",
+ "started": "2026-10-12T21:14:48+00:00",
  "states": [
   "MI",
   "VA"
  ],
- "towns_attempted": 78,
+ "towns_attempted": 80,
  "towns_failed": [],
  "towns_partial": [],
- "towns_succeeded": 78,
+ "towns_succeeded": 80,
  "window": {
   "end": "2027-02-09",
   "start": "2026-08-28"

@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T20:20:40+00:00",
+ "generated": "2026-10-12T21:16:23+00:00",
  "crawl_day": "2026-10-12",
  "window": {
   "end": "2027-02-09",
@@ -29,8 +29,8 @@
      },
      "county": {
       "attempted": 19,
-      "no_agendas_online": 8,
-      "blocked": 7,
+      "no_agendas_online": 9,
+      "blocked": 6,
       "readable": 4,
       "readable_share": 0.211,
       "bodies_targeted": 19,
@@ -39,14 +39,14 @@
       "blocked_how": {
        "vendor: diligent_community": 2,
        "vendor: boarddocs": 1,
-       "crawl-delay > 10 s": 1,
        "robots.txt": 1,
        "Cloudflare challenge": 1,
        "vendor: icompass_civicweb": 1
       },
       "no_agendas_how": {
        "no_agendas_found": 4,
-       "no_recent_agendas": 4
+       "no_recent_agendas": 4,
+       "js_only": 1
       },
       "platforms_readable": {
        "agenda_page": 3,
@@ -55,19 +55,19 @@
      },
      "township": {
       "attempted": 124,
-      "blocked": 10,
-      "readable": 37,
-      "no_agendas_online": 71,
-      "automated_no_docs_in_window": 5,
+      "blocked": 8,
+      "readable": 39,
+      "no_agendas_online": 72,
+      "automated_no_docs_in_window": 4,
       "error_unreachable": 1,
-      "readable_share": 0.298,
+      "readable_share": 0.315,
       "bodies_targeted": 372,
-      "bodies_readable": 64,
-      "bodies_readable_share": 0.172,
+      "bodies_readable": 69,
+      "bodies_readable_share": 0.185,
       "blocked_how": {
        "robots.txt": 3,
        "Cloudflare challenge": 2,
-       "crawl-delay > 10 s": 3,
+       "documents robots/403": 1,
        "vendor: diligent_community": 1,
        "WAF 403": 1
       },
@@ -75,21 +75,33 @@
        "no_agendas_found": 18,
        "no_website": 21,
        "website_mismatch": 2,
-       "no_recent_agendas": 29,
+       "no_recent_agendas": 30,
        "js_only": 1
       },
       "platforms_readable": {
-       "agenda_page": 34,
+       "agenda_page": 36,
        "civicplus": 3
       },
-      "indirect_via_county_planning_commission": 23,
+      "indirect_via_county_planning_commission": 21,
       "readable_or_county_reviewed_share": 0.484,
       "counties_with_readable_planning_commission": [
        "Calhoun",
        "Clinton",
        "Huron",
        "Livingston"
-      ]
+      ],
+      "direct_readable": 39,
+      "direct_readable_share": 0.325,
+      "via_county_items": 2,
+      "via_county_items_towns": [
+       "Fredonia Township",
+       "Leroy Township"
+      ],
+      "via_county_items_not_direct": [
+       "Leroy Township"
+      ],
+      "direct_or_via_county_items": 40,
+      "direct_or_via_county_items_share": 0.333
      }
     },
     "by_selection_group": {
@@ -100,8 +112,8 @@
      },
      "county_list": {
       "attempted": 27,
-      "readable": 7,
-      "readable_share": 0.259
+      "readable": 9,
+      "readable_share": 0.333
      },
      "county_planning": {
       "attempted": 19,
@@ -776,7 +788,7 @@
       "kind": "township",
       "group": "mta_sample",
       "class": "blocked",
-      "reason_code": "crawl_delay_exceeds_cap",
+      "reason_code": "documents_blocked",
       "platform": null,
       "boards_tracked": [
        "select_board",
@@ -785,7 +797,7 @@
       ],
       "boards_read": [],
       "boards_automated": [],
-      "reason": "robots.txt asks for a Crawl-delay above the 10 s cap (20.0s too long for prototype); host skipped",
+      "reason": "documents on villageoflakeview.org need a crawl delay above the 10 s document cap",
       "health": null
      },
      {
@@ -1108,20 +1120,18 @@
       "town": "Portland Township",
       "kind": "township",
       "group": "mta_sample",
-      "class": "automated_no_docs_in_window",
-      "reason_code": null,
-      "platform": "civicclerk",
+      "class": "no_agendas_online",
+      "reason_code": "no_recent_agendas",
+      "platform": null,
       "boards_tracked": [
        "select_board",
        "planning_board",
        "zoning_board_of_appeals"
       ],
       "boards_read": [],
-      "boards_automated": [
-       "select_board"
-      ],
-      "reason": "",
-      "health": "ok"
+      "boards_automated": [],
+      "reason": "board pages found (e.g. https://www.portlandtownship.org/trustees) but no agenda dated within the last 120 or next 120 days could be read from them",
+      "health": null
      },
      {
       "town": "Bingham Township",
@@ -2112,18 +2122,26 @@
       "town": "Hamburg Township",
       "kind": "township",
       "group": "county_list",
-      "class": "blocked",
-      "reason_code": "crawl_delay_exceeds_cap",
-      "platform": "municode_meetings",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
       "boards_tracked": [
        "select_board",
        "planning_board",
        "zoning_board_of_appeals"
       ],
-      "boards_read": [],
-      "boards_automated": [],
-      "reason": "agendas on municode_meetings: robots.txt on hamburg-mi.municodemeetings.com asks for a crawl delay above the 10 s cap (15.0s too long for p)",
-      "health": null
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
      },
      {
       "town": "Handy Township",
@@ -2150,18 +2168,25 @@
       "town": "Hartland Township",
       "kind": "township",
       "group": "county_list",
-      "class": "blocked",
-      "reason_code": "crawl_delay_exceeds_cap",
-      "platform": null,
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
       "boards_tracked": [
        "select_board",
        "planning_board",
        "zoning_board_of_appeals"
       ],
-      "boards_read": [],
-      "boards_automated": [],
-      "reason": "robots.txt asks for a Crawl-delay above the 10 s cap (15.0s too long for prototype); host skipped",
-      "health": null
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
      },
      {
       "town": "Oceola Township",
@@ -2650,15 +2675,15 @@
       "town": "Washtenaw County",
       "kind": "county",
       "group": "county_planning",
-      "class": "blocked",
-      "reason_code": "crawl_delay_exceeds_cap",
+      "class": "no_agendas_online",
+      "reason_code": "js_only",
       "platform": null,
       "boards_tracked": [
        "planning_board"
       ],
       "boards_read": [],
       "boards_automated": [],
-      "reason": "robots.txt asks for a Crawl-delay above the 10 s cap (20.0s too long for prototype); host skipped",
+      "reason": "homepage renders client-side (no server HTML to read)",
       "health": null
      },
      {
@@ -2857,68 +2882,68 @@
    },
    "output": {
     "documents_listed_run1": {
-     "new_documents": 158,
-     "new_hits": 243,
-     "towns_attempted": 47,
-     "towns_succeeded": 47
+     "new_documents": 191,
+     "new_hits": 235,
+     "towns_attempted": 49,
+     "towns_succeeded": 49
     },
-    "documents_indexed": 174,
+    "documents_indexed": 205,
     "documents_by_status": {
-     "ok": 160,
+     "ok": 191,
      "error": 14
     },
     "documents_read_by_text_source": {
-     "pdf": 119,
-     "html": 13,
+     "pdf": 148,
+     "html": 15,
      "ocr": 23,
      "docx": 5
     },
-    "hits": 216,
+    "hits": 219,
     "hits_by_topic": {
      "data_center": 96,
-     "zoning_amendment": 77,
+     "zoning_amendment": 87,
      "moratorium": 34,
      "battery_storage": 28,
-     "clean_energy_siting": 19,
-     "solar": 18,
-     "wireless_telecom": 5
+     "solar": 17,
+     "clean_energy_siting": 16,
+     "wireless_telecom": 4
     },
     "hits_by_board": {
-     "select_board": 94,
-     "planning_board": 121,
+     "select_board": 90,
+     "planning_board": 128,
      "zoning_board_of_appeals": 1
     },
-    "towns_with_hits": 25,
-    "hits_upcoming": 52
+    "towns_with_hits": 30,
+    "hits_upcoming": 48
    },
    "freshness": {
-    "documents_read_with_meeting_date": 154,
-    "documents_for_meetings_still_ahead": 33,
-    "share_still_ahead": 0.214,
+    "documents_read_with_meeting_date": 185,
+    "documents_for_meetings_still_ahead": 36,
+    "share_still_ahead": 0.195,
     "lead_time_days_by_source": {
      "revize_upload_stamp": {
-      "n": 32,
-      "median": 1.3,
+      "n": 33,
+      "median": 0.4,
       "p10": -2.7,
       "p90": 5.2,
-      "share_ge_3d": 0.41,
-      "share_negative": 0.44
+      "share_ge_3d": 0.39,
+      "share_negative": 0.42
      },
      "http_last_modified": {
-      "n": 94,
-      "median": 3.5,
-      "p10": -2.6,
-      "p90": 6.2,
-      "share_ge_3d": 0.61,
-      "share_negative": 0.24
+      "n": 124,
+      "median": 4.1,
+      "p10": -1.0,
+      "p90": 6.3,
+      "share_ge_3d": 0.64,
+      "share_negative": 0.19
      },
      "pdf_moddate_or_creationdate": {
-      "n": 133,
-      "median": 4.0,
-      "p10": -0.8,
-      "p90": 6.3,
+      "n": 164,
+      "median": 4.1,
+      "p10": 0.1,
+      "p90": 6.4,
       "share_ge_3d": 0.71,
-      "share_negative": 0.12
+      "share_negative": 0.1
      },
      "wordpress_upload_month_lower_bound": {
       "n": 36,
@@ -2945,12 +2970,12 @@
       "share_negative": 0.08
      },
      "our_first_fetch_upcoming_only": {
-      "n": 31,
+      "n": 36,
       "median": 0.4,
       "p10": -0.6,
       "p90": 1.4,
       "share_ge_3d": 0.06,
-      "share_negative": 0.26
+      "share_negative": 0.22
      },
      "civicplus_rss_pubdate": {
       "n": 8,
@@ -2973,13 +2998,13 @@
       "no_agendas_online": 1,
       "readable_share": 0.844,
       "bodies_targeted": 96,
-      "bodies_readable": 49,
-      "bodies_readable_share": 0.51,
+      "bodies_readable": 50,
+      "bodies_readable_share": 0.521,
       "blocked_how": {
        "robots.txt": 1,
        "Cloudflare challenge": 1,
        "WAF 403": 1,
-       "crawl-delay > 10 s": 1
+       "documents robots/403": 1
       },
       "no_agendas_how": {
        "no_recent_agendas": 1
@@ -2992,20 +3017,19 @@
      },
      "town": {
       "attempted": 5,
-      "blocked": 2,
-      "readable": 3,
-      "readable_share": 0.6,
+      "blocked": 1,
+      "readable": 4,
+      "readable_share": 0.8,
       "bodies_targeted": 15,
-      "bodies_readable": 4,
-      "bodies_readable_share": 0.267,
+      "bodies_readable": 5,
+      "bodies_readable_share": 0.333,
       "blocked_how": {
-       "vendor: boarddocs": 1,
-       "crawl-delay > 10 s": 1
+       "vendor: boarddocs": 1
       },
       "no_agendas_how": {},
       "platforms_readable": {
-       "civicclerk": 1,
-       "agenda_page": 2
+       "agenda_page": 3,
+       "civicclerk": 1
       }
      }
     },
@@ -3022,8 +3046,8 @@
      },
      "town": {
       "attempted": 5,
-      "readable": 3,
-      "readable_share": 0.6
+      "readable": 4,
+      "readable_share": 0.8
      }
     },
     "places": [
@@ -3190,6 +3214,7 @@
        "select_board"
       ],
       "boards_automated": [
+       "planning_board",
        "select_board"
       ],
       "reason": "",
@@ -3322,9 +3347,11 @@
        "zoning_board_of_appeals"
       ],
       "boards_read": [
+       "planning_board",
        "select_board"
       ],
       "boards_automated": [
+       "planning_board",
        "select_board"
       ],
       "reason": "",
@@ -3671,7 +3698,7 @@
       "kind": "county",
       "group": "piedmont",
       "class": "blocked",
-      "reason_code": "crawl_delay_exceeds_cap",
+      "reason_code": "documents_blocked",
       "platform": null,
       "boards_tracked": [
        "select_board",
@@ -3680,7 +3707,7 @@
       ],
       "boards_read": [],
       "boards_automated": [],
-      "reason": "robots.txt asks for a Crawl-delay above the 10 s cap (15.0s too long for prototype); host skipped",
+      "reason": "documents on www.fluvannacounty.org need a crawl delay above the 10 s document cap",
       "health": null
      },
      {
@@ -3751,18 +3778,23 @@
       "town": "Town of Warrenton",
       "kind": "town",
       "group": "town",
-      "class": "blocked",
-      "reason_code": "crawl_delay_exceeds_cap",
-      "platform": "municode_meetings",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
       "boards_tracked": [
        "select_board",
        "planning_board",
        "zoning_board_of_appeals"
       ],
-      "boards_read": [],
-      "boards_automated": [],
-      "reason": "agendas on municode_meetings: robots.txt on warrenton-va.municodemeetings.com asks for a crawl delay above the 10 s cap (15.0s too long for p)",
-      "health": null
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
      },
      {
       "town": "Town of Farmville",
@@ -3834,66 +3866,66 @@
    },
    "output": {
     "documents_listed_run1": {
-     "new_documents": 161,
-     "new_hits": 251,
-     "towns_attempted": 30,
-     "towns_succeeded": 30
+     "new_documents": 172,
+     "new_hits": 266,
+     "towns_attempted": 31,
+     "towns_succeeded": 31
     },
-    "documents_indexed": 166,
+    "documents_indexed": 177,
     "documents_by_status": {
-     "ok": 161,
+     "ok": 172,
      "error": 5
     },
     "documents_read_by_text_source": {
-     "pdf": 145,
-     "ocr": 15,
+     "pdf": 154,
+     "ocr": 17,
      "docx": 1
     },
-    "hits": 213,
+    "hits": 252,
     "hits_by_topic": {
-     "zoning_amendment": 100,
-     "solar": 62,
-     "clean_energy_siting": 33,
-     "data_center": 23,
-     "battery_storage": 23,
+     "zoning_amendment": 114,
+     "solar": 74,
+     "clean_energy_siting": 51,
+     "data_center": 33,
+     "battery_storage": 30,
      "wireless_telecom": 17,
      "moratorium": 1
     },
     "hits_by_board": {
-     "planning_board": 104,
-     "select_board": 109
+     "planning_board": 135,
+     "select_board": 117
     },
-    "towns_with_hits": 24,
-    "hits_upcoming": 59
+    "towns_with_hits": 26,
+    "hits_upcoming": 62
    },
    "freshness": {
-    "documents_read_with_meeting_date": 161,
-    "documents_for_meetings_still_ahead": 31,
-    "share_still_ahead": 0.193,
+    "documents_read_with_meeting_date": 172,
+    "documents_for_meetings_still_ahead": 33,
+    "share_still_ahead": 0.192,
     "lead_time_days_by_source": {
      "pdf_moddate_or_creationdate": {
-      "n": 140,
-      "median": 4.3,
+      "n": 151,
+      "median": 4.4,
       "p10": 0.2,
       "p90": 7.2,
-      "share_ge_3d": 0.78,
+      "share_ge_3d": 0.79,
       "share_negative": 0.09
      },
      "revize_upload_stamp": {
-      "n": 45,
+      "n": 52,
       "median": 4.2,
-      "p10": 0.2,
+      "p10": 2.2,
       "p90": 6.3,
-      "share_ge_3d": 0.84,
+      "share_ge_3d": 0.87,
       "share_negative": 0.04
      },
      "http_last_modified": {
-      "n": 49,
-      "median": 3.5,
+      "n": 60,
+      "median": 4.2,
       "p10": 0.2,
       "p90": 6.2,
-      "share_ge_3d": 0.82,
-      "share_negative": 0.06
+      "share_ge_3d": 0.83,
+      "share_negative": 0.07
      },
      "civicclerk_publishOn": {
       "n": 52,
@@ -3928,7 +3960,7 @@
       "share_negative": 1.0
      },
      "our_first_fetch_upcoming_only": {
-      "n": 31,
+      "n": 33,
       "median": 1.4,
       "p10": 0.4,
       "p90": 2.4,
@@ -4020,6 +4052,95 @@
    "new_hits": 477,
    "hits_current": 449,
    "errors_total": 19
+  },
+  "retest1": {
+   "duration_seconds": 133.6,
+   "towns_attempted": 80,
+   "towns_succeeded": 80,
+   "towns_failed": [],
+   "towns_partial": [],
+   "documents_listed": 382,
+   "documents_already_indexed": 0,
+   "new_documents": 363,
+   "documents_retried": 0,
+   "document_errors": 19,
+   "network": {
+    "bytes_by_purpose": {
+     "document": 1745,
+     "listing": 3348672
+    },
+    "cache_hits": 490,
+    "errors": 0,
+    "requests": 72,
+    "requests_by_purpose": {
+     "document": 24,
+     "listing": 48
+    },
+    "robots_blocked": 2
+   },
+   "new_hits": 501,
+   "hits_current": 471,
+   "errors_total": 19
+  },
+  "retest2": {
+   "duration_seconds": 76.7,
+   "towns_attempted": 80,
+   "towns_succeeded": 80,
+   "towns_failed": [],
+   "towns_partial": [],
+   "documents_listed": 382,
+   "documents_already_indexed": 380,
+   "new_documents": 0,
+   "documents_retried": 0,
+   "document_errors": 2,
+   "network": {
+    "bytes_by_purpose": {
+     "document": 438,
+     "listing": 791142
+    },
+    "cache_hits": 172,
+    "errors": 0,
+    "requests": 5,
+    "requests_by_purpose": {
+     "document": 2,
+     "listing": 3
+    },
+    "robots_blocked": 2
+   },
+   "new_hits": 0,
+   "hits_current": 471,
+   "errors_total": 2
+  },
+  "retest_cold": {
+   "duration_seconds": 86.0,
+   "towns_attempted": 80,
+   "towns_succeeded": 80,
+   "towns_failed": [],
+   "towns_partial": [],
+   "documents_listed": 382,
+   "documents_already_indexed": 380,
+   "new_documents": 0,
+   "documents_retried": 0,
+   "document_errors": 2,
+   "network": {
+    "bytes_by_purpose": {
+     "document": 1411787,
+     "listing": 31651957,
+     "robots": 138437
+    },
+    "cache_hits": 18,
+    "errors": 1,
+    "requests": 241,
+    "requests_by_purpose": {
+     "document": 3,
+     "listing": 156,
+     "robots": 82
+    },
+    "robots_blocked": 2
+   },
+   "new_hits": 0,
+   "hits_current": 471,
+   "errors_total": 2
   },
   "run1": {
    "duration_seconds": 193.9,

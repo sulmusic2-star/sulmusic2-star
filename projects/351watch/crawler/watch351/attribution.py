@@ -94,11 +94,66 @@ def attribute(hits: list[dict], raw_text: str, row: dict, known: dict[str, str])
             h["attributed_from"] = row["town"]
 
 
+MAX_ITEM_CHARS = 700        # an agenda item line, not a page of staff report
+
+
+def norm_ctx_text(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
+
+
+def split_items(hits: list[dict], raw_text: str, row: dict, known: dict[str, str], base: dict) -> list[dict]:
+    """Extra hits for a county body's document: one per agenda item (on agenda or minutes pages)
+    that names a township and matches a topic, for every township the regular hits do not
+    already file. A county planning commission's coordination list ("a. 08-26-01, Fredonia
+    Township: Zoning Text Amendment b. 08-26-02, Marshall Township: Zoning Map Amendment") is
+    one snippet to the matcher but one item per township to a watcher. `base` carries the
+    document's fields (board, meeting date, source URL...). The board stays the county body."""
+    from .keywords import SNIPPET_MAX, _page_spans, topics_in
+    county = row.get("county") or re.sub(r"\s+County$", "", row["town"])
+    text, spans = _page_spans(raw_text)
+    have = {(h.get("town"), (h.get("snippet") or "")[:80]) for h in hits}
+    filed = {h.get("town") for h in hits if h.get("attributed_from")}
+    out: list[dict] = []
+    seen_items: set[tuple[str, str]] = set()
+    for s, e, cls in spans:
+        if cls not in ("agenda", "minutes"):
+            continue
+        cuts = [m.start() for m in _ITEM_BREAK.finditer(text, s, e)] + [e]
+        for a, b in zip([s] + cuts, cuts):
+            item = text[a:b].strip()
+            if not item or len(item) > MAX_ITEM_CHARS:
+                continue
+            twp = None
+            for m in _TWP.finditer(item):
+                twp = _name(m)
+                if twp:
+                    break
+            if not twp or twp.lower() == county.lower():
+                continue
+            topics = topics_in(item, row.get("state"))
+            topics = [t for t in topics if t != "40b_comprehensive_permit"]
+            if not topics:
+                continue
+            town = canonical(twp, known)
+            snippet = item if len(item) <= SNIPPET_MAX else item[:SNIPPET_MAX - 1].rstrip() + "…"
+            key = (town, norm_ctx_text(item)[:120])
+            if key in seen_items or (town, snippet[:80]) in have:
+                continue
+            # the regular hit for this township already covers this item
+            if town in filed and any(h.get("town") == town and item[:60] in (h.get("snippet") or "") for h in hits):
+                continue
+            seen_items.add(key)
+            out.append({**base, "town": town, "county": county, "attributed_from": row["town"],
+                        "topics": topics, "snippet": snippet, "_context": norm_ctx_text(item)[:200]})
+    return out
+
+
 def known_townships(rows: list[dict], county: str) -> dict[str, str]:
-    """normalized short name -> row name, for monitored townships in `county`."""
+    """normalized short name -> row name, for monitored townships in `county` (only townships:
+    "Marshall Township" is not the City of Marshall)."""
     out = {}
     for r in rows:
-        if r.get("county") == county and r.get("kind") in ("township", "city"):
+        if r.get("county") == county and r.get("kind") == "township":
             short = re.sub(r"\b(?:charter\s+)?township\b|\bcity\s+of\b", "", r["town"], flags=re.I)
             out[re.sub(r"[^a-z]", "", short.lower())] = r["town"]
     return out

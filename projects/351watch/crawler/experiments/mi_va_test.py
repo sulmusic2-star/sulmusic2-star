@@ -71,6 +71,23 @@ CURATED: dict[str, dict] = {
                       "platform": "agenda_page", "url": "https://milivcounty.gov/planning/commission/"}],
         "curation_note": "Planning Commission page under the Planning department (2026 agendas and packets)",
     },
+    # Virginia counties where discovery found only the Board of Supervisors (fix round, 2026-10-12).
+    # Southampton's Planning Commission posts one page per meeting (staff reports, draft ordinances)
+    # under a page per year; its links are relative to <base href>, which discovery's hub search
+    # did not reach through the "archived" agendas page.
+    "Southampton County": {
+        "add_listings": [{"board": "Planning Commission", "board_key": "planning_board", "platform": "agenda_page",
+                          "url": "https://www.southamptoncounty.org/departments/planning/year_{year}.php"}],
+        "curation_note": "Planning Commission meeting pages (year_{year}.php), added by hand",
+    },
+    # Prince Edward's Planning Commission packets are on a Community Development page that discovery's
+    # hub search did not reach.
+    "Prince Edward County": {
+        "add_listings": [{"board": "Planning Commission", "board_key": "planning_board", "platform": "agenda_page",
+                          "url": "https://www.co.prince-edward.va.us/Departments/Community-Development/"
+                                 "Planning-Zoning/Planning-Commission-Meetings"}],
+        "curation_note": "Planning Commission packets page, added by hand",
+    },
 }
 
 
@@ -137,7 +154,12 @@ def cmd_discover(args) -> None:
             r["attribute_townships"] = True
         cur = CURATED.get(r["town"])
         if cur:
+            cur = dict(cur)
+            extra = cur.pop("add_listings", [])
             r.update(cur)
+            if extra and r.get("automated"):   # add boards discovery missed; keep what it found
+                have = {(l["board_key"], l["url"]) for l in r.get("listings") or []}
+                r["listings"] = (r.get("listings") or []) + [l for l in extra if (l["board_key"], l["url"]) not in have]
             r["curated"] = True
         prev[r["town"]] = r
     order = [t["town"] for t in targets]
@@ -166,19 +188,20 @@ def cmd_discover(args) -> None:
 
 # ------------------------------------------------------------------ crawl
 def cmd_crawl(args) -> None:
-    cmd = [sys.executable, "-m", "watch351.daily", "--states", "MI,VA", "--output-dir", str(TEST),
+    out = Path(args.test_dir) if args.test_dir else TEST   # e.g. data/test/extended for a wider window
+    cmd = [sys.executable, "-m", "watch351.daily", "--states", "MI,VA", "--output-dir", str(out),
            "--hits-name", HITS_NAME, "--days-back", str(args.days_back), "--days-ahead", str(args.days_ahead),
-           "--workers", str(args.workers), "--request-log", str(TEST / f"requests_{args.label}.tsv")]
+           "--workers", str(args.workers), "--request-log", str(out / f"requests_{args.label}.tsv")]
     if args.cache_dir:
         cmd += ["--cache-dir", args.cache_dir]   # e.g. an empty dir: a fresh container with only data/test/state
     print(" ".join(cmd))
     t0 = time.monotonic()
     proc = subprocess.run(cmd, cwd=CRAWLER)
     print(f"exit {proc.returncode}, wall {time.monotonic() - t0:.0f}s")
-    runs = TEST / "state" / "runs"
+    runs = out / "state" / "runs"
     latest = max(runs.glob("*.json"), key=lambda p: p.stat().st_mtime)
     rep = json.loads(latest.read_text())
-    snap = TEST / "runs" / f"run_{args.label}.json"
+    snap = out / "runs" / f"run_{args.label}.json"
     save(snap, rep)
     print(f"saved {snap}")
 
@@ -194,6 +217,11 @@ def main(argv=None) -> int:
     p.add_argument("--label", default="run1")
     p.add_argument("--per-state", type=int, default=45)
     p.add_argument("--exclude", help="sample: skip hits judged in this worksheet / precision_judgments.json")
+    p.add_argument("--test-dir", help="crawl / sample / analyze: output directory (default data/test)")
+    p.add_argument("--random", type=int, help="sample: simple random sample with this seed (default: round-robin "
+                                              "over towns)")
+    p.add_argument("--base-run", default="run1", help="analyze: run label that fixes the crawl day and window")
+    p.add_argument("--exclude-docs-from", help="sample: skip hits from the documents in this JSON list of URLs")
     p.add_argument("--worksheet", help="sample: output file name under data/test/ (default precision_worksheet.json)")
     p.add_argument("--cache-dir", help="crawl: fetch cache to use (default crawler/.cache)")
     p.add_argument("-v", "--verbose", action="store_true")
@@ -206,14 +234,18 @@ def main(argv=None) -> int:
     elif args.command == "crawl":
         cmd_crawl(args)
     elif args.command == "analyze":
-        from mi_va_analysis import analyze  # noqa: E402
-        analyze(args)
+        import mi_va_analysis  # noqa: E402
+        if args.test_dir:
+            mi_va_analysis.TEST = Path(args.test_dir)
+        mi_va_analysis.analyze(args)
     elif args.command == "rss":
         from mi_va_analysis import rss  # noqa: E402
         rss(args)
     elif args.command == "sample":
-        from mi_va_analysis import sample  # noqa: E402
-        sample(args)
+        import mi_va_analysis  # noqa: E402
+        if args.test_dir:
+            mi_va_analysis.TEST = Path(args.test_dir)
+        mi_va_analysis.sample(args)
     return 0
 
 

@@ -1,6 +1,6 @@
 {
  "_about": "351 Watch Michigan test (2026-10): 148 townships, cities and county planning commissions in southern Michigan and the Thumb (energy_siting_hotspots.md areas 1 and 4). Same row shape as towns_ma_all.json plus state, kind, selection_group / selection_reason / selection_source. Built by `python3 experiments/mi_va_test.py discover --state MI`.",
- "generated": "2026-10-12T15:12:11+00:00",
+ "generated": "2026-10-12T21:04:51+00:00",
  "state": "MI",
  "gated": true,
  "gate_note": "Test state: not part of the production daily run. Crawled only by `python3 -m watch351.daily --states MI,VA --output-dir ../data/test --hits-name hits_mi_va.json`.",
@@ -16,7 +16,7 @@
  },
  "evidence_rule": "a board is automated only if its listing shows >=1 agenda/packet/notice dated within [today-120d, today+120d] and the first such document is fetchable under robots.txt",
  "count": 148,
- "automated": 48,
+ "automated": 49,
  "towns": [
   {
    "town": "Bedford Township",
@@ -2457,9 +2457,12 @@
    "selection_reason": "MTA directory sample (first 60 in Wikidata order)",
    "selection_source": "research_notes/Meeting monitor national expansion/coverage_mi_township_websites.csv",
    "selection_source_url": "https://michigantownships.org/find-a-township/?fips=14000",
+   "final_url": "https://villageoflakeview.org/cato-township-information.php",
+   "cms": [],
+   "platform": null,
    "status": "not_automated",
-   "reason_code": "crawl_delay_exceeds_cap",
-   "reason": "robots.txt asks for a Crawl-delay above the 10 s cap (20.0s too long for prototype); host skipped",
+   "reason_code": "documents_blocked",
+   "reason": "documents on villageoflakeview.org need a crawl delay above the 10 s document cap",
    "automated": false,
    "listings": [],
    "boards_tracked": [
@@ -2474,12 +2477,41 @@
     "zoning_board_of_appeals"
    ],
    "board_evidence": {},
-   "board_stale": {},
+   "board_stale": {
+    "select_board": {
+     "board": "Township Board Information",
+     "source": "agenda_page",
+     "url": "https://villageoflakeview.org/cato-township-board.php",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "agenda_page",
+     "url": "https://villageoflakeview.org/cato-township-planning.php",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Township Zoning Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://villageoflakeview.org/cato-township-zoning-board-of-appeals.php",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
    "vendors": {},
    "robots_blocked": [],
-   "notes": [],
-   "pages_fetched": 0,
-   "discovered_at": "2026-10-12T15:01:23+00:00"
+   "notes": [
+    "DOCS documents on villageoflakeview.org need a crawl delay above the 10 s document cap",
+    "DOCS documents on villageoflakeview.org need a crawl delay above the 10 s document cap",
+    "DOCS documents on villageoflakeview.org need a crawl delay above the 10 s document cap"
+   ],
+   "pages_fetched": 30,
+   "discovered_at": "2026-10-12T20:56:24+00:00"
   },
   {
    "town": "Chandler Township",
@@ -3516,44 +3548,33 @@
     "civicplus",
     "wix"
    ],
-   "tenant": "portlandmi",
-   "platforms": [
-    "civicclerk"
-   ],
-   "platform": "civicclerk",
-   "status": "automated",
-   "reason_code": null,
-   "reason": null,
-   "automated": true,
-   "listings": [
-    {
-     "board": "City Council",
-     "board_key": "select_board",
-     "url": "https://portlandmi.portal.civicclerk.com"
-    }
-   ],
+   "platform": null,
+   "status": "not_automated",
+   "reason_code": "no_recent_agendas",
+   "reason": "board pages found (e.g. https://www.portlandtownship.org/trustees) but no agenda dated within the last 120 or next 120 days could be read from them",
+   "automated": false,
+   "listings": [],
    "boards_tracked": [
     "select_board",
     "planning_board",
     "zoning_board_of_appeals"
    ],
-   "boards_found": [
-    "select_board"
-   ],
+   "boards_found": [],
    "boards_missing": [
+    "select_board",
     "planning_board",
     "zoning_board_of_appeals"
    ],
-   "board_evidence": {
-    "select_board": {
-     "board": "City Council",
-     "source": "civicclerk",
-     "url": "https://portlandmi.portal.civicclerk.com",
-     "n_recent": 8,
-     "latest": "2026-10-05"
-    }
-   },
+   "board_evidence": {},
    "board_stale": {
+    "select_board": {
+     "board": "Trustees",
+     "source": "agenda_page",
+     "url": "https://www.portlandtownship.org/trustees",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
     "planning_board": {
      "board": "Planning Commission",
      "source": "agenda_page",
@@ -3571,20 +3592,11 @@
      "note": "board page found, no dated agendas in window"
     }
    },
-   "vendors": {
-    "civicclerk": {
-     "urls": [
-      "https://portlandmi.portal.civicclerk.com"
-     ],
-     "tenant": "portlandmi",
-     "found_by": "tenant probe",
-     "status": "supported"
-    }
-   },
+   "vendors": {},
    "robots_blocked": [],
    "notes": [],
    "pages_fetched": 34,
-   "discovered_at": "2026-10-12T15:02:38+00:00"
+   "discovered_at": "2026-10-12T21:04:51+00:00"
   },
   {
    "town": "Bingham Township",
@@ -7150,64 +7162,154 @@
    "cms": [
     "revize"
    ],
-   "platform": "municode_meetings",
-   "status": "not_automated",
-   "reason_code": "crawl_delay_exceeds_cap",
-   "reason": "agendas on municode_meetings: robots.txt on hamburg-mi.municodemeetings.com asks for a crawl delay above the 10 s cap (15.0s too long for p)",
-   "automated": false,
-   "listings": [],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://hamburg-mi.municodemeetings.com/",
+     "platform": "agenda_page",
+     "board_pattern": "township\\s+board|board\\s+of\\s+trustees|\\btrustees\\b|city\\s+council|city\\s+commission|village\\s+council|\\bTB\\b|\\bBOT\\b|board\\s+of\\s+(?:county\\s+)?commissioners|\\bboard\\s+(?:regular\\s+|special\\s+)?meeting|\\bregular\\s+board|\\bboard\\s+agenda|^\\s*TB\\b",
+     "board_exclude": "library\\s+board|parks?\\s+(?:and|&)\\s+rec|recreation\\s+(?:board|commission)|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|board\\s+of\\s+review|school\\s+board|committee|planning\\s+commission|planning\\s+board|\\bPC\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "vendor": "municode_meetings"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://hamburg-mi.municodemeetings.com/",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
+     "board_exclude": "planning\\s+district|regional|emergency\\s+planning|committee|township\\s+board|board\\s+of\\s+trustees|city\\s+council|city\\s+commission|village\\s+council|\\bTB\\b|\\bBOT\\b|board\\s+of\\s+(?:county\\s+)?commissioners|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "vendor": "municode_meetings"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://hamburg-mi.municodemeetings.com/",
+     "platform": "agenda_page",
+     "board_pattern": "zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals",
+     "board_exclude": "building|construction|code\\s+appeals|board\\s+of\\s+review|township\\s+board|board\\s+of\\s+trustees|city\\s+council|city\\s+commission|village\\s+council|\\bTB\\b|\\bBOT\\b|board\\s+of\\s+(?:county\\s+)?commissioners|planning\\s+commission|planning\\s+board|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "vendor": "municode_meetings"
+    }
+   ],
    "boards_tracked": [
     "select_board",
     "planning_board",
     "zoning_board_of_appeals"
    ],
-   "boards_found": [],
-   "boards_missing": [
-    "select_board",
+   "boards_found": [
     "planning_board",
+    "select_board",
     "zoning_board_of_appeals"
    ],
-   "board_evidence": {},
-   "board_stale": {
-    "select_board": {
-     "board": "Township Board of Trustees",
-     "source": "agenda_page",
-     "url": "https://www.hamburg.mi.us/government/agendas___meeting_minutes/township_board_of_trustees.php",
-     "n_recent": 0,
-     "latest": null,
-     "note": "board page found, no dated agendas in window"
-    },
+   "boards_missing": [],
+   "board_evidence": {
     "planning_board": {
-     "board": "Planning Commission",
+     "board": "Planning Board",
      "source": "agenda_page",
-     "url": "https://www.hamburg.mi.us/government/agendas___meeting_minutes/planning_commission.php",
-     "n_recent": 0,
-     "latest": null,
-     "note": "board page found, no dated agendas in window"
+     "url": "https://hamburg-mi.municodemeetings.com/",
+     "n_recent": 8,
+     "latest": "2026-09-16",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-09-16",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Agenda-ac8560c152194b0eb1189d8131541fce.pdf",
+       "title": "PDF Agenda for Planning Commission Meeting - 09/16/2026 - 6:00pm"
+      },
+      {
+       "date": "2026-09-16",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Packet-ac8560c152194b0eb1189d8131541fce.pdf",
+       "title": "PDF Agenda Packet for Planning Commission Meeting - 09/16/2026 - 6:00pm"
+      },
+      {
+       "date": "2026-08-19",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Agenda-45e959902bef49da9b5984194d1f4eb3.pdf",
+       "title": "PDF Agenda for Planning Commission Meeting - 08/19/2026 - 6:00pm"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://hamburg-mi.municodemeetings.com/",
+     "n_recent": 14,
+     "latest": "2026-10-13",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-13",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Agenda-1b81cf667d9e4f7f9e2861fba5667174.pdf",
+       "title": "PDF Agenda for Board of Trustees Special Meeting - 10/13/2026 - 10:00am"
+      },
+      {
+       "date": "2026-10-13",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Packet-1b81cf667d9e4f7f9e2861fba5667174.pdf",
+       "title": "PDF Agenda Packet for Board of Trustees Special Meeting - 10/13/2026 - 10:00am"
+      },
+      {
+       "date": "2026-10-06",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Agenda-54e9fa3077844c9388e71c5a7f8b3688.pdf",
+       "title": "PDF Agenda for Board of Trustees Regular Meeting - 10/06/2026 - 2:30pm"
+      }
+     ]
     },
     "zoning_board_of_appeals": {
      "board": "Zoning Board of Appeals",
      "source": "agenda_page",
-     "url": "https://www.hamburg.mi.us/government/agendas___meeting_minutes/zoning_board_of_appeals.php",
-     "n_recent": 0,
-     "latest": null,
-     "note": "board page found, no dated agendas in window"
+     "url": "https://hamburg-mi.municodemeetings.com/",
+     "n_recent": 4,
+     "latest": "2026-10-14",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-14",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Agenda-e1951b5ac9ed49708b1aee9bee3133e8.pdf",
+       "title": "PDF Agenda for Zoning Board of Appeals - 10/14/2026 - 6:00pm"
+      },
+      {
+       "date": "2026-10-14",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Packet-e1951b5ac9ed49708b1aee9bee3133e8.pdf",
+       "title": "PDF Agenda Packet for Zoning Board of Appeals - 10/14/2026 - 6:00pm"
+      },
+      {
+       "date": "2026-09-09",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Agenda-9c80a9b95ea546c098b575cc4e290f15.pdf",
+       "title": "PDF Agenda for Zoning Board of Appeals - 09/09/2026 - 6:00pm"
+      }
+     ]
     }
    },
+   "board_stale": {},
    "vendors": {
     "municode_meetings": {
      "urls": [
       "https://hamburg-mi.municodemeetings.com/",
       "https://hamburg-mi.municodemeetings.com/newsletter/subscriptions"
      ],
-     "status": "crawl_delay_over_cap",
-     "detail": "robots.txt on hamburg-mi.municodemeetings.com asks for a crawl delay above the 10 s cap (15.0s too long for p)"
+     "status": "open"
     }
    },
    "robots_blocked": [],
    "notes": [],
-   "pages_fetched": 34,
-   "discovered_at": "2026-10-12T15:06:46+00:00"
+   "pages_fetched": 37,
+   "discovered_at": "2026-10-12T20:55:00+00:00"
   },
   {
    "town": "Handy Township",
@@ -7309,29 +7411,143 @@
    "selection_reason": "listed on the Livingston County municipalities page",
    "selection_source": "research_notes/Meeting monitor national expansion/coverage_mi_township_websites.csv",
    "selection_source_url": "https://milivcounty.gov/municipalities/",
-   "status": "not_automated",
-   "reason_code": "crawl_delay_exceeds_cap",
-   "reason": "robots.txt asks for a Crawl-delay above the 10 s cap (15.0s too long for prototype); host skipped",
-   "automated": false,
-   "listings": [],
+   "final_url": "https://www.hartlandtwp.com/",
+   "cms": [
+    "municode_web",
+    "drupal"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.hartlandtwp.com/meetings",
+     "platform": "agenda_page",
+     "board_pattern": "township\\s+board|board\\s+of\\s+trustees|\\btrustees\\b|city\\s+council|city\\s+commission|village\\s+council|\\bTB\\b|\\bBOT\\b|board\\s+of\\s+(?:county\\s+)?commissioners|\\bboard\\s+(?:regular\\s+|special\\s+)?meeting|\\bregular\\s+board|\\bboard\\s+agenda|^\\s*TB\\b",
+     "board_exclude": "library\\s+board|parks?\\s+(?:and|&)\\s+rec|recreation\\s+(?:board|commission)|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|board\\s+of\\s+review|school\\s+board|committee|planning\\s+commission|planning\\s+board|\\bPC\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.hartlandtwp.com/meetings",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
+     "board_exclude": "planning\\s+district|regional|emergency\\s+planning|committee|township\\s+board|board\\s+of\\s+trustees|city\\s+council|city\\s+commission|village\\s+council|\\bTB\\b|\\bBOT\\b|board\\s+of\\s+(?:county\\s+)?commissioners|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://www.hartlandtwp.com/meetings",
+     "platform": "agenda_page",
+     "board_pattern": "zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals",
+     "board_exclude": "building|construction|code\\s+appeals|board\\s+of\\s+review|township\\s+board|board\\s+of\\s+trustees|city\\s+council|city\\s+commission|village\\s+council|\\bTB\\b|\\bBOT\\b|board\\s+of\\s+(?:county\\s+)?commissioners|planning\\s+commission|planning\\s+board|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
    "boards_tracked": [
     "select_board",
     "planning_board",
     "zoning_board_of_appeals"
    ],
-   "boards_found": [],
-   "boards_missing": [
-    "select_board",
+   "boards_found": [
     "planning_board",
+    "select_board",
     "zoning_board_of_appeals"
    ],
-   "board_evidence": {},
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.hartlandtwp.com/meetings",
+     "n_recent": 10,
+     "latest": "2026-10-08",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-08",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Agenda-2717c5be74d044a5afad18da291ff8be.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-08",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-2717c5be74d044a5afad18da291ff8be.pdf",
+       "title": "Agenda Packet"
+      },
+      {
+       "date": "2026-09-24",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Agenda-2e22e4c3497347c7a4879872670a661f.pdf",
+       "title": "Agenda"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.hartlandtwp.com/meetings",
+     "n_recent": 18,
+     "latest": "2026-10-06",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-06",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Agenda-457f140f78e749a9ba0ca922a0a35954.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-06",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-457f140f78e749a9ba0ca922a0a35954.pdf",
+       "title": "Agenda Packet"
+      },
+      {
+       "date": "2026-09-15",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Agenda-e65307173d8e4b66b9c37f873726cfd6.pdf",
+       "title": "Agenda"
+      }
+     ]
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://www.hartlandtwp.com/meetings",
+     "n_recent": 2,
+     "latest": "2026-08-19",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-08-19",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Agenda-fb512cfefd1b4031833aba0789ca7d62.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-08-19",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-fb512cfefd1b4031833aba0789ca7d62.pdf",
+       "title": "Agenda Packet"
+      }
+     ]
+    }
+   },
    "board_stale": {},
    "vendors": {},
    "robots_blocked": [],
    "notes": [],
-   "pages_fetched": 0,
-   "discovered_at": "2026-10-12T15:03:59+00:00"
+   "pages_fetched": 11,
+   "discovered_at": "2026-10-12T20:55:34+00:00"
   },
   {
    "town": "Oceola Township",
@@ -9026,10 +9242,15 @@
    "selection_group": "county_planning",
    "selection_reason": "County planning commission: reviews township zoning amendments under the Michigan Zoning Enabling Act (MCL 125.3307), so its agendas list township items; southern Michigan hotspot county",
    "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.washtenaw.org/",
+   "cms": [
+    "civicplus"
+   ],
    "tenant": "washtenawcomi",
+   "platform": null,
    "status": "not_automated",
-   "reason_code": "crawl_delay_exceeds_cap",
-   "reason": "robots.txt asks for a Crawl-delay above the 10 s cap (20.0s too long for prototype); host skipped",
+   "reason_code": "js_only",
+   "reason": "homepage renders client-side (no server HTML to read)",
    "automated": false,
    "listings": [],
    "boards_tracked": [
@@ -9044,17 +9265,18 @@
    "vendors": {
     "civicclerk": {
      "urls": [
-      "https://washtenawcomi.portal.civicclerk.com"
+      "https://washtenawcomi.portal.civicclerk.com/",
+      "https://washtenawcomi.v8.civicclerk.com"
      ],
      "tenant": "washtenawcomi",
-     "found_by": "tenant probe",
+     "found_by": "linked from site",
      "status": "supported"
     }
    },
    "robots_blocked": [],
    "notes": [],
-   "pages_fetched": 0,
-   "discovered_at": "2026-10-12T15:05:29+00:00",
+   "pages_fetched": 2,
+   "discovered_at": "2026-10-12T20:54:23+00:00",
    "attribute_townships": true
   },
   {
