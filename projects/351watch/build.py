@@ -351,6 +351,7 @@ FOOTER_LINKS = [
     ("/proof", "Coverage and method"),
     ("/pricing", "Free during the beta"),
     ("/privacy", "Privacy"),
+    ("/bot", "Our crawler"),
     ("/privacy#contact", "Corrections and contact"),
 ]
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' "
@@ -889,6 +890,35 @@ def build_proof(ctx):
 
 
 # ---------------------------------------------------------------- privacy
+
+def build_bot(ctx):
+    body = """
+<div class="wrap"><div class="prose">
+<h1>351WatchBot</h1>
+<p>351WatchBot is the crawler behind 351 Watch. It reads the meeting agendas, warrants and notices that towns and counties post on their own websites, and flags items about solar, battery storage, data centers, moratoria, zoning changes and similar land-use decisions.</p>
+<h2>How it identifies itself</h2>
+<p>Every request carries this User-Agent:</p>
+<pre><code>351WatchBot/0.1 (+https://351watch.vercel.app/bot)</code></pre>
+<p>Requests are also signed with <a href="https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/">Web Bot Auth</a> (HTTP Message Signatures, Ed25519). The public key is at <a href="/.well-known/http-message-signatures-directory">/.well-known/http-message-signatures-directory</a>, and each request names that directory in a <code>Signature-Agent</code> header.</p>
+<h2>What it does and doesn't do</h2>
+<ul>
+<li>Checks robots.txt before every request, including each redirect, and skips anything disallowed for <code>351WatchBot</code> or <code>*</code>.</li>
+<li>Makes at most one request per second to a host, or waits longer if robots.txt sets a <code>Crawl-delay</code>.</li>
+<li>Reads each meeting listing about once a day and downloads each agenda document once.</li>
+<li>Reads only public pages. It never logs in, never submits forms and never tries to get past a CAPTCHA or other bot check.</li>
+<li>Skips files larger than 40 MB.</li>
+</ul>
+<h2>Blocking it or slowing it down</h2>
+<p>To stop it, add this to your robots.txt. It takes effect on the next visit.</p>
+<pre><code>User-agent: 351WatchBot
+Disallow: /</code></pre>
+<p>To slow it down, add a <code>Crawl-delay</code> line giving the number of seconds to wait between requests. If you run a town or county website and want a different arrangement, or think the crawler misbehaved, <a href="/privacy#contact">send us a note</a> with your site's address.</p>
+</div></div>
+"""
+    return page(ctx, "351WatchBot, our crawler | 351 Watch",
+                "What 351WatchBot reads, how often it visits, how it identifies itself, and how to block it or slow it down.",
+                body, "/bot")
+
 
 def build_privacy(ctx):
     body = """
@@ -1604,6 +1634,7 @@ def main():
         "index.html": (build_index(ctx), "/"),
         "proof.html": (build_proof(ctx), "/proof"),
         "privacy.html": (build_privacy(ctx), "/privacy"),
+        "bot.html": (build_bot(ctx), "/bot"),
         "watch.html": (build_watch(ctx), "/watch"),
         "w.html": (build_viewer(ctx), None),
         "towns.html": (build_towns_index(ctx), "/towns"),
