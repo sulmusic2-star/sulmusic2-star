@@ -1,7 +1,7 @@
-// /watch: set up alerts (an "alert list"), or edit one with ?edit=<private key>.
-// One question per screen. Screen 1 asks for the town; screen 2 shows what the alerts would have
-// sent lately, ticks the towns next door, and asks for an email address (when /api/status says
-// email is on). Calendar, RSS and chat webhooks sit under "Other ways to get alerts".
+// /watch and /alerts-for-groups: set up alerts, or edit them with ?edit=<private key>.
+// Screen 1 asks for the town; screen 2 shows what the alerts would have sent lately, one ticked box
+// for the towns next door, the subjects, and an email address (when /api/status says email is on).
+// /alerts-for-groups (form data-mode="groups") adds per-town boxes, a chat webhook and a name.
 // Free alerts cover one home town plus the towns next to it (/data/neighbors.json), every topic.
 // Screen 1 also takes a line such as "battery storage in Carver, Plympton and Wareham": the first
 // town is the home town, other typed towns narrow the neighbors, typed topics narrow the topics.
@@ -22,6 +22,7 @@
   const topicBoxes = Array.from(form.querySelectorAll('input[name="topics"]'));
   const submit = $('watch-submit');
   const status = $('watch-status');
+  const groups = form.dataset.mode === 'groups';
   const testStatus = $('test-status');
   const webhook = $('webhook-url');
   const removeHook = $('webhook-remove');
@@ -77,15 +78,14 @@
       if (message) target.setAttribute('aria-invalid', 'true');
       else target.removeAttribute('aria-invalid');
     }
-    if (message && name === 'webhook_url') $('hook-details').open = true;
-    if (message && name === 'topics') $('topics-details').open = true;
+
   }
 
   // ---------- screens
   function show(step) {
     $('step-town').hidden = step !== 'town';
     $('step-send').hidden = step !== 'send';
-    title.textContent = step === 'town' ? 'Get free alerts'
+    title.textContent = step === 'town' ? title.dataset.start
       : `${editId ? 'Edit alerts' : 'Alerts'} for ${homeId ? label(homeId) : 'your town'}`;
     if (step === 'send') renderPreview();
   }
@@ -175,7 +175,10 @@
     return li;
   }
 
-  function topicSummary() {
+  function topicSummary() { // the subjects are plain checkboxes now; nothing to summarize
+    return;
+  }
+  function oldTopicSummary() {
     const on = topicBoxes.filter((t) => t.checked);
     const names = on.map((t) => t.closest('label').textContent.trim().toLowerCase());
     $('topics-details').querySelector('summary').textContent = on.length === topicBoxes.length ? 'Topics: all'
@@ -193,8 +196,8 @@
       box.hidden = true;
       return;
     }
-    $('home-request-text').textContent = `We can’t read ${label(id)}’s agendas yet. You’ll still get its neighbors.`;
-    $('home-request-btn').textContent = `Request ${label(id)}`;
+    $('home-request-text').textContent = `We can’t check ${label(id)}’s agendas yet. You’ll still get alerts for the towns next to it, and we can ask ${label(id)}’s town hall to let us check its agendas.`;
+    $('home-request-btn').textContent = `Ask us to add ${label(id)}`;
     $('home-request-btn').disabled = false;
     $('home-request-status').textContent = '';
     box.hidden = false;
@@ -206,7 +209,7 @@
     setStatus(out, 'Sending…');
     try {
       await window.w351.requestTown(homeId, label(homeId));
-      setStatus(out, 'Request sent. Thank you.', 'ok');
+      setStatus(out, 'Thanks. We’ve got your request and will ask the town hall.', 'ok');
     } catch (err) {
       setStatus(out, err.message, 'err');
       button.disabled = false;
@@ -223,7 +226,6 @@
 
   function setHome(id, checkedNear) {
     homeId = id;
-    $('home-name').textContent = id ? label(id) : 'your town';
     if (!id) {
       showRequest(null);
       nearList.replaceChildren();
@@ -234,14 +236,14 @@
     first.querySelector('input').disabled = true;
     nearList.replaceChildren(first, ...near.map((n) => checkbox('towns', n,
       `${label(n, id)} (next to ${label(id)}${notRead(n) ? ', not read yet' : ''})`, checkedNear ? checkedNear.includes(n) : true)));
-    $('near-all-text').firstChild.textContent = near.length === 1 ? 'Also watch the town next to ' : `Also watch the ${near.length} towns next to `;
+    const chosen = checkedNear ? near.filter((n) => checkedNear.includes(n)) : near;
+    $('near-all-text').textContent = `Also include ${chosen.length === 1 ? 'the town' : 'towns'} next to ${label(id)}: ${joinAnd((groups ? near : chosen).map((n) => label(n, id)))}`;
     $('near-all-row').hidden = !near.length;
-    $('near-note').textContent = near.length
-      ? 'Untick any you don’t want.'
+    $('near-note').hidden = Boolean(near.length);
+    $('near-note').textContent = near.length ? ''
       : (neighbors && Object.keys(neighbors).length
         ? `${label(id)} has no towns next to it, so alerts cover ${label(id)} only.`
         : `We couldn’t load the towns next to ${label(id)}. Alerts will cover ${label(id)} for now.`);
-    if (!near.length) $('near-details').open = true;
     syncNearAll();
     showRequest(id);
     fieldError('towns', '');
@@ -279,7 +281,8 @@
     const parts = [];
     const outside = first ? others.filter((o) => !area(first).includes(o)) : [];
     if (first) {
-      parts.push(`Found ${label(first)}.`);
+      const t = byId.get(first);
+      parts.push(`${label(first)}${t && t.county ? ` (${t.county} County)` : ''}.`);
     } else {
       parts.push('Pick your town from the list.');
     }
@@ -326,14 +329,14 @@
     const where = others ? `${label(homeId)} and ${others === 1 ? 'the town' : `${others} towns`} next to it` : label(homeId);
     const nodes = [];
     if (notRead(homeId)) {
-      nodes.push(el('p', 'notice', `We can’t read ${label(homeId)}’s agendas yet, so for now these alerts come from the towns next to it.`));
+      nodes.push(el('p', 'notice', `We can’t check ${label(homeId)}’s agendas yet, so for now these alerts come from the towns next to it.`));
     }
     if (!past && !ahead.length) {
-      nodes.push(el('p', '', `Nothing on these topics in ${where} in the last 30 days. You’ll hear from us when something comes up.`));
+      nodes.push(el('p', '', `Nothing about these subjects in ${where} in the last 30 days. You’ll hear from us when something comes up.`));
     } else {
       const lead = el('p');
-      lead.append('In the last 30 days, ', el('b', '', plural(past, 'meeting')), ` in ${where} had items on these topics. `,
-        ahead.length ? (ahead.length > 3 ? `${ahead.length} meetings are coming up. The next 3:` : 'Coming up next:') : 'Nothing else is on an agenda yet.');
+      lead.append(`In the last 30 days, ${where} had `, el('b', '', plural(past, 'meeting')), ' about these subjects. ',
+        ahead.length ? (ahead.length > 3 ? `${ahead.length} more are coming up. The next 3:` : 'Coming up next:') : 'Nothing else is on an agenda yet.');
       nodes.push(lead);
       if (ahead.length) {
         const list = el('ul', 'preview-lines');
@@ -341,10 +344,10 @@
           const li = el('li');
           const head = el('p', 'meet-head');
           if (ids.length > 1) head.append(el('span', '', label(m.tid, homeId)));
-          head.append(el('span', '', m.board), el('span', 'meet-day', dayLabel(m.d)));
-          // The most specific line: a named applicant or project first, a bare "Mentions …" last.
+          head.append(el('span', 'meet-day', dayLabel(m.d)));
+          // The most specific sentence: one that names an action first, a bare "mentions …" last.
           const said = m.ids.map((id) => (lines.lines[id] || [])[0]).filter(Boolean);
-          const rank = (s) => (s.includes(':') ? 0 : s.startsWith('Mentions') ? 2 : 1);
+          const rank = (s) => (s.includes(' will ') ? 0 : s.includes(' mentions ') ? 2 : 1);
           const best = said.sort((a, b) => rank(a) - rank(b) || b.length - a.length)[0] || 'Agenda item';
           const others = new Set(said).size - 1;
           li.append(head, el('p', 'line-say', best));
@@ -388,17 +391,29 @@
     home.focus();
   });
 
+  // Residents don't name their alerts: "Carver and the towns next to it".
+  function autoName(ids) {
+    if (!homeId) return '';
+    const others = ids.filter((x) => x !== homeId);
+    const near = area(homeId);
+    if (!others.length) return label(homeId);
+    if (others.length === near.length && others.every((x) => near.includes(x))) return `${label(homeId)} and the towns next to it`;
+    return `${label(homeId)} and ${others.length === 1 ? label(others[0], homeId) : `${others.length} nearby towns`}`;
+  }
+
   function payload() {
+    const towns = chosenTowns();
+    const typedName = form.elements.name ? form.elements.name.value.trim() : '';
     const data = {
-      name: form.elements.name.value,
-      towns: chosenTowns(),
+      name: typedName || autoName(towns),
+      towns,
       topics: topicBoxes.filter((t) => t.checked).map((t) => t.value),
-      webhook_format: form.elements.webhook_format.value,
       website: form.elements.website.value,
     };
+    if (form.elements.webhook_format) data.webhook_format = form.elements.webhook_format.value;
     if (homeId) data.home_town = homeId;
-    const url = webhook.value.trim();
-    if (!editId || url) data.webhook_url = url;
+    const url = webhook ? webhook.value.trim() : '';
+    if (webhook && (!editId || url)) data.webhook_url = url;
     else if (removeHook && removeHook.checked) data.webhook_url = '';
     if (!$('email-option').hidden) {
       const address = email.value.trim();
@@ -415,7 +430,7 @@
       ok = false;
     }
     if (!data.topics.length) {
-      fieldError('topics', 'Choose at least one topic.');
+      fieldError('topics', 'Tick at least one subject.');
       ok = false;
     }
     if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
@@ -435,7 +450,7 @@
     if (!res.ok || data.ok === false) {
       const err = new Error(data.error || (res.status === 503
         ? 'Alerts can’t be saved right now. Try again in a few minutes.'
-        : 'The server didn’t answer as expected. Try again in a minute.'));
+        : 'Something went wrong on our end. Try again in a minute.'));
       err.fields = data.fields || {};
       err.code = data.code || '';
       err.status = res.status;
@@ -464,7 +479,7 @@
         ? await send('PATCH', `/api/watchlists?id=${encodeURIComponent(editId)}`, data)
         : await send('POST', '/api/watchlists', data);
       const id = editId || result.id;
-      if (!id) throw new Error('The server didn’t answer as expected. Try again in a minute.');
+      if (!id) throw new Error('Something went wrong on our end. Try again in a minute.');
       window.w351.remember(id, data.name);
       if (window.w351.saveAreas) window.w351.saveAreas(data.home_town, data.towns);
       setStatus(status, editId ? 'Changes saved. Opening your alerts…' : 'Alerts set up. Opening them…', 'ok');
@@ -474,14 +489,14 @@
       for (const [field, message] of Object.entries(err.fields || {})) fieldError(field === 'home_town' ? 'towns' : field, message);
       if (err.code === 'free_area' || err.fields.towns || err.fields.home_town) {
         if (!err.fields.towns && !err.fields.home_town) fieldError('towns', err.message);
-        $('near-details').open = true;
+        if ($('near-details')) $('near-details').open = true;
       }
       setStatus(status, err.message, 'err');
       submit.disabled = false;
     }
   });
 
-  $('send-test').addEventListener('click', async (event) => {
+  if ($('send-test')) $('send-test').addEventListener('click', async (event) => {
     const button = event.currentTarget;
     const url = webhook.value.trim();
     fieldError('webhook_url', '');
@@ -512,9 +527,9 @@
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = `/w/${l.id}`;
-      a.textContent = l.name || 'Untitled alert list';
+      a.textContent = l.name || 'Your alerts';
       li.append(a);
-      if (l.readonly) li.append(' (shared with you, read-only)');
+      if (l.readonly) li.append(' (shared with you, view only)');
       return li;
     }));
     $('my-lists').hidden = false;
@@ -548,17 +563,19 @@
       await Promise.all([loadTowns, loadNeighbors]);
       $('edit-name').textContent = wl.name || 'your alert list';
       document.title = `Edit ${wl.name || 'alerts'} | ${document.title.split(' | ').pop()}`;
-      form.elements.name.value = wl.name || '';
+      if (wl.webhook && wl.webhook.configured && !groups) {
+        location.replace(`/alerts-for-groups?edit=${encodeURIComponent(editId)}`); // that page edits the webhook
+        return;
+      }
+      if (form.elements.name) form.elements.name.value = wl.name || '';
       const first = wl.home_town && wl.towns.includes(wl.home_town) ? wl.home_town : wl.towns[0];
       prefill([first, ...wl.towns.filter((t) => t !== first)], wl.topics);
       for (const t of topicBoxes) t.checked = wl.topics.includes(t.value);
       topicSummary();
-      if (wl.name) $('name-details').open = true;
-      if (wl.webhook && wl.webhook.configured) {
+      if (wl.webhook && wl.webhook.configured && webhook) {
         webhook.placeholder = `Saved: ${wl.webhook.masked}. Leave blank to keep it.`;
         form.elements.webhook_format.value = wl.webhook.format || 'auto';
         $('webhook-remove-row').hidden = false;
-        $('hook-details').open = true;
       }
       if (wl.email && wl.email.configured) {
         email.placeholder = `Saved: ${wl.email.masked}. Leave blank to keep it.`;

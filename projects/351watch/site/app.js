@@ -179,12 +179,56 @@ function setupContactForm() {
 
 // /search: site/search.js renders li.result items. Split the meta line into separate parts instead
 // of dot-joined text, and mark meetings that are still ahead.
+// Search excerpts: keep the sentence with the first match (and the next one if that sentence is short).
+function trimToSentence(node) {
+  const parts = [...node.childNodes].map((n) => ({ text: n.textContent, mark: n.nodeName === 'MARK' }));
+  const full = parts.map((p) => p.text).join('');
+  let pos = 0;
+  let first = -1;
+  let last = -1;
+  for (const p of parts) {
+    if (p.mark && first < 0) first = pos;
+    if (p.mark && first >= 0 && pos < first + 160) last = pos + p.text.length;
+    pos += p.text.length;
+  }
+  if (first < 0) return;
+  const lead = full.slice(0, first).match(/^[\s\S]*[.;!?]\s+/);
+  const start = lead ? lead[0].length : 0;
+  const stop = (from) => {
+    const i = full.slice(from).search(/[.;!?](?:\s|$)/);
+    return i >= 0 ? from + i + 1 : full.length;
+  };
+  let end = stop(last);
+  if (end - start < 60) end = stop(end);
+  if (start === 0 && end >= full.length) return;
+  const out = [];
+  pos = 0;
+  for (const p of parts) {
+    const a = Math.max(start, pos);
+    const b = Math.min(end, pos + p.text.length);
+    if (a < b) {
+      const t = p.text.slice(a - pos, b - pos);
+      if (p.mark) {
+        const mark = document.createElement('mark');
+        mark.textContent = t;
+        out.push(mark);
+      } else out.push(document.createTextNode(t));
+    }
+    pos += p.text.length;
+  }
+  if (start > 0) out.unshift(document.createTextNode('…'));
+  if (end < full.length) out.push(document.createTextNode('…'));
+  node.replaceChildren(...out);
+}
+
 function setupSearchResults() {
   const list = document.getElementById('search-results');
   if (!list || !window.MutationObserver) return;
   const dress = (li) => {
     if (li.dataset.dressed) return;
     li.dataset.dressed = '1';
+    const snippet = li.querySelector('.result-snippet');
+    if (snippet) trimToSentence(snippet);
     const meta = li.querySelector('.result-meta');
     if (meta && meta.textContent.includes(' · ')) { // slop-lint: ignore (splits search.js's dot-joined meta)
       meta.replaceChildren(...meta.textContent.split(' · ').map((part) => { // slop-lint: ignore
@@ -240,7 +284,7 @@ async function requestTown(id, name) {
   const res = await fetch('/api/contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ kind: 'message', message: `Coverage request: please read the agendas of ${name} (${id}).`, page: location.pathname }),
+    body: JSON.stringify({ kind: 'message', message: `Please add ${name} (${id}). We can't check its agendas yet.`, page: location.pathname }),
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok || !data.ok) throw new Error(data.error || 'The request didn’t go through. Try again in a minute.');
@@ -256,7 +300,7 @@ function setupRequestButtons() {
       try {
         await requestTown(box.dataset.requestTown, box.dataset.townName);
         out.classList.add('ok');
-        out.textContent = 'Request sent. Thank you. This page will list items once we can read the town.';
+        out.textContent = 'Thanks. We’ve got your request and will ask the town hall.';
       } catch (err) {
         out.classList.add('err');
         out.textContent = err.message;
@@ -343,6 +387,52 @@ window.w351 = {
   },
 };
 
+// "Copy citation" and "Share this meeting": buttons that need JavaScript, so they start hidden.
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    const tmp = document.createElement('textarea');
+    tmp.value = text;
+    tmp.setAttribute('readonly', '');
+    tmp.className = 'sr-only';
+    document.body.append(tmp);
+    tmp.select();
+    const ok = document.execCommand('copy');
+    tmp.remove();
+    return ok;
+  }
+}
+function flash(button, text) {
+  const was = button.dataset.label || button.textContent;
+  button.dataset.label = was;
+  button.textContent = text;
+  setTimeout(() => { button.textContent = was; }, 2000);
+}
+function setupCopyAndShare() {
+  document.addEventListener('click', async (event) => {
+    const copy = event.target.closest('[data-copy]');
+    if (copy) {
+      flash(copy, (await copyText(copy.dataset.copy)) ? 'Copied' : 'Couldn’t copy');
+      return;
+    }
+    const share = event.target.closest('[data-share]');
+    if (!share) return;
+    const data = { title: share.dataset.title, text: share.dataset.text, url: share.dataset.url };
+    if (navigator.share) {
+      try {
+        await navigator.share(data);
+      } catch {
+        /* closed without sharing */
+      }
+      return;
+    }
+    flash(share, (await copyText(data.url)) ? 'Link copied' : 'Couldn’t copy the link');
+  });
+  for (const b of document.querySelectorAll('[data-copy][hidden], [data-share][hidden]')) b.hidden = false;
+}
+
 followOldAnchors();
 setupTownBox();
 setupListFilter();
@@ -353,3 +443,4 @@ setupSearchResults();
 setupEmailNotes();
 setupRequestButtons();
 setupDisclosure();
+setupCopyAndShare();

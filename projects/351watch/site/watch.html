@@ -3,13 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Get alerts for your town&#x27;s agendas | Agenda Ahead</title>
-<meta name="description" content="Free alerts for your town and the towns next to it: solar, battery storage, data center and zoning items by calendar, RSS, email or chat. No account needed.">
+<title>Get free alerts for your town | Agenda Ahead</title>
+<meta name="description" content="Free email alerts when solar, battery storage, data centers or zoning come up on your town&#x27;s agendas and the towns next to it. No account needed.">
 <link rel="canonical" href="https://351watch-sulmusic2-4637s-projects.vercel.app/watch">
-<meta property="og:title" content="Get alerts for your town&#x27;s agendas | Agenda Ahead">
-<meta property="og:description" content="Free alerts for your town and the towns next to it: solar, battery storage, data center and zoning items by calendar, RSS, email or chat. No account needed.">
+<meta property="og:title" content="Get free alerts for your town">
+<meta property="og:description" content="Free email alerts when solar, battery storage, data centers or zoning come up on your town&#x27;s agendas and the towns next to it. No account needed.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Agenda Ahead">
+<meta property="og:url" content="https://351watch-sulmusic2-4637s-projects.vercel.app/watch">
+<meta property="og:image" content="https://351watch-sulmusic2-4637s-projects.vercel.app/og.png">
+<meta property="og:image:alt" content="Agenda Ahead: what's coming up at your town meetings">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
 <link rel="preload" href="/fonts/barlow-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/barlow-semicondensed-bold.woff2" as="font" type="font/woff2" crossorigin>
@@ -25,10 +29,12 @@
 <main id="main">
 
 <div class="wrap narrow watch">
-<p class="notice" id="edit-banner" hidden>Editing <b id="edit-name">your alert list</b>. <a href="/watch">Start a new one instead</a></p>
+<p class="notice" id="edit-banner" hidden>Editing <b id="edit-name">your alerts</b>. <a href="/watch">Set up new alerts instead</a></p>
 <p class="notice err" id="watch-error" role="alert" hidden></p>
-<h1 id="watch-title" tabindex="-1">Get free alerts</h1>
-<form id="watch-form" class="watch-form" novalidate>
+<h1 id="watch-title" tabindex="-1" data-start="Get free alerts">Get free alerts</h1>
+
+
+<form id="watch-form" class="watch-form" data-mode="residents" novalidate>
   <div class="step" id="step-town">
     <label for="home-town" class="big-q">Which town?</label>
     <p class="form-note" id="town-help">Alerts are free for your town and the towns next to it.</p>
@@ -37,7 +43,7 @@
     <p class="form-note" id="home-read" aria-live="polite">Pick it from the list as you type.</p>
     <div class="request" id="home-request" hidden>
       <p id="home-request-text"></p>
-      <button type="button" class="btn quiet" id="home-request-btn">Request this town</button>
+      <button type="button" class="btn quiet" id="home-request-btn">Ask us to add this town</button>
       <p class="form-status" id="home-request-status" role="status" aria-live="polite"></p>
     </div>
     <p class="field-error" id="towns-error" hidden></p>
@@ -49,67 +55,49 @@
     <div class="preview" id="preview" aria-live="polite"></div>
     <fieldset class="near" id="near-step">
       <legend class="sr-only">Towns</legend>
-      <label class="check big" id="near-all-row"><input type="checkbox" id="near-all" checked> <span id="near-all-text">Also watch the towns next to <span id="home-name">your town</span></span></label>
+      <label class="check big" id="near-all-row"><input type="checkbox" id="near-all" checked> <span id="near-all-text">Also include the towns next to <span id="home-name">your town</span></span></label>
       <p class="field-error" id="near-error" hidden></p>
-      <details class="disclose" id="near-details"><summary>See or change the towns</summary>
-        <p class="form-note" id="near-note"></p>
-        <ul class="check-cols" id="near-list"></ul>
-        <div id="extra-wrap" hidden>
-          <p class="form-note">Also in this alert list:</p>
-          <ul class="check-cols" id="extra-list"></ul>
-        </div>
-      </details>
-      <details class="disclose" id="topics-details"><summary>Topics: all</summary>
-        <ul class="check-cols topic-list"><li><label class="check"><input type="checkbox" name="topics" value="solar" checked><span>Solar</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="battery_storage" checked><span>Battery storage</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="data_center" checked><span>Data centers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="moratorium" checked><span>Moratoriums</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="clean_energy_siting" checked><span>Clean-energy permit rules</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="zoning_amendment" checked><span>Zoning changes</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="40b_comprehensive_permit" checked><span>Affordable housing</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wireless_telecom" checked><span>Cell towers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wetlands_filing" checked><span>Wetlands filings</span></label></li></ul>
-      </details>
+      <p class="form-note" id="near-note" hidden></p>
+      <div hidden><ul id="near-list"></ul><div id="extra-wrap"><ul id="extra-list"></ul></div></div>
+    </fieldset>
+    <fieldset class="near" id="topics-step">
+      <legend class="big-legend">Send me alerts about</legend>
+      <ul class="check-cols topic-list" id="topics-details"><li><label class="check"><input type="checkbox" name="topics" value="solar" checked><span>Solar</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="battery_storage" checked><span>Battery storage</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="data_center" checked><span>Data centers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="moratorium" checked><span>Moratoriums</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="clean_energy_siting" checked><span>Clean-energy permit rules</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="zoning_amendment" checked><span>Zoning changes</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="40b_comprehensive_permit" checked><span>Affordable housing</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wireless_telecom" checked><span>Cell towers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wetlands_filing" checked><span>Wetlands filings</span></label></li></ul>
       <p class="field-error" id="topics-error" hidden></p>
     </fieldset>
 
     <div id="email-option" hidden>
       <label class="field big-label">Your email address<input name="email" id="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" aria-describedby="email-help"></label>
-      <p class="form-note" id="email-help">We email you a link to confirm it. After that, at most one email a day, only when something new comes up.</p>
+      <p class="form-note" id="email-help">Free. At most one email a day, only when something new is posted. We email you a link to confirm the address first.</p>
+      <p class="form-note">We never sell or share your email.</p>
       <label class="check" id="email-remove-row" hidden><input type="checkbox" id="email-remove"> Stop emails and remove the address</label>
       <p class="field-error" id="email-error" hidden></p>
     </div>
-    <p class="form-note" id="no-email" hidden>Email alerts are starting soon. For now, the next page gives you a calendar link and an RSS feed.</p>
-
-    <details class="disclose" id="hook-details">
-      <summary>Other ways to get alerts</summary>
-      <p>The next page has a calendar link and an RSS feed, with or without email. You can also post alerts to a chat channel.</p>
-      <label class="field">Slack, Discord or Teams webhook URL <small>(optional)</small><input name="webhook_url" id="webhook-url" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://hooks.slack.com/services/…" aria-describedby="webhook-help"></label>
-      <p class="form-note" id="webhook-help">For Teams, use a Workflows webhook URL. We post once a day.</p>
-      <label class="check" id="webhook-remove-row" hidden><input type="checkbox" id="webhook-remove"> Remove the saved webhook</label>
-      <label class="field">Message format
-        <select name="webhook_format"><option value="auto">Match the service</option><option value="json">Plain JSON</option></select>
-      </label>
-      <div class="actions"><button type="button" class="btn quiet" id="send-test">Send a test message</button></div>
-      <p class="form-status" id="test-status" role="status" aria-live="polite"></p>
-      <p class="field-error" id="webhook_url-error" hidden></p>
-    </details>
-    <details class="disclose" id="name-details">
-      <summary>Name this list</summary>
-      <label class="field">Name <small>(optional)</small><input name="name" maxlength="80" autocomplete="off" placeholder="Carver and neighbors"></label>
-    </details>
+    <p class="form-note" id="no-email" hidden>Email alerts start soon. Until then, the next page lets you add these meetings to your calendar.</p>
+    
 
     <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
     <div class="submit-row">
       <button class="btn" type="submit" id="watch-submit">Get alerts</button>
       <p class="form-status" id="watch-status" role="status" aria-live="polite"></p>
     </div>
-    <p class="form-note">No account. <a href="/how-it-works#privacy">What we store</a></p>
+    <p class="form-note">No account needed. <a href="/how-it-works#privacy">What we keep and why</a></p>
   </div>
 </form>
+<p class="form-note">For a business or group? <a href="/alerts-for-groups">Alerts for businesses and groups</a> can post to Slack, Teams or Discord.</p>
+<p class="owner">Agenda Ahead is an independent service from OWNER_NAME_TBD, Massachusetts. We’re not connected to any town, developer or advocacy group.</p>
 
 <section id="my-lists" aria-labelledby="my-lists-title" hidden>
-  <h2 id="my-lists-title">Your alert lists in this browser</h2>
+  <h2 id="my-lists-title">Alerts you set up on this device</h2>
   <ul class="plain" id="my-lists-items"></ul>
 </section>
 </div>
 
 </main>
 <footer class="site"><div class="wrap">
-  <p>Agenda Ahead reads the agendas towns post online. It is not legal advice. Check dates with the town clerk.</p>
-  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/attorney-general">State rulings on moratoriums</a></li><li><a href="/pricing">What’s free</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#crawler">Our crawler</a></li><li><a href="/how-it-works#contact">Send a correction</a></li></ul>
+  <p>Agenda Ahead is an independent service from OWNER_NAME_TBD, Massachusetts. We’re not connected to any town, developer or advocacy group.</p>
+  <p>We check the agendas towns post online. This isn’t legal advice. Check dates with the town clerk.</p>
+  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/attorney-general">Attorney General reviews of town bylaws</a></li><li><a href="/pricing">Is it free?</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#crawler">How we collect agendas</a></li><li><a href="/how-it-works#contact">Contact us</a></li></ul>
 </div></footer>
 <script src="/app.js" defer></script>
 <script src="/watch.js" defer></script>
