@@ -33,7 +33,7 @@
   };
   const dayLabel = (iso) => {
     const d = new Date(`${iso.slice(0, 10)}T12:00:00Z`);
-    const opts = { weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC' };
+    const opts = { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' };
     if (iso.slice(0, 4) !== today.slice(0, 4)) opts.year = 'numeric';
     return d.toLocaleDateString('en-US', opts);
   };
@@ -68,17 +68,14 @@
   function sentence(g, withTown) {
     const [low] = topicPhrase(g.topics);
     let s;
-    if (g.source === 'massdep_wetlands') {
-      s = `a wetlands filing for ${low} reached MassDEP. The conservation commission must open a hearing within 21 days of filing.`;
-    } else {
-      const where = g.board_key === 'town_meeting' ? 'the town meeting warrant' : `the ${boardLabel(g)} agenda`;
-      s = `${where} mentions ${low}.`;
-    }
+    if (g.source === 'massdep_wetlands') s = `wetlands filing for ${low} went to the state.`;
+    else if (g.board_key === 'town_meeting') s = `town meeting warrant mentions ${low}.`;
+    else s = `${boardLabel(g)} agenda mentions ${low}.`;
     if (!withTown) return [s.charAt(0).toUpperCase() + s.slice(1)];
     const town = el('a', { class: 'item-town', href: townPath(g.town_url), text: g.town + (g.state && g.state !== 'MA' ? `, ${g.state}` : '') });
     const id = `${g.state}:${g.town}`;
     const next = homeTown && id !== homeTown ? ` (next to ${homeTown.split(':').slice(1).join(':')})` : '';
-    return ['In ', town, `${next}, ${s}`];
+    return [town, `${next}: ${s}`];
   }
 
   // Group items by agenda document and meeting, as merge_agendas() does in build.py.
@@ -96,36 +93,34 @@
     return [...groups.values()];
   }
 
+  // One agenda, as item_html() renders it in build.py.
   function itemNode(g) {
-    const when = fmtDate(g.meeting_date) || 'no date listed';
+    const iso = (g.meeting_date || '').slice(0, 10);
     const dep = g.source === 'massdep_wetlands';
     const pdf = /\.pdf$/i.test(g.source_url.split('?')[0]) || /\(pdf\)/i.test(g.document_title || '');
-    const label = dep ? 'Open the filing' : (pdf ? 'Open the agenda (PDF)' : 'Open the agenda');
-    const source = dep ? 'the MassDEP filing' : (g.board_key === 'town_meeting' ? 'the warrant' : 'the agenda');
-    const more = g.snippets.length - 3;
+    const label = dep ? 'Filing' : (pdf ? 'Agenda (PDF)' : 'Agenda');
+    const source = dep ? 'the state filing' : (g.board_key === 'town_meeting' ? 'the warrant' : 'the agenda');
     return el('li', { class: 'item' },
-      el('p', { class: 'item-say' }, ...sentence(g, true)),
-      el('p', { class: 'item-from', text: `Quoted from ${source}:` }),
-      ...g.snippets.slice(0, 3).map((s) => el('blockquote', { class: 'item-quote', cite: g.source_url, text: s })),
-      more > 0 ? el('p', { class: 'item-more', text: `${plural(more, 'more passage')} on this agenda.` }) : null,
-      el('p', { class: 'item-src' }, el('a', { href: g.source_url, rel: 'nofollow noopener', target: '_blank' }, label,
-        el('span', { class: 'sr-only', text: ` for ${g.town} ${boardLabel(g)}, ${when}` }))));
+      el('p', { class: 'item-date' }, iso ? el('time', { datetime: iso, text: dayLabel(iso) }) : 'No date'),
+      el('div', { class: 'item-main' },
+        el('p', { class: 'item-say' }, ...sentence(g, true)),
+        el('div', { class: 'item-actions' },
+          el('a', { class: 'item-link', href: g.source_url, rel: 'nofollow noopener', target: '_blank' }, label,
+            el('span', { class: 'sr-only', text: `: ${g.town} ${boardLabel(g)}, ${fmtDate(iso) || 'no date'}` })),
+          el('details', { class: 'item-words' }, el('summary', { text: 'Agenda wording' }),
+            el('p', { class: 'item-from', text: `Quoted from ${source}:` }),
+            ...g.snippets.slice(0, 3).map((q) => el('blockquote', { class: 'item-quote', cite: g.source_url, text: q }))))));
   }
 
-  function dayGroups(groups) {
-    const order = [];
-    const byDay = new Map();
-    for (const g of groups) {
-      const k = (g.meeting_date || '').slice(0, 10);
-      if (!byDay.has(k)) {
-        byDay.set(k, []);
-        order.push(k);
-      }
-      byDay.get(k).push(g);
+  // The first few agendas, the rest behind one "Show more", as item_list() does in build.py.
+  function itemList(groups, shown, more) {
+    const nodes = [el('ol', { class: 'items' }, ...groups.slice(0, shown).map(itemNode))];
+    const rest = groups.slice(shown);
+    if (rest.length) {
+      nodes.push(el('details', { class: 'more' }, el('summary', { text: `${more} (${rest.length})` }),
+        el('ol', { class: 'items' }, ...rest.map(itemNode))));
     }
-    return order.map((k) => el('section', { class: 'day' },
-      el('h4', { class: 'day-head' }, k ? el('time', { datetime: k, text: dayLabel(k) }) : 'No meeting date listed'),
-      el('ol', { class: 'items' }, ...byDay.get(k).map(itemNode))));
+    return nodes;
   }
 
   function fail(message, linkText = 'Set up new alerts') {
@@ -177,32 +172,17 @@
   }
 
   function renderItems(items) {
-    const town = $('i-town');
-    const topic = $('i-topic');
-    const search = $('i-search');
-    const towns = [...new Set(items.map((i) => i.town))].sort();
-    town.append(...towns.map((t) => el('option', { value: t, text: `${t} (${items.filter((i) => i.town === t).length})` })));
-    const topics = [...new Set(items.flatMap((i) => i.topics))];
-    topic.append(...topics.map((t) => el('option', { value: t, text: topicLabel(t) })));
-    const text = items.map((i) => `${i.town} ${i.board} ${i.snippet} ${i.document_title || ''}`.toLowerCase());
-
-    const apply = () => {
-      const q = search.value.trim().toLowerCase();
-      const shown = items.filter((item, n) =>
-        (!town.value || item.town === town.value) && (!topic.value || item.topics.includes(topic.value)) && (!q || text[n].includes(q)));
-      const up = merge(shown.filter((i) => i.meeting_date && i.meeting_date >= today).sort((a, b) => a.meeting_date.localeCompare(b.meeting_date)));
-      const past = merge(shown.filter((i) => i.meeting_date && i.meeting_date < today).sort((a, b) => b.meeting_date.localeCompare(a.meeting_date)));
-      const undated = merge(shown.filter((i) => !i.meeting_date));
-      const fill = (node, list, empty) => node.replaceChildren(...(list.length ? dayGroups(list) : [el('p', { class: 'empty', text: empty })]));
-      fill($('items-upcoming'), up, 'Nothing on upcoming agendas for these towns and topics yet. New items show up here, in the feeds and in the calendar.');
-      fill($('items-past'), past, 'No matching items from recent meetings.');
-      fill($('items-undated'), undated, '');
-      $('undated-wrap').hidden = !undated.length;
-      $('i-count').textContent = `${shown.length} of ${items.length} items`;
-    };
-    for (const c of [town, topic]) c.addEventListener('change', apply);
-    search.addEventListener('input', apply);
-    apply();
+    const up = merge(items.filter((i) => i.meeting_date && i.meeting_date >= today).sort((a, b) => a.meeting_date.localeCompare(b.meeting_date)));
+    const past = merge(items.filter((i) => i.meeting_date && i.meeting_date < today).sort((a, b) => b.meeting_date.localeCompare(a.meeting_date)));
+    const undated = merge(items.filter((i) => !i.meeting_date));
+    $('items-upcoming').replaceChildren(...(up.length ? itemList(up, 5, 'Show more')
+      : [el('p', { class: 'empty', text: 'Nothing coming up yet. New items show up here and in your calendar.' })]));
+    $('items-lead').textContent = up.length ? `${plural(up.length, 'agenda')} coming up.` : '';
+    $('items-past').replaceChildren(...itemList(past, 10, 'Show older'));
+    $('past-summary').textContent = `Show past items (${past.length})`;
+    $('past-wrap').hidden = !past.length;
+    $('items-undated').replaceChildren(...itemList(undated, 10, 'Show more'));
+    $('undated-wrap').hidden = !undated.length;
   }
 
   function renderFeeds(links) {
@@ -210,8 +190,8 @@
     $('rss-link').href = links.rss;
     $('json-link').href = links.json;
     const rows = [
-      ['Calendar', links.ics, 'For Google Calendar or Outlook on the web: add a calendar “from URL” and paste this.'],
-      ['RSS', links.rss, 'For feed readers such as Feedly, Inoreader or Outlook.'],
+      ['Calendar', links.ics, 'For Google Calendar or Outlook on the web, add a calendar from this URL.'],
+      ['RSS', links.rss, 'For feed readers.'],
     ];
     $('feed-rows').replaceChildren(...rows.map(([label, url, help], n) =>
       el('div', { class: 'feed-row' }, el('label', { for: `feed-${n}`, text: `${label} link` }), ...linkField(`feed-${n}`, url, `${label} link`), el('small', { text: help }))));
@@ -359,8 +339,7 @@
     $('wl-title').textContent = name;
     const townNames = wl.towns.map((t) => t.split(':').slice(1).join(':'));
     const shownTowns = townNames.slice(0, 8).join(', ') + (townNames.length > 8 ? ` and ${townNames.length - 8} more` : '');
-    $('wl-summary').textContent = `${wl.topics.map((t) => topicLabel(t)).join(', ')} in ${plural(wl.towns.length, 'town')}: ${shownTowns}. Made ${fmtDate(wl.created_at)}.`;
-    $('items-lead').textContent = `${plural(feed.count, 'item')} match${feed.count === 1 ? 'es' : ''} these alerts in the current data${feed.generated ? `, updated ${fmtDate(feed.generated)}` : ''}.`;
+    $('wl-summary').textContent = `${plural(wl.towns.length, 'town')}: ${shownTowns}.`;
     window.w351.remember(readonly ? id : wl.id, wl.name, readonly);
     $('wl-body').hidden = false;
 
@@ -370,6 +349,7 @@
       $('readonly-banner').hidden = false;
       return;
     }
+    $('settings').hidden = false;
     renderLinks(wl);
     renderWebhook(wl);
     renderEmail(wl, (await status).email_alerts === true);

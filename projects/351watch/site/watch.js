@@ -58,6 +58,7 @@
       else target.removeAttribute('aria-invalid');
     }
     if (message && name === 'webhook_url') $('hook-details').open = true;
+    if (message && name === 'topics') $('topics-details').open = true;
   }
 
   // ---------- data
@@ -145,6 +146,13 @@
     return li;
   }
 
+  function topicSummary() {
+    const on = topicBoxes.filter((t) => t.checked);
+    const names = on.map((t) => t.closest('label').textContent.trim().toLowerCase());
+    $('topics-details').querySelector('summary').textContent = on.length === topicBoxes.length ? 'Topics: all'
+      : (on.length ? `Topics: ${names.slice(0, 2).join(', ')}${on.length > 2 ? ` and ${on.length - 2} more` : ''}` : 'Topics: none');
+  }
+
   const area = (id) => (neighbors && !id.startsWith('_') && Array.isArray(neighbors[id]) ? neighbors[id] : []).filter((n) => byId.has(n));
   const notRead = (id) => byId.has(id) && byId.get(id).monitored === false;
 
@@ -155,7 +163,7 @@
       box.hidden = true;
       return;
     }
-    $('home-request-text').textContent = `We can’t read ${label(id)}’s agendas yet. Its alerts start once we can; items from the towns next to it still come. Want ${label(id)} covered?`;
+    $('home-request-text').textContent = `We can’t read ${label(id)}’s agendas yet. You’ll still get its neighbors.`;
     $('home-request-btn').textContent = `Request ${label(id)}`;
     $('home-request-btn').disabled = false;
     $('home-request-status').textContent = '';
@@ -178,10 +186,11 @@
   function setHome(id, checkedNear) {
     homeId = id;
     $('home-name').textContent = id ? label(id) : 'your town';
+    $('near-step').hidden = !id;
     if (!id) {
       showRequest(null);
       nearList.replaceChildren();
-      nearNote.textContent = 'Pick your town first. Its neighbors show up here, all included.';
+      nearNote.textContent = 'Pick your town first.';
       return;
     }
     const near = area(id);
@@ -191,10 +200,10 @@
       `${label(n, id)} (next to ${label(id)}${notRead(n) ? ', not read yet' : ''})`, checkedNear ? checkedNear.includes(n) : true)));
     showRequest(id);
     nearNote.textContent = near.length
-      ? `${label(id)} and the ${near.length === 1 ? 'town' : `${near.length} towns`} next to it are included. Untick any you don’t want.`
+      ? 'All are included. Untick any you don’t want.'
       : (neighbors && Object.keys(neighbors).length
-        ? `${label(id)} has no towns next to it on our map (islands, for example), so these alerts cover ${label(id)}.`
-        : `We couldn’t load the towns next to ${label(id)} right now. These alerts will cover ${label(id)}; you can add its neighbors later by editing them.`);
+        ? `${label(id)} has no towns next to it, so alerts cover ${label(id)} only.`
+        : `We couldn’t load the towns next to ${label(id)}. Alerts will cover ${label(id)} for now.`);
     fieldError('towns', '');
   }
 
@@ -219,6 +228,7 @@
       for (const t of topicBoxes) t.checked = true;
       topicsFromText = false;
     }
+    topicSummary();
 
     if (!text.trim()) {
       read.textContent = DEFAULT_READ;
@@ -234,7 +244,7 @@
     if (first) {
       const chosenTopics = topicBoxes.filter((t) => t.checked);
       const what = chosenTopics.length === topicBoxes.length ? 'every topic'
-        : joinAnd(chosenTopics.map((t) => t.closest('label').querySelector('span').firstChild.textContent.trim().toLowerCase()));
+        : joinAnd(chosenTopics.map((t) => t.closest('label').textContent.trim().toLowerCase()));
       const near = Array.from(nearList.querySelectorAll('input[name="towns"]:checked')).map((x) => x.value);
       const where = others.length
         ? joinAnd([first, ...others.filter((o) => near.includes(o))].map((x) => label(x)))
@@ -244,16 +254,16 @@
       parts.push('Pick your town from the list.');
     }
     if (outside.length) {
-      parts.push(` ${joinAnd(outside.map((x) => label(x)))} ${outside.length === 1 ? 'isn’t' : 'aren’t'} next to ${label(first)}. Free alerts cover one town and the towns next to it.`);
+      parts.push(` ${joinAnd(outside.map((x) => label(x)))} ${outside.length === 1 ? 'isn’t' : 'aren’t'} next to ${label(first)}. Free alerts cover one town and its neighbors.`);
     }
-    if (left.length) parts.push(` We didn’t find a town or topic called “${left.slice(0, 3).join('”, “')}”. Check the spelling.`);
+    if (left.length) parts.push(` We don’t know “${left.slice(0, 3).join('”, “')}”. Check the spelling.`);
     read.replaceChildren(...parts.map((p) => (typeof p === 'string' ? document.createTextNode(p) : p)));
   }
 
   // ---------- wiring
   home.addEventListener('input', () => Promise.all([loadTowns, loadNeighbors]).then(readHome));
   nearList.addEventListener('change', () => { if (home.value.trim()) readHome(); });
-  for (const t of topicBoxes) t.addEventListener('change', () => { topicsFromText = false; fieldError('topics', ''); });
+  for (const t of topicBoxes) t.addEventListener('change', () => { topicsFromText = false; fieldError('topics', ''); topicSummary(); });
 
   function payload() {
     const chosen = Array.from(form.querySelectorAll('#near-list input[name="towns"]:checked, #extra-list input[name="towns"]:checked')).map((b) => b.value);
@@ -395,6 +405,7 @@
     if (topicKeys.length && topicBoxes.some((t) => topicKeys.includes(t.value))) {
       for (const t of topicBoxes) t.checked = topicKeys.includes(t.value);
     }
+    topicSummary();
   }
 
   async function loadForEdit() {
@@ -411,6 +422,8 @@
       const first = wl.home_town && wl.towns.includes(wl.home_town) ? wl.home_town : wl.towns[0];
       prefill([first, ...wl.towns.filter((t) => t !== first)], wl.topics);
       for (const t of topicBoxes) t.checked = wl.topics.includes(t.value);
+      topicSummary();
+      if (wl.name) $('name-details').open = true;
       if (wl.webhook && wl.webhook.configured) {
         webhook.placeholder = `Saved: ${wl.webhook.masked}. Leave blank to keep it.`;
         form.elements.webhook_format.value = wl.webhook.format || 'auto';

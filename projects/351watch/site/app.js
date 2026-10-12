@@ -177,14 +177,8 @@ function setupContactForm() {
   });
 }
 
-// /search: site/search.js renders li.result items. Give them the site's plain topic names (from
-// data-topics), split the meta line into separate parts instead of dot-joined text, and mark
-// meetings that are still ahead.
-const TOPIC_NAMES = {
-  solar: 'Solar', battery_storage: 'Battery storage', data_center: 'Data centers', moratorium: 'Moratoria',
-  clean_energy_siting: 'Clean-energy permits', zoning_amendment: 'Zoning changes',
-  '40b_comprehensive_permit': 'Affordable housing (40B)', wireless_telecom: 'Cell towers', wetlands_filing: 'Wetlands filings',
-};
+// /search: site/search.js renders li.result items. Split the meta line into separate parts instead
+// of dot-joined text, and mark meetings that are still ahead.
 function setupSearchResults() {
   const list = document.getElementById('search-results');
   if (!list || !window.MutationObserver) return;
@@ -205,12 +199,6 @@ function setupSearchResults() {
         }
         return span;
       }));
-    }
-    if (li.dataset.topics && meta) {
-      const topics = document.createElement('p');
-      topics.className = 'result-topics';
-      topics.textContent = `Flagged: ${li.dataset.topics.split(',').map((t) => TOPIC_NAMES[t] || t).join(', ')}`;
-      meta.after(topics);
     }
   };
   new MutationObserver((changes) => {
@@ -259,6 +247,28 @@ function setupRequestButtons() {
   }
 }
 
+// Details on demand: a link to something inside a closed <details> opens it, and search filters
+// start open when the URL already uses one.
+function openTarget() {
+  const id = decodeURIComponent(location.hash.slice(1));
+  const el = id && document.getElementById(id);
+  if (!el) return;
+  for (let d = el.closest('details'); d; d = d.parentElement && d.parentElement.closest('details')) d.open = true;
+  const next = el.nextElementSibling;
+  if (el.matches('h2') && next && next.matches('details') && el.closest('section')) {
+    for (const d of el.closest('section').querySelectorAll(':scope > details')) d.open = true;
+  }
+}
+function setupDisclosure() {
+  openTarget();
+  window.addEventListener('hashchange', openTarget);
+  const filters = document.getElementById('search-filters');
+  if (filters) {
+    const p = new URLSearchParams(location.search);
+    if (['state', 'town', 'topic', 'board', 'sort', 'upcoming'].some((k) => p.get(k))) filters.open = true;
+  }
+}
+
 // Old links to the tracker that used to live on the home page.
 function followOldAnchors() {
   if (location.pathname === '/' && location.hash === '#tracker') location.replace('/attorney-general#tracker');
@@ -304,3 +314,4 @@ setupContactForm();
 setupSearchResults();
 setupEmailNotes();
 setupRequestButtons();
+setupDisclosure();

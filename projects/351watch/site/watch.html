@@ -25,18 +25,16 @@
 <main id="main">
 
 <div class="wrap narrow">
-<section class="page-head" aria-labelledby="watch-title">
-  <h1 id="watch-title">Get alerts</h1>
-  <p class="lead">Free: your town and the towns next to it, every topic, sent once a day when something new is posted. No account needed.</p>
-</section>
-<p class="notice" id="edit-banner" hidden>Editing <b id="edit-name">your alert list</b>. Changes apply to its page and feeds right away. <a href="/watch">Start a new alert list instead</a></p>
+<h1 id="watch-title">Get alerts</h1>
+<p class="lead">Free for your town and the towns next to it. No account needed.</p>
+<p class="notice" id="edit-banner" hidden>Editing <b id="edit-name">your alert list</b>. <a href="/watch">Start a new one instead</a></p>
 <p class="notice err" id="watch-error" role="alert" hidden></p>
 <form id="watch-form" class="watch-form" novalidate>
   <div class="step">
     <h2 class="step-head"><span class="step-n" aria-hidden="true">1</span> <label for="home-town">Your town</label></h2>
-    <input id="home-town" class="big-input" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Type a town name" aria-describedby="home-read towns-error">
+    <input id="home-town" class="big-input" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" aria-describedby="home-read towns-error">
     <datalist id="town-names"></datalist>
-    <p class="onebox-read" id="home-read" aria-live="polite">Pick your town from the list. You can also type topics with it, like “battery storage in Carver, Plympton and Wareham”.</p>
+    <p class="form-note" id="home-read" aria-live="polite">Pick it from the list as you type.</p>
     <div class="request" id="home-request" hidden>
       <p id="home-request-text"></p>
       <button type="button" class="btn quiet" id="home-request-btn">Request this town</button>
@@ -45,47 +43,45 @@
     <p class="field-error" id="towns-error" hidden></p>
   </div>
 
-  <fieldset class="step" id="near-step">
+  <fieldset class="step" id="near-step" hidden>
     <legend class="step-head"><span class="step-n" aria-hidden="true">2</span> <span>Towns next to <span id="home-name">your town</span></span></legend>
-    <p class="form-note" id="near-note">Pick your town first. Its neighbors show up here, all included.</p>
+    <p class="form-note" id="near-note">Pick your town first.</p>
     <ul class="check-cols" id="near-list"></ul>
     <div id="extra-wrap" hidden>
       <p class="form-note">Also in this alert list:</p>
       <ul class="check-cols" id="extra-list"></ul>
     </div>
-    <p class="form-note">Free alerts cover one town and the towns next to it. Watching more areas will be a paid plan later.</p>
-  </fieldset>
-
-  <fieldset class="step">
-    <legend class="step-head"><span class="step-n" aria-hidden="true">3</span> Topics</legend>
-    <ul class="check-cols topic-list"><li><label class="check"><input type="checkbox" name="topics" value="solar" checked><span>Solar <small>291 items now</small></span></label></li><li><label class="check"><input type="checkbox" name="topics" value="battery_storage" checked><span>Battery storage <small>170 items now</small></span></label></li><li><label class="check"><input type="checkbox" name="topics" value="data_center" checked><span>Data centers <small>158 items now</small></span></label></li><li><label class="check"><input type="checkbox" name="topics" value="moratorium" checked><span>Moratoria <small>95 items now</small></span></label></li><li><label class="check"><input type="checkbox" name="topics" value="clean_energy_siting" checked><span>Clean-energy permits <small>58 items now</small></span></label></li><li><label class="check"><input type="checkbox" name="topics" value="zoning_amendment" checked><span>Zoning changes <small>434 items now</small></span></label></li><li><label class="check"><input type="checkbox" name="topics" value="40b_comprehensive_permit" checked><span>Affordable housing (40B) <small>144 items now</small></span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wireless_telecom" checked><span>Cell towers <small>45 items now</small></span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wetlands_filing" checked><span>Wetlands filings <small>30 items now</small></span></label></li></ul>
+    <details class="disclose" id="topics-details"><summary>Topics: all</summary>
+      <ul class="check-cols topic-list"><li><label class="check"><input type="checkbox" name="topics" value="solar" checked><span>Solar</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="battery_storage" checked><span>Battery storage</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="data_center" checked><span>Data centers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="moratorium" checked><span>Moratoriums</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="clean_energy_siting" checked><span>Clean-energy permit rules</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="zoning_amendment" checked><span>Zoning changes</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="40b_comprehensive_permit" checked><span>Affordable housing</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wireless_telecom" checked><span>Cell towers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wetlands_filing" checked><span>Wetlands filings</span></label></li></ul>
+    </details>
     <p class="field-error" id="topics-error" hidden></p>
   </fieldset>
 
   <fieldset class="step">
-    <legend class="step-head"><span class="step-n" aria-hidden="true">4</span> How to get them</legend>
-    <p>Every alert list comes with a calendar feed and an RSS feed. You’ll get both links on the next page.</p>
+    <legend class="step-head"><span class="step-n" aria-hidden="true">3</span> <span>How to get them</span></legend>
+    <p>You get a calendar link and an RSS link on the next page.</p>
     <div id="email-option" hidden>
       <label class="field">Email <small>(optional)</small><input name="email" id="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" aria-describedby="email-help"></label>
-      <p class="form-note" id="email-help">We first send a link to confirm the address. After that you get at most one email a day, only when something new comes up, and every email has a one-click unsubscribe.</p>
-      <label class="check" id="email-remove-row" hidden><input type="checkbox" id="email-remove"> Stop emails and remove the saved address</label>
+      <p class="form-note" id="email-help">We send a link to confirm it first. Then at most one email a day.</p>
+      <label class="check" id="email-remove-row" hidden><input type="checkbox" id="email-remove"> Stop emails and remove the address</label>
       <p class="field-error" id="email-error" hidden></p>
     </div>
-    <details class="hook" id="hook-details">
+    <details class="disclose" id="hook-details">
       <summary>Post to Slack, Discord or Teams</summary>
-      <label class="field">Webhook URL for Slack, Discord or Teams (Workflows)
-        <input name="webhook_url" id="webhook-url" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://hooks.slack.com/services/…" aria-describedby="webhook-help">
-      </label>
-      <p class="form-note" id="webhook-help">We post new items to the channel once a day. Use a Slack incoming webhook (hooks.slack.com), a Discord webhook (discord.com/api/webhooks) or a Teams (Workflows) webhook URL (*.logic.azure.com or *.api.powerplatform.com).</p>
+      <label class="field">Webhook URL<input name="webhook_url" id="webhook-url" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://hooks.slack.com/services/…" aria-describedby="webhook-help"></label>
+      <p class="form-note" id="webhook-help">Use a Slack, Discord or Teams (Workflows) webhook URL. We post once a day.</p>
       <label class="check" id="webhook-remove-row" hidden><input type="checkbox" id="webhook-remove"> Remove the saved webhook</label>
       <label class="field">Message format
-        <select name="webhook_format"><option value="auto">Match the service (recommended)</option><option value="json">Plain JSON, for your own Teams workflow</option></select>
+        <select name="webhook_format"><option value="auto">Match the service</option><option value="json">Plain JSON</option></select>
       </label>
       <div class="actions"><button type="button" class="btn quiet" id="send-test">Send a test message</button></div>
       <p class="form-status" id="test-status" role="status" aria-live="polite"></p>
       <p class="field-error" id="webhook_url-error" hidden></p>
     </details>
-    <label class="field">Name this alert list <small>(optional)</small><input name="name" maxlength="80" autocomplete="off" placeholder="Carver and neighbors"></label>
+    <details class="disclose" id="name-details">
+      <summary>Name this list</summary>
+      <label class="field">Name <small>(optional)</small><input name="name" maxlength="80" autocomplete="off" placeholder="Carver and neighbors"></label>
+    </details>
   </fieldset>
 
   <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
@@ -93,20 +89,19 @@
     <button class="btn" type="submit" id="watch-submit">Create alerts</button>
     <p class="form-status" id="watch-status" role="status" aria-live="polite"></p>
   </div>
-  <p class="form-note">Next you get a calendar link, an RSS link and a private link to change these alerts. <a href="/how-it-works#privacy">What we store</a>.</p>
+  <p class="form-note"><a href="/how-it-works#privacy">What we store</a></p>
 </form>
 
 <section id="my-lists" aria-labelledby="my-lists-title" hidden>
-  <h2 id="my-lists-title">Alert lists made in this browser</h2>
+  <h2 id="my-lists-title">Your alert lists in this browser</h2>
   <ul class="plain" id="my-lists-items"></ul>
-  <p class="form-note">This list lives only in this browser. Bookmark your private links to keep them.</p>
 </section>
 </div>
 
 </main>
 <footer class="site"><div class="wrap">
-  <p>Agenda Ahead reads the agendas that towns post under state open meeting laws. It is informational only, not legal advice. Check dates and details with the town clerk or the linked agenda.</p>
-  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">Moratoria and Attorney General rulings</a></li><li><a href="/pricing">What’s free</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#crawler">Our crawler</a></li><li><a href="/how-it-works#contact">Send a correction</a></li></ul>
+  <p>Agenda Ahead reads the agendas towns post online. It is not legal advice. Check dates with the town clerk.</p>
+  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">State rulings on moratoriums</a></li><li><a href="/pricing">What’s free</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#crawler">Our crawler</a></li><li><a href="/how-it-works#contact">Send a correction</a></li></ul>
 </div></footer>
 <script src="/app.js" defer></script>
 <script src="/watch.js" defer></script>

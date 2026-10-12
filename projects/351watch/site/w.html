@@ -24,89 +24,76 @@
 </div></header>
 <main id="main">
 
-<div class="wrap narrow" id="wl-app" data-topics="{&quot;solar&quot;: [&quot;Solar&quot;, &quot;solar&quot;, false], &quot;battery_storage&quot;: [&quot;Battery storage&quot;, &quot;battery storage&quot;, false], &quot;data_center&quot;: [&quot;Data centers&quot;, &quot;data centers&quot;, true], &quot;moratorium&quot;: [&quot;Moratoria&quot;, &quot;a moratorium&quot;, false], &quot;clean_energy_siting&quot;: [&quot;Clean-energy permits&quot;, &quot;clean-energy permit rules&quot;, true], &quot;zoning_amendment&quot;: [&quot;Zoning changes&quot;, &quot;a zoning change&quot;, false], &quot;40b_comprehensive_permit&quot;: [&quot;Affordable housing (40B)&quot;, &quot;affordable housing (40B)&quot;, false], &quot;wireless_telecom&quot;: [&quot;Cell towers&quot;, &quot;cell towers&quot;, true], &quot;wetlands_filing&quot;: [&quot;Wetlands filings&quot;, &quot;a wetlands filing&quot;, false]}" data-order="[&quot;solar&quot;, &quot;battery_storage&quot;, &quot;data_center&quot;, &quot;moratorium&quot;, &quot;clean_energy_siting&quot;, &quot;zoning_amendment&quot;, &quot;40b_comprehensive_permit&quot;, &quot;wireless_telecom&quot;, &quot;wetlands_filing&quot;]">
-<section class="page-head" aria-labelledby="wl-title">
-  <p class="crumbs-plain">Alert list</p>
-  <h1 id="wl-title">Loading your alerts…</h1>
-  <p class="lead" id="wl-summary"></p>
-</section>
+<div class="wrap narrow" id="wl-app" data-topics="{&quot;solar&quot;: [&quot;Solar&quot;, &quot;solar&quot;, false], &quot;battery_storage&quot;: [&quot;Battery storage&quot;, &quot;battery storage&quot;, false], &quot;data_center&quot;: [&quot;Data centers&quot;, &quot;data centers&quot;, true], &quot;moratorium&quot;: [&quot;Moratoriums&quot;, &quot;a moratorium&quot;, false], &quot;clean_energy_siting&quot;: [&quot;Clean-energy permit rules&quot;, &quot;clean-energy permit rules&quot;, true], &quot;zoning_amendment&quot;: [&quot;Zoning changes&quot;, &quot;a zoning change&quot;, false], &quot;40b_comprehensive_permit&quot;: [&quot;Affordable housing&quot;, &quot;affordable housing&quot;, false], &quot;wireless_telecom&quot;: [&quot;Cell towers&quot;, &quot;cell towers&quot;, true], &quot;wetlands_filing&quot;: [&quot;Wetlands filings&quot;, &quot;a wetlands filing&quot;, false]}" data-order="[&quot;solar&quot;, &quot;battery_storage&quot;, &quot;data_center&quot;, &quot;moratorium&quot;, &quot;clean_energy_siting&quot;, &quot;zoning_amendment&quot;, &quot;40b_comprehensive_permit&quot;, &quot;wireless_telecom&quot;, &quot;wetlands_filing&quot;]">
+<p class="crumbs-plain">Alert list</p>
+<h1 id="wl-title">Loading your alerts…</h1>
+<p id="wl-summary"></p>
 <div class="notice err" id="wl-error" role="alert" hidden></div>
 <div id="wl-body" hidden>
-  <p class="notice ok" id="created-banner" tabindex="-1" hidden><b>Alerts created.</b><span id="inbox-note" hidden> Check your inbox to confirm your email address; emails start after that.</span> Save the private link below: it is the only way to change or delete this list, and we can’t recover it. To share these alerts, use the share link.</p>
+  <p class="notice ok" id="created-banner" tabindex="-1" hidden><b>Alerts created.</b><span id="inbox-note" hidden> Check your inbox to confirm your email.</span> Save your private link below. It’s the only way to change these alerts.</p>
   <p class="notice" id="readonly-banner" hidden>This is a shared, read-only link.</p>
 
   <section aria-labelledby="get-title">
-    <h2 id="get-title">Get these alerts</h2>
+    <h2 id="get-title" class="sr-only">Get these alerts</h2>
     <div class="get-buttons">
       <a class="btn" id="webcal-link" href="#">Add to calendar</a>
       <a class="btn quiet" id="rss-link" href="#">RSS feed</a>
-      <a class="btn quiet" id="json-link" href="#">JSON</a>
     </div>
-    <p class="form-note">The calendar has one all-day event per upcoming meeting with matched items. Feeds update once a day.</p>
-    <div class="feed-rows" id="feed-rows"></div>
+    <details class="disclose"><summary>Show feed links</summary>
+      <div class="feed-rows" id="feed-rows"></div>
+      <p class="small"><a id="json-link" href="#">JSON feed</a></p>
+    </details>
   </section>
 
   <section id="links-section" aria-labelledby="links-title" hidden>
     <h2 id="links-title">Your two links</h2>
     <div class="linkcard private">
       <p class="linkcard-title"><b>Private link: keep this to edit or delete</b></p>
-      <p class="form-note">Anyone with this link can change or delete these alerts. Bookmark it or save it somewhere safe.</p>
       <div class="copy-row" id="private-row"></div>
     </div>
     <div class="linkcard share">
       <p class="linkcard-title"><b>Share link: safe to post</b></p>
-      <p class="form-note">Shows the alerts and feeds, with no way to change them.</p>
       <div class="copy-row" id="share-row"></div>
     </div>
   </section>
 
   <section aria-labelledby="items-title">
-    <h2 id="items-title">Matched agenda items</h2>
-    <p id="items-lead"></p>
-    <div class="filterbar">
-      <label>Town<select id="i-town"><option value="">All</option></select></label>
-      <label>Topic<select id="i-topic"><option value="">All</option></select></label>
-      <label>Words<input id="i-search" type="search"></label>
-      <p class="count" id="i-count" aria-live="polite"></p>
-    </div>
-    <h3>Coming up</h3>
+    <h2 id="items-title">Coming up</h2>
+    <p class="status" id="items-lead"></p>
     <div id="items-upcoming"></div>
-    <h3>Recent meetings</h3>
-    <div id="items-past"></div>
-    <div id="undated-wrap" hidden>
-      <h3>No meeting date listed (mostly town meeting warrants)</h3>
-      <div id="items-undated"></div>
-    </div>
+    <details class="disclose" id="past-wrap"><summary id="past-summary">Show past items</summary><div id="items-past"></div></details>
+    <details class="disclose" id="undated-wrap" hidden><summary>Town meeting warrants</summary><div id="items-undated"></div></details>
   </section>
 
-  <section id="hook-section" aria-labelledby="hook-title" hidden>
-    <h2 id="hook-title">Daily messages</h2>
-    <p id="email-status" hidden></p>
-    <p id="hook-status"></p>
-    <div class="actions"><button type="button" class="btn small quiet" id="hook-test" hidden>Send a test message</button></div>
-    <p class="form-status" id="hook-test-status" role="status" aria-live="polite"></p>
-  </section>
-
-  <section id="manage-section" aria-labelledby="manage-title" hidden>
-    <h2 id="manage-title">Change or delete</h2>
-    <p id="plan-line"></p>
-    <div class="actions">
-      <a class="btn quiet" id="edit-link" href="/watch">Edit towns, topics or webhook</a>
-      <button type="button" class="btn quiet danger" id="delete-start">Delete alerts</button>
-    </div>
-    <div class="confirm" id="delete-confirm" hidden>
-      <p><b>Delete this alert list?</b> Its page, feeds and daily message stop right away. You can’t undo this.</p>
-      <div class="actions"><button type="button" class="btn danger" id="delete-yes">Delete alerts</button><button type="button" class="btn quiet" id="delete-no">Keep them</button></div>
-    </div>
-    <p class="form-status" id="manage-status" role="status" aria-live="polite"></p>
-  </section>
+  <details class="disclose settings" id="settings" hidden><summary>Change or delete these alerts</summary>
+    <section id="hook-section" aria-labelledby="hook-title" hidden>
+      <h2 id="hook-title">Messages</h2>
+      <p id="email-status" hidden></p>
+      <p id="hook-status"></p>
+      <div class="actions"><button type="button" class="btn small quiet" id="hook-test" hidden>Send a test message</button></div>
+      <p class="form-status" id="hook-test-status" role="status" aria-live="polite"></p>
+    </section>
+    <section id="manage-section" aria-labelledby="manage-title" hidden>
+      <h2 id="manage-title">Change or delete</h2>
+      <p id="plan-line"></p>
+      <div class="actions">
+        <a class="btn quiet" id="edit-link" href="/watch">Edit towns, topics or messages</a>
+        <button type="button" class="btn quiet danger" id="delete-start">Delete alerts</button>
+      </div>
+      <div class="confirm" id="delete-confirm" hidden>
+        <p><b>Delete this alert list?</b> Its page, feeds and messages stop. You can’t undo this.</p>
+        <div class="actions"><button type="button" class="btn danger" id="delete-yes">Delete alerts</button><button type="button" class="btn quiet" id="delete-no">Keep them</button></div>
+      </div>
+      <p class="form-status" id="manage-status" role="status" aria-live="polite"></p>
+    </section>
+  </details>
 </div>
 </div>
 
 </main>
 <footer class="site"><div class="wrap">
-  <p>Agenda Ahead reads the agendas that towns post under state open meeting laws. It is informational only, not legal advice. Check dates and details with the town clerk or the linked agenda.</p>
-  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">Moratoria and Attorney General rulings</a></li><li><a href="/pricing">What’s free</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#crawler">Our crawler</a></li><li><a href="/how-it-works#contact">Send a correction</a></li></ul>
+  <p>Agenda Ahead reads the agendas towns post online. It is not legal advice. Check dates with the town clerk.</p>
+  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">State rulings on moratoriums</a></li><li><a href="/pricing">What’s free</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#crawler">Our crawler</a></li><li><a href="/how-it-works#contact">Send a correction</a></li></ul>
 </div></footer>
 <script src="/app.js" defer></script>
 <script src="/w.js" defer></script>

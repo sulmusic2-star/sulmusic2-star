@@ -59,10 +59,10 @@ TOPIC_LABELS = {
     "solar": "Solar",
     "battery_storage": "Battery storage",
     "data_center": "Data centers",
-    "moratorium": "Moratoria",
-    "clean_energy_siting": "Clean-energy permits",
+    "moratorium": "Moratoriums",
+    "clean_energy_siting": "Clean-energy permit rules",
     "zoning_amendment": "Zoning changes",
-    "40b_comprehensive_permit": "Affordable housing (40B)",
+    "40b_comprehensive_permit": "Affordable housing",
     "wireless_telecom": "Cell towers",
     "wetlands_filing": "Wetlands filings",
 }
@@ -74,7 +74,7 @@ TOPIC_PHRASES = {
     "moratorium": ("a moratorium", False),
     "clean_energy_siting": ("clean-energy permit rules", True),
     "zoning_amendment": ("a zoning change", False),
-    "40b_comprehensive_permit": ("affordable housing (40B)", False),
+    "40b_comprehensive_permit": ("affordable housing", False),
     "wireless_telecom": ("cell towers", True),
     "wetlands_filing": ("a wetlands filing", False),
 }
@@ -100,7 +100,7 @@ REASON_LABELS = {
     "no_agenda_listing_found": "No agenda listing found",
     "vendor_blocked": "Agenda vendor blocks automated visitors",
     "vendor_robots_disallow": "Agenda vendor asks crawlers not to visit",
-    "crawl_delay_exceeds_cap": "Site asks for slower crawling than we support yet",
+    "crawl_delay_exceeds_cap": "Site wants slower crawling than we support",
 }
 
 # Agenda platforms as readers know them (town configs store the crawler's adapter names).
@@ -128,11 +128,11 @@ TOPIC_PAGES = [
      "matches": "data centers, hyperscale facilities or cryptocurrency mining",
      "tracker": lambda i: False,
      "ag": lambda r: "data cent" in (r.get("summary", "") + r.get("article", "")).lower()},
-    {"slug": "moratoria", "key": "moratorium", "name": "Moratoria",
+    {"slug": "moratoria", "key": "moratorium", "name": "Moratoriums",
      "matches": "a moratorium of any kind",
      "tracker": lambda i: "moratorium" in i.get("action", "").lower(),
      "ag": lambda r: r.get("bylaw_type") == "moratorium"},
-    {"slug": "consolidated-permit", "key": "clean_energy_siting", "name": "Clean-energy permits",
+    {"slug": "consolidated-permit", "key": "clean_energy_siting", "name": "Clean-energy permit rules",
      "matches": "the state's new consolidated local permit for small clean-energy projects (225 CMR 29.00)",
      "tracker": lambda i: i.get("action") == "Consolidated permit",
      "ag": lambda r: r.get("bylaw_type") == "consolidated permit bylaw"},
@@ -454,7 +454,7 @@ NAV = [
 FOOTER_LINKS = [
     ("/how-it-works", "How it works"),
     ("/topics", "Topics"),
-    ("/attorney-general", "Moratoria and Attorney General rulings"),
+    ("/attorney-general", "State rulings on moratoriums"),
     ("/pricing", "What’s free"),
     ("/how-it-works#privacy", "Privacy"),
     ("/how-it-works#crawler", "Our crawler"),
@@ -511,7 +511,7 @@ def page(ctx, title, description, body, path, scripts=(), noindex=False, head=""
 {body}
 </main>
 <footer class="site"><div class="wrap">
-  <p>{SITE_NAME} reads the agendas that towns post under state open meeting laws. It is informational only, not legal advice. Check dates and details with the town clerk or the linked agenda.</p>
+  <p>{SITE_NAME} reads the agendas towns post online. It is not legal advice. Check dates with the town clerk.</p>
   <ul class="foot-links">{footer_links}</ul>
 </div></footer>
 {script_tags}</body>
@@ -552,16 +552,17 @@ def topic_phrase(topics, cap=True):
 
 
 def sentence(g, town=None):
-    """Which board's agenda mentions which topics, in one plain sentence. It says only what the keyword
-    match shows; what the item is comes from the quoted agenda text under it."""
+    """One short sentence: which board's agenda mentions which topics. It claims only what the
+    keyword match shows; the agenda's own words sit behind "Agenda wording"."""
     low, _ = topic_phrase(g["topics"], cap=False)
+    who = f"{town}: " if town else ""
     if g.get("source") == "massdep_wetlands":
-        s = (f"a wetlands filing for {low} reached MassDEP. "
-             "The conservation commission must open a hearing within 21 days of filing.")
+        s = f"{who}wetlands filing for {low} went to the state."
+    elif g.get("board_key") == "town_meeting":
+        s = f"{who}town meeting warrant mentions {low}."
     else:
-        where = "the town meeting warrant" if g.get("board_key") == "town_meeting" else f"the {board_label(g)} agenda"
-        s = f"{where} mentions {low}."
-    return f"In {town}, {s}" if town else s[:1].upper() + s[1:]
+        s = f"{who}{board_label(g)} agenda mentions {low}."
+    return s[:1].upper() + s[1:] if not town else s
 
 
 def is_pdf(g):
@@ -585,48 +586,43 @@ def merge_agendas(hits):
 
 def day_label(iso, ctx):
     d = datetime.strptime(iso[:10], "%Y-%m-%d")
-    return d.strftime("%A, %B %-d") + ("" if iso[:4] == ctx.today[:4] else d.strftime(", %Y"))
+    return d.strftime("%a, %b %-d") + ("" if iso[:4] == ctx.today[:4] else d.strftime(", %Y"))
 
 
 def item_html(ctx, g, show_town=True):
-    state = f", {g['state']}" if len(ctx.states) > 1 and g["state"] != "MA" else ""
+    """One agenda: date, one sentence, a link to the agenda, and its wording on request."""
     town = None
     if show_town:
-        link = ctx.town_link(g["state"], g["town"], "item-town")
-        town = f"{link}{e(state)}"
-    say = sentence(g, town="\x00") if town else sentence(g)
-    say = e(say).replace("\x00", town) if town else e(say)
-    quotes = "".join(f'<blockquote class="item-quote" cite="{e(g["source_url"])}">{e(s)}</blockquote>' for s in g["snippets"][:3])
-    more = len(g["snippets"]) - 3
-    more_html = f'<p class="item-more">{plural(more, "more passage")} on this agenda.</p>' if more > 0 else ""
-    when = fmt_date(g.get("meeting_date")) or "no date listed"
+        state = f", {g['state']}" if len(ctx.states) > 1 and g["state"] != "MA" else ""
+        town = f"{ctx.town_link(g['state'], g['town'], 'item-town')}{e(state)}"
+    say = e(sentence(g, town="\x00")).replace("\x00", town) if town else e(sentence(g))
+    iso = (g.get("meeting_date") or "")[:10]
+    when = (f'<time datetime="{iso}">{day_label(iso, ctx)}</time>' if iso else "No date")
     dep = g.get("source") == "massdep_wetlands"
-    label = "Open the filing" if dep else ("Open the agenda (PDF)" if is_pdf(g) else "Open the agenda")
-    source = "the MassDEP filing" if dep else ("the warrant" if g.get("board_key") == "town_meeting" else "the agenda")
+    label = "Filing" if dep else ("Agenda (PDF)" if is_pdf(g) else "Agenda")
+    source = "the state filing" if dep else ("the warrant" if g.get("board_key") == "town_meeting" else "the agenda")
+    quotes = "".join(f'<blockquote class="item-quote" cite="{e(g["source_url"])}">{e(s)}</blockquote>' for s in g["snippets"][:3])
     return f"""<li class="item">
-  <p class="item-say">{say}</p>
-  <p class="item-from">Quoted from {source}:</p>
-  {quotes}{more_html}
-  <p class="item-src"><a href="{e(g['source_url'])}" rel="nofollow noopener" target="_blank">{label}<span class="sr-only"> for {e(g['town'])} {e(board_label(g))}, {when}</span></a></p>
+  <p class="item-date">{when}</p>
+  <div class="item-main">
+    <p class="item-say">{say}</p>
+    <div class="item-actions"><a class="item-link" href="{e(g['source_url'])}" rel="nofollow noopener" target="_blank">{label}<span class="sr-only">: {e(g['town'])} {e(board_label(g))}, {fmt_date(iso) or 'no date'}</span></a>
+    <details class="item-words"><summary>Agenda wording</summary><p class="item-from">Quoted from {source}:</p>{quotes}</details></div>
+  </div>
 </li>"""
 
 
-def day_groups(ctx, groups, show_town=True, level=3, empty=""):
-    """Agendas under one heading per meeting date, in the order given."""
+def item_list(ctx, groups, show_town=True, shown=5, more="Show more", empty=""):
+    """The first few agendas, the rest behind one "Show more"."""
     if not groups:
         return f'<p class="empty">{empty}</p>' if empty else ""
-    out, by_day = [], defaultdict(list)
-    order = []
-    for g in groups:
-        k = (g.get("meeting_date") or "")[:10]
-        if k not in by_day:
-            order.append(k)
-        by_day[k].append(g)
-    for k in order:
-        head = (f'<time datetime="{k}">{day_label(k, ctx)}</time>' if k else "No meeting date listed")
-        items = "".join(item_html(ctx, g, show_town) for g in by_day[k])
-        out.append(f'<section class="day"><h{level} class="day-head">{head}</h{level}><ol class="items">{items}</ol></section>')
-    return "".join(out)
+    head = "".join(item_html(ctx, g, show_town) for g in groups[:shown])
+    rest = groups[shown:]
+    html = f'<ol class="items">{head}</ol>'
+    if rest:
+        html += (f'<details class="more"><summary>{more} ({len(rest)})</summary>'
+                 f'<ol class="items">{"".join(item_html(ctx, g, show_town) for g in rest)}</ol></details>')
+    return html
 
 
 def split_hits(ctx, hits):
@@ -635,16 +631,6 @@ def split_hits(ctx, hits):
                   key=lambda h: (h["meeting_date"], h["town"]), reverse=True)
     undated = sorted((h for h in hits if not h.get("meeting_date")), key=lambda h: (h["town"], h.get("first_seen", "")))
     return upcoming, past, undated
-
-
-def more_details(ctx, groups, shown, summary_word="older agendas", show_town=True):
-    """The first `shown` day-groups of agendas, the rest behind a <details>."""
-    head, tail = groups[:shown], groups[shown:]
-    html = day_groups(ctx, head, show_town)
-    if tail:
-        html += (f'<details class="more"><summary>Show {plural(len(tail), summary_word[:-1], summary_word)}</summary>'
-                 f'{day_groups(ctx, tail, show_town)}</details>')
-    return html
 
 
 # ---------------------------------------------------------------- tracker and AG tables (reference pages)
@@ -737,16 +723,16 @@ def town_options(ctx):
     return f'<datalist id="town-names">{opts}</datalist>'
 
 
-def town_box(ctx, label="Your town", button="See what's coming up", examples=True):
+def town_box(ctx, label="Type your town", button="Show me", examples=True):
     eg = ""
     if examples:
-        picks = [t for t in ("MA:Carver", "MA:Amherst", "NY:Clay", "RI:Richmond") if t in ctx.town_by_id][:3]
+        picks = [t for t in ("MA:Carver", "MA:Amherst", "NY:Clay") if t in ctx.town_by_id][:3]
         links = [f'<a href="{town_path(*p.split(":", 1))}">{e(p.split(":", 1)[1])}{", " + p[:2] if p[:2] != "MA" else ""}</a>' for p in picks]
-        eg = (f'<p class="eg">Try {", ".join(links[:-1])} or {links[-1]}.</p>' if len(links) > 1
-              else (f'<p class="eg">Try {links[0]}.</p>' if links else ""))
+        eg = (f'<p class="eg">Or try {", ".join(links[:-1])} or {links[-1]}.</p>' if len(links) > 1
+              else (f'<p class="eg">Or try {links[0]}.</p>' if links else ""))
     return f"""<form class="townbox" action="/towns" method="get" role="search" data-town-form>
   <label for="town-q">{label}</label>
-  <div class="field-row"><input id="town-q" name="q" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Type a town name" required>
+  <div class="field-row"><input id="town-q" name="q" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" required>
   <button class="btn" type="submit">{button}</button></div>
   <p class="field-error" id="town-q-error" role="alert" hidden></p>
   {eg}
@@ -754,77 +740,24 @@ def town_box(ctx, label="Your town", button="See what's coming up", examples=Tru
 {town_options(ctx)}"""
 
 
-def search_box(label="Search every agenda", placeholder="data center moratorium"):
-    return f"""<form class="searchbox" action="/search" method="get" role="search">
-  <label for="home-q">{label}</label>
-  <div class="field-row"><input id="home-q" name="q" type="search" placeholder="{placeholder}" autocomplete="off">
-  <button class="btn quiet" type="submit">Search</button></div>
-</form>"""
-
-
-# ---------------------------------------------------------------- home
-
 def build_index(ctx):
     upcoming = [h for h in ctx.hits if ctx.is_upcoming(h) and HERO_TOPICS & set(h.get("topics", []))]
     upcoming.sort(key=lambda h: (h["meeting_date"], h["state"] != "MA", h["town"]))
     agendas = merge_agendas(upcoming)
-    shown = agendas[:12]
     monitored = sum(m for _, m, _ in ctx.coverage())
-    maps = []
-    for g, m in ctx.maps.items():
-        if not m.ok:
-            continue
-        hot = sorted((t for t in ctx.hot if t.split(":", 1)[0] in m.states), key=lambda t: (t[:2] != "MA", t))
-        names = join_and(ctx.town_link(*t.split(":", 1)) for t in hot)
-        if not maps:
-            others = "".join(
-                f' {o.name()}: {plural(sum(1 for t in ctx.hot if t[:2] in o.states), "town")} (<a href="/towns#{o.states[0].lower()}">map</a>).'
-                for og, o in ctx.maps.items() if og != g and o.ok)
-            maps.append(f"""<figure class="mapfig map-{g}">
-  {m.svg(ctx)}
-  <figcaption><span class="key-dot" aria-hidden="true"></span>Purple dots: {plural(len(hot), "town")} in {m.name()} with solar, battery storage, data center or moratorium items on upcoming agendas.{others}
-  <details><summary>List the {m.name()} towns</summary><p>{names}.</p></details></figcaption>
-</figure>""")
-    topic_links = join_and(f'<a href="/topics/{tp["slug"]}">{e(tp["name"].lower())}</a>' for tp in TOPIC_PAGES[:4])
-    if shown:
-        next_html = day_groups(ctx, shown)
-        more = (f'<p class="after-list">That is the next {len(shown)} of {plural(len(agendas), "upcoming agenda")}. '
-                f'See all of them by topic: {topic_links}.</p>')
-    else:
-        next_html = '<p class="empty">No matching items on upcoming agendas right now. We check every morning.</p>'
-        more = ""
+    next_html = item_list(ctx, agendas[:15], shown=5, empty="Nothing on upcoming agendas right now. We check every morning.")
 
     body = f"""
-<div class="wrap">
+<div class="wrap narrow">
 <section class="home-hero" aria-labelledby="hero-title">
-  <div class="hero-copy">
-    <h1 id="hero-title">What's coming up in your town</h1>
-    <p class="lead">{SITE_NAME} reads town board agendas in {e(ctx.region())} every morning. It flags solar, battery storage, data center and moratorium items and links each one to its agenda, so you know which meeting to go to.</p>
-    {town_box(ctx)}
-  </div>
-  <div class="hero-map">{maps[0] if maps else ''}</div>
+  <h1 id="hero-title">See when solar, batteries or data centers come up at your town meetings.</h1>
+  {town_box(ctx)}
 </section>
 
 <section class="next" aria-labelledby="next-title">
-  <h2 id="next-title">Next on town agendas</h2>
-  <p class="sub">Soonest meeting first. We read {monitored:,} towns' agendas; last checked {ctx.checked}.</p>
+  <h2 id="next-title">Coming up soon</h2>
   {next_html}
-  {more}
 </section>
-
-<div class="home-more">
-  <section aria-labelledby="search-title">
-    <h2 id="search-title">Search what towns are discussing</h2>
-    <p>Every agenda we read is searchable: words, towns and boards, past and upcoming.</p>
-    {search_box(label="Words to find")}
-  </section>
-  <section aria-labelledby="alerts-title">
-    <h2 id="alerts-title">Get alerts</h2>
-    <p>Pick your town. You get alerts for it and the towns next to it, once a day when something new is posted, in your calendar, an RSS reader or a Slack, Teams or Discord channel, and soon by email. Free, with no account.</p>
-    <p><a class="btn quiet" href="/watch">Set up alerts</a></p>
-  </section>
-</div>
-
 </div>
 """
     return page(
@@ -887,110 +820,85 @@ def build_town_page(ctx, t):
     health = (ctx.health or {}).get(tid)
     found = set(t.get("boards_found", []))
 
-    if t["monitored"] and up_g:
-        topics, _ = topic_phrase([x for g in up_g for x in g["topics"]], cap=False)
-        first = up_g[0]
-        lead = (f"{plural(len(upcoming), 'item')} on {town}’s agendas for meetings ahead {'mentions' if len(upcoming) == 1 else 'mention'} {topics}. "
-                f"The next is at the {board_label(first)} meeting on {day_label(first['meeting_date'], ctx)}.")
-    elif t["monitored"]:
-        lead = (f"Nothing on {town}’s upcoming agendas matches the topics we track. "
-                f"We read {plural(len(found), 'board')} here every day.")
+    # What's coming up: the one job of the page.
+    if t["monitored"]:
+        status = (f"{plural(len(up_g), 'agenda')} coming up. Checked {ctx.checked}." if up_g
+                  else f"Nothing coming up right now. Checked {ctx.checked}.")
+        coming = f"""<section aria-labelledby="upcoming-title">
+  <h2 id="upcoming-title">Coming up</h2>
+  <p class="status">{status}</p>
+  {item_list(ctx, up_g, show_town=False, shown=5)}
+</section>"""
+        request = ""
     else:
         reason = REASON_LABELS.get(t.get("reason_code"), "We can’t read this town’s agendas automatically yet")
-        lead = f"We can’t read {town}’s agendas yet. Reason: {reason[:1].lower() + reason[1:]}."
-        if hits:
-            dep = sum(1 for h in hits if h.get("source") == "massdep_wetlands")
-            lead += (f" This page lists {plural(dep, 'MassDEP wetlands filing')} for {town}." if dep == len(hits)
-                     else f" This page lists {plural(len(hits), 'item')} from other sources.")
-    checked = f"Agendas checked {ctx.checked}."
-    search_link = (f' <a class="text-link" href="/search?town={quote(tid, safe="")}">Search {e(town)}’s agendas</a>'
-                   if t["monitored"] else "")
-    request_html = "" if t["monitored"] else (
-        f'<div class="request" data-request-town="{e(tid)}" data-town-name="{e(town)}, {state}">'
-        f'<p>Want {e(town)} covered? Tell us, and we’ll ask the town or its website vendor for access.</p>'
-        f'<button type="button" class="btn quiet">Request {e(town)}</button>'
-        f'<p class="form-status" role="status" aria-live="polite"></p></div>')
+        coming = f"""<section aria-labelledby="upcoming-title">
+  <h2 id="upcoming-title">We can’t read {e(town)}’s agendas yet</h2>
+  <p class="status">{e(reason)}.</p>
+  {item_list(ctx, up_g, show_town=False, shown=5)}
+</section>"""
+        request = (f'<div class="request" data-request-town="{e(tid)}" data-town-name="{e(town)}, {state}">'
+                   f'<p>Want {e(town)} covered? We’ll ask the town for access.</p>'
+                   f'<button type="button" class="btn quiet">Request {e(town)}</button>'
+                   f'<p class="form-status" role="status" aria-live="polite"></p></div>')
 
-    sections = []
-    if t["monitored"] or up_g:
-        sections.append(f"""<section aria-labelledby="upcoming-title">
-  <h2 id="upcoming-title">Coming up</h2>
-  {day_groups(ctx, up_g, show_town=False, empty=f'No solar, battery storage, data center, zoning or housing items on {e(town)}’s upcoming agendas. Get alerts and we’ll tell you when one appears.')}
-</section>""")
+    # Everything else, one click away.
+    more = []
     if past_g:
-        sections.append(f"""<section aria-labelledby="recent-title">
-  <h2 id="recent-title">Recent meetings</h2>
-  {more_details(ctx, past_g, 6, show_town=False)}
-</section>""")
+        more.append(f"""<details class="disclose"><summary>Show past items ({len(past_g)})</summary>
+{item_list(ctx, past_g, show_town=False, shown=10, more="Show older")}</details>""")
     if und_g:
-        sections.append(f"""<section aria-labelledby="undated-title">
-  <h2 id="undated-title">Town meeting warrants and other undated items</h2>
-  {day_groups(ctx, und_g, show_town=False)}
-</section>""")
-    if tracked or ag_rows:
-        sections.append(f"""<section aria-labelledby="rules-title">
-  <h2 id="rules-title">Local rules and Attorney General rulings</h2>
-  {rules_html(ctx, tracked, ag_rows, town)}
-  <p class="small">The <a href="/attorney-general">statewide list</a> shows how the Attorney General has ruled on each kind of bylaw.</p>
-</section>""")
-
-    # Side column: where the town is, nearby towns, and where its agendas come from.
-    side = []
+        more.append(f"""<details class="disclose"><summary>Town meeting warrants ({len(und_g)})</summary>
+{item_list(ctx, und_g, show_town=False, shown=10)}</details>""")
     m = ctx.maps.get(map_group(state))
     if m and m.ok and tid in m.xy:
         x, y = m.xy[tid]
-        side.append(f"""<figure class="locator">
-  <div class="locator-map">
-    <picture><source srcset="/maps/{m.group}-dark.svg" media="(prefers-color-scheme: dark)"><img src="/maps/{m.group}.svg" alt="" width="{m.w}" height="{m.h}" loading="lazy"></picture>
-    <svg viewBox="0 0 {m.w} {m.h}" aria-hidden="true" focusable="false"><circle class="here" cx="{x}" cy="{y}" r="{m.r * 2.2:.1f}"/></svg>
-  </div>
-  <figcaption>{e(town)} is the ringed dot. Purple dots are towns with solar, battery storage, data center or moratorium items coming up.</figcaption>
-</figure>""")
-        near = []
         listed = ctx.neighbors.get(tid)
         near_ids = [(n, None) for n in listed] if listed else m.nearby(ctx, tid)
-        for other, km in near_ids:
+        near = []
+        for other, _ in near_ids:
             o = ctx.town_by_id[other]
             n_up = sum(1 for h in ctx.hits_by_town.get(other, []) if ctx.is_upcoming(h))
-            note = (f"{plural(n_up, 'item')} coming up" if n_up else ("nothing coming up" if o["monitored"] else "not read yet"))
+            note = (f"{n_up} coming up" if n_up else ("nothing coming up" if o["monitored"] else "not read yet"))
             st = f", {o['state']}" if o["state"] != state else ""
             near.append(f'<li><a href="{town_path(o["state"], o["town"])}">{e(o["town"])}{st}</a> <span class="{"n hot" if n_up else "n"}">{note}</span></li>')
-        near_head = f"Towns next to {e(town)}" if listed else "Nearby towns"
-        side.append(f'<section aria-labelledby="near-title"><h2 id="near-title">{near_head}</h2><ul class="plain near">{"".join(near)}</ul></section>')
-    where = kind.lower()
+        head = f"Towns next to {e(town)}" if listed else f"Towns near {e(town)}"
+        more.append(f"""<details class="disclose"><summary>{head}</summary>
+<div class="near-wrap"><ul class="plain near">{''.join(near)}</ul>
+<figure class="locator"><div class="locator-map">
+  <picture><source srcset="/maps/{m.group}-dark.svg" media="(prefers-color-scheme: dark)"><img src="/maps/{m.group}.svg" alt="" width="{m.w}" height="{m.h}" loading="lazy"></picture>
+  <svg viewBox="0 0 {m.w} {m.h}" aria-hidden="true" focusable="false"><circle class="here" cx="{x}" cy="{y}" r="{m.r * 2.2:.1f}"/></svg>
+</div><figcaption>{e(town)} is the ringed dot. Purple dots have items coming up.</figcaption></figure></div></details>""")
     sources = []
     for p in t.get("platforms") or []:
-        name = PLATFORM_NAMES.get(p, p).format(kind=where)
+        name = PLATFORM_NAMES.get(p, p).format(kind=kind.lower())
         if name not in sources:
             sources.append(name)
-    src = (f"<p>{town} posts agendas on {e(join_and(sources))}.</p>" if sources and t["monitored"] else "")
+    src = f"<p>{town} posts agendas on {e(join_and(sources))}.</p>" if sources and t["monitored"] else ""
     crawl = ""
     if health:
         fails = health.get("consecutive_failures") or 0
-        crawl = (f'<p class="small">Last successful read: {fmt_date(health.get("last_success")) or "none yet"}'
+        crawl = (f'<p class="small">Last read: {fmt_date(health.get("last_success")) or "none yet"}'
                  f'{f"; the last {fails} tries failed" if fails else ""}.</p>')
     website = (f'<p><a href="{e(t["website"])}" rel="nofollow noopener" target="_blank">{kind} website</a></p>'
                if t.get("website") else "")
-    gap = ("" if t["monitored"] else '<p class="small">We follow each site’s rules and don’t get around bot blocks. '
-           '<a href="/how-it-works#gaps">Why some towns can’t be read</a>.</p>')
-    side.append(f"""<section aria-labelledby="boards-title"><h2 id="boards-title">Boards we read</h2>{src}{board_list(ctx, t)}{crawl}{gap}{website}</section>""")
+    more.append(f"""<details class="disclose"><summary>Where these agendas come from</summary>
+{src}{board_list(ctx, t)}{crawl}{website}<p class="small"><a href="/how-it-works#gaps">Why some towns can’t be read</a></p></details>""")
+    if tracked or ag_rows:
+        more.append(f"""<details class="disclose"><summary>Bylaws and state rulings ({len(tracked) + len(ag_rows)})</summary>
+{rules_html(ctx, tracked, ag_rows, town)}<p class="small"><a href="/attorney-general">All Massachusetts rulings</a></p></details>""")
+    if t["monitored"]:
+        more.append(f'<p class="more-link"><a href="/search?town={quote(tid, safe="")}">Search {e(town)}’s agendas</a></p>')
 
     body = f"""
-<div class="wrap">
+<div class="wrap narrow">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/towns">Towns</a></li><li><a href="/towns#{state.lower()}">{e(state_name)}</a></li><li><span aria-current="page">{e(town)}</span></li></ol></nav>
-<div class="town-grid">
-  <div class="town-main">
-    <h1 id="town-title">{e(town)}</h1>
-    <p class="place">{kind} in {e(county)}{e(state_name)}</p>
-    <p class="lead">{e(lead)} {checked}</p>
-    <p class="actions"><a class="btn" href="{e(alerts_url(tid))}">Get alerts for {e(town)}</a>{search_link}</p>
-    {request_html}
-    {''.join(sections)}
-  </div>
-  <aside class="town-side" aria-label="About {e(town)}">
-    {''.join(side)}
-  </aside>
-</div>
+<h1 id="town-title" class="town-title">{e(town)}</h1>
+<p class="place">{kind} in {e(county)}{e(state_name)}</p>
+{coming}
+<p class="actions"><a class="btn" href="{e(alerts_url(tid))}">Get alerts for {e(town)} and neighbors</a></p>
+{request}
+<div class="disclosures">{''.join(more)}</div>
 </div>
 """
     title = f"{town}, {state} town agendas: solar and battery storage | {SITE_NAME}"
@@ -1035,7 +943,7 @@ def build_towns_index(ctx):
 <div class="wrap">
 <section class="page-head" aria-labelledby="towns-title">
   <h1 id="towns-title">Find your town</h1>
-  <p class="lead">{total:,} towns in {e(ctx.region())}. We read {mon:,} of them every day; the rest block automated readers or have no current agendas online. If yours isn’t read yet, open its page and ask for it.</p>
+  <p class="lead">We read {mon:,} of these {total:,} towns every day. The rest block automated readers or post no agendas.</p>
   <form class="filterbar" data-list-filter role="search" action="/towns" method="get">
     <label>Town or county<input type="search" name="q" data-search autocomplete="off"></label>
     <label>Show<select data-status><option value="">All towns</option><option value="up">With items coming up</option><option value="monitored">Read daily</option><option value="not">Not read yet</option></select></label>
@@ -1065,61 +973,43 @@ def build_topic_page(ctx, tp):
     ranked = sorted(by_town.items(), key=lambda kv: (-sum(1 for h in kv[1] if ctx.is_upcoming(h)), -len(kv[1]), kv[0][1]))
     town_rows = "".join(
         f"""<tr><th scope="row">{ctx.town_link(s, town)}{", " + s if s != "MA" else ""}</th>
-<td class="num" data-label="Coming up">{sum(1 for h in hs if ctx.is_upcoming(h))}</td><td class="num" data-label="All items">{len(hs)}</td>
-<td data-label="Latest meeting">{fmt_date(max((h.get('meeting_date') or '' for h in hs), default='')) or 'No date'}</td></tr>"""
+<td class="num" data-label="Coming up">{sum(1 for h in hs if ctx.is_upcoming(h))}</td><td class="num" data-label="All items">{len(hs)}</td></tr>"""
         for (s, town), hs in ranked[:25])
-    tracked = [i for i in ctx.tracker.get("items", []) if tp["tracker"](i)]
     ag_rows = [r for r in ctx.ag if tp["ag"](r)]
 
-    lead = (f"{plural(c['items'], 'agenda item')} in {plural(c['towns'], 'town')} mention {tp['matches']}, "
-            f"for {ctx.window_text()}. {plural(c['upcoming'], 'item is', 'items are')} for meetings ahead.")
-    rules = ""
+    more = [f"""<details class="disclose"><summary>Towns with the most items</summary>
+<div class="table-wrap"><table class="stack counts"><thead><tr><th scope="col">Town</th><th scope="col" class="num">Coming up</th><th scope="col" class="num">All items</th></tr></thead><tbody>{town_rows}</tbody></table></div></details>"""] if town_rows else []
+    if past:
+        g = merge_agendas(past)[:80]
+        more.append(f"""<details class="disclose"><summary>Show past items ({len(g)})</summary>{item_list(ctx, g, shown=10, more="Show older")}</details>""")
+    if undated:
+        g = merge_agendas(undated)[:40]
+        more.append(f"""<details class="disclose"><summary>Town meeting warrants ({len(g)})</summary>{item_list(ctx, g, shown=10)}</details>""")
     if tp["slug"] == "data-centers":
-        rules = ("<p>Data centers are not a use protected by G.L. c. 40A, §3, unlike solar and battery storage, so a town "
-                 "data-center moratorium can survive the Attorney General’s review. The Attorney General approved them in "
-                 "Shutesbury (case 12047, Jan. 20, 2026), Templeton (case 12294, Sept. 22, 2026) and Gill (Sept. 24, 2026, "
-                 "where the battery-storage half of the same article was struck).</p>")
-    elif ag_rows or tracked:
+        more.append("""<details class="disclose"><summary>Can a town pause data centers?</summary>
+<p>Yes, in Massachusetts. State law protects solar and battery storage, not data centers.</p>
+<p>The Attorney General approved data-center pauses in Shutesbury (case 12047, Jan. 20, 2026), Templeton (case 12294, Sept. 22, 2026) and Gill (Sept. 24, 2026).</p>
+<p><a href="/attorney-general">All Massachusetts rulings</a></p></details>""")
+    elif ag_rows:
         out = Counter(r.get("outcome") for r in ag_rows if r.get("record_type") == "ag_decision")
         n = sum(out.values())
-        bits = []
-        if n:
-            bits.append(f"The Attorney General has ruled on {plural(n, 'bylaw')} of this kind since 2022: "
-                        + ", ".join(f"{v} {k}" for k, v in out.most_common()) + ".")
-        if tracked:
-            bits.append(f"We track {plural(len(tracked), 'local action')} on it in Massachusetts.")
-        rules = f"<p>{' '.join(bits)}</p>"
-    rules_section = (f"""<section aria-labelledby="rules-title"><h2 id="rules-title">Rules and rulings</h2>{rules}
-<p><a href="/attorney-general">Moratoria, bylaws and Attorney General rulings</a></p></section>""" if rules else "")
-    other = "".join(f'<li><a href="/topics/{o["slug"]}">{e(o["name"])}</a></li>' for o in TOPIC_PAGES if o is not tp)
+        more.append(f"""<details class="disclose"><summary>State rulings on these bylaws ({n})</summary>
+<p>{"; ".join(f"{v} {k}" for k, v in out.most_common())}.</p><p><a href="/attorney-general">All Massachusetts rulings</a></p></details>""")
+    more.append(f'<p class="more-link"><a href="/search?topic={tp["key"]}&amp;upcoming=1">Search these agendas</a></p>')
+    others = "".join(f'<li><a href="/topics/{o["slug"]}">{e(o["name"])}</a></li>' for o in TOPIC_PAGES if o is not tp)
 
     body = f"""
 <div class="wrap narrow">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/topics">Topics</a></li><li><span aria-current="page">{e(tp['name'])}</span></li></ol></nav>
-<section class="page-head" aria-labelledby="topic-title">
-  <h1 id="topic-title">{e(tp['name'])} on town agendas</h1>
-  <p class="lead">{e(lead)} Agendas checked {ctx.checked}.</p>
-  <p class="actions"><a class="btn" href="{e(alerts_url(topics=[tp['key']]))}">Get {e(tp['name'].lower())} alerts</a> <a class="text-link" href="/search?topic={tp['key']}&amp;upcoming=1">Search these agendas</a></p>
-</section>
+<h1 id="topic-title">{e(tp['name'])} on town agendas</h1>
+<p class="status">{plural(c['upcoming'], 'item')} coming up in {plural(len({(h['state'], h['town']) for h in upcoming}), 'town')}. Checked {ctx.checked}.</p>
 <section aria-labelledby="upcoming-title">
   <h2 id="upcoming-title">Coming up</h2>
-  {day_groups(ctx, merge_agendas(upcoming), empty='Nothing on upcoming agendas right now. We check every morning.')}
+  {item_list(ctx, merge_agendas(upcoming), shown=5, empty='Nothing coming up right now. We check every morning.')}
 </section>
-<section aria-labelledby="bytown-title">
-  <h2 id="bytown-title">Towns with the most items</h2>
-  {'<div class="table-wrap"><table class="stack counts"><thead><tr><th scope="col">Town</th><th scope="col" class="num">Coming up</th><th scope="col" class="num">All items</th><th scope="col">Latest meeting</th></tr></thead><tbody>' + town_rows + '</tbody></table></div>' if town_rows else '<p class="empty">No items in the current window.</p>'}
-  {f'<p class="small">Top 25 of {plural(len(ranked), "town")}.</p>' if len(ranked) > 25 else ''}
-</section>
-<section aria-labelledby="recent-title">
-  <h2 id="recent-title">Recent meetings</h2>
-  {more_details(ctx, merge_agendas(past)[:80], 10) if past else '<p class="empty">No items from recent meetings.</p>'}
-</section>
-{f'<section aria-labelledby="undated-title"><h2 id="undated-title">Town meeting warrants and other undated items</h2>{more_details(ctx, merge_agendas(undated)[:40], 6)}</section>' if undated else ''}
-{rules_section}
-<section aria-labelledby="more-title">
-  <h2 id="more-title">Other topics</h2>
-  <ul class="inline-links">{other}<li><a href="/topics">All topics</a></li></ul>
-</section>
+<p class="actions"><a class="btn" href="{e(alerts_url(topics=[tp['key']]))}">Get {e(tp['name'].lower())} alerts</a></p>
+<div class="disclosures">{''.join(more)}</div>
+<nav class="others" aria-label="Other topics"><p class="small">Other topics:</p><ul class="inline-links">{others}</ul></nav>
 </div>
 """
     return page(ctx, f"{tp['name']} on town agendas in {join_and(ctx.states)} | {SITE_NAME}",
@@ -1147,7 +1037,7 @@ def build_topics_index(ctx):
 <div class="wrap narrow">
 <section class="page-head" aria-labelledby="topics-title">
   <h1 id="topics-title">Topics</h1>
-  <p class="lead">Agenda items by topic, for {ctx.window_text()}, across {e(ctx.region())}. One item can match more than one topic. Topics without a link are listed on each town's page and can be added to alerts.</p>
+  <p class="lead">Agenda items by topic. One item can match more than one topic.</p>
 </section>
 <div class="table-wrap"><table class="stack counts">{TOPIC_HEAD}<tbody>{''.join(rows)}</tbody></table></div>
 <p class="actions"><a class="btn" href="/watch">Get alerts</a></p>
@@ -1171,16 +1061,14 @@ def build_search(ctx):
         + "</optgroup>" for s in ctx.states)
     body = f"""
 <div class="wrap narrow">
-<section class="page-head" aria-labelledby="search-title">
-  <h1 id="search-title">Search agendas</h1>
-  <p class="lead">Search the full text of every agenda we’ve read in {e(ctx.region())}. Try a project name, a street, or words like “data center moratorium”. Put a phrase in quotes to match it exactly.</p>
-</section>
+<h1 id="search-title">Search agendas</h1>
 <form id="search-form" class="searchform" action="/search" method="get" role="search">
-  <div class="field-row big">
-    <label class="sr-only" for="search-q">Words to find</label>
-    <input name="q" id="search-q" type="search" autocomplete="off" placeholder="Words to find">
+  <label for="search-q">Words to find</label>
+  <div class="field-row">
+    <input name="q" id="search-q" type="search" autocomplete="off" placeholder="data center moratorium">
     <button class="btn" type="submit">Search</button>
   </div>
+  <details class="disclose filters" id="search-filters"><summary>Filters</summary>
   <div class="search-filters">
     <label>State<select name="state"><option value="">All states</option>{states}</select></label>
     <label>Town<select name="town"><option value="">All towns</option>{towns}</select></label>
@@ -1189,10 +1077,11 @@ def build_search(ctx):
     <label>Order<select name="sort"><option value="">Best match</option><option value="date">Newest meeting first</option></select></label>
     <label class="check"><input type="checkbox" name="upcoming" value="1"> Meetings ahead first</label>
   </div>
+  </details>
 </form>
 <p id="search-status" aria-live="polite"></p>
 <ol id="search-results"></ol>
-<noscript><p class="notice">Search needs JavaScript. You can still <a href="/towns">find a town</a> or <a href="/topics">browse by topic</a>.</p></noscript>
+<noscript><p class="notice">Search needs JavaScript. You can still <a href="/towns">find a town</a>.</p></noscript>
 </div>
 """
     return page(ctx, f"Search town agendas | {SITE_NAME}",
@@ -1208,23 +1097,21 @@ def build_watch(ctx):
     topics += sorted(k for k in topic_count if k not in TOPIC_LABELS)
     topic_boxes = "".join(
         f'<li><label class="check"><input type="checkbox" name="topics" value="{e(k)}" checked>'
-        f'<span>{e(TOPIC_LABELS.get(k, k))} <small>{topic_count.get(k, 0):,} items now</small></span></label></li>'
+        f'<span>{e(TOPIC_LABELS.get(k, k))}</span></label></li>'
         for k in topics)
 
     body = f"""
 <div class="wrap narrow">
-<section class="page-head" aria-labelledby="watch-title">
-  <h1 id="watch-title">Get alerts</h1>
-  <p class="lead">Free: your town and the towns next to it, every topic, sent once a day when something new is posted. No account needed.</p>
-</section>
-<p class="notice" id="edit-banner" hidden>Editing <b id="edit-name">your alert list</b>. Changes apply to its page and feeds right away. <a href="/watch">Start a new alert list instead</a></p>
+<h1 id="watch-title">Get alerts</h1>
+<p class="lead">Free for your town and the towns next to it. No account needed.</p>
+<p class="notice" id="edit-banner" hidden>Editing <b id="edit-name">your alert list</b>. <a href="/watch">Start a new one instead</a></p>
 <p class="notice err" id="watch-error" role="alert" hidden></p>
 <form id="watch-form" class="watch-form" novalidate>
   <div class="step">
     <h2 class="step-head"><span class="step-n" aria-hidden="true">1</span> <label for="home-town">Your town</label></h2>
-    <input id="home-town" class="big-input" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Type a town name" aria-describedby="home-read towns-error">
+    <input id="home-town" class="big-input" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" aria-describedby="home-read towns-error">
     <datalist id="town-names"></datalist>
-    <p class="onebox-read" id="home-read" aria-live="polite">Pick your town from the list. You can also type topics with it, like “battery storage in Carver, Plympton and Wareham”.</p>
+    <p class="form-note" id="home-read" aria-live="polite">Pick it from the list as you type.</p>
     <div class="request" id="home-request" hidden>
       <p id="home-request-text"></p>
       <button type="button" class="btn quiet" id="home-request-btn">Request this town</button>
@@ -1233,47 +1120,45 @@ def build_watch(ctx):
     <p class="field-error" id="towns-error" hidden></p>
   </div>
 
-  <fieldset class="step" id="near-step">
+  <fieldset class="step" id="near-step" hidden>
     <legend class="step-head"><span class="step-n" aria-hidden="true">2</span> <span>Towns next to <span id="home-name">your town</span></span></legend>
-    <p class="form-note" id="near-note">Pick your town first. Its neighbors show up here, all included.</p>
+    <p class="form-note" id="near-note">Pick your town first.</p>
     <ul class="check-cols" id="near-list"></ul>
     <div id="extra-wrap" hidden>
       <p class="form-note">Also in this alert list:</p>
       <ul class="check-cols" id="extra-list"></ul>
     </div>
-    <p class="form-note">Free alerts cover one town and the towns next to it. Watching more areas will be a paid plan later.</p>
-  </fieldset>
-
-  <fieldset class="step">
-    <legend class="step-head"><span class="step-n" aria-hidden="true">3</span> Topics</legend>
-    <ul class="check-cols topic-list">{topic_boxes}</ul>
+    <details class="disclose" id="topics-details"><summary>Topics: all</summary>
+      <ul class="check-cols topic-list">{topic_boxes}</ul>
+    </details>
     <p class="field-error" id="topics-error" hidden></p>
   </fieldset>
 
   <fieldset class="step">
-    <legend class="step-head"><span class="step-n" aria-hidden="true">4</span> How to get them</legend>
-    <p>Every alert list comes with a calendar feed and an RSS feed. You’ll get both links on the next page.</p>
+    <legend class="step-head"><span class="step-n" aria-hidden="true">3</span> <span>How to get them</span></legend>
+    <p>You get a calendar link and an RSS link on the next page.</p>
     <div id="email-option" hidden>
       <label class="field">Email <small>(optional)</small><input name="email" id="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" aria-describedby="email-help"></label>
-      <p class="form-note" id="email-help">We first send a link to confirm the address. After that you get at most one email a day, only when something new comes up, and every email has a one-click unsubscribe.</p>
-      <label class="check" id="email-remove-row" hidden><input type="checkbox" id="email-remove"> Stop emails and remove the saved address</label>
+      <p class="form-note" id="email-help">We send a link to confirm it first. Then at most one email a day.</p>
+      <label class="check" id="email-remove-row" hidden><input type="checkbox" id="email-remove"> Stop emails and remove the address</label>
       <p class="field-error" id="email-error" hidden></p>
     </div>
-    <details class="hook" id="hook-details">
+    <details class="disclose" id="hook-details">
       <summary>Post to Slack, Discord or Teams</summary>
-      <label class="field">Webhook URL for Slack, Discord or Teams (Workflows)
-        <input name="webhook_url" id="webhook-url" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://hooks.slack.com/services/…" aria-describedby="webhook-help">
-      </label>
-      <p class="form-note" id="webhook-help">We post new items to the channel once a day. Use a Slack incoming webhook (hooks.slack.com), a Discord webhook (discord.com/api/webhooks) or a Teams (Workflows) webhook URL (*.logic.azure.com or *.api.powerplatform.com).</p>
+      <label class="field">Webhook URL<input name="webhook_url" id="webhook-url" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://hooks.slack.com/services/…" aria-describedby="webhook-help"></label>
+      <p class="form-note" id="webhook-help">Use a Slack, Discord or Teams (Workflows) webhook URL. We post once a day.</p>
       <label class="check" id="webhook-remove-row" hidden><input type="checkbox" id="webhook-remove"> Remove the saved webhook</label>
       <label class="field">Message format
-        <select name="webhook_format"><option value="auto">Match the service (recommended)</option><option value="json">Plain JSON, for your own Teams workflow</option></select>
+        <select name="webhook_format"><option value="auto">Match the service</option><option value="json">Plain JSON</option></select>
       </label>
       <div class="actions"><button type="button" class="btn quiet" id="send-test">Send a test message</button></div>
       <p class="form-status" id="test-status" role="status" aria-live="polite"></p>
       <p class="field-error" id="webhook_url-error" hidden></p>
     </details>
-    <label class="field">Name this alert list <small>(optional)</small><input name="name" maxlength="80" autocomplete="off" placeholder="Carver and neighbors"></label>
+    <details class="disclose" id="name-details">
+      <summary>Name this list</summary>
+      <label class="field">Name <small>(optional)</small><input name="name" maxlength="80" autocomplete="off" placeholder="Carver and neighbors"></label>
+    </details>
   </fieldset>
 
   <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
@@ -1281,13 +1166,12 @@ def build_watch(ctx):
     <button class="btn" type="submit" id="watch-submit">Create alerts</button>
     <p class="form-status" id="watch-status" role="status" aria-live="polite"></p>
   </div>
-  <p class="form-note">Next you get a calendar link, an RSS link and a private link to change these alerts. <a href="/how-it-works#privacy">What we store</a>.</p>
+  <p class="form-note"><a href="/how-it-works#privacy">What we store</a></p>
 </form>
 
 <section id="my-lists" aria-labelledby="my-lists-title" hidden>
-  <h2 id="my-lists-title">Alert lists made in this browser</h2>
+  <h2 id="my-lists-title">Your alert lists in this browser</h2>
   <ul class="plain" id="my-lists-items"></ul>
-  <p class="form-note">This list lives only in this browser. Bookmark your private links to keep them.</p>
 </section>
 </div>
 """
@@ -1302,81 +1186,68 @@ def build_viewer(ctx):
                            for k, v in TOPIC_LABELS.items()}))
     body = f"""
 <div class="wrap narrow" id="wl-app" data-topics="{topics}" data-order="{e(json.dumps(TOPIC_ORDER))}">
-<section class="page-head" aria-labelledby="wl-title">
-  <p class="crumbs-plain">Alert list</p>
-  <h1 id="wl-title">Loading your alerts…</h1>
-  <p class="lead" id="wl-summary"></p>
-</section>
+<p class="crumbs-plain">Alert list</p>
+<h1 id="wl-title">Loading your alerts…</h1>
+<p id="wl-summary"></p>
 <div class="notice err" id="wl-error" role="alert" hidden></div>
 <div id="wl-body" hidden>
-  <p class="notice ok" id="created-banner" tabindex="-1" hidden><b>Alerts created.</b><span id="inbox-note" hidden> Check your inbox to confirm your email address; emails start after that.</span> Save the private link below: it is the only way to change or delete this list, and we can’t recover it. To share these alerts, use the share link.</p>
+  <p class="notice ok" id="created-banner" tabindex="-1" hidden><b>Alerts created.</b><span id="inbox-note" hidden> Check your inbox to confirm your email.</span> Save your private link below. It’s the only way to change these alerts.</p>
   <p class="notice" id="readonly-banner" hidden>This is a shared, read-only link.</p>
 
   <section aria-labelledby="get-title">
-    <h2 id="get-title">Get these alerts</h2>
+    <h2 id="get-title" class="sr-only">Get these alerts</h2>
     <div class="get-buttons">
       <a class="btn" id="webcal-link" href="#">Add to calendar</a>
       <a class="btn quiet" id="rss-link" href="#">RSS feed</a>
-      <a class="btn quiet" id="json-link" href="#">JSON</a>
     </div>
-    <p class="form-note">The calendar has one all-day event per upcoming meeting with matched items. Feeds update once a day.</p>
-    <div class="feed-rows" id="feed-rows"></div>
+    <details class="disclose"><summary>Show feed links</summary>
+      <div class="feed-rows" id="feed-rows"></div>
+      <p class="small"><a id="json-link" href="#">JSON feed</a></p>
+    </details>
   </section>
 
   <section id="links-section" aria-labelledby="links-title" hidden>
     <h2 id="links-title">Your two links</h2>
     <div class="linkcard private">
       <p class="linkcard-title"><b>Private link: keep this to edit or delete</b></p>
-      <p class="form-note">Anyone with this link can change or delete these alerts. Bookmark it or save it somewhere safe.</p>
       <div class="copy-row" id="private-row"></div>
     </div>
     <div class="linkcard share">
       <p class="linkcard-title"><b>Share link: safe to post</b></p>
-      <p class="form-note">Shows the alerts and feeds, with no way to change them.</p>
       <div class="copy-row" id="share-row"></div>
     </div>
   </section>
 
   <section aria-labelledby="items-title">
-    <h2 id="items-title">Matched agenda items</h2>
-    <p id="items-lead"></p>
-    <div class="filterbar">
-      <label>Town<select id="i-town"><option value="">All</option></select></label>
-      <label>Topic<select id="i-topic"><option value="">All</option></select></label>
-      <label>Words<input id="i-search" type="search"></label>
-      <p class="count" id="i-count" aria-live="polite"></p>
-    </div>
-    <h3>Coming up</h3>
+    <h2 id="items-title">Coming up</h2>
+    <p class="status" id="items-lead"></p>
     <div id="items-upcoming"></div>
-    <h3>Recent meetings</h3>
-    <div id="items-past"></div>
-    <div id="undated-wrap" hidden>
-      <h3>No meeting date listed (mostly town meeting warrants)</h3>
-      <div id="items-undated"></div>
-    </div>
+    <details class="disclose" id="past-wrap"><summary id="past-summary">Show past items</summary><div id="items-past"></div></details>
+    <details class="disclose" id="undated-wrap" hidden><summary>Town meeting warrants</summary><div id="items-undated"></div></details>
   </section>
 
-  <section id="hook-section" aria-labelledby="hook-title" hidden>
-    <h2 id="hook-title">Daily messages</h2>
-    <p id="email-status" hidden></p>
-    <p id="hook-status"></p>
-    <div class="actions"><button type="button" class="btn small quiet" id="hook-test" hidden>Send a test message</button></div>
-    <p class="form-status" id="hook-test-status" role="status" aria-live="polite"></p>
-  </section>
-
-  <section id="manage-section" aria-labelledby="manage-title" hidden>
-    <h2 id="manage-title">Change or delete</h2>
-    <p id="plan-line"></p>
-    <div class="actions">
-      <a class="btn quiet" id="edit-link" href="/watch">Edit towns, topics or webhook</a>
-      <button type="button" class="btn quiet danger" id="delete-start">Delete alerts</button>
-    </div>
-    <div class="confirm" id="delete-confirm" hidden>
-      <p><b>Delete this alert list?</b> Its page, feeds and daily message stop right away. You can’t undo this.</p>
-      <div class="actions"><button type="button" class="btn danger" id="delete-yes">Delete alerts</button><button type="button" class="btn quiet" id="delete-no">Keep them</button></div>
-    </div>
-    <p class="form-status" id="manage-status" role="status" aria-live="polite"></p>
-  </section>
+  <details class="disclose settings" id="settings" hidden><summary>Change or delete these alerts</summary>
+    <section id="hook-section" aria-labelledby="hook-title" hidden>
+      <h2 id="hook-title">Messages</h2>
+      <p id="email-status" hidden></p>
+      <p id="hook-status"></p>
+      <div class="actions"><button type="button" class="btn small quiet" id="hook-test" hidden>Send a test message</button></div>
+      <p class="form-status" id="hook-test-status" role="status" aria-live="polite"></p>
+    </section>
+    <section id="manage-section" aria-labelledby="manage-title" hidden>
+      <h2 id="manage-title">Change or delete</h2>
+      <p id="plan-line"></p>
+      <div class="actions">
+        <a class="btn quiet" id="edit-link" href="/watch">Edit towns, topics or messages</a>
+        <button type="button" class="btn quiet danger" id="delete-start">Delete alerts</button>
+      </div>
+      <div class="confirm" id="delete-confirm" hidden>
+        <p><b>Delete this alert list?</b> Its page, feeds and messages stop. You can’t undo this.</p>
+        <div class="actions"><button type="button" class="btn danger" id="delete-yes">Delete alerts</button><button type="button" class="btn quiet" id="delete-no">Keep them</button></div>
+      </div>
+      <p class="form-status" id="manage-status" role="status" aria-live="polite"></p>
+    </section>
+  </details>
 </div>
 </div>
 """
@@ -1401,17 +1272,17 @@ def build_how(ctx):
     blocked = sorted(not_auto.items(), key=lambda kv: -kv[1]["towns"])
     upcoming = sum(1 for h in ctx.hits if ctx.is_upcoming(h))
     median_ahead = ctx.ahead_median()
-    coverage = join_and(
+    monitored = sum(m for _, m, _ in ctx.coverage())
+    coverage_parts = [
         f"{m} of 351 Massachusetts cities and towns" if s == "MA" and n == 351
         else (f"all {n} Rhode Island towns" if s == "RI" and m == n
               else f"{m} of the {n} {STATE_NAMES.get(s, s)} towns we list")
-        for s, m, n in ctx.coverage())
-
+        for s, m, n in ctx.coverage()]
     board_rows = "".join(
         f"<tr><th scope='row'>{BOARD_NAMES[k]}</th><td class='num' data-label='Towns'>{v['towns']} of {v['of']}</td></tr>"
         for k, v in boards.items() if k in BOARD_NAMES)
     gap_rows = "".join(
-        f"<li><b>{e(REASON_LABELS.get(k, k))}</b>: {plural(v['towns'], 'town')}"
+        f"<li>{e(REASON_LABELS.get(k, k))}: {plural(v['towns'], 'town')}"
         f"{', such as ' + e(join_and(v.get('examples', [])[:3])) if v.get('examples') else ''}.</li>"
         for k, v in blocked)
     health = ""
@@ -1419,83 +1290,107 @@ def build_how(ctx):
         ok = [h for k, h in ctx.health.items() if k.startswith("MA:") and h.get("last_success")]
         latest = max((h["last_success"] for h in ok), default="")
         failing = sum(1 for k, h in ctx.health.items() if k.startswith("MA:") and h.get("consecutive_failures", 0) >= 3)
-        health = (f" The last daily run, on {fmt_date(latest)}, read {len(ok)} Massachusetts towns; "
-                  + (f"{plural(failing, 'town')} failed" if failing else "none failed") + " three or more days in a row.")
+        health = (f"<p>The last daily run, on {fmt_date(latest)}, read {len(ok)} Massachusetts towns. "
+                  + (f"{plural(failing, 'town')} failed" if failing else "None failed") + " three days in a row.</p>")
 
     body = f"""
 <div class="wrap narrow prose">
-<section class="page-head" aria-labelledby="how-title">
-  <h1 id="how-title">How {SITE_NAME} works</h1>
-  <p class="lead">Every morning our crawler reads the agendas that town boards post online. We flag items about solar, battery storage, data centers, moratoria and other land-use topics, and link each one to the agenda it came from. Alerts for your town and its neighbors are free. It’s informational only, not legal advice.</p>
-  <nav class="toc" aria-label="On this page"><ul>
-    <li><a href="#coverage">What we read</a></li><li><a href="#timing">How early you hear</a></li><li><a href="#gaps">Towns we can’t read</a></li>
-    <li><a href="#attorney-general">How the Attorney General rules</a></li><li><a href="#crawler">Our crawler</a></li>
-    <li><a href="#privacy">Privacy</a></li><li><a href="#contact">Corrections</a></li></ul></nav>
-</section>
+<h1 id="how-title">How it works</h1>
+<p class="lead">Every morning we read the agendas towns post online. We flag solar, battery, data center and zoning items. Each one links to its agenda.</p>
+<p>It’s informational only, not legal advice.</p>
 
 <section aria-labelledby="coverage">
   <h2 id="coverage">What we read</h2>
-  <p>Every day we read the agendas of {e(coverage)}. That means planning boards, zoning boards of appeals, conservation commissions, select boards and city or town councils, plus town meeting warrants where towns post them. The Massachusetts towns we read are home to {pct(auto.get('pop_share', 0))} of the state’s people (measured {fmt_date((census.get('generated') or '')[:10])}). We also add MassDEP wetlands filings for solar and battery projects.</p>
-  <div class="table-wrap"><table class="stack counts"><caption>Massachusetts towns where we read each board</caption><thead><tr><th scope="col">Board</th><th scope="col" class="num">Towns</th></tr></thead><tbody>{board_rows}</tbody></table></div>
-  <p>Each town’s page lists the boards we read there. <a href="/towns">Find your town</a>.</p>
+  <p>We read {monitored:,} towns’ agendas every day.</p>
+  <details class="disclose"><summary>Which towns and boards</summary>
+    <ul>{"".join(f"<li>{e(c[:1].upper() + c[1:])}.</li>" for c in coverage_parts)}</ul>
+    <p>The Massachusetts towns we read are home to {pct(auto.get('pop_share', 0))} of the state’s people.</p>
+    <div class="table-wrap"><table class="stack counts"><caption>Massachusetts towns where we read each board</caption><thead><tr><th scope="col">Board</th><th scope="col" class="num">Towns</th></tr></thead><tbody>{board_rows}</tbody></table></div>
+    <p>We also add state wetlands filings for solar and battery projects. <a href="/towns">Find your town</a></p>
+  </details>
 </section>
 
 <section aria-labelledby="timing">
   <h2 id="timing">How early you hear</h2>
-  <p>Massachusetts law requires notice 48 hours before a meeting, not counting weekends and holidays. We measured {first.get('n', 0):,} agendas from {first.get('towns', 0)} towns whose platforms record a posting time, for meetings from {fmt_date(window.get('start'))} to {fmt_date(window.get('end'))}. The first version went up a median {first.get('median_days', 0):.0f} days before the meeting, and {pct(first.get('share_ge_48h_before_meeting_day', 0))} were online at least 48 hours before the meeting day.</p>
-  <p>Of the {len(ctx.hits):,} items in the current data, {upcoming:,} are for meetings still ahead. We first saw those a median {median_ahead:.0f} days before the meeting.</p>
+  <p>Agendas usually go up {first.get('median_days', 0):.0f} days before the meeting.</p>
+  <details class="disclose"><summary>How we measured it</summary>
+    <p>Massachusetts requires notice 48 hours ahead, not counting weekends and holidays.</p>
+    <p>We timed {first.get('n', 0):,} agendas from {first.get('towns', 0)} towns. The meetings ran from {fmt_date(window.get('start'))} to {fmt_date(window.get('end'))}.</p>
+    <p>The first version went up a median {first.get('median_days', 0):.0f} days ahead. {pct(first.get('share_ge_48h_before_meeting_day', 0))} were online 48 hours before the meeting day.</p>
+    <p>{upcoming:,} of our {len(ctx.hits):,} current items are for meetings ahead. We saw those a median {median_ahead:.0f} days before the meeting.</p>
+  </details>
 </section>
 
 <section aria-labelledby="gaps">
   <h2 id="gaps">Towns we can’t read yet</h2>
-  <p>{351 - auto.get('towns', 0)} Massachusetts towns aren’t read automatically yet. Most block automated visitors or ask crawlers not to visit. We respect both and don’t get around them; we ask those towns and their vendors for access instead.</p>
-  <ul class="plain gaps">{gap_rows}</ul>
+  <p>{351 - auto.get('towns', 0)} Massachusetts towns block automated readers or post no current agendas.</p>
+  <details class="disclose"><summary>Why, town by town</summary>
+    <p>We respect blocks and don’t get around them. We ask those towns for access instead.</p>
+    <ul class="plain gaps">{gap_rows}</ul>
+  </details>
 </section>
 
 <section aria-labelledby="attorney-general">
-  <h2 id="attorney-general">How the Attorney General rules on moratoria</h2>
-  <p>A Massachusetts town bylaw takes effect only after the Attorney General reviews it; city ordinances are not reviewed. We read all 2,719 decision letters issued from January 2022 to October 10, 2026 and found {letters} on solar or battery storage. Since 2024 the Attorney General has ruled on {record['total']} solar or battery-storage moratorium articles in {record['towns']} towns and disapproved {record['disapproved']}, citing the zoning protection for solar and storage in G.L. c. 40A, §3. Bylaws that regulate rather than ban did better: {reg_ok} of {len(regulating)} were approved in whole or in part. Data-center moratoria have been approved, because data centers are not a protected use.</p>
-  <p><a href="/attorney-general">Every decision, with its letter, and the local actions we track</a></p>
+  <h2 id="attorney-general">Moratoriums and the Attorney General</h2>
+  <p>Since 2024, the Attorney General rejected {"all " + str(record['total']) if record['disapproved'] == record['total'] else f"{record['disapproved']} of {record['total']}"} solar and battery moratorium articles.</p>
+  <details class="disclose"><summary>What that means</summary>
+    <p>A Massachusetts town bylaw takes effect only after the Attorney General reviews it. City ordinances are not reviewed.</p>
+    <p>State law (G.L. c. 40A, §3) protects solar and battery storage. Towns may regulate them but not ban them.</p>
+    <p>We read all 2,719 decision letters from January 2022 to October 10, 2026. {letters} were about solar or batteries.</p>
+    <p>The {record['total']} moratorium articles came from {record['towns']} towns. Bylaws that regulate did better: {reg_ok} of {len(regulating)} were approved in whole or in part.</p>
+    <p>Data-center moratoriums have been approved, because state law doesn’t protect data centers.</p>
+    <p><a href="/attorney-general">Every decision, with its letter</a></p>
+  </details>
 </section>
 
 <section aria-labelledby="crawler">
   <h2 id="crawler">Our crawler, {BOT_NAME}</h2>
-  <p>{BOT_NAME} reads only public agenda pages and identifies itself on every request with this User-Agent:</p>
-  <pre><code>{e(BOT_UA)}</code></pre>
-  <p>Requests are also signed with <a href="https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/">Web Bot Auth</a> (HTTP Message Signatures, Ed25519). The public key is at <a href="/.well-known/http-message-signatures-directory">/.well-known/http-message-signatures-directory</a>, and each request names it in a <code>Signature-Agent</code> header.</p>
-  <ul>
-    <li>It checks robots.txt before every request, including each redirect, and skips anything disallowed for <code>{BOT_NAME}</code> or <code>*</code>.</li>
-    <li>It makes at most one request per second to a site, or waits longer if robots.txt sets a <code>Crawl-delay</code>.</li>
-    <li>It reads each meeting listing about once a day and downloads each agenda once. Scanned agendas are read with OCR.</li>
-    <li>It never logs in, never submits forms and never tries to get past a CAPTCHA or other bot check. It skips files larger than 40 MB.</li>
-  </ul>
-  <p>To stop it, add this to your robots.txt. It takes effect on the next visit:</p>
+  <p>It reads public agenda pages only, and it follows each site’s robots.txt.</p>
+  <p>To block it, add this to your robots.txt:</p>
   <pre><code>User-agent: {BOT_NAME}
 Disallow: /</code></pre>
-  <p>To slow it down, add a <code>Crawl-delay</code> line with the number of seconds to wait. If you run a town website and want a different arrangement, <a href="#contact">send us a note</a> with your site’s address.{health}</p>
+  <details class="disclose"><summary>How it behaves</summary>
+    <p>It sends this User-Agent on every request:</p>
+    <pre><code>{e(BOT_UA)}</code></pre>
+    <p>Requests are signed with <a href="https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/">Web Bot Auth</a>. The public key is at <a href="/.well-known/http-message-signatures-directory">/.well-known/http-message-signatures-directory</a>.</p>
+    <ul>
+      <li>It checks robots.txt before every request, including redirects.</li>
+      <li>It makes at most one request per second to a site, or follows <code>Crawl-delay</code>.</li>
+      <li>It reads each listing about once a day and each agenda once.</li>
+      <li>It never logs in, fills in forms or gets around a bot check.</li>
+      <li>It skips files larger than 40 MB.</li>
+    </ul>
+    {health}
+    <p>Run a town website and want something different? <a href="#contact">Send us a note</a>.</p>
+  </details>
 </section>
 
 <section aria-labelledby="privacy">
   <h2 id="privacy">Privacy</h2>
-  <p>{SITE_NAME} has no accounts or passwords. We don’t use cookies or analytics.</p>
-  <p>For an alert list we store the towns and topics you chose, its name, the webhook URL and email address if you give them, when it was made and changed, and whether each daily message went through. It is stored privately at our host, Vercel. Each list has two random links: a private link that can view, change or delete it, and a share link that can only view it and its feeds. Deleting a list removes it from our storage. We show webhook URLs only in shortened form, because anyone with the full URL can post to your channel.</p>
-  <p>If you give an email address, we store it with your alert list and send it only the alerts you asked for, once a day and only when there’s something new, after you confirm the address. We send through our email provider, Resend. We never share or sell it, and we delete it when you unsubscribe (every email has a one-click link) or delete the alert list.</p>
-  <p>Your browser keeps the links of alert lists you made or opened, so you can find them again. Clearing this site’s data in your browser removes that list.</p>
-  <p>Alerts for one town and its neighbors are free. If paid plans open, Stripe will handle payment, and we would store only the Stripe customer and subscription IDs. Before alert lists existed, some people joined a waitlist; we keep those entries privately and delete each one on request or 12 months after signup, whichever comes first.</p>
+  <p>No accounts, no cookies, no analytics. We store only what your alerts need.</p>
+  <details class="disclose"><summary>What we store</summary>
+    <p>For an alert list we store your towns, topics and list name. We also store a webhook URL or email address if you give one.</p>
+    <p>Each list has two links. The private link can change or delete it. The share link can only view it.</p>
+    <p>If you give an email address, we store it with your alert list. We send it only the alerts you asked for. That’s once a day, and only when there’s something new. First we ask you to confirm the address.</p>
+    <p>We send email through our provider, Resend. We never share or sell your address. We delete it when you unsubscribe or delete the alert list. Every email has a one-click unsubscribe link.</p>
+    <p>Your browser remembers the links of alert lists you made. Clearing this site’s data removes them.</p>
+    <p>If paid plans open, Stripe will handle payment. We would store only the Stripe customer and subscription IDs.</p>
+    <p>Some people joined an earlier waitlist. We delete each entry on request, or 12 months after signup.</p>
+  </details>
 </section>
 
 <section aria-labelledby="contact">
   <h2 id="contact">Corrections and contact</h2>
-  <p>We read every message. The form doesn’t ask for contact details, so we can’t reply; a correction shows up on the site once we’ve checked it.</p>
+  <p>We read every message. We can’t reply, because the form asks for no contact details.</p>
   <form id="contact-form" class="contact" novalidate>
     <label class="field">What is this about?
       <select name="kind">
-        <option value="correction">A correction to the data</option>
+        <option value="correction">A correction</option>
         <option value="removal">Delete an earlier waitlist signup</option>
         <option value="message">Something else</option>
       </select>
     </label>
-    <label class="field">Message <small>(for a removal, include the address you signed up with)</small><textarea name="message" required maxlength="2000"></textarea></label>
+    <label class="field">Message<textarea name="message" required maxlength="2000"></textarea></label>
     <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
     <button class="btn" type="submit">Send message</button>
     <p class="form-status" role="status" aria-live="polite"></p>
@@ -1504,7 +1399,7 @@ Disallow: /</code></pre>
 </div>
 """
     return page(ctx, f"How it works: coverage, timing, crawler and privacy | {SITE_NAME}",
-                f"{SITE_NAME} reads {sum(m for _, m, _ in ctx.coverage()):,} towns' agendas every day. Coverage, how early agendas "
+                f"{SITE_NAME} reads {monitored:,} towns' agendas every day. Coverage, how early agendas "
                 "are posted, the Attorney General's record, our crawler and privacy.",
                 body, "/how-it-works")
 
@@ -1699,10 +1594,10 @@ def build_pricing(ctx):
   <h2 id="free-title">Free alerts include</h2>
   <ul>
     <li>One town plus the towns next to it.</li>
-    <li>Every board we read there: planning board, zoning board of appeals, conservation commission, select board or council, and town meeting warrants.</li>
-    <li>Every topic: solar, battery storage, data centers, moratoria, clean-energy permits, zoning changes, affordable housing (40B), cell towers and wetlands filings.</li>
-    <li>Items before the meeting. We read agendas every morning, and for meetings still ahead we first saw items a median {median_ahead:.0f} days before the meeting (<a href="/how-it-works#timing">how we measure it</a>).</li>
-    <li>Delivery by email<span data-email-soon> (starting soon)</span>, a calendar feed, RSS, or a Slack, Teams or Discord channel.</li>
+    <li>Every board we read in those towns.</li>
+    <li>Every topic we track.</li>
+    <li>Items before the meeting, usually {median_ahead:.0f} days ahead (<a href="/how-it-works#timing">how we measure</a>).</li>
+    <li>Email<span data-email-soon> (starting soon)</span>, calendar, RSS, Slack, Teams or Discord.</li>
     <li>No account. A private link is the only key.</li>
   </ul>
   <p class="actions"><a class="btn" href="/watch">Get alerts</a></p>
