@@ -25,6 +25,15 @@ rewritten in place only when its document is processed again and something chang
 (re-match after a keyword-rule update, OCR replacing a scan). Rows are never pruned
 with the document index: search covers every document 351 Watch has read.
 
+When a rewrite changes a document's text (a town re-posts an amended agenda, or OCR
+replaces a scan), the earlier text is kept, append-only, in
+
+    data/archive/<ST>/<YYYY-MM>.jsonl  {"id", "url", "first_seen", "superseded_at",
+                                        "text_sha256", "text"}
+
+so the record of what each agenda said before its meeting, and when we saw it, is
+never overwritten.
+
 The daily engine calls `FullText.add` for each document it extracts and
 `FullText.save` once at the end. For documents already indexed, rebuild rows from
 the local cache without any network request:
@@ -44,7 +53,7 @@ import sys
 import threading
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 log = logging.getLogger("watch351.fulltext")
@@ -185,9 +194,18 @@ class FullText:
             pending, self._pending = self._pending, {}
             appends: dict[str, list[dict]] = {}
             rewrites: dict[str, dict[str, dict | None]] = {}   # shard -> id -> new row (None = moved away)
+            archived: dict[str, list[dict]] = {}   # shard -> superseded text versions
+            now = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
             for rid, row in pending.items():
                 shard = shard_of(row)
                 old = self._rows.get(rid)
+                if old is not None and old.get("text") != row.get("text"):
+                    archived.setdefault(old["_shard"], []).append({
+                        "id": rid, "url": old.get("url"), "first_seen": old.get("first_seen"),
+                        "superseded_at": now,
+                        "text_sha256": hashlib.sha256((old.get("text") or "").encode("utf-8")).hexdigest(),
+                        "text": old.get("text") or "",
+                    })
                 if old is None:
                     appends.setdefault(shard, []).append(row)
                 elif old["_shard"] == shard:
@@ -198,6 +216,12 @@ class FullText:
                 self._rows[rid] = {**row, "_shard": shard}
         touched = []
         try:
+            for shard, versions in sorted(archived.items()):
+                path = self.root.parent / "archive" / shard
+                path.parent.mkdir(parents=True, exist_ok=True)
+                with path.open("a", encoding="utf-8") as fh:
+                    fh.write("".join(_dumps(v) + "\n" for v in versions))
+                touched.append(path)
             for shard, changes in sorted(rewrites.items()):
                 path = self.root / shard
                 lines = []

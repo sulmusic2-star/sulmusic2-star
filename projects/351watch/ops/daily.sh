@@ -68,6 +68,7 @@ log "crawl"
 (cd crawler && python3 -m watch351.daily "${DAILY_ARGS[@]+"${DAILY_ARGS[@]}"}")
 log "search text: rows for indexed documents still missing one (local cache only, no network)"
 (cd crawler && python3 -m watch351.fulltext backfill >&2) || log "search backfill failed; continuing"
+python3 trending.py >&2 || log "trending failed; keeping the last data/trending.json"
 log "build site"
 python3 build.py
 

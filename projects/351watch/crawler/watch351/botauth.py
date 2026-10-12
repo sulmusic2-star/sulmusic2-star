@@ -1,9 +1,9 @@
-"""Web Bot Auth: sign 351WatchBot's requests so sites behind Cloudflare can verify who we are.
+"""Web Bot Auth: sign AgendaAheadBot's requests so sites behind Cloudflare can verify who we are.
 
 Cloudflare's Verified Bots programme accepts bots that sign each request with an
 Ed25519 key published in a key directory (HTTP Message Signatures, RFC 9421, plus
 draft-meunier-web-bot-auth-architecture). Our directory is served by the site at
-https://351watch.vercel.app/.well-known/http-message-signatures-directory
+https://agendaahead.vercel.app/.well-known/http-message-signatures-directory
 (site/api/key-directory.js), signed with the same key.
 
 The private key is the 32-byte Ed25519 seed, base64url-encoded, in the
@@ -33,7 +33,7 @@ import time
 from urllib.parse import urlsplit
 
 KEY_ENV = "WBA_PRIVATE_KEY"
-SIGNATURE_AGENT = os.environ.get("WBA_SIGNATURE_AGENT", "https://351watch.vercel.app")
+SIGNATURE_AGENT = os.environ.get("WBA_SIGNATURE_AGENT", "https://agendaahead.vercel.app")
 DIRECTORY_PATH = "/.well-known/http-message-signatures-directory"
 CLOUDFLARE_TEST_URL = "https://crawltest.com/cdn-cgi/web-bot-auth"
 SIGNATURE_TTL = 60  # seconds; Cloudflare suggests about a minute

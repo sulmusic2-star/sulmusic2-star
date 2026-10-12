@@ -84,13 +84,13 @@ Manual run: `EMAIL_TRANSPORT=file EMAIL_FROM=alerts@example.org EMAIL_OUTBOX=/tm
 
 ## Bot verification (Web Bot Auth)
 
-351WatchBot signs every request (HTTP Message Signatures, Ed25519) so sites behind Cloudflare can verify it. The key directory is served at `https://351watch.vercel.app/.well-known/http-message-signatures-directory` by `site/api/key-directory.js`, signed with `WBA_PRIVATE_KEY` (Vercel env, sensitive). The crawler signs only when the same value is in its environment as `WBA_PRIVATE_KEY`; otherwise it runs unsigned. Checks, from `crawler/`:
+AgendaAheadBot (formerly 351WatchBot) signs every request (HTTP Message Signatures, Ed25519) so sites behind Cloudflare can verify it. The key directory is served at `https://agendaahead.vercel.app/.well-known/http-message-signatures-directory (switch to agendaahead.com once that domain is live, by setting WBA_SIGNATURE_AGENT)` by `site/api/key-directory.js`, signed with `WBA_PRIVATE_KEY` (Vercel env, sensitive). The crawler signs only when the same value is in its environment as `WBA_PRIVATE_KEY`; otherwise it runs unsigned. Checks, from `crawler/`:
 
 - `python3 -m watch351.botauth check-directory` — the live directory is well formed and its signature verifies.
 - `python3 -m watch351.botauth test` — Cloudflare's test endpoint: `401` = well formed but key not registered yet, `200` = registered and verified, `400` = malformed.
 
-Registration (owner, Cloudflare dashboard): Manage Account → Configurations → Bot Submission Form → Verification Method "Request Signature" → key directory URL above, User-Agent `351WatchBot`. Track status under BotBase → Submission history. The bot's public page is `/bot`.
+Registration (owner, Cloudflare dashboard): Manage Account → Configurations → Bot Submission Form → Verification Method "Request Signature" → key directory URL above, User-Agent `AgendaAheadBot`. Track status under BotBase → Submission history. The bot's public page is `/bot`.
 
 ## Crawler rules
 
-Identify as 351WatchBot (`351WatchBot/0.1 (+https://351watch.vercel.app/bot)`, Web Bot Auth signature when the key is present); obey robots.txt on every host and redirect; ≤1 request/second/host (2.5 s for `opengov.sos.ri.gov`); no logins; never solve or bypass bot challenges; skip hosts asking for crawl-delay > 10 s.
+Identify as AgendaAheadBot (`AgendaAheadBot/0.1 (+https://agendaahead.vercel.app/bot)`; robots.txt rules for the former name 351WatchBot are also obeyed, Web Bot Auth signature when the key is present); obey robots.txt on every host and redirect; ≤1 request/second/host (2.5 s for `opengov.sos.ri.gov`); no logins; never solve or bypass bot challenges; skip hosts asking for crawl-delay > 10 s.
