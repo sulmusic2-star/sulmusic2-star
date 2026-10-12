@@ -290,10 +290,10 @@ export function confirmationMessage(wl, base) {
     `Towns: ${townList(wl)}`,
     `Topics: ${topicList(wl.topics)}`,
     '',
-    'To start the emails, open this link:',
+    'To start the emails, open this link and press Confirm:',
     l.confirm,
     '',
-    'No alerts are sent until the link is opened. If you did not ask for this, ignore this email, or remove the address now:',
+    'No alerts are sent until the address is confirmed. If you did not ask for this, ignore this email, or remove the address now:',
     l.unsubscribe,
     '',
   ].join('\n');
@@ -301,7 +301,7 @@ export function confirmationMessage(wl, base) {
     `<p style="${STYLE.p}">This address was entered on ${esc(SITE_NAME)} to get a daily email when town agendas have something new for these towns and subjects:</p>`,
     `<p style="${STYLE.p}"><b>${esc(label)}</b><br>Towns: ${esc(townList(wl))}<br>Topics: ${esc(topicList(wl.topics))}</p>`,
     `<p style="${STYLE.p}"><a href="${esc(l.confirm)}" style="${STYLE.link};font-weight:bold">Start the daily emails</a></p>`,
-    `<p style="${STYLE.small}">No alerts are sent until the link is opened. If you did not ask for this, ignore this email, or <a href="${esc(l.unsubscribe)}" style="${STYLE.link}">remove the address now</a>.</p>`,
+    `<p style="${STYLE.small}">No alerts are sent until the address is confirmed. If you did not ask for this, ignore this email, or <a href="${esc(l.unsubscribe)}" style="${STYLE.link}">remove the address now</a>.</p>`,
   ].join('\n'));
   return { subject, text, html, headers: unsubscribeHeaders(l.unsubscribe) };
 }
@@ -367,8 +367,17 @@ export function digestMessage(wl, items, more, base) {
 }
 
 // ---------- small HTML pages for the confirm and unsubscribe links ----------
+// Link scanners (Safe Links, mail gateways) open every link in an email, so a GET only shows a page.
+// The page's button posts a plain form back to the same URL (no script, fits the site CSP), and
+// only that POST changes anything.
+//   form: { action, token, button }   link: { before, href, text }
 
-export function linkPage(res, status, title, message) {
+export function linkPage(res, status, title, message, { form, link } = {}) {
+  const formHtml = form
+    ? `<form method="post" action="${esc(form.action)}"><input type="hidden" name="t" value="${esc(form.token)}">` +
+      `<button type="submit" class="btn">${esc(form.button)}</button></form>`
+    : '';
+  const linkHtml = link ? `<p>${esc(link.before)} <a href="${esc(link.href)}">${esc(link.text)}</a>.</p>` : '';
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('X-Robots-Tag', 'noindex');
   res.status(status).send(`<!doctype html>
@@ -376,7 +385,8 @@ export function linkPage(res, status, title, message) {
 <meta name="robots" content="noindex"><meta name="referrer" content="no-referrer">
 <title>${esc(title)} | ${esc(SITE_NAME)}</title><link rel="stylesheet" href="/styles.css"></head>
 <body><header class="site"><div class="wrap"><a class="brand" href="/">${esc(SITE_NAME)}</a></div></header>
-<main id="main"><div class="wrap"><section class="hero compact"><h1>${esc(title)}</h1><p class="lead">${esc(message)}</p></section></div></main>
+<main id="main"><div class="wrap"><section class="hero compact"><h1>${esc(title)}</h1><p class="lead">${esc(message)}</p>
+${formHtml}${linkHtml}</section></div></main>
 </body></html>
 `);
 }
