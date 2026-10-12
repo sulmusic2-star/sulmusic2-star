@@ -465,7 +465,7 @@ await test('at most 3 watchlists per address, and 3 confirmation emails a day pe
   }
   const fourth = await make({ home_town: 'MA:Carver', towns: ['MA:Carver'], email: L });
   assert.equal(fourth.status, 400);
-  assert.match(fourth.json.fields.email, /already gets alerts from 3 watchlists/);
+  assert.match(fourth.json.fields.email, /already gets 3 sets of alerts/);
   const del = await api('DELETE', `/api/watchlists?id=${ids[0]}`);
   assert.equal(del.status, 200);
   const retry = await make({ home_town: 'MA:Carver', towns: ['MA:Carver'], email: L });

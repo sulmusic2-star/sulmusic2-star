@@ -43,7 +43,7 @@ ${(h.topics || []).map((t) => `<category>${xml(TOPICS[t] || t)}</category>`).joi
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>${xml(`${SITE_NAME}: ${wl.name || 'watchlist'}`)}</title>
+<title>${xml(`${SITE_NAME}: ${wl.name || 'alerts'}`)}</title>
 <link>${xml(`${base}/w/${shareId(wl)}`)}</link>
 <atom:link href="${xml(feedUrl)}" rel="self" type="application/rss+xml"/>
 <description>${xml(describe(wl))}</description>
@@ -108,7 +108,7 @@ function ics(wl, items, base, generated) {
         ...group.map((g) => `• ${g.snippet}`),
         '',
         ...agendas.map((u) => `Agenda: ${u}`),
-        `Watchlist: ${base}/w/${shareId(wl)}`,
+        `Alerts page: ${base}/w/${shareId(wl)}`,
         'Confirm the time and place with the town; agendas can change.',
       ].join('\n');
       const uid = createHash('sha1').update(`${wl.id}|${key}`).digest('hex').slice(0, 20);
@@ -132,7 +132,7 @@ function ics(wl, items, base, generated) {
     `PRODID:-//${icsText(SITE_NAME)}//Agenda alerts//EN`,
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
-    `X-WR-CALNAME:${icsText(`${SITE_NAME}: ${wl.name || 'watchlist'}`)}`,
+    `X-WR-CALNAME:${icsText(`${SITE_NAME}: ${wl.name || 'alerts'}`)}`,
     `X-WR-CALDESC:${icsText(describe(wl))}`,
     'X-PUBLISHED-TTL:PT6H',
     'REFRESH-INTERVAL;VALUE=DURATION:PT6H',
@@ -151,7 +151,7 @@ export default async function handler(req, res) {
     const { wl } = await resolveWatchlist(id);
     if (!wl) {
       noStore(res);
-      return res.status(404).json({ ok: false, error: 'Watchlist not found.' });
+      return res.status(404).json({ ok: false, error: 'These alerts were not found.' });
     }
     const doc = await loadHits(req);
     const base = publicBase(req);

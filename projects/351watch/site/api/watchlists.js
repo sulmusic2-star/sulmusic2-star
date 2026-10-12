@@ -66,7 +66,7 @@ async function admit(req, res, address, watchlistId) {
 const view = (wl, req) => publicView(wl, publicBase(req), { email: emailView(wl) });
 
 async function create(req, res, body) {
-  if (throttled(req, 'create', 20, HOUR)) return fail(res, 429, 'Too many watchlists created from this network. Try again later.');
+  if (throttled(req, 'create', 20, HOUR)) return fail(res, 429, 'Too many alert sign-ups from this network. Try again later.');
   const ref = await referenceData(req);
   const { value, errors, code } = validateConfig(body, ref);
   const email = readEmailField(body);
@@ -160,7 +160,7 @@ async function sendTest(req, res, body, saved) {
     if (!parsed.url) return fail(res, 400, 'Enter a webhook URL first.', { webhook_url: 'Enter a webhook URL first.' });
     webhook = { url: parsed.url, format: body.webhook_format === 'json' ? 'json' : 'auto' };
   }
-  if (!webhook) return fail(res, 400, 'This watchlist has no webhook.');
+  if (!webhook) return fail(res, 400, 'These alerts have no webhook.');
 
   const base = publicBase(req);
   const wl = saved || { id: 'test', name: clean(body.name, 80), towns: [], topics: [] };
@@ -176,7 +176,7 @@ async function sendTest(req, res, body, saved) {
   }
   const link = saved ? `${base}/w/${shareId(saved)}` : `${base}/watch`;
   const intro = sample.length
-    ? `Test message: webhook delivery works. New items will look like ${sample.length === 1 ? 'this one' : 'these'} (already in your watchlist, shown as a sample).`
+    ? `Test message: webhook delivery works. New items will look like ${sample.length === 1 ? 'this one' : 'these'} (already on your alerts page, shown as a sample).`
     : 'Test message: webhook delivery works. New agenda items for your towns and topics will arrive here once a day.';
   const payload = buildPayload(webhookKind(webhook), { wl, items: sample, link, intro, test: true });
   const result = await postWebhook(webhook.url, payload);
@@ -204,14 +204,14 @@ export default async function handler(req, res) {
     if (req.method === 'POST' && action === 'test' && !id) return await sendTest(req, res, body, null);
 
     const { wl, readonly } = await resolveWatchlist(id);
-    if (!wl) return fail(res, 404, 'Watchlist not found. It may have been deleted.');
+    if (!wl) return fail(res, 404, 'These alerts were not found. They may have been deleted.');
 
     if (req.method === 'GET') {
       if (readonly) return res.status(200).json({ ok: true, watchlist: readonlyView(wl, publicBase(req)) });
       await ensureFeedId(wl); // watchlists made before read-only links existed get one now
       return res.status(200).json({ ok: true, watchlist: view(wl, req) });
     }
-    if (readonly) return fail(res, 403, 'This is a read-only link. Use the private link to change this watchlist.');
+    if (readonly) return fail(res, 403, 'This is a read-only link. Use the private link to change these alerts.');
     if (req.method === 'PATCH') return await update(req, res, wl, body);
     if (req.method === 'DELETE') {
       await removeJSON(`watchlists/${wl.id}.json`);

@@ -94,7 +94,7 @@ export async function admitAddress(address, watchlistId) {
   if (slotsTaken(idx, watchlistId) >= MAX_LISTS_PER_ADDRESS) {
     return {
       status: 400,
-      error: `This address already gets alerts from ${MAX_LISTS_PER_ADDRESS} watchlists, the most one address can have. Unsubscribe it from one of them first (the link is at the bottom of each email).`,
+      error: `This address already gets ${MAX_LISTS_PER_ADDRESS} sets of alerts, the most one address can have. Unsubscribe it from one of them first (the link is at the bottom of each email).`,
     };
   }
   const later = sendLimit(idx);
@@ -227,7 +227,7 @@ export function watchlistLabel(wl) {
     const others = towns.length - 1;
     return others ? `${townName(wl.home_town)} and neighbors` : townName(wl.home_town);
   }
-  if (!towns.length) return 'your watchlist';
+  if (!towns.length) return 'your towns';
   return towns.length > 1 ? `${townName(towns[0])} and ${plural(towns.length - 1, 'other town')}` : townName(towns[0]);
 }
 
@@ -284,9 +284,9 @@ export function confirmationMessage(wl, base) {
   const label = watchlistLabel(wl);
   const subject = `${SITE_NAME}: confirm daily emails for ${label}`;
   const text = [
-    `This address was entered on ${SITE_NAME} to get a daily email when new town agenda items match this watchlist:`,
+    `This address was entered on ${SITE_NAME} to get a daily email when town agendas have something new for these towns and subjects:`,
     '',
-    `Watchlist: ${label}`,
+    `Alerts for: ${label}`,
     `Towns: ${townList(wl)}`,
     `Topics: ${topicList(wl.topics)}`,
     '',
@@ -298,7 +298,7 @@ export function confirmationMessage(wl, base) {
     '',
   ].join('\n');
   const html = htmlDoc(subject, [
-    `<p style="${STYLE.p}">This address was entered on ${esc(SITE_NAME)} to get a daily email when new town agenda items match this watchlist:</p>`,
+    `<p style="${STYLE.p}">This address was entered on ${esc(SITE_NAME)} to get a daily email when town agendas have something new for these towns and subjects:</p>`,
     `<p style="${STYLE.p}"><b>${esc(label)}</b><br>Towns: ${esc(townList(wl))}<br>Topics: ${esc(topicList(wl.topics))}</p>`,
     `<p style="${STYLE.p}"><a href="${esc(l.confirm)}" style="${STYLE.link};font-weight:bold">Start the daily emails</a></p>`,
     `<p style="${STYLE.small}">No alerts are sent until the link is opened. If you did not ask for this, ignore this email, or <a href="${esc(l.unsubscribe)}" style="${STYLE.link}">remove the address now</a>.</p>`,
@@ -322,7 +322,7 @@ export function digestMessage(wl, items, more, base) {
   const subject = `${SITE_NAME}: ${plural(total, 'new item')} for ${label}`;
   const since = wl.email.last_email?.ok ? 'since the last email' : 'since you signed up';
   const lead = `${SITE_NAME} found ${plural(total, 'new agenda item')} for ${label} ${since}.`;
-  const why = `You get this email because ${maskEmail(wl.email.address)} confirmed daily alerts for this watchlist. Days without new items get no email. Agendas can change: confirm the time and place with the town.`;
+  const why = `You get this email because ${maskEmail(wl.email.address)} confirmed daily alerts for these towns. Days without new items get no email. Agendas can change: confirm the time and place with the town.`;
 
   const textItems = items.map((h) => [
     `${h.town}, ${h.state}: ${h.board}`,
@@ -335,10 +335,10 @@ export function digestMessage(wl, items, more, base) {
     lead,
     '',
     textItems.join('\n\n'),
-    ...(more ? ['', `And ${more} more on the watchlist page: ${l.share}`] : []),
+    ...(more ? ['', `And ${more} more on your alerts page: ${l.share}`] : []),
     '',
     '--',
-    `Watchlist page (safe to share): ${l.share}`,
+    `Alerts page (safe to share): ${l.share}`,
     `Change towns, topics or email (private link, do not forward this email): ${l.manage}`,
     `Unsubscribe from these emails: ${l.unsubscribe}`,
     '',
@@ -355,9 +355,9 @@ export function digestMessage(wl, items, more, base) {
   const html = htmlDoc(subject, [
     `<p style="${STYLE.p}">${esc(lead)}</p>`,
     ...htmlItems,
-    ...(more ? [`<p style="${STYLE.item}">And ${more} more on the <a href="${esc(l.share)}" style="${STYLE.link}">watchlist page</a>.</p>`] : []),
+    ...(more ? [`<p style="${STYLE.item}">And ${more} more on the <a href="${esc(l.share)}" style="${STYLE.link}">alerts page</a>.</p>`] : []),
     `<div style="${STYLE.foot}">`,
-    `<p style="${STYLE.small}"><a href="${esc(l.share)}" style="${STYLE.link}">Watchlist page</a> (safe to share)</p>`,
+    `<p style="${STYLE.small}"><a href="${esc(l.share)}" style="${STYLE.link}">Alerts page</a> (safe to share)</p>`,
     `<p style="${STYLE.small}"><a href="${esc(l.manage)}" style="${STYLE.link}">Change towns, topics or email</a> (private link, do not forward this email)</p>`,
     `<p style="${STYLE.small}"><a href="${esc(l.unsubscribe)}" style="${STYLE.link}">Unsubscribe</a> from these emails</p>`,
     `<p style="${STYLE.small}">${esc(why)}</p>`,
