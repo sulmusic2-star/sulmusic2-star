@@ -1,0 +1,9 @@
+{
+  "name": "351watch-search-index",
+  "private": true,
+  "type": "module",
+  "description": "Deploy-time Pagefind index for /search (see build-index.mjs).",
+  "dependencies": {
+    "pagefind": "1.5.2"
+  }
+}

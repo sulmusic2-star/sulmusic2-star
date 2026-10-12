@@ -3,7 +3,7 @@
 ## Daily refresh (scheduled 6:59 am America/New_York)
 
 1. Repo `sulmusic2-star/sulmusic2-star`, branch `claude/massachusetts-market-service-ead9ho` (`git pull --ff-only` first).
-2. `bash projects/351watch/ops/daily.sh` — refreshes MassDEP wetlands filings, crawls MA/NY/RI agendas incrementally (state in `data/state/`), rebuilds the site, commits "Daily refresh YYYY-MM-DD", pushes. Last printed line = commit SHA. A fresh container works: only listing pages are re-read; agenda documents already processed are skipped.
+2. `bash projects/351watch/ops/daily.sh` — refreshes MassDEP wetlands filings, crawls MA/NY/RI agendas incrementally (state in `data/state/`), appends the text of each new document to `data/search/` (and fills any row still missing from the local cache), rebuilds the site, commits "Daily refresh YYYY-MM-DD", pushes. Last printed line = commit SHA. A fresh container works: only listing pages are re-read; agenda documents already processed are skipped, and their search text is already in git.
 3. Deploy that SHA to production with the Vercel MCP `create_deployment` (no teamId):
 
 ```json
@@ -26,8 +26,16 @@
 ```
 
    The build (`site/vercel-build.sh`) assembles everything from git at that commit — pages, data, API functions, routing and the daily cron — so code changes ship the same way.
-4. Verify: deployment READY; `https://351watch-sulmusic2-4637s-projects.vercel.app/data/hits_current.json` shows today's `generated`.
+4. Verify: deployment READY; `https://351watch-sulmusic2-4637s-projects.vercel.app/data/hits_current.json` shows today's `generated`; `/search?q=battery+storage` lists results (the build log prints `search index: N documents from M rows`).
 5. Watch `data/state/town_health.json` for towns with `consecutive_failures` ≥ 3 and `data/state/runs/<date>.json` for errors.
+
+## Full-text search (`/search`)
+
+- Text lives in git: `data/search/<ST>/<YYYY-MM>.jsonl`, one row per document read, first 20,000 characters (contract in `ARCHITECTURE.md`). About 12.5 MB for 3,105 documents; each new document adds about 4 kB, so 100 to 300 new documents a day add 0.4 to 1.2 MB.
+- Rows come from the daily engine. `cd crawler && python3 -m watch351.fulltext backfill` re-extracts missing rows from the cache only (no network; `--no-ocr` skips scans whose OCR text is not cached); `daily.sh` runs it after the crawl. `python3 -m watch351.fulltext stats` prints counts and size.
+- The index is built at deploy time by `site/vercel-build.sh` (`search/build-index.mjs`, Pagefind 1.5.2 pinned by `search/package-lock.json`, about 15 s) into `/pagefind/` (about 18 MB, 3,200 files). Searches run in the browser and download about 200 to 300 kB on a first search, then about 40 to 140 kB per search; nothing runs on the server.
+- Local preview: `(cd search && npm ci) && node search/build-index.mjs data/search site/pagefind` (git-ignored), then `python3 build.py && node site/dev-server.mjs` and open `/search`.
+- Changing the rows' shape or `TEXT_CAP`: rows are append-only, so rebuild the folder on a container with a full cache (`rm -r data/search && python3 -m watch351.fulltext backfill`) and commit it in one change.
 
 ## Webhook delivery
 

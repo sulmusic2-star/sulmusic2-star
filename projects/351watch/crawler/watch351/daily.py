@@ -42,6 +42,7 @@ from . import current, extract
 from .adapters import REGISTRY
 from .crawl import scan_document_full, town_configs
 from .fetch import DEFAULT_CACHE_DIR, FetchError, PoliteFetcher
+from .fulltext import FullText
 from .keywords import MATCHER_VERSION
 from .models import AgendaDoc, Window
 from .state import (DATA, MAX_ATTEMPTS, DocIndex, iso_from_epoch, load_health, make_record, now_iso,
@@ -102,6 +103,7 @@ class DailyRun:
         self.can_extract = shutil.which("pdftotext") is not None and shutil.which("pdfinfo") is not None
         self.fetcher = PoliteFetcher(cache_dir)
         self.index = DocIndex(self.data_dir / "state" / "docs")
+        self.fulltext = FullText(self.data_dir / "search", self.data_dir)   # data/search rows
         ledger_p = self.data_dir / "first_seen.json"
         self.ledger = json.loads(ledger_p.read_text()) if ledger_p.exists() else {}
         self._claimed: set[str] = set()
@@ -180,6 +182,7 @@ class DailyRun:
         if rec is not None:
             new["last_seen_in_listing"] = self.index.get(doc.url)["last_seen_in_listing"]
         self.index.put(new)
+        self.fulltext.add(new, ex.text)
         if needs_ocr:
             out.needs_ocr += 1
         if rematch:
@@ -230,6 +233,7 @@ class DailyRun:
         outcomes.sort(key=lambda o: o.key)
 
         self.index.save()
+        self.fulltext.save()
         update_ledger(self.index, self.data_dir / "first_seen.json")
         prev = self._previous_ids()
         doc = current.rebuild(self.data_dir, today=self.today, agenda_hits=self.index.current_hits(),
