@@ -481,7 +481,9 @@
       const id = editId || result.id;
       if (!id) throw new Error('Something went wrong on our end. Try again in a minute.');
       window.w351.remember(id, data.name);
-      if (window.w351.saveAreas) window.w351.saveAreas(data.home_town, data.towns);
+      if (window.w351.saveAreas) {
+        window.w351.saveAreas(data.home_town, data.towns, data.topics.length < topicBoxes.length ? data.topics : null);
+      }
       setStatus(status, editId ? 'Changes saved. Opening your alerts…' : 'Alerts set up. Opening them…', 'ok');
       const flags = [editId ? '' : 'new=1', data.email ? 'email=1' : ''].filter(Boolean).join('&');
       location.assign(`/w/${id}${flags ? `?${flags}` : ''}`);

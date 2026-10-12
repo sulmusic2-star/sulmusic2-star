@@ -12,10 +12,12 @@ for the old /proof, /privacy and /bot URLs, maps/*.svg, sitemap.xml, robots.txt,
 (the town index the API validates against) and data/lines.json (item lines for the alert pages). The deploy step copies these plus data/hits_current.json.
 
 Site structure, built around what visitors come to do:
-  /               what's coming up in your town: town box, the next 3 meetings, map
-  /upcoming       every upcoming meeting with items on our topics
+  /               what's coming up in your town: town box, the biggest stories this week, map
+  /trending       the biggest stories coming up (data/trending.json), "For you" re-ranked in the browser
+  /upcoming       every upcoming meeting about solar, batteries, data centers, zoning, housing or cell towers
   /<st>/<town>    one town: the next 7 days, what's coming up, earlier meetings, nearby towns, boards read
-  /watch          set up alerts (an "alert list"), one question per screen; /w/<key> shows one
+  /watch          residents' alerts: a town, the towns next to it, subjects, email; /w/<key> shows them
+  /alerts-for-groups  the same, plus Slack, Teams or Discord webhooks, names and per-town choices
   /search         full-text search over every agenda (site/search.js fills the results)
   /how-it-works   coverage, timing, the Attorney General record, the crawler, privacy, contact
 """
@@ -507,13 +509,14 @@ class DotMap:
 
 NAV = [
     ("/towns", "Towns"),
-    ("/topics", "Topics"),
+    ("/trending", "Trending"),
     ("/search", "Search"),
     ("/watch", "Get alerts"),
 ]
 FOOTER_LINKS = [
     ("/how-it-works", "How it works"),
     ("/upcoming", "Everything coming up"),
+    ("/topics", "Topics"),
     ("/attorney-general", "Attorney General reviews of town bylaws"),
     ("/pricing", "Is it free?"),
     ("/how-it-works#privacy", "Privacy"),
@@ -1281,12 +1284,14 @@ def home_map(ctx):
 
 
 def build_index(ctx):
-    hero = upcoming_hits(ctx, lambda h: HERO_TOPICS & set(h.get("topics", [])))
-    meetings = group_meetings(ctx, hero)
     states = join_and(STATE_NAMES.get(x, x) for x in ctx.states)
-    next_html = (f'<ol class="meetings">{"".join(meeting_html(ctx, m) for m in meetings[:3])}</ol>' if meetings
-                 else '<p class="empty">Nothing about solar, batteries or data centers on the agendas posted so far. '
-                      'We check new agendas every morning.</p>')
+    stories, _ = trending_stories(ctx)
+    week_end = (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=7)).strftime("%Y-%m-%d")
+    week = [st for st in stories if st["meeting_date"] and st["meeting_date"] <= week_end][:3]
+    big_title = "Biggest this week" if week else "Biggest stories coming up"
+    week = week or stories[:3]
+    next_html = (f'<ol class="stories">{"".join(story_html(ctx, st) for st in week)}</ol>' if week
+                 else '<p class="empty">Nothing big on the agendas posted so far. We check new agendas every morning.</p>')
     body = f"""
 <div class="wrap home">
 <section class="home-hero" aria-labelledby="hero-title">
@@ -1296,8 +1301,9 @@ def build_index(ctx):
   <p class="owner">{e(OWNER_LINE)}</p>
 </section>
 <section class="next" aria-labelledby="next-title">
-  <h2 id="next-title">Coming up soon</h2>
+  <h2 id="next-title">{big_title}</h2>
   {next_html}
+  <p class="more-link"><a href="/trending">See the biggest stories</a></p>
   <p class="more-link"><a href="/upcoming">See everything coming up</a></p>
 </section>
 {home_map(ctx)}
@@ -1339,6 +1345,97 @@ def build_upcoming(ctx):
                 f"Town board meetings coming up in {join_and(ctx.states)} with solar, battery storage, data centers, zoning, "
                 "housing or cell towers on the agenda, each with a link to the agenda.",
                 body, "/upcoming")
+
+
+# ---------------------------------------------------------------- biggest stories (/trending)
+# trending.py ranks upcoming stories and writes data/trending.json (contract in ARCHITECTURE.md).
+# The page shows the top 20 still ahead; trending.js re-ranks them toward the visitor's own towns.
+
+def trending_stories(ctx):
+    doc = load("trending.json", {"stories": []})
+    hits_by_id = {h["id"]: h for h in ctx.hits}
+    out = []
+    for st in doc.get("stories", []):
+        d = st.get("meeting_date") or ""
+        if d and d < ctx.today:
+            continue
+        lead = next((hits_by_id[i] for i in st.get("hit_ids", []) if i in hits_by_id), None)
+        anchor = ""
+        if lead and lead.get("meeting_date"):
+            anchor = "#m-" + slugify(f"{lead['town']}-{board_label(lead)}-{lead['meeting_date'][:10]}")
+        out.append({
+            "id": st["id"], "score": st.get("score", 0), "headline": st.get("headline", ""), "dek": st.get("dek", ""),
+            "quote": st.get("quote", ""), "reasons": st.get("reasons", []), "topics": st.get("topics", []),
+            "towns": st.get("towns", []), "town": st.get("town", ""), "state": st.get("state", ""),
+            "href": (st.get("town_path") or town_path(st.get("state", "MA"), st.get("town", ""))) + anchor,
+            "meeting_date": d, "source_url": st.get("source_url", ""),
+            "new": any(ctx.is_new(hits_by_id[i]) for i in st.get("hit_ids", []) if i in hits_by_id),
+        })
+    return out, doc.get("personalize") or {"in_my_towns": 2.0, "in_neighbor_towns": 1.0, "topic_match": 0.5}
+
+
+def story_html(ctx, st, level=3):
+    when = (f'<time datetime="{st["meeting_date"]}" data-rel>{day_label(st["meeting_date"], ctx)}</time>'
+            if st["meeting_date"] else '<span>Date not set yet</span>')
+    town = f'{e(st["town"])}{", " + e(st["state"]) if st["state"] != "MA" else ""}'
+    new = '<span class="badge-new">New</span> ' if st["new"] else ""
+    why = "".join(f"<span>{e(r)}</span>" for r in st["reasons"])
+    quote = (f'<details class="item-words"><summary>Show the agenda text</summary>'
+             f'<p class="item-from">Quoted from the agenda:</p><blockquote class="item-quote">{e(st["quote"])}</blockquote></details>'
+             if st["quote"] else "")
+    agenda = (f'<a class="item-link" href="{e(st["source_url"])}" rel="nofollow noopener" target="_blank">Open the agenda'
+              f'<span class="sr-only">: {e(st["headline"])}</span></a>') if st["source_url"] else ""
+    return f"""<li class="story" data-id="{e(st['id'])}">
+  <p class="story-when" data-slop-ignore>{when}<span class="story-town">{town}</span></p>
+  <h{level} class="story-head" data-slop-ignore><a href="{e(st['href'])}">{new}{e(st['headline'])}</a></h{level}>
+  <p class="story-dek">{e(st['dek'])}</p>
+  {f'<p class="story-why" data-slop-ignore>{why}</p>' if why else ''}
+  <div class="line-tools">{quote}{agenda}</div>
+</li>"""
+
+
+def trending_json(stories, weights):
+    """site/data/trending.json: the stories still ahead, with only what the page needs."""
+    return json.dumps({"personalize": weights, "stories": stories}, separators=(",", ":"), ensure_ascii=False)
+
+
+def build_trending(ctx):
+    stories, _ = trending_stories(ctx)
+    top = stories[:20]
+    items = "".join(story_html(ctx, st, level=2) for st in top) if top else ""
+    body = f"""
+<div class="wrap narrow">
+<section class="page-head" aria-labelledby="trend-title">
+  <h1 id="trend-title">Biggest stories coming up</h1>
+  <p class="lead">The town agenda items with the most at stake: bans and moratoriums, large projects, and the same question in several towns at once. We rank them again every morning.</p>
+  <details class="disclose"><summary>How we rank them</summary>
+    <p>Each story gets points for what it is (a data center, battery storage, a ban or a moratorium, large solar), what the board will do (a vote or a hearing counts more than a discussion), how big the project is, how many boards and towns are taking it up, and how soon the meeting is. Nothing here says whether a project is good or bad.</p>
+  </details>
+</section>
+<form class="townbox near-me" id="near-me" hidden>
+  <label for="near-town">See stories near your town first</label>
+  <div class="field-row"><input id="near-town" type="text" list="near-towns" autocomplete="off" autocapitalize="words" spellcheck="false">
+  <button class="btn quiet" type="submit">Show nearby first</button></div>
+  <datalist id="near-towns"></datalist>
+  <p class="field-error" id="near-town-error" role="alert" hidden></p>
+</form>
+<div class="views" id="trend-views" hidden>
+  <p class="view-switch" role="group" aria-label="Which stories">
+    <button type="button" class="link-btn" id="view-mine" aria-pressed="true">For you</button>
+    <button type="button" class="link-btn" id="view-all" aria-pressed="false">Everywhere</button>
+  </p>
+  <p class="form-note" id="mine-note"></p>
+</div>
+<ol class="stories" id="trend-all">{items}</ol>
+<ol class="stories" id="trend-mine" hidden></ol>
+{'' if top else '<p class="empty">Nothing big on the agendas posted so far. We check new agendas every morning.</p>'}
+<p class="more-link"><a href="/upcoming">See everything coming up</a></p>
+</div>
+"""
+    return page(ctx, f"Biggest stories coming up at town meetings | {SITE_NAME}",
+                f"The town agenda items with the most at stake in {join_and(ctx.states)}: moratoriums and bans, large solar, "
+                "battery and data center projects, ranked every morning.",
+                body, "/trending", scripts=("/trending.js",), og_title="Biggest stories coming up at town meetings")
 
 
 # ---------------------------------------------------------------- town pages
@@ -2365,6 +2462,7 @@ def main():
     pages = {
         "index.html": (build_index(ctx), "/"),
         "upcoming.html": (build_upcoming(ctx), "/upcoming"),
+        "trending.html": (build_trending(ctx), "/trending"),
         "how-it-works.html": (build_how(ctx), "/how-it-works"),
         "search.html": (build_search(ctx), "/search"),
         "watch.html": (build_watch(ctx), "/watch"),
@@ -2403,6 +2501,7 @@ def main():
     write("robots.txt", build_robots())
     write("data/towns.json", town_index_json(ctx))
     write("data/lines.json", lines_json(ctx))
+    write("data/trending.json", trending_json(*trending_stories(ctx)))
     stale = SITE / "manifest.txt"
     if stale.exists():
         stale.unlink()

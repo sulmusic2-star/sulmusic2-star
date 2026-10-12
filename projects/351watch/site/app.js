@@ -362,10 +362,12 @@ window.w351 = {
   requestTown,
   // The visitor's own towns (home town first), saved when they set up alerts. Pages may use them to
   // put those towns first; nothing leaves the browser.
-  saveAreas(homeTown, towns) {
+  saveAreas(homeTown, towns, topics) {
     try {
       const list = [homeTown, ...(towns || []).filter((t) => t !== homeTown)].filter((t) => typeof t === 'string' && t.includes(':'));
-      if (list.length) localStorage.setItem(AREAS_KEY, JSON.stringify({ home_town: list[0], towns: list.slice(0, 40) }));
+      const doc = { home_town: list[0], towns: list.slice(0, 40) };
+      if (Array.isArray(topics) && topics.length) doc.topics = topics.slice(0, 20); // only when some subjects were left out
+      if (list.length) localStorage.setItem(AREAS_KEY, JSON.stringify(doc));
     } catch {
       /* storage unavailable */
     }
@@ -378,6 +380,7 @@ window.w351 = {
       return null;
     }
   },
+  relDates,
   forget(id) {
     try {
       localStorage.setItem(LISTS_KEY, JSON.stringify(this.recall().filter((l) => l.id !== id)));
@@ -386,6 +389,27 @@ window.w351 = {
     }
   },
 };
+
+// Meeting days said the way people say them: "Today, Oct 12", "Tomorrow, Oct 13", "Saturday, Oct 17",
+// counted in Boston time; a story whose meeting has passed is hidden.
+function relDates(root = document) {
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  for (const t of root.querySelectorAll('time[data-rel]')) {
+    const iso = t.getAttribute('datetime') || '';
+    const days = Math.round((Date.parse(`${iso}T12:00:00Z`) - Date.parse(`${today}T12:00:00Z`)) / 86400000);
+    if (Number.isNaN(days)) continue;
+    if (days < 0) {
+      const story = t.closest('.story');
+      if (story) story.hidden = true;
+      continue;
+    }
+    if (days > 6) continue;
+    const d = new Date(`${iso}T12:00:00Z`);
+    const md = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+    const name = days === 0 ? 'Today' : days === 1 ? 'Tomorrow' : d.toLocaleDateString('en-US', { weekday: 'long', timeZone: 'UTC' });
+    t.textContent = `${name}, ${md}`;
+  }
+}
 
 // "Copy citation" and "Share this meeting": buttons that need JavaScript, so they start hidden.
 async function copyText(text) {
@@ -444,3 +468,4 @@ setupEmailNotes();
 setupRequestButtons();
 setupDisclosure();
 setupCopyAndShare();
+relDates();
