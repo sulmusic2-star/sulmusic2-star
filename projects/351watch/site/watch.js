@@ -168,7 +168,7 @@
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok || data.ok === false) {
-      const err = new Error(data.error || 'Something went wrong. Please try again.');
+      const err = new Error(data.error || 'The server did not answer as expected. Try again in a minute.');
       err.fields = data.fields || {};
       throw err;
     }
@@ -180,7 +180,7 @@
     const data = payload();
     for (const f of ['towns', 'topics', 'webhook_url']) fieldError(f, '');
     if (!validate(data)) {
-      setStatus(status, 'Please fix the highlighted fields.', 'err');
+      setStatus(status, 'Check the highlighted fields.', 'err');
       return;
     }
     submit.disabled = true;
@@ -190,9 +190,9 @@
         ? await send('PATCH', `/api/watchlists?id=${encodeURIComponent(editId)}`, data)
         : await send('POST', '/api/watchlists', data);
       const id = editId || result.id;
-      if (!id) throw new Error('Something went wrong. Please try again.');
+      if (!id) throw new Error('The server did not answer as expected. Try again in a minute.');
       window.w351.remember(id, data.name);
-      setStatus(status, editId ? 'Saved. Opening your watchlist…' : 'Created. Opening your watchlist…', 'ok');
+      setStatus(status, editId ? 'Saved. Opening your watchlist…' : 'Watchlist created. Opening it…', 'ok');
       location.assign(`/w/${id}`);
     } catch (err) {
       for (const [field, message] of Object.entries(err.fields || {})) fieldError(field, message);

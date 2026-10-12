@@ -105,10 +105,10 @@ function setupContactForm() {
         body: JSON.stringify(payload),
       });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
+      if (!res.ok || !data.ok) throw new Error(data.error || 'The server did not answer as expected. Try again in a minute.');
       form.reset();
       status.classList.add('ok');
-      status.textContent = 'Thanks, your message was received.';
+      status.textContent = 'Message sent. Thank you.';
     } catch (err) {
       status.classList.add('err');
       status.textContent = err.message;

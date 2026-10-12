@@ -4,42 +4,44 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy and contact | 351 Watch</title>
-<meta name="description" content="What 351 Watch stores for watchlists (no accounts, no email), and how to send corrections.">
+<meta name="description" content="What 351 Watch stores for a watchlist (it has no accounts and collects no email addresses), and how to send a correction.">
 <link rel="canonical" href="https://351watch-sulmusic2-4637s-projects.vercel.app/privacy">
 <meta property="og:title" content="Privacy and contact | 351 Watch">
-<meta property="og:description" content="What 351 Watch stores for watchlists (no accounts, no email), and how to send corrections.">
+<meta property="og:description" content="What 351 Watch stores for a watchlist (it has no accounts and collects no email addresses), and how to send a correction.">
 <meta property="og:type" content="website">
 <meta name="color-scheme" content="light dark">
+<link rel="preload" href="/fonts/public-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/besley-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5f4a'/%3E%3Ctext x='16' y='21' font-family='Arial' font-size='13' font-weight='700' fill='white' text-anchor='middle'%3E351%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%231b4f8a'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='12.5' font-weight='700' fill='white' text-anchor='middle'%3E351%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap">
-  <a class="brand" href="/">351<span>Watch</span></a>
+  <a class="brand" href="/">351 Watch</a>
   <nav class="top" aria-label="Main">
-    <a href="/towns">Towns</a><a href="/topics">Topics</a><a href="/attorney-general">AG rulings</a><a href="/#tracker">Tracker</a><a href="/proof">Proof</a><a href="/pricing">Pricing</a>
-    <a class="cta" href="/watch">Watch towns</a>
+    <a href="/towns">Towns</a><a href="/topics">Topics</a><a href="/#tracker">Tracker</a><a href="/attorney-general">AG decisions</a><a href="/proof">Coverage</a>
+    <a class="cta" href="/watch">Create a watchlist</a>
   </nav>
 </div></header>
 <main id="main">
 
-<div class="wrap prose">
+<div class="wrap"><div class="prose">
 <h1>Privacy and contact</h1>
-<p>351 Watch has no accounts, no passwords and no email. This note explains what we store and why.</p>
+<p>351 Watch has no accounts or passwords, and it doesn't collect email addresses.</p>
 <h2>Watchlists</h2>
-<p>When you create a watchlist we store the towns and topics you chose, the optional name and the optional Slack, Teams or Discord webhook URL you enter, when it was created and changed, and whether our daily messages were delivered. It is stored privately at our hosting provider, Vercel, under a random identifier. That identifier is in your watchlist's link and feed links, and it is the only key: anyone who has the link can view, change or delete the watchlist. You can delete it at any time from its page, which removes it from our storage.</p>
+<p>When you create a watchlist we store the towns and topics you chose, the optional name, the optional Slack, Teams or Discord webhook URL, when the watchlist was created and changed, and whether each daily message was delivered. It is stored privately at our hosting provider, Vercel, under a random identifier. That identifier is part of the watchlist's link and its feed links, and it is the only key: anyone who has the link can view, change or delete the watchlist. Deleting a watchlist from its page removes it from our storage.</p>
 <p>We show webhook URLs only in shortened form, because anyone with the full URL can post to your channel. Messages go only to the URL you give us.</p>
 <h2>In your browser</h2>
-<p>We don't use cookies or analytics. The watchlist pages remember the links of watchlists you made in this browser's local storage, so you can find them again; clearing your browser's site data removes that list.</p>
+<p>We don't use cookies or analytics. The watchlist pages keep the links of watchlists made in this browser in its local storage so you can find them again. Clearing the site's data in your browser removes that list.</p>
 <h2>Payments</h2>
-<p>Everything is free during the founding beta. If paid plans open, payment is handled by Stripe; we would store only the Stripe customer and subscription identifiers on the watchlist the plan applies to.</p>
+<p>Everything is free during the founding beta. If paid plans open, Stripe will handle payment, and we would store only the Stripe customer and subscription IDs on the watchlist the plan applies to.</p>
 <h2>Earlier waitlist signups</h2>
-<p>Before watchlists existed, some people joined a waitlist. Those entries are kept privately and deleted on request, or 12 months after signup, whichever comes first. We don't send email.</p>
-<h2>About the data on this site</h2>
-<p>The tracker uses public records: agendas and warrants that towns must post under the Massachusetts Open Meeting Law, Attorney General decision letters, legislative records, and news reports. Our crawler reads only publicly posted pages, identifies itself, follows robots.txt and limits how often it visits each town's website.</p>
+<p>Before watchlists existed, some people joined a waitlist. We keep those entries privately and delete each one on request or 12 months after signup, whichever comes first. We don't send email.</p>
+<h2>Where the data comes from</h2>
+<p>The site is built from public records: agendas and warrants that towns post under open meeting laws, Attorney General decision letters, court rulings, legislative records and news reports. Our crawler reads only publicly posted pages, identifies itself, follows robots.txt and limits how often it visits each town's website.</p>
 <h2 id="contact">Corrections, removal requests and contact</h2>
-<p>We read every message. We can't reply, because we don't collect contact details; corrections show up on the site once checked.</p>
+<p>We read every message. The form doesn't collect contact details, so we can't reply; a correction shows up on the site once we've checked it.</p>
 <form id="contact-form" class="signup" novalidate>
   <label>Type of request
     <select name="kind">
@@ -53,12 +55,12 @@
   <button class="btn" type="submit">Send</button>
   <p class="form-status" role="status" aria-live="polite"></p>
 </form>
-</div>
+</div></div>
 
 </main>
 <footer class="site"><div class="wrap">
-  <p>351 Watch compiles public records that towns post under state open meeting laws, plus state and legislative sources. It is informational only and not legal advice. Always confirm dates and terms with the town clerk or the cited source.</p>
-  <p><a href="/watch">Watch towns</a> · <a href="/towns">All towns</a> · <a href="/topics">Topics</a> · <a href="/attorney-general">Attorney General rulings</a> · <a href="/pricing">Pricing</a> · <a href="/proof">Coverage and method</a> · <a href="/privacy">Privacy</a> · <a href="/privacy#contact">Corrections and contact</a></p>
+  <p>351 Watch compiles public records: agendas and warrants that towns post under state open meeting laws, Attorney General decision letters, court rulings and legislative records. It is informational only and is not legal advice. Confirm dates and terms with the town clerk or the linked source before relying on them.</p>
+  <ul class="foot-links"><li><a href="/watch">Create a watchlist</a></li><li><a href="/towns">All towns</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">Attorney General decisions</a></li><li><a href="/proof">Coverage and method</a></li><li><a href="/pricing">Free during the beta</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/privacy#contact">Corrections and contact</a></li></ul>
 </div></footer>
 <script src="/app.js" defer></script>
 </body>
