@@ -15,6 +15,7 @@ Read this before changing anything. Several workstreams build in parallel; these
 | Search index (Pagefind) + `/search` script | `search/build-index.mjs` → `/pagefind/` at deploy time; `site/search.js` | Search workstream. The `/search` page markup comes from `build.py`. |
 | Site generator | `build.py` → `site/` | Web app workstream. |
 | Web app API (Vercel functions) | `site/api/` | Web app workstream. |
+| Town neighbors (free watchlist area) | `tools/neighbors.py` → `data/neighbors.json`, published at `/data/neighbors.json` | Web app workstream. Contract below. |
 | Daily runbook | `ops/daily.sh` | Daily engine. |
 
 ## `data/hits_current.json` (the contract)
@@ -71,12 +72,46 @@ The crawler cache (`crawler/.cache`, raw bodies) is lost with the container and 
 - `<p id="search-status" aria-live="polite"></p>` and `<ol id="search-results"></ol>`; load `/search.js` (classic script, `defer`).
 - Each result: `<li class="result" data-topics="solar,moratorium">` with `<a class="result-title" href=SOURCE>`, `<p class="result-meta">` (town, state · board · date, "(upcoming)" when today or later), `<p class="result-snippet">` (matches in `<mark>`) and `<a class="result-town" href="/ma/carver">`. A `<button class="search-more">` (10 more results) is inserted after the list.
 
-## Watchlists (web app; no email, no passwords)
+## Watchlists (web app; the link is the key, there are no accounts)
 
-- A watchlist is created on `/watch`: chosen towns (`"MA:Amherst"`), topics, optional name, optional Slack, Discord, Teams (Workflows: `*.logic.azure.com`, `*.api.powerplatform.com`) or generic webhook URL.
-- Stored as a private Vercel Blob `watchlists/<id>.json`. Two keys, both 24+ random URL-safe chars: `id` is the private key that can edit or delete; `feed_id` is a read-only key used in feed, calendar and share links (`feeds/<feed_id>.json` points back to the watchlist). `GET /api/watchlists?id=<feed_id>` returns a read-only view (`readonly: true`, no id, no webhook); PATCH and DELETE need the private key. Feeds accept either key so older links keep working.
-- Delivery: web view `/w/<id>`, RSS `/api/feed?id=…&format=rss`, JSON, and iCalendar (`format=ics`, upcoming meetings with matched items). Webhooks are posted by a Vercel Cron function (`/api/cron/dispatch`, `CRON_SECRET`) once a day after the data refresh, sending only items first seen since the last dispatch.
+- A watchlist is created on `/watch`: a home town (`home_town`, `"MA:Carver"`), towns from its free area (`towns`), topics, optional name, optional Slack, Discord, Teams (Workflows: `*.logic.azure.com`, `*.api.powerplatform.com`) or generic webhook URL, and an optional email address.
+- Stored as a private Vercel Blob `watchlists/<id>.json`. Two keys, both 24+ random URL-safe chars: `id` is the private key that can edit or delete; `feed_id` is a read-only key used in feed, calendar and share links (`feeds/<feed_id>.json` points back to the watchlist). `GET /api/watchlists?id=<feed_id>` returns a read-only view (`readonly: true`) without the private id, the webhook or any email details; PATCH and DELETE need the private key. Feeds accept either key so older links keep working. DELETE removes the watchlist, its `feeds/` entry and its entry in the email index.
+- Delivery: web view `/w/<id>`, RSS `/api/feed?id=…&format=rss`, JSON, iCalendar (`format=ics`, upcoming meetings with matched items), webhooks and email. A Vercel Cron function (`/api/cron/dispatch`, `CRON_SECRET`, daily 13:30 UTC after the data refresh) posts webhooks first, then sends email digests; each channel keeps its own cursor and carries only items first seen since its last successful delivery.
+- Product name: `SITE_NAME` in `site/api/_watch.js` (default "Agenda Ahead", or the `SITE_NAME` env var) is the only name used in webhook messages, feed titles, email subjects, senders and footers. Stable identifiers (`351watch-<id>` RSS guids, `@351watch` calendar UIDs, the `351WatchBot` user agent) stay as they are so feed readers and calendars don't duplicate items.
 - Plans: free founding beta. Stripe Checkout code exists but is disabled unless `STRIPE_SECRET_KEY` and price env vars are set.
+
+### The free area: one town plus its neighbors
+
+All topics and all delivery channels are free; the limit is geographic. A watchlist covers one area: `home_town` plus any towns that touch it in `/data/neighbors.json`. Enforced in `validateConfig` (`site/api/_watch.js`) on create and update:
+
+- Create: `home_town` is required and must be a known town; `towns` ⊆ {home_town} ∪ neighbors(home_town). The home town itself need not be in `towns`. `MAX_TOWNS` (200), unknown-town and topic checks still apply.
+- Update, same home town: towns already on the list stay (so a later change to the neighbor data never blocks a save); added towns must be in the area.
+- Update, new `home_town`: the whole list must fit the new area, so a list can't collect several areas.
+- Watchlists made before the limit have no `home_town` (`grandfathered: true` in the private view). They keep working, and edits may remove towns. Adding a town requires the whole list to fit one area: the `home_town` sent, or else the first town on the list whose area holds the rest, which is then saved as `home_town`.
+- Over the limit: HTTP 400, `code: "free_area"`, `fields.towns` and `error` both "Free alerts cover one town and the towns next to it. Need more places? Tell us at /privacy#contact." If the neighbor file can't be loaded: 503, `code: "area_unavailable"` (removing towns still works).
+
+### `data/neighbors.json` (contract)
+
+- Built by `python3 tools/neighbors.py` (needs `pip install shapely pyshp`) from US Census cartographic boundary files, county subdivisions, 1:500,000, vintage 2024 (`cb_2024_{25,44,36}_cousub_500k.zip`). Source URLs, vintage and method are in its `_meta` key. Published at `/data/neighbors.json` by `site/vercel-build.sh`; the API reads it from there like `towns.json`.
+- Shape: `{"_meta": {...}, "MA:Carver": ["MA:Kingston", "MA:Middleborough", "MA:Plymouth", "MA:Plympton", "MA:Wareham"], ...}`. Keys containing `:` are town ids exactly as in `site/data/towns.json`; lists are sorted and symmetric.
+- Coverage: every MA (351) and RI (39) town and all of NY (998: towns, cities, New York City's five boroughs; Indian reservations left out). NY names used by more than one place get ` (city)` or ` (<County> County)` (e.g. `NY:Amsterdam (city)`), except towns already on the site, which keep their ids. Neighbors across the MA, RI and NY lines are included; CT, NH, VT, NJ and PA towns are not.
+- Rule: towns are neighbors when their boundaries come within 50 m of each other along at least 100 m (a corner-only contact measures about 25 to 55 m). Where the Census clips at the shoreline (ocean, Nantucket Sound, Narragansett Bay), towns across the water are not neighbors; Nantucket, Gosnold, Jamestown, New Shoreham and Staten Island have none. Rivers and unclipped bays (Long Island's Peconic Bay) count. Halifax is not a Carver neighbor: Plympton lies between them.
+- Some neighbors are not on the site (most NY places). The UI offers neighbors ∩ `towns.json`; the API rejects others as unknown towns.
+
+### Email alerts
+
+- Provider: `site/api/_email.js` is the only module that sends mail (Resend's HTTP API, `POST https://api.resend.com/emails`, Bearer `RESEND_API_KEY`, sender `EMAIL_FROM`; a bare address gets `SITE_NAME` as display name). Email is on only when both env vars are set; otherwise the API rejects a non-empty `email` field (400, `fields.email`) and `/api/status` reports `email_alerts: false`. `EMAIL_TRANSPORT=file` (ignored on Vercel) writes messages to a local folder for tests.
+- Opt-in: `email` on create or PATCH stores `wl.email = {address, confirmed: false, confirm_token, unsubscribe_token, requested_at, confirm_sends, confirm_sent_at, confirmed_at, last_emailed_at, last_email, failures}` and sends one confirmation email. Tokens are `<feed_id>.<24 random chars>`, never the private key. `GET /api/email?action=confirm&t=…` sets `confirmed: true` and redirects (303) to `/w/<private id>?email=confirmed`. PATCH with an empty `email` removes the address; a different address starts over with new tokens; the same address in another case changes nothing.
+- Unconfirmed addresses get nothing else, apart from one more confirmation on request (`POST /api/email?action=resend&id=<private id>`): at once if the first send failed, otherwise 24 hours after it, then never again.
+- Limits: 10 sign-ups per hour per network (per function instance); per address, 3 confirmation emails a day and 6 in 30 days, and at most 3 watchlists (confirmed ones, plus unconfirmed ones under a week old). Kept in `emails/<sha256 of the lowercased address>.json`: `{watchlists: {<id>: {confirmed, at}}, sends: [ISO times]}`. The index holds no address.
+- Digest: after the webhooks, `/api/cron/dispatch` sends each confirmed address one email of the items first seen since `email.last_emailed_at` (at most 50, then "And N more"), only when there is something new, then moves the cursor to the data snapshot time. A failed send leaves the cursor so the items go out the next day. Sends are spaced `EMAIL_SEND_INTERVAL_MS` apart (default 550 ms, for Resend's 2 requests a second) two at a time, and stop starting after 50 s (`email_deferred` in the response; those go out the next day).
+- Message: plain text and simple HTML. Each item gives town, board, meeting date, matched topics, a one-line agenda excerpt (quoted, never edited) and the agenda link. Footer: the share link, the private manage link, a one-click unsubscribe link. Headers `List-Unsubscribe: <…/api/email?action=unsubscribe&t=…>` and `List-Unsubscribe-Post: List-Unsubscribe=One-Click`. Subject: `Agenda Ahead: 2 new items for Carver and neighbors` (the watchlist's name when it has one).
+- Unsubscribe: `GET` or `POST /api/email?action=unsubscribe&t=…` removes the address and its index entry at once. GET shows a plain page; POST (mail clients' one-click) answers 200 JSON.
+- Privacy: the full address is stored only on the watchlist blob. The private view shows a masked address (`j***@example.com`) and its status; the read-only view, feeds and webhooks show nothing about email.
+
+### `GET /api/status`
+
+`{"ok": true, "email_alerts": true}`: whether this deployment has email configured, so pages can show or hide the email option. No caching.
 
 ## Deploys
 

@@ -3,7 +3,7 @@
 // The iCalendar feed has one all-day event per upcoming meeting with matched items.
 import { createHash } from 'node:crypto';
 import { allow, noStore } from './_store.js';
-import { TOPICS, fmtDate, loadHits, matchItems, publicBase, publicItem, resolveWatchlist, shareId } from './_watch.js';
+import { SITE_NAME, TOPICS, fmtDate, loadHits, matchItems, publicBase, publicItem, resolveWatchlist, shareId } from './_watch.js';
 
 const RSS_LIMIT = 100;
 const JSON_LIMIT = 500;
@@ -30,7 +30,7 @@ function rss(wl, items, base, feedUrl, generated) {
     const body =
       `<p>${html(h.snippet)}</p>` +
       `<p>${html(town)} · ${html(h.board)} · meeting ${html(fmtDate(h.meeting_date))}</p>` +
-      `<p><a href="${html(h.source_url)}">Open the agenda</a> · <a href="${html(publicItem(h, base).town_url)}">${html(h.town)} on 351 Watch</a></p>`;
+      `<p><a href="${html(h.source_url)}">Open the agenda</a> · <a href="${html(publicItem(h, base).town_url)}">${html(h.town)} on ${html(SITE_NAME)}</a></p>`;
     return `<item>
 <title>${xml(`${town}: ${h.board}, ${fmtDate(h.meeting_date)} (${topicText(h)})`)}</title>
 <link>${xml(h.source_url)}</link>
@@ -43,7 +43,7 @@ ${(h.topics || []).map((t) => `<category>${xml(TOPICS[t] || t)}</category>`).joi
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>${xml(`351 Watch: ${wl.name || 'watchlist'}`)}</title>
+<title>${xml(`${SITE_NAME}: ${wl.name || 'watchlist'}`)}</title>
 <link>${xml(`${base}/w/${shareId(wl)}`)}</link>
 <atom:link href="${xml(feedUrl)}" rel="self" type="application/rss+xml"/>
 <description>${xml(describe(wl))}</description>
@@ -129,10 +129,10 @@ function ics(wl, items, base, generated) {
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//351 Watch//Agenda alerts//EN',
+    `PRODID:-//${icsText(SITE_NAME)}//Agenda alerts//EN`,
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
-    `X-WR-CALNAME:${icsText(`351 Watch: ${wl.name || 'watchlist'}`)}`,
+    `X-WR-CALNAME:${icsText(`${SITE_NAME}: ${wl.name || 'watchlist'}`)}`,
     `X-WR-CALDESC:${icsText(describe(wl))}`,
     'X-PUBLISHED-TTL:PT6H',
     'REFRESH-INTERVAL;VALUE=DURATION:PT6H',

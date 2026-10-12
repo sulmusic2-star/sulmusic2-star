@@ -1,9 +1,14 @@
-// Watchlist logic shared by watchlists.js, feed.js, cron/dispatch.js, checkout.js and stripe-webhook.js:
-// the data contract (ARCHITECTURE.md), validation, item matching and webhook message formats.
+// Watchlist logic shared by watchlists.js, feed.js, email.js, cron/dispatch.js, checkout.js and
+// stripe-webhook.js: the data contract (ARCHITECTURE.md), validation (including the free area),
+// item matching and webhook message formats.
 import { randomBytes } from 'node:crypto';
 import { clean, readJSON, writeJSON } from './_store.js';
 
 export const CANONICAL_BASE = 'https://351watch-sulmusic2-4637s-projects.vercel.app';
+
+// The product name in messages, feeds and emails: one default here, or the SITE_NAME env var.
+// Templates use this constant, never a literal name.
+export const SITE_NAME = clean(process.env.SITE_NAME || '', 60) || 'Agenda Ahead';
 
 export const TOPICS = {
   battery_storage: 'Battery storage',
@@ -126,6 +131,24 @@ export async function loadTownIndex(req, hitsDoc) {
   return ids;
 }
 
+// Neighbor lists for the free area (data/neighbors.json, built by tools/neighbors.py).
+// Returns the map, or null when the file can't be loaded (callers answer 503 then).
+export async function loadNeighbors(req) {
+  try {
+    const doc = await fetchStatic(req, '/data/neighbors.json');
+    return doc && typeof doc === 'object' ? doc : null;
+  } catch (err) {
+    console.error('neighbor data unavailable', err.message);
+    return null;
+  }
+}
+
+// The free area around a home town: the town itself plus every town whose boundary touches it.
+export function areaOf(neighbors, home) {
+  const list = Array.isArray(neighbors?.[home]) ? neighbors[home] : [];
+  return new Set([home, ...list]);
+}
+
 export function topicSet(hitsDoc) {
   const set = new Set(Object.keys(TOPICS));
   for (const h of hitsDoc?.hits || []) for (const t of h.topics || []) set.add(t);
@@ -228,12 +251,27 @@ function toList(value) {
   return [];
 }
 
-// Returns { value, errors }. With `partial`, absent fields are left out of `value`.
-export function validateConfig(body, { towns, topics }, { partial = false } = {}) {
+export const FREE_AREA_MESSAGE =
+  'Free alerts cover one town and the towns next to it. Need more places? Tell us at /privacy#contact.';
+
+// Returns { value, errors, code }. With `partial` (PATCH), absent fields are left out of `value`
+// and `current` is the stored watchlist. code is 'free_area' when the towns go past the free area,
+// or 'area_unavailable' when the neighbor data could not be loaded.
+export function validateConfig(body, { towns, topics, neighbors }, { partial = false, current = null } = {}) {
   const errors = {};
   const value = {};
+  let code = null;
 
   if (!partial || 'name' in body) value.name = clean(body.name, 80);
+
+  // home_town: required on new watchlists; on an update an empty value means "unchanged".
+  const home = clean(body.home_town, 80);
+  if (home) {
+    if (!towns.has(home)) errors.home_town = `Unknown town: ${home}.`;
+    else value.home_town = home;
+  } else if (!partial) {
+    errors.home_town = 'Choose your town.';
+  }
 
   if (!partial || 'towns' in body) {
     const list = [...new Set(toList(body.towns).map((t) => clean(t, 80)).filter(Boolean))];
@@ -261,20 +299,68 @@ export function validateConfig(body, { towns, topics }, { partial = false } = {}
     value.webhook_format = WEBHOOK_FORMATS.has(body.webhook_format) ? body.webhook_format : 'auto';
   }
 
-  return { value, errors };
+  if (!errors.towns && !errors.home_town && (value.towns || value.home_town)) {
+    const area = checkArea(value, current, neighbors);
+    if (area === 'unavailable') code = 'area_unavailable';
+    else if (area === 'outside') {
+      code = 'free_area';
+      errors.towns = FREE_AREA_MESSAGE;
+    }
+  }
+
+  return { value, errors, code };
 }
 
-export function publicView(wl, base) {
+// The free limit: a watchlist's towns lie inside one area, a home town plus its neighbors.
+// - New watchlist: every town is in area(home_town).
+// - Home town unchanged: towns already on the list stay (even if the neighbor data changes later);
+//   added towns must be in the area.
+// - Home town changed: the whole list must fit the new area, so a list can't collect areas.
+// - Watchlist from before the limit (no home_town): removing towns is always allowed. Adding a town
+//   makes it a one-area list: the whole list must fit area(home_town), using the home_town sent or,
+//   without one, the first town on the list whose area holds them all (saved as home_town).
+// Returns 'ok', 'outside' or 'unavailable'. May set value.home_town on an old list.
+function checkArea(value, current, neighbors) {
+  const list = value.towns || current?.towns || [];
+  const before = new Set(current?.towns || []);
+  const added = list.filter((t) => !before.has(t));
+  const fits = (home) => {
+    const area = areaOf(neighbors, home);
+    return list.every((t) => area.has(t));
+  };
+
+  const homeChanged = Boolean(value.home_town) && value.home_town !== current?.home_town;
+  if (current && !homeChanged && !added.length) return 'ok'; // removals and reorders need no neighbor data
+  if (!neighbors) return 'unavailable';
+
+  if (!current) return fits(value.home_town) ? 'ok' : 'outside';
+  if (current.home_town && (!value.home_town || value.home_town === current.home_town)) {
+    const area = areaOf(neighbors, current.home_town);
+    return added.every((t) => area.has(t)) ? 'ok' : 'outside';
+  }
+  if (value.home_town) return fits(value.home_town) ? 'ok' : 'outside';
+  const inferred = list.find((t) => fits(t));
+  if (!inferred) return 'outside';
+  value.home_town = inferred;
+  return 'ok';
+}
+
+// The private view (private key only). `email` comes from _email_alerts.js emailView(); the
+// read-only view below never includes it.
+export function publicView(wl, base, { email } = {}) {
   const kind = webhookKind(wl.webhook);
   return {
     readonly: false,
     id: wl.id,
     name: wl.name || '',
+    home_town: wl.home_town || null,
+    grandfathered: !wl.home_town, // made before the one-area limit; can drop towns, not add outside one area
     towns: wl.towns,
     topics: wl.topics,
     webhook: wl.webhook?.url
       ? { configured: true, kind, format: wl.webhook.format || 'auto', host: new URL(wl.webhook.url).hostname, masked: maskUrl(wl.webhook.url) }
       : { configured: false },
+    email: email || { configured: false, available: false, confirmed: false, masked: null },
     plan: wl.plan || 'beta',
     created_at: wl.created_at,
     updated_at: wl.updated_at,
@@ -298,11 +384,12 @@ function feedLinks(wl, base) {
   };
 }
 
-// What a read-only link may see: no private key, no webhook details, no delivery log.
+// What a read-only link may see: no private key, no webhook or email details, no delivery log.
 export function readonlyView(wl, base) {
   return {
     readonly: true,
     name: wl.name || '',
+    home_town: wl.home_town || null,
     towns: wl.towns,
     topics: wl.topics,
     created_at: wl.created_at,
@@ -319,7 +406,7 @@ const mdEsc = (s) => String(s ?? '').replace(/([\\`*_[\]<>])/g, '\\$1');
 const topicText = (h) => (h.topics || []).map((t) => TOPICS[t] || t).join(', ');
 
 export function messageTitle(wl) {
-  return `351 Watch: ${wl.name || 'your watchlist'}`;
+  return `${SITE_NAME}: ${wl.name || 'your watchlist'}`;
 }
 
 export function buildPayload(kind, { wl, items, more = 0, link, intro, test = false }) {
@@ -342,7 +429,7 @@ export function buildPayload(kind, { wl, items, more = 0, link, intro, test = fa
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: more ? `…and ${more} more. <${slackUrl(link)}|See them all on 351 Watch>` : `<${slackUrl(link)}|Open this watchlist on 351 Watch>`,
+          text: more ? `…and ${more} more. <${slackUrl(link)}|See them all on ${slackEsc(SITE_NAME)}>` : `<${slackUrl(link)}|Open this watchlist on ${slackEsc(SITE_NAME)}>`,
         },
       },
     ];
@@ -353,7 +440,7 @@ export function buildPayload(kind, { wl, items, more = 0, link, intro, test = fa
     const lines = items.map(
       (h) => `**${mdEsc(h.town)}** · ${mdEsc(h.board)} · ${fmtDate(h.meeting_date)}  \n_${mdEsc(topicText(h))}_  \n${mdEsc(h.snippet)} [Open agenda](${h.source_url})`,
     );
-    if (more) lines.push(`…and ${more} more. [See them all on 351 Watch](${link})`);
+    if (more) lines.push(`…and ${more} more. [See them all on ${mdEsc(SITE_NAME)}](${link})`);
     return {
       '@type': 'MessageCard',
       '@context': 'https://schema.org/extensions',
@@ -392,7 +479,7 @@ export function buildPayload(kind, { wl, items, more = 0, link, intro, test = fa
             type: 'AdaptiveCard',
             version: '1.4',
             body,
-            actions: [{ type: 'Action.OpenUrl', title: more ? 'See them all on 351 Watch' : 'Open watchlist', url: link }],
+            actions: [{ type: 'Action.OpenUrl', title: more ? `See them all on ${SITE_NAME}` : 'Open watchlist', url: link }],
           },
         },
       ],
@@ -411,7 +498,7 @@ export function buildPayload(kind, { wl, items, more = 0, link, intro, test = fa
       shown += 1;
     }
     content += `\n${footer(more + items.length - shown)}`;
-    return { username: '351 Watch', content: content.slice(0, 2000), allowed_mentions: { parse: [] } };
+    return { username: SITE_NAME.slice(0, 80), content: content.slice(0, 2000), allowed_mentions: { parse: [] } };
   }
 
   // Generic JSON
