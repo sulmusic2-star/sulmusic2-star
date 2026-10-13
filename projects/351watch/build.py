@@ -737,13 +737,13 @@ def page(ctx, title, description, body, path, scripts=(), noindex=False, head=""
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap">
-  <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span>{e(SITE_NAME)}</a>
+  <a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="4" y="6" width="24" height="4" rx="2"/><rect class="hi" x="4" y="14" width="24" height="4" rx="2"/><rect x="4" y="22" width="16" height="4" rx="2"/></svg>{e(SITE_NAME)}</a>
   <nav class="top" aria-label="Main"><ul>{nav}</ul></nav>
 </div></header>
 <main id="main">
 {body}
 </main>
-<footer class="site"><div class="wrap">
+<footer class="site"><div class="wrap narrow">
   {owner}
   <p>We read the agendas towns post online. This isn’t legal advice; confirm dates with the town clerk.</p>
   <ul class="foot-links">{footer_links}</ul>
@@ -1666,8 +1666,15 @@ def group_meetings(ctx, hits):
                 t = TIME_RE.search(b["when_time"])
                 if t and fmt_time(t):
                     m["time"] = fmt_time(t)
-            if not m["place"] and b.get("when_place") and m["source"] != "massdep_wetlands":
-                m["place"] = short_place(b["when_place"])
+            # No place, or "online" for what the writer read as a room plus a Zoom link (a hybrid meeting).
+            if b.get("when_place") and m["source"] != "massdep_wetlands" and m["place"] in ("", "online"):
+                place = short_place(b["when_place"])
+                # Only a real place (a hall, room, school, street or address), not a writer's description of the setup.
+                named = re.search(r"\b(?:hall|room|cent(?:er|re)|school|street|st\.|road|rd\.|avenue|ave\.|drive|lane|way|"
+                                  r"building|library|office|station|chambers|complex|house|annex|church|academy)\b|\b\d{1,5} [A-Z]", place, re.I)
+                if place and named and not re.fullmatch(r"(?:zoom|online|remote|virtual)[^a-z]*", place, re.I):
+                    hybrid = bool(re.search(r"\b(?:zoom|online|remote|hybrid|virtual|webinar|teams)\b", b["when_place"], re.I))
+                    m["place"] = place + (", or join online" if hybrid else "")
     return list(out.values())
 
 
@@ -3040,7 +3047,7 @@ def build_how(ctx):
     <p>We email only the alerts you asked for: at most once a day, only when something new is posted, and only after you confirm your address.</p>
     <p>Our email provider, Resend, sends the emails. We never sell or share your email. We delete it when you unsubscribe or delete your alerts. Every email has a one-click unsubscribe link.</p>
     <p>This browser remembers the alerts you set up here. Clearing this site’s data removes them.</p>
-    <p>If you joined our pre-launch waitlist, we’ll delete your entry on request, and otherwise 12 months after you signed up.</p>
+    <p>Anything you sent through the contact form, we delete on request.</p>
   </details>
 </section>
 
@@ -3052,7 +3059,7 @@ def build_how(ctx):
     <label class="field">What is this about?
       <select name="kind">
         <option value="correction">A correction, a problem on a page, or town records</option>
-        <option value="removal">Delete my waitlist signup</option>
+        <option value="removal">Delete my alerts or my details</option>
         <option value="message">Something else</option>
       </select>
     </label>

@@ -396,6 +396,15 @@
   async function next() {
     await Promise.all([loadTowns, loadNeighbors]);
     readHome();
+    if (!homeId && home.value.trim()) {
+      // "Plym" + Continue: the one town that starts that way, as the home page's box does.
+      const q = plain(home.value);
+      const starts = towns.filter((t) => plain(t.town).startsWith(q));
+      if (starts.length === 1 || (starts.length > 1 && starts.every((t) => t.town === starts[0].town))) {
+        home.value = starts[0].town;
+        readHome();
+      }
+    }
     if (!homeId) {
       fieldError('towns', home.value.trim() ? 'We don’t know that town. Pick it from the list as you type.' : 'Type your town first.');
       home.focus();

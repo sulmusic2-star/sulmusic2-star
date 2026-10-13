@@ -165,11 +165,9 @@ header.site .wrap { display: flex; align-items: baseline; justify-content: space
 /* The wordmark: the product name (SITE_NAME in build.py) after a small cluster of map dots, one of them
    purple. It is plain text, so any short name fits; nothing about it depends on the current name. */
 .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-head); font-weight: 700; font-size: var(--t-h2); color: var(--ink); text-decoration: none; line-height: 1.2; white-space: nowrap; min-height: 44px; }
-/* The mark: three agenda lines, the middle one purple; the bottom line is shorter, as on a real agenda */
-.brand-mark { position: relative; width: 22px; height: 22px; flex: none; }
-.brand-mark::before, .brand-mark::after { content: ""; position: absolute; left: 2px; width: 18px; height: 3px; border-radius: 1.5px; }
-.brand-mark::before { top: 4px; background: var(--dot); box-shadow: -3px 12px 0 -3px var(--dot); }
-.brand-mark::after { top: 10px; background: var(--mark); }
+/* The mark: three agenda lines, the middle one purple, the last one shorter (inline SVG in the header; same as the favicon) */
+.brand-mark { width: 24px; height: 24px; flex: none; fill: var(--dot); }
+.brand-mark .hi { fill: var(--mark); }
 .brand:hover { color: var(--muted); }
 nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s1) var(--s5); }
 nav.top a { display: inline-flex; align-items: center; min-height: 44px; padding: var(--s1) 0; color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 3px solid transparent; }
@@ -316,9 +314,10 @@ details.more > summary { padding: var(--s2) 0; }
 /* /towns: states and counties fold; a summary is a tap target, a count sits beside it in grey */
 /* Every folding section gets the same chevron instead of the browser's triangle */
 summary { list-style: none; cursor: pointer; }
-summary::-webkit-details-marker { display: none; }
-summary::before { content: ""; display: inline-block; width: 8px; height: 8px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(-45deg); margin: 0 12px 2px 3px; transition: transform 0.15s; }
-details[open] > summary::before { transform: rotate(45deg); margin-bottom: 4px; }
+summary::marker, summary::-webkit-details-marker { display: none; content: ""; }
+summary::before { content: ""; display: inline-block; flex: none; width: 12px; height: 12px; margin-right: 10px; vertical-align: -1px; transition: transform 0.15s;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M4 2l4 4-4 4' fill='none' stroke='%236f7a74' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px 12px no-repeat; }
+details[open] > summary::before { transform: rotate(90deg); }
 @media (prefers-reduced-motion: reduce) { summary::before { transition: none; } }
 form[data-list-filter] label { flex: 1 1 100%; }
 form[data-list-filter] input { width: 100%; }
@@ -636,13 +635,7 @@ details.more > summary, details.disclose > summary {
   display: flex; align-items: center; gap: var(--s2); min-height: 52px; padding: var(--s2) 0;
   color: var(--ink); font-weight: 600; text-decoration: none; list-style: none; cursor: pointer;
 }
-details.more > summary::-webkit-details-marker, details.disclose > summary::-webkit-details-marker { display: none; }
-details.more > summary::before, details.disclose > summary::before, details.filters > summary::before {
-  content: "\25B8"; display: inline-block; width: 1em; flex: none; color: var(--muted); font-size: var(--t-sm);
-}
-details.more[open] > summary::before, details.disclose[open] > summary::before, details.filters[open] > summary::before { content: "\25BE"; }
 details.filters > summary { display: flex; align-items: center; gap: var(--s2); min-height: 44px; font-weight: 600; list-style: none; cursor: pointer; margin-top: var(--s2); }
-details.filters > summary::-webkit-details-marker { display: none; }
 details.more > summary:hover, details.disclose > summary:hover { text-decoration: underline; }
 details.disclose { border-top: 1px solid var(--rule); }
 .disclosures { margin-top: var(--s6); border-bottom: 1px solid var(--rule); }
