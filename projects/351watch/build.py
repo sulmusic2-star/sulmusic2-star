@@ -2500,7 +2500,8 @@ def build_town_page(ctx, t):
             next_line = ("Nothing on our topics in the agendas posted for upcoming meetings."
                          + (" A Town Meeting warrant with no date we could read is listed below." if und_m else "")
                          + (f" Next agenda posted: {e(nxt[1])}, {day_label(nxt[0], ctx)}." if nxt else ""))
-            listing = ""
+            # The page still shows what the town did most recently, rather than an empty screen.
+            listing = (f'<h2>Most recent</h2>{meeting_list(ctx, past_m[:2], show_town=False, shown=2)}' if past_m else "")
         coming = f"""<p class="next-line">{next_line}</p>
 <p class="actions"><a class="btn" href="{e(alerts_url(tid))}">Get {e(town)} alerts</a></p>
 <h2 class="sr-only">Coming up</h2>
@@ -2510,9 +2511,10 @@ def build_town_page(ctx, t):
         coming = cant_check_html(ctx, t, up_m)
 
     more = []
-    if past_m:
-        more.append(f"""<details class="disclose"><summary>Earlier meetings ({len(past_m)})</summary>
-{meeting_list(ctx, past_m, show_town=False, shown=5, more="Show older")}</details>""")
+    earlier = past_m if (up_m or not t["monitored"]) else past_m[2:]  # the two shown above aren't repeated
+    if earlier:
+        more.append(f"""<details class="disclose"><summary>Earlier meetings ({len(earlier)})</summary>
+{meeting_list(ctx, earlier, show_town=False, shown=5, more="Show older")}</details>""")
     if und_m:
         more.append(f"""<details class="disclose" id="warrants"><summary>Town Meeting warrants with no date we could read ({len(und_m)})</summary>
 {meeting_list(ctx, und_m, show_town=False, shown=5)}</details>""")

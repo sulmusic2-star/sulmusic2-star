@@ -52,6 +52,8 @@ TOPICS: dict[str, list[str]] = {
     ],
     "data_center": [
         r"\bdata[\s-]+cent(?:er|re)s?\b",
+        # Auburn's warrant calls them "Electronic Data Storage projects"
+        r"\b(?:electronic\s+)?data\s+storage\s+(?:facilit(?:y|ies)|cent(?:er|re)s?|projects?|buildings?|uses?)\b",
         r"\bhyperscale\b",
         r"\b(?:crypto(?:currency)?|bitcoin)\s+mining\b",
     ],
