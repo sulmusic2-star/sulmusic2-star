@@ -39,6 +39,9 @@ TOPICS: dict[str, list[str]] = {
     "40b_comprehensive_permit": [
         r"\b40\s?B\b",
         r"\bcomprehensive\s+permits?\b",
+        # 40R smart-growth districts: the other state housing program towns vote on (Carver, fall 2026)
+        r"\b40\s?R\b",
+        r"\bsmart\s+growth\s+(?:overlay\s+)?(?:zoning\s+)?districts?\b",
     ],
     # Siting phrases only: bare "wireless"/"telecommunications" mostly hits
     # voter-ID boilerplate ("wireless telephone statement") and IT purchases.
@@ -52,7 +55,7 @@ TOPICS: dict[str, list[str]] = {
     ],
     "data_center": [
         r"\bdata[\s-]+cent(?:er|re)s?\b",
-        # Auburn's warrant calls them "Electronic Data Storage projects"
+        # Auburn's warrant calls them "Electronic Data Storage projects"; Milford's bylaw, "Electronic Data Storage Centers"
         r"\b(?:electronic\s+)?data\s+storage\s+(?:facilit(?:y|ies)|cent(?:er|re)s?|projects?|buildings?|uses?)\b",
         r"\bhyperscale\b",
         r"\b(?:crypto(?:currency)?|bitcoin)\s+mining\b",
