@@ -490,7 +490,7 @@ h1 { margin-top: var(--s6); margin-bottom: var(--s3); }
 .next-door { font-size: var(--t-sm); color: var(--muted); margin: var(--s4) 0 0; max-width: 72ch; }
 /* Links inside the running line: vertical padding widens the tap area without changing the line box. */
 .next-door a { display: inline; padding: 10px 0; color: var(--ink); font-weight: 600; }
-.next-door > span { white-space: nowrap; }
+.next-door > span { white-space: nowrap; margin-right: var(--s4); }
 .report { margin: var(--s5) 0 0; font-size: var(--t-sm); }
 .report a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); }
 .eg a { display: inline-flex; align-items: center; min-height: 44px; }
@@ -522,8 +522,13 @@ td a, tbody th a { display: inline-flex; align-items: center; min-height: 44px; 
 .row-line { grid-area: line; font-weight: 600; }
 .row .stage { grid-area: stage; margin: 0; color: var(--muted); font-size: var(--t-sm); }
 .rows + .more-link, .trend-foot { margin-top: var(--s4); }
+@media (max-width: 640px) {
+  /* one column: the stage word sits under the line instead of squeezing it */
+  .row a { grid-template-columns: minmax(0, 1fr); grid-template-areas: "when" "line" "stage"; }
+  .row .stage { margin-top: 2px; }
+}
 .trend-foot { color: var(--muted); font-size: var(--t-sm); max-width: 70ch; }
-.trend-foot .townbox { margin-top: var(--s3); }
+.near-me { margin: var(--s3) 0 var(--s4); }
 .topic-line { margin: var(--s3) 0 0; }
 .keep { margin: var(--s5) 0 var(--s2); }
 #sample .meetings { border-left: 3px solid var(--rule); padding-left: var(--s4); }

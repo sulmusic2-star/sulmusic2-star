@@ -1881,6 +1881,8 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     dep = m["source"] == "massdep_wetlands"
     source = "the state filing" if dep else ("the warrant" if m["board_key"] == "town_meeting" else "the agenda")
 
+    notes_shown = []
+
     def line(text, entry):
         new = '<span class="badge-new">New</span> ' if entry["new"] else ""
         b = entry.get("brief")
@@ -1896,7 +1898,8 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
                 extra += f'<p class="line-next">{e(b["next"])}</p>'
             if b and b.get("can_speak") is False:
                 extra += f'<p class="line-next">{SPEAK_NO}</p>'
-            if entry["note"] and entry["note"] != HEARING_NOTE:
+            if entry["note"] and entry["note"] != HEARING_NOTE and entry["note"] not in notes_shown:
+                notes_shown.append(entry["note"])  # the same note (a two-thirds vote, AG review) once per meeting
                 extra += f'<p class="line-note">{e(entry["note"])}</p>'
             quotes = [b["quote"]] if b and b.get("quote") else [q for q in entry["quotes"][:3] if quote_key(q)[:60] not in quote_key(text)]
             if quotes:
@@ -2267,18 +2270,18 @@ def build_trending(ctx):
   </p>
   <p class="form-note" id="mine-note"></p>
 </div>
+<form class="townbox near-me" id="near-me" hidden>
+  <label for="near-town">Put stories near your town first</label>
+  <div class="field-row"><input id="near-town" type="text" list="near-towns" autocomplete="off" autocapitalize="words" spellcheck="false">
+  <button class="btn quiet" type="submit">Sort by my town</button></div>
+  <datalist id="near-towns"></datalist>
+  <p class="field-error" id="near-town-error" role="alert" hidden></p>
+</form>
 <ol class="rows" id="trend-all">{items}</ol>
 <ol class="rows" id="trend-mine" hidden></ol>
 {'' if top else '<p class="empty">Nothing big on the agendas posted so far.</p>'}
 <p class="more-link"><a href="/upcoming">See everything coming up</a></p>
 <div class="trend-foot">
-  <form class="townbox near-me" id="near-me" hidden>
-    <label for="near-town">Put stories near your town first</label>
-    <div class="field-row"><input id="near-town" type="text" list="near-towns" autocomplete="off" autocapitalize="words" spellcheck="false">
-    <button class="btn quiet" type="submit">Sort by my town</button></div>
-    <datalist id="near-towns"></datalist>
-    <p class="field-error" id="near-town-error" role="alert" hidden></p>
-  </form>
   <p>How we rank them: points for what it is (a data center, battery storage, a ban or a moratorium, large solar), what the board will do (a vote or a hearing counts more than a discussion), how big the project is, how many boards and towns are taking it up, and how soon the meeting is.</p>
 </div>
 </div>
