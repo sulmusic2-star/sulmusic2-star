@@ -986,6 +986,8 @@ def brief_text(base, b, town_meeting=False):
     sponsor reads "Planning Board article" so it isn't taken for the meeting's board."""
     b = dict(b)
     b["what"] = re.sub(r"^Same (?:article|item)\b[^.]*\.\s*", "", (b.get("what") or "").strip())
+    if b.get("history"):  # "Before this" is from our records by definition; the writers' hedge is noise on the page
+        b["history"] = re.sub(r"\s*\(per our records\)|,? per our records", "", b["history"]).strip()
     say = (b.get("line") or b.get("what") or base["say"]).strip()
     who = nice_case(b["who"]) if b.get("who") else ""
     if who and town_meeting and SPONSOR_RE.search(who) and not who.lower().endswith("article"):
@@ -2521,16 +2523,17 @@ def build_towns_index(ctx):
         items = []
         for t in towns:
             n_up = len(upcoming_meetings(ctx, t["id"]))
-            note = (plural(n_up, "meeting") + " coming up" if n_up else ("" if t["monitored"] else "can’t check yet"))
             search = f"{t['town']} {t.get('county') or ''} {STATE_NAMES.get(state, state)} {state}".lower()
             status = "up" if n_up else ("monitored" if t["monitored"] else "not")
-            note_html = f' <span class="n">{note}</span>' if note else ""
+            # A count badge for towns with something coming up; greyed names for towns we can't read yet.
+            note_html = f' <span class="n" aria-label="{plural(n_up, "meeting")} coming up">{n_up}</span>' if n_up else ""
+            title = "" if t["monitored"] else ' title="We can’t read this town’s agendas yet"'
             items.append(f'<li data-search="{e(search)}" data-status="{status}">'
-                         f'<a href="{town_path(state, t["town"])}">{e(t["town"])}</a>{note_html}</li>')
+                         f'<a href="{town_path(state, t["town"])}"{title}>{e(t["town"])}</a>{note_html}</li>')
         mon = sum(1 for t in towns if t["monitored"])
         sections.append(f"""<section class="state-towns" aria-labelledby="{state.lower()}">
   <h2 id="{state.lower()}">{e(STATE_NAMES.get(state, state))}</h2>
-  <p class="sub">We check {mon} of these {len(towns)} towns every morning.</p>
+  <p class="sub">We check {mon} of these {len(towns)} towns every morning. A number is how many meetings are coming up; greyed towns we can’t read yet.</p>
   <ul class="town-cols" data-filter-list>{''.join(items)}</ul>
 </section>""")
     total = len(ctx.towns)

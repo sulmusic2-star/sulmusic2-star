@@ -174,6 +174,11 @@ nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: 
 nav.top a { display: inline-flex; align-items: center; min-height: 44px; padding: var(--s1) 0; color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 3px solid transparent; }
 nav.top a:hover { border-bottom-color: var(--rule-strong); }
 nav.top a[aria-current="page"] { border-bottom-color: var(--ink); }
+@media (max-width: 480px) {
+  /* five links on one line on a phone */
+  nav.top ul { gap: 2px 10px; }
+  nav.top a { font-size: 14px; min-height: 40px; }
+}
 
 footer.site { border-top: 1px solid var(--rule); margin-top: var(--s8); padding: var(--s6) 0 var(--s7); color: var(--muted); font-size: var(--t-sm); }
 footer.site p { max-width: 75ch; }
@@ -295,6 +300,8 @@ details.more > summary { padding: var(--s2) 0; }
 .town-cols { list-style: none; padding: 0; margin: 0; columns: 4 210px; column-gap: var(--s5); }
 .town-cols li { break-inside: avoid; padding: 0; min-height: 44px; display: flex; align-items: center; flex-wrap: wrap; gap: 0 var(--s2); }
 .town-cols a { font-weight: 600; display: inline-flex; align-items: center; min-height: 44px; }
+.town-cols a[title] { color: var(--muted); font-weight: 500; }
+.town-cols .n { font-size: 12px; line-height: 18px; padding: 0 6px; border: 1px solid var(--rule-strong); border-radius: 10px; color: var(--muted); }
 .state-towns h2 { margin-top: var(--s6); }
 
 /* ---------- tables (reference pages) ---------- */
@@ -435,6 +442,7 @@ details.hook > summary { padding: var(--s1) 0; }
   .timeline li { grid-template-columns: 1fr; gap: var(--s1); }
   .feed-row label { flex-basis: 100%; }
   .town-cols { columns: 2 140px; }
+  .town-cols li, .town-cols a { min-height: 36px; }
   table.stack:not(.counts) thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   table.stack:not(.counts), table.stack:not(.counts) tbody, table.stack:not(.counts) tr { display: block; }
   table.stack:not(.counts) tr { padding: var(--s3) 0; border-bottom: 1px solid var(--rule); }
@@ -530,10 +538,15 @@ td a, tbody th a { display: inline-flex; align-items: center; min-height: 44px; 
 }
 .trend-foot { color: var(--muted); font-size: var(--t-sm); max-width: 70ch; }
 .near-me { margin: var(--s3) 0 var(--s4); }
-.trend-filters { display: grid; gap: var(--s3); margin: var(--s4) 0; font-size: var(--t-sm); }
-.trend-filters fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); align-items: center; }
-.trend-filters legend { float: left; margin-right: var(--s3); font-weight: 600; color: var(--muted); }
-.trend-filters label { display: inline-flex; gap: 6px; align-items: center; min-height: 32px; }
+/* Filters as pills: the box or radio is kept for keyboards and screen readers, the label carries the look. */
+.trend-filters { display: grid; gap: var(--s2); margin: var(--s4) 0; font-size: var(--t-sm); }
+.trend-filters fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.trend-filters legend { float: left; margin-right: var(--s2); font-weight: 600; color: var(--muted); line-height: 30px; }
+.trend-filters label { position: relative; display: inline-flex; align-items: center; min-height: 30px; padding: 0 10px; border: 1px solid var(--rule); border-radius: 15px; cursor: pointer; }
+.trend-filters input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.trend-filters label:has(input:checked) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.trend-filters label:has(input:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
+.trend-filters .form-note { margin: 0; }
 .topic-line { margin: var(--s3) 0 0; }
 .keep { margin: var(--s5) 0 var(--s2); }
 #sample .meetings { border-left: 3px solid var(--rule); padding-left: var(--s4); }
