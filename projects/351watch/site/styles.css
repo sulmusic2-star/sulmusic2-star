@@ -302,7 +302,14 @@ details.more > summary { padding: var(--s2) 0; }
 .town-cols a { font-weight: 600; display: inline-flex; align-items: center; min-height: 44px; }
 .town-cols a[title] { color: var(--muted); font-weight: 500; }
 .town-cols .n { font-size: 12px; line-height: 18px; padding: 0 6px; border: 1px solid var(--rule-strong); border-radius: 10px; color: var(--muted); }
-.state-towns h2 { margin-top: var(--s6); }
+/* /towns: states and counties fold; a summary is a tap target, a count sits beside it in grey */
+.state-towns { border-top: 1px solid var(--rule); }
+.state-towns > summary { font-size: var(--t-h2); font-weight: 700; padding: var(--s3) 0; cursor: pointer; line-height: 1.25; }
+.state-towns > summary .sub-count { display: block; font-size: var(--t-sm); margin: 2px 0 0; }
+.county { margin-left: var(--s3); }
+.county > summary { display: flex; align-items: center; gap: var(--s2); min-height: 44px; font-weight: 600; cursor: pointer; }
+.county .town-cols { margin: 0 0 var(--s3); }
+.sub-count { color: var(--muted); font-weight: 400; font-size: var(--t-sm); }
 
 /* ---------- tables (reference pages) ---------- */
 .table-wrap { overflow-x: auto; margin: var(--s3) 0; }

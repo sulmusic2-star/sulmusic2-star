@@ -51,32 +51,34 @@ function setupListFilter() {
   const form = document.querySelector('form[data-list-filter]');
   if (!form) return;
   const search = form.querySelector('[data-search]');
-  const status = form.querySelector('[data-status]');
   const count = form.querySelector('[data-count]');
   const empty = document.querySelector('[data-empty]');
   const items = Array.from(document.querySelectorAll('[data-filter-list] li'));
+  const groups = Array.from(document.querySelectorAll('details.state-towns, details.county'));
   const params = new URLSearchParams(location.search);
   if (params.get('q')) search.value = params.get('q');
+  const wide = window.matchMedia('(min-width: 860px)').matches;
 
   const apply = () => {
     const q = norm(search.value);
-    const s = status.value;
     let shown = 0;
     for (const li of items) {
-      const ok = (!q || norm(li.dataset.search).includes(q)) &&
-        (!s || li.dataset.status === s || (s === 'monitored' && li.dataset.status === 'up'));
+      const ok = !q || norm(li.dataset.search).includes(q);
       li.hidden = !ok;
       if (ok) shown += 1;
     }
-    for (const section of document.querySelectorAll('.state-towns')) {
-      section.hidden = !section.querySelector('li:not([hidden])');
+    // Typing opens every state and county with a match and hides the rest; with the box empty, states
+    // are open on a wide screen and folded on a phone, counties folded until tapped.
+    for (const group of groups) {
+      const has = Boolean(group.querySelector('li:not([hidden])'));
+      group.hidden = q ? !has : false;
+      group.open = q ? has : wide && group.classList.contains('state-towns');
     }
-    count.textContent = shown === items.length ? `${items.length} towns` : `${shown} of ${items.length} towns`;
+    count.textContent = q ? `${shown} of ${items.length} towns` : '';
     if (empty) empty.hidden = shown > 0;
   };
   form.addEventListener('submit', (event) => event.preventDefault());
   search.addEventListener('input', apply);
-  status.addEventListener('change', apply);
   apply();
 }
 

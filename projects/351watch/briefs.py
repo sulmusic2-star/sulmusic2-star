@@ -369,6 +369,10 @@ def verify(brief, text, town_dates=None, year=None):
         fails.append(f"action {brief['action']!r}: no sign of it near the quote")
     if brief.get("can_speak") is True and not re.search(SPEAK_CUE, text_norm, re.I):
         fails.append("can_speak is true but the agenda has no public hearing or public comment item")
+    # General knowledge is not the agenda: a vote threshold may be stated only when the document states it.
+    for key in ("line", "what", "next"):
+        if re.search(r"two.thirds", brief.get(key) or "", re.I) and not re.search(r"two.thirds|2/3", text_norm, re.I):
+            fails.append(f"{key}: names a two-thirds vote the agenda doesn't mention")
     if brief.get("history") and town_dates is not None:
         held = {(int(d[:4]), int(d[5:7]), int(d[8:10])) for d in town_dates if re.match(r"\d{4}-\d\d-\d\d", d or "")}
         for y, m, d in history_dates(brief["history"]):

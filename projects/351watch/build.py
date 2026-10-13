@@ -958,12 +958,16 @@ def brief_stage(b):
     """The stage word for a brief. A postponement names the new day when the brief's "next" says where the
     hearing moves to ("asked to postpone to Tue Oct 27, 2026" becomes "Postponed to Tue Oct 27")."""
     stage = BRIEF_STAGE.get(b.get("action") or "other", "")
+    # An applicant's request to continue is not a decision until the board agrees.
+    asked = bool(re.search(r"\b(?:request|ask)(?:ed|s|ing)?\b[^.]{0,40}?\b(?:continu|postpon)", f"{b.get('next') or ''} {b.get('quote') or ''}", re.I))
     if stage == "Postponed":
         m = re.search(r"(?:postpone[ds]? (?:it )?(?:to|until)|continued? (?:to|until)|continues|moves to|resumes|reopens|rescheduled (?:to|for)|new date)"
                       r"[^.;]{0,30}?\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{1,2})\b",
                       b.get("next") or "", re.I)
         if m:
             stage = f"Postponed to {m.group(1).title()} {m.group(2).title()} {int(m.group(3))}"
+        if asked:
+            stage = stage.replace("Postponed", "Asks to postpone")
     return stage
 
 
@@ -2272,9 +2276,9 @@ def build_trending(ctx):
 <p class="lead">Bans, moratoriums and large projects, ranked.</p>
 <form class="trend-filters" id="trend-filters" aria-label="Narrow the list">
   <fieldset><legend>When</legend>
-    <label><input type="radio" name="when" value="7"> Next 7 days</label>
-    <label><input type="radio" name="when" value="30"> Next 30 days</label>
-    <label><input type="radio" name="when" value="" checked> Any date</label>
+    <label><input type="radio" name="when" value="week"> This week</label>
+    <label><input type="radio" name="when" value="month"> This month</label>
+    <label><input type="radio" name="when" value="year" checked> This year</label>
   </fieldset>
   <fieldset><legend>Topics</legend>{topic_boxes}</fieldset>
   <p class="form-note" id="trend-count" aria-live="polite"></p>
@@ -2514,39 +2518,52 @@ def build_town_page(ctx, t):
     return page(ctx, title, desc, body, town_path(state, town), noindex=thin, og_title=og_title), thin
 
 
+def town_item_html(ctx, t):
+    """One town in the directory: a link, a count badge when meetings are coming up, greyed when we can't read it."""
+    n_up = len(upcoming_meetings(ctx, t["id"]))
+    search = f"{t['town']} {t.get('county') or ''} {STATE_NAMES.get(t['state'], t['state'])} {t['state']}".lower()
+    status = "up" if n_up else ("monitored" if t["monitored"] else "not")
+    note_html = f' <span class="n" aria-label="{plural(n_up, "meeting")} coming up">{n_up}</span>' if n_up else ""
+    title = "" if t["monitored"] else ' title="We can’t read this town’s agendas yet"'
+    return (f'<li data-search="{e(search)}" data-status="{status}">'
+            f'<a href="{town_path(t["state"], t["town"])}"{title}>{e(t["town"])}</a>{note_html}</li>')
+
+
 def build_towns_index(ctx):
-    sections, maps = [], []
+    """Search first; underneath, a browse list folded by state and county so the page is a few lines
+    long until someone opens a group or types a name (typing opens every group with a match)."""
+    sections = []
     for state in ctx.states:
         towns = [t for t in ctx.towns if t["state"] == state]
         if not towns:
             continue
-        items = []
+        by_county = {}
         for t in towns:
-            n_up = len(upcoming_meetings(ctx, t["id"]))
-            search = f"{t['town']} {t.get('county') or ''} {STATE_NAMES.get(state, state)} {state}".lower()
-            status = "up" if n_up else ("monitored" if t["monitored"] else "not")
-            # A count badge for towns with something coming up; greyed names for towns we can't read yet.
-            note_html = f' <span class="n" aria-label="{plural(n_up, "meeting")} coming up">{n_up}</span>' if n_up else ""
-            title = "" if t["monitored"] else ' title="We can’t read this town’s agendas yet"'
-            items.append(f'<li data-search="{e(search)}" data-status="{status}">'
-                         f'<a href="{town_path(state, t["town"])}"{title}>{e(t["town"])}</a>{note_html}</li>')
+            by_county.setdefault(t.get("county") or "", []).append(t)
+        groups = []
+        for county in sorted(by_county, key=lambda c: (c == "", c)):
+            items = "".join(town_item_html(ctx, t) for t in by_county[county])
+            if len(by_county) == 1:
+                groups.append(f'<ul class="town-cols" data-filter-list>{items}</ul>')
+            else:
+                label = f"{county} County" if county else "Other towns"
+                groups.append(f'<details class="county"><summary>{e(label)} <span class="sub-count">{len(by_county[county])}</span></summary>'
+                              f'<ul class="town-cols" data-filter-list>{items}</ul></details>')
         mon = sum(1 for t in towns if t["monitored"])
-        sections.append(f"""<section class="state-towns" aria-labelledby="{state.lower()}">
-  <h2 id="{state.lower()}">{e(STATE_NAMES.get(state, state))}</h2>
-  <p class="sub">We check {mon} of these {len(towns)} towns every morning. A number is how many meetings are coming up; greyed towns we can’t read yet.</p>
-  <ul class="town-cols" data-filter-list>{''.join(items)}</ul>
-</section>""")
-    total = len(ctx.towns)
-    mon = sum(1 for t in ctx.towns if t["monitored"])
+        sections.append(f"""<details class="state-towns" id="{state.lower()}">
+  <summary>{e(STATE_NAMES.get(state, state))} <span class="sub-count">{len(towns)} towns, {mon} checked every morning</span></summary>
+  {''.join(groups)}
+</details>""")
     body = f"""
 <div class="wrap narrow">
 <section class="page-head" aria-labelledby="towns-title">
   <h1 id="towns-title">Find your town</h1>
   <p class="lead">Pick your town to see what its boards have coming up.</p>
   <form class="filterbar" data-list-filter role="search" action="/towns" method="get">
-    <label>Town or county<input type="search" name="q" data-search autocomplete="off"></label>
+    <label>Town or county<input type="search" name="q" data-search autocomplete="off" autocapitalize="words" spellcheck="false"></label>
     <p class="count" data-count aria-live="polite"></p>
   </form>
+  <p class="form-note">A number is how many meetings a town has coming up; greyed towns we can’t read yet.</p>
   <p class="empty" data-empty hidden>No towns match. Check the spelling, or search by county.</p>
 </section>
 {''.join(sections)}

@@ -92,15 +92,22 @@
   const filters = $('trend-filters');
   function applyFilters() {
     if (!filters) return;
-    const days = new FormData(filters).get('when');
+    const when = new FormData(filters).get('when') || 'year';
     const topics = [...filters.querySelectorAll('input[name=topic]:checked')].map((i) => i.value);
-    const until = days ? new Date(Date.now() + Number(days) * 86400000).toISOString().slice(0, 10) : '';
+    // Calendar ranges, in local time: this week ends Sunday, this month on its last day; "this year"
+    // means the next twelve months, so nothing coming up is ever hidden by the default.
+    const now = new Date();
+    const end = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    if (when === 'week') end.setDate(end.getDate() + ((7 - end.getDay()) % 7));
+    else if (when === 'month') end.setMonth(end.getMonth() + 1, 0);
+    else end.setFullYear(end.getFullYear() + 1);
+    const until = `${end.getFullYear()}-${String(end.getMonth() + 1).padStart(2, '0')}-${String(end.getDate()).padStart(2, '0')}`;
     let shown = 0;
     let total = 0;
     for (const li of document.querySelectorAll('#trend-all > li, #trend-mine > li')) {
       const date = li.dataset.date || '';
       const has = (li.dataset.topics || '').split(' ');
-      const ok = (!until || (date && date <= until)) && (!topics.length || topics.some((t) => has.includes(t)));
+      const ok = (!date || date <= until) && (!topics.length || topics.some((t) => has.includes(t)));
       li.hidden = !ok;
       if (!li.parentElement.hidden) {
         total += 1;
@@ -108,7 +115,7 @@
       }
     }
     const count = $('trend-count');
-    if (count) count.textContent = days || topics.length ? `${shown} of ${total} stories` : '';
+    if (count) count.textContent = when !== 'year' || topics.length ? `${shown} of ${total} stories` : '';
   }
   if (filters) filters.addEventListener('change', applyFilters);
 
