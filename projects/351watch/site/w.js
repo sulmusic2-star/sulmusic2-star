@@ -256,7 +256,7 @@
     const link = d ? el('a', { class: 'item-link', href: d.url, rel: 'nofollow noopener', target: '_blank' },
       `${what.charAt(0).toUpperCase()}${what.slice(1)}${d.pdf ? ' (PDF)' : ''}`, el('span', { class: 'sr-only', text: `: ${where}` })) : null;
     // The speak line only for a hearing that is still on: not one postponed, canceled or withdrawn.
-    const entries = [...m.lines.values()].filter((v) => !/^(Postponed|Canceled|Withdrawn)/.test(v.stage || ''));
+    const entries = [...m.lines.values()].filter((v) => !/^(Postponed|Asks to postpone|Canceled|Withdrawn)/.test(v.stage || ''));
     // The brief's own rule from the agenda when the writer found one; otherwise the general line.
     const rules = [];
     for (const v of entries) {

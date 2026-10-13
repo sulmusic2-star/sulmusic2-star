@@ -244,7 +244,7 @@ class RenderTests(unittest.TestCase):
         self.assertIn('<p class="brief-what">Federal Pond Solar wants a special permit', html)
         self.assertIn("104 Tremont Street", html)  # the facts line: where, size, who
         self.assertIn("4.9 MW on 22 acres", html)
-        self.assertIn('<span class="stage">Postponed</span>', html)
+        self.assertIn('<span class="stage">Asks to postpone</span>', html)  # the applicant asked; the board hasn't agreed yet
         self.assertNotIn("Agenda wording", html, "lists carry no agenda text")
         self.assertNotIn("Copy citation", html)
         self.assertNotIn(self.build.SPEAK_TEXT, html, "a postponed hearing gets no speak line")
@@ -256,10 +256,11 @@ class RenderTests(unittest.TestCase):
         self.assertIn("Retrieved Oct 10, 2026", self.build.citation(ctx, m, next(iter(m["lines"].values()))))
 
     def test_postponement_names_the_new_day_when_the_brief_has_one(self):
-        self.assertEqual(self.build.brief_stage(GOOD), "Postponed")
+        self.assertEqual(self.build.brief_stage(GOOD), "Asks to postpone")  # GOOD's next: the applicant asked
         moved = {**GOOD, "next": "The company asked to postpone to Tue Oct 27, 2026, 6:30 pm, Town Hall Meeting Room #1."}
-        self.assertEqual(self.build.brief_stage(moved), "Postponed to Tue Oct 27")
+        self.assertEqual(self.build.brief_stage(moved), "Asks to postpone to Tue Oct 27")
         self.assertEqual(self.build.brief_stage({**GOOD, "next": "The hearing continues Tue Oct 27."}), "Postponed to Tue Oct 27")
+        self.assertEqual(self.build.brief_stage({**GOOD, "next": "The hearing was continued to Tue Oct 27."}), "Postponed to Tue Oct 27")
         self.assertEqual(self.build.brief_stage({**GOOD, "action": "hearing"}), "Hearing")
         self.assertEqual(self.build.brief_stage({**GOOD, "action": "adopted"}), "Final vote")
 

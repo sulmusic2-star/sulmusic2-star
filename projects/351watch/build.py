@@ -959,7 +959,7 @@ def brief_stage(b):
     hearing moves to ("asked to postpone to Tue Oct 27, 2026" becomes "Postponed to Tue Oct 27")."""
     stage = BRIEF_STAGE.get(b.get("action") or "other", "")
     # An applicant's request to continue is not a decision until the board agrees.
-    asked = bool(re.search(r"\b(?:request|ask)(?:ed|s|ing)?\b[^.]{0,40}?\b(?:continu|postpon)", f"{b.get('next') or ''} {b.get('quote') or ''}", re.I))
+    asked = bool(re.search(r"\b(?:request|ask)(?:ed|s|ing)?\b[^.]{0,40}?\b(?:continu|postpon)", b.get("next") or "", re.I))
     if stage == "Postponed":
         m = re.search(r"(?:postpone[ds]? (?:it )?(?:to|until)|continued? (?:to|until)|continues|moves to|resumes|reopens|rescheduled (?:to|for)|new date)"
                       r"[^.;]{0,30}?\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{1,2})\b",
@@ -1848,7 +1848,7 @@ def speak_line(m):
     """One line per meeting about speaking, only when an item is a hearing that isn't postponed, canceled
     or withdrawn."""
     entries = [v for v in m["lines"].values()
-               if not str(v.get("stage") or "").startswith(("Postponed", "Canceled", "Withdrawn"))]
+               if not str(v.get("stage") or "").startswith(("Postponed", "Asks to postpone", "Canceled", "Withdrawn"))]
     rules = []
     for v in entries:
         b = v.get("brief") or {}
