@@ -23,6 +23,7 @@ import hashlib
 import json
 import os
 import re
+from urllib.parse import unquote
 import sys
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
@@ -866,21 +867,55 @@ def verb(v, plural):
 
 WARRANT_DATE = re.compile(r"(?:(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),?\s+)?"
                           r"(January|February|March|April|May|June|July|August|September|October|November|December)"
-                          r"\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(20\d\d)")
+                          r"\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(20\d\d)", re.I)  # warrants print "MONDAY, APRIL 27, 2026" too
+HEADING_CHARS = 600  # a date this early in the document is the warrant's own heading
 
 
-def warrant_date(text, title):
+SEASON_MONTHS = {"spring": (3, 4, 5, 6), "fall": (9, 10, 11, 12), "autumn": (9, 10, 11, 12),
+                 "winter": (1, 2, 12), "summer": (6, 7, 8)}
+NOT_THE_MEETING = re.compile(r"fiscal\s+year|\bFY\s?\d|\bbeginning\b|\bending\b|\bthrough\b|\beffective\b|"
+                             r"\bexpir|\buntil\b|\bcommencing\b|\bsigned\b|\bposted\b|\bdated\b|\bdeadline\b", re.I)
+
+
+def warrant_date(text, title, window=None):
     """Meeting date of an undated Town Meeting warrant, read from its first pages.
-    Returns (date or None, hint) where hint is 'fall' when only the title says the meeting is this fall."""
+    Returns (date or None, hint) where hint is 'fall' when only the title says the meeting is this fall.
+    A date counts when it comes with a weekday or sits near "town meeting", "meet at", "assemble" or
+    "convene". When the title (or the file name) names a month or season, a date in another month is
+    not the meeting ("the fiscal year beginning July 1, 2026" in an October warrant). Among the rest,
+    a date in the heading (the first HEADING_CHARS characters) comes first, then one in the title's
+    year, then one inside `window` (a (start, end) pair of dates), then one not introduced as a
+    fiscal-year or effective date, then the one nearest the top."""
     head = text[:4000]
+    t = (title or "").lower()
+    want_year = re.search(r"\b(20\d\d)\b", t)
+    want_year = int(want_year.group(1)) if want_year else None
+    want_months = next((set(v) for k, v in SEASON_MONTHS.items() if re.search(rf"\b{k}\b", t)), set())
+    for i, name in enumerate(["january", "february", "march", "april", "may", "june", "july", "august",
+                              "september", "october", "november", "december"]):
+        if re.search(rf"\b{name}\b", t):
+            want_months = {i + 1}
+            break
+    cands = []
     for m in WARRANT_DATE.finditer(head):
         near = head[max(0, m.start() - 250):m.end() + 250]
-        if m.group(1) or re.search(r"town\s+meeting|meet\s+at|assemble|convene", near, re.I):
-            try:
-                return date(int(m.group(4)), MONTH_NUM[m.group(2).lower()], int(m.group(3))), None
-            except ValueError:
-                continue
-    t = (title or "").lower()
+        if not (m.group(1) or re.search(r"town\s+meeting|meet\s+at|assemble|convene", near, re.I)):
+            continue
+        try:
+            d = date(int(m.group(4)), MONTH_NUM[m.group(2).lower()], int(m.group(3)))
+        except ValueError:
+            continue
+        if want_months and d.month not in want_months:
+            continue
+        lead_in = head[max(0, m.start() - 40):m.start()]
+        cands.append((
+            0 if m.start() < HEADING_CHARS else 1,
+            0 if want_year is None or d.year == want_year else 1,
+            0 if window and window[0] and window[1] and window[0] <= d <= window[1] else 1,
+            1 if NOT_THE_MEETING.search(lead_in) else 0,
+            m.start(), d))
+    if cands:
+        return min(cands)[5], None
     if re.search(r"\b(fall|autumn|october|november|december|special)\b", t) and "2026" in t or \
             re.search(r"\b(fall|october|november)\b", t):
         return None, "fall"
@@ -907,7 +942,10 @@ def analyze_hit(h, inputs, today):
     if source != "agenda":
         a["date_source"] = "filing"
     elif d is None and (a["board_key"] == "town_meeting" or "warrant" in title.lower()):
-        d, a["hint"] = warrant_date(text, title)
+        win = (inputs.get("hits_doc") or {}).get("window") or {}
+        # The file name often says what the title doesn't ("Fall-2026-ATM-Warrant" behind a "CLICK HERE" link).
+        slug = unquote((h.get("source_url") or "").rsplit("/", 1)[-1]).replace("-", " ").replace("_", " ")
+        d, a["hint"] = warrant_date(text, f"{title} {slug}", (parse_date(win.get("start")), parse_date(win.get("end"))))
         a["date_source"] = "warrant" if d else None
     a["date"] = d
     a["days"] = (d - today).days if d else None
@@ -957,7 +995,7 @@ def find_anchor(text, s0, s1, topics):
 
 
 MINUTES_START = re.compile(r"called\s+(?:the\s+(?:meeting|session)\s+)?to\s+order\s+at|meeting\s+was\s+called\s+to\s+order|"
-                           r"\bmembers\s+present\s*:|\bPRESENT\s*:|made\s+a\s+motion|seconded\s+by|"
+                           r"\bmembers\s+present\s*:|(?<!TO )(?<!to )(?<!To )\bPRESENT\s*:|made\s+a\s+motion|seconded\s+by|"
                            r"\bmotion\s+(?:carried|passed)|\bmoved\s+to\s+(?:approve|adjourn|accept)", re.I)
 BYLAW_NEAR = re.compile(r"\bby-?laws?\b|\bordinances?\b|\blocal\s+law\b|\bzoning\s+(?:amendments?|code|text|regulations?|"
                         r"changes?|definitions?)|\bamend(?:ing|ment|ments|s)?\s+(?:to\s+)?(?:the\s+)?(?:\w+\s+){0,4}"
@@ -1000,19 +1038,25 @@ def minutes_near(text, anchor, title, minutes_start):
     low = title.lower()
     if re.search(r"\bminutes\b", low) and "agenda" not in low:
         return True
-    if MINUTES_STRONG.search(text, max(0, anchor - 400), anchor + 400):
+    # Minutes printed after the item (the packet's "MEETING MINUTES" section, or an "Approval of minutes"
+    # item) are not where the item sits; motions and narrative past that heading don't count against it.
+    end = anchor + 400
+    cap = re.search(r"\b(?:MEETING\s+)?MINUTES\b|\bApproval\s+of\s+(?:the\s+)?(?:meeting\s+)?minutes\b", text[anchor:end])
+    if cap:
+        end = anchor + cap.start()
+    if MINUTES_STRONG.search(text, max(0, anchor - 400), end):
         return True
-    narr = len(MINUTES_NARR.findall(text, max(0, anchor - 300), anchor + 300))
+    narr = len(MINUTES_NARR.findall(text, max(0, anchor - 300), min(anchor + 300, end)))
     if narr >= 2:
         return True
-    tight = text[max(0, anchor - 200):anchor + 200]
+    tight = text[max(0, anchor - 200):min(anchor + 200, end)]
     if narr and PRONOUN.search(tight):
         return True
     if re.search(r"(?<![\d.,:/$-])(\d{2,3}) (\d{2,3})(?![\d.,:/%-])", tight) and any(
             int(y) == int(x) + 1 for x, y in re.findall(r"(?<![\d.,:/$-])(\d{2,3}) (\d{2,3})(?![\d.,:/%-])", tight)):
         return True
     return minutes_start is not None and anchor > minutes_start and bool(
-        MINUTES_NARR.search(text, max(0, anchor - 600), anchor + 600))
+        MINUTES_NARR.search(text, max(0, anchor - 600), min(anchor + 600, end)))
 
 
 def classify(a, text, anchor, i0, i1):
