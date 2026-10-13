@@ -1,0 +1,3323 @@
+{
+ "_about": "351 Watch Virginia test (2026-10): 37 Southside and Piedmont counties (Board of Supervisors, Planning Commission, BZA) plus key towns (energy_siting_hotspots.md areas 2 and 9). Same row shape as towns_ma_all.json plus state, kind, selection_group / selection_reason / selection_source. Built by `python3 experiments/mi_va_test.py discover --state VA`.",
+ "generated": "2026-10-12T20:57:44+00:00",
+ "state": "VA",
+ "gated": true,
+ "gate_note": "Test state: not part of the production daily run. Crawled only by `python3 -m watch351.daily --states MI,VA --output-dir ../data/test --hits-name hits_mi_va.json`.",
+ "boards_tracked": [
+  "select_board",
+  "planning_board",
+  "zoning_board_of_appeals"
+ ],
+ "board_key_mapping": {
+  "Board of Supervisors, Town / City Council": "select_board",
+  "Planning Commission": "planning_board",
+  "Board of Zoning Appeals (BZA)": "zoning_board_of_appeals"
+ },
+ "evidence_rule": "a board is automated only if its listing shows >=1 agenda/packet/notice dated within [today-120d, today+120d] and the first such document is fetchable under robots.txt",
+ "count": 37,
+ "automated": 31,
+ "towns": [
+  {
+   "town": "Pittsylvania County",
+   "state": "VA",
+   "county": "Pittsylvania",
+   "kind": "county",
+   "website": "https://www.pittsylvaniacountyva.gov/",
+   "census_bucket": "generic_hand_listing",
+   "census_detail": "site pages (recent agenda links)",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); 5-mile spacing and 2% acreage cap (2023); data-center rejection Apr 15, 2025",
+   "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+   "final_url": "https://www.pittsylvaniacountyva.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "pittsylvaniacova",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://pittsylvaniacova.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of Zoning Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://pittsylvaniacova.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "url": "https://pittsylvaniacova.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://pittsylvaniacova.portal.civicclerk.com",
+     "n_recent": 4,
+     "latest": "2026-10-06"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicclerk",
+     "url": "https://pittsylvaniacova.portal.civicclerk.com",
+     "n_recent": 13,
+     "latest": "2026-09-15"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicclerk",
+     "url": "https://pittsylvaniacova.portal.civicclerk.com",
+     "n_recent": 4,
+     "latest": "2026-10-15"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "laserfiche": {
+     "urls": [
+      "https://weblink.pittgov.net/WebLink/",
+      "https://weblink.pittgov.net/WebLink/Browse.aspx?id=75377&amp;dbid=0&amp;repo=PittGovDocs&amp;cr=1",
+      "https://weblink.pittgov.net/WebLink/Browse.aspx?id=437968&amp;dbid=0&amp;repo=PittGovDocs",
+      "https://weblink.pittgov.net/WebLink/Browse.aspx?id=437970&amp;dbid=0&amp;repo=PittGovDocs"
+     ],
+     "status": "document_store"
+    },
+    "civicclerk": {
+     "urls": [
+      "https://pittsylvaniacova.portal.civicclerk.com"
+     ],
+     "tenant": "pittsylvaniacova",
+     "found_by": "tenant probe",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 30,
+   "discovered_at": "2026-10-12T15:09:15+00:00"
+  },
+  {
+   "town": "Halifax County",
+   "state": "VA",
+   "county": "Halifax",
+   "kind": "county",
+   "website": "https://www.halifaxcountyva.gov/",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicplus_agendacenter",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Tightened solar rules after a moratorium (late 2024); 2.0 GW PJM",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.halifaxcountyva.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "halifaxcova",
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://www.halifaxcountyva.gov/AgendaCenter/Board-of-Supervisors-2"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "4",
+     "url": "https://www.halifaxcountyva.gov/AgendaCenter/Planning-Commission-4"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.halifaxcountyva.gov/AgendaCenter/Planning-Commission-4",
+     "n_recent": 2,
+     "latest": "2026-09-15"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicplus",
+     "url": "https://www.halifaxcountyva.gov/AgendaCenter/Board-of-Supervisors-2",
+     "n_recent": 32,
+     "latest": "2026-10-09"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.halifaxcountyva.gov/AgendaCenter/Board-of-Zoning-Appeals-3",
+     "n_recent": 0,
+     "latest": "2025-11-18"
+    }
+   },
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://halifaxcova.portal.civicclerk.com"
+     ],
+     "tenant": "halifaxcova",
+     "found_by": "tenant probe",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 4 categories, 3 tracked"
+   ],
+   "pages_fetched": 15,
+   "discovered_at": "2026-10-12T15:09:03+00:00"
+  },
+  {
+   "town": "Mecklenburg County",
+   "state": "VA",
+   "county": "Mecklenburg",
+   "kind": "county",
+   "website": "https://www.mecklenburgva.com",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicplus_agendacenter",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Removed utility-scale solar as a future use (Apr 14, 2025); 2,325-acre cap race; 2.6 GW PJM; Microsoft data-center campus",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.mecklenburgva.com/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors Monthly Meetings",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://www.mecklenburgva.com/AgendaCenter/Board-of-Supervisors-Monthly-Meetings-2"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "8",
+     "url": "https://www.mecklenburgva.com/AgendaCenter/Planning-Commission-8"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.mecklenburgva.com/AgendaCenter/Planning-Commission-8",
+     "n_recent": 5,
+     "latest": "2026-10-15"
+    },
+    "select_board": {
+     "board": "Board of Supervisors Monthly Meetings",
+     "source": "civicplus",
+     "url": "https://www.mecklenburgva.com/AgendaCenter/Board-of-Supervisors-Monthly-Meetings-2",
+     "n_recent": 4,
+     "latest": "2026-10-13"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.mecklenburgva.com/AgendaCenter/Board-of-Zoning-Appeals-5",
+     "n_recent": 0,
+     "latest": "2026-02-24"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 3 categories, 3 tracked"
+   ],
+   "pages_fetched": 14,
+   "discovered_at": "2026-10-12T15:08:35+00:00"
+  },
+  {
+   "town": "Charlotte County",
+   "state": "VA",
+   "county": "Charlotte",
+   "kind": "county",
+   "website": "https://www.charlottecountyva.gov/",
+   "census_bucket": "blocked",
+   "census_detail": "robots_disallow",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "status": "not_automated",
+   "reason_code": "robots_disallow",
+   "reason": "robots.txt on the site disallows 351WatchBot (https://www.charlottecountyva.gov/)",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 0,
+   "discovered_at": "2026-10-12T15:07:44+00:00"
+  },
+  {
+   "town": "Brunswick County",
+   "state": "VA",
+   "county": "Brunswick",
+   "kind": "county",
+   "website": "https://www.brunswickco.com/",
+   "census_bucket": "generic_hand_listing",
+   "census_detail": "site pages (recent agenda links)",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); 2.9 GW PJM queue; Sabin whole-county restriction",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.brunswickco.com/",
+   "cms": [
+    "civiclive"
+   ],
+   "platform": null,
+   "status": "not_automated",
+   "reason_code": "no_recent_agendas",
+   "reason": "board pages found (e.g. https://www.brunswickco.com/government/board_of_supervisors) but no agenda dated within the last 120 or next 120 days could be read from them",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "agenda_page",
+     "url": "https://www.brunswickco.com/government/board_of_supervisors",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "agenda_page",
+     "url": "https://www.brunswickco.com/government/departments/planning___zoning/planning_commission",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "BZA Members",
+     "source": "agenda_page",
+     "url": "https://www.brunswickco.com/government/departments/planning___zoning/board_of_zoning_appeals/b_z_a_members",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 34,
+   "discovered_at": "2026-10-12T15:09:36+00:00"
+  },
+  {
+   "town": "Lunenburg County",
+   "state": "VA",
+   "county": "Lunenburg",
+   "kind": "county",
+   "website": "https://lunenburgva.gov/",
+   "census_bucket": "blocked",
+   "census_detail": "http_403",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://lunenburgva.gov/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://lunenburgva.gov/government/board_of_supervisors/agendas___minutes.php",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://lunenburgva.gov/government/board_of_supervisors/agendas___minutes.php",
+     "n_recent": 8,
+     "latest": "2026-10-08",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-08",
+       "url": "https://lunenburgva.gov/10-8-26 agenda.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-08",
+       "url": "https://lunenburgva.gov/October 8, 2026 Board Packet.pdf",
+       "title": "Packet"
+      },
+      {
+       "date": "2026-09-10",
+       "url": "https://lunenburgva.gov/9-10-26 agenda.pdf",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning Commission Agendas, Packets, & Minutes",
+     "source": "agenda_page",
+     "url": "https://lunenburgva.gov/government/planning_commission/agendas___minutes.php",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 28,
+   "discovered_at": "2026-10-12T15:10:03+00:00"
+  },
+  {
+   "town": "Nottoway County",
+   "state": "VA",
+   "county": "Nottoway",
+   "kind": "county",
+   "website": "http://www.nottoway.org",
+   "census_bucket": "blocked",
+   "census_detail": "http_403",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.nottoway.org/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+     "board_key": "select_board",
+     "url": "https://nottoway.org/administration/boards___commissions/board_of_supervisors_(bos)/board_agendas_minutes.php",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+     "source": "agenda_page",
+     "url": "https://nottoway.org/administration/boards___commissions/board_of_supervisors_(bos)/board_agendas_minutes.php",
+     "n_recent": 14,
+     "latest": "2026-10-15",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-15",
+       "url": "https://nottoway.org/Agenda BoS October 15, 2026.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-15",
+       "url": "https://nottoway.org/2026 Oct 15 BoS Pkg.pdf",
+       "title": "Packet"
+      },
+      {
+       "date": "2026-09-30",
+       "url": "https://nottoway.org/Agenda BoS Special Meeting September 30, 2026.docx",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning Commission (PC)",
+     "source": "agenda_page",
+     "url": "https://www.nottoway.org/administration/boards___commissions/planning_commission_(pc).php",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals (BZA)",
+     "source": "agenda_page",
+     "url": "https://www.nottoway.org/administration/boards___commissions/board_of_zoning_appeals_(bza).php",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 31,
+   "discovered_at": "2026-10-12T15:10:25+00:00"
+  },
+  {
+   "town": "Prince Edward County",
+   "state": "VA",
+   "county": "Prince Edward",
+   "kind": "county",
+   "website": "https://www.co.prince-edward.va.us/Home",
+   "census_bucket": "generic_hand_listing",
+   "census_detail": "site pages (recent agenda links)",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Gabriel and Old Ridge Road solar canceled (Sabin)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.co.prince-edward.va.us/Home",
+   "cms": [
+    "granicus_govaccess"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.co.prince-edward.va.us/Government/Board-of-Supervisors/Board-Meeting-Agendas-and-Meeting-Minutes",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "platform": "agenda_page",
+     "url": "https://www.co.prince-edward.va.us/Departments/Community-Development/Planning-Zoning/Planning-Commission-Meetings"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.co.prince-edward.va.us/Government/Board-of-Supervisors/Board-Meeting-Agendas-and-Meeting-Minutes",
+     "n_recent": 6,
+     "latest": "2026-10-13",
+     "kinds": [
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-14",
+       "url": "https://www.co.prince-edward.va.us/files/assets/county/v/1/govboard/documents/board-meetings/2026/july-14-2026-regular-meeting-packet.pdf",
+       "title": "July 14, 2026 Board of Supervisors Regular Meeting Packet (PDF, 12MB)"
+      },
+      {
+       "date": "2026-07-14",
+       "url": "https://www.co.prince-edward.va.us/files/assets/county/v/1/govboard/documents/board-meetings/2026/july-14-2026-regular-meeting-packet-addendum.pdf",
+       "title": "July 14, 2026 Board of Supervisors Regular Meeting Packet, Addendum (PDF, 1MB)"
+      },
+      {
+       "date": "2026-08-11",
+       "url": "https://www.co.prince-edward.va.us/files/assets/county/v/1/govboard/documents/board-meetings/2026/august-11-2026-board-of-supervisors-regular-meeting-packet.pdf",
+       "title": "August 11, 2026 Board of Supervisors Regular Meeting Packet (PDF, 9MB)"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 15,
+   "discovered_at": "2026-10-12T20:54:04+00:00",
+   "curation_note": "Planning Commission packets page, added by hand",
+   "curated": true
+  },
+  {
+   "town": "Appomattox County",
+   "state": "VA",
+   "county": "Appomattox",
+   "kind": "county",
+   "website": "https://www.appomattoxcountyva.gov/",
+   "census_bucket": "no_agenda_found",
+   "census_detail": "no agenda listing found in 7 pages",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.appomattoxcountyva.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "appomattoxcova",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "url": "https://appomattoxcova.portal.civicclerk.com"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://appomattoxcova.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://appomattoxcova.portal.civicclerk.com",
+     "n_recent": 1,
+     "latest": "2026-08-12"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicclerk",
+     "url": "https://appomattoxcova.portal.civicclerk.com",
+     "n_recent": 5,
+     "latest": "2026-09-21"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "agenda_page",
+     "url": "https://www.appomattoxcountyva.gov/243/Board-of-Zoning-Appeals",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://appomattoxcova.portal.civicclerk.com/?category_id=26",
+      "https://appomattoxcova.portal.civicclerk.com/?category_id=28"
+     ],
+     "tenant": "appomattoxcova",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 23,
+   "discovered_at": "2026-10-12T15:08:54+00:00"
+  },
+  {
+   "town": "Campbell County",
+   "state": "VA",
+   "county": "Campbell",
+   "kind": "county",
+   "website": "https://www.co.campbell.va.us/",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicplus_agendacenter",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Opposes a $1B 765 kV transmission line (Sep 2026)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.co.campbell.va.us/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "category_id": "5",
+     "url": "https://www.co.campbell.va.us/AgendaCenter/Board-of-Supervisors-5"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "6",
+     "url": "https://www.co.campbell.va.us/AgendaCenter/Planning-Commission-6"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.co.campbell.va.us/AgendaCenter/Planning-Commission-6",
+     "n_recent": 5,
+     "latest": "2026-10-26"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicplus",
+     "url": "https://www.co.campbell.va.us/AgendaCenter/Board-of-Supervisors-5",
+     "n_recent": 8,
+     "latest": "2026-10-06"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.co.campbell.va.us/AgendaCenter/Board-of-Zoning-Appeals-12",
+     "n_recent": 0,
+     "latest": null
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 8 categories, 3 tracked"
+   ],
+   "pages_fetched": 9,
+   "discovered_at": "2026-10-12T15:08:50+00:00"
+  },
+  {
+   "town": "Henry County",
+   "state": "VA",
+   "county": "Henry",
+   "kind": "county",
+   "website": "https://www.henrycountyva.gov/",
+   "census_bucket": "no_agenda_found",
+   "census_detail": "no agenda listing found in 7 pages",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Solar land cap (Cardinal News)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.henrycountyva.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "category_id": "3",
+     "url": "https://www.henrycountyva.gov/AgendaCenter/Board-of-Supervisors-3"
+    },
+    {
+     "board": "Board of Zoning Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "9",
+     "url": "https://www.henrycountyva.gov/AgendaCenter/Board-of-Zoning-Appeals-9"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "8",
+     "url": "https://www.henrycountyva.gov/AgendaCenter/Planning-Commission-8"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.henrycountyva.gov/AgendaCenter/Planning-Commission-8",
+     "n_recent": 3,
+     "latest": "2026-09-09"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicplus",
+     "url": "https://www.henrycountyva.gov/AgendaCenter/Board-of-Supervisors-3",
+     "n_recent": 4,
+     "latest": "2026-09-22"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.henrycountyva.gov/AgendaCenter/Board-of-Zoning-Appeals-9",
+     "n_recent": 5,
+     "latest": "2026-10-28"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 8 categories, 3 tracked"
+   ],
+   "pages_fetched": 3,
+   "discovered_at": "2026-10-12T15:08:10+00:00"
+  },
+  {
+   "town": "Greensville County",
+   "state": "VA",
+   "county": "Greensville",
+   "kind": "county",
+   "website": "https://www.greensvillecountyva.gov/",
+   "census_bucket": "agenda_links_no_recent_date",
+   "census_detail": "agenda links, no Aug26+ date seen",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Removed utility-scale solar as a use (Jun 2024); 2.3 GW PJM",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.greensvillecountyva.gov/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.greensvillecountyva.gov/boards___commissions/board_of_supervisors/agendas___minutes/board_of_supervisors.php",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://www.greensvillecountyva.gov/boards___commissions/board_of_supervisors/agendas___minutes/planning_commission.php",
+     "platform": "agenda_page",
+     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "agenda_page",
+     "url": "https://www.greensvillecountyva.gov/boards___commissions/board_of_supervisors/agendas___minutes/planning_commission.php",
+     "n_recent": 4,
+     "latest": "2026-10-13",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-13",
+       "url": "https://www.greensvillecountyva.gov/PC Agenda 10-13-2026.pdf",
+       "title": "October 13, 2026"
+      },
+      {
+       "date": "2026-09-09",
+       "url": "https://www.greensvillecountyva.gov/Planning Commission Agenda - 09092026.pdf",
+       "title": "September 9, 2026"
+      },
+      {
+       "date": "2026-08-11",
+       "url": "https://www.greensvillecountyva.gov/Planning Commission Agenda - 08112026.pdf",
+       "title": "August 11, 2026"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.greensvillecountyva.gov/boards___commissions/board_of_supervisors/agendas___minutes/board_of_supervisors.php",
+     "n_recent": 9,
+     "latest": "2026-10-05",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-05",
+       "url": "https://www.greensvillecountyva.gov/Documents Center/Agenda & Minutes/Board of Supervisors/2026/Agenda/Board of Supervisors Agenda - 10052026.pdf",
+       "title": "October 5, 2026"
+      },
+      {
+       "date": "2026-09-09",
+       "url": "https://www.greensvillecountyva.gov/Special Meeting - Wednesday, September 9, 2026.pdf",
+       "title": "September 9, 2026, Special Meeting"
+      },
+      {
+       "date": "2026-09-08",
+       "url": "https://www.greensvillecountyva.gov/Documents Center/Agenda & Minutes/Board of Supervisors/2026/Agenda/Board of Supervisors Agenda - 09082026.pdf",
+       "title": "September 8, 2026"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "agenda_page",
+     "url": "https://www.greensvillecountyva.gov/boards___commissions/board_of_supervisors/agendas___minutes/board_of_zoning_appeals.php",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 23,
+   "discovered_at": "2026-10-12T15:09:10+00:00"
+  },
+  {
+   "town": "Sussex County",
+   "state": "VA",
+   "county": "Sussex",
+   "kind": "county",
+   "website": "https://sussexcountyva.gov/",
+   "census_bucket": "generic_hand_listing",
+   "census_detail": "site pages (recent agenda links)",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); 3.5 GW PJM queue (largest in Southside)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://sussexcountyva.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://sussexcountyva.gov/agendas-and-minutes/",
+     "platform": "agenda_page",
+     "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://sussexcountyva.gov/agendas-and-minutes/",
+     "n_recent": 9,
+     "latest": "2026-09-24",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-06-18",
+       "url": "https://sussexcountyva.gov/wp-content/uploads/2026/06/6-18-2026-Regular-BOS-Meeting-Agenda-6-pm.pdf",
+       "title": "Download Agenda"
+      },
+      {
+       "date": "2026-06-18",
+       "url": "https://sussexcountyva.gov/wp-content/uploads/2026/06/6-18-2026-Board-Packet.pdf",
+       "title": "Download Packet"
+      },
+      {
+       "date": "2026-06-18",
+       "url": "https://sussexcountyva.gov/wp-content/uploads/2026/06/4.02-2-PH-2026-02-Zoning-Text-Amendment-2026-02-002.pdf",
+       "title": "Zoning Text Amendment 2"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "agenda_page",
+     "url": "https://sussexcountyva.gov/government/boards-and-commissions/planning-commission/",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "• Board of Zoning Appeals",
+     "source": "agenda_page",
+     "url": "https://sussexcountyva.gov/government/boards-and-commissions/board-of-zoning-appeals/",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 32,
+   "discovered_at": "2026-10-12T15:09:54+00:00"
+  },
+  {
+   "town": "Southampton County",
+   "state": "VA",
+   "county": "Southampton",
+   "kind": "county",
+   "website": "https://www.southamptoncounty.org/",
+   "census_bucket": "no_agenda_found",
+   "census_detail": "no agenda listing found in 7 pages",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Sabin whole-county restriction",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.southamptoncounty.org/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.southamptoncounty.org/departments/board_of_supervisors/bos_agendas_2026.php",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "platform": "agenda_page",
+     "url": "https://www.southamptoncounty.org/departments/planning/year_{year}.php"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.southamptoncounty.org/departments/board_of_supervisors/bos_agendas_2026.php",
+     "n_recent": 56,
+     "latest": "2026-09-22",
+     "kinds": [
+      "notice",
+      "unknown"
+     ],
+     "examples": [
+      {
+       "date": "2026-09-22",
+       "url": "https://www.southamptoncounty.org/BOS Agendas 2026/September 2026/No. 1 - Citizens Comment Period.pdf",
+       "title": "Citizens Comment Period"
+      },
+      {
+       "date": "2026-09-22",
+       "url": "https://www.southamptoncounty.org/BOS Agendas 2026/September 2026/No. 3 - VDOT and Transportation Matters.pdf",
+       "title": "VDOT Matters"
+      },
+      {
+       "date": "2026-09-22",
+       "url": "https://www.southamptoncounty.org/BOS Agendas 2026/September 2026/No. 4 - Monthly Reports.pdf",
+       "title": "Monthly Reports"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning Commission Agendas & Minutes",
+     "source": "agenda_page",
+     "url": "https://www.southamptoncounty.org/departments/planning/archived_planning_agendas.php",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals Agendas",
+     "source": "agenda_page",
+     "url": "https://www.southamptoncounty.org/departments/board_of_zoning_appeals/board_of_zoning_appeals_agendas.php",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 32,
+   "discovered_at": "2026-10-12T20:54:10+00:00",
+   "curation_note": "Planning Commission meeting pages (year_{year}.php), added by hand",
+   "curated": true
+  },
+  {
+   "town": "Dinwiddie County",
+   "state": "VA",
+   "county": "Dinwiddie",
+   "kind": "county",
+   "website": "http://www.dinwiddieva.us",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicplus_agendacenter",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.dinwiddieva.us/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://www.dinwiddieva.us/AgendaCenter/Board-of-Supervisors-2"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "1",
+     "url": "https://www.dinwiddieva.us/AgendaCenter/Planning-Commission-1"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.dinwiddieva.us/AgendaCenter/Planning-Commission-1",
+     "n_recent": 5,
+     "latest": "2026-10-14"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicplus",
+     "url": "https://www.dinwiddieva.us/AgendaCenter/Board-of-Supervisors-2",
+     "n_recent": 7,
+     "latest": "2026-10-06"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.dinwiddieva.us/AgendaCenter/Board-of-Zoning-Appeals-3",
+     "n_recent": 0,
+     "latest": "2026-01-21"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 8 categories, 3 tracked"
+   ],
+   "pages_fetched": 10,
+   "discovered_at": "2026-10-12T15:08:27+00:00"
+  },
+  {
+   "town": "Surry County",
+   "state": "VA",
+   "county": "Surry",
+   "kind": "county",
+   "website": "https://www.surrycountyva.gov/",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicclerk",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Sycamore Cross solar canceled (Sabin)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.surrycountyva.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "surrycova",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "url": "https://surrycova.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicclerk",
+     "url": "https://surrycova.portal.civicclerk.com",
+     "n_recent": 7,
+     "latest": "2026-10-05"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.surrycountyva.gov/AgendaCenter/Board-of-Zoning-Appeals-6",
+     "n_recent": 0,
+     "latest": null
+    },
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.surrycountyva.gov/AgendaCenter/Planning-Commission-7",
+     "n_recent": 0,
+     "latest": null
+    }
+   },
+   "vendors": {
+    "civicclerk_legacy": {
+     "urls": [
+      "https://surrycova.civicclerk.com/web/home.aspx"
+     ],
+     "tenant": "surrycova",
+     "status": "open"
+    },
+    "civicclerk": {
+     "urls": [
+      "https://surrycova.portal.civicclerk.com"
+     ],
+     "tenant": "surrycova",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 5 categories, 3 tracked",
+    "HTTP 404 https://www.surrycountyva.gov/159/129/Agendas-Minutes",
+    "HTTP 404 https://www.surrycountyva.gov/219/129/Agendas-Minutes",
+    "HTTP 404 https://www.surrycountyva.gov/218/129/Agendas-Minutes"
+   ],
+   "pages_fetched": 22,
+   "discovered_at": "2026-10-12T15:09:13+00:00"
+  },
+  {
+   "town": "Isle of Wight County",
+   "state": "VA",
+   "county": "Isle of Wight",
+   "kind": "county",
+   "website": "https://www.isleofwight.gov/",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicclerk",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Carver / Sycamore Cross solar canceled (Sabin)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.isleofwight.gov/",
+   "cms": [
+    "revize"
+   ],
+   "tenant": "isleofwightcova",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Zoning Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://isleofwightcova.portal.civicclerk.com"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://isleofwightcova.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "url": "https://isleofwightcova.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://isleofwightcova.portal.civicclerk.com",
+     "n_recent": 5,
+     "latest": "2026-09-22"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicclerk",
+     "url": "https://isleofwightcova.portal.civicclerk.com",
+     "n_recent": 7,
+     "latest": "2026-10-15"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicclerk",
+     "url": "https://isleofwightcova.portal.civicclerk.com",
+     "n_recent": 1,
+     "latest": "2026-07-06"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://isleofwightcova.boardportal.civicclerk.com/",
+      "https://isleofwightcova.v8.civicclerk.com/",
+      "https://isleofwightcova.portal.civicclerk.com/",
+      "https://isleofwightcova.portal.civicclerk.com/?category_id=26"
+     ],
+     "tenant": "isleofwightcova",
+     "found_by": "linked from site",
+     "status": "supported"
+    },
+    "laserfiche": {
+     "urls": [
+      "http://lfweb.isleofwightus.net/WebLink/Browse.aspx?dbid=1&startid=422",
+      "http://lfweb.isleofwightus.net/WebLink/Browse.aspx?dbid=1&amp;startid=133",
+      "http://lfweb.isleofwightus.net/WebLink/Browse.aspx?dbid=1&amp;startid=422",
+      "http://lfweb.isleofwightus.net/WebLink/Browse.aspx?dbid=1&startid=133"
+     ],
+     "status": "document_store"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 20,
+   "discovered_at": "2026-10-12T15:08:44+00:00"
+  },
+  {
+   "town": "Cumberland County",
+   "state": "VA",
+   "county": "Cumberland",
+   "kind": "county",
+   "website": "https://www.cumberlandcounty.virginia.gov/",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicplus_agendacenter",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.cumberlandcounty.virginia.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/Board-of-Supervisors-2"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "3",
+     "url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/Planning-Commission-3"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/Planning-Commission-3",
+     "n_recent": 7,
+     "latest": "2026-09-21"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicplus",
+     "url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/Board-of-Supervisors-2",
+     "n_recent": 8,
+     "latest": "2026-10-13"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/Board-of-Zoning-Appeals-4",
+     "n_recent": 0,
+     "latest": "2025-12-10"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 5 categories, 3 tracked"
+   ],
+   "pages_fetched": 5,
+   "discovered_at": "2026-10-12T15:08:41+00:00"
+  },
+  {
+   "town": "Buckingham County",
+   "state": "VA",
+   "county": "Buckingham",
+   "kind": "county",
+   "website": "http://www.buckinghamcountyva.org",
+   "census_bucket": "blocked",
+   "census_detail": "http_403",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.buckinghamcountyva.org/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "url": "https://www.buckinghamcountyva.org/administration/boards___commissions/board_of_supervisors/board_agenda_minutes_youtube.php",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Commission Packet/Minutes",
+     "board_key": "planning_board",
+     "url": "https://www.buckinghamcountyva.org/administration/boards___commissions/planning_commission.php",
+     "platform": "agenda_page",
+     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission Packet/Minutes",
+     "source": "agenda_page",
+     "url": "https://www.buckinghamcountyva.org/administration/boards___commissions/planning_commission.php",
+     "n_recent": 9,
+     "latest": "2026-09-28",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-09-28",
+       "url": "https://www.buckinghamcountyva.org/Document_Center/Agenda & Minutes/Planning Commission/2026/Agenda.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-09-28",
+       "url": "https://www.buckinghamcountyva.org/Document_Center/Agenda & Minutes/Planning Commission/2026/PC Meeting 9-28-2026.pdf",
+       "title": "Packet"
+      },
+      {
+       "date": "2026-08-24",
+       "url": "https://www.buckinghamcountyva.org/Document_Center/Agenda & Minutes/Planning Commission/2026/PC MEETING 8.24.2026.docx",
+       "title": "Agenda"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "agenda_page",
+     "url": "https://www.buckinghamcountyva.org/administration/boards___commissions/board_of_supervisors/board_agenda_minutes_youtube.php",
+     "n_recent": 9,
+     "latest": "2026-10-14",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-13",
+       "url": "https://www.buckinghamcountyva.org/October 13, 2026 agenda.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-14",
+       "url": "https://www.buckinghamcountyva.org/OCT 14 2026 BOS packet online version.pdf",
+       "title": "Packet"
+      },
+      {
+       "date": "2026-09-14",
+       "url": "https://www.buckinghamcountyva.org/September 14, 2026 agenda.pdf",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 12,
+   "discovered_at": "2026-10-12T15:09:12+00:00"
+  },
+  {
+   "town": "Amelia County",
+   "state": "VA",
+   "county": "Amelia",
+   "kind": "county",
+   "website": "http://www.ameliacova.com",
+   "census_bucket": "blocked",
+   "census_detail": "http_403",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.ameliacova.com/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.ameliacova.com/departments/boards_and_commissions/agendas_and_minutes.php",
+     "platform": "agenda_page",
+     "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://www.ameliacova.com/departments/boards_and_commissions/planning_commission.php",
+     "platform": "agenda_page",
+     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://www.ameliacova.com/departments/boards_and_commissions/board_of_zoning_appeal.php",
+     "platform": "agenda_page",
+     "board_pattern": "board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals",
+     "board_exclude": "building|construction|fire|code\\s+appeals|board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|planning\\s+commission|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "agenda_page",
+     "url": "https://www.ameliacova.com/departments/boards_and_commissions/planning_commission.php",
+     "n_recent": 5,
+     "latest": "2026-07-27",
+     "kinds": [
+      "notice",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-27",
+       "url": "https://www.ameliacova.com/Planning Commission/Meetings/Packets/July 27, 2026 PC Packet.pdf",
+       "title": "July 27, 2026 PC Packet"
+      },
+      {
+       "date": "2026-06-24",
+       "url": "https://www.ameliacova.com/Planning Commission/Meetings/Packets/June 24, 2026 PC Packet.pdf",
+       "title": "June 24, 2026 PC Packet"
+      },
+      {
+       "date": "2026-07-27",
+       "url": "https://www.ameliacova.com/Planning Commission/Meetings/Public Notices/Public Notice PC July 27, 2026.pdf",
+       "title": "Notice of Public Hearing - July 27, 2026"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.ameliacova.com/departments/boards_and_commissions/agendas_and_minutes.php",
+     "n_recent": 25,
+     "latest": "2026-10-14",
+     "kinds": [
+      "agenda",
+      "notice",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-14",
+       "url": "https://www.ameliacova.com/Board of Supervisors/BOS Meetings/Agenda/1.1-2026.10.14 October Agenda.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-14",
+       "url": "https://www.ameliacova.com/Board of Supervisors/BOS Meetings/Packets/October Work Session Packet.pdf",
+       "title": "Packet"
+      },
+      {
+       "date": "2026-09-23",
+       "url": "https://www.ameliacova.com/Board of Supervisors/BOS Meetings/Agenda/1. September 23 2026 Agenda.pdf",
+       "title": "Agenda"
+      }
+     ]
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://www.ameliacova.com/departments/boards_and_commissions/board_of_zoning_appeal.php",
+     "n_recent": 2,
+     "latest": "2026-07-22",
+     "kinds": [
+      "notice",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-22",
+       "url": "https://www.ameliacova.com/Document Center/Department/Boards & Commissions/Board of Zoning Appeals/July 22, 2026 BZA Packet.pdf",
+       "title": "BZA Packet - July 22, 2026"
+      },
+      {
+       "date": "2026-07-22",
+       "url": "https://www.ameliacova.com/Document Center/Department/Boards & Commissions/Board of Zoning Appeals/BZA Public Hearing Notice.pdf",
+       "title": "NOTICE OF PUBLIC HEARING - July 22, 2026"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 13,
+   "discovered_at": "2026-10-12T15:09:59+00:00"
+  },
+  {
+   "town": "Powhatan County",
+   "state": "VA",
+   "county": "Powhatan",
+   "kind": "county",
+   "website": "https://www.powhatanva.gov/",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicplus_agendacenter",
+   "selection_group": "southside",
+   "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.powhatanva.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://www.powhatanva.gov/AgendaCenter/Board-of-Supervisors-2"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "7",
+     "url": "https://www.powhatanva.gov/AgendaCenter/Planning-Commission-7"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.powhatanva.gov/AgendaCenter/Planning-Commission-7",
+     "n_recent": 4,
+     "latest": "2026-10-06"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicplus",
+     "url": "https://www.powhatanva.gov/AgendaCenter/Board-of-Supervisors-2",
+     "n_recent": 14,
+     "latest": "2026-10-08"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.powhatanva.gov/AgendaCenter/Board-of-Zoning-Appeals-10",
+     "n_recent": 0,
+     "latest": null
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 14 categories, 4 tracked"
+   ],
+   "pages_fetched": 14,
+   "discovered_at": "2026-10-12T15:09:56+00:00"
+  },
+  {
+   "town": "Culpeper County",
+   "state": "VA",
+   "county": "Culpeper",
+   "kind": "county",
+   "website": "https://www.culpepercounty.gov/",
+   "census_bucket": "no_agenda_found",
+   "census_detail": "no agenda listing found in 7 pages",
+   "selection_group": "piedmont",
+   "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); $12B data-center delay; Maroon / North Ridge solar canceled",
+   "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+   "status": "not_automated",
+   "reason_code": "bot_challenge",
+   "reason": "Cloudflare-style bot challenge (HTTP 403) on https://web.culpepercounty.gov/; not bypassed",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "meta refresh -> http://web.culpepercounty.gov/"
+   ],
+   "pages_fetched": 0,
+   "discovered_at": "2026-10-12T15:08:41+00:00"
+  },
+  {
+   "town": "Fauquier County",
+   "state": "VA",
+   "county": "Fauquier",
+   "kind": "county",
+   "website": "http://www.fauquiercounty.gov",
+   "census_bucket": "blocked",
+   "census_detail": "akamai_403",
+   "selection_group": "piedmont",
+   "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); Ended by-right data centers Oct 8, 2026; Remington gas fuel cells; Almeda / Bealeton solar canceled",
+   "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+   "status": "not_automated",
+   "reason_code": "waf_block",
+   "reason": "HTTP 403 from Akamai to 351WatchBot; not bypassed",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 0,
+   "discovered_at": "2026-10-12T15:08:42+00:00"
+  },
+  {
+   "town": "Orange County",
+   "state": "VA",
+   "county": "Orange",
+   "kind": "county",
+   "website": "https://orangecountyva.gov/",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicclerk",
+   "selection_group": "piedmont",
+   "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); Cunningham Springs, Orange Road and Sunfish solar canceled (Sabin)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://orangecountyva.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "orangecova",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "url": "https://orangecova.portal.civicclerk.com"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://orangecova.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://orangecova.portal.civicclerk.com",
+     "n_recent": 5,
+     "latest": "2026-10-15"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicclerk",
+     "url": "https://orangecova.portal.civicclerk.com",
+     "n_recent": 13,
+     "latest": "2026-10-13"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "agenda_page",
+     "url": "https://orangecountyva.gov/108/Board-of-Zoning-Appeals",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://orangecova.portal.civicclerk.com/"
+     ],
+     "tenant": "orangecova",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 1 categories, 1 tracked"
+   ],
+   "pages_fetched": 24,
+   "discovered_at": "2026-10-12T15:10:03+00:00"
+  },
+  {
+   "town": "Louisa County",
+   "state": "VA",
+   "county": "Louisa",
+   "kind": "county",
+   "website": "https://www.louisacounty.gov/",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicclerk",
+   "selection_group": "piedmont",
+   "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); Piedmont data-center belt; Sabin whole-county restriction",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.louisacounty.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "louisacova",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "url": "https://louisacova.portal.civicclerk.com"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://louisacova.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://louisacova.portal.civicclerk.com",
+     "n_recent": 7,
+     "latest": "2026-10-08"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicclerk",
+     "url": "https://louisacova.portal.civicclerk.com",
+     "n_recent": 6,
+     "latest": "2026-10-05"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "agenda_page",
+     "url": "https://www.louisacounty.gov/631/Board-of-Zoning-Appeals",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://louisacova.portal.civicclerk.com/subscriptions",
+      "https://louisacova.v8.civicclerk.com/img/NoMediaFile.png",
+      "https://louisacova.portal.civicclerk.com/"
+     ],
+     "tenant": "louisacova",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 4 categories, 0 tracked"
+   ],
+   "pages_fetched": 18,
+   "discovered_at": "2026-10-12T15:10:01+00:00"
+  },
+  {
+   "town": "Spotsylvania County",
+   "state": "VA",
+   "county": "Spotsylvania",
+   "kind": "county",
+   "website": "https://www.spotsylvania.va.us/",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicclerk",
+   "selection_group": "piedmont",
+   "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.spotsylvania.va.us/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "spotsylvaniacova",
+   "platforms": [
+    "civicclerk",
+    "agenda_page"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Zoning Appeals Agendas",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://www.spotsylvania.va.us/3242/Board-of-Zoning-Appeals-Agendas",
+     "platform": "agenda_page",
+     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|planning\\s+commission|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://spotsylvaniacova.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "url": "https://spotsylvaniacova.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://spotsylvaniacova.portal.civicclerk.com",
+     "n_recent": 5,
+     "latest": "2026-10-07"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicclerk",
+     "url": "https://spotsylvaniacova.portal.civicclerk.com",
+     "n_recent": 6,
+     "latest": "2026-10-13"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals Agendas",
+     "source": "agenda_page",
+     "url": "https://www.spotsylvania.va.us/3242/Board-of-Zoning-Appeals-Agendas",
+     "n_recent": 2,
+     "latest": "2026-07-21",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-06-16",
+       "url": "https://www.spotsylvania.va.us/DocumentCenter/View/40982/6-16-2026-BZA-Agenda",
+       "title": "6-16-2026 BZA Agenda"
+      },
+      {
+       "date": "2026-07-21",
+       "url": "https://www.spotsylvania.va.us/DocumentCenter/View/41284/7-21-2026-BZA-Agenda",
+       "title": "7-21-2026 BZA Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "civicclerk_legacy": {
+     "urls": [
+      "https://spotsylvaniacova.civicclerk.com/web/home.aspx"
+     ],
+     "tenant": "spotsylvaniacova",
+     "status": "open"
+    },
+    "civicclerk": {
+     "urls": [
+      "https://spotsylvaniacova.portal.civicclerk.com"
+     ],
+     "tenant": "spotsylvaniacova",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 1 categories, 0 tracked"
+   ],
+   "pages_fetched": 21,
+   "discovered_at": "2026-10-12T15:10:03+00:00"
+  },
+  {
+   "town": "Caroline County",
+   "state": "VA",
+   "county": "Caroline",
+   "kind": "county",
+   "website": "https://co.caroline.va.us/",
+   "census_bucket": "no_agenda_found",
+   "census_detail": "no agenda listing found in 7 pages",
+   "selection_group": "piedmont",
+   "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://co.caroline.va.us/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://co.caroline.va.us/AgendaCenter/Board-of-Supervisors-2"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "3",
+     "url": "https://co.caroline.va.us/AgendaCenter/Planning-Commission-3"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "4",
+     "url": "https://co.caroline.va.us/AgendaCenter/Zoning-Board-of-Appeals-4"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://co.caroline.va.us/AgendaCenter/Planning-Commission-3",
+     "n_recent": 4,
+     "latest": "2026-09-24"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicplus",
+     "url": "https://co.caroline.va.us/AgendaCenter/Board-of-Supervisors-2",
+     "n_recent": 9,
+     "latest": "2026-10-13"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "civicplus",
+     "url": "https://co.caroline.va.us/AgendaCenter/Zoning-Board-of-Appeals-4",
+     "n_recent": 1,
+     "latest": "2026-09-17"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 4 categories, 3 tracked"
+   ],
+   "pages_fetched": 4,
+   "discovered_at": "2026-10-12T15:09:16+00:00"
+  },
+  {
+   "town": "Hanover County",
+   "state": "VA",
+   "county": "Hanover",
+   "kind": "county",
+   "website": "https://www.hanovercounty.gov",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicclerk",
+   "selection_group": "piedmont",
+   "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); Data-center rezoning rejected May 27, 2026; North Anna River solar canceled",
+   "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+   "final_url": "https://www.hanovercounty.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "hanovercova",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "url": "https://hanovercova.portal.civicclerk.com"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://hanovercova.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of Zoning Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://hanovercova.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://hanovercova.portal.civicclerk.com",
+     "n_recent": 5,
+     "latest": "2026-10-15"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicclerk",
+     "url": "https://hanovercova.portal.civicclerk.com",
+     "n_recent": 9,
+     "latest": "2026-10-14"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicclerk",
+     "url": "https://hanovercova.portal.civicclerk.com",
+     "n_recent": 1,
+     "latest": "2026-07-29"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://hanovercova.portal.civicclerk.com/?category_id=26"
+     ],
+     "tenant": "hanovercova",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 6 categories, 0 tracked"
+   ],
+   "pages_fetched": 17,
+   "discovered_at": "2026-10-12T15:09:52+00:00"
+  },
+  {
+   "town": "Goochland County",
+   "state": "VA",
+   "county": "Goochland",
+   "kind": "county",
+   "website": "https://www.goochlandva.us/",
+   "census_bucket": "vendor_closed",
+   "census_detail": "iqm2",
+   "selection_group": "piedmont",
+   "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.goochlandva.us/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "goochlandcova",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "url": "https://goochlandcova.portal.civicclerk.com"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://goochlandcova.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://goochlandcova.portal.civicclerk.com",
+     "n_recent": 5,
+     "latest": "2026-10-15"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicclerk",
+     "url": "https://goochlandcova.portal.civicclerk.com",
+     "n_recent": 6,
+     "latest": "2026-10-06"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.goochlandva.us/AgendaCenter/Board-of-Zoning-Appeals-3",
+     "n_recent": 0,
+     "latest": "2026-05-18"
+    }
+   },
+   "vendors": {
+    "iqm2": {
+     "urls": [
+      "https://goochlandcountyva.iqm2.com/citizens/default.aspx",
+      "http://goochlandcountyva.iqm2.com/citizens/default.aspx"
+     ],
+     "status": "vendor_blocked",
+     "detail": "goochlandcountyva.iqm2.com answers HTTP 429 to 351WatchBot"
+    },
+    "civicclerk": {
+     "urls": [
+      "https://goochlandcova.portal.civicclerk.com"
+     ],
+     "tenant": "goochlandcova",
+     "found_by": "tenant probe",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 4 categories, 1 tracked",
+    "HTTP 404 https://www.goochlandva.us/734/Board-of-Supervisors-Meeting-Audio-Recor"
+   ],
+   "pages_fetched": 34,
+   "discovered_at": "2026-10-12T15:10:19+00:00"
+  },
+  {
+   "town": "Fluvanna County",
+   "state": "VA",
+   "county": "Fluvanna",
+   "kind": "county",
+   "website": "https://www.fluvannacounty.org/",
+   "census_bucket": "unreachable",
+   "census_detail": "robots_unreachable(5xx/timeout)",
+   "selection_group": "piedmont",
+   "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.fluvanna.gov/",
+   "cms": [
+    "municode_web",
+    "drupal"
+   ],
+   "platform": null,
+   "status": "not_automated",
+   "reason_code": "documents_blocked",
+   "reason": "documents on www.fluvannacounty.org need a crawl delay above the 10 s document cap",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {
+    "select_board": {
+     "board": "Agenda Submittal Information",
+     "source": "agenda_page",
+     "url": "https://www.fluvanna.gov/bos/page/board-supervisors-agenda-submittal-information",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "planning_board": {
+     "board": "Planning & Zoning",
+     "source": "agenda_page",
+     "url": "https://www.fluvanna.gov/planning",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Details/Audio",
+     "source": "agenda_page",
+     "url": "https://www.fluvanna.gov/bc-bza/page/board-zoning-appeals-september-15-2026-meeting",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "DOCS documents on www.fluvannacounty.org need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvannacounty.org need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvannacounty.org need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+    "DOCS documents on www.fluvanna.gov need a crawl delay above the 10 s document cap"
+   ],
+   "pages_fetched": 34,
+   "discovered_at": "2026-10-12T20:57:44+00:00"
+  },
+  {
+   "town": "King George County",
+   "state": "VA",
+   "county": "King George",
+   "kind": "county",
+   "website": "http://www.king-george.va.us",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicplus_agendacenter",
+   "selection_group": "piedmont",
+   "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); AWS withdrew its data-center permit application Aug 26, 2026",
+   "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+   "final_url": "https://www.king-george.va.us/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://www.king-george.va.us/AgendaCenter/Board-of-Supervisors-2"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "5",
+     "url": "https://www.king-george.va.us/AgendaCenter/Planning-Commission-5"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.king-george.va.us/AgendaCenter/Planning-Commission-5",
+     "n_recent": 4,
+     "latest": "2026-10-13"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicplus",
+     "url": "https://www.king-george.va.us/AgendaCenter/Board-of-Supervisors-2",
+     "n_recent": 9,
+     "latest": "2026-10-06"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.king-george.va.us/AgendaCenter/Board-of-Zoning-Appeals-3",
+     "n_recent": 0,
+     "latest": "2026-01-28"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 20 categories, 4 tracked"
+   ],
+   "pages_fetched": 7,
+   "discovered_at": "2026-10-12T15:10:07+00:00"
+  },
+  {
+   "town": "Madison County",
+   "state": "VA",
+   "county": "Madison",
+   "kind": "county",
+   "website": "https://www.madisonco.virginia.gov/",
+   "census_bucket": "stock_adapter",
+   "census_detail": "civicplus_agendacenter",
+   "selection_group": "piedmont",
+   "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9)",
+   "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+   "final_url": "https://www.madisonco.virginia.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "category_id": "3",
+     "url": "https://www.madisonco.virginia.gov/AgendaCenter/Board-of-Supervisors-3"
+    },
+    {
+     "board": "Board of Zoning Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "5",
+     "url": "https://www.madisonco.virginia.gov/AgendaCenter/Board-of-Zoning-Appeals-5"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "6",
+     "url": "https://www.madisonco.virginia.gov/AgendaCenter/Planning-Commission-6"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.madisonco.virginia.gov/AgendaCenter/Planning-Commission-6",
+     "n_recent": 8,
+     "latest": "2026-10-07"
+    },
+    "select_board": {
+     "board": "Board of Supervisors",
+     "source": "civicplus",
+     "url": "https://www.madisonco.virginia.gov/AgendaCenter/Board-of-Supervisors-3",
+     "n_recent": 14,
+     "latest": "2026-10-13"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.madisonco.virginia.gov/AgendaCenter/Board-of-Zoning-Appeals-5",
+     "n_recent": 2,
+     "latest": "2026-08-18"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 10 categories, 3 tracked"
+   ],
+   "pages_fetched": 5,
+   "discovered_at": "2026-10-12T15:09:53+00:00"
+  },
+  {
+   "town": "Town of Culpeper",
+   "state": "VA",
+   "county": "Culpeper",
+   "kind": "town",
+   "website": "https://www.culpeperva.gov/",
+   "selection_group": "town",
+   "selection_reason": "Data-center fights (coverage probe: BoardDocs)",
+   "selection_source": "research_notes/Meeting monitor national expansion/coverage_sample_jurisdictions.csv",
+   "final_url": "https://www.culpeperva.gov/",
+   "cms": [
+    "revize"
+   ],
+   "platform": "boarddocs",
+   "status": "not_automated",
+   "reason_code": "vendor_blocked",
+   "reason": "agendas on boarddocs: www.boarddocs.com answers HTTP 403 to 351WatchBot",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {
+    "select_board": {
+     "board": "COUNCIL BIOGRAPHIES View",
+     "source": "agenda_page",
+     "url": "https://www.culpeperva.gov/government/mayor_and_council/town_council_bios/index.php",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "boarddocs": {
+     "urls": [
+      "https://www.boarddocs.com/va/tocva/Board.nsf"
+     ],
+     "status": "vendor_blocked",
+     "detail": "www.boarddocs.com answers HTTP 403 to 351WatchBot"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 21,
+   "discovered_at": "2026-10-12T15:10:05+00:00"
+  },
+  {
+   "town": "Town of Warrenton",
+   "state": "VA",
+   "county": "Fauquier",
+   "kind": "town",
+   "website": "https://www.warrentonva.gov/",
+   "selection_group": "town",
+   "selection_reason": "Amazon data-center fight (coverage probe: Municode Meetings)",
+   "selection_source": "research_notes/Meeting monitor national expansion/coverage_sample_jurisdictions.csv",
+   "final_url": "https://www.warrentonva.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://warrenton-va.municodemeetings.com/",
+     "platform": "agenda_page",
+     "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "vendor": "municode_meetings"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://warrenton-va.municodemeetings.com/",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+commission|\\bPC\\b",
+     "board_exclude": "planning\\s+district|regional|emergency\\s+planning|committee|\\bPDC\\b|board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "vendor": "municode_meetings"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://warrenton-va.municodemeetings.com/",
+     "n_recent": 6,
+     "latest": "2026-08-18",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-08-18",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Agenda-2867e7419c154f4baec27a819830f359.pdf",
+       "title": "PDF Agenda for Planning Commission Regular Meeting - 08/18/2026 - 7:00pm"
+      },
+      {
+       "date": "2026-08-18",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Packet-2867e7419c154f4baec27a819830f359.pdf",
+       "title": "PDF Agenda Packet for Planning Commission Regular Meeting - 08/18/2026 - 7:00pm"
+      },
+      {
+       "date": "2026-07-21",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Agenda-e569ea84751c4c8db428f602831bfb93.pdf",
+       "title": "PDF Agenda for Planning Commission Regular Meeting - 07/21/2026 - 7:00pm"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://warrenton-va.municodemeetings.com/",
+     "n_recent": 10,
+     "latest": "2026-10-13",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-13",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Agenda-8440fd5a85d641a798587f4cdae0d3c6.pdf",
+       "title": "PDF Agenda for Town Council Regular Meeting - 10/13/2026 - 9:00am"
+      },
+      {
+       "date": "2026-10-13",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Packet-8440fd5a85d641a798587f4cdae0d3c6.pdf",
+       "title": "PDF Agenda Packet for Town Council Regular Meeting - 10/13/2026 - 9:00am"
+      },
+      {
+       "date": "2026-09-08",
+       "url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Agenda-bcc38a552688441db32f628328799daa.pdf",
+       "title": "PDF Agenda for Town Council Regular Meeting - 09/08/2026 - 9:00am"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "agenda_page",
+     "url": "https://www.warrentonva.gov/300/Board-of-Zoning-Appeals",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "municode_meetings": {
+     "urls": [
+      "https://warrenton-va.municodemeetings.com/"
+     ],
+     "status": "open"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 37,
+   "discovered_at": "2026-10-12T20:54:13+00:00"
+  },
+  {
+   "town": "Town of Farmville",
+   "state": "VA",
+   "county": "Prince Edward",
+   "kind": "town",
+   "website": "https://www.farmvilleva.com/",
+   "selection_group": "town",
+   "selection_reason": "Prince Edward county seat; CivicClerk tenant farmvilleva answers",
+   "selection_source": "research_notes/Meeting monitor national expansion/coverage_sample_jurisdictions.csv",
+   "final_url": "https://www.farmvilleva.com/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "farmvilleva",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Council",
+     "board_key": "select_board",
+     "url": "https://farmvilleva.portal.civicclerk.com"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://farmvilleva.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of Zoning Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://farmvilleva.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://farmvilleva.portal.civicclerk.com",
+     "n_recent": 4,
+     "latest": "2026-09-16"
+    },
+    "select_board": {
+     "board": "Town Council",
+     "source": "civicclerk",
+     "url": "https://farmvilleva.portal.civicclerk.com",
+     "n_recent": 8,
+     "latest": "2026-10-14"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicclerk",
+     "url": "https://farmvilleva.portal.civicclerk.com",
+     "n_recent": 2,
+     "latest": "2026-08-27"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "civicclerk_legacy": {
+     "urls": [
+      "https://farmvilleva.civicclerk.com/web/Home.aspx"
+     ],
+     "tenant": "farmvilleva",
+     "status": "open"
+    },
+    "civicclerk": {
+     "urls": [
+      "https://farmvilleva.portal.civicclerk.com"
+     ],
+     "tenant": "farmvilleva",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 1 categories, 1 tracked"
+   ],
+   "pages_fetched": 18,
+   "discovered_at": "2026-10-12T15:10:08+00:00"
+  },
+  {
+   "town": "Town of South Hill",
+   "state": "VA",
+   "county": "Mecklenburg",
+   "kind": "town",
+   "website": "https://www.southhillva.org/",
+   "selection_group": "town",
+   "selection_reason": "Mecklenburg's largest town, next to the Microsoft data-center campus",
+   "selection_source": "research_notes/Meeting monitor national expansion/coverage_sample_jurisdictions.csv",
+   "final_url": "https://www.southhillva.org/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.southhillva.org/agendas_and_minutes.php",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b|\\bplanning\\b|\\bzoning\\s+(?:board|appeals)|\\bZBA\\b|\\bBZA\\b|\\bappeals\\b",
+     "board_default": true
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.southhillva.org/agendas_and_minutes.php",
+     "n_recent": 9,
+     "latest": "2026-10-13",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-13",
+       "url": "https://www.southhillva.org/261013 SHTC Reg Mtg Agenda Only.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-13",
+       "url": "https://www.southhillva.org/261013 SHTC Reg Mtg.pdf",
+       "title": "Packet"
+      },
+      {
+       "date": "2026-09-14",
+       "url": "https://www.southhillva.org/260914 Regular_DRAFT.pdf",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "governing body assigned by default on https://www.southhillva.org/agendas_and_minutes.php"
+   ],
+   "pages_fetched": 20,
+   "discovered_at": "2026-10-12T15:10:16+00:00"
+  },
+  {
+   "town": "Town of South Boston",
+   "state": "VA",
+   "county": "Halifax",
+   "kind": "town",
+   "website": "https://www.southboston.com/",
+   "selection_group": "town",
+   "selection_reason": "Halifax's largest town (solar and industrial rezonings in the county)",
+   "selection_source": "research_notes/Meeting monitor national expansion/coverage_sample_jurisdictions.csv",
+   "final_url": "https://www.southboston.com/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.southboston.com/departments/council/council_minutes_of_meetings.php",
+     "platform": "agenda_page",
+     "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.southboston.com/departments/council/council_minutes_of_meetings.php",
+     "n_recent": 8,
+     "latest": "2026-10-13",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-13",
+       "url": "https://www.southboston.com/10-13-26 Council Agenda.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-13",
+       "url": "https://www.southboston.com/10-13-26 Council Packet.pdf",
+       "title": "Packet"
+      },
+      {
+       "date": "2026-09-14",
+       "url": "https://www.southboston.com/Council Agenda 9-14-26.pdf",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning Commission Members",
+     "source": "agenda_page",
+     "url": "https://www.southboston.com/departments/planning/planning_commission_members.php",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 18,
+   "discovered_at": "2026-10-12T15:10:20+00:00"
+  }
+ ]
+}

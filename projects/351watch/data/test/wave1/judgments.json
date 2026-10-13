@@ -1,0 +1,2675 @@
+{
+ "ct_round1": {
+  "worksheet": "worksheet_ct.json",
+  "seed": 2028,
+  "pool": 247,
+  "n": 60,
+  "definition": "An item is correct when its host town, applicant, facility / technology, status and decision or hearing date, and link all match the Siting Council's own pages (decision dates within one day of the docket page's Final Decision entry accepted). tags_ok: every topic tag right.",
+  "code": "ct_siting.py before the docket-date fix",
+  "correct": 55,
+  "tags_ok": 55,
+  "items": [
+   {
+    "n": 0,
+    "kind": "docket",
+    "number": "508",
+    "town": "Orange",
+    "correct": false,
+    "tags_ok": false,
+    "reason": "Docket 508 decided 08/19/22 (docket page), item says 2022-04-21 (the Decision and Order's service-list date); also tagged wireless_telecom for transmission monopoles"
+   },
+   {
+    "n": 1,
+    "kind": "docket",
+    "number": "509R",
+    "town": "New Canaan",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Remand decision: file name 08/01/24, docket page 08/02/24 (documents issued next day); accepted"
+   },
+   {
+    "n": 2,
+    "kind": "docket",
+    "number": "523",
+    "town": "Orange",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 3,
+    "kind": "docket",
+    "number": "526",
+    "town": "Stonington",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "File name 02/06/25, docket page 02/07/25; accepted"
+   },
+   {
+    "n": 4,
+    "kind": "docket",
+    "number": "527",
+    "town": "Killingly",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 5,
+    "kind": "docket",
+    "number": "529",
+    "town": "Haddam",
+    "correct": false,
+    "tags_ok": true,
+    "reason": "Docket 529 decided 05/30/25 (docket page), item says 2025-02-25 (service-list date)"
+   },
+   {
+    "n": 6,
+    "kind": "docket",
+    "number": "532",
+    "town": "Torrington",
+    "correct": false,
+    "tags_ok": true,
+    "reason": "Docket 532 was a denial (Council Decision Documents (Denial), 02/06/26); item says 'decided' with no outcome"
+   },
+   {
+    "n": 7,
+    "kind": "docket",
+    "number": "535",
+    "town": "Woodstock",
+    "correct": false,
+    "tags_ok": true,
+    "reason": "Docket 535 decided 02/06/26 (docket page), item says 2025-07-21 (service-list date)"
+   },
+   {
+    "n": 8,
+    "kind": "docket",
+    "number": "540",
+    "town": "New Milford",
+    "correct": false,
+    "tags_ok": true,
+    "reason": "Docket 540 decided 04/02/26 (docket page), item says 2025-08-28 (service-list date)"
+   },
+   {
+    "n": 9,
+    "kind": "petition",
+    "number": "1500",
+    "town": "Old Lyme",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 10,
+    "kind": "petition",
+    "number": "1502",
+    "town": "Greenwich",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 11,
+    "kind": "petition",
+    "number": "1503",
+    "town": "Milford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 12,
+    "kind": "petition",
+    "number": "1504",
+    "town": "Orange",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 13,
+    "kind": "petition",
+    "number": "1507",
+    "town": "Windsor",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 14,
+    "kind": "petition",
+    "number": "1514",
+    "town": "Cheshire",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Struck-through co-petitioners correctly dropped"
+   },
+   {
+    "n": 15,
+    "kind": "petition",
+    "number": "1523",
+    "town": "Colchester",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 16,
+    "kind": "petition",
+    "number": "1534",
+    "town": "Groton",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 17,
+    "kind": "petition",
+    "number": "1542",
+    "town": "Stamford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Applicant keeps the source's stray ')' ; accepted"
+   },
+   {
+    "n": 18,
+    "kind": "petition",
+    "number": "1544",
+    "town": "Norfolk",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 19,
+    "kind": "petition",
+    "number": "1544A",
+    "town": "Colebrook",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Applicant ends with the word 'amended' (from 'amended petition'); cosmetic, accepted"
+   },
+   {
+    "n": 20,
+    "kind": "petition",
+    "number": "1546",
+    "town": "Hartford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 21,
+    "kind": "petition",
+    "number": "1549",
+    "town": "Bridgeport",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 22,
+    "kind": "petition",
+    "number": "1553",
+    "town": "Hartford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 23,
+    "kind": "petition",
+    "number": "1555",
+    "town": "Windsor Locks",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 24,
+    "kind": "petition",
+    "number": "1562",
+    "town": "Colchester",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 25,
+    "kind": "petition",
+    "number": "1565",
+    "town": "East Haddam",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 26,
+    "kind": "petition",
+    "number": "1566",
+    "town": "Norwich",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Host towns from the bold markup: Franklin, named only in plain text, is not a host here (recall gap, not an error in this Norwich item)"
+   },
+   {
+    "n": 27,
+    "kind": "petition",
+    "number": "1567",
+    "town": "Weston",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 28,
+    "kind": "petition",
+    "number": "1568",
+    "town": "Windsor",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 29,
+    "kind": "petition",
+    "number": "1574",
+    "town": "Cheshire",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 30,
+    "kind": "petition",
+    "number": "1574",
+    "town": "Wallingford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 31,
+    "kind": "petition",
+    "number": "1575",
+    "town": "Salisbury",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 32,
+    "kind": "petition",
+    "number": "1576",
+    "town": "Haddam",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 33,
+    "kind": "petition",
+    "number": "1577",
+    "town": "Waterbury",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Watertown, Thomaston and Plymouth are named only in plain text: recall gap for those towns"
+   },
+   {
+    "n": 34,
+    "kind": "petition",
+    "number": "1580",
+    "town": "North Haven",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 35,
+    "kind": "petition",
+    "number": "1581",
+    "town": "East Hampton",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 36,
+    "kind": "petition",
+    "number": "1591",
+    "town": "Willington",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 37,
+    "kind": "petition",
+    "number": "1591",
+    "town": "Stafford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 38,
+    "kind": "petition",
+    "number": "1604",
+    "town": "Suffield",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 39,
+    "kind": "petition",
+    "number": "1605",
+    "town": "Hartford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 40,
+    "kind": "petition",
+    "number": "1606",
+    "town": "Middletown",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 41,
+    "kind": "petition",
+    "number": "1613",
+    "town": "East Haddam",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 42,
+    "kind": "petition",
+    "number": "1615",
+    "town": "Hartford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 43,
+    "kind": "petition",
+    "number": "1616",
+    "town": "East Haddam",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 44,
+    "kind": "petition",
+    "number": "1623",
+    "town": "Waterford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 45,
+    "kind": "petition",
+    "number": "1624",
+    "town": "Newtown",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 46,
+    "kind": "petition",
+    "number": "1626",
+    "town": "Franklin",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 47,
+    "kind": "petition",
+    "number": "1627",
+    "town": "Hamden",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 48,
+    "kind": "petition",
+    "number": "1631",
+    "town": "Wethersfield",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 49,
+    "kind": "petition",
+    "number": "1638",
+    "town": "Torrington",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 50,
+    "kind": "petition",
+    "number": "1639",
+    "town": "Killingworth",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 51,
+    "kind": "petition",
+    "number": "1641",
+    "town": "West Haven",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 52,
+    "kind": "petition",
+    "number": "1645",
+    "town": "Mansfield",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 53,
+    "kind": "petition",
+    "number": "1650",
+    "town": "Wolcott",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 54,
+    "kind": "petition",
+    "number": "1651",
+    "town": "Salem",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 55,
+    "kind": "petition",
+    "number": "1654",
+    "town": "Preston",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 56,
+    "kind": "petition",
+    "number": "1660",
+    "town": "Naugatuck",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 57,
+    "kind": "petition",
+    "number": "1664",
+    "town": "North Haven",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 58,
+    "kind": "petition",
+    "number": "1672",
+    "town": "Portland",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 59,
+    "kind": "petition",
+    "number": "1678",
+    "town": "Milford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   }
+  ]
+ },
+ "ct_round2": {
+  "worksheet": "worksheet_ct_r2.json",
+  "seed": 2029,
+  "pool": 185,
+  "n": 60,
+  "definition": "An item is correct when its host town, applicant, facility / technology, status and decision or hearing date, and link all match the Siting Council's own pages (decision dates within one day of the docket page's Final Decision entry accepted). tags_ok: every topic tag right.",
+  "code": "ct_siting.py after the docket-date fix (docket page Final Decision), before the round-2 fixes",
+  "correct": 57,
+  "tags_ok": 56,
+  "items": [
+   {
+    "n": 0,
+    "kind": "docket",
+    "number": "508",
+    "town": "New Haven",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Docket 508 now 08/19/22 (docket page Final Decision) - fixed since round 1"
+   },
+   {
+    "n": 1,
+    "kind": "docket",
+    "number": "508",
+    "town": "West Haven",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 2,
+    "kind": "docket",
+    "number": "516R",
+    "town": "Bridgeport",
+    "correct": false,
+    "tags_ok": true,
+    "reason": "Docket 516R is a court-ordered remand still in progress (no remand decision on the docket page); item says denied 2025-10-16, taken from a procedural filing under FINAL DECISION"
+   },
+   {
+    "n": 3,
+    "kind": "docket",
+    "number": "517",
+    "town": "Redding",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 4,
+    "kind": "docket",
+    "number": "520",
+    "town": "Haddam",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Docket 520: listing names Homeland Towers / Cellco with 'Infra Towers, LLC' inserted before 'Certificate'; applicant as listed accepted"
+   },
+   {
+    "n": 5,
+    "kind": "docket",
+    "number": "524",
+    "town": "Woodbury",
+    "correct": false,
+    "tags_ok": true,
+    "reason": "Docket 524 applicant missing: the listing strikes 'Greenskies Clean Energy, LLC' and inserts 'CF Woodbury Fawn Meadow LLC' after 'application for a', which the parser does not read"
+   },
+   {
+    "n": 6,
+    "kind": "docket",
+    "number": "528",
+    "town": "Andover",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 7,
+    "kind": "docket",
+    "number": "536",
+    "town": "Norfolk",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 8,
+    "kind": "docket",
+    "number": "537",
+    "town": "Stonington",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 9,
+    "kind": "petition",
+    "number": "1510",
+    "town": "Cheshire",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 10,
+    "kind": "petition",
+    "number": "1512",
+    "town": "Manchester",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 11,
+    "kind": "petition",
+    "number": "1513",
+    "town": "Branford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 12,
+    "kind": "petition",
+    "number": "1525",
+    "town": "Waterford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 13,
+    "kind": "petition",
+    "number": "1526",
+    "town": "Bloomfield",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 14,
+    "kind": "petition",
+    "number": "1529",
+    "town": "Old Saybrook",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 15,
+    "kind": "petition",
+    "number": "1530",
+    "town": "Beacon Falls",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 16,
+    "kind": "petition",
+    "number": "1532",
+    "town": "Avon",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 17,
+    "kind": "petition",
+    "number": "1535",
+    "town": "Stonington",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 18,
+    "kind": "petition",
+    "number": "1544A",
+    "town": "Norfolk",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Applicant ends with 'amended' (cosmetic, as in round 1)"
+   },
+   {
+    "n": 19,
+    "kind": "petition",
+    "number": "1552",
+    "town": "Ridgefield",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 20,
+    "kind": "petition",
+    "number": "1554",
+    "town": "West Hartford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 21,
+    "kind": "petition",
+    "number": "1557",
+    "town": "Enfield",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 22,
+    "kind": "petition",
+    "number": "1559",
+    "town": "Danbury",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 23,
+    "kind": "petition",
+    "number": "1561",
+    "town": "Waterbury",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 24,
+    "kind": "petition",
+    "number": "1566",
+    "town": "Lebanon",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 25,
+    "kind": "petition",
+    "number": "1566",
+    "town": "Bozrah",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 26,
+    "kind": "petition",
+    "number": "1567",
+    "town": "Wilton",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 27,
+    "kind": "petition",
+    "number": "1570",
+    "town": "New Britain",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 28,
+    "kind": "petition",
+    "number": "1573",
+    "town": "Southbury",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Brookfield named only in plain text (recall gap for Brookfield)"
+   },
+   {
+    "n": 29,
+    "kind": "petition",
+    "number": "1573",
+    "town": "Newtown",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 30,
+    "kind": "petition",
+    "number": "1584",
+    "town": "Hartford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 31,
+    "kind": "petition",
+    "number": "1585",
+    "town": "Meriden",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Struck-through earlier applicants correctly dropped"
+   },
+   {
+    "n": 32,
+    "kind": "petition",
+    "number": "1587",
+    "town": "Cheshire",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 33,
+    "kind": "petition",
+    "number": "1590",
+    "town": "Meriden",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 34,
+    "kind": "petition",
+    "number": "1592",
+    "town": "Somers",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 35,
+    "kind": "petition",
+    "number": "1595",
+    "town": "Ansonia",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 36,
+    "kind": "petition",
+    "number": "1612",
+    "town": "Southington",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 37,
+    "kind": "petition",
+    "number": "1613",
+    "town": "Lyme",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 38,
+    "kind": "petition",
+    "number": "1617",
+    "town": "Woodstock",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 39,
+    "kind": "petition",
+    "number": "1618",
+    "town": "Waterford",
+    "correct": true,
+    "tags_ok": false,
+    "reason": "Petition 1618: telecom equipment on a transmission structure; clean_energy_siting tag wrong"
+   },
+   {
+    "n": 40,
+    "kind": "petition",
+    "number": "1619",
+    "town": "Oxford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 41,
+    "kind": "petition",
+    "number": "1621",
+    "town": "Bridgeport",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "Struck-through 'VFS, LLC' correctly dropped"
+   },
+   {
+    "n": 42,
+    "kind": "petition",
+    "number": "1629",
+    "town": "East Hartford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 43,
+    "kind": "petition",
+    "number": "1632",
+    "town": "Norwalk",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 44,
+    "kind": "petition",
+    "number": "1642",
+    "town": "Danbury",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 45,
+    "kind": "petition",
+    "number": "1644",
+    "town": "Bristol",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 46,
+    "kind": "petition",
+    "number": "1646",
+    "town": "New Canaan",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 47,
+    "kind": "petition",
+    "number": "1647",
+    "town": "Oxford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 48,
+    "kind": "petition",
+    "number": "1649",
+    "town": "Canaan",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 49,
+    "kind": "petition",
+    "number": "1655",
+    "town": "East Haven",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 50,
+    "kind": "petition",
+    "number": "1656",
+    "town": "Beacon Falls",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 51,
+    "kind": "petition",
+    "number": "1658",
+    "town": null,
+    "correct": false,
+    "tags_ok": true,
+    "reason": "Petition 1658 has no town: the Council writes 'Storrs (Mansfield)' and the parser drops the parenthesis that holds the town"
+   },
+   {
+    "n": 52,
+    "kind": "petition",
+    "number": "1661",
+    "town": "Stamford",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 53,
+    "kind": "petition",
+    "number": "1663",
+    "town": "Hamden",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 54,
+    "kind": "petition",
+    "number": "1665",
+    "town": "Old Saybrook",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 55,
+    "kind": "petition",
+    "number": "1670",
+    "town": "New Haven",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 56,
+    "kind": "petition",
+    "number": "1673",
+    "town": "Burlington",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 57,
+    "kind": "petition",
+    "number": "1675",
+    "town": "Woodbridge",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 58,
+    "kind": "petition",
+    "number": "1677",
+    "town": "Killingworth",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   },
+   {
+    "n": 59,
+    "kind": "petition",
+    "number": "1693",
+    "town": "New Britain",
+    "correct": true,
+    "tags_ok": true,
+    "reason": "town, applicant, facility, status/date and link match the Council's listing"
+   }
+  ],
+  "after_fixes_in_sample": "Round-2 fixes (ct_siting.py: village (town) parentheses, telecom equipment on transmission structures) re-run offline over the 2022+ backfill: Petition 1658 now resolves to Mansfield and Petition 1618 loses the clean_energy_siting tag; Docket 508 (round 1) also loses its wrong wireless_telecom tag; no other judged item of rounds 1-2 changed. Not fixed: Docket 516R (remand still open, a procedural filing read as the decision) and Docket 524 (struck-and-inserted applicant)."
+ },
+ "vt_fresh": {
+  "worksheet": "worksheet_vt.json",
+  "seed": 2028,
+  "pool": "detail pages of Act 250 projects 1R0958-1R1037, 4C1284-4C1363, 5W0965-5W1044, 7E1106-7E1185, 9A0294-9A0373, 2W0278-2W0357",
+  "n": 60,
+  "definition": "An item is correct when its town, project description, applicant (organizations named, private persons shown as [individual]), application type, status, date and link match the project's Act 250 detail page, and its siting flag and topics are right: flagged exactly when it is new solar, storage, data-center, energy-generation or transmission, tower, extraction (quarry / pit) or large commercial / industrial development work (the brief's list), not when it is an administrative change. flag_ok: the flag and topics alone; fields_ok: the record fields alone.",
+  "code": "vt_act250.py as frozen before the fresh pool was drawn (classifier written on the 40 feed items)",
+  "correct": 54,
+  "flag_ok": 56,
+  "fields_ok": 58,
+  "flagged": 6,
+  "flagged_correct": 4,
+  "after_fixes_in_sample": "all 6 errors fixed by the round-1 VT fixes (tower words, pit reclamation, shopping-center additions, industrial subdivisions, acronym applicants, 'kara'); no other item of the 60 or of the 40 feed items changed except 4C0950-8 (a personal revocable trust, now [individual])",
+  "items": [
+   {
+    "n": 0,
+    "project_number": "2W0328",
+    "town": "Vernon",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 1,
+    "project_number": "9A0308",
+    "town": "Middlebury",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "source page lists a hearing date (2008-06-29) after its decision (2005-08-04); item copies the page"
+   },
+   {
+    "n": 2,
+    "project_number": "4C1289",
+    "town": "Essex",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 3,
+    "project_number": "9A0333",
+    "town": "Ferrisburgh",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 4,
+    "project_number": "4C1302",
+    "town": "Essex",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 5,
+    "project_number": "9A0317",
+    "town": "Middlebury",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 6,
+    "project_number": "5W1011",
+    "town": "Warren",
+    "flagged": false,
+    "topics": [],
+    "correct": false,
+    "flag_ok": false,
+    "fields_ok": true,
+    "reason": "missed tower: '10' HIGH TANSMITTER TOWER W/5' ANTENNA' (typo in source, no telecom word) is a communications tower; not flagged"
+   },
+   {
+    "n": 7,
+    "project_number": "9A0318",
+    "town": "Shoreham",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 8,
+    "project_number": "5W1021",
+    "town": "Montpelier",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 9,
+    "project_number": "1R1011",
+    "town": "Pittsford",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 10,
+    "project_number": "2W0300",
+    "town": "Dummerston",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 11,
+    "project_number": "1R1026",
+    "town": "Killington",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 12,
+    "project_number": "4C1315",
+    "town": "Williston",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 13,
+    "project_number": "4C1316",
+    "town": "Burlington",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 14,
+    "project_number": "5W1019",
+    "town": "Barre Town",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 15,
+    "project_number": "9A0330",
+    "town": "Bristol",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 16,
+    "project_number": "7E1179",
+    "town": "Ferdinand",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 17,
+    "project_number": "5W0973",
+    "town": "Berlin",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 18,
+    "project_number": "4C1347",
+    "town": "Shelburne",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 19,
+    "project_number": "9A0347",
+    "town": "Monkton",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 20,
+    "project_number": "9A0309",
+    "town": "New Haven",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 21,
+    "project_number": "9A0313",
+    "town": "Leicester",
+    "flagged": true,
+    "topics": [
+     "wireless_telecom"
+    ],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 22,
+    "project_number": "9A0323",
+    "town": "Vergennes",
+    "flagged": true,
+    "topics": [
+     "large_development"
+    ],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "30,500 sq ft private K-12 school, Act 250 type 'Commercial - College, School': large_development by the module's rule (commercial type, >=20,000 sq ft new floor area); accepted"
+   },
+   {
+    "n": 23,
+    "project_number": "2W0332",
+    "town": "Londonderry",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 24,
+    "project_number": "4C1313",
+    "town": "Milton",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 25,
+    "project_number": "5W0983",
+    "town": "Moretown",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 26,
+    "project_number": "4C1319",
+    "town": "Colchester",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 27,
+    "project_number": "2W0321",
+    "town": "Brattleboro",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 28,
+    "project_number": "4C1356",
+    "town": "Williston",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 29,
+    "project_number": "4C1344",
+    "town": "Essex",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 30,
+    "project_number": "4C1286",
+    "town": "Colchester",
+    "flagged": true,
+    "topics": [
+     "extraction"
+    ],
+    "correct": false,
+    "flag_ok": false,
+    "fields_ok": true,
+    "reason": "false positive: 'reclamation of a borrow pit' (stump dump) closes a pit; it is not extraction"
+   },
+   {
+    "n": 31,
+    "project_number": "9A0340",
+    "town": "Bristol",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 32,
+    "project_number": "5W1010",
+    "town": "Berlin",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 33,
+    "project_number": "1R1036",
+    "town": "Killington",
+    "flagged": false,
+    "topics": [],
+    "correct": false,
+    "flag_ok": true,
+    "fields_ok": false,
+    "reason": "applicant shown as 'Kara Tondorf Mountain Harmony, LLC': the contact person's name was not stripped (the source cell glues person and LLC together)"
+   },
+   {
+    "n": 34,
+    "project_number": "4C1292",
+    "town": "Colchester",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 35,
+    "project_number": "4C1290",
+    "town": "Essex",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 36,
+    "project_number": "4C1312",
+    "town": "Shelburne",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "six new golf holes and ponds: recreation, not on the brief's list; unflagged accepted"
+   },
+   {
+    "n": 37,
+    "project_number": "5W1025",
+    "town": "Duxbury",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 38,
+    "project_number": "2W0280",
+    "town": "Newfane",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 39,
+    "project_number": "1R1000",
+    "town": "Rutland City",
+    "flagged": true,
+    "topics": [
+     "extraction"
+    ],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "11.84-acre aggregate crushing / screening yard by an asphalt plant: extraction accepted"
+   },
+   {
+    "n": 40,
+    "project_number": "4C1320",
+    "town": "Burlington",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 41,
+    "project_number": "5W1030",
+    "town": "Middlesex",
+    "flagged": true,
+    "topics": [
+     "extraction"
+    ],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 42,
+    "project_number": "9A0358",
+    "town": "Bristol",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 43,
+    "project_number": "1R0964",
+    "town": "Pawlet",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 44,
+    "project_number": "9A0332",
+    "town": "New Haven",
+    "flagged": false,
+    "topics": [],
+    "correct": false,
+    "flag_ok": false,
+    "fields_ok": true,
+    "reason": "missed large development: 66-acre parcel subdivided into a 6-lot commercial/industrial subdivision"
+   },
+   {
+    "n": 45,
+    "project_number": "1R0992",
+    "town": "Brandon",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 46,
+    "project_number": "5W0994",
+    "town": "Berlin",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 47,
+    "project_number": "1R0989",
+    "town": "Benson",
+    "flagged": false,
+    "topics": [],
+    "correct": false,
+    "flag_ok": true,
+    "fields_ok": false,
+    "reason": "applicant 'VTEL' (Vermont Telephone Co., an acronym) shown as [individual]"
+   },
+   {
+    "n": 48,
+    "project_number": "5W1023",
+    "town": "Waterbury",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 49,
+    "project_number": "5W0969",
+    "town": "Woodbury",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 50,
+    "project_number": "1R1016",
+    "town": "Brandon",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 51,
+    "project_number": "2W0326",
+    "town": "Dummerston",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 52,
+    "project_number": "9A0341",
+    "town": "Vergennes",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 53,
+    "project_number": "9A0360",
+    "town": "Whiting",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 54,
+    "project_number": "2W0355",
+    "town": "Londonderry",
+    "flagged": true,
+    "topics": [
+     "large_development"
+    ],
+    "correct": false,
+    "flag_ok": false,
+    "fields_ok": true,
+    "reason": "false positive: a 12,500 sq ft addition to an existing shopping center is under the module's own 20,000 sq ft bar; the shopping-center rule fired on the words"
+   },
+   {
+    "n": 55,
+    "project_number": "4C1309",
+    "town": "Winooski",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 56,
+    "project_number": "9A0300",
+    "town": "Bristol",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 57,
+    "project_number": "1R0996",
+    "town": "Shrewsbury",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 58,
+    "project_number": "1R0998",
+    "town": "Danby",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   },
+   {
+    "n": 59,
+    "project_number": "1R1002",
+    "town": "Killington",
+    "flagged": false,
+    "topics": [],
+    "correct": true,
+    "flag_ok": true,
+    "fields_ok": true,
+    "reason": "fields match the detail page; flag right"
+   }
+  ]
+ },
+ "vt_feed_census": {
+  "source": "sources/vt_act250_items.json (the whole Act 250 agenda of 2026-10-12)",
+  "n": 40,
+  "in_sample": true,
+  "note": "The flag rules were written while reading these 40 items, so this is a census check, not an out-of-sample measure. All 40 match their detail pages; the 4 flagged (Fayston temporary 50 ft AT&T monopole, Berlin 100-room hotel, Milton JO earth extraction, Weathersfield Bow Sand Pit renewal) are right, and none of the 36 unflagged is a missed siting item. After the round-1 fixes one applicant changes: 'Katharine D. Stockman Revocable Trust' -> [individual] (personal trust).",
+  "correct": 40,
+  "flagged": 4
+ },
+ "ny_round1": {
+  "worksheet": "worksheet_ny.json",
+  "seed": 2028,
+  "pool": 85,
+  "n": 60,
+  "pool_note": "every hit in the document index of the extended NY crawl (ny_extended: meetings from 2026-06-14 to 2027-02-09, 25 towns); none had been read before the sample; matcher = the shared one in keywords.py, unchanged",
+  "definition": "MI/VA definition: a hit is a true positive when it points to a real agenda item, ordinance text, or staff or public record about its topic in the land-use or siting sense; general (non-zoning) ordinances and non-land-use moratoria are false positives. tags_ok: no wrong topic tag. board_ok: the board and meeting date shown are the document's.",
+  "correct": 55,
+  "tags_ok": 55,
+  "board_ok": 55,
+  "after_fixes_in_sample": "Denmark and Westfield listings curated after the sample: the zoning-law PDF (3 of the 5 false positives) is no longer listed, and Westfield's agendas are labelled Town Board. The solar-inverter and bare-letter false positives are matcher cases and stay (keywords.py is shared with MA and was not changed).",
+  "items": [
+   {
+    "n": 0,
+    "id": "633591a240da",
+    "town": "Albany",
+    "board": "Common Council Caucus & Regular Meeting",
+    "meeting_date": "2026-07-01",
+    "topics": [
+     "data_center"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "Common Council resolution supporting the state Responsible Data Center Development Act; accepted as a policy item on data-center development"
+   },
+   {
+    "n": 1,
+    "id": "9b6e454da785",
+    "town": "Albany",
+    "board": "Common Council Caucus & Regular Meeting",
+    "meeting_date": "2026-09-16",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 2,
+    "id": "a40904de287a",
+    "town": "Albany",
+    "board": "Common Council Caucus & Regular Meeting",
+    "meeting_date": "2026-08-12",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 3,
+    "id": "c5f96b3cc675",
+    "town": "Albany",
+    "board": "Common Council Caucus & Regular Meeting",
+    "meeting_date": "2026-07-15",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 4,
+    "id": "e08995aa959d",
+    "town": "Albany",
+    "board": "Common Council Caucus & Regular Meeting",
+    "meeting_date": "2026-09-16",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 5,
+    "id": "ec3da0b25129",
+    "town": "Albany",
+    "board": "Common Council Caucus & Regular Meeting",
+    "meeting_date": "2026-09-16",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 6,
+    "id": "709e75ca2954",
+    "town": "Angelica",
+    "board": "Town Board",
+    "meeting_date": "2026-08-10",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 7,
+    "id": "7fad08311459",
+    "town": "Angelica",
+    "board": "Town Board",
+    "meeting_date": "2026-06-08",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 8,
+    "id": "8735b47a3fd6",
+    "town": "Angelica",
+    "board": "Town Board",
+    "meeting_date": "2026-09-14",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 9,
+    "id": "d7c150ed08e7",
+    "town": "Angelica",
+    "board": "Town Board",
+    "meeting_date": "2026-10-12",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 10,
+    "id": "3f8e5fbbdd8e",
+    "town": "Arietta",
+    "board": "Town Board Meetings, Agendas & Minutes",
+    "meeting_date": "2026-05-18",
+    "topics": [
+     "battery_storage",
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 11,
+    "id": "48bd110a9819",
+    "town": "Arietta",
+    "board": "Town Board Meetings, Agendas & Minutes",
+    "meeting_date": "2026-05-18",
+    "topics": [
+     "battery_storage",
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 12,
+    "id": "709b2ab1e052",
+    "town": "Arietta",
+    "board": "Town Board Meetings, Agendas & Minutes",
+    "meeting_date": "2026-05-04",
+    "topics": [
+     "battery_storage",
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 13,
+    "id": "b3bbf29d8df8",
+    "town": "Arietta",
+    "board": "Town Board Meetings, Agendas & Minutes",
+    "meeting_date": "2026-06-15",
+    "topics": [
+     "battery_storage",
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 14,
+    "id": "ba73dc575b8b",
+    "town": "Arietta",
+    "board": "Town Board Meetings, Agendas & Minutes",
+    "meeting_date": "2026-05-04",
+    "topics": [
+     "battery_storage",
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 15,
+    "id": "7fa334254467",
+    "town": "Campbell",
+    "board": "Select Board / Council",
+    "meeting_date": "2026-10-13",
+    "topics": [
+     "battery_storage",
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 16,
+    "id": "c84360db432e",
+    "town": "Campbell",
+    "board": "Select Board / Council",
+    "meeting_date": "2026-09-28",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "Set public hearing for the BESS moratorium extension; moratorium tag missing but no wrong tag"
+   },
+   {
+    "n": 17,
+    "id": "ece570f9a181",
+    "town": "Campbell",
+    "board": "Select Board / Council",
+    "meeting_date": "2026-06-08",
+    "topics": [
+     "solar"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "'WEB Addison Solar' Town Board agenda item (a solar project)"
+   },
+   {
+    "n": 18,
+    "id": "f786b4cf2dfc",
+    "town": "Campbell",
+    "board": "Select Board / Council",
+    "meeting_date": "2026-09-28",
+    "topics": [
+     "battery_storage",
+     "solar",
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 19,
+    "id": "d6625e4f5f5a",
+    "town": "Corning",
+    "board": "Planning Board Meeting Agenda and Minutes",
+    "meeting_date": "2026-09-01",
+    "topics": [
+     "wireless_telecom"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 20,
+    "id": "4a80ee513dd0",
+    "town": "Denmark",
+    "board": "Town Board Organizational Meeting Agenda 01.01.2026 @ 11 am",
+    "meeting_date": "2026-06-15",
+    "topics": [
+     "solar"
+    ],
+    "correct": false,
+    "tags_ok": false,
+    "board_ok": false,
+    "reason": "zoning-law PDF (2019 code) table of contents ('Solar Energy Systems 61'); not a meeting record, and the document is a sidebar link read as a June 15 2026 Town Board document"
+   },
+   {
+    "n": 21,
+    "id": "5cfe3f80631c",
+    "town": "Denmark",
+    "board": "Town Board Organizational Meeting Agenda 01.01.2026 @ 11 am",
+    "meeting_date": "2026-06-15",
+    "topics": [
+     "solar",
+     "wireless_telecom"
+    ],
+    "correct": false,
+    "tags_ok": false,
+    "board_ok": false,
+    "reason": "same zoning-law PDF: use table listing 'Solar Energy Systems' and 'Telecommunication Tower/Antenna'"
+   },
+   {
+    "n": 22,
+    "id": "a1c010589970",
+    "town": "Denmark",
+    "board": "Town Board Organizational Meeting Agenda 01.01.2026 @ 11 am",
+    "meeting_date": "2026-06-15",
+    "topics": [
+     "solar"
+    ],
+    "correct": false,
+    "tags_ok": false,
+    "board_ok": false,
+    "reason": "supervisor's report: the town hall's own solar inverter replaced; not siting"
+   },
+   {
+    "n": 23,
+    "id": "c1bed5134949",
+    "town": "Denmark",
+    "board": "Town Board Organizational Meeting Agenda 01.01.2026 @ 11 am",
+    "meeting_date": "2026-06-15",
+    "topics": [
+     "solar"
+    ],
+    "correct": false,
+    "tags_ok": false,
+    "board_ok": false,
+    "reason": "same zoning-law PDF: site-plan submission checklist ('energy distribution facilities, including ... solar')"
+   },
+   {
+    "n": 24,
+    "id": "4dc8249cf8dd",
+    "town": "Dunkirk",
+    "board": "Common Council",
+    "meeting_date": "2026-09-15",
+    "topics": [
+     "battery_storage",
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 25,
+    "id": "9f2c8d60192b",
+    "town": "Dunkirk",
+    "board": "Planning Board",
+    "meeting_date": "2026-07-22",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 26,
+    "id": "3bc7526716c3",
+    "town": "Ellery",
+    "board": "Town Board",
+    "meeting_date": "2026-06-08",
+    "topics": [
+     "battery_storage",
+     "solar",
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 27,
+    "id": "c068438da115",
+    "town": "Ellery",
+    "board": "Town Board",
+    "meeting_date": "2026-08-10",
+    "topics": [
+     "solar"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 28,
+    "id": "ec24cf29bd9a",
+    "town": "Glen Cove",
+    "board": "City Council",
+    "meeting_date": "2026-05-26",
+    "topics": [
+     "wireless_telecom"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "engineering contract for the Fire Department monopole project (a new tower)"
+   },
+   {
+    "n": 29,
+    "id": "077de5561d50",
+    "town": "Greig",
+    "board": "Select Board / Council",
+    "meeting_date": "2026-06-10",
+    "topics": [
+     "moratorium",
+     "data_center"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 30,
+    "id": "3e7548f2ca70",
+    "town": "Greig",
+    "board": "Select Board / Council",
+    "meeting_date": "2026-06-10",
+    "topics": [
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 31,
+    "id": "4d01c9390fc7",
+    "town": "Greig",
+    "board": "Select Board / Council",
+    "meeting_date": "2026-05-13",
+    "topics": [
+     "moratorium",
+     "data_center"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 32,
+    "id": "dcb52a2fbd09",
+    "town": "Greig",
+    "board": "Select Board / Council",
+    "meeting_date": "2026-04-15",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 33,
+    "id": "0d8666e35ac2",
+    "town": "Massena",
+    "board": "Town Planning Board",
+    "meeting_date": "2026-08-20",
+    "topics": [
+     "data_center"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 34,
+    "id": "dc87035e5ba6",
+    "town": "Massena",
+    "board": "Town Planning Board",
+    "meeting_date": "2026-06-25",
+    "topics": [
+     "data_center"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 35,
+    "id": "3d21663b8c13",
+    "town": "Mount Pleasant",
+    "board": "Town Board",
+    "meeting_date": "2026-06-23",
+    "topics": [
+     "solar"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "special permit hearing for solar arrays at the NYC DEP water treatment plant (rooftop arrays per the Planning Board agenda, but a special-permit land-use action)"
+   },
+   {
+    "n": 36,
+    "id": "be598d753d5a",
+    "town": "Mount Pleasant",
+    "board": "Town Board",
+    "meeting_date": "2026-07-14",
+    "topics": [
+     "solar"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 37,
+    "id": "e3c5741bc528",
+    "town": "Mount Pleasant",
+    "board": "Town Board",
+    "meeting_date": "2026-07-21",
+    "topics": [
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 38,
+    "id": "f0030813458e",
+    "town": "Mount Pleasant",
+    "board": "Planning Board",
+    "meeting_date": "2026-05-07",
+    "topics": [
+     "solar"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "Planning Board site plan / hearing for the same DEP solar arrays (rooftop + equipment pad)"
+   },
+   {
+    "n": 39,
+    "id": "0392975fd746",
+    "town": "North Tonawanda",
+    "board": "Common Council",
+    "meeting_date": "2026-06-16",
+    "topics": [
+     "moratorium",
+     "data_center"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 40,
+    "id": "13057dfd4dcf",
+    "town": "North Tonawanda",
+    "board": "Common Council",
+    "meeting_date": "2026-06-02",
+    "topics": [
+     "zoning_amendment"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "local-law WHEREAS: 'additional time is required to finalize zoning amendments' (data-center moratorium extension tied to the zoning update)"
+   },
+   {
+    "n": 41,
+    "id": "269dc264f89d",
+    "town": "North Tonawanda",
+    "board": "Common Council",
+    "meeting_date": "2026-06-16",
+    "topics": [
+     "moratorium",
+     "data_center"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 42,
+    "id": "4ad5ee397b22",
+    "town": "North Tonawanda",
+    "board": "Common Council",
+    "meeting_date": "2026-06-16",
+    "topics": [
+     "moratorium",
+     "data_center"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 43,
+    "id": "26fcdc46728d",
+    "town": "Riverhead",
+    "board": "Planning Board",
+    "meeting_date": "2026-05-07",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 44,
+    "id": "414ec9bc2f47",
+    "town": "Riverhead",
+    "board": "Planning Board",
+    "meeting_date": "2026-04-16",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 45,
+    "id": "55f0936bd9f6",
+    "town": "Riverhead",
+    "board": "Town Board",
+    "meeting_date": "2026-07-21",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "published letters on BESS (Riverhead's BESS law debate)"
+   },
+   {
+    "n": 46,
+    "id": "8bb2ddf5abcb",
+    "town": "Riverhead",
+    "board": "Town Board",
+    "meeting_date": "2026-07-07",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "published letters on BESS"
+   },
+   {
+    "n": 47,
+    "id": "9c741b70ca06",
+    "town": "Riverhead",
+    "board": "Planning Board",
+    "meeting_date": "2026-10-15",
+    "topics": [
+     "wireless_telecom"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 48,
+    "id": "ac2f86ddb7cf",
+    "town": "Riverhead",
+    "board": "Town Board",
+    "meeting_date": "2026-07-07",
+    "topics": [
+     "moratorium"
+    ],
+    "correct": false,
+    "tags_ok": false,
+    "board_ok": true,
+    "reason": "published-letters list: 'Letter from ... - Temporary Moratorium' with no subject; cannot be tied to a land-use moratorium from the record"
+   },
+   {
+    "n": 49,
+    "id": "ba0ae21bcfc9",
+    "town": "Riverhead",
+    "board": "Town Board",
+    "meeting_date": "2026-10-06",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "published letters on BESS"
+   },
+   {
+    "n": 50,
+    "id": "bdfe5853866f",
+    "town": "Riverhead",
+    "board": "Town Board",
+    "meeting_date": "2026-04-21",
+    "topics": [
+     "battery_storage"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 51,
+    "id": "d39202d85f5e",
+    "town": "Riverhead",
+    "board": "Planning Board",
+    "meeting_date": "2026-04-16",
+    "topics": [
+     "wireless_telecom"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 52,
+    "id": "fd5cb4e276c4",
+    "town": "Riverhead",
+    "board": "Town Board",
+    "meeting_date": "2026-08-04",
+    "topics": [
+     "zoning_amendment"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 53,
+    "id": "364db2a21ea7",
+    "town": "West Bloomfield",
+    "board": "Town Board",
+    "meeting_date": "2026-09-09",
+    "topics": [
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 54,
+    "id": "4df7be78af5e",
+    "town": "West Bloomfield",
+    "board": "Town Board",
+    "meeting_date": "2026-07-22",
+    "topics": [
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 55,
+    "id": "5d910050e3dc",
+    "town": "West Bloomfield",
+    "board": "Town Board",
+    "meeting_date": "2026-09-09",
+    "topics": [
+     "solar"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 56,
+    "id": "974d04f32ff8",
+    "town": "West Bloomfield",
+    "board": "Town Board",
+    "meeting_date": "2026-09-09",
+    "topics": [
+     "solar"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 57,
+    "id": "1f8163f24a83",
+    "town": "Westfield",
+    "board": "Planning Board",
+    "meeting_date": null,
+    "topics": [
+     "battery_storage",
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": false,
+    "reason": "BESS and wind moratorium extension hearings, but the document is a March 4 2026 Town Board agenda shown as 'Planning Board' with no meeting date (discovery read the year page through the Planning Board page)"
+   },
+   {
+    "n": 58,
+    "id": "9109e7c219a9",
+    "town": "Yonkers",
+    "board": "City Council of Yonkers Stated Meeting",
+    "meeting_date": "2026-09-15",
+    "topics": [
+     "moratorium"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   },
+   {
+    "n": 59,
+    "id": "c0dde9412a67",
+    "town": "Yonkers",
+    "board": "City Council of Yonkers Stated Meeting",
+    "meeting_date": "2026-09-15",
+    "topics": [
+     "zoning_amendment"
+    ],
+    "correct": true,
+    "tags_ok": true,
+    "board_ok": true,
+    "reason": "real agenda item / notice / local law on the topic"
+   }
+  ]
+ }
+}

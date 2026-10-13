@@ -16,6 +16,12 @@ crawler/watch351/
     civicplus.py           CivicPlus "Agenda Center" (/AgendaCenter)
     civicclerk.py          CivicClerk portal (public read-only OData API)
     generic.py             any plain HTML page that lists agenda links (Revize, WordPress, ASP...)
+    agenda_page.py         general agenda-page reader: no per-site regex; classifies each document link
+                           (agenda / packet / notice / minutes), dates it from text, file name, row or
+                           heading, follows year folders and per-meeting pages (MI/VA test, 2026-10)
+  discover_sites.py      site-level discovery outside MA (CivicPlus, CivicClerk, eSCRIBE, closed-vendor
+                         detection, agenda pages) -> data/towns_mi.json, data/towns_va.json
+  attribution.py         Michigan county planning commission hits -> the township the item names
   discover.py            platform fingerprinting + listing discovery -> towns.json
   extract.py             PDF (pdftotext, tesseract OCR fallback) / HTML / DOCX -> text
   keywords.py            topic regexes, false-positive guards, snippet extraction
@@ -47,7 +53,7 @@ A full crawl of the 30 towns takes a few minutes on a cold cache. Most of that i
 ## Politeness rules (all in `fetch.py`)
 
 - User-Agent: `351WatchBot/0.1 (+contact: hello@351watch.example)`. The contact is a placeholder; swap in a real address before any wider run.
-- `robots.txt` is obeyed for every host, including hosts reached by redirect. A 4xx on robots.txt means "allow". A 5xx or unreachable robots.txt means skip the host for this run. A `Crawl-delay` is honored, and a host asking for more than 10 s is skipped.
+- `robots.txt` is obeyed for every host, including hosts reached by redirect. A 4xx on robots.txt means "allow". A 5xx or unreachable robots.txt means skip the host for this run. A `Crawl-delay` is honored, and a host asking for more than 10 s is skipped (listing pages may wait up to 20 s; documents keep the 10 s cap).
 - At most 1 request per second per host, enforced with a per-host lock, so parallel town workers cannot exceed it.
 - Timeouts are 10 s to connect and 45 s to read. Connection errors get up to 2 retries with backoff. HTTP errors are never retried.
 - Downloads are capped at 40 MB.

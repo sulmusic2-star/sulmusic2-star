@@ -1,0 +1,2558 @@
+{
+ "_about": "Agenda Ahead Wave 1 test (2026-10): Connecticut's 169 towns (Wikipedia list, read 2026-10-12; county = historical county, planning_region = the Census county-equivalent since 2022), for the Siting Council state feed (watch351/sources/ct_siting.py). No town agendas are crawled (automated: false). Built by `python3 experiments/wave1_test.py towns`.",
+ "generated": "2026-10-12T23:08:30+00:00",
+ "state": "CT",
+ "gated": true,
+ "gate_note": "Test state: not part of the production daily run or site. Items are written only to data/test/wave1/sources/ by `python3 -m watch351.sources.ct_siting`.",
+ "source_url": "https://en.wikipedia.org/wiki/List_of_towns_in_Connecticut",
+ "count": 169,
+ "towns": [
+  {
+   "town": "Andover",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 3151,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Ansonia",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "city",
+   "pop_2020": 18918,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Ashford",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 4191,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Avon",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 18932,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Barkhamsted",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 3647,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Beacon Falls",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 6000,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Berlin",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 20175,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Bethany",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "town",
+   "pop_2020": 5297,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Bethel",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 20358,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Bethlehem",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 3385,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Bloomfield",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 21535,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Bolton",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 4858,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Bozrah",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 2429,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Branford",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "town",
+   "pop_2020": 28273,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Bridgeport",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Greater Bridgeport",
+   "kind": "city",
+   "pop_2020": 148654,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Bridgewater",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 1662,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Bristol",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Naugatuck Valley",
+   "kind": "city",
+   "pop_2020": 60833,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Brookfield",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 17528,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Brooklyn",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 8450,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Burlington",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 9519,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Canaan",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 1080,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Canterbury",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 5045,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Canton",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 10124,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Chaplin",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 2151,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Cheshire",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 28733,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Chester",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 3749,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Clinton",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 13185,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Colchester",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 15555,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Colebrook",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 1361,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Columbia",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 5272,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Cornwall",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 1567,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Coventry",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 12235,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Cromwell",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 14225,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Danbury",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "city",
+   "pop_2020": 86518,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Darien",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 21499,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Deep River",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 4415,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Derby",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "city",
+   "pop_2020": 12325,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Durham",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 7152,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "East Granby",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 5214,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "East Haddam",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 8875,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "East Hampton",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 12717,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "East Hartford",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 51045,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "East Haven",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "town",
+   "pop_2020": 27923,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "East Lyme",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 18693,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "East Windsor",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 11190,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Eastford",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 1649,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Easton",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Greater Bridgeport",
+   "kind": "town",
+   "pop_2020": 7605,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Ellington",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 16426,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Enfield",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 42141,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Essex",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 6733,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Fairfield",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Greater Bridgeport",
+   "kind": "town",
+   "pop_2020": 61512,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Farmington",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 26712,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Franklin",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 1863,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Glastonbury",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 35159,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Goshen",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 3150,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Granby",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 10903,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Greenwich",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 63518,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Griswold",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 11402,
+   "aliases": [
+    "Jewett City"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Groton",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 38411,
+   "aliases": [
+    "Groton Long Point"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Guilford",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "town",
+   "pop_2020": 22073,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Haddam",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 8452,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Hamden",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "town",
+   "pop_2020": 61169,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Hampton",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 1728,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Hartford",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "city",
+   "pop_2020": 121054,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Hartland",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 1901,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Harwinton",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 5484,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Hebron",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 9098,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Kent",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 3019,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Killingly",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 17752,
+   "aliases": [
+    "Danielson"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Killingworth",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 6174,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Lebanon",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 7142,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Ledyard",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 15413,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Lisbon",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 4195,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Litchfield",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 8192,
+   "aliases": [
+    "Bantam"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Lyme",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 2352,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Madison",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "town",
+   "pop_2020": 17691,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Manchester",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 59713,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Mansfield",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 25892,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Marlborough",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 6133,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Meriden",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "city",
+   "pop_2020": 60850,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Middlebury",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 7574,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Middlefield",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 4217,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Middletown",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "city",
+   "pop_2020": 47717,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Milford",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "city",
+   "pop_2020": 52044,
+   "aliases": [
+    "Woodmont"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Monroe",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Greater Bridgeport",
+   "kind": "town",
+   "pop_2020": 18825,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Montville",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 18387,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Morris",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 2256,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Naugatuck",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "borough",
+   "pop_2020": 31519,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "New Britain",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "city",
+   "pop_2020": 74135,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "New Canaan",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 20622,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "New Fairfield",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 13579,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "New Hartford",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 6658,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "New Haven",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "city",
+   "pop_2020": 134023,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "New London",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "city",
+   "pop_2020": 27367,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "New Milford",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 28115,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Newington",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 30536,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Newtown",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 27173,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Norfolk",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 1588,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "North Branford",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "town",
+   "pop_2020": 13544,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "North Canaan",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 3211,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "North Haven",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "town",
+   "pop_2020": 24253,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "North Stonington",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 5149,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Norwalk",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "city",
+   "pop_2020": 91184,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Norwich",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "city",
+   "pop_2020": 40125,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Old Lyme",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 7628,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Old Saybrook",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 10481,
+   "aliases": [
+    "Fenwick"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Orange",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "town",
+   "pop_2020": 14280,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Oxford",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 12706,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Plainfield",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 14973,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Plainville",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 17525,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Plymouth",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 11671,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Pomfret",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 4266,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Portland",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 9384,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Preston",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 4788,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Prospect",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 9401,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Putnam",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 9224,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Redding",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 8765,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Ridgefield",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 25033,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Rocky Hill",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 20845,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Roxbury",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 2260,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Salem",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 4213,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Salisbury",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 4194,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Scotland",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 1576,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Seymour",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 16748,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Sharon",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 2680,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Shelton",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Naugatuck Valley",
+   "kind": "city",
+   "pop_2020": 40869,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Sherman",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 3527,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Simsbury",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 24517,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Somers",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 10255,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "South Windsor",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 26918,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Southbury",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 19879,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Southington",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 43501,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Sprague",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 2967,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Stafford",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 11472,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Stamford",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "city",
+   "pop_2020": 135470,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Sterling",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 3578,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Stonington",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 18335,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Stratford",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Greater Bridgeport",
+   "kind": "town",
+   "pop_2020": 52355,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Suffield",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 15752,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Thomaston",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 7442,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Thompson",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 9189,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Tolland",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 14563,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Torrington",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "city",
+   "pop_2020": 35515,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Trumbull",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Greater Bridgeport",
+   "kind": "town",
+   "pop_2020": 36827,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Union",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 785,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Vernon",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 30215,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Voluntown",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 2570,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Wallingford",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "town",
+   "pop_2020": 44396,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Warren",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 1351,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Washington",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 3646,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Waterbury",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "city",
+   "pop_2020": 114403,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Waterford",
+   "state": "CT",
+   "county": "New London",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 19571,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Watertown",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 22105,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "West Hartford",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 64083,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "West Haven",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "city",
+   "pop_2020": 55584,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Westbrook",
+   "state": "CT",
+   "county": "Middlesex",
+   "planning_region": "Lower Connecticut River Valley",
+   "kind": "town",
+   "pop_2020": 6769,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Weston",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 10354,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Westport",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 27141,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Wethersfield",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 27298,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Willington",
+   "state": "CT",
+   "county": "Tolland",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 5566,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Wilton",
+   "state": "CT",
+   "county": "Fairfield",
+   "planning_region": "Western Connecticut",
+   "kind": "town",
+   "pop_2020": 18503,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Winchester",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Northwest Hills",
+   "kind": "town",
+   "pop_2020": 10224,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Windham",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Southeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 24425,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Windsor",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 29492,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Windsor Locks",
+   "state": "CT",
+   "county": "Hartford",
+   "planning_region": "Capitol",
+   "kind": "town",
+   "pop_2020": 12613,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Wolcott",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 16142,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Woodbridge",
+   "state": "CT",
+   "county": "New Haven",
+   "planning_region": "South Central",
+   "kind": "town",
+   "pop_2020": 9087,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Woodbury",
+   "state": "CT",
+   "county": "Litchfield",
+   "planning_region": "Naugatuck Valley",
+   "kind": "town",
+   "pop_2020": 9723,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  },
+  {
+   "town": "Woodstock",
+   "state": "CT",
+   "county": "Windham",
+   "planning_region": "Northeastern Connecticut",
+   "kind": "town",
+   "pop_2020": 8221,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "ct_siting_council"
+   ],
+   "coverage_note": "Energy and telecommunications facilities here are decided by the Connecticut Siting Council; its petitions, dockets and hearings for this town reach us through the Council's listings. The town's own agendas are not read."
+  }
+ ]
+}
