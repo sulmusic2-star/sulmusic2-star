@@ -39,8 +39,8 @@ import os
 import re
 from datetime import date, datetime
 
-FIELDS = ("id", "what", "where", "size", "who", "action", "next", "history", "can_speak", "line", "quote",
-          "source_url", "written_at", "writer", "verified")
+FIELDS = ("id", "what", "where", "size", "who", "action", "next", "history", "can_speak", "how_to_speak", "line", "quote",
+          "when_time", "when_place", "duplicate_of", "missing", "source_url", "written_at", "writer", "verified")
 ACTIONS = ("hearing", "vote", "discussion", "continued", "adopted", "withdrawn", "extension", "other")
 LINE_MAX = 90
 # The cue each action needs within CUE_REACH characters of the quote (or anywhere, when there is no quote).

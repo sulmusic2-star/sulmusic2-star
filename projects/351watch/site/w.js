@@ -256,13 +256,20 @@
       `${what.charAt(0).toUpperCase()}${what.slice(1)}${d.pdf ? ' (PDF)' : ''}`, el('span', { class: 'sr-only', text: `: ${where}` })) : null;
     // The speak line only for a hearing that is still on: not one postponed, canceled or withdrawn.
     const entries = [...m.lines.values()].filter((v) => !/^(Postponed|Canceled|Withdrawn)/.test(v.stage || ''));
-    const speak = entries.some((v) => (v.brief && v.brief.can_speak === true) || (v.stage === 'Hearing' && !(v.brief && v.brief.can_speak === false)));
+    // The brief's own rule from the agenda when the writer found one; otherwise the general line.
+    const rules = [];
+    for (const v of entries) {
+      const b = v.brief || {};
+      if (b.can_speak === true && b.how_to_speak && !rules.includes(b.how_to_speak)) rules.push(b.how_to_speak);
+    }
+    const speakText = rules.length ? rules.slice(0, 2).join(' ') : SPEAK;
+    const speak = rules.length > 0 || entries.some((v) => (v.brief && v.brief.can_speak === true) || (v.stage === 'Hearing' && !(v.brief && v.brief.can_speak === false)));
     const all = [...m.lines];
     const shown = maxLines ? all.slice(0, maxLines) : all;
     return el('li', { class: 'meeting', id: m.id }, head,
       el('ul', { class: 'lines' }, ...shown.map(lineNode)),
       shown.length < all.length ? el('p', { class: 'more-items', text: `and ${plural(all.length - shown.length, 'more item')}` }) : null,
-      el('p', { class: 'meet-src' }, speak ? el('span', { class: 'speak-line', text: SPEAK }) : null, link));
+      el('p', { class: 'meet-src' }, speak ? el('span', { class: 'speak-line', text: speakText }) : null, link));
   }
 
   // The first few meetings, the rest behind one "Show more", as meeting_list() does in build.py.

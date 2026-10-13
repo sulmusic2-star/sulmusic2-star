@@ -936,7 +936,7 @@ def item_text(h):
     t.setdefault("stage", "Hearing" if t.get("note") == HEARING_NOTE else "")
     t.setdefault("facts", [])
     b = BRIEFS.get(h.get("id"))
-    return brief_text(t, b) if b else t
+    return brief_text(t, b, h.get("board_key") == "town_meeting") if b else t
 
 
 # Labels for a brief's facts, in the order they show. An empty label is a plain paragraph (the brief's
@@ -966,13 +966,32 @@ def brief_stage(b):
     return stage
 
 
-def brief_text(base, b):
+def nice_case(v):
+    """"PLANNING BOARD", as a warrant prints it, becomes "Planning Board"; mixed case is left alone."""
+    v = str(v)
+    if len(v) > 3 and v.isupper():
+        small = {"of", "and", "the", "for", "on", "at", "to", "in", "by", "a", "an"}
+        return " ".join(w if (i and w in small) else w[:1].upper() + w[1:] for i, w in enumerate(v.lower().split()))
+    return v
+
+
+SPONSOR_RE = re.compile(r"\b(board|committee|commission|council|selectmen|petition|department|trust|authority)\b", re.I)
+
+
+def brief_text(base, b, town_meeting=False):
     """The item's line from a verified written brief: the brief's one-liner as the heading, its facts, and
-    its own quote as the agenda wording. The shared reading still supplies the item key and number."""
+    its own quote as the agenda wording. The shared reading still supplies the item key and number. A
+    writer's note that the item was flagged twice is for the records, not the page; on a warrant, the
+    sponsor reads "Planning Board article" so it isn't taken for the meeting's board."""
+    b = dict(b)
+    b["what"] = re.sub(r"^Same (?:article|item)\b[^.]*\.\s*", "", (b.get("what") or "").strip())
     say = (b.get("line") or b.get("what") or base["say"]).strip()
+    who = nice_case(b["who"]) if b.get("who") else ""
+    if who and town_meeting and SPONSOR_RE.search(who) and not who.lower().endswith("article"):
+        who += " article"
     return {**base, "say": say, "kind": "brief", "note": "", "quote": b.get("quote") or base.get("quote", ""), "brief": b,
             "stage": brief_stage(b),
-            "facts": [v for v in (b.get("where"), b.get("size"), b.get("who")) if v],
+            "facts": [v for v in (nice_case(b["where"]) if b.get("where") else "", b.get("size"), who) if v],
             "rank": BRIEF_RANK.get(b.get("action") or "other", 40) + SUBJECT_RANK.get(base.get("subj", ""), 8)}
 
 
@@ -988,7 +1007,7 @@ def brief_facts_html(b, clerk="", skip_what=False):
         v = b.get(key)
         extra = ""
         if key == "can_speak":
-            v = BRIEF_SPEAK.get(v) if v in (True, False) else None
+            v = f"Yes. {b['how_to_speak']}" if v is True and b.get("how_to_speak") else (BRIEF_SPEAK.get(v) if v in (True, False) else None)
             if b.get("can_speak") is True and clerk:
                 extra = f" {clerk}"
         if v in (None, "", False):
@@ -997,7 +1016,7 @@ def brief_facts_html(b, clerk="", skip_what=False):
             if not (key == "what" and (same or skip_what)):
                 parts.append(f'<p class="brief-what">{e(str(v))}</p>')
             continue
-        rows.append(f'<div class="fact"><dt>{e(label)}</dt><dd>{e(str(v))}{extra}</dd></div>')
+        rows.append(f'<div class="fact"><dt>{e(label)}</dt><dd>{e(nice_case(v))}{extra}</dd></div>')
     if rows:
         parts.append(f'<dl class="brief-facts">{"".join(rows)}</dl>')
     return "".join(parts)
@@ -1095,6 +1114,9 @@ PERMIT_PLAIN = {"special permit": "a special permit", "site plan review": "site 
                 "comprehensive permit": "an affordable housing permit (40B)", "variance": "a variance",
                 "Notice of Intent": "a wetlands permit request", "planned development permit": "a planned development permit",
                 "permit extension": "a request to extend a permit", "modification": "a change to an approved permit"}
+# The same permits as a facts-line tag, next to the topic tag ("Affordable housing · 40B permit").
+PERMIT_FACT = {"comprehensive permit": "40B permit", "Notice of Intent": "wetlands permit", "site plan review": "site plan",
+               "permit extension": "permit extension", "modification": "change to an approved permit"}
 HEARING_NOTE = "Public hearing."
 
 
@@ -1273,8 +1295,8 @@ def analysis_text(h, a):
                 f"{fmt_date(ruling.get('decision_date'))}). {ruling.get('summary', '')}").strip()
     past_tm = tm and (ruling or not h.get("meeting_date") or h["meeting_date"] < TODAY[0])
     permits = TR.permit_list(a["item"]) if act in ("project_hearing", "project", "continuance") else []
-    facts = [x for x in (addr, join_and([PERMIT_PLAIN.get(x, x) for x in permits]).replace("a special permit", "special permit")
-                         .replace("a variance", "variance").replace("a wetlands permit request", "wetlands permit") if permits else "") if x]
+    facts = [x for x in (addr, join_and([PERMIT_FACT.get(x, re.sub(r"^an? ", "", PERMIT_PLAIN.get(x, x))) for x in permits])
+                         if permits else "") if x]
 
     def done(say, kind="act", stage="Discussion", rank_act=None):
         say = full_stop(say[:1].upper() + say[1:])
@@ -1603,6 +1625,9 @@ def group_meetings(ctx, hits):
                                                  "subj": t.get("subj", ""), "brief": t.get("brief"),
                                                  "stage": t.get("stage", ""), "facts": list(t.get("facts") or []),
                                                  "seen": h.get("first_seen") or "", "url": h["source_url"]})
+        nb = t.get("brief")
+        if nb and not nb.get("duplicate_of") and (entry.get("brief") or {}).get("duplicate_of"):
+            entry.update({"brief": nb, "hit": h["id"], "stage": t.get("stage", ""), "facts": list(t.get("facts") or [])})
         entry["topics"] += [x for x in item_topics(h) if x not in entry["topics"]]
         q = t.get("quote")
         if q and not overlaps(q, [x for v in m["lines"].values() for x in v["quotes"]]):
@@ -1817,6 +1842,13 @@ def speak_line(m):
     or withdrawn."""
     entries = [v for v in m["lines"].values()
                if not str(v.get("stage") or "").startswith(("Postponed", "Canceled", "Withdrawn"))]
+    rules = []
+    for v in entries:
+        b = v.get("brief") or {}
+        if b.get("can_speak") is True and b.get("how_to_speak") and b["how_to_speak"] not in rules:
+            rules.append(b["how_to_speak"])
+    if rules:
+        return " ".join(rules[:2])
     if any((v.get("brief") or {}).get("can_speak") is True for v in entries) or \
             any(v.get("stage") == "Hearing" and not (v.get("brief") or {}).get("can_speak") is False for v in entries):
         return SPEAK_TEXT
