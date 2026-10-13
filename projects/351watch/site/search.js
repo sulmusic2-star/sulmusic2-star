@@ -18,9 +18,11 @@
   const LABELS = {
     state: { MA: "Massachusetts", NY: "New York", RI: "Rhode Island", CT: "Connecticut", NH: "New Hampshire",
       VT: "Vermont", ME: "Maine", NJ: "New Jersey", PA: "Pennsylvania" },
-    topic: { battery_storage: "Battery storage", solar: "Solar", data_center: "Data centers", moratorium: "Moratoria",
-      clean_energy_siting: "Consolidated permit", "40b_comprehensive_permit": "40B housing",
-      wireless_telecom: "Wireless / cell towers", zoning_amendment: "Zoning amendments" },
+    topic: { battery_storage: "Battery storage", solar: "Solar", data_center: "Data centers",
+      moratorium: "Moratoriums (temporary bans)", clean_energy_siting: "Clean-energy permit rules",
+      "40b_comprehensive_permit": "Affordable housing (40B)", wireless_telecom: "Cell towers",
+      zoning_amendment: "Zoning changes", wetlands_filing: "Wetlands filings",
+      extraction: "Quarries and gravel pits", large_development: "Large developments" },
     board: { planning_board: "Planning board", zoning_board_of_appeals: "Zoning board of appeals",
       conservation_commission: "Conservation commission", select_board: "Select board or city council",
       town_meeting: "Town meeting warrants" },
@@ -76,7 +78,7 @@
 
   function formParams() {
     const p = new URLSearchParams();
-    for (const [k, v] of new FormData(form)) if (String(v).trim()) p.set(k, String(v).trim());
+    for (const [k, v] of new FormData(form)) if (String(v).trim()) p.append(k, String(v).trim());
     return p;
   }
 
@@ -153,7 +155,11 @@
     const parts = [];
     if (p.get("topic")) parts.push(`about ${label("topic", p.get("topic")).toLowerCase()}`);
     if (p.get("board")) parts.push(`from the ${label("board", p.get("board")).toLowerCase()}`);
-    if (p.get("town")) parts.push(`in ${label("town", p.get("town"))}`);
+    const towns = p.getAll("town").filter(Boolean);
+    if (towns.length) {
+      const names = towns.map((t) => label("town", t)); // "Carver, MA" already holds a comma
+      parts.push(`in ${names.length > 1 ? names.slice(0, -1).join("; ") + " and " + names[names.length - 1] : names[0]}`);
+    }
     else if (p.get("state")) parts.push(`in ${label("state", p.get("state"))}`);
     return parts.length ? " " + parts.join(" ") : "";
   }
@@ -168,13 +174,17 @@
     const gen = ++generation;
     const q = (p.get("q") || "").replace(/[“”„]/g, '"').trim(); // phrase search takes straight quotes
     const filters = {};
-    for (const f of FILTERS) if (p.get(f)) filters[f] = p.get(f);
+    for (const f of FILTERS) {
+      const values = p.getAll(f).filter(Boolean);
+      if (values.length === 1) filters[f] = values[0];
+      else if (values.length > 1) filters[f] = { any: values }; // several towns: ?town=MA:Carver&town=MA:Plymouth
+    }
     const upcoming = p.get("upcoming") === "1";
     const narrowed = Boolean(q || Object.keys(filters).length);
     list.replaceChildren();
     pending = [];
     if (more) more.hidden = true;
-    document.title = q ? `${q} – ${baseTitle}` : baseTitle;
+    document.title = q ? `${q} | ${baseTitle}` : baseTitle;
     if (!narrowed && !upcoming) {
       say("Type a word or phrase to search the agendas, for example battery storage or cell tower.");
       return;
@@ -213,15 +223,15 @@
       }
       if (gen !== generation) return;
       if (!results.length) {
-        say(q ? `No documents match ${quoted(q)}${describe(p)}. Try fewer or different words, or remove a filter.`
-          : narrowed ? `No documents match these filters${describe(p)}.` : "No upcoming meetings are in the index yet.");
+        say(q ? `No agendas match ${quoted(q)}${describe(p)}. Try fewer or different words, or remove a filter.`
+          : narrowed ? `No agendas match these filters${describe(p)}.` : "No upcoming meetings found yet.");
         return;
       }
       const n = results.length;
-      let msg = !used ? `${plural(n, "document", "documents")}${describe(p)}.`
-        : typos.length ? `No documents contain ${typos.map(quoted).join(" or ")}. Showing ${plural(n, "result", "results")} for ${quoted(used)}${describe(p)} instead.`
-        : `${plural(n, "document matches", "documents match")} ${quoted(used)}${describe(p)}.`;
-      if (upcoming && !narrowed) msg = `${plural(n, "document", "documents")} for upcoming meetings, soonest first.`;
+      let msg = !used ? `${plural(n, "agenda", "agendas")}${describe(p)}.`
+        : typos.length ? `No agendas contain ${typos.map(quoted).join(" or ")}. Showing ${plural(n, "result", "results")} for ${quoted(used)}${describe(p)} instead.`
+        : `${plural(n, "agenda matches", "agendas match")} ${quoted(used)}${describe(p)}.`;
+      if (upcoming && !narrowed) msg = `${plural(n, "agenda", "agendas")} for upcoming meetings, soonest first.`;
       else if (upcoming) {
         msg += soon ? ` ${plural(soon, "upcoming meeting is", "upcoming meetings are")} listed first.`
           : " None of them is for an upcoming meeting.";
@@ -232,7 +242,7 @@
     } catch (err) {
       if (gen !== generation) return;
       console.error(err);
-      say("Search is not available right now. Please try again in a few minutes.");
+      say("Search isn't working right now. Try again in a few minutes.");
     } finally {
       if (gen === generation) list.removeAttribute("aria-busy");
     }
@@ -249,13 +259,13 @@
       more.addEventListener("click", () => {
         more.disabled = true;
         renderMore(generation, true)
-          .catch(() => say("More results could not be loaded. Please try again."))
+          .catch(() => say("We couldn't load more results. Try again."))
           .finally(() => { more.disabled = false; });
       });
       list.after(more);
     }
     more.hidden = !pending.length;
-    more.textContent = `Show ${Math.min(PAGE, pending.length)} more results`;
+    more.textContent = `Show ${Math.min(PAGE, pending.length)} more`;
     if (focus && items[0]) items[0].querySelector("a").focus();
   }
 
@@ -265,7 +275,7 @@
     if (m.topics) li.dataset.topics = m.topics;
     const title = el("a", "result-title", m.title || "Agenda");
     title.href = d.url;
-    const when = m.date ? fmtDate(m.date) + (m.date >= today ? " (upcoming)" : "") : "Undated";
+    const when = m.date ? fmtDate(m.date) + (m.date >= today ? ", coming up" : "") : "Undated";
     const meta = el("p", "result-meta", [`${m.town}, ${m.state}`, m.board, when].filter(Boolean).join(" · "));
     const snippet = el("p", "result-snippet");
     excerpt(snippet, d.excerpt || "");

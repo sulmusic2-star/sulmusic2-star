@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T11:22:30+00:00",
+ "generated": "2026-10-13T13:18:18+00:00",
  "window": {
   "start": "2026-10-13",
   "end": "2027-02-10"
@@ -3857,6 +3857,48 @@
    ]
   },
   {
+   "id": "0a1755a33f61",
+   "score": 4.95,
+   "headline": "Sutton Town Meeting takes up zoning changes",
+   "dek": "The warrant for Sutton's fall Town Meeting gives no date. The warrant lists an article on zoning changes.",
+   "quote": "Planning Board To see if the Town will vote to amend the Zoning Bylaw as follows, or act or do anything in relation thereto.",
+   "reasons": [
+    "Town Meeting vote",
+    "Town Meeting date not in the warrant"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Sutton",
+   "county": "Worcester",
+   "towns": [
+    "MA:Sutton"
+   ],
+   "board": "Town Meeting",
+   "board_key": "town_meeting",
+   "meeting_date": null,
+   "meeting_date_source": null,
+   "days_until": null,
+   "first_seen": "2026-10-10T18:46:19+00:00",
+   "is_new": true,
+   "source_url": "https://www.suttonma.gov/DocumentCenter/View/7265/Fall-2026-ATM-Warrant",
+   "town_path": "/ma/sutton",
+   "action": "town_meeting",
+   "boards": [
+    {
+     "town": "Sutton",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": null
+    }
+   ],
+   "hit_ids": [
+    "3f2c3fc80f35",
+    "e50bcd9df4f8"
+   ]
+  },
+  {
    "id": "09268020936c",
    "score": 4.69,
    "headline": "Battery storage item on Holyoke Planning Board agenda",
@@ -3939,6 +3981,49 @@
     "8032f9fbcb19",
     "973d0290dfb0",
     "b89e61203347"
+   ]
+  },
+  {
+   "id": "ad3081feeaee",
+   "score": 3.24,
+   "headline": "Holliston Town Meeting takes up bylaw changes",
+   "dek": "Holliston's Town Meeting is Monday, Oct 19. The warrant lists an article on bylaw changes.",
+   "quote": "Select Board To see if the Town will vote to amend Sections 9, 10, and 11 of the Consolidated Personnel By-Law to read as follows: (deleted language shown in strikethrough and new language…",
+   "reasons": [
+    "Town Meeting vote",
+    "Town Meeting Oct 19"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Holliston",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Holliston"
+   ],
+   "board": "Town Meeting",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-19",
+   "meeting_date_source": "warrant",
+   "days_until": 6,
+   "first_seen": "2026-10-10T18:30:46+00:00",
+   "is_new": true,
+   "source_url": "https://www.townofholliston.us/688/October-2026-Town-Meeting-Warrant---Text",
+   "town_path": "/ma/holliston",
+   "action": "town_meeting",
+   "boards": [
+    {
+     "town": "Holliston",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-19"
+    }
+   ],
+   "hit_ids": [
+    "5ad1f8192bbf",
+    "aeca1e32d456",
+    "e57592c290bc"
    ]
   },
   {
@@ -4272,6 +4357,48 @@
    ]
   },
   {
+   "id": "abd6f5c15e80",
+   "score": 1.18,
+   "headline": "Solar item on Holliston Town Meeting warrant",
+   "dek": "Holliston's Town Meeting is Monday, Oct 19. The warrant lists an item on solar.",
+   "quote": "…over $100,000 in charges triggered by the temporary relocation and disconnection of the solar panels while roof repairs were underway.",
+   "reasons": [
+    "Town Meeting Oct 19"
+   ],
+   "topics": [
+    "solar"
+   ],
+   "state": "MA",
+   "town": "Holliston",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Holliston"
+   ],
+   "board": "Town Meeting",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-19",
+   "meeting_date_source": "warrant",
+   "days_until": 6,
+   "first_seen": "2026-10-10T18:30:46+00:00",
+   "is_new": true,
+   "source_url": "https://www.townofholliston.us/688/October-2026-Town-Meeting-Warrant---Text",
+   "town_path": "/ma/holliston",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Holliston",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-19"
+    }
+   ],
+   "hit_ids": [
+    "46a84e52f260",
+    "c089dbc951e1",
+    "d9d3696a656a"
+   ]
+  },
+  {
    "id": "794b103eaad2",
    "score": 1.18,
    "headline": "40B item on Marshfield Town Meeting warrant",
@@ -4309,126 +4436,6 @@
    ],
    "hit_ids": [
     "0b1deaf98896"
-   ]
-  },
-  {
-   "id": "f87d9f27e753",
-   "score": 1.18,
-   "headline": "Solar item on Norton Town Meeting warrant",
-   "dek": "Norton's Town Meeting is Monday, Oct 19. The warrant lists an item on solar.",
-   "quote": "For setbacks applicable to large-scale, ground-mounted solar photovoltaic power generation installations, see Article XXII, § 175-22.3.",
-   "reasons": [
-    "Town Meeting Oct 19"
-   ],
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Norton",
-   "county": "Bristol",
-   "towns": [
-    "MA:Norton"
-   ],
-   "board": "Town Meeting Warrants & Minutes",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-10-19",
-   "meeting_date_source": "agenda",
-   "days_until": 6,
-   "first_seen": "2026-10-10T18:32:30+00:00",
-   "is_new": true,
-   "source_url": "https://www.nortonma.gov/DocumentCenter/View/2259",
-   "town_path": "/ma/norton",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Norton",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-10-19"
-    }
-   ],
-   "hit_ids": [
-    "2762835c38ee"
-   ]
-  },
-  {
-   "id": "b629c46cd6b2",
-   "score": 1.18,
-   "headline": "Solar item on Salem City Council agenda",
-   "dek": "The City Council meets Monday, Oct 19. The agenda lists an item on solar.",
-   "quote": "…wind energy systems\" after \"medium-scale ground mounted solar energy systems\" in subsection 8 and by inserting a new subsection 10: \"The limitations on height of buildings shall apply to…",
-   "reasons": [
-    "Meeting Oct 19"
-   ],
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Salem",
-   "county": "Essex",
-   "towns": [
-    "MA:Salem"
-   ],
-   "board": "City Council",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-19",
-   "meeting_date_source": "agenda",
-   "days_until": 6,
-   "first_seen": "2026-10-10T18:44:51+00:00",
-   "is_new": true,
-   "source_url": "https://www.salemma.gov/AgendaCenter/ViewFile/Agenda/_10192026-8443",
-   "town_path": "/ma/salem",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Salem",
-     "board": "City Council",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-19"
-    }
-   ],
-   "hit_ids": [
-    "81328be3f179"
-   ]
-  },
-  {
-   "id": "1fb878b4057a",
-   "score": 1.18,
-   "headline": "40B item on Dartmouth Select Board agenda",
-   "dek": "The Select Board meets Tuesday, Oct 20. The agenda lists an item on 40B housing.",
-   "quote": "If approved, it provides a reasonable alternative to the proposed 40B development known as the Residences at Hawthorn.",
-   "reasons": [
-    "Meeting Oct 20"
-   ],
-   "topics": [
-    "40b_comprehensive_permit"
-   ],
-   "state": "MA",
-   "town": "Dartmouth",
-   "county": "Bristol",
-   "towns": [
-    "MA:Dartmouth"
-   ],
-   "board": "Select Board",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-20",
-   "meeting_date_source": "agenda",
-   "days_until": 7,
-   "first_seen": "2026-10-10T14:41:36+00:00",
-   "is_new": true,
-   "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_10202026-5883",
-   "town_path": "/ma/dartmouth",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Dartmouth",
-     "board": "Select Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-20"
-    }
-   ],
-   "hit_ids": [
-    "052a452fff1d"
    ]
   }
  ]
