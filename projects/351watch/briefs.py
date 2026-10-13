@@ -79,6 +79,8 @@ BODY_NAMES = ("attorney general", "town meeting", "select board", "selectboard",
 STATE_WORDS = {"massachusetts", "new york", "rhode island", "connecticut", "new hampshire", "vermont", "maine"}
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 CUE_REACH = 700
+# A "Public Hearings" heading covers every item listed under it, so a hearing cue may sit further back.
+HEARING_REACH = 1500
 SPEAK_REACH = 1500
 STOP = {"a", "an", "and", "at", "by", "for", "from", "in", "of", "on", "or", "the", "to", "with", "is", "are",
         "was", "were", "be", "will", "has", "have", "had", "its", "it", "this", "that", "as", "into", "near",
@@ -360,7 +362,8 @@ def verify(brief, text, town_dates=None, year=None):
             fails.append("quote is not in the agenda word for word")
     elif brief.get("what") or brief.get("line"):
         fails.append("no quote to rest on")
-    near = text_norm[max(0, qpos - CUE_REACH):qpos + len(norm(brief.get("quote") or "")) + CUE_REACH] if qpos >= 0 else text_norm
+    reach = HEARING_REACH if brief.get("action") == "hearing" else CUE_REACH
+    near = text_norm[max(0, qpos - reach):qpos + len(norm(brief.get("quote") or "")) + CUE_REACH] if qpos >= 0 else text_norm
     cue = ACTION_CUES.get(brief.get("action") or "other", "")
     if cue and not re.search(cue, near, re.I):
         fails.append(f"action {brief['action']!r}: no sign of it near the quote")
