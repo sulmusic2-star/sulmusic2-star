@@ -2,10 +2,8 @@
 (New York pilot, 2026-10). Everything the `generic` adapter accepts works here
 too; these listing keys are added:
 
-    "months": true            URL has {m} (or {mm}, {month} = "september") and {y}: expanded to every month the crawl
+    "months": true            URL has {m} and {y}: expanded to every month the crawl
                               window touches (".../meeting-agendas?m={m}&y={y}")
-    "skip_missing_months": true   with "months" or a {year} URL: a month or year page that does not exist
-                              yet (HTTP error) is skipped, not fatal (the first page of the window must answer)
     "strip_query": true       drop the whole query string of document links
                               (per-page-load cache-busters: "?tmstv=1791675856", "?t=...")
     "compact_dates": true     when nothing else dates a link, read an 8-digit MMDDYYYY or
@@ -21,19 +19,11 @@ too; these listing keys are added:
     "doc_href": regex         only links whose href matches (e.g. r"\\.pdf$")
     "scope": regex            only links inside the first <table>/<ul> that follows the first
                               heading-like element whose text matches (one page, one table per board)
-    "assume_year": 2026       rows dated "January 12" with no year get this year; "url" = the year in the
-                              listing page's URL (a {year} page); with month_only, a link named only by its
-                              month ("September Agenda") is that month of this year
+    "assume_year": 2026       rows dated "January 12" with no year get this year
     "date_regex": regex       named groups y, m (number or month name), d: a site-specific date
                               format ("2026.10 October 13 Town Board Meeting Agenda.pdf")
     "posted_regex": regex     group 1 is a posted/document date shown in the row
                               ("document date 10-02-2026"); kept in AgendaDoc.extra["posted"]
-    "follow_pages": true      each matching link is a notice or post page (WordPress public notices, posts):
-                              the page is fetched (listing purpose, at most "follow_limit", default 8, per
-                              listing); date_regex is tried on its text, then its heading is read for a date
-                              (or, with month_only, a month); the page itself is the document, or with
-                              "follow_doc": regex, the first link on the page whose href matches (a .docx or
-                              .pdf attachment)
 Revize "?t=YYYYMMDDhhmmss" upload stamps are kept in AgendaDoc.extra["uploaded"] before a
 query string is stripped.
 
@@ -44,7 +34,6 @@ from __future__ import annotations
 
 import re
 from datetime import date
-from urllib.parse import unquote
 
 from ..dates import MONTHS, first_date
 from ..models import AgendaDoc, Window
@@ -80,7 +69,6 @@ def _month_overlaps(s: str, window: Window) -> bool:
 
 
 _REVIZE_T = re.compile(r"[?&]t=(20\d{12})")
-_MONTH_NAME = re.compile(r"\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\b", re.I)
 _MONTH_DAY = re.compile(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})\b", re.I)
 
 
@@ -104,8 +92,7 @@ class GenericNYAdapter(GenericListingAdapter):
     def _expand_months(url: str, window: Window) -> list[str]:
         out, y, m = [], window.start.year, window.start.month
         while (y, m) <= (window.end.year, window.end.month):
-            out.append(url.replace("{m}", str(m)).replace("{mm}", f"{m:02d}").replace("{y}", str(y))
-                       .replace("{month}", date(y, m, 1).strftime("%B").lower()))   # "september_2026" folders
+            out.append(url.replace("{m}", str(m)).replace("{mm}", f"{m:02d}").replace("{y}", str(y)))
             y, m = (y + 1, 1) if m == 12 else (y, m + 1)
         return out
 
@@ -114,16 +101,8 @@ class GenericNYAdapter(GenericListingAdapter):
         for listing in cfg.get("listings", []):
             urls = self._expand_months(listing["url"], window) if listing.get("months") else \
                 self._expand(listing["url"], window)
-            for i, url in enumerate(urls):
-                try:
-                    found = self._parse_ny(cfg, listing, url, window)
-                except RuntimeError:
-                    # "skip_missing_months": a month folder the site has not created yet (HTTP 4xx/5xx)
-                    # is skipped instead of failing the listing; the first month must still answer
-                    if listing.get("skip_missing_months") and i > 0:
-                        continue
-                    raise
-                for doc in found:
+            for url in urls:
+                for doc in self._parse_ny(cfg, listing, url, window):
                     docs.setdefault(doc.url, doc)
         return list(docs.values())
 
@@ -139,10 +118,6 @@ class GenericNYAdapter(GenericListingAdapter):
         rules = [(re.compile(rx, re.I), b, k) for rx, b, k in listing.get("board_rules", [])]
         date_rx = re.compile(listing["date_regex"], re.I) if listing.get("date_regex") else None
         posted_rx = re.compile(listing["posted_regex"], re.I) if listing.get("posted_regex") else None
-        year_hint = listing.get("assume_year")
-        if year_hint == "url":
-            ym = re.search(r"(?<!\d)(20\d\d)(?!\d)", url)
-            year_hint = int(ym.group(1)) if ym else None
         soup = self.soup(resp)
         base_tag = soup.find("base", href=True)
         base = self.abs_url(resp.final_url, base_tag["href"]) if base_tag else resp.final_url
@@ -154,7 +129,7 @@ class GenericNYAdapter(GenericListingAdapter):
             root = head.find_next(["table", "ul"]) if head else None
             if root is None:
                 return []
-        out, followed = [], set()
+        out = []
         for a in root.find_all("a", href=True):
             href = a["href"].strip()
             if href.startswith(("#", "javascript:", "mailto:", "tel:")):
@@ -180,41 +155,21 @@ class GenericNYAdapter(GenericListingAdapter):
                 if hit is None:
                     continue
                 board, board_key = hit
-            doc_url = self.abs_url(base, href)
-            page_title = page_text = ""
-            if listing.get("follow_pages"):
-                # a link that dates itself outside the window is not followed
-                pre = (_regex_date(date_rx, f"{text} {href}") if date_rx else None) or first_date(text, href)
-                if pre is not None and pre not in window:
-                    continue
-                if doc_url in followed or len(followed) >= int(listing.get("follow_limit", 8)):
-                    continue
-                followed.add(doc_url)
-                page = self._follow(listing, doc_url)
-                if page is None:
-                    continue
-                doc_url, page_title, page_text = page
-                if exclude.search(page_title):
-                    continue
             when = _regex_date(date_rx, f"{text} {href}") if date_rx else None
-            if when is None and date_rx and page_text:
-                when = _regex_date(date_rx, page_text)
-            when = when or first_date(text, href, row_text) or (first_date(page_title) if page_title else None)
-            if when is None and year_hint:
+            when = when or first_date(text, href, row_text)
+            if when is None and listing.get("assume_year"):
                 m = _MONTH_DAY.search(f"{text} {row_text}")
                 if m:
                     try:
-                        when = date(int(year_hint), MONTHS[m.group(1)[:3].lower()], int(m.group(2)))
+                        when = date(int(listing["assume_year"]), MONTHS[m.group(1)[:3].lower()], int(m.group(2)))
                     except ValueError:
                         when = None
             if when is None and listing.get("compact_dates"):
                 when = _compact_date(href.split("?")[0])
             if when not in window:
-                named = _MONTH_NAME.search(text) if year_hint else None
-                if not (when is None and listing.get("month_only")
-                        and (_month_overlaps(f"{text} {unquote(href)} {page_title}", window)
-                             or (named and _month_overlaps(f"{named.group(0)} {year_hint}", window)))):
+                if not (when is None and listing.get("month_only") and _month_overlaps(f"{text} {href}", window)):
                     continue
+            doc_url = self.abs_url(base, href)
             extra = {}
             m = _REVIZE_T.search(doc_url)
             if m:
@@ -227,27 +182,7 @@ class GenericNYAdapter(GenericListingAdapter):
                 doc_url = doc_url.split("?")[0]
             out.append(AgendaDoc(
                 town=cfg["town"], board=board, board_key=board_key, meeting_date=when,
-                title=page_title or text or row_text[:120], url=doc_url, listing_url=url,
+                title=text or row_text[:120], url=doc_url, listing_url=url,
                 resolve_pdf=bool(listing.get("resolve_pdf")), extra=extra,
             ))
         return out
-
-    def _follow(self, listing: dict, url: str) -> tuple[str, str, str] | None:
-        """"follow_pages": read one notice or post page -> (document url, heading, page text)."""
-        resp = self.get_listing(url)
-        if not resp.ok:
-            return None
-        soup = self.soup(resp)
-        head = soup.find("h1") or soup.title
-        title = " ".join(head.get_text(" ", strip=True).split())[:200] if head else ""
-        for tag in soup(["script", "style", "nav", "header", "footer", "aside"]):
-            tag.decompose()
-        text = " ".join(soup.get_text(" ", strip=True).split())
-        target = resp.final_url
-        if listing.get("follow_doc"):
-            rx = re.compile(listing["follow_doc"], re.I)
-            a = next((a for a in soup.find_all("a", href=True) if rx.search(a["href"])), None)
-            if a is None:
-                return None
-            target = self.abs_url(resp.final_url, a["href"])
-        return target, title, text
