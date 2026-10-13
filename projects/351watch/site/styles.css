@@ -247,8 +247,8 @@ ul.plain { list-style: none; padding: 0; margin: 0; }
 .section-lead { max-width: 72ch; }
 
 /* ---------- home ---------- */
-.home-hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--s7); align-items: center; padding: var(--s6) 0 var(--s4); }
-.home-hero h1 { margin-bottom: var(--s4); max-width: 13ch; }
+.home-hero { display: block; padding: var(--s6) 0 var(--s4); }
+.home-hero h1 { margin-bottom: var(--s4); max-width: 20ch; }
 .townbox { margin-top: var(--s5); max-width: 560px; }
 .townbox label, .searchbox label { font-size: var(--t-lead); }
 .townbox input { border-color: var(--ink); }
@@ -477,6 +477,7 @@ h1 { margin-top: var(--s6); margin-bottom: var(--s3); }
 .item-tags { margin: 0; font-size: var(--t-sm); font-weight: 600; color: var(--muted); }
 .line-say { margin: 0; font-weight: 600; }
 .line-facts { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 var(--s4); margin: 0; color: var(--muted); font-size: var(--t-sm); }
+.line-before { color: var(--muted); font-size: var(--t-sm); margin: 2px 0 0; }
 .stage { margin-left: auto; white-space: nowrap; }
 .stage.soon { color: var(--warn); font-weight: 600; }
 .line-next { margin: var(--s1) 0 0; font-size: var(--t-sm); }
@@ -529,6 +530,10 @@ td a, tbody th a { display: inline-flex; align-items: center; min-height: 44px; 
 }
 .trend-foot { color: var(--muted); font-size: var(--t-sm); max-width: 70ch; }
 .near-me { margin: var(--s3) 0 var(--s4); }
+.trend-filters { display: grid; gap: var(--s3); margin: var(--s4) 0; font-size: var(--t-sm); }
+.trend-filters fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); align-items: center; }
+.trend-filters legend { float: left; margin-right: var(--s3); font-weight: 600; color: var(--muted); }
+.trend-filters label { display: inline-flex; gap: 6px; align-items: center; min-height: 32px; }
 .topic-line { margin: var(--s3) 0 0; }
 .keep { margin: var(--s5) 0 var(--s2); }
 #sample .meetings { border-left: 3px solid var(--rule); padding-left: var(--s4); }

@@ -662,6 +662,7 @@ class DotMap:
 NAV = [
     ("/towns", "Towns"),
     ("/trending", "Biggest stories"),
+    ("/topics", "Topics"),
     ("/search", "Search"),
     ("/watch", "Get alerts"),
 ]
@@ -1889,6 +1890,8 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
         what = ""
         if b and b.get("what") and quote_key(b["what"]) != quote_key(text):
             what = f'<p class="brief-what">{e(b["what"])}</p>'
+        if b and b.get("history"):  # what happened on this item before, from our own records
+            what += f'<p class="line-before"><b>Before this:</b> {e(b["history"])}</p>'
         facts = "".join(f"<span>{e(x)}</span>" for x in facts_text(entry))
         stage = stage_html(entry, m, ctx)
         facts_html = f'<p class="line-facts">{facts}{stage}</p>' if facts or stage else ""
@@ -2108,7 +2111,7 @@ def build_index(ctx):
     towns_read = sum(m for _, m, _ in ctx.coverage())
     abbr = join_and(ctx.states)
     body = f"""
-<div class="wrap home">
+<div class="wrap narrow home">
 <section class="home-hero" aria-labelledby="hero-title">
   <h1 id="hero-title">See what’s coming up at your town meetings</h1>
   <p class="lead">Free. We read <a href="/how-it-works#coverage">{towns_read} towns’</a> agendas in {e(abbr)} every morning and tell you when solar, battery storage or a data center is on one.</p>
@@ -2242,7 +2245,7 @@ def story_html(ctx, st, level=3):
     new = '<span class="badge-new">New</span> ' if st["new"] else ""
     board = f'<span>{e(st["board"])}</span>' if st.get("board") else ""
     stage = f'<span class="stage">{e(st["stage"])}</span>' if st.get("stage") else ""
-    return f"""<li class="row" data-id="{e(st['id'])}">
+    return f"""<li class="row" data-id="{e(st['id'])}" data-date="{e(st.get('meeting_date') or '')}" data-topics="{e(' '.join(st.get('topics') or []))}">
   <a href="{e(st['href'])}"><span class="row-when" data-slop-ignore>{when}<span>{town}</span>{board}</span>
   <span class="row-line">{new}{e(st['line'])}</span>{stage}</a>
 </li>"""
@@ -2259,10 +2262,21 @@ def build_trending(ctx):
     stories, _ = trending_stories(ctx)
     top = stories[:20]
     items = "".join(story_html(ctx, st, level=2) for st in top) if top else ""
+    topic_boxes = "".join(f'<label><input type="checkbox" name="topic" value="{k}"> {e(v)}</label>'
+                          for k, v in TOPIC_LABELS.items() if k not in GATED_TOPICS and k != "wetlands_filing")
     body = f"""
 <div class="wrap narrow">
 <h1 id="trend-title">Biggest stories coming up</h1>
 <p class="lead">Bans, moratoriums and large projects, ranked.</p>
+<form class="trend-filters" id="trend-filters" aria-label="Narrow the list">
+  <fieldset><legend>When</legend>
+    <label><input type="radio" name="when" value="7"> Next 7 days</label>
+    <label><input type="radio" name="when" value="30"> Next 30 days</label>
+    <label><input type="radio" name="when" value="" checked> Any date</label>
+  </fieldset>
+  <fieldset><legend>Topics</legend>{topic_boxes}</fieldset>
+  <p class="form-note" id="trend-count" aria-live="polite"></p>
+</form>
 <div class="views" id="trend-views" hidden>
   <p class="view-switch" role="group" aria-label="Which stories">
     <button type="button" class="link-btn" id="view-mine" aria-pressed="true">Near me</button>
@@ -2522,13 +2536,12 @@ def build_towns_index(ctx):
     total = len(ctx.towns)
     mon = sum(1 for t in ctx.towns if t["monitored"])
     body = f"""
-<div class="wrap">
+<div class="wrap narrow">
 <section class="page-head" aria-labelledby="towns-title">
   <h1 id="towns-title">Find your town</h1>
-  <p class="lead">Pick your town to see what its boards have coming up. Towns marked “can’t check yet” turn away programs like ours or don’t post dated agendas.</p>
+  <p class="lead">Pick your town to see what its boards have coming up.</p>
   <form class="filterbar" data-list-filter role="search" action="/towns" method="get">
     <label>Town or county<input type="search" name="q" data-search autocomplete="off"></label>
-    <label>Show<select data-status><option value="">All towns</option><option value="up">With something coming up</option><option value="monitored">We check these</option><option value="not">We can’t check these yet</option></select></label>
     <p class="count" data-count aria-live="polite"></p>
   </form>
   <p class="empty" data-empty hidden>No towns match. Check the spelling, or search by county.</p>
@@ -2609,7 +2622,8 @@ def build_topics_index(ctx):
         if not c["items"] and k not in TOPIC_PAGE_BY_KEY:
             continue
         tp = TOPIC_PAGE_BY_KEY.get(k)
-        name = f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' if tp else e(TOPIC_LABELS[k])
+        name = (f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' if tp
+                else f'<a href="/search?topic={e(k)}&amp;upcoming=1">{e(TOPIC_LABELS[k])}</a>')
         rows.append(f"""<tr><th scope="row">{name}</th><td class="num" data-label="Coming up">{c['upcoming']:,}</td>
 <td class="num" data-label="In all">{c['items']:,}</td><td class="num" data-label="Towns">{c['towns']:,}</td></tr>""")
     body = f"""

@@ -24,6 +24,8 @@
   // As story_html() in build.py: a row with day · town · board, the item's line and the stage word.
   function storyNode(st) {
     const li = el('li', 'row');
+    li.dataset.date = st.meeting_date || '';
+    li.dataset.topics = (st.topics || []).join(' ');
     const a = el('a');
     a.href = st.href;
     const when = el('span', 'row-when');
@@ -83,7 +85,32 @@
     views.hidden = false;
     chooser.hidden = true;
     show('mine');
+    applyFilters();
   }
+
+  // Narrow the list by date and by one or more topics; both lists ("Everywhere" and "Near me") follow.
+  const filters = $('trend-filters');
+  function applyFilters() {
+    if (!filters) return;
+    const days = new FormData(filters).get('when');
+    const topics = [...filters.querySelectorAll('input[name=topic]:checked')].map((i) => i.value);
+    const until = days ? new Date(Date.now() + Number(days) * 86400000).toISOString().slice(0, 10) : '';
+    let shown = 0;
+    let total = 0;
+    for (const li of document.querySelectorAll('#trend-all > li, #trend-mine > li')) {
+      const date = li.dataset.date || '';
+      const has = (li.dataset.topics || '').split(' ');
+      const ok = (!until || (date && date <= until)) && (!topics.length || topics.some((t) => has.includes(t)));
+      li.hidden = !ok;
+      if (!li.parentElement.hidden) {
+        total += 1;
+        if (ok) shown += 1;
+      }
+    }
+    const count = $('trend-count');
+    if (count) count.textContent = days || topics.length ? `${shown} of ${total} stories` : '';
+  }
+  if (filters) filters.addEventListener('change', applyFilters);
 
   $('view-mine').addEventListener('click', () => show('mine'));
   $('view-all').addEventListener('click', () => show('all'));
