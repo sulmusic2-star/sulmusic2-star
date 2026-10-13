@@ -59,7 +59,9 @@ ACTION_CUES = {
 }
 # A standing item anywhere on the agenda counts: residents can speak at the meeting.
 SPEAK_CUE = (r"public\s+(?:hearing|comment|input|forum|participation)|citizen(?:s'?|s’)?\s+(?:comment|forum|input|time)|"
-             r"open\s+forum|privilege of the floor|comments? from the public|public\s+to\s+be\s+heard|open\s+(?:mic|microphone)")
+             r"open\s+forum|privilege of the floor|comments? from the public|public\s+to\s+be\s+heard|open\s+(?:mic|microphone)|"
+             # a continued hearing, or the agenda itself saying who may speak ("non-members may speak", "wishing to speak")
+             r"continuation\s+hearing|\bmay\s+speak\b|wish(?:ing|es)?\s+to\s+speak|opportunity\s+to\s+speak|speak\s+in\s+favor")
 ABBREV = {  # the same place or body, written either way
     "st": "street", "rd": "road", "ave": "avenue", "hwy": "highway", "dr": "drive", "ln": "lane", "blvd": "boulevard",
     "ct": "court", "pl": "place", "rte": "route", "rt": "route", "tpke": "turnpike", "pkwy": "parkway", "cir": "circle",
