@@ -461,9 +461,17 @@ class AgendaPageAdapter(Adapter):
                     continue
         # A page that is itself the agenda ("Upcoming Meeting Agenda" in HTML, no document links): read
         # the page, keyed by meeting date (#meeting-YYYY-MM-DD) so each new agenda is a new document.
-        if (not out and not n_doc_links and page_kind == "agenda" and date_hint is None
+        # "self_page": "force" (a curated listing) reads the page as the agenda even though its navigation
+        # links a few documents (budget, zoning map), as long as no dated agenda document was found on it.
+        force = listing.get("self_page") == "force"
+        if (not out and (not n_doc_links or force) and (page_kind == "agenda" or force) and date_hint is None
                 and listing.get("self_page", True)):
-            main = soup.find("main") or soup.find(id=re.compile("content|main", re.I)) or soup.body or soup
+            if force:   # the page body without its header, navigation and footer
+                for tag in soup(["header", "nav", "footer"]):
+                    tag.decompose()
+                main = soup.find("main") or soup.body or soup
+            else:
+                main = soup.find("main") or soup.find(id=re.compile("content|main", re.I)) or soup.body or soup
             body_text = _norm(main.get_text(" ", strip=True))[:4000]
             d = next((d for d in (parse_date(m.group(0)) for m in re.finditer(
                 r"[A-Za-z]{3,9}\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s+20\d\d|\d{1,2}/\d{1,2}/20\d\d", body_text))

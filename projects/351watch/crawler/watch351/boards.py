@@ -83,6 +83,23 @@ STATE_BOARD_PATTERNS: dict[str, dict[str, tuple[str, str]]] = {
             r"building|construction|code|fire|sub-?committee",
         ),
     },
+    # New York (Wave 1 discovery only: production NY callers pass no state): town boards, village
+    # boards of trustees, city / common councils; town, village and city planning boards; ZBAs.
+    "NY": {
+        "select_board": (
+            r"^town board\b|^(?:regular\s+|special\s+)?town board|^(?:village\s+)?board of trustees\b|"
+            r"^village board\b|^(?:city|common) council\b|^town council\b",
+            r"committee|sub-?committee|joint|school|library|housing|ad hoc|ethics|assessment|review",
+        ),
+        "planning_board": (
+            r"planning board|planning commission|planning\s*(?:&|and)\s*zoning board",
+            r"county|regional|sub-?committee|committee|advisory|historic|economic|steering|comprehensive",
+        ),
+        "zoning_board_of_appeals": (
+            r"zoning board of appeals|\bZBA\b|^board of (?:zoning )?appeals\b|zoning appeals",
+            r"building|construction|code|sub-?committee|assessment",
+        ),
+    },
 }
 
 
