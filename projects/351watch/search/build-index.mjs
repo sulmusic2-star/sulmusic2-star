@@ -74,8 +74,7 @@ for (const row of best.values()) {
   const res = await index.addCustomRecord({
     url: link,
     // Title, town and board lead the content, so a town or board name ranks its own documents.
-    // "e¢" and "¢" are bullets the OCR misread; they would show up in excerpts.
-    content: `${title}. ${row.town}, ${STATE_NAMES[row.state] || row.state}. ${row.board || ""}. ${row.text.replace(/(^|\s)[e€o]?¢\s*/g, "$1")}`,
+    content: `${title}. ${row.town}, ${STATE_NAMES[row.state] || row.state}. ${row.board || ""}. ${row.text}`,
     language: "en",
     meta: {
       title,

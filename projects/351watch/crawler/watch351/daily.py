@@ -2,6 +2,12 @@
 
     python3 -m watch351.daily [--states MA,NY,RI] [--towns Amherst,...] [--no-network-docs]
                               [--cache-dir PATH] [--workers 16]
+    python3 -m watch351.daily --states MI,VA --output-dir ../data/test --hits-name hits_mi_va.json
+
+Gated states (a data/towns_<st>.json marked "gated": true, e.g. MI and VA under test) are
+never part of the default run: they are crawled only when named in --states, and only with
+an --output-dir other than data/ (their index, ledger, health, run report and hits file go
+there), so data/hits_current.json and data/state/ are never touched by them.
 
 For each automated town (rows default to state MA; the 30-town pilot
 data/towns.json is not read):
@@ -38,7 +44,7 @@ from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from . import current, extract
+from . import attribution, current, extract
 from .adapters import REGISTRY
 from .crawl import scan_document_full, town_configs
 from .fetch import DEFAULT_CACHE_DIR, FetchError, PoliteFetcher
@@ -86,12 +92,20 @@ class TownOutcome:
 class DailyRun:
     def __init__(self, cache_dir: Path, data_dir: Path = DATA, today: date | None = None,
                  days_back: int = DAYS_BACK, days_ahead: int = DAYS_AHEAD, no_network_docs: bool = False,
-                 workers: int = 16):
+                 workers: int = 16, towns_dir: Path | None = None, report_towns: list[dict] | None = None,
+                 hits_name: str = "hits_current.json"):
+        """`data_dir` receives the state index, ledger, run report, health and hits file;
+        `towns_dir` (default: data_dir) holds the towns_*.json configs. `report_towns`, when
+        given, are the town rows the hits file and health report cover (a gated test run);
+        otherwise every non-gated row in towns_dir."""
         self.started = now_iso()
         self.t0 = time.monotonic()
         self.today = today or datetime.now(timezone.utc).date()
         self.window = Window(self.today - timedelta(days=days_back), self.today + timedelta(days=days_ahead))
         self.data_dir = Path(data_dir)
+        self.towns_dir = Path(towns_dir) if towns_dir is not None else self.data_dir
+        self.report_towns = report_towns
+        self.hits_name = hits_name
         self.no_network_docs = no_network_docs
         self.workers = workers
         cache_dir = Path(cache_dir)
@@ -128,7 +142,16 @@ class DailyRun:
             return False
         return not doc.resolve_pdf or self.fetcher.is_cached(rec.get("source_url") or doc.url)
 
-    def process_doc(self, doc: AgendaDoc, state: str, out: TownOutcome) -> None:
+    def _attribution_names(self, row: dict) -> dict[str, str]:
+        rows = self.report_towns if self.report_towns is not None else current.load_towns(self.towns_dir)
+        return attribution.known_townships(rows, row.get("county") or "")
+
+    def process_doc(self, doc: AgendaDoc, state: str, out: TownOutcome, row: dict | None = None) -> None:
+        if row is not None and row.get("attribute_townships") and "county" not in doc.board.lower():
+            # "Calhoun County Planning Commission" (a Michigan county planning commission under the
+            # MZEA, whatever the listing's own label), so a township page can name the body
+            label = "Planning Commission" if doc.board_key == "planning_board" else doc.board
+            doc.board = f"{row.get('county')} County {label}"
         out.listed += 1
         if not self._claim(doc.url):
             out.already_indexed += 1
@@ -161,7 +184,17 @@ class DailyRun:
         prev_attempts = (rec or {}).get("attempts", 0)
         try:
             with self.fetcher.purpose("document"):
-                hits, ex, source_url = scan_document_full(self.fetcher, doc)
+                hits, ex, source_url = scan_document_full(self.fetcher, doc, state)
+            if row is not None and row.get("attribute_townships"):
+                # county planning commission items -> the township they name (attribution.py),
+                # one hit per township-named item
+                names = self._attribution_names(row)
+                attribution.attribute(hits, ex.text, row, names)
+                base = {"town": doc.town, "board": doc.board, "board_key": doc.board_key,
+                        "meeting_date": doc.meeting_date.isoformat() if doc.meeting_date else None,
+                        "source_url": source_url, "listing_url": doc.listing_url, "document_title": doc.title,
+                        "text_source": "ocr" if ex.ocr else ex.kind}
+                hits.extend(attribution.split_items(hits, ex.text, {**row, "state": state}, names, base))
         except Exception as e:  # noqa: BLE001 - one bad document must not stop the town
             msg = f"{type(e).__name__}: {e}" if not isinstance(e, FetchError) else str(e)
             if rematch:  # keep the good record; re-matching is best effort
@@ -217,7 +250,7 @@ class DailyRun:
             out.configs_ok += 1
             out.boards_ok |= boards
             for doc in docs:
-                self.process_doc(doc, state, out)
+                self.process_doc(doc, state, out, row)
         out.boards_failed -= out.boards_ok
         log.info("%s: %s, %d listed, %d new, %d hits", out.key, out.status, out.listed,
                  out.new_documents, len(out.new_hits))
@@ -237,7 +270,7 @@ class DailyRun:
         update_ledger(self.index, self.data_dir / "first_seen.json")
         prev = self._previous_ids()
         doc = current.rebuild(self.data_dir, today=self.today, agenda_hits=self.index.current_hits(),
-                              indexed_urls=self.index.urls())
+                              indexed_urls=self.index.urls(), towns=self.report_towns, out_name=self.hits_name)
         pruned = self.index.prune(self.today)
         if pruned:
             self.index.save()
@@ -258,14 +291,15 @@ class DailyRun:
 
     def _previous_ids(self) -> set[str] | None:
         try:
-            return {h["id"] for h in json.loads((self.data_dir / "hits_current.json").read_text())["hits"]}
+            return {h["id"] for h in json.loads((self.data_dir / self.hits_name).read_text())["hits"]}
         except (OSError, ValueError, KeyError):
             return None
 
     def _update_health(self, outcomes: list[TownOutcome]) -> None:
         path = self.data_dir / "state" / "town_health.json"
         health = load_health(path)
-        automated = {f"{t['state']}:{t['town']}" for t in current.load_towns(self.data_dir) if t.get("automated")}
+        rows = self.report_towns if self.report_towns is not None else current.load_towns(self.towns_dir)
+        automated = {f"{t['state']}:{t['town']}" for t in rows if t.get("automated")}
         health = {k: v for k, v in health.items() if k in automated}
         for o in outcomes:
             h = health.setdefault(o.key, {"last_success": None, "last_error": None,
@@ -319,6 +353,15 @@ class DailyRun:
             "documents_needing_ocr": sum(o.needs_ocr for o in outcomes),
             "documents_deferred": sum(o.deferred for o in outcomes),
             "document_errors": sum(o.doc_errors for o in outcomes),
+            # packets over the download cap are skipped, not read in part (a PDF needs the whole file);
+            # listed here from the index on every run so they stay visible after the first attempt
+            "documents_too_large": sorted(
+                ({"town": r["town"], "state": r["state"], "url": r["url"], "meeting_date": r.get("meeting_date"),
+                  "error": r.get("error", "")[:120]}
+                 for r in self.index.records()
+                 if r.get("status") == "error" and "too large" in (r.get("error") or "")
+                 and r.get("state") in by_state),
+                key=lambda x: (x["state"], x["town"], x["url"])),
             "new_hits": sum(len(o.new_hits) for o in outcomes),
             "new_hits_by_topic": dict(raw_topics.most_common()),
             "new_alert_items": len(new_ids),
@@ -340,7 +383,8 @@ class DailyRun:
 
 
 def select_towns(data_dir: Path, states: set[str] | None, towns: set[str] | None) -> list[dict]:
-    rows = [t for t in current.load_towns(data_dir) if t.get("automated")]
+    """Automated rows to crawl. Gated states are included only when named in `states`."""
+    rows = [t for t in current.load_towns(data_dir, include_gated=states) if t.get("automated")]
     if states:
         rows = [t for t in rows if t["state"] in states]
     if towns:
@@ -360,7 +404,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--no-network-docs", action="store_true",
                    help="refresh listings but download no documents (cached ones are still processed)")
     p.add_argument("--cache-dir", type=Path, default=DEFAULT_CACHE_DIR)
-    p.add_argument("--data-dir", type=Path, default=DATA)
+    p.add_argument("--data-dir", type=Path, default=DATA, help="where the towns_*.json configs are")
+    p.add_argument("--output-dir", type=Path, default=None,
+                   help="write the state index, ledger, run report, health and hits file here instead of "
+                        "--data-dir (required for gated states such as MI and VA; e.g. ../data/test)")
+    p.add_argument("--hits-name", default="hits_current.json",
+                   help="file name of the hits file written in the output dir (e.g. hits_mi_va.json)")
     p.add_argument("--workers", type=int, default=16, help="towns in parallel (each host stays <= 1 req/s)")
     p.add_argument("--days-back", type=int, default=DAYS_BACK)
     p.add_argument("--days-ahead", type=int, default=DAYS_AHEAD)
@@ -379,8 +428,20 @@ def main(argv: list[str] | None = None) -> int:
     if not rows:
         print("no automated towns selected", file=sys.stderr)
         return 2
-    run = DailyRun(args.cache_dir, args.data_dir, days_back=args.days_back, days_ahead=args.days_ahead,
-                   no_network_docs=args.no_network_docs, workers=args.workers)
+    out_dir = args.output_dir or args.data_dir
+    production_out = out_dir.resolve() == args.data_dir.resolve()
+    gated = current.gated_states(args.data_dir) & {t["state"] for t in rows}
+    if gated and production_out:
+        print(f"gated state(s) {sorted(gated)} are not part of the production run: pass --output-dir "
+              f"(e.g. ../data/test) so data/hits_current.json and data/state/ stay untouched", file=sys.stderr)
+        return 2
+    report_towns = None
+    if not production_out:
+        chosen = {t["state"] for t in rows}
+        report_towns = [t for t in current.load_towns(args.data_dir, include_gated=states) if t["state"] in chosen]
+    run = DailyRun(args.cache_dir, out_dir, days_back=args.days_back, days_ahead=args.days_ahead,
+                   no_network_docs=args.no_network_docs, workers=args.workers, towns_dir=args.data_dir,
+                   report_towns=report_towns, hits_name=args.hits_name)
     if not run.tesseract:
         print("tesseract not installed: image-only PDFs are recorded as needs_ocr and retried later",
               file=sys.stderr)
