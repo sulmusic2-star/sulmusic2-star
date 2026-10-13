@@ -995,7 +995,7 @@ def find_anchor(text, s0, s1, topics):
 
 
 MINUTES_START = re.compile(r"called\s+(?:the\s+(?:meeting|session)\s+)?to\s+order\s+at|meeting\s+was\s+called\s+to\s+order|"
-                           r"\bmembers\s+present\s*:|\bPRESENT\s*:|made\s+a\s+motion|seconded\s+by|"
+                           r"\bmembers\s+present\s*:|(?<!TO )(?<!to )(?<!To )\bPRESENT\s*:|made\s+a\s+motion|seconded\s+by|"
                            r"\bmotion\s+(?:carried|passed)|\bmoved\s+to\s+(?:approve|adjourn|accept)", re.I)
 BYLAW_NEAR = re.compile(r"\bby-?laws?\b|\bordinances?\b|\blocal\s+law\b|\bzoning\s+(?:amendments?|code|text|regulations?|"
                         r"changes?|definitions?)|\bamend(?:ing|ment|ments|s)?\s+(?:to\s+)?(?:the\s+)?(?:\w+\s+){0,4}"
@@ -1038,19 +1038,25 @@ def minutes_near(text, anchor, title, minutes_start):
     low = title.lower()
     if re.search(r"\bminutes\b", low) and "agenda" not in low:
         return True
-    if MINUTES_STRONG.search(text, max(0, anchor - 400), anchor + 400):
+    # Minutes printed after the item (the packet's "MEETING MINUTES" section, or an "Approval of minutes"
+    # item) are not where the item sits; motions and narrative past that heading don't count against it.
+    end = anchor + 400
+    cap = re.search(r"\b(?:MEETING\s+)?MINUTES\b|\bApproval\s+of\s+(?:the\s+)?(?:meeting\s+)?minutes\b", text[anchor:end])
+    if cap:
+        end = anchor + cap.start()
+    if MINUTES_STRONG.search(text, max(0, anchor - 400), end):
         return True
-    narr = len(MINUTES_NARR.findall(text, max(0, anchor - 300), anchor + 300))
+    narr = len(MINUTES_NARR.findall(text, max(0, anchor - 300), min(anchor + 300, end)))
     if narr >= 2:
         return True
-    tight = text[max(0, anchor - 200):anchor + 200]
+    tight = text[max(0, anchor - 200):min(anchor + 200, end)]
     if narr and PRONOUN.search(tight):
         return True
     if re.search(r"(?<![\d.,:/$-])(\d{2,3}) (\d{2,3})(?![\d.,:/%-])", tight) and any(
             int(y) == int(x) + 1 for x, y in re.findall(r"(?<![\d.,:/$-])(\d{2,3}) (\d{2,3})(?![\d.,:/%-])", tight)):
         return True
     return minutes_start is not None and anchor > minutes_start and bool(
-        MINUTES_NARR.search(text, max(0, anchor - 600), anchor + 600))
+        MINUTES_NARR.search(text, max(0, anchor - 600), min(anchor + 600, end)))
 
 
 def classify(a, text, anchor, i0, i1):
