@@ -311,7 +311,7 @@
     if (outside.length) {
       parts.push(` ${joinAnd(outside.map((x) => label(x)))} ${outside.length === 1 ? 'isn’t' : 'aren’t'} next to ${label(first)}. Free alerts cover one town and its neighbors.`);
     }
-    if (left.length) parts.push(` We don’t know “${left.slice(0, 3).join('”, “')}”. Check the spelling.`);
+    // Half-typed words are not mistakes; the Continue button says so if a name still doesn't match.
     read.textContent = parts.join('');
   }
 
@@ -355,7 +355,7 @@
       nodes.push(el('p', '', `Nothing on these topics in ${where} in the last 30 days. You’ll hear from us when something comes up.`));
     } else {
       const lead = el('p');
-      lead.append(`In the last 30 days, ${where} had `, el('b', '', plural(past, 'meeting')), ' on these topics. ',
+      lead.append(`Over the last 30 days, ${where} had `, el('b', '', plural(past, 'meeting')), ' on these topics, so expect about that many alerts a month. ',
         ahead.length ? (ahead.length > 3 ? `${ahead.length} more are coming up. The next 2:` : 'Coming up next:') : 'Nothing else is on an agenda yet.');
       nodes.push(lead);
       if (ahead.length) {

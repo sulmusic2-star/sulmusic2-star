@@ -240,7 +240,7 @@ class RenderTests(unittest.TestCase):
         self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True}
         ctx, m = self.meeting(HIT)
         html = self.build.meeting_html(ctx, m, show_town=False)
-        self.assertIn(f'<p class="line-say">{GOOD["line"]}</p>', html.replace("’", "’"))
+        self.assertIn(f'>{GOOD["line"]}</a></p>', html.replace("’", "’"))  # the headline links to the meeting page
         self.assertIn('<p class="brief-what">Federal Pond Solar wants a special permit', html)
         self.assertIn("104 Tremont Street", html)  # the facts line: where, size, who
         self.assertIn("4.9 MW on 22 acres", html)

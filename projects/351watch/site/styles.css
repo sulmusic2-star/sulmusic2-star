@@ -194,7 +194,7 @@ footer.site p { max-width: 75ch; }
   border: 2px solid var(--mark); border-radius: var(--radius);
   text-decoration: none; cursor: pointer;
 }
-.btn:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.btn:hover { background: #5e2062; border-color: #5e2062; color: var(--mark-ink); }
 .btn.quiet { background: transparent; color: var(--ink); border-color: var(--rule-strong); }
 .btn.quiet:hover { border-color: var(--ink); background: var(--land); color: var(--ink); }
 .btn.small { min-height: 44px; padding: 6px 14px; font-size: var(--t-sm); }
@@ -313,6 +313,14 @@ details.more > summary { padding: var(--s2) 0; }
 .town-cols a[title] { color: var(--muted); font-weight: 500; }
 .town-cols .n { font-size: 12px; line-height: 18px; padding: 0 6px; border: 1px solid var(--rule-strong); border-radius: 10px; color: var(--muted); }
 /* /towns: states and counties fold; a summary is a tap target, a count sits beside it in grey */
+/* Every folding section gets the same chevron instead of the browser's triangle */
+summary { list-style: none; cursor: pointer; }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: ""; display: inline-block; width: 8px; height: 8px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(-45deg); margin: 0 12px 2px 3px; transition: transform 0.15s; }
+details[open] > summary::before { transform: rotate(45deg); margin-bottom: 4px; }
+@media (prefers-reduced-motion: reduce) { summary::before { transition: none; } }
+form[data-list-filter] label { flex: 1 1 100%; }
+form[data-list-filter] input { width: 100%; }
 .state-towns { border-top: 1px solid var(--rule); }
 .state-towns > summary { font-size: var(--t-h2); font-weight: 700; padding: var(--s3) 0; cursor: pointer; line-height: 1.25; }
 .state-towns > summary .sub-count { display: block; font-size: var(--t-sm); margin: 2px 0 0; }
@@ -517,7 +525,13 @@ h1 { margin-top: var(--s6); margin-bottom: var(--s3); }
 .line-say { margin: 0; font-weight: 600; }
 .line-facts { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 var(--s4); margin: 0; color: var(--muted); font-size: var(--t-sm); }
 .line-before { color: var(--muted); font-size: var(--t-sm); margin: 2px 0 0; }
+.lines > .line + .line { margin-top: var(--s3); }
+.line-link { color: inherit; text-decoration: none; }
+.line-link:hover, .line-link:focus-visible { text-decoration: underline; }
+/* One status style everywhere: a dot and a word. Filled when the board acts (a vote or hearing), hollow otherwise. */
 .stage { margin-left: auto; white-space: nowrap; }
+.stage::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; border: 1.5px solid var(--rule-strong); box-sizing: border-box; }
+.stage.act::before { background: var(--mark); border-color: var(--mark); }
 .stage.soon { color: var(--warn); font-weight: 600; }
 .line-next { margin: var(--s1) 0 0; font-size: var(--t-sm); }
 .line-note { margin: var(--s1) 0 0; font-size: var(--t-sm); }
@@ -575,7 +589,7 @@ td a, tbody th a { display: inline-flex; align-items: center; min-height: 44px; 
 .trend-filters legend { float: left; margin-right: var(--s2); font-weight: 600; color: var(--muted); line-height: 30px; }
 .trend-filters label { position: relative; display: inline-flex; align-items: center; min-height: 30px; padding: 0 10px; border: 1px solid var(--rule); border-radius: 15px; cursor: pointer; }
 .trend-filters input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
-.trend-filters label:has(input:checked) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.trend-filters label:has(input:checked) { background: var(--mark); color: var(--mark-ink); border-color: var(--mark); }
 .trend-filters label:has(input:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
 .trend-filters .form-note { margin: 0; }
 .topic-line { margin: var(--s3) 0 0; }

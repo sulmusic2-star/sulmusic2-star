@@ -372,7 +372,9 @@
     const mail = wl.email || {};
     const home = homeTown ? homeTown.split(':').slice(1).join(':') : '';
     const others = wl.towns.filter((t) => t !== homeTown).length;
-    $('wl-title').textContent = home ? `Alerts on for ${home}${others ? ` and ${others === 1 ? 'the town' : `${others} towns`} next door` : ''}` : `Alerts on: ${wl.name || 'your towns'}`;
+    // Until an email or chat channel is set, what the person has is a calendar feed; say that, not "alerts".
+    const kind = mail.configured || wl.webhook ? 'Alerts' : 'Calendar feed';
+    $('wl-title').textContent = home ? `${kind} on for ${home}${others ? ` and ${others === 1 ? 'the town' : `${others} towns`} next door` : ''}` : `${kind} on: ${wl.name || 'your towns'}`;
     $('wl-summary').textContent = '';
     const how = $('created-how');
     if (mail.configured) {
