@@ -373,7 +373,7 @@
     const home = homeTown ? homeTown.split(':').slice(1).join(':') : '';
     const others = wl.towns.filter((t) => t !== homeTown).length;
     // Until an email or chat channel is set, what the person has is a calendar feed; say that, not "alerts".
-    const kind = mail.configured || wl.webhook ? 'Alerts' : 'Calendar feed';
+    const kind = mail.configured || (wl.webhook && wl.webhook.configured) ? 'Alerts' : 'Calendar feed';
     $('wl-title').textContent = home ? `${kind} on for ${home}${others ? ` and ${others === 1 ? 'the town' : `${others} towns`} next door` : ''}` : `${kind} on: ${wl.name || 'your towns'}`;
     $('wl-summary').textContent = '';
     const how = $('created-how');
