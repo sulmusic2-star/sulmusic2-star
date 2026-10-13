@@ -110,6 +110,20 @@ BOARD_RX = {
         "zoning_board_of_appeals": (r"board\s+of\s+zoning\s+appeals|\bBZA\b|zoning\s+appeals|board\s+of\s+appeals",
                                     r"building|construction|fire|code\s+appeals"),
     },
+    # New York (Wave 1): town boards, village boards of trustees, city / common councils
+    "NY": {
+        "select_board": (r"town\s+board|\bTB\b|board\s+of\s+trustees|village\s+board|\btrustees\b|city\s+council|"
+                         r"common\s+council|town\s+council|\bboard\s+(?:regular\s+|special\s+)?meeting|"
+                         r"\bregular\s+(?:town\s+)?board|\bboard\s+agenda|^\s*TB\b|work(?:shop)?\s+session",
+                         r"library\s+board|parks?\s+(?:and|&)\s+rec|recreation\s+(?:board|commission)|cemetery|"
+                         r"board\s+of\s+assessment|assessment\s+review|school\s+board|board\s+of\s+education|"
+                         r"ethics|committee|housing\s+authority|\bIDA\b|fire\s+district"),
+        "planning_board": (r"planning\s+board|planning\s+commission|\bPB\b|planning\b",
+                           r"county\s+planning|regional|committee|comprehensive\s+plan"),
+        "zoning_board_of_appeals": (r"zoning\s+board\s+of\s+appeals|\bZBA\b|board\s+of\s+(?:zoning\s+)?appeals|"
+                                    r"zoning\s+appeals",
+                                    r"building|construction|code\s+appeals|assessment\s+review"),
+    },
 }
 BOARD_NAME = {  # strict names, used to drop another board's links
     "MI": {"select_board": r"township\s+board|board\s+of\s+trustees|city\s+council|city\s+commission|village\s+council|"
@@ -120,6 +134,11 @@ BOARD_NAME = {  # strict names, used to drop another board's links
     "VA": {"select_board": r"board\s+of\s+supervisors|\bBOS\b|town\s+council|city\s+council",
            "planning_board": r"planning\s+commission|\bPC\b",
            "zoning_board_of_appeals": r"board\s+of\s+zoning\s+appeals|\bBZA\b|zoning\s+appeals|board\s+of\s+appeals"},
+    "NY": {"select_board": r"town\s+board|board\s+of\s+trustees|village\s+board|city\s+council|common\s+council|"
+                           r"\bTB\b",
+           "planning_board": r"planning\s+board|planning\s+commission|\bPB\b",
+           "zoning_board_of_appeals": r"zoning\s+board\s+of\s+appeals|\bZBA\b|board\s+of\s+(?:zoning\s+)?appeals|"
+                                      r"zoning\s+appeals"},
 }
 SLUG_HINTS = {
     "select_board": r"township[-_ ]?board|board[-_ ]of[-_ ]trustees|trustees|board[-_ ]of[-_ ]supervisors|supervisors|"
@@ -394,6 +413,12 @@ def civicclerk_guesses(row: dict, state: str) -> list[str]:
             return [f"{n}mi", f"cityof{n}mi"]
         # not "<name>mi": that is the city's tenant pattern (portlandmi is the City of Portland)
         return [f"{n}twpmi", f"{n}townshipmi", f"{n}chartertwpmi"]
+    if state == "NY":   # NY pilot tenants: doverny, amherstny, northhempsteadny, smithtownny
+        if kind == "city":
+            return [f"{n}ny", f"cityof{n}ny"]
+        if kind == "village":
+            return [f"villageof{n}ny", f"{n}villageny"]
+        return [f"{n}ny", f"townof{n}ny"]
     return []
 
 

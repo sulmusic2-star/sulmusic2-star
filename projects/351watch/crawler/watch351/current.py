@@ -35,7 +35,11 @@ WINDOW_DAYS = 120
 BOARD_KEYS = {"planning_board", "zoning_board_of_appeals", "conservation_commission",
               "select_board", "town_meeting"}
 TOPIC_KEYS = {"battery_storage", "solar", "data_center", "moratorium", "clean_energy_siting",
-              "40b_comprehensive_permit", "wireless_telecom", "zoning_amendment", "wetlands_filing"}
+              "40b_comprehensive_permit", "wireless_telecom", "zoning_amendment", "wetlands_filing",
+              # Wave 1 state feeds (Vermont Act 250): quarries / gravel pits, large commercial or industrial
+              # projects. In the contract (ARCHITECTURE.md) but used only by gated sources until the site has
+              # labels for them.
+              "extraction", "large_development"}
 # The contract names pdf|ocr|html; Word and plain-text agendas keep their true kind.
 TEXT_SOURCES = {"pdf", "ocr", "html", "docx", "text"}
 FIELDS = ["id", "state", "town", "county", "board", "board_key", "meeting_date", "topics", "snippet",
