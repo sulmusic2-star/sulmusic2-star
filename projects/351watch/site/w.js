@@ -223,7 +223,7 @@
   const factsText = (e) => {
     const parts = [tagText(e.topics), ...(e.facts || []).map(String)];
     const seen = new Set();
-    return parts.filter((x) => x && !seen.has(x.toLowerCase()) && seen.add(x.toLowerCase())).join(' \u00B7 ');
+    return parts.filter((x) => x && !seen.has(x.toLowerCase()) && seen.add(x.toLowerCase())).map((x) => el('span', { text: x }));
   };
 
   // One meeting, as meeting_html() renders it in build.py: the meeting line (town \u00B7 board \u00B7 day \u00B7 place), per item
@@ -248,7 +248,7 @@
       return el('li', { class: `line${b ? ' brief' : ''}` },
         el('p', { class: 'line-say' }, e.isNew ? el('span', { class: 'badge-new', text: 'New' }) : null, e.isNew ? ' ' : null, text),
         b && b.what && normQ(b.what) !== normQ(text) ? el('p', { class: 'brief-what', text: b.what }) : null,
-        facts || e.stage ? el('p', { class: 'line-facts' }, facts, e.stage ? el('span', { class: `stage${soon ? ' soon' : ''}`, text: e.stage }) : null) : null);
+        facts.length || e.stage ? el('p', { class: 'line-facts' }, ...facts, e.stage ? el('span', { class: `stage${soon ? ' soon' : ''}`, text: e.stage }) : null) : null);
     };
     const where = `${m.town} ${meetingBoard(m)}, ${m.date ? dayLabel(m.date) : 'no date'}`;
     const d = m.docs[0];

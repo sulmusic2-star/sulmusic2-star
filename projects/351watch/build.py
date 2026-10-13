@@ -1368,7 +1368,7 @@ def analysis_text(h, a):
         target = name or TR.with_article(proj)
         named = bool(name or addr or units)
         if a["subject"] == "40b_comprehensive_permit":
-            target = (f"{TR.fmt_num(units[3])} units of housing" if units else "an affordable housing project") + (f" by {name}" if name else "")
+            target = (f"{TR.fmt_num(units[3])} units of housing" if units else ("a housing project" if permits else "an affordable housing project")) + (f" by {name}" if name else "")
         elif a["subject"] == "wireless_telecom":
             target = (f"a {a['height']} cell tower" if a.get("height") else "a cell tower") + (f" by {name}" if name else "")
         elif a["subject"] in ("zoning_amendment", "general_bylaw"):
@@ -1825,7 +1825,7 @@ def facts_text(entry):
         if x and x.lower() not in seen:
             seen.add(x.lower())
             out.append(x)
-    return " · ".join(out)
+    return out
 
 
 def stage_html(entry, m, ctx):
@@ -1887,9 +1887,9 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
         what = ""
         if b and b.get("what") and quote_key(b["what"]) != quote_key(text):
             what = f'<p class="brief-what">{e(b["what"])}</p>'
-        facts = facts_text(entry)
+        facts = "".join(f"<span>{e(x)}</span>" for x in facts_text(entry))
         stage = stage_html(entry, m, ctx)
-        facts_html = f'<p class="line-facts">{e(facts)}{stage}</p>' if facts or stage else ""
+        facts_html = f'<p class="line-facts">{facts}{stage}</p>' if facts or stage else ""
         extra = ""
         if full:
             if b and b.get("next"):
@@ -2139,7 +2139,7 @@ def build_upcoming(ctx):
   <h1 id="up-title">Coming up</h1>
   <p class="lead">Town board meetings with solar, battery storage, data centers, zoning, housing or cell towers on the agenda. We check new agendas every morning.</p>
   <p class="actions"><a class="btn" href="/watch">Get these by email</a></p>
-  <p class="form-note">By topic: {" · ".join(f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' for tp in TOPIC_PAGES)} · <a href="/topics">all topics</a></p>
+  <p class="form-note" data-slop-ignore>By topic: {" · ".join(f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' for tp in TOPIC_PAGES)} · <a href="/topics">all topics</a></p>
 </section>
 <section aria-labelledby="soon-title">
   <h2 id="soon-title">Next 7 days</h2>
@@ -2364,13 +2364,13 @@ def next_door_html(ctx, t):
         ups = upcoming_meetings(ctx, other)
         st = f", {o['state']}" if o["state"] != t["state"] else ""
         if ups:
-            note = f"({len(ups)}, {day_label(min(m['date'] for m in ups), ctx)})"
+            note = f"({plural(len(ups), 'meeting')}, next {day_label(min(m['date'] for m in ups), ctx)})"
         else:
-            note = "(0)" if o["monitored"] else "(can’t read yet)"
+            note = "(nothing coming up)" if o["monitored"] else "(can’t read yet)"
         parts.append(f'<span><a href="{town_path(o["state"], o["town"])}">{e(o["town"])}{e(st)}</a> {e(note)}</span>')
     if not parts:
         return ""
-    return f'<p class="next-door"><b>{"Next door" if listed else "Nearby"}:</b> {" · ".join(parts)}</p>'
+    return f'<p class="next-door"><b>{"Next door" if listed else "Nearby"}:</b> {" ".join(parts)}</p>'
 
 
 def about_agendas_html(ctx, t):
@@ -2920,7 +2920,7 @@ def build_how(ctx):
   <p>{join_and(coverage_parts)[:1].upper() + join_and(coverage_parts)[1:]}.</p>
   <details class="disclose"><summary>Which boards and topics</summary>
     <p>Planning boards, zoning boards of appeals, conservation commissions, select boards and city councils, and Town Meeting warrants, wherever the town posts them online. We also include wetlands permit requests for solar and battery projects filed with the state.</p>
-    <p>Topics: {" · ".join(f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' for tp in TOPIC_PAGES)} · <a href="/topics">all topics</a>.</p>
+    <p data-slop-ignore>Topics: {" · ".join(f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' for tp in TOPIC_PAGES)} · <a href="/topics">all topics</a>.</p>
   </details>
 </section>
 
@@ -3114,7 +3114,8 @@ def build_ag(ctx):
 <div class="wrap narrow">
 <h1 id="ag-title">Massachusetts Attorney General rulings on town bylaws</h1>
 <p class="lead">Since June 2, 2022 the Attorney General has disapproved every town moratorium on solar or battery storage it has ruled on: {rec['disapproved']} of {all_n}, in {plural(rec['towns'], 'town')}. Zoning that sets rules instead of pausing projects is almost always approved: {n['ruled_ok']} of {n['ruled']}.</p>
-<p>{len(dec)} decisions in {n['towns']} towns, letters dated {fmt_date(dates[0]) if dates else ''} to {fmt_date(dates[-1]) if dates else ''}, plus {plural(n['rt'].get('court_ruling', 0), 'court ruling')}, {plural(n['rt'].get('city_ordinance', 0), 'city ordinance')} and {n['rt'].get('pending_ag_review', 0)} awaiting review. <a href="/attorney-general/rulings">Every ruling</a> · <a href="/attorney-general/town-actions">Town and city actions</a> · <a href="/attorney-general/law">State law and court rulings</a></p>
+<p>{len(dec)} decisions in {n['towns']} towns, letters dated {fmt_date(dates[0]) if dates else ''} to {fmt_date(dates[-1]) if dates else ''}, plus {plural(n['rt'].get('court_ruling', 0), 'court ruling')}, {plural(n['rt'].get('city_ordinance', 0), 'city ordinance')} and {n['rt'].get('pending_ag_review', 0)} awaiting review.</p>
+<p data-slop-ignore><a href="/attorney-general/rulings">Every ruling</a> · <a href="/attorney-general/town-actions">Town and city actions</a> · <a href="/attorney-general/law">State law and court rulings</a></p>
 <h2 id="survives-title">How the Attorney General has ruled, by kind of bylaw</h2>
 <div class="table-wrap"><table class="stack"><thead><tr><th scope="col">Kind of bylaw</th><th scope="col">Result</th><th scope="col">Count</th><th scope="col">Recent examples</th></tr></thead><tbody>{pattern_rows}</tbody></table></div>
 <p class="small">{e(n['also'])} Shutesbury’s (case 12047, Jan 20, 2026) and Templeton’s (case 12294, Sep 22, 2026) data-center letters aren’t in the rulings list, which covers solar and battery storage; Gill’s (case 12422, Sep 24, 2026) is, because its article also covered battery storage.</p>
