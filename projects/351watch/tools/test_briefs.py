@@ -70,7 +70,7 @@ class VerifyTests(unittest.TestCase):
         self.assertTrue(any(f.startswith("who:") for f in B.verify(bad, TEXT, {"2026-09-29"})))
         bad = {**GOOD, "where": "104 Tremont Street, Plympton"}
         self.assertTrue(any(f.startswith("where:") and "plympton" in f.lower() for f in B.verify(bad, TEXT, {"2026-09-29"})))
-        bad = {**GOOD, "what": "NextGrid Energy wants a special permit for a 4.9 MW solar array."}
+        bad = {**GOOD, "what": "The permit is for NextGrid Energy, a 4.9 MW solar array."}
         self.assertTrue(any("nextgrid" in f.lower() for f in B.verify(bad, TEXT, {"2026-09-29"})))
 
     def test_action_needs_its_cue(self):
@@ -89,6 +89,9 @@ class VerifyTests(unittest.TestCase):
         fails = B.verify(GOOD, TEXT, {"2026-10-13"})
         self.assertTrue(any("history" in f and "9/29" in f for f in fails), fails)
 
+    def test_a_history_date_of_an_agenda_without_items_passes_through_the_tool(self):
+        pass  # covered in ToolTests.test_storage_and_verifier_write_verified (the search doc dated 2026-09-29)
+
     def test_line_length_and_ids(self):
         bad = {**GOOD, "line": "x" * 91}
         self.assertTrue(any("91 characters" in f for f in B.verify(bad, TEXT, {"2026-09-29"})))
@@ -99,6 +102,76 @@ class VerifyTests(unittest.TestCase):
         self.assertIn("no agenda text for this document in data/search", B.verify(GOOD, "", set()))
 
 
+class ToleranceTests(unittest.TestCase):
+    """What counts as the same thing written another way."""
+
+    def ok(self, brief, text=TEXT, dates=("2026-09-29",), year=2026):
+        self.assertEqual(B.verify(brief, text, set(dates), year), [])
+
+    def test_street_abbreviations_both_ways(self):
+        self.ok({**GOOD, "where": "104 Tremont St", "line": "Federal Pond Solar hearing, 104 Tremont St, moves to Oct 27"})
+        self.ok({**GOOD, "where": "104 Tremont St."})
+        text = TEXT.replace("104 Tremont Street", "104 Tremont St.").replace("235 Main Street", "235 Main Ave")
+        self.ok({**GOOD, "where": "104 Tremont Street"}, text)
+        self.ok({**GOOD, "where": "235 Main Avenue"}, text)
+        self.ok({**GOOD, "where": "235 Main Ave."}, text)
+        self.assertTrue(any(f.startswith("where:") for f in B.verify({**GOOD, "where": "104 Tremont Road"}, TEXT, {"2026-09-29"}, 2026)))
+
+    def test_history_dates_from_any_document_we_hold(self):
+        self.ok({**GOOD, "history": "The Planning Board also met on Sep 15 and Aug 4, 2026."}, dates=("2026-09-29", "2026-09-15", "2026-08-04"))
+        self.assertTrue(any("history" in f for f in B.verify({**GOOD, "history": "Also on the Sep 15 agenda."}, TEXT, {"2026-09-29"}, 2026)))
+
+    def test_can_speak_rests_on_a_standing_item_anywhere(self):
+        far = "PRIVILEGE OF THE FLOOR: residents may address the board. " + "Item. " * 400 + TEXT.replace("Public Hearing Cont’d:", "Old business:")
+        self.ok({**GOOD, "can_speak": True}, far)
+        for cue in ("Citizens' time", "Public participation", "Comments from the public", "Public input", "Open forum"):
+            self.ok({**GOOD, "can_speak": True}, cue + ". " + far)
+
+    def test_more_action_cues(self):
+        res = TEXT + " RESOLUTION 70-2026: Endorsing the solar array at 104 Tremont Street. The council shall act on it tonight."
+        self.ok({**GOOD, "action": "vote", "quote": "Endorsing the solar array at 104 Tremont Street"}, res)
+        self.ok({**GOOD, "action": "discussion", "quote": "Endorsing the solar array at 104 Tremont Street"},
+                res + " Listening session, informational only.")
+        ext = TEXT + " 6. Meadow Solar 1, LLC: request for extension of its special permit at 223 Meadow Street."
+        self.ok({**GOOD, "action": "extension", "quote": "request for extension of its special permit"}, ext)
+        self.assertTrue(any("extension" in f for f in B.verify({**GOOD, "action": "extension"}, TEXT, {"2026-09-29"}, 2026)))
+
+    def test_number_forms(self):
+        text = TEXT + " A 45 ft pole; a 28.251 acres lot; US-made panels; $1,660,000 bond; a 15 minute limit."
+        self.ok({**GOOD, "size": "45-foot pole on 28.251-acre lot"}, text)
+        self.ok({**GOOD, "size": "45' pole"}, text)
+        self.ok({**GOOD, "what": "U.S.-made panels and a $1.66 million bond are listed; a 15-minute limit applies."},
+                text.replace("$1,660,000", "$1.66 million"))
+        self.ok({**GOOD, "size": "1,660,000 dollars"}, text)
+        self.assertTrue(any("46" in f for f in B.verify({**GOOD, "size": "46-foot pole"}, text, {"2026-09-29"}, 2026)))
+
+    def test_weekday_names_count_when_right_for_the_date(self):
+        self.ok({**GOOD, "next": "The hearing continues Tue Oct 27."})
+        self.ok({**GOOD, "next": "The hearing continues Tuesday, October 27, 2026."})
+        self.assertTrue(any("Wed" in f for f in B.verify({**GOOD, "next": "The hearing continues Wed Oct 27."}, TEXT, {"2026-09-29"}, 2026)))
+
+    def test_sentence_initial_and_ordinary_capitals_are_not_facts(self):
+        self.ok({**GOOD, "what": "Nothing else is listed. This item is the only one. Our records show no vote. Applicant asked to continue."})
+        self.ok({**GOOD, "what": "Town Meeting decides later; the Town Clerk posts the result. Both steps are routine."})
+        self.assertTrue(any("Acme" in f for f in B.verify({**GOOD, "what": "The plan is from Acme Partners."}, TEXT, {"2026-09-29"}, 2026)))
+
+    def test_bodies_and_state_law_from_our_records(self):
+        self.ok({**GOOD, "next": "The Planning Board sends it to the Select Board; the Attorney General reviews a bylaw after Town Meeting."})
+        self.ok({**GOOD, "next": "Under Massachusetts state law a town may regulate but not ban solar."})
+        self.assertTrue(any("Massachusetts" in f for f in B.verify({**GOOD, "next": "Towns in Massachusetts do this."}, TEXT, {"2026-09-29"}, 2026)))
+
+    def test_two_digit_years(self):
+        text = TEXT + " Approved 10/19/21. See the '21 decision and the FY27 budget."
+        self.ok({**GOOD, "what": "Approved in 2021 under the FY2027 budget; the 2021 decision stands."}, text)
+        self.assertTrue(any("2019" in f for f in B.verify({**GOOD, "what": "Approved in 2019."}, text, {"2026-09-29"}, 2026)))
+
+    def test_board_abbreviations_and_stage_words(self):
+        text = TEXT.replace("CARVER PLANNING BOARD", "CARVER ZBA and SELECTBOARD")
+        self.ok({**GOOD, "next": "The Zoning Board of Appeals and the Select Board take it up Oct 27."}, text)
+        self.ok({**GOOD, "line": "Postponed: Federal Pond Solar hearing moves to Oct 27"})
+        self.ok({**GOOD, "line": "Hearing: Federal Pond Solar, 104 Tremont St (Vote Oct 27)"})
+
+
 class ToolTests(unittest.TestCase):
     def setUp(self):
         self.dir = tempfile.mkdtemp(prefix="briefs-")
@@ -106,7 +179,10 @@ class ToolTests(unittest.TestCase):
         with open(os.path.join(self.dir, "search", "MA", "2026-10.jsonl"), "w") as f:
             f.write(json.dumps({"id": "abc", "url": URL, "state": "MA", "town": "Carver", "board_key": "planning_board",
                                 "meeting_date": "2026-10-13", "text": TEXT}) + "\n")
-        other = {**HIT, "id": "0000000000aa", "meeting_date": "2026-09-29", "source_url": URL + "?x"}
+            # an earlier agenda with no flagged item: its date may still be named in `history`
+            f.write(json.dumps({"id": "abd", "url": URL + "?prev", "state": "MA", "town": "Carver", "board_key": "planning_board",
+                                "meeting_date": "2026-09-29", "text": "Planning Board agenda. 1. Minutes. 2. Adjourn."}) + "\n")
+        other = {**HIT, "id": "0000000000aa", "meeting_date": "2026-10-01", "source_url": URL + "?x"}
         with open(os.path.join(self.dir, "hits_current.json"), "w") as f:
             json.dump({"generated": "2026-10-12T13:00:00+00:00", "window": {"start": "2026-06-14", "end": "2027-02-09"},
                        "hits": [HIT, other]}, f)
@@ -166,19 +242,41 @@ class RenderTests(unittest.TestCase):
         html = self.build.meeting_html(ctx, m, show_town=False)
         self.assertIn(f'<p class="line-say">{GOOD["line"]}</p>', html.replace("’", "’"))
         self.assertIn('<p class="brief-what">Federal Pond Solar wants a special permit', html)
-        for label in ("Where", "Size", "Who", "Next", "Earlier", "Can I speak?"):
-            self.assertIn(f"<dt>{label}</dt>", html)
-        self.assertIn("<dd>104 Tremont Street</dd>", html)
-        self.assertIn("<summary>Exact agenda wording</summary>", html)
-        self.assertIn(GOOD["quote"], html)
-        self.assertNotIn("requesting a Special Permit and Site Plan Review", html.split("Exact agenda wording")[0])
-        self.assertIn("Retrieved Oct 10, 2026", html)
+        self.assertIn("104 Tremont Street", html)  # the facts line: where, size, who
+        self.assertIn("4.9 MW on 22 acres", html)
+        self.assertIn('<span class="stage">Postponed</span>', html)
+        self.assertNotIn("Agenda wording", html, "lists carry no agenda text")
+        self.assertNotIn("Copy citation", html)
+        self.assertNotIn(self.build.SPEAK_TEXT, html, "a postponed hearing gets no speak line")
+        full = self.build.meeting_html(ctx, m, show_town=False, full=True)
+        self.assertIn("<summary>Agenda wording</summary>", full)
+        self.assertIn(GOOD["quote"], full)
+        self.assertIn(GOOD["next"], full)
+        self.assertNotIn("requesting a Special Permit and Site Plan Review", full.split("Agenda wording")[0])
+        self.assertIn("Retrieved Oct 10, 2026", self.build.citation(ctx, m, next(iter(m["lines"].values()))))
+
+    def test_postponement_names_the_new_day_when_the_brief_has_one(self):
+        self.assertEqual(self.build.brief_stage(GOOD), "Postponed")
+        moved = {**GOOD, "next": "The company asked to postpone to Tue Oct 27, 2026, 6:30 pm, Town Hall Meeting Room #1."}
+        self.assertEqual(self.build.brief_stage(moved), "Postponed to Tue Oct 27")
+        self.assertEqual(self.build.brief_stage({**GOOD, "next": "The hearing continues Tue Oct 27."}), "Postponed to Tue Oct 27")
+        self.assertEqual(self.build.brief_stage({**GOOD, "action": "hearing"}), "Hearing")
+        self.assertEqual(self.build.brief_stage({**GOOD, "action": "adopted"}), "Final vote")
+
+    def test_speak_line_only_for_a_live_hearing(self):
+        self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True, "action": "hearing"}
+        ctx, m = self.meeting(HIT)
+        self.assertEqual(self.build.speak_line(m), self.build.SPEAK_TEXT)
+        self.assertEqual(self.build.meeting_html(ctx, m, show_town=False).count(self.build.SPEAK_TEXT), 1, "once per meeting")
+        self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True, "action": "continued"}
+        ctx, m = self.meeting(HIT)
+        self.assertEqual(self.build.speak_line(m), "")
 
     def test_without_a_brief_the_rules_line_stays(self):
         ctx, m = self.meeting(HIT)
-        html = self.build.meeting_html(ctx, m, show_town=False)
-        self.assertNotIn("Exact agenda wording", html)
-        self.assertIn("Show the agenda text", html)
+        html = self.build.meeting_html(ctx, m, show_town=False, full=True)
+        self.assertIn("<summary>Agenda wording</summary>", html)
+        self.assertIn("Federal Pond Solar", html)
 
     def test_brief_stays_first_and_whole_in_a_meeting(self):
         self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True}
@@ -195,6 +293,7 @@ class RenderTests(unittest.TestCase):
         self.assertIn("<dt>Where</dt><dd>Main St</dd>", html)
         self.assertIn(self.build.BRIEF_SPEAK[False], html)
         self.assertNotIn("<dt>Size</dt>", html)
+        self.assertEqual(self.build.BRIEF_STAGE["continued"], "Postponed")
 
 
 if __name__ == "__main__":

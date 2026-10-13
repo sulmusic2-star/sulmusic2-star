@@ -41,19 +41,41 @@ from datetime import date, datetime
 
 FIELDS = ("id", "what", "where", "size", "who", "action", "next", "history", "can_speak", "line", "quote",
           "source_url", "written_at", "writer", "verified")
-ACTIONS = ("hearing", "vote", "discussion", "continued", "adopted", "withdrawn", "other")
+ACTIONS = ("hearing", "vote", "discussion", "continued", "adopted", "withdrawn", "extension", "other")
 LINE_MAX = 90
 # The cue each action needs within CUE_REACH characters of the quote (or anywhere, when there is no quote).
 ACTION_CUES = {
     "hearing": r"\bhearing",
-    "vote": r"\bvot(?:e|es|ed|ing)\b|to see if the (?:town|city) will|\bmotion\b|\bapprov|\bdecision\b",
-    "discussion": r"\bdiscuss|\breview|\bupdate|\bpresentation|\bworkshop|\breport|\bconsider",
+    "vote": r"\bvot(?:e|es|ed|ing)\b|to see if the (?:town|city)|\bmotion\b|\bapprov|\bdecision\b|\bresolution\b|"
+            r"consider and act|\bact on\b|\bendorse|\bshall\b|second reading|final vote|\badopt|\bauthoriz|\border\b|"
+            r"\brecommendation\b",
+    "discussion": r"\bdiscuss|\breview|\bupdate|\bpresentation|\bworkshop|\breport|\bconsider|listening session|"
+                  r"\binformational|\bstatus\b|\boverview|\bbriefing|\bforum\b|\b(?:old|new|unfinished|other) business\b|\binformal\b",
     "continued": r"continu",
     "adopted": r"\badopt|\benact|\bordain",
     "withdrawn": r"\bwithdr",
+    "extension": r"\bextension|\bextend",
     "other": r"",
 }
-SPEAK_CUE = r"public\s+(?:hearing|comment|input|forum)|citizen(?:s'?|s’)?\s+(?:comment|forum|input)|open\s+forum"
+# A standing item anywhere on the agenda counts: residents can speak at the meeting.
+SPEAK_CUE = (r"public\s+(?:hearing|comment|input|forum|participation)|citizen(?:s'?|s’)?\s+(?:comment|forum|input|time)|"
+             r"open\s+forum|privilege of the floor|comments? from the public|public\s+to\s+be\s+heard|open\s+(?:mic|microphone)")
+ABBREV = {  # the same place or body, written either way
+    "st": "street", "rd": "road", "ave": "avenue", "hwy": "highway", "dr": "drive", "ln": "lane", "blvd": "boulevard",
+    "ct": "court", "pl": "place", "rte": "route", "rt": "route", "tpke": "turnpike", "pkwy": "parkway", "cir": "circle",
+    "ter": "terrace", "sq": "square", "mt": "mount", "ft": "foot",
+    "zba": "zoning board of appeals", "bos": "board of selectmen", "concom": "conservation commission",
+}
+STAGE_WORDS = {"postponed", "hearing", "vote", "votes", "voted", "final", "discusses", "discussion", "decides", "withdrawn",
+               "canceled", "cancelled", "continued", "mentions", "holds", "extension"}  # the site's own line vocabulary
+ORDINARY = {"this", "it", "one", "nothing", "our", "town", "the", "a", "an", "if", "when", "no", "yes", "both", "each", "also",
+            "its", "they", "there", "here", "that", "these", "those", "we", "he", "she", "but", "and", "or", "so", "not"}
+# Bodies and processes a writer names from our own records, not the agenda's text.
+BODY_NAMES = ("attorney general", "town meeting", "select board", "selectboard", "board of selectmen", "planning board",
+              "zoning board", "board of appeals", "conservation commission", "city council", "town council", "town clerk",
+              "secretary of state", "land court", "supreme judicial court", "zoning board of appeals")
+STATE_WORDS = {"massachusetts", "new york", "rhode island", "connecticut", "new hampshire", "vermont", "maine"}
+WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 CUE_REACH = 700
 SPEAK_REACH = 1500
 STOP = {"a", "an", "and", "at", "by", "for", "from", "in", "of", "on", "or", "the", "to", "with", "is", "are",
@@ -142,8 +164,13 @@ def norm(s):
 
 def loose(s):
     """norm() with punctuation gone, except the dot inside a number, and digits split from letters, so
-    "4.9MW," and "4.9 MW" read the same."""
+    "4.9MW," and "4.9 MW" read the same. "U.S." is "us", "45'" and "45 ft" are "45 foot", "$1,660"
+    is "1660", "Selectboard" is "select board"."""
     s = norm(s)
+    s = re.sub(r"\bu\.s\.", "us", s)
+    s = re.sub(r"(\d)\s*(?:'|′|-?\s*(?:ft\.?|feet|foot))(?![a-z])", r"\1 foot", s)
+    s = re.sub(r"\bselect\s*board\b|\bselectboard\b", "select board", s)
+    s = re.sub(r"'(\d\d)\b", r" yr\1 ", s)  # "'21": a two-digit year, kept apart from other numbers
     s = re.sub(r"(?<!\d)\.|\.(?!\d)", " ", s)
     s = re.sub(r"[^a-z0-9.\s]+", " ", s)
     s = re.sub(r"(?<=\d)(?=[a-z])|(?<=[a-z])(?=\d)", " ", s)
@@ -162,11 +189,53 @@ def has_token(tok, loose_text):
     if has_phrase(tok, loose_text):
         return True
     low = tok.lower().strip(".")
+    if low.endswith("'s") or low.endswith("’s"):
+        return has_token(tok[:-2], loose_text)
+    year = re.fullmatch(r"(?:fy\s?)?(20(\d\d))", low)
+    if year:  # "2021" also as "10/19/21" or "'21"; "FY2027" also as "FY27"
+        yy = year.group(2)
+        if low.startswith("fy") and has_phrase(f"fy {yy}", loose_text):
+            return True
+        if re.search(rf"(?<!\d)\d{{1,2}} \d{{1,2}} {yy}(?!\d)|\byr {yy}\b|\bfy {yy}\b", loose_text):
+            return True
     if low in MONTH_ABBR:  # "Oct" in the brief, "October" in the agenda
         return has_phrase(MONTH_ABBR[low], loose_text)
-    if low.endswith("'s") or low.endswith("’s"):
-        return has_phrase(low[:-2], loose_text)
+    if low in ABBREV:  # "St" in the brief, "Street" in the agenda
+        return has_phrase(ABBREV[low], loose_text)
+    short = next((k for k, v in ABBREV.items() if v == low), None)
+    if short:  # "Street" in the brief, "St." in the agenda
+        return has_phrase(short, loose_text)
+    if "-" in tok.strip("-"):  # "28.251-acre", "U.S.-made", "15-minute": the number or name is the fact
+        parts = [x for x in tok.split("-") if x]
+        facts = [x for x in parts if re.search(r"\d", x) or x[:1].isupper()]
+        return all(has_token(x, loose_text) for x in facts) if facts else True
     return False
+
+
+def weekday_tokens(value, year=None):
+    """Weekday names in a date such as "Tue Oct 27" or "Tuesday, 10/27", when they are right for that date in
+    `year` (or the next year): the agenda may print the date without its weekday."""
+    out = set()
+    years = [year] if year else [date.today().year, date.today().year + 1]
+    for m in re.finditer(r"\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*\.?,?\s+(?:([A-Z][a-z]{2,8})\.?\s+(\d{1,2})|(\d{1,2})/(\d{1,2}))(?:,?\s+(20\d\d))?",
+                         value or ""):
+        name = m.group(1).lower()
+        if m.group(2):
+            mon = m.group(2).lower()
+            month = MONTHS.index(mon) + 1 if mon in MONTHS else (MONTHS.index(MONTH_ABBR[mon]) + 1 if mon in MONTH_ABBR else None)
+            day = int(m.group(3))
+        else:
+            month, day = int(m.group(4)), int(m.group(5))
+        if not month:
+            continue
+        for y in ([int(m.group(6))] if m.group(6) else years + ([years[0] + 1] if month <= 3 else [])):  # January after a December meeting
+            try:
+                if WEEKDAYS[date(y, month, day).weekday()].startswith(name):
+                    out.add(m.group(0).split()[0].strip(".,"))
+                    break
+            except ValueError:
+                continue
+    return out
 
 
 def checkable_tokens(value):
@@ -176,24 +245,26 @@ def checkable_tokens(value):
     out = []
     start = True
     for i, w in enumerate(words):
-        core = w.strip("\"'(),;:!?[]")
+        core = w.strip("\"'(),;:!?[]").rstrip(".-").strip("\"'(),;:!?[]")
         if not core:
             continue
-        nxt = words[i + 1].strip("\"'(),;:!?[]") if i + 1 < len(words) else ""
+        nxt = words[i + 1].strip("\"'(),;:!?[].-") if i + 1 < len(words) else ""
         if re.search(r"\d", core):
             out.append(core)
+        elif core[:1].isupper() and (core.rstrip(":").lower() in STAGE_WORDS or core.lower() in ORDINARY):
+            pass  # "Postponed:", "Hearing", "This", "Our": the site's vocabulary or an ordinary word, not a fact
         elif core[:1].isupper():
             if len(core) >= 2 and core.isupper():
                 out.append(core)
-            elif not start or (nxt[:1].isupper() and nxt.lower() not in STOP):
-                out.append(core)
+            elif not start:
+                out.append(core)  # the first word of a sentence is capitalized whatever it is
         start = core.endswith((".", "!", "?", ":"))
     return out
 
 
 def all_tokens(value):
-    return [w.strip("\"'(),;:!?[].") for w in (value or "").translate(_TRANS).split()
-            if w.strip("\"'(),;:!?[].").lower() not in STOP and len(w.strip("\"'(),;:!?[].")) >= 2]
+    toks = [w.strip("\"'(),;:!?[].-") for w in (value or "").translate(_TRANS).split()]
+    return [t for t in toks if t.lower() not in STOP and len(t) >= 2]
 
 
 def find_quote(quote, text_norm):
@@ -229,9 +300,10 @@ def history_dates(history):
 
 # ---------------------------------------------------------------- the check
 
-def verify(brief, text, town_dates=None):
+def verify(brief, text, town_dates=None, year=None):
     """Reasons the brief fails against the agenda text; [] when every check passes. `town_dates` is the
-    set of ISO meeting dates we hold for the brief's town (for `history`)."""
+    set of ISO meeting dates of every document we hold for the brief's town (for `history`); `year` is
+    the meeting's year (for weekday names in dates)."""
     fails = []
     if not re.fullmatch(r"[0-9a-f]{12}", str(brief.get("id") or "")):
         fails.append("id is not a 12-hex hit id")
@@ -256,7 +328,19 @@ def verify(brief, text, town_dates=None):
     text_loose = loose(text)
 
     def need(field, tokens):
-        missing = [t for t in tokens if not has_token(t, text_loose)]
+        ok_days = weekday_tokens(brief.get(field), year)
+        value_loose = loose(brief.get(field))
+        spelled = set()  # words of a body's full name when the agenda uses its abbreviation ("ZBA")
+        for short, full in ABBREV.items():
+            if " " in full and full in value_loose and has_phrase(short, text_loose):
+                spelled.update(full.split())
+        for body in BODY_NAMES:  # bodies and processes a writer names from our own records
+            if re.search(r"(?<![a-z])" + re.escape(body) + r"(?![a-z])", value_loose):
+                spelled.update(body.split())
+        if "state law" in value_loose or "state s" in value_loose:
+            for st in STATE_WORDS:
+                spelled.update(st.split())
+        missing = [t for t in tokens if t.strip(".,") not in ok_days and t.lower() not in spelled and not has_token(t, text_loose)]
         if missing:
             fails.append(f"{field}: not in the agenda: {', '.join(dict.fromkeys(missing))}")
 
@@ -278,16 +362,30 @@ def verify(brief, text, town_dates=None):
     cue = ACTION_CUES.get(brief.get("action") or "other", "")
     if cue and not re.search(cue, near, re.I):
         fails.append(f"action {brief['action']!r}: no sign of it near the quote")
-    if brief.get("can_speak") is True:
-        wide = text_norm[max(0, qpos - SPEAK_REACH):qpos + SPEAK_REACH] if qpos >= 0 else text_norm
-        if not re.search(SPEAK_CUE, wide, re.I):
-            fails.append("can_speak is true but the agenda doesn't say public hearing or public comment nearby")
+    if brief.get("can_speak") is True and not re.search(SPEAK_CUE, text_norm, re.I):
+        fails.append("can_speak is true but the agenda has no public hearing or public comment item")
     if brief.get("history") and town_dates is not None:
         held = {(int(d[:4]), int(d[5:7]), int(d[8:10])) for d in town_dates if re.match(r"\d{4}-\d\d-\d\d", d or "")}
         for y, m, d in history_dates(brief["history"]):
             if not any((y is None or y == hy) and m == hm and d == hd for hy, hm, hd in held):
                 fails.append(f"history names {m}/{d}{'/' + str(y) if y else ''}, which isn't a meeting date we hold for this town")
     return fails
+
+
+def search_dates(data_dir):
+    """{"MA:Carver": {ISO meeting dates}} of every document in data/search: the dates a brief's `history`
+    may name, whether or not that agenda had a flagged item."""
+    out = {}
+    for path in sorted(glob.glob(os.path.join(data_dir, "search", "*", "*.jsonl"))):
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                try:
+                    r = json.loads(line)
+                except ValueError:
+                    continue
+                if r.get("town") and r.get("meeting_date"):
+                    out.setdefault(f"{r.get('state', 'MA')}:{r['town']}", set()).add(r["meeting_date"][:10])
+    return out
 
 
 def doc_texts(data_dir, urls):

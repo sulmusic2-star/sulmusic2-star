@@ -123,6 +123,7 @@
     const on = !!(s && s.email_alerts === true);
     $('email-option').hidden = !on;
     $('no-email').hidden = on;
+    if (!on && !editId) submit.textContent = 'Add to my calendar';
   });
 
   // ---------- reading screen 1
@@ -179,8 +180,8 @@
     return li;
   }
 
-  function topicSummary() { // the subjects are plain checkboxes now; nothing to summarize
-    return;
+  function topicSummary() {
+    topicLine();
   }
   function oldTopicSummary() {
     const on = topicBoxes.filter((t) => t.checked);
@@ -241,13 +242,14 @@
     nearList.replaceChildren(first, ...near.map((n) => checkbox('towns', n,
       `${label(n, id)}${notRead(n) ? ' (can’t check yet)' : ''}`, checkedNear ? checkedNear.includes(n) : true)));
     const cant = [id, ...near].filter(notRead);
-    $('cant-note').textContent = cant.length
-      ? `We can’t check ${joinAnd(cant.map((n) => label(n, id)))} yet, so these alerts can’t include ${cant.length === 1 ? 'it' : 'them'} until we can. `
-        + 'The town clerk can tell you what’s coming up there.'
-      : '';
-    $('cant-note').hidden = !cant.length;
+    $('cant-note').textContent = notRead(id)
+      ? `We can’t check ${label(id)} yet, so for now these alerts come from the towns next to it.` : '';
+    $('cant-note').hidden = !notRead(id);
     const chosen = checkedNear ? near.filter((n) => checkedNear.includes(n)) : near;
-    $('near-all-text').textContent = `Also include ${chosen.length === 1 ? 'the town' : 'towns'} next to ${label(id)}: ${joinAnd((groups ? near : chosen).map((n) => label(n, id)))}`;
+    const cantNear = near.filter(notRead);
+    const shown = groups ? near : chosen;
+    $('near-all-text').textContent = `Also the ${shown.length === 1 ? 'town' : `${shown.length} towns`} next door: ${joinAnd(shown.map((n) => label(n, id)))}`
+      + (cantNear.length ? ` (${joinAnd(cantNear.map((n) => label(n, id)))} can’t be read yet)` : '');
     $('near-all-row').hidden = !near.length;
     $('near-note').hidden = Boolean(near.length);
     $('near-note').textContent = near.length ? ''
@@ -258,6 +260,16 @@
     showRequest(id);
     fieldError('towns', '');
   }
+
+  // "Topics: solar, battery storage, data centers. Change" above the folded options.
+  function topicLine() {
+    const on = topicBoxes.filter((t) => t.checked).map((t) => t.closest('label').textContent.trim().replace(/\s*\(.*\)$/, '').toLowerCase());
+    $('topic-names').textContent = on.length ? joinAnd(on) : 'none chosen';
+  }
+  $('topics-change').addEventListener('click', () => {
+    $('other-ways').open = true;
+    (topicBoxes[0] || $('other-ways')).focus();
+  });
 
   function setExtras(ids) {
     extraList.replaceChildren(...ids.map((i) => checkbox('towns', i, label(i), true)));
@@ -338,28 +350,25 @@
     const others = ids.length - 1;
     const where = others ? `${label(homeId)} and ${others === 1 ? 'the town' : `${others} towns`} next to it` : label(homeId);
     const nodes = [];
-    if (notRead(homeId)) {
-      nodes.push(el('p', 'notice', `We can’t check ${label(homeId)}’s agendas yet, so for now these alerts come from the towns next to it.`));
-    }
+
     if (!past && !ahead.length) {
       nodes.push(el('p', '', `Nothing on these topics in ${where} in the last 30 days. You’ll hear from us when something comes up.`));
     } else {
       const lead = el('p');
       lead.append(`In the last 30 days, ${where} had `, el('b', '', plural(past, 'meeting')), ' on these topics. ',
-        ahead.length ? (ahead.length > 3 ? `${ahead.length} more are coming up. The next 3:` : 'Coming up next:') : 'Nothing else is on an agenda yet.');
+        ahead.length ? (ahead.length > 3 ? `${ahead.length} more are coming up. The next 2:` : 'Coming up next:') : 'Nothing else is on an agenda yet.');
       nodes.push(lead);
       if (ahead.length) {
         const list = el('ul', 'preview-lines');
-        for (const m of ahead.slice(0, 3)) {
+        for (const m of ahead.slice(0, 2)) {
           const li = el('li');
           const head = el('p', 'meet-head');
-          if (ids.length > 1) head.append(el('span', '', label(m.tid, homeId)));
-          head.append(el('span', 'meet-day', dayLabel(m.d)));
-          // The most specific sentence: one that names an action first, a bare "mentions …" last.
+          head.append(el('span', '', label(m.tid, homeId)), el('span', '', m.board), el('span', 'meet-day', dayLabel(m.d)));
+          // The most specific line first (the lowest rank), as the town page orders them.
           const said = m.ids.map((id) => (lines.lines[id] || [])[0]).filter(Boolean);
           const rank = (id) => Number(((lines.lines[id] || [])[6]) ?? 60);
           const bestId = m.ids.slice().sort((a, b) => rank(a) - rank(b))[0];
-          const best = (lines.lines[bestId] || [])[0] || said[0] || 'Agenda item';
+          const best = ((lines.lines[bestId] || [])[0] || said[0] || 'Agenda item').replace(/:\s*“.*”$/, '.');
           const others = new Set(said).size - 1;
           li.append(head, el('p', 'line-say', best));
           if (others > 0) li.append(el('p', 'meet-found', `and ${plural(others, 'more item')}`));
@@ -517,6 +526,7 @@
       for (const [field, message] of Object.entries(err.fields || {})) fieldError(field === 'home_town' ? 'towns' : field, message);
       if (err.code === 'free_area' || err.fields.towns || err.fields.home_town) {
         if (!err.fields.towns && !err.fields.home_town) fieldError('towns', err.message);
+        if ($('other-ways')) $('other-ways').open = true;
         if ($('near-details')) $('near-details').open = true;
       }
       setStatus(status, err.message, 'err');

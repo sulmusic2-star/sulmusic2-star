@@ -21,72 +21,25 @@
   };
   const dayLabel = (iso) => new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' }).replace(/^(\w{3}),/, '$1');
 
-  // A brief's facts, labeled from trending.json's brief_labels (as brief_facts_html() in build.py).
-  function factsNode(b, labels, speak) {
-    const dl = el('dl', 'brief-facts');
-    for (const [key, label] of Object.entries(labels || {})) {
-      if (key === 'quote' || !label) continue;
-      let v = b[key];
-      if (key === 'can_speak') v = v === true ? (speak || {}).true : v === false ? (speak || {}).false : null;
-      if (v === null || v === undefined || v === '' || v === false) continue;
-      dl.append(el('div', 'fact'), el('dt', '', label), el('dd', '', String(v)));
-    }
-    return dl.childElementCount ? dl : null;
-  }
-
-  // As story_html() in build.py.
-  function storyNode(st, doc) {
-    const b = st.brief || null;
-    const headline = b && b.line ? b.line : st.headline;
-    const dek = b && b.what ? b.what : st.dek;
-    const li = el('li', `story${b ? ' brief' : ''}`);
-    const when = el('p', 'story-when');
+  // As story_html() in build.py: a row with day · town · board, the item's line and the stage word.
+  function storyNode(st) {
+    const li = el('li', 'row');
+    const a = el('a');
+    a.href = st.href;
+    const when = el('span', 'row-when');
     if (st.meeting_date) {
       const t = el('time', '', dayLabel(st.meeting_date));
       t.dateTime = st.meeting_date;
-      t.dataset.rel = '';
       when.append(t);
-    } else when.append(el('span', '', 'Date not set yet'));
-    when.append(el('span', 'story-town', `${st.town}${st.state !== 'MA' ? `, ${st.state}` : ''}`));
-    const head = el('h2', 'story-head');
-    const a = el('a');
-    a.href = st.href;
-    if (st.new) a.append(el('span', 'badge-new', 'New'), ' ');
-    a.append(headline);
-    head.append(a);
-    li.append(when, head, el('p', 'story-dek', dek));
-    const facts = b ? factsNode(b, (doc || {}).brief_labels, (doc || {}).brief_speak) : null;
-    if (facts) li.append(facts);
-    if (st.reasons.length) {
-      const why = el('p', 'story-why');
-      why.append(...st.reasons.map((r) => el('span', '', r)));
-      li.append(why);
-    }
-    const tools = el('div', 'line-tools');
-    const quoteText = b ? (b.quote || '') : st.quote;
-    if (quoteText) {
-      const d = el('details', 'item-words');
-      const q = el('blockquote', 'item-quote', quoteText);
-      d.append(el('summary', '', b ? (((doc || {}).brief_labels || {}).quote || 'Exact agenda wording') : 'Show the agenda text'),
-        el('p', 'item-from', `Quoted from the ${st.warrant ? 'warrant' : 'agenda'}:`), q);
-      tools.append(d);
-    }
-    if (st.source_url) {
-      const link = el('a', 'item-link', st.warrant ? 'Open the warrant' : 'Open the agenda');
-      link.href = st.source_url;
-      link.rel = 'nofollow noopener';
-      link.target = '_blank';
-      tools.append(link);
-    }
-    // Share: the day, the headline and the summary, ready to paste (app.js handles the click).
-    const share = el('button', 'link-btn', 'Share');
-    share.type = 'button';
-    share.dataset.share = '';
-    share.dataset.url = new URL(st.href, location.origin).href;
-    share.dataset.title = headline;
-    share.dataset.text = `${st.meeting_date ? `${dayLabel(st.meeting_date)}: ` : ''}${headline}. ${dek}`;
-    tools.append(share);
-    li.append(tools);
+    } else when.append(el('span', '', 'Date not set'));
+    when.append(el('span', '', `${st.town}${st.state !== 'MA' ? `, ${st.state}` : ''}`));
+    if (st.board) when.append(el('span', '', st.board));
+    const line = el('span', 'row-line');
+    if (st.new) line.append(el('span', 'badge-new', 'New'), ' ');
+    line.append(st.line || st.headline);
+    a.append(when, line);
+    if (st.stage) a.append(el('span', 'stage', st.stage));
+    li.append(a);
     return li;
   }
 
@@ -113,7 +66,7 @@
       const topicHit = topics.size && st.topics.some((t) => topics.has(t)) ? 1 : 0;
       return { st, i, personal: st.score * (1 + w.in_my_towns * mineHit + w.in_neighbor_towns * nearHit) * (1 + w.topic_match * topicHit) };
     }).sort((a, b) => b.personal - a.personal || a.i - b.i).slice(0, 20);
-    mine.replaceChildren(...ranked.map((r) => storyNode(r.st, doc)));
+    mine.replaceChildren(...ranked.map((r) => storyNode(r.st)));
     if (window.w351 && window.w351.relDates) window.w351.relDates(mine);
     const byId = new Map((townDoc.towns || []).map((t) => [t.id, t]));
     const home = byId.get(areas.home_town);

@@ -19,7 +19,8 @@
   const SITE = document.title.split(' | ').pop(); // the product name, from the title build.py wrote
   let homeTown = null; // the alert list's home town, when the API reports it
   let LINES = {}; // /data/lines.json: {lines: {id: [line, quote, note, kind, key, board, rank, number, subject]}, briefs: {id: brief}, new: [id, ...]}
-  const BRIEF_RANK = { vote: 10, adopted: 10, hearing: 20, continued: 20, other: 40, discussion: 40, withdrawn: 50 };
+  const BRIEF_RANK = { vote: 10, adopted: 10, hearing: 20, continued: 20, extension: 30, other: 40, discussion: 40, withdrawn: 50 };
+  const BRIEF_STAGE = { vote: 'Vote', adopted: 'Final vote', hearing: 'Hearing', continued: 'Postponed', extension: 'Extension', other: '', discussion: 'Discussion', withdrawn: 'Withdrawn' };
   let NEW = new Set();
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 
@@ -80,17 +81,18 @@
     const b = LINES.briefs && LINES.briefs[it.id];
     if (b && known) { // a verified written brief, as brief_text() in build.py
       return { say: (b.line || b.what || known[0]).trim(), quote: b.quote || known[1], note: '', kind: 'brief', key: known[4] || '',
-        who: known[5] || '', rank: BRIEF_RANK[b.action || 'other'] || 40, no: known[7] || '', subj: known[8] || '', brief: b };
+        who: known[5] || '', rank: BRIEF_RANK[b.action || 'other'] || 40, no: known[7] || '', subj: known[8] || '', brief: b,
+        stage: known[9] || BRIEF_STAGE[b.action || 'other'] || '', facts: [b.where, b.size, b.who].filter(Boolean) };
     }
     if (known) {
       return { say: known[0], quote: known[1], note: known[2] || '', kind: known[3] || 'act', key: known[4] || '', who: known[5] || '',
-        rank: Number(known[6] ?? 60), no: known[7] || '', subj: known[8] || '' };
+        rank: Number(known[6] ?? 60), no: known[7] || '', subj: known[8] || '', stage: known[9] || '', facts: known[10] || [] };
     }
     const who = it.board_key === 'town_meeting' ? 'Town Meeting' : `The ${boardLabel(it).replace(/^the /i, '')}`;
     const whose = it.board_key === 'town_meeting' ? 'The Town Meeting warrant' : `${who} agenda`;
     const first = order(it.topics || [])[0];
-    return { say: `${whose} mentions ${SUBJECT_NOUN[first] || 'our topics'}.`, quote: String(it.snippet || '').slice(0, 300), note: '',
-      kind: 'mention', key: '', who, rank: 70, no: '', subj: first || '' };
+    return { say: `Mentions ${SUBJECT_NOUN[first] || 'our topics'}.`, quote: String(it.snippet || '').slice(0, 300), note: '',
+      kind: 'mention', key: '', who, rank: 70, no: '', subj: first || '', stage: '', facts: [] };
   }
   const order = (topics) => [...new Set(topics)].sort((a, b) => (ORDER.includes(a) ? ORDER.indexOf(a) : 99) - (ORDER.includes(b) ? ORDER.indexOf(b) : 99));
   function tagText(topics) {
@@ -124,7 +126,7 @@
       const t = lineFor(it);
       if (!m.lines.has(t.say)) {
         m.lines.set(t.say, { quotes: [], topics: [], isNew: false, note: t.note, kind: t.kind, key: t.key, who: t.who, rank: t.rank,
-          no: t.no, subj: t.subj, seen: it.first_seen || '', url: it.source_url, brief: t.brief || null });
+          no: t.no, subj: t.subj, seen: it.first_seen || '', url: it.source_url, brief: t.brief || null, stage: t.stage || '', facts: t.facts || [] });
       }
       const entry = m.lines.get(t.say);
       const all = [...m.lines.values()].flatMap((v) => v.quotes);
@@ -151,6 +153,8 @@
       for (const t of e.topics) if (!into.topics.includes(t)) into.topics.push(t);
       into.isNew = into.isNew || e.isNew;
       into.note = into.note || e.note;
+      into.stage = into.stage || e.stage || '';
+      if (!(into.facts || []).length) into.facts = e.facts || [];
     };
     const sorted = [...lines.keys()].sort((a, b) => lines.get(a).rank - lines.get(b).rank
       || (lines.get(a).kind !== 'brief') - (lines.get(b).kind !== 'brief')
@@ -211,119 +215,54 @@
     return new Map(out.sort((a, b) => a[1].rank - b[1].rank));
   }
 
-  const shortDay = (iso) => new Date(`${iso.slice(0, 10)}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
-  // As posted_text() in build.py: a posting date only when we know it (first seen more than a day after
-  // the state's first sweep, and before the meeting).
-  function postedText(m) {
-    const start = LINES.first_sweep && LINES.first_sweep[m.state];
-    if (!m.found || !start) return '';
-    if (Date.parse(m.found) <= Date.parse(start) + 86400000) return '';
-    if (m.date && m.found.slice(0, 10) > m.date) return '';
-    const what = m.source === 'massdep_wetlands' ? 'Filed' : (m.board_key === 'town_meeting' ? 'Warrant posted' : 'Agenda posted');
-    return `${what} by ${shortDay(m.found)}`;
-  }
   // As place_text() in build.py.
   const placeText = (p) => (p === 'online' ? 'Online meeting' : p.replace(/ or online$/, ', or join online'));
   const whenText = (m) => (m.date ? dayLabel(m.date) + (m.time ? `, ${m.time}` : '') : '');
-  const shortQuote = (q, limit = 220) => (q.length <= limit ? q : `${q.slice(0, limit).replace(/\s+\S*$/, '').replace(/[,;:]$/, '')}…`);
-  // As citation() in build.py.
-  function citation(m, e) {
-    let doc;
-    if (m.source === 'massdep_wetlands') doc = m.date ? `Wetlands filing with the state, ${fmtDate(m.date)}` : 'Wetlands filing with the state';
-    else if (m.board_key === 'town_meeting') doc = m.date ? `Town Meeting warrant for ${fmtDate(m.date)}` : 'Town Meeting warrant';
-    else doc = m.date ? `${meetingBoard(m)}. Agenda for the meeting of ${fmtDate(m.date)}` : `${meetingBoard(m)}. Agenda`;
-    let text = `${m.town}, ${m.state}, ${doc}`;
-    if (e.no) text += `, ${e.no}`;
-    if (e.quotes.length) text += `: “${shortQuote(e.quotes[0])}”`;
-    const url = e.url || (m.docs[0] ? m.docs[0].url : '');
-    return e.seen ? `${text}. Retrieved ${fmtDate(e.seen.slice(0, 10))}. ${url}` : `${text}. ${url}`;
-  }
-  const reportHref = (m, text) => {
-    const about = `${m.town}, ${meetingBoard(m)}${m.date ? `, ${fmtDate(m.date)}` : ''}${text ? `: ${text}` : ''}`.slice(0, 300);
-    return `/how-it-works?about=${encodeURIComponent(about)}#contact`;
+  const SPEAK = LINESPEAK();
+  function LINESPEAK() { return (LINES && LINES.speak) || 'Public hearing: anyone can speak; written comments go to the town clerk before the meeting.'; }
+  const factsText = (e) => {
+    const parts = [tagText(e.topics), ...(e.facts || []).map(String)];
+    const seen = new Set();
+    return parts.filter((x) => x && !seen.has(x.toLowerCase()) && seen.add(x.toLowerCase())).join(' \u00B7 ');
   };
 
-  // One meeting, as meeting_html() renders it in build.py.
-  function meetingNode(m) {
+  // One meeting, as meeting_html() renders it in build.py: the meeting line (town \u00B7 board \u00B7 day \u00B7 place), per item
+  // one line that starts with the stage, a grey facts line with the stage word, then one source link.
+  function meetingNode(m, maxLines) {
     const dep = m.source === 'massdep_wetlands';
-    const source = dep ? 'the state filing' : (m.board_key === 'town_meeting' ? 'the warrant' : 'the agenda');
     const what = dep ? 'filing' : (m.board_key === 'town_meeting' ? 'warrant' : 'agenda');
     const tid = `${m.state}:${m.town}`;
     const next = homeTown && tid !== homeTown ? ` (next to ${homeTown.split(':').slice(1).join(':')})` : '';
     const when = whenText(m);
     const place = m.place && !dep && !(m.board_key === 'town_meeting' && m.place === 'online') ? placeText(m.place) : '';
-    const head = el('h3', { class: 'meet-head', 'data-slop-ignore': '' },
-      el('span', { class: 'meet-town' }, el('a', { href: townPath(m.town_url), text: m.town + (m.state && m.state !== 'MA' ? `, ${m.state}` : '') }), next), ' ',
+    const head = el('p', { class: 'meet-head', 'data-slop-ignore': '' },
+      el('span', { class: 'meet-town' }, el('a', { href: townPath(m.town_url), text: m.town + (m.state && m.state !== 'MA' ? `, ${m.state}` : '') }), next),
+      el('span', { text: meetingBoard(m) }),
       m.date ? el('span', { class: 'meet-day' }, el('time', { datetime: m.date, text: when }))
-        : (m.board_key === 'town_meeting' ? el('span', { class: 'meet-day', text: 'Date not found on the warrant' }) : null), ' ',
+        : (m.board_key === 'town_meeting' ? el('span', { class: 'meet-day', text: 'Date not found on the warrant' }) : null),
       place ? el('span', { class: 'meet-place', text: place }) : null);
-    const noteNode = (e) => {
-      if (e.note === HEARING_NOTE) {
-        return el('div', { class: 'line-note' }, el('p', { text: HEARING_NOTE }),
-          el('details', { class: 'speak' }, el('summary', { text: 'Can I speak?' }), el('p', { text: SPEAK_TEXT })));
-      }
-      return e.note ? el('p', { class: 'line-note', text: e.note }) : null;
-    };
-    // A brief's facts, labeled from lines.json's brief_labels (as brief_facts_html() in build.py).
-    const factsNodes = (b, skipWhat) => {
-      const labels = LINES.brief_labels || {};
-      const speak = LINES.brief_speak || {};
-      const out = [];
-      const rows = [];
-      const same = normQ(b.what || '') === normQ(b.line || '');
-      for (const [key, label] of Object.entries(labels)) {
-        if (key === 'quote') continue;
-        let v = b[key];
-        if (key === 'can_speak') v = v === true ? speak.true : v === false ? speak.false : null;
-        if (v === null || v === undefined || v === '' || v === false) continue;
-        if (!label) {
-          if (!(key === 'what' && (same || skipWhat))) out.push(el('p', { class: 'brief-what', text: String(v) }));
-          continue;
-        }
-        rows.push(el('div', { class: 'fact' }, el('dt', { text: label }), el('dd', { text: String(v) })));
-      }
-      if (rows.length) out.push(el('dl', { class: 'brief-facts' }, ...rows));
-      return out;
-    };
     const lineNode = ([text, e]) => {
-      if (e.brief) {
-        const b = e.brief;
-        const labels = LINES.brief_labels || {};
-        return el('li', { class: 'line brief' },
-          tagText(e.topics) ? el('p', { class: 'item-tags', text: tagText(e.topics) }) : null,
-          el('p', { class: 'line-say' }, e.isNew ? el('span', { class: 'badge-new', text: 'New' }) : null, e.isNew ? ' ' : null, text),
-          ...factsNodes(b, false),
-          el('div', { class: 'line-tools' },
-            b.quote ? el('details', { class: 'item-words' }, el('summary', { text: labels.quote || 'Exact agenda wording' }),
-              el('p', { class: 'item-from', text: `Quoted from ${source}:` }), el('blockquote', { class: 'item-quote', text: b.quote })) : null,
-            el('button', { type: 'button', class: 'link-btn', 'data-copy': citation(m, e), text: 'Copy citation' }),
-            el('a', { class: 'report-link', href: reportHref(m, text), text: 'Report a problem' })));
-      }
-      const inline = normQ(text);
-      const quotes = e.quotes.slice(0, 3).filter((q) => !inline.includes(normQ(q).slice(0, 60)));
-      return el('li', { class: 'line' },
-        tagText(e.topics) ? el('p', { class: 'item-tags', text: tagText(e.topics) }) : null,
+      const b = e.brief;
+      const facts = factsText(e);
+      const soon = e.stage === 'Hearing' && m.date && (Date.parse(`${m.date}T12:00:00Z`) - Date.parse(`${today}T12:00:00Z`)) / 86400000 <= 2 && m.date >= today;
+      return el('li', { class: `line${b ? ' brief' : ''}` },
         el('p', { class: 'line-say' }, e.isNew ? el('span', { class: 'badge-new', text: 'New' }) : null, e.isNew ? ' ' : null, text),
-        noteNode(e),
-        el('div', { class: 'line-tools' },
-          quotes.length ? el('details', { class: 'item-words' }, el('summary', { text: 'Show the agenda text' }),
-            el('p', { class: 'item-from', text: `Quoted from ${source}:` }),
-            ...quotes.map((q) => el('blockquote', { class: 'item-quote', text: q }))) : null,
-          el('button', { type: 'button', class: 'link-btn', 'data-copy': citation(m, e), text: 'Copy citation' }),
-          el('a', { class: 'report-link', href: reportHref(m, text), text: 'Report a problem' })));
+        b && b.what && normQ(b.what) !== normQ(text) ? el('p', { class: 'brief-what', text: b.what }) : null,
+        facts || e.stage ? el('p', { class: 'line-facts' }, facts, e.stage ? el('span', { class: `stage${soon ? ' soon' : ''}`, text: e.stage }) : null) : null);
     };
-    const where = `${m.town} ${meetingBoard(m)}, ${fmtDate(m.date) || 'no date'}`;
-    const links = m.docs.map((d, i) => el('a', { class: 'item-link', href: d.url, rel: 'nofollow noopener', target: '_blank' },
-      `${i ? `Another version of the ${what}` : `Open the ${what}`}${d.pdf ? ' (PDF)' : ''}`, el('span', { class: 'sr-only', text: `: ${where}` })));
-    const first = [...m.lines.keys()][0] || '';
-    const shareUrl = m.date && m.date >= today ? `${BASE}/m/${m.id.slice(2)}` : `${BASE}${townPath(m.town_url)}#${m.id}`;
-    const head2 = `${m.town} ${meetingBoard(m)}${when ? `, ${when}` : ''}${place ? `, ${place}` : ''}`;
-    const share = el('button', { type: 'button', class: 'link-btn', 'data-share': '', 'data-url': shareUrl,
-      'data-title': `${m.town} ${meetingBoard(m)}${when ? `, ${when}` : ''}`, 'data-text': first ? `${head2}. ${first}` : head2, text: 'Share this meeting' });
-    const postedLine = postedText(m);
+    const where = `${m.town} ${meetingBoard(m)}, ${m.date ? dayLabel(m.date) : 'no date'}`;
+    const d = m.docs[0];
+    const link = d ? el('a', { class: 'item-link', href: d.url, rel: 'nofollow noopener', target: '_blank' },
+      `${what.charAt(0).toUpperCase()}${what.slice(1)}${d.pdf ? ' (PDF)' : ''}`, el('span', { class: 'sr-only', text: `: ${where}` })) : null;
+    // The speak line only for a hearing that is still on: not one postponed, canceled or withdrawn.
+    const entries = [...m.lines.values()].filter((v) => !/^(Postponed|Canceled|Withdrawn)/.test(v.stage || ''));
+    const speak = entries.some((v) => (v.brief && v.brief.can_speak === true) || (v.stage === 'Hearing' && !(v.brief && v.brief.can_speak === false)));
+    const all = [...m.lines];
+    const shown = maxLines ? all.slice(0, maxLines) : all;
     return el('li', { class: 'meeting', id: m.id }, head,
-      el('ul', { class: 'lines' }, ...[...m.lines].map(lineNode)),
-      el('p', { class: 'meet-src' }, ...links, postedLine ? el('span', { class: 'meet-found', text: postedLine }) : null, ' ', share));
+      el('ul', { class: 'lines' }, ...shown.map(lineNode)),
+      shown.length < all.length ? el('p', { class: 'more-items', text: `and ${plural(all.length - shown.length, 'more item')}` }) : null,
+      el('p', { class: 'meet-src' }, speak ? el('span', { class: 'speak-line', text: SPEAK }) : null, link));
   }
 
   // The first few meetings, the rest behind one "Show more", as meeting_list() does in build.py.
@@ -391,7 +330,7 @@
     const past = group(items.filter((i) => i.meeting_date && i.meeting_date < today).sort(byDate(-1)));
     const undated = group(items.filter((i) => !i.meeting_date));
     $('items-upcoming').replaceChildren(...(up.length ? meetingList(up, 5, 'More coming up')
-      : [el('p', { class: 'empty', text: 'Nothing on these topics in the agendas posted so far. We check new agendas every morning.' })]));
+      : [el('p', { class: 'empty', text: 'Nothing on these topics in the agendas posted so far.' })]));
     $('items-lead').textContent = '';
     $('items-past').replaceChildren(...meetingList(past, 5, 'Show older'));
     $('past-summary').textContent = `Earlier meetings (${past.length})`;
@@ -412,10 +351,41 @@
       el('div', { class: 'feed-row' }, el('label', { for: `feed-${n}`, text: `${label} link` }), ...linkField(`feed-${n}`, url, `${label} link`), el('small', { text: help }))));
   }
 
-  function renderLinks(wl) {
-    $('private-row').replaceChildren(...linkField('private-link', wl.links.page, 'Private link'));
+  function renderLinks(wl, created) {
+    $('private-row').replaceChildren(...linkField(created ? 'private-link-again' : 'private-link', wl.links.page, 'Private link'));
     $('share-row').replaceChildren(...linkField('share-link', wl.links.share, 'Share link'));
     $('links-section').hidden = false;
+    if (created) $('created-row').replaceChildren(...linkField('private-link', wl.links.page, 'Private link'));
+  }
+
+  // Right after setting up: a short page with how the alerts arrive, one sample, the calendar button and
+  // the private link. The full list is one link away.
+  function renderCreated(wl, items, emailOn) {
+    const mail = wl.email || {};
+    const home = homeTown ? homeTown.split(':').slice(1).join(':') : '';
+    const others = wl.towns.filter((t) => t !== homeTown).length;
+    $('wl-title').textContent = home ? `Alerts on for ${home}${others ? ` and ${others === 1 ? 'the town' : `${others} towns`} next door` : ''}` : `Alerts on: ${wl.name || 'your towns'}`;
+    $('wl-summary').textContent = '';
+    const how = $('created-how');
+    if (mail.configured) {
+      how.textContent = `We’ll email ${mail.masked} at most once a day, only when something new is posted.`;
+      $('inbox-note').hidden = Boolean(mail.confirmed);
+    } else if (emailOn) {
+      how.textContent = 'At most one email a day, only when something new is posted. Add your address below to get them by email.';
+    } else {
+      how.textContent = 'Add these meetings to your calendar; email alerts are coming.';
+    }
+    const up = group(items.filter((i) => i.meeting_date && i.meeting_date >= today).sort((a, b) => a.meeting_date.localeCompare(b.meeting_date) || a.town.localeCompare(b.town)));
+    if (up.length) $('sample').replaceChildren(el('ol', { class: 'meetings' }, meetingNode(up[0], 1)));
+    else {
+      $('sample-lead').textContent = 'Nothing on these topics is on an agenda yet. You’ll hear from us when something is.';
+      $('sample').replaceChildren();
+    }
+    $('created-cal').href = wl.links.ics.replace(/^https?:/, 'webcal:');
+    $('see-all').href = location.pathname;
+    $('wl-created').hidden = false;
+    $('wl-created').setAttribute('tabindex', '-1');
+    $('wl-created').focus();
   }
 
   // Email (private view only): {configured, available, confirmed, masked, status, resend_available_at}.
@@ -558,7 +528,8 @@
     const shownTowns = townNames.slice(0, 8).join(', ') + (townNames.length > 8 ? ` and ${townNames.length - 8} more` : '');
     $('wl-summary').textContent = `${plural(wl.towns.length, 'town')}: ${shownTowns}.`;
     window.w351.remember(readonly ? id : wl.id, wl.name, readonly);
-    $('wl-body').hidden = false;
+    const created = params.get('new') === '1' && !readonly;
+    $('wl-body').hidden = created;
 
     renderFeeds(wl.links);
     LINES = (await linesDoc) || {};
@@ -568,19 +539,22 @@
       $('readonly-banner').hidden = false;
       return;
     }
+    const emailOn = (await status).email_alerts === true;
     $('settings').hidden = false;
-    renderLinks(wl);
+    renderLinks(wl, created);
     renderWebhook(wl);
-    renderEmail(wl, (await status).email_alerts === true);
+    renderEmail(wl, emailOn);
     renderManage(wl);
+    if (created) {
+      renderCreated(wl, feed.items, emailOn);
+      return;
+    }
     const unconfirmed = params.get('email') === '1' && !(wl.email && wl.email.confirmed);
-    if (params.get('new') === '1' || (params.get('email') === '1' && unconfirmed)) {
+    if (params.get('email') === '1' && unconfirmed) {
       const banner = $('created-banner');
-      if (params.get('new') !== '1') banner.querySelector('b').textContent = 'Changes saved.';
-      $('inbox-note').hidden = !unconfirmed;
+      banner.replaceChildren(el('b', { text: 'Changes saved.' }), ' Check your inbox and click the link to confirm your address.');
       banner.hidden = false;
       banner.focus();
-      $('get-title').closest('section').before($('links-section'));
     }
     if (params.get('email') === 'confirmed') {
       const banner = $('created-banner');

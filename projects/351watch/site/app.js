@@ -228,39 +228,85 @@ function trimToSentence(node) {
   node.replaceChildren(...out);
 }
 
+// Search results in the site's item format (town, board, "Mon Oct 26") with the town as the link, the
+// item's own line as the heading when the agenda has one (from /data/lines.json), one excerpt line with
+// no file names or URLs in it, and no repeats.
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function dayLabel(d) {
+  const m = d.match(/^([A-Z][a-z]{2}) (\d{1,2}), (\d{4})$/);
+  if (!m) return d;
+  const iso = `${m[3]}-${String(MONTHS.indexOf(m[1]) + 1).padStart(2, '0')}-${m[2].padStart(2, '0')}`;
+  const dt = new Date(`${iso}T12:00:00Z`);
+  const thisYear = new Date().getFullYear() === +m[3];
+  return `${dt.toLocaleDateString('en-US', { weekday: 'short', timeZone: 'UTC' })} ${m[1]} ${+m[2]}${thisYear ? '' : `, ${m[3]}`}`;
+}
+function cleanExcerpt(node) {
+  for (const n of [...node.childNodes]) {
+    if (n.nodeType !== 3) continue;
+    n.textContent = n.textContent
+      .replace(/https?:\/\/\S+/g, ' ')
+      .replace(/\S*\.(?:pdf|docx?|xlsx?)\b[^\s]*/gi, ' ')
+      .replace(/\b(?:FWD?|RE|FW)_[^\s]*/g, ' ')
+      .replace(/\b(?:[A-Z0-9_&-]{3,}\s+){3,}[A-Z0-9_&-]{3,}\b/g, ' ')
+      .replace(/\s{2,}/g, ' ');
+  }
+}
 function setupSearchResults() {
   const list = document.getElementById('search-results');
   if (!list || !window.MutationObserver) return;
   const form = document.getElementById('search-form');
   const seen = new Set();
-  const dress = (li) => {
+  let lines = null;
+  const loadLines = () => (lines ||= fetch('/data/lines.json').then((r) => (r.ok ? r.json() : {})).catch(() => ({})));
+  const dress = async (li) => {
     if (li.dataset.dressed) return;
     li.dataset.dressed = '1';
-    // The same agenda can come back twice (two copies of one document): show it once.
     const title = li.querySelector('.result-title');
     const meta = li.querySelector('.result-meta');
     const key = `${title ? title.textContent : ''}|${meta ? meta.textContent : ''}`;
-    if (seen.has(key) || (title && seen.has(title.href))) {
+    if (seen.has(key) || (title && seen.has(title.href))) { // the same agenda twice: show it once
       li.hidden = true;
       return;
     }
     seen.add(key);
     if (title) seen.add(title.href);
     const snippet = li.querySelector('.result-snippet');
-    if (snippet) trimToSentence(snippet);
+    if (snippet) {
+      cleanExcerpt(snippet);
+      trimToSentence(snippet);
+    }
+    const townLink = li.querySelector('.result-town');
+    let town = '';
+    let board = '';
     if (meta && meta.textContent.includes(' · ')) { // slop-lint: ignore (splits search.js's dot-joined meta)
-      meta.replaceChildren(...meta.textContent.split(' · ').map((part) => { // slop-lint: ignore
-        const span = document.createElement('span');
-        const upcoming = part.endsWith(' (upcoming)');
-        span.textContent = upcoming ? part.slice(0, -' (upcoming)'.length) : part;
-        if (upcoming) {
-          const badge = document.createElement('strong');
-          badge.className = 'result-upcoming';
-          badge.textContent = 'coming up';
-          span.append(' ', badge);
-        }
-        return span;
-      }));
+      const parts = meta.textContent.split(' · '); // slop-lint: ignore
+      town = (parts[0] || '').replace(/, MA$/, '');
+      board = parts[1] || '';
+      let when = parts[2] || '';
+      const upcoming = / \(upcoming\)$|, coming up$/.test(when);
+      when = when.replace(/ \(upcoming\)$|, coming up$/, '');
+      const past = !upcoming && when && when !== 'Undated';
+      meta.replaceChildren();
+      const first = document.createElement('span');
+      if (townLink) {
+        const a = document.createElement('a');
+        a.href = townLink.href;
+        a.textContent = town;
+        first.append(a);
+      } else first.textContent = town;
+      meta.append(first);
+      if (board) meta.append(Object.assign(document.createElement('span'), { textContent: board }));
+      if (when) meta.append(Object.assign(document.createElement('span'), { textContent: dayLabel(when) + (past ? ' · past' : '') })); // slop-lint: ignore (the item format's dot)
+    }
+    if (townLink) townLink.remove();
+    if (title) {
+      const doc = await loadLines();
+      const ids = (doc.by_url || {})[title.href] || [];
+      const said = ids.map((id) => (doc.lines || {})[id]).filter(Boolean).sort((a, b) => (a[6] || 60) - (b[6] || 60));
+      const line = said.length ? said[0][0].replace(/:\s*“.*”$/, '.') : '';
+      title.textContent = line || `${town} ${board || 'agenda'}${board ? ' agenda' : ''}`.trim();
+      const more = said.length > 1 ? ` +${said.length - 1}` : '';
+      if (more) title.append(Object.assign(document.createElement('span'), { className: 'result-more', textContent: more }));
     }
   };
 
@@ -372,8 +418,8 @@ function setupSearchResults() {
     const link = alert.querySelector('a');
     link.href = `/watch${q.toString() ? `?${q}` : ''}`;
     const names = towns.map((t) => nameOf(t).split(',')[0]);
-    link.textContent = names.length ? `Get alerts for ${names.length > 2 ? `${names[0]} and ${names.length - 1} more towns` : names.join(' and ')} by email`
-      : 'Get alerts for your town by email';
+    link.textContent = names.length ? `Email me when a new one is posted in ${names.length > 2 ? `${names[0]} and ${names.length - 1} more towns` : names.join(' or ')}`
+      : 'Email me when a new one is posted';
     alert.hidden = !list.querySelector('li.result:not([hidden])');
   }
 
@@ -410,11 +456,12 @@ function setupSearchResults() {
   if (form) form.addEventListener('change', syncAlert);
   let pending = 0;
   new MutationObserver((changes) => {
-    for (const c of changes) for (const n of c.addedNodes) if (n.nodeType === 1 && n.matches('li.result')) dress(n);
+    const jobs = [];
+    for (const c of changes) for (const n of c.addedNodes) if (n.nodeType === 1 && n.matches('li.result')) jobs.push(dress(n));
     if (!list.querySelector('li.result')) seen.clear();
     syncAlert();
     clearTimeout(pending);
-    pending = setTimeout(checkExact, 150);
+    Promise.all(jobs).then(() => { pending = setTimeout(checkExact, 150); });
   }).observe(list, { childList: true });
   syncAlert();
 }
@@ -494,7 +541,8 @@ function setupDisclosure() {
 
 // Old links to the tracker that used to live on the home page.
 function followOldAnchors() {
-  if (location.pathname === '/' && location.hash === '#tracker') location.replace('/attorney-general#tracker');
+  if (location.pathname === '/' && location.hash === '#tracker') location.replace('/attorney-general/town-actions');
+  if (location.pathname === '/attorney-general' && location.hash === '#tracker') location.replace('/attorney-general/town-actions');
 }
 
 // Alert lists made or opened in this browser (a per-viewer convenience; may be unavailable).
@@ -567,51 +615,15 @@ window.w351 = {
   },
 };
 
-function setupMyTown() {
-  for (const box of document.querySelectorAll('[data-my-town]')) {
-    const id = box.dataset.myTown;
-    const name = box.dataset.townName;
-    const button = box.querySelector('button');
-    const note = document.createElement('span');
-    note.className = 'form-note';
-    note.setAttribute('role', 'status');
-    const has = () => {
-      const doc = window.w351.areas();
-      return Boolean(doc && doc.towns.includes(id));
-    };
-    const show = () => {
-      button.textContent = has() ? `Remove ${name} from my towns` : `Add ${name} to my towns`;
-    };
-    button.addEventListener('click', () => {
-      if (has()) window.w351.removeTown(id);
-      else window.w351.addTown(id);
-      show();
-      note.textContent = has() ? ` Saved in this browser. Biggest stories, Search and alerts start from your towns.` : ' Removed.';
-    });
-    box.append(note);
-    show();
-    box.hidden = false;
-  }
-}
-
-// Meeting days said the way people say them: "Today, Oct 12", "Tomorrow, Oct 13", "Saturday, Oct 17",
-// counted in Boston time; a story whose meeting has passed is hidden.
+// A story or row whose meeting has passed (in Boston time) is hidden. Dates stay as written: "Tue Oct 13".
 function relDates(root = document) {
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
-  for (const t of root.querySelectorAll('time[data-rel]')) {
+  for (const t of root.querySelectorAll('.row time, .story time')) {
     const iso = t.getAttribute('datetime') || '';
-    const days = Math.round((Date.parse(`${iso}T12:00:00Z`) - Date.parse(`${today}T12:00:00Z`)) / 86400000);
-    if (Number.isNaN(days)) continue;
-    if (days < 0) {
-      const story = t.closest('.story');
-      if (story) story.hidden = true;
-      continue;
+    if (iso && iso < today) {
+      const item = t.closest('.row, .story');
+      if (item) item.hidden = true;
     }
-    if (days > 6) continue;
-    const d = new Date(`${iso}T12:00:00Z`);
-    const md = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
-    const name = days === 0 ? 'Today' : days === 1 ? 'Tomorrow' : d.toLocaleDateString('en-US', { weekday: 'long', timeZone: 'UTC' });
-    t.textContent = `${name}, ${md}`;
   }
 }
 
@@ -674,5 +686,4 @@ setupEmailNotes();
 setupRequestButtons();
 setupDisclosure();
 setupCopyAndShare();
-setupMyTown();
 relDates();

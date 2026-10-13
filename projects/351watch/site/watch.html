@@ -48,17 +48,39 @@
     </div>
     <p class="field-error" id="towns-error" hidden></p>
     <div class="actions"><button type="button" class="btn" id="town-next">Continue</button></div>
+    <p class="form-note">No account needed. For a business or group? <a href="/alerts-for-groups">Alerts for businesses and groups</a> can post to Slack, Teams or Discord.</p>
   </div>
 
   <div class="step" id="step-send" hidden>
     <p class="back"><button type="button" class="link-btn" id="change-town">Change town</button></p>
     <div class="preview" id="preview" aria-live="polite"></div>
+    <div id="email-option" hidden>
+      <label class="field big-label">Your email address<input name="email" id="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" aria-describedby="email-help"></label>
+      <p class="form-note" id="email-help">At most one email a day, only when something new is posted. We email you a link to confirm the address first, and never sell or share it.</p>
+      <label class="check" id="email-remove-row" hidden><input type="checkbox" id="email-remove"> Stop emails and remove the address</label>
+      <p class="field-error" id="email-error" hidden></p>
+    </div>
+    <p class="form-note" id="no-email" hidden>Email alerts are coming. For now, the next page adds these meetings to your calendar.</p>
+    
+    <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+    <div class="submit-row">
+      <button class="btn" type="submit" id="watch-submit">Send me these</button>
+      <p class="form-status" id="watch-status" role="status" aria-live="polite"></p>
+    </div>
     <fieldset class="near" id="near-step">
       <legend class="sr-only">Towns</legend>
-      <label class="check big" id="near-all-row"><input type="checkbox" id="near-all" checked> <span id="near-all-text">Also include the towns next to <span id="home-name">your town</span></span></label>
+      <label class="check big" id="near-all-row"><input type="checkbox" id="near-all" checked> <span id="near-all-text">Also the towns next to <span id="home-name">your town</span></span></label>
       <p class="field-error" id="near-error" hidden></p>
       <p class="form-note" id="near-note" hidden></p>
       <p class="form-note cant-note" id="cant-note" hidden></p>
+    </fieldset>
+    <p class="topic-line" id="topic-line">Topics: <span id="topic-names">solar, battery storage, data centers</span>. <button type="button" class="link-btn" id="topics-change">Change</button></p>
+    <details class="disclose" id="other-ways"><summary>Other ways: topics, towns, calendar, RSS</summary>
+      <fieldset class="near" id="topics-step">
+        <legend class="big-legend">Topics</legend>
+        <ul class="check-cols topic-list" id="topics-details"><li><label class="check"><input type="checkbox" name="topics" value="solar" checked><span>Solar</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="battery_storage" checked><span>Battery storage</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="data_center" checked><span>Data centers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="moratorium"><span>Moratoriums (temporary bans)</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="clean_energy_siting"><span>Clean-energy permit rules</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="zoning_amendment"><span>Zoning changes</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="40b_comprehensive_permit"><span>Affordable housing (40B)</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wireless_telecom"><span>Cell towers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wetlands_filing"><span>Wetlands filings</span></label></li></ul>
+        <p class="field-error" id="topics-error" hidden></p>
+      </fieldset>
       <details class="disclose" id="near-details"><summary>Choose which towns</summary>
         <ul class="check-cols" id="near-list"></ul>
         <div id="extra-wrap" hidden>
@@ -66,33 +88,10 @@
           <ul class="check-cols" id="extra-list"></ul>
         </div>
       </details>
-    </fieldset>
-    <fieldset class="near" id="topics-step">
-      <legend class="big-legend">Send me alerts about</legend>
-      <p class="form-note">We picked the three most people ask for. Add or remove any.</p>
-      <ul class="check-cols topic-list" id="topics-details"><li><label class="check"><input type="checkbox" name="topics" value="solar" checked><span>Solar</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="battery_storage" checked><span>Battery storage</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="data_center" checked><span>Data centers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="moratorium"><span>Moratoriums (temporary bans)</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="clean_energy_siting"><span>Clean-energy permit rules</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="zoning_amendment"><span>Zoning changes</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="40b_comprehensive_permit"><span>Affordable housing (40B)</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wireless_telecom"><span>Cell towers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wetlands_filing"><span>Wetlands filings</span></label></li></ul>
-      <p class="field-error" id="topics-error" hidden></p>
-    </fieldset>
-
-    <div id="email-option" hidden>
-      <label class="field big-label">Your email address<input name="email" id="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" aria-describedby="email-help"></label>
-      <p class="form-note" id="email-help">Free. At most one email a day, only when something new is posted. We email you a link to confirm the address first.</p>
-      <p class="form-note">We never sell or share your email.</p>
-      <label class="check" id="email-remove-row" hidden><input type="checkbox" id="email-remove"> Stop emails and remove the address</label>
-      <p class="field-error" id="email-error" hidden></p>
-    </div>
-    <p class="form-note" id="no-email" hidden>Email alerts start soon. Until then, the next page lets you add these meetings to your calendar.</p>
-    
-
-    <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
-    <div class="submit-row">
-      <button class="btn" type="submit" id="watch-submit">Get alerts</button>
-      <p class="form-status" id="watch-status" role="status" aria-live="polite"></p>
-    </div>
-    <p class="form-note">No account needed. <a href="/how-it-works#privacy">What we keep and why</a></p>
+      <p class="form-note">After you save, the next page has a calendar link and an RSS feed for these alerts.</p>
+    </details>
   </div>
 </form>
-<p class="form-note">For a business or group? <a href="/alerts-for-groups">Alerts for businesses and groups</a> can post to Slack, Teams or Discord.</p>
 
 
 <section id="my-lists" aria-labelledby="my-lists-title" hidden>
@@ -105,7 +104,7 @@
 <footer class="site"><div class="wrap">
   
   <p>We read the agendas towns post online. This isn’t legal advice; confirm dates with the town clerk.</p>
-  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">Massachusetts Attorney General rulings</a></li><li><a href="/pricing">Free alerts</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#contact">Contact us</a></li></ul>
+  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#contact">Contact us</a></li></ul>
 </div></footer>
 <script src="/app.js" defer></script>
 <script src="/watch.js" defer></script>

@@ -7,9 +7,11 @@
     python3 tools/verify_briefs.py --data DIR   another data directory (tests)
 
 For each brief: every proper noun, number, address fragment and the `who` value must appear in the
-document's text in data/search; `quote` must appear verbatim; `action` must have its cue near the
-quote; `can_speak: true` needs "public hearing" or "public comment" nearby; dates in `history` must be
-meeting dates we hold for the town. Failures print with the reason. `verified` is set to true only when
+document's text in data/search (St and Street, Ave. and Avenue, "45-foot" and "45 ft", "U.S." and "US",
+ZBA and Zoning Board of Appeals count as the same; a weekday name counts when it is right for the date
+beside it); `quote` must appear verbatim; `action` must have its cue near the quote; `can_speak: true`
+needs a public hearing or public comment item somewhere on the agenda; dates in `history` must be
+meeting dates of documents we hold for the town. Failures print with the reason. `verified` is set to true only when
 every check passes, and to false otherwise, in place (the only field this tool changes). Only the
 latest row for each id is checked; earlier rows for the same id are left as they are. Exit status is 1
 when any brief fails. build.py renders only briefs marked verified, and checks them again.
@@ -66,6 +68,8 @@ def main(argv=None):
     files = args.files or B.brief_files(args.data)
     hits = hits_by_id(args.data)
     dates = town_dates(hits)
+    for town, held in B.search_dates(args.data).items():  # every agenda we hold, not only those with items
+        dates.setdefault(town, set()).update(held)
     rows_by_file = {path: B.read_rows(path) for path in files}
     # Files are append-only: only the latest row for each id is checked; older rows are left as they are.
     latest = {}
@@ -96,7 +100,8 @@ def main(argv=None):
             elif row.get("source_url") and hit.get("source_url") and row["source_url"] != hit["source_url"]:
                 reasons.append("source_url is not the hit's document")
             town = f"{hit.get('state', 'MA')}:{hit.get('town')}" if hit else None
-            reasons += B.verify(row, texts.get(url, ""), dates.get(town, set()) if town else None)
+            year = int(hit["meeting_date"][:4]) if hit.get("meeting_date") else None
+            reasons += B.verify(row, texts.get(url, ""), dates.get(town, set()) if town else None, year)
             ok = not reasons
             label = f"{row['id']} {hit.get('town', '?')} {hit.get('board', '')} {hit.get('meeting_date') or 'undated'}".strip()
             if ok:

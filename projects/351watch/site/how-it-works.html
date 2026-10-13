@@ -36,11 +36,10 @@
 
 <section aria-labelledby="coverage">
   <h2 id="coverage">Which towns we check</h2>
-  <ul><li>In Massachusetts, 240 of the 351 cities and towns.</li><li>In New York, 33 of the 57 towns on this site.</li><li>In Rhode Island, all 39 cities and towns.</li></ul>
-  <details class="disclose"><summary>Which boards</summary>
-    <p>Planning boards, zoning boards of appeals, conservation commissions, select boards and city councils, and Town Meeting warrants, wherever the town posts them online.</p>
-    <p>We also include wetlands permit requests for solar and battery projects filed with the state.</p>
-    <p><a href="/towns">Find your town</a></p>
+  <p><a href="/towns#ma">240 of the 351 cities and towns</a> in Massachusetts, <a href="/towns#ny">33 towns</a> in New York and <a href="/towns#ri">all 39 cities and towns</a> in Rhode Island.</p>
+  <details class="disclose"><summary>Which boards and topics</summary>
+    <p>Planning boards, zoning boards of appeals, conservation commissions, select boards and city councils, and Town Meeting warrants, wherever the town posts them online. We also include wetlands permit requests for solar and battery projects filed with the state.</p>
+    <p>Topics: <a href="/topics/solar">Solar</a> · <a href="/topics/battery-storage">Battery storage</a> · <a href="/topics/data-centers">Data centers</a> · <a href="/topics/moratoria">Moratoriums</a> · <a href="/topics/consolidated-permit">Clean-energy permit rules</a> · <a href="/topics">all topics</a>.</p>
   </details>
 </section>
 
@@ -62,35 +61,12 @@
 
 <section aria-labelledby="attorney-general">
   <h2 id="attorney-general">Attorney General rulings</h2>
-  <p>In Massachusetts, a town bylaw takes effect only after the Attorney General reviews it. Since the Supreme Judicial Court’s Tracer Lane II decision (June 2, 2022), the Attorney General has ruled on 15 town moratoriums on solar or battery storage and disapproved all 15 (18 Town Meeting articles in 14 towns).</p>
-  <details class="disclose"><summary>What that means</summary>
-    <p>State zoning law (G.L. c. 40A, § 3) says a town may not prohibit solar energy systems, or regulate them unreasonably, except where needed to protect public health, safety or welfare. City ordinances don’t go to the Attorney General.</p>
-    <p>Battery storage has the same protection only through Land Court rulings: NextSun Energy LLC v. Fernandes (No. 19 MISC 000230, 2023) and Duxbury Energy Storage, LLC v. Town of Duxbury Zoning Board of Appeals (No. 23 MISC 000643, June 23, 2025), which applied the reasoning of the Supreme Judicial Court’s decision in Tracer Lane II Realty, LLC v. City of Waltham, 489 Mass. 775 (2022). The Land Court is a trial court, so for batteries this isn’t settled law the way it is for solar.</p>
-    <p>We read all 2,719 decision letters the Attorney General issued from January 2022 through October 10, 2026. 131 of them, dated Jan 6, 2022 to Oct 7, 2026, were about solar or battery storage. Zoning bylaws that set rules did better than moratoriums: of the 107 the Attorney General ruled on, 105 were approved in whole or in part.</p>
-    <p>The Attorney General approved data-center moratoriums in Shutesbury, Templeton and Gill, because state law doesn’t protect data centers the way it protects solar.</p>
-    <p><a href="/attorney-general">Every ruling, with its letter</a></p>
-  </details>
+  <p>In Massachusetts, a town bylaw takes effect only after the Attorney General reviews it. Since the Supreme Judicial Court’s Tracer Lane II decision (June 2, 2022), the Attorney General has ruled on 15 town moratoriums on solar or battery storage and disapproved all 15 (18 Town Meeting articles in 14 towns). <a href="/attorney-general">Every ruling, with its letter</a>.</p>
 </section>
 
 <section aria-labelledby="crawler">
   <h2 id="crawler">How we collect agendas</h2>
-  <p>Our program, AgendaAheadBot, visits town websites once a day and reads only public agenda pages. It follows each website’s robots.txt rules.</p>
-  <p>If you run a town website and want it to stay away, add this to your robots.txt:</p>
-  <pre><code>User-agent: AgendaAheadBot
-Disallow: /</code></pre>
-  <details class="disclose"><summary>Details for website managers</summary>
-    <p>It identifies itself on every visit as:</p>
-    <pre><code>AgendaAheadBot/0.1 (+https://agendaahead.com/bot)</code></pre>
-    <p>Visits are signed with <a href="https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/">Web Bot Auth</a>. The public key is at <a href="/.well-known/http-message-signatures-directory">/.well-known/http-message-signatures-directory</a>.</p>
-    <ul>
-      <li>It checks robots.txt before every visit, including redirects.</li>
-      <li>It asks a website for at most one page a second, or less often if the website says so.</li>
-      <li>It opens each agenda page about once a day and each agenda once.</li>
-      <li>It never logs in, fills in forms or gets past a bot check.</li>
-      <li>It skips files larger than 40 MB.</li>
-    </ul>
-    <p>Want something different? <a href="#contact">Send us a note</a>.</p>
-  </details>
+  <p>Our program, AgendaAheadBot, visits town websites once a day and reads only public agenda pages. It follows each website’s rules for programs like ours. <a href="/bot">For website managers</a>.</p>
 </section>
 
 <section aria-labelledby="privacy">
@@ -130,7 +106,7 @@ Disallow: /</code></pre>
 <footer class="site"><div class="wrap">
   
   <p>We read the agendas towns post online. This isn’t legal advice; confirm dates with the town clerk.</p>
-  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">Massachusetts Attorney General rulings</a></li><li><a href="/pricing">Free alerts</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#contact">Contact us</a></li></ul>
+  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#contact">Contact us</a></li></ul>
 </div></footer>
 <script src="/app.js" defer></script>
 </body>

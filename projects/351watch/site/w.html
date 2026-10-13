@@ -28,48 +28,51 @@
 </div></header>
 <main id="main">
 
-<div class="wrap narrow" id="wl-app" data-topics="{&quot;solar&quot;: [&quot;Solar&quot;, &quot;solar&quot;, false], &quot;battery_storage&quot;: [&quot;Battery storage&quot;, &quot;battery storage&quot;, false], &quot;data_center&quot;: [&quot;Data centers&quot;, &quot;data centers&quot;, true], &quot;moratorium&quot;: [&quot;Moratoriums (temporary bans)&quot;, &quot;a moratorium&quot;, false], &quot;clean_energy_siting&quot;: [&quot;Clean-energy permit rules&quot;, &quot;clean-energy permit rules&quot;, true], &quot;zoning_amendment&quot;: [&quot;Zoning changes&quot;, &quot;a zoning change&quot;, false], &quot;40b_comprehensive_permit&quot;: [&quot;Affordable housing (40B)&quot;, &quot;affordable housing&quot;, false], &quot;wireless_telecom&quot;: [&quot;Cell towers&quot;, &quot;cell towers&quot;, true], &quot;wetlands_filing&quot;: [&quot;Wetlands filings&quot;, &quot;a wetlands filing&quot;, false]}" data-order="[&quot;solar&quot;, &quot;battery_storage&quot;, &quot;data_center&quot;, &quot;moratorium&quot;, &quot;clean_energy_siting&quot;, &quot;zoning_amendment&quot;, &quot;40b_comprehensive_permit&quot;, &quot;wireless_telecom&quot;, &quot;wetlands_filing&quot;]" data-tags="{&quot;solar&quot;: &quot;Solar&quot;, &quot;battery_storage&quot;: &quot;Battery storage&quot;, &quot;data_center&quot;: &quot;Data centers&quot;, &quot;moratorium&quot;: &quot;Moratoriums&quot;, &quot;clean_energy_siting&quot;: &quot;Clean-energy permit rules&quot;, &quot;zoning_amendment&quot;: &quot;Zoning changes&quot;, &quot;40b_comprehensive_permit&quot;: &quot;Affordable housing&quot;, &quot;wireless_telecom&quot;: &quot;Cell towers&quot;, &quot;wetlands_filing&quot;: &quot;Wetlands filings&quot;}" data-mention="{&quot;solar&quot;: &quot;solar projects&quot;, &quot;battery_storage&quot;: &quot;battery storage&quot;, &quot;data_center&quot;: &quot;data centers&quot;, &quot;wireless_telecom&quot;: &quot;cell towers&quot;, &quot;40b_comprehensive_permit&quot;: &quot;affordable housing&quot;, &quot;clean_energy_siting&quot;: &quot;clean-energy projects&quot;, &quot;moratorium&quot;: &quot;a temporary ban (moratorium)&quot;, &quot;zoning_amendment&quot;: &quot;a zoning change&quot;, &quot;wetlands_filing&quot;: &quot;a wetlands filing&quot;}" data-base="https://agendaahead.vercel.app">
+<div class="wrap narrow" id="wl-app" data-topics="{&quot;solar&quot;: [&quot;Solar&quot;, &quot;solar&quot;, false], &quot;battery_storage&quot;: [&quot;Battery storage&quot;, &quot;battery storage&quot;, false], &quot;data_center&quot;: [&quot;Data centers&quot;, &quot;data centers&quot;, true], &quot;moratorium&quot;: [&quot;Moratoriums (temporary bans)&quot;, &quot;a moratorium&quot;, false], &quot;clean_energy_siting&quot;: [&quot;Clean-energy permit rules&quot;, &quot;clean-energy permit rules&quot;, true], &quot;zoning_amendment&quot;: [&quot;Zoning changes&quot;, &quot;a zoning change&quot;, false], &quot;40b_comprehensive_permit&quot;: [&quot;Affordable housing (40B)&quot;, &quot;affordable housing&quot;, false], &quot;wireless_telecom&quot;: [&quot;Cell towers&quot;, &quot;cell towers&quot;, true], &quot;wetlands_filing&quot;: [&quot;Wetlands filings&quot;, &quot;a wetlands filing&quot;, false], &quot;extraction&quot;: [&quot;Quarries and gravel pits&quot;, &quot;a quarry or gravel pit&quot;, false], &quot;large_development&quot;: [&quot;Large developments&quot;, &quot;a large development&quot;, false]}" data-order="[&quot;solar&quot;, &quot;battery_storage&quot;, &quot;data_center&quot;, &quot;moratorium&quot;, &quot;clean_energy_siting&quot;, &quot;zoning_amendment&quot;, &quot;40b_comprehensive_permit&quot;, &quot;wireless_telecom&quot;, &quot;wetlands_filing&quot;, &quot;extraction&quot;, &quot;large_development&quot;]" data-tags="{&quot;solar&quot;: &quot;Solar&quot;, &quot;battery_storage&quot;: &quot;Battery storage&quot;, &quot;data_center&quot;: &quot;Data centers&quot;, &quot;moratorium&quot;: &quot;Moratoriums&quot;, &quot;clean_energy_siting&quot;: &quot;Clean-energy permit rules&quot;, &quot;zoning_amendment&quot;: &quot;Zoning changes&quot;, &quot;40b_comprehensive_permit&quot;: &quot;Affordable housing&quot;, &quot;wireless_telecom&quot;: &quot;Cell towers&quot;, &quot;wetlands_filing&quot;: &quot;Wetlands filings&quot;, &quot;extraction&quot;: &quot;Quarries and gravel pits&quot;, &quot;large_development&quot;: &quot;Large developments&quot;}" data-mention="{&quot;solar&quot;: &quot;solar projects&quot;, &quot;battery_storage&quot;: &quot;battery storage&quot;, &quot;data_center&quot;: &quot;data centers&quot;, &quot;wireless_telecom&quot;: &quot;cell towers&quot;, &quot;40b_comprehensive_permit&quot;: &quot;affordable housing&quot;, &quot;clean_energy_siting&quot;: &quot;clean-energy projects&quot;, &quot;moratorium&quot;: &quot;a temporary ban (moratorium)&quot;, &quot;zoning_amendment&quot;: &quot;a zoning change&quot;, &quot;wetlands_filing&quot;: &quot;a wetlands filing&quot;, &quot;extraction&quot;: &quot;a quarry or gravel pit&quot;, &quot;large_development&quot;: &quot;a large development&quot;}" data-base="https://agendaahead.vercel.app">
 <p class="crumbs-plain">Your alerts</p>
 <h1 id="wl-title">Loading your alerts…</h1>
 <p id="wl-summary"></p>
 <div class="notice err" id="wl-error" role="alert" hidden></div>
+
+<div id="wl-created" hidden>
+  <p id="created-lead"><span id="created-how"></span><span id="inbox-note" hidden> Check your inbox and click the link to confirm your address.</span></p>
+  <p id="sample-lead">Here is what the first one will look like:</p>
+  <div id="sample"></div>
+  <p class="actions"><a class="btn" id="created-cal" href="#">Add these meetings to my calendar</a></p>
+  <p class="keep">To change or stop these alerts later, keep this link.</p>
+  <div class="copy-row" id="created-row"></div>
+  <p class="more-link"><a id="see-all" href="#">See everything coming up in these towns</a></p>
+</div>
+
 <div id="wl-body" hidden>
-  <p class="notice ok" id="created-banner" tabindex="-1" hidden><b>Your alerts are set up.</b><span id="inbox-note" hidden> Check your inbox and click the link to confirm your email.</span> Bookmark this page or save the private link below. It’s the only way to change these alerts.</p>
+  <p class="notice ok" id="created-banner" tabindex="-1" hidden></p>
   <p class="notice" id="readonly-banner" hidden>Someone shared these alerts with you. You can see them but not change them.</p>
-
-  <section aria-labelledby="get-title">
-    <h2 id="get-title" class="sr-only">Get these alerts</h2>
-    <div class="get-buttons">
-      <a class="btn" id="webcal-link" href="#">Add to calendar</a>
-      <a class="btn quiet" id="rss-link" href="#">RSS feed</a>
-    </div>
-    <details class="disclose"><summary>Calendar and RSS links to copy</summary>
-      <div class="feed-rows" id="feed-rows"></div>
-      <p class="small"><a id="json-link" href="#">Data feed (JSON), for your own tools</a></p>
-    </details>
-  </section>
-
-  <section id="links-section" aria-labelledby="links-title" hidden>
-    <h2 id="links-title">Your links</h2>
-    <div class="linkcard private">
-      <p class="linkcard-title"><b>Private link: keep this one to change or delete your alerts</b></p>
-      <div class="copy-row" id="private-row"></div>
-    </div>
-    <div class="linkcard share">
-      <p class="linkcard-title"><b>Share link: anyone with it can see these alerts, not change them</b></p>
-      <div class="copy-row" id="share-row"></div>
-    </div>
-  </section>
+  <div class="get-buttons">
+    <a class="btn" id="webcal-link" href="#">Add to calendar</a>
+    <a class="btn quiet" id="rss-link" href="#">RSS feed</a>
+  </div>
 
   <section aria-labelledby="items-title">
     <h2 id="items-title">Coming up</h2>
     <p class="status" id="items-lead"></p>
     <div id="items-upcoming"></div>
     <details class="disclose" id="past-wrap"><summary id="past-summary">Earlier meetings</summary><div id="items-past"></div></details>
-    <details class="disclose" id="undated-wrap" hidden><summary>Town meeting warrants</summary><div id="items-undated"></div></details>
+    <details class="disclose" id="undated-wrap" hidden><summary>Town Meeting warrants</summary><div id="items-undated"></div></details>
   </section>
 
+  <details class="disclose" id="other-get"><summary>Other ways to get these</summary>
+    <div class="feed-rows" id="feed-rows"></div>
+    <p class="small"><a id="json-link" href="#">Data feed (JSON), for your own tools</a></p>
+  </details>
+
   <details class="disclose settings" id="settings" hidden><summary>Change or delete these alerts</summary>
+    <section id="links-section" aria-labelledby="links-title" hidden>
+      <h2 id="links-title">Your links</h2>
+      <p class="linkcard-title"><b>Private link</b>: changes or deletes these alerts. Keep it to yourself.</p>
+      <div class="copy-row" id="private-row"></div>
+      <p class="linkcard-title"><b>Share link</b>: shows these alerts to anyone, without letting them change anything.</p>
+      <div class="copy-row" id="share-row"></div>
+    </section>
     <section id="hook-section" aria-labelledby="hook-title" hidden>
       <h2 id="hook-title">Where alerts go</h2>
       <p id="email-status" hidden></p>
@@ -98,7 +101,7 @@
 <footer class="site"><div class="wrap">
   
   <p>We read the agendas towns post online. This isn’t legal advice; confirm dates with the town clerk.</p>
-  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">Massachusetts Attorney General rulings</a></li><li><a href="/pricing">Free alerts</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#contact">Contact us</a></li></ul>
+  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#contact">Contact us</a></li></ul>
 </div></footer>
 <script src="/app.js" defer></script>
 <script src="/w.js" defer></script>
