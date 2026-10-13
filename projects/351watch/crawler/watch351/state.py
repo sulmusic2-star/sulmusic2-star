@@ -199,8 +199,7 @@ class DocIndex:
         out = []
         for h in rec.get("hits") or []:
             out.append({
-                "state": rec["state"], "town": h.get("town") or rec["town"], "board": rec.get("board"),
-                **({"county": h["county"]} if h.get("county") else {}),
+                "state": rec["state"], "town": rec["town"], "board": rec.get("board"),
                 "board_key": rec.get("board_key"), "meeting_date": rec.get("meeting_date"),
                 "topics": h["topics"], "snippet": h["snippet"],
                 "source_url": rec.get("source_url") or rec["url"],
@@ -253,9 +252,7 @@ def make_record(doc, state: str, *, first_seen: str, today: date, hits: list[dic
         "status": status,
         "text_source": ("ocr" if ex.ocr else ex.kind) if ex is not None else None,
         "kw": matcher or MATCHER_VERSION,
-        "hits": [{"topics": h["topics"], "snippet": h["snippet"], "ctx": h.get("_context") or norm_ctx(h["snippet"]),
-                  # county-body hits attributed to the township they name (attribution.py)
-                  **({"town": h["town"], "county": h.get("county")} if h.get("attributed_from") else {})}
+        "hits": [{"topics": h["topics"], "snippet": h["snippet"], "ctx": h.get("_context") or norm_ctx(h["snippet"])}
                  for h in hits],
     }
     if source_url and source_url != doc.url:

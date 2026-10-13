@@ -3,93 +3,105 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your watchlist | 351 Watch</title>
-<meta name="description" content="A private 351 Watch watchlist of town agenda items.">
+<title>Your alerts | Agenda Ahead</title>
+<meta name="description" content="Alerts from Agenda Ahead for towns you follow.">
 <meta name="robots" content="noindex">
-<meta property="og:title" content="Your watchlist | 351 Watch">
-<meta property="og:description" content="A private 351 Watch watchlist of town agenda items.">
+<meta property="og:title" content="Your alerts">
+<meta property="og:description" content="Alerts from Agenda Ahead for towns you follow.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Agenda Ahead">
+<meta property="og:url" content="https://agendaahead.vercel.app/w">
+<meta property="og:image" content="https://agendaahead.vercel.app/og.png">
+<meta property="og:image:alt" content="Agenda Ahead: what's coming up at your town meetings">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
-<link rel="preload" href="/fonts/public-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/besley-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/barlow-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/barlow-semicondensed-bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%231b4f8a'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='12.5' font-weight='700' fill='white' text-anchor='middle'%3E351%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctitle%3EAgenda%20Ahead%3C/title%3E%3Crect width='32' height='32' rx='4' fill='%23eef1ed'/%3E%3Ccircle cx='9' cy='11' r='3' fill='%23a9b3ac'/%3E%3Ccircle cx='19' cy='9' r='3' fill='%23a9b3ac'/%3E%3Ccircle cx='14' cy='20' r='4.5' fill='%237a2c80'/%3E%3Ccircle cx='24' cy='22' r='3' fill='%23a9b3ac'/%3E%3C/svg%3E">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap">
-  <a class="brand" href="/">351 Watch</a>
-  <nav class="top" aria-label="Main">
-    <a href="/towns">Towns</a><a href="/topics">Topics</a><a href="/#tracker">Tracker</a><a href="/attorney-general">AG decisions</a><a href="/proof">Coverage</a>
-    <a class="cta" href="/watch">Create a watchlist</a>
-  </nav>
+  <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span>Agenda Ahead</a>
+  <nav class="top" aria-label="Main"><ul><li><a href="/towns">Towns</a></li><li><a href="/trending">Biggest stories</a></li><li><a href="/topics">Topics</a></li><li><a href="/search">Search</a></li><li><a href="/watch" aria-current="page">Get alerts</a></li></ul></nav>
 </div></header>
 <main id="main">
 
-<div class="wrap" id="wl-app" data-topics="{&quot;battery_storage&quot;: &quot;Battery storage&quot;, &quot;solar&quot;: &quot;Solar&quot;, &quot;data_center&quot;: &quot;Data centers&quot;, &quot;moratorium&quot;: &quot;Moratoria&quot;, &quot;clean_energy_siting&quot;: &quot;Consolidated permit&quot;, &quot;40b_comprehensive_permit&quot;: &quot;40B housing&quot;, &quot;wireless_telecom&quot;: &quot;Wireless / cell towers&quot;, &quot;zoning_amendment&quot;: &quot;Zoning amendments&quot;, &quot;wetlands_filing&quot;: &quot;Wetlands filings (MassDEP)&quot;}">
-<section class="hero compact" aria-labelledby="wl-title">
-  <p class="crumbs">Watchlist</p>
-  <h1 id="wl-title">Loading watchlist…</h1>
-  <p class="lead" id="wl-summary"></p>
-</section>
+<div class="wrap narrow" id="wl-app" data-topics="{&quot;solar&quot;: [&quot;Solar&quot;, &quot;solar&quot;, false], &quot;battery_storage&quot;: [&quot;Battery storage&quot;, &quot;battery storage&quot;, false], &quot;data_center&quot;: [&quot;Data centers&quot;, &quot;data centers&quot;, true], &quot;moratorium&quot;: [&quot;Moratoriums (temporary bans)&quot;, &quot;a moratorium&quot;, false], &quot;clean_energy_siting&quot;: [&quot;Clean-energy permit rules&quot;, &quot;clean-energy permit rules&quot;, true], &quot;zoning_amendment&quot;: [&quot;Zoning changes&quot;, &quot;a zoning change&quot;, false], &quot;40b_comprehensive_permit&quot;: [&quot;Affordable housing (40B)&quot;, &quot;affordable housing&quot;, false], &quot;wireless_telecom&quot;: [&quot;Cell towers&quot;, &quot;cell towers&quot;, true], &quot;wetlands_filing&quot;: [&quot;Wetlands filings&quot;, &quot;a wetlands filing&quot;, false], &quot;extraction&quot;: [&quot;Quarries and gravel pits&quot;, &quot;a quarry or gravel pit&quot;, false], &quot;large_development&quot;: [&quot;Large developments&quot;, &quot;a large development&quot;, false]}" data-order="[&quot;solar&quot;, &quot;battery_storage&quot;, &quot;data_center&quot;, &quot;moratorium&quot;, &quot;clean_energy_siting&quot;, &quot;zoning_amendment&quot;, &quot;40b_comprehensive_permit&quot;, &quot;wireless_telecom&quot;, &quot;wetlands_filing&quot;, &quot;extraction&quot;, &quot;large_development&quot;]" data-tags="{&quot;solar&quot;: &quot;Solar&quot;, &quot;battery_storage&quot;: &quot;Battery storage&quot;, &quot;data_center&quot;: &quot;Data centers&quot;, &quot;moratorium&quot;: &quot;Moratoriums&quot;, &quot;clean_energy_siting&quot;: &quot;Clean-energy permit rules&quot;, &quot;zoning_amendment&quot;: &quot;Zoning changes&quot;, &quot;40b_comprehensive_permit&quot;: &quot;Affordable housing&quot;, &quot;wireless_telecom&quot;: &quot;Cell towers&quot;, &quot;wetlands_filing&quot;: &quot;Wetlands filings&quot;, &quot;extraction&quot;: &quot;Quarries and gravel pits&quot;, &quot;large_development&quot;: &quot;Large developments&quot;}" data-mention="{&quot;solar&quot;: &quot;solar projects&quot;, &quot;battery_storage&quot;: &quot;battery storage&quot;, &quot;data_center&quot;: &quot;data centers&quot;, &quot;wireless_telecom&quot;: &quot;cell towers&quot;, &quot;40b_comprehensive_permit&quot;: &quot;affordable housing&quot;, &quot;clean_energy_siting&quot;: &quot;clean-energy projects&quot;, &quot;moratorium&quot;: &quot;a temporary ban (moratorium)&quot;, &quot;zoning_amendment&quot;: &quot;a zoning change&quot;, &quot;wetlands_filing&quot;: &quot;a wetlands filing&quot;, &quot;extraction&quot;: &quot;a quarry or gravel pit&quot;, &quot;large_development&quot;: &quot;a large development&quot;}" data-base="https://agendaahead.vercel.app">
+<p class="crumbs-plain">Your alerts</p>
+<h1 id="wl-title">Loading your alerts…</h1>
+<p id="wl-summary"></p>
 <div class="notice err" id="wl-error" role="alert" hidden></div>
+
+<div id="wl-created" hidden>
+  <p id="created-lead"><span id="created-how"></span><span id="inbox-note" hidden> Check your inbox and click the link to confirm your address.</span></p>
+  <p id="sample-lead">Here is what the first one will look like:</p>
+  <div id="sample"></div>
+  <p class="actions"><a class="btn" id="created-cal" href="#">Add these meetings to my calendar</a></p>
+  <p class="keep">To change or stop these alerts later, keep this link.</p>
+  <div class="copy-row" id="created-row"></div>
+  <p class="more-link"><a id="see-all" href="#">See everything coming up in these towns</a></p>
+</div>
+
 <div id="wl-body" hidden>
-  <p class="notice"><b>Bookmark this page.</b> Its link is the only key to this watchlist: anyone who has it can view, change or delete the watchlist, and we can't recover a lost link. <button type="button" class="btn small ghost" id="copy-page">Copy link</button></p>
-  <p class="notice ok" id="checkout-banner" hidden></p>
+  <p class="notice ok" id="created-banner" tabindex="-1" hidden></p>
+  <p class="notice" id="readonly-banner" hidden>Someone shared these alerts with you. You can see them but not change them.</p>
+  <div class="get-buttons">
+    <a class="btn" id="webcal-link" href="#">Add to calendar</a>
+    <a class="btn quiet" id="rss-link" href="#">RSS feed</a>
+  </div>
 
   <section aria-labelledby="items-title">
-    <h2 id="items-title">Matched agenda items</h2>
-    <p class="section-lead" id="items-lead"></p>
-    <div class="filters">
-      <label>Town<select id="i-town"><option value="">All</option></select></label>
-      <label>Topic<select id="i-topic"><option value="">All</option></select></label>
-      <label>Search<input id="i-search" type="search" placeholder="Board, keyword"></label>
-      <span class="count" id="i-count" aria-live="polite"></span>
-    </div>
-    <h3 class="sub">Upcoming meetings</h3>
-    <div class="hits" id="items-upcoming"></div>
-    <h3 class="sub">Recent meetings</h3>
-    <div class="hits" id="items-past"></div>
-    <div id="undated-wrap" hidden>
-      <h3 class="sub">Date not listed (mostly town meeting warrants)</h3>
-      <div class="hits" id="items-undated"></div>
-    </div>
+    <h2 id="items-title">Coming up</h2>
+    <p class="status" id="items-lead"></p>
+    <div id="items-upcoming"></div>
+    <details class="disclose" id="past-wrap"><summary id="past-summary">Earlier meetings</summary><div id="items-past"></div></details>
+    <details class="disclose" id="undated-wrap" hidden><summary>Town Meeting warrants</summary><div id="items-undated"></div></details>
   </section>
 
-  <section aria-labelledby="feeds-title">
-    <h2 id="feeds-title">Feeds</h2>
-    <p class="section-lead">Paste these into a feed reader, a spreadsheet or your own scripts. They update once a day, after the agenda scan.</p>
+  <details class="disclose" id="other-get"><summary>Other ways to get these</summary>
     <div class="feed-rows" id="feed-rows"></div>
-    <p><a class="btn ghost small" id="webcal-link" href="#">Subscribe in your calendar app</a></p>
-  </section>
+    <p class="small"><a id="json-link" href="#">Data feed (JSON), for your own tools</a></p>
+  </details>
 
-  <section aria-labelledby="hook-title">
-    <h2 id="hook-title">Daily messages</h2>
-    <p id="hook-status"></p>
-    <div class="actions"><button type="button" class="btn small ghost" id="hook-test" hidden>Send a test message</button></div>
-    <p class="form-status" id="hook-test-status" role="status" aria-live="polite"></p>
-  </section>
-
-  <section aria-labelledby="manage-title">
-    <h2 id="manage-title">Manage</h2>
-    <p id="plan-line"></p>
-    <div class="actions">
-      <a class="btn" id="edit-link" href="/watch">Edit towns, topics or webhook</a>
-      <button type="button" class="btn ghost danger" id="delete-start">Delete watchlist</button>
-    </div>
-    <div class="confirm" id="delete-confirm" hidden>
-      <p><b>Delete this watchlist?</b> Its page and feeds stop working right away, and you can't undo it.</p>
-      <div class="actions"><button type="button" class="btn danger" id="delete-yes">Delete watchlist</button><button type="button" class="btn ghost" id="delete-no">Keep it</button></div>
-    </div>
-    <p class="form-status" id="manage-status" role="status" aria-live="polite"></p>
-  </section>
+  <details class="disclose settings" id="settings" hidden><summary>Change or delete these alerts</summary>
+    <section id="links-section" aria-labelledby="links-title" hidden>
+      <h2 id="links-title">Your links</h2>
+      <p class="linkcard-title"><b>Private link</b>: changes or deletes these alerts. Keep it to yourself.</p>
+      <div class="copy-row" id="private-row"></div>
+      <p class="linkcard-title"><b>Share link</b>: shows these alerts to anyone, without letting them change anything.</p>
+      <div class="copy-row" id="share-row"></div>
+    </section>
+    <section id="hook-section" aria-labelledby="hook-title" hidden>
+      <h2 id="hook-title">Where alerts go</h2>
+      <p id="email-status" hidden></p>
+      <p id="hook-status"></p>
+      <div class="actions"><button type="button" class="btn small quiet" id="hook-test" hidden>Send a test message</button></div>
+      <p class="form-status" id="hook-test-status" role="status" aria-live="polite"></p>
+    </section>
+    <section id="manage-section" aria-labelledby="manage-title" hidden>
+      <h2 id="manage-title">Change or delete</h2>
+      <p id="plan-line"></p>
+      <div class="actions">
+        <a class="btn quiet" id="edit-link" href="/watch">Change towns, topics or email</a>
+        <button type="button" class="btn quiet danger" id="delete-start">Delete alerts</button>
+      </div>
+      <div class="confirm" id="delete-confirm" hidden>
+        <p><b>Delete these alerts?</b> Emails, posts and calendar updates stop, and this page goes away. You can’t undo this.</p>
+        <div class="actions"><button type="button" class="btn danger" id="delete-yes">Delete alerts</button><button type="button" class="btn quiet" id="delete-no">Keep them</button></div>
+      </div>
+      <p class="form-status" id="manage-status" role="status" aria-live="polite"></p>
+    </section>
+  </details>
 </div>
 </div>
 
 </main>
 <footer class="site"><div class="wrap">
-  <p>351 Watch compiles public records: agendas and warrants that towns post under state open meeting laws, Attorney General decision letters, court rulings and legislative records. It is informational only and is not legal advice. Confirm dates and terms with the town clerk or the linked source before relying on them.</p>
-  <ul class="foot-links"><li><a href="/watch">Create a watchlist</a></li><li><a href="/towns">All towns</a></li><li><a href="/topics">Topics</a></li><li><a href="/attorney-general">Attorney General decisions</a></li><li><a href="/proof">Coverage and method</a></li><li><a href="/pricing">Free during the beta</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/bot">Our crawler</a></li><li><a href="/privacy#contact">Corrections and contact</a></li></ul>
+  
+  <p>We read the agendas towns post online. This isn’t legal advice; confirm dates with the town clerk.</p>
+  <ul class="foot-links"><li><a href="/how-it-works">How it works</a></li><li><a href="/upcoming">Everything coming up</a></li><li><a href="/attorney-general">Attorney General rulings</a></li><li><a href="/how-it-works#privacy">Privacy</a></li><li><a href="/how-it-works#contact">Contact us</a></li></ul>
 </div></footer>
 <script src="/app.js" defer></script>
 <script src="/w.js" defer></script>
