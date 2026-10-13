@@ -1,7 +1,7 @@
 """Draw site/og.png, the 1200x630 picture shown when someone shares a link to the site.
 
 usage: python3 tools/og_image.py   (needs Pillow, fontTools and brotli to read the site's own fonts)
-Same look as the site: the dot-cluster mark, the product name in Barlow Semi Condensed Bold, one line
+Same look as the site: the three-line agenda mark, the product name in Barlow Semi Condensed Bold, one line
 in Barlow, on the paper color. Rerun it when SITE_NAME changes.
 """
 import io
@@ -31,9 +31,9 @@ def font(name, size):
 img = Image.new("RGB", (1200, 630), PAPER)
 d = ImageDraw.Draw(img)
 d.rectangle([0, 560, 1200, 630], fill=LAND)
-# the mark: three grey dots and one purple
-for x, y, r, c in ((96, 120, 14, DOT), (152, 108, 14, DOT), (160, 176, 14, DOT), (118, 160, 22, MARK)):
-    d.ellipse([x - r, y - r, x + r, y + r], fill=c)
+# the mark: three agenda lines, the middle one purple, the last one shorter (as the favicon and nav)
+for y, w, c in ((98, 78, DOT), (126, 78, MARK), (154, 52, DOT)):
+    d.rounded_rectangle([82, y, 82 + w, y + 13], radius=6, fill=c)
 d.text((210, 92), SITE_NAME, font=font("barlow-semicondensed-bold.woff2", 96), fill=INK)
 d.text((80, 270), "See what’s coming up at", font=font("barlow-semicondensed-bold.woff2", 84), fill=INK)
 d.text((80, 365), "your town meetings", font=font("barlow-semicondensed-bold.woff2", 84), fill=INK)

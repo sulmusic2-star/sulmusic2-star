@@ -165,10 +165,11 @@ header.site .wrap { display: flex; align-items: baseline; justify-content: space
 /* The wordmark: the product name (SITE_NAME in build.py) after a small cluster of map dots, one of them
    purple. It is plain text, so any short name fits; nothing about it depends on the current name. */
 .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-head); font-weight: 700; font-size: var(--t-h2); color: var(--ink); text-decoration: none; line-height: 1.2; white-space: nowrap; min-height: 44px; }
+/* The mark: three agenda lines, the middle one purple; the bottom line is shorter, as on a real agenda */
 .brand-mark { position: relative; width: 22px; height: 22px; flex: none; }
-.brand-mark::before, .brand-mark::after { content: ""; position: absolute; border-radius: 50%; }
-.brand-mark::before { width: 6px; height: 6px; left: 1px; top: 3px; background: var(--dot); box-shadow: 12px -2px 0 var(--dot), 14px 12px 0 var(--dot); }
-.brand-mark::after { width: 10px; height: 10px; left: 4px; top: 10px; background: var(--mark); }
+.brand-mark::before, .brand-mark::after { content: ""; position: absolute; left: 2px; width: 18px; height: 3px; border-radius: 1.5px; }
+.brand-mark::before { top: 4px; background: var(--dot); box-shadow: -3px 12px 0 -3px var(--dot); }
+.brand-mark::after { top: 10px; background: var(--mark); }
 .brand:hover { color: var(--muted); }
 nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s1) var(--s5); }
 nav.top a { display: inline-flex; align-items: center; min-height: 44px; padding: var(--s1) 0; color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 3px solid transparent; }
