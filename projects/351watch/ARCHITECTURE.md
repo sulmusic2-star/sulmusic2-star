@@ -197,3 +197,60 @@ The crawler cache (`crawler/.cache`, raw bodies) is lost with the container and 
 ## Crawler rules (non-negotiable)
 
 Identify as AgendaAheadBot (robots.txt rules for the former name 351WatchBot are also obeyed); obey robots.txt on every host and redirect hop; ≤1 request/second/host; no logins; never solve or bypass bot challenges; respect crawl-delay (skip hosts asking >10 s; listing pages, a few requests per host per day, may wait up to 20 s: `fetch.LISTING_CRAWL_DELAY_CAP`).
+
+## `data/briefs/` (written briefs contract)
+
+
+A brief is a short written explanation of one flagged agenda item, keyed by the hit's `id` (the 12-hex id in `hits_current.json`). It replaces the item's rules-based sentence on town pages, topic pages, `/upcoming`, the meeting pages, `/w/<key>` and the Biggest stories page, but only after `tools/verify_briefs.py` has checked it against the agenda's own text and set `verified: true`. Nothing unverified renders; `build.py` runs the same check again when it loads them.
+
+- `data/briefs/<ST>/<YYYY-MM>.jsonl` (the hit's meeting month; `undated.jsonl` without one): one JSON object per line, append-only. A later row for the same `id` replaces the earlier one (the latest `written_at` wins). `briefs.append_brief()` writes one; `briefs.load_briefs()` reads the latest per id.
+- Fields, all optional except `id` and `written_at`: `what` (one plain sentence: what is proposed or being decided), `where` (address or location as the agenda gives it), `size` (MW, acres, units, dollars, as stated), `who` (applicant or sponsor as named), `action` (one of `hearing`, `vote`, `discussion`, `continued`, `adopted`, `withdrawn`, `other`), `next` (what happens next, if the agenda says), `history` (earlier meetings on the same item, from our own data), `can_speak` (true, false or null, from the agenda), `line` (the one-line version, at most 90 characters), `quote` (the exact agenda sentence or sentences the brief rests on), `source_url`, `written_at`, `writer` (e.g. `claude-fable-5-1`), `verified` (set only by the verifier).
+- The verifier (`python3 tools/verify_briefs.py`, `--check` to write nothing): every proper noun, number and address fragment in `what`, `line`, `next`, `size` and `where`, and the whole `who` value, must appear in the document's text in `data/search` (case-insensitive, punctuation-tolerant); `quote` must appear verbatim (whitespace and curly quotes aside; `…` joins parts in order); `action` needs its cue near the quote ("continued" needs "continu"); `can_speak: true` needs "public hearing" or "public comment" nearby; dates in `history` must be meeting dates we hold for that town. It prints each failure with the reason, sets `verified` on the latest row for each id (the only field it changes), and exits 1 when any brief fails. `ops/daily.sh` runs it after `trending.py` and before `build.py`.
+- Rendering: the brief's `line` is the item's first line, then `what` as a sentence, then the facts line (`where` · `size` · `who`) ending in the stage word from `BRIEF_STAGE` by `action` (a `continued` brief says "Postponed to Tue Oct 27" when its `next` names the day, `brief_stage()`). On the `/m/` page only: `next`, `history`, the clerk line when `can_speak` is true, and the quote behind "Agenda wording". `lines.json` and `trending.json` carry the briefs and the labels for `w.js` and `trending.js`. Without a brief, the rules-based line stays, in the same format.
+
+## Watchlists (web app; the link is the key, there are no accounts)
+
+
+- A watchlist is created on `/watch`: a home town (`home_town`, `"MA:Carver"`), towns from its free area (`towns`), topics, optional name, optional Slack, Discord, Teams (Workflows: `*.logic.azure.com`, `*.api.powerplatform.com`) or generic webhook URL, and an optional email address.
+- Stored as a private Vercel Blob `watchlists/<id>.json`. Two keys, both 24+ random URL-safe chars: `id` is the private key that can edit or delete; `feed_id` is a read-only key used in feed, calendar and share links (`feeds/<feed_id>.json` points back to the watchlist). `GET /api/watchlists?id=<feed_id>` returns a read-only view (`readonly: true`) without the private id, the webhook or any email details; PATCH and DELETE need the private key. Feeds accept either key so older links keep working. DELETE removes the watchlist, its `feeds/` entry and its entry in the email index.
+- Delivery: web view `/w/<id>`, RSS `/api/feed?id=…&format=rss`, JSON, iCalendar (`format=ics`, upcoming meetings with matched items), webhooks and email. A Vercel Cron function (`/api/cron/dispatch`, `CRON_SECRET`, daily 13:30 UTC after the data refresh) posts webhooks first, then sends email digests; each channel keeps its own cursor and carries only items first seen since its last successful delivery.
+- Product name: `SITE_NAME` in `site/api/_watch.js` (default "Agenda Ahead", or the `SITE_NAME` env var) is the only name used in webhook messages, feed titles, email subjects, senders and footers. Stable identifiers (`351watch-<id>` RSS guids, `@351watch` calendar UIDs, the `351WatchBot` user agent) stay as they are so feed readers and calendars don't duplicate items.
+- Plans: free founding beta. Stripe Checkout code exists but is disabled unless `STRIPE_SECRET_KEY` and price env vars are set.
+
+### The free area: one town plus its neighbors
+
+
+All topics and all delivery channels are free; the limit is geographic. A watchlist covers one area: `home_town` plus any towns that touch it in `/data/neighbors.json`. Enforced in `validateConfig` (`site/api/_watch.js`) on create and update:
+
+- Create: `home_town` is required and must be a known town; `towns` ⊆ {home_town} ∪ neighbors(home_town). The home town itself need not be in `towns`. `MAX_TOWNS` (200), unknown-town and topic checks still apply.
+- Update, same home town: towns already on the list stay (so a later change to the neighbor data never blocks a save); added towns must be in the area.
+- Update, new `home_town`: the whole list must fit the new area, so a list can't collect several areas.
+- Watchlists made before the limit have no `home_town` (`grandfathered: true` in the private view). They keep working, and edits may remove towns. Adding a town requires the whole list to fit one area: the `home_town` sent, or else the first town on the list whose area holds the rest, which is then saved as `home_town`.
+- Over the limit: HTTP 400, `code: "free_area"`, `fields.towns` and `error` both "Free alerts cover one town and the towns next to it. Need more places? Tell us at /privacy#contact." If the neighbor file can't be loaded: 503, `code: "area_unavailable"` (removing towns still works).
+
+### `data/neighbors.json` (contract)
+
+
+- Built by `python3 tools/neighbors.py` (needs `pip install shapely pyshp`) from US Census cartographic boundary files, county subdivisions, 1:500,000, vintage 2024 (`cb_2024_{25,44,36}_cousub_500k.zip`). Source URLs, vintage and method are in its `_meta` key. Published at `/data/neighbors.json` by `site/vercel-build.sh`; the API reads it from there like `towns.json`.
+- Shape: `{"_meta": {...}, "MA:Carver": ["MA:Kingston", "MA:Middleborough", "MA:Plymouth", "MA:Plympton", "MA:Wareham"], ...}`. Keys containing `:` are town ids exactly as in `site/data/towns.json`; lists are sorted and symmetric.
+- Coverage: every MA (351) and RI (39) town and all of NY (998: towns, cities, New York City's five boroughs; Indian reservations left out). NY names used by more than one place get ` (city)` or ` (<County> County)` (e.g. `NY:Amsterdam (city)`), except towns already on the site, which keep their ids. Neighbors across the MA, RI and NY lines are included; CT, NH, VT, NJ and PA towns are not.
+- Rule: towns are neighbors when their boundaries come within 50 m of each other along at least 100 m (a corner-only contact measures about 25 to 55 m). Where the Census clips at the shoreline (ocean, Nantucket Sound, Narragansett Bay), towns across the water are not neighbors; Nantucket, Gosnold, Jamestown, New Shoreham and Staten Island have none. Rivers and unclipped bays (Long Island's Peconic Bay) count. Halifax is not a Carver neighbor: Plympton lies between them.
+- Some neighbors are not on the site (most NY places). The UI offers neighbors ∩ `towns.json`; the API rejects others as unknown towns.
+
+### Email alerts
+
+
+- Provider: `site/api/_email.js` is the only module that sends mail (Resend's HTTP API, `POST https://api.resend.com/emails`, Bearer `RESEND_API_KEY`, sender `EMAIL_FROM`; a bare address gets `SITE_NAME` as display name). Email is on only when both env vars are set; otherwise the API rejects a non-empty `email` field (400, `fields.email`) and `/api/status` reports `email_alerts: false`. `EMAIL_TRANSPORT=file` (ignored on Vercel) writes messages to a local folder for tests.
+- Opt-in: `email` on create or PATCH stores `wl.email = {address, confirmed: false, confirm_token, unsubscribe_token, requested_at, confirm_sends, confirm_sent_at, confirmed_at, last_emailed_at, last_email, failures}` and sends one confirmation email. Tokens are `<feed_id>.<24 random chars>`, never the private key. PATCH with an empty `email` removes the address; a different address starts over with new tokens; the same address in any case, or its masked form, changes nothing.
+- Links never act on a GET, because mail scanners (Outlook Safe Links, gateways) open every link in an email. `GET /api/email?action=confirm&t=…` and `…action=unsubscribe&t=…` show a plain page with one button; the button POSTs a form (no script, so the site CSP allows it) to the same URL with the token, and only the POST changes anything. A confirm POST sets `confirmed: true` and redirects (303) to `/w/<private id>?email=confirmed`.
+- Unconfirmed addresses get nothing else, apart from one more confirmation on request (`POST /api/email?action=resend&id=<private id>`): at once if the first send failed, otherwise 24 hours after it, then never again.
+- Limits: 10 sign-ups per hour per network (per function instance); per address, 3 confirmation emails a day and 6 in 30 days, and at most 3 watchlists (confirmed ones, plus unconfirmed ones under a week old). Kept in `emails/<sha256 of the lowercased address>.json`: `{watchlists: {<id>: {confirmed, at}}, sends: [ISO times]}`. The index holds no address.
+- Digest: after the webhooks, `/api/cron/dispatch` sends each confirmed address one email of the items first seen since `email.last_emailed_at` (at most 50, then "And N more"), only when there is something new, then moves the cursor to the data snapshot time. A failed send leaves the cursor so the items go out the next day. Sends are spaced `EMAIL_SEND_INTERVAL_MS` apart (default 550 ms, for Resend's 2 requests a second) two at a time, and stop starting after 50 s (`email_deferred` in the response; those go out the next day).
+- Message: plain text and simple HTML. Each item gives town, board, meeting date, matched topics, a one-line agenda excerpt (quoted, never edited) and the agenda link. Footer: the share link, the private manage link, a one-click unsubscribe link. Headers `List-Unsubscribe: <…/api/email?action=unsubscribe&t=…>` and `List-Unsubscribe-Post: List-Unsubscribe=One-Click`. Subject: `Agenda Ahead: 2 new items for Carver and neighbors` (the watchlist's name when it has one).
+- Unsubscribe: a POST to `/api/email?action=unsubscribe&t=…` removes the address and its index entry at once. The form's POST answers a "You're unsubscribed" page linking to the watchlist page (where the address can be added again); the RFC 8058 one-click POST that mail providers send (body `List-Unsubscribe=One-Click`, urlencoded or multipart) answers 200 JSON.
+- Privacy: the full address is stored only on the watchlist blob. The private view shows a masked address (`j***@example.com`) and its status; the read-only view, feeds and webhooks show nothing about email.
+
+### `GET /api/status`
+
+
+`{"ok": true, "email_alerts": true}`: whether this deployment has email configured, so pages can show or hide the email option. No caching.
