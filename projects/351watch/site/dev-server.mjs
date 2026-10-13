@@ -7,10 +7,13 @@
 // Environment:
 //   PORT                   default 8351
 //   HITS_FILE              file served as /data/hits_current.json (default ../data/hits_current.json)
+//   NEIGHBORS_FILE         file served as /data/neighbors.json (default ../data/neighbors.json)
 //   BLOB_READ_WRITE_TOKEN  unset -> an in-memory Blob store replaces @vercel/blob (lost on restart)
-//   MOCK_WEBHOOK_URL       if set, outbound requests to webhook hosts and api.stripe.com are sent
-//                          here instead, with the original URL in an x-original-url header
-//   CRON_SECRET, STRIPE_*  passed through to the handlers as on Vercel
+//   MOCK_WEBHOOK_URL       if set, outbound requests to webhook hosts, api.stripe.com and api.resend.com
+//                          are sent here instead, with the original URL in an x-original-url header
+//   EMAIL_TRANSPORT=file   with EMAIL_FROM set, email alerts are on and each message is written to
+//                          EMAIL_OUTBOX (default <tmp>/351watch-outbox) instead of being sent
+//   CRON_SECRET, STRIPE_*, RESEND_API_KEY, EMAIL_FROM, SITE_NAME  passed through to the handlers as on Vercel
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { createHash, randomBytes } from 'node:crypto';
@@ -21,6 +24,7 @@ const SITE = dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.PORT || 8351);
 const ORIGIN = `http://127.0.0.1:${PORT}`;
 const HITS_FILE = resolve(process.env.HITS_FILE || join(SITE, '..', 'data', 'hits_current.json'));
+const NEIGHBORS_FILE = resolve(process.env.NEIGHBORS_FILE || join(SITE, '..', 'data', 'neighbors.json'));
 const config = JSON.parse(await readFile(join(SITE, 'vercel.json'), 'utf8'));
 
 process.env.DATA_ORIGIN ||= ORIGIN;
@@ -77,7 +81,7 @@ if (!process.env.BLOB_READ_WRITE_TOKEN) {
 // ---------- outbound webhook / Stripe redirection for local tests ----------
 if (process.env.MOCK_WEBHOOK_URL) {
   const realFetch = globalThis.fetch;
-  const MOCK_HOST = /^(hooks\.slack\.com|outlook\.office\.com|discord\.com|api\.stripe\.com)$|\.webhook\.office\.com$|\.logic\.azure\.com$/;
+  const MOCK_HOST = /^(hooks\.slack\.com|outlook\.office\.com|discord\.com|api\.stripe\.com|api\.resend\.com)$|\.webhook\.office\.com$|\.logic\.azure\.com$/;
   globalThis.fetch = (input, init = {}) => {
     const url = new URL(typeof input === 'string' || input instanceof URL ? input : input.url);
     if (!MOCK_HOST.test(url.hostname)) return realFetch(input, init);
@@ -134,6 +138,7 @@ async function fileAt(pathname) {
 
 async function resolveStatic(pathname) {
   if (pathname === '/data/hits_current.json') return HITS_FILE;
+  if (pathname === '/data/neighbors.json') return NEIGHBORS_FILE;
   if (pathname === '/') return fileAt('/index.html');
   if (pathname.endsWith('/')) return (await fileAt(`${pathname}index.html`)) || null;
   return (await fileAt(pathname)) || (await fileAt(`${pathname}.html`));
