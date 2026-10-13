@@ -7,8 +7,7 @@ the politeness rules live in exactly one place:
 * obeys robots.txt (RFC 9309 semantics: 4xx on robots.txt = allow all,
   5xx / network failure = disallow the host for this run)
 * waits at least `min_interval` seconds between requests to the same host
-  (or the robots.txt Crawl-delay, whichever is larger); a host asking for more than
-  CRAWL_DELAY_CAP (10 s) is skipped, or LISTING_CRAWL_DELAY_CAP (20 s) for listing pages
+  (or the robots.txt Crawl-delay, whichever is larger)
 * caches every response body under crawler/.cache/ so re-runs are cheap
 * never logs in, never sends cookies it was not given, never retries a
   403/429 aggressively
@@ -42,12 +41,6 @@ DEFAULT_CACHE_DIR = Path(__file__).resolve().parent.parent / ".cache"
 # Hosts that rate-limit below our default 1 request/second (seconds between requests).
 HOST_MIN_INTERVAL = {"opengov.sos.ri.gov": 2.5}
 MAX_BYTES = 40 * 1024 * 1024  # skip anything bigger than 40 MB
-# Longest robots.txt Crawl-delay we honour (seconds). A host asking for more is skipped.
-# Listing pages (a few requests per host per day) may wait up to 20 s; documents and
-# everything else keep the 10 s cap.
-CRAWL_DELAY_CAP = 10.0
-LISTING_CRAWL_DELAY_CAP = 20.0
-LISTING_PURPOSES = frozenset({"listing"})
 
 
 @dataclass
@@ -58,7 +51,6 @@ class Response:
     content_type: str
     body: bytes
     from_cache: bool = False
-    last_modified: str | None = None   # the server's Last-Modified header, when it sent one
 
     @property
     def ok(self) -> bool:
@@ -165,7 +157,7 @@ class PoliteFetcher:
             return None
         return Response(url=url, final_url=meta["final_url"], status=meta["status"],
                         content_type=meta["content_type"], body=body_p.read_bytes(),
-                        from_cache=True, last_modified=meta.get("last_modified"))
+                        from_cache=True)
 
     def _write_cache(self, resp: Response) -> None:
         body_p, meta_p = self._cache_paths(resp.url)
@@ -174,7 +166,6 @@ class PoliteFetcher:
         meta_p.write_text(json.dumps({
             "url": resp.url, "final_url": resp.final_url, "status": resp.status,
             "content_type": resp.content_type, "fetched_at": time.time(),
-            **({"last_modified": resp.last_modified} if resp.last_modified else {}),
         }))
 
     # ----------------------------------------------------------------- robots
@@ -220,7 +211,7 @@ class PoliteFetcher:
 
     def allowed(self, url: str) -> bool:
         rp = self._robots_for(url)
-        return rp is not None and all(rp.can_fetch(a, url) for a in (ROBOTS_AGENT, *FORMER_ROBOTS_AGENTS))
+        return rp is not None and rp.can_fetch(ROBOTS_AGENT, url)
 
     # --------------------------------------------------------------- throttle
     def _throttle(self, host: str, interval: float) -> None:
@@ -284,11 +275,9 @@ class PoliteFetcher:
         delay = max(delays) if delays else None
         interval = max(self.min_interval, HOST_MIN_INTERVAL.get(urlsplit(url).netloc, 0.0),
                        float(delay) if delay else 0.0)
-        # Cap absurd crawl-delays so one host cannot stall the whole run; if a site asks
-        # for more than the cap we skip it instead of hammering. Listing pages (purpose
-        # "listing") may wait longer than documents.
-        cap = LISTING_CRAWL_DELAY_CAP if getattr(self._ctx, "kind", None) in LISTING_PURPOSES else CRAWL_DELAY_CAP
-        if interval > cap:
+        # Cap absurd crawl-delays so one host cannot stall the whole run;
+        # if a site asks for more than 10s we skip it instead of hammering.
+        if interval > 10:
             raise RobotsDisallowed(f"{url} (crawl-delay {interval}s too long for prototype)")
         return interval
 
@@ -333,8 +322,7 @@ class PoliteFetcher:
             raise FetchError(f"offline mode and not cached: {url}")
 
         r, body, final_url = self._get_following_redirects(url)
-        resp = Response(url, final_url, r.status_code, r.headers.get("Content-Type", ""), body,
-                        last_modified=r.headers.get("Last-Modified"))
+        resp = Response(url, final_url, r.status_code, r.headers.get("Content-Type", ""), body)
         if r.status_code in (200, 404, 410):
             self._write_cache(resp)  # cache successes and definitive misses
         if not resp.ok:
