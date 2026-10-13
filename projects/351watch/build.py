@@ -1672,7 +1672,8 @@ def group_meetings(ctx, hits):
                 # Only a real place (a hall, room, school, street or address), not a writer's description of the setup.
                 named = re.search(r"\b(?:hall|room|cent(?:er|re)|school|street|st\.|road|rd\.|avenue|ave\.|drive|lane|way|"
                                   r"building|library|office|station|chambers|complex|house|annex|church|academy)\b|\b\d{1,5} [A-Z]", place, re.I)
-                if place and named and not re.fullmatch(r"(?:zoom|online|remote|virtual)[^a-z]*", place, re.I):
+                vague = re.search(r"not (?:stated|given|listed|named)|in[- ]person|\bTBD\b|to be announced", place, re.I)
+                if place and named and not vague and not re.fullmatch(r"(?:zoom|online|remote|virtual)[^a-z]*", place, re.I):
                     hybrid = bool(re.search(r"\b(?:zoom|online|remote|hybrid|virtual|webinar|teams)\b", b["when_place"], re.I))
                     m["place"] = place + (", or join online" if hybrid else "")
     return list(out.values())
