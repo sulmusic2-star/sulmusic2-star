@@ -444,6 +444,20 @@ details.hook > summary { padding: var(--s1) 0; }
   header.site .wrap { gap: 0 var(--s4); }
   nav.top ul { gap: 0 var(--s4); }
   .field-row .btn { flex: 1 1 100%; }
+  /* /trending on a phone: smaller pills and a one-line town box, so the first story is in reach */
+  .trend-filters label { min-height: 28px; padding: 0 8px; font-size: 14px; }
+  .trend-filters fieldset { gap: 4px; }
+  .trend-filters legend { line-height: 28px; }
+  .near-me .field-row { flex-wrap: nowrap; }
+  .near-me .field-row .btn { flex: 0 0 auto; }
+  /* /topics on a phone: one line per topic instead of a four-column table */
+  .counts thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .counts, .counts tbody, .counts tr { display: block; }
+  .counts tr { padding: var(--s2) 0; border-bottom: 1px solid var(--rule); }
+  .counts tbody th { display: block; border: 0; padding: 0; }
+  .counts td { display: inline; border: 0; padding: 0; color: var(--muted); font-size: var(--t-sm); white-space: nowrap; }
+  .counts td::after { content: " " attr(data-label); text-transform: lowercase; }
+  .counts td + td::before { content: " · "; }
   .onebox { padding: var(--s4); margin-left: calc(-1 * var(--s2)); margin-right: calc(-1 * var(--s2)); }
   .onebox label { font-size: var(--t-h3); }
   .timeline li { grid-template-columns: 1fr; gap: var(--s1); }

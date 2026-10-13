@@ -2117,6 +2117,9 @@ def build_index(ctx):
                  else '<p class="empty">Nothing big on the agendas posted so far.</p>')
     towns_read = sum(m for _, m, _ in ctx.coverage())
     abbr = join_and(ctx.states)
+    ahead = upcoming_hits(ctx)
+    ahead_towns = len({(h.get("state"), h.get("town")) for h in ahead})
+    count_line = f'<span class="sub-count">{len(ahead):,} items at meetings still ahead in {ahead_towns} towns</span>' if ahead else ""
     body = f"""
 <div class="wrap narrow home">
 <section class="home-hero" aria-labelledby="hero-title">
@@ -2128,7 +2131,7 @@ def build_index(ctx):
 <section class="next" aria-labelledby="next-title">
   <h2 id="next-title">{big_title}</h2>
   {next_html}
-  <p class="more-link"><a href="/upcoming">See everything coming up</a></p>
+  <p class="more-link"><a href="/upcoming">See everything coming up</a> {count_line}</p>
 </section>
 </div>
 """
@@ -2293,8 +2296,8 @@ def build_trending(ctx):
 </div>
 <form class="townbox near-me" id="near-me" hidden>
   <label for="near-town">Put stories near your town first</label>
-  <div class="field-row"><input id="near-town" type="text" list="near-towns" autocomplete="off" autocapitalize="words" spellcheck="false">
-  <button class="btn quiet" type="submit">Sort by my town</button></div>
+  <div class="field-row"><input id="near-town" type="text" list="near-towns" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Your town">
+  <button class="btn quiet" type="submit">Put my town first</button></div>
   <datalist id="near-towns"></datalist>
   <p class="field-error" id="near-town-error" role="alert" hidden></p>
 </form>

@@ -90,7 +90,8 @@
 
   // Narrow the list by date and by one or more topics; both lists ("Everywhere" and "Near me") follow.
   const filters = $('trend-filters');
-  function applyFilters() {
+  const staticRows = [...all.children];  // the top 20 build.py rendered
+  async function applyFilters() {
     if (!filters) return;
     const when = new FormData(filters).get('when') || 'year';
     const topics = [...filters.querySelectorAll('input[name=topic]:checked')].map((i) => i.value);
@@ -102,20 +103,35 @@
     else if (when === 'month') end.setMonth(end.getMonth() + 1, 0);
     else end.setFullYear(end.getFullYear() + 1);
     const until = `${end.getFullYear()}-${String(end.getMonth() + 1).padStart(2, '0')}-${String(end.getDate()).padStart(2, '0')}`;
+    const keep = (date, has) => (!date || date <= until) && (!topics.length || topics.some((t) => has.includes(t)));
+    const active = when !== 'year' || topics.length > 0;
+    // "Everywhere" with a filter on draws from every ranked story (/data/trending.json holds 100), not just
+    // the 20 on the page, so a topic shows all of its stories; without a filter the page's own rows return.
+    const [doc] = await data;
+    const stories = Array.isArray(doc.stories) ? doc.stories : [];
     let shown = 0;
     let total = 0;
-    for (const li of document.querySelectorAll('#trend-all > li, #trend-mine > li')) {
-      const date = li.dataset.date || '';
-      const has = (li.dataset.topics || '').split(' ');
-      const ok = (!date || date <= until) && (!topics.length || topics.some((t) => has.includes(t)));
+    if (active && stories.length) {
+      const matches = stories.filter((st) => keep(st.meeting_date || '', st.topics || []));
+      all.replaceChildren(...matches.map(storyNode));
+      if (window.w351 && window.w351.relDates) window.w351.relDates(all);
+      if (!all.hidden) {
+        shown = matches.length;
+        total = stories.length;
+      }
+    } else if (all.children.length !== staticRows.length || all.firstChild !== staticRows[0]) {
+      all.replaceChildren(...staticRows);
+    }
+    for (const li of mine.children) {
+      const ok = keep(li.dataset.date || '', (li.dataset.topics || '').split(' '));
       li.hidden = !ok;
-      if (!li.parentElement.hidden) {
+      if (!mine.hidden) {
         total += 1;
         if (ok) shown += 1;
       }
     }
     const count = $('trend-count');
-    if (count) count.textContent = when !== 'year' || topics.length ? `${shown} of ${total} stories` : '';
+    if (count) count.textContent = active ? `${shown} of ${total} stories` : '';
   }
   if (filters) filters.addEventListener('change', applyFilters);
 
