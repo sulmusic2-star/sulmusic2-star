@@ -1,5 +1,5 @@
 // Stores corrections, data-removal requests and general messages as private blobs.
-// No email address is collected: 351 Watch does not send email.
+// The form collects no email address (email alerts are separate: see _email_alerts.js).
 import { bodySize, clean, noStore, readBody, save, postOnly, throttled } from './_store.js';
 
 const KINDS = new Set(['correction', 'removal', 'message']);
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   }
 
   const message = clean(body.message, 2000);
-  if (message.length < 3) return res.status(400).json({ ok: false, error: 'Please write a message.' });
+  if (message.length < 3) return res.status(400).json({ ok: false, error: 'Write a message first.' });
 
   try {
     await save('contact', {
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     });
   } catch (err) {
     console.error('contact write failed', err);
-    return res.status(500).json({ ok: false, error: 'Something went wrong. Please try again.' });
+    return res.status(500).json({ ok: false, error: 'Something went wrong. Try again.' });
   }
   return res.status(200).json({ ok: true });
 }
