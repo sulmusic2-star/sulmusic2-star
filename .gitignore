@@ -5,3 +5,9 @@ node_modules/
 
 # Agent worktrees
 .claude/worktrees/
+
+# Full-text rows written by test crawls (data/test is test output; search text stays local)
+projects/351watch/data/test/**/search/
+projects/351watch/data/test/**/archive/
+projects/351watch/data/test/search/
+projects/351watch/data/test/archive/

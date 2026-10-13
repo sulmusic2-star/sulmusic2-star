@@ -28,7 +28,7 @@ export default async function handler(req, res) {
   const plan = clean(body.plan, 20);
   if (!PLANS[plan]) return res.status(400).json({ ok: false, error: 'Unknown plan.' });
   if (!configured(plan)) {
-    return res.status(503).json({ ok: false, beta: true, error: 'Paid plans are not open yet. Everything is free for now.' });
+    return res.status(503).json({ ok: false, beta: true, error: 'Paid plans are not open yet. Everything is free during the founding beta.' });
   }
   if (throttled(req, 'checkout', 20, 60 * 60 * 1000)) return res.status(429).json({ ok: false, error: 'Too many attempts. Try again later.' });
 
@@ -65,11 +65,11 @@ export default async function handler(req, res) {
     const session = await stripe.json().catch(() => ({}));
     if (!stripe.ok || !session.url) {
       console.error('stripe checkout error', stripe.status, session?.error?.message);
-      return res.status(502).json({ ok: false, error: 'Checkout isn\'t working right now. Try again later.' });
+      return res.status(502).json({ ok: false, error: 'Checkout is unavailable right now. Please try again later.' });
     }
     return res.status(200).json({ ok: true, url: session.url });
   } catch (err) {
     console.error('stripe checkout failed', err);
-    return res.status(502).json({ ok: false, error: 'Checkout isn\'t working right now. Try again later.' });
+    return res.status(502).json({ ok: false, error: 'Checkout is unavailable right now. Please try again later.' });
   }
 }
