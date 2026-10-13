@@ -1,0 +1,3699 @@
+{
+ "_about": "Agenda Ahead Wave 1 test (2026-10): every Vermont municipality (Wikipedia list, read 2026-10-12), for the Act 250 state feed (watch351/sources/vt_act250.py). No town agendas are crawled (automated: false). Built by `python3 experiments/wave1_test.py towns`.",
+ "generated": "2026-10-12T23:08:30+00:00",
+ "state": "VT",
+ "gated": true,
+ "gate_note": "Test state: not part of the production daily run or site. Items are written only to data/test/wave1/sources/ by `python3 -m watch351.sources.vt_act250`.",
+ "source_url": "https://en.wikipedia.org/wiki/List_of_municipalities_in_Vermont",
+ "count": 256,
+ "towns": [
+  {
+   "town": "Addison",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 1365,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Albany",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 976,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Alburgh",
+   "state": "VT",
+   "county": "Grand Isle",
+   "kind": "town",
+   "pop_2020": 2106,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Andover",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 568,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Arlington",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 2457,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Athens",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 380,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Averill",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "unincorporated town",
+   "pop_2020": 21,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Averys Gore",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "gore",
+   "pop_2020": 0,
+   "aliases": [
+    "Avery's Gore"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Bakersfield",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 1273,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Baltimore",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 229,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Barnard",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 992,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Barnet",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 1663,
+   "aliases": [
+    "West Barnet Village",
+    "West Barnet"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Barre City",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "city",
+   "pop_2020": 8491,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Barre Town",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 7923,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Barton",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 2872,
+   "aliases": [
+    "Orleans Village",
+    "Orleans"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Belvidere",
+   "state": "VT",
+   "county": "Lamoille",
+   "kind": "town",
+   "pop_2020": 358,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Bennington",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 15333,
+   "aliases": [
+    "North Bennington Village",
+    "North Bennington",
+    "Old Bennington Village",
+    "Old Bennington"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Benson",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 974,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Berkshire",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 1547,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Berlin",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 2849,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Bethel",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 1942,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Bloomfield",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 217,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Bolton",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 1301,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Bradford",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 2790,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Braintree",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 1207,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Brandon",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 4129,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Brattleboro",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 12184,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Bridgewater",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 903,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Bridport",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 1225,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Brighton",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 1157,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Bristol",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 3782,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Brookfield",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 1244,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Brookline",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 540,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Brownington",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 1042,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Brunswick",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 88,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Buels Gore",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "gore",
+   "pop_2020": 29,
+   "aliases": [
+    "Buel's Gore"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Burke",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 1651,
+   "aliases": [
+    "West Burke Village",
+    "West Burke"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Burlington",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "city",
+   "pop_2020": 44743,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Cabot",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 1443,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Calais",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 1661,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Cambridge",
+   "state": "VT",
+   "county": "Lamoille",
+   "kind": "town",
+   "pop_2020": 3839,
+   "aliases": [
+    "Jeffersonville Village",
+    "Jeffersonville"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Canaan",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 896,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Castleton",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 4458,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Cavendish",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 1392,
+   "aliases": [
+    "Proctorsville Village",
+    "Proctorsville"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Charleston",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 1021,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Charlotte",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 3783,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Chelsea",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 1233,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Chester",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 3005,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Chittenden",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 1237,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Clarendon",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 2412,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Colchester",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 17524,
+   "aliases": [
+    "Westbury Village",
+    "Westbury",
+    "Winooski Village",
+    "Winooski"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Concord",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 1141,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Corinth",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 1455,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Cornwall",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 1207,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Coventry",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 1100,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Craftsbury",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 1343,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Danby",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 1284,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Danville",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 2335,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Derby",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 4579,
+   "aliases": [
+    "Derby Center Village",
+    "Derby Center",
+    "Derby Line Village",
+    "Derby Line",
+    "West Derby Village",
+    "West Derby"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Dorset",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 2133,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Dover",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 1798,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Dummerston",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 1865,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Duxbury",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 1413,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "East Haven",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 270,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "East Montpelier",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 2598,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Eden",
+   "state": "VT",
+   "county": "Lamoille",
+   "kind": "town",
+   "pop_2020": 1338,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Elmore",
+   "state": "VT",
+   "county": "Lamoille",
+   "kind": "town",
+   "pop_2020": 886,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Enosburgh",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 2810,
+   "aliases": [
+    "Enosburg Falls Village",
+    "Enosburg Falls"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Essex",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 11540,
+   "aliases": [
+    "Essex Junction Village",
+    "Essex Junction",
+    "Essex Center Village",
+    "Essex Center",
+    "Essex, Town of"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Essex Junction",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "city",
+   "pop_2020": 10590,
+   "aliases": [
+    "Essex Junction, City of"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Fair Haven",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 2736,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Fairfax",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 5014,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Fairfield",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 2044,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Fairlee",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 988,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Fayston",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 1364,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Ferdinand",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "unincorporated town",
+   "pop_2020": 16,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Ferrisburgh",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 2646,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Fletcher",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 1346,
+   "aliases": [
+    "Binghamville Village",
+    "Binghamville"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Franklin",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 1363,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Georgia",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 4845,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Glastenbury",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "unincorporated town",
+   "pop_2020": 9,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Glover",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 1114,
+   "aliases": [
+    "West Glover Village",
+    "West Glover"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Goshen",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 172,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Grafton",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 645,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Granby",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 81,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Grand Isle",
+   "state": "VT",
+   "county": "Grand Isle",
+   "kind": "town",
+   "pop_2020": 2086,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Granville",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 301,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Greensboro",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 811,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Groton",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 984,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Guildhall",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 262,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Guilford",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 2120,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Halifax",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 771,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Hancock",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 359,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Hardwick",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 2920,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Hartford",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 10686,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Hartland",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 3446,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Highgate",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 3472,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Hinesburg",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 4698,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Holland",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 632,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Hubbardton",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 735,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Huntington",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 1934,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Hyde Park",
+   "state": "VT",
+   "county": "Lamoille",
+   "kind": "town",
+   "pop_2020": 3020,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Ira",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 368,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Irasburg",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 1233,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Isle La Motte",
+   "state": "VT",
+   "county": "Grand Isle",
+   "kind": "town",
+   "pop_2020": 488,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Jamaica",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 1005,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Jay",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 551,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Jericho",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 5104,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Johnson",
+   "state": "VT",
+   "county": "Lamoille",
+   "kind": "town",
+   "pop_2020": 3491,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Killington",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 1407,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Kirby",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 575,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Landgrove",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 177,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Leicester",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 990,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Lemington",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 87,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Lewis",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "unincorporated town",
+   "pop_2020": 2,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Lincoln",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 1323,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Londonderry",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 1919,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Lowell",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 887,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Ludlow",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 2172,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Lunenburg",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 1246,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Lyndon",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 5491,
+   "aliases": [
+    "Lyndonville Village",
+    "Lyndonville",
+    "Lyndon Center Village",
+    "Lyndon Center",
+    "Lyndon Corner Village",
+    "Lyndon Corner"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Maidstone",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 211,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Manchester",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 4484,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Marlboro",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 1722,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Marshfield",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 1583,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Mendon",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 1149,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Middlebury",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 9152,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Middlesex",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 1779,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Middletown Springs",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 794,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Milton",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 10723,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Monkton",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 2079,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Montgomery",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 1184,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Montpelier",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "city",
+   "pop_2020": 8074,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Moretown",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 1753,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Morgan",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 638,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Morristown",
+   "state": "VT",
+   "county": "Lamoille",
+   "kind": "town",
+   "pop_2020": 5434,
+   "aliases": [
+    "Morrisville Village",
+    "Morrisville"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Mount Holly",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 1385,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Mount Tabor",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 210,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "New Haven",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 1683,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Newark",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 584,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Newbury",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 2293,
+   "aliases": [
+    "Wells River Village",
+    "Wells River"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Newfane",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 1645,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Newport City",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "city",
+   "pop_2020": 4455,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Newport Town",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 1526,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "North Hero",
+   "state": "VT",
+   "county": "Grand Isle",
+   "kind": "town",
+   "pop_2020": 939,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Northfield",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 5918,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Norton",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 153,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Norwich",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 3612,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Orange",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 1048,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Orwell",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 1239,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Panton",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 646,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Pawlet",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 1424,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Peacham",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 715,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Peru",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 531,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Pittsfield",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 504,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Pittsford",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 2862,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Plainfield",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 1236,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Plymouth",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 641,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Pomfret",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 916,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Poultney",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 3020,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Pownal",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 3258,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Proctor",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 1763,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Putney",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 2617,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Randolph",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 4774,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Reading",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 687,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Readsboro",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 702,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Richford",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 2346,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Richmond",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 4167,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Ripton",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 739,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Rochester",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 1099,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Rockingham",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 4832,
+   "aliases": [
+    "Bellows Falls Village",
+    "Bellows Falls",
+    "Saxtons River Village",
+    "Saxtons River"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Roxbury",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 678,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Royalton",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 2750,
+   "aliases": [
+    "South Royalton Village",
+    "South Royalton"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Rupert",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 698,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Rutland City",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "city",
+   "pop_2020": 15807,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Rutland Town",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 3924,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Ryegate",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 1165,
+   "aliases": [
+    "South Ryegate Village",
+    "South Ryegate"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Salisbury",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 1221,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Sandgate",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 387,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Searsburg",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 126,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Shaftsbury",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 3598,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Sharon",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 1560,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Sheffield",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 682,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Shelburne",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 7717,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Sheldon",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 2136,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Shoreham",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 1260,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Shrewsbury",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 1096,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Somerset",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "unincorporated town",
+   "pop_2020": 6,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "South Burlington",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "city",
+   "pop_2020": 20292,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "South Hero",
+   "state": "VT",
+   "county": "Grand Isle",
+   "kind": "town",
+   "pop_2020": 1674,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Springfield",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 9062,
+   "aliases": [
+    "Springfield Center Village",
+    "Springfield Center"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "St. Albans City",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "city",
+   "pop_2020": 6887,
+   "aliases": [
+    "Saint Albans City",
+    "Saint Albans City"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "St. Albans Town",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 6988,
+   "aliases": [
+    "Saint Albans Town",
+    "Saint Albans Town"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "St. George",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 794,
+   "aliases": [
+    "Saint George",
+    "Saint George"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "St. Johnsbury",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 7364,
+   "aliases": [
+    "Saint Johnsbury",
+    "Saint Johnsbury"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Stamford",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 861,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Stannard",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 208,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Starksboro",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 1756,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Stockbridge",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 718,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Stowe",
+   "state": "VT",
+   "county": "Lamoille",
+   "kind": "town",
+   "pop_2020": 5223,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Strafford",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 1094,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Stratton",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 440,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Sudbury",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 545,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Sunderland",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 1056,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Sutton",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 913,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Swanton",
+   "state": "VT",
+   "county": "Franklin",
+   "kind": "town",
+   "pop_2020": 6701,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Thetford",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 2775,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Tinmouth",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 553,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Topsham",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 1199,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Townshend",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 1291,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Troy",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 1722,
+   "aliases": [
+    "North Troy Village",
+    "North Troy"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Tunbridge",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 1337,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Underhill",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 3129,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Vergennes",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "city",
+   "pop_2020": 2553,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Vernon",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 2192,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Vershire",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 672,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Victory",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "town",
+   "pop_2020": 70,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Waitsfield",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 1844,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Walden",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 956,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Wallingford",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 2129,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Waltham",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 446,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Wardsboro",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 869,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Warner's Grant",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "gore",
+   "pop_2020": 0,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Warren",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 1977,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Warren's Gore",
+   "state": "VT",
+   "county": "Essex",
+   "kind": "gore",
+   "pop_2020": 2,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Washington",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 1032,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Waterbury",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 5331,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Waterford",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 1268,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Waterville",
+   "state": "VT",
+   "county": "Lamoille",
+   "kind": "town",
+   "pop_2020": 686,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Weathersfield",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 2842,
+   "aliases": [
+    "Perkinsville Village",
+    "Perkinsville"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Wells",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 1214,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "West Fairlee",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 621,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "West Haven",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 239,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "West Rutland",
+   "state": "VT",
+   "county": "Rutland",
+   "kind": "town",
+   "pop_2020": 2214,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "West Windsor",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 1344,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Westfield",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 534,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Westford",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 2062,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Westminster",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 3016,
+   "aliases": [
+    "North Westminster Village",
+    "North Westminster"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Westmore",
+   "state": "VT",
+   "county": "Orleans",
+   "kind": "town",
+   "pop_2020": 357,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Weston",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 623,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Weybridge",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 814,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Wheelock",
+   "state": "VT",
+   "county": "Caledonia",
+   "kind": "town",
+   "pop_2020": 759,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Whiting",
+   "state": "VT",
+   "county": "Addison",
+   "kind": "town",
+   "pop_2020": 405,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Whitingham",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 1344,
+   "aliases": [
+    "Jacksonville Village",
+    "Jacksonville"
+   ],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Williamstown",
+   "state": "VT",
+   "county": "Orange",
+   "kind": "town",
+   "pop_2020": 3515,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Williston",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "town",
+   "pop_2020": 10103,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Wilmington",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 2255,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Windham",
+   "state": "VT",
+   "county": "Windham",
+   "kind": "town",
+   "pop_2020": 449,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Windsor",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 3559,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Winhall",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 1182,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Winooski",
+   "state": "VT",
+   "county": "Chittenden",
+   "kind": "city",
+   "pop_2020": 7997,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Wolcott",
+   "state": "VT",
+   "county": "Lamoille",
+   "kind": "town",
+   "pop_2020": 1670,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Woodbury",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 928,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Woodford",
+   "state": "VT",
+   "county": "Bennington",
+   "kind": "town",
+   "pop_2020": 355,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Woodstock",
+   "state": "VT",
+   "county": "Windsor",
+   "kind": "town",
+   "pop_2020": 3005,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  },
+  {
+   "town": "Worcester",
+   "state": "VT",
+   "county": "Washington",
+   "kind": "town",
+   "pop_2020": 964,
+   "aliases": [],
+   "automated": false,
+   "coverage": "state_feed",
+   "coverage_sources": [
+    "vt_act250"
+   ],
+   "coverage_note": "Act 250 land-use permits for projects in this town reach us through the state's daily Act 250 agenda; the town's own agendas are not read."
+  }
+ ]
+}
