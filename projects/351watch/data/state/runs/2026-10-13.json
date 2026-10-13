@@ -1,0 +1,200 @@
+{
+ "by_state": {
+  "MA": {
+   "new_documents": 3,
+   "new_hits": 6,
+   "towns_attempted": 240,
+   "towns_succeeded": 236
+  },
+  "NY": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 33,
+   "towns_succeeded": 33
+  },
+  "RI": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 39,
+   "towns_succeeded": 39
+  }
+ },
+ "date": "2026-10-13",
+ "document_errors": 0,
+ "documents_already_indexed": 21,
+ "documents_deferred": 0,
+ "documents_listed": 2860,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 2836,
+ "documents_retried": 0,
+ "documents_too_large": [
+  {
+   "error": "too large (> 41943040 bytes): https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560",
+   "meeting_date": "2026-10-14",
+   "state": "MA",
+   "town": "Franklin",
+   "url": "https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586",
+   "meeting_date": "2026-09-28",
+   "state": "MA",
+   "town": "Great Barrington",
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577",
+   "meeting_date": "2026-10-06",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Cortlandt",
+   "url": "https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109",
+   "meeting_date": "2026-09-14",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114",
+   "meeting_date": "2026-10-19",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Kent",
+   "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
+  }
+ ],
+ "duration_seconds": 1047.2,
+ "errors": [
+  {
+   "error": "listing generic: https://www.boylston-ma.gov/government/board_of_selectman/agendas_minutes.php: Response ended prematurely",
+   "town": "MA:Boylston"
+  },
+  {
+   "error": "listing civicplus: https://www.eastbridgewaterma.gov/AgendaCenter/Search/?term=&CIDs=8%2C14%2C19%2C21%2C23%2C&startDate=09%2F13%2F2026&endDate=02%2F10%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='www.eastbridgewaterma.gov', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:East Bridgewater"
+  },
+  {
+   "error": "listing civicplus: https://www.town.medfield.net/AgendaCenter/Search/?term=&CIDs=37%2C10%2C18%2C45%2C&startDate=09%2F13%2F2026&endDate=02%2F10%2F2027&dateRange=&dateSelector=: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+   "town": "MA:Medfield"
+  },
+  {
+   "error": "listing generic: https://www.northadams-ma.gov/document_center/index.php: Response ended prematurely",
+   "town": "MA:North Adams"
+  },
+  {
+   "error": "listing generic: https://www.northadams-ma.gov/document_center/index.php: Response ended prematurely",
+   "town": "MA:North Adams"
+  },
+  {
+   "error": "listing generic: https://www.northadams-ma.gov/document_center/index.php: Response ended prematurely",
+   "town": "MA:North Adams"
+  },
+  {
+   "error": "listing civicplus: https://www.townofsomerset.org/AgendaCenter/Search/?term=&CIDs=2%2C4%2C3%2C5%2C&startDate=09%2F13%2F2026&endDate=02%2F10%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='www.townofsomerset.org', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Somerset"
+  },
+  {
+   "error": "listing civicplus: https://www.townofwales.net/AgendaCenter/Search/?term=&CIDs=2%2C7%2C12%2C20%2C&startDate=09%2F13%2F2026&endDate=02%2F10%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='www.townofwales.net', port=443): Max retries exceeded with url: /AgendaCenter/Search/?term=&CIDs=2%2C7",
+   "town": "MA:Wales"
+  }
+ ],
+ "errors_total": 8,
+ "finished": "2026-10-13T11:22:30+00:00",
+ "hits_current": 1172,
+ "index": {
+  "by_state": {
+   "MA": 2674,
+   "NY": 161,
+   "RI": 290
+  },
+  "by_status": {
+   "error": 14,
+   "needs_ocr": 3,
+   "ok": 3108
+  },
+  "by_text_source": {
+   "docx": 16,
+   "html": 147,
+   "none": 14,
+   "ocr": 732,
+   "pdf": 2216
+  },
+  "documents": 3125,
+  "hits": 1206,
+  "pruned": 0,
+  "towns": 307,
+  "with_hits": 647
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 285814,
+   "listing": 132308231,
+   "robots": 1010
+  },
+  "cache_hits": 3051,
+  "errors": 8,
+  "requests": 672,
+  "requests_by_purpose": {
+   "document": 3,
+   "listing": 667,
+   "robots": 2
+  },
+  "robots_blocked": 0
+ },
+ "new_alert_items": 3,
+ "new_alert_items_by_topic": {
+  "clean_energy_siting": 2,
+  "solar": 1
+ },
+ "new_documents": 3,
+ "new_hits": 6,
+ "new_hits_by_topic": {
+  "clean_energy_siting": 4,
+  "solar": 2
+ },
+ "options": {
+  "matcher_version": "f19d64a142",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-10-13T11:05:03+00:00",
+ "states": [
+  "MA",
+  "NY",
+  "RI"
+ ],
+ "towns_attempted": 312,
+ "towns_failed": [
+  "MA:East Bridgewater",
+  "MA:North Adams",
+  "MA:Somerset",
+  "MA:Wales"
+ ],
+ "towns_partial": [
+  "MA:Boylston",
+  "MA:Medfield"
+ ],
+ "towns_succeeded": 308,
+ "window": {
+  "end": "2027-02-10",
+  "start": "2026-09-13"
+ }
+}

@@ -1,8 +1,8 @@
 {
- "generated": "2026-10-12T21:24:57+00:00",
+ "generated": "2026-10-13T11:22:30+00:00",
  "window": {
-  "start": "2026-10-12",
-  "end": "2027-02-09"
+  "start": "2026-10-13",
+  "end": "2027-02-10"
  },
  "personalize": {
   "in_my_towns": 2.0,
@@ -36,7 +36,7 @@
    "board_key": "town_meeting",
    "meeting_date": "2026-10-17",
    "meeting_date_source": "warrant",
-   "days_until": 5,
+   "days_until": 4,
    "first_seen": "2026-10-10T14:41:39+00:00",
    "is_new": true,
    "source_url": "https://www.plymouth-ma.gov/DocumentCenter/View/11128/FINAL-2026-Fall-Annual-Town-Meeting-Warrant-PDF",
@@ -97,7 +97,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:39:57+00:00",
    "is_new": true,
    "source_url": "https://www.boxborough-ma.gov/AgendaCenter/ViewFile/Agenda/_10132026-5103",
@@ -114,6 +114,142 @@
    "hit_ids": [
     "9cb4bc6764b0",
     "fd098c0c0268"
+   ]
+  },
+  {
+   "id": "902d840dc5c3",
+   "score": 27.0,
+   "headline": "Burrillville Town Council takes up petition to prohibit data centers",
+   "dek": "The Town Council meets Wednesday, Oct 14. The agenda lists a petition to prohibit data centers.",
+   "quote": "26-320 Consider and act on a petition from Roberta Lacey for an amendment to the Burrillville General Ordinances, Chapter 30 Zoning to prohibit data centers",
+   "reasons": [
+    "Proposed ban",
+    "Vote Oct 14"
+   ],
+   "topics": [
+    "data_center"
+   ],
+   "state": "RI",
+   "town": "Burrillville",
+   "county": "Providence",
+   "towns": [
+    "RI:Burrillville"
+   ],
+   "board": "Town Council",
+   "board_key": "select_board",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-11T00:31:08+00:00",
+   "is_new": true,
+   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4127%5C2026%5C568466.pdf",
+   "town_path": "/ri/burrillville",
+   "action": "ban",
+   "boards": [
+    {
+     "town": "Burrillville",
+     "board": "Town Council",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "52644e6da136"
+   ]
+  },
+  {
+   "id": "0f43c917cfe2",
+   "score": 25.65,
+   "headline": "Northfield planners hold hearing on a data-center moratorium",
+   "dek": "The Planning Board meets Tuesday, Oct 20. The agenda lists a public hearing on a draft moratorium on data centers.",
+   "quote": "Discuss draft proposed moratorium for data storage centers",
+   "reasons": [
+    "Moratorium hearing",
+    "Also on the Oct 27 agenda",
+    "Hearing Oct 20"
+   ],
+   "topics": [
+    "moratorium"
+   ],
+   "state": "MA",
+   "town": "Northfield",
+   "county": "Franklin",
+   "towns": [
+    "MA:Northfield"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-20",
+   "meeting_date_source": "agenda",
+   "days_until": 7,
+   "first_seen": "2026-10-10T18:43:23+00:00",
+   "is_new": true,
+   "source_url": "https://www.northfieldma.gov/AgendaCenter/ViewFile/Agenda/_10202026-456",
+   "town_path": "/ma/northfield",
+   "action": "moratorium",
+   "boards": [
+    {
+     "town": "Northfield",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-20"
+    }
+   ],
+   "hit_ids": [
+    "96aec5cc080d",
+    "ed48b5c254a3"
+   ]
+  },
+  {
+   "id": "d30d1acf807d",
+   "score": 25.65,
+   "headline": "Pittsfield Community Development Board holds hearing on a data-center moratorium",
+   "dek": "The Community Development Board meets Tuesday, Oct 20. The agenda lists a public hearing on a temporary moratorium on data centers.",
+   "quote": "Article 23-4 Section 4.332 \"Data Centers, Temporary Moratorium\" to amend the Zoning Ordinance to impose a temporary moratorium on Data Centers in Pittsfield.",
+   "reasons": [
+    "Moratorium hearing",
+    "Also on the Sep 15 agenda",
+    "Hearing Oct 20"
+   ],
+   "topics": [
+    "data_center",
+    "moratorium",
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Pittsfield",
+   "county": "Berkshire",
+   "towns": [
+    "MA:Pittsfield"
+   ],
+   "board": "Community Development Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-20",
+   "meeting_date_source": "agenda",
+   "days_until": 7,
+   "first_seen": "2026-10-10T14:40:49+00:00",
+   "is_new": true,
+   "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1011",
+   "town_path": "/ma/pittsfield",
+   "action": "moratorium",
+   "boards": [
+    {
+     "town": "Pittsfield",
+     "board": "City Council",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-13"
+    },
+    {
+     "town": "Pittsfield",
+     "board": "Community Development Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-20"
+    }
+   ],
+   "hit_ids": [
+    "3c8608f4afee",
+    "ce3fdfbb13b6",
+    "f849e923f1ef"
    ]
   },
   {
@@ -142,7 +278,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "meeting_date_source": "agenda",
-   "days_until": 14,
+   "days_until": 13,
    "first_seen": "2026-10-10T18:45:29+00:00",
    "is_new": true,
    "source_url": "https://www.southhadley.org/AgendaCenter/ViewFile/Agenda/_10262026-6731",
@@ -173,139 +309,72 @@
    ]
   },
   {
-   "id": "902d840dc5c3",
-   "score": 24.3,
-   "headline": "Burrillville Town Council takes up petition to prohibit data centers",
-   "dek": "The Town Council meets Wednesday, Oct 14. The agenda lists a petition to prohibit data centers.",
-   "quote": "26-320 Consider and act on a petition from Roberta Lacey for an amendment to the Burrillville General Ordinances, Chapter 30 Zoning to prohibit data centers",
+   "id": "b542b05de4fd",
+   "score": 23.22,
+   "headline": "Harvard Town Meeting takes up solar and battery storage rules",
+   "dek": "Harvard's Town Meeting is Tuesday, Oct 20. The warrant lists an article on solar and battery storage rules.",
+   "quote": "…incorporating standards for Solar Photovoltaic Installations, Battery Energy Storage Systems, and Consolidated Local Permitting consistent with 225 CMR 29.00 and Chapter 239 of the Acts of 2024",
    "reasons": [
-    "Proposed ban",
-    "Vote Oct 14"
+    "Town Meeting vote",
+    "3 town boards",
+    "Town Meeting Oct 20"
    ],
    "topics": [
-    "data_center"
-   ],
-   "state": "RI",
-   "town": "Burrillville",
-   "county": "Providence",
-   "towns": [
-    "RI:Burrillville"
-   ],
-   "board": "Town Council",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-11T00:31:08+00:00",
-   "is_new": true,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4127%5C2026%5C568466.pdf",
-   "town_path": "/ri/burrillville",
-   "action": "ban",
-   "boards": [
-    {
-     "town": "Burrillville",
-     "board": "Town Council",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "52644e6da136"
-   ]
-  },
-  {
-   "id": "0f43c917cfe2",
-   "score": 22.8,
-   "headline": "Northfield planners hold hearing on a data-center moratorium",
-   "dek": "The Planning Board meets Tuesday, Oct 20. The agenda lists a public hearing on a draft moratorium on data centers.",
-   "quote": "Discuss draft proposed moratorium for data storage centers",
-   "reasons": [
-    "Moratorium hearing",
-    "Also on the Oct 27 agenda",
-    "Hearing Oct 20"
-   ],
-   "topics": [
-    "moratorium"
+    "battery_storage",
+    "clean_energy_siting",
+    "solar",
+    "wireless_telecom"
    ],
    "state": "MA",
-   "town": "Northfield",
-   "county": "Franklin",
+   "town": "Harvard",
+   "county": "Worcester",
    "towns": [
-    "MA:Northfield"
+    "MA:Harvard"
    ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
+   "board": "Town Meeting Warrants",
+   "board_key": "town_meeting",
    "meeting_date": "2026-10-20",
    "meeting_date_source": "agenda",
-   "days_until": 8,
-   "first_seen": "2026-10-10T18:43:23+00:00",
+   "days_until": 7,
+   "first_seen": "2026-10-10T18:30:33+00:00",
    "is_new": true,
-   "source_url": "https://www.northfieldma.gov/AgendaCenter/ViewFile/Agenda/_10202026-456",
-   "town_path": "/ma/northfield",
-   "action": "moratorium",
+   "source_url": "https://www.harvard-ma.gov/DocumentCenter/View/3148/STM-Warrant---October-20-2026",
+   "town_path": "/ma/harvard",
+   "action": "town_meeting",
    "boards": [
     {
-     "town": "Northfield",
-     "board": "Planning Board",
-     "board_key": "planning_board",
+     "town": "Harvard",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
      "meeting_date": "2026-10-20"
-    }
-   ],
-   "hit_ids": [
-    "96aec5cc080d",
-    "ed48b5c254a3"
-   ]
-  },
-  {
-   "id": "d30d1acf807d",
-   "score": 22.8,
-   "headline": "Pittsfield Community Development Board holds hearing on a data-center moratorium",
-   "dek": "The Community Development Board meets Tuesday, Oct 20. The agenda lists a public hearing on a temporary moratorium on data centers.",
-   "quote": "Article 23-4 Section 4.332 \"Data Centers, Temporary Moratorium\" to amend the Zoning Ordinance to impose a temporary moratorium on Data Centers in Pittsfield.",
-   "reasons": [
-    "Moratorium hearing",
-    "Also on the Sep 15 agenda",
-    "Hearing Oct 20"
-   ],
-   "topics": [
-    "data_center",
-    "moratorium",
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Pittsfield",
-   "county": "Berkshire",
-   "towns": [
-    "MA:Pittsfield"
-   ],
-   "board": "Community Development Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-20",
-   "meeting_date_source": "agenda",
-   "days_until": 8,
-   "first_seen": "2026-10-10T14:40:49+00:00",
-   "is_new": true,
-   "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1011",
-   "town_path": "/ma/pittsfield",
-   "action": "moratorium",
-   "boards": [
-    {
-     "town": "Pittsfield",
-     "board": "City Council",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-13"
     },
     {
-     "town": "Pittsfield",
-     "board": "Community Development Board",
+     "town": "Harvard",
+     "board": "Planning Board",
      "board_key": "planning_board",
-     "meeting_date": "2026-10-20"
+     "meeting_date": "2026-09-28"
+    },
+    {
+     "town": "Harvard",
+     "board": "Select Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-09-15"
     }
    ],
    "hit_ids": [
-    "3c8608f4afee",
-    "ce3fdfbb13b6",
-    "f849e923f1ef"
+    "25d77821f037",
+    "302289de5954",
+    "56b6254318d9",
+    "572e047f8d3e",
+    "5d94feb1ddeb",
+    "725011856f35",
+    "7f8427feb398",
+    "803eb8bc2039",
+    "ac8a02a07a64",
+    "bd14f1f1d64b",
+    "d5eef25430e6",
+    "e4d7a87ef2a0",
+    "f63ddca42e37"
    ]
   },
   {
@@ -334,7 +403,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "meeting_date_source": "agenda",
-   "days_until": 3,
+   "days_until": 2,
    "first_seen": "2026-10-10T14:40:50+00:00",
    "is_new": true,
    "source_url": "https://www.cityofwestfield.org/AgendaCenter/ViewFile/Agenda/_10152026-8687",
@@ -385,7 +454,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-11T00:06:52+00:00",
    "is_new": true,
    "source_url": "https://townofgenevany.gov/Documents/Departments and Services/Agendas & Minutes/Town Board Meeting Agendas/2026.10.13 Town Board Meeting Agenda.pdf",
@@ -438,7 +507,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:44:31+00:00",
    "is_new": true,
    "source_url": "https://www.townofrochestermass.com/AgendaCenter/ViewFile/Agenda/_10132026-578",
@@ -474,72 +543,45 @@
    ]
   },
   {
-   "id": "b542b05de4fd",
-   "score": 20.64,
-   "headline": "Harvard Town Meeting takes up solar and battery storage rules",
-   "dek": "Harvard's Town Meeting is Tuesday, Oct 20. The warrant lists an article on solar and battery storage rules.",
-   "quote": "…incorporating standards for Solar Photovoltaic Installations, Battery Energy Storage Systems, and Consolidated Local Permitting consistent with 225 CMR 29.00 and Chapter 239 of the Acts of 2024",
+   "id": "a65d111beec7",
+   "score": 19.5,
+   "headline": "Leyden planners discuss a possible data-center moratorium",
+   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists a possible moratorium on data centers.",
+   "quote": "AI data center moratorium?",
    "reasons": [
-    "Town Meeting vote",
-    "3 town boards",
-    "Town Meeting Oct 20"
+    "Possible moratorium",
+    "Meeting Oct 14"
    ],
    "topics": [
-    "battery_storage",
-    "clean_energy_siting",
-    "solar",
-    "wireless_telecom"
+    "data_center",
+    "moratorium"
    ],
    "state": "MA",
-   "town": "Harvard",
-   "county": "Worcester",
+   "town": "Leyden",
+   "county": "Franklin",
    "towns": [
-    "MA:Harvard"
+    "MA:Leyden"
    ],
-   "board": "Town Meeting Warrants",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-10-20",
+   "board": "Planning Board Meetings",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-14",
    "meeting_date_source": "agenda",
-   "days_until": 8,
-   "first_seen": "2026-10-10T18:30:33+00:00",
+   "days_until": 1,
+   "first_seen": "2026-10-10T18:41:48+00:00",
    "is_new": true,
-   "source_url": "https://www.harvard-ma.gov/DocumentCenter/View/3148/STM-Warrant---October-20-2026",
-   "town_path": "/ma/harvard",
-   "action": "town_meeting",
+   "source_url": "https://www.townofleyden.com/files/Planning_Board_-_2026-10-14_-_Agenda.pdf",
+   "town_path": "/ma/leyden",
+   "action": "moratorium",
    "boards": [
     {
-     "town": "Harvard",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-10-20"
-    },
-    {
-     "town": "Harvard",
+     "town": "Leyden",
      "board": "Planning Board",
      "board_key": "planning_board",
-     "meeting_date": "2026-09-28"
-    },
-    {
-     "town": "Harvard",
-     "board": "Select Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-09-15"
+     "meeting_date": "2026-10-14"
     }
    ],
    "hit_ids": [
-    "25d77821f037",
-    "302289de5954",
-    "56b6254318d9",
-    "572e047f8d3e",
-    "5d94feb1ddeb",
-    "725011856f35",
-    "7f8427feb398",
-    "803eb8bc2039",
-    "ac8a02a07a64",
-    "bd14f1f1d64b",
-    "d5eef25430e6",
-    "e4d7a87ef2a0",
-    "f63ddca42e37"
+    "7d25a9e826f8"
    ]
   },
   {
@@ -568,7 +610,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-29",
    "meeting_date_source": "agenda",
-   "days_until": 17,
+   "days_until": 16,
    "first_seen": "2026-10-10T14:40:52+00:00",
    "is_new": true,
    "source_url": "https://www.northamptonma.gov/AgendaCenter/ViewFile/Agenda/_10292026-9422",
@@ -617,7 +659,7 @@
    "board_key": "zoning_board_of_appeals",
    "meeting_date": "2026-10-15",
    "meeting_date_source": "agenda",
-   "days_until": 3,
+   "days_until": 2,
    "first_seen": "2026-10-10T18:46:41+00:00",
    "is_new": true,
    "source_url": "https://www.townofsomerset.org/AgendaCenter/ViewFile/Agenda/_10152026-2195",
@@ -664,7 +706,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T14:41:00+00:00",
    "is_new": true,
    "source_url": "https://www.cityofwestfield.org/AgendaCenter/ViewFile/Agenda/_10132026-8701",
@@ -707,7 +749,7 @@
    "board_key": "town_meeting",
    "meeting_date": "2026-10-26",
    "meeting_date_source": "warrant",
-   "days_until": 14,
+   "days_until": 13,
    "first_seen": "2026-10-10T18:30:28+00:00",
    "is_new": true,
    "source_url": "https://www.falmouthma.gov/DocumentCenter/View/22133/October-2026-Warrant---Final",
@@ -754,7 +796,7 @@
    "board_key": "conservation_commission",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:36:05+00:00",
    "is_new": true,
    "source_url": "https://www.swanseama.gov/con com 10.13.26.pdf",
@@ -797,7 +839,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "meeting_date_source": "agenda",
-   "days_until": 10,
+   "days_until": 9,
    "first_seen": "2026-10-10T18:41:53+00:00",
    "is_new": true,
    "source_url": "https://www.lakevillema.org/AgendaCenter/ViewFile/Agenda/_10222026-624",
@@ -827,101 +869,8 @@
    ]
   },
   {
-   "id": "a65d111beec7",
-   "score": 17.55,
-   "headline": "Leyden planners discuss a possible data-center moratorium",
-   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists a possible moratorium on data centers.",
-   "quote": "AI data center moratorium?",
-   "reasons": [
-    "Possible moratorium",
-    "Meeting Oct 14"
-   ],
-   "topics": [
-    "data_center",
-    "moratorium"
-   ],
-   "state": "MA",
-   "town": "Leyden",
-   "county": "Franklin",
-   "towns": [
-    "MA:Leyden"
-   ],
-   "board": "Planning Board Meetings",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T18:41:48+00:00",
-   "is_new": true,
-   "source_url": "https://www.townofleyden.com/files/Planning_Board_-_2026-10-14_-_Agenda.pdf",
-   "town_path": "/ma/leyden",
-   "action": "moratorium",
-   "boards": [
-    {
-     "town": "Leyden",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "7d25a9e826f8"
-   ]
-  },
-  {
-   "id": "cf748f114dd9",
-   "score": 16.95,
-   "headline": "Upton planners hear permit request for ground-mounted solar array at 169 South St",
-   "dek": "The Planning Board meets Tuesday, Oct 13. The agenda lists a public hearing on a special permit for a ground-mounted solar array.",
-   "quote": "Special Permit for a proposed Large-Scale Ground-Mounted Solar Photovoltaic Installation",
-   "reasons": [
-    "Public hearing",
-    "2 town boards",
-    "Hearing Oct 13"
-   ],
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Upton",
-   "county": "Worcester",
-   "towns": [
-    "MA:Upton"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-13",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-10-10T18:46:57+00:00",
-   "is_new": true,
-   "source_url": "https://www.uptonma.gov/AgendaCenter/ViewFile/Agenda/_10132026-1276",
-   "town_path": "/ma/upton",
-   "action": "project_hearing",
-   "boards": [
-    {
-     "town": "Upton",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-13"
-    },
-    {
-     "town": "Upton",
-     "board": "Conservation Commission",
-     "board_key": "conservation_commission",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "1055586933ce",
-    "11a71666e894",
-    "a20db8285d12",
-    "ec83bdbea385"
-   ]
-  },
-  {
    "id": "47ffbe533ede",
-   "score": 15.53,
+   "score": 17.25,
    "headline": "Middlefield Conservation Commission discusses solar and battery storage rules",
    "dek": "The Conservation Commission meets Wednesday, Oct 14. The agenda lists an item on solar and battery storage rules.",
    "quote": "…the Transfer Station Discussion of Solar and Battery Storage ByLaw Response to Mr. Lewis of 0 Town Hill Road New/Old Business",
@@ -945,7 +894,7 @@
    "board_key": "conservation_commission",
    "meeting_date": "2026-10-14",
    "meeting_date_source": "agenda",
-   "days_until": 2,
+   "days_until": 1,
    "first_seen": "2026-10-10T18:42:40+00:00",
    "is_new": true,
    "source_url": "https://middlefield-ma.gov/AgendaCenter/ViewFile/Agenda/_10142026-616",
@@ -973,8 +922,59 @@
    ]
   },
   {
+   "id": "cf748f114dd9",
+   "score": 16.95,
+   "headline": "Upton planners hear permit request for ground-mounted solar array at 169 South St",
+   "dek": "The Planning Board meets Tuesday, Oct 13. The agenda lists a public hearing on a special permit for a ground-mounted solar array.",
+   "quote": "Special Permit for a proposed Large-Scale Ground-Mounted Solar Photovoltaic Installation",
+   "reasons": [
+    "Public hearing",
+    "2 town boards",
+    "Hearing Oct 13"
+   ],
+   "topics": [
+    "solar"
+   ],
+   "state": "MA",
+   "town": "Upton",
+   "county": "Worcester",
+   "towns": [
+    "MA:Upton"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-13",
+   "meeting_date_source": "agenda",
+   "days_until": 0,
+   "first_seen": "2026-10-10T18:46:57+00:00",
+   "is_new": true,
+   "source_url": "https://www.uptonma.gov/AgendaCenter/ViewFile/Agenda/_10132026-1276",
+   "town_path": "/ma/upton",
+   "action": "project_hearing",
+   "boards": [
+    {
+     "town": "Upton",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-13"
+    },
+    {
+     "town": "Upton",
+     "board": "Conservation Commission",
+     "board_key": "conservation_commission",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "1055586933ce",
+    "11a71666e894",
+    "a20db8285d12",
+    "ec83bdbea385"
+   ]
+  },
+  {
    "id": "e7a951cbf1a1",
-   "score": 14.85,
+   "score": 16.5,
    "headline": "Sudbury planners discuss battery storage rules",
    "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists an item on battery storage rules.",
    "quote": "Battery Energy Storage System Bylaw",
@@ -996,7 +996,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-14",
    "meeting_date_source": "agenda",
-   "days_until": 2,
+   "days_until": 1,
    "first_seen": "2026-10-10T14:39:09+00:00",
    "is_new": true,
    "source_url": "https://cdn.sudbury.ma.us/wp-content/uploads/sites/328/2026/10/PlanningBoard_2026_Oct_14_agenda.pdf?version=d43792501acae3b43f2fa5ee39865c33",
@@ -1014,47 +1014,6 @@
     "8f50133f1583",
     "ae78da542444",
     "b11573c5125e"
-   ]
-  },
-  {
-   "id": "5f5cee665d2a",
-   "score": 13.5,
-   "headline": "Clay zoning board reviews variance request for a battery storage project",
-   "dek": "The Zoning Board of Appeals meets Monday, Oct 12. The agenda lists a variance for a battery storage project.",
-   "quote": "The requested variances include a reduction in the front yard setback along Wetzel Road from 200 feet to 10.3 feet, a reduction in the front yard setback along Maltlage Drive from 50 feet to 20 feet…",
-   "reasons": [
-    "Permit application",
-    "Meeting Oct 12"
-   ],
-   "topics": [
-    "battery_storage"
-   ],
-   "state": "NY",
-   "town": "Clay",
-   "county": "Onondaga",
-   "towns": [
-    "NY:Clay"
-   ],
-   "board": "Zoning Board of Appeals",
-   "board_key": "zoning_board_of_appeals",
-   "meeting_date": "2026-10-12",
-   "meeting_date_source": "agenda",
-   "days_until": 0,
-   "first_seen": "2026-10-10T15:58:08+00:00",
-   "is_new": true,
-   "source_url": "https://townofclayny.gov/sites/default/files/2026-10/Zoning%20Board%20Agenda%20-%20October%2012%2C%202026.pdf",
-   "town_path": "/ny/clay",
-   "action": "project",
-   "boards": [
-    {
-     "town": "Clay",
-     "board": "Zoning Board of Appeals",
-     "board_key": "zoning_board_of_appeals",
-     "meeting_date": "2026-10-12"
-    }
-   ],
-   "hit_ids": [
-    "3e788bbf8b03"
    ]
   },
   {
@@ -1084,7 +1043,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T14:41:21+00:00",
    "is_new": true,
    "source_url": "https://www.westfordma.gov/AgendaCenter/ViewFile/Agenda/_10132026-6982",
@@ -1145,7 +1104,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-16",
    "meeting_date_source": "agenda",
-   "days_until": 4,
+   "days_until": 3,
    "first_seen": "2026-10-10T18:41:08+00:00",
    "is_new": true,
    "source_url": "https://www.egremont-ma.gov/AgendaCenter/ViewFile/Agenda/_10162026-2018",
@@ -1190,7 +1149,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-21",
    "meeting_date_source": "agenda",
-   "days_until": 9,
+   "days_until": 8,
    "first_seen": "2026-10-10T18:48:46+00:00",
    "is_new": true,
    "source_url": "https://www.westonma.gov/AgendaCenter/ViewFile/Agenda/_10212026-9203",
@@ -1235,7 +1194,7 @@
    "board_key": "zoning_board_of_appeals",
    "meeting_date": "2026-10-15",
    "meeting_date_source": "agenda",
-   "days_until": 3,
+   "days_until": 2,
    "first_seen": "2026-10-10T18:44:58+00:00",
    "is_new": true,
    "source_url": "https://www.saugus-ma.gov/AgendaCenter/ViewFile/Agenda/_10152026-1429",
@@ -1254,6 +1213,108 @@
     "bd21f4240e21",
     "d060cdbe2d60",
     "db752cc6908c"
+   ]
+  },
+  {
+   "id": "06f8d86fbf35",
+   "score": 12.08,
+   "headline": "Mashpee zoning board hears 65-unit 40B rental plan",
+   "dek": "The Zoning Board of Appeals meets Wednesday, Oct 14. The agenda lists a comprehensive permit for 65 units by On Commons.",
+   "quote": "Petitioner, On Commons LLC C/O, Blatman, Bobrowski, Haverty & Silverstein, LLC is requesting a Comprehensive Permit under M.G.L. 40B §§20-23 to construct sixty-five (65) rental units, including…",
+   "reasons": [
+    "Continued public hearing",
+    "65 units",
+    "Also on the Sep 23 agenda",
+    "Hearing Oct 14"
+   ],
+   "topics": [
+    "40b_comprehensive_permit"
+   ],
+   "state": "MA",
+   "town": "Mashpee",
+   "county": "Barnstable",
+   "towns": [
+    "MA:Mashpee"
+   ],
+   "board": "Zoning Board of Appeals",
+   "board_key": "zoning_board_of_appeals",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-10T18:42:27+00:00",
+   "is_new": true,
+   "source_url": "https://www.mashpeema.gov/AgendaCenter/ViewFile/Agenda/_10142026-496",
+   "town_path": "/ma/mashpee",
+   "action": "project_hearing",
+   "boards": [
+    {
+     "town": "Mashpee",
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "560e919be4c4",
+    "c7bf8804b837"
+   ]
+  },
+  {
+   "id": "3102a2cc2a93",
+   "score": 11.62,
+   "headline": "Wendell Conservation Commission reviews Wendell Solar permit request",
+   "dek": "The Conservation Commission meets Tuesday, Oct 13. The agenda lists an application for Wendell Solar at 62 Morse Village Rd.",
+   "quote": "Consolidated Permitting state mandate: in effect as of Oct.",
+   "reasons": [
+    "Permit application",
+    "2 town boards",
+    "Meeting Oct 13"
+   ],
+   "topics": [
+    "battery_storage",
+    "clean_energy_siting",
+    "solar"
+   ],
+   "state": "MA",
+   "town": "Wendell",
+   "county": "Franklin",
+   "towns": [
+    "MA:Wendell"
+   ],
+   "board": "Conservation Commission",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-10-13",
+   "meeting_date_source": "agenda",
+   "days_until": 0,
+   "first_seen": "2026-10-10T18:35:54+00:00",
+   "is_new": true,
+   "source_url": "https://www.wendellmass.us/meetings/conservation-commission-october-13-2026/#tab-agenda",
+   "town_path": "/ma/wendell",
+   "action": "project",
+   "boards": [
+    {
+     "town": "Wendell",
+     "board": "Conservation Commission",
+     "board_key": "conservation_commission",
+     "meeting_date": "2026-10-13"
+    },
+    {
+     "town": "Wendell",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-09-28"
+    }
+   ],
+   "hit_ids": [
+    "01a22a9a5e9b",
+    "0a3c4521919a",
+    "3bbb795cb3c9",
+    "445b6813cd11",
+    "4e131ce390f8",
+    "64afe7f26af5",
+    "8272dcb76069",
+    "9dcfde192fe0",
+    "fbf7f7aa9b60"
    ]
   },
   {
@@ -1280,7 +1341,7 @@
    "board_key": "zoning_board_of_appeals",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:40:07+00:00",
    "is_new": true,
    "source_url": "https://www.ashlandmass.com/AgendaCenter/ViewFile/Agenda/_10132026-8005",
@@ -1299,47 +1360,47 @@
    ]
   },
   {
-   "id": "06f8d86fbf35",
-   "score": 10.87,
-   "headline": "Mashpee zoning board hears 65-unit 40B rental plan",
-   "dek": "The Zoning Board of Appeals meets Wednesday, Oct 14. The agenda lists a comprehensive permit for 65 units by On Commons.",
-   "quote": "Petitioner, On Commons LLC C/O, Blatman, Bobrowski, Haverty & Silverstein, LLC is requesting a Comprehensive Permit under M.G.L. 40B §§20-23 to construct sixty-five (65) rental units, including…",
+   "id": "d6291eaab115",
+   "score": 10.3,
+   "headline": "Amherst Conservation Commission hears wetlands filing for a solar project",
+   "dek": "The Conservation Commission meets Wednesday, Oct 14. The agenda lists a public hearing on a Notice of Intent for a solar project.",
+   "quote": "Submitted by PureSky Energy for a change to the previously approved transformer containment system on two equipment pads associated with the solar facility at 191 West Pomeroy Lane (Map 19D, Lot 10).…",
    "reasons": [
-    "Continued public hearing",
-    "65 units",
+    "Public hearing",
     "Also on the Sep 23 agenda",
     "Hearing Oct 14"
    ],
    "topics": [
-    "40b_comprehensive_permit"
+    "solar"
    ],
    "state": "MA",
-   "town": "Mashpee",
-   "county": "Barnstable",
+   "town": "Amherst",
+   "county": "Hampshire",
    "towns": [
-    "MA:Mashpee"
+    "MA:Amherst"
    ],
-   "board": "Zoning Board of Appeals",
-   "board_key": "zoning_board_of_appeals",
+   "board": "Conservation Commission",
+   "board_key": "conservation_commission",
    "meeting_date": "2026-10-14",
    "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T18:42:27+00:00",
+   "days_until": 1,
+   "first_seen": "2026-10-10T14:39:06+00:00",
    "is_new": true,
-   "source_url": "https://www.mashpeema.gov/AgendaCenter/ViewFile/Agenda/_10142026-496",
-   "town_path": "/ma/mashpee",
+   "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_10142026-160",
+   "town_path": "/ma/amherst",
    "action": "project_hearing",
    "boards": [
     {
-     "town": "Mashpee",
-     "board": "Zoning Board of Appeals",
-     "board_key": "zoning_board_of_appeals",
+     "town": "Amherst",
+     "board": "Conservation Commission",
+     "board_key": "conservation_commission",
      "meeting_date": "2026-10-14"
     }
    ],
    "hit_ids": [
-    "560e919be4c4",
-    "c7bf8804b837"
+    "5a1d78b97014",
+    "84d0e759bb5f",
+    "cbd6c1296b5a"
    ]
   },
   {
@@ -1365,7 +1426,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:42:38+00:00",
    "is_new": true,
    "source_url": "https://www.townoflenox.com/AgendaCenter/ViewFile/Agenda/_10132026-382",
@@ -1406,7 +1467,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:44:00+00:00",
    "is_new": true,
    "source_url": "https://www.town.pepperell.ma.us/AgendaCenter/ViewFile/Agenda/_10132026-4825",
@@ -1448,7 +1509,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-11T00:21:53+00:00",
    "is_new": true,
    "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C3943%5C2026%5C568421.pdf",
@@ -1464,6 +1525,129 @@
    ],
    "hit_ids": [
     "165f50dd7bb4"
+   ]
+  },
+  {
+   "id": "f2575ffdce78",
+   "score": 9.9,
+   "headline": "Holliston planners hold hearing on zoning changes",
+   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists a public hearing on zoning changes.",
+   "quote": "Zoning By-Law Amendment",
+   "reasons": [
+    "Public hearing",
+    "Hearing Oct 14"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Holliston",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Holliston"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-10T18:41:31+00:00",
+   "is_new": true,
+   "source_url": "https://www.townofholliston.us/AgendaCenter/ViewFile/Agenda/_10142026-1340",
+   "town_path": "/ma/holliston",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Holliston",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "c339f9184f8c"
+   ]
+  },
+  {
+   "id": "334afa9dfac1",
+   "score": 9.9,
+   "headline": "Middleton planners hold hearing on zoning changes",
+   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists a public hearing on zoning changes.",
+   "quote": "…at the Middleton Municipal Complex, 105 South Main St, to study the impacts of proposed amendments to the Zoning Bylaw.",
+   "reasons": [
+    "Public hearing",
+    "Hearing Oct 14"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Middleton",
+   "county": "Essex",
+   "towns": [
+    "MA:Middleton"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-10T18:42:44+00:00",
+   "is_new": true,
+   "source_url": "https://www.middletonma.gov/AgendaCenter/ViewFile/Agenda/_10142026-3827",
+   "town_path": "/ma/middleton",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Middleton",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "18e6fc005c19"
+   ]
+  },
+  {
+   "id": "1af246ffc25f",
+   "score": 9.9,
+   "headline": "Newport City Council holds hearing on zoning changes",
+   "dek": "The City Council meets Wednesday, Oct 14. The agenda lists a public hearing on zoning changes.",
+   "quote": "Proposed amendments to the Zoning Ordinance: a. b.",
+   "reasons": [
+    "Public hearing",
+    "Hearing Oct 14"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "RI",
+   "town": "Newport",
+   "county": "Newport",
+   "towns": [
+    "RI:Newport"
+   ],
+   "board": "City Council",
+   "board_key": "select_board",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-11T00:14:30+00:00",
+   "is_new": true,
+   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4853%5C2026%5C568251.pdf",
+   "town_path": "/ri/newport",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Newport",
+     "board": "City Council",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "0b3ecc9732cd"
    ]
   },
   {
@@ -1490,7 +1674,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:41:09+00:00",
    "is_new": true,
    "source_url": "https://www.falmouthma.gov/AgendaCenter/ViewFile/Agenda/_10132026-17020",
@@ -1535,7 +1719,7 @@
    "board_key": "conservation_commission",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:45:09+00:00",
    "is_new": true,
    "source_url": "https://www.shirley-ma.gov/AgendaCenter/ViewFile/Agenda/_10132026-1273",
@@ -1565,173 +1749,6 @@
    ]
   },
   {
-   "id": "d6291eaab115",
-   "score": 9.27,
-   "headline": "Amherst Conservation Commission hears wetlands filing for a solar project",
-   "dek": "The Conservation Commission meets Wednesday, Oct 14. The agenda lists a public hearing on a Notice of Intent for a solar project.",
-   "quote": "Submitted by PureSky Energy for a change to the previously approved transformer containment system on two equipment pads associated with the solar facility at 191 West Pomeroy Lane (Map 19D, Lot 10).…",
-   "reasons": [
-    "Public hearing",
-    "Also on the Sep 23 agenda",
-    "Hearing Oct 14"
-   ],
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Amherst",
-   "county": "Hampshire",
-   "towns": [
-    "MA:Amherst"
-   ],
-   "board": "Conservation Commission",
-   "board_key": "conservation_commission",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T14:39:06+00:00",
-   "is_new": true,
-   "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_10142026-160",
-   "town_path": "/ma/amherst",
-   "action": "project_hearing",
-   "boards": [
-    {
-     "town": "Amherst",
-     "board": "Conservation Commission",
-     "board_key": "conservation_commission",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "5a1d78b97014",
-    "84d0e759bb5f",
-    "cbd6c1296b5a"
-   ]
-  },
-  {
-   "id": "f2575ffdce78",
-   "score": 8.91,
-   "headline": "Holliston planners hold hearing on zoning changes",
-   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists a public hearing on zoning changes.",
-   "quote": "Zoning By-Law Amendment",
-   "reasons": [
-    "Public hearing",
-    "Hearing Oct 14"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Holliston",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Holliston"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T18:41:31+00:00",
-   "is_new": true,
-   "source_url": "https://www.townofholliston.us/AgendaCenter/ViewFile/Agenda/_10142026-1340",
-   "town_path": "/ma/holliston",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Holliston",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "c339f9184f8c"
-   ]
-  },
-  {
-   "id": "334afa9dfac1",
-   "score": 8.91,
-   "headline": "Middleton planners hold hearing on zoning changes",
-   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists a public hearing on zoning changes.",
-   "quote": "…at the Middleton Municipal Complex, 105 South Main St, to study the impacts of proposed amendments to the Zoning Bylaw.",
-   "reasons": [
-    "Public hearing",
-    "Hearing Oct 14"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Middleton",
-   "county": "Essex",
-   "towns": [
-    "MA:Middleton"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T18:42:44+00:00",
-   "is_new": true,
-   "source_url": "https://www.middletonma.gov/AgendaCenter/ViewFile/Agenda/_10142026-3827",
-   "town_path": "/ma/middleton",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Middleton",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "18e6fc005c19"
-   ]
-  },
-  {
-   "id": "1af246ffc25f",
-   "score": 8.91,
-   "headline": "Newport City Council holds hearing on zoning changes",
-   "dek": "The City Council meets Wednesday, Oct 14. The agenda lists a public hearing on zoning changes.",
-   "quote": "Proposed amendments to the Zoning Ordinance: a. b.",
-   "reasons": [
-    "Public hearing",
-    "Hearing Oct 14"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "RI",
-   "town": "Newport",
-   "county": "Newport",
-   "towns": [
-    "RI:Newport"
-   ],
-   "board": "City Council",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-11T00:14:30+00:00",
-   "is_new": true,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4853%5C2026%5C568251.pdf",
-   "town_path": "/ri/newport",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Newport",
-     "board": "City Council",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "0b3ecc9732cd"
-   ]
-  },
-  {
    "id": "e8f7cbed32fb",
    "score": 8.91,
    "headline": "Plymouth Town Meeting takes up zoning changes",
@@ -1754,7 +1771,7 @@
    "board_key": "town_meeting",
    "meeting_date": "2026-10-17",
    "meeting_date_source": "warrant",
-   "days_until": 5,
+   "days_until": 4,
    "first_seen": "2026-10-10T18:35:24+00:00",
    "is_new": true,
    "source_url": "https://www.plymouth-ma.gov/DocumentCenter/View/11128/FINAL-2026-Fall-Annual-Town-Meeting-Warrant-PDF",
@@ -1797,7 +1814,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-19",
    "meeting_date_source": "agenda",
-   "days_until": 7,
+   "days_until": 6,
    "first_seen": "2026-10-10T18:42:07+00:00",
    "is_new": true,
    "source_url": "https://www.lunenburgma.gov/AgendaCenter/ViewFile/Agenda/_10192026-8042",
@@ -1838,7 +1855,7 @@
    "board_key": "town_meeting",
    "meeting_date": "2026-10-19",
    "meeting_date_source": "warrant",
-   "days_until": 7,
+   "days_until": 6,
    "first_seen": "2026-10-10T18:32:50+00:00",
    "is_new": true,
    "source_url": "https://www.miltonma.gov/DocumentCenter/View/10775/2026-October-Special-Town-Meeting-Warrant",
@@ -1880,7 +1897,7 @@
    "board_key": "town_meeting",
    "meeting_date": "2026-10-19",
    "meeting_date_source": "agenda",
-   "days_until": 7,
+   "days_until": 6,
    "first_seen": "2026-10-10T18:32:30+00:00",
    "is_new": true,
    "source_url": "https://www.nortonma.gov/DocumentCenter/View/2259",
@@ -1921,7 +1938,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-19",
    "meeting_date_source": "agenda",
-   "days_until": 7,
+   "days_until": 6,
    "first_seen": "2026-10-10T18:44:51+00:00",
    "is_new": true,
    "source_url": "https://www.salemma.gov/AgendaCenter/ViewFile/Agenda/_10192026-8443",
@@ -1963,7 +1980,7 @@
    "board_key": "town_meeting",
    "meeting_date": "2026-10-19",
    "meeting_date_source": "warrant",
-   "days_until": 7,
+   "days_until": 6,
    "first_seen": "2026-10-10T18:46:42+00:00",
    "is_new": true,
    "source_url": "https://www.suttonma.gov/DocumentCenter/View/7435/2026-Fall_Town_Meeting_Yes_No_Warrant_Presentation",
@@ -1979,6 +1996,91 @@
    ],
    "hit_ids": [
     "9fc253c01614"
+   ]
+  },
+  {
+   "id": "c29bef011e5d",
+   "score": 8.91,
+   "headline": "Ipswich Town Meeting takes up zoning changes",
+   "dek": "Ipswich's Town Meeting is Tuesday, Oct 20. The warrant lists an article on zoning changes.",
+   "quote": "Planning Board To see if the Town will vote to amend the Ipswich Protective Zoning Bylaw by revising Section III, Definitions, to update the definition of \"Structure\" as set forth below",
+   "reasons": [
+    "Town Meeting vote",
+    "Town Meeting Oct 20"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Ipswich",
+   "county": "Essex",
+   "towns": [
+    "MA:Ipswich"
+   ],
+   "board": "Town Meeting",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-20",
+   "meeting_date_source": "agenda",
+   "days_until": 7,
+   "first_seen": "2026-10-10T18:31:58+00:00",
+   "is_new": true,
+   "source_url": "https://www.ipswichma.gov/DocumentCenter/View/19242",
+   "town_path": "/ma/ipswich",
+   "action": "town_meeting",
+   "boards": [
+    {
+     "town": "Ipswich",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-20"
+    }
+   ],
+   "hit_ids": [
+    "a331ecc0d4d4",
+    "c2745c091f24",
+    "f96da3570993"
+   ]
+  },
+  {
+   "id": "36b44bee7ac8",
+   "score": 8.91,
+   "headline": "Pittsfield Community Development Board holds hearing on zoning changes",
+   "dek": "The Community Development Board meets Tuesday, Oct 20. The agenda lists a public hearing on zoning changes.",
+   "quote": "Article 23-4 Section 4.313 \"Conversions\" to amend the Zoning Ordinance to clarify and modernize conversion requirements for buildings in Pittsfield.",
+   "reasons": [
+    "Public hearing",
+    "Hearing Oct 20"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Pittsfield",
+   "county": "Berkshire",
+   "towns": [
+    "MA:Pittsfield"
+   ],
+   "board": "Community Development Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-20",
+   "meeting_date_source": "agenda",
+   "days_until": 7,
+   "first_seen": "2026-10-10T14:40:57+00:00",
+   "is_new": true,
+   "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1011",
+   "town_path": "/ma/pittsfield",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Pittsfield",
+     "board": "Community Development Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-20"
+    }
+   ],
+   "hit_ids": [
+    "b6ac8c463978",
+    "b89c2c8058ed"
    ]
   },
   {
@@ -2004,7 +2106,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-11T00:07:37+00:00",
    "is_new": true,
    "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4488%5C2026%5C568393.pdf",
@@ -2020,6 +2122,48 @@
    ],
    "hit_ids": [
     "e0e1c5ce7d3c"
+   ]
+  },
+  {
+   "id": "d7486441009c",
+   "score": 8.7,
+   "headline": "Warwick planners hear rezoning request for 56 Pine St",
+   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists a public hearing on a rezoning request for 56 Pine St.",
+   "quote": "Stonefield Engineering and Design, 56 Pine St., Providence B. Public Hearing Zone Change/ Unified Development Review Waiver",
+   "reasons": [
+    "Rezoning request",
+    "Hearing Oct 14"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "RI",
+   "town": "Warwick",
+   "county": "Kent",
+   "towns": [
+    "RI:Warwick"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-11T00:24:44+00:00",
+   "is_new": true,
+   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4383%5C2026%5C568190.pdf",
+   "town_path": "/ri/warwick",
+   "action": "rezoning",
+   "boards": [
+    {
+     "town": "Warwick",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "ec835c65b972",
+    "feaa880c1f46"
    ]
   },
   {
@@ -2046,7 +2190,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-11T00:19:17+00:00",
    "is_new": true,
    "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C3922%5C2026%5C568191.pdf",
@@ -2091,7 +2235,7 @@
    "board_key": "zoning_board_of_appeals",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:44:54+00:00",
    "is_new": true,
    "source_url": "https://www.sandwichmass.org/AgendaCenter/ViewFile/Agenda/_10132026-4442",
@@ -2133,7 +2277,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:43:12+00:00",
    "is_new": true,
    "source_url": "https://www.miltonma.gov/AgendaCenter/ViewFile/Agenda/_10132026-6947",
@@ -2149,91 +2293,6 @@
    ],
    "hit_ids": [
     "35adeca4bf94"
-   ]
-  },
-  {
-   "id": "c29bef011e5d",
-   "score": 7.92,
-   "headline": "Ipswich Town Meeting takes up zoning changes",
-   "dek": "Ipswich's Town Meeting is Tuesday, Oct 20. The warrant lists an article on zoning changes.",
-   "quote": "Planning Board To see if the Town will vote to amend the Ipswich Protective Zoning Bylaw by revising Section III, Definitions, to update the definition of \"Structure\" as set forth below",
-   "reasons": [
-    "Town Meeting vote",
-    "Town Meeting Oct 20"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Ipswich",
-   "county": "Essex",
-   "towns": [
-    "MA:Ipswich"
-   ],
-   "board": "Town Meeting",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-10-20",
-   "meeting_date_source": "agenda",
-   "days_until": 8,
-   "first_seen": "2026-10-10T18:31:58+00:00",
-   "is_new": true,
-   "source_url": "https://www.ipswichma.gov/DocumentCenter/View/19242",
-   "town_path": "/ma/ipswich",
-   "action": "town_meeting",
-   "boards": [
-    {
-     "town": "Ipswich",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-10-20"
-    }
-   ],
-   "hit_ids": [
-    "a331ecc0d4d4",
-    "c2745c091f24",
-    "f96da3570993"
-   ]
-  },
-  {
-   "id": "36b44bee7ac8",
-   "score": 7.92,
-   "headline": "Pittsfield Community Development Board holds hearing on zoning changes",
-   "dek": "The Community Development Board meets Tuesday, Oct 20. The agenda lists a public hearing on zoning changes.",
-   "quote": "Article 23-4 Section 4.313 \"Conversions\" to amend the Zoning Ordinance to clarify and modernize conversion requirements for buildings in Pittsfield.",
-   "reasons": [
-    "Public hearing",
-    "Hearing Oct 20"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Pittsfield",
-   "county": "Berkshire",
-   "towns": [
-    "MA:Pittsfield"
-   ],
-   "board": "Community Development Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-20",
-   "meeting_date_source": "agenda",
-   "days_until": 8,
-   "first_seen": "2026-10-10T14:40:57+00:00",
-   "is_new": true,
-   "source_url": "https://www.pittsfieldma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1011",
-   "town_path": "/ma/pittsfield",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Pittsfield",
-     "board": "Community Development Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-20"
-    }
-   ],
-   "hit_ids": [
-    "b6ac8c463978",
-    "b89c2c8058ed"
    ]
   },
   {
@@ -2259,7 +2318,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "meeting_date_source": "agenda",
-   "days_until": 10,
+   "days_until": 9,
    "first_seen": "2026-10-10T18:41:53+00:00",
    "is_new": true,
    "source_url": "https://www.lakevillema.org/AgendaCenter/ViewFile/Agenda/_10222026-624",
@@ -2300,7 +2359,7 @@
    "board_key": "town_meeting",
    "meeting_date": "2026-10-26",
    "meeting_date_source": "warrant",
-   "days_until": 14,
+   "days_until": 13,
    "first_seen": "2026-10-10T18:47:41+00:00",
    "is_new": true,
    "source_url": "https://www.wareham.gov/DocumentCenter/View/9042/2026-Fall-Town-Meeting-Warrant-PDF",
@@ -2319,45 +2378,87 @@
    ]
   },
   {
-   "id": "d7486441009c",
-   "score": 7.83,
-   "headline": "Warwick planners hear rezoning request for 56 Pine St",
-   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists a public hearing on a rezoning request for 56 Pine St.",
-   "quote": "Stonefield Engineering and Design, 56 Pine St., Providence B. Public Hearing Zone Change/ Unified Development Review Waiver",
+   "id": "708788f9d851",
+   "score": 7.92,
+   "headline": "Hubbardston Town Meeting takes up zoning changes",
+   "dek": "Hubbardston's Town Meeting is Tuesday, Oct 27. The warrant lists an article on zoning changes.",
+   "quote": "…TO THE ZONING ACT, G.L. c. 40A (Two-thirds vote required) To see if the Town will vote to amend the Hubbardston Zoning Bylaws Sections 2.32, 4.2, 4.9, 4.10, 4.11, 4.12, 10.1, 10.4, and 17.9…",
    "reasons": [
-    "Rezoning request",
-    "Hearing Oct 14"
+    "Town Meeting vote",
+    "Town Meeting Oct 27"
    ],
    "topics": [
     "zoning_amendment"
    ],
-   "state": "RI",
-   "town": "Warwick",
-   "county": "Kent",
+   "state": "MA",
+   "town": "Hubbardston",
+   "county": "Worcester",
    "towns": [
-    "RI:Warwick"
+    "MA:Hubbardston"
    ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-14",
+   "board": "Town Meeting",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-27",
    "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-11T00:24:44+00:00",
+   "days_until": 14,
+   "first_seen": "2026-10-10T18:41:43+00:00",
    "is_new": true,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4383%5C2026%5C568190.pdf",
-   "town_path": "/ri/warwick",
-   "action": "rezoning",
+   "source_url": "https://www.hubbardstonma.gov/AgendaCenter/ViewFile/Agenda/_10272026-834",
+   "town_path": "/ma/hubbardston",
+   "action": "town_meeting",
    "boards": [
     {
-     "town": "Warwick",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-14"
+     "town": "Hubbardston",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-27"
     }
    ],
    "hit_ids": [
-    "ec835c65b972",
-    "feaa880c1f46"
+    "43841fda4bc5"
+   ]
+  },
+  {
+   "id": "75f35ad66216",
+   "score": 7.92,
+   "headline": "Winchester planners hold hearing on zoning changes",
+   "dek": "The Planning Board meets Tuesday, Oct 27. The agenda lists a public hearing on zoning changes.",
+   "quote": "The hearing will consider the following proposed amendments to the Winchester Zoning Bylaw and Zoning Map, and a related article, to be acted on at the Town Meeting beginning November 5, 2026.",
+   "reasons": [
+    "Public hearing",
+    "Hearing Oct 27"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Winchester",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Winchester"
+   ],
+   "board": "PLANNING BOARD - TOWN CLERK'S OFFICE",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-27",
+   "meeting_date_source": "agenda",
+   "days_until": 14,
+   "first_seen": "2026-10-10T18:49:18+00:00",
+   "is_new": true,
+   "source_url": "https://www.winchester.us/AgendaCenter/ViewFile/Agenda/_10272026-7379",
+   "town_path": "/ma/winchester",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Winchester",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-27"
+    }
+   ],
+   "hit_ids": [
+    "1289179f15b6",
+    "95590555ca85",
+    "c76a680e57d2"
    ]
   },
   {
@@ -2383,7 +2484,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:40:54+00:00",
    "is_new": true,
    "source_url": "https://www.eastlongmeadowma.gov/AgendaCenter/ViewFile/Agenda/_10132026-4773",
@@ -2424,7 +2525,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-11T00:03:59+00:00",
    "is_new": true,
    "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C5072%5C2026%5C568229.pdf",
@@ -2465,7 +2566,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:41:39+00:00",
    "is_new": true,
    "source_url": "https://www.town.hull.ma.us/AgendaCenter/ViewFile/Agenda/_10132026-1601",
@@ -2506,7 +2607,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:41:51+00:00",
    "is_new": true,
    "source_url": "https://www.lincolntown.org/AgendaCenter/ViewFile/Agenda/_10132026-7074",
@@ -2547,7 +2648,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:42:09+00:00",
    "is_new": true,
    "source_url": "https://www.cityofmalden.org/AgendaCenter/ViewFile/Agenda/_10132026-4464",
@@ -2588,7 +2689,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:42:35+00:00",
    "is_new": true,
    "source_url": "https://medfordma.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=978,plainText=false)",
@@ -2629,7 +2730,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-11T00:22:36+00:00",
    "is_new": true,
    "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4672%5C2026%5C568430.pdf",
@@ -2645,6 +2746,173 @@
    ],
    "hit_ids": [
     "2548a292bfc2"
+   ]
+  },
+  {
+   "id": "d6a234e4316b",
+   "score": 7.5,
+   "headline": "Hudson zoning board reviews request for wireless facility change",
+   "dek": "The Zoning Board of Appeals meets Wednesday, Oct 14. The agenda lists a special permit and modification for a wireless facility.",
+   "quote": "ZSP-26-3: 3 Robert Bonazzoli Av Request of Centerline Engineering Services on behalf of T-Mobile Northeast LLC to modify a Special Permit for modifications to an existing wireless communications…",
+   "reasons": [
+    "Permit application",
+    "Also on the Oct 8 agenda",
+    "Meeting Oct 14"
+   ],
+   "topics": [
+    "wireless_telecom"
+   ],
+   "state": "MA",
+   "town": "Hudson",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Hudson"
+   ],
+   "board": "Zoning Board of Appeals",
+   "board_key": "zoning_board_of_appeals",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-10T18:41:40+00:00",
+   "is_new": true,
+   "source_url": "https://www.townofhudson.org/AgendaCenter/ViewFile/Agenda/_10142026-4450",
+   "town_path": "/ma/hudson",
+   "action": "project",
+   "boards": [
+    {
+     "town": "Hudson",
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "4c0b61bdc96f",
+    "4ea386142624"
+   ]
+  },
+  {
+   "id": "9dc96f9b67eb",
+   "score": 7.5,
+   "headline": "Lunenburg zoning board discusses zoning changes",
+   "dek": "The Zoning Board of Appeals meets Wednesday, Oct 14. The agenda lists an item on zoning changes.",
+   "quote": "Stephen Wallace, Director of Planning and Economic Development, present Zoning Amendments for 2027 Adjournment OPEN MEETING LAW:",
+   "reasons": [
+    "Draft rules",
+    "Meeting Oct 14"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Lunenburg",
+   "county": "Worcester",
+   "towns": [
+    "MA:Lunenburg"
+   ],
+   "board": "Zoning Board of Appeals",
+   "board_key": "zoning_board_of_appeals",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-10T18:42:16+00:00",
+   "is_new": true,
+   "source_url": "https://www.lunenburgma.gov/AgendaCenter/ViewFile/Agenda/_10142026-8065",
+   "town_path": "/ma/lunenburg",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Lunenburg",
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "042fb74e29a0"
+   ]
+  },
+  {
+   "id": "4ee9288cdb78",
+   "score": 7.5,
+   "headline": "New Shoreham planners discuss zoning changes",
+   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists an item on zoning changes.",
+   "quote": "Advisory to the Zoning Board of Review for an application for a Special Use Permit pursuant to Zoning Ordinance Section 113 to construct an addition on a structure that is located in the Coastal Zone.",
+   "reasons": [
+    "Draft rules",
+    "Meeting Oct 14"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "RI",
+   "town": "New Shoreham",
+   "county": "Washington",
+   "towns": [
+    "RI:New Shoreham"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-11T00:15:10+00:00",
+   "is_new": true,
+   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4284%5C2026%5C568148.pdf",
+   "town_path": "/ri/new-shoreham",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "New Shoreham",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "3e8459f78d20",
+    "9dd5a66b2a9d"
+   ]
+  },
+  {
+   "id": "c75c0ab9a4f9",
+   "score": 7.5,
+   "headline": "Wenham planners discuss zoning changes",
+   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists an item on zoning changes.",
+   "quote": "Review draft zoning bylaw for mixed use community development overlay at Iron Rail",
+   "reasons": [
+    "Draft rules",
+    "Meeting Oct 14"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Wenham",
+   "county": "Essex",
+   "towns": [
+    "MA:Wenham"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-10T18:48:21+00:00",
+   "is_new": true,
+   "source_url": "https://www.wenhamma.gov/AgendaCenter/ViewFile/Agenda/_10142026-1518",
+   "town_path": "/ma/wenham",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Wenham",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "d2edeabf803e"
    ]
   },
   {
@@ -2671,7 +2939,7 @@
    "board_key": "zoning_board_of_appeals",
    "meeting_date": "2026-10-15",
    "meeting_date_source": "agenda",
-   "days_until": 3,
+   "days_until": 2,
    "first_seen": "2026-10-10T18:41:12+00:00",
    "is_new": true,
    "source_url": "https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10152026-2540",
@@ -2712,7 +2980,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:39:34+00:00",
    "is_new": true,
    "source_url": "https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10132026-2768",
@@ -2753,7 +3021,7 @@
    "board_key": "zoning_board_of_appeals",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:41:23+00:00",
    "is_new": true,
    "source_url": "https://www.clintonma.gov/AgendaCenter/ViewFile/Agenda/_10132026-2534",
@@ -2769,173 +3037,6 @@
    ],
    "hit_ids": [
     "6e2281b70205"
-   ]
-  },
-  {
-   "id": "d6a234e4316b",
-   "score": 6.75,
-   "headline": "Hudson zoning board reviews request for wireless facility change",
-   "dek": "The Zoning Board of Appeals meets Wednesday, Oct 14. The agenda lists a special permit and modification for a wireless facility.",
-   "quote": "ZSP-26-3: 3 Robert Bonazzoli Av Request of Centerline Engineering Services on behalf of T-Mobile Northeast LLC to modify a Special Permit for modifications to an existing wireless communications…",
-   "reasons": [
-    "Permit application",
-    "Also on the Oct 8 agenda",
-    "Meeting Oct 14"
-   ],
-   "topics": [
-    "wireless_telecom"
-   ],
-   "state": "MA",
-   "town": "Hudson",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Hudson"
-   ],
-   "board": "Zoning Board of Appeals",
-   "board_key": "zoning_board_of_appeals",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T18:41:40+00:00",
-   "is_new": true,
-   "source_url": "https://www.townofhudson.org/AgendaCenter/ViewFile/Agenda/_10142026-4450",
-   "town_path": "/ma/hudson",
-   "action": "project",
-   "boards": [
-    {
-     "town": "Hudson",
-     "board": "Zoning Board of Appeals",
-     "board_key": "zoning_board_of_appeals",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "4c0b61bdc96f",
-    "4ea386142624"
-   ]
-  },
-  {
-   "id": "9dc96f9b67eb",
-   "score": 6.75,
-   "headline": "Lunenburg zoning board discusses zoning changes",
-   "dek": "The Zoning Board of Appeals meets Wednesday, Oct 14. The agenda lists an item on zoning changes.",
-   "quote": "Stephen Wallace, Director of Planning and Economic Development, present Zoning Amendments for 2027 Adjournment OPEN MEETING LAW:",
-   "reasons": [
-    "Draft rules",
-    "Meeting Oct 14"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Lunenburg",
-   "county": "Worcester",
-   "towns": [
-    "MA:Lunenburg"
-   ],
-   "board": "Zoning Board of Appeals",
-   "board_key": "zoning_board_of_appeals",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T18:42:16+00:00",
-   "is_new": true,
-   "source_url": "https://www.lunenburgma.gov/AgendaCenter/ViewFile/Agenda/_10142026-8065",
-   "town_path": "/ma/lunenburg",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Lunenburg",
-     "board": "Zoning Board of Appeals",
-     "board_key": "zoning_board_of_appeals",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "042fb74e29a0"
-   ]
-  },
-  {
-   "id": "4ee9288cdb78",
-   "score": 6.75,
-   "headline": "New Shoreham planners discuss zoning changes",
-   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists an item on zoning changes.",
-   "quote": "Advisory to the Zoning Board of Review for an application for a Special Use Permit pursuant to Zoning Ordinance Section 113 to construct an addition on a structure that is located in the Coastal Zone.",
-   "reasons": [
-    "Draft rules",
-    "Meeting Oct 14"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "RI",
-   "town": "New Shoreham",
-   "county": "Washington",
-   "towns": [
-    "RI:New Shoreham"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-11T00:15:10+00:00",
-   "is_new": true,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4284%5C2026%5C568148.pdf",
-   "town_path": "/ri/new-shoreham",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "New Shoreham",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "3e8459f78d20",
-    "9dd5a66b2a9d"
-   ]
-  },
-  {
-   "id": "c75c0ab9a4f9",
-   "score": 6.75,
-   "headline": "Wenham planners discuss zoning changes",
-   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists an item on zoning changes.",
-   "quote": "Review draft zoning bylaw for mixed use community development overlay at Iron Rail",
-   "reasons": [
-    "Draft rules",
-    "Meeting Oct 14"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Wenham",
-   "county": "Essex",
-   "towns": [
-    "MA:Wenham"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T18:48:21+00:00",
-   "is_new": true,
-   "source_url": "https://www.wenhamma.gov/AgendaCenter/ViewFile/Agenda/_10142026-1518",
-   "town_path": "/ma/wenham",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Wenham",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "d2edeabf803e"
    ]
   },
   {
@@ -2961,7 +3062,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-15",
    "meeting_date_source": "agenda",
-   "days_until": 3,
+   "days_until": 2,
    "first_seen": "2026-10-10T14:40:51+00:00",
    "is_new": true,
    "source_url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10152026-2608",
@@ -3001,7 +3102,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:41:14+00:00",
    "is_new": true,
    "source_url": "https://www.halifaxma.gov/AgendaCenter/ViewFile/Agenda/_10132026-775",
@@ -3041,7 +3142,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:44:21+00:00",
    "is_new": true,
    "source_url": "https://www.mattapoisett.gov/AgendaCenter/ViewFile/Agenda/_10132026-2332",
@@ -3081,7 +3182,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:42:45+00:00",
    "is_new": true,
    "source_url": "https://www.middletonma.gov/AgendaCenter/ViewFile/Agenda/_10132026-3838",
@@ -3097,6 +3198,48 @@
    ],
    "hit_ids": [
     "880cfbb4cba1"
+   ]
+  },
+  {
+   "id": "19feecdb91c5",
+   "score": 6.56,
+   "headline": "Leyden Planning Board takes up state clean energy permit process",
+   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists an item on the state's consolidated permit process.",
+   "quote": "Review of new MA State-required town-wide consolidated local permitting process for proposed \"clean energy infrastructure facility\" (solar, wind, battery storage, etc.) This option must be offered…",
+   "reasons": [
+    "Meeting Oct 14"
+   ],
+   "topics": [
+    "battery_storage",
+    "clean_energy_siting",
+    "solar"
+   ],
+   "state": "MA",
+   "town": "Leyden",
+   "county": "Franklin",
+   "towns": [
+    "MA:Leyden"
+   ],
+   "board": "Planning Board Meetings",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-10T18:41:48+00:00",
+   "is_new": true,
+   "source_url": "https://www.townofleyden.com/files/Planning_Board_-_2026-10-14_-_Agenda.pdf",
+   "town_path": "/ma/leyden",
+   "action": "process",
+   "boards": [
+    {
+     "town": "Leyden",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "f7f1224de4f5"
    ]
   },
   {
@@ -3126,7 +3269,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T14:41:32+00:00",
    "is_new": true,
    "source_url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_10132026-616",
@@ -3186,7 +3329,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-21",
    "meeting_date_source": "agenda",
-   "days_until": 9,
+   "days_until": 8,
    "first_seen": "2026-10-10T18:50:02+00:00",
    "is_new": true,
    "source_url": "https://www.uxbridge-ma.gov/AgendaCenter/ViewFile/Agenda/_10212026-835",
@@ -3227,7 +3370,7 @@
    "board_key": "zoning_board_of_appeals",
    "meeting_date": "2026-10-15",
    "meeting_date_source": "agenda",
-   "days_until": 3,
+   "days_until": 2,
    "first_seen": "2026-10-10T18:43:15+00:00",
    "is_new": true,
    "source_url": "https://nantucketma.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=37496,plainText=false)",
@@ -3247,129 +3390,44 @@
    ]
   },
   {
-   "id": "708788f9d851",
-   "score": 5.94,
-   "headline": "Hubbardston Town Meeting takes up zoning changes",
-   "dek": "Hubbardston's Town Meeting is Tuesday, Oct 27. The warrant lists an article on zoning changes.",
-   "quote": "…TO THE ZONING ACT, G.L. c. 40A (Two-thirds vote required) To see if the Town will vote to amend the Hubbardston Zoning Bylaws Sections 2.32, 4.2, 4.9, 4.10, 4.11, 4.12, 10.1, 10.4, and 17.9…",
+   "id": "455942d4099a",
+   "score": 6.0,
+   "headline": "Clay planners review request for cell tower at 7200 Henry Clay Blvd",
+   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists a site plan review for a wireless facility.",
+   "quote": "Requires SEQR Determination Decision Pending One (1) #2026-070 (Moyers Corners Cell Tower) Airosmith Development: 7200 Henry Clay Blvd. Site Plan",
    "reasons": [
-    "Town Meeting vote",
-    "Town Meeting Oct 27"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Hubbardston",
-   "county": "Worcester",
-   "towns": [
-    "MA:Hubbardston"
-   ],
-   "board": "Town Meeting",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-10-27",
-   "meeting_date_source": "agenda",
-   "days_until": 15,
-   "first_seen": "2026-10-10T18:41:43+00:00",
-   "is_new": true,
-   "source_url": "https://www.hubbardstonma.gov/AgendaCenter/ViewFile/Agenda/_10272026-834",
-   "town_path": "/ma/hubbardston",
-   "action": "town_meeting",
-   "boards": [
-    {
-     "town": "Hubbardston",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-10-27"
-    }
-   ],
-   "hit_ids": [
-    "43841fda4bc5"
-   ]
-  },
-  {
-   "id": "75f35ad66216",
-   "score": 5.94,
-   "headline": "Winchester planners hold hearing on zoning changes",
-   "dek": "The Planning Board meets Tuesday, Oct 27. The agenda lists a public hearing on zoning changes.",
-   "quote": "The hearing will consider the following proposed amendments to the Winchester Zoning Bylaw and Zoning Map, and a related article, to be acted on at the Town Meeting beginning November 5, 2026.",
-   "reasons": [
-    "Public hearing",
-    "Hearing Oct 27"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Winchester",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Winchester"
-   ],
-   "board": "PLANNING BOARD - TOWN CLERK'S OFFICE",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-27",
-   "meeting_date_source": "agenda",
-   "days_until": 15,
-   "first_seen": "2026-10-10T18:49:18+00:00",
-   "is_new": true,
-   "source_url": "https://www.winchester.us/AgendaCenter/ViewFile/Agenda/_10272026-7379",
-   "town_path": "/ma/winchester",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Winchester",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-27"
-    }
-   ],
-   "hit_ids": [
-    "1289179f15b6",
-    "95590555ca85",
-    "c76a680e57d2"
-   ]
-  },
-  {
-   "id": "19feecdb91c5",
-   "score": 5.91,
-   "headline": "Leyden Planning Board takes up state clean energy permit process",
-   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists an item on the state's consolidated permit process.",
-   "quote": "Review of new MA State-required town-wide consolidated local permitting process for proposed \"clean energy infrastructure facility\" (solar, wind, battery storage, etc.) This option must be offered…",
-   "reasons": [
+    "Permit application",
     "Meeting Oct 14"
    ],
    "topics": [
-    "battery_storage",
-    "clean_energy_siting",
-    "solar"
+    "wireless_telecom"
    ],
-   "state": "MA",
-   "town": "Leyden",
-   "county": "Franklin",
+   "state": "NY",
+   "town": "Clay",
+   "county": "Onondaga",
    "towns": [
-    "MA:Leyden"
+    "NY:Clay"
    ],
-   "board": "Planning Board Meetings",
+   "board": "Planning Board",
    "board_key": "planning_board",
    "meeting_date": "2026-10-14",
    "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T18:41:48+00:00",
+   "days_until": 1,
+   "first_seen": "2026-10-10T15:58:08+00:00",
    "is_new": true,
-   "source_url": "https://www.townofleyden.com/files/Planning_Board_-_2026-10-14_-_Agenda.pdf",
-   "town_path": "/ma/leyden",
-   "action": "process",
+   "source_url": "https://townofclayny.gov/sites/default/files/2026-10/Planning%20Board%20Revised%20Agenda%2010-14-2026.pdf",
+   "town_path": "/ny/clay",
+   "action": "project",
    "boards": [
     {
-     "town": "Leyden",
+     "town": "Clay",
      "board": "Planning Board",
      "board_key": "planning_board",
      "meeting_date": "2026-10-14"
     }
    ],
    "hit_ids": [
-    "f7f1224de4f5"
+    "aa5b64f75b7e"
    ]
   },
   {
@@ -3395,7 +3453,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:42:56+00:00",
    "is_new": true,
    "source_url": "https://www.millburyma.gov/AgendaCenter/ViewFile/Agenda/_10132026-790",
@@ -3436,7 +3494,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-11T00:21:53+00:00",
    "is_new": true,
    "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C3943%5C2026%5C568421.pdf",
@@ -3477,7 +3535,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:48:14+00:00",
    "is_new": true,
    "source_url": "https://truroma.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=10739,plainText=false)",
@@ -3493,6 +3551,47 @@
    ],
    "hit_ids": [
     "9e55d279a202"
+   ]
+  },
+  {
+   "id": "37f63a42e84f",
+   "score": 5.7,
+   "headline": "Deerfield Selectboard takes up a landfill solar easement",
+   "dek": "The Selectboard meets Wednesday, Oct 14. The agenda lists an easement for a landfill solar project.",
+   "quote": "Discussion/Decision Items a) Easement for Eversource and Verizon re Landfill Solar b) Real estate offers from Kestrel Land Trust i) Parcel 83-8 on the Connecticut River Page 1 of 2 ii) Parcel 103-12…",
+   "reasons": [
+    "Easement",
+    "Meeting Oct 14"
+   ],
+   "topics": [
+    "solar"
+   ],
+   "state": "MA",
+   "town": "Deerfield",
+   "county": "Franklin",
+   "towns": [
+    "MA:Deerfield"
+   ],
+   "board": "Selectboard / Board of Health",
+   "board_key": "select_board",
+   "meeting_date": "2026-10-14",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-10-10T18:40:33+00:00",
+   "is_new": true,
+   "source_url": "https://www.deerfieldma.us/AgendaCenter/ViewFile/Agenda/_10142026-2952",
+   "town_path": "/ma/deerfield",
+   "action": "deal",
+   "boards": [
+    {
+     "town": "Deerfield",
+     "board": "Selectboard",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "7c061674893c"
    ]
   },
   {
@@ -3519,7 +3618,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T14:41:02+00:00",
    "is_new": true,
    "source_url": "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_10132026-2156",
@@ -3535,47 +3634,6 @@
    ],
    "hit_ids": [
     "ddff2495582f"
-   ]
-  },
-  {
-   "id": "455942d4099a",
-   "score": 5.4,
-   "headline": "Clay planners review request for cell tower at 7200 Henry Clay Blvd",
-   "dek": "The Planning Board meets Wednesday, Oct 14. The agenda lists a site plan review for a wireless facility.",
-   "quote": "Requires SEQR Determination Decision Pending One (1) #2026-070 (Moyers Corners Cell Tower) Airosmith Development: 7200 Henry Clay Blvd. Site Plan",
-   "reasons": [
-    "Permit application",
-    "Meeting Oct 14"
-   ],
-   "topics": [
-    "wireless_telecom"
-   ],
-   "state": "NY",
-   "town": "Clay",
-   "county": "Onondaga",
-   "towns": [
-    "NY:Clay"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T15:58:08+00:00",
-   "is_new": true,
-   "source_url": "https://townofclayny.gov/sites/default/files/2026-10/Planning%20Board%20Revised%20Agenda%2010-14-2026.pdf",
-   "town_path": "/ny/clay",
-   "action": "project",
-   "boards": [
-    {
-     "town": "Clay",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "aa5b64f75b7e"
    ]
   },
   {
@@ -3601,7 +3659,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "meeting_date_source": "agenda",
-   "days_until": 10,
+   "days_until": 9,
    "first_seen": "2026-10-11T00:13:10+00:00",
    "is_new": true,
    "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4434%5C2026%5C566335.pdf",
@@ -3617,6 +3675,58 @@
    ],
    "hit_ids": [
     "3e3b6505caa9"
+   ]
+  },
+  {
+   "id": "594d3e58bebf",
+   "score": 5.32,
+   "headline": "40B item on Harvard Town Meeting warrant",
+   "dek": "Harvard's Town Meeting is Tuesday, Oct 20. The warrant lists an item on 40B housing. It was on the Planning Board agenda Sep 28.",
+   "quote": "Comprehensive permits are issued by the Board of Appeals under the provisions of G.L. Chapter 40B, Sections 20 to 23, to provide for…",
+   "reasons": [
+    "2 town boards",
+    "Town Meeting Oct 20"
+   ],
+   "topics": [
+    "40b_comprehensive_permit"
+   ],
+   "state": "MA",
+   "town": "Harvard",
+   "county": "Worcester",
+   "towns": [
+    "MA:Harvard"
+   ],
+   "board": "Town Meeting Warrants",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-20",
+   "meeting_date_source": "agenda",
+   "days_until": 7,
+   "first_seen": "2026-10-10T18:30:33+00:00",
+   "is_new": true,
+   "source_url": "https://www.harvard-ma.gov/DocumentCenter/View/3148/STM-Warrant---October-20-2026",
+   "town_path": "/ma/harvard",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Harvard",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-20"
+    },
+    {
+     "town": "Harvard",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-09-28"
+    }
+   ],
+   "hit_ids": [
+    "4be034ef779a",
+    "932b918a8694",
+    "975c8335804e",
+    "9f7e5371534b",
+    "c7b2dc6a697b",
+    "fa67f844d7ad"
    ]
   },
   {
@@ -3643,7 +3753,7 @@
    "board_key": "zoning_board_of_appeals",
    "meeting_date": "2026-10-28",
    "meeting_date_source": "agenda",
-   "days_until": 16,
+   "days_until": 15,
    "first_seen": "2026-10-10T18:39:40+00:00",
    "is_new": true,
    "source_url": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10282026-2945",
@@ -3685,7 +3795,7 @@
    "board_key": "conservation_commission",
    "meeting_date": "2026-10-26",
    "meeting_date_source": "agenda",
-   "days_until": 14,
+   "days_until": 13,
    "first_seen": "2026-10-10T18:41:36+00:00",
    "is_new": true,
    "source_url": "https://www.gardner-ma.gov/AgendaCenter/ViewFile/Agenda/_10262026-5112",
@@ -3702,47 +3812,6 @@
    "hit_ids": [
     "89de2742249c",
     "ae449738c727"
-   ]
-  },
-  {
-   "id": "37f63a42e84f",
-   "score": 5.13,
-   "headline": "Deerfield Selectboard takes up a landfill solar easement",
-   "dek": "The Selectboard meets Wednesday, Oct 14. The agenda lists an easement for a landfill solar project.",
-   "quote": "Discussion/Decision Items a) Easement for Eversource and Verizon re Landfill Solar b) Real estate offers from Kestrel Land Trust i) Parcel 83-8 on the Connecticut River Page 1 of 2 ii) Parcel 103-12…",
-   "reasons": [
-    "Easement",
-    "Meeting Oct 14"
-   ],
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Deerfield",
-   "county": "Franklin",
-   "towns": [
-    "MA:Deerfield"
-   ],
-   "board": "Selectboard / Board of Health",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-14",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T18:40:33+00:00",
-   "is_new": true,
-   "source_url": "https://www.deerfieldma.us/AgendaCenter/ViewFile/Agenda/_10142026-2952",
-   "town_path": "/ma/deerfield",
-   "action": "deal",
-   "boards": [
-    {
-     "town": "Deerfield",
-     "board": "Selectboard",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "7c061674893c"
    ]
   },
   {
@@ -3768,7 +3837,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-19",
    "meeting_date_source": "agenda",
-   "days_until": 7,
+   "days_until": 6,
    "first_seen": "2026-10-10T18:32:53+00:00",
    "is_new": true,
    "source_url": "https://www.quincyma.gov/Agendas and Minutes/City Council/City Council/Calendar/Council_Calendar_2026_10_19.pdf",
@@ -3785,58 +3854,6 @@
    "hit_ids": [
     "4486ec82f29a",
     "8c3b3766b20d"
-   ]
-  },
-  {
-   "id": "594d3e58bebf",
-   "score": 4.72,
-   "headline": "40B item on Harvard Town Meeting warrant",
-   "dek": "Harvard's Town Meeting is Tuesday, Oct 20. The warrant lists an item on 40B housing. It was on the Planning Board agenda Sep 28.",
-   "quote": "Comprehensive permits are issued by the Board of Appeals under the provisions of G.L. Chapter 40B, Sections 20 to 23, to provide for…",
-   "reasons": [
-    "2 town boards",
-    "Town Meeting Oct 20"
-   ],
-   "topics": [
-    "40b_comprehensive_permit"
-   ],
-   "state": "MA",
-   "town": "Harvard",
-   "county": "Worcester",
-   "towns": [
-    "MA:Harvard"
-   ],
-   "board": "Town Meeting Warrants",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-10-20",
-   "meeting_date_source": "agenda",
-   "days_until": 8,
-   "first_seen": "2026-10-10T18:30:33+00:00",
-   "is_new": true,
-   "source_url": "https://www.harvard-ma.gov/DocumentCenter/View/3148/STM-Warrant---October-20-2026",
-   "town_path": "/ma/harvard",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Harvard",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-10-20"
-    },
-    {
-     "town": "Harvard",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-09-28"
-    }
-   ],
-   "hit_ids": [
-    "4be034ef779a",
-    "932b918a8694",
-    "975c8335804e",
-    "9f7e5371534b",
-    "c7b2dc6a697b",
-    "fa67f844d7ad"
    ]
   },
   {
@@ -3861,7 +3878,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:29:35+00:00",
    "is_new": true,
    "source_url": "https://www.holyoke.org/meetings/planning-board-meeting-october-13-2026/#tab-agenda",
@@ -3903,7 +3920,7 @@
    "board_key": "zoning_board_of_appeals",
    "meeting_date": "2026-11-18",
    "meeting_date_source": "agenda",
-   "days_until": 37,
+   "days_until": 36,
    "first_seen": "2026-10-10T18:44:16+00:00",
    "is_new": true,
    "source_url": "https://www.town.pepperell.ma.us/AgendaCenter/ViewFile/Agenda/_11182026-4827",
@@ -3947,7 +3964,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:48:03+00:00",
    "is_new": true,
    "source_url": "https://www.wellesleyma.gov/AgendaCenter/ViewFile/Agenda/_10132026-9688",
@@ -3969,7 +3986,7 @@
   },
   {
    "id": "05964e6b7059",
-   "score": 2.7,
+   "score": 3.0,
    "headline": "North Attleborough Town Council discusses bylaw changes",
    "dek": "The Town Council meets Wednesday, Oct 14. The agenda lists an item on bylaw changes.",
    "quote": "Measure 2027-024- Bylaw Amendment to allow \"Miscellaneous professional and business offices and services, including but not limited to medical, legal, insurance, real estate offices, and other…",
@@ -3990,7 +4007,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-14",
    "meeting_date_source": "agenda",
-   "days_until": 2,
+   "days_until": 1,
    "first_seen": "2026-10-10T18:43:15+00:00",
    "is_new": true,
    "source_url": "https://www.northattleborough.gov/AgendaCenter/ViewFile/Agenda/_10142026-2716",
@@ -4009,51 +4026,8 @@
    ]
   },
   {
-   "id": "ef881c74d0da",
-   "score": 2.52,
-   "headline": "Dartmouth Select Board reviews Town Meeting article on bylaw changes",
-   "dek": "The Select Board meets Tuesday, Oct 20. The agenda lists an article on bylaw changes.",
-   "quote": "action relative thereto. Sponsor: Board of Parks & Recreation 12 ARTICLE 15: GENERAL BYLAW AMENDMENT – CHAPTER 315, SECTION 6 (SNOW TO BE REMOVED FROM SIDEWALKS) To see if the Town will vote to…",
-   "reasons": [
-    "Town Meeting article",
-    "Meeting Oct 20"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Dartmouth",
-   "county": "Bristol",
-   "towns": [
-    "MA:Dartmouth"
-   ],
-   "board": "Select Board",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-20",
-   "meeting_date_source": "agenda",
-   "days_until": 8,
-   "first_seen": "2026-10-10T14:41:36+00:00",
-   "is_new": true,
-   "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_10202026-5883",
-   "town_path": "/ma/dartmouth",
-   "action": "warrant_review",
-   "boards": [
-    {
-     "town": "Dartmouth",
-     "board": "Select Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-20"
-    }
-   ],
-   "hit_ids": [
-    "183419bb0528",
-    "60050bed19f4",
-    "c06d60c37a9d"
-   ]
-  },
-  {
    "id": "caae7346b5d0",
-   "score": 2.16,
+   "score": 2.88,
    "headline": "Tyngsborough Town Meeting takes up bylaw changes",
    "dek": "Tyngsborough's Town Meeting is Tuesday, Oct 27. The warrant lists an article on bylaw changes.",
    "quote": "Non-Criminal Disposition Bylaw Amendments To see if the Town will vote to amend the Town's General Bylaws to substitute a Non-Criminal Disposition Bylaw under to G.L. c. 40, § 21D, for the existing…",
@@ -4074,7 +4048,7 @@
    "board_key": "town_meeting",
    "meeting_date": "2026-10-27",
    "meeting_date_source": "agenda",
-   "days_until": 15,
+   "days_until": 14,
    "first_seen": "2026-10-10T18:36:15+00:00",
    "is_new": true,
    "source_url": "https://www.tyngsboroughma.gov/DocumentCenter/View/3558/Final-STM-Warrant-October-27-2026",
@@ -4091,6 +4065,49 @@
    "hit_ids": [
     "e09a2f6b05bd",
     "ef3b1be07926"
+   ]
+  },
+  {
+   "id": "ef881c74d0da",
+   "score": 2.84,
+   "headline": "Dartmouth Select Board reviews Town Meeting article on bylaw changes",
+   "dek": "The Select Board meets Tuesday, Oct 20. The agenda lists an article on bylaw changes.",
+   "quote": "action relative thereto. Sponsor: Board of Parks & Recreation 12 ARTICLE 15: GENERAL BYLAW AMENDMENT – CHAPTER 315, SECTION 6 (SNOW TO BE REMOVED FROM SIDEWALKS) To see if the Town will vote to…",
+   "reasons": [
+    "Town Meeting article",
+    "Meeting Oct 20"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Dartmouth",
+   "county": "Bristol",
+   "towns": [
+    "MA:Dartmouth"
+   ],
+   "board": "Select Board",
+   "board_key": "select_board",
+   "meeting_date": "2026-10-20",
+   "meeting_date_source": "agenda",
+   "days_until": 7,
+   "first_seen": "2026-10-10T14:41:36+00:00",
+   "is_new": true,
+   "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_10202026-5883",
+   "town_path": "/ma/dartmouth",
+   "action": "warrant_review",
+   "boards": [
+    {
+     "town": "Dartmouth",
+     "board": "Select Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-20"
+    }
+   ],
+   "hit_ids": [
+    "183419bb0528",
+    "60050bed19f4",
+    "c06d60c37a9d"
    ]
   },
   {
@@ -4156,7 +4173,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-13",
    "meeting_date_source": "agenda",
-   "days_until": 1,
+   "days_until": 0,
    "first_seen": "2026-10-10T18:41:53+00:00",
    "is_new": true,
    "source_url": "https://www.ci.lancaster.ma.us/AgendaCenter/ViewFile/Agenda/_10132026-1647",
@@ -4172,6 +4189,46 @@
    ],
    "hit_ids": [
     "410171c38c15"
+   ]
+  },
+  {
+   "id": "f5f012b37825",
+   "score": 1.35,
+   "headline": "Zoning item on Auburn Town Meeting warrant",
+   "dek": "Auburn's Town Meeting is Tuesday, Oct 27. The warrant lists an item on zoning changes.",
+   "quote": "…Select Board Finance Committee 14 Vote to amend the Auburn Zoning Bylaws by adding a new Section 14 (Inclusionary Zoning).",
+   "reasons": [
+    "Town Meeting Oct 27"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Auburn",
+   "county": "Worcester",
+   "towns": [
+    "MA:Auburn"
+   ],
+   "board": "Town Meeting",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-27",
+   "meeting_date_source": "warrant",
+   "days_until": 14,
+   "first_seen": "2026-10-10T18:28:24+00:00",
+   "is_new": true,
+   "source_url": "https://www.auburnma.gov/DocumentCenter/View/22749/Special-Town-Meeting-October-27-2026-PDF",
+   "town_path": "/ma/auburn",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Auburn",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-27"
+    }
+   ],
+   "hit_ids": [
+    "747e1a89daa7"
    ]
   },
   {
@@ -4196,7 +4253,7 @@
    "board_key": "planning_board",
    "meeting_date": "2026-10-15",
    "meeting_date_source": "agenda",
-   "days_until": 3,
+   "days_until": 2,
    "first_seen": "2026-10-10T18:45:02+00:00",
    "is_new": true,
    "source_url": "https://www.salemma.gov/AgendaCenter/ViewFile/Agenda/_10152026-8455",
@@ -4236,7 +4293,7 @@
    "board_key": "town_meeting",
    "meeting_date": "2026-10-19",
    "meeting_date_source": "agenda",
-   "days_until": 7,
+   "days_until": 6,
    "first_seen": "2026-10-10T18:36:04+00:00",
    "is_new": true,
    "source_url": "https://www.marshfield-ma.gov/STM Complete Draft 10.19.26.pdf",
@@ -4276,7 +4333,7 @@
    "board_key": "town_meeting",
    "meeting_date": "2026-10-19",
    "meeting_date_source": "agenda",
-   "days_until": 7,
+   "days_until": 6,
    "first_seen": "2026-10-10T18:32:30+00:00",
    "is_new": true,
    "source_url": "https://www.nortonma.gov/DocumentCenter/View/2259",
@@ -4316,7 +4373,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-19",
    "meeting_date_source": "agenda",
-   "days_until": 7,
+   "days_until": 6,
    "first_seen": "2026-10-10T18:44:51+00:00",
    "is_new": true,
    "source_url": "https://www.salemma.gov/AgendaCenter/ViewFile/Agenda/_10192026-8443",
@@ -4336,7 +4393,7 @@
   },
   {
    "id": "1fb878b4057a",
-   "score": 1.05,
+   "score": 1.18,
    "headline": "40B item on Dartmouth Select Board agenda",
    "dek": "The Select Board meets Tuesday, Oct 20. The agenda lists an item on 40B housing.",
    "quote": "If approved, it provides a reasonable alternative to the proposed 40B development known as the Residences at Hawthorn.",
@@ -4356,7 +4413,7 @@
    "board_key": "select_board",
    "meeting_date": "2026-10-20",
    "meeting_date_source": "agenda",
-   "days_until": 8,
+   "days_until": 7,
    "first_seen": "2026-10-10T14:41:36+00:00",
    "is_new": true,
    "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_10202026-5883",
@@ -4372,46 +4429,6 @@
    ],
    "hit_ids": [
     "052a452fff1d"
-   ]
-  },
-  {
-   "id": "111b9c0fc17e",
-   "score": 1.05,
-   "headline": "Solar item on Falmouth Town Meeting warrant",
-   "dek": "Falmouth's Town Meeting is Monday, Oct 26. The warrant lists an item on solar.",
-   "quote": "…capacity shall be included in the calculation of electrical demand, except for on-site solar generation.",
-   "reasons": [
-    "Town Meeting Oct 26"
-   ],
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Falmouth",
-   "county": "Barnstable",
-   "towns": [
-    "MA:Falmouth"
-   ],
-   "board": "Town Meeting",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-10-26",
-   "meeting_date_source": "warrant",
-   "days_until": 14,
-   "first_seen": "2026-10-10T18:30:28+00:00",
-   "is_new": true,
-   "source_url": "https://www.falmouthma.gov/DocumentCenter/View/22133/October-2026-Warrant---Final",
-   "town_path": "/ma/falmouth",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Falmouth",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-10-26"
-    }
-   ],
-   "hit_ids": [
-    "165647255a0c"
    ]
   }
  ]
