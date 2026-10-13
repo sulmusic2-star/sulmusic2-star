@@ -4,33 +4,120 @@
 const norm = (s) => String(s || '').toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
 
 // Town box: <form data-town-form> with an input tied to <datalist id="town-names">, whose options
-// carry data-href. A unique match goes straight to the town's page; anything else falls back to
-// the form's own GET to /towns?q=..., which lists matching towns.
+// carry data-href and data-up (meetings coming up). With a <ul class="suggest"> beside the input,
+// the browser's own popup is replaced by a visible list of up to eight towns, each a full tap row,
+// with arrow keys, Enter and Escape (the GOV.UK accessible-autocomplete pattern). A unique match
+// goes straight to the town's page; a name shared by two states asks which; anything else falls
+// back to the form's own GET to /towns?q=..., which lists matching towns.
 function setupTownBox() {
   const list = document.getElementById('town-names');
   for (const form of document.querySelectorAll('form[data-town-form]')) {
     const input = form.querySelector('input');
     const error = form.querySelector('.field-error');
+    const box = form.querySelector('.suggest');
+    const status = form.querySelector('[aria-live]');
     if (!list || !input) continue;
     const towns = Array.from(list.options).map((o) => {
       const [name, state] = o.value.split(/,\s*/);
-      return { name: norm(name), full: norm(o.value), state: norm(state || 'ma'), href: o.dataset.href };
+      return { label: name, name: norm(name), full: norm(o.value), state: (state || 'MA').toUpperCase(), st: norm(state || 'ma'),
+        href: o.dataset.href, up: Number(o.dataset.up || 0) };
     });
+    const say = (text) => { if (status) status.textContent = text; };
+    const fail = (text) => {
+      if (error) { error.textContent = text; error.hidden = false; }
+    };
+    // Exact name first, then names that start with the typed text, then names that contain it.
+    const find = (q) => {
+      const rank = (t) => (t.full === q || t.name === q ? 0 : t.name.startsWith(q) ? 1 : t.full.startsWith(q) ? 2 : t.name.includes(q) ? 3 : 9);
+      return towns.map((t) => [rank(t), t]).filter(([r]) => r < 9)
+        .sort((a, b) => a[0] - b[0] || a[1].name.localeCompare(b[1].name)).slice(0, 8).map(([, t]) => t);
+    };
+    let shown = [];
+    let active = -1;
+    const close = () => {
+      if (!box) return;
+      box.hidden = true;
+      box.replaceChildren();
+      input.setAttribute('aria-expanded', 'false');
+      input.removeAttribute('aria-activedescendant');
+      shown = [];
+      active = -1;
+    };
+    const setActive = (i) => {
+      active = i;
+      Array.from(box.children).forEach((li, n) => li.setAttribute('aria-selected', String(n === i)));
+      if (i >= 0) {
+        input.setAttribute('aria-activedescendant', box.children[i].id);
+        box.children[i].scrollIntoView({ block: 'nearest' });
+      } else input.removeAttribute('aria-activedescendant');
+    };
+    const open = (matches) => {
+      if (!box) return;
+      shown = matches;
+      box.replaceChildren(...matches.map((t, i) => {
+        const li = document.createElement('li');
+        li.id = `${input.id}-opt-${i}`;
+        li.setAttribute('role', 'option');
+        li.setAttribute('aria-selected', 'false');
+        li.dataset.href = t.href;
+        const name = document.createElement('span');
+        name.className = 'name';
+        name.textContent = t.label;
+        const st = document.createElement('span');
+        st.className = 'st';
+        st.textContent = t.up ? `${t.state} · ${t.up} ${t.up === 1 ? 'meeting' : 'meetings'} coming up` : t.state;
+        li.append(name, st);
+        return li;
+      }));
+      box.hidden = false;
+      input.setAttribute('aria-expanded', 'true');
+      setActive(-1);
+      say(`${matches.length} ${matches.length === 1 ? 'town matches' : 'towns match'}. Use the arrow keys, then Enter.`);
+    };
+    if (box) {
+      input.removeAttribute('list');
+      input.setAttribute('role', 'combobox');
+      input.setAttribute('aria-autocomplete', 'list');
+      input.setAttribute('aria-expanded', 'false');
+      input.setAttribute('aria-controls', box.id);
+      input.addEventListener('keydown', (event) => {
+        if (box.hidden) return;
+        if (event.key === 'ArrowDown') { event.preventDefault(); setActive(Math.min(active + 1, shown.length - 1)); }
+        else if (event.key === 'ArrowUp') { event.preventDefault(); setActive(Math.max(active - 1, 0)); }
+        else if (event.key === 'Escape') close();
+        else if (event.key === 'Enter' && active >= 0) { event.preventDefault(); location.assign(shown[active].href); }
+      });
+      input.addEventListener('blur', () => setTimeout(close, 150));
+      box.addEventListener('mousedown', (event) => event.preventDefault());  // keep the input focused while tapping a row
+      box.addEventListener('click', (event) => {
+        const li = event.target.closest('li[data-href]');
+        if (li) location.assign(li.dataset.href);
+      });
+    }
     form.addEventListener('submit', (event) => {
       const q = norm(input.value);
       if (!q) {
         event.preventDefault();
-        if (error) {
-          error.textContent = 'Type a town name, like Carver.';
-          error.hidden = false;
-        }
+        fail('Type a town name, like Carver.');
         input.focus();
         return;
       }
       let hits = towns.filter((t) => t.full === q);
+      if (!hits.length) hits = towns.filter((t) => `${t.name} ${t.st}` === q || `${t.name} ${stateName(t.st)}` === q);
       if (!hits.length) hits = towns.filter((t) => t.name === q);
-      if (!hits.length) hits = towns.filter((t) => `${t.name} ${t.state}` === q || `${t.name} ${stateName(t.state)}` === q);
-      if (hits.length > 1) hits = hits.filter((t) => t.state === 'ma');
+      if (hits.length > 1) {
+        // The same name in two states: ask, rather than guess.
+        event.preventDefault();
+        const states = hits.map((t) => stateName(t.st).replace(/\b\w/g, (c) => c.toUpperCase()));
+        fail(`${hits[0].label} is in ${states.slice(0, -1).join(', ')} and ${states[states.length - 1]}. Which one?`);
+        open(hits);
+        input.focus();
+        return;
+      }
+      if (!hits.length) {
+        const near = find(q);
+        if (near.length === 1 || (near.length && near[0].name.startsWith(q) && !near[1].name.startsWith(q))) hits = [near[0]];
+      }
       if (hits.length === 1) {
         event.preventDefault();
         location.assign(hits[0].href);
@@ -38,6 +125,14 @@ function setupTownBox() {
     });
     input.addEventListener('input', () => {
       if (error) error.hidden = true;
+      const q = norm(input.value);
+      if (!q) return close();
+      const matches = find(q);
+      if (matches.length) open(matches);
+      else {
+        close();
+        say('No town matches yet.');
+      }
     });
   }
 }

@@ -255,6 +255,16 @@ ul.plain { list-style: none; padding: 0; margin: 0; }
 .home-hero { display: block; padding: var(--s6) 0 var(--s4); }
 .home-hero h1 { margin-bottom: var(--s4); max-width: 20ch; }
 .townbox { margin-top: var(--s5); max-width: 560px; }
+/* The town box's own suggestion list, under the input: up to eight full-height rows */
+.combo { position: relative; flex: 1 1 240px; min-width: 0; }
+.combo input { width: 100%; }
+.suggest { position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 5; margin: 0; padding: 4px 0; list-style: none;
+  background: var(--paper); border: 1px solid var(--rule-strong); border-radius: 4px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); max-height: 50vh; overflow-y: auto; }
+.suggest li { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s3); min-height: 44px; padding: 10px 12px; cursor: pointer; }
+.suggest li .name { font-weight: 600; }
+.suggest li .st { color: var(--muted); font-size: var(--t-sm); white-space: nowrap; }
+.suggest li:hover, .suggest li[aria-selected="true"] { background: var(--land); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .townbox label, .searchbox label { font-size: var(--t-lead); }
 .townbox input { border-color: var(--ink); }
 .next h2 { margin-top: var(--s6); }

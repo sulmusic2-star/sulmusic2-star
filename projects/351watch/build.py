@@ -2069,7 +2069,8 @@ def topic_counts(ctx, key, state=None):
 def town_options(ctx):
     """<datalist> of every town, each option carrying its page path for the town box."""
     multi = len(ctx.states) > 1
-    opts = "".join(f'<option value="{e(t["town"])}{", " + t["state"] if multi else ""}" data-href="{town_path(t["state"], t["town"])}"></option>'
+    opts = "".join(f'<option value="{e(t["town"])}{", " + t["state"] if multi else ""}" data-href="{town_path(t["state"], t["town"])}"'
+                   f' data-up="{len(upcoming_meetings(ctx, t["id"]))}"></option>'
                    for t in ctx.towns)
     return f'<datalist id="town-names">{opts}</datalist>'
 
@@ -2083,9 +2084,11 @@ def town_box(ctx, label="Type your town", button="Find my town", examples=True):
               else (f'<p class="eg">Or try {links[0]}.</p>' if links else ""))
     return f"""<form class="townbox" action="/towns" method="get" role="search" data-town-form>
   <label for="town-q">{label}</label>
-  <div class="field-row"><input id="town-q" name="q" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" required>
+  <div class="field-row"><div class="combo"><input id="town-q" name="q" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" required>
+  <ul class="suggest" id="town-q-list" role="listbox" aria-label="Matching towns" hidden></ul></div>
   <button class="btn" type="submit">{button}</button></div>
   <p class="field-error" id="town-q-error" role="alert" hidden></p>
+  <p class="sr-only" id="town-q-status" aria-live="polite"></p>
   {eg}
 </form>
 {town_options(ctx)}"""
