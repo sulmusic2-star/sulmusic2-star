@@ -5,3 +5,6 @@ node_modules/
 __pycache__/
 *.pyc
 site/pagefind/
+
+# brief-writing work files (writer input and output; the imported rows live in data/briefs)
+data/briefs_work/
