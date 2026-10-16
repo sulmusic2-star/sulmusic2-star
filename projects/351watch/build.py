@@ -3103,9 +3103,9 @@ def build_town_page(ctx, t):
 
     body = f"""
 <div class="wrap narrow">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/towns">Towns</a></li><li><a href="/towns#{state.lower()}">{e(state_name)}</a></li><li><span aria-current="page">{e(town)}</span></li></ol></nav>
 <div class="page-grid with-head">
 <div class="grid-head">
-<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/towns">Towns</a></li><li><a href="/towns#{state.lower()}">{e(state_name)}</a></li><li><span aria-current="page">{e(town)}</span></li></ol></nav>
 <h1 id="town-title">{e(town)}</h1>
 </div>
 <div class="page-main">

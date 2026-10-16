@@ -182,7 +182,9 @@ time, table, .n, .sub-count, .row-day, .ticket-when { font-variant-numeric: tabu
   /* a town page: the crumbs and H1 sit in the grid, so the rail starts level with the H1 */
   .page-grid.with-head { grid-template-areas: "head rail" "main rail"; grid-template-rows: auto 1fr; }
   .grid-head { grid-area: head; }
-  .grid-head h1 { margin-top: var(--s3); }
+  .grid-head h1 { margin-top: 0; }
+  .crumbs + .page-grid { margin-top: var(--s3); }
+  .page-grid.with-head .rail { margin-top: 10px; }
   .rail { grid-area: rail; position: sticky; top: var(--s5); }
   .rail > :first-child { margin-top: 0; }
   .rail .next-door > span { display: block; margin: 0; white-space: normal; }
@@ -527,6 +529,7 @@ td small, th small { display: block; color: var(--muted); font-weight: 400; }
 .wrap.narrow > .next > h2:first-child, .next > h2:first-child { margin-top: 0; }
 h1 { margin-top: var(--s6); margin-bottom: var(--s3); }
 .crumbs + h1 { margin-top: var(--s3); }
+.crumbs + .page-grid > .grid-head > h1 { margin-top: var(--s3); }
 .crumbs ol { margin-top: var(--s4); }
 .status { color: var(--muted); margin-top: calc(-1 * var(--s1)); }
 .lead { color: var(--ink); }
