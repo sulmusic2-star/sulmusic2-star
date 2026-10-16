@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T11:01:44+00:00",
+ "generated": "2026-10-16T11:02:23+00:00",
  "source": "massdep_wetlands",
  "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
  "link_types": {
@@ -17,7 +17,7 @@
   {
    "parent": "National Grid (New England Power / Mass. Electric)",
    "kind": "utility",
-   "filings": 31,
+   "filings": 32,
    "project_applicants": [
     "MASSACHUSETTS ELECTRIC COMPANY",
     "NEP",
@@ -28,6 +28,7 @@
     "[individual]"
    ],
    "sites": [
+    "Attleboro: READ ST TO 105 WEST ST",
     "Ayer: K137E L138E 337 TRANSMISSION LINE ROW",
     "Berlin: W 23 ROW",
     "Billerica: K137E L138E 337 TRANSMISSION LINE ROW",
@@ -42,7 +43,6 @@
     "Hanover: 191 WATER ST",
     "Leicester: 408 STAFFORD ST",
     "Littleton: K137E L138E 337 TRANSMISSION LINE ROW",
-    "Lowell: READ ST TO 105 WEST ST",
     "Marlborough: 365 SOUTH ST",
     "Millbury: E5 F6 TRANSMISSION LINES RIGHT OF WAY",
     "North Brookfield: 39 EAST BROOKFIELD RD",
@@ -56,10 +56,12 @@
     "Ware: 33 GILBERTVILLE RD O15N TRANSMISSION LINE",
     "Wendell: 431 WENDELL DEPOT RD",
     "Wendell: A127 WENDELL DEPOT TAP TRANSMISSION LINE ROW",
+    "West Brookfield: EXISTING TRANSMISSION LINE RIGHT OF WAY",
     "West Newbury: 394 AND B154 C155 TAP TRANSMISSION LINE ROW",
     "Westford: K137E L138E 337 TRANSMISSION LINE RIGHT OF WAY"
    ],
    "towns": [
+    "Attleboro",
     "Ayer",
     "Berlin",
     "Billerica",
@@ -72,7 +74,6 @@
     "Hanover",
     "Leicester",
     "Littleton",
-    "Lowell",
     "Marlborough",
     "Millbury",
     "North Brookfield",
@@ -85,14 +86,15 @@
     "Spencer",
     "Ware",
     "Wendell",
+    "West Brookfield",
     "West Newbury",
     "Westford"
    ],
    "categories": {
-    "transmission_substation": 31
+    "transmission_substation": 32
    },
    "links": {
-    "applicant_name": 30,
+    "applicant_name": 31,
     "description_mention": 1
    },
    "consultants": [],
@@ -322,8 +324,8 @@
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
     },
     {
-     "dep_file_number": null,
-     "town": "Lowell",
+     "dep_file_number": "097-1624",
+     "town": "Attleboro",
      "applicant": "NEW ENGLAND POWER COMPANY",
      "received_date": "2026-09-28",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213321",
@@ -344,10 +346,18 @@
      "received_date": "2026-10-08",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213464",
      "evidence": "applicant name 'NEP' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": null,
+     "town": "West Brookfield",
+     "applicant": "NEW ENGLAND POWER COMPANY",
+     "received_date": "2026-10-14",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213522",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
     }
    ],
    "distinct_applicants": 7,
-   "distinct_sites": 30,
+   "distinct_sites": 31,
    "in_target_list": true,
    "target_segment": "transmission/utility"
   },
@@ -457,6 +467,94 @@
    "distinct_sites": 7,
    "in_target_list": true,
    "target_segment": "solar; storage"
+  },
+  {
+   "parent": "Parallel Products Solar Energy",
+   "kind": "developer",
+   "filings": 6,
+   "project_applicants": [
+    "PARALLEL PRODUCTS SOLAR ENERGY",
+    "PARALLEL PRODUCTS SOLAR ENERGY LLC",
+    "PARALLEL PRODUCTS SOLAR ENERGY, LLC"
+   ],
+   "sites": [
+    "Brockton: 511 THATCHER ST",
+    "Carver: 235 MAIN ST",
+    "Easton: 41 HAMPDEN DRIVE",
+    "Hanover: 96 INDUSTRIAL WAY",
+    "West Bridgewater: SAMUEL AVE BROOKS PLACE"
+   ],
+   "towns": [
+    "Brockton",
+    "Carver",
+    "Easton",
+    "Hanover",
+    "West Bridgewater"
+   ],
+   "categories": {
+    "solar": 4,
+    "energy_name_only": 2
+   },
+   "links": {
+    "applicant_name": 6
+   },
+   "consultants": [
+    "Farland Corp"
+   ],
+   "dep_files": [
+    {
+     "dep_file_number": "031-1314",
+     "town": "Hanover",
+     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY",
+     "received_date": "2025-11-17",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209285",
+     "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy"
+    },
+    {
+     "dep_file_number": "328-0875",
+     "town": "West Bridgewater",
+     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY, LLC",
+     "received_date": "2025-12-03",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209457",
+     "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY, LLC' matches Parallel Products Solar Energy"
+    },
+    {
+     "dep_file_number": "152-1869",
+     "town": "Easton",
+     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY",
+     "received_date": "2026-03-09",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210623",
+     "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy"
+    },
+    {
+     "dep_file_number": "118-0882",
+     "town": "Brockton",
+     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY, LLC",
+     "received_date": "2026-05-11",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211449",
+     "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY, LLC' matches Parallel Products Solar Energy"
+    },
+    {
+     "dep_file_number": "152-1881",
+     "town": "Easton",
+     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY",
+     "received_date": "2026-08-26",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212855",
+     "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Carver",
+     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY LLC",
+     "received_date": "2026-10-13",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213526",
+     "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY LLC' matches Parallel Products Solar Energy"
+    }
+   ],
+   "distinct_applicants": 3,
+   "distinct_sites": 5,
+   "in_target_list": true,
+   "target_segment": "solar"
   },
   {
    "parent": "Eversource (NSTAR Electric)",
@@ -614,83 +712,6 @@
    "distinct_sites": 5,
    "in_target_list": true,
    "target_segment": "solar; storage"
-  },
-  {
-   "parent": "Parallel Products Solar Energy",
-   "kind": "developer",
-   "filings": 5,
-   "project_applicants": [
-    "PARALLEL PRODUCTS SOLAR ENERGY",
-    "PARALLEL PRODUCTS SOLAR ENERGY, LLC"
-   ],
-   "sites": [
-    "Brockton: 511 THATCHER ST",
-    "Easton: 41 HAMPDEN DRIVE",
-    "Hanover: 96 INDUSTRIAL WAY",
-    "West Bridgewater: SAMUEL AVE BROOKS PLACE"
-   ],
-   "towns": [
-    "Brockton",
-    "Easton",
-    "Hanover",
-    "West Bridgewater"
-   ],
-   "categories": {
-    "solar": 3,
-    "energy_name_only": 2
-   },
-   "links": {
-    "applicant_name": 5
-   },
-   "consultants": [
-    "Farland Corp"
-   ],
-   "dep_files": [
-    {
-     "dep_file_number": "031-1314",
-     "town": "Hanover",
-     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY",
-     "received_date": "2025-11-17",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209285",
-     "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy"
-    },
-    {
-     "dep_file_number": "328-0875",
-     "town": "West Bridgewater",
-     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY, LLC",
-     "received_date": "2025-12-03",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209457",
-     "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY, LLC' matches Parallel Products Solar Energy"
-    },
-    {
-     "dep_file_number": "152-1869",
-     "town": "Easton",
-     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY",
-     "received_date": "2026-03-09",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210623",
-     "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy"
-    },
-    {
-     "dep_file_number": "118-0882",
-     "town": "Brockton",
-     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY, LLC",
-     "received_date": "2026-05-11",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211449",
-     "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY, LLC' matches Parallel Products Solar Energy"
-    },
-    {
-     "dep_file_number": "152-1881",
-     "town": "Easton",
-     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY",
-     "received_date": "2026-08-26",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212855",
-     "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy"
-    }
-   ],
-   "distinct_applicants": 2,
-   "distinct_sites": 4,
-   "in_target_list": true,
-   "target_segment": "solar"
   },
   {
    "parent": "BlueWave",
@@ -1120,8 +1141,9 @@
    "parent_kind": "utility",
    "link": "applicant_name",
    "confidence": "high",
-   "filings": 17,
+   "filings": 18,
    "towns": [
+    "Attleboro",
     "Ayer",
     "Berlin",
     "Billerica",
@@ -1130,18 +1152,18 @@
     "Chelmsford",
     "Groveland",
     "Littleton",
-    "Lowell",
     "Marlborough",
     "Millbury",
     "North Brookfield",
     "Palmer",
     "Southbridge",
-    "Ware"
+    "Ware",
+    "West Brookfield"
    ],
    "payors": [],
    "consultants": [],
    "categories": {
-    "transmission_substation": 17
+    "transmission_substation": 18
    },
    "evidence": [
     {
@@ -1305,14 +1327,24 @@
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213179"
     },
     {
-     "dep_file_number": null,
-     "town": "Lowell",
+     "dep_file_number": "097-1624",
+     "town": "Attleboro",
      "received_date": "2026-09-28",
      "filing_type": "Notice of Intent",
      "payor": null,
      "link": "applicant_name",
      "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213321"
+    },
+    {
+     "dep_file_number": null,
+     "town": "West Brookfield",
+     "received_date": "2026-10-14",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213522"
     }
    ],
    "shares_contact_with": [
@@ -1421,6 +1453,96 @@
    ]
   },
   {
+   "applicant": "PARALLEL PRODUCTS SOLAR ENERGY",
+   "parent": "Parallel Products Solar Energy",
+   "parent_kind": "developer",
+   "link": "applicant_name",
+   "confidence": "high",
+   "filings": 6,
+   "towns": [
+    "Brockton",
+    "Carver",
+    "Easton",
+    "Hanover",
+    "West Bridgewater"
+   ],
+   "payors": [
+    "FARLAND CORP",
+    "FARLAND CORP, INC",
+    "PARALLEL PRODUCTS TECH"
+   ],
+   "consultants": [
+    "Farland Corp"
+   ],
+   "categories": {
+    "solar": 4,
+    "energy_name_only": 2
+   },
+   "evidence": [
+    {
+     "dep_file_number": "031-1314",
+     "town": "Hanover",
+     "received_date": "2025-11-17",
+     "filing_type": "Notice of Intent",
+     "payor": "FARLAND CORP",
+     "link": "applicant_name",
+     "how": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209285"
+    },
+    {
+     "dep_file_number": "328-0875",
+     "town": "West Bridgewater",
+     "received_date": "2025-12-03",
+     "filing_type": "ANRAD (resource area delineation)",
+     "payor": "PARALLEL PRODUCTS TECH",
+     "link": "applicant_name",
+     "how": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY, LLC' matches Parallel Products Solar Energy",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209457"
+    },
+    {
+     "dep_file_number": "152-1869",
+     "town": "Easton",
+     "received_date": "2026-03-09",
+     "filing_type": "ANRAD (resource area delineation)",
+     "payor": "FARLAND CORP",
+     "link": "applicant_name",
+     "how": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210623"
+    },
+    {
+     "dep_file_number": "118-0882",
+     "town": "Brockton",
+     "received_date": "2026-05-11",
+     "filing_type": "Notice of Intent",
+     "payor": "FARLAND CORP",
+     "link": "applicant_name",
+     "how": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY, LLC' matches Parallel Products Solar Energy",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211449"
+    },
+    {
+     "dep_file_number": "152-1881",
+     "town": "Easton",
+     "received_date": "2026-08-26",
+     "filing_type": "Notice of Intent",
+     "payor": "FARLAND CORP, INC",
+     "link": "applicant_name",
+     "how": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212855"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Carver",
+     "received_date": "2026-10-13",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": "FARLAND CORP",
+     "link": "applicant_name",
+     "how": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY LLC' matches Parallel Products Solar Energy",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213526"
+    }
+   ],
+   "shares_contact_with": []
+  },
+  {
    "applicant": "NEXTGRID, INC.",
    "parent": "NextGrid",
    "parent_kind": "developer",
@@ -1491,85 +1613,6 @@
      "link": "applicant_name",
      "how": "applicant name 'NEXTGRID' matches NextGrid",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212703"
-    }
-   ],
-   "shares_contact_with": []
-  },
-  {
-   "applicant": "PARALLEL PRODUCTS SOLAR ENERGY",
-   "parent": "Parallel Products Solar Energy",
-   "parent_kind": "developer",
-   "link": "applicant_name",
-   "confidence": "high",
-   "filings": 5,
-   "towns": [
-    "Brockton",
-    "Easton",
-    "Hanover",
-    "West Bridgewater"
-   ],
-   "payors": [
-    "FARLAND CORP",
-    "FARLAND CORP, INC",
-    "PARALLEL PRODUCTS TECH"
-   ],
-   "consultants": [
-    "Farland Corp"
-   ],
-   "categories": {
-    "solar": 3,
-    "energy_name_only": 2
-   },
-   "evidence": [
-    {
-     "dep_file_number": "031-1314",
-     "town": "Hanover",
-     "received_date": "2025-11-17",
-     "filing_type": "Notice of Intent",
-     "payor": "FARLAND CORP",
-     "link": "applicant_name",
-     "how": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209285"
-    },
-    {
-     "dep_file_number": "328-0875",
-     "town": "West Bridgewater",
-     "received_date": "2025-12-03",
-     "filing_type": "ANRAD (resource area delineation)",
-     "payor": "PARALLEL PRODUCTS TECH",
-     "link": "applicant_name",
-     "how": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY, LLC' matches Parallel Products Solar Energy",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209457"
-    },
-    {
-     "dep_file_number": "152-1869",
-     "town": "Easton",
-     "received_date": "2026-03-09",
-     "filing_type": "ANRAD (resource area delineation)",
-     "payor": "FARLAND CORP",
-     "link": "applicant_name",
-     "how": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210623"
-    },
-    {
-     "dep_file_number": "118-0882",
-     "town": "Brockton",
-     "received_date": "2026-05-11",
-     "filing_type": "Notice of Intent",
-     "payor": "FARLAND CORP",
-     "link": "applicant_name",
-     "how": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY, LLC' matches Parallel Products Solar Energy",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211449"
-    },
-    {
-     "dep_file_number": "152-1881",
-     "town": "Easton",
-     "received_date": "2026-08-26",
-     "filing_type": "Notice of Intent",
-     "payor": "FARLAND CORP, INC",
-     "link": "applicant_name",
-     "how": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212855"
     }
    ],
    "shares_contact_with": []
@@ -2082,6 +2125,7 @@
     }
    ],
    "shares_contact_with": [
+    "LOWELL STREET STORAGE 1, LLC",
     "NEW LEAF ENERGY, INC"
    ]
   },
@@ -2260,7 +2304,8 @@
     }
    ],
    "shares_contact_with": [
-    "FEDERAL FURNACE ROAD SOLAR 1, LLC"
+    "FEDERAL FURNACE ROAD SOLAR 1, LLC",
+    "LOWELL STREET STORAGE 1, LLC"
    ]
   },
   {
@@ -2782,6 +2827,34 @@
    ]
   },
   {
+   "applicant": "JAKE MARLEY WITH HYPERION SYSTEMS, LLC",
+   "parent": null,
+   "parent_kind": null,
+   "link": null,
+   "confidence": null,
+   "filings": 1,
+   "towns": [
+    "Whately"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "solar": 1
+   },
+   "evidence": [
+    {
+     "dep_file_number": null,
+     "town": "Whately",
+     "received_date": "2026-09-29",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "unresolved",
+     "how": null,
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213344"
+    }
+   ]
+  },
+  {
    "applicant": "MARINE RENEWABLE ENERGY COLLABORATIVE",
    "parent": null,
    "parent_kind": null,
@@ -2950,9 +3023,7 @@
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/209053"
     }
    ],
-   "shares_contact_with": [
-    "SITE DESIGN PROFESSIONALS, LLC"
-   ]
+   "shares_contact_with": []
   },
   {
    "applicant": "SOMERSET ENERGY STORAGE, LLC",
@@ -3051,7 +3122,7 @@
  "top_third_party_payors_all_filings": [
   {
    "payor": "ZENITH ENG",
-   "filings": 43,
+   "filings": 45,
    "towns": 19,
    "kind": "consultant"
   },
@@ -3080,15 +3151,15 @@
    "kind": "consultant"
   },
   {
-   "payor": "OAKHILL ENG",
-   "filings": 25,
-   "towns": 6,
+   "payor": "Farland Corp",
+   "filings": 26,
+   "towns": 14,
    "kind": "consultant"
   },
   {
-   "payor": "Farland Corp",
+   "payor": "OAKHILL ENG",
    "filings": 25,
-   "towns": 13,
+   "towns": 6,
    "kind": "consultant"
   },
   {
@@ -3105,13 +3176,13 @@
   },
   {
    "payor": "CC ENG",
-   "filings": 18,
-   "towns": 6,
+   "filings": 19,
+   "towns": 7,
    "kind": "consultant"
   },
   {
    "payor": "CLARK ENG",
-   "filings": 18,
+   "filings": 19,
    "towns": 3,
    "kind": "consultant"
   },
@@ -3122,15 +3193,21 @@
    "kind": "consultant"
   },
   {
-   "payor": "SOURATI ENG",
-   "filings": 14,
-   "towns": 5,
+   "payor": "FORESIGHT ENG",
+   "filings": 15,
+   "towns": 8,
    "kind": "consultant"
   },
   {
    "payor": "GRADY CONSULTING",
-   "filings": 14,
+   "filings": 15,
    "towns": 10,
+   "kind": "consultant"
+  },
+  {
+   "payor": "SOURATI ENG",
+   "filings": 14,
+   "towns": 5,
    "kind": "consultant"
   },
   {
@@ -3140,9 +3217,9 @@
    "kind": "consultant"
   },
   {
-   "payor": "FORESIGHT ENG",
-   "filings": 13,
-   "towns": 6,
+   "payor": "PMP CONSULTING",
+   "filings": 12,
+   "towns": 10,
    "kind": "consultant"
   },
   {
@@ -3164,16 +3241,16 @@
    "kind": "consultant"
   },
   {
-   "payor": "PMP CONSULTING",
-   "filings": 11,
-   "towns": 9,
-   "kind": "consultant"
-  },
-  {
    "payor": "SITE DESIGN ENG",
    "filings": 11,
    "towns": 1,
    "kind": "consultant"
+  },
+  {
+   "payor": "CRAWFORD LAND MGMT",
+   "filings": 10,
+   "towns": 6,
+   "kind": "company"
   },
   {
    "payor": "SOUTHCOAST ENG",
@@ -3200,10 +3277,10 @@
    "kind": "consultant"
   },
   {
-   "payor": "CRAWFORD LAND MGMT",
+   "payor": "BLUEFLAX DESIGN",
    "filings": 8,
    "towns": 6,
-   "kind": "company"
+   "kind": "consultant"
   },
   {
    "payor": "New Leaf Energy",
@@ -3218,12 +3295,6 @@
    "kind": "consultant"
   },
   {
-   "payor": "BLUEFLAX DESIGN",
-   "filings": 7,
-   "towns": 5,
-   "kind": "consultant"
-  },
-  {
    "payor": "AM WILSON ASSOC",
    "filings": 7,
    "towns": 3,
@@ -3233,6 +3304,12 @@
    "payor": "TIGHE & BOND",
    "filings": 6,
    "towns": 3,
+   "kind": "consultant"
+  },
+  {
+   "payor": "W ENG",
+   "filings": 6,
+   "towns": 4,
    "kind": "consultant"
   },
   {
@@ -3263,12 +3340,6 @@
    "payor": "STRONG TREE ENG",
    "filings": 5,
    "towns": 4,
-   "kind": "consultant"
-  },
-  {
-   "payor": "W ENG",
-   "filings": 5,
-   "towns": 3,
    "kind": "consultant"
   },
   {
@@ -3386,6 +3457,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "BSC COMPANIES",
+   "filings": 3,
+   "towns": 3,
+   "kind": "company"
+  },
+  {
    "payor": "PARE CORP",
    "filings": 2,
    "towns": 2,
@@ -3399,12 +3476,6 @@
   },
   {
    "payor": "CROCKER DESIGN",
-   "filings": 2,
-   "towns": 1,
-   "kind": "consultant"
-  },
-  {
-   "payor": "FIELD ENG",
    "filings": 2,
    "towns": 1,
    "kind": "consultant"

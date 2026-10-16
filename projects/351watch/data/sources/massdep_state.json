@@ -1,37 +1,39 @@
 {
  "coverage": {
   "from": "2025-10-10",
-  "to": "2026-10-13"
+  "to": "2026-10-16"
  },
  "source": "massdep_wetlands",
  "api": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire",
  "cursor": {
-  "max_filing_date": "2026-10-09",
-  "max_noi_id": 213499
+  "max_filing_date": "2026-10-16",
+  "max_noi_id": 213570
  },
  "lookback_days": 45,
  "last_run": {
-  "at": "2026-10-13T11:01:44+00:00",
+  "at": "2026-10-16T11:02:23+00:00",
   "offline": false,
   "blocked": null,
   "rebuilt_from_cache": 4609,
-  "listed": 644,
-  "refetch_no_description": 171,
-  "details_needed": 171,
-  "details_fetched": 171,
-  "http_requests": 181
+  "listed": 715,
+  "refetch_no_description": 131,
+  "details_needed": 281,
+  "changed": 79,
+  "details_fetched": 281,
+  "new": 71,
+  "http_requests": 291
  },
  "summary": {
-  "filings_total": 4609,
+  "filings_total": 4680,
   "filings_by_type": {
-   "Notice of Intent": 2447,
-   "Notice of Intent (buffer zone only)": 1961,
-   "ANRAD (resource area delineation)": 201
+   "Notice of Intent": 2487,
+   "Notice of Intent (buffer zone only)": 1986,
+   "ANRAD (resource area delineation)": 207
   },
-  "energy_hits": 90,
+  "energy_hits": 93,
   "energy_by_category": {
-   "transmission_substation": 40,
-   "solar": 27,
+   "transmission_substation": 41,
+   "solar": 29,
    "developer_other": 7,
    "solar_and_storage": 6,
    "energy_name_only": 6,
@@ -39,24 +41,24 @@
    "wind_or_marine": 1
   },
   "energy_by_topic": {
-   "solar": 43,
+   "solar": 45,
    "battery_storage": 11
   },
   "energy_by_filing_type": {
-   "Notice of Intent": 62,
-   "Notice of Intent (buffer zone only)": 21,
+   "Notice of Intent": 64,
+   "Notice of Intent (buffer zone only)": 22,
    "ANRAD (resource area delineation)": 7
   },
   "energy_by_confidence": {
-   "high": 42,
+   "high": 44,
    "medium": 34,
-   "low": 14
+   "low": 15
   },
-  "energy_towns": 68,
+  "energy_towns": 70,
   "all_categories_incl_excluded": {
-   "transmission_substation": 40,
-   "utility_routine": 36,
-   "solar": 27,
+   "transmission_substation": 41,
+   "utility_routine": 37,
+   "solar": 29,
    "developer_other": 7,
    "solar_and_storage": 6,
    "energy_name_only": 6,
@@ -65,14 +67,14 @@
    "ev_charging": 1,
    "wind_or_marine": 1
   },
-  "energy_with_parent": 68,
+  "energy_with_parent": 70,
   "top_parents": [
    {
     "parent": "National Grid (New England Power / Mass. Electric)",
     "kind": "utility",
-    "filings": 31,
-    "sites": 30,
-    "towns": 27
+    "filings": 32,
+    "sites": 31,
+    "towns": 28
    },
    {
     "parent": "New Leaf Energy",
@@ -80,6 +82,13 @@
     "filings": 8,
     "sites": 7,
     "towns": 3
+   },
+   {
+    "parent": "Parallel Products Solar Energy",
+    "kind": "developer",
+    "filings": 6,
+    "sites": 5,
+    "towns": 5
    },
    {
     "parent": "Eversource (NSTAR Electric)",
@@ -94,13 +103,6 @@
     "filings": 5,
     "sites": 5,
     "towns": 5
-   },
-   {
-    "parent": "Parallel Products Solar Energy",
-    "kind": "developer",
-    "filings": 5,
-    "sites": 4,
-    "towns": 4
    },
    {
     "parent": "BlueWave",
@@ -224,6 +226,16 @@
    "changed": 0,
    "details_fetched": 171,
    "hits": 90
+  },
+  {
+   "at": "2026-10-16T11:02:23+00:00",
+   "offline": false,
+   "blocked": null,
+   "listed": 715,
+   "new": 71,
+   "changed": 79,
+   "details_fetched": 281,
+   "hits": 93
   }
  ]
 }
