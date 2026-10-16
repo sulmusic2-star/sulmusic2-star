@@ -222,9 +222,12 @@ class ToolTests(unittest.TestCase):
         self.assertEqual(verify_briefs.main(["--data", self.dir, "--check", "--quiet"]), 1)
         self.assertNotIn("verified", B.read_rows(path)[0][1])
 
-    def test_unknown_hit_fails(self):
-        B.append_brief(self.dir, {**GOOD, "id": "ffffffffffff"}, "MA", None)
-        self.assertEqual(verify_briefs.main(["--data", self.dir, "--quiet"]), 1)
+    def test_unknown_hit_is_skipped_not_failed(self):
+        # an item dropped as off the subject or archived: the brief stays unused, and the run does not fail
+        path = B.append_brief(self.dir, {**GOOD, "id": "ffffffffffff"}, "MA", None)
+        self.assertEqual(verify_briefs.main(["--data", self.dir, "--quiet"]), 0)
+        self.assertIs(B.read_rows(path)[0][1]["verified"], False)
+        self.assertEqual(B.load_briefs(self.dir, verified_only=True), {})
 
 
 class RenderTests(unittest.TestCase):
