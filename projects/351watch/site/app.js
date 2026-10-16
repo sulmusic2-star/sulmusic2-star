@@ -272,7 +272,7 @@ function setupContactForm() {
       if (!res.ok || !data.ok) throw new Error(data.error || 'The message didn’t go through. Try again in a minute.');
       form.reset();
       status.classList.add('ok');
-      status.textContent = 'Message sent. Thank you.';
+      status.textContent = `Message sent. Thank you.${data && data.ref ? ` Reference ${data.ref}, if you write again about it.` : ''}`;
     } catch (err) {
       status.classList.add('err');
       status.textContent = err.message;

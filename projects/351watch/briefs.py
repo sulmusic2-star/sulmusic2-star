@@ -79,7 +79,7 @@ BODY_NAMES = ("attorney general", "town meeting", "select board", "selectboard",
 STATE_WORDS = {"massachusetts", "new york", "rhode island", "connecticut", "new hampshire", "vermont", "maine"}
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 ASIDE = re.compile(r"our records|our copy|in our (?:copy|records|files)|per our|as the agenda spells|listed with a question mark|"
-                   r"no rules stated|gives no rules|cut off in our", re.I)
+                   r"no rules stated|gives no rules|cut off in our|\b(?:no time limit|nothing|not) (?:is )?stated|no rules are given", re.I)
 CUE_REACH = 700
 # A "Public Hearings" heading covers every item listed under it, so a hearing cue may sit further back.
 HEARING_REACH = 1500

@@ -119,7 +119,7 @@
       if (!meetings.has(key)) {
         const at = (LINES.at && LINES.at[it.source_url]) || ['', ''];
         meetings.set(key, { state: it.state, town: it.town, town_url: it.town_url, board: boardLabel(it), board_key: it.board_key,
-          source: it.source, date: d, lines: new Map(), docs: [], found: it.first_seen || '', time: at[0], place: at[1],
+          source: it.source, date: d, lines: new Map(), docs: [], found: it.first_seen || '', time: at[0], place: at[1], cancelled: Boolean(at[2]),
           id: `m-${slug(`${it.town}-${boardLabel(it)}-${d || 'warrant'}`)}` });
       }
       const m = meetings.get(key);
@@ -219,7 +219,7 @@
   const placeText = (p) => (p === 'online' ? 'Online meeting' : p.replace(/ or online$/, ', or join online'));
   const whenText = (m) => (m.date ? dayLabel(m.date) + (m.time ? `, ${m.time}` : '') : '');
   const SPEAK = LINESPEAK();
-  function LINESPEAK() { return (LINES && LINES.speak) || 'Public hearing: anyone can speak; written comments go to the town clerk before the meeting.'; }
+  function LINESPEAK() { return (LINES && LINES.speak) || 'Public hearing: anyone can attend and ask to speak. The agenda prints no other rule.'; }
   const factsText = (e) => {
     const parts = [tagText(e.topics), ...(e.facts || []).map(String)];
     const seen = new Set();
@@ -240,14 +240,16 @@
       el('span', { text: meetingBoard(m) }),
       m.date ? el('span', { class: 'meet-day' }, el('time', { datetime: m.date, text: when }))
         : (m.board_key === 'town_meeting' ? el('span', { class: 'meet-day', text: 'Date not found on the warrant' }) : null),
-      place ? el('span', { class: 'meet-place', text: place }) : null);
+      place ? el('span', { class: 'meet-place', text: place }) : null,
+      m.cancelled ? el('span', { class: 'meet-canceled', text: 'Canceled by the town' }) : null);
     const lineNode = ([text, e]) => {
       const b = e.brief;
       const facts = factsText(e);
-      const soon = e.stage === 'Hearing' && m.date && (Date.parse(`${m.date}T12:00:00Z`) - Date.parse(`${today}T12:00:00Z`)) / 86400000 <= 2 && m.date >= today;
+      const stage = m.cancelled ? 'Canceled' : e.stage;
+      const soon = stage === 'Hearing' && m.date && (Date.parse(`${m.date}T12:00:00Z`) - Date.parse(`${today}T12:00:00Z`)) / 86400000 <= 2 && m.date >= today;
       return el('li', { class: `line${b ? ' brief' : ''}` },
         el('p', { class: 'line-say' }, el('span', {}, e.isNew ? el('span', { class: 'badge-new', text: 'New' }) : null, e.isNew ? ' ' : null, text),
-          e.stage ? el('span', { class: `stage${/^(Vote|Hearing|Final vote|Possible vote|Decided)/.test(e.stage) ? ' act' : ''}${soon ? ' soon' : ''}`, text: e.stage }) : null),
+          stage ? el('span', { class: `stage${/^(Vote|Hearing|Final vote|Possible vote|Decided)/.test(stage) ? ' act' : ''}${soon ? ' soon' : ''}`, text: stage }) : null),
         b && b.what && normQ(b.what) !== normQ(text) ? el('p', { class: 'brief-what', text: b.what }) : null,
         b && b.history ? el('p', { class: 'line-before' }, el('b', { text: 'Before this:' }), ` ${b.history}`) : null,
         facts.length ? el('p', { class: 'line-facts' }, ...facts) : null);
@@ -257,7 +259,7 @@
     const link = d ? el('a', { class: 'item-link', href: d.url, rel: 'nofollow noopener', target: '_blank' },
       `${what.charAt(0).toUpperCase()}${what.slice(1)}${d.pdf ? ' (PDF)' : ''}`, el('span', { class: 'sr-only', text: `: ${where}` })) : null;
     // The speak line only for a hearing that is still on: not one postponed, canceled or withdrawn.
-    const entries = [...m.lines.values()].filter((v) => !/^(Postponed|Asks to postpone|Canceled|Withdrawn)/.test(v.stage || ''));
+    const entries = m.cancelled ? [] : [...m.lines.values()].filter((v) => !/^(Postponed|Asks to postpone|Canceled|Withdrawn)/.test(v.stage || ''));
     // The brief's own rule from the agenda when the writer found one; otherwise the general line.
     const rules = [];
     for (const v of entries) {

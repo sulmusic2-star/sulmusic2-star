@@ -3,7 +3,7 @@
 // The iCalendar feed has one all-day event per upcoming meeting with matched items.
 import { createHash } from 'node:crypto';
 import { allow, noStore } from './_store.js';
-import { SITE_NAME, TOPICS, fmtDate, loadHits, matchItems, publicBase, publicItem, resolveWatchlist, shareId } from './_watch.js';
+import { SITE_NAME, TOPICS, fmtDate, loadHits, loadLines, matchItems, publicBase, publicItem, resolveWatchlist, shareId } from './_watch.js';
 
 const RSS_LIMIT = 100;
 const JSON_LIMIT = 500;
@@ -13,6 +13,17 @@ const xml = (s) =>
 const html = xml;
 const rfc822 = (iso) => new Date(iso || Date.now()).toUTCString();
 const topicText = (h) => (h.topics || []).map((t) => TOPICS[t] || t).join(', ');
+// The site's sentence for an item (a written brief's line, or the rules-based one), else the agenda's own words.
+const lineFor = (lines, h) => (lines.lines && lines.lines[h.id] && lines.lines[h.id][0]) || h.snippet;
+const atFor = (lines, h) => (lines.at && lines.at[h.source_url]) || ['', '', false];
+// "7 pm" / "6:30 pm" -> [19, 0]; anything else -> null (an all-day event)
+function clockOf(text) {
+  const m = /(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m/i.exec(text || '');
+  if (!m) return null;
+  let hour = Number(m[1]) % 12;
+  if (m[3].toLowerCase() === 'p') hour += 12;
+  return [hour, Number(m[2] || 0)];
+}
 
 function easternToday() {
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
@@ -24,15 +35,19 @@ function describe(wl) {
   return `Agenda items on ${wl.topics.map((t) => TOPICS[t] || t).join(', ')} in ${shown}.`;
 }
 
-function rss(wl, items, base, feedUrl, generated) {
+function rss(wl, items, base, feedUrl, generated, lines = {}) {
   const entries = items.slice(0, RSS_LIMIT).map((h) => {
     const town = `${h.town}${h.state && h.state !== 'MA' ? `, ${h.state}` : ''}`;
+    const at = atFor(lines, h);
+    const when = [fmtDate(h.meeting_date), at[0], at[1]].filter(Boolean).join(', ');
     const body =
-      `<p>${html(h.snippet)}</p>` +
-      `<p>${html(town)} · ${html(h.board)} · meeting ${html(fmtDate(h.meeting_date))}</p>` +
+      (at[2] ? '<p>This meeting is canceled by the town.</p>' : '') +
+      `<p>${html(lineFor(lines, h))}</p>` +
+      (lineFor(lines, h) !== h.snippet ? `<p>Agenda wording: ${html(h.snippet)}</p>` : '') +
+      `<p>${html(town)} · ${html(h.board)} · meeting ${html(when)}</p>` +
       `<p><a href="${html(h.source_url)}">Open the agenda</a> · <a href="${html(publicItem(h, base).town_url)}">${html(h.town)} on ${html(SITE_NAME)}</a></p>`;
     return `<item>
-<title>${xml(`${town}: ${h.board}, ${fmtDate(h.meeting_date)} (${topicText(h)})`)}</title>
+<title>${xml(`${at[2] ? 'Canceled: ' : ''}${town}: ${h.board}, ${fmtDate(h.meeting_date)} (${topicText(h)})`)}</title>
 <link>${xml(h.source_url)}</link>
 <guid isPermaLink="false">351watch-${xml(h.id)}</guid>
 <pubDate>${rfc822(h.first_seen)}</pubDate>
@@ -88,7 +103,7 @@ function nextDay(iso) {
 }
 const stamp = (iso) => new Date(iso || Date.now()).toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
 
-function ics(wl, items, base, generated) {
+function ics(wl, items, base, generated, site = {}) {
   const today = easternToday();
   const meetings = new Map();
   for (const h of items) {
@@ -104,24 +119,33 @@ function ics(wl, items, base, generated) {
       const wanted = new Set(wl.topics);
       const topics = [...new Set(group.flatMap((g) => g.topics || []))].filter((t) => wanted.has(t)).map((t) => TOPICS[t] || t);
       const agendas = [...new Set(group.map((g) => g.source_url))];
+      const at = atFor(site, h);
+      const cancelled = Boolean(at[2]);
+      const clock = clockOf(at[0]);
       const description = [
-        ...group.map((g) => `• ${g.snippet}`),
+        ...(cancelled ? ['This meeting is canceled by the town.', ''] : []),
+        ...group.map((g) => `• ${lineFor(site, g)}`),
         '',
         ...agendas.map((u) => `Agenda: ${u}`),
         `Alerts page: ${base}/w/${shareId(wl)}`,
         'Confirm the time and place with the town; agendas can change.',
       ].join('\n');
       const uid = createHash('sha1').update(`${wl.id}|${key}`).digest('hex').slice(0, 20);
+      const pad = (n) => String(n).padStart(2, '0');
+      // a meeting with a known hour is a two-hour event in Eastern time; otherwise an all-day one
+      const start = clock ? `DTSTART;TZID=America/New_York:${icsDate(h.meeting_date)}T${pad(clock[0])}${pad(clock[1])}00` : `DTSTART;VALUE=DATE:${icsDate(h.meeting_date)}`;
+      const end = clock ? `DTEND;TZID=America/New_York:${icsDate(h.meeting_date)}T${pad(Math.min(clock[0] + 2, 23))}${pad(clock[1])}00` : `DTEND;VALUE=DATE:${icsDate(nextDay(h.meeting_date))}`;
       return [
         'BEGIN:VEVENT',
         `UID:${uid}@351watch`,
         `DTSTAMP:${stamp(generated)}`,
-        `DTSTART;VALUE=DATE:${icsDate(h.meeting_date)}`,
-        `DTEND;VALUE=DATE:${icsDate(nextDay(h.meeting_date))}`,
-        `SUMMARY:${icsText(`${h.town} ${h.board}: ${topics.join(', ')}`)}`,
-        `LOCATION:${icsText(`${h.town}, ${h.state}`)}`,
+        start,
+        end,
+        `SUMMARY:${icsText(`${cancelled ? 'CANCELED: ' : ''}${h.town} ${h.board}: ${topics.join(', ')}`)}`,
+        `LOCATION:${icsText(`${at[1] ? `${at[1]}, ` : ''}${h.town}, ${h.state}`)}`,
         `DESCRIPTION:${icsText(description)}`,
         `URL:${agendas[0]}`,
+        ...(cancelled ? ['STATUS:CANCELLED'] : []),
         'TRANSP:TRANSPARENT',
         'END:VEVENT',
       ];
@@ -154,6 +178,7 @@ export default async function handler(req, res) {
       return res.status(404).json({ ok: false, error: 'These alerts were not found.' });
     }
     const doc = await loadHits(req);
+    const lines = await loadLines(req);
     const base = publicBase(req);
     const items = matchItems(doc.hits, wl);
     // Feed readers get a short shared cache; the watchlist page asks for fresh=1 so edits show at once.
@@ -161,12 +186,12 @@ export default async function handler(req, res) {
 
     if (format === 'rss') {
       res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
-      return res.status(200).send(rss(wl, items, base, `${base}/api/feed?id=${shareId(wl)}&format=rss`, doc.generated));
+      return res.status(200).send(rss(wl, items, base, `${base}/api/feed?id=${shareId(wl)}&format=rss`, doc.generated, lines));
     }
     if (format === 'ics') {
       res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
       res.setHeader('Content-Disposition', 'inline; filename="agenda-ahead.ics"');
-      return res.status(200).send(ics(wl, items, base, doc.generated));
+      return res.status(200).send(ics(wl, items, base, doc.generated, lines));
     }
     return res.status(200).json({
       ok: true,
@@ -174,7 +199,10 @@ export default async function handler(req, res) {
       generated: doc.generated || null,
       window: doc.window || null,
       count: items.length,
-      items: items.slice(0, JSON_LIMIT).map((h) => publicItem(h, base)),
+      items: items.slice(0, JSON_LIMIT).map((h) => {
+        const at = atFor(lines, h);
+        return { ...publicItem(h, base), line: lineFor(lines, h), meeting_time: at[0] || null, place: at[1] || null, cancelled: Boolean(at[2]) };
+      }),
     });
   } catch (err) {
     console.error('feed failed', err);

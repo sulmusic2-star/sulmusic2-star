@@ -117,6 +117,18 @@ export async function loadHits(req) {
   return { ...doc, hits: Array.isArray(doc.hits) ? doc.hits : [] };
 }
 
+// /data/lines.json: the site's own sentence for each item, and each agenda's time, place and cancellation
+// ({at: {url: [time, place, cancelled]}}), so a feed says what the page says. Missing: the feed falls back to raw text.
+export async function loadLines(req) {
+  try {
+    const doc = await fetchStatic(req, '/data/lines.json');
+    return doc && typeof doc === 'object' ? doc : {};
+  } catch (err) {
+    console.error('lines unavailable', err.message);
+    return {};
+  }
+}
+
 // Valid towns: the site's town index plus any town present in the current data.
 export async function loadTownIndex(req, hitsDoc) {
   let towns = [];

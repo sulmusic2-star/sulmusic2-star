@@ -1743,7 +1743,7 @@ def group_meetings(ctx, hits):
         entry["note"] = entry["note"] or t["note"]
         link = h.get("doc_url") or h["source_url"]  # the live file when the town re-posted the agenda
         if link not in [d["url"] for d in m["docs"]]:
-            m["docs"].append({"url": link, "pdf": is_pdf(h)})
+            m["docs"].append({"url": link, "pdf": is_pdf(h), "title": h.get("document_title") or ""})
         if h.get("first_seen") and (not m["found"] or h["first_seen"] < m["found"]):
             m["found"] = h["first_seen"]
         m["topics"] += [x for x in item_topics(h) if x not in m["topics"]]
@@ -1766,8 +1766,10 @@ def group_meetings(ctx, hits):
             # No place, or "online" for what the writer read as a room plus a Zoom link (a hybrid meeting),
             # or a place with no room when the writer's names one ("Meeting Room #1, Carver Town Hall").
             room_in_place = re.search(ROOM_WORDS, m["place"] or "")
+            addr_in_place = re.search(r"\d", m["place"] or "")
             if (b.get("when_place") and m["source"] != "massdep_wetlands"
-                    and (m["place"] in ("", "online") or (not room_in_place and re.search(ROOM_WORDS, b["when_place"])))):
+                    and (m["place"] in ("", "online") or (not room_in_place and re.search(ROOM_WORDS, b["when_place"]))
+                         or (not addr_in_place and re.search(r"\b\d{1,5}\s+[A-Z][a-z]+", b["when_place"])))):
                 place = short_place(b["when_place"])
                 # Only a real place (a hall, room, school, street or address), not a writer's description of the setup.
                 named = re.search(r"\b(?:hall|room|cent(?:er|re)|school|street|st\.|road|rd\.|avenue|ave\.|drive|lane|way|"
@@ -1775,9 +1777,13 @@ def group_meetings(ctx, hits):
                 vague = re.search(r"not (?:stated|given|listed|named)|in[- ]person|\bTBD\b|to be announced", place, re.I)
                 hybrid = bool(re.search(r"\b(?:zoom|online|remote|hybrid|virtual|webinar|teams)\b", b["when_place"], re.I))
                 if place and named and not vague and not re.fullmatch(r"(?:zoom|online|remote|virtual)[^a-z]*", place, re.I):
-                    m["place"] = place + (", or join online" if hybrid else "")
+                    online = ", or on Zoom (link on the agenda)" if re.search(r"\bzoom\b", b["when_place"], re.I) else ", or join online"
+                    m["place"] = place + (online if hybrid else "")
                 elif hybrid and re.search(r"in[- ]person", b["when_place"], re.I):
                     m["place"] = "In person and online (the agenda doesn’t say which room)"
+    for m in out.values():
+        # a town that posts a "Revised Agenda" beside the original: the revised one is the link
+        m["docs"].sort(key=lambda d: not re.search(r"revis|amend|updat", d.get("title") or "", re.I))
     return list(out.values())
 
 
@@ -2067,7 +2073,7 @@ def meeting_head(ctx, m, show_town=True, with_board=True):
     elif m["board_key"] == "town_meeting":
         parts.append('<span class="meet-day">Date not found on the warrant</span>')
     if m.get("cancelled"):
-        parts.append('<span class="meet-canceled">Canceled, the town says</span>')
+        parts.append('<span class="meet-canceled">Canceled by the town</span>')
     if m["place"] and m["source"] != "massdep_wetlands":
         parts.append(f'<span class="meet-place">{e(place_text(m["place"]))}</span>')
     return " ".join(parts)
@@ -2857,7 +2863,7 @@ def build_town_page(ctx, t):
         if up_m:
             first = next((m for m in up_m if not m.get("cancelled")), up_m[0])
             next_line = (f"Next meeting on our list: {e(meeting_board(first))}, {e(when_text(ctx, first))}." if not first.get("cancelled")
-                         else f"The next meeting on our list, {e(meeting_board(first))} on {e(when_text(ctx, first))}, is canceled, the town says.")
+                         else f"The next meeting on our list, {e(meeting_board(first))} on {e(when_text(ctx, first))}, is canceled by the town.")
             listing = meeting_list(ctx, up_m, show_town=False, shown=3, more="More coming up")
         else:
             nxt = next_posted(ctx, t)
@@ -3850,16 +3856,15 @@ def lines_json(ctx):
     by_url = defaultdict(list)
     for h in ctx.hits:
         by_url[h["source_url"]].append(h["id"])
+    # at: {agenda url: [time, place, cancelled]} from the grouped meetings, so the alert pages and the calendar
+    # feed say the same room, the same hour and the same cancellation as the site.
     at = {}
-    for h in ctx.hits:
-        header = ctx.headers.get(h["source_url"], "")
-        d = (h.get("meeting_date") or "")[:10]
-        place = meeting_place(header, d or None)
-        if h.get("board_key") == "town_meeting" and place == "online":
-            place = ""
-        when = [meeting_time(header, d), place]
+    for m in group_meetings(ctx, ctx.hits):
+        place = "" if (m["board_key"] == "town_meeting" and m.get("place") == "online") else (m.get("place") or "")
+        when = [m.get("time") or "", place, bool(m.get("cancelled"))]
         if any(when):
-            at[h["source_url"]] = when
+            for d in m["docs"]:
+                at[d["url"]] = when
     return json.dumps({
         "generated": ctx.hits_doc.get("generated"),
         "today": ctx.today,
