@@ -2528,7 +2528,7 @@ def build_index(ctx):
 <div class="wrap narrow home">
 <section class="home-hero" aria-labelledby="hero-title">
   <h1 id="hero-title">See what’s coming up at your town meetings</h1>
-  <p class="lead">Free, with no account and no ads. We read <a href="/how-it-works#coverage">{towns_read} towns’</a> agendas in {e(abbr)} every morning and tell you when solar, battery storage or a data center is on one.</p>
+  <p class="lead">Free, without an account or ads. We read <a href="/how-it-works#coverage">{towns_read} towns’</a> agendas in {e(abbr)} every morning and tell you when solar, battery storage or a data center is on one.</p>
   {town_box(ctx)}
   {owner_html()}
 </section>
