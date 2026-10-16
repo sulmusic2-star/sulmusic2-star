@@ -1954,6 +1954,8 @@ def share_text(ctx, m, first, entry=None):
     head = f"{m['town']} {meeting_board(m)}" + (f", {when}" if when else "") + (f", {place}" if place else "")
     text = f"{head}. {plain_say(first)}" if first else head
     rule = speak_short(m, entry) if entry is not None else ""
+    if rule and not text.endswith((".", "!", "?", "”")):
+        text += "."  # a headline carries no final period; the sentence after it needs one
     return f"{text} {for_town(rule, m['state'], m['town'])}" if rule else text
 
 
