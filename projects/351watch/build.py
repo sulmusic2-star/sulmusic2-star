@@ -1045,7 +1045,7 @@ SPONSOR_RE = re.compile(r"\b(board|committee|commission|council|selectmen|petiti
 def public_brief(b):
     """A brief as the alert pages get it: the writers' note that an item was flagged twice is for the records."""
     out = dict(b)
-    out["what"] = re.sub(r"^Same (?:article|item)\b[^.]*\.\s*", "", (b.get("what") or "").strip())
+    out["what"] = re.sub(r"^(?:Same|This) (?:article|item)\b[^.]*\.\s*", "", (b.get("what") or "").strip())
     out.pop("missing", None)
     return out
 
@@ -1056,7 +1056,7 @@ def brief_text(base, b, town_meeting=False):
     writer's note that the item was flagged twice is for the records, not the page; on a warrant, the
     sponsor reads "Planning Board article" so it isn't taken for the meeting's board."""
     b = dict(b)
-    b["what"] = re.sub(r"^Same (?:article|item)\b[^.]*\.\s*", "", (b.get("what") or "").strip())
+    b["what"] = re.sub(r"^(?:Same|This) (?:article|item)\b[^.]*\.\s*", "", (b.get("what") or "").strip())
     for key in ("history", "next"):  # "Before this" is from our records by definition; the writers' hedge is noise on the page
         if b.get(key):
             b[key] = re.sub(r"\s*\((?:per|in|from)[^()]*our records\)|,? (?:per|in) our records\b", "", b[key]).strip()
@@ -2435,19 +2435,25 @@ def tracker_table(ctx, items, table_id=None):
 def ag_row(ctx, r, filters=False):
     year = (r.get("decision_date") or "")[:4]
     attrs = (f' data-outcome="{e(r.get("outcome", ""))}" data-bylaw="{e(r.get("bylaw_type", ""))}"'
-             f' data-tech="{e(r.get("technology", ""))}" data-year="{year}"') if filters else ""
+             f' data-tech="{e(r.get("technology", ""))}" data-year="{year}" data-county="{e(r.get("county") or "")}"') if filters else ""
     case = f", case {e(str(r['case_number']))}{e(r.get('letter_note', ''))}" if r.get("case_number") else ""
     label = "Decision letter" if r.get("record_type") == "ag_decision" else "Source"
     letter = (f'<a href="{e(r["letter_url"])}" rel="nofollow noopener" target="_blank">{label}{case}</a>'
               if r.get("letter_url") else "")
     town = ag_town(r.get("town"))
     city = " (city)" if "(city)" in (r.get("town") or "") else ""
+    what = "Court ruling" if r.get("record_type") == "court_ruling" else (r.get("bylaw_type") or "bylaw")
+    citation = (f"{town}, MA, {r.get('article') or what}: {r.get('outcome') or 'pending'}"
+                + (f" by the Massachusetts Attorney General, case {r['case_number']}" if r.get("case_number") else "")
+                + (f", {fmt_date(r['decision_date'])}" if r.get("decision_date") else "") + f". {r.get('summary') or ''}"
+                + (f" Source: {r['letter_url']}." if r.get("letter_url") else "") + f" Via Agenda Ahead, {BASE_URL}/attorney-general/rulings.")
+    cite_btn = f' <button type="button" class="link-btn cite" data-copy="{e(citation)}" hidden>Copy citation</button>'
     return f"""<tr{attrs}>
   <td class="when">{fmt_date(r['decision_date']) if r.get('decision_date') else 'Awaiting a decision'}{'<small>meeting date</small>' if r.get('decision_date') and (r.get('outcome') or '').startswith(('proposed', 'pending')) else ''}</td>
   <td class="town"><b>{ctx.town_link('MA', town)}{e(city)}</b><small>{e(r.get('article', ''))}</small></td>
   <td>{"Court ruling" if r.get("record_type") == "court_ruling" else e(first_up(r.get('bylaw_type', '')))}<br><small>{e(r.get('technology', ''))}</small></td>
   <td><span class="badge {outcome_class(r.get('outcome'))}">{e((r.get('outcome') or '').capitalize())}</span></td>
-  <td class="col-summary"><p class="summary">{e(r.get('summary', ''))}</p>{letter}</td>
+  <td class="col-summary"><p class="summary">{e(r.get('summary', ''))}</p>{letter}{cite_btn}</td>
 </tr>"""
 
 
@@ -2649,17 +2655,38 @@ def build_404(ctx):
     return page(ctx, f"Page not found | {SITE_NAME}", "That page isn’t here.", body, "/404", noindex=True)
 
 
-def list_tools_html(counties):
+def cant_read_by_county(ctx):
+    """{"Worcester": "18 towns: its site runs a bot check (Ashburnham, Athol, ...); asks programs to stay away (Barre, Worcester)"}
+    for the towns we don't read, grouped by the reason."""
+    by = defaultdict(lambda: defaultdict(list))
+    for t in ctx.towns:
+        if t.get("monitored") or not t.get("county"):
+            continue
+        by[t["county"]][REASON_SHORT.get(t.get("reason_code") or "", "we have not worked out how yet")].append(t["town"])
+    out = {}
+    for county, reasons in by.items():
+        n = sum(len(v) for v in reasons.values())
+        parts = [f"{why} ({', '.join(sorted(towns))})" for why, towns in sorted(reasons.items(), key=lambda kv: -len(kv[1]))]
+        out[county] = f"{plural(n, 'town')}: " + "; ".join(parts)
+    return out
+
+
+def list_tools_html(counties, cant=None):
     """The row above a meeting list: county and town filters, the view switch, "only my towns" for people with
-    alerts on this device, and the count. app.js (setupMeetingFilter, setupViewSwitch) runs it."""
+    alerts on this device, the count, and under a chosen county the towns there we can't read, with the reason.
+    app.js (setupMeetingFilter, setupViewSwitch) runs it."""
     opts = "".join(f'<option value="{e(c)}">{e(c)} County</option>' for c in counties)
     county = f'<label>County<select data-key="county"><option value="">All</option>{opts}</select></label>' if len(counties) > 1 else ""
+    cant_html = "".join(
+        f'<p class="form-note cant-list" data-cant-county="{e(c)}" hidden>Not read yet in {e(c)} County, {e(v)}. <a href="/how-it-works#gaps">More on why</a>.</p>'
+        for c, v in sorted((cant or {}).items()) if c in counties)
     return f"""<div class="filterbar list-tools" data-meeting-filter>
     {county}
     <label>Town<input type="search" data-key="town" placeholder="Any town" autocomplete="off"></label>
     <p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="full" aria-pressed="true">With write-ups</button><button type="button" class="link-btn" data-view="lines" aria-pressed="false">One line each</button></p>
     <p class="count" data-count aria-live="polite"></p>
     <p class="form-note mine-row"><button type="button" class="link-btn" data-my-towns hidden>Only my towns</button></p>
+    {cant_html}
   </div>"""
 
 
@@ -2679,7 +2706,7 @@ def build_upcoming(ctx):
   <p class="lead">Town board meetings with solar, battery storage, data centers, zoning, housing or cell towers on the agenda, read from the agendas every morning.</p>
   <p class="actions"><a class="btn" href="/watch">Get alerts for your town</a></p>
   <p class="form-note" data-slop-ignore>By topic: {" · ".join(f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' for tp in TOPIC_PAGES)} · <a href="/topics">all topics</a></p>
-  {list_tools_html(counties)}
+  {list_tools_html(counties, cant_read_by_county(ctx))}
 </section>
 <section aria-labelledby="soon-title">
   <h2 id="soon-title">Next 7 days</h2>
@@ -2957,12 +2984,12 @@ def cant_check_html(ctx, t, up_m):
     phone = clerk_phone(t)
     host = re.sub(r"^https?://(www\.)?", "", (t.get("website") or "")).rstrip("/")
     site = (f' or check <a href="{e(t["website"])}" rel="nofollow noopener" target="_blank">{e(host)}</a>' if host else "")
-    call = f"Call the {e(town)} Town Clerk" + (f" at {e(phone)}" if phone else "")
+    call = for_town(f"Call the {e(town)} Town Clerk", state, town) + (f" at {e(phone)}" if phone else "")
     ids, _ = near_ids(ctx, t)
     n_near = len([x for x in ids if x in ctx.town_by_id])
     filings = meeting_list(ctx, up_m, show_town=False, shown=3, more="More coming up")
     return f"""<section class="cant" aria-labelledby="town-title">
-  <p class="lead cant-lead">We can’t read {e(town)}’s agendas yet. {e(reason)}. {call}{site}.</p>
+  <p class="lead cant-lead">We can’t read {e(town)}’s agendas yet. {e(for_town(reason, state, town))}. {call}{site}.</p>
   {next_door_html(ctx, t)}
   <p class="actions"><a class="btn" href="{e(alerts_url(tid))}">Get alerts for the {n_near} towns next to {e(town)}</a></p>
   <div class="request" data-request-town="{e(tid)}" data-town-name="{e(town)}, {state}">
@@ -3249,7 +3276,7 @@ def build_topic_page(ctx, tp):
     write(f"topics/{tp['slug']}.csv", topic_csv(ctx, up_m))
     tools = f"""<p class="action-row">{copy_week}<a href="/topics/{tp['slug']}.csv" download>Download the list (CSV)</a></p>""" if up_m else ""
     counties = sorted({(ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or "" for m in up_m} - {""})
-    county_filter = list_tools_html(counties) if up_m else ""
+    county_filter = list_tools_html(counties, cant_read_by_county(ctx)) if up_m else ""
     ledger_note = ""
     if tp["slug"] == "data-centers" and ledger_rows(ctx):
         n_rows = ledger_rows(ctx)
@@ -3799,8 +3826,8 @@ AG_PAGES = [("/attorney-general", "Summary"), ("/attorney-general/rulings", "Eve
 LEDGER_STATUS = [("in effect", "In effect"), ("adopted", "Adopted"), ("proposed", "Proposed"), ("expired", "Expired"),
                  ("disapproved", "Disapproved"), ("withdrawn", "Withdrawn"), ("reported", "Reported in the press, not confirmed")]
 LEDGER_COLS = ["state", "town", "county", "measure", "body", "proposed_date", "adopted_date", "ag_decision", "ag_decision_date",
-               "ag_case_number", "in_effect_from", "in_effect_to", "proposed_term_from", "proposed_term_to", "status", "summary",
-               "sources", "confidence"]
+               "ag_case_number", "ag_decision_date_note", "in_effect_from", "in_effect_to", "proposed_term_from", "proposed_term_to",
+               "status", "summary", "sources", "confidence"]
 LEDGER_BADGE = {"in effect": "active", "adopted": "pending", "proposed": "pending", "expired": "cleared",
                 "disapproved": "cleared", "withdrawn": "cleared", "reported": "info"}
 
@@ -3838,7 +3865,7 @@ def ledger_csv(rows):
     w = csv.writer(out)
     w.writerow(LEDGER_COLS)
     for r in rows:
-        w.writerow([" ".join(r.get("sources") or []) if c == "sources" else (r.get(c) or "") for c in LEDGER_COLS])
+        w.writerow([" | ".join(r.get("sources") or []) if c == "sources" else (r.get(c) or "") for c in LEDGER_COLS])
     return out.getvalue()
 
 
@@ -3894,7 +3921,8 @@ def build_data_center_ledger(ctx):
         ag = ""
         if r.get("ag_decision"):
             ag = e(first_up(r["ag_decision"]))
-            bits = ([fmt_date(r["ag_decision_date"])] if r.get("ag_decision_date") else []) + ([f"case {r['ag_case_number']}"] if r.get("ag_case_number") else [])
+            bits = ([fmt_date(r["ag_decision_date"]) + (f" ({r['ag_decision_date_note']})" if r.get("ag_decision_date_note") else "")]
+                    if r.get("ag_decision_date") else []) + ([f"case {r['ag_case_number']}"] if r.get("ag_case_number") else [])
             if bits:
                 ag += f", {e(', '.join(bits))}"
         elif st == "MA":
@@ -3921,6 +3949,17 @@ def build_data_center_ledger(ctx):
             conf = (f'<p class="ledger-conf">How sure: {e(level.strip())}.' + (f" {e(first_up(note.strip()))}" if note else "") + "</p>")
         search = " ".join(filter(None, [town, r.get("county") or "", STATE_NAMES.get(st, st), st, r.get("measure") or "", r.get("body") or "",
                                         label[r["status"]], r.get("summary") or ""]))
+        cite_dates = "; ".join(x for x in [
+            f"proposed {fmt_date(r['proposed_date'])}" if r.get("proposed_date") else "",
+            f"adopted {fmt_date(r['adopted_date'])}" if r.get("adopted_date") else "",
+            (f"Attorney General {r['ag_decision']}" + (f" {fmt_date(r['ag_decision_date'])}" if r.get("ag_decision_date") else "")
+             + (f", case {r['ag_case_number']}" if r.get("ag_case_number") else "")) if r.get("ag_decision") else "",
+            f"in effect {fmt_date(r['in_effect_from'])}" + (f" to {fmt_date(r['in_effect_to'])}" if r.get("in_effect_to") else "") if r.get("in_effect_from") else "",
+        ] if x)
+        citation = (f"{town}, {st}: {r.get('measure') or 'measure'} on data centers, {label[r['status']].lower()}"
+                    + (f" ({cite_dates})" if cite_dates else "") + f". {r.get('summary') or ''} Sources: {' | '.join(r.get('sources') or [])}. "
+                    f"Agenda Ahead data-center ledger, {BASE_URL}/attorney-general/data-centers, checked {generated}.")
+        cite_btn = f'<button type="button" class="link-btn cite" data-copy="{e(citation)}" hidden>Copy citation</button>'
         body_rows.append(f"""<tr data-search="{e(search)}" data-status="{e(r['status'])}">
   <td class="town" data-label="Town"><b>{town_cell}</b>{county}</td>
   <td data-label="Measure">{e(first_up(r.get('measure') or ''))}{f"<br><small>{e(r['body'])}</small>" if r.get('body') else ''}</td>
@@ -3928,7 +3967,7 @@ def build_data_center_ledger(ctx):
 <dt>Adopted</dt><dd>{ledger_date(r.get('adopted_date'), 'Not yet' if r['status'] == 'proposed' else 'Not found')}</dd>
 <dt>Attorney General</dt><dd>{ag}</dd><dt>{effect_key}</dt><dd>{effect}</dd></dl></td>
   <td class="col-summary" data-label="Status"><span class="badge {LEDGER_BADGE[r['status']]}">{e(label[r['status']])}</span>
-    <p class="summary">{e(r.get('summary') or '')}</p><p class="ledger-src">{srcs}</p>{conf}</td>
+    <p class="summary">{e(r.get('summary') or '')}</p><p class="ledger-src">{srcs} {cite_btn}</p>{conf}</td>
 </tr>""")
     body = f"""
 <div class="wrap">
@@ -4046,22 +4085,32 @@ def build_ag_rulings(ctx):
     outcomes = [o for o, _ in Counter(r.get("outcome") for r in ag).most_common()]
     bylaws = [b for b, _ in Counter(r.get("bylaw_type") for r in ag).most_common()]
     techs = [t for t, _ in Counter(r.get("technology") for r in ag).most_common()]
-    years = sorted({(r.get("decision_date") or "")[:4] for r in ag if r.get("decision_date")}, reverse=True)
+    # the Attorney General's own decisions (and the bylaws awaiting one) in the table; court rulings and city
+    # ordinances, which the Attorney General does not review, in their own table under it
+    decisions = [r for r in ag if r.get("record_type") in ("ag_decision", "pending_ag_review")]
+    context = [r for r in ag if r.get("record_type") not in ("ag_decision", "pending_ag_review")]
+    outcomes = [o for o, _ in Counter(r.get("outcome") for r in decisions).most_common()]
+    years = sorted({(r.get("decision_date") or "")[:4] for r in decisions if r.get("decision_date")}, reverse=True)
+    counties = sorted({r.get("county") for r in decisions if r.get("county")})
     body = f"""
 <div class="wrap">
 <h1 id="ag-title">Every Attorney General ruling on solar, battery storage and data-center bylaws</h1>
-<p class="lead">{e(ag_summary_line(n))} Each decision letter links to the Attorney General’s public website; court rulings and city ordinances are included for context and labeled as such.</p>
+<p class="lead">{e(ag_summary_line(n))} Each decision letter links to the Attorney General’s public website. Court rulings and city ordinances, which the Attorney General does not review, are in their own table below.</p>
 {ag_nav("/attorney-general/rulings")}
 <div class="filterbar" data-filters="ag-ledger">
   <label>Outcome<select data-key="outcome"><option value="">All</option>{opts(outcomes)}</select></label>
   <label>Kind of bylaw<select data-key="bylaw"><option value="">All</option>{opts(bylaws)}</select></label>
   <label>Technology<select data-key="tech"><option value="">All</option>{opts(techs)}</select></label>
+  <label>County<select data-key="county"><option value="">All</option>{opts(counties)}</select></label>
   <label>Year<select data-key="year"><option value="">All</option>{opts(years)}</select></label>
   <label>Words<input type="search" data-search></label>
   <p class="count" data-count aria-live="polite"></p>
 </div>
-{ag_table(ctx, ag, table_id='ag-ledger', filters=True)}
+{ag_table(ctx, decisions, table_id='ag-ledger', filters=True)}
 <p class="action-row"><a href="/attorney-general/rulings.csv" download>Download the table (CSV)</a></p>
+<h2 id="ag-context">Court rulings and city ordinances</h2>
+<p>For context: the courts' rulings on these bylaws, and what cities (which adopt ordinances without Attorney General review) have done.</p>
+{ag_table(ctx, context, table_id='ag-context')}
 </div>
 """
     write("attorney-general/rulings.csv", ag_csv(ag))

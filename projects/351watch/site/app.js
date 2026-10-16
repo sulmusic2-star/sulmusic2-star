@@ -849,6 +849,14 @@ function setupMeetingFilter() {
     }
     // a day heading with nothing left under it goes too
     for (const d of days) d.hidden = !d.querySelector('.meeting:not([hidden])');
+    // "Show meetings more than 30 days out (8)" counts what the filter leaves
+    for (const det of document.querySelectorAll('details.more')) {
+      const summary = det.querySelector(':scope > summary');
+      const n = det.querySelectorAll('.meeting:not([hidden])').length;
+      if (summary && /\(\d+\)/.test(summary.textContent)) summary.textContent = summary.textContent.replace(/\(\d+\)/, `(${n})`);
+    }
+    // under a chosen county, the towns there we can't read
+    for (const p of bar.querySelectorAll('[data-cant-county]')) p.hidden = p.dataset.cantCounty !== county;
     const narrowed = county || want || onlyMine;
     count.textContent = narrowed ? (shown ? `${shown} of ${meetings.length} meetings` : 'Nothing coming up for that choice.') : '';
     // the address bar carries the choice, so the page can be shared or bookmarked
