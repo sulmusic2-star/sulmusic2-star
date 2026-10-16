@@ -345,17 +345,22 @@
           place: at[1] || "", status: at[2] ? "Canceled" : "", document: m.title || "Agenda", topics: words(m.topics),
           agenda_url: url, town_url: m.town_url ? location.origin + m.town_url : "" };
         if (!items.length) rows.push({ ...base, item: "" });
-        for (const it of items) rows.push({ ...base, item: it[0], status: at[2] ? "Canceled" : (it[9] || "") });
+        const seenItems = new Set();
+        for (const it of items) {
+          if (seenItems.has(it[0])) continue; // one agenda item flagged twice is one line
+          seenItems.add(it[0]);
+          rows.push({ ...base, item: it[0], status: at[2] ? "Canceled" : (it[9] || "") });
+        }
       }
       if (kind === "copy") {
         const byDoc = new Map();
         for (const r of rows) {
           const key = r.agenda_url;
           if (!byDoc.has(key)) byDoc.set(key, { ...r, items: [] });
-          if (r.item) byDoc.get(key).items.push(r.item);
+          if (r.item) byDoc.get(key).items.push(r.status && r.status !== "Canceled" ? `${r.item} (${r.status})` : r.item);
         }
         const text = [...byDoc.values()].map((r) => {
-          const head = `${r.town}${r.state && r.state !== "MA" ? `, ${r.state}` : ""} ${r.board}${r.date ? `, ${fmtDate(r.date)}` : ""}${r.time ? `, ${r.time}` : ""}${r.place ? `, ${r.place}` : ""}${r.status ? ` (${r.status.toLowerCase()})` : ""}`;
+          const head = `${r.town}${r.state && r.state !== "MA" ? `, ${r.state}` : ""} ${r.board}${r.date ? `, ${fmtDate(r.date)}` : ""}${r.time ? `, ${r.time}` : ""}${r.place ? `, ${r.place}` : ""}${r.status === "Canceled" ? " (canceled by the town)" : ""}`;
           return `${head}: ${r.items.length ? r.items.join("; ") : r.document}. ${r.agenda_url}`;
         }).join("\n");
         btn.textContent = (await copyPlain(text)) ? `Copied ${byDoc.size} lines` : "Couldn’t copy";
