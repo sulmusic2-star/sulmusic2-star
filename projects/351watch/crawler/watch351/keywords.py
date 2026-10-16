@@ -62,6 +62,8 @@ TOPICS: dict[str, list[str]] = {
     ],
     "zoning_amendment": [
         r"\bzoning\s+(?:by-?law\s+|ordinance\s+|map\s+)?amendments?\b",
+        # an overlay district being created, changed or repealed ("repeal the Brant Rock Village Overlay District")
+        r"\b(?:repeal|rescind|amend|establish|creat|adopt|delet|eliminat|remov)\w*\b[^.;:]{0,60}?\boverlay\s+districts?\b",
         r"\b(?:by-?law|ordinance)\s+amendments?\b",
         r"\bamend(?:ing|ment|ments)?\s+(?:to\s+)?(?:the\s+)?(?:\w+\s+){0,2}zoning\s+(?:by-?laws?|ordinances?|maps?)\b",
     ],

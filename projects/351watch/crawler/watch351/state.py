@@ -247,21 +247,28 @@ class DocIndex:
         seen, so its id and lead time never change once published."""
         recs = sorted((r for r in self.records() if r.get("hits") and r.get("board_key")),
                       key=lambda r: (r.get("first_seen") or "", r["url"]))
-        by_url = {r["url"]: r for r in recs}
+        all_docs = {r["url"]: r for r in self.records()}
         seen, out = set(), []
         for rec in recs:
             # A replaced document: its items that the new file still carries stay, under their old ids,
             # with the link pointing at the new file; items the new file dropped go with it. When the
-            # new file isn't read yet (fetch failed), everything stays and only the link changes.
-            keep = None
+            # new file isn't read yet (fetch failed), everything stays and only the link changes. A file
+            # replaced more than once (Carver posted its Oct 20 agenda three times) follows the chain to the live one.
+            new, keep = None, None
             if rec.get("status") == "replaced":
-                new = by_url.get(rec.get("replaced_by") or "")
-                if new is not None:
+                new = all_docs.get(rec.get("replaced_by") or "")
+                hops = 0
+                while new is not None and new.get("status") == "replaced" and hops < 10:
+                    new = all_docs.get(new.get("replaced_by") or "")
+                    hops += 1
+                if new is not None and new.get("status") == "ok":
                     keep = {h.get("ctx") or norm_ctx(h["snippet"]) for h in new.get("hits") or []}
             for h in self.hits_of(rec):
                 ctx = h.pop("_ctx")
                 if keep is not None and ctx not in keep:
                     continue
+                if new is not None:
+                    h["doc_url"] = new["url"]
                 key = (h["state"], h["town"], h["board_key"], h["meeting_date"], ctx)
                 if key in seen:
                     continue

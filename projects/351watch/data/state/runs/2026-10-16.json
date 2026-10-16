@@ -9,11 +9,11 @@
  },
  "date": "2026-10-16",
  "document_errors": 0,
- "documents_already_indexed": 13,
+ "documents_already_indexed": 0,
  "documents_deferred": 0,
  "documents_listed": 14,
  "documents_needing_ocr": 0,
- "documents_rematched": 0,
+ "documents_rematched": 13,
  "documents_retried": 0,
  "documents_too_large": [
   {
@@ -38,42 +38,42 @@
    "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577"
   }
  ],
- "duration_seconds": 1.8,
+ "duration_seconds": 4.0,
  "errors": [],
  "errors_total": 0,
- "finished": "2026-10-16T15:20:15+00:00",
- "hits_current": 1290,
+ "finished": "2026-10-16T16:24:59+00:00",
+ "hits_current": 1170,
  "index": {
   "by_state": {
-   "MA": 3069,
+   "MA": 3062,
    "NY": 183,
    "RI": 345
   },
   "by_status": {
    "error": 16,
    "needs_ocr": 3,
-   "ok": 3577,
-   "replaced": 1
+   "ok": 3569,
+   "replaced": 2
   },
   "by_text_source": {
-   "docx": 19,
+   "docx": 18,
    "html": 164,
    "none": 16,
-   "ocr": 840,
-   "pdf": 2558
+   "ocr": 836,
+   "pdf": 2556
   },
-  "documents": 3597,
-  "hits": 1337,
-  "pruned": 0,
+  "documents": 3590,
+  "hits": 1326,
+  "pruned": 8,
   "towns": 307,
-  "with_hits": 728
+  "with_hits": 726
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 225142,
-   "listing": 126842
+   "document": 225161,
+   "listing": 126844
   },
-  "cache_hits": 0,
+  "cache_hits": 13,
   "errors": 0,
   "requests": 2,
   "requests_by_purpose": {
@@ -94,7 +94,7 @@
   "solar": 1
  },
  "options": {
-  "matcher_version": "66736d9fde",
+  "matcher_version": "a38020c644",
   "no_network_docs": false,
   "ocr_max_pages": 6,
   "pdftotext": true,
@@ -127,9 +127,21 @@
    ],
    "towns_attempted": 1,
    "towns_succeeded": 1
+  },
+  {
+   "duration_seconds": 1.8,
+   "new_documents": 1,
+   "new_hits": 2,
+   "requests": 2,
+   "started": "2026-10-16T15:20:13+00:00",
+   "states": [
+    "MA"
+   ],
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   }
  ],
- "started": "2026-10-16T15:20:13+00:00",
+ "started": "2026-10-16T16:24:55+00:00",
  "states": [
   "MA"
  ],

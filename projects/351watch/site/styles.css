@@ -467,6 +467,9 @@ td small, th small { display: block; color: var(--muted); font-weight: 400; }
   .trend-filters legend { line-height: 28px; }
   .near-me .field-row { flex-wrap: nowrap; }
   .near-me .field-row .btn { flex: 0 0 auto; }
+  /* the town box: button beside the input, so the suggestion list never drops over it */
+  .townbox .field-row { flex-wrap: nowrap; }
+  .townbox .field-row .btn { flex: 0 0 auto; padding-left: 14px; padding-right: 14px; }
   /* /topics on a phone: one line per topic instead of a four-column table */
   .counts thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .counts, .counts tbody, .counts tr { display: block; }
@@ -566,6 +569,7 @@ h1 { margin-top: var(--s6); margin-bottom: var(--s3); }
 .ticket p { margin: 0 0 var(--s2); }
 .ticket-when { font: 700 var(--t-h3)/1.22 var(--f-head); color: var(--ink); }
 .ticket-place { color: var(--ink); }
+.ticket-watch { color: var(--ink); font-size: var(--t-sm); }
 .ticket-speak { color: var(--muted); font-size: var(--t-sm); }
 .ticket .actions { margin: var(--s4) 0 0; }
 .ticket .actions .btn { width: 100%; }
@@ -729,7 +733,7 @@ details.disclose[open] { padding-bottom: var(--s4); }
 }
 
 /* Written briefs: the one-line heading, the "what" sentence, then the facts line */
-.brief-what { margin: var(--s1) 0 0; max-width: 70ch; }
+.brief-what { margin: var(--s1) 0 0; max-width: 30em; }
 .brief-facts { display: grid; grid-template-columns: max-content 1fr; gap: var(--s1) var(--s3); margin: var(--s2) 0 0; max-width: 70ch; font-size: var(--t-sm); }
 .brief-facts .fact { display: contents; }
 .brief-facts dt { font-weight: 600; color: var(--muted); }

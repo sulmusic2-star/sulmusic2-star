@@ -69,6 +69,18 @@ class ReplacedTests(unittest.TestCase):
         self.assertEqual(old["status"], "ok")
         self.assertNotIn("replaced_by", old)
 
+    def test_replaced_twice_links_to_the_last_file(self):
+        third = "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_10202026-632"
+        self.index.retire_replaced("MA", "Carver", {("select_board", "2026-10-20"): {NEW}}, TODAY)
+        self.index.put(rec(third, "2026-10-18T11:00:00+00:00", ["Purchase of solar credits, item 6"]))
+        self.index.retire_replaced("MA", "Carver", {("select_board", "2026-10-20"): {third}}, date(2026, 10, 18))
+        hits = {h["snippet"]: h for h in self.index.current_hits()}
+        # the item all three files carry keeps the first file's identity and links to the third
+        self.assertEqual(hits["Purchase of solar credits, item 6"]["source_url"], OLD)
+        self.assertEqual(hits["Purchase of solar credits, item 6"]["doc_url"], third)
+        # the second file's own item, dropped by the third, is gone
+        self.assertNotIn("Solar canopy at the school", hits)
+
     def test_replacement_not_read_yet_keeps_everything_with_the_live_link(self):
         unread = "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_10202026-640"
         self.index.retire_replaced("MA", "Carver", {("select_board", "2026-10-20"): {unread}}, TODAY)
