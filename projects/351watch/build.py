@@ -2449,10 +2449,10 @@ def ag_row(ctx, r, filters=False):
                 + (f" Source: {r['letter_url']}." if r.get("letter_url") else "") + f" Via Agenda Ahead, {BASE_URL}/attorney-general/rulings.")
     cite_btn = f' <button type="button" class="link-btn cite" data-copy="{e(citation)}" hidden>Copy citation</button>'
     return f"""<tr{attrs}>
-  <td class="when">{fmt_date(r['decision_date']) if r.get('decision_date') else 'Awaiting a decision'}{'<small>meeting date</small>' if r.get('decision_date') and (r.get('outcome') or '').startswith(('proposed', 'pending')) else ''}</td>
-  <td class="town"><b>{ctx.town_link('MA', town)}{e(city)}</b><small>{e(r.get('article', ''))}</small></td>
-  <td>{"Court ruling" if r.get("record_type") == "court_ruling" else e(first_up(r.get('bylaw_type', '')))}<br><small>{e(r.get('technology', ''))}</small></td>
-  <td><span class="badge {outcome_class(r.get('outcome'))}">{e((r.get('outcome') or '').capitalize())}</span></td>
+  <td class="when" data-label="Date">{fmt_date(r['decision_date']) if r.get('decision_date') else 'Awaiting a decision'}{'<small>meeting date</small>' if r.get('decision_date') and (r.get('outcome') or '').startswith(('proposed', 'pending')) else ''}</td>
+  <td class="town" data-label="Town"><b>{ctx.town_link('MA', town)}{e(city)}</b><small>{e(r.get('article', ''))}</small></td>
+  <td data-label="Type">{"Court ruling" if r.get("record_type") == "court_ruling" else e(first_up(r.get('bylaw_type', '')))}<br><small>{e(r.get('technology', ''))}</small></td>
+  <td data-label="Outcome"><span class="badge {outcome_class(r.get('outcome'))}">{e((r.get('outcome') or '').capitalize())}</span></td>
   <td class="col-summary"><p class="summary">{e(r.get('summary', ''))}</p>{letter}{cite_btn}</td>
 </tr>"""
 

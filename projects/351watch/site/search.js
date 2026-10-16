@@ -39,6 +39,10 @@
   let loaded = []; // result data rendered so far, for Copy this list and Download CSV
   let tools = null;
   let flaggedOnly = false; // hide agendas with no flagged item (the OCR of a routine agenda is not a lead)
+  let weekOnly = false; // only meetings from today through seven days out (a Monday list)
+  const todayISO = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  const weekEndISO = new Date(Date.now() - new Date().getTimezoneOffset() * 60000 + 7 * 86400000).toISOString().slice(0, 10);
+  const inWeek = (d) => Boolean(d) && d >= todayISO && d <= weekEndISO;
   let linesDoc = null; // Promise of /data/lines.json: the site's sentence, status, time and place per agenda
   const loadLines = () => (linesDoc ||= fetch("/data/lines.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({})));
   let more = null; // "Show more" button, created on demand
@@ -280,7 +284,15 @@
         list.classList.toggle("flagged-only", flaggedOnly);
       });
       only.append(box, " Only agendas with a flagged item");
-      tools.append(copyBtn, csvBtn, only);
+      const week = el("label", "result-only");
+      const weekBox = document.createElement("input");
+      weekBox.type = "checkbox";
+      weekBox.addEventListener("change", () => {
+        weekOnly = weekBox.checked;
+        list.classList.toggle("week-only", weekOnly);
+      });
+      week.append(weekBox, " Only the next 7 days");
+      tools.append(copyBtn, csvBtn, only, week);
       list.after(tools);
     }
     tools.hidden = !loaded.length;
@@ -343,6 +355,7 @@
         const ids = (L.by_url && L.by_url[url]) || [];
         const items = ids.map((id) => L.lines && L.lines[id]).filter((x) => x && x[3] !== "mention");
         if (flaggedOnly && !items.length) continue;
+        if (weekOnly && !inWeek(m.date)) continue;
         const base = { town: m.town || "", state: m.state || "", board: m.board || "", date: m.date || "", time: at[0] || "",
           place: at[1] || "", status: at[2] ? "Canceled" : "", document: m.title || "Agenda", topics: words(m.topics),
           agenda_url: url, town_url: m.town_url ? location.origin + m.town_url : "" };
@@ -388,6 +401,7 @@
     const m = d.meta || {};
     const li = el("li", "result");
     if (m.topics) li.dataset.topics = m.topics;
+    if (inWeek(m.date)) li.dataset.week = "1";
     const title = el("a", "result-title", m.title || "Agenda");
     title.href = d.url;
     const when = m.date ? fmtDate(m.date) + (m.date >= today ? ", coming up" : "") : "Undated";
