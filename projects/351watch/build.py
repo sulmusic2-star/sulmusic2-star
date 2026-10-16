@@ -1132,7 +1132,8 @@ def item_text_rules(h):
     if name or addr:
         return {"say": full_stop(f"Discusses {obj}{cont} (no vote listed)."), "note": note, "kind": "list", "stage": stage,
                 "facts": [x for x in (addr,) if x]}
-    about = join_and([MENTION_NOUN.get(t, t.replace("_", " ")) for t in ordered_topics(topics)][:3]) or "these subjects"
+    about = join_and([("a 40R smart-growth district" if t == "40b_comprehensive_permit" and SMART_GROWTH.search(text) else MENTION_NOUN.get(t, t.replace("_", " ")))
+                      for t in ordered_topics(topics)][:3]) or "these subjects"
     words = short_quote(text, 110)
     say = f"Mentions {about} in “{words}”" if words and not junk(words) else f"Mentions {about}."
     return {"say": say, "note": note, "kind": "mention", "stage": "", "facts": []}
@@ -1207,8 +1208,14 @@ def item_number(a):
     return f"item {m.group(1)}" if m else ""
 
 
+POSSIBLE_VOTE = re.compile(r"\b(?:possible|potential|may)\s+vote|discussion\s+and\s+(?:possible\s+)?vote", re.I)
+SMART_GROWTH = re.compile(r"\b40\s?R\b|smart.growth", re.I)
+
+
 def subject_noun(a):
     s = a["subject"]
+    if s == "40b_comprehensive_permit" and SMART_GROWTH.search(a.get("item") or ""):
+        return "a 40R smart-growth district"  # zoning for denser housing, not a 40B permit
     if s in ("data_center", "battery_storage") and TR.SUBJECT_RE["data_center"].search(a["item"]) \
             and TR.SUBJECT_RE["battery_storage"].search(a["item"]):
         return "battery storage and data centers"
@@ -1356,6 +1363,10 @@ def analysis_text(h, a):
     def done(say, kind="act", stage="Discussion", rank_act=None):
         say = full_stop(say[:1].upper() + say[1:])
         say = re.sub(r"\) \((?=[a-z])", "; ", say)  # "(a moratorium) (continued …) (no vote listed)" reads as one aside
+        if stage == "Discussion" and POSSIBLE_VOTE.search(a.get("item") or ""):
+            # "Discussion and possible vote": the agenda allows a vote without promising one
+            stage = "Possible vote"
+            say = say.replace(" (no vote listed)", "; a vote is possible").replace("; no vote listed)", "; a vote is possible)")
         if f"{h['state']}:{h['town']}" in CITIES:
             say = city_words(say)
         if past_tm:
