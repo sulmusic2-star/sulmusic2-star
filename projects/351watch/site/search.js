@@ -38,6 +38,9 @@
   let pending = []; // results not rendered yet
   let loaded = []; // result data rendered so far, for Copy this list and Download CSV
   let tools = null;
+  let flaggedOnly = false; // hide agendas with no flagged item (the OCR of a routine agenda is not a lead)
+  let linesDoc = null; // Promise of /data/lines.json: the site's sentence, status, time and place per agenda
+  const loadLines = () => (linesDoc ||= fetch("/data/lines.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({})));
   let more = null; // "Show more" button, created on demand
 
   const load = () =>
@@ -267,7 +270,15 @@
       csvBtn.type = "button";
       copyBtn.addEventListener("click", () => exportResults("copy", copyBtn));
       csvBtn.addEventListener("click", () => exportResults("csv", csvBtn));
-      tools.append(copyBtn, csvBtn);
+      const only = el("label", "result-only");
+      const box = document.createElement("input");
+      box.type = "checkbox";
+      box.addEventListener("change", () => {
+        flaggedOnly = box.checked;
+        list.classList.toggle("flagged-only", flaggedOnly);
+      });
+      only.append(box, " Only agendas with a flagged item");
+      tools.append(copyBtn, csvBtn, only);
       list.after(tools);
     }
     tools.hidden = !loaded.length;
@@ -319,24 +330,46 @@
         more.hidden = !pending.length;
         more.textContent = `Show ${Math.min(PAGE, pending.length)} more`;
       }
-      const rows = loaded.map((d) => {
+      const L = await loadLines();
+      const words = (t) => (t || "").split(",").filter(Boolean).map((k) => LABELS.topic[k] || k).join(", ");
+      // one row per flagged item (the site's sentence and status), or one row for the agenda when it has none
+      const rows = [];
+      for (const d of loaded) {
         const m = d.meta || {};
-        return { town: m.town || "", state: m.state || "", board: m.board || "", date: m.date || "", title: m.title || "Agenda",
-          topics: m.topics || "", url: location.origin + d.url };
-      });
+        const url = /^https?:/i.test(d.url) ? d.url : location.origin + d.url;
+        const at = (L.at && L.at[url]) || ["", "", false];
+        const ids = (L.by_url && L.by_url[url]) || [];
+        const items = ids.map((id) => L.lines && L.lines[id]).filter((x) => x && x[3] !== "mention");
+        if (flaggedOnly && !items.length) continue;
+        const base = { town: m.town || "", state: m.state || "", board: m.board || "", date: m.date || "", time: at[0] || "",
+          place: at[1] || "", status: at[2] ? "Canceled" : "", document: m.title || "Agenda", topics: words(m.topics),
+          agenda_url: url, town_url: m.town_url ? location.origin + m.town_url : "" };
+        if (!items.length) rows.push({ ...base, item: "" });
+        for (const it of items) rows.push({ ...base, item: it[0], status: at[2] ? "Canceled" : (it[9] || "") });
+      }
       if (kind === "copy") {
-        const text = rows.map((r) => `${r.town}${r.state && r.state !== "MA" ? `, ${r.state}` : ""} ${r.board}${r.date ? `, ${fmtDate(r.date)}` : ""}: ${r.title}. ${r.url}`).join("\n");
-        btn.textContent = (await copyPlain(text)) ? `Copied ${rows.length} lines` : "Couldn’t copy";
+        const byDoc = new Map();
+        for (const r of rows) {
+          const key = r.agenda_url;
+          if (!byDoc.has(key)) byDoc.set(key, { ...r, items: [] });
+          if (r.item) byDoc.get(key).items.push(r.item);
+        }
+        const text = [...byDoc.values()].map((r) => {
+          const head = `${r.town}${r.state && r.state !== "MA" ? `, ${r.state}` : ""} ${r.board}${r.date ? `, ${fmtDate(r.date)}` : ""}${r.time ? `, ${r.time}` : ""}${r.place ? `, ${r.place}` : ""}${r.status ? ` (${r.status.toLowerCase()})` : ""}`;
+          return `${head}: ${r.items.length ? r.items.join("; ") : r.document}. ${r.agenda_url}`;
+        }).join("\n");
+        btn.textContent = (await copyPlain(text)) ? `Copied ${byDoc.size} lines` : "Couldn’t copy";
       } else {
         const esc = (v) => `"${String(v).replace(/"/g, '""')}"`;
-        const csv = [["town", "state", "board", "date", "document", "topics", "page_url"].join(","),
-          ...rows.map((r) => [r.town, r.state, r.board, r.date, r.title, r.topics, r.url].map(esc).join(","))].join("\n");
+        const cols = ["town", "state", "board", "date", "time", "place", "status", "item", "document", "topics", "agenda_url", "town_url"];
+        const csv = [cols.join(","), ...rows.map((r) => cols.map((c) => esc(r[c])).join(","))].join("\n");
         const a = document.createElement("a");
         a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
         a.download = "agenda-ahead-search.csv";
         a.click();
         setTimeout(() => URL.revokeObjectURL(a.href), 1000);
         btn.textContent = `Downloaded ${rows.length} rows`;
+        if (!rows.length) btn.textContent = "Nothing to download";
       }
       setTimeout(() => { btn.textContent = old; }, 2500);
     } finally {

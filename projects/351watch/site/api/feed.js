@@ -15,6 +15,17 @@ const rfc822 = (iso) => new Date(iso || Date.now()).toUTCString();
 const topicText = (h) => (h.topics || []).map((t) => TOPICS[t] || t).join(', ');
 // The site's sentence for an item (a written brief's line, or the rules-based one), else the agenda's own words.
 const lineFor = (lines, h) => (lines.lines && lines.lines[h.id] && lines.lines[h.id][0]) || h.snippet;
+const kindFor = (lines, h) => (lines.lines && lines.lines[h.id] && lines.lines[h.id][3]) || '';
+// An item flagged twice (two windows of one agenda item) is one item: keep the first of each sentence per agenda.
+function onePerItem(items, lines) {
+  const seen = new Set();
+  return items.filter((h) => {
+    const key = `${h.source_url}|${lineFor(lines, h)}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
 const atFor = (lines, h) => (lines.at && lines.at[h.source_url]) || ['', '', false];
 // "7 pm" / "6:30 pm" -> [19, 0]; anything else -> null (an all-day event)
 function clockOf(text) {
@@ -124,7 +135,7 @@ function ics(wl, items, base, generated, site = {}) {
       const clock = clockOf(at[0]);
       const description = [
         ...(cancelled ? ['This meeting is canceled by the town.', ''] : []),
-        ...group.map((g) => `• ${lineFor(site, g)}`),
+        ...[...new Set(group.filter((g) => kindFor(site, g) !== 'mention' || group.length === 1).map((g) => lineFor(site, g)))].map((s) => `• ${s}`),
         '',
         ...agendas.map((u) => `Agenda: ${u}`),
         `Alerts page: ${base}/w/${shareId(wl)}`,
@@ -180,7 +191,7 @@ export default async function handler(req, res) {
     const doc = await loadHits(req);
     const lines = await loadLines(req);
     const base = publicBase(req);
-    const items = matchItems(doc.hits, wl);
+    const items = onePerItem(matchItems(doc.hits, wl), lines);
     // Feed readers get a short shared cache; the watchlist page asks for fresh=1 so edits show at once.
     res.setHeader('Cache-Control', req.query?.fresh === '1' ? 'no-store' : 'public, max-age=300, s-maxage=300');
 

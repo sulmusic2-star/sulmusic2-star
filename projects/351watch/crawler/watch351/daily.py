@@ -278,6 +278,9 @@ class DailyRun:
 
         self.index.save()
         self.fulltext.save()
+        # agendas a town replaced stay out of the search index (search/build-index.mjs reads this)
+        write_json(self.data_dir / "search" / "replaced.json",
+                   sorted(r["url"] for r in self.index.records() if r.get("status") == "replaced"), indent=0)
         update_ledger(self.index, self.data_dir / "first_seen.json")
         prev = self._previous_ids()
         doc = current.rebuild(self.data_dir, today=self.today, agenda_hits=self.index.current_hits(),

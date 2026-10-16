@@ -646,7 +646,7 @@ class Hit:
     context: str  # normalized text around the first keyword, used for dedupe
 
 
-def find_hits(raw_text: str, max_per_doc: int = 8, state: str | None = None) -> list[Hit]:
+def find_hits(raw_text: str, max_per_doc: int = 12, state: str | None = None) -> list[Hit]:
     """Hits in one document. `state` adds that state's patterns (STATE_TOPICS); without
     it the result is exactly the shared matcher's."""
     matches: list[tuple[int, int, str]] = []
@@ -687,8 +687,8 @@ def find_hits(raw_text: str, max_per_doc: int = 8, state: str | None = None) -> 
         if (hits and topic in hits[-1].topics and start < covered_until + CONTINUATION_GAP
                 and not _ITEM_BOUNDARY.search(text[last_match:start])):
             continue  # same item continuing ("...The moratorium will be in effect until...")
-        if per_topic.get(topic, 0) >= 3:
-            continue  # long packets: keep the first few mentions per topic
+        if per_topic.get(topic, 0) >= 5:
+            continue  # long packets: keep the first few mentions per topic (a warrant can carry five zoning articles)
         s, e = _snippet_bounds(text, start, end)
         snippet = text[s:e].strip(" ,;:-")
         if len(snippet) > SNIPPET_MAX:

@@ -45,15 +45,40 @@ function* jsonlFiles(dir) {
 // several URLs in one town (re-posts, listing pages), is indexed once, keeping the latest meeting.
 const best = new Map();
 let rows = 0;
+// Agendas a town replaced with a new file (data/search/replaced.json, written by the daily crawl) are not indexed.
+let replaced = new Set();
+try {
+  replaced = new Set(JSON.parse(readFileSync(`${dataDir}/replaced.json`, "utf8")));
+} catch (err) {
+  replaced = new Set();
+}
 for (const file of jsonlFiles(dataDir)) {
   for (const line of readFileSync(file, "utf8").split("\n")) {
     if (!line.trim()) continue;
     const row = JSON.parse(line);
     rows++;
     if (!row.text || !(row.source_url || row.url)) continue;
+    if (replaced.has(row.url) || replaced.has(row.source_url)) continue;
     const key = `${row.state}|${row.town}|${createHash("sha1").update(row.text).digest("hex")}`;
     const prev = best.get(key);
     if (!prev || (row.meeting_date || "") > (prev.meeting_date || "")) best.set(key, row);
+  }
+}
+
+// A board's day posted more than once (an agenda, then a revised one, then a cancellation notice): the newest
+// posting is the one to find, so the earlier ones go when any title says revised, amended, updated or cancelled.
+{
+  const byDay = new Map();
+  for (const [key, row] of best) {
+    if (!row.meeting_date || !row.board_key) continue;
+    const day = `${row.state}|${row.town}|${row.board_key}|${row.meeting_date}`;
+    if (!byDay.has(day)) byDay.set(day, []);
+    byDay.get(day).push([key, row]);
+  }
+  for (const group of byDay.values()) {
+    if (group.length < 2 || !group.some(([, r]) => /cancel|revis|amend|updat/i.test(r.title || ""))) continue;
+    group.sort((a, b) => (b[1].first_seen || "").localeCompare(a[1].first_seen || ""));
+    for (const [key] of group.slice(1)) best.delete(key);
   }
 }
 

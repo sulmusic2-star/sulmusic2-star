@@ -444,6 +444,9 @@ class Ctx:
         # A writer's "(not a solar item)" is honest, but a reader doesn't need the item at all: it goes with the
         # off-subject hits (the CSV and the copied week already left it out).
         self.hits = [h for h in self.hits if not OFF_ITEM.search((BRIEFS.get(h["id"]) or {}).get("line") or "")]
+        for h in self.hits:  # a Town Meeting warrant a town posts under its Select Board listing is a Town Meeting
+            if h.get("board_key") != "town_meeting" and TM_TITLE.search(h.get("document_title") or ""):
+                h["board"], h["board_key"] = "Town Meeting", "town_meeting"
         for h in self.hits:
             h["topics"] = item_topics(h)
         # The meeting date of each document, also for warrants dated from their own text (as Trending does).
@@ -736,7 +739,7 @@ def gloss_once(body):
 def page(ctx, title, description, body, path, scripts=(), noindex=False, head="", og_title=None):
     current = nav_section(path)
     nav = "".join(
-        f'<li><a href="{href}"{" aria-current=\"page\"" if href == current else ""}>{label}</a></li>' for href, label in NAV
+        f'<li{" class=\"nav-rulings\"" if href == "/attorney-general" else ""}><a href="{href}"{" aria-current=\"page\"" if href == current else ""}>{label}</a></li>' for href, label in NAV
     )
     robots = '<meta name="robots" content="noindex">\n' if noindex else ""
     canonical = "" if noindex else f'<link rel="canonical" href="{BASE_URL}{"" if path == "/" else path}">\n'
@@ -1220,7 +1223,7 @@ def tr_quote(a, limit):
 
 def item_number(a):
     """"Article 12" or "item 3" when the agenda numbers the item."""
-    m = re.search(r"\bArticle\s+(\d{1,3}[A-Z]?)\b", a["item"][:400])
+    m = re.search(r"\bArticle\s+(\d{1,3}[A-Z]?)\b(?![.\d])", a["item"][:400])  # not "Article 4.8.12", a bylaw section
     if m:
         return f"Article {m.group(1)}"
     m = re.match(r"\s*(\d{1,2}[a-z]?|[A-H])[.)]\s+[A-Z]", a["item"])
@@ -1520,8 +1523,8 @@ def full_stop(text):
 
 def quotable(words):
     """Agenda words worth quoting on a page: whole words from the start, no file names or links."""
-    return bool(words) and not junk(words) and words[:1].isupper() and len(words.split()) >= 4 \
-        and not re.search(r"\.pdf\b|https?://|\.docx?\b", words, re.I)
+    return bool(words) and not junk(words) and bool(re.match(r"[A-Z][A-Za-z]", words)) and len(words.split()) >= 4 \
+        and words.count(")") <= words.count("(") and not re.search(r"\.pdf\b|https?://|\.docx?\b", words, re.I)
 
 
 def junk(part):
@@ -1799,6 +1802,8 @@ def short_place(text):
     place = re.sub(r",?\s+and (?:Zoom|online|remote|by video|via Zoom)\b.*$", "", place, flags=re.I)
     if len(place) > 70:
         place = place[:70].rsplit(",", 1)[0]
+    if place.count("(") > place.count(")"):  # cut inside a parenthesis: "Town Hall (hybrid" -> "Town Hall"
+        place = place[:place.rfind("(")]
     return place.strip(" ,")
 
 
@@ -1943,6 +1948,7 @@ def tag_text(topics):
 
 
 SPEAK_TEXT = "Public hearing: anyone can attend and ask to speak. The agenda prints no other rule."
+SPEAK_COMMENT = "The agenda has a public comment period: anyone can attend and ask to speak then. It prints no other rule."
 SPEAK_TM = "Town Meeting: the town’s voters decide. Ask the town clerk how others may speak."
 SPEAK_NO = "The agenda lists no public comment on this item; ask the town clerk."
 
@@ -2019,11 +2025,28 @@ def facts_text(entry):
     return out
 
 
+def et_when(iso):
+    """"Oct 16, 7:07 am" in Eastern time, from an ISO timestamp: when we read a town's listing."""
+    try:
+        dt = datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone(ZoneInfo("America/New_York"))
+    except (ValueError, AttributeError):
+        return ""
+    return f"{dt.strftime('%b')} {dt.day}, {dt.strftime('%-I:%M %p').lower()}"
+
+
 def headline(text):
     """A headline carries no final period (the written briefs already drop theirs); abbreviations keep it.
     The status word beside it says "Discussion", so "(no vote listed)" goes; a Town Meeting vote reads one way."""
     text = text.replace(" (no vote listed)", "").replace("; no vote listed)", ")")
     text = re.sub(r"\.\s+Vote \((Article \d+)\)$", r": vote (\1)", text)
+    # Subject first, as the written briefs read: "Discusses a zoning change" -> "A zoning change: discussion",
+    # "Holds a hearing on a solar farm at 5 Main St" -> "A solar farm at 5 Main St: hearing" (lines with a quote stay).
+    if "“" not in text and ":" not in text:
+        m = re.match(r"^(Discusses|Holds a hearing on|Votes on|Decides on) (.+?)\.?$", text)
+        if m:
+            what = m.group(2)
+            what = what[0].upper() + what[1:]
+            text = f"{what}: {'discussion' if m.group(1) == 'Discusses' else 'hearing' if m.group(1).startswith('Holds') else 'vote'}"
     if re.search(r"[a-z0-9)”\"]\.$", text) and not re.search(r"\b(?:St|Rd|Ave|Dr|Ln|Blvd|Mt|No|Art|Sec|Inc|Corp|LLC|Co)\.$", text):
         return text[:-1]
     return text
@@ -2055,9 +2078,10 @@ def speak_line(m):
         return for_town(" ".join(rules[:2]), m["state"], m["town"])
     if m.get("board_key") == "town_meeting" and entries:
         return SPEAK_TM
-    if any((v.get("brief") or {}).get("can_speak") is True for v in entries) or \
-            any(v.get("stage") == "Hearing" and not (v.get("brief") or {}).get("can_speak") is False for v in entries):
+    if any(v.get("stage") == "Hearing" and not (v.get("brief") or {}).get("can_speak") is False for v in entries):
         return for_town(SPEAK_TEXT, m["state"], m["town"])
+    if any((v.get("brief") or {}).get("can_speak") is True for v in entries):
+        return SPEAK_COMMENT  # a vote or discussion with a public comment item on the agenda, not a hearing
     return ""
 
 
@@ -2214,7 +2238,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     def line(text, entry):
         b = entry.get("brief")
         # "New" is for a project the town has not seen before, not every freshly posted agenda
-        new = '<span class="badge-new">New</span> ' if entry["new"] and not (b and b.get("history")) else ""
+        new = '<span class="badge-new">New</span> ' if entry["new"] and not (b and b.get("history")) and not text.startswith("New ") else ""
         what = ""
         if b and b.get("what") and quote_key(b["what"]) != quote_key(text):
             what = f'<p class="brief-what">{e(b["what"])}</p>'
@@ -2224,7 +2248,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
         stage = stage_html(entry, m, ctx)
         facts_html = f'<p class="line-facts">{facts}</p>' if facts else ""
         extra = ""
-        if str(entry.get("stage") or "").startswith("Asks to postpone"):
+        if str(entry.get("stage") or "").startswith("Asks to postpone") and m.get("date") and m["date"] >= ctx.today:
             # a request is not a decision: the board says yes or no at this meeting
             extra += '<p class="line-next">The board decides at this meeting whether to postpone; until it does, the hearing is still on.</p>'
         if full:
@@ -2504,7 +2528,7 @@ def build_index(ctx):
 <div class="wrap narrow home">
 <section class="home-hero" aria-labelledby="hero-title">
   <h1 id="hero-title">See what’s coming up at your town meetings</h1>
-  <p class="lead">Free. We read <a href="/how-it-works#coverage">{towns_read} towns’</a> agendas in {e(abbr)} every morning and tell you when solar, battery storage or a data center is on one.</p>
+  <p class="lead">Free, with no account and no ads. We read <a href="/how-it-works#coverage">{towns_read} towns’</a> agendas in {e(abbr)} every morning and tell you when solar, battery storage or a data center is on one.</p>
   {town_box(ctx)}
   {owner_html()}
 </section>
@@ -2524,15 +2548,36 @@ def build_index(ctx):
     )
 
 
+def build_404(ctx):
+    """Our own page for a link that leads nowhere: a meeting page goes when its agenda is replaced or the
+    meeting passes, so the page offers the town box and the lists instead of a platform's error."""
+    body = f"""
+<div class="wrap narrow">
+<section class="page-head" aria-labelledby="nf-title">
+  <h1 id="nf-title">That page isn’t here</h1>
+  <p class="lead">The link may be old: a meeting’s page goes when the meeting has passed or its agenda was replaced. Type your town to see what’s coming up there.</p>
+  {town_box(ctx)}
+  <p class="more-link"><a href="/upcoming">Everything coming up</a> · <a href="/towns">All towns</a> · <a href="/search">Search the agendas</a></p>
+</section>
+</div>
+"""
+    return page(ctx, f"Page not found | {SITE_NAME}", "That page isn’t here.", body, "/404", noindex=True)
+
+
 def build_upcoming(ctx):
     meetings = group_meetings(ctx, upcoming_hits(ctx))
     week_end = (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=6)).strftime("%Y-%m-%d")
     soon = [m for m in meetings if m["date"] <= week_end]
     later = [m for m in meetings if m["date"] > week_end]
+    counties = sorted({(ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or "" for m in meetings} - {""})
+    opts = "".join(f'<option value="{e(c)}">{e(c)}</option>' for c in counties)
+    county_filter = (f'<div class="filterbar" data-meeting-filter><label>County<select data-key="county"><option value="">All</option>{opts}</select></label>'
+                     f'<p class="count" data-count aria-live="polite"></p></div>') if len(counties) > 1 else ""
     body = f"""
 <div class="wrap narrow">
 <section class="page-head" aria-labelledby="up-title">
   <h1 id="up-title">Coming up</h1>
+  {county_filter}
   <p class="lead">Town board meetings with solar, battery storage, data centers, zoning, housing or cell towers on the agenda. We check new agendas every morning.</p>
   <p class="actions"><a class="btn" href="/watch">Get alerts for your town</a></p>
   <p class="form-note" data-slop-ignore>By topic: {" · ".join(f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' for tp in TOPIC_PAGES)} · <a href="/topics">all topics</a></p>
@@ -2570,6 +2615,8 @@ def trending_stories(ctx):
         # The row describes the story's own meeting (its date and board), so the lead hit is one from that
         # meeting; the story's headline stands in when none of its hits is from that day.
         hits = [hits_by_id[i] for i in st.get("hit_ids", []) if i in hits_by_id]
+        if st.get("hit_ids") and not hits:
+            continue  # every item behind the story was dropped (off the subject): no story
         same_day = [h for h in hits if (h.get("meeting_date") or "")[:10] == d[:10]] if d else []
         lead = next((h for h in same_day if board_label(h) == st.get("board")), None) or (same_day[0] if same_day else None)
         board = board_label(lead) if lead else st.get("board", "")
@@ -2792,7 +2839,7 @@ def about_agendas_html(ctx, t):
         if name and name not in boards:
             boards.append(name)
     health = (ctx.health or {}).get(t["id"]) or {}
-    last = short_day(health["last_success"]) if health.get("last_success") else ""
+    last = et_when(health["last_success"]) if health.get("last_success") else ""
     ri = "ri_sos" in (t.get("platforms") or [])
     where = "the Rhode Island Secretary of State’s open meetings website" if ri else "its website"
     what = f"{e(town)}’s {e(join_and(boards))} agendas" if boards else f"{e(town)}’s agendas"
@@ -3128,7 +3175,8 @@ def build_topic_page(ctx, tp):
                 body, f"/topics/{tp['slug']}")
 
 
-OFF_ITEM = re.compile(r"\(not an? [a-z0-9 -]+ item\)", re.I)  # a writer's note that the flagged words were incidental
+OFF_ITEM = re.compile(r"\(not an? [a-z0-9 -]+ item\)", re.I)
+TM_TITLE = re.compile(r"\btown meeting\b[^|]{0,60}\bwarrant\b|\bwarrant\b[^|]{0,60}\btown meeting\b", re.I)  # a writer's note that the flagged words were incidental
 
 
 def real_lines(m):
@@ -3244,6 +3292,7 @@ def build_search(ctx):
   </details>
 </form>
 <p id="search-status" aria-live="polite"></p>
+<p class="form-note search-examples">Try <a href="/search?q=battery+storage&amp;upcoming=1">battery storage</a>, <a href="/search?q=data+center+moratorium">data center moratorium</a>, <a href="/search?q=cell+tower&amp;upcoming=1">cell tower</a> or <a href="/search?q=40B&amp;upcoming=1">40B</a>.</p>
 <p class="notice" id="search-exact" hidden></p>
 <p class="search-alert" id="search-alert" hidden><a class="btn quiet" href="/watch">Get alerts for your town</a></p>
 <ol id="search-results"></ol>
@@ -3311,6 +3360,7 @@ def build_watch(ctx, groups=False):
   <div class="step" id="step-town">
     <label for="home-town" class="big-q">Which town?</label>
     <p class="form-note" id="town-help">Alerts are free for your town and the towns next to it.</p>
+    <p class="form-note">At most one message a day, only when something new is posted, and one click to stop. Email is coming; today you get a calendar feed and a private page.</p>
     <input id="home-town" class="big-input" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" aria-describedby="town-help home-read towns-error">
     <datalist id="town-names"></datalist>
     <p class="form-note" id="home-read" aria-live="polite">Pick it from the list as you type.</p>
@@ -3910,7 +3960,7 @@ def lines_json(ctx):
     lines = {}
     for h in ctx.hits:
         t = item_text(h)
-        lines[h["id"]] = [t["say"], t.get("quote") or "", t["note"], t["kind"],
+        lines[h["id"]] = [headline(t["say"]), t.get("quote") or "", t["note"], t["kind"],
                           t.get("key") or (find_name(" ".join((h.get("snippet") or "").split()))[0] or find_address(h.get("snippet") or "")).lower(),
                           who_label(h), t.get("rank", 60), t.get("no", ""), t.get("subj", ""), t.get("stage", ""), list(t.get("facts") or [])]
     by_url = defaultdict(list)
@@ -3953,9 +4003,9 @@ def build_meeting_page(ctx, m):
     label = "Open the Town Meeting warrant" if what == "warrant" else f"Open the {what}"
     link = f'<a class="item-link" href="{e(d["url"])}" rel="nofollow noopener" target="_blank">{label}{" (PDF)" if d["pdf"] else ""}</a>' if d else ""
     # When, where and whether you can speak sit in the ticket, where someone deciding whether to go looks first.
-    speak_top = speak_line(m)
+    speak_top = "" if m.get("cancelled") else speak_line(m)
     health = (ctx.health or {}).get(t.get("id")) or {}
-    checked = short_day(health["last_success"]) if health.get("last_success") else ""
+    checked = et_when(health["last_success"]) if health.get("last_success") else ""
     host = re.sub(r"^www\.", "", (d["url"].split("/")[2] if d and "//" in d["url"] else ""))
     posted = posted_text(ctx, m).replace("Agenda posted by", "posted").replace("Warrant posted by", "posted").replace("Filed by", "filed")
     entry = next(iter(m["lines"].values()), None)
@@ -3970,6 +4020,8 @@ def build_meeting_page(ctx, m):
     place = place_text(m["place"]) if m["place"] and m["source"] != "massdep_wetlands" else ""
     when = (f'<p class="ticket-when"><time datetime="{m["date"]}">{e(when_text(ctx, m))}</time></p>' if m["date"]
             else '<p class="ticket-when">Date not found on the warrant</p>')
+    if m.get("cancelled"):
+        when += '<p class="ticket-canceled">Canceled by the town</p>'
     ticket = f"""<aside class="rail" aria-label="When and where">
 <div class="ticket">
   {when}
@@ -4014,6 +4066,7 @@ def main():
     ctx = Ctx()
     pages = {
         "index.html": (build_index(ctx), "/"),
+        "404.html": (build_404(ctx), None),
         "upcoming.html": (build_upcoming(ctx), "/upcoming"),
         "trending.html": (build_trending(ctx), "/trending"),
         "how-it-works.html": (build_how(ctx), "/how-it-works"),
