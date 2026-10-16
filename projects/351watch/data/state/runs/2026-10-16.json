@@ -1,19 +1,31 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 1,
-   "new_hits": 2,
-   "towns_attempted": 1,
-   "towns_succeeded": 1
+   "new_documents": 6,
+   "new_hits": 7,
+   "towns_attempted": 30,
+   "towns_succeeded": 30
+  },
+  "NY": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 3,
+   "towns_succeeded": 3
+  },
+  "RI": {
+   "new_documents": 2,
+   "new_hits": 0,
+   "towns_attempted": 5,
+   "towns_succeeded": 5
   }
  },
  "date": "2026-10-16",
  "document_errors": 0,
  "documents_already_indexed": 0,
  "documents_deferred": 0,
- "documents_listed": 14,
+ "documents_listed": 446,
  "documents_needing_ocr": 0,
- "documents_rematched": 13,
+ "documents_rematched": 438,
  "documents_retried": 0,
  "documents_too_large": [
   {
@@ -36,65 +48,103 @@
    "state": "MA",
    "town": "Wellfleet",
    "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Cortlandt",
+   "url": "https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109",
+   "meeting_date": "2026-09-14",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114",
+   "meeting_date": "2026-10-19",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Kent",
+   "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
   }
  ],
- "duration_seconds": 4.0,
+ "duration_seconds": 158.1,
  "errors": [],
  "errors_total": 0,
- "finished": "2026-10-16T16:24:59+00:00",
- "hits_current": 1170,
+ "finished": "2026-10-16T21:14:20+00:00",
+ "hits_current": 1200,
  "index": {
   "by_state": {
-   "MA": 3062,
+   "MA": 3068,
    "NY": 183,
-   "RI": 345
+   "RI": 347
   },
   "by_status": {
    "error": 16,
    "needs_ocr": 3,
-   "ok": 3569,
-   "replaced": 2
+   "ok": 3570,
+   "replaced": 9
   },
   "by_text_source": {
    "docx": 18,
    "html": 164,
    "none": 16,
-   "ocr": 836,
-   "pdf": 2556
+   "ocr": 837,
+   "pdf": 2563
   },
-  "documents": 3590,
-  "hits": 1326,
-  "pruned": 8,
+  "documents": 3598,
+  "hits": 1352,
+  "pruned": 0,
   "towns": 307,
-  "with_hits": 726
+  "with_hits": 725
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 225161,
-   "listing": 126844
+   "document": 1505892,
+   "listing": 44056944
   },
-  "cache_hits": 13,
+  "cache_hits": 466,
   "errors": 0,
-  "requests": 2,
+  "requests": 99,
   "requests_by_purpose": {
-   "document": 1,
-   "listing": 1
+   "document": 9,
+   "listing": 90
   },
   "robots_blocked": 0
  },
- "new_alert_items": 1,
+ "new_alert_items": 33,
  "new_alert_items_by_topic": {
-  "40b_comprehensive_permit": 1,
-  "solar": 1
+  "40b_comprehensive_permit": 5,
+  "battery_storage": 4,
+  "clean_energy_siting": 1,
+  "data_center": 8,
+  "moratorium": 4,
+  "solar": 8,
+  "zoning_amendment": 10
  },
- "new_documents": 1,
- "new_hits": 2,
+ "new_documents": 8,
+ "new_hits": 7,
  "new_hits_by_topic": {
-  "40b_comprehensive_permit": 2,
-  "solar": 1
+  "40b_comprehensive_permit": 1,
+  "battery_storage": 3,
+  "clean_energy_siting": 1,
+  "data_center": 1,
+  "moratorium": 1,
+  "solar": 1,
+  "zoning_amendment": 3
  },
  "options": {
-  "matcher_version": "a38020c644",
+  "matcher_version": "4f9bcaade9",
   "no_network_docs": false,
   "ocr_max_pages": 6,
   "pdftotext": true,
@@ -139,16 +189,30 @@
    ],
    "towns_attempted": 1,
    "towns_succeeded": 1
+  },
+  {
+   "duration_seconds": 4.0,
+   "new_documents": 1,
+   "new_hits": 2,
+   "requests": 2,
+   "started": "2026-10-16T16:24:55+00:00",
+   "states": [
+    "MA"
+   ],
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   }
  ],
- "started": "2026-10-16T16:24:55+00:00",
+ "started": "2026-10-16T21:11:42+00:00",
  "states": [
-  "MA"
+  "MA",
+  "NY",
+  "RI"
  ],
- "towns_attempted": 1,
+ "towns_attempted": 38,
  "towns_failed": [],
  "towns_partial": [],
- "towns_succeeded": 1,
+ "towns_succeeded": 38,
  "window": {
   "end": "2027-02-13",
   "start": "2026-09-16"

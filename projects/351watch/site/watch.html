@@ -39,7 +39,10 @@
     <label for="home-town" class="big-q">Which town?</label>
     <p class="form-note" id="town-help">Alerts are free for your town and the towns next to it.</p>
     <p class="form-note">At most one message a day, only when something new is posted, and one click to stop. Email is coming; today you get a calendar feed and a private page.</p>
-    <input id="home-town" class="big-input" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" aria-describedby="town-help home-read towns-error">
+    <div class="combo" data-town-box="pick">
+      <input id="home-town" class="big-input" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" aria-describedby="town-help home-read towns-error">
+      <ul class="suggest" id="home-town-list" role="listbox" aria-label="Matching towns" hidden></ul>
+    </div>
     <datalist id="town-names"></datalist>
     <p class="form-note" id="home-read" aria-live="polite">Pick it from the list as you type.</p>
     <div class="request" id="home-request" hidden>
@@ -64,10 +67,6 @@
     <p class="form-note" id="no-email" hidden>Email alerts are coming. For now, the next page adds these meetings to your calendar.</p>
     
     <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
-    <div class="submit-row">
-      <button class="btn" type="submit" id="watch-submit">Send me these</button>
-      <p class="form-status" id="watch-status" role="status" aria-live="polite"></p>
-    </div>
     <fieldset class="near" id="near-step">
       <legend class="sr-only">Towns</legend>
       <label class="check big" id="near-all-row"><input type="checkbox" id="near-all" checked> <span id="near-all-text">Also the towns next to <span id="home-name">your town</span></span></label>
@@ -91,6 +90,10 @@
       </details>
       <p class="form-note">After you save, the next page has a calendar link and an RSS feed for these alerts.</p>
     </details>
+    <div class="submit-row">
+      <button class="btn" type="submit" id="watch-submit">Send me these</button>
+      <p class="form-status" id="watch-status" role="status" aria-live="polite"></p>
+    </div>
   </div>
 </form>
 

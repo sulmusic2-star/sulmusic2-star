@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-16T16:32:20+00:00",
+ "generated": "2026-10-16T21:14:22+00:00",
  "window": {
   "start": "2026-10-16",
   "end": "2027-02-13"
@@ -150,10 +150,10 @@
     "203c7e1a696a",
     "342d7a961ce9",
     "55ec1757d558",
-    "7681c25ee0bf",
     "9f6d57553d8b",
     "a23eb83bf1d7",
-    "ac3dafef41eb"
+    "ac3dafef41eb",
+    "fdfd7fb9a8bf"
    ]
   },
   {
@@ -260,11 +260,13 @@
    "hit_ids": [
     "148731ad087c",
     "1c18cf988355",
+    "2ba1beeceafe",
     "3d432f2e5751",
     "56268dde466c",
     "6d2188527e61",
     "7a9bd9b2c219",
     "96fc867ca47d",
+    "a30f706ec45d",
     "a8a60d3be0eb",
     "b24ff3984a31",
     "deb210b8c929",
@@ -828,6 +830,58 @@
    ]
   },
   {
+   "id": "ea85e31b7019",
+   "score": 14.18,
+   "headline": "Washington planners discuss solar and battery storage rules",
+   "dek": "The Planning Board meets Tuesday, Oct 20. The agenda lists an item on solar and battery storage rules.",
+   "quote": "BRPC Overview of model Solar and BESS bylaws from Dept. of Energy",
+   "reasons": [
+    "Draft rules",
+    "2 town boards",
+    "Meeting Oct 20"
+   ],
+   "topics": [
+    "battery_storage",
+    "clean_energy_siting",
+    "solar"
+   ],
+   "state": "MA",
+   "town": "Washington",
+   "county": "Berkshire",
+   "towns": [
+    "MA:Washington"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-20",
+   "meeting_date_source": "agenda",
+   "days_until": 4,
+   "first_seen": "2026-10-10T18:47:55+00:00",
+   "is_new": false,
+   "source_url": "https://www.washington-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-145",
+   "town_path": "/ma/washington",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Washington",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-20"
+    },
+    {
+     "town": "Washington",
+     "board": "Select Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-09-21"
+    }
+   ],
+   "hit_ids": [
+    "753ada25aa19",
+    "d918a2642cd3",
+    "f4318213f1d0"
+   ]
+  },
+  {
    "id": "ab7767de1e54",
    "score": 13.5,
    "headline": "Egremont planners review a draft battery storage bylaw",
@@ -962,11 +1016,67 @@
    "hit_ids": [
     "02c63aafdb13",
     "1e9b5956fc30",
+    "2c4150e1a57b",
+    "3b251cc39638",
+    "45d5850171d9",
     "51d2ab3d4a52",
     "60a20752ece7",
+    "8005ea9087d3",
     "869d33654c02",
     "a4ba3b203a9f",
     "dfb444d918dd"
+   ]
+  },
+  {
+   "id": "75ca8b2944da",
+   "score": 12.15,
+   "headline": "Holliston zoning board reviews Butler Family 1995 40B request",
+   "dek": "The Zoning Board of Appeals meets Wednesday, Oct 21. The agenda lists a special permit and comprehensive permit for 40B housing by Butler Family 1995.",
+   "quote": "Kenneth Butler, Trustee (Owner), 1286 Washington Street b. Comprehensive Permit",
+   "reasons": [
+    "Permit application",
+    "Also in Amesbury",
+    "Meeting Oct 21"
+   ],
+   "topics": [
+    "40b_comprehensive_permit"
+   ],
+   "state": "MA",
+   "town": "Holliston",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Amesbury",
+    "MA:Holliston"
+   ],
+   "board": "Zoning Board of Appeals",
+   "board_key": "zoning_board_of_appeals",
+   "meeting_date": "2026-10-21",
+   "meeting_date_source": "agenda",
+   "days_until": 5,
+   "first_seen": "2026-10-10T18:39:39+00:00",
+   "is_new": false,
+   "source_url": "https://www.townofholliston.us/AgendaCenter/ViewFile/Agenda/_10212026-1351",
+   "town_path": "/ma/holliston",
+   "action": "project",
+   "boards": [
+    {
+     "town": "Holliston",
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "meeting_date": "2026-10-21"
+    },
+    {
+     "town": "Amesbury",
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "meeting_date": "2026-09-24"
+    }
+   ],
+   "hit_ids": [
+    "18cb32b7ac0d",
+    "4b58d94421f0",
+    "dd37d5c58b70",
+    "f75f5ccdf961"
    ]
   },
   {
@@ -1887,7 +1997,7 @@
    "score": 7.56,
    "headline": "Sutton Town Meeting takes up zoning changes",
    "dek": "Sutton's Town Meeting is Monday, Oct 19. The warrant lists an article on zoning changes.",
-   "quote": "Does not approve the proposed zoning map amendment.",
+   "quote": "Planning Board To see if the Town will vote to amend the Zoning Bylaw as follows, or act or do anything in relation thereto.",
    "reasons": [
     "Town Meeting vote",
     "Town Meeting Oct 19"
@@ -1908,7 +2018,7 @@
    "days_until": 3,
    "first_seen": "2026-10-10T18:46:42+00:00",
    "is_new": false,
-   "source_url": "https://www.suttonma.gov/DocumentCenter/View/7435/2026-Fall_Town_Meeting_Yes_No_Warrant_Presentation",
+   "source_url": "https://www.suttonma.gov/DocumentCenter/View/7454/2026-Fall-Annual-Town-Meeting-Warrant-Packet",
    "town_path": "/ma/sutton",
    "action": "town_meeting",
    "boards": [
@@ -1920,7 +2030,9 @@
     }
    ],
    "hit_ids": [
-    "9fc253c01614"
+    "7ff9efb9ddd8",
+    "9fc253c01614",
+    "bccd9da27047"
    ]
   },
   {
@@ -2920,6 +3032,47 @@
    ]
   },
   {
+   "id": "8c99d28f2da4",
+   "score": 5.57,
+   "headline": "Data-center item on Townsend Planning Board agenda",
+   "dek": "The Planning Board meets Monday, Oct 19. The agenda lists an item on data centers.",
+   "quote": "MRPC (Katherine Waugh) survey for Planning Board input on local zoning and permitting approaches for Battery Energy Storage Systems (BESS), data centers, and tiny homes.",
+   "reasons": [
+    "Meeting Oct 19"
+   ],
+   "topics": [
+    "battery_storage",
+    "data_center"
+   ],
+   "state": "MA",
+   "town": "Townsend",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Townsend"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-19",
+   "meeting_date_source": "agenda",
+   "days_until": 3,
+   "first_seen": "2026-10-16T21:12:48+00:00",
+   "is_new": true,
+   "source_url": "https://townsendma.gov/Agendas and Minutes/Planning Board/2026/Agenda - Planning Board 10-19-26 (Revision 1).pdf",
+   "town_path": "/ma/townsend",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Townsend",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-19"
+    }
+   ],
+   "hit_ids": [
+    "786fd2578cf4"
+   ]
+  },
+  {
    "id": "782d5e2cac75",
    "score": 5.57,
    "headline": "Data-center item on Smithfield Town Council agenda",
@@ -3181,7 +3334,7 @@
    "score": 4.2,
    "headline": "Sutton Town Meeting takes up zoning changes",
    "dek": "The warrant for Sutton's fall Town Meeting gives no date. The warrant lists an article on zoning changes.",
-   "quote": "Planning Board To see if the Town will vote to amend the Zoning Bylaw as follows, or act or do anything in relation thereto.",
+   "quote": "Mitchell Cohen To see if the Town will vote to amend the Zoning Map to rezone Rural Residential (R-1) portions of 430 Putnam Hill Road (M49-P226) and 434 Putnam Hill Road (M49-P224) to Village (V)…",
    "reasons": [
     "Town Meeting vote",
     "Town Meeting date not in the warrant"
@@ -3214,8 +3367,7 @@
     }
    ],
    "hit_ids": [
-    "3f2c3fc80f35",
-    "e50bcd9df4f8"
+    "3f2c3fc80f35"
    ]
   },
   {
@@ -3813,6 +3965,46 @@
    ]
   },
   {
+   "id": "0dddbf5a0c15",
+   "score": 1.18,
+   "headline": "Solar item on Norton Town Meeting warrant",
+   "dek": "Norton's Town Meeting is Monday, Oct 19. The warrant lists an item on solar.",
+   "quote": "For setbacks applicable to large-scale, ground-mounted solar photovoltaic power generation installations, see Article XX, § 175-22.3.",
+   "reasons": [
+    "Town Meeting Oct 19"
+   ],
+   "topics": [
+    "solar"
+   ],
+   "state": "MA",
+   "town": "Norton",
+   "county": "Bristol",
+   "towns": [
+    "MA:Norton"
+   ],
+   "board": "Town Meeting Warrants & Minutes",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-19",
+   "meeting_date_source": "agenda",
+   "days_until": 3,
+   "first_seen": "2026-10-16T11:10:11+00:00",
+   "is_new": true,
+   "source_url": "https://www.nortonma.gov/DocumentCenter/View/2264",
+   "town_path": "/ma/norton",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Norton",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-19"
+    }
+   ],
+   "hit_ids": [
+    "9bcffb17e03b"
+   ]
+  },
+  {
    "id": "649a28612204",
    "score": 1.18,
    "headline": "Solar item on Salem Planning Board agenda",
@@ -3938,6 +4130,46 @@
    ]
   },
   {
+   "id": "5046b0a6f17a",
+   "score": 0.68,
+   "headline": "Zoning item on Marshfield Town Meeting warrant",
+   "dek": "Marshfield's Town Meeting is Monday, Oct 19. The warrant lists an item on zoning changes.",
+   "quote": "…to effectuate the purposes hereof, or take any other action relative thereto, including removal of the Brant Rock Village Overlay District references and boundaries from our Zoning maps.",
+   "reasons": [
+    "Town Meeting Oct 19"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Marshfield",
+   "county": "Plymouth",
+   "towns": [
+    "MA:Marshfield"
+   ],
+   "board": "Town Meeting",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-19",
+   "meeting_date_source": "agenda",
+   "days_until": 3,
+   "first_seen": "2026-10-10T18:36:04+00:00",
+   "is_new": false,
+   "source_url": "https://www.marshfield-ma.gov/STM Complete Draft 10.19.26.pdf",
+   "town_path": "/ma/marshfield",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Marshfield",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-19"
+    }
+   ],
+   "hit_ids": [
+    "c65b083ce612"
+   ]
+  },
+  {
    "id": "f5f012b37825",
    "score": 0.6,
    "headline": "Zoning item on Auburn Town Meeting warrant",
@@ -3982,7 +4214,7 @@
    "score": 0.34,
    "headline": "Solar item on Holliston Town Meeting warrant",
    "dek": "Holliston's Town Meeting is Monday, Oct 19. The warrant lists an item on solar.",
-   "quote": "…over $100,000 in charges triggered by the temporary relocation and disconnection of the solar panels while roof repairs were underway.",
+   "quote": "…purchase agreement (\"PPA\") with a third party for the construction and installation of a solar panel array on the top of the Holliston Fire Department's headquarters at 59 Central Street.",
    "reasons": [
     "Town Meeting Oct 19"
    ],
@@ -4016,7 +4248,8 @@
    "hit_ids": [
     "46a84e52f260",
     "c089dbc951e1",
-    "d9d3696a656a"
+    "d9d3696a656a",
+    "e580e1180e19"
    ]
   },
   {
@@ -4057,47 +4290,6 @@
    ],
    "hit_ids": [
     "0b1deaf98896"
-   ]
-  },
-  {
-   "id": "f87d9f27e753",
-   "score": 0.34,
-   "headline": "Solar item on Norton Town Meeting warrant",
-   "dek": "Norton's Town Meeting is Monday, Oct 19. The warrant lists an item on solar.",
-   "quote": "For setbacks applicable to large-scale, ground-mounted solar photovoltaic power generation installations, see Article XX, § 175-22.3.",
-   "reasons": [
-    "Town Meeting Oct 19"
-   ],
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Norton",
-   "county": "Bristol",
-   "towns": [
-    "MA:Norton"
-   ],
-   "board": "Town Meeting Warrants & Minutes",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-10-19",
-   "meeting_date_source": "agenda",
-   "days_until": 3,
-   "first_seen": "2026-10-10T18:32:30+00:00",
-   "is_new": false,
-   "source_url": "https://www.nortonma.gov/DocumentCenter/View/2264",
-   "town_path": "/ma/norton",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Norton",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-10-19"
-    }
-   ],
-   "hit_ids": [
-    "2762835c38ee",
-    "9bcffb17e03b"
    ]
   },
   {
@@ -4258,87 +4450,6 @@
    ],
    "hit_ids": [
     "f7b6ae0dbf80"
-   ]
-  },
-  {
-   "id": "0edfa19a9b73",
-   "score": 0.3,
-   "headline": "Solar item on Hingham Current Warrant Articles warrant",
-   "dek": "Hingham's Town Meeting is Thursday, Oct 29. The warrant lists an item on solar.",
-   "quote": "The Project will also include reinforcement of selected roof framing and related interior work to meet current Code requirements and support potential future solar installation in the designated…",
-   "reasons": [
-    "Town Meeting Oct 29"
-   ],
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Hingham",
-   "county": "Plymouth",
-   "towns": [
-    "MA:Hingham"
-   ],
-   "board": "Current Warrant Articles",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-10-29",
-   "meeting_date_source": "agenda",
-   "days_until": 13,
-   "first_seen": "2026-10-10T18:31:45+00:00",
-   "is_new": false,
-   "source_url": "https://www.hingham-ma.gov/DocumentCenter/View/29458/2026-Special-Town-Meeting-Warrant",
-   "town_path": "/ma/hingham",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Hingham",
-     "board": "Current Warrant Articles",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-10-29"
-    }
-   ],
-   "hit_ids": [
-    "133c0d92aa96",
-    "18232ab870b5"
-   ]
-  },
-  {
-   "id": "ed626acfcceb",
-   "score": 0.05,
-   "headline": "Cell tower item on Norton Town Meeting warrant",
-   "dek": "Norton's Town Meeting is Monday, Oct 19. The warrant lists an item on a cell tower.",
-   "quote": "…70 65 654 chimneys, domes, spires, towers, radio or television antennas in any zone (in feet) Maximum height in feet for wireless communication facilities is 125 feet. * Wetlands and water bodies…",
-   "reasons": [
-    "Town Meeting Oct 19"
-   ],
-   "topics": [
-    "wireless_telecom"
-   ],
-   "state": "MA",
-   "town": "Norton",
-   "county": "Bristol",
-   "towns": [
-    "MA:Norton"
-   ],
-   "board": "Town Meeting Warrants & Minutes",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-10-19",
-   "meeting_date_source": "agenda",
-   "days_until": 3,
-   "first_seen": "2026-10-10T18:32:30+00:00",
-   "is_new": false,
-   "source_url": "https://www.nortonma.gov/DocumentCenter/View/2259",
-   "town_path": "/ma/norton",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Norton",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-10-19"
-    }
-   ],
-   "hit_ids": [
-    "a8a7ba46d197"
    ]
   }
  ]

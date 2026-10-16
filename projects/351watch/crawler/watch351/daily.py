@@ -429,7 +429,13 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--days-ahead", type=int, default=DAYS_AHEAD)
     p.add_argument("--request-log", type=Path, help="write every network request (purpose, status, url) here")
     p.add_argument("-v", "--verbose", action="store_true")
+    p.add_argument("--fresh-listings", action="store_true",
+                   help="re-read listing pages even when cached today (the afternoon re-check)")
     args = p.parse_args(argv)
+    if args.fresh_listings:
+        from .adapters import base as _base, ri_sos as _ri_sos
+        _base.LISTING_MAX_AGE = 0  # a listing fetched this morning is stale by afternoon when a town re-posts
+        _ri_sos.LISTING_MAX_AGE = 0
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO,
                         format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     logging.getLogger("urllib3").setLevel(logging.WARNING)

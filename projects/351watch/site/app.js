@@ -11,17 +11,37 @@ const norm = (s) => String(s || '').toLowerCase().replace(/[’']/g, '').replace
 // back to the form's own GET to /towns?q=..., which lists matching towns.
 function setupTownBox() {
   const list = document.getElementById('town-names');
-  for (const form of document.querySelectorAll('form[data-town-form]')) {
+  // A form goes to the town's page; a box with data-town-box="pick" (the alerts page) fills its input instead.
+  for (const form of document.querySelectorAll('form[data-town-form], [data-town-box]')) {
     const input = form.querySelector('input');
     const error = form.querySelector('.field-error');
     const box = form.querySelector('.suggest');
     const status = form.querySelector('[aria-live]');
     if (!list || !input) continue;
-    const towns = Array.from(list.options).map((o) => {
-      const [name, state] = o.value.split(/,\s*/);
-      return { label: name, name: norm(name), full: norm(o.value), state: (state || 'MA').toUpperCase(), st: norm(state || 'ma'),
-        href: o.dataset.href, up: Number(o.dataset.up || 0) };
-    });
+    const pick = form.dataset.townBox === 'pick';
+    // The alerts page fills the list after loading its towns, so read it when needed, not once at start.
+    let towns = [];
+    let read = -1;
+    const allTowns = () => {
+      if (list.options.length !== read) {
+        read = list.options.length;
+        towns = Array.from(list.options).map((o) => {
+          const [name, state] = o.value.split(/,\s*/);
+          return { label: name, name: norm(name), full: norm(o.value), state: (state || 'MA').toUpperCase(), st: norm(state || 'ma'),
+            href: o.dataset.href, up: Number(o.dataset.up || 0) };
+        });
+      }
+      return towns;
+    };
+    // Choosing a town: go to its page, or (on the alerts page) put its name in the box and let the page read it.
+    const choose = (t) => {
+      if (!pick) return location.assign(t.href);
+      const twin = allTowns().some((o) => o !== t && o.name === t.name);
+      input.value = twin ? `${t.label} ${t.state}` : t.label;
+      close();
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      input.focus();
+    };
     const say = (text) => { if (status) status.textContent = text; };
     const fail = (text) => {
       if (error) { error.textContent = text; error.hidden = false; }
@@ -29,7 +49,7 @@ function setupTownBox() {
     // Exact name first, then names that start with the typed text, then names that contain it.
     const find = (q) => {
       const rank = (t) => (t.full === q || t.name === q ? 0 : t.name.startsWith(q) ? 1 : t.full.startsWith(q) ? 2 : t.name.includes(q) ? 3 : 9);
-      return towns.map((t) => [rank(t), t]).filter(([r]) => r < 9)
+      return allTowns().map((t) => [rank(t), t]).filter(([r]) => r < 9)
         .sort((a, b) => a[0] - b[0] || a[1].name.localeCompare(b[1].name)).slice(0, 8).map(([, t]) => t);
     };
     let shown = [];
@@ -59,7 +79,8 @@ function setupTownBox() {
         li.id = `${input.id}-opt-${i}`;
         li.setAttribute('role', 'option');
         li.setAttribute('aria-selected', 'false');
-        li.dataset.href = t.href;
+        li.dataset.href = t.href || '';
+        li.dataset.i = String(i);
         const name = document.createElement('span');
         name.className = 'name';
         name.textContent = t.label;
@@ -85,14 +106,24 @@ function setupTownBox() {
         if (event.key === 'ArrowDown') { event.preventDefault(); setActive(Math.min(active + 1, shown.length - 1)); }
         else if (event.key === 'ArrowUp') { event.preventDefault(); setActive(Math.max(active - 1, 0)); }
         else if (event.key === 'Escape') close();
-        else if (event.key === 'Enter' && active >= 0) { event.preventDefault(); location.assign(shown[active].href); }
+        else if (event.key === 'Enter' && active >= 0) { event.preventDefault(); choose(shown[active]); }
       });
       input.addEventListener('blur', () => setTimeout(close, 150));
       box.addEventListener('mousedown', (event) => event.preventDefault());  // keep the input focused while tapping a row
       box.addEventListener('click', (event) => {
-        const li = event.target.closest('li[data-href]');
-        if (li) location.assign(li.dataset.href);
+        const li = event.target.closest('li[data-i]');
+        if (li && shown[Number(li.dataset.i)]) choose(shown[Number(li.dataset.i)]);
       });
+    }
+    if (pick) {
+      input.addEventListener('input', () => {
+        const q = norm(input.value);
+        if (!q) return close();
+        const matches = find(q);
+        if (matches.length) open(matches);
+        else close();
+      });
+      continue;
     }
     form.addEventListener('submit', (event) => {
       const q = norm(input.value);
@@ -102,9 +133,9 @@ function setupTownBox() {
         input.focus();
         return;
       }
-      let hits = towns.filter((t) => t.full === q);
-      if (!hits.length) hits = towns.filter((t) => `${t.name} ${t.st}` === q || `${t.name} ${stateName(t.st)}` === q);
-      if (!hits.length) hits = towns.filter((t) => t.name === q);
+      let hits = allTowns().filter((t) => t.full === q);
+      if (!hits.length) hits = allTowns().filter((t) => `${t.name} ${t.st}` === q || `${t.name} ${stateName(t.st)}` === q);
+      if (!hits.length) hits = allTowns().filter((t) => t.name === q);
       if (hits.length > 1) {
         // The same name in two states: ask, rather than guess.
         event.preventDefault();
@@ -148,7 +179,9 @@ function setupListFilter() {
   const search = form.querySelector('[data-search]');
   const count = form.querySelector('[data-count]');
   const empty = document.querySelector('[data-empty]');
-  const items = Array.from(document.querySelectorAll('[data-filter-list] li'));
+  const status = form.querySelector('[data-status]');
+  const noun = form.dataset.noun || 'towns';
+  const items = Array.from(document.querySelectorAll('[data-filter-list] li, [data-filter-list] tr[data-search]'));
   const groups = Array.from(document.querySelectorAll('details.state-towns, details.county'));
   const params = new URLSearchParams(location.search);
   if (params.get('q')) search.value = params.get('q');
@@ -156,9 +189,10 @@ function setupListFilter() {
 
   const apply = () => {
     const q = norm(search.value);
+    const want = status ? status.value : '';
     let shown = 0;
     for (const li of items) {
-      const ok = !q || norm(li.dataset.search).includes(q);
+      const ok = (!q || norm(li.dataset.search).includes(q)) && (!want || li.dataset.status === want);
       li.hidden = !ok;
       if (ok) shown += 1;
     }
@@ -169,11 +203,12 @@ function setupListFilter() {
       group.hidden = q ? !has : false;
       group.open = q ? has : wide && group.classList.contains('state-towns');
     }
-    count.textContent = q ? `${shown} of ${items.length} towns` : '';
+    count.textContent = (q || want) ? `${shown} of ${items.length} ${noun}` : '';
     if (empty) empty.hidden = shown > 0;
   };
   form.addEventListener('submit', (event) => event.preventDefault());
   search.addEventListener('input', apply);
+  if (status) status.addEventListener('change', apply);
   apply();
 }
 
