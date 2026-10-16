@@ -595,6 +595,8 @@ h1 { margin-top: var(--s6); margin-bottom: var(--s3); }
 @media (min-width: 760px) {
   .compact .meeting { align-items: start; }
 }
+/* a meeting's own page: the ticket holds the day and time, so the items start at the left edge */
+.meetings.one .meeting { display: block; }
 .meetings.one .line { margin-bottom: var(--s4); }
 @media (max-width: 480px) {
   .line-say { display: block; }
