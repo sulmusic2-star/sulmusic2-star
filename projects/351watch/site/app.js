@@ -815,8 +815,10 @@ function setupMeetingFilter() {
   const bar = document.querySelector('[data-meeting-filter]');
   if (!bar) return;
   const select = bar.querySelector('select[data-key="county"]');
+  if (!select) return;
   const count = bar.querySelector('[data-count]');
   const meetings = Array.from(document.querySelectorAll('.meeting[data-county]'));
+  const days = Array.from(document.querySelectorAll('.day-group'));
   const apply = () => {
     let shown = 0;
     for (const m of meetings) {
@@ -824,6 +826,8 @@ function setupMeetingFilter() {
       m.hidden = !ok;
       if (ok) shown += 1;
     }
+    // a day heading with nothing left under it goes too
+    for (const d of days) d.hidden = !d.querySelector('.meeting:not([hidden])');
     count.textContent = select.value ? (shown ? `${shown} of ${meetings.length} meetings` : 'Nothing coming up in that county.') : '';
   };
   select.addEventListener('change', apply);

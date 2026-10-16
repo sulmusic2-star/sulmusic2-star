@@ -37,8 +37,8 @@
     const when = el('span', 'row-when');
     when.append(el('span', 'row-town', `${st.town}${st.state !== 'MA' ? `, ${st.state}` : ''}`));
     if (st.board) when.append(el('span', '', st.board));
+    if (st.new) when.append(el('span', 'is-new', 'New to this town'));
     const line = el('span', 'row-line');
-    if (st.new) line.append(el('span', 'badge-new', 'New'), ' ');
     const words = (st.line || st.headline || '').replace(' (no vote listed)', '').replace('; no vote listed)', ')');
     line.append(/[a-z0-9)]\.$/.test(words) && !/\b(St|Rd|Ave|Dr|Ln|Blvd|Mt|No|Art|Sec|Inc|Corp|LLC|Co)\.$/.test(words) ? words.slice(0, -1) : words);
     a.append(day, when, line);

@@ -2104,8 +2104,9 @@ def speak_line(m):
     return ""
 
 
-def meeting_head(ctx, m, show_town=True, with_board=True):
-    """"Carver · Planning Board · Tue Oct 13, 6:30 pm · Town Hall Room 1": the line above a meeting's items."""
+def meeting_head(ctx, m, show_town=True, with_board=True, with_when=True):
+    """"Carver · Planning Board · Town Hall Room 1": the line above a meeting's items. In a list the day is
+    printed once above the day's meetings and the time sits in its own column, so `with_when` is off there."""
     parts = []
     if show_town:
         st = f", {m['state']}" if m["state"] != "MA" else ""
@@ -2113,9 +2114,9 @@ def meeting_head(ctx, m, show_town=True, with_board=True):
     if with_board:
         parts.append(f"<span>{e(meeting_board(m))}</span>")
     when = when_text(ctx, m)
-    if m["date"]:
+    if with_when and m["date"]:
         parts.append(f'<span class="meet-day"><time datetime="{m["date"]}">{e(when)}</time></span>')
-    elif m["board_key"] == "town_meeting":
+    elif with_when and m["board_key"] == "town_meeting":
         parts.append('<span class="meet-day">Date not found on the warrant</span>')
     if m.get("cancelled"):
         parts.append('<span class="meet-canceled">Canceled by the town</span>')
@@ -2254,10 +2255,10 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
 
     notes_shown = []
 
-    def line(text, entry):
+    def line(text, entry, first=False):
         b = entry.get("brief")
         # "New" is for a project the town has not seen before, not every freshly posted agenda
-        new = '<span class="badge-new">New</span> ' if entry["new"] and not (b and b.get("history")) and not text.startswith("New ") else ""
+        new = entry["new"] and not (b and b.get("history")) and not text.startswith("New ")
         what = ""
         if b and b.get("what") and quote_key(b["what"]) != quote_key(text):
             w = b["what"]
@@ -2267,7 +2268,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
             what = f'<p class="brief-what">{e(w)}</p>'
         if b and b.get("history"):  # what happened on this item before, from our own records
             what += f'<p class="line-before"><b>Before this:</b> {e(b["history"])}</p>'
-        facts = "".join(f"<span>{e(x)}</span>" for x in facts_text(entry))
+        facts = ('<span class="is-new">New to this town</span>' if new else "") + "".join(f"<span>{e(x)}</span>" for x in facts_text(entry))
         stage = stage_html(entry, m, ctx)
         facts_html = f'<p class="line-facts">{facts}</p>' if facts else ""
         extra = ""
@@ -2295,12 +2296,15 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
         say = (f'<a class="line-link" href="/m/{m["id"][2:]}">{e(text)}</a>' if not full and m.get("date") and m["date"] >= ctx.today
                else e(text))
         kind = " brief" if b else (" mention" if entry.get("kind") == "mention" else "")
-        return f'<li class="line{kind}"><p class="line-say"><span>{new}{say}</span>{stage}</p>{what}{facts_html}{extra}</li>'
+        # the one-line view prints the meeting's words ("Carver · Planning Board") ahead of the first item
+        head_words = f' data-head="{e(head_text)}"' if first and head_text else ""
+        return f'<li class="line{kind}"><p class="line-say"><span{head_words}>{say}</span>{stage}</p>{what}{facts_html}{extra}</li>'
 
+    head_text = "" if full else " · ".join(x for x in ([m["town"] + ("" if m["state"] == "MA" else f", {m['state']}")] if show_town else []) + [meeting_board(m)])
     entries = list(m["lines"].items())
     if m.get("cancelled"):
         entries = [(t, {**en, "stage": "Canceled"}) for t, en in entries]
-    lines = "".join(line(t, en) for t, en in entries[:lines_shown])
+    lines = "".join(line(t, en, first=(i == 0)) for i, (t, en) in enumerate(entries[:lines_shown]))
     if entries[lines_shown:]:
         lines += (f'<li class="line-more"><details class="more"><summary>{plural(len(entries) - lines_shown, "more item")}</summary>'
                   f'<ul class="lines">{"".join(line(t, en) for t, en in entries[lines_shown:])}</ul></details></li>')
@@ -2312,10 +2316,16 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     speak = "" if (full or m.get("cancelled")) else speak_line(m)  # the meeting's own page says it in the ticket instead
     tail = "" if full else link
     county = (ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or ""
-    head = "" if full else (f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town)}</p>'
+    when = ""
+    if not full:
+        # the time in its own column; the day is the heading above the day's meetings
+        when = (f'<span class="meet-when"><time datetime="{m["date"]}">{e(m["time"])}</time></span>' if m["time"] and m["date"]
+                else '<span class="meet-when none">No time</span>')
+    head = "" if full else (f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town, with_when=False)}</p>'
                             + (f'<p class="speak-line">{e(speak)}</p>' if speak else ""))
     terms = terms_html(m, source) if full and not m.get("cancelled") else ""
     return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" id="{m['id']}" data-county="{e(county)}" data-state="{e(m['state'])}">
+  {when}
   {head}
   <ul class="lines">{lines}</ul>
   {terms}
@@ -2323,15 +2333,45 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
 </li>"""
 
 
+def time_key(m):
+    """Minutes past midnight for "6:30 pm", or a large number when the agenda lists no time."""
+    mt = re.match(r"(\d{1,2})(?::(\d{2}))?\s*([ap])m", (m.get("time") or "").strip(), re.I)
+    if not mt:
+        return 10_000
+    h = int(mt.group(1)) % 12 + (12 if mt.group(3).lower() == "p" else 0)
+    return h * 60 + int(mt.group(2) or 0)
+
+
+def day_groups(ctx, meetings, show_town=True, lines_shown=4):
+    """Meetings under a heading per day, in the day order given; within a day in time order, no time last."""
+    groups = []
+    for m in meetings:
+        key = m["date"] or ""
+        if groups and groups[-1][0] == key:
+            groups[-1][1].append(m)
+        else:
+            groups.append((key, [m]))
+    out = []
+    for key, ms in groups:
+        ms = sorted(ms, key=time_key)
+        if key:
+            label = f'<time datetime="{key}">{e(day_label(key, ctx))}</time>'
+        else:
+            label = "Date not found on the warrant"
+        out.append(f'<section class="day-group"><h3 class="day">{label}</h3><ol class="meetings">'
+                   + "".join(meeting_html(ctx, m, show_town, lines_shown) for m in ms) + "</ol></section>")
+    return f'<div class="days">{"".join(out)}</div>'
+
+
 def meeting_list(ctx, meetings, show_town=True, shown=3, more="Show more", empty="", lines_shown=4):
-    """The first few meetings, the rest behind one "Show more"."""
+    """The first few meetings, grouped by day, the rest behind one "Show more"."""
     if not meetings:
         return f'<p class="empty">{empty}</p>' if empty else ""
-    html = f'<ol class="meetings">{"".join(meeting_html(ctx, m, show_town, lines_shown) for m in meetings[:shown])}</ol>'
+    html = day_groups(ctx, meetings[:shown], show_town, lines_shown)
     rest = meetings[shown:]
     if rest:
         html += (f'<details class="more"><summary>{more} ({len(rest)})</summary>'
-                 f'<ol class="meetings">{"".join(meeting_html(ctx, m, show_town, lines_shown) for m in rest)}</ol></details>')
+                 + day_groups(ctx, rest, show_town, lines_shown) + '</details>')
     return html
 
 
@@ -2595,18 +2635,20 @@ def build_upcoming(ctx):
     later = [m for m in meetings if m["date"] > week_end]
     counties = sorted({(ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or "" for m in meetings} - {""})
     opts = "".join(f'<option value="{e(c)}">{e(c)}</option>' for c in counties)
-    county_filter = (f'<div class="filterbar" data-meeting-filter><label>County<select data-key="county"><option value="">All</option>{opts}</select></label>'
-                     f'<p class="count" data-count aria-live="polite"></p></div>') if len(counties) > 1 else ""
+    county_filter = (f'<label>County<select data-key="county"><option value="">All</option>{opts}</select></label>') if len(counties) > 1 else ""
     body = f"""
 <div class="wrap narrow">
 <section class="page-head" aria-labelledby="up-title">
   <h1 id="up-title">Coming up</h1>
-  {county_filter}
-  <p class="lead">Town board meetings with solar, battery storage, data centers, zoning, housing or cell towers on the agenda. We check new agendas every morning.</p>
+  <p class="lead">Town board meetings with solar, battery storage, data centers, zoning, housing or cell towers on the agenda, read from the agendas every morning.</p>
+  <div class="filterbar list-tools" data-meeting-filter>
+    {county_filter}
+    <p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="full" aria-pressed="true">With write-ups</button><button type="button" class="link-btn" data-view="lines" aria-pressed="false">One line each</button></p>
+    <p class="count" data-count aria-live="polite"></p>
+  </div>
   <p class="actions"><a class="btn" href="/watch">Get alerts for your town</a></p>
   <p class="form-note" data-slop-ignore>By topic: {" · ".join(f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' for tp in TOPIC_PAGES)} · <a href="/topics">all topics</a></p>
 </section>
-<p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="full" aria-pressed="true">With write-ups</button><button type="button" class="link-btn" data-view="lines" aria-pressed="false">One line each</button></p>
 <section aria-labelledby="soon-title">
   <h2 id="soon-title">Next 7 days</h2>
   {meeting_list(ctx, soon, shown=max(len(soon), 1), empty="Nothing in the next 7 days.")}
@@ -2704,13 +2746,14 @@ def story_html(ctx, st, level=3):
     to the meeting's page, where the detail lives."""
     when = f'<time datetime="{st["meeting_date"]}">{e(day_label(st["meeting_date"], ctx))}</time>' if st["meeting_date"] else "Date not set"
     town = f'{e(st["town"])}{", " + e(st["state"]) if st["state"] != "MA" else ""}'
-    new = '<span class="badge-new">New</span> ' if st["new"] else ""
+    # "New" rides the meta line, so every headline starts at the same edge
+    new = '<span class="is-new">New to this town</span>' if st["new"] else ""
     board = f'<span>{e(st["board"])}</span>' if st.get("board") else ""
     stage = stage_html({"stage": st.get("stage")}, {"date": st.get("meeting_date")}, ctx)
     line = headline(st["line"])
     return f"""<li class="row" data-id="{e(st['id'])}" data-date="{e(st.get('meeting_date') or '')}" data-topics="{e(' '.join(st.get('topics') or []))}">
-  <a href="{e(st['href'])}"><span class="row-day" data-slop-ignore>{when}</span><span class="row-when" data-slop-ignore><span class="row-town">{town}</span>{board}</span>
-  <span class="row-line">{new}{e(line)}</span>{stage}</a>
+  <a href="{e(st['href'])}"><span class="row-day" data-slop-ignore>{when}</span><span class="row-when" data-slop-ignore><span class="row-town">{town}</span>{board}{new}</span>
+  <span class="row-line">{e(line)}</span>{stage}</a>
 </li>"""
 
 
@@ -3104,7 +3147,7 @@ def build_towns_index(ctx):
   <div class="counties">{''.join(groups)}</div>
 </details>""")
     body = f"""
-<div class="wrap narrow">
+<div class="wrap narrow towns">
 <section class="page-head" aria-labelledby="towns-title">
   <h1 id="towns-title">Find your town</h1>
   <p class="lead">Pick your town to see what its boards have coming up.</p>
@@ -3716,12 +3759,12 @@ AG_PAGES = [("/attorney-general", "Summary"), ("/attorney-general/rulings", "Eve
 # The data-center ledger: one row per town measure (moratorium or ban), with every date the record has.
 # Rows come from data/data_center_ledger.json, compiled by hand from the towns' warrants, the Attorney General's
 # decision letters and the towns' bylaws; each row lists its sources. Status order is the reading order.
-LEDGER_STATUS = [("in effect", "In effect"), ("adopted, awaiting AG", "Adopted, awaiting the Attorney General"),
-                 ("proposed", "Proposed"), ("expired", "Expired"), ("disapproved", "Disapproved"), ("withdrawn", "Withdrawn")]
+LEDGER_STATUS = [("in effect", "In effect"), ("adopted", "Adopted"), ("proposed", "Proposed"), ("expired", "Expired"),
+                 ("disapproved", "Disapproved"), ("withdrawn", "Withdrawn"), ("reported", "Reported in the press, not confirmed")]
 LEDGER_COLS = ["state", "town", "county", "measure", "body", "proposed_date", "adopted_date", "ag_decision", "ag_decision_date",
                "ag_case_number", "in_effect_from", "in_effect_to", "status", "summary", "sources", "confidence"]
-LEDGER_BADGE = {"in effect": "active", "adopted, awaiting AG": "pending", "proposed": "pending", "expired": "cleared",
-                "disapproved": "cleared", "withdrawn": "cleared"}
+LEDGER_BADGE = {"in effect": "active", "adopted": "pending", "proposed": "pending", "expired": "cleared",
+                "disapproved": "cleared", "withdrawn": "cleared", "reported": "info"}
 
 
 def ledger_rows(ctx):
@@ -3781,14 +3824,11 @@ def build_data_center_ledger(ctx):
         ag = ""
         if r.get("ag_decision"):
             ag = e(first_up(r["ag_decision"]))
-            if r.get("ag_decision_date"):
-                ag += f"<br><small>{fmt_date(r['ag_decision_date'])}</small>"
-            if r.get("ag_case_number"):
-                ag += f"<br><small>case {e(str(r['ag_case_number']))}</small>"
-        elif st == "MA" and r.get("adopted_date"):
-            ag = "Awaiting a decision"
+            bits = ([fmt_date(r["ag_decision_date"])] if r.get("ag_decision_date") else []) + ([f"case {r['ag_case_number']}"] if r.get("ag_case_number") else [])
+            if bits:
+                ag += f"<br><small>{e(', '.join(bits))}</small>"
         elif st == "MA":
-            ag = "Not yet before the AG"
+            ag = "None yet"
         else:
             ag = "No state review"
         effect = ""
@@ -3800,14 +3840,17 @@ def build_data_center_ledger(ctx):
                 effect += "<br><small>no end date in the record</small>"
         srcs = " ".join(f'<a href="{e(u)}" rel="nofollow noopener" target="_blank">Source {i}</a>'
                         for i, u in enumerate(r.get("sources") or [], 1))
-        conf = f'<small class="muted">Confidence: {e(r["confidence"])}</small>' if r.get("confidence") else ""
+        conf = ""
+        if r.get("confidence"):
+            level, _, note = r["confidence"].partition(":")
+            conf = f'<small class="muted ledger-conf">How sure: {e(level.strip())}. {e(first_up(note.strip()))}</small>' if note else f'<small class="muted ledger-conf">How sure: {e(level.strip())}</small>'
         search = " ".join(filter(None, [town, r.get("county") or "", r.get("measure") or "", r.get("body") or "", label[r["status"]],
                                         r.get("summary") or ""]))
         body_rows.append(f"""<tr data-search="{e(search)}" data-status="{e(r['status'])}">
   <td class="town" data-label="Town"><b>{town_cell}</b>{county}</td>
   <td data-label="Measure">{e(first_up(r.get('measure') or ''))}{f"<br><small>{e(r['body'])}</small>" if r.get('body') else ''}</td>
   <td class="when" data-label="Proposed">{ledger_date(r.get('proposed_date'))}</td>
-  <td class="when" data-label="Adopted">{ledger_date(r.get('adopted_date'), 'Not yet')}</td>
+  <td class="when" data-label="Adopted">{ledger_date(r.get('adopted_date'), 'Not yet' if r['status'] == 'proposed' else 'Not found')}</td>
   <td data-label="Attorney General">{ag}</td>
   <td class="when" data-label="In effect">{effect or 'Not in effect'}</td>
   <td class="col-summary" data-label="Status"><span class="badge {LEDGER_BADGE[r['status']]}">{e(label[r['status']])}</span>
@@ -3825,7 +3868,7 @@ def build_data_center_ledger(ctx):
 </form>
 <div class="table-wrap"><table class="stack ledger-table" id="ledger">
 <thead><tr><th scope="col">Town</th><th scope="col">Measure</th><th scope="col">Proposed</th><th scope="col">Adopted</th>
-<th scope="col">Attorney General</th><th scope="col">In effect</th><th scope="col" class="col-summary">Status</th></tr></thead>
+<th scope="col">Attorney General</th><th scope="col">In effect</th><th scope="col" class="col-summary">Status and what happened</th></tr></thead>
 <tbody data-filter-list>{"".join(body_rows)}</tbody></table></div>
 <p class="muted" data-empty hidden>No measure matches.</p>
 <p class="action-row"><a href="/attorney-general/data-centers.csv" download>Download the ledger (CSV)</a></p>

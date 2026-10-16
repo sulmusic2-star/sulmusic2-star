@@ -248,11 +248,11 @@
       const stage = m.cancelled ? 'Canceled' : e.stage;
       const soon = stage === 'Hearing' && m.date && (Date.parse(`${m.date}T12:00:00Z`) - Date.parse(`${today}T12:00:00Z`)) / 86400000 <= 2 && m.date >= today;
       return el('li', { class: `line${b ? ' brief' : ''}` },
-        el('p', { class: 'line-say' }, el('span', {}, e.isNew ? el('span', { class: 'badge-new', text: 'New' }) : null, e.isNew ? ' ' : null, text),
+        el('p', { class: 'line-say' }, el('span', {}, text),
           stage ? el('span', { class: `stage${/^(Vote|Hearing|Final vote|Possible vote|Decided)/.test(stage) ? ' act' : ''}${soon ? ' soon' : ''}`, text: stage }) : null),
         b && b.what && normQ(b.what) !== normQ(text) ? el('p', { class: 'brief-what', text: b.what }) : null,
         b && b.history ? el('p', { class: 'line-before' }, el('b', { text: 'Before this:' }), ` ${b.history}`) : null,
-        facts.length ? el('p', { class: 'line-facts' }, ...facts) : null);
+        facts.length || e.isNew ? el('p', { class: 'line-facts' }, e.isNew ? el('span', { class: 'is-new', text: 'New to this town' }) : null, ...facts) : null);
     };
     const where = `${m.town} ${meetingBoard(m)}, ${m.date ? dayLabel(m.date) : 'no date'}`;
     const d = m.docs[0];
