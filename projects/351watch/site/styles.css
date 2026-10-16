@@ -547,6 +547,8 @@ h1 { margin-top: var(--s6); margin-bottom: var(--s3); }
 .line-next { margin: var(--s2) 0 0; font-size: var(--t-sm); max-width: 34em; }
 .line-note { margin: var(--s1) 0 0; font-size: var(--t-sm); max-width: 34em; }
 .speak-line { color: var(--muted); font-size: var(--t-sm); max-width: 34em; margin: calc(-1 * var(--s2)) 0 var(--s3); }
+.terms { color: var(--muted); font-size: var(--t-sm); max-width: 34em; margin: var(--s4) 0 0; }
+.terms dfn { font-style: normal; color: var(--ink); }
 /* /upcoming with "One line each": the write-ups fold away */
 .compact .meetings :is(.brief-what, .line-before, .line-facts, .line-next, .line-note, .speak-line) { display: none; }
 .compact .lines > .line + .line { margin-top: var(--s2); }

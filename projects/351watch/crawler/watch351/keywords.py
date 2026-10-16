@@ -106,7 +106,44 @@ _FALSE_POSITIVE = [
     # bond / contract boilerplate: "bankruptcy, insolvency, reorganization, moratorium"
     (re.compile(r"morator(?:ium|ia|iums)", re.I),
      lambda t, m: re.search(r"bankruptcy|insolvency|reorganization|creditors", _around(t, m, 60, 60), re.I)),
+    # "General Ordinance Amendment" about e-bikes, salaries, parks or composting is not a zoning change
+    (re.compile(r"(?:by-?law|ordinance)\s+amendments?", re.I),
+     lambda t, m: not re.search(r"zoning\s*$", t[max(0, m.start() - 12):m.start()], re.I)
+     and not _ZONING_CTX.search(_around(t, m, 300, 300))),
 ]
+_ZONING_CTX = re.compile(r"zoning|\bzones?\b|rezon|land\s+use|\bdistricts?\b|overlay|site\s+plan|special\s+permit|dimensional|"
+                         r"setback|use\s+(?:table|regulations)|subdivision|lot\s+(?:size|coverage|area)|building\s+height|"
+                         r"accessory\s+dwelling|\bADUs?\b|frontage|\b40[ABR]\b|\bto\s+allow\b|by[\s-]right|permitted\s+uses?|"
+                         r"nonconforming|mixed[\s-]use|multi-?family|dwelling\s+units?|wetlands?|"
+                         r"conservation\s+commission\s+by-?law", re.I)
+
+# ----------------------------------------------------------------------------
+# Hits that passed the matcher but are not what the site tracks. The engine drops them when it writes
+# hits_current.json; build.py asks the same question of older hits.
+# ----------------------------------------------------------------------------
+# A moratorium on its own is a hit only when it is about land use or energy: a PFAS moratorium, a winter
+# shut-off moratorium or a street-opening moratorium is a real item for the town, but not one this site tracks.
+LAND_USE_WORDS = re.compile(r"solar|battery|data.?cent|server|development|building|construction|subdivision|zoning|housing|"
+                            r"permit|dwelling|short.term|rental|cannabis|marijuana|warehouse|crypto", re.I)
+POLE_WORDS = re.compile(r"\b(?:mid.?span\s+)?poles?\b|pole\s+(?:location|petition|hearing)|conduit", re.I)
+UTILITY_WORDS = re.compile(r"national\s*grid|eversource|verizon|unitil|comcast|massachusetts\s+electric", re.I)
+_PROJECT_WORDS = re.compile(r"solar\s+(?:farm|array|project|facility)|battery\s+(?:energy\s+)?storage\s+(?:system|facility|project)", re.I)
+_ORDINANCE_ONLY = re.compile(r"(?:by-?law|ordinance)\s+amendments?", re.I)
+
+
+def off_subject(h: dict) -> bool:
+    """True for a hit the site should not show: a moratorium on something other than land use, a utility's
+    pole petition that says "solar", or a general-ordinance amendment (salaries, parks, e-bikes) with no
+    zoning words in its window."""
+    snippet = " ".join((h.get("snippet") or "").split())
+    topics = list(h.get("topics") or [])
+    if topics == ["moratorium"] and not LAND_USE_WORDS.search(snippet):
+        return True
+    # A Planning Board's or Zoning Board's "bylaw amendment" is a zoning one; any other body's needs zoning words.
+    if (topics == ["zoning_amendment"] and h.get("board_key") not in ("planning_board", "zoning_board_of_appeals")
+            and _ORDINANCE_ONLY.search(snippet) and not _ZONING_CTX.search(snippet)):
+        return True
+    return bool(POLE_WORDS.search(snippet) and UTILITY_WORDS.search(snippet) and not _PROJECT_WORDS.search(snippet))
 
 # ----------------------------------------------------------------------------
 # State-specific patterns (Michigan, Virginia). They are matched only when find_hits /

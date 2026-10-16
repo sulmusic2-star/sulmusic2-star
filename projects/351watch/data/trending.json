@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-16T15:20:26+00:00",
+ "generated": "2026-10-16T16:00:41+00:00",
  "window": {
   "start": "2026-10-16",
   "end": "2027-02-13"
@@ -119,7 +119,7 @@
    "board": "Town Meeting",
    "board_key": "town_meeting",
    "meeting_date": "2026-10-17",
-   "meeting_date_source": "warrant",
+   "meeting_date_source": "agenda",
    "days_until": 1,
    "first_seen": "2026-10-10T14:41:39+00:00",
    "is_new": false,
@@ -1362,6 +1362,48 @@
    ]
   },
   {
+   "id": "2bcc705ee207",
+   "score": 8.84,
+   "headline": "Stow planners hold 40B hearing",
+   "dek": "The Planning Board meets Tuesday, Oct 20. The agenda lists a public hearing on a comprehensive permit for 40B housing.",
+   "quote": "Gates Lane Comprehensive Permit Posted 10.15.26 at…",
+   "reasons": [
+    "Public hearing",
+    "First time this has come up in Stow",
+    "Hearing Oct 20"
+   ],
+   "topics": [
+    "40b_comprehensive_permit"
+   ],
+   "state": "MA",
+   "town": "Stow",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Stow"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-20",
+   "meeting_date_source": "agenda",
+   "days_until": 4,
+   "first_seen": "2026-10-16T11:11:01+00:00",
+   "is_new": true,
+   "source_url": "https://www.stow-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-540",
+   "town_path": "/ma/stow",
+   "action": "project_hearing",
+   "boards": [
+    {
+     "town": "Stow",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-20"
+    }
+   ],
+   "hit_ids": [
+    "4e0cc9f0ea33"
+   ]
+  },
+  {
    "id": "26146b2a627b",
    "score": 8.78,
    "headline": "Narragansett planners discuss zoning changes",
@@ -1435,7 +1477,7 @@
    "board": "Town Meeting",
    "board_key": "town_meeting",
    "meeting_date": "2026-10-17",
-   "meeting_date_source": "warrant",
+   "meeting_date_source": "agenda",
    "days_until": 1,
    "first_seen": "2026-10-10T18:35:24+00:00",
    "is_new": false,
@@ -1553,8 +1595,7 @@
     "Hearing Oct 22"
    ],
    "topics": [
-    "40b_comprehensive_permit",
-    "zoning_amendment"
+    "40b_comprehensive_permit"
    ],
    "state": "MA",
    "town": "Franklin",
@@ -1584,7 +1625,6 @@
     "5ccad8b608b9",
     "66c5918b4a17",
     "9230f2e1d4bd",
-    "92eda75919a7",
     "b9c0c3562e85"
    ]
   },
@@ -1739,7 +1779,7 @@
    "board": "Town Meeting",
    "board_key": "town_meeting",
    "meeting_date": "2026-10-19",
-   "meeting_date_source": "warrant",
+   "meeting_date_source": "agenda",
    "days_until": 3,
    "first_seen": "2026-10-10T18:32:50+00:00",
    "is_new": false,
@@ -1864,7 +1904,7 @@
    "board": "Town Meeting",
    "board_key": "town_meeting",
    "meeting_date": "2026-10-19",
-   "meeting_date_source": "warrant",
+   "meeting_date_source": "agenda",
    "days_until": 3,
    "first_seen": "2026-10-10T18:46:42+00:00",
    "is_new": false,
@@ -2008,47 +2048,6 @@
    ],
    "hit_ids": [
     "69ceb74e599c"
-   ]
-  },
-  {
-   "id": "2bcc705ee207",
-   "score": 7.49,
-   "headline": "Stow planners hold 40B hearing",
-   "dek": "The Planning Board meets Tuesday, Oct 20. The agenda lists a public hearing on a comprehensive permit for 40B housing.",
-   "quote": "Gates Lane Comprehensive Permit Posted 10.15.26 at…",
-   "reasons": [
-    "Public hearing",
-    "Hearing Oct 20"
-   ],
-   "topics": [
-    "40b_comprehensive_permit"
-   ],
-   "state": "MA",
-   "town": "Stow",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Stow"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-20",
-   "meeting_date_source": "agenda",
-   "days_until": 4,
-   "first_seen": "2026-10-16T11:11:01+00:00",
-   "is_new": true,
-   "source_url": "https://www.stow-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-540",
-   "town_path": "/ma/stow",
-   "action": "project_hearing",
-   "boards": [
-    {
-     "town": "Stow",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-20"
-    }
-   ],
-   "hit_ids": [
-    "4e0cc9f0ea33"
    ]
   },
   {
@@ -2377,8 +2376,7 @@
     }
    ],
    "hit_ids": [
-    "05895701586a",
-    "9bd981e8eff4"
+    "05895701586a"
    ]
   },
   {
@@ -2446,7 +2444,7 @@
    "board": "Town Meeting Warrants",
    "board_key": "town_meeting",
    "meeting_date": "2026-10-26",
-   "meeting_date_source": "warrant",
+   "meeting_date_source": "agenda",
    "days_until": 10,
    "first_seen": "2026-10-10T18:47:41+00:00",
    "is_new": false,
@@ -3431,47 +3429,6 @@
    ]
   },
   {
-   "id": "78e1bac55dfa",
-   "score": 3.24,
-   "headline": "Jamestown Town Council holds hearing on bylaw changes",
-   "dek": "The Town Council meets Monday, Oct 19. The agenda lists a public hearing on bylaw changes.",
-   "quote": "For Proposed Amendments to the Code of Ordinances, Chapter 42, Section 1-11, Parks and Recreation.",
-   "reasons": [
-    "Public hearing",
-    "Hearing Oct 19"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "RI",
-   "town": "Jamestown",
-   "county": "Newport",
-   "towns": [
-    "RI:Jamestown"
-   ],
-   "board": "Town Council",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-19",
-   "meeting_date_source": "agenda",
-   "days_until": 3,
-   "first_seen": "2026-10-16T11:18:22+00:00",
-   "is_new": true,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4169%5C2026%5C568914.pdf",
-   "town_path": "/ri/jamestown",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Jamestown",
-     "board": "Town Council",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-19"
-    }
-   ],
-   "hit_ids": [
-    "ebb122ec4599"
-   ]
-  },
-  {
    "id": "2268c94b3fbf",
    "score": 3.21,
    "headline": "40B item on Billerica Select Board agenda",
@@ -3696,91 +3653,6 @@
    ]
   },
   {
-   "id": "ad3081feeaee",
-   "score": 1.89,
-   "headline": "Holliston Town Meeting takes up bylaw changes",
-   "dek": "Holliston's Town Meeting is Monday, Oct 19. The warrant lists an article on bylaw changes.",
-   "quote": "Select Board To see if the Town will vote to amend Sections 9, 10, and 11 of the Consolidated Personnel By-Law to read as follows: (deleted language shown in strikethrough and new language…",
-   "reasons": [
-    "Town Meeting vote",
-    "Town Meeting Oct 19"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Holliston",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Holliston"
-   ],
-   "board": "Town Meeting",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-10-19",
-   "meeting_date_source": "warrant",
-   "days_until": 3,
-   "first_seen": "2026-10-10T18:30:46+00:00",
-   "is_new": false,
-   "source_url": "https://www.townofholliston.us/688/October-2026-Town-Meeting-Warrant---Text",
-   "town_path": "/ma/holliston",
-   "action": "town_meeting",
-   "boards": [
-    {
-     "town": "Holliston",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-10-19"
-    }
-   ],
-   "hit_ids": [
-    "5ad1f8192bbf",
-    "aeca1e32d456",
-    "e57592c290bc"
-   ]
-  },
-  {
-   "id": "caae7346b5d0",
-   "score": 1.68,
-   "headline": "Tyngsborough Town Meeting takes up bylaw changes",
-   "dek": "Tyngsborough's Town Meeting is Tuesday, Oct 27. The warrant lists an article on bylaw changes.",
-   "quote": "Non-Criminal Disposition Bylaw Amendments To see if the Town will vote to amend the Town's General Bylaws to substitute a Non-Criminal Disposition Bylaw under to G.L. c. 40, § 21D, for the existing…",
-   "reasons": [
-    "Town Meeting vote",
-    "Town Meeting Oct 27"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Tyngsborough",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Tyngsborough"
-   ],
-   "board": "Town Meeting",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-10-27",
-   "meeting_date_source": "agenda",
-   "days_until": 11,
-   "first_seen": "2026-10-10T18:36:15+00:00",
-   "is_new": false,
-   "source_url": "https://www.tyngsboroughma.gov/DocumentCenter/View/3558/Final-STM-Warrant-October-27-2026",
-   "town_path": "/ma/tyngsborough",
-   "action": "town_meeting",
-   "boards": [
-    {
-     "town": "Tyngsborough",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-10-27"
-    }
-   ],
-   "hit_ids": [
-    "e09a2f6b05bd",
-    "ef3b1be07926"
-   ]
-  },
-  {
    "id": "b16355235d2b",
    "score": 1.5,
    "headline": "Belchertown Conservation Commission discusses solar",
@@ -3858,49 +3730,6 @@
    ],
    "hit_ids": [
     "4e58a1611e45"
-   ]
-  },
-  {
-   "id": "ef881c74d0da",
-   "score": 1.49,
-   "headline": "Dartmouth Select Board reviews Town Meeting article on bylaw changes",
-   "dek": "The Select Board meets Tuesday, Oct 20. The agenda lists an article on bylaw changes.",
-   "quote": "action relative thereto. Sponsor: Board of Parks & Recreation 12 ARTICLE 15: GENERAL BYLAW AMENDMENT – CHAPTER 315, SECTION 6 (SNOW TO BE REMOVED FROM SIDEWALKS) To see if the Town will vote to…",
-   "reasons": [
-    "Town Meeting article",
-    "Meeting Oct 20"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Dartmouth",
-   "county": "Bristol",
-   "towns": [
-    "MA:Dartmouth"
-   ],
-   "board": "Select Board",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-20",
-   "meeting_date_source": "agenda",
-   "days_until": 4,
-   "first_seen": "2026-10-10T14:41:36+00:00",
-   "is_new": false,
-   "source_url": "https://www.dartmouthma.gov/AgendaCenter/ViewFile/Agenda/_10202026-5883",
-   "town_path": "/ma/dartmouth",
-   "action": "warrant_review",
-   "boards": [
-    {
-     "town": "Dartmouth",
-     "board": "Select Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-20"
-    }
-   ],
-   "hit_ids": [
-    "183419bb0528",
-    "60050bed19f4",
-    "c06d60c37a9d"
    ]
   },
   {
@@ -4065,47 +3894,6 @@
    ]
   },
   {
-   "id": "b917645467c3",
-   "score": 1.05,
-   "headline": "Bellingham Town Meeting takes up bylaw changes",
-   "dek": "The warrant for Bellingham's fall Town Meeting gives no date. The warrant lists an article on bylaw changes.",
-   "quote": "Dogs To see if the Town will vote to amend Chapter 55 of the Town's General Bylaws, \"Dogs\", by inserting new sections 55-5A, 55-5B and 55-5C and amending sections 55-1 and 55-10, all as set forth in…",
-   "reasons": [
-    "Town Meeting vote",
-    "Town Meeting date not in the warrant"
-   ],
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Bellingham",
-   "county": "Norfolk",
-   "towns": [
-    "MA:Bellingham"
-   ],
-   "board": "Town Meeting Warrants & Results",
-   "board_key": "town_meeting",
-   "meeting_date": null,
-   "meeting_date_source": null,
-   "days_until": null,
-   "first_seen": "2026-10-10T18:39:52+00:00",
-   "is_new": false,
-   "source_url": "https://www.bellinghamma.org/DocumentCenter/View/9502/Fall-Town-Meeting-Warrant-2026",
-   "town_path": "/ma/bellingham",
-   "action": "town_meeting",
-   "boards": [
-    {
-     "town": "Bellingham",
-     "board": "Town Meeting Warrants & Results",
-     "board_key": "town_meeting",
-     "meeting_date": null
-    }
-   ],
-   "hit_ids": [
-    "aa173055cabb"
-   ]
-  },
-  {
    "id": "4c2ab9fbcd8a",
    "score": 0.81,
    "headline": "Lexington planners cancel Oct 21 hearing on zoning changes",
@@ -4210,7 +3998,7 @@
    "board": "Town Meeting",
    "board_key": "town_meeting",
    "meeting_date": "2026-10-19",
-   "meeting_date_source": "warrant",
+   "meeting_date_source": "agenda",
    "days_until": 3,
    "first_seen": "2026-10-10T18:30:46+00:00",
    "is_new": false,
@@ -4430,6 +4218,127 @@
    ],
    "hit_ids": [
     "165647255a0c"
+   ]
+  },
+  {
+   "id": "be179d74c242",
+   "score": 0.3,
+   "headline": "Solar item on Lancaster Planning Board agenda",
+   "dek": "The Planning Board meets Monday, Oct 26. The agenda lists an item on solar.",
+   "quote": "The property is located at 70 McGovern, Lancaster, MA, in the EZA Retail Subdistrict, Flexible Design 1 District and is overlayed by the Solar District and is identified on the Town Assessor's office…",
+   "reasons": [
+    "Meeting Oct 26"
+   ],
+   "topics": [
+    "solar"
+   ],
+   "state": "MA",
+   "town": "Lancaster",
+   "county": "Worcester",
+   "towns": [
+    "MA:Lancaster"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-26",
+   "meeting_date_source": "agenda",
+   "days_until": 10,
+   "first_seen": "2026-10-10T18:41:53+00:00",
+   "is_new": false,
+   "source_url": "https://www.ci.lancaster.ma.us/AgendaCenter/ViewFile/Agenda/_10262026-1629",
+   "town_path": "/ma/lancaster",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Lancaster",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-26"
+    }
+   ],
+   "hit_ids": [
+    "f7b6ae0dbf80"
+   ]
+  },
+  {
+   "id": "0edfa19a9b73",
+   "score": 0.3,
+   "headline": "Solar item on Hingham Current Warrant Articles warrant",
+   "dek": "Hingham's Town Meeting is Thursday, Oct 29. The warrant lists an item on solar.",
+   "quote": "The Project will also include reinforcement of selected roof framing and related interior work to meet current Code requirements and support potential future solar installation in the designated…",
+   "reasons": [
+    "Town Meeting Oct 29"
+   ],
+   "topics": [
+    "solar"
+   ],
+   "state": "MA",
+   "town": "Hingham",
+   "county": "Plymouth",
+   "towns": [
+    "MA:Hingham"
+   ],
+   "board": "Current Warrant Articles",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-29",
+   "meeting_date_source": "agenda",
+   "days_until": 13,
+   "first_seen": "2026-10-10T18:31:45+00:00",
+   "is_new": false,
+   "source_url": "https://www.hingham-ma.gov/DocumentCenter/View/29458/2026-Special-Town-Meeting-Warrant",
+   "town_path": "/ma/hingham",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Hingham",
+     "board": "Current Warrant Articles",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-29"
+    }
+   ],
+   "hit_ids": [
+    "133c0d92aa96",
+    "18232ab870b5"
+   ]
+  },
+  {
+   "id": "ed626acfcceb",
+   "score": 0.05,
+   "headline": "Cell tower item on Norton Town Meeting warrant",
+   "dek": "Norton's Town Meeting is Monday, Oct 19. The warrant lists an item on a cell tower.",
+   "quote": "…70 65 654 chimneys, domes, spires, towers, radio or television antennas in any zone (in feet) Maximum height in feet for wireless communication facilities is 125 feet. * Wetlands and water bodies…",
+   "reasons": [
+    "Town Meeting Oct 19"
+   ],
+   "topics": [
+    "wireless_telecom"
+   ],
+   "state": "MA",
+   "town": "Norton",
+   "county": "Bristol",
+   "towns": [
+    "MA:Norton"
+   ],
+   "board": "Town Meeting Warrants & Minutes",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-19",
+   "meeting_date_source": "agenda",
+   "days_until": 3,
+   "first_seen": "2026-10-10T18:32:30+00:00",
+   "is_new": false,
+   "source_url": "https://www.nortonma.gov/DocumentCenter/View/2259",
+   "town_path": "/ma/norton",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Norton",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-19"
+    }
+   ],
+   "hit_ids": [
+    "a8a7ba46d197"
    ]
   }
  ]

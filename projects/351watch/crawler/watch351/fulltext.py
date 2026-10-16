@@ -187,6 +187,19 @@ class FullText:
             log.warning("search row for %s failed: %s", rec.get("url"), e)
             return False
 
+    def redate(self, rec: dict) -> bool:
+        """The crawler learned a document's meeting day after the fact (a warrant dated from its own text):
+        move its row to that month, text untouched. Returns True if the folder will change."""
+        rid = doc_id(rec["url"])
+        with self._lock:
+            old = self._rows.get(rid)
+            if old is None or old.get("meeting_date") == rec.get("meeting_date"):
+                return False
+            row = {k: v for k, v in old.items() if k != "_shard"}
+            row["meeting_date"] = rec.get("meeting_date")
+            self._pending[rid] = row
+        return True
+
     def save(self) -> list[Path]:
         """Append new rows to their shards (sorted by town, url) and rewrite only the
         lines of rows that changed. Returns the files touched."""

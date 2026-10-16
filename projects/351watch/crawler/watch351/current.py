@@ -27,7 +27,13 @@ import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
+from .keywords import off_subject
+
 log = logging.getLogger("watch351.current")
+
+
+def _quote_key(s: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", (s or "").lower()).strip()[:80]
 
 DATA = Path(__file__).resolve().parents[2] / "data"
 WINDOW_DAYS = 120
@@ -273,8 +279,14 @@ def build(data_dir: Path = DATA, today: date | None = None, archive: bool = True
     seen: dict[str, dict] = {}
     for h in raw:
         n = normalize(h, counties)
-        if n["source_url"] and n["snippet"]:
+        if n["source_url"] and n["snippet"] and not off_subject(n):
             seen.setdefault(n["id"], n)
+    # A warrant read twice, once with its date and once without: the undated twin goes.
+    dated = {(h["state"], h["town"], _quote_key(h["snippet"])) for h in seen.values()
+             if h.get("board_key") == "town_meeting" and h.get("meeting_date")}
+    for hid in [k for k, h in seen.items() if h.get("board_key") == "town_meeting" and not h.get("meeting_date")
+                and (h["state"], h["town"], _quote_key(h["snippet"])) in dated]:
+        del seen[hid]
     current, old = [], []
     for h in seen.values():
         d = _window_date(h)

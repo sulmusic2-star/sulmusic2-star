@@ -83,7 +83,7 @@ def main(argv=None):
     for _, _, row in latest.values():
         urls.add(row.get("source_url") or (hits.get(row["id"]) or {}).get("source_url"))
     texts = B.doc_texts(args.data, urls)
-    failed = passed = superseded = 0
+    failed = passed = superseded = orphans = 0
     for path, rows in rows_by_file.items():
         changed = False
         out = []
@@ -96,8 +96,16 @@ def main(argv=None):
             url = row.get("source_url") or hit.get("source_url")
             reasons = []
             if not hit:
-                reasons.append("no hit with this id in hits_current.json or the archive")
-            elif row.get("source_url") and hit.get("source_url") and row["source_url"] != hit["source_url"]:
+                # the item is gone (dropped as off the subject, or archived): the brief stays, unused, and is not a failure
+                orphans += 1
+                if row.get("verified") is not False:
+                    row["verified"] = False
+                    changed = True
+                out.append(row)
+                if not args.quiet:
+                    print(f"skip {row['id']}: no item with this id now (dropped or archived)")
+                continue
+            if row.get("source_url") and hit.get("source_url") and row["source_url"] != hit["source_url"]:
                 reasons.append("source_url is not the hit's document")
             town = f"{hit.get('state', 'MA')}:{hit.get('town')}" if hit else None
             year = int(hit["meeting_date"][:4]) if hit.get("meeting_date") else None
@@ -117,7 +125,7 @@ def main(argv=None):
             out.append(row)
         if changed and not args.check:
             B.write_rows(path, out)
-    print(f"{passed} verified, {failed} failed, {superseded} superseded by a later row, {len(files)} file(s)"
+    print(f"{passed} verified, {failed} failed, {orphans} without an item, {superseded} superseded by a later row, {len(files)} file(s)"
           + (" (nothing written)" if args.check else ""))
     return 1 if failed else 0
 

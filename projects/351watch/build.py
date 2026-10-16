@@ -31,6 +31,7 @@ import re
 from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta
 from html import escape
+import sys
 from pathlib import Path
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
@@ -202,22 +203,10 @@ CLERKS = {}
 CITIES = set()  # "MA:Pittsfield": a city, which adopts ordinances and has no Town Meeting
 
 
-# A moratorium on its own is a hit only when it is about land use or energy: a PFAS moratorium, a winter
-# shut-off moratorium or a street-opening moratorium is a real item for the town, but not one this site tracks.
-LAND_USE_WORDS = re.compile(r"solar|battery|data.?cent|server|development|building|construction|subdivision|zoning|housing|"
-                            r"permit|dwelling|short.term|rental|cannabis|marijuana|warehouse|crypto", re.I)
-
-
-POLE_WORDS = re.compile(r"\b(?:mid.?span\s+)?poles?\b|pole\s+(?:location|petition|hearing)|conduit", re.I)
-UTILITY_WORDS = re.compile(r"national\s*grid|eversource|verizon|unitil|comcast|massachusetts\s+electric", re.I)
-
-
-def off_subject(h):
-    snippet = " ".join((h.get("snippet") or "").split())
-    if (h.get("topics") or []) == ["moratorium"] and not LAND_USE_WORDS.search(snippet):
-        return True
-    # a utility's pole petition that happens to say "solar" or "battery" is not a project
-    return bool(POLE_WORDS.search(snippet) and UTILITY_WORDS.search(snippet) and not re.search(r"solar\s+(?:farm|array|project|facility)|battery\s+(?:energy\s+)?storage\s+(?:system|facility|project)", snippet, re.I))
+# Hits about something else (a PFAS moratorium, a utility's pole petition, a general-ordinance amendment) are the
+# engine's call, so the pages and hits_current.json agree: watch351.keywords.off_subject.
+sys.path.insert(0, str(ROOT / "crawler"))
+from watch351.keywords import off_subject  # noqa: E402
 
 
 def load(name, default):
@@ -1943,12 +1932,29 @@ def report_link(m, text=""):
     return f'<a class="report-link" href="/how-it-works?about={quote(about[:300], safe="")}#contact">Report a problem</a>'
 
 
-def share_text(ctx, m, first):
-    """Ready to paste into Facebook: the meeting, its day, time and place, and one line."""
+def speak_short(m, entry):
+    """One short sentence on speaking for a shared line, when the item is a live hearing or a Town Meeting vote."""
+    stage = str(entry.get("stage") or "")
+    if m.get("cancelled") or stage.startswith(("Postponed", "Asks to postpone", "Canceled", "Withdrawn")):
+        return ""
+    if m.get("board_key") == "town_meeting":
+        return "Town Meeting’s voters decide."
+    b = entry.get("brief") or {}
+    if b.get("can_speak") is True and b.get("how_to_speak") and len(b["how_to_speak"]) <= 140:
+        return b["how_to_speak"]
+    if b.get("can_speak") is True or stage == "Hearing":
+        return "Anyone can attend and ask to speak."
+    return ""
+
+
+def share_text(ctx, m, first, entry=None):
+    """Ready to paste into Facebook or a text: the meeting, its day, time and place, one line, and how to speak."""
     when = when_text(ctx, m)
     place = place_text(m["place"]) if m["place"] and m["source"] != "massdep_wetlands" else ""
     head = f"{m['town']} {meeting_board(m)}" + (f", {when}" if when else "") + (f", {place}" if place else "")
-    return f"{head}. {plain_say(first)}" if first else head
+    text = f"{head}. {plain_say(first)}" if first else head
+    rule = speak_short(m, entry) if entry is not None else ""
+    return f"{text} {for_town(rule, m['state'], m['town'])}" if rule else text
 
 
 def meeting_share_url(ctx, m):
@@ -2029,6 +2035,51 @@ def meeting_head(ctx, m, show_town=True, with_board=True):
     return " ".join(parts)
 
 
+# Plain words for the terms an agenda uses, printed on a meeting's own page when its items use them (the first four).
+TERMS = [
+    (re.compile(r"\bnotice of intent\b|\bNOI\b", re.I), "Notice of Intent",
+     "the application for a wetlands permit, filed with the Conservation Commission"),
+    (re.compile(r"\border of conditions\b|\bOOC\b"), "Order of Conditions", "the wetlands permit, with the rules the work must follow"),
+    (re.compile(r"\bbuffer zone\b", re.I), "Buffer Zone", "the 100 feet next to a wetland, where work needs the Conservation Commission’s review"),
+    (re.compile(r"request for determination|determination of applicability|\bRDA\b", re.I), "Request for Determination",
+     "asks the Conservation Commission whether the wetlands law applies to a piece of work"),
+    (re.compile(r"\bcomprehensive permit\b|\b40B\b", re.I), "Comprehensive permit",
+     "the state’s 40B permit: one permit from the Zoning Board of Appeals for housing with affordable units, which can override local zoning"),
+    (re.compile(r"\b40R\b|smart growth", re.I), "40R district",
+     "a smart-growth zoning district for denser housing with a share kept affordable, which the state pays the town to adopt"),
+    (re.compile(r"\bspecial permit\b", re.I), "Special permit", "permission the zoning bylaw lets a board grant for a use it allows only with conditions"),
+    (re.compile(r"\bsite plan\b", re.I), "Site plan review", "the board’s check of a project’s layout, parking, drainage and lighting"),
+    (re.compile(r"\bvariance\b", re.I), "Variance", "permission to depart from a zoning rule because the lot’s shape, size or ground makes the rule a hardship"),
+    (re.compile(r"\boverlay district\b", re.I), "Overlay district", "a zoning layer with extra rules on top of the zone underneath"),
+    (re.compile(r"\bmoratori", re.I), "Moratorium", "a temporary ban"),
+    (re.compile(r"\bdecommission", re.I), "Decommissioning", "taking a project down at the end of its life and restoring the land"),
+    (re.compile(r"\bBESS\b|battery energy storage", re.I), "Battery energy storage (BESS)", "large batteries that store electricity and feed it back to the grid"),
+    (re.compile(r"\binterconnection\b", re.I), "Interconnection", "connecting a project to the electric grid"),
+    (re.compile(r"\bPILOT\b|payments? in lieu of tax", re.I), "PILOT",
+     "a payment in lieu of taxes: a yearly payment the owner and the town agree on instead of property tax"),
+    (re.compile(r"\b61A\b", re.I), "Chapter 61A", "the farmland tax break; when the land leaves farming, the town has a right of first refusal to buy it"),
+    (re.compile(r"\bANR\b|approval not required", re.I), "ANR plan",
+     "an “approval not required” plan: a lot division along an existing road that the Planning Board endorses because it is not a subdivision"),
+    (re.compile(r"\bexecutive session\b", re.I), "Executive session", "a closed part of the meeting; the public leaves"),
+    (re.compile(r"\bapplicant\b|\bpetitioner\b", re.I), "Applicant", "the person or company asking for the permit"),
+]
+
+
+def terms_html(m, source):
+    """The agenda's terms in plain words, from the items' quotes and write-ups."""
+    parts = list(m["lines"])
+    for en in m["lines"].values():
+        parts += list(en.get("quotes") or [])
+        b = en.get("brief") or {}
+        parts += [b.get(k) or "" for k in ("what", "quote", "next", "how_to_speak")]
+    text = " ".join(p for p in parts if p)
+    found = [(name, plain) for rx, name, plain in TERMS if rx.search(text)][:4]
+    if not found:
+        return ""
+    return (f'<p class="terms"><b>Words on {e(source)}.</b> '
+            + " ".join(f"<dfn>{e(name)}</dfn>: {e(plain)}." for name, plain in found) + "</p>")
+
+
 def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     """One meeting in the site's one item format: a meeting line (town, board, day and time, place), then
     per item one line that starts with the stage, the brief's sentence when there is one, a grey facts
@@ -2091,9 +2142,11 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     county = (ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or ""
     head = "" if full else (f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town)}</p>'
                             + (f'<p class="speak-line">{e(speak)}</p>' if speak else ""))
+    terms = terms_html(m, source) if full and not m.get("cancelled") else ""
     return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" id="{m['id']}" data-county="{e(county)}" data-state="{e(m['state'])}">
   {head}
   <ul class="lines">{lines}</ul>
+  {terms}
   {f'<p class="meet-src">{tail}</p>' if tail else ''}
 </li>"""
 
@@ -2942,9 +2995,13 @@ def build_topic_page(ctx, tp):
                 body, f"/topics/{tp['slug']}")
 
 
+OFF_ITEM = re.compile(r"\(not an? [a-z -]+ item\)", re.I)  # a writer's note that the flagged words were incidental
+
+
 def real_lines(m):
-    """A meeting's items that say something (not a bare mention of a word), best first."""
-    return [(t, en) for t, en in m["lines"].items() if en.get("kind") != "mention"]
+    """A meeting's items that say something (not a bare mention of a word, not an item a writer marked as
+    off the subject), best first."""
+    return [(t, en) for t, en in m["lines"].items() if en.get("kind") != "mention" and not OFF_ITEM.search(t)]
 
 
 def week_list_text(ctx, meetings):
@@ -2958,7 +3015,7 @@ def week_list_text(ctx, meetings):
             lines = real_lines(m)
             if not lines:
                 continue
-            rows.append(share_text(ctx, m, lines[0][0]) + f" {meeting_share_url(ctx, m)}")
+            rows.append(share_text(ctx, m, lines[0][0], lines[0][1]) + f" {meeting_share_url(ctx, m)}")
         if rows:
             blocks.append(f"{STATE_NAMES.get(st, st)}\n" + "\n".join(rows))
     return "\n\n".join(blocks)
@@ -3774,7 +3831,7 @@ def build_meeting_page(ctx, m):
             + (f" Read {e(read)}" if read else "") + (f"{';' if read else ' Checked'} the town’s listing checked {e(checked)}." if checked else ("." if read else "")))
     cite = citation(ctx, m, entry)
     share = (f'<button type="button" class="link-btn" data-share data-url="{e(meeting_share_url(ctx, m))}" data-title="{e(title + ", " + when_text(ctx, m))}" '
-             f'data-text="{e(share_text(ctx, m, first))}" hidden>Share</button>')
+             f'data-text="{e(share_text(ctx, m, first, entry))}" hidden>Share</button>')
     copy = f'<button type="button" class="link-btn" data-copy="{e(cite)}" hidden>Copy citation</button>'
     about = quote(f"{m['town']}, {meeting_board(m)}" + (f", {day_label(m['date'], ctx)}" if m["date"] else ""), safe="")
     place = place_text(m["place"]) if m["place"] and m["source"] != "massdep_wetlands" else ""

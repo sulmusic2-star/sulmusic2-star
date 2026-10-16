@@ -389,7 +389,11 @@
     const up = group(items.filter((i) => i.meeting_date && i.meeting_date >= today).sort((a, b) => a.meeting_date.localeCompare(b.meeting_date) || a.town.localeCompare(b.town)));
     if (up.length) $('sample').replaceChildren(el('ol', { class: 'meetings' }, meetingNode(up[0], 1)));
     else {
-      $('sample-lead').textContent = 'Nothing on these topics is on an agenda yet. You’ll hear from us when something is.';
+      // A warrant we could not date is on the list but not in the sample; say so instead of "nothing".
+      const undated = items.filter((i) => !i.meeting_date).length;
+      $('sample-lead').textContent = undated
+        ? `${undated === 1 ? 'One item' : `${undated} items`} on your list ${undated === 1 ? 'comes' : 'come'} from a document that prints no meeting date; the full list has ${undated === 1 ? 'it' : 'them'}. You’ll hear from us when a dated agenda is posted.`
+        : 'Nothing on these topics is on an agenda yet. You’ll hear from us when something is.';
       $('sample').replaceChildren();
     }
     $('created-cal').href = wl.links.ics.replace(/^https?:/, 'webcal:');

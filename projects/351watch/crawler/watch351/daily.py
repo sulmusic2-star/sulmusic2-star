@@ -49,6 +49,7 @@ from .adapters import REGISTRY
 from .crawl import scan_document_full, town_configs
 from .fetch import DEFAULT_CACHE_DIR, FetchError, PoliteFetcher
 from .fulltext import FullText
+from .dates import warrant_date
 from .keywords import MATCHER_VERSION
 from .models import AgendaDoc, Window
 from .state import (DATA, MAX_ATTEMPTS, DocIndex, iso_from_epoch, load_health, make_record, now_iso,
@@ -186,6 +187,8 @@ class DailyRun:
         try:
             with self.fetcher.purpose("document"):
                 hits, ex, source_url = scan_document_full(self.fetcher, doc, state)
+            if doc.meeting_date is None and doc.board_key == "town_meeting":
+                doc.meeting_date = warrant_date(ex.text)  # a warrant prints its day near the top
             if row is not None and row.get("attribute_townships"):
                 # county planning commission items -> the township they name (attribution.py),
                 # one hit per township-named item

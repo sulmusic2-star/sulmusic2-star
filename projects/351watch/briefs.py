@@ -48,7 +48,7 @@ ACTION_CUES = {
     "hearing": r"\bhearing",
     "vote": r"\bvot(?:e|es|ed|ing)\b|to see if the (?:town|city)|\bmotion\b|\bapprov|\bdecision\b|\bresolution\b|"
             r"consider and act|\bact on\b|\bendorse|\bshall\b|second reading|final vote|\badopt|\bauthoriz|\border\b|"
-            r"\brecommendation\b",
+            r"\brecommendation\b|discussion\s*(?:&|and)\s*(?:possible\s+)?action|(?:third|final)\s+reading",
     "discussion": r"\bdiscuss|\breview|\bupdate|\bpresentation|\bworkshop|\breport|\bconsider|listening session|"
                   r"\binformational|\bstatus\b|\boverview|\bbriefing|\bforum\b|\b(?:old|new|unfinished|other) business\b|\binformal\b",
     "continued": r"continu",
