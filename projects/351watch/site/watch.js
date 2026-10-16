@@ -355,8 +355,9 @@
       nodes.push(el('p', '', `Nothing on these topics in ${where} in the last 30 days. You’ll hear from us when something comes up.`));
     } else {
       const lead = el('p');
-      lead.append(`Over the last 30 days, ${where} had `, el('b', '', plural(past, 'meeting')), ' on these topics, so expect about that many alerts a month. ',
-        ahead.length ? (ahead.length > 3 ? `${ahead.length} more are coming up. The next 2:` : 'Coming up next:') : 'Nothing else is on an agenda yet.');
+      const next = ahead.length ? (ahead.length > 3 ? `${ahead.length} more are coming up. The next 2:` : 'Coming up next:') : 'Nothing else is on an agenda yet.';
+      if (past) lead.append(`Over the last 30 days, ${where} had `, el('b', '', plural(past, 'meeting')), ' on these topics, so expect about that many alerts a month. ', next);
+      else lead.append(`Nothing on these topics in ${where} in the last 30 days, so alerts will be rare. `, next);
       nodes.push(lead);
       if (ahead.length) {
         const list = el('ul', 'preview-lines');
@@ -598,6 +599,12 @@
     }
     if (topicKeys.length && topicBoxes.some((t) => topicKeys.includes(t.value))) {
       for (const t of topicBoxes) t.checked = topicKeys.includes(t.value);
+      if (!valid.length) {
+        // Someone arrived from a topic page: the question keeps the promise it came from.
+        const names = topicBoxes.filter((t) => t.checked).map((t) => ((t.closest('label') || t.parentElement).textContent || '').trim().split('\n')[0].trim());
+        const help = $('town-help');
+        if (help && names.length) help.textContent = `Alerts about ${names.join(' and ').toLowerCase()} are free for your town and the towns next to it.`;
+      }
     }
     topicSummary();
     return valid.length > 0;

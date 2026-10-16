@@ -28,19 +28,25 @@
     li.dataset.topics = (st.topics || []).join(' ');
     const a = el('a');
     a.href = st.href;
-    const when = el('span', 'row-when');
+    const day = el('span', 'row-day');
     if (st.meeting_date) {
       const t = el('time', '', dayLabel(st.meeting_date));
       t.dateTime = st.meeting_date;
-      when.append(t);
-    } else when.append(el('span', '', 'Date not set'));
-    when.append(el('span', '', `${st.town}${st.state !== 'MA' ? `, ${st.state}` : ''}`));
+      day.append(t);
+    } else day.append('Date not set');
+    const when = el('span', 'row-when');
+    when.append(el('span', 'row-town', `${st.town}${st.state !== 'MA' ? `, ${st.state}` : ''}`));
     if (st.board) when.append(el('span', '', st.board));
     const line = el('span', 'row-line');
     if (st.new) line.append(el('span', 'badge-new', 'New'), ' ');
-    line.append(st.line || st.headline);
-    a.append(when, line);
-    if (st.stage) a.append(el('span', 'stage', st.stage));
+    const words = st.line || st.headline || '';
+    line.append(/[a-z0-9)]\.$/.test(words) && !/\b(St|Rd|Ave|Dr|Ln|Blvd|Mt|No|Art|Sec|Inc|Corp|LLC|Co)\.$/.test(words) ? words.slice(0, -1) : words);
+    a.append(day, when, line);
+    if (st.stage) {
+      // the same dot as the page: filled when the board acts (a vote or hearing), hollow otherwise
+      const act = /^(Vote|Hearing|Final vote|Possible vote|Decided)/.test(st.stage);
+      a.append(el('span', `stage${act ? ' act' : ''}`, st.stage));
+    }
     li.append(a);
     return li;
   }

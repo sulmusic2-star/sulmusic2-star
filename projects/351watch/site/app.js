@@ -189,18 +189,19 @@ function setupTrackerFilter() {
   const count = document.querySelector('#f-count');
 
   function apply() {
-    const q = search.value.trim().toLowerCase();
+    const words = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
     let shown = 0;
     for (const row of rows) {
+      const text = row.textContent.toLowerCase();
       const match =
         (!status.value || row.dataset.group === status.value) &&
         (!topic.value || row.dataset.topic.includes(topic.value)) &&
         (!county.value || row.dataset.county === county.value) &&
-        (!q || row.textContent.toLowerCase().includes(q));
+        words.every((w) => text.includes(w));
       row.hidden = !match;
       if (match) shown += 1;
     }
-    count.textContent = `${shown} of ${rows.length} shown`;
+    count.textContent = shown ? `${shown} of ${rows.length} shown` : `None of the ${rows.length} match. Try fewer words or another filter.`;
   }
 
   for (const el of [status, topic, county]) el.addEventListener('change', apply);
@@ -220,14 +221,14 @@ function setupGenericFilters() {
     const count = bar.querySelector('[data-count]');
 
     const apply = () => {
-      const q = search ? search.value.trim().toLowerCase() : '';
+      const words = search ? search.value.trim().toLowerCase().split(/\s+/).filter(Boolean) : [];
       let shown = 0;
       rows.forEach((row, i) => {
-        const match = selects.every((s) => !s.value || row.dataset[s.dataset.key] === s.value) && (!q || text[i].includes(q));
+        const match = selects.every((s) => !s.value || row.dataset[s.dataset.key] === s.value) && words.every((w) => text[i].includes(w));
         row.hidden = !match;
         if (match) shown += 1;
       });
-      if (count) count.textContent = `${shown} of ${rows.length} shown`;
+      if (count) count.textContent = shown ? `${shown} of ${rows.length} shown` : `None of the ${rows.length} match. Try fewer words or another filter.`;
     };
     for (const s of selects) s.addEventListener('change', apply);
     if (search) search.addEventListener('input', apply);

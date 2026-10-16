@@ -151,7 +151,15 @@ class ToleranceTests(unittest.TestCase):
         self.assertTrue(any("Wed" in f for f in B.verify({**GOOD, "next": "The hearing continues Wed Oct 27."}, TEXT, {"2026-09-29"}, 2026)))
 
     def test_sentence_initial_and_ordinary_capitals_are_not_facts(self):
-        self.ok({**GOOD, "what": "Nothing else is listed. This item is the only one. Our records show no vote. Applicant asked to continue."})
+        self.ok({**GOOD, "what": "Nothing else is listed. This item is the only one. No vote is listed. Applicant asked to continue."})
+
+    def test_asides_about_our_records_or_copy_fail(self):
+        for text in ("The filing was made in July (per our records).", "The rest of the article is cut off in our copy.",
+                     "Old Warren Rd Development LLC (Pedro Rodriguez, as the agenda spells it) filed."):
+            fails = B.verify({**GOOD, "what": text}, TEXT, {"2026-09-29"}, 2026)
+            self.assertTrue(any("say what the agenda says" in f for f in fails), (text, fails))
+        fails = B.verify({**GOOD, "how_to_speak": "Public hearing; no rules stated."}, TEXT, {"2026-09-29"}, 2026)
+        self.assertTrue(any("no rules stated" in f for f in fails), fails)
         self.ok({**GOOD, "what": "Town Meeting decides later; the Town Clerk posts the result. Both steps are routine."})
         self.assertTrue(any("Acme" in f for f in B.verify({**GOOD, "what": "The plan is from Acme Partners."}, TEXT, {"2026-09-29"}, 2026)))
 
@@ -240,7 +248,8 @@ class RenderTests(unittest.TestCase):
         self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True}
         ctx, m = self.meeting(HIT)
         html = self.build.meeting_html(ctx, m, show_town=False)
-        self.assertIn(f'>{GOOD["line"]}</a></p>', html.replace("’", "’"))  # the headline links to the meeting page
+        self.assertIn(f'>{GOOD["line"]}</a></span>', html.replace("’", "’"))  # the headline links to the meeting page
+        self.assertIn('</a></span><span class="stage">Asks to postpone</span></p>', html)  # the status sits beside it
         self.assertIn('<p class="brief-what">Federal Pond Solar wants a special permit', html)
         self.assertIn("104 Tremont Street", html)  # the facts line: where, size, who
         self.assertIn("4.9 MW on 22 acres", html)
@@ -253,7 +262,7 @@ class RenderTests(unittest.TestCase):
         self.assertIn(GOOD["quote"], full)
         self.assertIn(GOOD["next"], full)
         self.assertNotIn("requesting a Special Permit and Site Plan Review", full.split("Agenda wording")[0])
-        self.assertIn("Retrieved Oct 10, 2026", self.build.citation(ctx, m, next(iter(m["lines"].values()))))
+        self.assertIn("Read Oct 10, 2026", self.build.citation(ctx, m, next(iter(m["lines"].values()))))
 
     def test_postponement_names_the_new_day_when_the_brief_has_one(self):
         self.assertEqual(self.build.brief_stage(GOOD), "Asks to postpone")  # GOOD's next: the applicant asked

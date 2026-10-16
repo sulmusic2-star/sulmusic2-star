@@ -78,6 +78,8 @@ BODY_NAMES = ("attorney general", "town meeting", "select board", "selectboard",
               "secretary of state", "land court", "supreme judicial court", "zoning board of appeals")
 STATE_WORDS = {"massachusetts", "new york", "rhode island", "connecticut", "new hampshire", "vermont", "maine"}
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+ASIDE = re.compile(r"our records|our copy|in our (?:copy|records|files)|per our|as the agenda spells|listed with a question mark|"
+                   r"no rules stated|gives no rules|cut off in our", re.I)
 CUE_REACH = 700
 # A "Public Hearings" heading covers every item listed under it, so a hearing cue may sit further back.
 HEARING_REACH = 1500
@@ -373,6 +375,12 @@ def verify(brief, text, town_dates=None, year=None):
     for key in ("line", "what", "next"):
         if re.search(r"two.thirds", brief.get(key) or "", re.I) and not re.search(r"two.thirds|2/3", text_norm, re.I):
             fails.append(f"{key}: names a two-thirds vote the agenda doesn't mention")
+    # The page is for the reader, not the newsroom: no asides about our records, our copy or how the agenda
+    # spells a name, and no "no rules stated" (leave how_to_speak empty and the default rule applies).
+    for key in ("line", "what", "history", "next", "how_to_speak", "where", "size", "who"):
+        m = ASIDE.search(brief.get(key) or "")
+        if m:
+            fails.append(f"{key}: says {m.group(0)!r}; say what the agenda says, or leave it out")
     if brief.get("history") and town_dates is not None:
         held = {(int(d[:4]), int(d[5:7]), int(d[8:10])) for d in town_dates if re.match(r"\d{4}-\d\d-\d\d", d or "")}
         for y, m, d in history_dates(brief["history"]):

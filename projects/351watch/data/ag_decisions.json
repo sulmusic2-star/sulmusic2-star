@@ -2345,5 +2345,57 @@
     "record_type": "pending_ag_review",
     "case_number": null,
     "portal_document_name": null
+  },
+  {
+    "town": "Shutesbury",
+    "county": "Franklin",
+    "article": "Article 10 (Sep. 30, 2025 STM)",
+    "bylaw_type": "moratorium",
+    "technology": "data center",
+    "decision_date": "2026-01-20",
+    "outcome": "approved",
+    "legal_basis": "G.L. c. 40, s. 32; Amherst v. Attorney General, 398 Mass. 793 (1986); moratorium zoning with a legitimate purpose, limited in time and scope",
+    "summary": "Shutesbury's Article 10 put a temporary moratorium on building new data centers until June 20, 2026, added a definition of \"data center\" and listed data centers as a prohibited use in every zoning district. The AG approved it: data centers aren't a protected use, so a time-limited moratorium with a planning purpose stands.",
+    "letter_url": "https://shutesbury.org/sites/default/files/AGO%20letter%20re%202025%20STM%20bylaws_Jan2026.pdf",
+    "other_sources": [
+      "https://shutesbury.org/sites/default/files/AGO%20decision%20posting_2025%20STM.pdf"
+    ],
+    "record_type": "ag_decision",
+    "case_number": "12047",
+    "portal_document_name": "MLU Decision - 1/20/2026 - 12047 - SHUTESBURY - DATA CENTERS (letter as posted by the town)"
+  },
+  {
+    "town": "Templeton",
+    "county": "Worcester",
+    "article": "Article 38 (May 13, 2026 ATM)",
+    "bylaw_type": "moratorium",
+    "technology": "data center",
+    "decision_date": "2026-09-22",
+    "outcome": "approved",
+    "legal_basis": "G.L. c. 40, s. 32; Amherst v. Attorney General, 398 Mass. 793 (1986); defect waiver under Chapter 299 of the Acts of 2000 (Aug. 18, 2026)",
+    "summary": "Templeton's Article 38, a citizen petition, put a 360-day moratorium on constructing new data centers, through May 8, 2027, while the town studies their effect on police, fire, water and power. The AG approved it: a temporary moratorium with a legitimate zoning purpose doesn't conflict with state law.",
+    "letter_url": "https://www.templetonma.gov/DocumentCenter/View/3138/by-law-38",
+    "other_sources": [
+      "https://www.templetonma.gov/CivicAlerts.aspx?AID=107"
+    ],
+    "record_type": "ag_decision",
+    "case_number": "12294",
+    "portal_document_name": "MLU Decision - 9/22/2026 - 12294 - TEMPLETON - DATA CENTERS (letter as posted by the town)"
+  },
+  {
+    "town": "Gill",
+    "county": "Franklin",
+    "article": "Article 7 (May 4, 2026 ATM), data-center part",
+    "bylaw_type": "moratorium",
+    "technology": "data center",
+    "decision_date": "2026-09-24",
+    "outcome": "approved",
+    "legal_basis": "G.L. c. 40A, s. 3 (solar protection, para. 9); Tracer Lane II (489 Mass. 775, 2022); Sunpin v. Petersham ZBA (497 Mass. 794, 2026); Ch. 239 of Acts of 2024 / 225 CMR 29.00 (consolidated local permit by Oct. 1, 2026)",
+    "summary": "The same letter approved the data-center half of Gill's Article 7: a moratorium on data centers until May 3, 2027 stands, because data centers aren't a protected use. The battery-storage half was struck.",
+    "letter_url": "https://massago.hylandcloud.com/231publicaccess/api/Document/AT%C3%89qBCk%C3%89aK1jSPOTz0LbchBhDW5bw3PSIPrVpMBWk1ucwR6RkMx3rFcso1XwgN8hDP%C3%81PLnFruG%C3%89DPEgM7QrKwho%3D/",
+    "other_sources": [],
+    "record_type": "ag_decision",
+    "case_number": "12422",
+    "portal_document_name": "MLU Decision - 9/24/2026 - 12422 - GILL - DATA CENTERS"
   }
 ]
