@@ -36,6 +36,8 @@
   let vocab = null; // Promise of the spelling vocabulary (most frequent first)
   let generation = 0; // the latest query; older ones stop rendering
   let pending = []; // results not rendered yet
+  let loaded = []; // result data rendered so far, for Copy this list and Download CSV
+  let tools = null;
   let more = null; // "Show more" button, created on demand
 
   const load = () =>
@@ -183,6 +185,8 @@
     const narrowed = Boolean(q || Object.keys(filters).length);
     list.replaceChildren();
     pending = [];
+    loaded = [];
+    if (tools) tools.hidden = true;
     if (more) more.hidden = true;
     document.title = q ? `${q} | ${baseTitle}` : baseTitle;
     if (!narrowed && !upcoming) {
@@ -253,6 +257,20 @@
     if (gen !== generation) return;
     const items = data.map(item);
     list.append(...items);
+    loaded.push(...data);
+    if (!tools) {
+      // the list as text to paste, or as a spreadsheet: every result the search found, up to 300
+      tools = el("p", "result-tools");
+      const copyBtn = el("button", "link-btn", "Copy this list");
+      copyBtn.type = "button";
+      const csvBtn = el("button", "link-btn", "Download CSV");
+      csvBtn.type = "button";
+      copyBtn.addEventListener("click", () => exportResults("copy", copyBtn));
+      csvBtn.addEventListener("click", () => exportResults("csv", csvBtn));
+      tools.append(copyBtn, csvBtn);
+      list.after(tools);
+    }
+    tools.hidden = !loaded.length;
     if (!more) {
       more = el("button", "search-more");
       more.type = "button";
@@ -267,6 +285,63 @@
     more.hidden = !pending.length;
     more.textContent = `Show ${Math.min(PAGE, pending.length)} more`;
     if (focus && items[0]) items[0].querySelector("a").focus();
+  }
+
+  async function copyPlain(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (err) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.append(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      ta.remove();
+      return ok;
+    }
+  }
+
+  // Every result the search found (up to 300), as lines to paste or a CSV to open in a spreadsheet.
+  async function exportResults(kind, btn) {
+    const gen = generation;
+    const old = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Gathering…";
+    try {
+      while (pending.length && loaded.length < 300) {
+        const data = await Promise.all(pending.splice(0, 50).map((r) => r.data()));
+        if (gen !== generation) return;
+        loaded.push(...data);
+        list.append(...data.map(item));
+      }
+      if (more) {
+        more.hidden = !pending.length;
+        more.textContent = `Show ${Math.min(PAGE, pending.length)} more`;
+      }
+      const rows = loaded.map((d) => {
+        const m = d.meta || {};
+        return { town: m.town || "", state: m.state || "", board: m.board || "", date: m.date || "", title: m.title || "Agenda",
+          topics: m.topics || "", url: location.origin + d.url };
+      });
+      if (kind === "copy") {
+        const text = rows.map((r) => `${r.town}${r.state && r.state !== "MA" ? `, ${r.state}` : ""} ${r.board}${r.date ? `, ${fmtDate(r.date)}` : ""}: ${r.title}. ${r.url}`).join("\n");
+        btn.textContent = (await copyPlain(text)) ? `Copied ${rows.length} lines` : "Couldn’t copy";
+      } else {
+        const esc = (v) => `"${String(v).replace(/"/g, '""')}"`;
+        const csv = [["town", "state", "board", "date", "document", "topics", "page_url"].join(","),
+          ...rows.map((r) => [r.town, r.state, r.board, r.date, r.title, r.topics, r.url].map(esc).join(","))].join("\n");
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+        a.download = "agenda-ahead-search.csv";
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+        btn.textContent = `Downloaded ${rows.length} rows`;
+      }
+      setTimeout(() => { btn.textContent = old; }, 2500);
+    } finally {
+      btn.disabled = false;
+    }
   }
 
   function item(d) {

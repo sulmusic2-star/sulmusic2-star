@@ -570,6 +570,9 @@ h1 { margin-top: var(--s6); margin-bottom: var(--s3); }
 .ticket-when { font: 700 var(--t-h3)/1.22 var(--f-head); color: var(--ink); }
 .ticket-place { color: var(--ink); }
 .ticket-watch { color: var(--ink); font-size: var(--t-sm); }
+.ticket-share { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); margin: var(--s2) 0 0; }
+.meet-note { margin: var(--s3) 0 0; max-width: 34em; }
+.result-tools { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); margin: var(--s3) 0 0; font-size: var(--t-sm); }
 .ticket-speak { color: var(--muted); font-size: var(--t-sm); }
 .ticket .actions { margin: var(--s4) 0 0; }
 .ticket .actions .btn { width: 100%; }

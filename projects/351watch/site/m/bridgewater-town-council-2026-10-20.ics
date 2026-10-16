@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:m-bridgewater-town-council-2026-10-20@agendaahead
+DTSTAMP:20261016T120000Z
+DTSTART;TZID=America/New_York:20261020T190000
+DTEND;TZID=America/New_York:20261020T210000
+SUMMARY:Bridgewater Town Council: High intensity data centers zoning ordina
+ nce (D-FY26-016): Town Council action
+LOCATION:BTV Studios\, 80 Spring Street\, Bridgewater\, MA
+DESCRIPTION:• High intensity data centers zoning ordinance (D-FY26-016): 
+ Town Council action\n\nAgenda: https://bridgewaterma.api.civicclerk.com/v1
+ /Meetings/GetMeetingFileStream(fileId=9034\,plainText=false)\nPage: https:
+ //agendaahead.vercel.app/m/bridgewater-town-council-2026-10-20\nConfirm th
+ e time and place with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/bridgewater-town-council-2026-10-20
+END:VEVENT
+END:VCALENDAR

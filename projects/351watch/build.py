@@ -1756,9 +1756,11 @@ def group_meetings(ctx, hits):
                 t = TIME_RE.search(b["when_time"])
                 if t and fmt_time(t):
                     m["time"] = fmt_time(t)
-            # Where to watch from home, when the agenda says: a cable channel or a YouTube stream.
-            if b.get("when_place") or b.get("quote"):
-                for w in re.findall(r"(?:cable\s+)?channel\s*\d+|youtube|facebook\s+live|livestream", f"{b.get('when_place') or ''} {b.get('quote') or ''}", re.I):
+            # Where to watch from home, when the agenda says: a cable channel or a YouTube stream (from the write-up
+            # or the top of the agenda itself).
+            head_text = " ".join(ctx.headers.get(d["url"], "") for d in m["docs"]) if hasattr(ctx, "headers") else ""
+            if b.get("when_place") or b.get("quote") or head_text:
+                for w in re.findall(r"(?:cable\s+)?channel\s*\d+|youtube|facebook\s+live|livestream", f"{b.get('when_place') or ''} {b.get('quote') or ''} {head_text}", re.I):
                     w = re.sub(r"^cable\s+", "", w, flags=re.I)
                     w = "YouTube" if w.lower() == "youtube" else w[0].upper() + w[1:]
                     if w not in m.setdefault("watch", []):
@@ -2117,6 +2119,64 @@ TERMS = [
 ]
 
 
+def who_votes_html(m):
+    """A Planning Board's hearing on a zoning change is not the vote: the board recommends, Town Meeting (or a
+    city's council) adopts. One line on the meeting's own page, when an item is such a hearing."""
+    if m.get("cancelled") or m.get("board_key") != "planning_board":
+        return ""
+    zoning = {"zoning_amendment", "moratorium", "clean_energy_siting"}
+    if not any(v.get("stage") == "Hearing" and zoning & set(v.get("topics") or []) for v in m["lines"].values()):
+        return ""
+    city = f"{m['state']}:{m['town']}" in CITIES
+    who, what = ("the City Council", "ordinance") if city else ("Town Meeting", "bylaw")
+    return f'<p class="line-note meet-note">After the hearing the Planning Board makes a recommendation; {who} votes on the {what}.</p>'
+
+
+def meeting_ics(ctx, m):
+    """One calendar event for a meeting's own page: its hour in Eastern time when the agenda gives one (two hours
+    long), else an all-day event; the room; the items as the description; cancelled when the town says so."""
+    t = re.search(r"(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m", m.get("time") or "", re.I)
+    day = m["date"].replace("-", "")
+    if t:
+        hour = int(t.group(1)) % 12 + (12 if t.group(3).lower() == "p" else 0)
+        minute = int(t.group(2) or 0)
+        start = f"DTSTART;TZID=America/New_York:{day}T{hour:02d}{minute:02d}00"
+        end = f"DTEND;TZID=America/New_York:{day}T{min(hour + 2, 23):02d}{minute:02d}00"
+    else:
+        nxt = (date.fromisoformat(m["date"]) + timedelta(days=1)).isoformat().replace("-", "")
+        start, end = f"DTSTART;VALUE=DATE:{day}", f"DTEND;VALUE=DATE:{nxt}"
+    place = place_text(m["place"]) if m["place"] and m["source"] != "massdep_wetlands" else ""
+    lines = [plain_say(t_) for t_, _ in real_lines(m)][:4]
+    page = meeting_share_url(ctx, m)
+    doc = m["docs"][0]["url"] if m["docs"] else ""
+    desc = ([("This meeting is canceled by the town.")] if m.get("cancelled") else []) + [f"• {x}" for x in lines] + \
+        ["", f"Agenda: {doc}" if doc else "", f"Page: {page}", "Confirm the time and place with the town; agendas can change."]
+
+    def ics_text(s):
+        return str(s).replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
+
+    def fold(line):
+        out, cur = [], ""
+        for ch in line:
+            if len((cur + ch).encode("utf-8")) > (74 if out else 75):
+                out.append(cur)
+                cur = ""
+            cur += ch
+        out.append(cur)
+        return "\r\n ".join(out)
+
+    summary = f"{'CANCELED: ' if m.get('cancelled') else ''}{m['town']} {meeting_board(m)}" + (f": {lines[0]}" if lines else "")
+    ev = ["BEGIN:VCALENDAR", "VERSION:2.0", f"PRODID:-//{SITE_NAME}//Meeting//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+          "BEGIN:VEVENT", f"UID:{m['id']}@agendaahead", f"DTSTAMP:{ctx.today.replace('-', '')}T120000Z", start, end,
+          f"SUMMARY:{ics_text(summary)}",
+          f"LOCATION:{ics_text((place + ', ' if place else '') + m['town'] + ', ' + m['state'])}",
+          f"DESCRIPTION:{ics_text(chr(10).join(x for x in desc if x is not None))}", f"URL:{page}"]
+    if m.get("cancelled"):
+        ev.append("STATUS:CANCELLED")
+    ev += ["END:VEVENT", "END:VCALENDAR"]
+    return "\r\n".join(fold(x) for x in ev) + "\r\n"
+
+
 def terms_html(m, source):
     """The agenda's terms in plain words, from the items' quotes and write-ups."""
     parts = list(m["lines"])
@@ -2207,7 +2267,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     county = (ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or ""
     head = "" if full else (f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town)}</p>'
                             + (f'<p class="speak-line">{e(speak)}</p>' if speak else ""))
-    terms = terms_html(m, source) if full and not m.get("cancelled") else ""
+    terms = (who_votes_html(m) + terms_html(m, source)) if full and not m.get("cancelled") else ""
     return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" id="{m['id']}" data-county="{e(county)}" data-state="{e(m['state'])}">
   {head}
   <ul class="lines">{lines}</ul>
@@ -2432,7 +2492,7 @@ def build_index(ctx):
     week_end = (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=7)).strftime("%Y-%m-%d")
     week = [st for st in stories if st["meeting_date"] and st["meeting_date"] <= week_end][:3]
     big_title = "This week" if week else "Biggest stories coming up"
-    week = week or stories[:3]
+    week = sorted(week, key=lambda st: st["meeting_date"]) or stories[:3]  # the biggest three, in the order they happen
     next_html = (f'<ol class="rows">{"".join(story_html(ctx, st) for st in week)}</ol>' if week
                  else '<p class="empty">Nothing big on the agendas posted so far.</p>')
     towns_read = sum(m for _, m, _ in ctx.coverage())
@@ -3918,7 +3978,7 @@ def build_meeting_page(ctx, m):
   {f'<p class="ticket-speak">{e(speak_top)}</p>' if speak_top else ''}
   {f'<p class="ticket-links">{link}</p>' if link else ''}
   <p class="actions"><a class="btn" href="{e(alerts_url(t.get('id')))}">Get alerts for {e(m['town'])}</a></p>
-  <p class="ticket-share">{share}</p>
+  <p class="ticket-share">{share}<a class="link-btn" href="/m/{m['id'][2:]}.ics" download="{e(m['id'][2:])}.ics">Add to my calendar</a></p>
 </div>
 </aside>"""
     body = f"""
@@ -3984,10 +4044,11 @@ def main():
                 d.rmdir()
     meeting_dir = SITE / "m"
     if meeting_dir.is_dir():
-        for f in meeting_dir.glob("*.html"):
+        for f in list(meeting_dir.glob("*.html")) + list(meeting_dir.glob("*.ics")):
             f.unlink()
     for m in group_meetings(ctx, upcoming_hits(ctx)):
         pages[f"m/{m['id'][2:]}.html"] = (build_meeting_page(ctx, m), None)
+        pages[f"m/{m['id'][2:]}.ics"] = (meeting_ics(ctx, m), None)  # "Add to my calendar" on the meeting's page
     thin = 0
     for t in ctx.towns:
         html, is_thin = build_town_page(ctx, t)
