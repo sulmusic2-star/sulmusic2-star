@@ -1,31 +1,19 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 393,
-   "new_hits": 105,
-   "towns_attempted": 240,
-   "towns_succeeded": 238
-  },
-  "NY": {
-   "new_documents": 22,
-   "new_hits": 0,
-   "towns_attempted": 33,
-   "towns_succeeded": 33
-  },
-  "RI": {
-   "new_documents": 54,
-   "new_hits": 11,
-   "towns_attempted": 39,
-   "towns_succeeded": 39
+   "new_documents": 1,
+   "new_hits": 2,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   }
  },
  "date": "2026-10-16",
- "document_errors": 2,
- "documents_already_indexed": 17,
+ "document_errors": 0,
+ "documents_already_indexed": 13,
  "documents_deferred": 0,
- "documents_listed": 2972,
+ "documents_listed": 14,
  "documents_needing_ocr": 0,
- "documents_rematched": 2484,
+ "documents_rematched": 0,
  "documents_retried": 0,
  "documents_too_large": [
   {
@@ -48,128 +36,62 @@
    "state": "MA",
    "town": "Wellfleet",
    "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577"
-  },
-  {
-   "error": "too large (> 41943040 bytes): https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf",
-   "meeting_date": "2026-10-06",
-   "state": "NY",
-   "town": "Cortlandt",
-   "url": "https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf"
-  },
-  {
-   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109",
-   "meeting_date": "2026-09-14",
-   "state": "NY",
-   "town": "Glenville",
-   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109"
-  },
-  {
-   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114",
-   "meeting_date": "2026-10-19",
-   "state": "NY",
-   "town": "Glenville",
-   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114"
-  },
-  {
-   "error": "too large (> 41943040 bytes): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166",
-   "meeting_date": "2026-10-06",
-   "state": "NY",
-   "town": "Kent",
-   "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
   }
  ],
- "duration_seconds": 1116.8,
- "errors": [
-  {
-   "error": "listing civicplus: https://www.eastbridgewaterma.gov/AgendaCenter/Search/?term=&CIDs=8%2C14%2C19%2C21%2C23%2C&startDate=09%2F16%2F2026&endDate=02%2F13%2F2027&dateRange=&dateSelector=",
-   "town": "MA:East Bridgewater"
-  },
-  {
-   "error": "listing generic: listing https://www.hamiltonma.gov/public-meetings/planning-board/20261020/19-00-00/ returned HTTP 404",
-   "town": "MA:Hamilton"
-  },
-  {
-   "error": "listing generic: listing https://www.hamiltonma.gov/government/zoning-board-appeals/meeting-packets-zoning-board-hamilton-2024/ returned HTTP 404",
-   "town": "MA:Hamilton"
-  },
-  {
-   "error": "listing generic: listing https://www.hamiltonma.gov/public-meetings/conservation-commission/20261014/19-00-00/ returned HTTP 404",
-   "town": "MA:Hamilton"
-  },
-  {
-   "error": "document: extract failed (content-type application/msword): https://www.westport-ma.com/10-27-26 Agenda.doc",
-   "town": "MA:Westport"
-  },
-  {
-   "error": "document: HTTP 429: https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4218%5C2026%5C568612.pdf",
-   "town": "RI:Portsmouth"
-  }
- ],
- "errors_total": 6,
- "finished": "2026-10-16T11:26:14+00:00",
- "hits_current": 1291,
+ "duration_seconds": 1.8,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-10-16T15:20:15+00:00",
+ "hits_current": 1290,
  "index": {
   "by_state": {
-   "MA": 3068,
+   "MA": 3069,
    "NY": 183,
    "RI": 345
   },
   "by_status": {
    "error": 16,
    "needs_ocr": 3,
-   "ok": 3577
+   "ok": 3577,
+   "replaced": 1
   },
   "by_text_source": {
    "docx": 19,
    "html": 164,
    "none": 16,
    "ocr": 840,
-   "pdf": 2557
+   "pdf": 2558
   },
-  "documents": 3596,
-  "hits": 1335,
+  "documents": 3597,
+  "hits": 1337,
   "pruned": 0,
   "towns": 307,
-  "with_hits": 727
+  "with_hits": 728
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 233265368,
-   "listing": 129146244,
-   "robots": 449376
+   "document": 225142,
+   "listing": 126842
   },
-  "cache_hits": 2662,
-  "errors": 5,
-  "requests": 1494,
+  "cache_hits": 0,
+  "errors": 0,
+  "requests": 2,
   "requests_by_purpose": {
-   "document": 495,
-   "listing": 713,
-   "robots": 286
+   "document": 1,
+   "listing": 1
   },
-  "robots_blocked": 1
+  "robots_blocked": 0
  },
- "new_alert_items": 121,
+ "new_alert_items": 1,
  "new_alert_items_by_topic": {
-  "40b_comprehensive_permit": 28,
-  "battery_storage": 11,
-  "clean_energy_siting": 7,
-  "data_center": 20,
-  "moratorium": 9,
-  "solar": 37,
-  "wetlands_filing": 3,
-  "zoning_amendment": 31
+  "40b_comprehensive_permit": 1,
+  "solar": 1
  },
- "new_documents": 469,
- "new_hits": 116,
+ "new_documents": 1,
+ "new_hits": 2,
  "new_hits_by_topic": {
-  "40b_comprehensive_permit": 17,
-  "battery_storage": 13,
-  "clean_energy_siting": 9,
-  "data_center": 19,
-  "moratorium": 9,
-  "solar": 39,
-  "wireless_telecom": 1,
-  "zoning_amendment": 35
+  "40b_comprehensive_permit": 2,
+  "solar": 1
  },
  "options": {
   "matcher_version": "66736d9fde",
@@ -179,19 +101,42 @@
   "tesseract": true,
   "workers": 16
  },
- "started": "2026-10-16T11:07:38+00:00",
+ "previous_runs_today": [
+  {
+   "duration_seconds": 1116.8,
+   "new_documents": 469,
+   "new_hits": 116,
+   "requests": 1494,
+   "started": "2026-10-16T11:07:38+00:00",
+   "states": [
+    "MA",
+    "NY",
+    "RI"
+   ],
+   "towns_attempted": 312,
+   "towns_succeeded": 310
+  },
+  {
+   "duration_seconds": 0.8,
+   "new_documents": 0,
+   "new_hits": 0,
+   "requests": 0,
+   "started": "2026-10-16T15:17:36+00:00",
+   "states": [
+    "MA"
+   ],
+   "towns_attempted": 1,
+   "towns_succeeded": 1
+  }
+ ],
+ "started": "2026-10-16T15:20:13+00:00",
  "states": [
-  "MA",
-  "NY",
-  "RI"
+  "MA"
  ],
- "towns_attempted": 312,
- "towns_failed": [
-  "MA:East Bridgewater",
-  "MA:Hamilton"
- ],
+ "towns_attempted": 1,
+ "towns_failed": [],
  "towns_partial": [],
- "towns_succeeded": 310,
+ "towns_succeeded": 1,
  "window": {
   "end": "2027-02-13",
   "start": "2026-09-16"

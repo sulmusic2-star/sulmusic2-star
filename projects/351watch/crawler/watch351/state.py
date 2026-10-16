@@ -142,12 +142,42 @@ class DocIndex:
             rec = self._docs.get(url)
             if rec is None:
                 return
+            if rec.get("status") == "replaced":  # the town put the file back
+                rec["status"] = rec.pop("status_before", "ok")
+                rec.pop("replaced_by", None)
+                rec.pop("replaced_on", None)
             last = rec.get("last_seen_in_listing")
             if not last or (today - date.fromisoformat(last)).days >= LAST_SEEN_REFRESH_DAYS:
                 rec["last_seen_in_listing"] = today.isoformat()
             for k, v in (meta or {}).items():
                 if v and not rec.get(k):
                     rec[k] = v
+
+    def retire_replaced(self, state: str, town: str, listed: dict, today: date, recent_days: int = 14) -> list[dict]:
+        """A town re-posted an agenda under a new file: the meeting's old document is gone from the
+        listing while another document for the same board and day is on it. Mark the old one
+        `replaced` (with `replaced_by`) so its link is never shown dead; its items keep their ids
+        through current_hits(). `listed` is {(board_key, meeting_date ISO): {urls on today's listing}}
+        from this sweep. Only meetings from recent_days back onward are judged: older documents
+        leave listings for ordinary reasons."""
+        cutoff = (today - timedelta(days=recent_days)).isoformat()
+        retired = []
+        with self._lock:
+            for rec in self._docs.values():
+                if rec.get("state") != state or rec.get("town") != town or rec.get("status") == "replaced":
+                    continue
+                md = rec.get("meeting_date")
+                if not md or md < cutoff:
+                    continue
+                urls = listed.get((rec.get("board_key"), md))
+                if not urls or rec["url"] in urls:
+                    continue
+                rec["status_before"] = rec.get("status") or "ok"
+                rec["status"] = "replaced"
+                rec["replaced_by"] = sorted(urls)[0]
+                rec["replaced_on"] = today.isoformat()
+                retired.append(rec)
+        return retired
 
     # -- persistence ---------------------------------------------------------
     @staticmethod
@@ -207,6 +237,7 @@ class DocIndex:
                 "listing_url": rec.get("listing_url"), "document_title": rec.get("title"),
                 "text_source": rec.get("text_source"), "first_seen": rec.get("first_seen"),
                 "source": "agenda", "_ctx": h.get("ctx") or norm_ctx(h["snippet"]),
+                **({"doc_url": rec["replaced_by"]} if rec.get("replaced_by") else {}),
             })
         return out
 
@@ -216,10 +247,22 @@ class DocIndex:
         seen, so its id and lead time never change once published."""
         recs = sorted((r for r in self.records() if r.get("hits") and r.get("board_key")),
                       key=lambda r: (r.get("first_seen") or "", r["url"]))
+        by_url = {r["url"]: r for r in recs}
         seen, out = set(), []
         for rec in recs:
+            # A replaced document: its items that the new file still carries stay, under their old ids,
+            # with the link pointing at the new file; items the new file dropped go with it. When the
+            # new file isn't read yet (fetch failed), everything stays and only the link changes.
+            keep = None
+            if rec.get("status") == "replaced":
+                new = by_url.get(rec.get("replaced_by") or "")
+                if new is not None:
+                    keep = {h.get("ctx") or norm_ctx(h["snippet"]) for h in new.get("hits") or []}
             for h in self.hits_of(rec):
-                key = (h["state"], h["town"], h["board_key"], h["meeting_date"], h.pop("_ctx"))
+                ctx = h.pop("_ctx")
+                if keep is not None and ctx not in keep:
+                    continue
+                key = (h["state"], h["town"], h["board_key"], h["meeting_date"], ctx)
                 if key in seen:
                     continue
                 seen.add(key)

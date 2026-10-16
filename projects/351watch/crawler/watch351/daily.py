@@ -79,6 +79,7 @@ class TownOutcome:
     needs_ocr: int = 0
     doc_errors: int = 0
     deferred: int = 0
+    replaced: int = 0
     new_hits: list = field(default_factory=list)
     errors: list = field(default_factory=list)
 
@@ -231,6 +232,7 @@ class DailyRun:
     def run_town(self, row: dict) -> TownOutcome:
         state = row["state"]
         out = TownOutcome(f"{state}:{row['town']}", state, row["town"])
+        listed: dict[tuple, set] = {}  # (board_key, meeting date) -> document URLs on today's listings
         for cfg in town_configs(row):
             out.configs += 1
             boards = {l.get("board_key") for l in cfg["listings"] if l.get("board_key")}
@@ -250,7 +252,13 @@ class DailyRun:
             out.configs_ok += 1
             out.boards_ok |= boards
             for doc in docs:
+                if doc.meeting_date and doc.board_key:
+                    listed.setdefault((doc.board_key, doc.meeting_date.isoformat()), set()).add(doc.url)
                 self.process_doc(doc, state, out, row)
+        # A re-posted agenda: the old file is gone from the listing, a new one is on it for the same day.
+        for rec in self.index.retire_replaced(state, row["town"], listed, self.today):
+            out.replaced += 1
+            log.info("%s: %s replaced by %s", out.key, rec["url"], rec.get("replaced_by"))
         out.boards_failed -= out.boards_ok
         log.info("%s: %s, %d listed, %d new, %d hits", out.key, out.status, out.listed,
                  out.new_documents, len(out.new_hits))

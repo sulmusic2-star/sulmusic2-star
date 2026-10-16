@@ -43,8 +43,9 @@ TOPIC_KEYS = {"battery_storage", "solar", "data_center", "moratorium", "clean_en
 # The contract names pdf|ocr|html; Word and plain-text agendas keep their true kind.
 TEXT_SOURCES = {"pdf", "ocr", "html", "docx", "text"}
 FIELDS = ["id", "state", "town", "county", "board", "board_key", "meeting_date", "topics", "snippet",
-          "source_url", "listing_url", "document_title", "text_source", "first_seen",
+          "source_url", "doc_url", "listing_url", "document_title", "text_source", "first_seen",
           "days_before_meeting", "source"]
+OPTIONAL_FIELDS = {"days_before_meeting", "county", "doc_url"}
 _STATE_FILE = re.compile(r"^agenda_hits_([a-z]{2})\.json$")
 
 
@@ -194,6 +195,7 @@ def normalize(h: dict, counties: dict) -> dict:
         "topics": list(h.get("topics") or []),
         "snippet": snippet,
         "source_url": h.get("source_url"),
+        **({"doc_url": h["doc_url"]} if h.get("doc_url") else {}),  # the live file, when the town re-posted the agenda
         "listing_url": h.get("listing_url"),
         "document_title": h.get("document_title"),
         "text_source": h.get("text_source"),
@@ -314,7 +316,7 @@ def validate(doc: dict) -> list[str]:
     for i, h in enumerate(doc["hits"]):
         where = f"hits[{i}]"
         extra = set(h) - set(FIELDS)
-        missing = set(FIELDS) - set(h) - {"days_before_meeting", "county"}
+        missing = set(FIELDS) - set(h) - OPTIONAL_FIELDS
         if extra:
             errs.append(f"{where}: unexpected keys {sorted(extra)}")
         if missing:

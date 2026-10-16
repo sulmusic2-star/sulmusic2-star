@@ -203,15 +203,20 @@ SMALL_SOLAR = re.compile(r"carport|canopy|roof[\s-]*(?:top|mounted)|rooftop|resi
                          r"school|w-Solar|solar\s+(?:light|panel)s?\s+(?:for|on)\b", re.I)
 
 CANCEL_RE = re.compile(r"\bcancel(?:l?ed|lation)\b", re.I)
+MEETING_CANCELLED_RE = re.compile(r"meeting\s+(?:is\s+|has\s+been\s+|was\s+)?cancel+ed|cancel+ed\s+meeting|\bcancel+ed\s*[-–—]\s*next\s+meeting", re.I)
 WITHDRAWN_RE = re.compile(r"\bwithdr[ae]wn?\b|\bwithdrawal\b|\brequest(?:ed|s)?\s+to\s+withdraw", re.I)
 CONTINUANCE_RE = re.compile(
     r"request(?:ed|s|ing)?\s+(?:a\s+|to\s+)?(?:continuance|continue)|continuance\s+(?:to|until)|"
     r"(?<!be )continued\s+(?:to|until)\s+(?:the\s+)?(?:\w+\s+)?\d|to\s+be\s+continued|\bpostpon", re.I)
+CONT_TAIL_RE = re.compile(r"\bcontinued\s+(?:to|until)\s+(?:\w+day,?\s+)?(?:January|February|March|April|May|June|July|August|"
+                          r"September|October|November|December)\s+\d{1,2}", re.I)
+NOTICE_START_RE = re.compile(r"notice\s+of\s+intent|request\s+for\s+determination|DEP\s+File|abbreviated\s+notice|"
+                             r"notice\s+is\s+hereby\s+given|\bANRAD\b", re.I)
 CONTINUED_HEARING_RE = re.compile(r"continued\s+(?:public\s+)?hearing|hearing\s+cont(?:'d|inued)?|cont'd|"
                                   r"\(?continued\s+from\b", re.I)
 HEARING_RE = re.compile(r"\bpublic\s+hearings?\b|\bhearings?\b|\bPH\b|\bnotice\s+of\s+(?:hybrid\s+|remote\s+)?public", re.I)
-VOTE_RE = re.compile(r"\bvote\s+(?:on|to)\b|\bdiscuss(?:ion)?\s+and\s+(?:possible\s+)?vote|\bact\s+on\b|"
-                     r"\bconsider\s+and\s+act|\bpossible\s+vote", re.I)
+VOTE_RE = re.compile(r"\bvote\s+(?:on|to)\b|\bdiscuss(?:ion)?\s+(?:and|&)\s+(?:possible\s+)?(?:vote|action)|\bact\s+on\b|"
+                     r"\bconsider\s+and\s+act|\bpossible\s+vote|\b(?:second|third|final)\s+reading\b|\bordinance\s+adoption\b", re.I)
 DRAFT_RE = re.compile(r"\bdraft\b", re.I)
 TM_ARTICLE_RE = re.compile(r"to\s+see\s+if\s+the\s+(?:town|city)\s+will\s+vote|\bwarrant\s+articles?\b", re.I)
 ADOPT_RE = re.compile(r"\badopt(?:ing|ion\s+of)\s+(?:a\s+|the\s+)?(?:local\s+law|(?:new\s+)?(?:zoning\s+)?(?:by-?law|ordinance))"
@@ -930,7 +935,9 @@ def analyze_hit(h, inputs, today):
     topics = list(h.get("topics") or [])
     title = h.get("document_title") or (doc or {}).get("title") or ""
     source = h.get("source") or "agenda"
+    meeting_cancelled = bool(CANCEL_RE.search(title) or MEETING_CANCELLED_RE.search(text[:900]))
     a = {
+        "meeting_cancelled": meeting_cancelled,
         "hit": h, "id": h["id"], "state": h.get("state"), "town": h.get("town"), "county": h.get("county"),
         "board_raw": h.get("board") or "", "board_key": h.get("board_key") or "",
         "topics": topics, "source": source, "title": title,
@@ -1159,10 +1166,21 @@ def classify(a, text, anchor, i0, i1):
                                                            r"permit|waivers?\s+(?:of|from)", item, re.I):
         kind = "project"  # a 40B application lists bylaw waivers; it is still one project
     cont = CONTINUANCE_RE.search(item if a["mode"] == "item" else item[:rel + 400])
-    cont_date = continuance_date(item, a["date"] or date.today()) if cont else None
+    cont_text = item
+    if not cont:
+        # A legal notice ends with its continuation ("CONTINUED TO NOVEMBER 4, 2026."), often well past the
+        # sentence that named the project: read on to the next notice, but not into it.
+        tail = text[i1:min(len(text), anchor + 1500)]
+        m = CONT_TAIL_RE.search(tail)
+        if m and not NOTICE_START_RE.search(tail[:m.start()]):
+            cont = m
+            cont_text = text[i0:i1 + m.end()]
+    cont_date = continuance_date(cont_text, a["date"] or date.today()) if cont else None
+    a["cont_date"] = cont_date.isoformat() if cont_date else None
+    a["cont_asked"] = bool(cont and re.search(r"request", cont.group(0), re.I))
     stale_cont = bool(cont and cont_date and a["date"] and cont_date < a["date"])
 
-    if CANCEL_RE.search(item):
+    if CANCEL_RE.search(item) or a.get("meeting_cancelled"):
         action = "cancelled"
     elif minutes or stale_cont:
         action = "minutes"   # narrative minutes, or a continuance to a date before this meeting
@@ -1172,8 +1190,11 @@ def classify(a, text, anchor, i0, i1):
         action = "continuance"
     elif mor_siting:
         action = "moratorium"
-        flags["vote"] = bool(re.search(r"vote\s+(?:on|to)[^.;]{0,60}moratori|moratori[^.;]{0,40}vote\s+(?:on|to)|"
-                                       r"discuss\s+and\s+vote[^.;]{0,60}moratori|recommend\s+adoption", item, re.I))
+        flags["vote"] = bool(re.search(r"vote\s+(?:on|to)[^.;]{0,90}moratori|moratori[^.;]{0,60}(?:vote\s+(?:on|to)|in\s+effect\s+through)|"
+                                       r"discuss\w*\s+(?:and|&)\s+(?:vote|action)[^.;]{0,90}moratori|recommend\s+adoption|"
+                                       r"(?:second|third|final)\s+reading", item, re.I)
+                             # a council ordinance prints its readings above the text: the third reading is the vote
+                             or bool(re.search(r"(?:third|final)\s+reading\s*:", text[max(0, i0 - 1500):i0], re.I)))
         flags["draft"] = bool(re.search(r"draft[^.;]{0,40}moratori", item, re.I))
         flags["proposed"] = bool(re.search(r"propos\w+[^.;]{0,40}moratori|moratori[^.;]{0,20}propos", item, re.I))
         flags["tentative"] = bool(re.search(r"moratori\w*\s*\?|possible\s+moratori|potential\s+moratori", item, re.I))

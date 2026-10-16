@@ -178,11 +178,10 @@ TRACER_LANE = "2022-06-02"
 # (trial court) rulings, so it is not settled law for batteries. Used on /attorney-general and /how-it-works.
 LAW_SOLAR = ("State zoning law (G.L. c. 40A, § 3) says a town may not prohibit solar energy systems, or regulate them "
              "unreasonably, except where needed to protect public health, safety or welfare.")
-LAW_BATTERY = ("Battery storage has the same protection only through Land Court rulings: NextSun Energy LLC v. Fernandes "
-               "(No. 19 MISC 000230, 2023) and Duxbury Energy Storage, LLC v. Town of Duxbury Zoning Board of Appeals "
-               "(No. 23 MISC 000643, June 23, 2025), which applied the reasoning of the Supreme Judicial Court’s decision in "
-               "Tracer Lane II Realty, LLC v. City of Waltham, 489 Mass. 775 (2022). The Land Court is a trial court, so "
-               "for batteries this isn’t settled law the way it is for solar.")
+LAW_BATTERY = ("Battery storage has that protection only through two Land Court rulings, and the Land Court is a trial court, "
+               "so for batteries this isn’t settled law the way it is for solar. The rulings are NextSun Energy LLC v. Fernandes "
+               "(2023) and Duxbury Energy Storage, LLC v. Town of Duxbury Zoning Board of Appeals (June 23, 2025); both applied "
+               "the reasoning of the Supreme Judicial Court in Tracer Lane II Realty, LLC v. City of Waltham (2022).")
 e = escape
 
 
@@ -209,8 +208,16 @@ LAND_USE_WORDS = re.compile(r"solar|battery|data.?cent|server|development|buildi
                             r"permit|dwelling|short.term|rental|cannabis|marijuana|warehouse|crypto", re.I)
 
 
+POLE_WORDS = re.compile(r"\b(?:mid.?span\s+)?poles?\b|pole\s+(?:location|petition|hearing)|conduit", re.I)
+UTILITY_WORDS = re.compile(r"national\s*grid|eversource|verizon|unitil|comcast|massachusetts\s+electric", re.I)
+
+
 def off_subject(h):
-    return (h.get("topics") or []) == ["moratorium"] and not LAND_USE_WORDS.search(" ".join((h.get("snippet") or "").split()))
+    snippet = " ".join((h.get("snippet") or "").split())
+    if (h.get("topics") or []) == ["moratorium"] and not LAND_USE_WORDS.search(snippet):
+        return True
+    # a utility's pole petition that happens to say "solar" or "battery" is not a project
+    return bool(POLE_WORDS.search(snippet) and UTILITY_WORDS.search(snippet) and not re.search(r"solar\s+(?:farm|array|project|facility)|battery\s+(?:energy\s+)?storage\s+(?:system|facility|project)", snippet, re.I))
 
 
 def load(name, default):
@@ -398,6 +405,11 @@ class Ctx:
             subject = (r.get("portal_document_name") or "").rsplit(" - ", 1)[-1].strip()
             r["letter_note"] = f" ({subject.lower()} letter)" if len(names) > 1 and subject and not subject[0].isdigit() else ""
         self.hits = [h for h in self.hits_doc["hits"] if h.get("state", "MA") in self.states and not off_subject(h)]
+        # A warrant read twice, once with its date and once without: the undated twin is dropped.
+        dated = {(h["state"], h["town"], quote_key(h.get("snippet") or "")[:80]) for h in self.hits
+                 if h.get("board_key") == "town_meeting" and h.get("meeting_date")}
+        self.hits = [h for h in self.hits if not (h.get("board_key") == "town_meeting" and not h.get("meeting_date")
+                                                  and (h["state"], h["town"], quote_key(h.get("snippet") or "")[:80]) in dated)]
         TODAY[0] = self.today
         self.tr_inputs = TR.load_inputs(str(DATA))
         TR_INPUTS[0] = self.tr_inputs
@@ -1020,7 +1032,7 @@ def brief_text(base, b, town_meeting=False):
         if b.get(key):
             b[key] = re.sub(r"\s*\((?:per|in|from)[^()]*our records\)|,? (?:per|in) our records\b", "", b[key]).strip()
             b[key] = b[key].replace("Related papers in our records:", "Related papers:")
-    for key in ("line", "what", "history", "next", "how_to_speak"):  # the agenda's quote stays as printed
+    for key in ("line", "what", "history", "next", "how_to_speak", "where", "who"):  # the agenda's quote stays as printed
         if b.get(key):
             b[key] = smart_quotes(b[key])
     say = (b.get("line") or b.get("what") or base["say"]).strip()
@@ -1135,7 +1147,7 @@ def item_text_rules(h):
     about = join_and([("a 40R smart-growth district" if t == "40b_comprehensive_permit" and SMART_GROWTH.search(text) else MENTION_NOUN.get(t, t.replace("_", " ")))
                       for t in ordered_topics(topics)][:3]) or "these subjects"
     words = short_quote(text, 110)
-    say = f"Mentions {about} in “{words}”" if words and not junk(words) else f"Mentions {about}."
+    say = f"Mentions {about} in “{words}”" if quotable(words) else f"Mentions {about}."
     return {"say": say, "note": note, "kind": "mention", "stage": "", "facts": []}
 
 
@@ -1372,8 +1384,10 @@ def analysis_text(h, a):
         if past_tm:
             say = say.replace("Votes on ", "Voted on ")
             stage = "Decided" if ruling else ("Warrant" if not h.get("meeting_date") else "Vote")
+        # Among sentences about the same item, the one that names the decision outranks a discussion
+        decided = 0 if stage in ("Vote", "Final vote", "Hearing", "Decided") else 1 if stage.startswith(("Possible vote", "Postponed", "Asks")) else 3
         return {"say": say, "note": note, "kind": kind, "key": key, "quote": full, "no": no, "subj": a["subject"],
-                "stage": stage, "facts": facts, "rank": RANK.get(rank_act or act, 6) * 10 + SUBJECT_RANK.get(a["subject"], 8)}
+                "stage": stage, "facts": facts, "rank": RANK.get(rank_act or act, 6) * 10 + SUBJECT_RANK.get(a["subject"], 8) + decided}
 
     def quoted(lead, plain):
         """lead: “quote” when the agenda's sentence is short enough to read inline; otherwise the plain words."""
@@ -1462,10 +1476,11 @@ def analysis_text(h, a):
             return done(f"Votes on {kinds} for {target}{at}{cont}.", kind="list", stage="Vote")
         return done(f"Discusses {kinds} for {target}{at}{cont} (no vote listed).", kind="list")
     if act == "continuance":
-        d = TR.continuance_date(a["item"], date.fromisoformat(TODAY[0]))
+        d = date.fromisoformat(a["cont_date"]) if a.get("cont_date") else TR.continuance_date(a["item"], date.fromisoformat(TODAY[0]))
         when = f" to {d.strftime('%a %b %-d')}" if d else ""
         what = f"{name}’s hearing" if name else f"the hearing on {TR.with_article(proj)}"
-        return done(f"Postponed: {what}{at} moves{when} (the applicant asked).", stage=f"Postponed{when}")
+        why = " (the applicant asked)" if a.get("cont_asked") else ""
+        return done(f"Postponed: {what}{at} moves{when}{why}.", stage=f"Postponed{when}")
     if act == "deal":
         deal = TR.deal_kind(a["item"])
         what = "tax and benefits talks" if deal == "tax talks" else TR.with_article(deal)
@@ -1481,7 +1496,7 @@ def analysis_text(h, a):
     if act == "discussion":
         return done(quoted(f"Discusses {noun}", f"Discusses {noun} (no vote listed)"), kind="mention")
     words = short_quote(" ".join((a.get("item") or "").split()), 110)
-    return done(quoted(f"Mentions {noun}", f"Mentions {noun} in “{words}”" if words else f"Mentions {noun}"), kind="mention", stage="")
+    return done(quoted(f"Mentions {noun}", f"Mentions {noun} in “{words}”" if quotable(words) else f"Mentions {noun}"), kind="mention", stage="")
 
 
 TODAY = [None]
@@ -1494,6 +1509,12 @@ def agenda_line(h):
 def full_stop(text):
     """One period at the end, also after a name such as "Corp." """
     return re.sub(r"\.\.$", ".", text)
+
+
+def quotable(words):
+    """Agenda words worth quoting on a page: whole words from the start, no file names or links."""
+    return bool(words) and not junk(words) and words[:1].isupper() and len(words.split()) >= 4 \
+        and not re.search(r"\.pdf\b|https?://|\.docx?\b", words, re.I)
 
 
 def junk(part):
@@ -1595,6 +1616,7 @@ def clean_place(v):
     v = " ".join(v.split()).strip(" ,.-–|:*(")
     v = re.sub(r"^(?:(?:[ap]\.?m\.?|at|in|the|of|in-?person|hybrid|department|office)\s+)+", "", v, flags=re.I)
     v = re.sub(r"^.*\bMayor\s+", "", v)  # "Dominick Pangallo Mayor City Hall": a name and title from the letterhead
+    v = re.sub(r",?\s+in\s+[A-Z][\w .'’-]{2,30},\s*(?:MA|NY|RI|Massachusetts)\b\.?", "", v)  # "…in Plymouth, MA": the page already says where
     if re.match(r"(?i)bos\b", v):
         v = "Select Board meeting room" if re.search(r"(?i)room", v) else ""
     v = v[:1].upper() + v[1:] if v else v
@@ -1671,6 +1693,10 @@ def overlaps(q, quotes):
     return False
 
 
+CANCELLED_DOC = re.compile(r"\bcancel+ed\b", re.I)
+MEETING_CANCELLED = re.compile(r"meeting\s+(?:is\s+|has\s+been\s+|was\s+)?cancel+ed|cancel+ed\s+meeting|\bcancel+ed\s*[-–—]\s*next\s+meeting", re.I)
+
+
 def group_meetings(ctx, hits):
     """Hits grouped by meeting (town, board, date), in the order given. A meeting keeps one sentence per
     agenda item (repeats merged), most important first, its time and place from the agenda header, and
@@ -1683,11 +1709,13 @@ def group_meetings(ctx, hits):
         if m is None:
             header = ctx.headers.get(h["source_url"], "")
             place = meeting_place(header, date_ or None)
+            cancelled = bool(CANCELLED_DOC.search(h.get("document_title") or "") or MEETING_CANCELLED.search(header[:900]))
             if h.get("board_key") == "town_meeting" and place in ("online", ""):
                 place = ""  # a Town Meeting is held in person; say nothing rather than guess
             m = out[key] = {"id": "m-" + slugify(f"{h['town']}-{board_label(h)}-{date_ or 'warrant'}"),
                             "state": h["state"], "town": h["town"], "board": board_label(h), "board_key": h.get("board_key"),
                             "date": date_, "source": h.get("source"), "lines": {}, "docs": [], "found": h.get("first_seen") or "",
+                            "cancelled": cancelled,
                             "topics": [], "time": meeting_time(header, date_), "place": place}
         t = item_text(h)
         name, _ = find_name(" ".join((h.get("snippet") or "").split()))
@@ -1706,8 +1734,9 @@ def group_meetings(ctx, hits):
             entry["quotes"].append(q)
         entry["new"] = entry["new"] or ctx.is_new(h)
         entry["note"] = entry["note"] or t["note"]
-        if h["source_url"] not in [d["url"] for d in m["docs"]]:
-            m["docs"].append({"url": h["source_url"], "pdf": is_pdf(h)})
+        link = h.get("doc_url") or h["source_url"]  # the live file when the town re-posted the agenda
+        if link not in [d["url"] for d in m["docs"]]:
+            m["docs"].append({"url": link, "pdf": is_pdf(h)})
         if h.get("first_seen") and (not m["found"] or h["first_seen"] < m["found"]):
             m["found"] = h["first_seen"]
         m["topics"] += [x for x in item_topics(h) if x not in m["topics"]]
@@ -1766,6 +1795,8 @@ def merge_entry(into, entry):
             into["quotes"].append(q)
     into["facts"] = into.get("facts") or entry.get("facts") or []
     into["stage"] = into.get("stage") or entry.get("stage") or ""
+    if entry.get("stage") in ("Vote", "Final vote", "Hearing") and into["stage"] in ("", "Discussion"):
+        into["stage"] = entry["stage"]  # a sentence that found the vote or hearing outranks one that didn't
     into["topics"] += [t for t in entry["topics"] if t not in into["topics"]]
     into["new"] = into["new"] or entry["new"]
     into["note"] = into["note"] or entry["note"]
@@ -1842,6 +1873,7 @@ def place_text(place):
     """"Online meeting", or "Carver Town Hall, or join online" for a hybrid meeting."""
     if place == "online":
         return "Online meeting"
+    place = re.sub(r",?\s+in\s+[A-Z][\w .'’-]{2,30},\s*(?:MA|NY|RI|Massachusetts)\b\.?", "", place)  # the page already says which town
     return place[:-len(" or online")] + ", or join online" if place.endswith(" or online") else place
 
 
@@ -1882,7 +1914,8 @@ def tag_text(topics):
     return ", ".join([tags[0]] + [t.lower() for t in tags[1:]]) if tags else ""
 
 
-SPEAK_TEXT = "Public hearing: anyone can speak; written comments go to the town clerk before the meeting."
+SPEAK_TEXT = "Public hearing. The usual rule applies: anyone can attend and ask to speak, and written comments go to the town clerk before the meeting."
+SPEAK_TM = "Town Meeting: the town’s voters decide (elected members, where the town has a representative town meeting). Ask the town clerk how others may speak."
 SPEAK_NO = "The agenda lists no public comment on this item; ask the town clerk."
 
 
@@ -1937,7 +1970,10 @@ def facts_text(entry):
 
 
 def headline(text):
-    """A headline carries no final period (the written briefs already drop theirs); abbreviations keep it."""
+    """A headline carries no final period (the written briefs already drop theirs); abbreviations keep it.
+    The status word beside it says "Discussion", so "(no vote listed)" goes; a Town Meeting vote reads one way."""
+    text = text.replace(" (no vote listed)", "").replace("; no vote listed)", ")")
+    text = re.sub(r"\.\s+Vote \((Article \d+)\)$", r": vote (\1)", text)
     if re.search(r"[a-z0-9)”\"]\.$", text) and not re.search(r"\b(?:St|Rd|Ave|Dr|Ln|Blvd|Mt|No|Art|Sec|Inc|Corp|LLC|Co)\.$", text):
         return text[:-1]
     return text
@@ -1965,6 +2001,8 @@ def speak_line(m):
             rules.append(b["how_to_speak"])
     if rules:
         return for_town(" ".join(rules[:2]), m["state"], m["town"])
+    if m.get("board_key") == "town_meeting" and entries:
+        return SPEAK_TM
     if any((v.get("brief") or {}).get("can_speak") is True for v in entries) or \
             any(v.get("stage") == "Hearing" and not (v.get("brief") or {}).get("can_speak") is False for v in entries):
         return for_town(SPEAK_TEXT, m["state"], m["town"])
@@ -1984,6 +2022,8 @@ def meeting_head(ctx, m, show_town=True, with_board=True):
         parts.append(f'<span class="meet-day"><time datetime="{m["date"]}">{e(when)}</time></span>')
     elif m["board_key"] == "town_meeting":
         parts.append('<span class="meet-day">Date not found on the warrant</span>')
+    if m.get("cancelled"):
+        parts.append('<span class="meet-canceled">Canceled, the town says</span>')
     if m["place"] and m["source"] != "massdep_wetlands":
         parts.append(f'<span class="meet-place">{e(place_text(m["place"]))}</span>')
     return " ".join(parts)
@@ -2035,6 +2075,8 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
         return f'<li class="line{kind}"><p class="line-say"><span>{new}{say}</span>{stage}</p>{what}{facts_html}{extra}</li>'
 
     entries = list(m["lines"].items())
+    if m.get("cancelled"):
+        entries = [(t, {**en, "stage": "Canceled"}) for t, en in entries]
     lines = "".join(line(t, en) for t, en in entries[:lines_shown])
     if entries[lines_shown:]:
         lines += (f'<li class="line-more"><details class="more"><summary>{plural(len(entries) - lines_shown, "more item")}</summary>'
@@ -2044,13 +2086,15 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     d = m["docs"][0] if m["docs"] else None
     link = (f'<a class="item-link" href="{e(d["url"])}" rel="nofollow noopener" target="_blank">{what.capitalize()}'
             f'{" (PDF)" if d["pdf"] else ""}<span class="sr-only">: {e(where)}</span></a>') if d else ""
-    speak = "" if full else speak_line(m)  # the meeting's own page says it in the ticket instead
-    tail = (f'<span class="speak-line">{e(speak)}</span>' if speak else "") + ("" if full else link)
-    head = "" if full else f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town)}</p>'
-    return f"""<li class="meeting" id="{m['id']}">
+    speak = "" if (full or m.get("cancelled")) else speak_line(m)  # the meeting's own page says it in the ticket instead
+    tail = "" if full else link
+    county = (ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or ""
+    head = "" if full else (f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town)}</p>'
+                            + (f'<p class="speak-line">{e(speak)}</p>' if speak else ""))
+    return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" id="{m['id']}" data-county="{e(county)}" data-state="{e(m['state'])}">
   {head}
   <ul class="lines">{lines}</ul>
-  <p class="meet-src">{tail}</p>
+  {f'<p class="meet-src">{tail}</p>' if tail else ''}
 </li>"""
 
 
@@ -2131,6 +2175,32 @@ def ag_letter_links(ctx, towns, technology):
             continue
         out.append(f'<a href="{e(r["letter_url"])}" rel="nofollow noopener" target="_blank">{e(town)}</a> (case {e(str(r["case_number"]))}, {fmt_date(r["decision_date"])})')
     return join_and(out)
+
+
+def ag_csv(rows):
+    """Every ruling as a spreadsheet: one row per decision letter and subject."""
+    out = io.StringIO()
+    w = csv.writer(out)
+    w.writerow(["town", "county", "article", "bylaw_type", "technology", "decision_date", "outcome", "record_type",
+                "case_number", "letter_url", "summary"])
+    for r in sorted(rows, key=lambda r: r.get("decision_date") or "", reverse=True):
+        url = r.get("letter_url") or ""
+        w.writerow([ag_town(r.get("town")), r.get("county") or "", r.get("article") or "", r.get("bylaw_type") or "",
+                    r.get("technology") or "", r.get("decision_date") or "", r.get("outcome") or "", r.get("record_type") or "",
+                    r.get("case_number") or "", (BASE_URL + url) if url.startswith("/") else url, plain_ag(r.get("summary") or "")])
+    return out.getvalue()
+
+
+def actions_csv(items):
+    """Town and city actions as a spreadsheet."""
+    out = io.StringIO()
+    w = csv.writer(out)
+    w.writerow(["town", "county", "topic", "action", "status", "key_date", "date_label", "body", "summary", "sources"])
+    for i in items:
+        srcs = " ".join(x.get("url") or "" for x in (i.get("sources") or []) if isinstance(x, dict))
+        w.writerow([i.get("town") or "", i.get("county") or "", i.get("topic") or "", i.get("action") or "", i.get("status") or "",
+                    i.get("key_date") or "", i.get("date_label") or "", i.get("body") or "", plain_ag(i.get("summary") or ""), srcs])
+    return out.getvalue()
 
 
 def ag_table(ctx, rows, table_id=None, filters=False):
@@ -2289,6 +2359,7 @@ def build_upcoming(ctx):
   <p class="actions"><a class="btn" href="/watch">Get alerts for your town</a></p>
   <p class="form-note" data-slop-ignore>By topic: {" · ".join(f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' for tp in TOPIC_PAGES)} · <a href="/topics">all topics</a></p>
 </section>
+<p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="full" aria-pressed="true">With write-ups</button><button type="button" class="link-btn" data-view="lines" aria-pressed="false">One line each</button></p>
 <section aria-labelledby="soon-title">
   <h2 id="soon-title">Next 7 days</h2>
   {meeting_list(ctx, soon, shown=20, empty="Nothing in the next 7 days.")}
@@ -2580,33 +2651,59 @@ def cant_check_html(ctx, t, up_m):
 
 
 STAGE_DATE = re.compile(r"^(Postponed|Asks to postpone) to (Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{1,2})$")
+LONG_DATE = re.compile(r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2})(?:,\s*(\d{4}))?\b")
 
 
 def continued_ahead(ctx, meetings, up_m):
-    """Hearings an earlier agenda moved to a later day that has no agenda yet: [(day, meeting, item text, asked)].
+    """What earlier agendas say is coming on a day that has no agenda yet: hearings moved to a later day,
+    and Town Meeting votes a write-up names with a date. [(day, meeting, item text, note)], soonest first.
     Once that day's agenda is posted the item shows under it and this list drops it."""
     today = date.fromisoformat(ctx.today)
     posted = {(m["board_key"], m["date"]) for m in up_m}
     out, seen = [], set()
+
+    def add(board_key, d, m, text, note):
+        key = (board_key, d, quote_key(text)[:40])
+        if d < today or (board_key, d.isoformat()) in posted or key in seen:
+            return
+        seen.add(key)
+        out.append((d, m, text, note))
+
     for m in meetings:
         if not m.get("date"):
             continue
         md = date.fromisoformat(m["date"])
+        when = day_label(m["date"], ctx)
         for text, entry in m["lines"].items():
             mt = STAGE_DATE.match(str(entry.get("stage") or ""))
-            if not mt:
-                continue
-            try:
-                d = datetime.strptime(f"{mt.group(3)} {mt.group(4)} {md.year}", "%b %d %Y").date()
-            except ValueError:
-                continue
-            if d < md:
-                d = d.replace(year=md.year + 1)
-            key = (m["board_key"], d, quote_key(text)[:40])
-            if d < today or (m["board_key"], d.isoformat()) in posted or key in seen:
-                continue
-            seen.add(key)
-            out.append((d, m, text, mt.group(1) == "Asks to postpone"))
+            if mt:
+                try:
+                    d = datetime.strptime(f"{mt.group(3)} {mt.group(4)} {md.year}", "%b %d %Y").date()
+                except ValueError:
+                    continue
+                if d < md:
+                    d = d.replace(year=md.year + 1)
+                if mt.group(1) == "Asks to postpone":
+                    note = (f"the board was asked on {when}; we don’t know yet whether it agreed" if m["date"] < ctx.today
+                            else f"if the board agrees at its {when} meeting")
+                else:
+                    note = f"moved from {when}"
+                add(m["board_key"], d, m, text, note)
+            # a write-up that names the Town Meeting day an article goes to
+            b = entry.get("brief") or {}
+            for sentence in re.split(r"(?<=[.;])\s+", b.get("next") or ""):
+                if not re.search(r"town meeting", sentence, re.I):
+                    continue
+                ld = LONG_DATE.search(sentence)
+                if not ld:
+                    continue
+                try:
+                    d = datetime.strptime(f"{ld.group(1)} {ld.group(2)} {ld.group(3) or md.year}", "%B %d %Y").date()
+                except ValueError:
+                    continue
+                if not ld.group(3) and d < md:
+                    d = d.replace(year=md.year + 1)
+                add("town_meeting", d, m, text, f"named on the {when} {meeting_board(m)} agenda; the warrant isn’t posted yet")
     return sorted(out, key=lambda x: x[0])
 
 
@@ -2614,14 +2711,10 @@ def continued_html(ctx, rows):
     if not rows:
         return ""
     items = []
-    for d, m, text, asked in rows:
-        when = day_label(m["date"], ctx)
-        if asked:
-            note = f"if the board agreed on {when}" if m["date"] < ctx.today else f"if the board agrees at its {when} meeting"
-        else:
-            note = f"moved from {when}"
-        items.append(f'<li><b>{e(day_label(d.isoformat(), ctx))}</b>, {e(meeting_board(m))}: '
-                     f'<a class="line-link" href="{town_path(m["state"], m["town"])}#{m["id"]}">{e(plain_say(text))}</a> ({e(note)})</li>')
+    for d, m, text, note in rows:
+        board = "Town Meeting" if note.startswith("named on") else meeting_board(m)
+        items.append(f'<li><b>{e(day_label(d.isoformat(), ctx))}</b>, {e(board)}: '
+                     f'<a class="line-link" href="{town_path(m["state"], m["town"])}#{m["id"]}">{e(headline(plain_say(text)))}</a> ({e(note)})</li>')
     return f"""<section class="continued" aria-labelledby="continued-title">
 <h2 id="continued-title">Also ahead, from earlier agendas</h2>
 <p class="form-note">The agenda for that day isn’t posted yet; the date comes from the earlier agenda.</p>
@@ -2642,8 +2735,9 @@ def build_town_page(ctx, t):
     rail = ""
     if t["monitored"]:
         if up_m:
-            first = up_m[0]
-            next_line = f"Next meeting on our list: {e(meeting_board(first))}, {e(when_text(ctx, first))}."
+            first = next((m for m in up_m if not m.get("cancelled")), up_m[0])
+            next_line = (f"Next meeting on our list: {e(meeting_board(first))}, {e(when_text(ctx, first))}." if not first.get("cancelled")
+                         else f"The next meeting on our list, {e(meeting_board(first))} on {e(when_text(ctx, first))}, is canceled, the town says.")
             listing = meeting_list(ctx, up_m, show_town=False, shown=3, more="More coming up")
         else:
             nxt = next_posted(ctx, t)
@@ -2814,10 +2908,15 @@ def build_topic_page(ctx, tp):
     up_m = group_meetings(ctx, upcoming)
     week_end = (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=7)).strftime("%Y-%m-%d")
     week = [m for m in up_m if m["date"] <= week_end]
-    week_text = "\n".join(share_text(ctx, m, next(iter(m["lines"]), "")) + f" {meeting_share_url(ctx, m)}" for m in week)
+    week_text = week_list_text(ctx, week)
     copy_week = (f'<button type="button" class="link-btn" data-copy="{e(week_text)}" hidden>Copy this week’s list</button>' if week else "")
     write(f"topics/{tp['slug']}.csv", topic_csv(ctx, up_m))
     tools = f"""<p class="action-row">{copy_week}<a href="/topics/{tp['slug']}.csv" download>Download the list (CSV)</a></p>""" if up_m else ""
+    counties = sorted({(ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or "" for m in up_m} - {""})
+    county_filter = ""
+    if len(counties) > 1:
+        opts = "".join(f'<option value="{e(c)}">{e(c)} County</option>' for c in counties)
+        county_filter = f"""<div class="filterbar" data-meeting-filter><label>County<select data-key="county"><option value="">All</option>{opts}</select></label><p class="count" data-count aria-live="polite"></p></div>"""
     read, total = (sum(m for _, m, _ in ctx.coverage()), sum(n for _, _, n in ctx.coverage()))
     coverage = (f'<p class="checked">From the agendas of {read} of {total} towns in {e(join_and(STATE_NAMES.get(x, x) for x in ctx.states))}. '
                 f'<a href="/how-it-works#coverage">Towns we can’t read yet</a>.</p>')
@@ -2828,6 +2927,7 @@ def build_topic_page(ctx, tp):
 <h1 id="topic-title">{e(tp['name'])} on town agendas</h1>
 <section aria-labelledby="upcoming-title">
   <div class="sec-head"><h2 id="upcoming-title">Coming up</h2><a class="btn" href="{e(alerts_url(topics=[tp['key']]))}">Get alerts for your town</a></div>
+  {county_filter}
   {meeting_list(ctx, up_m, shown=max(5, len(week)), more="More coming up", empty='Nothing on the agenda about this right now. We check every morning.')}
   {tools}
   {coverage}
@@ -2842,18 +2942,41 @@ def build_topic_page(ctx, tp):
                 body, f"/topics/{tp['slug']}")
 
 
+def real_lines(m):
+    """A meeting's items that say something (not a bare mention of a word), best first."""
+    return [(t, en) for t, en in m["lines"].items() if en.get("kind") != "mention"]
+
+
+def week_list_text(ctx, meetings):
+    """The week as text to paste: one line per meeting, grouped by state, mention-only meetings left out."""
+    blocks = []
+    for st in sorted({m["state"] for m in meetings}, key=lambda x: (x != "MA", x)):
+        rows = []
+        for m in meetings:
+            if m["state"] != st or m.get("cancelled"):
+                continue
+            lines = real_lines(m)
+            if not lines:
+                continue
+            rows.append(share_text(ctx, m, lines[0][0]) + f" {meeting_share_url(ctx, m)}")
+        if rows:
+            blocks.append(f"{STATE_NAMES.get(st, st)}\n" + "\n".join(rows))
+    return "\n\n".join(blocks)
+
+
 def topic_csv(ctx, meetings):
     """One row per agenda item at a meeting still ahead: town, state, board, date, time, place, item, status,
     the agenda's URL and the meeting's page."""
     out = io.StringIO()
     w = csv.writer(out)
-    w.writerow(["town", "state", "board", "date", "time", "place", "item", "status", "agenda_url", "page_url"])
+    w.writerow(["town", "county", "state", "board", "date", "time", "place", "item", "status", "agenda_url", "page_url"])
     for m in meetings:
         doc = m["docs"][0]["url"] if m["docs"] else ""
         place = place_text(m["place"]) if m["place"] and m["source"] != "massdep_wetlands" else ""
-        for text, entry in m["lines"].items():
-            w.writerow([m["town"], m["state"], meeting_board(m), m["date"] or "", m.get("time") or "", place,
-                        plain_say(text), entry.get("stage") or "", doc, meeting_share_url(ctx, m)])
+        county = (ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or ""
+        for text, entry in real_lines(m):
+            w.writerow([m["town"], county, m["state"], meeting_board(m), m["date"] or "", m.get("time") or "", place,
+                        plain_say(text), "Canceled" if m.get("cancelled") else (entry.get("stage") or ""), doc, meeting_share_url(ctx, m)])
     return out.getvalue()
 
 
@@ -3381,7 +3504,7 @@ def build_ag(ctx):
     body = f"""
 <div class="wrap narrow">
 <h1 id="ag-title">Massachusetts Attorney General rulings on town bylaws</h1>
-<p class="lead">Since June 2, 2022 the Attorney General has disapproved every town moratorium on solar or battery storage it has ruled on: {rec['disapproved']} of {all_n}, in {plural(rec['towns'], 'town')}. Zoning that sets rules instead of pausing projects is almost always approved: {n['ruled_ok']} of {n['ruled']}.</p>
+<p class="lead">A town can’t ban solar. Since June 2, 2022, when the state’s highest court said so in Tracer Lane II, the Attorney General has disapproved every town moratorium (a temporary ban) on solar or battery storage it has ruled on: {rec['disapproved']} of {all_n}, in {plural(rec['towns'], 'town')}. Zoning that sets rules instead of pausing projects is almost always approved: {n['ruled_ok']} of {n['ruled']}.</p>
 <p>{n['letters']} decisions in {n['towns']} towns, letters dated {fmt_date(dates[0]) if dates else ''} to {fmt_date(dates[-1]) if dates else ''}, plus {plural(n['rt'].get('court_ruling', 0), 'court ruling')}, {plural(n['rt'].get('city_ordinance', 0), 'city ordinance')} and {n['rt'].get('pending_ag_review', 0)} awaiting review.</p>
 <p data-slop-ignore><a href="/attorney-general/rulings">Every ruling</a> · <a href="/attorney-general/town-actions">Town and city actions</a> · <a href="/attorney-general/law">State law and court rulings</a></p>
 <h2 id="survives-title">How the Attorney General has ruled, by kind of bylaw</h2>
@@ -3424,8 +3547,10 @@ def build_ag_rulings(ctx):
   <p class="count" data-count aria-live="polite"></p>
 </div>
 {ag_table(ctx, ag, table_id='ag-ledger', filters=True)}
+<p class="action-row"><a href="/attorney-general/rulings.csv" download>Download the table (CSV)</a></p>
 </div>
 """
+    write("attorney-general/rulings.csv", ag_csv(ag))
     return page(ctx, f"Every Attorney General ruling on solar and battery bylaws | {SITE_NAME}",
                 f"All {n['letters']} Massachusetts Attorney General decisions on town solar, battery storage and data-center bylaws since 2022, "
                 "with a link to each letter, plus the court rulings around them.",
@@ -3451,8 +3576,10 @@ def build_ag_actions(ctx):
   <p class="count" id="f-count" aria-live="polite"></p>
 </div>
 {tracker_table(ctx, items, "tracker-table")}
+<p class="action-row"><a href="/attorney-general/town-actions.csv" download>Download the table (CSV)</a></p>
 </div>
 """
+    write("attorney-general/town-actions.csv", actions_csv(items))
     return page(ctx, f"Town and city actions on battery storage and solar | {SITE_NAME}",
                 f"{len(items)} Massachusetts town and city actions on battery storage and solar: moratoriums, special acts, "
                 "zoning bylaws and permit rules, each with a link to its source.",
@@ -3633,16 +3760,18 @@ def build_meeting_page(ctx, m):
     title = f"{m['town']} {meeting_board(m)}"
     d = m["docs"][0] if m["docs"] else None
     what = "filing" if m["source"] == "massdep_wetlands" else ("warrant" if m["board_key"] == "town_meeting" else "agenda")
-    gloss = " (Town Meeting’s agenda)" if what == "warrant" else ""
-    link = f'<a class="item-link" href="{e(d["url"])}" rel="nofollow noopener" target="_blank">Open the {what}{gloss}{" (PDF)" if d["pdf"] else ""}</a>' if d else ""
+    label = "Open the Town Meeting warrant" if what == "warrant" else f"Open the {what}"
+    link = f'<a class="item-link" href="{e(d["url"])}" rel="nofollow noopener" target="_blank">{label}{" (PDF)" if d["pdf"] else ""}</a>' if d else ""
     # When, where and whether you can speak sit in the ticket, where someone deciding whether to go looks first.
     speak_top = speak_line(m)
     health = (ctx.health or {}).get(t.get("id")) or {}
     checked = short_day(health["last_success"]) if health.get("last_success") else ""
     host = re.sub(r"^www\.", "", (d["url"].split("/")[2] if d and "//" in d["url"] else ""))
     posted = posted_text(ctx, m).replace("Agenda posted by", "posted").replace("Warrant posted by", "posted").replace("Filed by", "filed")
-    prov = f"From the {meeting_board(m)} {what}{' ' + posted if posted else ''}{' on ' + e(host) if host else ''}.{' Checked ' + e(checked) + '.' if checked else ''}"
     entry = next(iter(m["lines"].values()), None)
+    read = short_day(entry["seen"][:10]) if entry and entry.get("seen") else ""
+    prov = (f"From the {meeting_board(m)} {what}{' ' + posted if posted else ''}{' on ' + e(host) if host else ''}."
+            + (f" Read {e(read)}" if read else "") + (f"{';' if read else ' Checked'} the town’s listing checked {e(checked)}." if checked else ("." if read else "")))
     cite = citation(ctx, m, entry)
     share = (f'<button type="button" class="link-btn" data-share data-url="{e(meeting_share_url(ctx, m))}" data-title="{e(title + ", " + when_text(ctx, m))}" '
              f'data-text="{e(share_text(ctx, m, first))}" hidden>Share</button>')

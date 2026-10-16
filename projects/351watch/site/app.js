@@ -516,8 +516,8 @@ function setupSearchResults() {
     const link = alert.querySelector('a');
     link.href = `/watch${q.toString() ? `?${q}` : ''}`;
     const names = towns.map((t) => nameOf(t).split(',')[0]);
-    link.textContent = names.length ? `Email me when a new one is posted in ${names.length > 2 ? `${names[0]} and ${names.length - 1} more towns` : names.join(' or ')}`
-      : 'Email me when a new one is posted';
+    link.textContent = names.length ? `Get alerts for ${names.length > 2 ? `${names[0]} and ${names.length - 1} more towns` : names.join(' or ')}`
+      : 'Get alerts for your town';
     alert.hidden = !list.querySelector('li.result:not([hidden])');
   }
 
@@ -775,9 +775,47 @@ function setupCopyAndShare() {
 
 followOldAnchors();
 setupTownBox();
+// Topic pages: <div data-meeting-filter> with a county select hides the meetings from other counties.
+function setupMeetingFilter() {
+  const bar = document.querySelector('[data-meeting-filter]');
+  if (!bar) return;
+  const select = bar.querySelector('select[data-key="county"]');
+  const count = bar.querySelector('[data-count]');
+  const meetings = Array.from(document.querySelectorAll('.meeting[data-county]'));
+  const apply = () => {
+    let shown = 0;
+    for (const m of meetings) {
+      const ok = !select.value || m.dataset.county === select.value;
+      m.hidden = !ok;
+      if (ok) shown += 1;
+    }
+    count.textContent = select.value ? (shown ? `${shown} of ${meetings.length} meetings` : 'Nothing coming up in that county.') : '';
+  };
+  select.addEventListener('change', apply);
+  apply();
+}
+
+// /upcoming: "One line each" hides the write-ups so a reporter can scan six towns on one screen.
+function setupViewSwitch() {
+  const bar = document.querySelector('[data-view-switch]');
+  if (!bar) return;
+  const buttons = Array.from(bar.querySelectorAll('[data-view]'));
+  const set = (view) => {
+    document.body.classList.toggle('compact', view === 'lines');
+    for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.view === view));
+    try { localStorage.setItem('agendaahead:view', view); } catch { /* private window */ }
+  };
+  let view = new URLSearchParams(location.search).get('view');
+  if (!view) { try { view = localStorage.getItem('agendaahead:view'); } catch { /* private window */ } }
+  set(view === 'lines' ? 'lines' : 'full');
+  for (const b of buttons) b.addEventListener('click', () => set(b.dataset.view));
+}
+
 setupListFilter();
 setupTrackerFilter();
 setupGenericFilters();
+setupMeetingFilter();
+setupViewSwitch();
 setupContactForm();
 setupSearchResults();
 setupEmailNotes();
