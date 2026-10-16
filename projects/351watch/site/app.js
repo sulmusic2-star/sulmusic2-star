@@ -477,6 +477,7 @@ function setupSearchResults() {
   const setTowns = (ids) => {
     if (!chips) return;
     chips.replaceChildren(...[...new Set(ids)].filter(Boolean).map(chip));
+    try { localStorage.setItem('agendaahead:search-towns', JSON.stringify(chosen())); } catch { /* private window */ }
   };
   function params() {
     const p = new URLSearchParams();
@@ -486,6 +487,7 @@ function setupSearchResults() {
       if (k === 'town') p.append(k, value);
       else p.set(k, value);
     }
+    for (const field of form.elements) if (field.type === 'checkbox' && field.defaultChecked && !field.checked) p.set(field.name, '0');
     return p;
   }
   function submit() {
@@ -509,7 +511,12 @@ function setupSearchResults() {
     return true;
   }
   if (pick && form) {
-    setTowns(new URLSearchParams(location.search).getAll('town').flatMap((v) => v.split(',')));
+    const fromUrl = new URLSearchParams(location.search).getAll('town').flatMap((v) => v.split(','));
+    let remembered = [];
+    try { remembered = JSON.parse(localStorage.getItem('agendaahead:search-towns') || '[]'); } catch { /* private window */ }
+    // the towns added last time stay until removed; a link with its own towns wins
+    setTowns(fromUrl.length ? fromUrl : remembered.filter((id) => options.some((x) => x.dataset.id === id)));
+    if (!fromUrl.length && chosen().length && location.search) submit();
     document.getElementById('town-add-btn').addEventListener('click', () => { if (addTyped()) submit(); });
     add.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' && add.value.trim()) {
@@ -815,22 +822,54 @@ function setupMeetingFilter() {
   const bar = document.querySelector('[data-meeting-filter]');
   if (!bar) return;
   const select = bar.querySelector('select[data-key="county"]');
-  if (!select) return;
+  const town = bar.querySelector('input[data-key="town"]');
+  const mineBtn = bar.querySelector('[data-my-towns]');
+  if (!select && !town) return;
   const count = bar.querySelector('[data-count]');
   const meetings = Array.from(document.querySelectorAll('.meeting[data-county]'));
   const days = Array.from(document.querySelectorAll('.day-group'));
+  // "Only my towns": the towns this device has alerts for (window.w351.areas, from watch.js)
+  const mine = window.w351 && window.w351.areas ? window.w351.areas() : null;
+  const mineNames = mine && mine.towns ? mine.towns.map((id) => id.split(':').slice(1).join(':')) : [];
+  let onlyMine = false;
+  const params = new URLSearchParams(location.search);
+  if (select && params.get('county') && [...select.options].some((o) => o.value === params.get('county'))) select.value = params.get('county');
+  if (town && params.get('town')) town.value = params.get('town');
   const apply = () => {
+    const want = town ? norm(town.value) : '';
+    const county = select ? select.value : '';
     let shown = 0;
     for (const m of meetings) {
-      const ok = !select.value || m.dataset.county === select.value;
+      const name = m.dataset.town || '';
+      const ok = (!county || m.dataset.county === county)
+        && (!want || norm(name).startsWith(want) || norm(name).includes(` ${want}`))
+        && (!onlyMine || mineNames.includes(name));
       m.hidden = !ok;
       if (ok) shown += 1;
     }
     // a day heading with nothing left under it goes too
     for (const d of days) d.hidden = !d.querySelector('.meeting:not([hidden])');
-    count.textContent = select.value ? (shown ? `${shown} of ${meetings.length} meetings` : 'Nothing coming up in that county.') : '';
+    const narrowed = county || want || onlyMine;
+    count.textContent = narrowed ? (shown ? `${shown} of ${meetings.length} meetings` : 'Nothing coming up for that choice.') : '';
+    // the address bar carries the choice, so the page can be shared or bookmarked
+    const p = new URLSearchParams(location.search);
+    if (county) p.set('county', county); else p.delete('county');
+    if (town && town.value.trim()) p.set('town', town.value.trim()); else p.delete('town');
+    const qs = p.toString();
+    history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
   };
-  select.addEventListener('change', apply);
+  if (select) select.addEventListener('change', apply);
+  if (town) town.addEventListener('input', apply);
+  if (mineBtn && mineNames.length) {
+    mineBtn.hidden = false;
+    mineBtn.textContent = `Only my towns (${mineNames.slice(0, 3).join(', ')}${mineNames.length > 3 ? ` and ${mineNames.length - 3} more` : ''})`;
+    mineBtn.addEventListener('click', () => {
+      onlyMine = !onlyMine;
+      mineBtn.setAttribute('aria-pressed', String(onlyMine));
+      mineBtn.textContent = onlyMine ? 'All towns' : `Only my towns (${mineNames.slice(0, 3).join(', ')}${mineNames.length > 3 ? ` and ${mineNames.length - 3} more` : ''})`;
+      apply();
+    });
+  }
   apply();
 }
 

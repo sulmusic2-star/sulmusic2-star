@@ -71,7 +71,8 @@
     input.value = p.get("q") || "";
     for (const field of form.elements) {
       if (!field.name || field === input) continue;
-      if (field.type === "checkbox") field.checked = p.get(field.name) === field.value;
+      // a box checked in the HTML stays checked unless the address says otherwise (upcoming=0 after an uncheck)
+      if (field.type === "checkbox") field.checked = p.has(field.name) ? p.get(field.name) === field.value : field.defaultChecked;
       else if (field.tagName === "SELECT") {
         const v = p.get(field.name) || "";
         if (v && ![...field.options].some((o) => o.value === v)) field.add(new Option(label(field.name, v), v));
@@ -84,6 +85,7 @@
   function formParams() {
     const p = new URLSearchParams();
     for (const [k, v] of new FormData(form)) if (String(v).trim()) p.append(k, String(v).trim());
+    for (const field of form.elements) if (field.type === "checkbox" && field.defaultChecked && !field.checked) p.set(field.name, "0");
     return p;
   }
 

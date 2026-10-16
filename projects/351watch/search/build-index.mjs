@@ -86,11 +86,15 @@ const { index, errors } = await createIndex({ forceLanguage: "en" });
 if (!index) throw new Error(`pagefind: ${errors.join("; ")}`);
 const seen = new Set();
 const docFreq = new Map();
-for (const row of best.values()) {
+for (let row of best.values()) {
   const link = row.source_url || row.url;
   if (seen.has(link)) continue;
   seen.add(link);
   const title = displayTitle(row);
+  // A Town Meeting warrant posted under a board's listing is the voters' document, not the board's.
+  if (/\btown meeting\b[^|]{0,60}\bwarrant\b|\bwarrant\b[^|]{0,60}\btown meeting\b/i.test(title) && row.board_key !== "town_meeting") {
+    row = { ...row, board: "Town Meeting", board_key: "town_meeting" };
+  }
   const filters = { state: [row.state] };
   if (row.town) filters.town = [`${row.state}:${row.town}`];
   if (row.board_key) filters.board = [row.board_key];

@@ -280,7 +280,7 @@ class RenderTests(unittest.TestCase):
         self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True, "action": "hearing"}
         ctx, m = self.meeting(HIT)
         self.assertEqual(self.build.speak_line(m), self.build.SPEAK_TEXT)
-        self.assertEqual(self.build.meeting_html(ctx, m, show_town=False).count(self.build.SPEAK_TEXT), 1, "once per meeting")
+        self.assertEqual(self.build.meeting_html(ctx, m, show_town=False).count(self.build.SPEAK_SHORT[self.build.SPEAK_TEXT]), 1, "once per meeting, the list wording")
         self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True, "action": "continued"}
         ctx, m = self.meeting(HIT)
         self.assertEqual(self.build.speak_line(m), "")
