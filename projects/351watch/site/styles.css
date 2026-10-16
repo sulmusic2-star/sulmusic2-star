@@ -460,7 +460,7 @@ td small, th small { display: block; color: var(--muted); font-weight: 400; }
   :root { --gutter: 16px; }
   header.site .wrap { gap: 0 var(--s4); }
   nav.top ul { gap: 0 var(--s4); }
-  nav.top li.nav-rulings { display: none; }  /* six items wrap on a phone; the rulings pages stay one tap away in the footer */
+  nav.top li.nav-stories { display: none; }  /* six items wrap on a phone; Biggest stories is one tap away under Topics and on the home page */
   .field-row .btn { flex: 1 1 100%; }
   /* /trending on a phone: smaller pills and a one-line town box, so the first story is in reach */
   .trend-filters label { min-height: 28px; padding: 0 8px; font-size: 14px; }
@@ -577,6 +577,7 @@ h1 { margin-top: var(--s6); margin-bottom: var(--s3); }
 .result-only { display: inline-flex; align-items: center; gap: var(--s1); }
 #search-results.flagged-only .result:not([data-topics]) { display: none; }
 .ticket-canceled { color: var(--ink); font-weight: 600; }
+main:has(#ag-title) p:not(.lead):not(.count) { max-width: 34em; }
 .ticket-speak { color: var(--muted); font-size: var(--t-sm); }
 .ticket .actions { margin: var(--s4) 0 0; }
 .ticket .actions .btn { width: 100%; }

@@ -739,7 +739,7 @@ def gloss_once(body):
 def page(ctx, title, description, body, path, scripts=(), noindex=False, head="", og_title=None):
     current = nav_section(path)
     nav = "".join(
-        f'<li{" class=\"nav-rulings\"" if href == "/attorney-general" else ""}><a href="{href}"{" aria-current=\"page\"" if href == current else ""}>{label}</a></li>' for href, label in NAV
+        f'<li{" class=\"nav-stories\"" if href == "/trending" else ""}><a href="{href}"{" aria-current=\"page\"" if href == current else ""}>{label}</a></li>' for href, label in NAV
     )
     robots = '<meta name="robots" content="noindex">\n' if noindex else ""
     canonical = "" if noindex else f'<link rel="canonical" href="{BASE_URL}{"" if path == "/" else path}">\n'
@@ -2130,8 +2130,8 @@ TERMS = [
     (re.compile(r"\boverlay district\b", re.I), "Overlay district", "a zoning layer with extra rules on top of the zone underneath"),
     (re.compile(r"\bmoratori", re.I), "Moratorium", "a temporary ban"),
     (re.compile(r"\bdecommission", re.I), "Decommissioning", "taking a project down at the end of its life and restoring the land"),
-    (re.compile(r"\bBESS\b"), "BESS", "a battery energy storage system: large batteries that store electricity and feed it back to the grid"),
-    (re.compile(r"battery energy storage", re.I), "Battery energy storage", "large batteries that store electricity and feed it back to the grid"),
+    (re.compile(r"\bBESS\b"), "BESS", "large batteries that store electricity and feed it back to the grid (a battery energy storage system)"),
+    (re.compile(r"battery energy storage", re.I), "Battery energy storage", "large batteries that store electricity and feed it back to the grid (a battery energy storage system)"),
     (re.compile(r"\binterconnection\b", re.I), "Interconnection", "connecting a project to the electric grid"),
     (re.compile(r"\bPILOT\b|payments? in lieu of tax", re.I), "PILOT",
      "a payment in lieu of taxes: a yearly payment the owner and the town agree on instead of property tax"),
@@ -2143,9 +2143,9 @@ TERMS = [
 ]
 
 
-def who_votes_html(m):
+def who_votes_text(m):
     """A Planning Board's hearing on a zoning change is not the vote: the board recommends, Town Meeting (or a
-    city's council) adopts. One line on the meeting's own page, when an item is such a hearing."""
+    city's council) adopts. One line in the meeting's ticket, when an item is such a hearing."""
     if m.get("cancelled") or m.get("board_key") != "planning_board":
         return ""
     zoning = {"zoning_amendment", "moratorium", "clean_energy_siting"}
@@ -2153,7 +2153,7 @@ def who_votes_html(m):
         return ""
     city = f"{m['state']}:{m['town']}" in CITIES
     who, what = ("the City Council", "ordinance") if city else ("Town Meeting", "bylaw")
-    return f'<p class="line-note meet-note">After the hearing the Planning Board makes a recommendation; {who} votes on the {what}.</p>'
+    return f"After the hearing the Planning Board makes a recommendation; {who} votes on the {what}."
 
 
 def meeting_ics(ctx, m):
@@ -2241,7 +2241,11 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
         new = '<span class="badge-new">New</span> ' if entry["new"] and not (b and b.get("history")) and not text.startswith("New ") else ""
         what = ""
         if b and b.get("what") and quote_key(b["what"]) != quote_key(text):
-            what = f'<p class="brief-what">{e(b["what"])}</p>'
+            w = b["what"]
+            mt_ = STAGE_DATE.match(str(entry.get("stage") or ""))
+            if mt_:  # "Postponed to Wed Nov 4" is the status; the write-up needn't end by saying so again
+                w = re.sub(rf"\s*[^.]*\b{mt_.group(3)}[a-z]*\.?\s+{int(mt_.group(4))}\b[^.]*\.$", "", w, flags=re.I) or w
+            what = f'<p class="brief-what">{e(w)}</p>'
         if b and b.get("history"):  # what happened on this item before, from our own records
             what += f'<p class="line-before"><b>Before this:</b> {e(b["history"])}</p>'
         facts = "".join(f"<span>{e(x)}</span>" for x in facts_text(entry))
@@ -2291,7 +2295,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     county = (ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or ""
     head = "" if full else (f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town)}</p>'
                             + (f'<p class="speak-line">{e(speak)}</p>' if speak else ""))
-    terms = (who_votes_html(m) + terms_html(m, source)) if full and not m.get("cancelled") else ""
+    terms = terms_html(m, source) if full and not m.get("cancelled") else ""
     return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" id="{m['id']}" data-county="{e(county)}" data-state="{e(m['state'])}">
   {head}
   <ul class="lines">{lines}</ul>
@@ -2523,7 +2527,8 @@ def build_index(ctx):
     abbr = join_and(ctx.states)
     ahead = upcoming_hits(ctx)
     ahead_towns = len({(h.get("state"), h.get("town")) for h in ahead})
-    count_line = f'<span class="sub-count">{len(ahead):,} items at meetings still ahead in {ahead_towns} towns</span>' if ahead else ""
+    ahead_lines = sum(len(m["lines"]) for m in group_meetings(ctx, ahead))  # what /upcoming lists, not raw windows
+    count_line = f'<span class="sub-count">{ahead_lines:,} items at meetings still ahead in {ahead_towns} towns</span>' if ahead else ""
     body = f"""
 <div class="wrap narrow home">
 <section class="home-hero" aria-labelledby="hero-title">
@@ -3241,6 +3246,7 @@ def build_topics_index(ctx):
 <section class="page-head" aria-labelledby="topics-title">
   <h1 id="topics-title">Topics</h1>
   <p class="lead">Pick a subject to see what town boards have coming up about it.</p>
+  <p class="more-link"><a href="/trending">Biggest stories coming up</a></p>
 </section>
 <div class="table-wrap"><table class="stack counts">{TOPIC_HEAD}<tbody>{''.join(rows)}</tbody></table></div>
 <p class="actions"><a class="btn" href="/watch">Get alerts</a></p>
@@ -3747,7 +3753,7 @@ def build_ag(ctx):
 <p class="lead">A town can’t ban solar. Since June 2, 2022, when the state’s highest court said so in Tracer Lane II, the Attorney General has disapproved every town moratorium (a temporary ban) on solar or battery storage it has ruled on: {rec['disapproved']} of {all_n}, in {plural(rec['towns'], 'town')}. Zoning that sets rules instead of pausing projects is almost always approved: {n['ruled_ok']} of {n['ruled']}.</p>
 <p>{n['letters']} decisions in {n['towns']} towns, letters dated {fmt_date(dates[0]) if dates else ''} to {fmt_date(dates[-1]) if dates else ''}, plus {plural(n['rt'].get('court_ruling', 0), 'court ruling')}, {plural(n['rt'].get('city_ordinance', 0), 'city ordinance')} and {n['rt'].get('pending_ag_review', 0)} awaiting review.</p>
 <p data-slop-ignore><a href="/attorney-general/rulings">Every ruling</a> · <a href="/attorney-general/town-actions">Town and city actions</a> · <a href="/attorney-general/law">State law and court rulings</a></p>
-<p class="terms"><b>Words on this page.</b> <dfn>Tracer Lane II</dfn>: the 2022 ruling by the state’s highest court that a town can’t use zoning to ban solar. <dfn>G.L. c. 40A, § 3</dfn>: the state zoning law’s solar clause; a town can’t prohibit solar or restrict it unreasonably. <dfn>225 CMR 29.00</dfn>: the state’s 2025 rules for permitting clean-energy projects, with one consolidated local permit. <dfn>Land Court</dfn>: a state trial court for land disputes; its rulings carry less weight than the highest court’s. <dfn>Moratorium</dfn>: a temporary ban.</p>
+<p class="terms"><b>Words on this page.</b> <dfn>Tracer Lane II</dfn>: the 2022 ruling by the state’s highest court that a town can’t use zoning to ban solar. <dfn>G.L. c. 40A, § 3</dfn>: the state zoning law’s solar clause; a town can’t prohibit solar or restrict it unreasonably. <dfn>225 CMR 29.00</dfn>: the state’s 2025 rules for permitting clean-energy projects, with one consolidated local permit. <dfn>Land Court</dfn>: a state trial court for land disputes; its rulings carry less weight than the highest court’s.</p>
 <h2 id="survives-title">How the Attorney General has ruled, by kind of bylaw</h2>
 <div class="table-wrap"><table class="stack"><thead><tr><th scope="col">Kind of bylaw</th><th scope="col">Result</th><th scope="col">Count</th><th scope="col">Recent examples</th></tr></thead><tbody>{pattern_rows}</tbody></table></div>
 <p class="small">{e(n['also'])} The three data-center letters are in the rulings list too: Shutesbury’s (case 12047, Jan 20, 2026) and Templeton’s (case 12294, Sep 22, 2026) as the towns posted them, and Gill’s (case 12422, Sep 24, 2026), which struck the battery-storage half of the same article.</p>
@@ -4028,6 +4034,7 @@ def build_meeting_page(ctx, m):
   {f'<p class="ticket-place">{e(place)}</p>' if place else ''}
   {f'<p class="ticket-watch">Watch on {e(" or ".join(m["watch"]))}</p>' if m.get("watch") else ''}
   {f'<p class="ticket-speak">{e(speak_top)}</p>' if speak_top else ''}
+  {f'<p class="ticket-speak">{e(who_votes_text(m))}</p>' if who_votes_text(m) else ''}
   {f'<p class="ticket-links">{link}</p>' if link else ''}
   <p class="actions"><a class="btn" href="{e(alerts_url(t.get('id')))}">Get alerts for {e(m['town'])}</a></p>
   <p class="ticket-share">{share}<a class="link-btn" href="/m/{m['id'][2:]}.ics" download="{e(m['id'][2:])}.ics">Add to my calendar</a></p>
