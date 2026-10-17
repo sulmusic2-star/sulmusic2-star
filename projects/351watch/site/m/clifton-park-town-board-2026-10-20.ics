@@ -6,15 +6,17 @@ METHOD:PUBLISH
 BEGIN:VEVENT
 UID:m-clifton-park-town-board-2026-10-20@agendaahead
 DTSTAMP:20261017T120000Z
-DTSTART;VALUE=DATE:20261020
-DTEND;VALUE=DATE:20261021
-SUMMARY:Clifton Park Town Board: Holds a hearing on solar rules.
-LOCATION:Clifton Park\, NY
-DESCRIPTION:• Holds a hearing on solar rules.\n\nAgenda: https://cliftonp
- arkny.gov/document-center/agendas/town-board-agendas/2026-1/6121-10-20-202
- 6-draft-town-board-meeting-packet\nPage: https://agendaahead.vercel.app/m/
- clifton-park-town-board-2026-10-20\nConfirm the time and place with the to
- wn\; agendas can change.
+DTSTART;TZID=America/New_York:20261020T190000
+DTEND;TZID=America/New_York:20261020T210000
+SUMMARY:Clifton Park Town Board: Town solar zoning code update: Town Board 
+ vote to hire GPI
+LOCATION:Wood Room\, Town Hall\, One Town Plaza\, Clifton Park\, Clifton Pa
+ rk\, NY
+DESCRIPTION:• Town solar zoning code update: Town Board vote to hire GPI\
+ n\nAgenda: https://cliftonparkny.gov/document-center/agendas/town-board-ag
+ endas/2026-1/6121-10-20-2026-draft-town-board-meeting-packet\nPage: https:
+ //agendaahead.vercel.app/m/clifton-park-town-board-2026-10-20\nConfirm the
+  time and place with the town\; agendas can change.
 URL:https://agendaahead.vercel.app/m/clifton-park-town-board-2026-10-20
 END:VEVENT
 END:VCALENDAR

@@ -6,16 +6,17 @@ METHOD:PUBLISH
 BEGIN:VEVENT
 UID:m-chicopee-city-council-2026-10-20@agendaahead
 DTSTAMP:20261017T120000Z
-DTSTART;VALUE=DATE:20261020
-DTEND;VALUE=DATE:20261021
-SUMMARY:Chicopee City Council: Discusses a temporary ban on new data center
- s (a moratorium\; no vote listed).
-LOCATION:Chicopee City Hall\, or join online\, Chicopee\, MA
-DESCRIPTION:• Discusses a temporary ban on new data centers (a moratorium
- \; no vote listed).\n\nAgenda: https://www.chicopeema.gov/AgendaCenter/Vie
- wFile/Agenda/_10202026-2936\nPage: https://agendaahead.vercel.app/m/chicop
- ee-city-council-2026-10-20\nConfirm the time and place with the town\; age
- ndas can change.
+DTSTART;TZID=America/New_York:20261020T183000
+DTEND;TZID=America/New_York:20261020T203000
+SUMMARY:Chicopee City Council: Data-center moratorium: order to refer it to
+  the Public Works committee
+LOCATION:City Hall Auditorium\, 274 Front Street\, 3rd Floor\, Chicopee\, o
+ r on Zoom\, Chicopee\, MA
+DESCRIPTION:• Data-center moratorium: order to refer it to the Public Wor
+ ks committee\n\nAgenda: https://www.chicopeema.gov/AgendaCenter/ViewFile/A
+ genda/_10202026-2936\nPage: https://agendaahead.vercel.app/m/chicopee-city
+ -council-2026-10-20\nConfirm the time and place with the town\; agendas ca
+ n change.
 URL:https://agendaahead.vercel.app/m/chicopee-city-council-2026-10-20
 END:VEVENT
 END:VCALENDAR

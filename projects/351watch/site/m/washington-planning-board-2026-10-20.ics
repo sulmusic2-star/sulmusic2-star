@@ -6,16 +6,17 @@ METHOD:PUBLISH
 BEGIN:VEVENT
 UID:m-washington-planning-board-2026-10-20@agendaahead
 DTSTAMP:20261017T120000Z
-DTSTART;VALUE=DATE:20261020
-DTEND;VALUE=DATE:20261021
-SUMMARY:Washington Planning Board: Discusses solar and battery storage rule
- s (no vote listed).
-LOCATION:Washington Town Hall\, Washington\, MA
-DESCRIPTION:• Discusses solar and battery storage rules (no vote listed).
- \n\nAgenda: https://www.washington-ma.gov/AgendaCenter/ViewFile/Agenda/_10
- 202026-145\nPage: https://agendaahead.vercel.app/m/washington-planning-boa
- rd-2026-10-20\nConfirm the time and place with the town\; agendas can chan
- ge.
+DTSTART;TZID=America/New_York:20261020T190000
+DTEND;TZID=America/New_York:20261020T210000
+SUMMARY:Washington Planning Board: Model solar and battery storage bylaws: 
+ Planning Board review with BRPC
+LOCATION:Washington Town Hall 8 Summit Hill Road Washington\, MA 01223\, Wa
+ shington\, MA
+DESCRIPTION:• Model solar and battery storage bylaws: Planning Board revi
+ ew with BRPC\n\nAgenda: https://www.washington-ma.gov/AgendaCenter/ViewFil
+ e/Agenda/_10202026-145\nPage: https://agendaahead.vercel.app/m/washington-
+ planning-board-2026-10-20\nConfirm the time and place with the town\; agen
+ das can change.
 URL:https://agendaahead.vercel.app/m/washington-planning-board-2026-10-20
 END:VEVENT
 END:VCALENDAR

@@ -6,17 +6,17 @@ METHOD:PUBLISH
 BEGIN:VEVENT
 UID:m-montague-selectboard-2026-10-19@agendaahead
 DTSTAMP:20261017T120000Z
-DTSTART;VALUE=DATE:20261019
-DTEND;VALUE=DATE:20261020
+DTSTART;TZID=America/New_York:20261019T182500
+DTEND;TZID=America/New_York:20261019T202500
 SUMMARY:Montague Selectboard: New state permitting process for small clean 
  energy projects: planning director briefing
 LOCATION:Online meeting\, Montague\, MA
 DESCRIPTION:• New state permitting process for small clean energy project
- s: planning director briefing\n• Discusses the state’s new permit proc
- ess for small clean-energy projects (no vote listed).\n\nAgenda: https://m
- ontague-ma.gov/files/2026-10-19__Selectboard_Meeting_Materials.pdf\nPage: 
- https://agendaahead.vercel.app/m/montague-selectboard-2026-10-19\nConfirm 
- the time and place with the town\; agendas can change.
+ s: planning director briefing\n• New state permit process for small clea
+ n energy projects: Selectboard briefing\n\nAgenda: https://montague-ma.gov
+ /files/2026-10-19__Selectboard_Meeting_Materials.pdf\nPage: https://agenda
+ ahead.vercel.app/m/montague-selectboard-2026-10-19\nConfirm the time and p
+ lace with the town\; agendas can change.
 URL:https://agendaahead.vercel.app/m/montague-selectboard-2026-10-19
 END:VEVENT
 END:VCALENDAR

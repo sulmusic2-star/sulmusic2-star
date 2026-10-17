@@ -6,15 +6,16 @@ METHOD:PUBLISH
 BEGIN:VEVENT
 UID:m-cortlandt-town-board-2026-10-20@agendaahead
 DTSTAMP:20261017T120000Z
-DTSTART;VALUE=DATE:20261020
-DTEND;VALUE=DATE:20261021
-SUMMARY:Cortlandt Town Board: Holds a hearing on 202 Cortlandt LLC.
-LOCATION:Clerk Amanda Shafiullah Town Hall\, Cortlandt\, NY
-DESCRIPTION:• Holds a hearing on 202 Cortlandt LLC.\n• Discusses a spec
- ial permit for a solar project (no vote listed).\n\nAgenda: https://www.to
- wnofcortlandtny.gov/uppages/AGENDA-OCT26-FOR POSTING.pdf\nPage: https://ag
- endaahead.vercel.app/m/cortlandt-town-board-2026-10-20\nConfirm the time a
- nd place with the town\; agendas can change.
+DTSTART;TZID=America/New_York:20261020T190000
+DTEND;TZID=America/New_York:20261020T210000
+SUMMARY:Cortlandt Town Board: 2.3 MW solar project\, Lexington Ave and Rout
+ e 202: Town Board vote on 1-year extension
+LOCATION:Town Hall\, 1 Heady Street\, Cortlandt Manor\, NY\, Cortlandt\, NY
+DESCRIPTION:• 2.3 MW solar project\, Lexington Ave and Route 202: Town Bo
+ ard vote on 1-year extension\n\nAgenda: https://www.townofcortlandtny.gov/
+ uppages/AGENDA-OCT26-FOR POSTING.pdf\nPage: https://agendaahead.vercel.app
+ /m/cortlandt-town-board-2026-10-20\nConfirm the time and place with the to
+ wn\; agendas can change.
 URL:https://agendaahead.vercel.app/m/cortlandt-town-board-2026-10-20
 END:VEVENT
 END:VCALENDAR

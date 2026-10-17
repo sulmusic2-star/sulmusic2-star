@@ -428,8 +428,10 @@ class Ctx:
             ANALYSIS[h["id"]] = a
             if not h.get("meeting_date") and a.get("date_source") == "warrant" and a.get("date"):
                 h["meeting_date"] = a["date"].isoformat()  # read from the warrant, as Trending does
-        # Minutes of an earlier meeting printed in an agenda packet aren't agenda items.
-        self.hits = [h for h in self.hits if (ANALYSIS.get(h["id"]) or {}).get("action") != "minutes"]
+        # Minutes of an earlier meeting printed in an agenda packet aren't agenda items. A Town Meeting warrant is
+        # never minutes, even when an article names the committee meeting before it (Auburn's Article 20).
+        self.hits = [h for h in self.hits if (ANALYSIS.get(h["id"]) or {}).get("action") != "minutes"
+                     or h.get("board_key") == "town_meeting"]
         # A warrant dated from its own text, older than the hits window, is an old warrant the town's site
         # still lists (Whately's 2012 to 2019 warrants), not an item for these pages.
         win_start = (self.hits_doc.get("window") or {}).get("start") or ""
@@ -1894,6 +1896,16 @@ def tidy_lines(lines, town_meeting=False):
         longer = next((k for k in acts if k != short and k in named and core(short) in core(k)), None)
         if longer and short in named:
             merge_entry(named[longer], named.pop(short))
+    # One warrant article, one line: two write-ups of "Article 19" (from two windows of one warrant) print once.
+    by_article = {}
+    for k in sorted(named, key=lambda k: named[k]["rank"]):
+        art = re.search(r"\bArticle (\d+)\b", k)
+        if not art or named[k]["kind"] == "mention":
+            continue
+        if art.group(1) in by_article:
+            merge_entry(named[by_article[art.group(1)]], named.pop(k))
+        else:
+            by_article[art.group(1)] = k
     shown = set()
     out = {}
     for k in sorted(named, key=lambda k: (named[k]["kind"] == "mention", named[k]["rank"])):
@@ -2329,7 +2341,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
         text = headline(text)
         if not full and not b and entry.get("kind") == "mention":
             # a list doesn't print a stray fragment of the agenda as a headline; the meeting's page keeps it
-            text = re.sub(r"\s+in “[^”]*”\.?$", "", text).rstrip(".")
+            text = re.sub(r"(?:\s+in|:)\s*“[^”]*”\.?$", "", text).rstrip(".")
         # In a list, the headline taps through to the meeting's own page (built for meetings still ahead).
         say = (f'<a class="line-link" href="/m/{m["id"][2:]}">{e(text)}</a>' if not full and m.get("date") and m["date"] >= ctx.today
                else e(text))
