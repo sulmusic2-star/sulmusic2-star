@@ -183,10 +183,10 @@ function setupListFilter() {
   const noun = form.dataset.noun || 'towns';
   const items = Array.from(document.querySelectorAll('[data-filter-list] li, [data-filter-list] tr[data-search]'));
   const groups = Array.from(document.querySelectorAll('details.state-towns, details.county'));
+  const sections = Array.from(document.querySelectorAll('.rec-group'));
   const params = new URLSearchParams(location.search);
   if (params.get('q')) search.value = params.get('q');
   if (status && params.get('status') && [...status.options].some((o) => o.value === params.get('status'))) status.value = params.get('status');
-  const wide = window.matchMedia('(min-width: 860px)').matches;
   const keep = () => {
     const p = new URLSearchParams(location.search);
     if (search.value.trim()) p.set('q', search.value.trim()); else p.delete('q');
@@ -209,8 +209,9 @@ function setupListFilter() {
     for (const group of groups) {
       const has = Boolean(group.querySelector('li:not([hidden])'));
       group.hidden = q ? !has : false;
-      group.open = q ? has : wide && group.classList.contains('state-towns');
+      group.open = q ? has : false; // a state opens when someone taps it
     }
+    for (const sec of sections) sec.hidden = !sec.querySelector('li:not([hidden])');
     count.textContent = (q || want) ? `${shown} of ${items.length} ${noun}` : '';
     if (empty) empty.hidden = shown > 0;
     keep();
@@ -225,7 +226,7 @@ function setupListFilter() {
 function setupTrackerFilter() {
   const table = document.querySelector('#tracker-table');
   if (!table) return;
-  const rows = Array.from(table.querySelectorAll('tbody tr'));
+  const rows = Array.from(table.querySelectorAll('.rec'));
   const status = document.querySelector('#f-status');
   const topic = document.querySelector('#f-topic');
   const county = document.querySelector('#f-county');
@@ -258,8 +259,8 @@ function setupTrackerFilter() {
 function setupGenericFilters() {
   for (const bar of document.querySelectorAll('[data-filters]')) {
     const group = bar.dataset.filters;
-    const rows = Array.from(document.querySelectorAll(`table[data-filter-group="${group}"] tbody tr:not(.year-row)`));
-    const years = Array.from(document.querySelectorAll(`table[data-filter-group="${group}"] tbody tr.year-row`));
+    const rows = Array.from(document.querySelectorAll(`[data-filter-group="${group}"] .rec`));
+    const years = Array.from(document.querySelectorAll(`[data-filter-group="${group}"] [data-year-group]`));
     const text = rows.map((r) => r.textContent.toLowerCase());
     const selects = Array.from(bar.querySelectorAll('select[data-key]'));
     const search = bar.querySelector('[data-search]');
@@ -280,16 +281,8 @@ function setupGenericFilters() {
         if (match) shown += 1;
       });
       if (count) count.textContent = shown ? `${shown} of ${rows.length} shown` : `None of the ${rows.length} match. Try fewer words or another filter.`;
-      // a year heading with no row left under it goes
-      for (const y of years) {
-        let next = y.nextElementSibling;
-        let any = false;
-        while (next && !next.classList.contains('year-row')) {
-          if (!next.hidden) { any = true; break; }
-          next = next.nextElementSibling;
-        }
-        y.hidden = !any;
-      }
+      // a year with no ruling left under it goes
+      for (const y of years) y.hidden = !y.querySelector('.rec:not([hidden])');
       const p = new URLSearchParams(location.search);
       for (const s of selects) { if (s.value) p.set(s.dataset.key, s.value); else p.delete(s.dataset.key); }
       if (search && search.value.trim()) p.set('q', search.value.trim()); else if (search) p.delete('q');
@@ -787,9 +780,9 @@ window.w351 = {
   // Every town this device follows: the alerts' towns and the towns added in Search.
   myTowns() {
     const doc = this.areas();
-    let search = [];
-    try { search = JSON.parse(localStorage.getItem('agendaahead:search-towns') || '[]'); } catch { /* private window */ }
-    return [...new Set([...(doc ? doc.towns : []), ...(Array.isArray(search) ? search : [])])].filter((t) => typeof t === 'string' && t.includes(':'));
+    const read = (key) => { try { const v = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(v) ? v : []; } catch { return []; } };
+    return [...new Set([...(doc ? doc.towns : []), ...read('agendaahead:search-towns'), ...read('agendaahead:story-towns')])]
+      .filter((t) => typeof t === 'string' && t.includes(':'));
   },
   relDates,
   forget(id) {
@@ -950,12 +943,14 @@ function setupViewSwitch() {
   const set = (view) => {
     document.body.classList.toggle('compact', view === 'lines');
     for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.view === view));
-    try { localStorage.setItem('agendaahead:view', view); } catch { /* private window */ }
   };
   let view = new URLSearchParams(location.search).get('view');
-  if (!view) { try { view = localStorage.getItem('agendaahead:view'); } catch { /* private window */ } }
-  set(view === 'lines' ? 'lines' : 'full');
-  for (const b of buttons) b.addEventListener('click', () => set(b.dataset.view));
+  if (!view) { try { view = localStorage.getItem('agendaahead:view2'); } catch { /* private window */ } }
+  set(view === 'full' ? 'full' : 'lines');
+  for (const b of buttons) b.addEventListener('click', () => {
+    set(b.dataset.view);
+    try { localStorage.setItem('agendaahead:view2', b.dataset.view); } catch { /* private window */ }
+  });
 }
 
 setupListFilter();
@@ -963,6 +958,12 @@ setupTrackerFilter();
 setupGenericFilters();
 markPastDays();
 setupMeetingFilter();
+(() => {
+  const id = decodeURIComponent(location.hash.slice(1));
+  const rec = id ? document.getElementById(id) : null;
+  const box = rec && rec.matches('.rec') ? rec.querySelector('details') : null;
+  if (box) { box.open = true; rec.scrollIntoView({ block: 'start' }); }
+})();
 setupViewSwitch();
 setupContactForm();
 setupSearchResults();

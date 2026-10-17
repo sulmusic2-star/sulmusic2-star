@@ -2308,7 +2308,9 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
             what += f'<p class="line-before"><b>Before this:</b> {e(b["history"])}</p>'
         facts = ('<span class="is-new">New to this town</span>' if new else "") + "".join(f"<span>{e(x)}</span>" for x in facts_text(entry))
         stage = stage_html(entry, m, ctx)
-        facts_html = f'<p class="line-facts">{facts}</p>' if facts else ""
+        # a list keeps the headline, the write-up and "New"; the facts line (topics, address, applicant) is on the meeting's page
+        facts_html = ((f'<p class="line-facts">{facts}</p>' if facts else "") if full
+                      else ('<p class="line-facts"><span class="is-new">New to this town</span></p>' if new else ""))
         extra = ""
         if str(entry.get("stage") or "").startswith("Asks to postpone") and m.get("date") and m["date"] >= ctx.today:
             # a request is not a decision: the board says yes or no at this meeting
@@ -2436,15 +2438,13 @@ def tracker_rows(ctx, items):
     for item in sorted(items, key=lambda i: i.get("key_date") or "", reverse=True):
         group = status_group(item)
         topic = item.get("topic", "")
-        rows.append(
-            f"""<tr data-group="{group}" data-topic="{e(topic.lower())}" data-county="{e(item.get('county', ''))}">
-  <td class="town"><b>{ctx.town_link(item.get('state', 'MA'), item['town'])}</b><small>{e(item.get('county', ''))} County</small></td>
-  <td>{e(item.get('action', ''))}<br><small>{e(topic)}</small></td>
-  <td><span class="badge {group}">{e(item.get('status', ''))}</span></td>
-  <td class="when">{fmt_date(item.get('key_date'))}<small>{e(item.get('date_label', ''))}</small></td>
-  <td class="col-summary"><p class="summary">{e(item.get('summary', ''))}</p>{sources_html(item.get('sources', []))}</td>
-</tr>"""
-        )
+        town = item["town"]
+        body = (f'<p>{e(item.get("summary", ""))}</p>{sources_html(item.get("sources", []))}'
+                f'<p class="rec-links"><a href="{town_path(item.get("state", "MA"), town)}">Everything about {e(town)}</a>'
+                f'{" (" + e(item["county"]) + " County)" if item.get("county") else ""}</p>')
+        rows.append(rec_li(e(town), f"{e(item.get('action', ''))}, {e(topic.lower())}",
+                           f"<b>{e(item.get('status', ''))}</b>, {fmt_date(item.get('key_date'))}", body,
+                           f' data-group="{group}" data-topic="{e(topic.lower())}" data-county="{e(item.get("county", ""))}"'))
     return "\n".join(rows)
 
 
@@ -2454,7 +2454,7 @@ TRACKER_HEAD = ('<thead><tr><th scope="col">Town</th><th scope="col">Action</th>
 
 def tracker_table(ctx, items, table_id=None):
     tid = f' id="{table_id}"' if table_id else ""
-    return f'<div class="table-wrap"><table class="stack"{tid}>{TRACKER_HEAD}<tbody>{tracker_rows(ctx, items)}</tbody></table></div>'
+    return f'<div class="rec-list"{tid}><ul class="recs">{tracker_rows(ctx, items)}</ul></div>'
 
 
 def ag_row(ctx, r, filters=False):
@@ -2479,13 +2479,17 @@ def ag_row(ctx, r, filters=False):
                     + f". {smart_quotes(r.get('summary') or '')}"
                     + (f" Source: {src}." if src else "") + f" Via Agenda Ahead, {BASE_URL}/attorney-general/rulings.")
     cite_btn = f' <button type="button" class="link-btn cite" data-copy="{e(citation)}" hidden>Copy citation</button>'
-    return f"""<tr{attrs}>
-  <td class="when" data-label="Date">{fmt_date(r['decision_date']) if r.get('decision_date') else 'Awaiting a decision'}{'<small>meeting date</small>' if r.get('decision_date') and (r.get('outcome') or '').startswith(('proposed', 'pending')) else ''}</td>
-  <td class="town" data-label="Town"><b>{ctx.town_link('MA', town)}{e(city)}</b><small>{e(r.get('article', ''))}</small></td>
-  <td data-label="Type">{"Court ruling" if r.get("record_type") == "court_ruling" else e(first_up(r.get('bylaw_type', '')))}<br><small>{e(r.get('technology', ''))}</small></td>
-  <td data-label="Outcome"><span class="badge {outcome_class(r.get('outcome'))}">{e((r.get('outcome') or '').capitalize())}</span></td>
-  <td class="col-summary"><p class="summary">{e(smart_quotes(r.get('summary', '')))}</p>{letter}{cite_btn}</td>
-</tr>"""
+    kind = "Court ruling" if r.get("record_type") == "court_ruling" else first_up(r.get("bylaw_type") or "Bylaw")
+    tech = r.get("technology") or ""
+    when = fmt_date(r["decision_date"]) if r.get("decision_date") else "Awaiting a decision"
+    outcome = first_up(r.get("outcome") or "pending")
+    meeting = " (meeting date)" if r.get("decision_date") and (r.get("outcome") or "").startswith(("proposed", "pending")) else ""
+    body = (f'<p class="rec-sub">{e(r.get("article", ""))}</p>'
+            f'<p>{e(smart_quotes(r.get("summary", "")))}</p>'
+            f'<p class="rec-links">{letter}{cite_btn}</p>'
+            + (f'<p class="rec-links"><a href="{town_path("MA", town)}">Everything about {e(town)}</a></p>' if f"MA:{town}" in ctx.town_by_id else ""))
+    return rec_li(f"{e(town)}{e(city)}", f"{e(kind)}{', ' + e(tech) if tech else ''}",
+                  f"<b>{e(outcome)}</b>, {when}{meeting}", body, attrs)
 
 
 def court_cite(r):
@@ -2542,22 +2546,30 @@ def actions_csv(items):
     return out.getvalue()
 
 
+def rec_li(town, what, key, body, attrs="", rid=""):
+    """One record as a box that opens: the town, what it is and its status in one line; the details inside."""
+    idattr = f' id="{rid}"' if rid else ""
+    return (f'<li class="rec"{idattr}{attrs}><details><summary><span class="rec-town">{town}</span>'
+            f'<span class="rec-what">{what}</span><span class="rec-key">{key}</span></summary>'
+            f'<div class="rec-body">{body}</div></details></li>')
+
+
 def ag_table(ctx, rows, table_id=None, filters=False, group=None, by_year=False):
+    """The Attorney General's rulings as records, newest first, under a heading per year when by_year."""
     tid = f' id="{table_id}"' if table_id else ""
-    group = f' data-filter-group="{group or table_id}"' if filters else ""
-    out, year = [], None
-    for r in sorted(rows, key=lambda r: r.get("decision_date") or "", reverse=True):
+    grp = f' data-filter-group="{group or table_id}"' if filters else ""
+    ordered = sorted(rows, key=lambda r: r.get("decision_date") or "", reverse=True)
+    if not by_year:
+        return f'<div class="rec-list"{tid}{grp}><ul class="recs">{"".join(ag_row(ctx, r, filters) for r in ordered)}</ul></div>'
+    years = []
+    for r in ordered:
         y = (r.get("decision_date") or "")[:4] or "Awaiting a decision"
-        if by_year and y != year:
-            out.append(f'<tr class="year-row"><th colspan="5" scope="rowgroup">{e(y)}</th></tr>')
-            year = y
-        out.append(ag_row(ctx, r, filters))
-    body = "\n".join(out)
-    return f"""<div class="table-wrap"><table class="stack"{tid}{group}>
-  <thead><tr><th scope="col">Date</th><th scope="col">Town and article</th><th scope="col">Type</th><th scope="col">Outcome</th><th scope="col" class="col-summary">Summary and source</th></tr></thead>
-  <tbody>
-{body}
-  </tbody></table></div>"""
+        if not years or years[-1][0] != y:
+            years.append((y, []))
+        years[-1][1].append(r)
+    out = "".join(f'<section class="rec-group" data-year-group><h2 class="rec-head">{e(y)} <span class="sub-count">{plural(len(rs), "ruling")}</span></h2>'
+                  f'<ul class="recs">{"".join(ag_row(ctx, r, filters) for r in rs)}</ul></section>' for y, rs in years)
+    return f'<div class="rec-list"{tid}{grp}>{out}</div>'
 
 
 def ag_moratorium_record(ag, since=None):
@@ -2737,7 +2749,7 @@ def list_tools_html(counties, cant=None):
     return f"""<div class="filterbar list-tools" data-meeting-filter>
     {county}
     <label>Town<input type="search" data-key="town" placeholder="Any town" autocomplete="off"></label>
-    <p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="full" aria-pressed="true">With write-ups</button><button type="button" class="link-btn" data-view="lines" aria-pressed="false">One line each</button></p>
+    <p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="lines" aria-pressed="true">Short list</button><button type="button" class="link-btn" data-view="full" aria-pressed="false">With write-ups</button></p>
     <p class="count" data-count aria-live="polite"></p>
     <p class="form-note mine-row"><button type="button" class="link-btn" data-my-towns hidden>Only my towns</button></p>
     {cant_html}
@@ -2758,8 +2770,6 @@ def build_upcoming(ctx):
 <section class="page-head" aria-labelledby="up-title">
   <h1 id="up-title">Coming up</h1>
   <p class="lead">Town board meetings with solar, battery storage, data centers, zoning, housing or cell towers on the agenda, read from the agendas every morning.</p>
-  <p class="actions"><a class="btn" href="/watch">Get alerts for your town</a></p>
-  <p class="form-note" data-slop-ignore>By topic: {" · ".join(f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' for tp in TOPIC_PAGES)} · <a href="/topics">all topics</a></p>
   {list_tools_html(counties, cant_read_by_county(ctx))}
 </section>
 <section aria-labelledby="soon-title">
@@ -2886,7 +2896,16 @@ def build_trending(ctx):
     body = f"""
 <div class="wrap narrow">
 <h1 id="trend-title">Biggest stories coming up</h1>
-<p class="lead">Bans, moratoriums and large projects, ranked.</p>
+<p class="lead">Bans, moratoriums and large projects on town agendas, ranked. Add your towns to see only theirs.</p>
+<form class="panel story-towns" id="story-towns" aria-label="Your towns">
+  <label for="story-town">Your towns</label>
+  <div class="field-row"><input id="story-town" type="text" list="story-town-list" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Type a town"><button class="btn" type="submit">Add</button></div>
+  <datalist id="story-town-list"></datalist>
+  <ul class="chips" id="story-chips" aria-label="Your towns"></ul>
+  <label class="check" id="story-near-row" hidden><input type="checkbox" id="story-near" checked> Include the towns next to them</label>
+  <p class="field-error" id="story-town-error" role="alert" hidden></p>
+</form>
+<details class="disclose" id="trend-filter-box"><summary>Filter by date or topic</summary>
 <form class="trend-filters" id="trend-filters" aria-label="Narrow the list">
   <fieldset><legend>When</legend>
     <label><input type="radio" name="when" value="week"> This week</label>
@@ -2894,29 +2913,18 @@ def build_trending(ctx):
     <label><input type="radio" name="when" value="year" checked> This year</label>
   </fieldset>
   <fieldset><legend>Topics</legend>{topic_boxes}</fieldset>
-  <p class="form-note" id="trend-count" aria-live="polite"></p>
 </form>
-<div class="views" id="trend-views" hidden>
-  <p class="view-switch" role="group" aria-label="Which stories">
-    <button type="button" class="link-btn" id="view-mine" aria-pressed="true">Near me</button>
-    <button type="button" class="link-btn" id="view-all" aria-pressed="false">Everywhere</button>
-  </p>
-  <p class="form-note" id="mine-note"></p>
-</div>
-<form class="townbox near-me" id="near-me" hidden>
-  <label for="near-town">Put stories near your town first</label>
-  <div class="field-row"><input id="near-town" type="text" list="near-towns" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Your town">
-  <button class="btn quiet" type="submit">Put my town first</button></div>
-  <datalist id="near-towns"></datalist>
-  <p class="field-error" id="near-town-error" role="alert" hidden></p>
-</form>
+</details>
+<p class="results-head" id="trend-count" aria-live="polite"></p>
 <ol class="rows" id="trend-all">{items}</ol>
 <ol class="rows" id="trend-mine" hidden></ol>
 {'' if top else '<p class="empty">Nothing big on the agendas posted so far.</p>'}
 <p class="more-link"><a href="/upcoming">See everything coming up</a></p>
+<details class="disclose"><summary>How we rank them</summary>
 <div class="trend-foot">
-  <p>How we rank them: points for what it is (a data center, battery storage, a ban or a moratorium, large solar), what the board will do (a vote or a hearing counts more than a discussion), how big the project is, how many boards and towns are taking it up, and how soon the meeting is.</p>
+  <p>Points for what it is (a data center, battery storage, a ban or a moratorium, large solar), what the board will do (a vote or a hearing counts more than a discussion), how big the project is, how many boards and towns are taking it up, and how soon the meeting is.</p>
 </div>
+</details>
 </div>
 """
     return page(ctx, f"Biggest stories coming up at town meetings | {SITE_NAME}",
@@ -3346,7 +3354,7 @@ def build_topic_page(ctx, tp):
 <h1 id="topic-title">{e(tp['name'])} on town agendas</h1>
 {ledger_note}
 <section aria-labelledby="upcoming-title">
-  <div class="sec-head"><h2 id="upcoming-title">Coming up</h2><a class="btn" href="{e(alerts_url(topics=[tp['key']]))}">Get alerts for your town</a></div>
+  <h2 id="upcoming-title">Coming up</h2>
   {county_filter}
   {meeting_list(ctx, up_m, shown=max(1, sum(1 for m in up_m if m["date"] <= (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=30)).strftime("%Y-%m-%d"))), more="Show meetings more than 30 days out", empty='Nothing on the agenda about this right now. We check every morning.')}
   {tools}
@@ -4092,13 +4100,21 @@ def build_data_center_ledger(ctx):
                     f"Sources: {' | '.join(abs_url(u) for u in (r.get('sources') or []))}. "
                     f"Agenda Ahead data-center ledger, {BASE_URL}/attorney-general/data-centers#{rid}, checked {generated}.")
         cite_btn = f'<button type="button" class="link-btn cite" data-copy="{e(citation)}" hidden>Copy citation</button>'
-        body_rows.append(f"""<tr id="{rid}" data-search="{e(search)}" data-status="{e(r['status'])}">
-  <td class="town" data-label="Town"><b>{town_cell}</b>{county}</td>
-  <td data-label="Measure">{e(first_up(r.get('measure') or ''))}{f"<br><small>{e(r['body'])}</small>" if r.get('body') else ''}</td>
-  <td data-label="Dates"><dl class="ledger-dates">{dates_html}</dl></td>
-  <td class="col-summary" data-label="Status"><p class="ledger-status"><b>{e(label[r['status']])}</b>{sure}</p>
-    <p class="summary">{e(smart_quotes(r.get('summary') or ''))}</p><p class="ledger-src">{srcs} {cite_btn}</p>{why}</td>
-</tr>""")
+        key = {"in effect": f"In effect to {fmt_date(r['in_effect_to'])}" if r.get("in_effect_to") else "In effect",
+               "expired": f"Ended {fmt_date(r['in_effect_to'])}" if r.get("in_effect_to") else "Ended",
+               "adopted": f"Adopted {fmt_date(r['adopted_date'])}" if r.get("adopted_date") else "Adopted",
+               "proposed": f"Proposed {fmt_date(r['proposed_date'])}" if r.get("proposed_date") else "Proposed",
+               "reported": "Reported in the press"}.get(r["status"], label[r["status"]])
+        place = town + ("" if st == "MA" else f", {st}")
+        body = (f'<p class="rec-sub">{town_cell}{", " + e(r["county"]) + " County" if r.get("county") else ""}'
+                f'{", " + e(STATE_NAMES.get(st, st)) if st != "MA" else ""}. {e(first_up(r.get("measure") or ""))}'
+                f'{" by the " + e(r["body"]) if r.get("body") else ""}.</p>'
+                f'<dl class="ledger-dates">{dates_html}</dl>'
+                f'<p>{e(smart_quotes(r.get("summary") or ""))}</p>'
+                f'<p class="rec-links">{srcs} {cite_btn}</p>'
+                f'<p class="ledger-status">{sure.strip()}</p>{why}')
+        body_rows.append((r["status"], rec_li(e(place), e(first_up(r.get("measure") or "")), e(key), body,
+                                              f' data-search="{e(search)}" data-status="{e(r["status"])}"', rid)))
     body = f"""
 <div class="wrap">
 <h1 id="ledger-title">Data-center moratoriums and bans, town by town</h1>
@@ -4109,9 +4125,10 @@ def build_data_center_ledger(ctx):
   <label>Town, county, state or words<input type="search" data-search autocomplete="off"></label>
   <p class="count" data-count aria-live="polite"></p>
 </form>
-<div class="table-wrap"><table class="stack ledger-table" id="ledger">
-<thead><tr><th scope="col">Town</th><th scope="col">Measure</th><th scope="col">Dates</th><th scope="col" class="col-summary">Status and what happened</th></tr></thead>
-<tbody data-filter-list>{"".join(body_rows)}</tbody></table></div>
+<div class="rec-list" id="ledger">{"".join(
+        f'<section class="rec-group" data-status-group="{e(k)}"><h2 class="rec-head">{e(v)} <span class="sub-count">{plural(counts[k], "measure")}</span></h2>'
+        f'<ul class="recs" data-filter-list>{"".join(li for s, li in body_rows if s == k)}</ul></section>'
+        for k, v in LEDGER_STATUS if counts.get(k))}</div>
 <p class="muted" data-empty hidden>No measure matches.</p>
 <p class="action-row"><a href="/attorney-general/data-centers.csv" download>Download the ledger (CSV)</a></p>
 <p class="form-note">A Massachusetts town can pause data centers: state law protects solar and battery storage, not data centers. The Attorney General approved the moratoriums in {ag_letter_links(ctx, ("Shutesbury", "Templeton", "Gill"), "data center")}. A moratorium runs from the date the Attorney General approves it, or from the town vote where the bylaw says so, to the end date the bylaw names. Dates come from the warrant, the decision letter and the bylaw; a date we could not find in those reads “Not found”.</p>

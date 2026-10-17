@@ -830,3 +830,92 @@ details.disclose[open] { padding-bottom: var(--s4); }
   .brief-facts { grid-template-columns: 1fr; gap: 0; }
   .brief-facts dd { margin-bottom: var(--s2); }
 }
+
+
+/* ==========================================================================================================
+   The owner's direction (Oct 17): one centered column on every page, things grouped in boxes, the first
+   screen shows only what the visitor came for and the details open on a tap. Later rules here win.
+   ========================================================================================================== */
+:root { --list-w: 100%; --box-radius: 10px; }
+.wrap, .narrow, .wrap.narrow, .wrap.narrow.home { max-width: 880px; }
+@media (min-width: 1024px) { .narrow { max-width: 880px; } }
+/* one column: a town's next-door list follows its meetings; a meeting's ticket (first in its markup) leads */
+.page-grid, .page-grid.with-head { display: block; }
+.rail { position: static; margin-top: var(--s6); }
+.page-grid > .rail:first-child { margin: 0 0 var(--s5); }
+.grid-head h1 { margin-top: var(--s3); }
+.ticket { max-width: none; border-radius: var(--box-radius); }
+
+/* a box for controls and choices */
+.panel, .filterbar { background: var(--land); border-radius: var(--box-radius); padding: var(--s4) var(--s5); margin: var(--s4) 0; }
+.panel label, .story-towns > label { font-weight: 600; }
+.story-towns .field-row { margin: var(--s2) 0; }
+.story-towns .chips:not(:empty) { margin: var(--s2) 0; }
+.results-head { font: 600 var(--t-h3)/1.3 var(--f-head); color: var(--ink); margin: var(--s5) 0 var(--s3); }
+.results-head:empty { display: none; }
+
+/* meetings as boxes under a day heading */
+.days { margin-top: var(--s4); }
+.day { border-top: 0; padding: 0; margin: 0 0 var(--s3); }
+.day-group + .day-group { margin-top: var(--s6); }
+.meetings { margin: 0; }
+.meeting { border: 1px solid var(--rule); border-radius: var(--box-radius); padding: var(--s4) var(--s5); background: var(--paper); }
+.meeting + .meeting { margin-top: var(--s3); }
+@media (min-width: 760px) { .meeting { grid-template-columns: 5.5rem minmax(0, 1fr); column-gap: var(--s4); } }
+.meetings.one .meeting { border: 0; padding: 0; border-radius: 0; background: none; }
+.meet-src { margin-top: var(--s3); }
+/* the short list: each box is the meeting's line and its headlines */
+.compact .meeting { padding: var(--s3) var(--s4); }
+.compact .meeting + .meeting { margin-top: var(--s2); }
+.compact .meetings .meet-src { display: flex; margin-top: var(--s1); }
+.compact .meetings .meet-place, .compact .line-head { display: none; }
+@media (min-width: 760px) { .compact .meetings .meet-head { display: flex; margin-bottom: var(--s1); } }
+@media (max-width: 759px) { .compact .meetings .meet-head { display: inline; } }
+.compact .line-say { font: 600 var(--t-body)/1.4 var(--f-body); }
+
+/* stories as boxes */
+.row { border: 1px solid var(--rule); border-radius: var(--box-radius); background: var(--paper); }
+.row + .row { margin-top: var(--s2); }
+.row a { margin: 0; padding: var(--s3) var(--s4); border-radius: var(--box-radius); }
+
+/* the home page: one centered column */
+@media (min-width: 1024px) { .home { display: block; } }
+.home-hero { text-align: center; padding-top: var(--s4); }
+.home-hero h1 { max-width: none; }
+.home-hero .lead { margin-left: auto; margin-right: auto; }
+.home-hero .townbox { margin: 0 auto; text-align: left; max-width: 560px; }
+.home > .next { margin-top: var(--s7); }
+
+/* records (rulings, town actions, the data-center ledger): one line each, the details inside */
+.recs { list-style: none; margin: 0; padding: 0; }
+.rec { border: 1px solid var(--rule); border-radius: var(--box-radius); background: var(--paper); }
+.rec + .rec { margin-top: var(--s2); }
+.rec > details > summary { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) auto; gap: var(--s1) var(--s4);
+  align-items: baseline; padding: var(--s3) var(--s4); color: var(--ink); font-weight: 400; min-height: 0; }
+.rec > details > summary:hover { text-decoration: none; background: var(--land); border-radius: var(--box-radius); }
+.rec > details > summary::before { grid-column: 1 / -1; display: none; }
+.rec > details[open] > summary { border-bottom: 1px solid var(--rule); border-radius: var(--box-radius) var(--box-radius) 0 0; }
+.rec-town { font-weight: 700; }
+.rec-key { color: var(--muted); font-size: var(--t-sm); text-align: right; }
+.rec-key b { color: var(--ink); font-weight: 600; }
+.rec-body { padding: var(--s3) var(--s4) var(--s4); }
+.rec-body > p, .rec-body > dl { margin: 0 0 var(--s3); max-width: var(--measure); }
+.rec-body > :last-child { margin-bottom: 0; }
+.rec-sub { color: var(--muted); font-size: var(--t-sm); }
+.rec-links { font-size: var(--t-sm); display: flex; flex-wrap: wrap; gap: var(--s1) var(--s4); }
+.rec-head { font-size: var(--t-h3); margin: var(--s6) 0 var(--s3); }
+.rec-list > .rec-group:first-child .rec-head { margin-top: var(--s4); }
+.rec-head .sub-count { font-size: var(--t-sm); margin-left: var(--s2); }
+@media (max-width: 640px) {
+  .rec > details > summary { grid-template-columns: 1fr; }
+  .rec-key { text-align: left; }
+}
+
+/* /towns: each state a box that opens */
+.state-towns { border: 1px solid var(--rule); border-radius: var(--box-radius); padding: 0 var(--s4); background: var(--paper); }
+.state-towns + .state-towns { margin-top: var(--s3); }
+.state-towns > summary { font-size: var(--t-h3); }
+
+/* search results as boxes */
+.result { border: 1px solid var(--rule); border-radius: var(--box-radius); padding: var(--s4) var(--s5); max-width: none; }
+.result + .result { margin-top: var(--s2); }

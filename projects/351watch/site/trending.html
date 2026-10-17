@@ -30,7 +30,16 @@
 
 <div class="wrap narrow">
 <h1 id="trend-title">Biggest stories coming up</h1>
-<p class="lead">Bans, moratoriums and large projects, ranked.</p>
+<p class="lead">Bans, moratoriums and large projects on town agendas, ranked. Add your towns to see only theirs.</p>
+<form class="panel story-towns" id="story-towns" aria-label="Your towns">
+  <label for="story-town">Your towns</label>
+  <div class="field-row"><input id="story-town" type="text" list="story-town-list" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Type a town"><button class="btn" type="submit">Add</button></div>
+  <datalist id="story-town-list"></datalist>
+  <ul class="chips" id="story-chips" aria-label="Your towns"></ul>
+  <label class="check" id="story-near-row" hidden><input type="checkbox" id="story-near" checked> Include the towns next to them</label>
+  <p class="field-error" id="story-town-error" role="alert" hidden></p>
+</form>
+<details class="disclose" id="trend-filter-box"><summary>Filter by date or topic</summary>
 <form class="trend-filters" id="trend-filters" aria-label="Narrow the list">
   <fieldset><legend>When</legend>
     <label><input type="radio" name="when" value="week"> This week</label>
@@ -38,22 +47,9 @@
     <label><input type="radio" name="when" value="year" checked> This year</label>
   </fieldset>
   <fieldset><legend>Topics</legend><label><input type="checkbox" name="topic" value="solar"> Solar</label><label><input type="checkbox" name="topic" value="battery_storage"> Battery storage</label><label><input type="checkbox" name="topic" value="data_center"> Data centers</label><label><input type="checkbox" name="topic" value="moratorium"> Moratoriums</label><label><input type="checkbox" name="topic" value="clean_energy_siting"> Clean-energy permit rules</label><label><input type="checkbox" name="topic" value="zoning_amendment"> Zoning changes</label><label><input type="checkbox" name="topic" value="40b_comprehensive_permit"> Affordable housing</label><label><input type="checkbox" name="topic" value="wireless_telecom"> Cell towers</label></fieldset>
-  <p class="form-note" id="trend-count" aria-live="polite"></p>
 </form>
-<div class="views" id="trend-views" hidden>
-  <p class="view-switch" role="group" aria-label="Which stories">
-    <button type="button" class="link-btn" id="view-mine" aria-pressed="true">Near me</button>
-    <button type="button" class="link-btn" id="view-all" aria-pressed="false">Everywhere</button>
-  </p>
-  <p class="form-note" id="mine-note"></p>
-</div>
-<form class="townbox near-me" id="near-me" hidden>
-  <label for="near-town">Put stories near your town first</label>
-  <div class="field-row"><input id="near-town" type="text" list="near-towns" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Your town">
-  <button class="btn quiet" type="submit">Put my town first</button></div>
-  <datalist id="near-towns"></datalist>
-  <p class="field-error" id="near-town-error" role="alert" hidden></p>
-</form>
+</details>
+<p class="results-head" id="trend-count" aria-live="polite"></p>
 <ol class="rows" id="trend-all"><li class="row" data-id="713658529b04" data-date="2026-10-21" data-topics="battery_storage solar wetlands_filing">
   <a href="/m/carver-conservation-commission-2026-10-21"><span class="row-day" data-slop-ignore><time datetime="2026-10-21">Wed Oct 21</time></span><span class="row-when" data-slop-ignore><span class="row-town">Carver</span><span>Conservation Commission</span><span class="is-new">New to this town</span></span>
   <span class="row-line">Solar canopies with battery storage, 235 Main St (Parallel Products): wetlands hearing</span><span class="stage act">Hearing</span></a>
@@ -118,9 +114,11 @@
 <ol class="rows" id="trend-mine" hidden></ol>
 
 <p class="more-link"><a href="/upcoming">See everything coming up</a></p>
+<details class="disclose"><summary>How we rank them</summary>
 <div class="trend-foot">
-  <p>How we rank them: points for what it is (a data center, battery storage, a ban or a moratorium, large solar), what the board will do (a vote or a hearing counts more than a discussion), how big the project is, how many boards and towns are taking it up, and how soon the meeting is.</p>
+  <p>Points for what it is (a data center, battery storage, a ban or a moratorium, large solar), what the board will do (a vote or a hearing counts more than a discussion), how big the project is, how many boards and towns are taking it up, and how soon the meeting is.</p>
 </div>
+</details>
 </div>
 
 </main>

@@ -1,15 +1,20 @@
-// /trending: the biggest stories coming up. build.py renders the top 20 for everyone ("Everywhere").
-// When this browser has the visitor's towns (saved by alert setup, or by "See stories near your town
-// first" here), "For you" re-ranks /data/trending.json toward them, as trending.personalize() does:
-//   personal = score × (1 + 2·in my towns + 1·in a town next to mine) × (1 + 0.5·topic match)
+// /trending: the biggest stories coming up. build.py renders the top 20 for everyone. A visitor can add any
+// number of towns; the list then shows the stories in those towns (and, when ticked, the towns next to them),
+// their own towns first, then by size. The towns stay in this browser.
 (() => {
   const all = document.getElementById('trend-all');
   if (!all) return;
   const $ = (id) => document.getElementById(id);
   const mine = $('trend-mine');
-  const views = $('trend-views');
-  const chooser = $('near-me');
-  const input = $('near-town');
+  const form = $('story-towns');
+  const input = $('story-town');
+  const chips = $('story-chips');
+  const near = $('story-near');
+  const nearRow = $('story-near-row');
+  const error = $('story-town-error');
+  const filters = $('trend-filters');
+  const count = $('trend-count');
+  const KEY = 'agendaahead:story-towns';
   const readJSON = (url) => fetch(url).then((r) => r.json().catch(() => ({})).then((d) => (r.ok ? d : {}))).catch(() => ({}));
   const data = Promise.all([readJSON('/data/trending.json'), readJSON('/data/neighbors.json'), readJSON('/data/towns.json')]);
   const plain = (s) => String(s || '').toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
@@ -20,8 +25,9 @@
     return node;
   };
   const dayLabel = (iso) => new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' }).replace(/^(\w{3}),/, '$1');
+  const relDates = (root) => { if (window.w351 && window.w351.relDates) window.w351.relDates(root); };
 
-  // As story_html() in build.py: a row with day · town · board, the item's line and the stage word.
+  // As story_html() in build.py: a box with the day, town and board, the item's line and the status.
   function storyNode(st) {
     const li = el('li', 'row');
     li.dataset.date = st.meeting_date || '';
@@ -51,126 +57,141 @@
     return li;
   }
 
-  function show(which) {
-    const showMine = which === 'mine';
-    mine.hidden = !showMine;
-    all.hidden = showMine;
-    $('view-mine').setAttribute('aria-pressed', String(showMine));
-    $('view-all').setAttribute('aria-pressed', String(!showMine));
+  const staticRows = [...all.children]; // the top 20 build.py rendered
+  let chosen = null;
+  try { chosen = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { chosen = null; }
+  if (!Array.isArray(chosen)) chosen = window.w351 && window.w351.myTowns ? window.w351.myTowns() : [];
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(chosen)); } catch { /* private window */ } };
+  let names = new Map();
+  const nameOf = (id) => names.get(id) || id.split(':').slice(1).join(':');
+  const listNames = (ids) => {
+    const n = ids.map(nameOf);
+    return n.length <= 2 ? n.join(' and ') : `${n.slice(0, -1).join(', ')} and ${n[n.length - 1]}`;
+  };
+
+  function renderChips() {
+    chips.replaceChildren(...chosen.map((id) => {
+      const li = document.createElement('li');
+      const x = el('button', 'chip-x', '×');
+      x.type = 'button';
+      x.setAttribute('aria-label', `Remove ${nameOf(id)}`);
+      x.addEventListener('click', () => {
+        chosen = chosen.filter((t) => t !== id);
+        save();
+        renderChips();
+        render();
+        input.focus();
+      });
+      li.append(document.createTextNode(nameOf(id)), x);
+      return li;
+    }));
+    nearRow.hidden = !chosen.length;
   }
 
-  async function renderMine(areas) {
-    const [doc, neighbors, townDoc] = await data;
-    const stories = Array.isArray(doc.stories) ? doc.stories : [];
-    if (!stories.length) return;
-    const w = doc.personalize || { in_my_towns: 2, in_neighbor_towns: 1, topic_match: 0.5 };
-    const chosen = new Set(areas.towns);
-    const near = new Set();
-    for (const t of chosen) for (const n of (Array.isArray(neighbors[t]) ? neighbors[t] : [])) if (!chosen.has(n)) near.add(n);
-    const topics = new Set(Array.isArray(areas.topics) ? areas.topics : []);
-    const ranked = stories.map((st, i) => {
-      const mineHit = st.towns.some((t) => chosen.has(t)) ? 1 : 0;
-      const nearHit = st.towns.some((t) => near.has(t)) ? 1 : 0;
-      const topicHit = topics.size && st.topics.some((t) => topics.has(t)) ? 1 : 0;
-      return { st, i, personal: st.score * (1 + w.in_my_towns * mineHit + w.in_neighbor_towns * nearHit) * (1 + w.topic_match * topicHit) };
-    }).sort((a, b) => b.personal - a.personal || a.i - b.i).slice(0, 20);
-    mine.replaceChildren(...ranked.map((r) => storyNode(r.st)));
-    if (window.w351 && window.w351.relDates) window.w351.relDates(mine);
-    const byId = new Map((townDoc.towns || []).map((t) => [t.id, t]));
-    const home = byId.get(areas.home_town);
-    const name = home ? home.town : areas.home_town.split(':').slice(1).join(':');
-    const note = $('mine-note');
-    note.replaceChildren(`Stories in ${name} and the towns next to it come first. `);
-    const change = el('button', 'link-btn', 'Change town');
-    change.type = 'button';
-    change.addEventListener('click', () => {
-      chooser.hidden = false;
-      input.focus();
-    });
-    note.append(change);
-    views.hidden = false;
-    chooser.hidden = true;
-    show('mine');
-    applyFilters();
-  }
-
-  // Narrow the list by date and by one or more topics; both lists ("Everywhere" and "Near me") follow.
-  const filters = $('trend-filters');
-  const staticRows = [...all.children];  // the top 20 build.py rendered
-  async function applyFilters() {
-    if (!filters) return;
-    const when = new FormData(filters).get('when') || 'year';
-    const topics = [...filters.querySelectorAll('input[name=topic]:checked')].map((i) => i.value);
-    // Calendar ranges, in local time: this week ends Sunday, this month on its last day; "this year"
-    // means the next twelve months, so nothing coming up is ever hidden by the default.
+  // Date and topic filters: calendar ranges in local time; "this year" means the next twelve months.
+  function filterState() {
+    const when = filters ? (new FormData(filters).get('when') || 'year') : 'year';
+    const topics = filters ? [...filters.querySelectorAll('input[name=topic]:checked')].map((i) => i.value) : [];
     const now = new Date();
     const end = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     if (when === 'week') end.setDate(end.getDate() + ((7 - end.getDay()) % 7));
     else if (when === 'month') end.setMonth(end.getMonth() + 1, 0);
     else end.setFullYear(end.getFullYear() + 1);
     const until = `${end.getFullYear()}-${String(end.getMonth() + 1).padStart(2, '0')}-${String(end.getDate()).padStart(2, '0')}`;
-    const keep = (date, has) => (!date || date <= until) && (!topics.length || topics.some((t) => has.includes(t)));
-    const active = when !== 'year' || topics.length > 0;
-    // "Everywhere" with a filter on draws from every ranked story (/data/trending.json holds 100), not just
-    // the 20 on the page, so a topic shows all of its stories; without a filter the page's own rows return.
-    const [doc] = await data;
-    const stories = Array.isArray(doc.stories) ? doc.stories : [];
-    let shown = 0;
-    let total = 0;
-    if (active && stories.length) {
-      const matches = stories.filter((st) => keep(st.meeting_date || '', st.topics || []));
-      all.replaceChildren(...matches.map(storyNode));
-      if (window.w351 && window.w351.relDates) window.w351.relDates(all);
-      if (!all.hidden) {
-        shown = matches.length;
-        total = stories.length;
-      }
-    } else if (all.children.length !== staticRows.length || all.firstChild !== staticRows[0]) {
-      all.replaceChildren(...staticRows);
-    }
-    for (const li of mine.children) {
-      const ok = keep(li.dataset.date || '', (li.dataset.topics || '').split(' '));
-      li.hidden = !ok;
-      if (!mine.hidden) {
-        total += 1;
-        if (ok) shown += 1;
-      }
-    }
-    const count = $('trend-count');
-    if (count) count.textContent = active ? `${shown} of ${total} stories` : '';
+    return {
+      keep: (date, has) => (!date || date <= until) && (!topics.length || topics.some((t) => has.includes(t))),
+      active: when !== 'year' || topics.length > 0,
+    };
   }
-  if (filters) filters.addEventListener('change', applyFilters);
 
-  $('view-mine').addEventListener('click', () => show('mine'));
-  $('view-all').addEventListener('click', () => show('all'));
+  const say = (text, link) => {
+    count.replaceChildren(text);
+    if (link) {
+      count.append(' ');
+      const a = el('a', '', link[0]);
+      a.href = link[1];
+      count.append(a);
+    }
+  };
+
+  async function render() {
+    const [doc, neighbors] = await data;
+    const stories = Array.isArray(doc.stories) ? doc.stories : [];
+    const { keep, active } = filterState();
+    if (!chosen.length) {
+      mine.hidden = true;
+      all.hidden = false;
+      if (active && stories.length) {
+        const matches = stories.filter((st) => keep(st.meeting_date || '', st.topics || []));
+        all.replaceChildren(...matches.map(storyNode));
+        relDates(all);
+        say(`${matches.length} ${matches.length === 1 ? 'story' : 'stories'}`);
+      } else {
+        if (all.firstChild !== staticRows[0] || all.children.length !== staticRows.length) all.replaceChildren(...staticRows);
+        say('');
+      }
+      return;
+    }
+    const own = new Set(chosen);
+    const nextDoor = new Set();
+    if (near.checked) for (const t of chosen) for (const n of (Array.isArray(neighbors[t]) ? neighbors[t] : [])) if (!own.has(n)) nextDoor.add(n);
+    const picked = stories
+      .map((st, i) => ({ st, i, mine: (st.towns || []).some((t) => own.has(t)), next: (st.towns || []).some((t) => nextDoor.has(t)) }))
+      .filter((x) => (x.mine || x.next) && keep(x.st.meeting_date || '', x.st.topics || []))
+      .sort((a, b) => Number(b.mine) - Number(a.mine) || b.st.score - a.st.score || a.i - b.i)
+      .map((x) => x.st);
+    mine.replaceChildren(...picked.map(storyNode));
+    relDates(mine);
+    mine.hidden = false;
+    all.hidden = true;
+    const shown = [...mine.children].filter((li) => !li.hidden).length;
+    const where = `${listNames(chosen)}${near.checked ? ' and the towns next to them' : ''}`;
+    if (shown) say(`${shown} ${shown === 1 ? 'story' : 'stories'} in ${where}.`);
+    else say(`Nothing big coming up in ${where} right now.`, ['See everything coming up', '/upcoming']);
+  }
 
   data.then(([, , townDoc]) => {
     const towns = townDoc.towns || [];
     const multi = new Set(towns.map((t) => t.state)).size > 1;
-    $('near-towns').replaceChildren(...towns.map((t) => {
+    names = new Map(towns.map((t) => [t.id, t.state === 'MA' || !multi ? t.town : `${t.town}, ${t.state}`]));
+    $('story-town-list').replaceChildren(...towns.map((t) => {
       const o = document.createElement('option');
       o.value = `${t.town}${multi ? `, ${t.state}` : ''}`;
       return o;
     }));
+    renderChips();
   });
-  chooser.addEventListener('submit', async (event) => {
-    event.preventDefault();
+
+  async function add() {
     const [, , townDoc] = await data;
     const want = plain(input.value);
-    const match = (townDoc.towns || []).find((t) => plain(`${t.town} ${t.state}`) === want || plain(t.town) === want);
-    const error = $('near-town-error');
+    if (!want) {
+      error.textContent = 'Type a town first.';
+      error.hidden = false;
+      return;
+    }
+    const towns = townDoc.towns || [];
+    const match = towns.find((t) => plain(`${t.town} ${t.state}`) === want) || towns.find((t) => plain(t.town) === want);
     if (!match) {
-      error.textContent = want ? 'We don’t know that town. Pick it from the list as you type.' : 'Type your town first.';
+      error.textContent = 'We don’t know that town. Pick it from the list as you type.';
       error.hidden = false;
       return;
     }
     error.hidden = true;
-    const areas = { home_town: match.id, towns: [match.id] };
-    if (window.w351) window.w351.saveAreas(match.id, [match.id]);
-    renderMine(areas);
+    if (!chosen.includes(match.id)) chosen.push(match.id);
+    input.value = '';
+    save();
+    renderChips();
+    render();
+  }
+  form.addEventListener('submit', (event) => { event.preventDefault(); add(); });
+  input.addEventListener('change', async () => {
+    const [, , townDoc] = await data;
+    const want = plain(input.value);
+    if ((townDoc.towns || []).some((t) => plain(`${t.town} ${t.state}`) === want)) add();
   });
-
-  const saved = window.w351 && window.w351.areas ? window.w351.areas() : null;
-  chooser.hidden = Boolean(saved);
-  if (saved) renderMine(saved);
+  near.addEventListener('change', render);
+  if (filters) filters.addEventListener('change', render);
+  renderChips();
+  render();
 })();

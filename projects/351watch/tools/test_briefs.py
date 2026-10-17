@@ -254,8 +254,10 @@ class RenderTests(unittest.TestCase):
         self.assertIn(f'>{GOOD["line"]}</a></span>', html.replace("’", "’"))  # the headline links to the meeting page
         self.assertIn('</a></span><span class="stage">Asks to postpone</span></p>', html)  # the status sits beside it
         self.assertIn('<p class="brief-what">Federal Pond Solar wants a special permit', html)
-        self.assertIn("104 Tremont Street", html)  # the facts line: where, size, who
-        self.assertIn("4.9 MW on 22 acres", html)
+        self.assertNotIn("104 Tremont Street", html, "a list leaves the facts line to the meeting's own page")
+        full = self.build.meeting_html(ctx, m, show_town=False, full=True)
+        self.assertIn("104 Tremont Street", full)  # the facts line on the meeting page: where, size, who
+        self.assertIn("4.9 MW on 22 acres", full)
         self.assertIn('<span class="stage">Asks to postpone</span>', html)  # the applicant asked; the board hasn't agreed yet
         self.assertNotIn("Agenda wording", html, "lists carry no agenda text")
         self.assertNotIn("Copy citation", html)
