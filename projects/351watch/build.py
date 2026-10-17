@@ -79,12 +79,12 @@ TOPIC_LABELS = {
     "solar": "Solar",
     "battery_storage": "Battery storage",
     "data_center": "Data centers",
-    "moratorium": "Moratoriums (temporary bans)",
+    "moratorium": "Moratoriums",
     "clean_energy_siting": "Clean-energy permit rules",
     "zoning_amendment": "Zoning changes",
     "40b_comprehensive_permit": "Affordable housing (40B)",
     "wireless_telecom": "Cell towers",
-    "wetlands_filing": "Wetlands filings",
+    "wetlands_filing": "Wetlands permits",
     # Used by the gated Vermont feed so far; the forms list them once a state we show has items on them.
     "extraction": "Quarries and gravel pits",
     "large_development": "Large developments",
@@ -183,6 +183,23 @@ TOPIC_PAGES = [
      "matches": "the state's new consolidated local permit for small clean-energy projects (225 CMR 29.00)",
      "tracker": lambda i: i.get("action") == "Consolidated permit",
      "ag": lambda r: r.get("bylaw_type") == "consolidated permit bylaw"},
+    {"slug": "zoning", "key": "zoning_amendment", "name": "Zoning changes",
+     "matches": "changes to a town's zoning bylaw or zoning map",
+     "tracker": lambda i: False,
+     "ag": lambda r: r.get("bylaw_type") == "zoning regulation"},
+    {"slug": "40b-housing", "key": "40b_comprehensive_permit", "name": "Affordable housing (40B)",
+     "matches": "comprehensive permits under Chapter 40B, the state law that lets a housing project with affordable homes "
+                "skip some local zoning rules",
+     "tracker": lambda i: False, "ag": lambda r: False},
+    {"slug": "cell-towers", "key": "wireless_telecom", "name": "Cell towers",
+     "matches": "cell towers and other wireless antennas",
+     "tracker": lambda i: False, "ag": lambda r: False},
+    {"slug": "wetlands", "key": "wetlands_filing", "name": "Wetlands permits",
+     "matches": "Conservation Commission hearings and state wetlands filings for energy and data-center projects",
+     "tracker": lambda i: False, "ag": lambda r: False,
+     # the Conservation Commission's hearings are the wetlands permits people go to, not only the state filings
+     "hits": lambda h: "wetlands_filing" in h.get("topics", []) or (
+         h.get("board_key") == "conservation_commission" and set(h.get("topics", [])) & {"solar", "battery_storage", "data_center"})},
 ]
 TOPIC_PAGE_BY_KEY = {tp["key"]: tp for tp in TOPIC_PAGES}
 
@@ -2628,7 +2645,9 @@ def moratorium_lines(ag):
 
 
 def topic_counts(ctx, key, state=None):
-    hits = [h for h in ctx.hits if key in h.get("topics", []) and (state is None or h["state"] == state)]
+    tp = TOPIC_PAGE_BY_KEY.get(key) or {}
+    match = tp.get("hits") or (lambda h: key in h.get("topics", []))
+    hits = [h for h in ctx.hits if match(h) and (state is None or h["state"] == state)]
     return {
         "hits": hits,
         "items": len(hits),

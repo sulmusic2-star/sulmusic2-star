@@ -125,9 +125,14 @@ const config = {
     { src: '^/w(/.*)?$', headers: { 'X-Robots-Tag': 'noindex' }, continue: true },
     { src: '^/data/(.*)$', headers: { 'Cache-Control': 'public, max-age=300, s-maxage=300' }, continue: true },
     { src: '^/(.+)\\.html$', status: 308, headers: { Location: '/$1' } },
+    // a state's own address goes to that state on the towns page
+    { src: '^/(ma|ny|ri)/?$', status: 308, headers: { Location: '/towns#$1' } },
     { handle: 'filesystem' },
     { src: '^/\\.well-known/http-message-signatures-directory/?$', dest: '/api/key-directory' },
     { src: '^/w/[^/]*/?$', dest: '/w' },
+    // anything else that isn't a file: our own 404 page, with the site's header and a town box
+    { handle: 'error' },
+    { status: 404, src: '^/(.*)$', dest: '/404' },
   ],
   overrides,
   crons: [{ path: '/api/cron/dispatch', schedule: '30 13 * * *' }],

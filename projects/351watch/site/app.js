@@ -1061,7 +1061,7 @@ setupMeetingFilter();
 (() => {
   const id = decodeURIComponent(location.hash.slice(1));
   const rec = id ? document.getElementById(id) : null;
-  const box = rec && rec.matches('.rec') ? rec.querySelector('details') : null;
+  const box = rec && rec.matches('.rec') ? rec.querySelector('details') : (rec && rec.tagName === 'DETAILS' ? rec : null);
   if (box) { box.open = true; rec.scrollIntoView({ block: 'start' }); }
 })();
 setupViewSwitch();
