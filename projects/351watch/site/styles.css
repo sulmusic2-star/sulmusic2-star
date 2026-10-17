@@ -919,3 +919,26 @@ details.disclose[open] { padding-bottom: var(--s4); }
 /* search results as boxes */
 .result { border: 1px solid var(--rule); border-radius: var(--box-radius); padding: var(--s4) var(--s5); max-width: none; }
 .result + .result { margin-top: var(--s2); }
+
+/* a record opens: an arrow at its end says so */
+.rec > details > summary { grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) auto 12px; }
+.rec > details > summary::after { content: ""; width: 12px; height: 12px; align-self: center; transition: transform 0.15s;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M4 2l4 4-4 4' fill='none' stroke='%236f7a74' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px 12px no-repeat; }
+.rec > details[open] > summary::after { transform: rotate(90deg); }
+@media (max-width: 640px) { .rec > details > summary { grid-template-columns: minmax(0, 1fr) 12px; } .rec > details > summary > span { grid-column: 1; } .rec > details > summary::after { grid-column: 2; grid-row: 1; } }
+/* filters folded behind one tap */
+.filter-box { margin: var(--s4) 0; }
+.filter-box > summary { display: inline-flex; align-items: center; min-height: 44px; }
+.filter-box > .filterbar { margin-top: var(--s2); }
+/* the town page's view switch sits under the button */
+.actions + .sr-only + .view-switch { margin: var(--s4) 0 0; }
+/* the Rulings page's three answers, side by side on a wide screen */
+.answers { list-style: none; margin: var(--s5) 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--s3); }
+.answer { display: flex; flex-direction: column; gap: var(--s2); border: 1px solid var(--rule); border-radius: var(--box-radius); padding: var(--s4); background: var(--paper); }
+.answer b { font-family: var(--f-head); font-size: var(--t-h3); line-height: 1.25; }
+.answer span { flex: 1; }
+.answer a { font-weight: 600; }
+@media (max-width: 640px) {
+  /* two short fields share a row on a phone */
+  .list-tools label { flex: 1 1 calc(50% - var(--s4)); }
+}

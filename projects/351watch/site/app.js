@@ -246,7 +246,8 @@ function setupTrackerFilter() {
       row.hidden = !match;
       if (match) shown += 1;
     }
-    count.textContent = shown ? `${shown} of ${rows.length} shown` : `None of the ${rows.length} match. Try fewer words or another filter.`;
+    const on = status.value || topic.value || county.value || words.length;
+    count.textContent = on ? (shown ? `${shown} of ${rows.length} shown` : `None of the ${rows.length} match. Try fewer words or another filter.`) : '';
   }
 
   for (const el of [status, topic, county]) el.addEventListener('change', apply);
@@ -271,6 +272,9 @@ function setupGenericFilters() {
       if (v && [...s.options].some((o) => o.value === v)) s.value = v;
     }
     if (search && params.get('q')) search.value = params.get('q');
+    const head = document.querySelector(`[data-count-for="${group}"]`);
+    const box = bar.closest('details');
+    if (box && (selects.some((s) => s.value) || (search && search.value))) box.open = true;
 
     const apply = () => {
       const words = search ? search.value.trim().toLowerCase().split(/\s+/).filter(Boolean) : [];
@@ -280,7 +284,10 @@ function setupGenericFilters() {
         row.hidden = !match;
         if (match) shown += 1;
       });
-      if (count) count.textContent = shown ? `${shown} of ${rows.length} shown` : `None of the ${rows.length} match. Try fewer words or another filter.`;
+      const on = selects.some((s) => s.value) || (search && search.value.trim());
+      const said = on ? (shown ? `${shown} of ${rows.length} shown` : `None of the ${rows.length} match. Try fewer words or another filter.`) : '';
+      if (count) count.textContent = said;
+      if (head) head.textContent = said;
       // a year with no ruling left under it goes
       for (const y of years) y.hidden = !y.querySelector('.rec:not([hidden])');
       const p = new URLSearchParams(location.search);

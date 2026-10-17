@@ -138,14 +138,15 @@
     const picked = stories
       .map((st, i) => ({ st, i, mine: (st.towns || []).some((t) => own.has(t)), next: (st.towns || []).some((t) => nextDoor.has(t)) }))
       .filter((x) => (x.mine || x.next) && keep(x.st.meeting_date || '', x.st.topics || []))
-      .sort((a, b) => Number(b.mine) - Number(a.mine) || b.st.score - a.st.score || a.i - b.i)
+      // your own towns' stories in the order they happen
+      .sort((a, b) => (a.st.meeting_date || '9999').localeCompare(b.st.meeting_date || '9999') || Number(b.mine) - Number(a.mine) || b.st.score - a.st.score)
       .map((x) => x.st);
     mine.replaceChildren(...picked.map(storyNode));
     relDates(mine);
     mine.hidden = false;
     all.hidden = true;
     const shown = [...mine.children].filter((li) => !li.hidden).length;
-    const where = `${listNames(chosen)}${near.checked ? ' and the towns next to them' : ''}`;
+    const where = near.checked ? `${chosen.map(nameOf).join(', ')} and the towns next to them` : listNames(chosen);
     if (shown) say(`${shown} ${shown === 1 ? 'story' : 'stories'} in ${where}.`);
     else say(`Nothing big coming up in ${where} right now.`, ['See everything coming up', '/upcoming']);
   }

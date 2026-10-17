@@ -3170,6 +3170,7 @@ def build_town_page(ctx, t):
         coming = f"""{f'<p class="next-line">{next_line}</p>' if next_line else ''}
 <p class="actions"><a class="btn" href="{e(alerts_url(tid))}">Get {e(town)} alerts</a></p>
 <h2 class="sr-only">Coming up</h2>
+{'<p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="lines" aria-pressed="true">Short list</button><button type="button" class="link-btn" data-view="full" aria-pressed="false">With write-ups</button></p>' if up_m else ''}
 {listing}
 {continued_html(ctx, continued_ahead(ctx, up_m + past_m, up_m))}"""
         rail = f'<aside class="rail" aria-label="Nearby and about">{next_door_html(ctx, t)}{about_agendas_html(ctx, t)}</aside>'
@@ -4118,7 +4119,7 @@ def build_data_center_ledger(ctx):
     body = f"""
 <div class="wrap">
 <h1 id="ledger-title">Data-center moratoriums and bans, town by town</h1>
-<p class="lead">{plural(len(rows), 'measure')} in {len({(r.get('state'), r.get('town')) for r in rows})} towns and cities: {tally}. Each row has the date it was proposed, adopted, ruled on by the Attorney General and took effect, with a link to every source. Checked {generated}. Missing or out of date? <a href="/how-it-works#contact">Send a correction</a>.</p>
+<p class="lead">Every town and city with a data-center moratorium or ban, proposed, in effect or ended: {plural(len(rows), 'measure')} in {len({(r.get('state'), r.get('town')) for r in rows})} places. Tap one for its dates and sources. Checked {generated}.</p>
 {ag_nav("/attorney-general/data-centers")}
 <form class="filterbar" data-list-filter data-noun="measures">
   <label>Status<select data-status><option value="">All</option>{status_opts}</select></label>
@@ -4202,11 +4203,18 @@ def build_ag(ctx):
     all_n = rec["total"]
     body = f"""
 <div class="wrap narrow">
-<h1 id="ag-title">Massachusetts Attorney General rulings on town bylaws</h1>
-<p class="lead">A town can’t ban solar. Since June 2, 2022, when the state’s highest court said so in Tracer Lane II, the Attorney General has disapproved every town moratorium (a temporary ban) on solar or battery storage it has ruled on: {rec['disapproved']} of {all_n}, in {plural(rec['towns'], 'town')}. Zoning that sets rules instead of pausing projects is almost always approved: {n['ruled_ok']} of {n['ruled']}.</p>
-<p>{n['letters']} decisions in {n['towns']} towns, letters dated {fmt_date(dates[0]) if dates else ''} to {fmt_date(dates[-1]) if dates else ''}, plus {plural(n['rt'].get('court_ruling', 0), 'court ruling')}, {plural(n['rt'].get('city_ordinance', 0), 'city ordinance')} and {n['rt'].get('pending_ag_review', 0)} awaiting review.</p>
-<p data-slop-ignore><a href="/attorney-general/rulings">Every ruling</a> · <a href="/attorney-general/town-actions">Town and city actions</a> · <a href="/attorney-general/law">State law and court rulings</a></p>
-<p class="terms"><b>Words on this page.</b> <dfn>Tracer Lane II</dfn>: the 2022 ruling by the state’s highest court that a town can’t use zoning to ban solar. <dfn>G.L. c. 40A, § 3</dfn>: the state zoning law’s solar clause; a town can’t prohibit solar or restrict it unreasonably. <dfn>225 CMR 29.00</dfn>: the state’s 2025 rules for permitting clean-energy projects, with one consolidated local permit. <dfn>Land Court</dfn>: a state trial court for land disputes; its rulings carry less weight than the highest court’s.</p>
+<h1 id="ag-title">Can a Massachusetts town limit solar, battery storage or data centers?</h1>
+<p class="lead">It can set rules for solar and battery storage, but it can’t ban or pause them. It can pause or ban data centers. The state’s Attorney General reviews every town bylaw before it takes effect; here is how those reviews have gone.</p>
+{ag_nav("/attorney-general")}
+<ul class="answers">
+  <li class="answer"><b>A moratorium on solar or battery storage</b><span>Disapproved every time since June 2022: {rec['disapproved']} of {all_n}, in {plural(rec['towns'], 'town')}.</span><a href="/attorney-general/rulings?bylaw=moratorium">See them</a></li>
+  <li class="answer"><b>Zoning rules for solar or battery storage</b><span>Almost always approved: {n['ruled_ok']} of {n['ruled']}.</span><a href="/attorney-general/rulings?bylaw=zoning+regulation">See them</a></li>
+  <li class="answer"><b>A moratorium on data centers</b><span>Approved in Shutesbury, Templeton and Gill; state law doesn’t protect data centers.</span><a href="/attorney-general/data-centers">The data-center ledger</a></li>
+</ul>
+<details class="disclose"><summary>Words on this page</summary>
+<p class="terms"><dfn>Tracer Lane II</dfn>: the 2022 ruling by the state’s highest court that a town can’t use zoning to ban solar. <dfn>G.L. c. 40A, § 3</dfn>: the state zoning law’s solar clause; a town can’t prohibit solar or restrict it unreasonably. <dfn>225 CMR 29.00</dfn>: the state’s 2025 rules for permitting clean-energy projects, with one consolidated local permit. <dfn>Land Court</dfn>: a state trial court for land disputes; its rulings carry less weight than the highest court’s.</p>
+</details>
+<p class="small">{n['letters']} decisions in {n['towns']} towns, letters dated {fmt_date(dates[0]) if dates else ''} to {fmt_date(dates[-1]) if dates else ''}, plus {plural(n['rt'].get('court_ruling', 0), 'court ruling')}, {plural(n['rt'].get('city_ordinance', 0), 'city ordinance')} and {n['rt'].get('pending_ag_review', 0)} awaiting review.</p>
 <h2 id="survives-title">How the Attorney General has ruled, by kind of bylaw</h2>
 <div class="table-wrap"><table class="stack"><thead><tr><th scope="col">Kind of bylaw</th><th scope="col">Result</th><th scope="col">Count</th><th scope="col">Recent examples</th></tr></thead><tbody>{pattern_rows}</tbody></table></div>
 <p class="small">{e(n['also'])} The three data-center letters are in the rulings list too: Shutesbury’s (case 12047, Jan 20, 2026) and Templeton’s (case 12294, Sep 22, 2026) as the towns posted them, and Gill’s (case 12422, Sep 24, 2026), which struck the battery-storage half of the same article.</p>
@@ -4244,8 +4252,9 @@ def build_ag_rulings(ctx):
     body = f"""
 <div class="wrap">
 <h1 id="ag-title">Every Attorney General ruling on solar, battery storage and data-center bylaws</h1>
-<p class="lead">{e(ag_summary_line(n))} Each decision letter links to the Attorney General’s public website. Court rulings and city ordinances, which the Attorney General does not review, are in their own table below.</p>
+<p class="lead">Every decision the Massachusetts Attorney General has made on a town’s solar, battery storage or data-center bylaw since 2022, newest first. Tap one for the letter.</p>
 {ag_nav("/attorney-general/rulings")}
+<details class="filter-box"><summary>Filter the rulings</summary>
 <div class="filterbar" data-filters="ag-ledger">
   <label>Outcome<select data-key="outcome"><option value="">All</option>{opts(outcomes)}</select></label>
   <label>Kind of bylaw<select data-key="bylaw"><option value="">All</option>{opts(bylaws)}</select></label>
@@ -4253,12 +4262,13 @@ def build_ag_rulings(ctx):
   <label>County<select data-key="county"><option value="">All</option>{opts(counties)}</select></label>
   <label>Year<select data-key="year"><option value="">All</option>{opts(years)}</select></label>
   <label>Words<input type="search" data-search></label>
-  <p class="count" data-count aria-live="polite"></p>
 </div>
+</details>
+<p class="results-head" data-count-for="ag-ledger" aria-live="polite"></p>
 {ag_table(ctx, decisions, table_id='ag-ledger', filters=True, by_year=True)}
 <p class="action-row"><a href="/attorney-general/rulings.csv" download>Download the table (CSV)</a></p>
 <h2 id="ag-context">Court rulings and city ordinances</h2>
-<p>For context: the courts' rulings on these bylaws, and what cities (which adopt ordinances without Attorney General review) have done.</p>
+<p>For context: the courts’ rulings on these bylaws, and what cities (which adopt ordinances without Attorney General review) have done.</p>
 {ag_table(ctx, context, table_id='ag-context', filters=True, group='ag-ledger')}
 </div>
 """
@@ -4278,15 +4288,17 @@ def build_ag_actions(ctx):
     body = f"""
 <div class="wrap">
 <h1 id="ag-title">Town and city actions on battery storage and solar</h1>
-<p class="lead">{plural(len(items), 'action')}: moratoriums, special acts, zoning bylaws and permit rules, each with a link to its source. Checked {verified}. {e(ag_summary_line(n))} Missing or out of date? <a href="/how-it-works#contact">Send a correction</a>.</p>
+<p class="lead">What towns and cities have done about battery storage and solar: moratoriums, special acts, zoning bylaws and permit rules. Tap one for its sources. Checked {verified}.</p>
 {ag_nav("/attorney-general/town-actions")}
+<details class="filter-box"><summary>Filter the actions</summary>
 <div class="filterbar">
   <label>Status<select id="f-status"><option value="">All</option><option value="pending">Pending</option><option value="active">In effect or adopted</option><option value="cleared">Not in effect</option><option value="info">Permit rules</option></select></label>
   <label>Topic<select id="f-topic"><option value="">All</option><option value="battery">Battery storage</option><option value="solar">Solar</option></select></label>
   <label>County<select id="f-county"><option value="">All</option>{county_opts}</select></label>
   <label>Words<input id="f-search" type="search"></label>
-  <p class="count" id="f-count" aria-live="polite"></p>
 </div>
+</details>
+<p class="results-head" id="f-count" aria-live="polite"></p>
 {tracker_table(ctx, items, "tracker-table")}
 <p class="action-row"><a href="/attorney-general/town-actions.csv" download>Download the table (CSV)</a></p>
 </div>
