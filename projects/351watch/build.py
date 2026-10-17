@@ -2878,6 +2878,8 @@ def trending_stories(ctx):
             # "First time on an agenda" only for a project with no earlier meeting in our records
             "new": not (b and b.get("history")) and any(ctx.is_new(hits_by_id[i]) for i in st.get("hit_ids", []) if i in hits_by_id),
             "brief": b,
+            # why it ranks: at most two signs of what is at stake or how stirred up people are
+            "why": [w for w in st.get("why", []) if not w.startswith("First time")][:2],
         })
     return out, doc.get("personalize") or {"in_my_towns": 2.0, "in_neighbor_towns": 1.0, "topic_match": 0.5}
 
@@ -2922,9 +2924,10 @@ def story_html(ctx, st, level=3):
     board = f'<span>{e(st["board"])}</span>' if st.get("board") else ""
     stage = stage_html({"stage": st.get("stage")}, {"date": st.get("meeting_date")}, ctx)
     line = headline(st["line"])
+    why = f'<span class="row-why">{e("; ".join(st.get("why") or []))}</span>' if st.get("why") else ""
     return f"""<li class="row" data-id="{e(st['id'])}" data-date="{e(st.get('meeting_date') or '')}" data-topics="{e(' '.join(st.get('topics') or []))}">
   <a href="{e(st['href'])}"><span class="row-day" data-slop-ignore>{when}</span><span class="row-when" data-slop-ignore><span class="row-town">{town}</span>{board}{new}</span>
-  <span class="row-line">{e(line)}</span>{stage}</a>
+  <span class="row-line">{e(line)}</span>{why}{stage}</a>
 </li>"""
 
 
@@ -2970,7 +2973,13 @@ def build_trending(ctx):
 <p class="more-link"><a href="/upcoming">See everything coming up</a></p>
 <details class="disclose"><summary>How we rank them</summary>
 <div class="trend-foot">
-  <p>Points for what it is (a data center, battery storage, a ban or a moratorium, large solar), what the board will do (a vote or a hearing counts more than a discussion), how big the project is, how many boards and towns are taking it up, and how soon the meeting is.</p>
+  <p>Each story gets points for three things.</p>
+  <ul class="plain-list">
+    <li><b>What’s at stake.</b> What it is (a data center, battery storage, a ban or moratorium, large solar), how big it is (megawatts, acres, homes), whether it covers the whole town, and how final the step is: a vote or hearing counts more than a discussion.</li>
+    <li><b>How stirred up people are.</b> How many boards and meetings it has been on, a delay from an earlier meeting, a citizen petition, letters from the public, an appeal or lawsuit, neighboring towns taking up the same subject, and regional news naming the town (headlines from newsrooms such as MassLive, WBUR, the Boston Globe, Syracuse.com and ecoRI News).</li>
+    <li><b>How soon.</b> A meeting in the next week counts most.</li>
+  </ul>
+  <p>The grey line under a story says what lifted it.</p>
 </div>
 </details>
 </div>
@@ -3210,6 +3219,24 @@ def continued_html(ctx, rows):
 </section>"""
 
 
+def news_html(ctx, t):
+    """"In the news": up to three regional headlines from the last 45 days naming the town and a siting subject
+    (crawler/watch351/sources/news.py), each linking to the newsroom's story."""
+    if "_news" not in ctx.__dict__:
+        ctx._news = (load("news/matches.json", {}) or {}).get("towns", {})
+    since = (datetime.strptime(ctx.today, "%Y-%m-%d") - timedelta(days=45)).strftime("%Y-%m-%d")
+    arts, seen = [], set()
+    for a in ctx._news.get(t["id"], []):
+        if (a.get("published") or "")[:10] >= since and a["title"] not in seen:
+            seen.add(a["title"])
+            arts.append(a)
+    if not arts:
+        return ""
+    items = "".join(f'<li><a href="{e(a["link"])}" rel="nofollow noopener" target="_blank">{e(a["title"])}</a> '
+                    f'<span class="news-src">{e(a["source"])}, {e(short_day(a["published"]))}</span></li>' for a in arts[:3])
+    return f'<section class="in-news" aria-labelledby="news-title"><h2 id="news-title">In the news</h2><ul class="news-list">{items}</ul></section>'
+
+
 def build_town_page(ctx, t):
     tid, state, town = t["id"], t["state"], t["town"]
     hits = ctx.hits_by_town.get(tid, [])
@@ -3238,7 +3265,8 @@ def build_town_page(ctx, t):
 <h2 class="sr-only">Coming up</h2>
 {'<p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="lines" aria-pressed="true">Short list</button><button type="button" class="link-btn" data-view="full" aria-pressed="false">With write-ups</button></p>' if up_m else ''}
 {listing}
-{continued_html(ctx, continued_ahead(ctx, up_m + past_m, up_m))}"""
+{continued_html(ctx, continued_ahead(ctx, up_m + past_m, up_m))}
+{news_html(ctx, t)}"""
         rail = f'<aside class="rail" aria-label="Nearby and about">{next_door_html(ctx, t)}{about_agendas_html(ctx, t)}</aside>'
     else:
         coming = cant_check_html(ctx, t, up_m)

@@ -103,7 +103,11 @@ Read this before changing anything. Several workstreams build in parallel; these
 
 ### Score
 
-`score = (topic points × action multiplier + bonuses × routine − vague) × timing`, rounded to 2 places. All weights are constants at the top of `trending.py`.
+`score = (stakes + buzz) × timing`, rounded to 2 places, where stakes = topic points × action multiplier (what it is, and how final the step is) plus size, a first in the town, an earlier town vote and an Attorney General ruling; buzz = boards, towns and meetings handling it, plus regional news naming the town and subject (last 30 days, `data/news/matches.json`), a citizen petition, letters from the public, an appeal or lawsuit, a delay from an earlier meeting, and two or more neighboring towns with the same siting subject on agendas within 60 days. Bonuses are × routine and less a vague penalty, as before. All weights are constants at the top of `trending.py`. Each story also carries `why` (the buzz and stakes reasons shown in grey under the headline), `stakes` and `buzz`.
+
+**Regional news** (`crawler/watch351/sources/news.py`, run by `ops/daily.sh` before `trending.py`): the RSS feeds of regional newsrooms and the day-by-day sitemaps of MassLive, the Boston Globe and Syracuse.com, read as AgendaAheadBot with robots.txt checked on every host (Google News disallows us and is not used; pages that answer 403 are not retried). Only headlines, links, dates and the feed's own summaries are kept, and only for articles that touch a siting subject (`data/news/items.jsonl`); `data/news/matches.json` maps town ids to the last 45 days of matching articles. Town pages list up to three under "In the news".
+
+**Where people care** (`tools/where_people_care.py`, Mondays in `ops/daily.sh`): the same signals for towns we don't read (news, active neighbors, ledger and tracker rows) and for states we don't cover, with what it would take to add each town; writes `data/expansion_targets.json` and `research_notes/Expansion/where_people_care.md`.
 
 | Part | Values |
 |---|---|

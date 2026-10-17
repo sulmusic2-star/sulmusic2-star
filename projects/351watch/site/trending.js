@@ -48,6 +48,7 @@
     const words = (st.line || st.headline || '').replace(' (no vote listed)', '').replace('; no vote listed)', ')');
     line.append(/[a-z0-9)]\.$/.test(words) && !/\b(St|Rd|Ave|Dr|Ln|Blvd|Mt|No|Art|Sec|Inc|Corp|LLC|Co)\.$/.test(words) ? words.slice(0, -1) : words);
     a.append(day, when, line);
+    if (st.why && st.why.length) a.append(el('span', 'row-why', st.why.join('; ')));
     if (st.stage) {
       // the same dot as the page: filled when the board acts (a vote or hearing), hollow otherwise
       const act = /^(Vote|Hearing|Final vote|Possible vote|Decided)/.test(st.stage);

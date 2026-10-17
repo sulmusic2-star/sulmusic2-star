@@ -3,7 +3,7 @@
 ## Daily refresh (scheduled 6:59 am America/New_York)
 
 1. Repo `sulmusic2-star/sulmusic2-star`, branch `claude/massachusetts-market-service-ead9ho` (`git pull --ff-only` first).
-2. `bash projects/351watch/ops/daily.sh` — refreshes MassDEP wetlands filings, crawls MA/NY/RI agendas incrementally (state in `data/state/`), appends the text of each new document to `data/search/` (and fills any row still missing from the local cache), rebuilds the site, commits "Daily refresh YYYY-MM-DD", pushes. Last printed line = commit SHA. A fresh container works: only listing pages are re-read; agenda documents already processed are skipped, and their search text is already in git.
+2. `bash projects/351watch/ops/daily.sh` — refreshes MassDEP wetlands filings, crawls MA/NY/RI agendas incrementally, reads regional news headlines for the Biggest stories ranking (state in `data/state/`), appends the text of each new document to `data/search/` (and fills any row still missing from the local cache), rebuilds the site, commits "Daily refresh YYYY-MM-DD", pushes. Last printed line = commit SHA. A fresh container works: only listing pages are re-read; agenda documents already processed are skipped, and their search text is already in git.
 3. Deploy that SHA to production with the Vercel MCP `create_deployment` (no teamId):
 
 ```json

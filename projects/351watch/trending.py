@@ -34,8 +34,10 @@ DATA = os.path.join(HERE, "data")
 TZ = ZoneInfo("America/New_York")
 
 # ============================================================================ weights
-# score = (SUBJECT_POINTS x ACTION_MULT + bonuses x routine - vague) x timing, where
-#   bonuses = scale + first + momentum + new + tracker + ag, and routine = min(1, ACTION_MULT / 0.8).
+# score = (stakes + buzz) x timing, where
+#   stakes = SUBJECT_POINTS x ACTION_MULT (what it is, and how final the step is) + scale + first + tracker + ag
+#   buzz   = momentum (boards, towns, meetings) + news + petition + letters + appeal + put-off + nearby towns
+#   and the bonuses (everything after the first term) are x routine = min(1, ACTION_MULT / 0.8), less a vague penalty.
 # Tuned by reading the ranked list; see research_notes/Design/trending_review.md. Documented in ARCHITECTURE.md.
 
 SUBJECT_POINTS = {
@@ -102,6 +104,17 @@ TRACKER_POINTS = 1.0         # the town already voted on this subject (tracker.j
 AG_POINTS = 1.5
 AG_DAYS = 365
 VAGUE_PENALTY = 1.5
+# Buzz: signs that people are stirred up, from the agendas themselves and from regional news.
+NEWS_POINTS = [(3, 3.5), (2, 2.5), (1, 1.5)]   # articles in the last NEWS_DAYS days naming the town and subject
+NEWS_DAYS = 30
+PETITION_POINTS = 2.0      # residents put it on the warrant or agenda themselves
+LETTERS_POINTS = 1.0       # letters or comments from the public listed with the item
+APPEAL_POINTS = 1.5        # an appeal or lawsuit named in the item
+PUT_OFF_POINTS = 1.0       # continued from an earlier meeting
+WAVE_POINTS = 1.0          # per neighboring town with the same subject on an agenda (from WAVE_MIN, cap WAVE_CAP)
+WAVE_MIN = 2
+WAVE_CAP = 3
+WAVE_DAYS = 60
 ROUTINE_BONUS_FLOOR = 0.8   # bonuses scale by ACTION_MULT / 0.8 when the lead's multiplier is below 0.8
 TOP_N = 100
 
@@ -230,6 +243,15 @@ DEAL_RE = re.compile(r"\blease\b|\bcontract\b|\baward\b|\beasement\b|\bPILOT\b|p
 DISCUSS_RE = re.compile(r"\bdiscuss(?:ion)?\b|\bupdate\b|\breview\b|\bpresentation\b|\bworkshop\b|\bbusiness\s+session\b", re.I)
 BAN_RE = re.compile(r"\bprohibit(?:s|ed|ing|ion)?\b|\bban(?:s|ning|ned)?\b", re.I)
 PETITION_RE = re.compile(r"\bpetition", re.I)
+CITIZEN_PETITION_RE = re.compile(r"citizens?[’']?s?[’']?\s+petition|petition(?:ed)?\s+(?:article|of\s+(?:\d+|ten|twenty|one\s+hundred)\s+"
+                                 r"(?:or\s+more\s+)?(?:registered\s+)?voters)|\bby\s+(?:citizen\s+)?petition\b|"
+                                 r"(?:ten|10|100|one\s+hundred|200)\s+(?:or\s+more\s+)?registered\s+voters", re.I)
+# Evidence about this item, not boilerplate: "submit written comments" and a bare "Correspondence" heading don't count.
+LETTERS_RE = re.compile(r"\b(?:letters?|e-?mails?|comments?)\s+(?:from|by)\s+(?:residents|abutters|neighbors|citizens|the\s+public)\b|"
+                        r"\bpublic\s+comments?\s+(?:received|letters?)|\bcomment\s+letters?\b|"
+                        r"\babutters?[’']?\s+(?:letters?|concerns?|comments?)|\bpetition\s+signed\s+by", re.I)
+APPEAL_RE = re.compile(r"\bappeal(?:ed)?\s+(?:of|to|from|by|filed)\b|\bland\s+court\b|\bsuperior\s+court\b|\blawsuit\b|"
+                       r"\bremand(?:ed)?\b|\bcomplaint\s+(?:filed|against)\b", re.I)
 
 MINUTES_STRONG = re.compile(r"\bmoved\s+to\s+(?:approve|adjourn|accept|close|continue|recommend|table|grant|deny|amend|ordain|refer)\b|"
                             r"\bmade\s+a\s+motion\b|\bseconded\s+by\b|\bmotion\s+(?:carried|passed)|"
@@ -821,6 +843,8 @@ def load_inputs(data_dir=DATA):
         "tracker": load_json(os.path.join(data_dir, "tracker.json"), {}).get("items", []),
         "ag": load_json(os.path.join(data_dir, "ag_decisions.json"), []),
         "neighbors": load_json(os.path.join(data_dir, "neighbors.json"), {}),
+        # regional news naming a town and a subject (crawler/watch351/sources/news.py)
+        "news": load_json(os.path.join(data_dir, "news", "matches.json"), {}).get("towns", {}),
     }
 
 
@@ -1884,6 +1908,70 @@ def momentum_reasons(story, lead, inputs):
     return out
 
 
+def story_family(story):
+    fams = {topic_family(a["subject"]) for a in story["hits"] if a["status"] != "stale"}
+    fams |= {topic_family(t) for a in story["hits"] for t in a.get("topics") or []}
+    return fams - {"other", "general_bylaw", "zoning"} or fams
+
+
+def buzz_signals(story, lead, inputs, today):
+    """Signs that people are stirred up about this: regional news, a citizen petition, letters from the public,
+    an appeal or lawsuit, a delay from an earlier meeting, and neighboring towns taking up the same subject.
+    Returns (points, reasons)."""
+    pts, why = 0.0, []
+    fams = story_family(story)
+    tid = f"{lead['state']}:{lead['town']}"
+    # regional news naming the town and the subject in the last NEWS_DAYS days
+    since = (today - timedelta(days=NEWS_DAYS)).isoformat()
+    arts = [x for x in (inputs.get("news") or {}).get(tid, [])
+            if (x.get("published") or "")[:10] >= since and fams & {topic_family(t) for t in x.get("topics") or []}]
+    if arts:
+        n = len({x["link"] for x in arts})
+        pts += next(p for k, p in NEWS_POINTS if n >= k)
+        why.append(f"In the news ({n} {'story' if n == 1 else 'stories'})")
+    # the item's own words: the window around the matched text, not the agenda items next to it
+    text = " ".join(a["item"][max(0, a["anchor_rel"] - 250):a["anchor_rel"] + 350]
+                    for a in story["hits"] if a["status"] != "stale" and a.get("item"))
+    if CITIZEN_PETITION_RE.search(text):
+        pts += PETITION_POINTS
+        why.append("Citizen petition")
+    if APPEAL_RE.search(text):
+        pts += APPEAL_POINTS
+        why.append("Appeal or lawsuit")
+    if LETTERS_RE.search(text):
+        pts += LETTERS_POINTS
+        why.append("Letters from the public")
+    if any(a is not lead and (a["action"] == "continuance" or a["flags"].get("continued")) for a in story["hits"]) \
+            or lead["flags"].get("continued"):
+        pts += PUT_OFF_POINTS
+        why.append("Put off from an earlier meeting")
+    # a wave: neighboring towns with the same subject on an agenda in the last or next WAVE_DAYS days
+    near = set((inputs.get("neighbors") or {}).get(tid, [])) - set(story["towns"])
+    if not fams & {"data", "energy", "moratorium", "40b_comprehensive_permit", "wireless_telecom"}:
+        near = set()  # zoning changes are on most agendas: a "wave" of them says nothing
+    lo, hi = today - timedelta(days=WAVE_DAYS), today + timedelta(days=WAVE_DAYS)
+    wave = sorted({f"{st}:{tw}" for st, tw, t, d in inputs["history"]
+                   if f"{st}:{tw}" in near and d and lo <= d <= hi and topic_family(t) in fams})
+    if len(wave) >= WAVE_MIN:
+        pts += WAVE_POINTS * min(WAVE_CAP, len(wave))
+        names = [w.split(":", 1)[1] for w in wave]
+        shown = names if len(names) <= 3 else names[:2] + [f"{len(names) - 2} more"]
+        why.append("Also next door in " + (" and ".join(shown) if len(shown) <= 2 else ", ".join(shown[:-1]) + " and " + shown[-1]))
+    return pts, why
+
+
+def story_extra_why(story, lead, first, scale, tracker):
+    """The stakes reasons worth showing beside the buzz ones: size, a first in the town, an earlier vote."""
+    out = set()
+    if scale and lead["action"] not in ("continuance", "minutes", "cancelled", "withdrawn"):
+        out.add(first_cap(scale[0][1]))
+    if first:
+        out.add(f"First time this has come up in {lead['town']}")
+    if tracker:
+        out.add(tracker)
+    return out
+
+
 def build_story(hits, inputs, hist, today, now):
     live = [a for a in hits if a["status"] == "live"]
     if not live:
@@ -1944,7 +2032,8 @@ def build_story(hits, inputs, hist, today, now):
     extra_b = min(MOMENTUM_CAP, story["n_boards"] - 1)
     extra_t = min(MOMENTUM_CAP, story["n_towns"] - 1)
     extra_m = min(2, len(meetings) - 1) if extra_b == 0 else 0
-    bonus += extra_b * MOMENTUM_BOARD + extra_t * MOMENTUM_TOWN + extra_m * MOMENTUM_MEETING
+    momentum_points = extra_b * MOMENTUM_BOARD + extra_t * MOMENTUM_TOWN + extra_m * MOMENTUM_MEETING
+    bonus += momentum_points
     reasons.extend(momentum_reasons(story, lead, inputs))
     tr = timing_reason(lead)
     if tr:
@@ -1963,6 +2052,13 @@ def build_story(hits, inputs, hist, today, now):
     if ag:
         bonus += AG_POINTS
         reasons.append(ag)
+    stakes = lead["base"] + bonus - momentum_points
+    buzz, why = buzz_signals(story, lead, inputs, today)
+    bonus += buzz
+    reasons.extend(why)
+    story["why"] = why + [r for r in reasons if r in story_extra_why(story, lead, first, scale, trk)]
+    story["stakes"] = round(stakes, 2)
+    story["buzz"] = round(buzz + momentum_points, 2)
     # routine leads (mentions, minutes, continuances) keep only part of their bonuses, so momentum or a
     # tracker entry cannot lift a passing mention above a real hearing
     bonus *= min(1.0, ACTION_MULT[lead["action"]] / ROUTINE_BONUS_FLOOR)
@@ -1993,6 +2089,9 @@ def to_json(story):
         "dek": story["dek"],
         "quote": story["quote"],
         "reasons": story["reasons"],
+        "why": story.get("why", []),
+        "stakes": story.get("stakes"),
+        "buzz": story.get("buzz"),
         "topics": topics,
         "state": a["state"],
         "town": a["town"],

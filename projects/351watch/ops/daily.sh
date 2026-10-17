@@ -68,7 +68,11 @@ log "crawl"
 (cd crawler && python3 -m watch351.daily "${DAILY_ARGS[@]+"${DAILY_ARGS[@]}"}")
 log "search text: rows for indexed documents still missing one (local cache only, no network)"
 (cd crawler && python3 -m watch351.fulltext backfill >&2) || log "search backfill failed; continuing"
+log "regional news (headlines naming a town and a siting subject)"
+(cd crawler && python3 -m watch351.sources.news >&2) || log "news feeds failed; keeping yesterday's matches"
 python3 trending.py >&2 || log "trending failed; keeping the last data/trending.json"
+# Mondays: where people care that we don't read yet (research_notes/Expansion/where_people_care.md)
+if [ "$(date -u +%u)" = 1 ]; then python3 tools/where_people_care.py >&2 || log "where_people_care failed"; fi
 python3 tools/verify_briefs.py --quiet >&2 || log "some written briefs failed verification; build.py leaves them out"
 log "build site"
 python3 build.py

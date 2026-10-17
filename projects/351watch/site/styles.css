@@ -1003,3 +1003,16 @@ details.disclose[open] { padding-bottom: var(--s4); }
 }
 /* the home sentence breaks evenly, never with one word alone on its last line */
 .home-hero .lead, .home-hero h1 { text-wrap: balance; }
+/* Biggest stories: a grey line under the headline says what lifted the story */
+.row-why { grid-area: why; color: var(--muted); font-size: var(--t-sm); margin-top: 2px; }
+.row a { grid-template-areas: "day when" "line line" "why why" "stage stage"; }
+@media (min-width: 760px) { .row a { grid-template-areas: "day when stage" "day line stage" "day why stage"; } }
+@media (min-width: 1024px) { .home .row a { grid-template-areas: "day when" "day line" "day why" "day stage"; } }
+.plain-list { margin: var(--s2) 0 var(--s3); padding-left: 1.2em; }
+.plain-list li + li { margin-top: var(--s2); }
+/* a town's fight in the regional news */
+.in-news { margin-top: var(--s6); }
+.in-news h2 { font-size: var(--t-h3); margin: 0 0 var(--s2); }
+.news-list { list-style: none; margin: 0; padding: 0; }
+.news-list li { margin: var(--s2) 0; }
+.news-src { color: var(--muted); font-size: var(--t-sm); white-space: nowrap; }

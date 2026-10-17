@@ -1,0 +1,2271 @@
+{
+ "generated": "2026-10-17T15:34:43",
+ "today": "2026-10-17",
+ "towns": [
+  {
+   "id": "MA:Hadley",
+   "state": "MA",
+   "town": "Hadley",
+   "county": "Hampshire",
+   "score": 7.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "town action on battery storage",
+    "5 neighbors we read have it on agendas (Amherst, Easthampton, Holyoke, Northampton and more): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Duxbury",
+   "state": "MA",
+   "town": "Duxbury",
+   "county": "Plymouth",
+   "score": 6.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "town action on battery storage",
+    "4 neighbors we read have it on agendas (Kingston, Marshfield, Pembroke, Plymouth): 40B housing, battery storage, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Ludlow",
+   "state": "MA",
+   "town": "Ludlow",
+   "county": "Hampden",
+   "score": 6.0,
+   "takes": "unblock request",
+   "reason_code": "waf_block",
+   "why": [
+    "in the news (1): MassLive, Ludlow joins wmass communities debating data center moratorium",
+    "3 neighbors we read have it on agendas (Belchertown, Chicopee, Wilbraham): battery storage, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Shutesbury",
+   "state": "MA",
+   "town": "Shutesbury",
+   "county": "Franklin",
+   "score": 6.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "data-center measure: moratorium (expired), ban (in effect)",
+    "2 neighbors we read have it on agendas (Amherst, Wendell): 40B housing, battery storage, clean-energy permits, data centers, solar"
+   ]
+  },
+  {
+   "id": "MA:Templeton",
+   "state": "MA",
+   "town": "Templeton",
+   "county": "Worcester",
+   "score": 6.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "data-center measure: moratorium (in effect)",
+    "2 neighbors we read have it on agendas (Gardner, Hubbardston): battery storage, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Acton",
+   "state": "MA",
+   "town": "Acton",
+   "county": "Middlesex",
+   "score": 5.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "6 neighbors we read have it on agendas (Boxborough, Concord, Littleton, Maynard and more): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Becket",
+   "state": "MA",
+   "town": "Becket",
+   "county": "Berkshire",
+   "score": 5.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "town action on battery storage and solar",
+    "3 neighbors we read have it on agendas (Blandford, Middlefield, Washington): battery storage, clean-energy permits, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Berkley",
+   "state": "MA",
+   "town": "Berkley",
+   "county": "Bristol",
+   "score": 5.0,
+   "takes": "unblock request",
+   "reason_code": "waf_block",
+   "why": [
+    "5 neighbors we read have it on agendas (Dighton, Freetown, Lakeville, Somerset and more): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Greenfield",
+   "state": "MA",
+   "town": "Greenfield",
+   "county": "Franklin",
+   "score": 5.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "5 neighbors we read have it on agendas (Colrain, Deerfield, Gill, Leyden and more): battery storage, clean-energy permits, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Groton",
+   "state": "MA",
+   "town": "Groton",
+   "county": "Middlesex",
+   "score": 5.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "6 neighbors we read have it on agendas (Ayer, Littleton, Pepperell, Shirley and more): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Hanson",
+   "state": "MA",
+   "town": "Hanson",
+   "county": "Plymouth",
+   "score": 5.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "town action on battery storage",
+    "3 neighbors we read have it on agendas (East Bridgewater, Halifax, Pembroke): 40B housing, battery storage, clean-energy permits, data centers, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Hopkinton",
+   "state": "MA",
+   "town": "Hopkinton",
+   "county": "Middlesex",
+   "score": 5.0,
+   "takes": "unblock request to the agenda host",
+   "reason_code": "vendor_robots_disallow",
+   "why": [
+    "5 neighbors we read have it on agendas (Ashland, Holliston, Milford, Southborough and more): 40B housing, clean-energy permits, data centers, solar"
+   ]
+  },
+  {
+   "id": "MA:Middleborough",
+   "state": "MA",
+   "town": "Middleborough",
+   "county": "Plymouth",
+   "score": 5.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "7 neighbors we read have it on agendas (Bridgewater, Carver, Halifax, Lakeville and more): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Rehoboth",
+   "state": "MA",
+   "town": "Rehoboth",
+   "county": "Bristol",
+   "score": 5.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "6 neighbors we read have it on agendas (Attleboro, Dighton, Norton, Seekonk and more): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Berlin",
+   "state": "MA",
+   "town": "Berlin",
+   "county": "Worcester",
+   "score": 4.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "4 neighbors we read have it on agendas (Bolton, Boylston, Clinton, Hudson): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Brookfield",
+   "state": "MA",
+   "town": "Brookfield",
+   "county": "Worcester",
+   "score": 4.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "town action on battery storage",
+    "2 neighbors we read have it on agendas (North Brookfield, Sturbridge): battery storage, clean-energy permits, solar"
+   ]
+  },
+  {
+   "id": "MA:Dalton",
+   "state": "MA",
+   "town": "Dalton",
+   "county": "Berkshire",
+   "score": 4.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "4 neighbors we read have it on agendas (Hinsdale, Lanesborough, Pittsfield, Washington): battery storage, clean-energy permits, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Danvers",
+   "state": "MA",
+   "town": "Danvers",
+   "county": "Essex",
+   "score": 4.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "4 neighbors we read have it on agendas (Beverly, Middleton, Salem, Topsfield): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Framingham",
+   "state": "MA",
+   "town": "Framingham",
+   "county": "Middlesex",
+   "score": 4.0,
+   "takes": "unblock request to the agenda host",
+   "reason_code": "vendor_blocked",
+   "why": [
+    "4 neighbors we read have it on agendas (Ashland, Sherborn, Southborough, Sudbury): 40B housing, battery storage, clean-energy permits, data centers"
+   ]
+  },
+  {
+   "id": "MA:Granby",
+   "state": "MA",
+   "town": "Granby",
+   "county": "Hampshire",
+   "score": 4.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "4 neighbors we read have it on agendas (Amherst, Belchertown, Chicopee, South Hadley): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Medway",
+   "state": "MA",
+   "town": "Medway",
+   "county": "Norfolk",
+   "score": 4.0,
+   "takes": "our work: a reader for a browser-only page",
+   "reason_code": "js_only",
+   "why": [
+    "4 neighbors we read have it on agendas (Bellingham, Franklin, Holliston, Milford): 40B housing, battery storage, clean-energy permits, data centers, solar"
+   ]
+  },
+  {
+   "id": "MA:Norfolk",
+   "state": "MA",
+   "town": "Norfolk",
+   "county": "Norfolk",
+   "score": 4.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "4 neighbors we read have it on agendas (Franklin, Medfield, Walpole, Wrentham): 40B housing, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:North Andover",
+   "state": "MA",
+   "town": "North Andover",
+   "county": "Essex",
+   "score": 4.0,
+   "takes": "our work: a reader for its agenda system",
+   "reason_code": "no_adapter",
+   "why": [
+    "4 neighbors we read have it on agendas (Andover, Lawrence, Methuen, Middleton): 40B housing, clean-energy permits, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Palmer",
+   "state": "MA",
+   "town": "Palmer",
+   "county": "Hampden",
+   "score": 4.0,
+   "takes": "unblock request",
+   "reason_code": "robots_disallow_site",
+   "why": [
+    "4 neighbors we read have it on agendas (Belchertown, Monson, Ware, Wilbraham): data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Westminster",
+   "state": "MA",
+   "town": "Westminster",
+   "county": "Worcester",
+   "score": 4.0,
+   "takes": "our work: a reader for a browser-only page",
+   "reason_code": "js_only",
+   "why": [
+    "4 neighbors we read have it on agendas (Fitchburg, Gardner, Hubbardston, Leominster): battery storage, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Williamsburg",
+   "state": "MA",
+   "town": "Williamsburg",
+   "county": "Hampshire",
+   "score": 4.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "4 neighbors we read have it on agendas (Conway, Goshen, Northampton, Whately): clean-energy permits, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Barnstable",
+   "state": "MA",
+   "town": "Barnstable",
+   "county": "Barnstable",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "3 neighbors we read have it on agendas (Mashpee, Sandwich, Yarmouth): 40B housing, battery storage, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Bernardston",
+   "state": "MA",
+   "town": "Bernardston",
+   "county": "Franklin",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "3 neighbors we read have it on agendas (Gill, Leyden, Northfield): battery storage, clean-energy permits, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Chesterfield",
+   "state": "MA",
+   "town": "Chesterfield",
+   "county": "Hampshire",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "town action on battery storage",
+    "1 neighbors we read have it on agendas (Goshen): cell towers"
+   ]
+  },
+  {
+   "id": "MA:Douglas",
+   "state": "MA",
+   "town": "Douglas",
+   "county": "Worcester",
+   "score": 3.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "3 neighbors we read have it on agendas (Sutton, Uxbridge, Burrillville): 40B housing, battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "MA:Easton",
+   "state": "MA",
+   "town": "Easton",
+   "county": "Bristol",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "robots_disallow_site",
+   "why": [
+    "3 neighbors we read have it on agendas (Mansfield, Norton, Taunton): 40B housing, battery storage, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Foxborough",
+   "state": "MA",
+   "town": "Foxborough",
+   "county": "Norfolk",
+   "score": 3.0,
+   "takes": "our work: a reader for a browser-only page",
+   "reason_code": "js_only",
+   "why": [
+    "3 neighbors we read have it on agendas (Mansfield, Walpole, Wrentham): 40B housing, battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "MA:Lynn",
+   "state": "MA",
+   "town": "Lynn",
+   "county": "Essex",
+   "score": 3.0,
+   "takes": "our work: a reader for a browser-only page",
+   "reason_code": "js_only",
+   "why": [
+    "3 neighbors we read have it on agendas (Salem, Saugus, Swampscott): 40B housing, battery storage, data centers, solar"
+   ]
+  },
+  {
+   "id": "MA:Millis",
+   "state": "MA",
+   "town": "Millis",
+   "county": "Norfolk",
+   "score": 3.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "3 neighbors we read have it on agendas (Holliston, Medfield, Sherborn): 40B housing, clean-energy permits, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:New Bedford",
+   "state": "MA",
+   "town": "New Bedford",
+   "county": "Bristol",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "3 neighbors we read have it on agendas (Acushnet, Dartmouth, Freetown): 40B housing, data centers, solar"
+   ]
+  },
+  {
+   "id": "MA:New Braintree",
+   "state": "MA",
+   "town": "New Braintree",
+   "county": "Worcester",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "robots_disallow_site",
+   "why": [
+    "3 neighbors we read have it on agendas (North Brookfield, Oakham, Ware): battery storage, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Newburyport",
+   "state": "MA",
+   "town": "Newburyport",
+   "county": "Essex",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "3 neighbors we read have it on agendas (Amesbury, Newbury, Salisbury): 40B housing, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Newton",
+   "state": "MA",
+   "town": "Newton",
+   "county": "Middlesex",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "waf_block",
+   "why": [
+    "3 neighbors we read have it on agendas (Boston, Waltham, Wellesley): battery storage, clean-energy permits, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Petersham",
+   "state": "MA",
+   "town": "Petersham",
+   "county": "Worcester",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "town action on battery storage and solar",
+    "1 neighbors we read have it on agendas (Ware): moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Southampton",
+   "state": "MA",
+   "town": "Southampton",
+   "county": "Hampshire",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "3 neighbors we read have it on agendas (Easthampton, Holyoke, Westfield): battery storage, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:West Springfield",
+   "state": "MA",
+   "town": "West Springfield",
+   "county": "Hampden",
+   "score": 3.0,
+   "takes": "our work: a reader for its agenda system",
+   "reason_code": "no_adapter",
+   "why": [
+    "3 neighbors we read have it on agendas (Chicopee, Holyoke, Westfield): battery storage, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Westwood",
+   "state": "MA",
+   "town": "Westwood",
+   "county": "Norfolk",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "waf_block",
+   "why": [
+    "3 neighbors we read have it on agendas (Dover, Norwood, Walpole): 40B housing, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Wilmington",
+   "state": "MA",
+   "town": "Wilmington",
+   "county": "Middlesex",
+   "score": 3.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "3 neighbors we read have it on agendas (Andover, Billerica, Tewksbury): 40B housing, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Worthington",
+   "state": "MA",
+   "town": "Worthington",
+   "county": "Hampshire",
+   "score": 3.0,
+   "takes": "find where it posts agendas",
+   "reason_code": "no_agenda_listing_found",
+   "why": [
+    "town action on battery storage and solar",
+    "1 neighbors we read have it on agendas (Middlefield): battery storage, clean-energy permits, solar"
+   ]
+  },
+  {
+   "id": "NY:Philipstown",
+   "state": "NY",
+   "town": "Philipstown",
+   "county": null,
+   "score": 3.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "3 neighbors we read have it on agendas (Cortlandt, Kent, Stony Point): moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Ashburnham",
+   "state": "MA",
+   "town": "Ashburnham",
+   "county": "Worcester",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "2 neighbors we read have it on agendas (Fitchburg, Gardner): battery storage, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Ashfield",
+   "state": "MA",
+   "town": "Ashfield",
+   "county": "Franklin",
+   "score": 2.0,
+   "takes": "our work: a reader for a browser-only page",
+   "reason_code": "js_only",
+   "why": [
+    "2 neighbors we read have it on agendas (Conway, Goshen): solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Barre",
+   "state": "MA",
+   "town": "Barre",
+   "county": "Worcester",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "robots_disallow_site",
+   "why": [
+    "2 neighbors we read have it on agendas (Hubbardston, Oakham): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "MA:Brimfield",
+   "state": "MA",
+   "town": "Brimfield",
+   "county": "Hampden",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "2 neighbors we read have it on agendas (Monson, Sturbridge): battery storage, clean-energy permits, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Cambridge",
+   "state": "MA",
+   "town": "Cambridge",
+   "county": "Middlesex",
+   "score": 2.0,
+   "takes": "unblock request to the agenda host",
+   "reason_code": "vendor_blocked",
+   "why": [
+    "2 neighbors we read have it on agendas (Boston, Somerville): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "MA:Cohasset",
+   "state": "MA",
+   "town": "Cohasset",
+   "county": "Norfolk",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "2 neighbors we read have it on agendas (Hingham, Scituate): 40B housing, solar"
+   ]
+  },
+  {
+   "id": "MA:Everett",
+   "state": "MA",
+   "town": "Everett",
+   "county": "Middlesex",
+   "score": 2.0,
+   "takes": "our work: a reader for its agenda system",
+   "reason_code": "no_adapter",
+   "why": [
+    "2 neighbors we read have it on agendas (Boston, Somerville): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "MA:Fairhaven",
+   "state": "MA",
+   "town": "Fairhaven",
+   "county": "Bristol",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "waf_block",
+   "why": [
+    "2 neighbors we read have it on agendas (Acushnet, Mattapoisett): clean-energy permits, solar"
+   ]
+  },
+  {
+   "id": "MA:Hancock",
+   "state": "MA",
+   "town": "Hancock",
+   "county": "Berkshire",
+   "score": 2.0,
+   "takes": "find where it posts agendas",
+   "reason_code": "no_agenda_listing_found",
+   "why": [
+    "2 neighbors we read have it on agendas (Lanesborough, Pittsfield): battery storage, clean-energy permits, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Hanover",
+   "state": "MA",
+   "town": "Hanover",
+   "county": "Plymouth",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "2 neighbors we read have it on agendas (Norwell, Pembroke): battery storage, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Harwich",
+   "state": "MA",
+   "town": "Harwich",
+   "county": "Barnstable",
+   "score": 2.0,
+   "takes": "ask for a daily visit",
+   "reason_code": "crawl_delay_exceeds_cap",
+   "why": [
+    "2 neighbors we read have it on agendas (Brewster, Orleans): 40B housing, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Marblehead",
+   "state": "MA",
+   "town": "Marblehead",
+   "county": "Essex",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "waf_block",
+   "why": [
+    "2 neighbors we read have it on agendas (Salem, Swampscott): 40B housing, battery storage, data centers, solar"
+   ]
+  },
+  {
+   "id": "MA:North Reading",
+   "state": "MA",
+   "town": "North Reading",
+   "county": "Middlesex",
+   "score": 2.0,
+   "takes": "our work: a reader for a browser-only page",
+   "reason_code": "js_only",
+   "why": [
+    "2 neighbors we read have it on agendas (Andover, Middleton): 40B housing, clean-energy permits, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Northborough",
+   "state": "MA",
+   "town": "Northborough",
+   "county": "Worcester",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "2 neighbors we read have it on agendas (Boylston, Southborough): 40B housing, battery storage, clean-energy permits, data centers"
+   ]
+  },
+  {
+   "id": "MA:Orange",
+   "state": "MA",
+   "town": "Orange",
+   "county": "Franklin",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "2 neighbors we read have it on agendas (Erving, Wendell): 40B housing, battery storage, clean-energy permits, data centers, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Peabody",
+   "state": "MA",
+   "town": "Peabody",
+   "county": "Essex",
+   "score": 2.0,
+   "takes": "find where it posts agendas",
+   "reason_code": "no_agenda_listing_found",
+   "why": [
+    "2 neighbors we read have it on agendas (Middleton, Salem): 40B housing, battery storage, clean-energy permits, data centers, solar"
+   ]
+  },
+  {
+   "id": "MA:Pelham",
+   "state": "MA",
+   "town": "Pelham",
+   "county": "Hampshire",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "2 neighbors we read have it on agendas (Amherst, Belchertown): 40B housing, battery storage, clean-energy permits, data centers, solar"
+   ]
+  },
+  {
+   "id": "MA:Plainfield",
+   "state": "MA",
+   "town": "Plainfield",
+   "county": "Hampshire",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "town action on battery storage and solar"
+   ]
+  },
+  {
+   "id": "MA:Raynham",
+   "state": "MA",
+   "town": "Raynham",
+   "county": "Bristol",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "2 neighbors we read have it on agendas (Bridgewater, Taunton): data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Revere",
+   "state": "MA",
+   "town": "Revere",
+   "county": "Suffolk",
+   "score": 2.0,
+   "takes": "unblock request to the agenda host",
+   "reason_code": "vendor_blocked",
+   "why": [
+    "2 neighbors we read have it on agendas (Boston, Saugus): 40B housing, data centers"
+   ]
+  },
+  {
+   "id": "MA:Russell",
+   "state": "MA",
+   "town": "Russell",
+   "county": "Hampden",
+   "score": 2.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "2 neighbors we read have it on agendas (Blandford, Westfield): battery storage, clean-energy permits, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Sheffield",
+   "state": "MA",
+   "town": "Sheffield",
+   "county": "Berkshire",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "2 neighbors we read have it on agendas (Egremont, Great Barrington): battery storage, clean-energy permits, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Stockbridge",
+   "state": "MA",
+   "town": "Stockbridge",
+   "county": "Berkshire",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "2 neighbors we read have it on agendas (Great Barrington, West Stockbridge): battery storage, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Warwick",
+   "state": "MA",
+   "town": "Warwick",
+   "county": "Franklin",
+   "score": 2.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "2 neighbors we read have it on agendas (Erving, Northfield): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Watertown",
+   "state": "MA",
+   "town": "Watertown",
+   "county": "Middlesex",
+   "score": 2.0,
+   "takes": "ask for a daily visit",
+   "reason_code": "crawl_delay_exceeds_cap",
+   "why": [
+    "2 neighbors we read have it on agendas (Boston, Waltham): data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:West Brookfield",
+   "state": "MA",
+   "town": "West Brookfield",
+   "county": "Worcester",
+   "score": 2.0,
+   "takes": "our work: a reader for a browser-only page",
+   "reason_code": "js_only",
+   "why": [
+    "2 neighbors we read have it on agendas (North Brookfield, Ware): moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Westhampton",
+   "state": "MA",
+   "town": "Westhampton",
+   "county": "Hampshire",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "robots_disallow_site",
+   "why": [
+    "2 neighbors we read have it on agendas (Easthampton, Northampton): battery storage, clean-energy permits, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Worcester",
+   "state": "MA",
+   "town": "Worcester",
+   "county": "Worcester",
+   "score": 2.0,
+   "takes": "unblock request to the agenda host",
+   "reason_code": "vendor_robots_disallow",
+   "why": [
+    "2 neighbors we read have it on agendas (Auburn, Millbury): clean-energy permits, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "NY:Ballston",
+   "state": "NY",
+   "town": "Ballston",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Clifton Park, Milton): solar"
+   ]
+  },
+  {
+   "id": "NY:Greenfield",
+   "state": "NY",
+   "town": "Greenfield",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Milton, Wilton): solar"
+   ]
+  },
+  {
+   "id": "NY:Haverstraw",
+   "state": "NY",
+   "town": "Haverstraw",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Cortlandt, Stony Point): moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Hillsdale",
+   "state": "NY",
+   "town": "Hillsdale",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Egremont, Claverack): battery storage, clean-energy permits, solar"
+   ]
+  },
+  {
+   "id": "NY:Huntington",
+   "state": "NY",
+   "town": "Huntington",
+   "county": "Suffolk",
+   "score": 2.0,
+   "takes": "ask for a daily visit",
+   "reason_code": "crawl_delay_exceeds_cap",
+   "why": [
+    "2 neighbors we read have it on agendas (Babylon, Oyster Bay): battery storage, solar, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Malta",
+   "state": "NY",
+   "town": "Malta",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Clifton Park, Milton): solar"
+   ]
+  },
+  {
+   "id": "NY:New Castle",
+   "state": "NY",
+   "town": "New Castle",
+   "county": "Westchester",
+   "score": 2.0,
+   "takes": "unblock request to the agenda host",
+   "reason_code": "vendor_robots_disallow",
+   "why": [
+    "2 neighbors we read have it on agendas (Bedford, Cortlandt): battery storage, moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Peekskill",
+   "state": "NY",
+   "town": "Peekskill",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Cortlandt, Stony Point): moratoriums, solar, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Salina",
+   "state": "NY",
+   "town": "Salina",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Clay, Lysander): battery storage, data centers, moratoriums, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Saratoga Springs",
+   "state": "NY",
+   "town": "Saratoga Springs",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Milton, Wilton): solar"
+   ]
+  },
+  {
+   "id": "NY:Schroeppel",
+   "state": "NY",
+   "town": "Schroeppel",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Clay, Lysander): battery storage, data centers, moratoriums, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Abington",
+   "state": "MA",
+   "town": "Abington",
+   "county": "Plymouth",
+   "score": 1.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "1 neighbors we read have it on agendas (Weymouth): data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "MA:Arlington",
+   "state": "MA",
+   "town": "Arlington",
+   "county": "Middlesex",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "waf_block",
+   "why": [
+    "1 neighbors we read have it on agendas (Somerville): battery storage, moratoriums"
+   ]
+  },
+  {
+   "id": "MA:Brookline",
+   "state": "MA",
+   "town": "Brookline",
+   "county": "Norfolk",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Boston): data centers"
+   ]
+  },
+  {
+   "id": "MA:Buckland",
+   "state": "MA",
+   "town": "Buckland",
+   "county": "Franklin",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Conway): solar"
+   ]
+  },
+  {
+   "id": "MA:Chatham",
+   "state": "MA",
+   "town": "Chatham",
+   "county": "Barnstable",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Orleans): 40B housing"
+   ]
+  },
+  {
+   "id": "MA:Chelsea",
+   "state": "MA",
+   "town": "Chelsea",
+   "county": "Suffolk",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Boston): data centers"
+   ]
+  },
+  {
+   "id": "MA:Cheshire",
+   "state": "MA",
+   "town": "Cheshire",
+   "county": "Berkshire",
+   "score": 1.0,
+   "takes": "our work: a reader for a browser-only page",
+   "reason_code": "js_only",
+   "why": [
+    "1 neighbors we read have it on agendas (Lanesborough): clean-energy permits"
+   ]
+  },
+  {
+   "id": "MA:Cummington",
+   "state": "MA",
+   "town": "Cummington",
+   "county": "Hampshire",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "robots_disallow_site",
+   "why": [
+    "1 neighbors we read have it on agendas (Goshen): cell towers"
+   ]
+  },
+  {
+   "id": "MA:Dedham",
+   "state": "MA",
+   "town": "Dedham",
+   "county": "Norfolk",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "waf_block",
+   "why": [
+    "1 neighbors we read have it on agendas (Boston): data centers"
+   ]
+  },
+  {
+   "id": "MA:Edgartown",
+   "state": "MA",
+   "town": "Edgartown",
+   "county": "Dukes",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "waf_block",
+   "why": [
+    "1 neighbors we read have it on agendas (Oak Bluffs): solar"
+   ]
+  },
+  {
+   "id": "MA:Florida",
+   "state": "MA",
+   "town": "Florida",
+   "county": "Berkshire",
+   "score": 1.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "1 neighbors we read have it on agendas (Rowe): battery storage, solar"
+   ]
+  },
+  {
+   "id": "MA:Georgetown",
+   "state": "MA",
+   "town": "Georgetown",
+   "county": "Essex",
+   "score": 1.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "1 neighbors we read have it on agendas (Newbury): solar"
+   ]
+  },
+  {
+   "id": "MA:Groveland",
+   "state": "MA",
+   "town": "Groveland",
+   "county": "Essex",
+   "score": 1.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "1 neighbors we read have it on agendas (Newbury): solar"
+   ]
+  },
+  {
+   "id": "MA:Hardwick",
+   "state": "MA",
+   "town": "Hardwick",
+   "county": "Worcester",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Ware): moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Holland",
+   "state": "MA",
+   "town": "Holland",
+   "county": "Hampden",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Sturbridge): battery storage, clean-energy permits, solar"
+   ]
+  },
+  {
+   "id": "MA:Huntington",
+   "state": "MA",
+   "town": "Huntington",
+   "county": "Hampshire",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Blandford): battery storage, clean-energy permits, data centers, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "MA:Merrimac",
+   "state": "MA",
+   "town": "Merrimac",
+   "county": "Essex",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "waf_block",
+   "why": [
+    "1 neighbors we read have it on agendas (Amesbury): 40B housing"
+   ]
+  },
+  {
+   "id": "MA:Millville",
+   "state": "MA",
+   "town": "Millville",
+   "county": "Worcester",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Uxbridge): 40B housing, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "MA:Monroe",
+   "state": "MA",
+   "town": "Monroe",
+   "county": "Franklin",
+   "score": 1.0,
+   "takes": "find where it posts agendas",
+   "reason_code": "no_agenda_listing_found",
+   "why": [
+    "1 neighbors we read have it on agendas (Rowe): battery storage, solar"
+   ]
+  },
+  {
+   "id": "MA:Monterey",
+   "state": "MA",
+   "town": "Monterey",
+   "county": "Berkshire",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Great Barrington): battery storage, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Montgomery",
+   "state": "MA",
+   "town": "Montgomery",
+   "county": "Hampden",
+   "score": 1.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "1 neighbors we read have it on agendas (Westfield): battery storage, data centers"
+   ]
+  },
+  {
+   "id": "MA:Mount Washington",
+   "state": "MA",
+   "town": "Mount Washington",
+   "county": "Berkshire",
+   "score": 1.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "1 neighbors we read have it on agendas (Egremont): battery storage, clean-energy permits, solar"
+   ]
+  },
+  {
+   "id": "MA:New Ashford",
+   "state": "MA",
+   "town": "New Ashford",
+   "county": "Berkshire",
+   "score": 1.0,
+   "takes": "our work: a reader for its agenda system",
+   "reason_code": "no_adapter",
+   "why": [
+    "1 neighbors we read have it on agendas (Lanesborough): clean-energy permits"
+   ]
+  },
+  {
+   "id": "MA:Phillipston",
+   "state": "MA",
+   "town": "Phillipston",
+   "county": "Worcester",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Hubbardston): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "MA:Reading",
+   "state": "MA",
+   "town": "Reading",
+   "county": "Middlesex",
+   "score": 1.0,
+   "takes": "our work: a reader for its agenda system",
+   "reason_code": "no_adapter",
+   "why": [
+    "1 neighbors we read have it on agendas (Wakefield): data centers"
+   ]
+  },
+  {
+   "id": "MA:Rowley",
+   "state": "MA",
+   "town": "Rowley",
+   "county": "Essex",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Newbury): solar"
+   ]
+  },
+  {
+   "id": "MA:Stoneham",
+   "state": "MA",
+   "town": "Stoneham",
+   "county": "Middlesex",
+   "score": 1.0,
+   "takes": "find dated agendas",
+   "reason_code": "agendas_stale_or_undated",
+   "why": [
+    "1 neighbors we read have it on agendas (Wakefield): data centers"
+   ]
+  },
+  {
+   "id": "MA:West Boylston",
+   "state": "MA",
+   "town": "West Boylston",
+   "county": "Worcester",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Boylston): battery storage, clean-energy permits, data centers"
+   ]
+  },
+  {
+   "id": "MA:Windsor",
+   "state": "MA",
+   "town": "Windsor",
+   "county": "Berkshire",
+   "score": 1.0,
+   "takes": "our work: a reader for its agenda system",
+   "reason_code": "no_adapter",
+   "why": [
+    "1 neighbors we read have it on agendas (Hinsdale): battery storage"
+   ]
+  },
+  {
+   "id": "NY:Amenia",
+   "state": "NY",
+   "town": "Amenia",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Stanford): battery storage, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Austerlitz",
+   "state": "NY",
+   "town": "Austerlitz",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (West Stockbridge): solar"
+   ]
+  },
+  {
+   "id": "NY:Benton",
+   "state": "NY",
+   "town": "Benton",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Geneva): battery storage, solar"
+   ]
+  },
+  {
+   "id": "NY:Bethlehem",
+   "state": "NY",
+   "town": "Bethlehem",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (East Greenbush): battery storage"
+   ]
+  },
+  {
+   "id": "NY:Brighton (Monroe County)",
+   "state": "NY",
+   "town": "Brighton (Monroe County)",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Penfield): solar"
+   ]
+  },
+  {
+   "id": "NY:Camillus",
+   "state": "NY",
+   "town": "Camillus",
+   "county": "Onondaga",
+   "score": 1.0,
+   "takes": "look into it",
+   "reason_code": "no_agendas_online",
+   "why": [
+    "1 neighbors we read have it on agendas (Marcellus): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Canaan",
+   "state": "NY",
+   "town": "Canaan",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (West Stockbridge): solar"
+   ]
+  },
+  {
+   "id": "NY:Carmel",
+   "state": "NY",
+   "town": "Carmel",
+   "county": "Putnam",
+   "score": 1.0,
+   "takes": "look into it",
+   "reason_code": "tls_error",
+   "why": [
+    "1 neighbors we read have it on agendas (Kent): solar, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Cato",
+   "state": "NY",
+   "town": "Cato",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Lysander): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Charlton",
+   "state": "NY",
+   "town": "Charlton",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Milton): solar"
+   ]
+  },
+  {
+   "id": "NY:Cicero",
+   "state": "NY",
+   "town": "Cicero",
+   "county": "Onondaga",
+   "score": 1.0,
+   "takes": "ask for a daily visit",
+   "reason_code": "crawl_delay_exceeds_cap",
+   "why": [
+    "1 neighbors we read have it on agendas (Clay): battery storage, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Clarkstown",
+   "state": "NY",
+   "town": "Clarkstown",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Cortlandt): solar, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Clinton (Dutchess County)",
+   "state": "NY",
+   "town": "Clinton (Dutchess County)",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Stanford): battery storage, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Colonie",
+   "state": "NY",
+   "town": "Colonie",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Clifton Park): solar"
+   ]
+  },
+  {
+   "id": "NY:Copake",
+   "state": "NY",
+   "town": "Copake",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Egremont): battery storage, clean-energy permits, solar"
+   ]
+  },
+  {
+   "id": "NY:Elbridge",
+   "state": "NY",
+   "town": "Elbridge",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Lysander): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Fayette",
+   "state": "NY",
+   "town": "Fayette",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Geneva): battery storage, solar"
+   ]
+  },
+  {
+   "id": "NY:Galway",
+   "state": "NY",
+   "town": "Galway",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Milton): solar"
+   ]
+  },
+  {
+   "id": "NY:Geddes",
+   "state": "NY",
+   "town": "Geddes",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Lysander): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Geneva (city)",
+   "state": "NY",
+   "town": "Geneva (city)",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Geneva): battery storage, solar"
+   ]
+  },
+  {
+   "id": "NY:Ghent",
+   "state": "NY",
+   "town": "Ghent",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Claverack): solar"
+   ]
+  },
+  {
+   "id": "NY:Glen Cove",
+   "state": "NY",
+   "town": "Glen Cove",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Oyster Bay): solar, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Granby",
+   "state": "NY",
+   "town": "Granby",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Lysander): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Greenport",
+   "state": "NY",
+   "town": "Greenport",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Claverack): solar"
+   ]
+  },
+  {
+   "id": "NY:Halfmoon",
+   "state": "NY",
+   "town": "Halfmoon",
+   "county": "Saratoga",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Clifton Park): solar"
+   ]
+  },
+  {
+   "id": "NY:Hastings",
+   "state": "NY",
+   "town": "Hastings",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Clay): battery storage, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Highlands",
+   "state": "NY",
+   "town": "Highlands",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Stony Point): moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Ira",
+   "state": "NY",
+   "town": "Ira",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Lysander): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Irondequoit",
+   "state": "NY",
+   "town": "Irondequoit",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Penfield): solar"
+   ]
+  },
+  {
+   "id": "NY:Islip",
+   "state": "NY",
+   "town": "Islip",
+   "county": "Suffolk",
+   "score": 1.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "1 neighbors we read have it on agendas (Babylon): battery storage, solar"
+   ]
+  },
+  {
+   "id": "NY:Lewisboro",
+   "state": "NY",
+   "town": "Lewisboro",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Bedford): battery storage, moratoriums, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Livingston",
+   "state": "NY",
+   "town": "Livingston",
+   "county": "Columbia",
+   "score": 1.0,
+   "takes": "look into it",
+   "reason_code": "undecodable_response",
+   "why": [
+    "1 neighbors we read have it on agendas (Claverack): solar"
+   ]
+  },
+  {
+   "id": "NY:Macedon",
+   "state": "NY",
+   "town": "Macedon",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Penfield): solar"
+   ]
+  },
+  {
+   "id": "NY:Milan",
+   "state": "NY",
+   "town": "Milan",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Stanford): battery storage, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Moreau",
+   "state": "NY",
+   "town": "Moreau",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Wilton): solar"
+   ]
+  },
+  {
+   "id": "NY:Mount Kisco",
+   "state": "NY",
+   "town": "Mount Kisco",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Bedford): battery storage, moratoriums, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Niskayuna",
+   "state": "NY",
+   "town": "Niskayuna",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Clifton Park): solar"
+   ]
+  },
+  {
+   "id": "NY:North Castle",
+   "state": "NY",
+   "town": "North Castle",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Bedford): battery storage, moratoriums, cell towers"
+   ]
+  },
+  {
+   "id": "NY:North East",
+   "state": "NY",
+   "town": "North East",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Stanford): battery storage, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:North Greenbush",
+   "state": "NY",
+   "town": "North Greenbush",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (East Greenbush): battery storage"
+   ]
+  },
+  {
+   "id": "NY:Northumberland",
+   "state": "NY",
+   "town": "Northumberland",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Wilton): solar"
+   ]
+  },
+  {
+   "id": "NY:Onondaga",
+   "state": "NY",
+   "town": "Onondaga",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Marcellus): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Ossining",
+   "state": "NY",
+   "town": "Ossining",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Cortlandt): solar, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Otisco",
+   "state": "NY",
+   "town": "Otisco",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Marcellus): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Patterson",
+   "state": "NY",
+   "town": "Patterson",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Kent): solar, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Pawling",
+   "state": "NY",
+   "town": "Pawling",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Kent): solar, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Perinton",
+   "state": "NY",
+   "town": "Perinton",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Penfield): solar"
+   ]
+  },
+  {
+   "id": "NY:Phelps",
+   "state": "NY",
+   "town": "Phelps",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Geneva): battery storage, solar"
+   ]
+  },
+  {
+   "id": "NY:Pine Plains",
+   "state": "NY",
+   "town": "Pine Plains",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Stanford): battery storage, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Pittsford",
+   "state": "NY",
+   "town": "Pittsford",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Penfield): solar"
+   ]
+  },
+  {
+   "id": "NY:Pound Ridge",
+   "state": "NY",
+   "town": "Pound Ridge",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Bedford): battery storage, moratoriums, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Rensselaer",
+   "state": "NY",
+   "town": "Rensselaer",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (East Greenbush): battery storage"
+   ]
+  },
+  {
+   "id": "NY:Riverhead",
+   "state": "NY",
+   "town": "Riverhead",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Southold): cell towers"
+   ]
+  },
+  {
+   "id": "NY:Sand Lake",
+   "state": "NY",
+   "town": "Sand Lake",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (East Greenbush): battery storage"
+   ]
+  },
+  {
+   "id": "NY:Saratoga",
+   "state": "NY",
+   "town": "Saratoga",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Wilton): solar"
+   ]
+  },
+  {
+   "id": "NY:Schodack",
+   "state": "NY",
+   "town": "Schodack",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (East Greenbush): battery storage"
+   ]
+  },
+  {
+   "id": "NY:Seneca",
+   "state": "NY",
+   "town": "Seneca",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Geneva): battery storage, solar"
+   ]
+  },
+  {
+   "id": "NY:Shelter Island",
+   "state": "NY",
+   "town": "Shelter Island",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Southold): cell towers"
+   ]
+  },
+  {
+   "id": "NY:Skaneateles",
+   "state": "NY",
+   "town": "Skaneateles",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Marcellus): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Somers",
+   "state": "NY",
+   "town": "Somers",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Bedford): battery storage, moratoriums, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Southampton",
+   "state": "NY",
+   "town": "Southampton",
+   "county": "Suffolk",
+   "score": 1.0,
+   "takes": "unblock request to the agenda host",
+   "reason_code": "vendor_blocked",
+   "why": [
+    "1 neighbors we read have it on agendas (Southold): cell towers"
+   ]
+  },
+  {
+   "id": "NY:Spafford",
+   "state": "NY",
+   "town": "Spafford",
+   "county": "Onondaga",
+   "score": 1.0,
+   "takes": "our work: a reader for a browser-only page",
+   "reason_code": "js_only",
+   "why": [
+    "1 neighbors we read have it on agendas (Marcellus): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Stockport",
+   "state": "NY",
+   "town": "Stockport",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Claverack): solar"
+   ]
+  },
+  {
+   "id": "NY:Taghkanic",
+   "state": "NY",
+   "town": "Taghkanic",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Claverack): solar"
+   ]
+  },
+  {
+   "id": "NY:Tuxedo",
+   "state": "NY",
+   "town": "Tuxedo",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Stony Point): moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Van Buren",
+   "state": "NY",
+   "town": "Van Buren",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Lysander): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Varick",
+   "state": "NY",
+   "town": "Varick",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Geneva): battery storage, solar"
+   ]
+  },
+  {
+   "id": "NY:Walworth",
+   "state": "NY",
+   "town": "Walworth",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Penfield): solar"
+   ]
+  },
+  {
+   "id": "NY:Washington",
+   "state": "NY",
+   "town": "Washington",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Stanford): battery storage, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Waterloo",
+   "state": "NY",
+   "town": "Waterloo",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Geneva): battery storage, solar"
+   ]
+  },
+  {
+   "id": "NY:Webster",
+   "state": "NY",
+   "town": "Webster",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Penfield): solar"
+   ]
+  },
+  {
+   "id": "NY:Woodbury",
+   "state": "NY",
+   "town": "Woodbury",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Stony Point): moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Yorktown",
+   "state": "NY",
+   "town": "Yorktown",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Cortlandt): solar, cell towers"
+   ]
+  }
+ ],
+ "states": [
+  {
+   "state": "CT",
+   "stories": 2,
+   "topics": {
+    "wind": 2
+   }
+  },
+  {
+   "state": "NH",
+   "stories": 1,
+   "topics": {
+    "data_center": 1
+   }
+  }
+ ],
+ "weights": {
+  "news": 3.0,
+  "wave_per_neighbor": 1.0,
+  "ledger": 4.0,
+  "tracker": 2.0
+ }
+}
