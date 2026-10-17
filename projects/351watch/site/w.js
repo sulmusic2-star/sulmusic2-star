@@ -219,7 +219,7 @@
   const placeText = (p) => (p === 'online' ? 'Online meeting' : p.replace(/ or online$/, ', or join online'));
   const whenText = (m) => (m.date ? dayLabel(m.date) + (m.time ? `, ${m.time}` : '') : '');
   const SPEAK = LINESPEAK();
-  function LINESPEAK() { return (LINES && LINES.speak) || 'Public hearing: anyone can attend and ask to speak. The agenda prints no other rule.'; }
+  function LINESPEAK() { return (LINES && LINES.speak) || 'Public hearing: anyone can attend and ask to speak.'; }
   const factsText = (e) => {
     const parts = [tagText(e.topics), ...(e.facts || []).map(String)];
     const seen = new Set();

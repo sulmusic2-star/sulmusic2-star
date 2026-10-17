@@ -947,3 +947,37 @@ details.disclose[open] { padding-bottom: var(--s4); }
 /* the menu says "Biggest stories" on a wide screen and "Stories" on a phone */
 .nav-short { display: none; }
 @media (max-width: 480px) { .nav-long { display: none; } .nav-short { display: inline; } }
+
+/* round 11 (style director): one box recipe, 16 px inside on every side, in both views */
+.meeting, .compact .meeting { padding: var(--s4); }
+.meeting > :last-child, .meeting .lines > li:last-child, .meeting .lines > li:last-child > :last-child, .meet-src:last-child { margin-bottom: 0; }
+.meeting .lines { margin-bottom: 0; }
+/* a town's neighbors: one per line, the count in grey after the name */
+.next-door { max-width: none; }
+.next-door-head { font-size: var(--t-h3); margin: 0 0 var(--s2); }
+.next-door-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: var(--s1) var(--s4); }
+.next-door-list li { color: var(--muted); font-size: var(--t-sm); }
+.next-door-list a { color: var(--ink); font-weight: 600; padding: 6px 0; display: inline-block; }
+.rail .next-door-list { grid-template-columns: 1fr; }
+/* "Also ahead": the same boxes as a list of stories */
+.continued-list { list-style: none; padding: 0; }
+.continued-list li { max-width: none; margin: 0; }
+.continued-list .row + .row { margin-top: var(--s2); }
+/* /towns: "2 meetings" in grey beside the town, no badge */
+.town-cols .n { border: 0; padding: 0; border-radius: 0; font-size: var(--t-sm); line-height: inherit; }
+/* a county's name never breaks; its count follows on the same line and wraps under it only when it must */
+.county > summary { display: block; padding: 10px 0; }
+.county > summary .sub-count { display: inline; margin-left: var(--s2); padding: 0; white-space: normal; }
+/* the ledger: dates and "How sure" in one list, sources one per line */
+.ledger-dates { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--s1) var(--s4); }
+.ledger-dates dt { color: var(--muted); }
+.ledger-dates dd { margin: 0; }
+.ledger-srcs { list-style: none; margin: 0 0 var(--s3); padding: 0; font-size: var(--t-sm); }
+.ledger-srcs li + li { margin-top: var(--s1); }
+.ledger-why { margin: 0 0 var(--s3); font-size: var(--t-sm); }
+/* a button is as wide as its words */
+.ticket .btn, .actions .btn, .town-actions .btn { width: auto; display: inline-flex; }
+.rec-links { align-items: center; }
+.rec-links .link-btn { min-height: 0; padding: 6px 0; }
+.ticket .actions .btn { width: auto; }
+.line-say .stage { white-space: normal; }

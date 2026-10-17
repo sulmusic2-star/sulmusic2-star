@@ -243,12 +243,11 @@
       const n = results.length;
       let msg = !used ? `${plural(n, "agenda", "agendas")}${describe(p)}.`
         : typos.length ? `No agendas contain ${typos.map(quoted).join(" or ")}. Showing ${plural(n, "result", "results")} for ${quoted(used)}${describe(p)} instead.`
-        : `${plural(n, "agenda matches", "agendas match")} ${quoted(used)}${describe(p)}.`;
-      if (upcoming && !narrowed) msg = `${plural(n, "agenda", "agendas")} for upcoming meetings, soonest first.`;
-      else if (upcoming) {
-        msg += soon ? ` ${plural(soon, "upcoming meeting is", "upcoming meetings are")} listed first.`
-          : " None of them is for an upcoming meeting.";
-      }
+        : `${plural(n, "agenda", "agendas")} with ${quoted(used)}${describe(p)}`;
+      if (upcoming && !narrowed) msg = `${plural(n, "agenda", "agendas")} for upcoming meetings, soonest first`;
+      else if (upcoming) msg = msg.replace(/\.$/, "") + (soon ? ` · ${soon} coming up, shown first` : " · none coming up");
+      const examples = document.querySelector(".search-examples");
+      if (examples) examples.hidden = Boolean(q);
       pending = results;
       await renderMore(gen, false);
       if (gen === generation) say(msg);

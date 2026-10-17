@@ -257,6 +257,24 @@ function setupTrackerFilter() {
 
 // <div class="filterbar" data-filters="G"> with <select data-key="k"> filters rows of every
 // table[data-filter-group="G"] by their data-k attribute; [data-search] matches row text.
+// a CSV file as its records (a quoted field may hold a comma, a quote or a line break), each kept as written
+function csvRecords(text) {
+  const out = [];
+  let start = 0;
+  let quoted = false;
+  for (let i = 0; i < text.length; i += 1) {
+    const c = text[i];
+    if (c === '"') quoted = !quoted;
+    else if (!quoted && (c === '\n' || c === '\r')) {
+      if (i > start) out.push(text.slice(start, i));
+      if (c === '\r' && text[i + 1] === '\n') i += 1;
+      start = i + 1;
+    }
+  }
+  if (start < text.length) out.push(text.slice(start));
+  return out;
+}
+
 function setupGenericFilters() {
   for (const bar of document.querySelectorAll('[data-filters]')) {
     const group = bar.dataset.filters;
@@ -273,6 +291,29 @@ function setupGenericFilters() {
     }
     if (search && params.get('q')) search.value = params.get('q');
     const head = document.querySelector(`[data-count-for="${group}"]`);
+    const home = document.getElementById(group);
+    const csv = document.querySelector(`a[data-csv-for="${group}"]`);
+    if (csv) {
+      // with a filter on, the download is the rows shown: the full file, cut to the rows' line numbers
+      csv.addEventListener('click', async (ev) => {
+        const keep = rows.filter((r) => !r.hidden && r.dataset.csv).map((r) => Number(r.dataset.csv));
+        if (keep.length === rows.filter((r) => r.dataset.csv).length) return;
+        ev.preventDefault();
+        try {
+          const all = await (await fetch(csv.getAttribute('href'))).text();
+          const lines = csvRecords(all);
+          const out = [lines[0], ...keep.sort((a, b) => a - b).map((i) => lines[i + 1])].join('\r\n') + '\r\n';
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(new Blob([out], { type: 'text/csv' }));
+          a.download = 'rulings-filtered.csv';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        } catch (e) {
+          location.href = csv.getAttribute('href');
+        }
+      });
+    }
     const box = bar.closest('details');
     if (box && (selects.some((s) => s.value) || (search && search.value))) box.open = true;
 
@@ -285,11 +326,26 @@ function setupGenericFilters() {
         if (match) shown += 1;
       });
       const on = selects.some((s) => s.value) || (search && search.value.trim());
-      const said = on ? (shown ? `${shown} of ${rows.length} shown` : `None of the ${rows.length} match. Try fewer words or another filter.`) : '';
+      // the count is for the main list (the Attorney General's rulings), not the court rulings filtered with it
+      const own = rows.filter((r) => !home || home.contains(r));
+      const ownShown = own.filter((r) => !r.hidden).length;
+      const said = on ? (ownShown ? `${ownShown} of ${own.length} shown` : `None of the ${own.length} match. Try fewer words or another filter.`) : '';
       if (count) count.textContent = said;
       if (head) head.textContent = said;
-      // a year with no ruling left under it goes
-      for (const y of years) y.hidden = !y.querySelector('.rec:not([hidden])');
+      // a year with no ruling left under it goes; the others count what is left
+      for (const y of years) {
+        const left = y.querySelectorAll('.rec:not([hidden])').length;
+        y.hidden = !left;
+        const sub = y.querySelector('.sub-count');
+        if (sub) {
+          sub.dataset.all = sub.dataset.all || sub.textContent;
+          sub.textContent = on ? `${left} of ${y.querySelectorAll('.rec').length} rulings` : sub.dataset.all;
+        }
+      }
+      if (csv) {
+        csv.dataset.all = csv.dataset.all || csv.textContent;
+        csv.textContent = on && ownShown ? 'Download what’s shown (CSV)' : csv.dataset.all;
+      }
       const p = new URLSearchParams(location.search);
       for (const s of selects) { if (s.value) p.set(s.dataset.key, s.value); else p.delete(s.dataset.key); }
       if (search && search.value.trim()) p.set('q', search.value.trim()); else if (search) p.delete('q');
@@ -870,47 +926,75 @@ function setupMeetingFilter() {
   const select = bar.querySelector('select[data-key="county"]');
   const town = bar.querySelector('input[data-key="town"]');
   const mineBtn = bar.querySelector('[data-my-towns]');
+  const mineNote = bar.querySelector('[data-cant-mine]');
   if (!select && !town) return;
   const count = bar.querySelector('[data-count]');
   // the meetings still ahead: not a day that has passed since the page was built, not an "Earlier meetings" fold
   const meetings = Array.from(document.querySelectorAll('.meeting[data-county]'))
     .filter((m) => !m.closest('.day-group.past') && !m.closest('details.disclose'));
   const days = Array.from(document.querySelectorAll('.day-group:not(.past)'));
-  // "Only my towns": every town this device follows (alerts and Search)
+  const sections = Array.from(document.querySelectorAll('[data-meet-section]'));
+  // "Only my towns": every town this device follows (alerts, Search and Biggest stories)
   const mineIds = window.w351 && window.w351.myTowns ? window.w351.myTowns() : [];
   const mineNames = mineIds.map((id) => id.split(':').slice(1).join(':'));
-  let onlyMine = false;
   const params = new URLSearchParams(location.search);
-  if (select && params.get('county') && [...select.options].some((o) => o.value === params.get('county'))) select.value = params.get('county');
+  let onlyMine = params.get('mine') === '1' && mineNames.length > 0;
+  if (select && params.get('county')) {
+    const v = params.get('county');
+    // an older link says county=Worcester; the list now names counties within their state (MA:Worcester)
+    const opt = [...select.options].find((o) => o.value === v) || [...select.options].find((o) => o.value === `MA:${v}`)
+      || [...select.options].find((o) => o.value.endsWith(`:${v}`));
+    if (opt) select.value = opt.value;
+  }
   if (town && params.get('town')) town.value = params.get('town');
+  const joinAnd = (xs) => (xs.length < 3 ? xs.join(' and ') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
+  const mineLabel = () => `Only my towns (${mineNames.slice(0, 3).join(', ')}${mineNames.length > 3 ? ` and ${mineNames.length - 3} more` : ''})`;
+  // the towns this device follows that we can't read yet, so a quiet list isn't taken for a quiet town
+  let unread = null;
+  const sayUnread = () => {
+    if (!mineNote) return;
+    if (!onlyMine || !unread || !unread.length) { mineNote.hidden = true; return; }
+    const groups = {};
+    for (const t of unread) (groups[t.why] = groups[t.why] || []).push(t.town);
+    mineNote.textContent = `Your towns: ${joinAnd(mineNames)}. We can’t read ${Object.entries(groups)
+      .map(([why, ts]) => `${joinAnd(ts)} (${why})`).join('; ')} yet, so nothing from ${unread.length === 1 ? 'it' : 'them'} shows here.`;
+    mineNote.hidden = false;
+  };
   const apply = () => {
-    const want = town ? norm(town.value) : '';
+    const wants = town ? town.value.split(',').map((w) => norm(w)).filter(Boolean) : [];
     const county = select ? select.value : '';
     let shown = 0;
     for (const m of meetings) {
-      const name = m.dataset.town || '';
+      const name = norm(m.dataset.town || '');
       const ok = (!county || m.dataset.county === county)
-        && (!want || norm(name).startsWith(want) || norm(name).includes(` ${want}`))
-        && (!onlyMine || mineNames.includes(name));
+        && (!wants.length || wants.some((w) => name.startsWith(w) || name.includes(` ${w}`)))
+        && (!onlyMine || mineNames.includes(m.dataset.town || ''));
       m.hidden = !ok;
       if (ok) shown += 1;
     }
-    // a day heading with nothing left under it goes too
+    const narrowed = county || wants.length || onlyMine;
+    // a day heading with nothing left under it goes too, and so does a "Next 7 days" or "Later" with nothing in it
     for (const d of days) d.hidden = !d.querySelector('.meeting:not([hidden])');
-    // "Show meetings more than 30 days out (8)" counts what the filter leaves
+    for (const sec of sections) {
+      const has = sec.querySelector('.meeting');
+      sec.hidden = Boolean(narrowed && has && !sec.querySelector('.meeting:not([hidden])'));
+    }
+    // "Show meetings more than 30 days out (8)" counts what the filter leaves, and goes at none
     for (const det of document.querySelectorAll('details.more')) {
       const summary = det.querySelector(':scope > summary');
       const n = det.querySelectorAll('.meeting:not([hidden])').length;
       if (summary && /\(\d+\)/.test(summary.textContent)) summary.textContent = summary.textContent.replace(/\(\d+\)/, `(${n})`);
+      det.hidden = n === 0;
     }
     // under a chosen county, the towns there we can't read
     for (const p of bar.querySelectorAll('[data-cant-county]')) p.hidden = p.dataset.cantCounty !== county;
-    const narrowed = county || want || onlyMine;
     count.textContent = narrowed ? (shown ? `${shown} of ${meetings.length} meetings` : 'Nothing coming up for that choice.') : '';
+    sayUnread();
     // the address bar carries the choice, so the page can be shared or bookmarked
     const p = new URLSearchParams(location.search);
     if (county) p.set('county', county); else p.delete('county');
     if (town && town.value.trim()) p.set('town', town.value.trim()); else p.delete('town');
+    if (onlyMine) p.set('mine', '1'); else p.delete('mine');
     const qs = p.toString();
     history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
   };
@@ -918,13 +1002,22 @@ function setupMeetingFilter() {
   if (town) town.addEventListener('input', apply);
   if (mineBtn && mineNames.length) {
     mineBtn.hidden = false;
-    mineBtn.textContent = `Only my towns (${mineNames.slice(0, 3).join(', ')}${mineNames.length > 3 ? ` and ${mineNames.length - 3} more` : ''})`;
+    const label = () => {
+      mineBtn.setAttribute('aria-pressed', String(onlyMine));
+      mineBtn.textContent = onlyMine ? 'All towns' : mineLabel();
+    };
+    label();
     mineBtn.addEventListener('click', () => {
       onlyMine = !onlyMine;
-      mineBtn.setAttribute('aria-pressed', String(onlyMine));
-      mineBtn.textContent = onlyMine ? 'All towns' : `Only my towns (${mineNames.slice(0, 3).join(', ')}${mineNames.length > 3 ? ` and ${mineNames.length - 3} more` : ''})`;
+      label();
       apply();
     });
+    fetch('/data/towns.json').then((r) => (r.ok ? r.json() : null)).then((d) => {
+      if (!d) return;
+      const ids = new Set(mineIds);
+      unread = (d.towns || []).filter((t) => ids.has(t.id) && !t.monitored).map((t) => ({ town: t.town, why: t.why || 'not worked out yet' }));
+      sayUnread();
+    }).catch(() => {});
   }
   apply();
 }

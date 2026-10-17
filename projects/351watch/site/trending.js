@@ -64,10 +64,26 @@
   // a link with ?towns=MA:Carver,MA:Plymouth shows those towns (and can be shared)
   const fromUrl = (new URLSearchParams(location.search).get('towns') || '').split(',').filter((t) => /^[A-Z]{2}:/.test(t));
   if (fromUrl.length) chosen = fromUrl;
+  // the rest of the choice travels in the link too: ?towns=…&near=1&when=month&topics=solar,battery
+  const start = new URLSearchParams(location.search);
+  if (start.get('near') === '1') near.checked = true;
+  if (filters && start.get('when')) {
+    const w = filters.querySelector(`input[name=when][value="${CSS.escape(start.get('when'))}"]`);
+    if (w) w.checked = true;
+  }
+  if (filters && start.get('topics')) {
+    const want = start.get('topics').split(',');
+    for (const box of filters.querySelectorAll('input[name=topic]')) box.checked = want.includes(box.value);
+  }
   const save = () => {
     try { localStorage.setItem(KEY, JSON.stringify(chosen)); } catch { /* private window */ }
     const p = new URLSearchParams(location.search);
     if (chosen.length) p.set('towns', chosen.join(',')); else p.delete('towns');
+    if (chosen.length && near.checked) p.set('near', '1'); else p.delete('near');
+    const when = filters ? (new FormData(filters).get('when') || 'year') : 'year';
+    if (when !== 'year') p.set('when', when); else p.delete('when');
+    const topics = filters ? [...filters.querySelectorAll('input[name=topic]:checked')].map((i) => i.value) : [];
+    if (topics.length) p.set('topics', topics.join(',')); else p.delete('topics');
     const qs = p.toString();
     history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
   };
@@ -156,7 +172,7 @@
     all.hidden = true;
     const shown = [...mine.children].filter((li) => !li.hidden).length;
     const where = near.checked ? `${chosen.map(nameOf).join(', ')} and the towns next to them` : listNames(chosen);
-    if (shown) say(`${shown} ${shown === 1 ? 'story' : 'stories'} in ${where}.`);
+    if (shown) say(`${shown} ${shown === 1 ? 'story' : 'stories'} in ${where}, by date`);
     else say(`Nothing big coming up in ${where} right now.`, ['See everything coming up', '/upcoming']);
   }
 
@@ -172,13 +188,14 @@
     renderChips();
   });
 
-  async function add() {
+  // value is read when the visitor acts, so a pick from the list and a press of Add can't race each other
+  async function add(value) {
+    const want = plain(value);
     const [, , townDoc] = await data;
-    const want = plain(input.value);
     if (!want) {
-      // Enter right after picking from the list: the town is already added
+      // Add pressed after a pick from the list already added the town: nothing to say
+      error.textContent = 'Type a town first.';
       error.hidden = Boolean(chosen.length);
-      if (!chosen.length) error.textContent = 'Type a town first.';
       return;
     }
     const towns = townDoc.towns || [];
@@ -190,19 +207,22 @@
     }
     error.hidden = true;
     if (!chosen.includes(match.id)) chosen.push(match.id);
-    input.value = '';
+    if (plain(input.value) === want) input.value = '';
     save();
     renderChips();
     render();
   }
-  form.addEventListener('submit', (event) => { event.preventDefault(); add(); });
-  input.addEventListener('change', async () => {
+  form.addEventListener('submit', (event) => { event.preventDefault(); add(input.value); });
+  // a pick from the suggestions adds the town at once
+  input.addEventListener('input', async (event) => {
+    const value = input.value;
     const [, , townDoc] = await data;
-    const want = plain(input.value);
-    if ((townDoc.towns || []).some((t) => plain(`${t.town} ${t.state}`) === want)) add();
+    const want = plain(value);
+    const picked = event.inputType === 'insertReplacementText' || !event.inputType;
+    if (want && picked && (townDoc.towns || []).some((t) => plain(`${t.town} ${t.state}`) === want)) add(value);
   });
-  near.addEventListener('change', render);
-  if (filters) filters.addEventListener('change', render);
+  near.addEventListener('change', () => { save(); render(); });
+  if (filters) filters.addEventListener('change', () => { save(); render(); });
   if (chosen.length) save();
   renderChips();
   render();
