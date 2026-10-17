@@ -252,7 +252,7 @@
           stage ? el('span', { class: `stage${/^(Vote|Hearing|Final vote|Possible vote|Decided)/.test(stage) ? ' act' : ''}${soon ? ' soon' : ''}`, text: stage }) : null),
         b && b.what && normQ(b.what) !== normQ(text) ? el('p', { class: 'brief-what', text: b.what }) : null,
         b && b.history ? el('p', { class: 'line-before' }, el('b', { text: 'Before this:' }), ` ${b.history}`) : null,
-        facts.length || e.isNew ? el('p', { class: 'line-facts' }, e.isNew ? el('span', { class: 'is-new', text: 'New to this town' }) : null, ...facts) : null);
+        facts.length || e.isNew ? el('p', { class: 'line-facts' }, e.isNew ? el('span', { class: 'is-new', text: 'First time on an agenda' }) : null, ...facts) : null);
     };
     const where = `${m.town} ${meetingBoard(m)}, ${m.date ? dayLabel(m.date) : 'no date'}`;
     const d = m.docs[0];

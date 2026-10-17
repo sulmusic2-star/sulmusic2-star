@@ -709,7 +709,7 @@ class DotMap:
 
 NAV = [
     ("/towns", "Towns"),
-    ("/trending", "Biggest stories"),
+    ("/trending", '<span class="nav-long">Biggest stories</span><span class="nav-short">Stories</span>'),
     ("/topics", "Topics"),
     ("/search", "Search"),
     ("/attorney-general", "Rulings"),
@@ -761,7 +761,7 @@ def gloss_once(body):
 def page(ctx, title, description, body, path, scripts=(), noindex=False, head="", og_title=None):
     current = nav_section(path)
     nav = "".join(
-        f'<li{" class=\"nav-stories\"" if href == "/trending" else ""}><a href="{href}"{" aria-current=\"page\"" if href == current else ""}>{label}</a></li>' for href, label in NAV
+        f'<li{" class=\"nav-stories\"" if href == "/trending" else (" class=\"nav-topics\"" if href == "/topics" else "")}><a href="{href}"{" aria-current=\"page\"" if href == current else ""}>{label}</a></li>' for href, label in NAV
     )
     robots = '<meta name="robots" content="noindex">\n' if noindex else ""
     canonical = "" if noindex else f'<link rel="canonical" href="{BASE_URL}{"" if path == "/" else path}">\n'
@@ -2306,11 +2306,11 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
             what = f'<p class="brief-what">{e(w)}</p>'
         if b and b.get("history"):  # what happened on this item before, from our own records
             what += f'<p class="line-before"><b>Before this:</b> {e(b["history"])}</p>'
-        facts = ('<span class="is-new">New to this town</span>' if new else "") + "".join(f"<span>{e(x)}</span>" for x in facts_text(entry))
+        facts = ('<span class="is-new">First time on an agenda</span>' if new else "") + "".join(f"<span>{e(x)}</span>" for x in facts_text(entry))
         stage = stage_html(entry, m, ctx)
         # a list keeps the headline, the write-up and "New"; the facts line (topics, address, applicant) is on the meeting's page
         facts_html = ((f'<p class="line-facts">{facts}</p>' if facts else "") if full
-                      else ('<p class="line-facts"><span class="is-new">New to this town</span></p>' if new else ""))
+                      else ('<p class="line-facts"><span class="is-new">First time on an agenda</span></p>' if new else ""))
         extra = ""
         if str(entry.get("stage") or "").startswith("Asks to postpone") and m.get("date") and m["date"] >= ctx.today:
             # a request is not a decision: the board says yes or no at this meeting
@@ -2367,7 +2367,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     if not full:
         # the time in its own column; the day is the heading above the day's meetings
         when = (f'<span class="meet-when"><time datetime="{m["date"]}">{e(m["time"])}</time></span>' if m["time"] and m["date"]
-                else '<span class="meet-when none">No time</span>')
+                else '<span class="meet-when none">Time not given</span>')
     head = "" if full else f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town, with_when=False)}</p>'
     speak_html = f'<p class="speak-line"><b>Speaking:</b> {e(speak)}</p>' if speak else ""
     terms = terms_html(m, source) if full and not m.get("cancelled") else ""
@@ -2870,7 +2870,7 @@ def story_html(ctx, st, level=3):
     when = f'<time datetime="{st["meeting_date"]}">{e(day_label(st["meeting_date"], ctx))}</time>' if st["meeting_date"] else "Date not set"
     town = f'{e(st["town"])}{", " + e(st["state"]) if st["state"] != "MA" else ""}'
     # "New" rides the meta line, so every headline starts at the same edge
-    new = '<span class="is-new">New to this town</span>' if st["new"] else ""
+    new = '<span class="is-new">First time on an agenda</span>' if st["new"] else ""
     board = f'<span>{e(st["board"])}</span>' if st.get("board") else ""
     stage = stage_html({"stage": st.get("stage")}, {"date": st.get("meeting_date")}, ctx)
     line = headline(st["line"])
@@ -3168,7 +3168,7 @@ def build_town_page(ctx, t):
             # The page still shows what the town did most recently, rather than an empty screen.
             listing = (f'<h2>Most recent</h2>{meeting_list(ctx, past_m[:2], show_town=False, shown=2)}' if past_m else "")
         coming = f"""{f'<p class="next-line">{next_line}</p>' if next_line else ''}
-<p class="actions"><a class="btn" href="{e(alerts_url(tid))}">Get {e(town)} alerts</a></p>
+<p class="actions"><a class="btn" href="{e(alerts_url(tid))}">Follow {e(town)}’s meetings</a></p>
 <h2 class="sr-only">Coming up</h2>
 {'<p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="lines" aria-pressed="true">Short list</button><button type="button" class="link-btn" data-view="full" aria-pressed="false">With write-ups</button></p>' if up_m else ''}
 {listing}
@@ -3868,6 +3868,7 @@ def ag_numbers(ctx):
         "ag": ag, "dec": dec, "letters": len(letters), "dates": dates, "towns": len({ag_town(r["town"]) for r in dec}),
         "rt": Counter(r.get("record_type") for r in ag), "headline": headline, "also": also, "rec": rec,
         "ruled": len(ruled), "ruled_ok": sum(1 for r in ruled if r["outcome"] in ("approved", "approved in part")),
+        "ruled_full": sum(1 for r in ruled if r["outcome"] == "approved"), "ruled_part": sum(1 for r in ruled if r["outcome"] == "approved in part"),
         "ok_any": sum(1 for r in dec if r["outcome"] in ("approved", "approved in part")),
     }
 
@@ -4069,7 +4070,7 @@ def build_data_center_ledger(ctx):
                     pairs.append(("In effect", term_text(r["in_effect_from"], r.get("in_effect_to"))
                                   + ("" if r.get("in_effect_to") else ", no end date in the record")))
                 else:
-                    pairs.append(("In effect", "Yes; the start date is not in the record"))
+                    pairs.append(("In effect", "Yes (start date not found)"))
                 if r.get("proposed_term_to"):
                     pairs.append(("Proposed extension", f"to {fmt_date(r['proposed_term_to'])}"))
             elif r["status"] == "expired":
@@ -4204,12 +4205,12 @@ def build_ag(ctx):
     body = f"""
 <div class="wrap narrow">
 <h1 id="ag-title">Can a Massachusetts town limit solar, battery storage or data centers?</h1>
-<p class="lead">It can set rules for solar and battery storage, but it can’t ban or pause them. It can pause or ban data centers. The state’s Attorney General reviews every town bylaw before it takes effect; here is how those reviews have gone.</p>
+<p class="lead">It can set rules for solar and battery storage, but pausing or banning them almost never gets past the state. It can pause or ban data centers. The state’s Attorney General reviews every town bylaw before it takes effect; here is how those reviews have gone.</p>
 {ag_nav("/attorney-general")}
 <ul class="answers">
   <li class="answer"><b>A moratorium on solar or battery storage</b><span>Disapproved every time since June 2022: {rec['disapproved']} of {all_n}, in {plural(rec['towns'], 'town')}.</span><a href="/attorney-general/rulings?bylaw=moratorium">See them</a></li>
-  <li class="answer"><b>Zoning rules for solar or battery storage</b><span>Almost always approved: {n['ruled_ok']} of {n['ruled']}.</span><a href="/attorney-general/rulings?bylaw=zoning+regulation">See them</a></li>
-  <li class="answer"><b>A moratorium on data centers</b><span>Approved in Shutesbury, Templeton and Gill; state law doesn’t protect data centers.</span><a href="/attorney-general/data-centers">The data-center ledger</a></li>
+  <li class="answer"><b>Zoning rules for solar or battery storage</b><span>Approved {n['ruled_ok']} times out of {n['ruled']}: {n['ruled_full']} in full and {n['ruled_part']} with some parts struck.</span><a href="/attorney-general/rulings?bylaw=zoning+regulation">See them</a></li>
+  <li class="answer"><b>A moratorium or ban on data centers</b><span>Approved: moratoriums in Shutesbury, Templeton and Gill, and Shutesbury’s ban in every district. State law doesn’t protect data centers.</span><a href="/attorney-general/data-centers">The data-center ledger</a></li>
 </ul>
 <details class="disclose"><summary>Words on this page</summary>
 <p class="terms"><dfn>Tracer Lane II</dfn>: the 2022 ruling by the state’s highest court that a town can’t use zoning to ban solar. <dfn>G.L. c. 40A, § 3</dfn>: the state zoning law’s solar clause; a town can’t prohibit solar or restrict it unreasonably. <dfn>225 CMR 29.00</dfn>: the state’s 2025 rules for permitting clean-energy projects, with one consolidated local permit. <dfn>Land Court</dfn>: a state trial court for land disputes; its rulings carry less weight than the highest court’s.</p>
@@ -4514,8 +4515,8 @@ def build_meeting_page(ctx, m):
   {f'<p class="ticket-speak">{e(speak_top)}</p>' if speak_top else ''}
   {f'<p class="ticket-speak">{e(who_votes_text(m))}</p>' if who_votes_text(m) else ''}
   {f'<p class="ticket-links">{link}</p>' if link else ''}
-  <p class="actions"><a class="btn" href="{e(alerts_url(t.get('id')))}">Get alerts for {e(m['town'])}</a></p>
-  <p class="ticket-share">{share}<a class="link-btn" href="/m/{m['id'][2:]}.ics" download="{e(m['id'][2:])}.ics">Add to my calendar</a></p>
+  <p class="actions"><a class="btn" href="{e(alerts_url(t.get('id')))}">Follow {e(m['town'])}’s meetings</a></p>
+  <p class="ticket-share">{share}<a class="link-btn" href="/m/{m['id'][2:]}.ics" download="{e(m['id'][2:])}.ics">Add this meeting to my calendar</a></p>
 </div>
 </aside>"""
     body = f"""

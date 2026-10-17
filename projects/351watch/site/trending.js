@@ -43,7 +43,7 @@
     const when = el('span', 'row-when');
     when.append(el('span', 'row-town', `${st.town}${st.state !== 'MA' ? `, ${st.state}` : ''}`));
     if (st.board) when.append(el('span', '', st.board));
-    if (st.new) when.append(el('span', 'is-new', 'New to this town'));
+    if (st.new) when.append(el('span', 'is-new', 'First time on an agenda'));
     const line = el('span', 'row-line');
     const words = (st.line || st.headline || '').replace(' (no vote listed)', '').replace('; no vote listed)', ')');
     line.append(/[a-z0-9)]\.$/.test(words) && !/\b(St|Rd|Ave|Dr|Ln|Blvd|Mt|No|Art|Sec|Inc|Corp|LLC|Co)\.$/.test(words) ? words.slice(0, -1) : words);
@@ -61,7 +61,16 @@
   let chosen = null;
   try { chosen = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { chosen = null; }
   if (!Array.isArray(chosen)) chosen = window.w351 && window.w351.myTowns ? window.w351.myTowns() : [];
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(chosen)); } catch { /* private window */ } };
+  // a link with ?towns=MA:Carver,MA:Plymouth shows those towns (and can be shared)
+  const fromUrl = (new URLSearchParams(location.search).get('towns') || '').split(',').filter((t) => /^[A-Z]{2}:/.test(t));
+  if (fromUrl.length) chosen = fromUrl;
+  const save = () => {
+    try { localStorage.setItem(KEY, JSON.stringify(chosen)); } catch { /* private window */ }
+    const p = new URLSearchParams(location.search);
+    if (chosen.length) p.set('towns', chosen.join(',')); else p.delete('towns');
+    const qs = p.toString();
+    history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
+  };
   let names = new Map();
   const nameOf = (id) => names.get(id) || id.split(':').slice(1).join(':');
   const listNames = (ids) => {
@@ -167,8 +176,9 @@
     const [, , townDoc] = await data;
     const want = plain(input.value);
     if (!want) {
-      error.textContent = 'Type a town first.';
-      error.hidden = false;
+      // Enter right after picking from the list: the town is already added
+      error.hidden = Boolean(chosen.length);
+      if (!chosen.length) error.textContent = 'Type a town first.';
       return;
     }
     const towns = townDoc.towns || [];
@@ -193,6 +203,7 @@
   });
   near.addEventListener('change', render);
   if (filters) filters.addEventListener('change', render);
+  if (chosen.length) save();
   renderChips();
   render();
 })();
