@@ -43,6 +43,8 @@
   </div>
   <div class="search-filters">
     <label>State<select name="state"><option value="">All states</option><option value="MA">Massachusetts</option><option value="NY">New York</option><option value="RI">Rhode Island</option></select></label>
+    <label>Topic<select name="topic"><option value="">All topics</option><option value="solar">Solar</option><option value="battery_storage">Battery storage</option><option value="data_center">Data centers</option><option value="moratorium">Moratoriums (temporary bans)</option><option value="clean_energy_siting">Clean-energy permit rules</option><option value="zoning_amendment">Zoning changes</option><option value="40b_comprehensive_permit">Affordable housing (40B)</option><option value="wireless_telecom">Cell towers</option><option value="wetlands_filing">Wetlands filings</option></select></label>
+    <label>Board<select name="board"><option value="">All boards</option><option value="planning_board">Planning board</option><option value="zoning_board_of_appeals">Zoning board of appeals</option><option value="conservation_commission">Conservation commission</option><option value="select_board">Select board or city council</option><option value="town_meeting">Town Meeting</option></select></label>
     <div class="town-pick" id="town-pick">
       <label for="town-add">Towns</label>
       <div class="field-row"><input id="town-add" type="text" list="search-towns" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="All towns">
@@ -52,15 +54,12 @@
       <p class="form-note"><button type="button" class="link-btn" id="my-towns-btn" hidden>Search my towns</button></p>
       <p class="field-error" id="town-add-error" role="alert" hidden></p>
     </div>
-    <label>Topic<select name="topic"><option value="">All topics</option><option value="solar">Solar</option><option value="battery_storage">Battery storage</option><option value="data_center">Data centers</option><option value="moratorium">Moratoriums (temporary bans)</option><option value="clean_energy_siting">Clean-energy permit rules</option><option value="zoning_amendment">Zoning changes</option><option value="40b_comprehensive_permit">Affordable housing (40B)</option><option value="wireless_telecom">Cell towers</option><option value="wetlands_filing">Wetlands filings</option></select></label>
-    <label>Board<select name="board"><option value="">All boards</option><option value="planning_board">Planning board</option><option value="zoning_board_of_appeals">Zoning board of appeals</option><option value="conservation_commission">Conservation commission</option><option value="select_board">Select board or city council</option><option value="town_meeting">Town Meeting</option></select></label>
   </div>
   </details>
 </form>
 <p id="search-status" aria-live="polite"></p>
 <p class="form-note search-examples">Try <a href="/search?q=battery+storage&amp;upcoming=1">battery storage</a>, <a href="/search?q=data+center+moratorium">data center moratorium</a>, <a href="/search?q=cell+tower&amp;upcoming=1">cell tower</a> or <a href="/search?q=40B&amp;upcoming=1">40B</a>.</p>
 <p class="notice" id="search-exact" hidden></p>
-<p class="search-alert" id="search-alert" hidden><a class="btn quiet" href="/watch">Get alerts for your town</a></p>
 <ol id="search-results"></ol>
 <noscript><p class="notice">Search needs JavaScript. You can still <a href="/towns">find a town</a>.</p></noscript>
 </div>

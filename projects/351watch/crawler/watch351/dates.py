@@ -89,6 +89,13 @@ _WARRANT_DAY = re.compile(
     + r")", re.I)
 
 
+# A warrant's running head: "OCTOBER 27, 2026 FALL ANNUAL TOWN MEETING WARRANT" or "October 27, 2026 Special Town
+# Meeting Warrant". No weekday, but the date sits right against the words "Town Meeting", which a fiscal-year
+# date or a "hold until October 13" never does.
+_WARRANT_HEAD = re.compile(
+    r"\b" + _MONTH_NAME + r"\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4}),?\s+"
+    r"(?:(?:fall|spring|annual|special|adjourned|regular|semi-annual)\s+){0,3}town\s+meeting\b", re.I)
+
 _WEEKDAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
 
 
@@ -108,4 +115,29 @@ def warrant_date(text: str | None, limit: int = 4000) -> date | None:
             dt = _mk(int(g[8]), MONTHS[g[7][:3].lower()], day) if day else None
         if dt and _WEEKDAYS[dt.weekday()] == m.group(0)[:3].lower():
             return dt
+    # the running head repeats on every page, so it is read further in than the first page; a date that follows
+    # "the", "at", "of" or "since" names an earlier meeting ("approved at the May 5, 2026 Annual Town Meeting")
+    heads = list(_WARRANT_HEAD.finditer(text[:max(limit, 20000)]))
+    for i, m in enumerate(heads):
+        # two meeting dates back to back ("October 19, 2026 Special Town Meeting June 29, 2026 Special Town
+        # Meeting") are a list of links to meetings, not this warrant's heading
+        if (i and m.start() - heads[i - 1].end() < 60) or (i + 1 < len(heads) and heads[i + 1].start() - m.end() < 60):
+            continue
+        before = text[max(0, m.start() - 12):m.start()].lower()
+        if re.search(r"\b(?:the|at|of|since|by|from|under|minutes)\s*$", before):
+            continue
+        dt = _mk(int(m.group(3)), MONTHS[m.group(1)[:3].lower()], int(m.group(2)))
+        if dt:
+            return dt
     return None
+
+
+def warrant_redate(listing_day: date | None, text: str | None) -> date | None:
+    """The meeting day for a warrant whose listing gave a date: the warrant's own printed day when it is later
+    than the listing's (a listing often dates a warrant by the day it was posted) and within four months of it.
+    None when the listing's date stands."""
+    day = warrant_date(text)
+    if not day or not listing_day:
+        return None
+    gap = (day - listing_day).days
+    return day if 0 < gap <= 120 else None

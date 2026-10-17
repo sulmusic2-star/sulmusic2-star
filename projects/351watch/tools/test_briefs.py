@@ -280,7 +280,13 @@ class RenderTests(unittest.TestCase):
         self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True, "action": "hearing"}
         ctx, m = self.meeting(HIT)
         self.assertEqual(self.build.speak_line(m), self.build.SPEAK_TEXT)
-        self.assertEqual(self.build.meeting_html(ctx, m, show_town=False).count(self.build.SPEAK_SHORT[self.build.SPEAK_TEXT]), 1, "once per meeting, the list wording")
+        html = self.build.meeting_html(ctx, m, show_town=False)
+        # a list prints the agenda's own rule, keyed "Speaking:", once and above the items; never the generic stamp
+        self.assertNotIn(self.build.SPEAK_SHORT[self.build.SPEAK_TEXT], html)
+        rule = self.build.speak_rule(m)
+        if rule:
+            self.assertEqual(html.count("<b>Speaking:</b>"), 1)
+            self.assertLess(html.index("<b>Speaking:</b>"), html.index('<ul class="lines">'))
         self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True, "action": "continued"}
         ctx, m = self.meeting(HIT)
         self.assertEqual(self.build.speak_line(m), "")

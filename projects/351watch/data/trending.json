@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-17T13:32:06+00:00",
+ "generated": "2026-10-17T13:52:58+00:00",
  "window": {
   "start": "2026-10-17",
   "end": "2027-02-14"
@@ -154,6 +154,66 @@
     "a23eb83bf1d7",
     "ac3dafef41eb",
     "fdfd7fb9a8bf"
+   ]
+  },
+  {
+   "id": "b31de63b9780",
+   "score": 26.4,
+   "headline": "Uxbridge Town Meeting takes up a data-center moratorium",
+   "dek": "Uxbridge's Town Meeting is Tuesday, Oct 27. The warrant lists an article proposing a temporary moratorium on data centers.",
+   "quote": "BYLAWS – CHAPTER 144, FEES OF THE SEALER OF WEIGHTS AND MEASURES ARTICLE 16: TEMPORARY MORATORIUM ON DATA CENTERS ARTICLE 17: AMEND THE ZONING BYLAWS, ARTICLE VIII, SECTION 400-12, NONCONFORMING USES…",
+   "reasons": [
+    "Moratorium vote",
+    "3 town boards",
+    "Town Meeting Oct 27"
+   ],
+   "topics": [
+    "data_center",
+    "moratorium",
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Uxbridge",
+   "county": "Worcester",
+   "towns": [
+    "MA:Uxbridge"
+   ],
+   "board": "Town Meeting",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-27",
+   "meeting_date_source": "agenda",
+   "days_until": 10,
+   "first_seen": "2026-10-10T18:36:30+00:00",
+   "is_new": false,
+   "source_url": "https://www.uxbridge-ma.gov/DocumentCenter/View/10074/FATM-2026-POSTED-WARRANT-091526",
+   "town_path": "/ma/uxbridge",
+   "action": "moratorium",
+   "boards": [
+    {
+     "town": "Uxbridge",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-27"
+    },
+    {
+     "town": "Uxbridge",
+     "board": "Select Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-06"
+    },
+    {
+     "town": "Uxbridge",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-09-23"
+    }
+   ],
+   "hit_ids": [
+    "285252088621",
+    "5bebf34b8650",
+    "6d714a0c171c",
+    "9c13328f77c3",
+    "b2ba8ad4f70a"
    ]
   },
   {
@@ -1051,7 +1111,7 @@
    "board": "Town Meeting",
    "board_key": "town_meeting",
    "meeting_date": "2026-10-26",
-   "meeting_date_source": "warrant",
+   "meeting_date_source": "agenda",
    "days_until": 9,
    "first_seen": "2026-10-10T18:30:28+00:00",
    "is_new": false,
@@ -3311,6 +3371,48 @@
    ]
   },
   {
+   "id": "c85f53232717",
+   "score": 6.72,
+   "headline": "Uxbridge Town Meeting takes up zoning changes",
+   "dek": "Uxbridge's Town Meeting is Tuesday, Oct 27. The warrant lists an article on zoning changes.",
+   "quote": "Planning Board OCTOBER 27, 2026 FALL ANNUAL TOWN MEETING WARRANT PAGE 18 ARTICLE 17: AMEND THE ZONING BYLAWS, ARTICLE VIII, SECTION 400-12, NONCONFORMING USES AND STRUCTURES; SECTION 400-32 RETREAT…",
+   "reasons": [
+    "Town Meeting vote",
+    "Town Meeting Oct 27"
+   ],
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Uxbridge",
+   "county": "Worcester",
+   "towns": [
+    "MA:Uxbridge"
+   ],
+   "board": "Town Meeting",
+   "board_key": "town_meeting",
+   "meeting_date": "2026-10-27",
+   "meeting_date_source": "agenda",
+   "days_until": 10,
+   "first_seen": "2026-10-10T18:36:30+00:00",
+   "is_new": false,
+   "source_url": "https://www.uxbridge-ma.gov/DocumentCenter/View/10074/FATM-2026-POSTED-WARRANT-091526",
+   "town_path": "/ma/uxbridge",
+   "action": "town_meeting",
+   "boards": [
+    {
+     "town": "Uxbridge",
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "meeting_date": "2026-10-27"
+    }
+   ],
+   "hit_ids": [
+    "9a9e428faf78",
+    "b9f335c528ef"
+   ]
+  },
+  {
    "id": "75f35ad66216",
    "score": 6.72,
    "headline": "Winchester planners hold hearing on zoning changes",
@@ -4442,87 +4544,6 @@
    ],
    "hit_ids": [
     "5232abc553de"
-   ]
-  },
-  {
-   "id": "2268c94b3fbf",
-   "score": 3.21,
-   "headline": "40B item on Billerica Select Board agenda",
-   "dek": "The Select Board meets Monday, Oct 19. The agenda lists an item on 40B housing.",
-   "quote": "Kelly Sardina, 95 Gray Street, raised concerns regarding the Graystone Estates 40B project on Capodilupo Way/Gray Street, including issues relating to permitting timelines and expiration of prior…",
-   "reasons": [
-    "Meeting Oct 19"
-   ],
-   "topics": [
-    "40b_comprehensive_permit"
-   ],
-   "state": "MA",
-   "town": "Billerica",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Billerica"
-   ],
-   "board": "Select Board",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-19",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-16T11:08:04+00:00",
-   "is_new": true,
-   "source_url": "https://www.billerica.gov/AgendaCenter/ViewFile/Agenda/_10192026-6024",
-   "town_path": "/ma/billerica",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Billerica",
-     "board": "Select Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-19"
-    }
-   ],
-   "hit_ids": [
-    "d35b573bbb6a",
-    "fa85421fcaa1"
-   ]
-  },
-  {
-   "id": "16ff27267738",
-   "score": 3.21,
-   "headline": "Solar item on North Brookfield Planning Board agenda",
-   "dek": "The Planning Board meets Wednesday, Oct 21. The agenda lists an item on solar.",
-   "quote": "Local Government Representa ve for Solar Projects",
-   "reasons": [
-    "Meeting Oct 21"
-   ],
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "North Brookfield",
-   "county": "Worcester",
-   "towns": [
-    "MA:North Brookfield"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-21",
-   "meeting_date_source": "agenda",
-   "days_until": 4,
-   "first_seen": "2026-10-16T11:10:06+00:00",
-   "is_new": true,
-   "source_url": "https://www.northbrookfield.net/AgendaCenter/ViewFile/Agenda/_10212026-493",
-   "town_path": "/ma/north-brookfield",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "North Brookfield",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-21"
-    }
-   ],
-   "hit_ids": [
-    "7e4720954d8b"
    ]
   }
  ]

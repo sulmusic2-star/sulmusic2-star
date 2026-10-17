@@ -220,6 +220,7 @@ def load_clerks():
 
 CLERKS = {}
 CITIES = set()  # "MA:Pittsfield": a city, which adopts ordinances and has no Town Meeting
+REP_TM = set()  # "MA:Dartmouth": a Representative Town Meeting, where elected members vote
 
 
 # Hits about something else (a PFAS moratorium, a utility's pole petition, a general-ordinance amendment) are the
@@ -398,6 +399,7 @@ class Ctx:
         self.towns = [t for t in all_towns if t["state"] in self.states]
         self.town_by_id = {t["id"]: t for t in self.towns}
         CITIES.update(t["id"] for t in self.towns if t.get("kind") == "city")
+        REP_TM.update(t["id"] for t in self.towns if t.get("legislative_body") == "Representative Town Meeting")
         for item in self.tracker.get("items", []):
             if f"{item.get('state', 'MA')}:{item['town']}" in CITIES:
                 item["action"] = re.sub(r"\b[Bb]ylaw\b", "ordinance", item["action"])
@@ -411,7 +413,8 @@ class Ctx:
         for r in self.ag:
             names = by_case.get(str(r.get("case_number") or ""), set())
             subject = (r.get("portal_document_name") or "").rsplit(" - ", 1)[-1].strip()
-            r["letter_note"] = f" ({subject.lower()} letter)" if len(names) > 1 and subject and not subject[0].isdigit() else ""
+            # a note the data carries ("revised letter") stands when the case has one letter
+            r["letter_note"] = (f" ({subject.lower()} letter)" if len(names) > 1 and subject and not subject[0].isdigit() else "") or r.get("letter_note") or ""
         self.hits = [h for h in self.hits_doc["hits"] if h.get("state", "MA") in self.states and not off_subject(h)]
         # A warrant read twice, once with its date and once without: the undated twin is dropped.
         dated = {(h["state"], h["town"], quote_key(h.get("snippet") or "")[:80]) for h in self.hits
@@ -1801,8 +1804,9 @@ def group_meetings(ctx, hits):
                 vague = re.search(r"not (?:stated|given|listed|named)|in[- ]person|\bTBD\b|to be announced", place, re.I)
                 hybrid = bool(re.search(r"\b(?:zoom|online|remote|hybrid|virtual|webinar|teams)\b", b["when_place"], re.I))
                 if place and named and not vague and not re.fullmatch(r"(?:zoom|online|remote|virtual)[^a-z]*", place, re.I):
-                    online = ", or on Zoom (link on the agenda)" if re.search(r"\bzoom\b", b["when_place"], re.I) else ", or join online"
-                    m["place"] = place + (online if hybrid else "")
+                    # a Town Meeting's Zoom is for speaking by permission, not for attending; and the link is not ours to promise
+                    online = ", or on Zoom" if re.search(r"\bzoom\b", b["when_place"], re.I) else ", or join online"
+                    m["place"] = place + (online if hybrid and m["board_key"] != "town_meeting" else "")
                 elif hybrid and re.search(r"in[- ]person", b["when_place"], re.I):
                     m["place"] = "In person and online (the agenda doesn’t say which room)"
     for m in out.values():
@@ -1971,7 +1975,9 @@ SPEAK_COMMENT = "The agenda has a public comment period: anyone can attend and a
 SPEAK_TM = "Town Meeting: the town’s voters decide. Ask the town clerk how others may speak."
 SPEAK_NO = "The agenda lists no public comment on this item; ask the town clerk."
 # In a list the rule is one short line under the items; the meeting's own page prints the full wording in the ticket.
+SPEAK_TM_REP = "Representative Town Meeting: elected members vote. Ask the town clerk how others may speak."
 SPEAK_SHORT = {SPEAK_TEXT: "Public hearing: anyone can attend and ask to speak.",
+               SPEAK_TM_REP: "Representative Town Meeting: elected members vote.",
                SPEAK_COMMENT: "Public comment period on the agenda: anyone can attend and speak then.",
                SPEAK_TM: "Town Meeting: the town’s voters decide."}
 
@@ -1979,7 +1985,8 @@ SPEAK_SHORT = {SPEAK_TEXT: "Public hearing: anyone can attend and ask to speak."
 def for_town(text, state, town):
     """A city has a city clerk: the default wording says so when the municipality is one."""
     if text and f"{state}:{town}" in CITIES:
-        return text.replace("town clerk", "city clerk").replace("Town clerk", "City clerk").replace("Town Clerk", "City Clerk")
+        return (text.replace("town clerk", "city clerk").replace("Town clerk", "City clerk").replace("Town Clerk", "City Clerk")
+                .replace("town hall", "city hall").replace("Town Hall", "City Hall"))
     return text
 
 
@@ -2006,7 +2013,8 @@ def speak_short(m, entry):
     if m.get("cancelled") or stage.startswith(("Postponed", "Asks to postpone", "Canceled", "Withdrawn")):
         return ""
     if m.get("board_key") == "town_meeting":
-        return "Town Meeting’s voters decide."
+        return ("Representative Town Meeting’s elected members decide." if f"{m['state']}:{m['town']}" in REP_TM
+                else "Town Meeting’s voters decide.")
     b = entry.get("brief") or {}
     if b.get("can_speak") is True and b.get("how_to_speak") and len(b["how_to_speak"]) <= 140:
         return b["how_to_speak"]
@@ -2096,6 +2104,22 @@ def speak_line(m, short=False):
     return line
 
 
+def speak_rule(m):
+    """The agenda's own words on speaking, from the write-ups (at most two rules, said once each); "" when it gives none.
+    Lists print only this; the meeting's own page prints speak_line in its ticket."""
+    if m.get("cancelled"):
+        return ""
+    rules = []
+    for v in m["lines"].values():
+        if str(v.get("stage") or "").startswith(("Postponed", "Asks to postpone", "Canceled", "Withdrawn")):
+            continue
+        b = v.get("brief") or {}
+        rule = b.get("how_to_speak")
+        if b.get("can_speak") is True and rule and quote_key(rule)[:40] not in {quote_key(r)[:40] for r in rules}:
+            rules.append(rule)
+    return for_town(" ".join(rules[:2]), m["state"], m["town"]) if rules else ""
+
+
 def speak_line_full(m):
     entries = [v for v in m["lines"].values()
                if not str(v.get("stage") or "").startswith(("Postponed", "Asks to postpone", "Canceled", "Withdrawn"))]
@@ -2109,8 +2133,9 @@ def speak_line_full(m):
     if rules:
         return for_town(" ".join(rules[:2]), m["state"], m["town"])
     if m.get("board_key") == "town_meeting" and entries:
-        return SPEAK_TM
-    if any(v.get("stage") == "Hearing" and not (v.get("brief") or {}).get("can_speak") is False for v in entries):
+        return SPEAK_TM_REP if f"{m['state']}:{m['town']}" in REP_TM else SPEAK_TM
+    if any(re.search(r"\bhearing\b", str(v.get("stage") or ""), re.I) and not (v.get("brief") or {}).get("can_speak") is False
+           for v in entries):
         return for_town(SPEAK_TEXT, m["state"], m["town"])
     if any((v.get("brief") or {}).get("can_speak") is True for v in entries):
         return SPEAK_COMMENT  # a vote or discussion with a public comment item on the agenda, not a hearing
@@ -2333,7 +2358,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     d = m["docs"][0] if m["docs"] else None
     link = (f'<a class="item-link" href="{e(d["url"])}" rel="nofollow noopener" target="_blank">{what.capitalize()}'
             f'{" (PDF)" if d["pdf"] else ""}<span class="sr-only">: {e(where)}</span></a>') if d else ""
-    speak = "" if (full or m.get("cancelled")) else speak_line(m, short=True)  # the meeting's own page says it in the ticket instead
+    speak = "" if full else speak_rule(m)  # the meeting's own page says it in the ticket instead
     tail = "" if full else link
     county = (ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or ""
     when = ""
@@ -2342,13 +2367,13 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
         when = (f'<span class="meet-when"><time datetime="{m["date"]}">{e(m["time"])}</time></span>' if m["time"] and m["date"]
                 else '<span class="meet-when none">No time</span>')
     head = "" if full else f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town, with_when=False)}</p>'
-    speak_html = f'<p class="speak-line">{e(speak)}</p>' if speak else ""
+    speak_html = f'<p class="speak-line"><b>Speaking:</b> {e(speak)}</p>' if speak else ""
     terms = terms_html(m, source) if full and not m.get("cancelled") else ""
     return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" id="{m['id']}" data-county="{e(county)}" data-state="{e(m['state'])}" data-town="{e(m['town'])}">
   {when}
   {head}
-  <ul class="lines">{lines}</ul>
   {speak_html}
+  <ul class="lines">{lines}</ul>
   {terms}
   {f'<p class="meet-src">{tail}</p>' if tail else ''}
 </li>"""
@@ -2443,18 +2468,40 @@ def ag_row(ctx, r, filters=False):
     town = ag_town(r.get("town"))
     city = " (city)" if "(city)" in (r.get("town") or "") else ""
     what = "Court ruling" if r.get("record_type") == "court_ruling" else (r.get("bylaw_type") or "bylaw")
-    citation = (f"{town}, MA, {r.get('article') or what}: {r.get('outcome') or 'pending'}"
-                + (f" by the Massachusetts Attorney General, case {r['case_number']}" if r.get("case_number") else "")
-                + (f", {fmt_date(r['decision_date'])}" if r.get("decision_date") else "") + f". {r.get('summary') or ''}"
-                + (f" Source: {r['letter_url']}." if r.get("letter_url") else "") + f" Via Agenda Ahead, {BASE_URL}/attorney-general/rulings.")
+    src = abs_url(r.get("letter_url") or "")
+    if r.get("record_type") == "court_ruling":
+        citation = (f"{court_cite(r)}. {smart_quotes(r.get('summary') or '')}" + (f" Source: {src}." if src else "")
+                    + f" Via Agenda Ahead, {BASE_URL}/attorney-general/rulings.")
+    else:
+        citation = (f"{town}, MA, {r.get('article') or what}: {r.get('outcome') or 'pending'}"
+                    + (f" by the Massachusetts Attorney General, case {r['case_number']}{r.get('letter_note') or ''}" if r.get("case_number") else "")
+                    + (f", {fmt_date(r['decision_date'])}" if len(r.get("decision_date") or "") == 10 else "")
+                    + f". {smart_quotes(r.get('summary') or '')}"
+                    + (f" Source: {src}." if src else "") + f" Via Agenda Ahead, {BASE_URL}/attorney-general/rulings.")
     cite_btn = f' <button type="button" class="link-btn cite" data-copy="{e(citation)}" hidden>Copy citation</button>'
     return f"""<tr{attrs}>
   <td class="when" data-label="Date">{fmt_date(r['decision_date']) if r.get('decision_date') else 'Awaiting a decision'}{'<small>meeting date</small>' if r.get('decision_date') and (r.get('outcome') or '').startswith(('proposed', 'pending')) else ''}</td>
   <td class="town" data-label="Town"><b>{ctx.town_link('MA', town)}{e(city)}</b><small>{e(r.get('article', ''))}</small></td>
   <td data-label="Type">{"Court ruling" if r.get("record_type") == "court_ruling" else e(first_up(r.get('bylaw_type', '')))}<br><small>{e(r.get('technology', ''))}</small></td>
   <td data-label="Outcome"><span class="badge {outcome_class(r.get('outcome'))}">{e((r.get('outcome') or '').capitalize())}</span></td>
-  <td class="col-summary"><p class="summary">{e(r.get('summary', ''))}</p>{letter}{cite_btn}</td>
+  <td class="col-summary"><p class="summary">{e(smart_quotes(r.get('summary', '')))}</p>{letter}{cite_btn}</td>
 </tr>"""
+
+
+def court_cite(r):
+    """The case as a court cites it: "Tracer Lane II Realty, LLC v. City of Waltham, 489 Mass. 775 (2022)", or
+    "Town of Wendell v. Campbell, No. 25 MISC 000014 (Mass. Land Ct. Mar. 2026)"."""
+    art = (r.get("article") or "").strip()
+    d = r.get("decision_date") or ""
+    year = d[:4]
+    m = re.match(r"(.+?),\s*(\d+ Mass\.(?: App\. Ct\.)? \d+)\s*\((?:SJC|AC|Supreme Judicial Court|Appeals Court)-\d+\)\s*$", art)
+    if m:
+        return f"{m.group(1)}, {m.group(2)} ({year})"
+    m = re.match(r"(.+?),\s*Land Ct\.\s*(?:No\.\s*)?(\d+ MISC \d+)\s*(?:\([A-Z]+\))?\s*$", art)
+    if m:
+        when = fmt_date(d) if len(d) == 10 else (datetime.strptime(d, "%Y-%m").strftime("%b. %Y").replace("May.", "May") if len(d) == 7 else year)
+        return f"{m.group(1)}, No. {m.group(2)} (Mass. Land Ct. {when})"
+    return art + (f" ({year})" if year else "")
 
 
 def ag_letter_links(ctx, towns, technology):
@@ -2495,10 +2542,17 @@ def actions_csv(items):
     return out.getvalue()
 
 
-def ag_table(ctx, rows, table_id=None, filters=False):
+def ag_table(ctx, rows, table_id=None, filters=False, group=None, by_year=False):
     tid = f' id="{table_id}"' if table_id else ""
-    group = f' data-filter-group="{table_id}"' if filters else ""
-    body = "\n".join(ag_row(ctx, r, filters) for r in sorted(rows, key=lambda r: r.get("decision_date") or "", reverse=True))
+    group = f' data-filter-group="{group or table_id}"' if filters else ""
+    out, year = [], None
+    for r in sorted(rows, key=lambda r: r.get("decision_date") or "", reverse=True):
+        y = (r.get("decision_date") or "")[:4] or "Awaiting a decision"
+        if by_year and y != year:
+            out.append(f'<tr class="year-row"><th colspan="5" scope="rowgroup">{e(y)}</th></tr>')
+            year = y
+        out.append(ag_row(ctx, r, filters))
+    body = "\n".join(out)
     return f"""<div class="table-wrap"><table class="stack"{tid}{group}>
   <thead><tr><th scope="col">Date</th><th scope="col">Town and article</th><th scope="col">Type</th><th scope="col">Outcome</th><th scope="col" class="col-summary">Summary and source</th></tr></thead>
   <tbody>
@@ -2993,7 +3047,7 @@ def cant_check_html(ctx, t, up_m):
   {next_door_html(ctx, t)}
   <p class="actions"><a class="btn" href="{e(alerts_url(tid))}">Get alerts for the {n_near} towns next to {e(town)}</a></p>
   <div class="request" data-request-town="{e(tid)}" data-town-name="{e(town)}, {state}">
-    <p>Want {e(town)} added? We’ll ask the town hall to let us read its agendas.</p>
+    <p>Want {e(town)} added? {for_town("We’ll ask the town hall to let us read its agendas.", state, town)}</p>
     <label class="field">Email, if you want to hear when {e(town)} is added<input type="email" name="request_email" autocomplete="email" spellcheck="false"></label>
     <button type="button" class="btn quiet">Ask us to add {e(town)}</button>
     <p class="form-status" role="status" aria-live="polite"></p>
@@ -3294,7 +3348,7 @@ def build_topic_page(ctx, tp):
 <section aria-labelledby="upcoming-title">
   <div class="sec-head"><h2 id="upcoming-title">Coming up</h2><a class="btn" href="{e(alerts_url(topics=[tp['key']]))}">Get alerts for your town</a></div>
   {county_filter}
-  {meeting_list(ctx, up_m, shown=max(5, len(week)), more="More coming up", empty='Nothing on the agenda about this right now. We check every morning.')}
+  {meeting_list(ctx, up_m, shown=max(1, sum(1 for m in up_m if m["date"] <= (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=30)).strftime("%Y-%m-%d"))), more="Show meetings more than 30 days out", empty='Nothing on the agenda about this right now. We check every morning.')}
   {tools}
   {coverage}
 </section>
@@ -3411,6 +3465,8 @@ def build_search(ctx):
   </div>
   <div class="search-filters">
     <label>State<select name="state"><option value="">All states</option>{states}</select></label>
+    <label>Topic<select name="topic"><option value="">All topics</option>{topics}</select></label>
+    <label>Board<select name="board"><option value="">All boards</option>{boards}</select></label>
     <div class="town-pick" id="town-pick">
       <label for="town-add">Towns</label>
       <div class="field-row"><input id="town-add" type="text" list="search-towns" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="All towns">
@@ -3420,15 +3476,12 @@ def build_search(ctx):
       <p class="form-note"><button type="button" class="link-btn" id="my-towns-btn" hidden>Search my towns</button></p>
       <p class="field-error" id="town-add-error" role="alert" hidden></p>
     </div>
-    <label>Topic<select name="topic"><option value="">All topics</option>{topics}</select></label>
-    <label>Board<select name="board"><option value="">All boards</option>{boards}</select></label>
   </div>
   </details>
 </form>
 <p id="search-status" aria-live="polite"></p>
 <p class="form-note search-examples">Try <a href="/search?q=battery+storage&amp;upcoming=1">battery storage</a>, <a href="/search?q=data+center+moratorium">data center moratorium</a>, <a href="/search?q=cell+tower&amp;upcoming=1">cell tower</a> or <a href="/search?q=40B&amp;upcoming=1">40B</a>.</p>
 <p class="notice" id="search-exact" hidden></p>
-<p class="search-alert" id="search-alert" hidden><a class="btn quiet" href="/watch">Get alerts for your town</a></p>
 <ol id="search-results"></ol>
 <noscript><p class="notice">Search needs JavaScript. You can still <a href="/towns">find a town</a>.</p></noscript>
 </div>
@@ -3865,7 +3918,7 @@ def ledger_csv(rows):
     w = csv.writer(out)
     w.writerow(LEDGER_COLS)
     for r in rows:
-        w.writerow([" | ".join(r.get("sources") or []) if c == "sources" else (r.get(c) or "") for c in LEDGER_COLS])
+        w.writerow([" | ".join(abs_url(u) for u in (r.get("sources") or [])) if c == "sources" else (r.get(c) or "") for c in LEDGER_COLS])
     return out.getvalue()
 
 
@@ -3901,6 +3954,63 @@ def ledger_sources_html(urls):
     return ", ".join(out)
 
 
+def smart_quotes(text):
+    """Curly quotes for display: "word" becomes “word” and it's becomes it’s."""
+    if not text:
+        return text or ""
+    out = re.sub(r'(^|[\s(\[\u2014\u2013/-])"', "\\1\u201c", text)
+    out = out.replace('"', "\u201d")
+    out = re.sub(r"(^|[\s(\[\u2014\u2013/-])'", "\\1\u2018", out)
+    return out.replace("'", "\u2019")
+
+
+def abs_url(url):
+    return BASE_URL + url if url and url.startswith("/") else (url or "")
+
+
+def source_dates(ctx):
+    """{document url: meeting date} from the agendas we hold and the Attorney General's letters, to label sources."""
+    cache = ctx.__dict__.get("_source_dates")
+    if cache is None:
+        cache = {}
+        for path in sorted((DATA / "search").glob("*/*.jsonl")):
+            for line in path.open():
+                try:
+                    row = json.loads(line)
+                except ValueError:
+                    continue
+                if row.get("meeting_date"):
+                    for k in ("url", "source_url"):
+                        if row.get(k):
+                            cache.setdefault(row[k], row["meeting_date"][:10])
+        for r in ctx.ag:
+            if r.get("letter_url") and len(r.get("decision_date") or "") == 10:
+                cache.setdefault(abs_url(r["letter_url"]), r["decision_date"])
+        ctx.__dict__["_source_dates"] = cache
+    return cache
+
+
+def ledger_sources_html_dated(ctx, urls):
+    """"Agenda, Oct 5, 2026; Warrant, Oct 17, 2026; News report": each source named, with its date when we hold it."""
+    dates = source_dates(ctx)
+    seen = Counter()
+    out = []
+    for u in urls:
+        u = abs_url(u)
+        name = ledger_source_name(u)
+        day = dates.get(u)
+        label = f"{name}, {fmt_date(day)}" if day else name
+        seen[label] += 1
+        if seen[label] > 1:
+            label += f" ({seen[label]})"
+        out.append(f'<a href="{e(u)}" rel="nofollow noopener" target="_blank">{e(label)}</a>')
+    return "; ".join(out)
+
+
+def term_text(start, end):
+    return (fmt_date(start) if start else "From adoption") + (f" to {fmt_date(end)}" if end else "")
+
+
 def build_data_center_ledger(ctx):
     rows = ledger_rows(ctx)
     if not rows:
@@ -3911,63 +4021,83 @@ def build_data_center_ledger(ctx):
     generated = fmt_date((json.loads((DATA / "data_center_ledger.json").read_text()).get("generated") or date.today().isoformat())[:10])
     status_opts = "".join(f'<option value="{e(k)}">{e(v)}</option>' for k, v in LEDGER_STATUS if counts.get(k))
     body_rows = []
+    ids = Counter()
     for r in rows:
         town = r.get("town") or ""
         st = r.get("state") or "MA"
+        rid = "dc-" + slugify(f"{st}-{town}-{r.get('measure') or 'measure'}")
+        ids[rid] += 1
+        if ids[rid] > 1:
+            rid += f"-{ids[rid]}"
         town_cell = ctx.town_link(st, town)
         county = f'<small>{e(r["county"])} County</small>' if r.get("county") else ""
         if st != "MA":
             county = f'<small>{e((r.get("county") or "") + (" County, " if r.get("county") else ""))}{e(st)}</small>'
         ag = ""
+        ag_plain = ""
         if r.get("ag_decision"):
-            ag = e(first_up(r["ag_decision"]))
             bits = ([fmt_date(r["ag_decision_date"]) + (f" ({r['ag_decision_date_note']})" if r.get("ag_decision_date_note") else "")]
                     if r.get("ag_decision_date") else []) + ([f"case {r['ag_case_number']}"] if r.get("ag_case_number") else [])
-            if bits:
-                ag += f", {e(', '.join(bits))}"
+            ag_plain = first_up(r["ag_decision"]) + (f", {', '.join(bits)}" if bits else "")
+            ag = e(ag_plain)
         elif st == "MA":
             ag = "None yet"
         else:
             ag = "No state review"
-        effect_key = "In effect"
-        if r["status"] == "in effect":
-            if r.get("in_effect_from"):
-                effect = fmt_date(r["in_effect_from"]) + (f" to {fmt_date(r['in_effect_to'])}" if r.get("in_effect_to") else ", no end date in the record")
-            else:
-                effect = "Yes; the start date is not in the record"
-        elif r["status"] == "expired":
-            effect = (fmt_date(r["in_effect_from"]) + " to " if r.get("in_effect_from") else "Until ") + fmt_date(r["in_effect_to"]) if r.get("in_effect_to") else "Ended; dates not found"
-        elif r.get("proposed_term_from") or r.get("proposed_term_to"):
-            effect_key = "Proposed term"
-            effect = (fmt_date(r["proposed_term_from"]) if r.get("proposed_term_from") else "From adoption") + (f" to {fmt_date(r['proposed_term_to'])}" if r.get("proposed_term_to") else "")
+        # A measure still proposed prints the dates it has and stops; one that passed prints every step.
+        pairs = []
+        if r["status"] in ("proposed", "withdrawn", "reported"):
+            pairs.append(("Proposed", ledger_date(r.get("proposed_date"), "Date not found")))
+            if r.get("proposed_term_from") or r.get("proposed_term_to"):
+                pairs.append(("Proposed term", term_text(r.get("proposed_term_from"), r.get("proposed_term_to"))))
         else:
-            effect = "Not in effect"
-        srcs = ledger_sources_html(r.get("sources") or [])
-        conf = ""
-        if r.get("confidence"):
-            level, _, note = r["confidence"].partition(":")
-            conf = (f'<p class="ledger-conf">How sure: {e(level.strip())}.' + (f" {e(first_up(note.strip()))}" if note else "") + "</p>")
-        search = " ".join(filter(None, [town, r.get("county") or "", STATE_NAMES.get(st, st), st, r.get("measure") or "", r.get("body") or "",
+            if r.get("proposed_date"):
+                pairs.append(("Proposed", fmt_date(r["proposed_date"])))
+            pairs.append(("Adopted", ledger_date(r.get("adopted_date"))))
+            pairs.append(("Attorney General", ag))
+            if r["status"] == "in effect":
+                if r.get("in_effect_from"):
+                    pairs.append(("In effect", term_text(r["in_effect_from"], r.get("in_effect_to"))
+                                  + ("" if r.get("in_effect_to") else ", no end date in the record")))
+                else:
+                    pairs.append(("In effect", "Yes; the start date is not in the record"))
+                if r.get("proposed_term_to"):
+                    pairs.append(("Proposed extension", f"to {fmt_date(r['proposed_term_to'])}"))
+            elif r["status"] == "expired":
+                pairs.append(("In effect", term_text(r.get("in_effect_from"), r.get("in_effect_to")) if r.get("in_effect_to")
+                              else "Ended; dates not found"))
+            elif r.get("proposed_term_from") or r.get("proposed_term_to"):
+                pairs.append(("Proposed term", term_text(r.get("proposed_term_from"), r.get("proposed_term_to"))))
+        dates_html = "".join(f"<dt>{e(k)}</dt><dd>{v}</dd>" for k, v in pairs)
+        srcs = ledger_sources_html_dated(ctx, r.get("sources") or [])
+        level, _, note = (r.get("confidence") or "").partition(":")
+        level = level.strip()
+        sure = f' <span class="ledger-sure">How sure: {e(level)}</span>' if level else ""
+        why = (f'<details class="ledger-why"><summary>Why we rate it {e(level)}</summary><p>{e(smart_quotes(first_up(note.strip())))}</p></details>'
+               if note.strip() else "")
+        search = " ".join(filter(None, [town, r.get("county") or "", f"{r['county']} County" if r.get("county") else "",
+                                        STATE_NAMES.get(st, st), st, r.get("measure") or "", r.get("body") or "",
                                         label[r["status"]], r.get("summary") or ""]))
         cite_dates = "; ".join(x for x in [
             f"proposed {fmt_date(r['proposed_date'])}" if r.get("proposed_date") else "",
             f"adopted {fmt_date(r['adopted_date'])}" if r.get("adopted_date") else "",
-            (f"Attorney General {r['ag_decision']}" + (f" {fmt_date(r['ag_decision_date'])}" if r.get("ag_decision_date") else "")
-             + (f", case {r['ag_case_number']}" if r.get("ag_case_number") else "")) if r.get("ag_decision") else "",
-            f"in effect {fmt_date(r['in_effect_from'])}" + (f" to {fmt_date(r['in_effect_to'])}" if r.get("in_effect_to") else "") if r.get("in_effect_from") else "",
+            f"Attorney General {ag_plain[:1].lower()}{ag_plain[1:]}" if ag_plain else "",
+            f"in effect {term_text(r['in_effect_from'], r.get('in_effect_to'))}" if r.get("in_effect_from") else "",
+            f"proposed term {term_text(r.get('proposed_term_from'), r.get('proposed_term_to'))}"
+            if (r.get("proposed_term_from") or r.get("proposed_term_to")) and r["status"] != "in effect" else "",
+            f"proposed extension to {fmt_date(r['proposed_term_to'])}" if r["status"] == "in effect" and r.get("proposed_term_to") else "",
         ] if x)
         citation = (f"{town}, {st}: {r.get('measure') or 'measure'} on data centers, {label[r['status']].lower()}"
-                    + (f" ({cite_dates})" if cite_dates else "") + f". {r.get('summary') or ''} Sources: {' | '.join(r.get('sources') or [])}. "
-                    f"Agenda Ahead data-center ledger, {BASE_URL}/attorney-general/data-centers, checked {generated}.")
+                    + (f" ({cite_dates})" if cite_dates else "") + f". {smart_quotes(r.get('summary') or '')} "
+                    f"Sources: {' | '.join(abs_url(u) for u in (r.get('sources') or []))}. "
+                    f"Agenda Ahead data-center ledger, {BASE_URL}/attorney-general/data-centers#{rid}, checked {generated}.")
         cite_btn = f'<button type="button" class="link-btn cite" data-copy="{e(citation)}" hidden>Copy citation</button>'
-        body_rows.append(f"""<tr data-search="{e(search)}" data-status="{e(r['status'])}">
+        body_rows.append(f"""<tr id="{rid}" data-search="{e(search)}" data-status="{e(r['status'])}">
   <td class="town" data-label="Town"><b>{town_cell}</b>{county}</td>
   <td data-label="Measure">{e(first_up(r.get('measure') or ''))}{f"<br><small>{e(r['body'])}</small>" if r.get('body') else ''}</td>
-  <td data-label="Dates"><dl class="ledger-dates"><dt>Proposed</dt><dd>{ledger_date(r.get('proposed_date'))}</dd>
-<dt>Adopted</dt><dd>{ledger_date(r.get('adopted_date'), 'Not yet' if r['status'] == 'proposed' else 'Not found')}</dd>
-<dt>Attorney General</dt><dd>{ag}</dd><dt>{effect_key}</dt><dd>{effect}</dd></dl></td>
-  <td class="col-summary" data-label="Status"><span class="badge {LEDGER_BADGE[r['status']]}">{e(label[r['status']])}</span>
-    <p class="summary">{e(r.get('summary') or '')}</p><p class="ledger-src">{srcs} {cite_btn}</p>{conf}</td>
+  <td data-label="Dates"><dl class="ledger-dates">{dates_html}</dl></td>
+  <td class="col-summary" data-label="Status"><p class="ledger-status"><b>{e(label[r['status']])}</b>{sure}</p>
+    <p class="summary">{e(smart_quotes(r.get('summary') or ''))}</p><p class="ledger-src">{srcs} {cite_btn}</p>{why}</td>
 </tr>""")
     body = f"""
 <div class="wrap">
@@ -3976,7 +4106,7 @@ def build_data_center_ledger(ctx):
 {ag_nav("/attorney-general/data-centers")}
 <form class="filterbar" data-list-filter data-noun="measures">
   <label>Status<select data-status><option value="">All</option>{status_opts}</select></label>
-  <label>Town or words<input type="search" data-search autocomplete="off"></label>
+  <label>Town, county, state or words<input type="search" data-search autocomplete="off"></label>
   <p class="count" data-count aria-live="polite"></p>
 </form>
 <div class="table-wrap"><table class="stack ledger-table" id="ledger">
@@ -3984,7 +4114,7 @@ def build_data_center_ledger(ctx):
 <tbody data-filter-list>{"".join(body_rows)}</tbody></table></div>
 <p class="muted" data-empty hidden>No measure matches.</p>
 <p class="action-row"><a href="/attorney-general/data-centers.csv" download>Download the ledger (CSV)</a></p>
-<p class="form-note">A Massachusetts town can pause data centers: state law protects solar and battery storage, not data centers. The Attorney General approved the moratoriums in {ag_letter_links(ctx, ("Shutesbury", "Templeton", "Gill"), "data center")}. A moratorium runs from the date the Attorney General approves it, or from the town vote where the bylaw says so, to the end date the bylaw names. Dates come from the warrant, the decision letter and the bylaw; a date we could not find in those reads "Not found".</p>
+<p class="form-note">A Massachusetts town can pause data centers: state law protects solar and battery storage, not data centers. The Attorney General approved the moratoriums in {ag_letter_links(ctx, ("Shutesbury", "Templeton", "Gill"), "data center")}. A moratorium runs from the date the Attorney General approves it, or from the town vote where the bylaw says so, to the end date the bylaw names. Dates come from the warrant, the decision letter and the bylaw; a date we could not find in those reads “Not found”.</p>
 </div>
 """
     write("attorney-general/data-centers.csv", ledger_csv(rows))
@@ -4090,6 +4220,8 @@ def build_ag_rulings(ctx):
     decisions = [r for r in ag if r.get("record_type") in ("ag_decision", "pending_ag_review")]
     context = [r for r in ag if r.get("record_type") not in ("ag_decision", "pending_ag_review")]
     outcomes = [o for o, _ in Counter(r.get("outcome") for r in decisions).most_common()]
+    bylaws = [b for b, _ in Counter(r.get("bylaw_type") for r in decisions).most_common() if b]
+    techs = [t for t, _ in Counter(r.get("technology") for r in decisions).most_common() if t]
     years = sorted({(r.get("decision_date") or "")[:4] for r in decisions if r.get("decision_date")}, reverse=True)
     counties = sorted({r.get("county") for r in decisions if r.get("county")})
     body = f"""
@@ -4106,11 +4238,11 @@ def build_ag_rulings(ctx):
   <label>Words<input type="search" data-search></label>
   <p class="count" data-count aria-live="polite"></p>
 </div>
-{ag_table(ctx, decisions, table_id='ag-ledger', filters=True)}
+{ag_table(ctx, decisions, table_id='ag-ledger', filters=True, by_year=True)}
 <p class="action-row"><a href="/attorney-general/rulings.csv" download>Download the table (CSV)</a></p>
 <h2 id="ag-context">Court rulings and city ordinances</h2>
 <p>For context: the courts' rulings on these bylaws, and what cities (which adopt ordinances without Attorney General review) have done.</p>
-{ag_table(ctx, context, table_id='ag-context')}
+{ag_table(ctx, context, table_id='ag-context', filters=True, group='ag-ledger')}
 </div>
 """
     write("attorney-general/rulings.csv", ag_csv(ag))
@@ -4284,7 +4416,8 @@ def lines_json(ctx):
         t = item_text(h)
         lines[h["id"]] = [headline(t["say"]), t.get("quote") or "", t["note"], t["kind"],
                           t.get("key") or (find_name(" ".join((h.get("snippet") or "").split()))[0] or find_address(h.get("snippet") or "")).lower(),
-                          who_label(h), t.get("rank", 60), t.get("no", ""), t.get("subj", ""), t.get("stage", ""), list(t.get("facts") or [])]
+                          who_label(h), t.get("rank", 60), t.get("no", ""), t.get("subj", ""), t.get("stage", ""), list(t.get("facts") or []),
+                          list(h.get("topics") or [])]
     by_url = defaultdict(list)
     for h in ctx.hits:
         by_url[h["source_url"]].append(h["id"])

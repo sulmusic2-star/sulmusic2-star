@@ -64,8 +64,8 @@
     "https://www.templetonma.gov/DocumentCenter/View/3138/by-law-38",
     "https://www.templetonma.gov/CivicAlerts.aspx?AID=107"
    ],
-   "confidence": "high: the measure and the May 13, 2026 / May 8, 2027 dates come from OCR of the scanned letter; the AG letter's own date line is not legible in the posted copy, so 2026-09-22 is the Town Clerk's posting date as recorded in our rulings file.",
-   "ag_decision_date_note": "the Town Clerk's posting date; the letter's own date line is not legible in the posted copy"
+   "confidence": "high: the measure and the May 13, 2026 and May 8, 2027 dates come from a scanned copy of the letter; the letter's own date line is not legible, so the decision date given is the Town Clerk's posting date, Sept. 22, 2026. The letter was issued between Sept. 14, when the town's certification reached the Attorney General, and Sept. 22.",
+   "ag_decision_date_note": "issued between Sep 14 and Sep 22, 2026; Sep 22 is the Town Clerk's posting date, since the letter's own date line is not legible"
   },
   {
    "state": "MA",
@@ -113,7 +113,7 @@
     "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2143",
     "https://www.yahoo.com/news/us/articles/central-mass-city-puts-data-141013573.html"
    ],
-   "confidence": "high: the agendas give the text and end date (the petition's 'regular course' was July 13, 2026); the 8-0 vote comes from the MassLive report the tracker cites."
+   "confidence": "high: the agendas give the text and end date (the petition was filed July 13, 2026); the 8-0 vote comes from a MassLive report, republished on Yahoo News."
   },
   {
    "state": "MA",
@@ -134,7 +134,7 @@
     "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09142026-2125",
     "https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2143"
    ],
-   "confidence": "medium: the agenda text is clear on content, but the use-table codes are OCR'd and the committee's disposition is not stated."
+   "confidence": "medium: the agenda text is clear on content, but the use-table codes come from a scanned page read by machine, and the committee's decision is not stated."
   },
   {
    "state": "MA",
@@ -204,7 +204,7 @@
     "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_08262026-3821",
     "https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Agenda/_09222026-3909"
    ],
-   "confidence": "high: the warrant states both dates; the in effect dates are the article's proposed term, and the Oct. 17 vote is not in our records."
+   "confidence": "high: the warrant states both dates, which are the article's proposed term; the Oct. 17 vote is not in our records yet."
   },
   {
    "state": "MA",
@@ -306,7 +306,7 @@
    "in_effect_from": null,
    "in_effect_to": null,
    "status": "proposed",
-   "summary": "Article 16 of the Oct. 27, 2026 Fall Annual Town Meeting warrant, sponsored by the Town Manager, would set a temporary moratorium on applying for and installing data centers by adding Section 400-24 and a definition; the Planning Board held its hearing Sept. 23 and the Select Board reviewed the article Oct. 6.",
+   "summary": "Article 16 of the Oct. 27, 2026 Fall Annual Town Meeting warrant, sponsored by the Planning Board, would set a temporary moratorium on applying for and installing data centers by adding Section 400-24 and a definition; the Planning Board held its hearing Sept. 23 and the Select Board reviewed the article Oct. 6.",
    "sources": [
     "https://www.uxbridge-ma.gov/DocumentCenter/View/10074/FATM-2026-POSTED-WARRANT-091526",
     "https://www.uxbridge-ma.gov/AgendaCenter/ViewFile/Agenda/_09232026-817",
@@ -400,7 +400,7 @@
     "https://easthamptonma.gov/AgendaCenter/ViewFile/Agenda/_09162026-3655",
     "https://easthamptonma.gov/AgendaCenter/ViewFile/Agenda/_10072026-3682"
    ],
-   "confidence": "medium: the Oct. 7 packet prints the draft order but our text cuts off before any duration; the council's request is dated 7-15-26 in its tracking list, and the Oct. 7 result is not in our records."
+   "confidence": "medium: the Oct. 7 packet prints the draft order, but the copy we read stops before any duration; the council's request is dated July 15, 2026 in its tracking list, and the Oct. 7 result is not in our records."
   },
   {
    "state": "MA",
@@ -484,7 +484,7 @@
    "sources": [
     "https://boston.legistar.com/MeetingDetail.aspx?LEGID=14238&GID=847&G=AC4A50E2-9128-4EA8-8ACF-04F7A6E02E82"
    ],
-   "confidence": "medium: one Legistar line ('Referred'); no committee, hearing or text."
+   "confidence": "medium: one line on the City Council's agenda ('Referred'); no committee, hearing or text."
   },
   {
    "state": "MA",
@@ -736,7 +736,7 @@
     "https://www.townofcharlton.net/AgendaCenter/ViewFile/Agenda/_10072026-4700",
     "https://www.townofcharlton.net/AgendaCenter/ViewFile/Agenda/_09222026-4686"
    ],
-   "confidence": "medium: the hearing notice describes the text; the interim prohibition states a study deadline rather than an end date, so end date is null."
+   "confidence": "medium: the hearing notice describes the text; the interim prohibition runs until a study is done rather than to a date, so no end date is given."
   },
   {
    "state": "MA",
@@ -798,7 +798,7 @@
    "sources": [
     "https://www.mansfieldma.com/DocumentCenter/View/13822/Final-Annual-Town-Meeting-Warrant-2026"
    ],
-   "confidence": "low: the warrant is our only record; the Town Meeting result is not in our data, and no Mansfield data-center decision is in our rulings file."
+   "confidence": "low: the warrant is our only record; the Town Meeting result is not in our records, and the Attorney General has issued no Mansfield data-center decision we know of."
   },
   {
    "state": "MA",
@@ -1045,7 +1045,7 @@
    "sources": [
     "https://www.boylston-ma.gov/PB%20Agenda%209-30-26.pdf"
    ],
-   "confidence": "low: one agenda line; our index dates the document Sept. 30 while its text says Oct. 5, 2026."
+   "confidence": "low: one agenda line; the town's listing dates the agenda Sept. 30 while the agenda itself says Oct. 5, 2026."
   },
   {
    "state": "MA",
@@ -1085,7 +1085,7 @@
    "sources": [
     "https://www.yahoo.com/news/us/articles/central-mass-city-puts-data-141013573.html"
    ],
-   "confidence": "low: a single sentence in a news report the tracker cites; no Agawam agenda or ordinance in our data, and no dates."
+   "confidence": "low: a single sentence in a MassLive news report; no Agawam agenda or ordinance in our records, and no dates."
   },
   {
    "state": "MA",
@@ -1162,7 +1162,7 @@
    "in_effect_from": null,
    "in_effect_to": null,
    "status": "proposed",
-   "summary": "A zoning ordinance amendment sponsored by Councilors Geary and Burns would define a data center and make it a prohibited use in all zoning districts; the Planning Board discussed it Sept. 2 and acted on a recommendation Sept. 10, the Town Council set a hearing on Sept. 21, and the hearing is Oct. 19, 2026.",
+   "summary": "A zoning ordinance amendment sponsored by Councilors Geary and Burns would define a data center and make it a prohibited use in all zoning districts; the Planning Board discussed it Sept. 2 and listed possible action on a recommendation for Sept. 10; the Town Council's Sept. 21 agenda listed a possible vote to set a hearing date, and the hearing is Oct. 19, 2026.",
    "sources": [
     "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4514%5C2026%5C564909.pdf",
     "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4514%5C2026%5C565607.pdf",
@@ -1273,7 +1273,7 @@
     "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4390%5C2026%5C567225.pdf",
     "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4390%5C2026%5C567691.pdf"
    ],
-   "confidence": "medium: the notice groups the data center with uses to be prohibited but does not print the use-table entry; our index dates the document Sept. 28 while its text says Sept. 23."
+   "confidence": "medium: the notice groups data centers with uses to be prohibited but does not print the use-table entry; the town's listing dates the notice Sept. 28 while the notice itself says Sept. 23."
   },
   {
    "state": "RI",
@@ -1336,7 +1336,8 @@
    "sources": [
     "https://lysanderny.gov/sites/default/files/2026-10/10-1-2026_agenda.pdf"
    ],
-   "confidence": "low: 'in effect' rests on the agenda's wording about extending an existing moratorium; its adoption date and current end date are not in our records, and April 1, 2027 is the proposed extension."
+   "confidence": "low: 'in effect' rests on the agenda's wording about extending an existing moratorium; its adoption date and current end date are not in our records, and April 1, 2027 is the proposed extension.",
+   "proposed_term_to": "2027-04-01"
   }
  ]
 }

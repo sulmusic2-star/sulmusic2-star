@@ -33,6 +33,22 @@ class WarrantDateTests(unittest.TestCase):
         self.assertIsNone(warrant_date("SPECIAL TOWN MEETING Monday, October 20, 2026"))  # Oct 20, 2026 is a Tuesday
         self.assertEqual(warrant_date("SPECIAL TOWN MEETING Tuesday, October 20, 2026"), date(2026, 10, 20))
 
+    def test_running_head_against_town_meeting(self):
+        self.assertEqual(warrant_date("ARTICLE 7 ... OCTOBER 27, 2026 FALL ANNUAL TOWN MEETING WARRANT PAGE | 3"), date(2026, 10, 27))
+        self.assertEqual(warrant_date("October 27, 2026 Special Town Meeting Warrant Recommendations"), date(2026, 10, 27))
+        self.assertIsNone(warrant_date("Hold until October 13, 2026 meeting. Recommend approval."))
+        self.assertIsNone(warrant_date("to amend the vote of the May 2, 2017 Annual Town Meeting under Article 12"))
+        self.assertIsNone(warrant_date("which was approved at the May 5, 2026, Annual Town Meeting to repurpose"))
+        self.assertIsNone(warrant_date("Town Meeting Minutes October 19, 2026 Special Town Meeting June 29, 2026 Special Town Meeting 2026"))
+
+    def test_a_posting_date_gives_way_to_the_printed_day(self):
+        from watch351.dates import warrant_redate
+        head = "OCTOBER 27, 2026 FALL ANNUAL TOWN MEETING WARRANT"
+        self.assertEqual(warrant_redate(date(2026, 9, 21), head), date(2026, 10, 27))
+        self.assertIsNone(warrant_redate(date(2026, 10, 27), head))   # the same day: nothing to change
+        self.assertIsNone(warrant_redate(date(2026, 11, 2), head))    # a listing date later than the print stands
+        self.assertIsNone(warrant_redate(date(2026, 5, 1), head))     # more than four months apart stands
+
     def test_only_the_top_of_the_document_counts(self):
         text = "x" * 5000 + " Saturday, October 17, 2026"
         self.assertIsNone(warrant_date(text))

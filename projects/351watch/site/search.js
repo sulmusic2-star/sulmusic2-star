@@ -351,6 +351,7 @@
       for (const d of loaded) {
         const m = d.meta || {};
         const url = /^https?:/i.test(d.url) ? d.url : location.origin + d.url;
+        const link = url.replace(/ /g, "%20"); // a town's file name with spaces still pastes as one link
         const at = (L.at && L.at[url]) || ["", "", false];
         const ids = (L.by_url && L.by_url[url]) || [];
         const items = ids.map((id) => L.lines && L.lines[id]).filter((x) => x && x[3] !== "mention");
@@ -358,13 +359,14 @@
         if (weekOnly && !inWeek(m.date)) continue;
         const base = { town: m.town || "", state: m.state || "", board: m.board || "", date: m.date || "", time: at[0] || "",
           place: at[1] || "", status: at[2] ? "Canceled" : "", document: m.title || "Agenda", topics: words(m.topics),
-          agenda_url: url, town_url: m.town_url ? location.origin + m.town_url : "" };
+          agenda_url: link, town_url: m.town_url ? location.origin + m.town_url : "" };
         if (!items.length) rows.push({ ...base, item: "" });
         const seenItems = new Set();
         for (const it of items) {
           if (seenItems.has(it[0])) continue; // one agenda item flagged twice is one line
           seenItems.add(it[0]);
-          rows.push({ ...base, item: it[0], status: at[2] ? "Canceled" : (it[9] || "") });
+          rows.push({ ...base, item: it[0], status: at[2] ? "Canceled" : (it[9] || ""),
+            topics: Array.isArray(it[11]) && it[11].length ? words(it[11].join(",")) : base.topics });
         }
       }
       if (kind === "copy") {

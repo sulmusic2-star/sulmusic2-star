@@ -185,7 +185,15 @@ function setupListFilter() {
   const groups = Array.from(document.querySelectorAll('details.state-towns, details.county'));
   const params = new URLSearchParams(location.search);
   if (params.get('q')) search.value = params.get('q');
+  if (status && params.get('status') && [...status.options].some((o) => o.value === params.get('status'))) status.value = params.get('status');
   const wide = window.matchMedia('(min-width: 860px)').matches;
+  const keep = () => {
+    const p = new URLSearchParams(location.search);
+    if (search.value.trim()) p.set('q', search.value.trim()); else p.delete('q');
+    if (status && status.value) p.set('status', status.value); else p.delete('status');
+    const qs = p.toString();
+    history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
+  };
 
   const apply = () => {
     const q = norm(search.value);
@@ -205,6 +213,7 @@ function setupListFilter() {
     }
     count.textContent = (q || want) ? `${shown} of ${items.length} ${noun}` : '';
     if (empty) empty.hidden = shown > 0;
+    keep();
   };
   form.addEventListener('submit', (event) => event.preventDefault());
   search.addEventListener('input', apply);
@@ -249,11 +258,18 @@ function setupTrackerFilter() {
 function setupGenericFilters() {
   for (const bar of document.querySelectorAll('[data-filters]')) {
     const group = bar.dataset.filters;
-    const rows = Array.from(document.querySelectorAll(`table[data-filter-group="${group}"] tbody tr`));
+    const rows = Array.from(document.querySelectorAll(`table[data-filter-group="${group}"] tbody tr:not(.year-row)`));
+    const years = Array.from(document.querySelectorAll(`table[data-filter-group="${group}"] tbody tr.year-row`));
     const text = rows.map((r) => r.textContent.toLowerCase());
     const selects = Array.from(bar.querySelectorAll('select[data-key]'));
     const search = bar.querySelector('[data-search]');
     const count = bar.querySelector('[data-count]');
+    const params = new URLSearchParams(location.search);
+    for (const s of selects) {
+      const v = params.get(s.dataset.key);
+      if (v && [...s.options].some((o) => o.value === v)) s.value = v;
+    }
+    if (search && params.get('q')) search.value = params.get('q');
 
     const apply = () => {
       const words = search ? search.value.trim().toLowerCase().split(/\s+/).filter(Boolean) : [];
@@ -264,6 +280,21 @@ function setupGenericFilters() {
         if (match) shown += 1;
       });
       if (count) count.textContent = shown ? `${shown} of ${rows.length} shown` : `None of the ${rows.length} match. Try fewer words or another filter.`;
+      // a year heading with no row left under it goes
+      for (const y of years) {
+        let next = y.nextElementSibling;
+        let any = false;
+        while (next && !next.classList.contains('year-row')) {
+          if (!next.hidden) { any = true; break; }
+          next = next.nextElementSibling;
+        }
+        y.hidden = !any;
+      }
+      const p = new URLSearchParams(location.search);
+      for (const s of selects) { if (s.value) p.set(s.dataset.key, s.value); else p.delete(s.dataset.key); }
+      if (search && search.value.trim()) p.set('q', search.value.trim()); else if (search) p.delete('q');
+      const qs = p.toString();
+      history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
     };
     for (const s of selects) s.addEventListener('change', apply);
     if (search) search.addEventListener('input', apply);
@@ -435,10 +466,12 @@ function setupSearchResults() {
     if (title) {
       const doc = await loadLines();
       const ids = (doc.by_url || {})[title.href] || [];
-      const said = ids.map((id) => (doc.lines || {})[id]).filter(Boolean).sort((a, b) => (a[6] || 60) - (b[6] || 60));
+      const seenSaid = new Set();
+      const said = ids.map((id) => (doc.lines || {})[id]).filter(Boolean).sort((a, b) => (a[6] || 60) - (b[6] || 60))
+        .filter((x) => (seenSaid.has(x[0]) ? false : seenSaid.add(x[0])));
       const line = said.length ? said[0][0].replace(/:\s*“.*”$/, '.') : '';
       title.textContent = line || `${town} ${board || 'agenda'}${board ? ' agenda' : ''}`.trim();
-      const more = said.length > 1 ? ` +${said.length - 1}` : '';
+      const more = said.length > 1 ? ` and ${said.length - 1} more item${said.length > 2 ? 's' : ''}` : '';
       if (more) title.append(Object.assign(document.createElement('span'), { className: 'result-more', textContent: more }));
     }
   };
@@ -516,7 +549,11 @@ function setupSearchResults() {
     try { remembered = JSON.parse(localStorage.getItem('agendaahead:search-towns') || '[]'); } catch { /* private window */ }
     // the towns added last time stay until removed; a link with its own towns wins
     setTowns(fromUrl.length ? fromUrl : remembered.filter((id) => options.some((x) => x.dataset.id === id)));
-    if (!fromUrl.length && chosen().length && location.search) submit();
+    if (!fromUrl.length && chosen().length) {
+      const filters = document.getElementById('search-filters');
+      if (filters) filters.open = true; // the towns in use are in view
+      submit();
+    }
     document.getElementById('town-add-btn').addEventListener('click', () => { if (addTyped()) submit(); });
     add.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' && add.value.trim()) {
@@ -710,9 +747,11 @@ window.w351 = {
   requestTown,
   // The visitor's own towns (home town first), saved when they set up alerts. Pages may use them to
   // put those towns first; nothing leaves the browser.
-  saveAreas(homeTown, towns, topics) {
+  saveAreas(homeTown, towns, topics, merge = true) {
     try {
-      const list = [homeTown, ...(towns || []).filter((t) => t !== homeTown)].filter((t) => typeof t === 'string' && t.includes(':'));
+      // a new alert adds its towns to the ones this device already has (merge); removing a town replaces the list
+      const before = merge && this.areas() ? this.areas().towns : [];
+      const list = [...new Set([homeTown, ...(towns || []), ...before])].filter((t) => typeof t === 'string' && t.includes(':'));
       const doc = { home_town: list[0], towns: list.slice(0, 40) };
       if (Array.isArray(topics) && topics.length) doc.topics = topics.slice(0, 20); // only when some subjects were left out
       if (list.length) localStorage.setItem(AREAS_KEY, JSON.stringify(doc));
@@ -732,7 +771,7 @@ window.w351 = {
   addTown(id) {
     const doc = this.areas();
     const towns = doc ? doc.towns : [];
-    if (!towns.includes(id)) this.saveAreas(doc ? doc.home_town : id, [...towns, id], doc && doc.topics);
+    if (!towns.includes(id)) this.saveAreas(doc ? doc.home_town : id, [...towns, id], doc && doc.topics, false);
   },
   removeTown(id) {
     const doc = this.areas();
@@ -740,10 +779,17 @@ window.w351 = {
     const towns = doc.towns.filter((t) => t !== id);
     try {
       if (!towns.length) localStorage.removeItem(AREAS_KEY);
-      else this.saveAreas(towns[0], towns, doc.topics);
+      else this.saveAreas(towns[0], towns, doc.topics, false);
     } catch {
       /* storage unavailable */
     }
+  },
+  // Every town this device follows: the alerts' towns and the towns added in Search.
+  myTowns() {
+    const doc = this.areas();
+    let search = [];
+    try { search = JSON.parse(localStorage.getItem('agendaahead:search-towns') || '[]'); } catch { /* private window */ }
+    return [...new Set([...(doc ? doc.towns : []), ...(Array.isArray(search) ? search : [])])].filter((t) => typeof t === 'string' && t.includes(':'));
   },
   relDates,
   forget(id) {
@@ -826,11 +872,13 @@ function setupMeetingFilter() {
   const mineBtn = bar.querySelector('[data-my-towns]');
   if (!select && !town) return;
   const count = bar.querySelector('[data-count]');
-  const meetings = Array.from(document.querySelectorAll('.meeting[data-county]'));
-  const days = Array.from(document.querySelectorAll('.day-group'));
-  // "Only my towns": the towns this device has alerts for (window.w351.areas, from watch.js)
-  const mine = window.w351 && window.w351.areas ? window.w351.areas() : null;
-  const mineNames = mine && mine.towns ? mine.towns.map((id) => id.split(':').slice(1).join(':')) : [];
+  // the meetings still ahead: not a day that has passed since the page was built, not an "Earlier meetings" fold
+  const meetings = Array.from(document.querySelectorAll('.meeting[data-county]'))
+    .filter((m) => !m.closest('.day-group.past') && !m.closest('details.disclose'));
+  const days = Array.from(document.querySelectorAll('.day-group:not(.past)'));
+  // "Only my towns": every town this device follows (alerts and Search)
+  const mineIds = window.w351 && window.w351.myTowns ? window.w351.myTowns() : [];
+  const mineNames = mineIds.map((id) => id.split(':').slice(1).join(':'));
   let onlyMine = false;
   const params = new URLSearchParams(location.search);
   if (select && params.get('county') && [...select.options].some((o) => o.value === params.get('county'))) select.value = params.get('county');
@@ -881,6 +929,19 @@ function setupMeetingFilter() {
   apply();
 }
 
+// A day heading whose date has passed (the page was built this morning; it may be read after midnight) goes,
+// with its meetings.
+function markPastDays() {
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  for (const g of document.querySelectorAll('.day-group')) {
+    const t = g.querySelector('.day time[datetime]');
+    if (t && t.getAttribute('datetime') < today && !g.closest('details.disclose')) {
+      g.classList.add('past');
+      g.hidden = true;
+    }
+  }
+}
+
 // /upcoming: "One line each" hides the write-ups so a reporter can scan six towns on one screen.
 function setupViewSwitch() {
   const bar = document.querySelector('[data-view-switch]');
@@ -900,6 +961,7 @@ function setupViewSwitch() {
 setupListFilter();
 setupTrackerFilter();
 setupGenericFilters();
+markPastDays();
 setupMeetingFilter();
 setupViewSwitch();
 setupContactForm();

@@ -369,8 +369,17 @@ form[data-list-filter] input { width: 100%; }
 
 /* ---------- tables (reference pages) ---------- */
 .table-wrap { overflow-x: auto; margin: var(--s3) 0; }
-table.stack .col-summary { width: 42%; }
-.ledger-table .col-summary { width: 46%; }
+@media (min-width: 641px) {
+  table.stack .col-summary { width: 42%; }
+  .ledger-table .col-summary { width: 46%; }
+}
+tr.year-row th { font: 700 var(--t-h3)/1.25 var(--f-head); color: var(--ink); padding: var(--s6) 0 var(--s2); border-bottom: 1px solid var(--rule-strong); }
+tr.year-row:first-child th { padding-top: var(--s3); }
+.ledger-status { margin: 0 0 var(--s1); }
+.ledger-sure { color: var(--muted); font-weight: 400; font-size: var(--t-sm); margin-left: var(--s3); }
+.ledger-why { margin: var(--s1) 0 0; font-size: var(--t-sm); color: var(--muted); }
+.ledger-why > summary { display: inline-flex; min-height: 0; padding: 6px 0; color: var(--muted); font-weight: 400; text-decoration: underline; text-underline-offset: 0.18em; }
+.ledger-why p { margin: var(--s1) 0 0; max-width: var(--measure); }
 .ledger-dates { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 2px var(--s2); margin: 0; }
 .ledger-dates dt { color: var(--muted); }
 .ledger-dates dd { margin: 0; }
@@ -575,13 +584,13 @@ h1 { margin-top: var(--s6); margin-bottom: var(--s3); }
 .lines > .line + .line { margin-top: var(--s5); }
 .more-items { margin: 0 0 var(--s2); color: var(--muted); font-size: var(--t-sm); }
 .item-tags { margin: 0; font-size: var(--t-sm); font-weight: 600; color: var(--muted); }
-.line-say { display: grid; grid-template-columns: minmax(0, 1fr) 9.5rem; column-gap: var(--s4); align-items: baseline; margin: 0; font: 700 var(--t-h3)/1.22 var(--f-head); text-wrap: pretty; }
+.line-say { display: grid; grid-template-columns: minmax(0, 1fr) 11rem; column-gap: var(--s4); align-items: baseline; margin: 0; font: 700 var(--t-h3)/1.22 var(--f-head); text-wrap: pretty; }
 .line-say .stage { font: 400 var(--t-sm)/1.5 var(--f-body); color: var(--muted); margin: 0; }
 /* An item that only mentions a subject (the agenda's own words, no headline to write) stays in the text face */
 .line.mention .line-say { font: 600 var(--t-body)/1.4 var(--f-body); }
 .brief-what { margin: var(--s2) 0 0; max-width: var(--measure); }
 .line-facts { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0 var(--s4); margin: var(--s1) 0 0; color: var(--muted); font-size: var(--t-sm); max-width: var(--measure); }
-.line-facts .is-new { color: var(--muted); font-weight: 600; }
+.line-facts .is-new { color: var(--muted); font-weight: 400; }
 .line-before { color: var(--muted); font-size: var(--t-sm); margin: var(--s1) 0 0; max-width: var(--measure); }
 /* Headlines in a list tap through; a light underline says so without shouting */
 .line-link { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); text-decoration-thickness: 1px; text-underline-offset: 0.12em; }
@@ -594,6 +603,8 @@ h1 { margin-top: var(--s6); margin-bottom: var(--s3); }
 .line-next { margin: var(--s2) 0 0; font-size: var(--t-sm); max-width: var(--measure); }
 .line-note { margin: var(--s1) 0 0; font-size: var(--t-sm); max-width: var(--measure); }
 .speak-line { color: var(--muted); font-size: var(--t-sm); max-width: var(--measure); margin: 0 0 var(--s3); }
+.speak-line b { color: var(--ink); font-weight: 600; }
+.town-pick { max-width: 36rem; }
 .terms { color: var(--muted); font-size: var(--t-sm); max-width: var(--measure); margin: var(--s4) 0 0; }
 .terms dfn { font-style: normal; color: var(--ink); }
 /* /upcoming with "One line each": one line per item in the text face, the meeting's words ahead of its first item,
@@ -676,7 +687,7 @@ td a, tbody th a { display: inline; padding: 10px 0; }
 .meet-src { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--s4); margin: 0; font-size: var(--t-sm); }
 .meet-src .link-btn { font-size: var(--t-sm); font-weight: 600; }
 .meet-found { color: var(--muted); }
-.row-when .is-new { color: var(--muted); font-weight: 600; }
+.row-when .is-new { color: var(--muted); font-weight: 400; }
 .item-link { font-weight: 600; display: inline; padding: 10px 0; }
 .item-words > summary { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-weight: 400; text-decoration: underline; text-underline-offset: 0.18em; list-style: none; }
 .item-words > summary::-webkit-details-marker { display: none; }
@@ -758,6 +769,8 @@ details.disclose[open] { padding-bottom: var(--s4); }
 .watch-form input[type="text"], .watch-form input[type="email"], .watch-form input[type="search"] { width: 100%; }
 @media (max-width: 640px) {
   .home-hero h1 { margin-bottom: var(--s5); }
+  .home-hero { padding-bottom: 0; }
+  .home > .next { margin-top: var(--s6); }
   .sec-head .btn { flex: 1 1 100%; }
   .actions .btn { flex: 1 1 100%; }
 }
