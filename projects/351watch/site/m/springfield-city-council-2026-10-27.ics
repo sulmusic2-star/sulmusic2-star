@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:m-springfield-city-council-2026-10-27@agendaahead
+DTSTAMP:20261017T120000Z
+DTSTART;TZID=America/New_York:20261027T170000
+DTEND;TZID=America/New_York:20261027T190000
+SUMMARY:Springfield City Council: Discusses a rule change (no vote listed).
+LOCATION:Springfield\, MA
+DESCRIPTION:• Discusses a rule change (no vote listed).\n\nAgenda: https:
+ //springfieldma.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId
+ =23734\,plainText=false)\nPage: https://agendaahead.vercel.app/m/springfie
+ ld-city-council-2026-10-27\nConfirm the time and place with the town\; age
+ ndas can change.
+URL:https://agendaahead.vercel.app/m/springfield-city-council-2026-10-27
+END:VEVENT
+END:VCALENDAR

@@ -1,15 +1,15 @@
 {
- "generated": "2026-10-16T21:11:20+00:00",
+ "generated": "2026-10-17T13:14:46+00:00",
  "source": "massdep_wetlands",
  "source_name": "MassDEP Wetlands Protection Act filings (EEA Data Portal, WIRe)",
  "window": {
   "start": "2025-10-10",
-  "end": "2026-10-16"
+  "end": "2026-10-17"
  },
  "states": [
   "MA"
  ],
- "filings_total": 4680,
+ "filings_total": 4693,
  "hits_count": 93,
  "notes": "meeting_date is the DEP filing date (the API has no hearing date); the Conservation Commission must open its hearing within 21 days of filing (310 CMR 10.05(5)(b)). Extra per-hit fields are under 'details'.",
  "hits": [
@@ -259,19 +259,19 @@
    "snippet": "NOI, Jake Marley With Hyperion Systems, LLC: Application for a proposed 400.00 kW AC (590.40 kW DC) large-scale, ground-mounted, elevated, dual-use solar array located at 299 river road. 299 River Rd.",
    "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213344",
    "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
-   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent, Whately",
+   "document_title": "MassDEP wetlands filing 339-0142 — Notice of Intent, Whately",
    "text_source": "api",
    "first_seen": "2026-10-10T23:46:13+00:00",
    "days_before_meeting": -12.0,
    "source": "massdep_wetlands",
    "details": {
     "noi_id": "213344",
-    "dep_file_number": null,
+    "dep_file_number": "339-0142",
     "filing_type": "Notice of Intent",
     "project_type": "Commercial/Industrial",
     "received_date": "2026-09-29",
     "issued_date": null,
-    "status": "received",
+    "status": "file_number_issued",
     "soc_requested": false,
     "meeting_date_basis": "filing_date",
     "applicant": "JAKE MARLEY WITH HYPERION SYSTEMS, LLC",

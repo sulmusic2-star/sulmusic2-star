@@ -1,30 +1,33 @@
 {
  "coverage": {
   "from": "2025-10-10",
-  "to": "2026-10-16"
+  "to": "2026-10-17"
  },
  "source": "massdep_wetlands",
  "api": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire",
  "cursor": {
   "max_filing_date": "2026-10-16",
-  "max_noi_id": 213570
+  "max_noi_id": 213583
  },
  "lookback_days": 45,
  "last_run": {
-  "at": "2026-10-16T21:11:20+00:00",
+  "at": "2026-10-17T13:14:46+00:00",
   "offline": false,
   "blocked": null,
   "rebuilt_from_cache": 4680,
-  "listed": 605,
-  "details_needed": 0,
-  "http_requests": 9
+  "listed": 618,
+  "details_needed": 32,
+  "changed": 19,
+  "details_fetched": 32,
+  "new": 13,
+  "http_requests": 41
  },
  "summary": {
-  "filings_total": 4680,
+  "filings_total": 4693,
   "filings_by_type": {
-   "Notice of Intent": 2487,
-   "Notice of Intent (buffer zone only)": 1986,
-   "ANRAD (resource area delineation)": 207
+   "Notice of Intent": 2489,
+   "Notice of Intent (buffer zone only)": 1996,
+   "ANRAD (resource area delineation)": 208
   },
   "energy_hits": 93,
   "energy_by_category": {
@@ -53,7 +56,7 @@
   "energy_towns": 70,
   "all_categories_incl_excluded": {
    "transmission_substation": 41,
-   "utility_routine": 37,
+   "utility_routine": 38,
    "solar": 29,
    "developer_other": 7,
    "solar_and_storage": 6,
@@ -241,6 +244,16 @@
    "new": 0,
    "changed": 0,
    "details_fetched": 0,
+   "hits": 93
+  },
+  {
+   "at": "2026-10-17T13:14:46+00:00",
+   "offline": false,
+   "blocked": null,
+   "listed": 618,
+   "new": 13,
+   "changed": 19,
+   "details_fetched": 32,
    "hits": 93
   }
  ]
