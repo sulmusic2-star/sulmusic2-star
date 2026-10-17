@@ -455,7 +455,7 @@ class Ctx:
             if wrong_doc or BR.verify(b, doc.get("text") or "", town_dates.get(f"{h['state']}:{h['town']}", set()), year):
                 self.briefs_dropped += 1
                 continue
-            BRIEFS[bid] = b
+            BRIEFS[bid] = moratorium_word(b)
         # A writer's "(not a solar item)" is honest, but a reader doesn't need the item at all: it goes with the
         # off-subject hits (the CSV and the copied week already left it out).
         self.hits = [h for h in self.hits if not OFF_ITEM.search((BRIEFS.get(h["id"]) or {}).get("line") or "")]
@@ -2135,7 +2135,7 @@ def speak_line_full(m):
     return ""
 
 
-def meeting_head(ctx, m, show_town=True, with_board=True, with_when=True):
+def meeting_head(ctx, m, show_town=True, with_board=True, with_when=True, doc_link=""):
     """"Carver · Planning Board · Town Hall Room 1": the line above a meeting's items. In a list the day is
     printed once above the day's meetings and the time sits in its own column, so `with_when` is off there."""
     parts = []
@@ -2153,6 +2153,8 @@ def meeting_head(ctx, m, show_town=True, with_board=True, with_when=True):
         parts.append('<span class="meet-canceled">Canceled by the town</span>')
     if m["place"] and m["source"] != "massdep_wetlands":
         parts.append(f'<span class="meet-place">{e(place_text(m["place"]))}</span>')
+    if doc_link:  # the short list puts the agenda link on the meeting's top line (under the place on a phone)
+        parts.append(f'<span class="meet-doc">{doc_link}</span>')
     return " ".join(parts)
 
 
@@ -2364,7 +2366,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
         # the time in its own column; the day is the heading above the day's meetings
         when = (f'<span class="meet-when"><time datetime="{m["date"]}">{e(m["time"])}</time></span>' if m["time"] and m["date"]
                 else '<span class="meet-when none">Time not given</span>')
-    head = "" if full else f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town, with_when=False)}</p>'
+    head = "" if full else f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town, with_when=False, doc_link=link)}</p>'
     speak_html = f'<p class="speak-line"><b>Speaking:</b> {e(speak)}</p>' if speak else ""
     terms = terms_html(m, source) if full and not m.get("cancelled") else ""
     return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" id="{m['id']}" data-county="{e(county)}" data-state="{e(m['state'])}" data-town="{e(m['town'])}">
@@ -3422,6 +3424,18 @@ def build_topic_page(ctx, tp):
                 body, f"/topics/{tp['slug']}")
 
 
+def moratorium_word(b):
+    """A headline says "ban" where the agenda says moratorium: a pause is not a ban, so it says moratorium."""
+    src = f"{b.get('quote') or ''} {b.get('what') or ''}"
+    line = b.get("line") or ""
+    if (re.search(r"\bmoratori", src, re.I) and not re.search(r"\b(?:ban|prohibit\w*)\b", b.get("quote") or "", re.I)
+            and re.search(r"\bban\b", line, re.I)):
+        line = re.sub(r"\b(?:temporary )?ban\b", "moratorium", line, flags=re.I)
+        line = re.sub(r"\bban\b", "moratorium", line, flags=re.I)
+        b = {**b, "line": line[:1].upper() + line[1:]}
+    return b
+
+
 OFF_ITEM = re.compile(r"\(not an? [a-z0-9 -]+ item\)|\(attachment text\b|^(?:Existing|Standing notice)\b[^(]*\(not a project\)", re.I)
 TM_TITLE = re.compile(r"\btown meeting\b[^|]{0,60}\bwarrant\b|\bwarrant\b[^|]{0,60}\btown meeting\b", re.I)  # a writer's note that the flagged words were incidental
 
@@ -4150,12 +4164,19 @@ def build_data_center_ledger(ctx):
                     f"Sources: {' | '.join(abs_url(u) for u in (r.get('sources') or []))}. "
                     f"Agenda Ahead data-center ledger, {BASE_URL}/attorney-general/data-centers#{rid}, checked {generated}.")
         cite_btn = f'<button type="button" class="link-btn cite" data-copy="{e(citation)}" hidden>Copy citation</button>'
+        # the next meeting with a data-center item in this town, from the same agendas as Coming up
+        nxt = next((m for m in upcoming_meetings(ctx, f"{st}:{town}")
+                    if any("data_center" in (en.get("topics") or []) for en in m["lines"].values())), None)
+        if nxt and r["status"] in ("proposed", "adopted", "reported", "in effect"):
+            pairs.insert(0, ("Next on an agenda", f'<a href="/m/{nxt["id"][2:]}">{e(meeting_board(nxt))}, {e(day_label(nxt["date"], ctx))}</a>'))
         # the group heading names the status, so the row's key is the date that matters for it
         key = {"in effect": f"To {fmt_date(r['in_effect_to'])}" if r.get("in_effect_to") else "No end date found",
                "expired": f"Ended {fmt_date(r['in_effect_to'])}" if r.get("in_effect_to") else "Ended",
                "adopted": fmt_date(r["adopted_date"]) if r.get("adopted_date") else "Date not found",
                "proposed": fmt_date(r["proposed_date"]) if r.get("proposed_date") else "Date not found",
                "reported": "In the press"}.get(r["status"], label[r["status"]])
+        if nxt and r["status"] in ("proposed", "adopted", "reported"):
+            key = f"On the agenda {short_day(nxt['date'])}"
         place = town + ("" if st == "MA" else f", {st}")
         where = (f"{r['county']} County" if r.get("county") else "") + (f", {STATE_NAMES.get(st, st)}" if st != "MA" else "")
         more = f' <a href="{town_path(st, town)}">Everything about {e(town)}</a>' if f"{st}:{town}" in ctx.town_by_id else ""
@@ -4305,7 +4326,7 @@ def build_ag_rulings(ctx):
         r["_csv"] = i
     body = f"""
 <div class="wrap">
-<h1 id="ag-title">Every Attorney General ruling on solar, battery storage and data-center bylaws</h1>
+<h1 id="ag-title">Attorney General rulings on town bylaws</h1>
 <p class="lead">Every decision the Massachusetts Attorney General has made on a town’s solar, battery storage or data-center bylaw since 2022, newest first. Tap one for the letter.</p>
 {ag_nav("/attorney-general/rulings")}
 <details class="filter-box"><summary>Filter the rulings</summary>
@@ -4474,6 +4495,22 @@ def build_sitemap(paths):
 
 def build_robots():
     return f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /w/\nDisallow: /w?\n\nSitemap: {BASE_URL}/sitemap.xml\n"
+
+
+def search_titles(ctx):
+    """{agenda URL: its main item's headline}: Search titles an agenda by what is on it, not by its file name
+    (search/build-index.mjs reads this; a vote or hearing first)."""
+    best = {}
+    order = {"vote": 0, "hearing": 1, "continued": 2, "adopted": 3}
+    for h in ctx.hits:
+        b = BRIEFS.get(h["id"])
+        if not b or not b.get("line") or b.get("duplicate_of") or OFF_ITEM.search(b["line"]):
+            continue
+        rank = order.get(b.get("action"), 9)
+        url = h.get("source_url") or ""
+        if url and (url not in best or rank < best[url][0]):
+            best[url] = (rank, headline(b["line"]))
+    return {u: t for u, (_, t) in best.items()}
 
 
 def town_index_json(ctx):
@@ -4659,6 +4696,7 @@ def main():
     write("sitemap.xml", build_sitemap([p for _, p in pages.values() if p]))
     write("robots.txt", build_robots())
     write("data/towns.json", town_index_json(ctx))
+    (DATA / "search" / "titles.json").write_text(json.dumps(search_titles(ctx), ensure_ascii=False, sort_keys=True, indent=0) + "\n")
     write("data/lines.json", lines_json(ctx))
     write("data/trending.json", trending_json(*trending_stories(ctx)))
     stale = SITE / "manifest.txt"

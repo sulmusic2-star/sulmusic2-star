@@ -26,10 +26,33 @@ if (!dataDir || !outDir) {
 // Same rule as build.py: lowercase, spaces -> "-", apostrophes dropped.
 const slugify = (name) => name.toLowerCase().replace(/['’]/g, "").replace(/\s+/g, "-");
 
+// The headline of each agenda's main item, written by build.py from the checked write-ups.
+let headlines = {};
+try {
+  headlines = JSON.parse(readFileSync(`${dataDir}/titles.json`, "utf8"));
+} catch (err) {
+  headlines = {};
+}
+
+function rawTitle(row) {
+  return (row.title || "").replace(/\s*\(pdf\)\s*$/i, "").replace(/\s+/g, " ").trim();
+}
+
+// What a person reads as the result's title: the main item's headline when we wrote one; otherwise the
+// document's own title, unless that is a file name ("STM Warrant 10.19.26", "6/20/2026 Agenda"), in which
+// case the kind of document (the town, board and date print under it).
 function displayTitle(row) {
-  const t = (row.title || "").replace(/\s*\(pdf\)\s*$/i, "").replace(/\s+/g, " ").trim();
-  // Link text some listings use instead of a title.
-  if (!t || /^(copy document link|download|view|click here|pdf|documents?)$/i.test(t)) return `${row.board || "Meeting"} agenda`;
+  const written = headlines[row.source_url || row.url] || headlines[row.url];
+  if (written) return written;
+  const t = rawTitle(row);
+  const kind = /warrant/i.test(t) ? "warrant" : /minutes/i.test(t) ? "minutes" : /notice/i.test(t) ? "notice" : "agenda";
+  const tm = /\bSTM\b|special town meeting/i.test(t) ? "Special Town Meeting" : /\bATM\b|annual town meeting/i.test(t) ? "Annual Town Meeting" : "";
+  const revised = /revis|amend/i.test(t) ? " (revised)" : "";
+  // Link text some listings use instead of a title, or a file name full of dates and codes.
+  if (!t || /^(copy document link|download|view|click here|pdf|documents?)$/i.test(t)
+      || /\d{1,2}[./-]\d{1,2}[./-]\d{2,4}|\d{4}-\d{2}-\d{2}|\d{6,}|_/.test(t)) {
+    return `${tm || row.board || "Meeting"} ${kind}${revised}`;
+  }
   return t;
 }
 
@@ -92,7 +115,7 @@ for (let row of best.values()) {
   seen.add(link);
   const title = displayTitle(row);
   // A Town Meeting warrant posted under a board's listing is the voters' document, not the board's.
-  if (/\btown meeting\b[^|]{0,60}\bwarrant\b|\bwarrant\b[^|]{0,60}\btown meeting\b/i.test(title) && row.board_key !== "town_meeting") {
+  if (/\btown meeting\b[^|]{0,60}\bwarrant\b|\bwarrant\b[^|]{0,60}\btown meeting\b/i.test(rawTitle(row)) && row.board_key !== "town_meeting") {
     row = { ...row, board: "Town Meeting", board_key: "town_meeting" };
   }
   const filters = { state: [row.state] };
@@ -104,7 +127,7 @@ for (let row of best.values()) {
     url: link,
     // Title, town and board lead the content, so a town or board name ranks its own documents.
     // "e¢" and "¢" are bullets the OCR misread; they would show up in excerpts.
-    content: `${title}. ${row.town}, ${STATE_NAMES[row.state] || row.state}. ${row.board || ""}. ${row.text.replace(/(^|\s)[e€o]?¢\s*/g, "$1")}`,
+    content: `${title}. ${rawTitle(row)}. ${row.town}, ${STATE_NAMES[row.state] || row.state}. ${row.board || ""}. ${row.text.replace(/(^|\s)[e€o]?¢\s*/g, "$1")}`,
     language: "en",
     meta: {
       title,
