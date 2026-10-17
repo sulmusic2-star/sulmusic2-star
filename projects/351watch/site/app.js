@@ -605,11 +605,7 @@ function setupSearchResults() {
     try { remembered = JSON.parse(localStorage.getItem('agendaahead:search-towns') || '[]'); } catch { /* private window */ }
     // the towns added last time stay until removed; a link with its own towns wins
     setTowns(fromUrl.length ? fromUrl : remembered.filter((id) => options.some((x) => x.dataset.id === id)));
-    if (!fromUrl.length && chosen().length) {
-      const filters = document.getElementById('search-filters');
-      if (filters) filters.open = true; // the towns in use are in view
-      submit();
-    }
+    if (!fromUrl.length && chosen().length) submit();  // the summary says how many filters are on; results stay first
     document.getElementById('town-add-btn').addEventListener('click', () => { if (addTyped()) submit(); });
     add.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' && add.value.trim()) {
@@ -651,8 +647,8 @@ function setupSearchResults() {
     const link = alert.querySelector('a');
     link.href = `/watch${q.toString() ? `?${q}` : ''}`;
     const names = towns.map((t) => nameOf(t).split(',')[0]);
-    link.textContent = names.length ? `Get alerts for ${names.length > 2 ? `${names[0]} and ${names.length - 1} more towns` : names.join(' or ')}`
-      : 'Get alerts for your town';
+    link.textContent = names.length ? `Follow ${names.length > 2 ? `${names[0]} and ${names.length - 1} more towns` : names.join(' or ')}`
+      : 'Follow your town';
     alert.hidden = !list.querySelector('li.result:not([hidden])');
   }
 
@@ -765,10 +761,19 @@ function openTarget() {
 function setupDisclosure() {
   openTarget();
   window.addEventListener('hashchange', openTarget);
+  // Search keeps its results first: the folded filters say how many are on instead of opening.
   const filters = document.getElementById('search-filters');
   if (filters) {
-    const p = new URLSearchParams(location.search);
-    if (['state', 'town', 'topic', 'board', 'sort', 'upcoming'].some((k) => p.get(k))) filters.open = true;
+    const summary = filters.querySelector(':scope > summary');
+    const say = () => {
+      const on = ['state', 'topic', 'board'].filter((k) => (filters.querySelector(`select[name=${k}]`) || {}).value).length
+        + (document.querySelector('#town-chips li') ? 1 : 0);
+      summary.textContent = on ? `Filters (${on} on)` : 'Filters';
+    };
+    new MutationObserver(say).observe(document.getElementById('town-chips') || filters, { childList: true });
+    say();
+    window.addEventListener('popstate', say);
+    document.addEventListener('change', (ev) => { if (filters.contains(ev.target)) setTimeout(say, 0); });
   }
 }
 

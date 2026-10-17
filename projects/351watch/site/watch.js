@@ -123,7 +123,7 @@
     const on = !!(s && s.email_alerts === true);
     $('email-option').hidden = !on;
     $('no-email').hidden = on;
-    if (!on && !editId) submit.textContent = 'Add to my calendar';
+    if (!on && !editId) submit.textContent = 'Follow these towns';
   });
 
   // ---------- reading screen 1
@@ -201,7 +201,7 @@
       box.hidden = true;
       return;
     }
-    $('home-request-text').textContent = `We can’t check ${label(id)}’s agendas yet. You’ll still get alerts for the towns next to it, and we can ask ${label(id)}’s town hall to let us check its agendas.`;
+    $('home-request-text').textContent = `We can’t check ${label(id)}’s agendas yet. You can still follow the towns next to it, and we can ask ${label(id)}’s town hall to let us check its agendas.`;
     $('home-request-btn').textContent = `Ask us to add ${label(id)}`;
     $('home-request-btn').disabled = false;
     $('home-request-status').textContent = '';
@@ -603,7 +603,7 @@
         // Someone arrived from a topic page: the question keeps the promise it came from.
         const names = topicBoxes.filter((t) => t.checked).map((t) => ((t.closest('label') || t.parentElement).textContent || '').trim().split('\n')[0].trim());
         const help = $('town-help');
-        if (help && names.length) help.textContent = `Alerts about ${names.join(' and ').toLowerCase()} are free for your town and the towns next to it.`;
+        if (help && names.length) help.textContent = `You get a private page that updates every morning and a calendar feed about ${names.join(' and ').toLowerCase()} for it and the towns next to it.`;
       }
     }
     topicSummary();
@@ -646,7 +646,7 @@
       box.hidden = false;
       $('edit-banner').hidden = true;
       editId = null;
-      submit.textContent = 'Get alerts';
+      submit.textContent = 'Follow these towns';
       submit.disabled = false;
       show('town');
     }

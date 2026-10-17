@@ -1,6 +1,18 @@
 // /trending: the biggest stories coming up. build.py renders the top 20 for everyone. A visitor can add any
 // number of towns; the list then shows the stories in those towns (and, when ticked, the towns next to them),
 // their own towns first, then by size. The towns stay in this browser.
+// One status vocabulary (build.py stage_class / stage_word)
+function stageClass(s) {
+  if (/^(Postponed|Asks to postpone|Moved|Asked to move)/.test(s)) return 'stage moved';
+  if (/^(Canceled|Withdrawn)/.test(s)) return 'stage off';
+  if (/^Possible vote/.test(s)) return 'stage maybe';
+  if (/^(Vote|Hearing|Final vote|Decided)/.test(s)) return 'stage act';
+  return 'stage';
+}
+function stageWord(s) {
+  return s.replace(/^Postponed to /, 'Moved to ').replace(/^Postponed$/, 'Moved').replace(/^Asks to postpone/, 'Asked to move');
+}
+
 (() => {
   const all = document.getElementById('trend-all');
   if (!all) return;
@@ -43,7 +55,7 @@
     const when = el('span', 'row-when');
     when.append(el('span', 'row-town', `${st.town}${st.state !== 'MA' ? `, ${st.state}` : ''}`));
     if (st.board) when.append(el('span', '', st.board));
-    if (st.new) when.append(el('span', 'is-new', 'First time on an agenda'));
+    if (st.new) when.append(el('span', 'is-new', 'New on an agenda'));
     const line = el('span', 'row-line');
     const words = (st.line || st.headline || '').replace(' (no vote listed)', '').replace('; no vote listed)', ')');
     line.append(/[a-z0-9)]\.$/.test(words) && !/\b(St|Rd|Ave|Dr|Ln|Blvd|Mt|No|Art|Sec|Inc|Corp|LLC|Co)\.$/.test(words) ? words.slice(0, -1) : words);
@@ -51,8 +63,7 @@
     if (st.why && st.why.length) a.append(el('span', 'row-why', st.why.join('; ')));
     if (st.stage) {
       // the same dot as the page: filled when the board acts (a vote or hearing), hollow otherwise
-      const act = /^(Vote|Hearing|Final vote|Possible vote|Decided)/.test(st.stage);
-      a.append(el('span', `stage${act ? ' act' : ''}`, st.stage));
+      a.append(el('span', stageClass(st.stage), stageWord(st.stage)));
     }
     li.append(a);
     return li;

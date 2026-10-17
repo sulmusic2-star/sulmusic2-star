@@ -105,7 +105,7 @@ const overrides = {};
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p);
-    else if (e.name.endsWith('.html') && e.name !== 'index.html') {
+    else if (e.name.endsWith('.html') && e.name !== 'index.html' && path.relative(staticDir, p) !== '404.html') {
       const rel = path.relative(staticDir, p).split(path.sep).join('/');
       overrides[rel] = { path: rel.slice(0, -5), contentType: 'text/html; charset=utf-8' };
     }
@@ -130,9 +130,8 @@ const config = {
     { handle: 'filesystem' },
     { src: '^/\\.well-known/http-message-signatures-directory/?$', dest: '/api/key-directory' },
     { src: '^/w/[^/]*/?$', dest: '/w' },
-    // anything else that isn't a file: our own 404 page, with the site's header and a town box
-    { handle: 'error' },
-    { status: 404, src: '^/(.*)$', dest: '/404' },
+    // anything else that isn't a file: our own 404 page (kept under its file name, see overrides)
+    { src: '^/(?!api/).*$', dest: '/404.html', status: 404 },
   ],
   overrides,
   crons: [{ path: '/api/cron/dispatch', schedule: '30 13 * * *' }],

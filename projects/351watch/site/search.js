@@ -199,7 +199,7 @@
     if (more) more.hidden = true;
     document.title = q ? `${q} | ${baseTitle}` : baseTitle;
     if (!narrowed && !upcoming) {
-      say("Type a word or phrase to search the agendas, for example battery storage or cell tower.");
+      say("");
       return;
     }
     say("Searching…");

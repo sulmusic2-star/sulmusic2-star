@@ -1,6 +1,18 @@
 // /w/<key> (or /w?id=<key>): one alert list. A private key shows everything, including the
 // private and share links, the daily message, edit and delete. A share (read-only) key shows the
 // items and feeds only. ?new=1 after creating shows the "save your private link" banner.
+// One status vocabulary (build.py stage_class / stage_word)
+function stageClass(s) {
+  if (/^(Postponed|Asks to postpone|Moved|Asked to move)/.test(s)) return 'stage moved';
+  if (/^(Canceled|Withdrawn)/.test(s)) return 'stage off';
+  if (/^Possible vote/.test(s)) return 'stage maybe';
+  if (/^(Vote|Hearing|Final vote|Decided)/.test(s)) return 'stage act';
+  return 'stage';
+}
+function stageWord(s) {
+  return s.replace(/^Postponed to /, 'Moved to ').replace(/^Postponed$/, 'Moved').replace(/^Asks to postpone/, 'Asked to move');
+}
+
 (() => {
   const app = document.getElementById('wl-app');
   if (!app) return;
@@ -246,13 +258,12 @@
       const b = e.brief;
       const facts = factsText(e);
       const stage = m.cancelled ? 'Canceled' : e.stage;
-      const soon = stage === 'Hearing' && m.date && (Date.parse(`${m.date}T12:00:00Z`) - Date.parse(`${today}T12:00:00Z`)) / 86400000 <= 2 && m.date >= today;
       return el('li', { class: `line${b ? ' brief' : ''}` },
         el('p', { class: 'line-say' }, el('span', {}, text),
-          stage ? el('span', { class: `stage${/^(Vote|Hearing|Final vote|Possible vote|Decided)/.test(stage) ? ' act' : ''}${soon ? ' soon' : ''}`, text: stage }) : null),
+          stage ? el('span', { class: stageClass(stage), text: stageWord(stage) }) : null),
         b && b.what && normQ(b.what) !== normQ(text) ? el('p', { class: 'brief-what', text: b.what }) : null,
         b && b.history ? el('p', { class: 'line-before' }, el('b', { text: 'Before this:' }), ` ${b.history}`) : null,
-        facts.length || e.isNew ? el('p', { class: 'line-facts' }, e.isNew ? el('span', { class: 'is-new', text: 'First time on an agenda' }) : null, ...facts) : null);
+        facts.length || e.isNew ? el('p', { class: 'line-facts' }, e.isNew ? el('span', { class: 'is-new', text: 'New on an agenda' }) : null, ...facts) : null);
     };
     const where = `${m.town} ${meetingBoard(m)}, ${m.date ? dayLabel(m.date) : 'no date'}`;
     const d = m.docs[0];
@@ -375,9 +386,7 @@
     const mail = wl.email || {};
     const home = homeTown ? homeTown.split(':').slice(1).join(':') : '';
     const others = wl.towns.filter((t) => t !== homeTown).length;
-    // Until an email or chat channel is set, what the person has is a calendar feed; say that, not "alerts".
-    const kind = mail.configured || (wl.webhook && wl.webhook.configured) ? 'Alerts' : 'Calendar feed';
-    $('wl-title').textContent = home ? `${kind} on for ${home}${others ? ` and ${others === 1 ? 'the town' : `${others} towns`} next door` : ''}` : `${kind} on: ${wl.name || 'your towns'}`;
+    $('wl-title').textContent = home ? `You’re following ${home}${others ? ` and ${others === 1 ? 'the town' : `${others} towns`} next door` : ''}` : `You’re following ${wl.name || 'your towns'}`;
     $('wl-summary').textContent = '';
     const how = $('created-how');
     if (mail.configured) {
@@ -386,7 +395,7 @@
     } else if (emailOn) {
       how.textContent = 'At most one email a day, only when something new is posted. Add your address below to get them by email.';
     } else {
-      how.textContent = 'Add these meetings to your calendar; email alerts are coming.';
+      how.textContent = 'This page updates every morning as towns post agendas. Add the meetings to your calendar, or post them to Slack, Teams or Discord.';
     }
     const up = group(items.filter((i) => i.meeting_date && i.meeting_date >= today).sort((a, b) => a.meeting_date.localeCompare(b.meeting_date) || a.town.localeCompare(b.town)));
     if (up.length) $('sample').replaceChildren(el('ol', { class: 'meetings' }, meetingNode(up[0], 1)));
@@ -481,7 +490,7 @@
   function renderManage(wl) {
     $('manage-section').hidden = false;
     const plan = PLANS[wl.plan] || wl.plan;
-    $('plan-line').replaceChildren(`${plan || 'Free'}. `, el('a', { href: '/pricing', text: 'See what’s included' }), '.');
+    $('plan-line').replaceChildren(`${plan || 'Free'}. `, el('a', { href: '/how-it-works#free', text: 'What it costs' }), '.');
     $('edit-link').href = `/watch?edit=${wl.id}`;
     const start = $('delete-start');
     const confirmBox = $('delete-confirm');
