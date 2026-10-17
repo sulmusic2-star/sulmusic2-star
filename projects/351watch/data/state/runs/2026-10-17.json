@@ -1,32 +1,20 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 96,
-   "new_hits": 58,
-   "towns_attempted": 240,
-   "towns_succeeded": 238
-  },
-  "NY": {
-   "new_documents": 14,
-   "new_hits": 15,
-   "towns_attempted": 33,
-   "towns_succeeded": 33
-  },
-  "RI": {
-   "new_documents": 18,
-   "new_hits": 2,
-   "towns_attempted": 39,
-   "towns_succeeded": 39
+   "new_documents": 32,
+   "new_hits": 18,
+   "towns_attempted": 3,
+   "towns_succeeded": 3
   }
  },
  "date": "2026-10-17",
- "document_errors": 3,
- "documents_already_indexed": 444,
+ "document_errors": 0,
+ "documents_already_indexed": 0,
  "documents_deferred": 0,
- "documents_listed": 2980,
+ "documents_listed": 32,
  "documents_needing_ocr": 0,
- "documents_rematched": 2404,
- "documents_retried": 1,
+ "documents_rematched": 0,
+ "documents_retried": 0,
  "documents_too_large": [
   {
    "error": "too large (> 41943040 bytes): https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560",
@@ -62,133 +50,72 @@
    "state": "MA",
    "town": "Westport",
    "url": "https://www.westport-ma.com/Documents/Departments/Planning/Agendas And Minutes/2026/Packets/Packet 2026-10-20.pdf"
-  },
-  {
-   "error": "too large (> 41943040 bytes): https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf",
-   "meeting_date": "2026-10-06",
-   "state": "NY",
-   "town": "Cortlandt",
-   "url": "https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf"
-  },
-  {
-   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109",
-   "meeting_date": "2026-09-14",
-   "state": "NY",
-   "town": "Glenville",
-   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109"
-  },
-  {
-   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114",
-   "meeting_date": "2026-10-19",
-   "state": "NY",
-   "town": "Glenville",
-   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114"
-  },
-  {
-   "error": "too large (> 41943040 bytes): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166",
-   "meeting_date": "2026-10-06",
-   "state": "NY",
-   "town": "Kent",
-   "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
   }
  ],
- "duration_seconds": 985.1,
- "errors": [
-  {
-   "error": "listing generic: listing https://www.hamiltonma.gov/public-meetings/planning-board/20261020/19-00-00/ returned HTTP 404",
-   "town": "MA:Hamilton"
-  },
-  {
-   "error": "listing generic: listing https://www.hamiltonma.gov/government/zoning-board-appeals/meeting-packets-zoning-board-hamilton-2024/ returned HTTP 404",
-   "town": "MA:Hamilton"
-  },
-  {
-   "error": "listing generic: listing https://www.hamiltonma.gov/public-meetings/conservation-commission/20261014/19-00-00/ returned HTTP 404",
-   "town": "MA:Hamilton"
-  },
-  {
-   "error": "listing civicplus: https://www.leominster-ma.gov/AgendaCenter/Search/?term=&CIDs=3%2C2%2C5%2C4%2C&startDate=09%2F17%2F2026&endDate=02%2F14%2F2027&dateRange=&dateSelector=",
-   "town": "MA:Leominster"
-  },
-  {
-   "error": "document: too large (55940673 > 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634",
-   "town": "MA:Wellfleet"
-  },
-  {
-   "error": "document: too large (42216812 > 41943040 bytes): https://cms2.revize.com/revize/westportma/Documents/Departments/Planning/Agendas And Minutes/2026/Packets/Packet 2026-10-20.pdf",
-   "town": "MA:Westport"
-  },
-  {
-   "error": "document: https://cms8.revize.com/revize/penfieldny/Town Site/Departments/Town Clerk/2026.10.21 TBWS Agenda.docx",
-   "town": "NY:Penfield"
-  }
- ],
- "errors_total": 7,
- "finished": "2026-10-17T13:32:05+00:00",
- "hits_current": 1321,
+ "duration_seconds": 33.6,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-10-17T16:16:47+00:00",
+ "hits_current": 1329,
  "index": {
   "by_state": {
-   "MA": 3158,
+   "MA": 3190,
    "NY": 198,
    "RI": 365
   },
   "by_status": {
    "error": 18,
    "needs_ocr": 3,
-   "ok": 3671,
+   "ok": 3703,
    "replaced": 29
   },
   "by_text_source": {
    "docx": 20,
-   "html": 167,
+   "html": 179,
    "none": 18,
    "ocr": 870,
-   "pdf": 2646
+   "pdf": 2666
   },
-  "documents": 3721,
-  "hits": 1471,
-  "pruned": 8,
-  "towns": 307,
-  "with_hits": 751
+  "documents": 3753,
+  "hits": 1489,
+  "pruned": 0,
+  "towns": 310,
+  "with_hits": 759
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 126505622,
-   "listing": 128686172,
-   "robots": 448595
+   "document": 29026449,
+   "listing": 6017023,
+   "robots": 840
   },
-  "cache_hits": 2623,
-  "errors": 5,
-  "requests": 1101,
+  "cache_hits": 4,
+  "errors": 0,
+  "requests": 65,
   "requests_by_purpose": {
-   "document": 137,
-   "listing": 680,
-   "robots": 284
+   "document": 52,
+   "listing": 10,
+   "robots": 3
   },
-  "robots_blocked": 2
+  "robots_blocked": 0
  },
- "new_alert_items": 131,
+ "new_alert_items": 17,
  "new_alert_items_by_topic": {
-  "40b_comprehensive_permit": 7,
-  "battery_storage": 32,
-  "clean_energy_siting": 9,
-  "data_center": 16,
-  "moratorium": 10,
-  "solar": 32,
-  "wireless_telecom": 7,
-  "zoning_amendment": 49
+  "40b_comprehensive_permit": 1,
+  "battery_storage": 2,
+  "data_center": 1,
+  "solar": 4,
+  "wireless_telecom": 2,
+  "zoning_amendment": 8
  },
- "new_documents": 128,
- "new_hits": 75,
+ "new_documents": 32,
+ "new_hits": 18,
  "new_hits_by_topic": {
-  "40b_comprehensive_permit": 5,
-  "battery_storage": 17,
-  "clean_energy_siting": 1,
-  "data_center": 18,
-  "moratorium": 7,
-  "solar": 15,
-  "wireless_telecom": 5,
-  "zoning_amendment": 23
+  "40b_comprehensive_permit": 1,
+  "battery_storage": 2,
+  "data_center": 1,
+  "solar": 5,
+  "wireless_telecom": 2,
+  "zoning_amendment": 8
  },
  "options": {
   "matcher_version": "4f9bcaade9",
@@ -196,21 +123,32 @@
   "ocr_max_pages": 6,
   "pdftotext": true,
   "tesseract": true,
-  "workers": 16
+  "workers": 3
  },
- "started": "2026-10-17T13:15:40+00:00",
+ "previous_runs_today": [
+  {
+   "duration_seconds": 985.1,
+   "new_documents": 128,
+   "new_hits": 75,
+   "requests": 1101,
+   "started": "2026-10-17T13:15:40+00:00",
+   "states": [
+    "MA",
+    "NY",
+    "RI"
+   ],
+   "towns_attempted": 312,
+   "towns_succeeded": 310
+  }
+ ],
+ "started": "2026-10-17T16:16:14+00:00",
  "states": [
-  "MA",
-  "NY",
-  "RI"
+  "MA"
  ],
- "towns_attempted": 312,
- "towns_failed": [
-  "MA:Hamilton",
-  "MA:Leominster"
- ],
+ "towns_attempted": 3,
+ "towns_failed": [],
  "towns_partial": [],
- "towns_succeeded": 310,
+ "towns_succeeded": 3,
  "window": {
   "end": "2027-02-14",
   "start": "2026-09-17"

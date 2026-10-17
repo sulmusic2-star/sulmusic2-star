@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-17T15:33:33+00:00",
+ "generated": "2026-10-17T16:17:36+00:00",
  "window": {
   "start": "2026-10-17",
   "end": "2027-02-14"
@@ -1126,6 +1126,57 @@
    ]
   },
   {
+   "id": "b5d63402c7a9",
+   "score": 18.9,
+   "headline": "Groton planners review permit request for a battery storage project",
+   "dek": "The Planning Board meets Thursday, Oct 22. The agenda lists a site plan review for a battery storage project.",
+   "quote": "Public Hearing continuation– Application for Major Site Plan Review, Battery Energy Storage System, 600 Cow Pond Brook Road, Assessors Map 248, Parcel 41 (GELD & Lightshift Energy) Discussion",
+   "reasons": [
+    "Permit application",
+    "Also on the Oct 8 agenda",
+    "Meeting Oct 22",
+    "Put off from an earlier meeting",
+    "Also next door in Littleton, Pepperell and 3 more"
+   ],
+   "why": [
+    "Put off from an earlier meeting",
+    "Also next door in Littleton, Pepperell and 3 more"
+   ],
+   "stakes": 9.0,
+   "buzz": 5.0,
+   "topics": [
+    "battery_storage"
+   ],
+   "state": "MA",
+   "town": "Groton",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Groton"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-22",
+   "meeting_date_source": "agenda",
+   "days_until": 5,
+   "first_seen": "2026-10-17T16:16:18+00:00",
+   "is_new": true,
+   "source_url": "https://portal.grotonma.gov/public/meetings/17660",
+   "town_path": "/ma/groton",
+   "action": "project",
+   "boards": [
+    {
+     "town": "Groton",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-22"
+    }
+   ],
+   "hit_ids": [
+    "234de49eee0f",
+    "316318bcc8ff"
+   ]
+  },
+  {
    "id": "ea85e31b7019",
    "score": 18.23,
    "headline": "Washington planners discuss solar and battery storage rules",
@@ -1457,10 +1508,10 @@
    "reasons": [
     "Draft rules",
     "Meeting Oct 19",
-    "Also next door in Deerfield, Erving and 2 more"
+    "Also next door in Deerfield, Erving and 3 more"
    ],
    "why": [
-    "Also next door in Deerfield, Erving and 2 more"
+    "Also next door in Deerfield, Erving and 3 more"
    ],
    "stakes": 9.0,
    "buzz": 3.0,
@@ -2235,6 +2286,54 @@
    ]
   },
   {
+   "id": "4c4174a3088d",
+   "score": 9.45,
+   "headline": "Townsend Planning Board takes up state clean energy permit process",
+   "dek": "The Planning Board meets Monday, Oct 19. The agenda lists an item on the state's consolidated permit process.",
+   "quote": "Allowing Use of Battery Energy Storage Systems (in light of the consolidated local permitting process for Small Clean Energy Infrastructure Facilities).",
+   "reasons": [
+    "Meeting Oct 19",
+    "Also next door in Groton, Pepperell and Shirley"
+   ],
+   "why": [
+    "Also next door in Groton, Pepperell and Shirley"
+   ],
+   "stakes": 4.5,
+   "buzz": 3.0,
+   "topics": [
+    "battery_storage",
+    "clean_energy_siting",
+    "moratorium"
+   ],
+   "state": "MA",
+   "town": "Townsend",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Townsend"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-19",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-10-16T11:11:25+00:00",
+   "is_new": true,
+   "source_url": "https://townsendma.gov/Agendas and Minutes/Planning Board/2026/Agenda - Planning Board 10-19-26.pdf",
+   "town_path": "/ma/townsend",
+   "action": "process",
+   "boards": [
+    {
+     "town": "Townsend",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-19"
+    }
+   ],
+   "hit_ids": [
+    "6e99695a8a2f"
+   ]
+  },
+  {
    "id": "ae64f6f921eb",
    "score": 9.18,
    "headline": "Carver Select Board agenda lists solar tax talks",
@@ -2701,54 +2800,6 @@
    ]
   },
   {
-   "id": "4c4174a3088d",
-   "score": 8.27,
-   "headline": "Townsend Planning Board takes up state clean energy permit process",
-   "dek": "The Planning Board meets Monday, Oct 19. The agenda lists an item on the state's consolidated permit process.",
-   "quote": "Allowing Use of Battery Energy Storage Systems (in light of the consolidated local permitting process for Small Clean Energy Infrastructure Facilities).",
-   "reasons": [
-    "Meeting Oct 19",
-    "Also next door in Pepperell and Shirley"
-   ],
-   "why": [
-    "Also next door in Pepperell and Shirley"
-   ],
-   "stakes": 4.5,
-   "buzz": 2.0,
-   "topics": [
-    "battery_storage",
-    "clean_energy_siting",
-    "moratorium"
-   ],
-   "state": "MA",
-   "town": "Townsend",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Townsend"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-19",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-16T11:11:25+00:00",
-   "is_new": true,
-   "source_url": "https://townsendma.gov/Agendas and Minutes/Planning Board/2026/Agenda - Planning Board 10-19-26.pdf",
-   "town_path": "/ma/townsend",
-   "action": "process",
-   "boards": [
-    {
-     "town": "Townsend",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-19"
-    }
-   ],
-   "hit_ids": [
-    "6e99695a8a2f"
-   ]
-  },
-  {
    "id": "3e941a353f68",
    "score": 8.1,
    "headline": "Lanesborough planners review permit request for a clean energy project",
@@ -2837,6 +2888,53 @@
    ],
    "hit_ids": [
     "5ade24d1e470"
+   ]
+  },
+  {
+   "id": "8c99d28f2da4",
+   "score": 8.1,
+   "headline": "Data-center item on Townsend Planning Board agenda",
+   "dek": "The Planning Board meets Monday, Oct 19. The agenda lists an item on data centers.",
+   "quote": "MRPC (Katherine Waugh) survey for Planning Board input on local zoning and permitting approaches for Battery Energy Storage Systems (BESS), data centers, and tiny homes.",
+   "reasons": [
+    "Meeting Oct 19",
+    "Also next door in Groton, Pepperell and Shirley"
+   ],
+   "why": [
+    "Also next door in Groton, Pepperell and Shirley"
+   ],
+   "stakes": 6.0,
+   "buzz": 3.0,
+   "topics": [
+    "battery_storage",
+    "data_center"
+   ],
+   "state": "MA",
+   "town": "Townsend",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Townsend"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-19",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-10-16T21:12:48+00:00",
+   "is_new": true,
+   "source_url": "https://townsendma.gov/Agendas and Minutes/Planning Board/2026/Agenda - Planning Board 10-19-26 (Revision 1).pdf",
+   "town_path": "/ma/townsend",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Townsend",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-19"
+    }
+   ],
+   "hit_ids": [
+    "786fd2578cf4"
    ]
   },
   {
@@ -3518,53 +3616,6 @@
    ],
    "hit_ids": [
     "5f115fc03a61"
-   ]
-  },
-  {
-   "id": "8c99d28f2da4",
-   "score": 7.26,
-   "headline": "Data-center item on Townsend Planning Board agenda",
-   "dek": "The Planning Board meets Monday, Oct 19. The agenda lists an item on data centers.",
-   "quote": "MRPC (Katherine Waugh) survey for Planning Board input on local zoning and permitting approaches for Battery Energy Storage Systems (BESS), data centers, and tiny homes.",
-   "reasons": [
-    "Meeting Oct 19",
-    "Also next door in Pepperell and Shirley"
-   ],
-   "why": [
-    "Also next door in Pepperell and Shirley"
-   ],
-   "stakes": 6.0,
-   "buzz": 2.0,
-   "topics": [
-    "battery_storage",
-    "data_center"
-   ],
-   "state": "MA",
-   "town": "Townsend",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Townsend"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-19",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-16T21:12:48+00:00",
-   "is_new": true,
-   "source_url": "https://townsendma.gov/Agendas and Minutes/Planning Board/2026/Agenda - Planning Board 10-19-26 (Revision 1).pdf",
-   "town_path": "/ma/townsend",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Townsend",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-19"
-    }
-   ],
-   "hit_ids": [
-    "786fd2578cf4"
    ]
   },
   {
@@ -4303,6 +4354,54 @@
    ]
   },
   {
+   "id": "9ea3b664debe",
+   "score": 6.5,
+   "headline": "Acton Planning Board agenda lists continuance of a data center hearing",
+   "dek": "The Planning Board meets Tuesday, Oct 20. The agenda lists a request to continue the hearing.",
+   "quote": "Continuing Discussion on Data Centers Meeting Materials: https://doc.actonma.gov/dsweb/View/Collection-19856 Page 1 of 2 The agenda items listed are those reasonably anticipated by the Chair.",
+   "reasons": [
+    "Continuance requested",
+    "Meeting Oct 20",
+    "Also next door in Boxborough and Littleton"
+   ],
+   "why": [
+    "Also next door in Boxborough and Littleton"
+   ],
+   "stakes": 4.5,
+   "buzz": 2.0,
+   "topics": [
+    "data_center",
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Acton",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Acton"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-20",
+   "meeting_date_source": "agenda",
+   "days_until": 3,
+   "first_seen": "2026-10-17T16:16:19+00:00",
+   "is_new": true,
+   "source_url": "https://www.actonma.gov/Archive.aspx?ADID=23365",
+   "town_path": "/ma/acton",
+   "action": "continuance",
+   "boards": [
+    {
+     "town": "Acton",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-20"
+    }
+   ],
+   "hit_ids": [
+    "5480c802f157"
+   ]
+  },
+  {
    "id": "9bf8a27fbdb4",
    "score": 6.48,
    "headline": "Quincy City Council takes up a solar lease",
@@ -4897,97 +4996,6 @@
    ],
    "hit_ids": [
     "3f2c3fc80f35"
-   ]
-  },
-  {
-   "id": "cb4dbaedb4e7",
-   "score": 4.03,
-   "headline": "Data-center item on Ashland Town Meeting warrant",
-   "dek": "The warrant for Ashland's fall Town Meeting gives no date. The warrant lists an item on data centers.",
-   "quote": "Amend Chapter 282 Section Planning Board 2/3 3.0 to add Data Centers to the Use Table 10 Citizens Petition:",
-   "reasons": [
-    "Town Meeting date not in the warrant",
-    "Citizen petition"
-   ],
-   "why": [
-    "Citizen petition"
-   ],
-   "stakes": 6.0,
-   "buzz": 2.0,
-   "topics": [
-    "data_center"
-   ],
-   "state": "MA",
-   "town": "Ashland",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Ashland"
-   ],
-   "board": "Town Meeting",
-   "board_key": "town_meeting",
-   "meeting_date": null,
-   "meeting_date_source": null,
-   "days_until": null,
-   "first_seen": "2026-10-16T11:08:09+00:00",
-   "is_new": true,
-   "source_url": "https://www.ashlandmass.com/DocumentCenter/View/17653/2026-Special-Town-Meeting-Warrant-Posted-by-Constable-October-8-2026",
-   "town_path": "/ma/ashland",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Ashland",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": null
-    }
-   ],
-   "hit_ids": [
-    "2705c51f97f9"
-   ]
-  },
-  {
-   "id": "a33114354c24",
-   "score": 3.98,
-   "headline": "Gardner Conservation Commission hears request for cell tower at 677 Timpany Blvd",
-   "dek": "The Conservation Commission meets Monday, Oct 26. The agenda lists a public hearing on a Notice of Intent for a wireless facility.",
-   "quote": "PUBLIC HEARING The Gardner Conservation Commission will hold a Public Meeting under MGL, Ch. 131, § 40, Wetlands Protection Act and the City of Gardner Wetlands Protection Ordinance on the Notice of…",
-   "reasons": [
-    "Public hearing",
-    "Hearing Oct 26"
-   ],
-   "why": [],
-   "stakes": 3.31,
-   "buzz": 0.0,
-   "topics": [
-    "wireless_telecom"
-   ],
-   "state": "MA",
-   "town": "Gardner",
-   "county": "Worcester",
-   "towns": [
-    "MA:Gardner"
-   ],
-   "board": "Conservation Commission",
-   "board_key": "conservation_commission",
-   "meeting_date": "2026-10-26",
-   "meeting_date_source": "agenda",
-   "days_until": 9,
-   "first_seen": "2026-10-10T18:41:36+00:00",
-   "is_new": false,
-   "source_url": "https://www.gardner-ma.gov/AgendaCenter/ViewFile/Agenda/_10262026-5112",
-   "town_path": "/ma/gardner",
-   "action": "project_hearing",
-   "boards": [
-    {
-     "town": "Gardner",
-     "board": "Conservation Commission",
-     "board_key": "conservation_commission",
-     "meeting_date": "2026-10-26"
-    }
-   ],
-   "hit_ids": [
-    "89de2742249c",
-    "ae449738c727"
    ]
   }
  ]

@@ -72,13 +72,40 @@
    "platforms": [
     "generic"
    ],
-   "platform": "generic",
+   "platform": "agenda_page",
    "warrants_found": true,
-   "status": "not_automated",
-   "reason_code": "agendas_stale_or_undated",
-   "reason": "agenda listing pages found (e.g. https://www.actonma.gov/164/Planning) but no agenda dated within the last 120 days or next 120 days could be read from them",
-   "automated": false,
-   "listings": [],
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.actonma.gov/Archive.aspx?AMID=88"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://www.actonma.gov/Archive.aspx?AMID=90"
+    },
+    {
+     "board": "Conservation Commission",
+     "board_key": "conservation_commission",
+     "url": "https://www.actonma.gov/Archive.aspx?AMID=95"
+    },
+    {
+     "board": "Select Board",
+     "board_key": "select_board",
+     "url": "https://www.actonma.gov/Archive.aspx?AMID=40",
+     "board_exclude": "time extension"
+    },
+    {
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "url": "https://www.actonma.gov/Archive.aspx?AMID=54"
+    }
+   ],
    "listings_found_not_crawled": [
     {
      "board": "Town Meeting",
@@ -155,7 +182,9 @@
     }
    },
    "robots_blocked": [],
-   "notes": [],
+   "notes": [
+    "2026-10-17: listings added by hand from a robots-checked review (research_notes/Expansion/where_people_care.md)"
+   ],
    "pages_fetched": 16,
    "discovered_at": "2026-10-10T18:28:38+00:00"
   },
@@ -10928,13 +10957,34 @@
     "revize"
    ],
    "platforms": [],
-   "platform": null,
+   "platform": "agenda_page",
    "warrants_found": false,
-   "status": "not_automated",
-   "reason_code": "agendas_stale_or_undated",
-   "reason": "agenda listing pages found (e.g. https://www.greenfield-ma.gov/government/city_council/index.php) but no agenda dated within the last 120 days or next 120 days could be read from them",
-   "automated": false,
-   "listings": [],
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.greenfield-ma.gov/government/boards_and_commissions/planning_board.php"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://www.greenfield-ma.gov/government/boards_and_commissions/zoning_board_of_appeals_.php"
+    },
+    {
+     "board": "Conservation Commission",
+     "board_key": "conservation_commission",
+     "url": "https://www.greenfield-ma.gov/government/boards_and_commissions/conservation_commission.php"
+    },
+    {
+     "board": "City Council",
+     "board_key": "select_board",
+     "url": "https://www.greenfield-ma.gov/government/city_council/city_council_minutes.php"
+    }
+   ],
    "boards_found": [],
    "boards_missing": [
     "planning_board",
@@ -10955,7 +11005,9 @@
    },
    "vendors": {},
    "robots_blocked": [],
-   "notes": [],
+   "notes": [
+    "2026-10-17: listings added by hand from a robots-checked review (research_notes/Expansion/where_people_care.md)"
+   ],
    "pages_fetched": 6,
    "discovered_at": "2026-10-10T18:29:31+00:00"
   },
@@ -10977,11 +11029,47 @@
    ],
    "platform": "generic",
    "warrants_found": true,
-   "status": "not_automated",
-   "reason_code": "agendas_stale_or_undated",
-   "reason": "agenda listing pages found (e.g. https://www.grotonma.gov/government/boards-and-committees/planning-board/) but no agenda dated within the last 120 days or next 120 days could be read from them",
-   "automated": false,
-   "listings": [],
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://portal.grotonma.gov/meetings",
+     "link_pattern": "^Planning Board Meeting \\d{4}-\\d\\d-\\d\\d\\b",
+     "exclude_pattern": "cancel"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://portal.grotonma.gov/meetings",
+     "link_pattern": "^Zoning Board of Appeals Meeting \\d{4}-\\d\\d-\\d\\d\\b",
+     "exclude_pattern": "cancel"
+    },
+    {
+     "board": "Conservation Commission",
+     "board_key": "conservation_commission",
+     "url": "https://portal.grotonma.gov/meetings",
+     "link_pattern": "^Conservation Commission Meeting \\d{4}-\\d\\d-\\d\\d\\b",
+     "exclude_pattern": "cancel"
+    },
+    {
+     "board": "Select Board",
+     "board_key": "select_board",
+     "url": "https://portal.grotonma.gov/meetings",
+     "link_pattern": "^Select Board Meeting \\d{4}-\\d\\d-\\d\\d\\b",
+     "exclude_pattern": "cancel"
+    },
+    {
+     "board": "Town Meeting",
+     "board_key": "town_meeting",
+     "url": "https://portal.grotonma.gov/meetings",
+     "link_pattern": "^Town Meeting Meeting \\d{4}-\\d\\d-\\d\\d\\b",
+     "exclude_pattern": "cancel"
+    }
+   ],
    "listings_found_not_crawled": [
     {
      "board": "Town Meeting",
@@ -11067,7 +11155,9 @@
    },
    "vendors": {},
    "robots_blocked": [],
-   "notes": [],
+   "notes": [
+    "2026-10-17: listings added by hand from a robots-checked review (research_notes/Expansion/where_people_care.md)"
+   ],
    "pages_fetched": 14,
    "discovered_at": "2026-10-10T18:30:05+00:00"
   },

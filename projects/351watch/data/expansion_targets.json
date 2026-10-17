@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-17T15:34:43",
+ "generated": "2026-10-17T16:17:45",
  "today": "2026-10-17",
  "towns": [
   {
@@ -68,18 +68,6 @@
    ]
   },
   {
-   "id": "MA:Acton",
-   "state": "MA",
-   "town": "Acton",
-   "county": "Middlesex",
-   "score": 5.0,
-   "takes": "find dated agendas",
-   "reason_code": "agendas_stale_or_undated",
-   "why": [
-    "6 neighbors we read have it on agendas (Boxborough, Concord, Littleton, Maynard and more): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar, cell towers"
-   ]
-  },
-  {
    "id": "MA:Becket",
    "state": "MA",
    "town": "Becket",
@@ -102,30 +90,6 @@
    "reason_code": "waf_block",
    "why": [
     "5 neighbors we read have it on agendas (Dighton, Freetown, Lakeville, Somerset and more): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar"
-   ]
-  },
-  {
-   "id": "MA:Greenfield",
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "score": 5.0,
-   "takes": "find dated agendas",
-   "reason_code": "agendas_stale_or_undated",
-   "why": [
-    "5 neighbors we read have it on agendas (Colrain, Deerfield, Gill, Leyden and more): battery storage, clean-energy permits, data centers, moratoriums, solar"
-   ]
-  },
-  {
-   "id": "MA:Groton",
-   "state": "MA",
-   "town": "Groton",
-   "county": "Middlesex",
-   "score": 5.0,
-   "takes": "find dated agendas",
-   "reason_code": "agendas_stale_or_undated",
-   "why": [
-    "6 neighbors we read have it on agendas (Ayer, Littleton, Pepperell, Shirley and more): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar, cell towers"
    ]
   },
   {
@@ -187,6 +151,18 @@
    "reason_code": "bot_challenge",
    "why": [
     "4 neighbors we read have it on agendas (Bolton, Boylston, Clinton, Hudson): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, cell towers"
+   ]
+  },
+  {
+   "id": "MA:Bernardston",
+   "state": "MA",
+   "town": "Bernardston",
+   "county": "Franklin",
+   "score": 4.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "4 neighbors we read have it on agendas (Gill, Greenfield, Leyden, Northfield): 40B housing, battery storage, clean-energy permits, data centers, moratoriums, solar, cell towers"
    ]
   },
   {
@@ -332,18 +308,6 @@
    "reason_code": "bot_challenge",
    "why": [
     "3 neighbors we read have it on agendas (Mashpee, Sandwich, Yarmouth): 40B housing, battery storage, moratoriums, solar, cell towers"
-   ]
-  },
-  {
-   "id": "MA:Bernardston",
-   "state": "MA",
-   "town": "Bernardston",
-   "county": "Franklin",
-   "score": 3.0,
-   "takes": "unblock request",
-   "reason_code": "bot_challenge",
-   "why": [
-    "3 neighbors we read have it on agendas (Gill, Leyden, Northfield): battery storage, clean-energy permits, data centers, moratoriums, solar"
    ]
   },
   {
