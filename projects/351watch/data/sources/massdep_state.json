@@ -1,7 +1,7 @@
 {
  "coverage": {
   "from": "2025-10-10",
-  "to": "2026-10-17"
+  "to": "2026-10-18"
  },
  "source": "massdep_wetlands",
  "api": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire",
@@ -11,7 +11,7 @@
  },
  "lookback_days": 45,
  "last_run": {
-  "at": "2026-10-17T18:30:37+00:00",
+  "at": "2026-10-18T11:01:38+00:00",
   "offline": false,
   "blocked": null,
   "rebuilt_from_cache": 4693,
@@ -255,6 +255,16 @@
   },
   {
    "at": "2026-10-17T18:30:37+00:00",
+   "offline": false,
+   "blocked": null,
+   "listed": 618,
+   "new": 0,
+   "changed": 0,
+   "details_fetched": 0,
+   "hits": 93
+  },
+  {
+   "at": "2026-10-18T11:01:38+00:00",
    "offline": false,
    "blocked": null,
    "listed": 618,

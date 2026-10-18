@@ -1,0 +1,195 @@
+{
+ "by_state": {
+  "MA": {
+   "new_documents": 10,
+   "new_hits": 20,
+   "towns_attempted": 243,
+   "towns_succeeded": 242
+  },
+  "NY": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 33,
+   "towns_succeeded": 33
+  },
+  "RI": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 39,
+   "towns_succeeded": 39
+  }
+ },
+ "date": "2026-10-18",
+ "document_errors": 1,
+ "documents_already_indexed": 2903,
+ "documents_deferred": 0,
+ "documents_listed": 2931,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 17,
+ "documents_retried": 0,
+ "documents_too_large": [
+  {
+   "error": "too large (> 41943040 bytes): https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560",
+   "meeting_date": "2026-10-14",
+   "state": "MA",
+   "town": "Franklin",
+   "url": "https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586",
+   "meeting_date": "2026-09-28",
+   "state": "MA",
+   "town": "Great Barrington",
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577",
+   "meeting_date": "2026-10-06",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577"
+  },
+  {
+   "error": "too large (55940673 > 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634"
+  },
+  {
+   "error": "too large (42216812 > 41943040 bytes): https://cms2.revize.com/revize/westportma/Documents/Departments/Planning/Agendas ",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Westport",
+   "url": "https://www.westport-ma.com/Documents/Departments/Planning/Agendas And Minutes/2026/Packets/Packet 2026-10-20.pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Cortlandt",
+   "url": "https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109",
+   "meeting_date": "2026-09-14",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114",
+   "meeting_date": "2026-10-19",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Kent",
+   "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
+  }
+ ],
+ "duration_seconds": 888.8,
+ "errors": [
+  {
+   "error": "listing generic: listing https://www.hamiltonma.gov/public-meetings/planning-board/20261020/19-00-00/ returned HTTP 404",
+   "town": "MA:Hamilton"
+  },
+  {
+   "error": "listing generic: listing https://www.hamiltonma.gov/government/zoning-board-appeals/meeting-packets-zoning-board-hamilton-2024/ returned HTTP 404",
+   "town": "MA:Hamilton"
+  },
+  {
+   "error": "listing generic: listing https://www.hamiltonma.gov/public-meetings/conservation-commission/20261014/19-00-00/ returned HTTP 404",
+   "town": "MA:Hamilton"
+  },
+  {
+   "error": "document: https://cms8.revize.com/revize/penfieldny/Town Site/Departments/Town Clerk/2026.10.21 TBWS Agenda.docx",
+   "town": "NY:Penfield"
+  }
+ ],
+ "errors_total": 4,
+ "finished": "2026-10-18T11:16:49+00:00",
+ "hits_current": 1330,
+ "index": {
+  "by_state": {
+   "MA": 3192,
+   "NY": 198,
+   "RI": 365
+  },
+  "by_status": {
+   "error": 18,
+   "needs_ocr": 3,
+   "ok": 3705,
+   "replaced": 29
+  },
+  "by_text_source": {
+   "docx": 20,
+   "html": 179,
+   "none": 18,
+   "ocr": 870,
+   "pdf": 2668
+  },
+  "documents": 3755,
+  "hits": 1492,
+  "pruned": 8,
+  "towns": 310,
+  "with_hits": 759
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 229142,
+   "listing": 134674774,
+   "robots": 816
+  },
+  "cache_hits": 231,
+  "errors": 4,
+  "requests": 694,
+  "requests_by_purpose": {
+   "document": 3,
+   "listing": 690,
+   "robots": 1
+  },
+  "robots_blocked": 1
+ },
+ "new_alert_items": 2,
+ "new_alert_items_by_topic": {
+  "data_center": 2
+ },
+ "new_documents": 10,
+ "new_hits": 20,
+ "new_hits_by_topic": {
+  "40b_comprehensive_permit": 1,
+  "battery_storage": 6,
+  "data_center": 6,
+  "solar": 5,
+  "zoning_amendment": 7
+ },
+ "options": {
+  "matcher_version": "4f9bcaade9",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-10-18T11:02:00+00:00",
+ "states": [
+  "MA",
+  "NY",
+  "RI"
+ ],
+ "towns_attempted": 315,
+ "towns_failed": [
+  "MA:Hamilton"
+ ],
+ "towns_partial": [],
+ "towns_succeeded": 314,
+ "window": {
+  "end": "2027-02-15",
+  "start": "2026-09-18"
+ }
+}
