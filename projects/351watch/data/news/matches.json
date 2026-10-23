@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-23T11:30:35+00:00",
+ "generated": "2026-10-23T18:33:40+00:00",
  "states": {
   "CT": {
    "solar": 1,
@@ -7,7 +7,7 @@
   },
   "MA": {
    "battery_storage": 1,
-   "data_center": 36,
+   "data_center": 37,
    "moratorium": 6,
    "wind": 3
   },
@@ -16,7 +16,7 @@
   },
   "NY": {
    "battery_storage": 1,
-   "data_center": 23,
+   "data_center": 25,
    "moratorium": 2
   },
   "RI": {
@@ -44,6 +44,17 @@
     "published": "2026-09-16T22:01:30+00:00",
     "source": "MassLive",
     "title": "Boston councilor calls for citywide ban on data centers",
+    "topics": [
+     "data_center"
+    ]
+   }
+  ],
+  "MA:Chicopee": [
+   {
+    "link": "https://www.masslive.com/westernmass/2026/10/chicopee-begins-early-conversations-on-data-center-zoning.html",
+    "published": "2026-10-23T18:09:44+00:00",
+    "source": "MassLive",
+    "title": "Chicopee begins early conversations on data center zoning",
     "topics": [
      "data_center"
     ]

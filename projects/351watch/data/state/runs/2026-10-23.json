@@ -1,32 +1,32 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 357,
-   "new_hits": 131,
-   "towns_attempted": 243,
-   "towns_succeeded": 241
+   "new_documents": 10,
+   "new_hits": 0,
+   "towns_attempted": 20,
+   "towns_succeeded": 20
   },
   "NY": {
-   "new_documents": 27,
-   "new_hits": 4,
-   "towns_attempted": 33,
-   "towns_succeeded": 33
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   },
   "RI": {
-   "new_documents": 41,
-   "new_hits": 18,
-   "towns_attempted": 39,
-   "towns_succeeded": 39
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 5,
+   "towns_succeeded": 5
   }
  },
  "date": "2026-10-23",
- "document_errors": 3,
- "documents_already_indexed": 2581,
+ "document_errors": 0,
+ "documents_already_indexed": 319,
  "documents_deferred": 0,
- "documents_listed": 3010,
- "documents_needing_ocr": 1,
- "documents_rematched": 1,
- "documents_retried": 0,
+ "documents_listed": 330,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 0,
+ "documents_retried": 1,
  "documents_too_large": [
   {
    "error": "too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
@@ -99,109 +99,55 @@
    "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
   }
  ],
- "duration_seconds": 1334.3,
- "errors": [
-  {
-   "error": "document: too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
-   "town": "MA:Bedford"
-  },
-  {
-   "error": "listing civicplus: https://www.belchertown.org/AgendaCenter/Search/?term=&CIDs=11%2C15%2C21%2C18%2C&startDate=09%2F23%2F2026&endDate=02%2F20%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='www.belchertown.org', port=443): Read timed out. (read timeout=10)",
-   "town": "MA:Belchertown"
-  },
-  {
-   "error": "listing generic: listing https://www.hamiltonma.gov/public-meetings/planning-board/20261020/19-00-00/ returned HTTP 404",
-   "town": "MA:Hamilton"
-  },
-  {
-   "error": "listing generic: listing https://www.hamiltonma.gov/government/zoning-board-appeals/meeting-packets-zoning-board-hamilton-2024/ returned HTTP 404",
-   "town": "MA:Hamilton"
-  },
-  {
-   "error": "listing generic: listing https://www.hamiltonma.gov/public-meetings/conservation-commission/20261014/19-00-00/ returned HTTP 404",
-   "town": "MA:Hamilton"
-  },
-  {
-   "error": "document: extract failed (content-type application/msword): https://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_10272026-2167",
-   "town": "MA:Leominster"
-  },
-  {
-   "error": "listing civicplus: https://www.stoughton.org/AgendaCenter/Search/?term=&CIDs=9%2C6%2C2%2C7%2C&startDate=09%2F23%2F2026&endDate=02%2F20%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='www.stoughton.org', port=443): Read timed out. (read timeout=45)",
-   "town": "MA:Stoughton"
-  },
-  {
-   "error": "document: HTTP 429: https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C3946%5C2026%5C569644.pdf",
-   "town": "RI:South Kingstown"
-  }
- ],
- "errors_total": 8,
- "finished": "2026-10-23T11:29:38+00:00",
+ "duration_seconds": 92.5,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-10-23T18:33:17+00:00",
  "hits_current": 1448,
  "index": {
   "by_state": {
-   "MA": 3543,
+   "MA": 3553,
    "NY": 225,
    "RI": 407
   },
   "by_status": {
-   "error": 19,
+   "error": 18,
    "needs_ocr": 4,
-   "ok": 4110,
-   "replaced": 42
+   "ok": 4120,
+   "replaced": 43
   },
   "by_text_source": {
    "docx": 20,
    "html": 206,
-   "none": 21,
+   "none": 20,
    "ocr": 951,
-   "pdf": 2977
+   "pdf": 2988
   },
-  "documents": 4175,
+  "documents": 4185,
   "hits": 1626,
-  "pruned": 8,
+  "pruned": 0,
   "towns": 310,
   "with_hits": 839
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 166219821,
-   "listing": 135815441,
-   "robots": 855616
+   "document": 4738015,
+   "listing": 8442309
   },
-  "cache_hits": 198,
-  "errors": 7,
-  "requests": 1459,
+  "cache_hits": 27,
+  "errors": 0,
+  "requests": 77,
   "requests_by_purpose": {
-   "document": 445,
-   "listing": 720,
-   "robots": 294
+   "document": 11,
+   "listing": 66
   },
   "robots_blocked": 0
  },
- "new_alert_items": 122,
- "new_alert_items_by_topic": {
-  "40b_comprehensive_permit": 15,
-  "battery_storage": 12,
-  "clean_energy_siting": 4,
-  "data_center": 21,
-  "moratorium": 8,
-  "solar": 27,
-  "wetlands_filing": 4,
-  "wireless_telecom": 4,
-  "zoning_amendment": 45
- },
- "new_documents": 425,
- "new_hits": 153,
- "new_hits_by_topic": {
-  "40b_comprehensive_permit": 22,
-  "battery_storage": 19,
-  "clean_energy_siting": 4,
-  "data_center": 28,
-  "moratorium": 10,
-  "solar": 35,
-  "wireless_telecom": 4,
-  "zoning_amendment": 57
- },
+ "new_alert_items": 0,
+ "new_alert_items_by_topic": {},
+ "new_documents": 10,
+ "new_hits": 0,
+ "new_hits_by_topic": {},
  "options": {
   "matcher_version": "4f9bcaade9",
   "no_network_docs": false,
@@ -210,21 +156,32 @@
   "tesseract": true,
   "workers": 16
  },
- "started": "2026-10-23T11:07:23+00:00",
+ "previous_runs_today": [
+  {
+   "duration_seconds": 1334.3,
+   "new_documents": 425,
+   "new_hits": 153,
+   "requests": 1459,
+   "started": "2026-10-23T11:07:23+00:00",
+   "states": [
+    "MA",
+    "NY",
+    "RI"
+   ],
+   "towns_attempted": 315,
+   "towns_succeeded": 313
+  }
+ ],
+ "started": "2026-10-23T18:31:44+00:00",
  "states": [
   "MA",
   "NY",
   "RI"
  ],
- "towns_attempted": 315,
- "towns_failed": [
-  "MA:Hamilton",
-  "MA:Stoughton"
- ],
- "towns_partial": [
-  "MA:Belchertown"
- ],
- "towns_succeeded": 313,
+ "towns_attempted": 26,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 26,
  "window": {
   "end": "2027-02-20",
   "start": "2026-09-23"
