@@ -1,18 +1,63 @@
 {
- "generated": "2026-10-18T11:01:38+00:00",
+ "generated": "2026-10-23T11:01:29+00:00",
  "source": "massdep_wetlands",
  "source_name": "MassDEP Wetlands Protection Act filings (EEA Data Portal, WIRe)",
  "window": {
   "start": "2025-10-10",
-  "end": "2026-10-18"
+  "end": "2026-10-23"
  },
  "states": [
   "MA"
  ],
- "filings_total": 4693,
- "hits_count": 93,
+ "filings_total": 4773,
+ "hits_count": 95,
  "notes": "meeting_date is the DEP filing date (the API has no hearing date); the Conservation Commission must open its hearing within 21 days of filing (310 CMR 10.05(5)(b)). Extra per-hit fields are under 'details'.",
  "hits": [
+  {
+   "id": "dc6912b2b2d7",
+   "state": "MA",
+   "town": "Clinton",
+   "county": "Worcester",
+   "board": "Conservation Commission (wetlands filing)",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-10-19",
+   "topics": [
+    "wetlands_filing"
+   ],
+   "snippet": "NOI, New England Power Company (NEP): no description. Existing Utility Right-of-way.",
+   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213590",
+   "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
+   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent, Clinton",
+   "text_source": "api",
+   "first_seen": "2026-10-23T11:01:29+00:00",
+   "days_before_meeting": -4.5,
+   "source": "massdep_wetlands",
+   "details": {
+    "noi_id": "213590",
+    "dep_file_number": null,
+    "filing_type": "Notice of Intent",
+    "project_type": "Utilities",
+    "received_date": "2026-10-19",
+    "issued_date": null,
+    "status": "received",
+    "soc_requested": false,
+    "meeting_date_basis": "filing_date",
+    "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
+    "payor": null,
+    "parent": "National Grid (New England Power / Mass. Electric)",
+    "parent_link": "applicant_name",
+    "parent_confidence": "high",
+    "consultant": null,
+    "project_address": "EXISTING UTILITY RIGHT-OF-WAY",
+    "description": null,
+    "category": "transmission_substation",
+    "confidence": "low",
+    "signals": [
+     "name:New England Power (transmission owner)"
+    ],
+    "api_url": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire/213590"
+   }
+  },
   {
    "id": "722b6ae26abf",
    "state": "MA",
@@ -73,19 +118,19 @@
    "snippet": "Buffer-zone NOI, Parallel Products Solar Energy LLC (fee paid by Farland Corp): Install solar canopies w/i existing parking area; concrete equipment pads & fencing. 235 Main Street.",
    "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213526",
    "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
-   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent (buffer zone only), Carver",
+   "document_title": "MassDEP wetlands filing 126-0714 — Notice of Intent (buffer zone only), Carver",
    "text_source": "api",
    "first_seen": "2026-10-16T11:02:23+00:00",
    "days_before_meeting": -3.5,
    "source": "massdep_wetlands",
    "details": {
     "noi_id": "213526",
-    "dep_file_number": null,
+    "dep_file_number": "126-0714",
     "filing_type": "Notice of Intent (buffer zone only)",
     "project_type": "Utilities",
     "received_date": "2026-10-13",
     "issued_date": null,
-    "status": "received",
+    "status": "file_number_issued",
     "soc_requested": false,
     "meeting_date_basis": "filing_date",
     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY LLC",
@@ -107,7 +152,7 @@
    }
   },
   {
-   "id": "fa7081adbde9",
+   "id": "74e3a8f2b174",
    "state": "MA",
    "town": "Shutesbury",
    "county": "Franklin",
@@ -117,22 +162,22 @@
    "topics": [
     "wetlands_filing"
    ],
-   "snippet": "NOI, Nep: no description. E5/f6 Transmission Line Right-of-way (ROW).",
+   "snippet": "NOI, Nep: Conduct transmission lines ROW. work will include: structure maintenance, removals andinstallation; access improvements and construction; work envelope construction; andvegetative conv… E5/f6 Transmission Line Right-of-way (ROW).",
    "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213464",
    "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
-   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent, Shutesbury",
+   "document_title": "MassDEP wetlands filing 286-0314 — Notice of Intent, Shutesbury",
    "text_source": "api",
    "first_seen": "2026-10-10T23:46:13+00:00",
    "days_before_meeting": -3.0,
    "source": "massdep_wetlands",
    "details": {
     "noi_id": "213464",
-    "dep_file_number": null,
+    "dep_file_number": "286-0314",
     "filing_type": "Notice of Intent",
-    "project_type": "Utilities",
+    "project_type": "Utilities, I-LP: Public utilities",
     "received_date": "2026-10-08",
     "issued_date": null,
-    "status": "received",
+    "status": "file_number_issued",
     "soc_requested": false,
     "meeting_date_basis": "filing_date",
     "applicant": "NEP",
@@ -142,17 +187,62 @@
     "parent_confidence": "high",
     "consultant": null,
     "project_address": "E5/F6 TRANSMISSION LINE RIGHT-OF-WAY (ROW)",
-    "description": null,
+    "description": "CONDUCT TRANSMISSION LINES ROW. WORK WILL INCLUDE: STRUCTURE MAINTENANCE, REMOVALS ANDINSTALLATION; ACCESS IMPROVEMENTS AND CONSTRUCTION; WORK ENVELOPE CONSTRUCTION; ANDVEGETATIVE CONVERSION (DUE TO TREE CANOPY REMOVAL).",
     "category": "transmission_substation",
-    "confidence": "low",
+    "confidence": "medium",
     "signals": [
-     "name:New England Power (transmission owner)"
+     "desc:TRANSMISSION LINES"
     ],
     "api_url": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire/213464"
    }
   },
   {
-   "id": "fd5d04c78608",
+   "id": "943d5b8c7e16",
+   "state": "MA",
+   "town": "Winchendon",
+   "county": "Worcester",
+   "board": "Conservation Commission (wetlands filing)",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-10-02",
+   "topics": [
+    "wetlands_filing"
+   ],
+   "snippet": "Buffer-zone NOI, Massachusetts Electric Company: Expansion of a substation to accomodate a new transformer within the buffer zone. 599 Spring Street.",
+   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213398",
+   "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
+   "document_title": "MassDEP wetlands filing 345-0825 — Notice of Intent (buffer zone only), Winchendon",
+   "text_source": "api",
+   "first_seen": "2026-10-10T23:46:13+00:00",
+   "days_before_meeting": -9.0,
+   "source": "massdep_wetlands",
+   "details": {
+    "noi_id": "213398",
+    "dep_file_number": "345-0825",
+    "filing_type": "Notice of Intent (buffer zone only)",
+    "project_type": "Utilities",
+    "received_date": "2026-10-02",
+    "issued_date": null,
+    "status": "file_number_issued",
+    "soc_requested": false,
+    "meeting_date_basis": "filing_date",
+    "applicant": "MASSACHUSETTS ELECTRIC COMPANY",
+    "payor": null,
+    "parent": "National Grid (New England Power / Mass. Electric)",
+    "parent_link": "applicant_name",
+    "parent_confidence": "high",
+    "consultant": null,
+    "project_address": "599 SPRING STREET",
+    "description": "EXPANSION OF A SUBSTATION TO ACCOMODATE A NEW TRANSFORMER WITHIN THE BUFFER ZONE.",
+    "category": "transmission_substation",
+    "confidence": "high",
+    "signals": [
+     "desc:SUBSTATION"
+    ],
+    "api_url": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire/213398"
+   }
+  },
+  {
+   "id": "ad8560089eb3",
    "state": "MA",
    "town": "Northborough",
    "county": "Worcester",
@@ -162,22 +252,22 @@
    "topics": [
     "wetlands_filing"
    ],
-   "snippet": "Buffer-zone NOI, New England Power Company (NEP): no description. Existing Utility Right-of-way.",
+   "snippet": "NOI, New England Power Company (NEP): Electrical utility ROW improvements including structure replacements, tree trimming and access roadway improvements. impacts to BVW resulting from tempo… Line W23 (from Berlin Boarder To Allen Street).",
    "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213381",
    "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
-   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent (buffer zone only), Northborough",
+   "document_title": "MassDEP wetlands filing 247-1284 — Notice of Intent, Northborough",
    "text_source": "api",
    "first_seen": "2026-10-10T23:46:13+00:00",
    "days_before_meeting": -10.0,
    "source": "massdep_wetlands",
    "details": {
     "noi_id": "213381",
-    "dep_file_number": null,
-    "filing_type": "Notice of Intent (buffer zone only)",
-    "project_type": "Utilities",
+    "dep_file_number": "247-1284",
+    "filing_type": "Notice of Intent",
+    "project_type": "Utilities, I-LP: Public utilities",
     "received_date": "2026-10-01",
     "issued_date": null,
-    "status": "received",
+    "status": "file_number_issued",
     "soc_requested": false,
     "meeting_date_basis": "filing_date",
     "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
@@ -186,12 +276,13 @@
     "parent_link": "applicant_name",
     "parent_confidence": "high",
     "consultant": null,
-    "project_address": "EXISTING UTILITY RIGHT-OF-WAY",
-    "description": null,
+    "project_address": "LINE W23 (FROM BERLIN BOARDER TO ALLEN STREET)",
+    "description": "ELECTRICAL UTILITY ROW IMPROVEMENTS INCLUDING STRUCTURE REPLACEMENTS, TREE TRIMMING AND ACCESS ROADWAY IMPROVEMENTS. IMPACTS TO BVW RESULTING FROM TEMPORARY MATTING.",
     "category": "transmission_substation",
-    "confidence": "low",
+    "confidence": "medium",
     "signals": [
-     "name:New England Power (transmission owner)"
+     "desc:ROW",
+     "desc:STRUCTURE REPLACEMENTS"
     ],
     "api_url": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire/213381"
    }

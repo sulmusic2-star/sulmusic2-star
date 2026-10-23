@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:m-richmond-planning-board-2026-10-27@agendaahead
+DTSTAMP:20261023T120000Z
+DTSTART;TZID=America/New_York:20261027T183000
+DTEND;TZID=America/New_York:20261027T203000
+SUMMARY:Richmond Planning Board
+LOCATION:Town Council Chambers\, or join online\, Richmond\, RI
+DESCRIPTION:\nAgenda: https://opengov.sos.ri.gov/Common/DownloadMeetingFile
+ s?FilePath=%5CNotices%5C3922%5C2026%5C569611.pdf\nPage: https://agendaahea
+ d.vercel.app/m/richmond-planning-board-2026-10-27\nConfirm the time and pl
+ ace with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/richmond-planning-board-2026-10-27
+END:VEVENT
+END:VCALENDAR

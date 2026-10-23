@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:m-dartmouth-select-board-2026-10-26@agendaahead
+DTSTAMP:20261023T120000Z
+DTSTART;TZID=America/New_York:20261026T173000
+DTEND;TZID=America/New_York:20261026T193000
+SUMMARY:Dartmouth Select Board
+LOCATION:Dartmouth\, MA
+DESCRIPTION:\nAgenda: https://www.dartmouthma.gov/AgendaCenter/ViewFile/Age
+ nda/_10262026-5918\nPage: https://agendaahead.vercel.app/m/dartmouth-selec
+ t-board-2026-10-26\nConfirm the time and place with the town\; agendas can
+  change.
+URL:https://agendaahead.vercel.app/m/dartmouth-select-board-2026-10-26
+END:VEVENT
+END:VCALENDAR

@@ -1,25 +1,26 @@
 {
- "generated": "2026-10-18T11:17:24+00:00",
+ "generated": "2026-10-23T11:30:35+00:00",
  "states": {
   "CT": {
+   "solar": 1,
    "wind": 2
   },
   "MA": {
    "battery_storage": 1,
-   "data_center": 34,
-   "moratorium": 4,
-   "wind": 1
+   "data_center": 36,
+   "moratorium": 6,
+   "wind": 3
   },
   "NH": {
-   "data_center": 1
+   "data_center": 2
   },
   "NY": {
    "battery_storage": 1,
-   "data_center": 21,
+   "data_center": 23,
    "moratorium": 2
   },
   "RI": {
-   "data_center": 3,
+   "data_center": 4,
    "solar": 1,
    "wind": 3
   }
@@ -34,15 +35,6 @@
     "topics": [
      "data_center",
      "moratorium"
-    ]
-   },
-   {
-    "link": "https://www.masslive.com/westernmass/2026/09/vote-expected-tuesday-on-data-center-pause-in-agawam.html",
-    "published": "2026-09-03T17:09:01+00:00",
-    "source": "MassLive",
-    "title": "Vote expected tuesday on data center pause in Agawam",
-    "topics": [
-     "data_center"
     ]
    }
   ],
@@ -77,6 +69,17 @@
     "title": "Northampton councilors considering data center moratorium laud healeys order",
     "topics": [
      "data_center",
+     "moratorium"
+    ]
+   }
+  ],
+  "MA:Westborough": [
+   {
+    "link": "https://wbjournal.com/article/westborough-adopts-drone-rules-as-lawmakers-seek-statewide-delivery-moratorium/",
+    "published": "2026-10-21T20:28:40+00:00",
+    "source": "Worcester Business Journal",
+    "title": "Westborough adopts drone rules as lawmakers seek statewide delivery moratorium",
+    "topics": [
      "moratorium"
     ]
    }

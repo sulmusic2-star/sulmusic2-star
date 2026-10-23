@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-18T11:01:38+00:00",
+ "generated": "2026-10-23T11:01:29+00:00",
  "source": "massdep_wetlands",
  "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
  "link_types": {
@@ -17,7 +17,7 @@
   {
    "parent": "National Grid (New England Power / Mass. Electric)",
    "kind": "utility",
-   "filings": 32,
+   "filings": 34,
    "project_applicants": [
     "MASSACHUSETTS ELECTRIC COMPANY",
     "NEP",
@@ -38,6 +38,7 @@
     "Charlton: 29 SNAKE HILL RD",
     "Charlton: CARPENTER HILL RD",
     "Chelmsford: K137E L138E 337 TRANSMISSION LINE ROW",
+    "Clinton: EXISTING UTILITY RIGHT OF WAY",
     "Georgetown: 394 AND B154 C155 TAP TRANSMISSION LINE ROW",
     "Groveland: 209 KING ST",
     "Hanover: 191 WATER ST",
@@ -46,7 +47,7 @@
     "Marlborough: 365 SOUTH ST",
     "Millbury: E5 F6 TRANSMISSION LINES RIGHT OF WAY",
     "North Brookfield: 39 EAST BROOKFIELD RD",
-    "Northborough: EXISTING UTILITY RIGHT OF WAY",
+    "Northborough: LINE W23",
     "Palmer: EXISTING TRANSMISSION LINE RIGHT OF WAY",
     "Royalston: 95 SOUTH ROYALSTON RD",
     "Shirley: EXISTING UTILITY ROW",
@@ -58,7 +59,8 @@
     "Wendell: A127 WENDELL DEPOT TAP TRANSMISSION LINE ROW",
     "West Brookfield: EXISTING TRANSMISSION LINE RIGHT OF WAY",
     "West Newbury: 394 AND B154 C155 TAP TRANSMISSION LINE ROW",
-    "Westford: K137E L138E 337 TRANSMISSION LINE RIGHT OF WAY"
+    "Westford: K137E L138E 337 TRANSMISSION LINE RIGHT OF WAY",
+    "Winchendon: 599 SPRING ST"
    ],
    "towns": [
     "Attleboro",
@@ -69,6 +71,7 @@
     "Buckland",
     "Charlton",
     "Chelmsford",
+    "Clinton",
     "Georgetown",
     "Groveland",
     "Hanover",
@@ -88,13 +91,14 @@
     "Wendell",
     "West Brookfield",
     "West Newbury",
-    "Westford"
+    "Westford",
+    "Winchendon"
    ],
    "categories": {
-    "transmission_substation": 32
+    "transmission_substation": 34
    },
    "links": {
-    "applicant_name": 31,
+    "applicant_name": 33,
     "description_mention": 1
    },
    "consultants": [],
@@ -332,7 +336,7 @@
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
     },
     {
-     "dep_file_number": null,
+     "dep_file_number": "247-1284",
      "town": "Northborough",
      "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
      "received_date": "2026-10-01",
@@ -340,7 +344,15 @@
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)"
     },
     {
-     "dep_file_number": null,
+     "dep_file_number": "345-0825",
+     "town": "Winchendon",
+     "applicant": "MASSACHUSETTS ELECTRIC COMPANY",
+     "received_date": "2026-10-02",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213398",
+     "evidence": "applicant name 'MASSACHUSETTS ELECTRIC COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": "286-0314",
      "town": "Shutesbury",
      "applicant": "NEP",
      "received_date": "2026-10-08",
@@ -354,10 +366,18 @@
      "received_date": "2026-10-14",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213522",
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Clinton",
+     "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
+     "received_date": "2026-10-19",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213590",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)"
     }
    ],
    "distinct_applicants": 7,
-   "distinct_sites": 31,
+   "distinct_sites": 33,
    "in_target_list": true,
    "target_segment": "transmission/utility"
   },
@@ -543,7 +563,7 @@
      "evidence": "applicant name 'PARALLEL PRODUCTS SOLAR ENERGY' matches Parallel Products Solar Energy"
     },
     {
-     "dep_file_number": null,
+     "dep_file_number": "126-0714",
      "town": "Carver",
      "applicant": "PARALLEL PRODUCTS SOLAR ENERGY LLC",
      "received_date": "2026-10-13",
@@ -1360,9 +1380,10 @@
    "parent_kind": "utility",
    "link": "applicant_name",
    "confidence": "high",
-   "filings": 7,
+   "filings": 8,
    "towns": [
     "Boxford",
+    "Clinton",
     "Georgetown",
     "Northborough",
     "Shirley",
@@ -1373,7 +1394,7 @@
    "payors": [],
    "consultants": [],
    "categories": {
-    "transmission_substation": 7
+    "transmission_substation": 8
    },
    "evidence": [
     {
@@ -1437,14 +1458,24 @@
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211586"
     },
     {
-     "dep_file_number": null,
+     "dep_file_number": "247-1284",
      "town": "Northborough",
      "received_date": "2026-10-01",
-     "filing_type": "Notice of Intent (buffer zone only)",
+     "filing_type": "Notice of Intent",
      "payor": null,
      "link": "applicant_name",
      "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213381"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Clinton",
+     "received_date": "2026-10-19",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213590"
     }
    ],
    "shares_contact_with": [
@@ -1530,7 +1561,7 @@
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212855"
     },
     {
-     "dep_file_number": null,
+     "dep_file_number": "126-0714",
      "town": "Carver",
      "received_date": "2026-10-13",
      "filing_type": "Notice of Intent (buffer zone only)",
@@ -1725,6 +1756,56 @@
    ]
   },
   {
+   "applicant": "MASSACHUSETTS ELECTRIC COMPANY",
+   "parent": "National Grid (New England Power / Mass. Electric)",
+   "parent_kind": "utility",
+   "link": "applicant_name",
+   "confidence": "high",
+   "filings": 3,
+   "towns": [
+    "Hanover",
+    "Royalston",
+    "Winchendon"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "transmission_substation": 3
+   },
+   "evidence": [
+    {
+     "dep_file_number": "031-1319",
+     "town": "Hanover",
+     "received_date": "2026-04-14",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'MASSACHUSETTS ELECTRIC COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211053"
+    },
+    {
+     "dep_file_number": "275-0105",
+     "town": "Royalston",
+     "received_date": "2026-07-28",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'MASSACHUSETTS ELECTRIC COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212412"
+    },
+    {
+     "dep_file_number": "345-0825",
+     "town": "Winchendon",
+     "received_date": "2026-10-02",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'MASSACHUSETTS ELECTRIC COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213398"
+    }
+   ]
+  },
+  {
    "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
    "parent": "Eversource (NSTAR Electric)",
    "parent_kind": "utility",
@@ -1823,45 +1904,6 @@
     }
    ],
    "shares_contact_with": []
-  },
-  {
-   "applicant": "MASSACHUSETTS ELECTRIC COMPANY",
-   "parent": "National Grid (New England Power / Mass. Electric)",
-   "parent_kind": "utility",
-   "link": "applicant_name",
-   "confidence": "high",
-   "filings": 2,
-   "towns": [
-    "Hanover",
-    "Royalston"
-   ],
-   "payors": [],
-   "consultants": [],
-   "categories": {
-    "transmission_substation": 2
-   },
-   "evidence": [
-    {
-     "dep_file_number": "031-1319",
-     "town": "Hanover",
-     "received_date": "2026-04-14",
-     "filing_type": "Notice of Intent",
-     "payor": null,
-     "link": "applicant_name",
-     "how": "applicant name 'MASSACHUSETTS ELECTRIC COMPANY' matches National Grid (New England Power / Mass. Electric)",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211053"
-    },
-    {
-     "dep_file_number": "275-0105",
-     "town": "Royalston",
-     "received_date": "2026-07-28",
-     "filing_type": "Notice of Intent",
-     "payor": null,
-     "link": "applicant_name",
-     "how": "applicant name 'MASSACHUSETTS ELECTRIC COMPANY' matches National Grid (New England Power / Mass. Electric)",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212412"
-    }
-   ]
   },
   {
    "applicant": "NEW ENGLAND POWER CO AND MASSACHUSETTS ELECTRIC COMPANY",
@@ -2265,7 +2307,7 @@
    },
    "evidence": [
     {
-     "dep_file_number": null,
+     "dep_file_number": "286-0314",
      "town": "Shutesbury",
      "received_date": "2026-10-08",
      "filing_type": "Notice of Intent",
@@ -3122,20 +3164,20 @@
  "top_third_party_payors_all_filings": [
   {
    "payor": "ZENITH ENG",
-   "filings": 45,
+   "filings": 47,
    "towns": 19,
+   "kind": "consultant"
+  },
+  {
+   "payor": "MORSE ENG",
+   "filings": 34,
+   "towns": 8,
    "kind": "consultant"
   },
   {
    "payor": "SULLIVAN ENG",
    "filings": 33,
    "towns": 1,
-   "kind": "consultant"
-  },
-  {
-   "payor": "MORSE ENG",
-   "filings": 33,
-   "towns": 8,
    "kind": "consultant"
   },
   {
@@ -3146,8 +3188,14 @@
   },
   {
    "payor": "JM O'REILLY & ASSOC",
-   "filings": 27,
+   "filings": 28,
    "towns": 10,
+   "kind": "consultant"
+  },
+  {
+   "payor": "OAKHILL ENG",
+   "filings": 26,
+   "towns": 6,
    "kind": "consultant"
   },
   {
@@ -3157,14 +3205,8 @@
    "kind": "consultant"
   },
   {
-   "payor": "OAKHILL ENG",
-   "filings": 25,
-   "towns": 6,
-   "kind": "consultant"
-  },
-  {
    "payor": "COLLINS ENG",
-   "filings": 22,
+   "filings": 23,
    "towns": 12,
    "kind": "consultant"
   },
@@ -3176,7 +3218,7 @@
   },
   {
    "payor": "CC ENG",
-   "filings": 19,
+   "filings": 20,
    "towns": 7,
    "kind": "consultant"
   },
@@ -3187,9 +3229,21 @@
    "kind": "consultant"
   },
   {
+   "payor": "GRADY CONSULTING",
+   "filings": 17,
+   "towns": 11,
+   "kind": "consultant"
+  },
+  {
    "payor": "ENVIRO CONSULT & RESTOR",
    "filings": 16,
    "towns": 15,
+   "kind": "consultant"
+  },
+  {
+   "payor": "COLLINS CIVIL ENG",
+   "filings": 15,
+   "towns": 9,
    "kind": "consultant"
   },
   {
@@ -3199,21 +3253,9 @@
    "kind": "consultant"
   },
   {
-   "payor": "GRADY CONSULTING",
-   "filings": 15,
-   "towns": 10,
-   "kind": "consultant"
-  },
-  {
    "payor": "SOURATI ENG",
    "filings": 14,
    "towns": 5,
-   "kind": "consultant"
-  },
-  {
-   "payor": "COLLINS CIVIL ENG",
-   "filings": 13,
-   "towns": 8,
    "kind": "consultant"
   },
   {
@@ -3241,6 +3283,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "RIM ENG",
+   "filings": 11,
+   "towns": 5,
+   "kind": "consultant"
+  },
+  {
    "payor": "SITE DESIGN ENG",
    "filings": 11,
    "towns": 1,
@@ -3262,12 +3310,6 @@
    "payor": "BRACKEN ENG",
    "filings": 9,
    "towns": 1,
-   "kind": "consultant"
-  },
-  {
-   "payor": "RIM ENG",
-   "filings": 9,
-   "towns": 4,
    "kind": "consultant"
   },
   {
@@ -3301,6 +3343,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "SFG ASSOC",
+   "filings": 7,
+   "towns": 2,
+   "kind": "consultant"
+  },
+  {
    "payor": "TIGHE & BOND",
    "filings": 6,
    "towns": 3,
@@ -3320,12 +3368,6 @@
   },
   {
    "payor": "NANTUCKET ENG",
-   "filings": 6,
-   "towns": 1,
-   "kind": "consultant"
-  },
-  {
-   "payor": "SFG ASSOC",
    "filings": 6,
    "towns": 1,
    "kind": "consultant"
@@ -3379,6 +3421,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "ECOSYSTEM SOLUTIONS",
+   "filings": 4,
+   "towns": 4,
+   "kind": "company"
+  },
+  {
    "payor": "BAYCOAST BANK",
    "filings": 4,
    "towns": 1,
@@ -3419,12 +3467,6 @@
    "filings": 3,
    "towns": 2,
    "kind": "consultant"
-  },
-  {
-   "payor": "ECOSYSTEM SOLUTIONS",
-   "filings": 3,
-   "towns": 3,
-   "kind": "company"
   },
   {
    "payor": "AVIZINIS ENVIRO SVCS",
