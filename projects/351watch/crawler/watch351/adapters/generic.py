@@ -128,6 +128,8 @@ class GenericListingAdapter(Adapter):
                 if not (when is None and undated_rx and undated_rx.search(hay)):
                     continue
             doc_url = self.abs_url(base, href)
+            if doc_url.split("#", 1)[0] in (url, resp.final_url):
+                continue  # an in-page anchor on the listing itself ("agendas_minutes.php#outer-7338"), not a document
             if strip_q:
                 doc_url = strip_doc_query(doc_url)
             out.append(AgendaDoc(

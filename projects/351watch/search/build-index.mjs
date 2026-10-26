@@ -94,6 +94,8 @@ for (const file of jsonlFiles(dataDir)) {
     rows++;
     if (!row.text || !(row.source_url || row.url)) continue;
     if (replaced.has(row.url) || replaced.has(row.source_url)) continue;
+    // a listing page indexed as if it were a document (an in-page anchor on the board's agendas page)
+    if (row.listing_url && (row.url || "").split("#")[0] === row.listing_url.split("#")[0]) continue;
     const key = `${row.state}|${row.town}|${createHash("sha1").update(row.text).digest("hex")}`;
     const prev = best.get(key);
     if (!prev || (row.meeting_date || "") > (prev.meeting_date || "")) best.set(key, row);
