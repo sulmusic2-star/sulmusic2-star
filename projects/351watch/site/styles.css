@@ -244,6 +244,11 @@ label { font-weight: 600; }
 .list-tools .cant-list { flex-basis: 100%; margin: 0; }
 .list-tools .clear-row { flex-basis: 100%; margin: 0; }
 .list-tools .labels-row { flex-basis: 100%; margin: 0; }
+@media (max-width: 600px) {
+  .tabs ul { flex-wrap: wrap; overflow: visible; gap: 0 var(--s4); }
+  .tabs::after { display: none; }
+}
+.suggest { right: auto; min-width: 100%; width: max-content; max-width: calc(100vw - 32px); }
 .labels { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--s2) var(--s4); align-items: baseline; margin: var(--s3) 0; max-width: var(--measure); }
 .labels dt, .labels dd { margin: 0; }
 @media (max-width: 480px) { .labels { grid-template-columns: 1fr; } .labels dd { margin-bottom: var(--s2); } }
@@ -681,6 +686,12 @@ form[data-list-filter] label { flex: 1 1 100%; }
 .tag-part { color: var(--warn); background: var(--warn-wash); }
 .tag-no { color: #8a1c1c; background: #f8e5e5; }
 .tag-wait { color: var(--muted); background: var(--land); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tag-ok { color: #a9dfb5; background: #1f3a27; }
+  :root:not([data-theme="light"]) .tag-no { color: #f2b0b0; background: #4a2326; }
+}
+:root[data-theme="dark"] .tag-ok { color: #a9dfb5; background: #1f3a27; }
+:root[data-theme="dark"] .tag-no { color: #f2b0b0; background: #4a2326; }
 .timeline li { display: block; border-bottom: 0; padding: 0; }
 .timeline > li { display: grid; grid-template-columns: 140px 1fr; gap: var(--s4); padding: var(--s4) 0; border-bottom: 1px solid var(--rule); }
 .timeline .sources { margin: var(--s2) 0 0; padding: 0; list-style: none; }

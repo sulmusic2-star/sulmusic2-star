@@ -981,9 +981,11 @@ function setupMeetingFilter() {
       else if (!narrowed) det.open = false;
     }
     if (clearBtn) clearBtn.hidden = !narrowed;
+    followFilter(narrowed);
     // under a chosen county, the towns there we can't read
     for (const p of bar.querySelectorAll('[data-cant-county]')) p.hidden = p.dataset.cantCounty !== county;
-    count.textContent = narrowed ? (shown ? `${shown} of ${meetings.length} meetings` : 'Nothing coming up for that choice.') : '';
+    const items = meetings.filter((m) => !m.hidden).reduce((n, m) => n + m.querySelectorAll('.line').length, 0);
+    count.textContent = narrowed ? (shown ? `${shown} of ${meetings.length} meetings, ${items} ${items === 1 ? 'item' : 'items'}` : 'Nothing coming up for that choice.') : '';
     sayUnread();
     // the address bar carries the choice, so the page can be shared or bookmarked
     const p = new URLSearchParams(location.search);
@@ -993,6 +995,51 @@ function setupMeetingFilter() {
     const qs = p.toString();
     history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
   };
+  // "Copy this week's list" and the CSV cover what the filter leaves, not the whole state
+  const copyBtn = document.querySelector('.action-row [data-copy]');
+  const csvLink = document.querySelector('.action-row a[download]');
+  const copyAll = copyBtn ? copyBtn.dataset.copy : '';
+  const csvLabel = csvLink ? csvLink.textContent : '';
+  const visibleTowns = () => new Set(meetings.filter((m) => !m.hidden).map((m) => `${(m.dataset.county || 'MA:').split(':')[0]}:${m.dataset.town}`));
+  const choice = () => (select && select.value ? select.options[select.selectedIndex].textContent : (town && town.value.trim()) || (onlyMine ? 'my towns' : ''));
+  function followFilter(on) {
+    if (copyBtn) {
+      if (!on) copyBtn.dataset.copy = copyAll;
+      else {
+        const lines = [];
+        for (const m of document.querySelectorAll('[data-meet-section]:first-of-type .meeting:not([hidden])')) {
+          const day = m.closest('.day-group');
+          const when = day ? day.querySelector('.day').textContent.trim() : '';
+          const time = m.querySelector('.meet-when time');
+          const head = Array.from(m.querySelectorAll('.meet-head > span:not(.meet-place)')).map((s) => s.textContent.trim()).filter((t) => t && !/^Agenda/.test(t)).join(' ');
+          const item = m.querySelector('.line-link');
+          const link = item ? `${location.origin}${item.getAttribute('href')}` : '';
+          lines.push(`${head}, ${when}${time ? `, ${time.textContent.trim()}` : ''}: ${item ? item.textContent.trim() : ''}. ${link}`.replace(/\s+\./g, '.'));
+        }
+        copyBtn.dataset.copy = lines.join('\n');
+      }
+    }
+    if (csvLink) csvLink.textContent = on ? `${csvLabel.replace(/\s*\(.*$/, '')} (CSV, ${choice()})` : csvLabel;
+  }
+  if (csvLink) csvLink.addEventListener('click', async (event) => {
+    if (!(select && select.value) && !(town && town.value.trim()) && !onlyMine) return;
+    event.preventDefault();
+    try {
+      const text = await (await fetch(csvLink.getAttribute('href'))).text();
+      const rows = csvRecords(text);
+      const keep = visibleTowns();
+      const out = [rows[0]].concat(rows.slice(1).filter((r) => keep.has(`${r[2]}:${r[0]}`)));
+      const esc = (v) => `"${String(v).replace(/"/g, '""')}"`;
+      const blob = new Blob([out.map((r) => r.map(esc).join(',')).join('\n')], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `agenda-ahead-${norm(choice()).replace(/\s+/g, '-') || 'filtered'}.csv`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    } catch {
+      location.assign(csvLink.getAttribute('href'));
+    }
+  });
   if (select) select.addEventListener('change', apply);
   if (town) town.addEventListener('input', apply);
   if (clearBtn) clearBtn.addEventListener('click', () => {

@@ -103,6 +103,7 @@ class DailyRun:
         self.started = now_iso()
         self.t0 = time.monotonic()
         self.today = today or datetime.now(timezone.utc).date()
+        self.refresh_days = 0  # >0: re-read documents of meetings this many days ahead even when indexed (afternoon re-check)
         self.window = Window(self.today - timedelta(days=days_back), self.today + timedelta(days=days_ahead))
         self.data_dir = Path(data_dir)
         self.towns_dir = Path(towns_dir) if towns_dir is not None else self.data_dir
@@ -170,6 +171,9 @@ class DailyRun:
                 # matching rules changed: re-match from the local cache only (never re-download)
                 if rec.get("kw") != MATCHER_VERSION and self._cached_for_rematch(rec, doc):
                     rematch = True
+                elif (self.refresh_days and doc.meeting_date and 0 <= (doc.meeting_date - self.today).days <= self.refresh_days
+                      and not doc.resolve_pdf):
+                    rematch = True  # the town may have amended the agenda at the same address since the morning
                 else:
                     out.already_indexed += 1
                     return
@@ -435,9 +439,11 @@ def main(argv: list[str] | None = None) -> int:
                    help="re-read listing pages even when cached today (the afternoon re-check)")
     args = p.parse_args(argv)
     if args.fresh_listings:
+        from . import crawl as _crawl
         from .adapters import base as _base, ri_sos as _ri_sos
         _base.LISTING_MAX_AGE = 0  # a listing fetched this morning is stale by afternoon when a town re-posts
         _ri_sos.LISTING_MAX_AGE = 0
+        _crawl.DOC_MAX_AGE = 3 * 3600  # and an agenda amended at the same address is read again (refresh_days below)
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO,
                         format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     logging.getLogger("urllib3").setLevel(logging.WARNING)
@@ -464,6 +470,8 @@ def main(argv: list[str] | None = None) -> int:
     run = DailyRun(args.cache_dir, out_dir, days_back=args.days_back, days_ahead=args.days_ahead,
                    no_network_docs=args.no_network_docs, workers=args.workers, towns_dir=args.data_dir,
                    report_towns=report_towns, hits_name=args.hits_name)
+    if args.fresh_listings:
+        run.refresh_days = 3
     if not run.tesseract:
         print("tesseract not installed: image-only PDFs are recorded as needs_ocr and retried later",
               file=sys.stderr)

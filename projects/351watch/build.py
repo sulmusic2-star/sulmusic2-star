@@ -394,6 +394,8 @@ class Ctx:
         self.census = load("ma_census_summary.json", {})
         self.leadtime = load("leadtime_ma_all.json", {})
         self.ag = load("ag_decisions.json", [])
+        POSTED_LETTERS.update(r["letter_url"] for r in self.ag
+                              if r.get("letter_url") and "copy of the letter the town posted" in (r.get("portal_document_name") or ""))
         for r in self.ag:
             for k in ("summary", "article", "outcome", "technology", "bylaw_type", "legal_basis"):
                 if isinstance(r.get(k), str):
@@ -458,6 +460,9 @@ class Ctx:
         # never minutes, even when an article names the committee meeting before it (Auburn's Article 20).
         self.hits = [h for h in self.hits if (ANALYSIS.get(h["id"]) or {}).get("action") != "minutes"
                      or h.get("board_key") == "town_meeting"]
+        # An invoice list ("Cushman Road Solar, Invoice 17974, $1,325.00") or a page's download list ("...packet.pdf
+        # PDF 9.8MB Download") names a subject without putting anything on the agenda.
+        self.hits = [h for h in self.hits if not JUNK_ITEM.search(" ".join(((ANALYSIS.get(h["id"]) or {}).get("item") or h.get("snippet") or "").split()))]
         # A warrant dated from its own text, older than the hits window, is an old warrant the town's site
         # still lists (Whately's 2012 to 2019 warrants), not an item for these pages.
         win_start = (self.hits_doc.get("window") or {}).get("start") or ""
@@ -1245,6 +1250,7 @@ def stage_verb(verb, hearing=False):
 # counts and the Trending page all use that one reading. ANALYSIS is filled by Ctx.
 
 ANALYSIS = {}
+JUNK_ITEM = re.compile(r"(?:\bInvoice\s*#?\s*\d{3,}\b.*){2}|^\s*Vouchers?\s*:|\.pdf\b\s+PDF\s+[\d.]+\s*[KMG]B|\bDownload\b.{0,80}\.pdf\b", re.I)
 BRIEFS = {}  # hit id -> verified written brief (briefs.py); filled by Ctx, shown instead of the rules-based line
 SUBJECT_NOUN = {"data_center": "data centers", "battery_storage": "battery storage", "solar": "solar",
                 "wind": "wind energy", "clean_energy_siting": "small clean-energy projects", "zoning_amendment": "zoning",
@@ -1475,6 +1481,18 @@ def analysis_text(h, a):
             return done(f"Votes on {core}{cont}.", stage="Vote")
         return done(f"Discusses {core}{cont} (no vote listed).")
 
+    # "+ Signature: High Street Solar Site B — Site Plan Review and Special Permit Decision": the board signs a decision
+    # it already made; nothing is heard or decided
+    signing = re.match(r"^[\s«»+•·\-–—]*(?:Signature|Sign(?:ing)?)\s*[:\-–—]\s*(.+)", " ".join((a.get("item") or "").split()), re.I)
+    if signing and not f.get("vote"):
+        what = re.split(r"\s+Decision\b", signing.group(1), 1)[0]
+        what = re.sub(r"\s[–—-]\s", ", ", what).strip(" ,:;")
+        for lst in (facts, fact_pairs):  # the window's address and permit words belong to the next line, not the signing
+            try:
+                lst[:] = []
+            except TypeError:
+                pass
+        return done(f"Signs the decision: {short_quote(what, 100)}.", kind="list", stage="Signing")
     if a["source"] != "agenda":
         mw = next((x[1] for x in a["scale"] if x[2] == "MW"), None)
         what = TR.with_article(f"{mw} {proj.replace(' project', '')}" if mw else proj)
@@ -1566,6 +1584,12 @@ def analysis_text(h, a):
     if act == "cancelled":
         return done(f"Canceled: the hearing on {name or noun}.", kind="list", stage="Canceled")
     if act == "withdrawn":
+        # "Applicant has withdrawn the Battery Energy Storage System from their application": one part goes, not the application
+        part = re.search(r"withdr(?:awn|aws|ew|awal of)\s+(?:the\s+|its\s+|their\s+)?(.+?)\s+from\s+(?:their|the|its)\s+(?:application|request|petition|plan)",
+                         " ".join((a.get("item") or "").split()), re.I)
+        if part:
+            what = "the battery storage" if re.search(r"batter|energy storage|\bBESS\b", part.group(1), re.I) else f"the {part.group(1).strip().lower()}"
+            return done(f"Withdraws {what} from the application{' by ' + name if name else ''}.", kind="list", stage="Withdrawn")
         return done(f"Withdrawn: the application{' by ' + name if name else ''}.", kind="list", stage="Withdrawn")
     if act == "discussion":
         return done(quoted(f"Discusses {noun}", f"Discusses {noun} (no vote listed)"), kind="mention")
@@ -1766,13 +1790,42 @@ def quote_key(q):
 
 
 def overlaps(q, quotes):
-    """True when q repeats one of quotes: the same passage, or two cuts of one passage."""
+    """True when q repeats one of quotes: the same passage, two cuts of one passage, or the same project named
+    the same way (a street address, or a name like "Smart Growth Overlay" or "Federal Pond Solar")."""
     a = re.sub(r"[^a-z0-9]+", " ", (q or "").lower()).strip()
+    names_a = project_names(q)
     for other in quotes:
         b = re.sub(r"[^a-z0-9]+", " ", (other or "").lower()).strip()
         if a[:80] == b[:80] or (len(a) > 40 and a[6:66] in b) or (len(b) > 40 and b[6:66] in a):
             return True
+        names_b = project_names(other)
+        if any(x == y or (len(x) >= 10 and x in y) or (len(y) >= 10 and y in x) for x in names_a for y in names_b):
+            return True  # "Smart Growth Overlay" and "Smart Growth Overlay District" name one project
     return False
+
+
+ADDRESS_RE = re.compile(r"\b\d{1,5}[A-Z]?(?:-\d+)? [A-Z][a-z]+(?: [A-Z][a-z]+)? (?:Road|Rd|Street|St|Avenue|Ave|Lane|Ln|Drive|Dr|Way|Highway|Hwy|Route|Rte|Turnpike|Pike|Boulevard|Blvd|Place|Pl|Circle|Court|Ct)\b\.?")
+NAME_RE = re.compile(r"\b([A-Z][a-z]+(?: [A-Z][a-z]+){1,3})\b")
+GENERIC_NAME_WORDS = {"Special", "Permit", "Site", "Plan", "Review", "Public", "Hearing", "Zoning", "Bylaw", "Board", "Town", "Meeting",
+                      "Planning", "Commission", "Application", "Discussion", "Vote", "Continued", "Notice", "Intent", "Conservation",
+                      "Select", "Council", "City", "Map", "Lot", "Assessor", "Assessors", "Chapter", "Section", "Article", "The",
+                      "Applicant", "Appeals", "Order", "Conditions", "Request", "Approval", "Decision", "Minutes", "Agenda", "New",
+                      "Old", "Business", "Annual", "Amended", "Definitive", "Subdivision", "Variance", "Appeal", "General", "Law",
+                      "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "January", "February", "March", "April", "May",
+                      "June", "July", "August", "September", "October", "November", "December", "Massachusetts", "County",
+                      "Road", "Street", "Avenue", "Lane", "Drive", "Way", "Highway", "Route", "Turnpike", "Boulevard", "Place",
+                      "Circle", "Court"}
+
+
+def project_names(text):
+    """The addresses and proper names ("Smart Growth Overlay", "Federal Pond Solar") in an agenda passage that
+    identify a project, not the agenda's furniture."""
+    out = {m.group(0).rstrip(".").lower() for m in ADDRESS_RE.finditer(text or "")}
+    for m in NAME_RE.finditer(text or ""):
+        words = m.group(1).split()
+        if sum(w in GENERIC_NAME_WORDS for w in words) <= len(words) - 2:
+            out.add(" ".join(w for w in words if w not in GENERIC_NAME_WORDS).lower())
+    return out
 
 
 CANCELLED_DOC = re.compile(r"\bcancel+ed\b", re.I)
@@ -2584,7 +2637,7 @@ def ag_row(ctx, r, filters=False):
              + (f' data-csv="{r["_csv"]}"' if "_csv" in r else "")) if filters else ""
     case = f", case {e(str(r['case_number']))}{e(r.get('letter_note', ''))}" if r.get("case_number") else ""
     posted_copy = "copy of the letter the town posted" in (r.get("portal_document_name") or "")
-    label = ("Town Clerk’s posting of the decision" if posted_copy else "Decision letter") if r.get("record_type") == "ag_decision" else "Source"
+    label = r.get("source_label") or (("Town Clerk’s posting of the decision" if posted_copy else "Decision letter") if r.get("record_type") == "ag_decision" else "Source")
     letter = (f'<a href="{e(r["letter_url"])}" rel="nofollow noopener" target="_blank">{label}{case}</a>'
               if r.get("letter_url") else "")
     town = ag_town(r.get("town"))
@@ -2649,7 +2702,13 @@ def court_cite(r):
     if m:
         when = fmt_date(d) if len(d) == 10 else (datetime.strptime(d, "%Y-%m").strftime("%b. %Y").replace("May.", "May") if len(d) == 7 else year)
         return f"{m.group(1)}, No. {m.group(2)} (Mass. Land Ct. {when})"
-    return art + (f" ({year})" if year else "")
+    return art if re.search(r"\b\d{4}\)\s*$", art) else art + (f" ({year})" if year else "")  # a cite that ends in its year keeps it once
+
+
+def decided_text(r):
+    """"Sep 22, 2026", or "decided Sep 14 to Sep 22, 2026" when the letter carries no single date."""
+    dn = re.match(r"decided between (\w+ \d+) and (\w+ \d+), (\d{4})", r.get("date_note") or "")
+    return f"decided {dn.group(1)} to {dn.group(2)}, {dn.group(3)}" if dn else fmt_date(r.get("decision_date"))
 
 
 def ag_letter_links(ctx, towns, technology):
@@ -2660,7 +2719,7 @@ def ag_letter_links(ctx, towns, technology):
         if not r:
             out.append(e(town))
             continue
-        out.append(f'<a href="{e(r["letter_url"])}" rel="nofollow noopener" target="_blank">{e(town)}</a> (case {e(str(r["case_number"]))}, {fmt_date(r["decision_date"])})')
+        out.append(f'<a href="{e(r["letter_url"])}" rel="nofollow noopener" target="_blank">{e(town)}</a> (case {e(str(r["case_number"]))}, {e(decided_text(r))})')
     return join_and(out)
 
 
@@ -2997,7 +3056,7 @@ def build_upcoming(ctx):
     # The week as text to paste and the whole list as a spreadsheet, as on the topic pages.
     week_text = week_list_text(ctx, soon)
     copy_week = f'<button type="button" class="link-btn" data-copy="{e(week_text)}" hidden>Copy this week’s list</button>' if week_text else ""
-    write("upcoming.csv", topic_csv(ctx, meetings))
+    write("upcoming.csv", topic_csv(ctx, meetings, all_items=True))
     tools = f'<p class="action-row">{copy_week}<a href="/upcoming.csv" download>Download the list (CSV)</a></p>' if meetings else ""
     body = f"""
 <div class="wrap narrow">
@@ -3052,6 +3111,9 @@ def trending_stories(ctx):
         if st.get("hit_ids") and not hits:
             continue  # every item behind the story was dropped (off the subject): no story
         same_day = [h for h in hits if (h.get("meeting_date") or "")[:10] == d[:10]] if d else []
+        # the row shows the meeting's biggest item: a vote or hearing before a discussion, a withdrawal or a mention
+        same_day.sort(key=lambda h: (STORY_LEAD_ORDER.get((BRIEFS.get(h["id"]) or {}).get("action") or item_text(h).get("kind") or "", 5),
+                                     item_text(h).get("rank", 60)))
         lead = next((h for h in same_day if board_label(h) == st.get("board")), None) or (same_day[0] if same_day else None)
         board = board_label(lead) if lead else st.get("board", "")
         anchor = "#m-" + slugify(f"{st.get('town', '')}-{board}-{d[:10]}") if d and board else ""
@@ -3069,13 +3131,14 @@ def trending_stories(ctx):
             "stage": brief_stage(b) if b else item.get("stage", ""),
             "id": st["id"], "score": st.get("score", 0), "headline": plain_story(st.get("headline", "")),
             "dek": plain_story(st.get("dek", "")).replace("The warrant lists ", "The warrant (the list of what voters will decide) lists "),
-            "quote": st.get("quote", ""), "reasons": story_chips(st), "topics": st.get("topics", []), "warrant": warrant,
+            "quote": st.get("quote", ""), "reasons": story_reasons_for(st, b, item), "topics": st.get("topics", []), "warrant": warrant,
             "towns": st.get("towns", []), "town": st.get("town", ""), "state": st.get("state", ""),
             "href": href,
             "meeting_date": d, "source_url": st.get("source_url", ""),
             # "New on an agenda" only for a project with no earlier meeting in our records
             "new": (not (b and b.get("history")) and not any(w.startswith("Put off") for w in st.get("why", []))
                     and not str(st.get("stage") or "").startswith(("Postponed", "Asks", "Moved"))
+                    and not any(((ANALYSIS.get(i) or {}).get("flags") or {}).get("continued") for i in st.get("hit_ids", []))
                     and any(ctx.is_new(hits_by_id[i]) for i in st.get("hit_ids", []) if i in hits_by_id)),
             "brief": b,
             # why it ranks: at most two signs of what is at stake or how stirred up people are
@@ -3086,6 +3149,26 @@ def trending_stories(ctx):
 
 def plain_story(text):
     return re.sub(r"\b(?:a|the) Notice of Intent\b", "a wetlands permit request", text).replace("Notice of Intent", "wetlands permit request")
+
+
+STORY_LEAD_ORDER = {"vote": 0, "hearing": 0, "adopted": 1, "continued": 2, "project": 3, "discussion": 4, "brief": 4,
+                    "withdrawn": 8, "cancelled": 8, "mention": 9}
+
+
+def story_reasons_for(st, b, item):
+    """The story's reasons, minus any the item itself contradicts: "Public hearing" when the item's status isn't a
+    hearing, "First time this has come up" when the item was put off from an earlier meeting or has a history."""
+    stage = str((brief_stage(b) if b else item.get("stage", "")) or "")
+    carried = any(w.startswith("Put off") for w in st.get("why", [])) or bool((b or {}).get("history")) \
+        or any(w.startswith("Town has an earlier") for w in st.get("why", []))
+    out = []
+    for r in story_chips(st):
+        if r == "Public hearing" and not stage.startswith("Hearing"):
+            continue
+        if r.startswith("First time") and carried:
+            continue
+        out.append(r)
+    return out
 
 
 def story_chips(st):
@@ -3223,9 +3306,11 @@ def rules_html(ctx, tracked, ag_rows, town):
         who = {"ag_decision": "Attorney General", "court_ruling": "Court ruling", "city_ordinance": "City council",
                "pending_ag_review": "Attorney General review"}.get(kind, "Ruling")
         dated = "letter dated" if kind == "ag_decision" else ("meeting" if (r.get("outcome") or "").startswith("proposed") else "decided")
-        letter = (f'<a href="{e(r["letter_url"])}" rel="nofollow noopener" target="_blank">'
-                  f'{"Decision letter" if kind == "ag_decision" else "Source"}{case}</a>' if r.get("letter_url") else "")
-        parts.append(f"""<li><p><b>{who}: {e((r.get('outcome') or '').lower())}</b> ({dated} {fmt_date(r.get('decision_date'))}). {e(r.get('article', ''))}, {e(r.get('bylaw_type', ''))}.</p>
+        when = decided_text(r) if r.get("date_note") else f"{dated} {fmt_date(r.get('decision_date'))}"
+        posted = "copy of the letter the town posted" in (r.get("portal_document_name") or "")
+        label = r.get("source_label") or (("Town Clerk’s posting of the decision" if posted else "Decision letter") if kind == "ag_decision" else "Source")
+        letter = (f'<a href="{e(r["letter_url"])}" rel="nofollow noopener" target="_blank">{label}{case}</a>' if r.get("letter_url") else "")
+        parts.append(f"""<li><p><b>{who}: {e((r.get('outcome') or '').lower())}</b> ({e(when)}). {e(r.get('article', ''))}, {e(r.get('bylaw_type', ''))}.</p>
 <p class="small">{e(r.get('summary', ''))} {letter}</p></li>""")
     return f'<ul class="plain rules">{"".join(parts)}</ul>'
 
@@ -3785,9 +3870,10 @@ def week_list_text(ctx, meetings):
     return "\n\n".join(blocks)
 
 
-def topic_csv(ctx, meetings):
+def topic_csv(ctx, meetings, all_items=False):
     """One row per agenda item at a meeting still ahead: town, state, board, date, time, place, item, status,
-    the agenda's URL and the meeting's page."""
+    the agenda's URL and the meeting's page. `all_items` keeps the mention-only lines too (status Mentioned), so
+    the file holds every item the page counts."""
     out = io.StringIO()
     w = csv.writer(out)
     w.writerow(["town", "county", "state", "board", "date", "time", "place", "item", "status", "agenda_url", "page_url"])
@@ -3795,9 +3881,11 @@ def topic_csv(ctx, meetings):
         doc = m["docs"][0]["url"] if m["docs"] else ""
         place = place_text(m["place"]) if m["place"] and m["source"] != "massdep_wetlands" else ""
         county = (ctx.town_by_id.get(f"{m['state']}:{m['town']}") or {}).get("county") or ""
-        for text, entry in real_lines(m):
+        rows = [(t, en) for t, en in m["lines"].items() if not OFF_ITEM.search(t)] if all_items else real_lines(m)
+        for text, entry in rows:
+            status = "Canceled" if m.get("cancelled") else (entry.get("stage") or ("Mentioned" if entry.get("kind") == "mention" else ""))
             w.writerow([m["town"], county, m["state"], meeting_board(m), m["date"] or "", m.get("time") or "", place,
-                        plain_say(text), "Canceled" if m.get("cancelled") else (entry.get("stage") or ""), doc, meeting_share_url(ctx, m)])
+                        plain_say(text), status, doc, meeting_share_url(ctx, m)])
     return out.getvalue()
 
 
@@ -4370,9 +4458,14 @@ def ledger_date(value, missing="Not found"):
     return fmt_date(value) if value else missing
 
 
+POSTED_LETTERS = set()  # decision letters we hold only as the Town Clerk's posting (filled by Ctx from ag_decisions.json)
+
+
 def ledger_source_name(url):
     """What a source is, from its address: the letter, the warrant, an agenda, a news report, or the site's name."""
     u = url.lower()
+    if url in POSTED_LETTERS:
+        return "Town Clerk’s posting of the Attorney General decision"
     if "massago.hylandcloud" in u or "/letters/" in u or "ago%20" in u or "ago " in u:
         return "Attorney General letter"
     if "warrant" in u:
@@ -4560,7 +4653,7 @@ def build_data_center_ledger(ctx):
 <div class="wrap">
 {ag_nav("/attorney-general/data-centers")}
 <h1 id="ledger-title">Data-center ledger</h1>
-<p class="lead">Every town and city with a data-center moratorium or ban, proposed, in effect or ended: {plural(len(rows), 'measure')} in {len({(r.get('state'), r.get('town')) for r in rows})} places. Tap one for its dates and sources. Checked {generated}.</p>
+<p class="lead">Every town and city with a data-center moratorium or ban, proposed, in effect or ended: {plural(len(rows), 'measure')} in {len({(r.get('state'), r.get('town')) for r in rows})} places. Tap one for its dates and sources.</p>
 {ag_checked(ctx)}
 <form class="filterbar" data-list-filter data-noun="measures">
   <label>Status<select data-status><option value="">All</option>{status_opts}</select></label>
@@ -4665,11 +4758,11 @@ def build_ag(ctx):
          "Disapproved", f"{rec['disapproved']} of {rec['total']} ruled on, in {plural(rec['towns'], 'town')}", examples(rec["rows"])),
         ("Zoning that sets rules for solar or battery storage: size tiers, districts, special permits, site plan review, setbacks",
          "Approved, often with some parts struck", ratio(zr), examples(zr)),
-        ("A ban on stand-alone or principal-use battery storage, in any kind of article",
+        ("A ban on stand-alone or principal-use battery storage, in a zoning regulation or prohibition article",
          "Struck every time since March 2023", f"{len(sb_struck)} struck, {len(sb_ok)} approved (of {len(sb)})"
          + (f"; the approval was {', '.join(ag_town(r['town']) + ' on ' + fmt_date(r['decision_date']) for r in sb_ok)}" if sb_ok else ""),
          examples(sb_struck)),
-        ("Licensing or another general (non-zoning) bylaw for battery storage",
+        ("Licensing or another general (non-zoning) bylaw",
          "Disapproved: it has to be adopted as zoning", ratio(gl), examples(gl)),
         ("Bans on weed killers or pesticides at solar or battery storage sites",
          "Struck: state pesticide law (G.L. c. 132B) overrides town rules", f"In {len(herb)} of {len(part)} partial approvals", examples(herb)),
@@ -4688,7 +4781,7 @@ def build_ag(ctx):
 <p class="lead">A Massachusetts town can set rules for solar and battery storage, but pausing or banning them almost never gets past the state. It can pause or ban data centers. The state’s Attorney General reviews every town bylaw before it takes effect; here is how those reviews have gone.</p>
 {ag_checked(ctx)}
 <ul class="answers">
-  <li class="answer"><b>A moratorium on solar or battery storage</b><span>Disapproved every time since June 2022: {rec['disapproved']} of {all_n}, in {plural(rec['towns'], 'town')}.</span><a href="/attorney-general/rulings?bylaw=moratorium">See them</a></li>
+  <li class="answer"><b>A moratorium on solar or battery storage</b><span>Disapproved every time since June 2022: {rec['disapproved']} of {all_n}, in {plural(rec['towns'], 'town')}.</span><a href="/attorney-general/rulings?bylaw=moratorium&amp;outcome=disapproved">See them</a></li>
   <li class="answer"><b>Zoning rules for solar or battery storage</b><span>Approved {n['ruled_ok']} times out of {n['ruled']}: {n['ruled_full']} in full and {n['ruled_part']} with some parts struck.</span><a href="/attorney-general/rulings?bylaw=zoning+regulation">See them</a></li>
   <li class="answer"><b>A moratorium or ban on data centers</b><span>Approved: moratoriums in Shutesbury, Templeton and Gill (where the battery-storage half of the same article was struck), and Shutesbury’s ban in every district. State law doesn’t protect data centers.</span><a href="/attorney-general/data-centers">Data-center ledger</a></li>
   <li class="answer"><b>New in 2026</b><span>The state’s highest court ruled in Sunpin (Jul 14, 2026) that a town may deny a special permit for a protected solar project only when necessary to protect public health, safety or welfare. Since Oct 1, 2026, every town must take consolidated permit applications for small clean-energy projects and decide them within 12 months, or the project is approved.</span><a href="/attorney-general/law">State law</a></li>
@@ -4702,7 +4795,7 @@ def build_ag(ctx):
 <p>{LAW_BATTERY}</p>
 <p>The Attorney General approved data-center moratoriums in Shutesbury, Templeton and Gill, because state law doesn’t protect data centers the way it protects solar; the letters are in <a href="/attorney-general/rulings">the rulings list</a>. Missing or out of date? <a href="/contact">Send a correction</a>.</p>
 <details class="disclose"><summary>Words on this page</summary>
-<p class="terms"><dfn>Tracer Lane II</dfn>: the 2022 ruling by the state’s highest court that a town can’t use zoning to ban solar. <dfn>G.L. c. 40A, § 3</dfn>: the state zoning law’s solar clause; a town can’t prohibit solar or restrict it unreasonably. <dfn>225 CMR 29.00</dfn>: the state’s rules, final in February 2026, for permitting small clean-energy projects with one consolidated local permit. <dfn>Land Court</dfn>: a state trial court for land disputes; its rulings carry less weight than the highest court’s.</p>
+<p class="terms"><dfn>Tracer Lane II</dfn>: the 2022 ruling by the state’s highest court that a town can’t use zoning to ban solar. <dfn>G.L. c. 40A, § 3</dfn>: the state zoning law’s solar clause; a town can’t prohibit solar or restrict it unreasonably, except where necessary to protect public health, safety or welfare. <dfn>225 CMR 29.00</dfn>: the state’s rules, final in February 2026, for permitting small clean-energy projects with one consolidated local permit. <dfn>Land Court</dfn>: a state trial court for land disputes; its rulings carry less weight than the highest court’s.</p>
 </details>
 </div>
 """
@@ -4776,7 +4869,7 @@ def build_ag_actions(ctx):
 <div class="wrap">
 {ag_nav("/attorney-general/town-actions")}
 <h1 id="ag-title">Town actions</h1>
-<p class="lead">What towns and cities have done about battery storage and solar: moratoriums, special acts, zoning bylaws and permit rules. Tap one for its sources. Checked {verified}.</p>
+<p class="lead">What towns and cities have done about battery storage and solar: moratoriums, special acts, zoning bylaws and permit rules. Tap one for its sources.</p>
 {ag_checked(ctx)}
 <details class="filter-box"><summary>Filter the actions</summary>
 <div class="filterbar">

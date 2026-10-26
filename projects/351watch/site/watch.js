@@ -90,7 +90,7 @@
     $('step-town').hidden = step !== 'town';
     $('step-send').hidden = step !== 'send';
     title.textContent = step === 'town' ? title.dataset.start
-      : `${editId ? 'Edit alerts' : 'Alerts'} for ${homeId ? label(homeId) : 'your town'}`;
+      : `${editId ? 'Edit updates for' : 'Follow'} ${homeId ? label(homeId) : 'your town'}`;
     if (step === 'send') renderPreview();
   }
 

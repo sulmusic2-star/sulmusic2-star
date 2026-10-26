@@ -343,6 +343,8 @@ def boundaries(text):
             if rx is LABEL_BOUNDARY and re.search(r"[–—-]\s*$", before):
                 continue  # "169 South St – Public Hearing – Special Permit": one item, dash-separated
             out.add(m.start())
+    for m in SYMBOL_BULLET_RE.finditer(text):
+        out.add(m.start())
     for m in LETTER_ITEM_RE.finditer(text):
         prev = chr(ord(m.group(1)) - 1)
         if m.group(1) != "a" and not re.search(r"(?<=\s)" + prev + r"[.)]\s+[A-Z]", text[max(0, m.start() - 1500):m.start()]):
@@ -352,6 +354,8 @@ def boundaries(text):
 
 
 LETTER_ITEM_RE = re.compile(r"(?<=\s)([a-h])[.)]\s+(?=[A-Z])")
+# bullets a PDF's symbol font turns into « or + ("« Minutes: October 13 + Signature: High Street Solar")
+SYMBOL_BULLET_RE = re.compile(r"(?<=\s)[«»+]\s+(?=[A-Z])")
 
 
 def sentence_spans(text, lo=0, hi=None, semicolons=True):
@@ -1072,6 +1076,7 @@ UTILITY_WORK = re.compile(r"(?:national\s*grid|n\.\s?grid|eversource|nstar|veriz
                           r"(?:poles?\b|conduit|grant\s+of\s+location|manhole|wires)|grant\s+of\s+location|mid\s+span\s+pole", re.I)
 STARTER_RE = re.compile(r"\b(?:Discussion|Discuss|Request|Review|Update|Approval|Minutes|Correspondence|Vote\s+to|"
                         r"Accept|Appoint|Report)\b")
+OWN_HEADING_RE = re.compile(r"[\s«»+•·\-–—]*(?:\d{1,2}(?::\d{2})?\s*[AaPp]\.?[Mm]\.?)?[\s–—-]*(?:Open(?:ing)?\s+(?:of\s+)?)?(?:the\s+)?(?:Continued\s+|Cont(?:['’])?d\.?\s+)?(?:Public\s+)?")
 ITEM_BREAK_RE = re.compile(r"\s(?:[a-h]|\d{1,2})[.)]\s+(?=[A-Z])|\b(?:Mr|Ms|Mrs|Dr)\.?\s+[A-Z][\w'’.-]*.{0,40}?\bto\s+speak\b|\s[–—]\s")
 
 
@@ -1161,7 +1166,12 @@ def classify(a, text, anchor, i0, i1):
     hearing_near = None
     for m in HEARING_RE.finditer(text, i0 if a["mode"] == "item" else max(i0, anchor - 220), min(i1, anchor + 40)):
         between = text[m.end():anchor]
-        if m.start() > anchor or len(between) < 40 or not (STARTER_RE.search(between) or ITEM_BREAK_RE.search(between)):
+        # "6:00PM – Open Continued Public Hearing for a Request…": the hearing word opens the item itself, whatever
+        # starter words ("Request", "Approval") follow it before the matched words
+        own_heading = bool(OWN_HEADING_RE.fullmatch(text[i0:m.start()]))
+        if m.start() > anchor:
+            continue
+        if own_heading or len(between) < 40 or not (STARTER_RE.search(between) or ITEM_BREAK_RE.search(between)):
             hearing_near = m  # no other agenda item ("Discussion of...", "e. Mr. X to speak...") in between
     doc_hearing = bool(DOC_HEARING_RE.search(text[:1500])) or (re.search(r"hearing", title, re.I) and len(text) < 8000)
     flags = {

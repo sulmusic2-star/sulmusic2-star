@@ -286,7 +286,8 @@
     if (gen !== generation) return;
     // the same meeting under two links (an agenda and its packet, a re-post): one row
     const data = batch.filter((d) => {
-      const key = (d.meta && d.meta.page) || d.url;
+      const m = d.meta || {};
+      const key = m.page || (m.town && m.board && m.date ? `${m.state}|${m.town}|${m.board}|${m.date}` : d.url);
       if (shownDocs.has(key)) return false;
       shownDocs.add(key);
       return true;

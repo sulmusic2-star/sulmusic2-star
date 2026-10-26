@@ -5,6 +5,11 @@
 
 from __future__ import annotations
 
+# Agenda documents are cached for good: a town that changes one posts it under a new address. The afternoon
+# re-check (daily.py --fresh-listings) sets this to a few hours for meetings in the next days, so an agenda amended
+# at the same address (CivicPlus "Amended") is read again.
+DOC_MAX_AGE: float | None = None
+
 import json
 import logging
 import re
@@ -65,7 +70,7 @@ def scan_document_full(fetcher: PoliteFetcher, doc: AgendaDoc,
     """scan_document plus the URL the hits cite (the resolved PDF for landing pages).
     `state` turns on that state's extra keyword patterns (keywords.STATE_TOPICS); None
     keeps the shared matcher (Massachusetts, NY, RI)."""
-    resp = fetcher.get(doc.url)  # agenda documents are cached indefinitely
+    resp = fetcher.get(doc.url, max_age=DOC_MAX_AGE)  # cached indefinitely, except on the afternoon re-check (daily.py)
     if not resp.ok:
         raise FetchError(f"HTTP {resp.status}: {doc.url}")
     if doc.resolve_pdf:
