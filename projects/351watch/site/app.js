@@ -475,60 +475,14 @@ function setupSearchResults() {
   const list = document.getElementById('search-results');
   if (!list || !window.MutationObserver) return;
   const form = document.getElementById('search-form');
-  const seen = new Set();
-  let lines = null;
-  const loadLines = () => (lines ||= fetch('/data/lines.json').then((r) => (r.ok ? r.json() : {})).catch(() => ({})));
-  const dress = async (li) => {
+  // search.js renders each result; the excerpt loses its OCR noise and ends on a sentence here.
+  const dress = (li) => {
     if (li.dataset.dressed) return;
     li.dataset.dressed = '1';
-    const title = li.querySelector('.result-title');
-    const meta = li.querySelector('.result-meta');
-    const key = `${title ? title.textContent : ''}|${meta ? meta.textContent : ''}`;
-    if (seen.has(key) || (title && seen.has(title.href))) { // the same agenda twice: show it once
-      li.hidden = true;
-      return;
-    }
-    seen.add(key);
-    if (title) seen.add(title.href);
     const snippet = li.querySelector('.result-snippet');
     if (snippet) {
       cleanExcerpt(snippet);
       trimToSentence(snippet);
-    }
-    const townLink = li.querySelector('.result-town');
-    let town = '';
-    let board = '';
-    if (meta && meta.textContent.includes(' · ')) { // slop-lint: ignore (splits search.js's dot-joined meta)
-      const parts = meta.textContent.split(' · '); // slop-lint: ignore
-      town = (parts[0] || '').replace(/, MA$/, '');
-      board = parts[1] || '';
-      let when = parts[2] || '';
-      const upcoming = / \(upcoming\)$|, coming up$/.test(when);
-      when = when.replace(/ \(upcoming\)$|, coming up$/, '');
-      const past = !upcoming && when && when !== 'Undated';
-      meta.replaceChildren();
-      const first = document.createElement('span');
-      if (townLink) {
-        const a = document.createElement('a');
-        a.href = townLink.href;
-        a.textContent = town;
-        first.append(a);
-      } else first.textContent = town;
-      meta.append(first);
-      if (board) meta.append(Object.assign(document.createElement('span'), { textContent: board }));
-      if (when) meta.append(Object.assign(document.createElement('span'), { textContent: dayLabel(when) + (past ? ' · past' : '') })); // slop-lint: ignore (the item format's dot)
-    }
-    if (townLink) townLink.remove();
-    if (title) {
-      const doc = await loadLines();
-      const ids = (doc.by_url || {})[title.href] || [];
-      const seenSaid = new Set();
-      const said = ids.map((id) => (doc.lines || {})[id]).filter(Boolean).sort((a, b) => (a[6] || 60) - (b[6] || 60))
-        .filter((x) => (seenSaid.has(x[0]) ? false : seenSaid.add(x[0])));
-      const line = said.length ? said[0][0].replace(/:\s*“.*”$/, '.') : '';
-      title.textContent = line || `${town} ${board || 'agenda'}${board ? ' agenda' : ''}`.trim();
-      const more = said.length > 1 ? ` and ${said.length - 1} more item${said.length > 2 ? 's' : ''}` : '';
-      if (more) title.append(Object.assign(document.createElement('span'), { className: 'result-more', textContent: more }));
     }
   };
 
@@ -685,12 +639,10 @@ function setupSearchResults() {
   if (form) form.addEventListener('change', syncAlert);
   let pending = 0;
   new MutationObserver((changes) => {
-    const jobs = [];
-    for (const c of changes) for (const n of c.addedNodes) if (n.nodeType === 1 && n.matches('li.result')) jobs.push(dress(n));
-    if (!list.querySelector('li.result')) seen.clear();
+    for (const c of changes) for (const n of c.addedNodes) if (n.nodeType === 1 && n.matches('li.result')) dress(n);
     syncAlert();
     clearTimeout(pending);
-    Promise.all(jobs).then(() => { pending = setTimeout(checkExact, 150); });
+    pending = setTimeout(checkExact, 150);
   }).observe(list, { childList: true });
   syncAlert();
 }
@@ -934,6 +886,7 @@ function setupMeetingFilter() {
   const mineNote = bar.querySelector('[data-cant-mine]');
   if (!select && !town) return;
   const count = bar.querySelector('[data-count]');
+  const clearBtn = bar.querySelector('[data-clear-filters]');
   // the meetings still ahead: not a day that has passed since the page was built, not an "Earlier meetings" fold
   const meetings = Array.from(document.querySelectorAll('.meeting[data-county]'))
     .filter((m) => !m.closest('.day-group.past') && !m.closest('details.disclose'));
@@ -991,6 +944,17 @@ function setupMeetingFilter() {
       if (summary && /\(\d+\)/.test(summary.textContent)) summary.textContent = summary.textContent.replace(/\(\d+\)/, `(${n})`);
       det.hidden = n === 0;
     }
+    // a week's fold says what the filter leaves in it, opens when something does, and goes at none
+    for (const det of document.querySelectorAll('details.week')) {
+      const left = Array.from(det.querySelectorAll('.meeting:not([hidden])'));
+      const items = left.reduce((n, m) => n + m.querySelectorAll('.line').length, 0);
+      const label = det.querySelector('[data-week-count]');
+      if (label) label.textContent = `${items} ${items === 1 ? 'item' : 'items'} at ${left.length} ${left.length === 1 ? 'meeting' : 'meetings'}`;
+      det.hidden = left.length === 0;
+      if (narrowed && left.length) det.open = true;
+      else if (!narrowed) det.open = false;
+    }
+    if (clearBtn) clearBtn.hidden = !narrowed;
     // under a chosen county, the towns there we can't read
     for (const p of bar.querySelectorAll('[data-cant-county]')) p.hidden = p.dataset.cantCounty !== county;
     count.textContent = narrowed ? (shown ? `${shown} of ${meetings.length} meetings` : 'Nothing coming up for that choice.') : '';
@@ -1005,6 +969,16 @@ function setupMeetingFilter() {
   };
   if (select) select.addEventListener('change', apply);
   if (town) town.addEventListener('input', apply);
+  if (clearBtn) clearBtn.addEventListener('click', () => {
+    if (select) select.value = '';
+    if (town) town.value = '';
+    onlyMine = false;
+    if (mineBtn) {
+      mineBtn.setAttribute('aria-pressed', 'false');
+      if (mineNames.length) mineBtn.textContent = mineLabel();
+    }
+    apply();
+  });
   if (mineBtn && mineNames.length) {
     mineBtn.hidden = false;
     const label = () => {
@@ -1040,7 +1014,8 @@ function markPastDays() {
   }
 }
 
-// /upcoming: "One line each" hides the write-ups so a reporter can scan six towns on one screen.
+// /upcoming: "Titles only" hides the write-ups so a reporter can scan six towns on one screen. The page comes
+// built that way (body.compact); a remembered "With details" takes the class off.
 function setupViewSwitch() {
   const bar = document.querySelector('[data-view-switch]');
   if (!bar) return;

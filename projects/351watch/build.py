@@ -823,7 +823,7 @@ def page(ctx, title, description, body, path, scripts=(), noindex=False, head=""
 <link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="{FAVICON}">
 {head}</head>
-<body>
+<body{' class="compact"' if 'data-view-switch' in body else ''}>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap">
   <a class="brand" href="/">{BRAND_MARK}<span>{e(SITE_NAME)}</span></a>
@@ -2917,22 +2917,67 @@ def cant_read_by_county(ctx):
 
 def list_tools_html(counties, cant=None):
     """The row above a meeting list: county and town filters, the view switch, "only my towns" for people with
-    alerts on this device, the count, and under a chosen county the towns there we can't read, with the reason.
-    app.js (setupMeetingFilter, setupViewSwitch) runs it."""
-    opts = "".join(f'<option value="{e(c)}">{e(county_label(c))}</option>' for c in counties)
+    alerts on this device, the count, Clear filters, and under a chosen county the towns there we can't read, with
+    the reason. app.js (setupMeetingFilter, setupViewSwitch) runs it."""
+    by_state = defaultdict(list)
+    for c in counties:
+        by_state[c.split(":")[0]].append(c)
+    if len(by_state) > 1:  # several states: each state's counties under its name
+        opts = "".join(f'<optgroup label="{e(STATE_NAMES.get(st, st))}">'
+                       + "".join(f'<option value="{e(c)}">{e(c.split(":", 1)[1])}</option>' for c in cs) + "</optgroup>"
+                       for st, cs in by_state.items())
+    else:  # the box is labelled County, so the names stand alone ("Plymouth", not "Plymouth County")
+        opts = "".join(f'<option value="{e(c)}">{e(c.split(":", 1)[1])}</option>' for c in counties)
     county = f'<label>County<select data-key="county"><option value="">All</option>{opts}</select></label>' if len(counties) > 1 else ""
     cant_html = "".join(
         f'<p class="form-note cant-list" data-cant-county="{e(c)}" hidden>We can’t read these {e(county_label(c))} towns yet: {e(v)}. <a href="/how-it-works#gaps">Why</a></p>'
         for c, v in sorted((cant or {}).items()) if c in counties)
     return f"""<div class="filterbar list-tools" data-meeting-filter>
     {county}
-    <label>Town<input type="search" data-key="town" placeholder="Any town" title="Several towns: put commas between them" autocomplete="off"></label>
-    <p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="lines" aria-pressed="true">Short list</button><button type="button" class="link-btn" data-view="full" aria-pressed="false">With write-ups</button></p>
+    <label>Town<input type="search" data-key="town" placeholder="Type a town" title="Several towns: put commas between them" autocomplete="off"></label>
+    {view_switch_html()}
     <p class="count" data-count aria-live="polite"></p>
+    <p class="form-note clear-row"><button type="button" class="link-btn" data-clear-filters hidden>Clear filters</button></p>
     <p class="form-note mine-row"><button type="button" class="link-btn" data-my-towns hidden>Only my towns</button></p>
     <p class="form-note cant-list" data-cant-mine hidden></p>
     {cant_html}
   </div>"""
+
+
+SUBJECT_WORDS = ["solar", "battery storage", "data centers", "moratoriums", "clean-energy permit rules", "zoning changes",
+                 "affordable housing", "cell towers", "wetlands permits"]
+SUBJECTS = join_and(SUBJECT_WORDS)  # "solar, battery storage, ... and wetlands permits"
+SUBJECTS_OR = ", ".join(SUBJECT_WORDS[:-1]) + " or " + SUBJECT_WORDS[-1]
+
+
+def view_switch_html():
+    """"Show: Titles only | With details". The page is built in the titles-only view (body.compact), so a reader
+    without JavaScript sees what the pressed button says; app.js (setupViewSwitch) applies a remembered choice."""
+    return ('<p class="view-switch" data-view-switch><span class="view-label">Show</span>'
+            '<button type="button" class="link-btn" data-view="lines" aria-pressed="true">Titles only</button>'
+            '<button type="button" class="link-btn" data-view="full" aria-pressed="false">With details</button></p>')
+
+
+def week_folds(ctx, meetings):
+    """Meetings beyond the next 7 days, one closed fold per week ("Week of Nov 2", its items and meetings), so the
+    page is a screen of folds rather than a month-long scroll. app.js (setupMeetingFilter) recounts a fold under a
+    filter and opens the ones with something left."""
+    weeks = []
+    for m in meetings:
+        d = datetime.strptime(m["date"][:10], "%Y-%m-%d")
+        monday = (d - timedelta(days=d.weekday())).strftime("%Y-%m-%d")
+        if weeks and weeks[-1][0] == monday:
+            weeks[-1][1].append(m)
+        else:
+            weeks.append((monday, [m]))
+    out = []
+    for monday, ms in weeks:
+        n_items = sum(len(m["lines"]) for m in ms)
+        label = datetime.strptime(monday, "%Y-%m-%d").strftime("%b %-d")
+        out.append(f'<details class="week"><summary><span>Week of {label}</span>'
+                   f'<span class="sub-count" data-week-count>{plural(n_items, "item")} at {plural(len(ms), "meeting")}</span></summary>'
+                   + day_groups(ctx, ms) + "</details>")
+    return "".join(out)
 
 
 def build_upcoming(ctx):
@@ -2943,13 +2988,16 @@ def build_upcoming(ctx):
     counties = county_keys(ctx, meetings)
     n_items = sum(len(m["lines"]) for m in meetings)
     n_towns = len({(m["state"], m["town"]) for m in meetings})
-    month_end = (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=30)).strftime("%Y-%m-%d")
-    in_month = sum(1 for m in later if m["date"] <= month_end)
+    # The week as text to paste and the whole list as a spreadsheet, as on the topic pages.
+    week_text = week_list_text(ctx, soon)
+    copy_week = f'<button type="button" class="link-btn" data-copy="{e(week_text)}" hidden>Copy this week’s list</button>' if week_text else ""
+    write("upcoming.csv", topic_csv(ctx, meetings))
+    tools = f'<p class="action-row">{copy_week}<a href="/upcoming.csv" download>Download the list (CSV)</a></p>' if meetings else ""
     body = f"""
 <div class="wrap narrow">
 <section class="page-head" aria-labelledby="up-title">
   <h1 id="up-title">Coming up</h1>
-  <p class="lead">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {plural(n_towns, 'town')}: solar, batteries, data centers, zoning, housing and cell towers on town agendas.</p>
+  <p class="lead">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {plural(n_towns, 'town')}: {SUBJECTS} on town agendas.</p>
   {site_checked(ctx)}
   {tabs(COMING_TABS, "/upcoming", "Coming up")}
   {list_tools_html(counties, cant_read_by_county(ctx))}
@@ -2957,10 +3005,11 @@ def build_upcoming(ctx):
 <section aria-labelledby="soon-title" data-meet-section>
   <h2 id="soon-title">Next 7 days</h2>
   {meeting_list(ctx, soon, shown=max(len(soon), 1), empty="Nothing in the next 7 days.")}
+  {tools}
 </section>
 <section aria-labelledby="later-title" data-meet-section>
-  <h2 id="later-title">Later</h2>
-  {meeting_list(ctx, later, shown=max(in_month, 1), more="Show meetings more than 30 days out", empty="Nothing later yet.")}
+  <h2 id="later-title">Later, by week</h2>
+  {week_folds(ctx, later) if later else '<p class="empty">Nothing later yet.</p>'}
 </section>
 <p class="more-link"><a href="/search?upcoming=1">Search these agendas</a></p>
 </div>
@@ -3417,7 +3466,7 @@ def town_summary(ctx, t, up_m, past_m=None):
         if last:
             text, _ = real_lines(last)[0]
             recent = f" Most recent: {day_label(last['date'], ctx)}, {meeting_board(last)}: {headline(plain_say(text))}."
-        lead = ("Nothing coming up on solar, battery storage, data centers, moratoriums, zoning, housing, cell towers or wetlands."
+        lead = (f"Nothing coming up on {SUBJECTS_OR}."
                 + recent + (f" The next agenda we know of: {nxt[1]}, {day_label(nxt[0], ctx)}." if nxt else ""))
     health = (ctx.health or {}).get(t["id"]) or {}
     when = et_when(health["last_success"]) if health.get("last_success") else ""
@@ -3450,7 +3499,7 @@ def build_town_page(ctx, t):
             listing = (f'<h2>Most recent</h2>{meeting_list(ctx, past_m[:2], show_town=False, shown=2)}' if past_m else "")
         coming = f"""<p class="actions"><a class="btn" href="{e(alerts_url(tid))}">Follow {e(town)}’s meetings</a></p>
 <h2 class="sr-only">Coming up</h2>
-{'<p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="lines" aria-pressed="true">Short list</button><button type="button" class="link-btn" data-view="full" aria-pressed="false">With write-ups</button></p>' if up_m else ''}
+{view_switch_html() if up_m else ''}
 {listing}
 {continued_html(ctx, continued_ahead(ctx, up_m + past_m, up_m))}
 {news_html(ctx, t)}"""
@@ -3746,6 +3795,8 @@ def topic_csv(ctx, meetings):
 
 def build_topics_index(ctx):
     rows = []
+    first = min((h.get("first_seen") or "" for h in ctx.hits if h.get("first_seen")), default="")
+    since = f"since {fmt_date(first[:10])}" if first else "since we started reading"
     keys = [tp["key"] for tp in TOPIC_PAGES] + [k for k in TOPIC_LABELS if k not in TOPIC_PAGE_BY_KEY]
     for k in keys:
         c = topic_counts(ctx, k)
@@ -3757,16 +3808,17 @@ def build_topics_index(ctx):
         # Meetings, not items, so the number matches what the topic page lists.
         up_meetings = len(group_meetings(ctx, [h for h in c["hits"] if ctx.is_upcoming(h)]))
         rows.append(f"""<li><h2>{name}</h2><p class="topic-next">{plural(up_meetings, 'meeting')} coming up</p>
-<p class="small">{plural(c['items'], 'item')} in {plural(c['towns'], 'town')} since we started reading</p></li>""")
+<p class="small">{plural(c['items'], 'item')} in {plural(c['towns'], 'town')} {since}</p></li>""")
     body = f"""
 <div class="wrap narrow">
 <section class="page-head" aria-labelledby="topics-title">
   <h1 id="topics-title">Topics</h1>
-  <p class="lead">The {len(rows)} subjects we look for on every agenda, and how many meetings coming up touch each one.</p>
+  <p class="lead">The {len(rows)} subjects we look for on every agenda, and how many meetings coming up touch each one.
+  A meeting with two of them on its agenda counts under both.</p>
   {site_checked(ctx)}
 </section>
 <ul class="topic-boxes">{''.join(rows)}</ul>
-<p class="more-link"><a href="/trending">See the biggest stories coming up</a></p>
+<p class="more-link"><a href="/upcoming">Everything coming up, by date</a></p>
 </div>
 """
     return page(ctx, f"Topics: solar, battery storage, data centers | {SITE_NAME}",
@@ -3788,7 +3840,7 @@ def build_search(ctx):
 <div class="wrap narrow">
 <h1 id="search-title">Search agendas</h1>
 <p class="lead">The full text of every flagged item on {sum(m for _, m, _ in ctx.coverage())} towns’ agendas, past meetings and coming up.</p>
-<form id="search-form" class="searchform" action="/search" method="get" role="search">
+<form id="search-form" class="searchform" action="/search" method="get" role="search" data-towns="{sum(m for _, m, _ in ctx.coverage())}">
   <label for="search-q">Search for</label>
   <div class="field-row">
     <input name="q" id="search-q" type="search" autocomplete="off" placeholder="data center moratorium">
@@ -3798,6 +3850,8 @@ def build_search(ctx):
   <div class="search-sort">
     <label>Sort<select name="sort"><option value="date">Newest meeting first</option><option value="">Best match</option></select></label>
     <label class="check"><input type="checkbox" name="upcoming" value="1" checked> Meetings still ahead first</label>
+    <label class="check"><input type="checkbox" name="flagged" value="1"> Only meetings with a flagged item</label>
+    <label class="check"><input type="checkbox" name="week" value="1"> Only the next 7 days</label>
   </div>
   <div class="search-filters">
     <label>State<select name="state"><option value="">All states</option>{states}</select></label>
@@ -4832,19 +4886,45 @@ def build_robots():
 
 
 def search_titles(ctx):
-    """{agenda URL: its main item's headline}: Search titles an agenda by what is on it, not by its file name
-    (search/build-index.mjs reads this; a vote or hearing first)."""
+    """{agenda URL: {"title": its main item's headline, "more": other items written up on it, "page": the meeting's
+    page here, "" when the meeting has passed}}: Search titles an agenda by what is on it, not by its file name, and
+    sends the reader to the meeting's page (search/build-index.mjs reads this; a vote or hearing first)."""
     best = {}
+    lines = defaultdict(set)
     order = {"vote": 0, "hearing": 1, "continued": 2, "adopted": 3}
     for h in ctx.hits:
         b = BRIEFS.get(h["id"])
         if not b or not b.get("line") or b.get("duplicate_of") or OFF_ITEM.search(b["line"]):
             continue
-        rank = order.get(b.get("action"), 9)
+        rank = (order.get(b.get("action"), 9), item_text(h).get("rank", 60))  # a vote or hearing, then the bigger item
         url = h.get("source_url") or ""
-        if url and (url not in best or rank < best[url][0]):
+        if not url:
+            continue
+        lines[url].add(headline(b["line"]))
+        if url not in best or rank < best[url][0]:
             best[url] = (rank, headline(b["line"]))
-    return {u: t for u, (_, t) in best.items()}
+    pages = {}
+    for m in group_meetings(ctx, upcoming_hits(ctx)):
+        for d in m["docs"]:
+            pages.setdefault(d["url"], f"/m/{m['id'][2:]}")
+    out = {u: {"title": t, "more": len(lines[u]) - 1, "page": pages.get(u, "")} for u, (_, t) in best.items()}
+    for u, pg in pages.items():
+        out.setdefault(u, {"title": "", "more": 0, "page": pg})
+    return out
+
+
+def search_pages(ctx):
+    """{"MA|Lancaster|planning_board|2026-10-26": {"page": the meeting's page, "title": its main item's headline}}:
+    a board's day posted as several documents (an agenda, two hearing notices) is one meeting on /search, under
+    the headline we wrote, whichever document the words were found in (search/build-index.mjs reads this)."""
+    out = {}
+    for m in group_meetings(ctx, upcoming_hits(ctx)):
+        if not m.get("date") or not m.get("board_key"):
+            continue
+        lines = real_lines(m)
+        title = headline(plain_say(lines[0][0])) if lines else ""
+        out.setdefault(f"{m['state']}|{m['town']}|{m['board_key']}|{m['date']}", {"page": f"/m/{m['id'][2:]}", "title": title})
+    return out
 
 
 def town_index_json(ctx):
@@ -5033,6 +5113,7 @@ def main():
     write("robots.txt", build_robots())
     write("data/towns.json", town_index_json(ctx))
     (DATA / "search" / "titles.json").write_text(json.dumps(search_titles(ctx), ensure_ascii=False, sort_keys=True, indent=0) + "\n")
+    (DATA / "search" / "pages.json").write_text(json.dumps(search_pages(ctx), ensure_ascii=False, sort_keys=True, indent=0) + "\n")
     write("data/lines.json", lines_json(ctx))
     write("data/trending.json", trending_json(*trending_stories(ctx)))
     stale = SITE / "manifest.txt"

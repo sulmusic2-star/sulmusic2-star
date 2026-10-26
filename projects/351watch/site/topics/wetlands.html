@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctitle%3EAgenda%20Ahead%3C/title%3E%3Crect x='4' y='7' width='18' height='4' rx='1' fill='%231f2724'/%3E%3Crect x='4' y='14' width='24' height='4' rx='1' fill='%237a2c80'/%3E%3Crect x='4' y='21' width='18' height='4' rx='1' fill='%231f2724'/%3E%3C/svg%3E">
 </head>
-<body>
+<body class="compact">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap">
   <a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 26 20" aria-hidden="true" focusable="false"><rect x="0" y="1" width="19" height="4" rx="1"/><rect class="hi" x="0" y="8" width="26" height="4" rx="1"/><rect x="0" y="15" width="19" height="4" rx="1"/></svg><span>Agenda Ahead</span></a>
@@ -38,10 +38,11 @@
 <section aria-labelledby="upcoming-title">
   <h2 id="upcoming-title">Coming up</h2>
   <div class="filterbar list-tools" data-meeting-filter>
-    <label>County<select data-key="county"><option value="">All</option><option value="MA:Franklin">Franklin County</option><option value="MA:Hampshire">Hampshire County</option><option value="MA:Worcester">Worcester County</option><option value="NY:Schenectady">Schenectady County, NY</option></select></label>
-    <label>Town<input type="search" data-key="town" placeholder="Any town" title="Several towns: put commas between them" autocomplete="off"></label>
-    <p class="view-switch" data-view-switch><button type="button" class="link-btn" data-view="lines" aria-pressed="true">Short list</button><button type="button" class="link-btn" data-view="full" aria-pressed="false">With write-ups</button></p>
+    <label>County<select data-key="county"><option value="">All</option><optgroup label="Massachusetts"><option value="MA:Franklin">Franklin</option><option value="MA:Hampshire">Hampshire</option><option value="MA:Worcester">Worcester</option></optgroup><optgroup label="New York"><option value="NY:Schenectady">Schenectady</option></optgroup></select></label>
+    <label>Town<input type="search" data-key="town" placeholder="Type a town" title="Several towns: put commas between them" autocomplete="off"></label>
+    <p class="view-switch" data-view-switch><span class="view-label">Show</span><button type="button" class="link-btn" data-view="lines" aria-pressed="true">Titles only</button><button type="button" class="link-btn" data-view="full" aria-pressed="false">With details</button></p>
     <p class="count" data-count aria-live="polite"></p>
+    <p class="form-note clear-row"><button type="button" class="link-btn" data-clear-filters hidden>Clear filters</button></p>
     <p class="form-note mine-row"><button type="button" class="link-btn" data-my-towns hidden>Only my towns</button></p>
     <p class="form-note cant-list" data-cant-mine hidden></p>
     <p class="form-note cant-list" data-cant-county="MA:Franklin" hidden>We can’t read these Franklin County towns yet: Bernardston, Buckland, Orange and Shutesbury (website blocks automatic reading); Hawley and Warwick (agendas posted without dates); Ashfield (agenda page needs a full web browser); Monroe (no agenda page found). <a href="/how-it-works#gaps">Why</a></p><p class="form-note cant-list" data-cant-county="MA:Hampshire" hidden>We can’t read these Hampshire County towns yet: Chesterfield, Hadley, Huntington, Pelham, Plainfield, Southampton and Williamsburg (website blocks automatic reading); Cummington and Westhampton (website asks automatic readers to stay away); Granby (agendas posted without dates); Worthington (no agenda page found). <a href="/how-it-works#gaps">Why</a></p><p class="form-note cant-list" data-cant-county="MA:Worcester" hidden>We can’t read these Worcester County towns yet: Ashburnham, Athol, Berlin, Brookfield, Hardwick, Millville, Northborough, Petersham, Phillipston, Royalston, Templeton and West Boylston (website blocks automatic reading); Barre and New Braintree (website asks automatic readers to stay away); West Brookfield and Westminster (agenda page needs a full web browser); Douglas (agendas posted without dates); Worcester (agenda host asks automatic readers to stay away). <a href="/how-it-works#gaps">Why</a></p><p class="form-note cant-list" data-cant-county="NY:Schenectady" hidden>We can’t read these Schenectady County, NY towns yet: Duanesburg (website blocks automatic reading). <a href="/how-it-works#gaps">Why</a></p>

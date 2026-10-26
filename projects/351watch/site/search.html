@@ -32,7 +32,7 @@
 <div class="wrap narrow">
 <h1 id="search-title">Search agendas</h1>
 <p class="lead">The full text of every flagged item on 315 towns’ agendas, past meetings and coming up.</p>
-<form id="search-form" class="searchform" action="/search" method="get" role="search">
+<form id="search-form" class="searchform" action="/search" method="get" role="search" data-towns="315">
   <label for="search-q">Search for</label>
   <div class="field-row">
     <input name="q" id="search-q" type="search" autocomplete="off" placeholder="data center moratorium">
@@ -42,6 +42,8 @@
   <div class="search-sort">
     <label>Sort<select name="sort"><option value="date">Newest meeting first</option><option value="">Best match</option></select></label>
     <label class="check"><input type="checkbox" name="upcoming" value="1" checked> Meetings still ahead first</label>
+    <label class="check"><input type="checkbox" name="flagged" value="1"> Only meetings with a flagged item</label>
+    <label class="check"><input type="checkbox" name="week" value="1"> Only the next 7 days</label>
   </div>
   <div class="search-filters">
     <label>State<select name="state"><option value="">All states</option><option value="MA">Massachusetts</option><option value="NY">New York</option><option value="RI">Rhode Island</option></select></label>

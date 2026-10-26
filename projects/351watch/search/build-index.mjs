@@ -26,12 +26,25 @@ if (!dataDir || !outDir) {
 // Same rule as build.py: lowercase, spaces -> "-", apostrophes dropped.
 const slugify = (name) => name.toLowerCase().replace(/['’]/g, "").replace(/\s+/g, "-");
 
-// The headline of each agenda's main item, written by build.py from the checked write-ups.
+// Per agenda, from build.py (data/search/titles.json): the headline of its main item, how many more items
+// were written up on it, and the meeting's page here while the meeting is ahead. Older files hold the headline alone.
 let headlines = {};
 try {
   headlines = JSON.parse(readFileSync(`${dataDir}/titles.json`, "utf8"));
 } catch (err) {
   headlines = {};
+}
+// The same, per board and day (data/search/pages.json): a meeting posted as several documents is one result.
+let pagesByDay = {};
+try {
+  pagesByDay = JSON.parse(readFileSync(`${dataDir}/pages.json`, "utf8"));
+} catch (err) {
+  pagesByDay = {};
+}
+function noted(row) {
+  const w = headlines[row.source_url || row.url] || headlines[row.url];
+  if (w) return typeof w === "string" ? { title: w } : w;
+  return (row.board_key && row.meeting_date && pagesByDay[`${row.state}|${row.town}|${row.board_key}|${row.meeting_date}`]) || {};
 }
 
 function rawTitle(row) {
@@ -42,8 +55,7 @@ function rawTitle(row) {
 // document's own title, unless that is a file name ("STM Warrant 10.19.26", "6/20/2026 Agenda"), in which
 // case the kind of document (the town, board and date print under it).
 function displayTitle(row) {
-  const written = headlines[row.source_url || row.url] || headlines[row.url];
-  if (written) return written;
+  if (noted(row).title) return noted(row).title;
   const t = rawTitle(row);
   const kind = /warrant/i.test(t) ? "warrant" : /minutes/i.test(t) ? "minutes" : /notice/i.test(t) ? "notice" : "agenda";
   const tm = /\bSTM\b|special town meeting/i.test(t) ? "Special Town Meeting" : /\bATM\b|annual town meeting/i.test(t) ? "Annual Town Meeting" : "";
@@ -159,6 +171,8 @@ for (let row of best.values()) {
       date: row.meeting_date || "",
       topics: (row.topics || []).join(","),
       town_url: row.town ? `/${row.state.toLowerCase()}/${slugify(row.town)}` : "",
+      page: noted(row).page || "",
+      more: String(noted(row).more || 0),
     },
     filters,
     sort: row.meeting_date ? { date: row.meeting_date } : {},
