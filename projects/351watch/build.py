@@ -2421,6 +2421,8 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
             what += f'<p class="line-before"><b>Before this:</b> {e(b["history"])}</p>'
         facts = ('<span class="is-new">New on an agenda</span>' if new else "") + "".join(f"<span>{e(x)}</span>" for x in facts_text(entry))
         stage = stage_html(entry, m, ctx)
+        if entry.get("kind") == "mention" and re.match(r"Mentions\b", text):
+            stage = '<span class="stage">Mentioned</span>'  # the word comes up; the agenda lists nothing to discuss or decide
         # a list keeps the headline, the write-up and "New"; the facts line (topics, address, applicant) is on the meeting's page
         pairs = fact_pairs(entry)
         facts_html = (((f'<p class="line-facts"><span class="is-new">New on an agenda</span></p>' if new else "")
