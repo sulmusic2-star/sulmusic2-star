@@ -3081,7 +3081,7 @@ def build_upcoming(ctx):
 <div class="wrap narrow">
 <section class="page-head" aria-labelledby="up-title">
   <h1 id="up-title">Coming up</h1>
-  <p class="lead">Every meeting in the next few weeks with {SUBJECTS_OR} on the agenda, soonest first. Narrow it by county, subject or town.</p>
+  <p class="lead">Every meeting in the next few weeks with one of the nine subjects we follow on the agenda, soonest first. Narrow it by county, subject or town.</p>
   <p class="small">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {plural(n_towns, 'town')}.</p>
   {site_checked(ctx)}
   {tabs(COMING_TABS, "/upcoming", "Coming up")}
