@@ -85,7 +85,7 @@ if [ "$NO_COMMIT" -eq 1 ]; then
 fi
 
 # ------------------------------------------------------------------ commit + push
-git add -A -- data site
+git add -A -- data site ../../research_notes/Expansion/where_people_care.md
 if git diff --cached --quiet -- data site; then
   log "no changes to commit"
 else
@@ -111,7 +111,7 @@ PY
     echo
     echo "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
   } > "$MSG_FILE"
-  git commit -q -F "$MSG_FILE" -- data site
+  git commit -q -F "$MSG_FILE" -- data site ../../research_notes/Expansion/where_people_care.md
   rm -f "$MSG_FILE"
   log "committed $(git rev-parse --short HEAD)"
 fi
