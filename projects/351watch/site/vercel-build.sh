@@ -124,7 +124,14 @@ const config = {
     { src: '^/api/(?!feed)(.*)$', headers: { 'Cache-Control': 'no-store' }, continue: true },
     { src: '^/w(/.*)?$', headers: { 'X-Robots-Tag': 'noindex' }, continue: true },
     { src: '^/data/(.*)$', headers: { 'Cache-Control': 'public, max-age=300, s-maxage=300' }, continue: true },
+    // fonts and the hashed search-index chunks never change under their names; styles and scripts for a few minutes
+    { src: '^/fonts/(.*)$', headers: { 'Cache-Control': 'public, max-age=31536000, immutable' }, continue: true },
+    { src: '^/pagefind/(index|fragment|filter)/(.*)$', headers: { 'Cache-Control': 'public, max-age=31536000, immutable' }, continue: true },
+    { src: '^/(.*)\\.(css|js)$', headers: { 'Cache-Control': 'public, max-age=300, stale-while-revalidate=3600' }, continue: true },
+    { src: '^/index\\.html$', status: 308, headers: { Location: '/' } },
     { src: '^/(.+)\\.html$', status: 308, headers: { Location: '/$1' } },
+    // one address per page: no trailing slash (the /w/:id pages keep theirs until the rewrite below)
+    { src: '^/((?!api/|w/).+)/$', status: 308, headers: { Location: '/$1' } },
     // a state's own address goes to that state on the towns page
     { src: '^/(ma|ny|ri)/?$', status: 308, headers: { Location: '/towns#$1' } },
     { handle: 'filesystem' },
