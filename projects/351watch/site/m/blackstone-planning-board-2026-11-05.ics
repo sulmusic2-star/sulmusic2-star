@@ -3,19 +3,36 @@ VERSION:2.0
 PRODID:-//Agenda Ahead//Meeting//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
 BEGIN:VEVENT
 UID:m-blackstone-planning-board-2026-11-05@agendaahead
 DTSTAMP:20261026T120000Z
 DTSTART;TZID=America/New_York:20261105T190000
 DTEND;TZID=America/New_York:20261105T210000
-SUMMARY:Blackstone Planning Board: Discusses an item on solar and battery s
- torage rules (no vote listed).
+SUMMARY:Blackstone Planning Board: Discusses solar and battery storage rule
+ s (no vote listed).
 LOCATION:15 Saint Paul Street\, or join online\, Blackstone\, MA
-DESCRIPTION:• Discusses an item on solar and battery storage rules (no vo
- te listed).\n\nAgenda: https://www.townofblackstone.org/AgendaCenter/ViewF
- ile/Agenda/_11052026-6579\nPage: https://agendaahead.vercel.app/m/blacksto
- ne-planning-board-2026-11-05\nConfirm the time and place with the town\; a
- gendas can change.
+DESCRIPTION:• Discusses solar and battery storage rules (no vote listed).
+ \n\nAgenda: https://www.townofblackstone.org/AgendaCenter/ViewFile/Agenda/
+ _11052026-6579\nPage: https://agendaahead.vercel.app/m/blackstone-planning
+ -board-2026-11-05\nConfirm the time and place with the town\; agendas can 
+ change.
 URL:https://agendaahead.vercel.app/m/blackstone-planning-board-2026-11-05
 END:VEVENT
 END:VCALENDAR

@@ -286,12 +286,14 @@ BOUNDARY_RES = [
     re.compile(r"[•◼▪●○◦■□►➢✓]|(?<=\s)\u2212(?=\s)"),
     re.compile(r"(?<=\s)(?:e|o|e¢|¢|«)\s+(?=[A-Z])"),
     re.compile(r"(?<!\S)\d{1,2}:\d{2}\s*(?:[AaPp]\.?\s?[Mm]\.?)?(?=\s)"),
-    re.compile(r"(?<!\S)(?:ARTICLE|Article)\s+\d+\b"),
+    ARTICLE_BOUNDARY := re.compile(r"(?<!\S)(?:ARTICLE|Article)\s+\d+\b"),
     re.compile(r"(?<!\S)\d{2}-\d{3}(?=\s+[A-Z])"),
     re.compile(r"(?<!\S)(?:NB|OB|PH)-\d+\b"),
     re.compile(r"(?<!\S)(?:Ordinance|Resolution|Order|Measure)\s+(?:No\.\s*)?#?\d{2,4}-\d+"),
     re.compile(r"(?<!\S)Approval\s+of\s+(?:the\s+)?(?:meeting\s+)?minutes", re.I),
     re.compile(r"…"),  # data/search joins text cut at TEXT_CAP to later snippets with " … "
+    LABEL_BOUNDARY := re.compile(r"(?<!\S)(?:Continued\s+)?(?:Discussion|ANR|ZBA\s+Recommendation|Public\s+Hearing|Site\s+Plan(?:\s+Review)?|"
+                                 r"Special\s+Permit|Variance|Request|Review|Update|Decision|Presentation|Appointment|Vote)\s[–—]\s"),
     re.compile(SECTION_PAT),
 ]
 DOC_HEARING_RE = re.compile(r"will\s+hold\s+(?:a\s+)?(?:\w+\s+){0,2}public\s+hearings?|notice\s+of\s+(?:\w+\s+){0,2}public\s+hearing|"
@@ -312,7 +314,7 @@ def section_before(text, pos, reach=1500):
 HEADER_RE = re.compile(r"(public\s+hearings?(?:\s+cont\S*|\s+continued)?|continued\s+(?:public\s+)?hearings?|"
                        r"public\s+meetings?|new\s+business|old\s+business|unfinished\s+business|other\s+business|"
                        r"approval\s+of\s+minutes|minutes|discussion(?:\s+items)?|action\s+items|warrant\s+articles?|"
-                       r"business\s+session)\s*:?\s*(?:\(?[^()]{0,40}\)?)?\s*$", re.I)
+                       r"business\s+session)\s*:?\s*(?:\([^()]{0,40}\))?\s*:?\s*$", re.I)
 ABBREV = {"st", "rd", "ave", "no", "inc", "corp", "mr", "ms", "mrs", "dr", "sec", "art", "approx", "co", "ln", "blvd",
           "jr", "sr", "esq", "vs", "etc", "u.s", "m.g.l", "g.l", "c", "s", "p", "pp", "ch", "mass", "dept", "hwy",
           "rte", "mt", "ft", "sq", "lot", "map", "vol", "pg", "a.m", "p.m", "d/b/a", "o/b/o", "fl", "flr", "e.g", "i.e"}
@@ -324,15 +326,32 @@ NOT_ITEM_NUMBER = re.compile(r"(?:Lots?|Map|Parcel|Plat|Block|Unit|No\.?|#|Secti
                              r"Page|Book|Ward|District|Phase|Building|Suite|Exhibit|of|[,&]|and)\s*$", re.I)
 
 
+NOT_ARTICLE_BEFORE = re.compile(r"\b(?:a|an|the|new|of|under|per|in|to|as|by|see|this|that|amend(?:ing|ed|s)?|"
+                                r"insert(?:ing)?|add(?:ing)?|and|or)\s+$", re.I)
+
+
 def boundaries(text):
     """Start positions of agenda items: numbering, bullets, times, section headers, article numbers."""
     out = set()
     for i, rx in enumerate(BOUNDARY_RES):
         for m in rx.finditer(text):
-            if i == 0 and NOT_ITEM_NUMBER.search(text[max(0, m.start() - 12):m.start()]):
+            before = text[max(0, m.start() - 12):m.start()]
+            if i == 0 and NOT_ITEM_NUMBER.search(before):
                 continue  # "Map 14, Lot 17. The applicant..." is not item 17
+            if rx is ARTICLE_BOUNDARY and NOT_ARTICLE_BEFORE.search(before):
+                continue  # "to establish a new Article 4-13" cites an article; it does not start one
+            if rx is LABEL_BOUNDARY and re.search(r"[–—-]\s*$", before):
+                continue  # "169 South St – Public Hearing – Special Permit": one item, dash-separated
             out.add(m.start())
+    for m in LETTER_ITEM_RE.finditer(text):
+        prev = chr(ord(m.group(1)) - 1)
+        if m.group(1) != "a" and not re.search(r"(?<=\s)" + prev + r"[.)]\s+[A-Z]", text[max(0, m.start() - 1500):m.start()]):
+            continue  # "e." is an item only when "d." came before it
+        out.add(m.start())
     return sorted(out)
+
+
+LETTER_ITEM_RE = re.compile(r"(?<=\s)([a-h])[.)]\s+(?=[A-Z])")
 
 
 def sentence_spans(text, lo=0, hi=None, semicolons=True):
@@ -1053,6 +1072,7 @@ UTILITY_WORK = re.compile(r"(?:national\s*grid|n\.\s?grid|eversource|nstar|veriz
                           r"(?:poles?\b|conduit|grant\s+of\s+location|manhole|wires)|grant\s+of\s+location|mid\s+span\s+pole", re.I)
 STARTER_RE = re.compile(r"\b(?:Discussion|Discuss|Request|Review|Update|Approval|Minutes|Correspondence|Vote\s+to|"
                         r"Accept|Appoint|Report)\b")
+ITEM_BREAK_RE = re.compile(r"\s(?:[a-h]|\d{1,2})[.)]\s+(?=[A-Z])|\b(?:Mr|Ms|Mrs|Dr)\.?\s+[A-Z][\w'’.-]*.{0,40}?\bto\s+speak\b|\s[–—]\s")
 
 
 def nearest(rx, text, lo, hi, pos):
@@ -1062,6 +1082,9 @@ def nearest(rx, text, lo, hi, pos):
         d = 0 if m.start() <= pos <= m.end() else (pos - m.end() if m.end() < pos else m.start() - pos)
         best = d if best is None else min(best, d)
     return best
+
+
+TABLE_NUM_RE = re.compile(r"(?<![\w.])(?:\$\s?\d[\d,]*(?:\.\d+)?|\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d{3}(?=\s+[A-Z]{2,}))(?![\w.])")
 
 
 def minutes_near(text, anchor, title, minutes_start):
@@ -1083,6 +1106,11 @@ def minutes_near(text, anchor, title, minutes_start):
     tight = text[max(0, anchor - 200):min(anchor + 200, end)]
     if narr and PRONOUN.search(tight):
         return True
+    # A budget or revenue table ("363 SOLAR RENEWABLE ENERGY 370 DW TRANSPORTATION … 2,659,663 2,655,992"):
+    # account codes and sums around the words, no sentence
+    if len(TABLE_NUM_RE.findall(tight)) >= 4 and len(re.findall(r"\b[A-Z]{3,}\b", tight)) >= 3 and \
+            not re.search(r"\b(?:to|for|of|will|shall|hearing|vote)\b|\b(?:request|propos|discuss|applica)\w*", tight, re.I):
+        return True
     if re.search(r"(?<![\d.,:/$-])(\d{2,3}) (\d{2,3})(?![\d.,:/%-])", tight) and any(
             int(y) == int(x) + 1 for x, y in re.findall(r"(?<![\d.,:/$-])(\d{2,3}) (\d{2,3})(?![\d.,:/%-])", tight)):
         return True
@@ -1098,7 +1126,7 @@ def classify(a, text, anchor, i0, i1):
     local_lo, local_hi = max(i0, anchor - 200), min(i1, anchor + 220)
     local = text[local_lo:local_hi]
     header = a["header"]
-    section = header or (section_before(text, i0, 900) if i0 else "")
+    section = header or (section_before(text, i0, 2500) if i0 else "")
     if not section and i0:
         caps = [m.group(0) for m in re.finditer(SECTION_PAT, text[max(0, i0 - 2500):i0])]
         section = caps[-1] if caps else ""
@@ -1133,12 +1161,12 @@ def classify(a, text, anchor, i0, i1):
     hearing_near = None
     for m in HEARING_RE.finditer(text, i0 if a["mode"] == "item" else max(i0, anchor - 220), min(i1, anchor + 40)):
         between = text[m.end():anchor]
-        if m.start() > anchor or len(between) < 40 or not STARTER_RE.search(between):
-            hearing_near = m  # no other agenda item ("Discussion of...", "Request for...") in between
+        if m.start() > anchor or len(between) < 40 or not (STARTER_RE.search(between) or ITEM_BREAK_RE.search(between)):
+            hearing_near = m  # no other agenda item ("Discussion of...", "e. Mr. X to speak...") in between
     doc_hearing = bool(DOC_HEARING_RE.search(text[:1500])) or (re.search(r"hearing", title, re.I) and len(text) < 8000)
     flags = {
         "hearing": bool(hearing_near or HEARING_SECTIONS.search(section) or doc_hearing),
-        "continued": bool(CONTINUED_HEARING_RE.search(item[:rel + 200] + " " + header)),
+        "continued": bool(CONTINUED_HEARING_RE.search(item[:rel + 200] + " " + header)) or bool(re.match(r"\s*(?:\d{1,2}[.)]\s+)?Continued\b", item)),
         "vote": bool(VOTE_RE.search(local)),
         "draft": bool(DRAFT_RE.search(local)),
         "proposed": bool(re.search(r"\bpropos", local, re.I)),

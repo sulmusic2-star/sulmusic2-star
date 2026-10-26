@@ -3,19 +3,37 @@ VERSION:2.0
 PRODID:-//Agenda Ahead//Meeting//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
 BEGIN:VEVENT
 UID:m-greenfield-planning-board-2026-11-05@agendaahead
 DTSTAMP:20261026T120000Z
 DTSTART;TZID=America/New_York:20261105T180000
 DTEND;TZID=America/New_York:20261105T200000
-SUMMARY:Greenfield Planning Board: Holds a hearing on a zoning change.
+SUMMARY:Greenfield Planning Board: Discusses the state’s new permit proce
+ ss for small clean-energy projects (no vote listed).
 LOCATION:Online meeting\, Greenfield\, MA
-DESCRIPTION:• Holds a hearing on a zoning change.\n• Discusses a draft 
- data-center ordinance (no vote listed).\n\nAgenda: https://www.greenfield-
- ma.gov/Document_Center/Government/Planning Board/Planning Board Agenda_11.
- 05.2026.pdf\nPage: https://agendaahead.vercel.app/m/greenfield-planning-bo
- ard-2026-11-05\nConfirm the time and place with the town\; agendas can cha
- nge.
+DESCRIPTION:• Discusses the state’s new permit process for small clean-
+ energy projects (no vote listed).\n• Discusses a zoning change (no vote 
+ listed).\n\nAgenda: https://www.greenfield-ma.gov/Document_Center/Governme
+ nt/Planning Board/Planning Board Agenda_11.05.2026.pdf\nPage: https://agen
+ daahead.vercel.app/m/greenfield-planning-board-2026-11-05\nConfirm the tim
+ e and place with the town\; agendas can change.
 URL:https://agendaahead.vercel.app/m/greenfield-planning-board-2026-11-05
 END:VEVENT
 END:VCALENDAR

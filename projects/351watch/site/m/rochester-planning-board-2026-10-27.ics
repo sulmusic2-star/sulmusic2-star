@@ -3,22 +3,38 @@ VERSION:2.0
 PRODID:-//Agenda Ahead//Meeting//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
 BEGIN:VEVENT
 UID:m-rochester-planning-board-2026-10-27@agendaahead
 DTSTAMP:20261026T120000Z
 DTSTART;TZID=America/New_York:20261027T190000
 DTEND;TZID=America/New_York:20261027T210000
 SUMMARY:Rochester Planning Board: Holds a hearing on a special permit and s
- ite plans for Featherbed Lane South Solar at 72 Marion Road.
+ ite plans for a solar project at 72 Marion Road.
 LOCATION:Town Hall\, or join online\, Rochester\, MA
-DESCRIPTION:• Holds a hearing on a special permit and site plans for Feat
- herbed Lane South Solar at 72 Marion Road.\n• Holds a hearing on a speci
- al permit and site plans for a solar project at 72 Marion Road.\n• Postp
- oned: Walnut Plain Road Solar’s hearing at 0 Walnut Plain Road moves to 
- Tue Nov 10 (the applicant asked).\n\nAgenda: https://www.townofrochesterma
- ss.com/AgendaCenter/ViewFile/Agenda/_10272026-589\nPage: https://agendaahe
- ad.vercel.app/m/rochester-planning-board-2026-10-27\nConfirm the time and 
- place with the town\; agendas can change.
+DESCRIPTION:• Holds a hearing on a special permit and site plans for a so
+ lar project at 72 Marion Road.\n• Postponed: Walnut Plain Road Solar’s
+  hearing at 0 Walnut Plain Road moves to Tue Nov 10 (the applicant asked).
+ \n\nAgenda: https://www.townofrochestermass.com/AgendaCenter/ViewFile/Agen
+ da/_10272026-589\nPage: https://agendaahead.vercel.app/m/rochester-plannin
+ g-board-2026-10-27\nConfirm the time and place with the town\; agendas can
+  change.
 URL:https://agendaahead.vercel.app/m/rochester-planning-board-2026-10-27
 END:VEVENT
 END:VCALENDAR

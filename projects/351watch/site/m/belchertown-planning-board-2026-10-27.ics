@@ -3,18 +3,34 @@ VERSION:2.0
 PRODID:-//Agenda Ahead//Meeting//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
 BEGIN:VEVENT
 UID:m-belchertown-planning-board-2026-10-27@agendaahead
 DTSTAMP:20261026T120000Z
 DTSTART;TZID=America/New_York:20261027T190000
 DTEND;TZID=America/New_York:20261027T210000
-SUMMARY:Belchertown Planning Board: Discusses a variance for a data center 
- (no vote listed).
+SUMMARY:Belchertown Planning Board
 LOCATION:Lawrence Memorial Hall\, or join online\, Belchertown\, MA
-DESCRIPTION:• Discusses a variance for a data center (no vote listed).\n\
- nAgenda: https://www.belchertown.org/AgendaCenter/ViewFile/Agenda/_1027202
- 6-2302\nPage: https://agendaahead.vercel.app/m/belchertown-planning-board-
- 2026-10-27\nConfirm the time and place with the town\; agendas can change.
+DESCRIPTION:\nAgenda: https://www.belchertown.org/AgendaCenter/ViewFile/Age
+ nda/_10272026-2302\nPage: https://agendaahead.vercel.app/m/belchertown-pla
+ nning-board-2026-10-27\nConfirm the time and place with the town\; agendas
+  can change.
 URL:https://agendaahead.vercel.app/m/belchertown-planning-board-2026-10-27
 END:VEVENT
 END:VCALENDAR

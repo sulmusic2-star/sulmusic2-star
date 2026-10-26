@@ -1534,7 +1534,7 @@ def analysis_text(h, a):
             return done(f"Holds a hearing on {kinds + ' for ' if kinds else ''}{target}{at}{cont}.", stage="Hearing")
         if not (kinds and (named or asked)):
             # No permit named, or nothing asked for: the agenda's words, not a guess ("solar credits" isn't a project).
-            return done(quoted("Mentions " + noun, f"Discusses {target}{at} (no vote listed)"), kind="mention", stage="",
+            return done(quoted("Mentions " + noun, f"Discusses {target}{at}{cont} (no vote listed)"), kind="mention", stage="",
                         rank_act="project" if named else "mention")
         if f.get("vote"):
             return done(f"Votes on {kinds} for {target}{at}{cont}.", kind="list", stage="Vote")
@@ -1664,6 +1664,14 @@ def meeting_time(header, iso):
     if not header or not iso:
         return ""
     text = STAMP_RE.sub(" ", header[:1500])
+    # "5:00 p.m. Executive Session … 6:00 p.m. Return to Open Session": the public part starts at 6
+    if re.search(r"\bexecutive\s+session\b", text, re.I):
+        om = re.search(r"(\d{1,2}(?::\d{2})?\s*[ap]\.?\s?m\.?)\s*[-–:]?\s*(?:return\s+to\s+|reconvene\s+(?:in\s+)?)?open\s+session", text, re.I) \
+            or re.search(r"open\s+session\s*(?:at|[-–:])?\s*(\d{1,2}(?::\d{2})?\s*[ap]\.?\s?m\.?)", text, re.I)
+        if om:
+            t = TIME_RE.match(om.group(1))
+            if t and fmt_time(t):
+                return fmt_time(t)
     m = re.search(r"\btime(?:\s+of\s+meeting)?\s*:\s*", text, re.I)
     if m:
         t = TIME_RE.match(text, m.end())
@@ -1678,7 +1686,7 @@ def meeting_time(header, iso):
 
 def clean_place(v):
     v = " ".join(v.split()).strip(" ,.-–|:*(")
-    v = re.sub(r"^(?:(?:[ap]\.?m\.?|at|in|the|of|in-?person|hybrid|department|office)\s+)+", "", v, flags=re.I)
+    v = re.sub(r"^(?:(?:[ap]\.?m\.?|at|in|the|of|in-?person|hybrid|department|office|copy|booklet|packet|agenda|location)\s+)+", "", v, flags=re.I)
     v = re.sub(r"^.*\bMayor\s+", "", v)  # "Dominick Pangallo Mayor City Hall": a name and title from the letterhead
     v = re.sub(r",?\s+in\s+[A-Z][\w .'’-]{2,30},\s*(?:MA|NY|RI|Massachusetts)\b\.?", "", v)  # "…in Plymouth, MA": the page already says where
     if re.match(r"(?i)bos\b", v):
@@ -1966,8 +1974,8 @@ def posted_text(ctx, m):
     seen after the meeting, get no posting date."""
     if not m["found"] or not ctx.known_posting(m["state"], m["found"], m["date"]):
         return ""
-    what = "Filed" if m["source"] == "massdep_wetlands" else ("Warrant posted" if m["board_key"] == "town_meeting" else "Agenda posted")
-    return f"{what} by {datetime.strptime(m['found'][:10], '%Y-%m-%d').strftime('%b %-d')}"
+    what = "Filed" if m["source"] == "massdep_wetlands" else "first seen"
+    return f"{what} {datetime.strptime(m['found'][:10], '%Y-%m-%d').strftime('%b %-d')}"
 
 
 def place_text(place):
@@ -2218,7 +2226,12 @@ def speak_line_full(m):
         return for_town(SPEAK_TEXT, m["state"], m["town"])
     if any((v.get("brief") or {}).get("can_speak") is True for v in entries):
         return SPEAK_COMMENT  # a vote or discussion with a public comment item on the agenda, not a hearing
+    if entries and m.get("board_key") != "town_meeting":
+        return SPEAK_NONE
     return ""
+
+
+SPEAK_NONE = "No public hearing on these items. The agenda doesn’t say whether the board takes comments on them."
 
 
 def meeting_head(ctx, m, show_town=True, with_board=True, with_when=True, doc_link=""):
@@ -2295,6 +2308,13 @@ def who_votes_text(m):
     return f"After the hearing the Planning Board makes a recommendation; {who} votes on the {what}."
 
 
+VTIMEZONE_NY = ["BEGIN:VTIMEZONE", "TZID:America/New_York",
+                "BEGIN:DAYLIGHT", "TZOFFSETFROM:-0500", "TZOFFSETTO:-0400", "TZNAME:EDT", "DTSTART:19700308T020000",
+                "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU", "END:DAYLIGHT",
+                "BEGIN:STANDARD", "TZOFFSETFROM:-0400", "TZOFFSETTO:-0500", "TZNAME:EST", "DTSTART:19701101T020000",
+                "RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU", "END:STANDARD", "END:VTIMEZONE"]
+
+
 def meeting_ics(ctx, m):
     """One calendar event for a meeting's own page: its hour in Eastern time when the agenda gives one (two hours
     long), else an all-day event; the room; the items as the description; cancelled when the town says so."""
@@ -2328,8 +2348,10 @@ def meeting_ics(ctx, m):
         out.append(cur)
         return "\r\n ".join(out)
 
-    summary = f"{'CANCELED: ' if m.get('cancelled') else ''}{m['town']} {meeting_board(m)}" + (f": {lines[0]}" if lines else "")
+    first_line = re.sub(r"^(?:Postponed|Canceled|Withdrawn|Asks to postpone|Moved|Asked to move)[^:]*:\s*", "", lines[0]) if lines else ""
+    summary = f"{'CANCELED: ' if m.get('cancelled') else ''}{m['town']} {meeting_board(m)}" + (f": {first_line}" if first_line else "")
     ev = ["BEGIN:VCALENDAR", "VERSION:2.0", f"PRODID:-//{SITE_NAME}//Meeting//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+          *(VTIMEZONE_NY if t else []),
           "BEGIN:VEVENT", f"UID:{m['id']}@agendaahead", f"DTSTAMP:{ctx.today.replace('-', '')}T120000Z", start, end,
           f"SUMMARY:{ics_text(summary)}",
           f"LOCATION:{ics_text((place + ', ' if place else '') + m['town'] + ', ' + m['state'])}",
@@ -2377,7 +2399,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     def line(text, entry, first=False):
         b = entry.get("brief")
         # "New" is for a project the town has not seen before, not every freshly posted agenda
-        new = entry["new"] and not (b and b.get("history")) and not text.startswith("New ")
+        new = entry["new"] and not carried_over(entry) and not text.startswith("New ")
         what = ""
         if b and b.get("what") and quote_key(b["what"]) != quote_key(text):
             w = b["what"]
@@ -2962,7 +2984,9 @@ def trending_stories(ctx):
             "href": href,
             "meeting_date": d, "source_url": st.get("source_url", ""),
             # "New on an agenda" only for a project with no earlier meeting in our records
-            "new": not (b and b.get("history")) and any(ctx.is_new(hits_by_id[i]) for i in st.get("hit_ids", []) if i in hits_by_id),
+            "new": (not (b and b.get("history")) and not any(w.startswith("Put off") for w in st.get("why", []))
+                    and not str(st.get("stage") or "").startswith(("Postponed", "Asks", "Moved"))
+                    and any(ctx.is_new(hits_by_id[i]) for i in st.get("hit_ids", []) if i in hits_by_id)),
             "brief": b,
             # why it ranks: at most two signs of what is at stake or how stirred up people are
             "why": [w for w in st.get("why", []) if not w.startswith("First time")][:2],
@@ -3602,6 +3626,20 @@ def moratorium_word(b):
 
 OFF_ITEM = re.compile(r"\(not an? [a-z0-9 -]+ item\)|\(attachment text\b|^(?:Existing|Standing notice)\b[^(]*\(not a project\)", re.I)
 TM_TITLE = re.compile(r"\btown meeting\b[^|]{0,60}\bwarrant\b|\bwarrant\b[^|]{0,60}\btown meeting\b", re.I)  # a writer's note that the flagged words were incidental
+
+
+def carried_over(entry):
+    """An item continued, postponed or moved from an earlier meeting, or with a history in its write-up:
+    not "New on an agenda", whatever day we first read this agenda."""
+    b = entry.get("brief") or {}
+    if b.get("history"):
+        return True
+    if str(entry.get("stage") or "").startswith(("Postponed", "Asks to postpone", "Moved", "Asked to move")):
+        return True
+    if ((ANALYSIS.get(entry.get("hit") or "") or {}).get("flags") or {}).get("continued"):
+        return True  # "Continued Discussion – Data Centers": the reading found the continuation
+    text = " ".join([str(entry.get("say") or ""), str(entry.get("quote") or "")] + [str(q) for q in (entry.get("quotes") or [])])
+    return bool(CONTINUED.search(text))
 
 
 def real_lines(m):
@@ -4785,7 +4823,7 @@ def build_meeting_page(ctx, m):
     health = (ctx.health or {}).get(t.get("id")) or {}
     checked = et_when(health["last_success"]) if health.get("last_success") else ""
     host = re.sub(r"^www\.", "", (d["url"].split("/")[2] if d and "//" in d["url"] else ""))
-    posted = posted_text(ctx, m).replace("Agenda posted by", "posted").replace("Warrant posted by", "posted").replace("Filed by", "filed")
+    posted = posted_text(ctx, m).replace("Filed", "filed")
     entry = next(iter(m["lines"].values()), None)
     read = short_day(entry["seen"][:10]) if entry and entry.get("seen") else ""
     prov = (f"From the {meeting_board(m)} {what}{' ' + posted if posted else ''}{' on ' + e(host) if host else ''}."
