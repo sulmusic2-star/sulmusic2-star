@@ -243,6 +243,11 @@ label { font-weight: 600; }
 .list-tools .mine-row:has(> [hidden]) { display: none; }
 .list-tools .cant-list { flex-basis: 100%; margin: 0; }
 .list-tools .clear-row { flex-basis: 100%; margin: 0; }
+.list-tools .labels-row { flex-basis: 100%; margin: 0; }
+.labels { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--s2) var(--s4); align-items: baseline; margin: var(--s3) 0; max-width: var(--measure); }
+.labels dt, .labels dd { margin: 0; }
+@media (max-width: 480px) { .labels { grid-template-columns: 1fr; } .labels dd { margin-bottom: var(--s2); } }
+.list-tools .labels-row a { color: var(--muted); }
 .list-tools .clear-row:has(> [hidden]) { display: none; }
 .panel label, .story-towns > label { font-weight: 600; }
 .story-towns .field-row { margin: var(--s2) 0; }

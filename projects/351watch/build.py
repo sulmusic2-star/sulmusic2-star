@@ -2942,6 +2942,7 @@ def list_tools_html(counties, cant=None):
     {view_switch_html()}
     <p class="count" data-count aria-live="polite"></p>
     <p class="form-note clear-row"><button type="button" class="link-btn" data-clear-filters hidden>Clear filters</button></p>
+    <p class="form-note labels-row"><a href="/how-it-works#labels">What the labels mean</a></p>
     <p class="form-note mine-row"><button type="button" class="link-btn" data-my-towns hidden>Only my towns</button></p>
     <p class="form-note cant-list" data-cant-mine hidden></p>
     {cant_html}
@@ -4149,6 +4150,23 @@ def build_how(ctx):
   </details>
 </section>
 
+<section aria-labelledby="labels">
+  <h2 id="labels">What the labels mean</h2>
+  <p>Each item carries one word for where it stands, taken from the agenda’s own wording.</p>
+  <dl class="labels">
+    <dt><span class="stage act">Vote</span></dt><dd>The board is listed to decide it at this meeting.</dd>
+    <dt><span class="stage act">Hearing</span></dt><dd>A public hearing, under the agenda’s own heading: anyone can attend and ask to speak.</dd>
+    <dt><span class="stage maybe">Possible vote</span></dt><dd>The agenda says the board may vote, or lists it for a decision without saying so outright.</dd>
+    <dt><span class="stage">Discussion</span></dt><dd>On the agenda to talk about, with no vote listed.</dd>
+    <dt><span class="stage">Mentioned</span></dt><dd>The subject comes up in the agenda’s words, with nothing to discuss or decide.</dd>
+    <dt><span class="stage">Filing</span></dt><dd>A wetlands permit application filed with the state, before the Conservation Commission hears it.</dd>
+    <dt><span class="stage moved">Moved to Tue Nov 10</span></dt><dd>The agenda itself moves the item to a later meeting. "Asked to move": the applicant asked and the board hasn’t said.</dd>
+    <dt><span class="stage off">Canceled</span></dt><dd>The town canceled the meeting or withdrew the item.</dd>
+    <dt><span class="is-new">New on an agenda</span></dt><dd>A project no agenda we have read listed before. An item continued or moved from an earlier meeting is never new.</dd>
+  </dl>
+  <p>A meeting with <b>No time listed</b> has no time on its agenda; <b>Warrant not posted yet</b> means the Town Meeting date is known from an earlier agenda and the warrant isn’t up.</p>
+</section>
+
 <section aria-labelledby="gaps">
   <h2 id="gaps">Towns we can’t check yet</h2>
   <p>Some town websites turn away programs like ours, and some don’t post agendas with dates. We don’t get around those limits. We ask the town hall instead, and you can ask us to add a town from its page.</p>
@@ -5047,6 +5065,7 @@ def build_meeting_page(ctx, m):
 {ticket}
 <h2 class="sr-only">On the {e(what)}</h2>
 <ol class="meetings one">{meeting_html(ctx, m, show_town=False, lines_shown=20, full=True)}</ol>
+<p class="form-note"><a href="/how-it-works#labels">What the labels mean</a></p>
 {follow}
 <p class="more-link"><a href="{town_path(m['state'], m['town'])}">Everything coming up in {e(m['town'])}</a></p>
 </div>
