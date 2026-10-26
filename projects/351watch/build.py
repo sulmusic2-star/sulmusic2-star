@@ -2792,6 +2792,7 @@ def town_box(ctx, label="Type your town", button="Find my town", examples=True):
   <button class="btn" type="submit">{button}</button></div>
   <p class="field-error" id="town-q-error" role="alert" hidden></p>
   <p class="sr-only" id="town-q-status" aria-live="polite"></p>
+  <p class="eg" data-your-towns hidden></p>
   {eg}
 </form>
 {town_options(ctx)}"""

@@ -11,6 +11,27 @@ const norm = (s) => String(s || '').toLowerCase().replace(/[’']/g, '').replace
 // back to the form's own GET to /towns?q=..., which lists matching towns.
 function setupTownBox() {
   const list = document.getElementById('town-names');
+  // The towns this device already follows or searched for, as links, in place of the examples.
+  const mine = list && window.w351 && window.w351.myTowns ? window.w351.myTowns().slice(0, 6) : [];
+  for (const p of document.querySelectorAll('[data-your-towns]')) {
+    const links = [];
+    for (const id of mine) {
+      const [st, name] = [id.slice(0, 2), id.slice(3)];
+      const o = Array.from(list.options).find((x) => norm(x.value) === norm(`${name}, ${st}`) || (st === 'MA' && norm(x.value) === norm(name)));
+      if (!o || !o.dataset.href) continue;
+      const a = document.createElement('a');
+      a.href = o.dataset.href;
+      a.textContent = name + (st === 'MA' ? '' : `, ${st}`);
+      links.push(a);
+    }
+    if (!links.length) continue;
+    p.replaceChildren('Your towns: ');
+    links.forEach((a, i) => p.append(i ? ', ' : '', a));
+    p.append('.');
+    p.hidden = false;
+    const eg = p.nextElementSibling;
+    if (eg && eg.classList.contains('eg')) eg.hidden = true;
+  }
   // A form goes to the town's page; a box with data-town-box="pick" (the alerts page) fills its input instead.
   for (const form of document.querySelectorAll('form[data-town-form], [data-town-box]')) {
     const input = form.querySelector('input');
