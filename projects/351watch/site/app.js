@@ -232,6 +232,7 @@ function setupTrackerFilter() {
   const county = document.querySelector('#f-county');
   const search = document.querySelector('#f-search');
   const count = document.querySelector('#f-count');
+  if (!status || !topic || !county || !search || !count) return;
 
   function apply() {
     const words = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
@@ -560,7 +561,8 @@ function setupSearchResults() {
     // the towns added last time stay until removed; a link with its own towns wins
     setTowns(fromUrl.length ? fromUrl : remembered.filter((id) => options.some((x) => x.dataset.id === id)));
     if (!fromUrl.length && chosen().length) submit();  // the summary says how many filters are on; results stay first
-    document.getElementById('town-add-btn').addEventListener('click', () => { if (addTyped()) submit(); });
+    const addBtn = document.getElementById('town-add-btn');
+    if (addBtn) addBtn.addEventListener('click', () => { if (addTyped()) submit(); });
     add.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' && add.value.trim()) {
         event.preventDefault();
@@ -1033,22 +1035,22 @@ function setupViewSwitch() {
   });
 }
 
-setupListFilter();
-setupTrackerFilter();
-setupGenericFilters();
-markPastDays();
-setupMeetingFilter();
-(() => {
+// A page's record, opened and scrolled to when the address names it (#carver, #case-10697).
+function openLinkedRecord() {
   const id = decodeURIComponent(location.hash.slice(1));
   const rec = id ? document.getElementById(id) : null;
   const box = rec && rec.matches('.rec') ? rec.querySelector('details') : (rec && rec.tagName === 'DETAILS' ? rec : null);
   if (box) { box.open = true; rec.scrollIntoView({ block: 'start' }); }
-})();
-setupViewSwitch();
-setupContactForm();
-setupSearchResults();
-setupEmailNotes();
-setupRequestButtons();
-setupDisclosure();
-setupCopyAndShare();
-relDates();
+}
+
+// Each setup looks for its own markup and returns when the page has none; one that throws on an odd page
+// must not stop the copy buttons, disclosures or past-day hiding after it.
+for (const setup of [setupListFilter, setupTrackerFilter, setupGenericFilters, markPastDays, setupMeetingFilter,
+  openLinkedRecord, setupViewSwitch, setupContactForm, setupSearchResults, setupEmailNotes, setupRequestButtons,
+  setupDisclosure, setupCopyAndShare, relDates]) {
+  try {
+    setup();
+  } catch (err) {
+    console.error(`${setup.name}: ${err && err.message}`);
+  }
+}

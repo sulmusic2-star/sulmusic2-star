@@ -591,5 +591,5 @@ function stageWord(s) {
     }
   }
 
-  main();
+  main().catch((err) => fail(err && err.message ? err.message : 'Something went wrong loading this page.'));
 })();

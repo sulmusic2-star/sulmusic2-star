@@ -782,7 +782,7 @@ def page_end(path, source=""):
     """The strip at the end of every page: where the page's facts come from (when it has one source) and a way
     to report a problem with this page."""
     report = f'<a href="/contact?about={quote(path or "/")}">Report a problem with this page</a>'
-    return f'<div class="page-end wrap narrow">{f"<p>{source}</p>" if source else ""}<p>{report}</p></div>'
+    return f'<aside class="page-end wrap narrow" aria-label="About this page">{f"<p>{source}</p>" if source else ""}<p>{report}</p></aside>'
 
 
 def page(ctx, title, description, body, path, scripts=(), noindex=False, head="", og_title=None, source=""):
@@ -819,6 +819,7 @@ def page(ctx, title, description, body, path, scripts=(), noindex=False, head=""
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
 <link rel="preload" href="/fonts/barlow-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/barlow-semibold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/barlow-semicondensed-bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="{FAVICON}">
@@ -3152,6 +3153,7 @@ def build_trending(ctx):
 <div class="wrap narrow">
 <h1 id="trend-title">Biggest stories coming up</h1>
 <p class="lead">Bans, moratoriums and large projects on town agendas, ranked by what’s at stake and how stirred up people are. Add your towns to see only theirs.</p>
+<noscript><p class="notice">Adding your towns and the filters need JavaScript. Without it, every story shows, biggest first.</p></noscript>
 {site_checked(ctx)}
 {tabs(COMING_TABS, "/trending", "Coming up")}
 <form class="panel story-towns" id="story-towns" aria-label="Your towns">
@@ -3606,6 +3608,7 @@ def build_towns_index(ctx):
 <section class="page-head" aria-labelledby="towns-title">
   <h1 id="towns-title">Find your town</h1>
   <p class="lead">Pick your town to see what its boards have coming up.</p>
+  <noscript><p class="notice">The town box needs JavaScript. Every town is listed below, by state and county.</p></noscript>
   <form class="filterbar" data-list-filter role="search" action="/towns" method="get">
     <label>Town or county<input type="search" name="q" data-search autocomplete="off" autocapitalize="words" spellcheck="false"></label>
     <p class="count" data-count aria-live="polite"></p>
@@ -3932,6 +3935,7 @@ def build_watch(ctx, groups=False):
 <h1 id="watch-title" tabindex="-1" data-start="{e(title)}">{e(title)}</h1>
 {f'<p class="lead">{e(lead)}</p>' if lead else ""}
 {more}
+<noscript><p class="notice">Following a town needs JavaScript. You can still <a href="/towns">find your town</a> and read what’s coming up there.</p></noscript>
 <form id="watch-form" class="watch-form" data-mode="{'groups' if groups else 'residents'}" novalidate>
   <div class="step" id="step-town">
     <label for="home-town" class="big-q">Which town?</label>
@@ -4725,7 +4729,7 @@ def build_ag_rulings(ctx):
 <p class="results-head" data-count-for="ag-ledger" aria-live="polite"></p>
 {ag_table(ctx, decisions, table_id='ag-ledger', filters=True, by_year=True)}
 <p class="action-row"><a href="/attorney-general/rulings.csv" download data-csv-for="ag-ledger">Download everything as a CSV ({len(ag)} rows: {len(n["dec"])} rulings, {n["rt"].get("court_ruling", 0)} court rulings, {n["rt"].get("city_ordinance", 0)} city items, {n["rt"].get("pending_ag_review", 0)} awaiting a decision)</a></p>
-<h2 id="ag-context">Court rulings and city ordinances</h2>
+<h2 id="ag-context-title">Court rulings and city ordinances</h2>
 <p>For context: the courts’ rulings on these bylaws, and what cities (which adopt ordinances without Attorney General review) have done.</p>
 {ag_table(ctx, context, table_id='ag-context', filters=True, group='ag-ledger')}
 </div>
@@ -4800,6 +4804,7 @@ def build_ag_law(ctx):
 <p class="lead">{LAW_SOLAR}</p>
 {ag_checked(ctx)}
 <p>{LAW_BATTERY}</p>
+<h2 id="timeline-title">What the courts and the Legislature have said, in date order</h2>
 <p class="section-lead">Since October 1, 2026, every Massachusetts city and town has had to accept consolidated permit applications for small clean-energy projects and decide them within 12 months.</p>
 {framework_list(ctx.tracker.get('framework', []))}
 <h2 id="bytype-title">Attorney General rulings on solar and battery-storage bylaws, by kind and by year</h2>

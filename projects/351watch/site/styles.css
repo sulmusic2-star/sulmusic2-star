@@ -120,7 +120,7 @@ nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0 var(
 nav.top a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
 nav.top a:hover { border-bottom-color: var(--rule-strong); }
 nav.top a[aria-current="page"] { border-bottom-color: var(--ink); }
-.nav-follow { display: inline-flex; align-items: center; min-height: 40px; padding: 0 var(--s4); border: 2px solid var(--mark-fill); border-radius: var(--radius);
+.nav-follow { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s4); border: 2px solid var(--mark-fill); border-radius: var(--radius);
   color: var(--ink); font-weight: 600; text-decoration: none; white-space: nowrap; }
 .nav-follow:hover, .nav-follow[aria-current="page"] { background: var(--mark-fill); color: var(--on-mark); }
 
@@ -378,7 +378,7 @@ details.more > summary:hover, details.disclose > summary:hover { text-decoration
 .trend-filters { display: grid; gap: var(--s2); margin: var(--s4) 0; font-size: var(--t-sm); }
 .trend-filters fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .trend-filters legend { float: left; margin-right: var(--s2); font-weight: 600; color: var(--muted); line-height: 32px; }
-.trend-filters label { position: relative; display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border: 1px solid var(--rule-strong); border-radius: 16px; cursor: pointer; font-weight: 400; background: var(--paper); }
+.trend-filters label { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border: 1px solid var(--rule-strong); border-radius: 22px; cursor: pointer; font-weight: 400; background: var(--paper); }
 .trend-filters input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
 .trend-filters label:has(input:checked) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .trend-filters label:has(input:focus-visible) { outline: 2px solid var(--mark); outline-offset: 2px; }
@@ -518,6 +518,7 @@ form[data-list-filter] label { flex: 1 1 100%; }
 
 /* ================================================================ search */
 .searchform .field-row input { font-size: var(--t-body); border-color: var(--ink); }
+.searchform > .filters > summary { display: inline-flex; align-items: center; min-height: 44px; }
 .search-filters, .search-sort { display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: var(--s3) var(--s4); align-items: end; margin: var(--s4) 0 0; }
 .search-filters > label, .search-sort > label { display: flex; flex-direction: column; gap: var(--s1); font-size: var(--t-sm); }
 .search-filters select, .search-sort select { width: 100%; }
@@ -606,7 +607,7 @@ form[data-list-filter] label { flex: 1 1 100%; }
   /* header: the wordmark and the button on one row, the five sections on the next, scrolling sideways if they must */
   header.site .wrap { gap: 0 var(--s3); padding-bottom: 0; }
   .brand { font-size: 1.375rem; flex: 1 1 auto; }
-  .nav-follow { order: 2; min-height: 40px; padding: 0 var(--s3); font-size: var(--t-sm); }
+  .nav-follow { order: 2; min-height: 44px; padding: 0 var(--s3); font-size: var(--t-sm); }
   nav.top { order: 3; flex-basis: 100%; overflow-x: auto; scrollbar-width: none; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter); }
   nav.top::-webkit-scrollbar { display: none; }
   nav.top ul { justify-content: flex-start; gap: 0 var(--s4); }
@@ -624,7 +625,8 @@ form[data-list-filter] label { flex: 1 1 100%; }
   .counts, .counts tbody, .counts tr { display: block; }
   .counts tr { padding: var(--s2) 0; border-bottom: 1px solid var(--rule); }
   .counts tbody th { display: block; border: 0; padding: 0; }
-  .counts td { display: inline-block; border: 0; padding: 0 var(--s3) 0 0; color: var(--muted); font-size: var(--t-sm); white-space: nowrap; }
+  .counts th a { display: inline-block; padding: 10px 0; margin: -10px 0; }
+.counts td { display: inline-block; border: 0; padding: 0 var(--s3) 0 0; color: var(--muted); font-size: var(--t-sm); white-space: nowrap; }
   .counts td::after { content: " " attr(data-label); text-transform: lowercase; }
   table.stack:not(.counts) thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   table.stack:not(.counts), table.stack:not(.counts) tbody, table.stack:not(.counts) tr { display: block; }

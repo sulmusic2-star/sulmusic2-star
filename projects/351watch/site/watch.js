@@ -95,7 +95,7 @@
   }
 
   // ---------- data
-  const loadTowns = fetch('/data/towns.json').then((r) => r.json()).then((doc) => {
+  const loadTowns = fetch('/data/towns.json').then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status))))).then((doc) => {
     towns = doc.towns || [];
     const multi = new Set(towns.map((t) => t.state)).size > 1;
     $('town-names').replaceChildren(...towns.map((t) => {
@@ -112,6 +112,8 @@
     }
     nameList = [...names.entries()].sort((a, b) => b[0].length - a[0].length)
       .map(([n, ids]) => [n, new RegExp(`(^| )${esc(n)}(?: (ma|mass|massachusetts|ny|new york|ri|rhode island))?(?= |$)`), ids]);
+  }).catch(() => {
+    fieldError('towns', 'We couldn’t load the town list. Reload the page to try again.');
   });
   const loadNeighbors = readJSON('/data/neighbors.json').then((doc) => { neighbors = doc && typeof doc === 'object' ? doc : {}; });
   let linesPromise = null;
