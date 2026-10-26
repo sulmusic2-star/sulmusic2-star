@@ -297,6 +297,25 @@ function csvRecords(text) {
   return out;
 }
 
+// one CSV record's fields: a quoted field may hold a comma or a doubled quote
+function csvFields(record) {
+  const out = [];
+  let field = '';
+  let quoted = false;
+  for (let i = 0; i < record.length; i += 1) {
+    const c = record[i];
+    if (quoted) {
+      if (c === '"' && record[i + 1] === '"') { field += '"'; i += 1; }
+      else if (c === '"') quoted = false;
+      else field += c;
+    } else if (c === '"') quoted = true;
+    else if (c === ',') { out.push(field); field = ''; }
+    else field += c;
+  }
+  out.push(field);
+  return out;
+}
+
 function setupGenericFilters() {
   for (const bar of document.querySelectorAll('[data-filters]')) {
     const group = bar.dataset.filters;
@@ -1007,11 +1026,14 @@ function setupMeetingFilter() {
       if (!on) copyBtn.dataset.copy = copyAll;
       else {
         const lines = [];
-        for (const m of document.querySelectorAll('[data-meet-section]:first-of-type .meeting:not([hidden])')) {
+        const soon = document.getElementById('soon-title');
+        const week = soon ? soon.closest('[data-meet-section]') : null;
+        for (const m of week ? week.querySelectorAll('.meeting:not([hidden])') : []) {
           const day = m.closest('.day-group');
           const when = day ? day.querySelector('.day').textContent.trim() : '';
           const time = m.querySelector('.meet-when time');
-          const head = Array.from(m.querySelectorAll('.meet-head > span:not(.meet-place)')).map((s) => s.textContent.trim()).filter((t) => t && !/^Agenda/.test(t)).join(' ');
+          const head = Array.from(m.querySelectorAll('.meet-head > span:not(.meet-place):not(.meet-day):not(.meet-doc)'))
+            .map((s) => s.textContent.trim()).filter((t) => t && !/^(?:Agenda|Warrant|Packet)\b/.test(t)).join(' ');
           const item = m.querySelector('.line-link');
           const link = item ? `${location.origin}${item.getAttribute('href')}` : '';
           lines.push(`${head}, ${when}${time ? `, ${time.textContent.trim()}` : ''}: ${item ? item.textContent.trim() : ''}. ${link}`.replace(/\s+\./g, '.'));
@@ -1028,9 +1050,8 @@ function setupMeetingFilter() {
       const text = await (await fetch(csvLink.getAttribute('href'))).text();
       const rows = csvRecords(text);
       const keep = visibleTowns();
-      const out = [rows[0]].concat(rows.slice(1).filter((r) => keep.has(`${r[2]}:${r[0]}`)));
-      const esc = (v) => `"${String(v).replace(/"/g, '""')}"`;
-      const blob = new Blob([out.map((r) => r.map(esc).join(',')).join('\n')], { type: 'text/csv' });
+      const out = [rows[0]].concat(rows.slice(1).filter((r) => { const f = csvFields(r); return keep.has(`${f[2]}:${f[0]}`); }));
+      const blob = new Blob([out.join('\n') + '\n'], { type: 'text/csv' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = `agenda-ahead-${norm(choice()).replace(/\s+/g, '-') || 'filtered'}.csv`;
