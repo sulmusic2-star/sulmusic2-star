@@ -11418,12 +11418,12 @@
    "has_town_meeting": true,
    "final_url": "https://www.hamiltonma.gov/",
    "cms": [
-    "wordpress"
+    "civicplus"
    ],
    "platforms": [
-    "generic"
+    "civicplus"
    ],
-   "platform": "generic",
+   "platform": "civicplus",
    "warrants_found": false,
    "status": "automated",
    "reason_code": null,
@@ -11431,97 +11431,65 @@
    "automated": true,
    "listings": [
     {
-     "board": "Planning Board Meeting",
+     "board": "Conservation Commission",
+     "board_key": "conservation_commission",
+     "category_id": "2",
+     "url": "https://www.hamiltonma.gov/AgendaCenter/Conservation-Commission-2"
+    },
+    {
+     "board": "Planning Board",
      "board_key": "planning_board",
-     "url": "https://www.hamiltonma.gov/public-meetings/planning-board/20261020/19-00-00/",
-     "link_pattern": "agenda|notice|posting",
-     "context": "block",
-     "date_only_docs": true,
-     "board_exclude": "zoning board|board of appeals|\\bZBA\\b|zoning appeals|conservation commission|\\bconcom\\b|\\bconservation\\b|select ?board|board of selectmen|selectmen|select men|(?:city|town) council"
+     "category_id": "21",
+     "url": "https://www.hamiltonma.gov/AgendaCenter/Planning-Board-21"
+    },
+    {
+     "board": "Select Board",
+     "board_key": "select_board",
+     "category_id": "10",
+     "url": "https://www.hamiltonma.gov/AgendaCenter/Select-Board-10"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "4",
+     "url": "https://www.hamiltonma.gov/AgendaCenter/Zoning-Board-of-Appeals-4"
     },
     {
      "board": "Zoning Board of Appeals Meeting Packets",
      "board_key": "zoning_board_of_appeals",
-     "url": "https://www.hamiltonma.gov/government/zoning-board-appeals/meeting-packets-zoning-board-hamilton-2024/",
-     "link_pattern": "agenda|notice|posting",
-     "context": "block",
-     "date_only_docs": true,
-     "board_exclude": "\\bplanning board\\b|community development board|\\bplanning\\s*(?:&|and)\\s*zoning (?:board|commission)|conservation commission|\\bconcom\\b|\\bconservation\\b|select ?board|board of selectmen|selectmen|select men|(?:city|town) council"
-    },
-    {
-     "board": "Conservation Commission Meeting",
-     "board_key": "conservation_commission",
-     "url": "https://www.hamiltonma.gov/public-meetings/conservation-commission/20261014/19-00-00/",
-     "link_pattern": "agenda|notice|posting",
-     "context": "block",
-     "date_only_docs": true,
-     "board_exclude": "\\bplanning board\\b|community development board|\\bplanning\\s*(?:&|and)\\s*zoning (?:board|commission)|zoning board|board of appeals|\\bZBA\\b|zoning appeals|select ?board|board of selectmen|selectmen|select men|(?:city|town) council"
+     "category_id": "22",
+     "url": "https://www.hamiltonma.gov/AgendaCenter/Zoning-Board-of-Appeals-Meeting-Packets-22"
     }
    ],
    "boards_found": [
     "conservation_commission",
     "planning_board",
+    "select_board",
     "zoning_board_of_appeals"
    ],
    "boards_missing": [
-    "select_board",
     "town_meeting"
    ],
    "board_evidence": {
     "conservation_commission": {
-     "board": "Conservation Commission Meeting",
-     "source": "generic",
-     "url": "https://www.hamiltonma.gov/public-meetings/conservation-commission/20261014/19-00-00/",
-     "n_recent": 1,
-     "latest": "2026-10-14",
-     "examples": [
-      {
-       "url": "https://www.hamiltonma.gov/2026_10_14-conservation-commission-meeting-agenda-2/",
-       "text": "2026_10_14 Conservation Commission Meeting Agenda",
-       "date": "2026-10-14"
-      }
-     ],
-     "n_past_90": 0
+     "board": "Conservation Commission",
+     "source": "civicplus",
+     "url": "https://www.hamiltonma.gov/AgendaCenter/Conservation-Commission-2"
     },
     "planning_board": {
-     "board": "Planning Board Meeting",
-     "source": "generic",
-     "url": "https://www.hamiltonma.gov/public-meetings/planning-board/20261020/19-00-00/",
-     "n_recent": 1,
-     "latest": "2026-09-30",
-     "examples": [
-      {
-       "url": "https://www.hamiltonma.gov/2026_10_20_planning-board_revised-agenda/",
-       "text": "2026_10_20_Planning Board_revised agenda",
-       "date": "2026-09-30"
-      }
-     ],
-     "n_past_90": 1
+     "board": "Planning Board",
+     "source": "civicplus",
+     "url": "https://www.hamiltonma.gov/AgendaCenter/Planning-Board-21"
+    },
+    "select_board": {
+     "board": "Select Board",
+     "source": "civicplus",
+     "url": "https://www.hamiltonma.gov/AgendaCenter/Select-Board-10"
     },
     "zoning_board_of_appeals": {
      "board": "Zoning Board of Appeals Meeting Packets",
-     "source": "generic",
-     "url": "https://www.hamiltonma.gov/government/zoning-board-appeals/meeting-packets-zoning-board-hamilton-2024/",
-     "n_recent": 4,
-     "latest": "2026-10-07",
-     "examples": [
-      {
-       "url": "https://www.hamiltonma.gov/wp-content/uploads/2021/11/10-07-2026-Agenda.pdf",
-       "text": "10-07-2026 Agenda",
-       "date": "2026-10-07"
-      },
-      {
-       "url": "https://www.hamiltonma.gov/wp-content/uploads/2021/11/09-02-2026-Amended-Agenda.pdf",
-       "text": "09-02-2026 Amended Agenda",
-       "date": "2026-09-02"
-      },
-      {
-       "url": "https://www.hamiltonma.gov/wp-content/uploads/2021/11/08-05-2026.pdf",
-       "text": "Agenda – 08-05-2026",
-       "date": "2026-08-05"
-      }
-     ],
-     "n_past_90": 4
+     "source": "civicplus",
+     "url": "https://www.hamiltonma.gov/AgendaCenter/Zoning-Board-of-Appeals-Meeting-Packets-22"
     }
    },
    "board_stale": {
@@ -11546,7 +11514,8 @@
    "robots_blocked": [],
    "notes": [],
    "pages_fetched": 15,
-   "discovered_at": "2026-10-10T18:29:19+00:00"
+   "discovered_at": "2026-10-10T18:29:19+00:00",
+   "note": "Oct 20, 2026: the town moved its agendas from its own meeting pages to a CivicPlus Agenda Center; re-discovered Oct 26."
   },
   {
    "town": "Hampden",

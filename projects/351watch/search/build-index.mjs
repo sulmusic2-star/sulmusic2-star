@@ -105,6 +105,28 @@ for (const file of jsonlFiles(dataDir)) {
   }
 }
 
+// Clerks' stamps and page furniture that would otherwise lead an excerpt: "By Kelly A McElreath at
+// 10:19 am, Aug 20, 2026", "RECEIVED By Town Clerk's Office at 3:29 pm, Sep 10, 2026", "APPROVED BY THE
+// TOWN CLERK'S OFFICE ON: 9/3/2026 8:26:30 AM", "Page 2 of 19", "Meeting Posted by: Susan Monahan",
+// and a CivicClerk listing's "Agenda Minutes Video Timestamp: 2026/09/10 15:12:33 09/10/2026" runs.
+const STAMP_RES = [
+  /\b(?:RECEIVED\s+)?By (?:[A-Z][\w.'-]*\s){1,4}?at \d{1,2}:\d{2} ?[ap]m, [A-Z][a-z]{2} \d{1,2}, \d{4}\b/g,
+  /\b(?:RECEIVED|APPROVED)(?: AND APPROVED)? BY (?:THE )?TOWN CLERK['’]?S OFFICE(?: ON)?:? ?\d{1,2}\/\d{1,2}\/\d{2,4}(?: \d{1,2}:\d{2}(?::\d{2})? ?[AP]M)?(?: and REVISED \d{1,2}\/\d{1,2}\/\d{2,4} \d{1,2}:\d{2}(?::\d{2})? ?[AP]M)?/gi,
+  /\bReceived by (?:the )?Town Clerk(?:['’]s Office)?:?\s*(?:on )?\d{1,2}\/\d{1,2}\/\d{2,4}(?: \d{1,2}:\d{2} ?[AP]M)?/gi,
+  /\bRECEIVED TOWN CLERK [A-Z ,]{3,30} DATE: [A-Z][a-z]+ \d{1,2}, \d{4} TIME: \d{1,2}:\d{2} [AP]M/g,
+  /\bDate Posted: Date Revised:(?: \d{1,2}\/\d{1,2}\/\d{4})? Received by Town Clerk:(?: \d{1,2}\/\d{1,2}\/\d{4})?/g,
+  /\bMeeting Posted by: [A-Z][A-Za-z.'-]+(?: [A-Z][A-Za-z.'-]+){0,3}(?:, Recording Secretary)?/g,
+  /\bPage \d{1,3} of \d{1,3}\b/gi,
+  /(?:\s(?:Agenda|Minutes|Video|Packet))+ Timestamp: \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2}(?: \d{1,2}\/\d{1,2}\/\d{4})?/g,
+  /\bTimestamp: \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2}\b/g,
+  /(^|\s)[e€o]?¢\s*/g,
+];
+function cleanText(text) {
+  let t = text;
+  for (const re of STAMP_RES) t = t.replace(re, " ");
+  return t.replace(/\s{2,}/g, " ").trim();
+}
+
 const { index, errors } = await createIndex({ forceLanguage: "en" });
 if (!index) throw new Error(`pagefind: ${errors.join("; ")}`);
 const seen = new Set();
@@ -126,8 +148,7 @@ for (let row of best.values()) {
   const res = await index.addCustomRecord({
     url: link,
     // Title, town and board lead the content, so a town or board name ranks its own documents.
-    // "e¢" and "¢" are bullets the OCR misread; they would show up in excerpts.
-    content: `${title}. ${rawTitle(row)}. ${row.town}, ${STATE_NAMES[row.state] || row.state}. ${row.board || ""}. ${row.text.replace(/(^|\s)[e€o]?¢\s*/g, "$1")}`,
+    content: `${title}. ${rawTitle(row)}. ${row.town}, ${STATE_NAMES[row.state] || row.state}. ${row.board || ""}. ${cleanText(row.text)}`,
     language: "en",
     meta: {
       title,
