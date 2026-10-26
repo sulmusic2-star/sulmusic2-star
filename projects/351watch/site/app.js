@@ -926,7 +926,9 @@ function setupMeetingFilter() {
   const bar = document.querySelector('[data-meeting-filter]');
   if (!bar) return;
   const select = bar.querySelector('select[data-key="county"]');
+  const topicSel = bar.querySelector('select[data-key="topic"]');
   const town = bar.querySelector('input[data-key="town"]');
+  const searchLink = document.querySelector('.more-link a[href^="/search"]');
   const mineBtn = bar.querySelector('[data-my-towns]');
   const mineNote = bar.querySelector('[data-cant-mine]');
   if (!select && !town) return;
@@ -950,6 +952,18 @@ function setupMeetingFilter() {
     if (opt) select.value = opt.value;
   }
   if (town && params.get('town')) town.value = params.get('town');
+  if (topicSel && params.get('topic') && [...topicSel.options].some((o) => o.value === params.get('topic'))) topicSel.value = params.get('topic');
+  // "Carver, Plympton" is two towns; "Amherst, NY" is one town in one state
+  const parseWants = (v) => {
+    const out = [];
+    for (const raw of v.split(',')) {
+      const t = norm(raw);
+      if (!t) continue;
+      if (/^(ma|ny|ri|ct|nh|vt|me)$/.test(t) && out.length) out[out.length - 1].state = t.toUpperCase();
+      else out.push({ name: t, state: '' });
+    }
+    return out;
+  };
   const joinAnd = (xs) => (xs.length < 3 ? xs.join(' and ') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
   const mineLabel = () => `Only my towns (${mineNames.slice(0, 3).join(', ')}${mineNames.length > 3 ? ` and ${mineNames.length - 3} more` : ''})`;
   // the towns this device follows that we can't read yet, so a quiet list isn't taken for a quiet town
@@ -964,18 +978,26 @@ function setupMeetingFilter() {
     mineNote.hidden = false;
   };
   const apply = () => {
-    const wants = town ? town.value.split(',').map((w) => norm(w)).filter(Boolean) : [];
+    const wants = town ? parseWants(town.value) : [];
     const county = select ? select.value : '';
+    const topic = topicSel ? topicSel.value : '';
     let shown = 0;
     for (const m of meetings) {
       const name = norm(m.dataset.town || '');
       const ok = (!county || m.dataset.county === county)
-        && (!wants.length || wants.some((w) => name.startsWith(w) || name.includes(` ${w}`)))
+        && (!topic || (m.dataset.topics || '').split(' ').includes(topic))
+        && (!wants.length || wants.some((w) => (name.startsWith(w.name) || name.includes(` ${w.name}`)) && (!w.state || m.dataset.state === w.state)))
         && (!onlyMine || mineNames.includes(m.dataset.town || ''));
       m.hidden = !ok;
       if (ok) shown += 1;
     }
-    const narrowed = county || wants.length || onlyMine;
+    const narrowed = county || topic || wants.length || onlyMine;
+    // "Search these agendas" keeps the subject and, for a few named towns, the towns
+    if (searchLink) {
+      const towns = wants.length ? [...new Set(meetings.filter((m) => !m.hidden).map((m) => `${m.dataset.state}:${m.dataset.town}`))] : [];
+      searchLink.href = '/search?upcoming=1' + (topic ? `&topic=${encodeURIComponent(topic)}` : '')
+        + (towns.length && towns.length <= 6 ? towns.map((t) => `&town=${encodeURIComponent(t)}`).join('') : '');
+    }
     // a day heading with nothing left under it goes too, and so does a "Next 7 days" or "Later" with nothing in it
     for (const d of days) d.hidden = !d.querySelector('.meeting:not([hidden])');
     for (const sec of sections) {
@@ -1009,6 +1031,7 @@ function setupMeetingFilter() {
     // the address bar carries the choice, so the page can be shared or bookmarked
     const p = new URLSearchParams(location.search);
     if (county) p.set('county', county); else p.delete('county');
+    if (topic) p.set('topic', topic); else p.delete('topic');
     if (town && town.value.trim()) p.set('town', town.value.trim()); else p.delete('town');
     if (onlyMine) p.set('mine', '1'); else p.delete('mine');
     const qs = p.toString();
@@ -1020,7 +1043,9 @@ function setupMeetingFilter() {
   const copyAll = copyBtn ? copyBtn.dataset.copy : '';
   const csvLabel = csvLink ? csvLink.textContent : '';
   const visibleTowns = () => new Set(meetings.filter((m) => !m.hidden).map((m) => `${(m.dataset.county || 'MA:').split(':')[0]}:${m.dataset.town}`));
-  const choice = () => (select && select.value ? select.options[select.selectedIndex].textContent : (town && town.value.trim()) || (onlyMine ? 'my towns' : ''));
+  const choice = () => [select && select.value ? select.options[select.selectedIndex].textContent : '',
+    topicSel && topicSel.value ? topicSel.options[topicSel.selectedIndex].textContent : '',
+    (town && town.value.trim()) || '', onlyMine ? 'my towns' : ''].filter(Boolean).join(', ');
   function followFilter(on) {
     if (copyBtn) {
       if (!on) copyBtn.dataset.copy = copyAll;
@@ -1044,7 +1069,7 @@ function setupMeetingFilter() {
     if (csvLink) csvLink.textContent = on ? `${csvLabel.replace(/\s*\(.*$/, '')} (CSV, ${choice()})` : csvLabel;
   }
   if (csvLink) csvLink.addEventListener('click', async (event) => {
-    if (!(select && select.value) && !(town && town.value.trim()) && !onlyMine) return;
+    if (!(select && select.value) && !(topicSel && topicSel.value) && !(town && town.value.trim()) && !onlyMine) return;
     event.preventDefault();
     try {
       const text = await (await fetch(csvLink.getAttribute('href'))).text();
@@ -1062,9 +1087,11 @@ function setupMeetingFilter() {
     }
   });
   if (select) select.addEventListener('change', apply);
+  if (topicSel) topicSel.addEventListener('change', apply);
   if (town) town.addEventListener('input', apply);
   if (clearBtn) clearBtn.addEventListener('click', () => {
     if (select) select.value = '';
+    if (topicSel) topicSel.value = '';
     if (town) town.value = '';
     onlyMine = false;
     if (mineBtn) {

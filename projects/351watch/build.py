@@ -1250,7 +1250,8 @@ def stage_verb(verb, hearing=False):
 # counts and the Trending page all use that one reading. ANALYSIS is filled by Ctx.
 
 ANALYSIS = {}
-JUNK_ITEM = re.compile(r"(?:\bInvoice\s*#?\s*\d{3,}\b.*){2}|^\s*Vouchers?\s*:|\.pdf\b\s+PDF\s+[\d.]+\s*[KMG]B|\bDownload\b.{0,80}\.pdf\b", re.I)
+JUNK_ITEM = re.compile(r"(?:\bInvoice\s*#?\s*\d{3,}\b.*){2}|^\s*Vouchers?\s*:|\.pdf\b\s+PDF\s+[\d.]+\s*[KMG]B|\bDownload\b.{0,80}\.pdf\b"
+                       r"|(?:\b(?:18|19)\d{2}\b\D{0,120}){4}", re.I)  # four 19th- or 20th-century years: an index of old articles, not an item
 BRIEFS = {}  # hit id -> verified written brief (briefs.py); filled by Ctx, shown instead of the rules-based line
 SUBJECT_NOUN = {"data_center": "data centers", "battery_storage": "battery storage", "solar": "solar",
                 "wind": "wind energy", "clean_energy_siting": "small clean-energy projects", "zoning_amendment": "zoning",
@@ -2211,8 +2212,10 @@ def headline(text):
     return text
 
 
-STATUS_SHOWN = [(re.compile(r"^Postponed to "), "Moved to "), (re.compile(r"^Postponed$"), "Moved"),
+STATUS_SHOWN = [(re.compile(r"^Postponed to "), "Moved to "), (re.compile(r"^Postponed$"), "Moved, no date given"),
                (re.compile(r"^Asks to postpone"), "Asked to move")]
+# the status word a line starts with, when the tag beside it already says so
+STATUS_PREFIX = re.compile(r"^(?:Postponed|Canceled|Cancelled|Withdrawn|Asks to postpone|Asked to move|Moved)(?:\s+to\s+\w{3} \w{3} \d{1,2}(?:, \d{4})?)?:\s*")
 
 
 def stage_class(stage):
@@ -2502,6 +2505,9 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
                           f'<p class="item-from">Quoted from {source}:</p>'
                           + "".join(f'<blockquote class="item-quote">{e(q)}</blockquote>' for q in quotes) + "</details>")
         text = headline(text)
+        if stage and STATUS_PREFIX.match(text):  # "Postponed: X's hearing moves to Nov 10": the amber tag says Moved
+            text = STATUS_PREFIX.sub("", text)
+            text = text[:1].upper() + text[1:]
         if not full and not b and entry.get("kind") == "mention":
             # a list doesn't print a stray fragment of the agenda as a headline; the meeting's page keeps it
             text = re.sub(r"(?:\s+in|:)\s*“[^”]*”\.?$", "", text).rstrip(".")
@@ -2544,7 +2550,8 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     head = "" if full else f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town, with_when=False, doc_link=link)}</p>'
     speak_html = f'<p class="speak-line"><b>Speaking:</b> {e(speak)}</p>' if speak else ""
     terms = terms_html(m, source) if full and not m.get("cancelled") else ""
-    return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" id="{m['id']}" data-county="{e(county)}" data-state="{e(m['state'])}" data-town="{e(m['town'])}">
+    subjects = sorted({t for v in m["lines"].values() for t in (v.get("topics") or [])})
+    return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" id="{m['id']}" data-county="{e(county)}" data-state="{e(m['state'])}" data-town="{e(m['town'])}" data-topics="{e(' '.join(subjects))}">
   {when}
   {head}
   {speak_html}
@@ -2979,7 +2986,7 @@ def cant_read_by_county(ctx):
     return out
 
 
-def list_tools_html(counties, cant=None):
+def list_tools_html(counties, cant=None, topics=None):
     """The row above a meeting list: county and town filters, the view switch, "only my towns" for people with
     alerts on this device, the count, Clear filters, and under a chosen county the towns there we can't read, with
     the reason. app.js (setupMeetingFilter, setupViewSwitch) runs it."""
@@ -2993,12 +3000,17 @@ def list_tools_html(counties, cant=None):
     else:  # the box is labelled County, so the names stand alone ("Plymouth", not "Plymouth County")
         opts = "".join(f'<option value="{e(c)}">{e(c.split(":", 1)[1])}</option>' for c in counties)
     county = f'<label>County<select data-key="county"><option value="">All</option>{opts}</select></label>' if len(counties) > 1 else ""
+    topic = ""
+    if topics:
+        t_opts = "".join(f'<option value="{e(k)}">{e(TOPIC_LABELS.get(k, k))}</option>' for k in TOPIC_LABELS if k in topics)
+        topic = f'<label>Topic<select data-key="topic"><option value="">All</option>{t_opts}</select></label>'
     cant_html = "".join(
         f'<p class="form-note cant-list" data-cant-county="{e(c)}" hidden>We can’t read these {e(county_label(c))} towns yet: {e(v)}. <a href="/how-it-works#gaps">Why</a></p>'
         for c, v in sorted((cant or {}).items()) if c in counties)
     return f"""<div class="filterbar list-tools" data-meeting-filter>
     {county}
-    <label>Town<input type="search" data-key="town" placeholder="Type a town" title="Several towns: put commas between them" autocomplete="off"></label>
+    {topic}
+    <label>Town<input type="search" data-key="town" placeholder="Type a town" title="Several towns: put commas between them; a state after a comma (Amherst, NY) picks that state" autocomplete="off"></label>
     {view_switch_html()}
     <p class="count" data-count aria-live="polite"></p>
     <p class="form-note clear-row"><button type="button" class="link-btn" data-clear-filters hidden>Clear filters</button></p>
@@ -3065,7 +3077,7 @@ def build_upcoming(ctx):
   <p class="lead">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {plural(n_towns, 'town')}: {SUBJECTS} on town agendas.</p>
   {site_checked(ctx)}
   {tabs(COMING_TABS, "/upcoming", "Coming up")}
-  {list_tools_html(counties, cant_read_by_county(ctx))}
+  {list_tools_html(counties, cant_read_by_county(ctx), topics={t for m in meetings for v in m["lines"].values() for t in (v.get("topics") or [])})}
 </section>
 <section aria-labelledby="soon-title" data-meet-section>
   <h2 id="soon-title">Next 7 days</h2>
@@ -3216,6 +3228,9 @@ def story_html(ctx, st, level=3, rank=None):
     board = f'<span>{e(st["board"])}</span>' if st.get("board") else ""
     stage = stage_html({"stage": st.get("stage")}, {"date": st.get("meeting_date")}, ctx)
     line = headline(st["line"])
+    if stage and STATUS_PREFIX.match(line):
+        line = STATUS_PREFIX.sub("", line)
+        line = line[:1].upper() + line[1:]
     reasons = story_reasons(st)
     why = f'<span class="row-why">{"".join(f"<span>{e(r)}</span>" for r in reasons)}</span>' if reasons else ""
     return f"""<li class="row" data-id="{e(st['id'])}" data-date="{e(st.get('meeting_date') or '')}" data-topics="{e(' '.join(st.get('topics') or []))}">
@@ -3876,7 +3891,7 @@ def topic_csv(ctx, meetings, all_items=False):
     the file holds every item the page counts."""
     out = io.StringIO()
     w = csv.writer(out)
-    w.writerow(["town", "county", "state", "board", "date", "time", "place", "item", "status", "agenda_url", "page_url"])
+    w.writerow(["town", "county", "state", "board", "date", "time", "place", "item", "status", "topics", "agenda_url", "page_url"])
     for m in meetings:
         doc = m["docs"][0]["url"] if m["docs"] else ""
         place = place_text(m["place"]) if m["place"] and m["source"] != "massdep_wetlands" else ""
@@ -3884,8 +3899,9 @@ def topic_csv(ctx, meetings, all_items=False):
         rows = [(t, en) for t, en in m["lines"].items() if not OFF_ITEM.search(t)] if all_items else real_lines(m)
         for text, entry in rows:
             status = "Canceled" if m.get("cancelled") else (entry.get("stage") or ("Mentioned" if entry.get("kind") == "mention" else ""))
+            subjects = "; ".join(TOPIC_LABELS.get(t, t) for t in (entry.get("topics") or []))
             w.writerow([m["town"], county, m["state"], meeting_board(m), m["date"] or "", m.get("time") or "", place,
-                        plain_say(text), status, doc, meeting_share_url(ctx, m)])
+                        plain_say(text), status, subjects, doc, meeting_share_url(ctx, m)])
     return out.getvalue()
 
 
