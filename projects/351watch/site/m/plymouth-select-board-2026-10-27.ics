@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:m-plymouth-select-board-2026-10-27@agendaahead
+DTSTAMP:20261026T120000Z
+DTSTART;TZID=America/New_York:20261027T170000
+DTEND;TZID=America/New_York:20261027T190000
+SUMMARY:Plymouth Select Board
+LOCATION:Plymouth Town Hall\, or join online\, Plymouth\, MA
+DESCRIPTION:\nAgenda: https://www.plymouth-ma.gov/AgendaCenter/ViewFile/Age
+ nda/_10272026-4006\nPage: https://agendaahead.vercel.app/m/plymouth-select
+ -board-2026-10-27\nConfirm the time and place with the town\; agendas can 
+ change.
+URL:https://agendaahead.vercel.app/m/plymouth-select-board-2026-10-27
+END:VEVENT
+END:VCALENDAR

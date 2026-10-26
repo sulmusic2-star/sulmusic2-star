@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:m-sharon-select-board-2026-10-27@agendaahead
+DTSTAMP:20261026T120000Z
+DTSTART;TZID=America/New_York:20261027T190000
+DTEND;TZID=America/New_York:20261027T210000
+SUMMARY:Sharon Select Board
+LOCATION:Online meeting\, Sharon\, MA
+DESCRIPTION:\nAgenda: https://www.sharonma.gov/AgendaCenter/ViewFile/Agenda
+ /_10272026-792\nPage: https://agendaahead.vercel.app/m/sharon-select-board
+ -2026-10-27\nConfirm the time and place with the town\; agendas can change
+ .
+URL:https://agendaahead.vercel.app/m/sharon-select-board-2026-10-27
+END:VEVENT
+END:VCALENDAR

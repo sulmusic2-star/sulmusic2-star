@@ -1,14 +1,17 @@
 {
- "generated": "2026-10-23T18:33:40+00:00",
+ "generated": "2026-10-26T11:22:23+00:00",
  "states": {
   "CT": {
+   "data_center": 1,
+   "moratorium": 1,
    "solar": 1,
    "wind": 2
   },
   "MA": {
    "battery_storage": 1,
-   "data_center": 37,
-   "moratorium": 6,
+   "data_center": 34,
+   "moratorium": 4,
+   "solar": 1,
    "wind": 3
   },
   "NH": {
@@ -16,28 +19,16 @@
   },
   "NY": {
    "battery_storage": 1,
-   "data_center": 25,
+   "data_center": 26,
    "moratorium": 2
   },
   "RI": {
    "data_center": 4,
    "solar": 1,
-   "wind": 3
+   "wind": 2
   }
  },
  "towns": {
-  "MA:Agawam": [
-   {
-    "link": "https://www.masslive.com/westernmass/2026/09/agawam-confirms-moratorium-on-data-centers-ban-on-large-projects-fails.html",
-    "published": "2026-09-09T02:07:16+00:00",
-    "source": "MassLive",
-    "title": "Agawam confirms moratorium on data centers ban on large projects fails",
-    "topics": [
-     "data_center",
-     "moratorium"
-    ]
-   }
-  ],
   "MA:Boston": [
    {
     "link": "https://www.masslive.com/boston/2026/09/boston-councilor-calls-for-citywide-ban-on-data-centers.html",
@@ -66,18 +57,6 @@
     "published": "2026-09-15T10:00:10+00:00",
     "source": "MassLive",
     "title": "Ludlow joins wmass communities debating data center moratorium",
-    "topics": [
-     "data_center",
-     "moratorium"
-    ]
-   }
-  ],
-  "MA:Northampton": [
-   {
-    "link": "https://www.masslive.com/westernmass/2026/09/northampton-councilors-considering-data-center-moratorium-laud-healeys-order.html",
-    "published": "2026-09-09T01:40:31+00:00",
-    "source": "MassLive",
-    "title": "Northampton councilors considering data center moratorium laud healeys order",
     "topics": [
      "data_center",
      "moratorium"
