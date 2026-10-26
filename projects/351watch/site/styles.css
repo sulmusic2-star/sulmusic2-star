@@ -359,7 +359,8 @@ details.more > summary:hover, details.disclose > summary:hover { text-decoration
 .row-when { grid-area: when; display: flex; flex-wrap: wrap; gap: 0 var(--s3); font-size: var(--t-sm); color: var(--muted); }
 .row-town { color: var(--ink); font-weight: 600; }
 .row-line { grid-area: line; font-weight: 600; max-width: 64ch; margin-top: var(--s1); }
-.row-why { grid-area: why; color: var(--muted); font-size: var(--t-sm); margin-top: var(--s1); }
+.row-why { grid-area: why; display: flex; flex-wrap: wrap; gap: 0 var(--s2); color: var(--muted); font-size: var(--t-sm); margin-top: var(--s1); }
+.row-why > span + span::before { content: "\00B7"; margin-right: var(--s2); }
 .row .stage { grid-area: stage; margin-top: var(--s1); justify-self: start; }
 @media (min-width: 760px) {
   .row a { grid-template-columns: 6.5rem minmax(0, 1fr) 9rem; grid-template-areas: "day when stage" "day line stage" "day why stage"; column-gap: var(--s4); }
@@ -673,3 +674,8 @@ table.counts caption { text-align: left; font-weight: 600; padding: 0 0 var(--s2
     background: linear-gradient(90deg, rgba(255,255,255,0), var(--paper, #fff)); }
   .timeline > li { grid-template-columns: 1fr; gap: var(--s1); }
 }
+
+/* Biggest stories: the rank where a date column was; an item the agenda moves away reads as settled. */
+.row-rank { grid-area: day; font: 700 1.25rem/1 var(--f-head); font-variant-numeric: tabular-nums; color: var(--muted); padding-top: 2px; }
+.stage.moved { display: inline-block; width: auto; justify-self: start; }
+.line:has(> .line-say > .stage.moved) .line-link { color: var(--muted); }

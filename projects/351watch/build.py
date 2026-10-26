@@ -2979,10 +2979,18 @@ def trending_stories(ctx):
     doc = load("trending.json", {"stories": []})
     hits_by_id = {h["id"]: h for h in ctx.hits}
     out = []
+    seen_story = set()
     for st in doc.get("stories", []):
         d = st.get("meeting_date") or ""
         if d and d < ctx.today:
             continue
+        if st.get("action") in ("withdrawn", "cancelled", "mention", "minutes") or \
+                re.match(r"(?i)(?:withdrawn|mentions?|canceled|cancelled)\b", st.get("headline") or ""):
+            continue  # not a story anyone acts on
+        key = (st.get("state"), st.get("town"), d, re.sub(r"\W+", " ", (st.get("headline") or "").lower())[:50])
+        if key in seen_story:
+            continue
+        seen_story.add(key)
         # The row describes the story's own meeting (its date and board), so the lead hit is one from that
         # meeting; the story's headline stands in when none of its hits is from that day.
         hits = [hits_by_id[i] for i in st.get("hit_ids", []) if i in hits_by_id]
@@ -3051,19 +3059,29 @@ def story_chips(st):
     return out
 
 
-def story_html(ctx, st, level=3):
-    """One story as a compact row: day · town · board, the item's line, and the stage word. The row links
-    to the meeting's page, where the detail lives."""
+def story_reasons(st):
+    """The grey line under a story: up to two of its reasons, the neighbors' wave last."""
+    chips = [c for c in (st.get("reasons") or []) if c and not c.startswith("Also next door")]
+    wave = [c for c in (st.get("reasons") or []) if c.startswith("Also next door")]
+    return (chips[:2] if len(chips) >= 2 else chips + wave[:1])[:2]
+
+
+def story_html(ctx, st, level=3, rank=None):
+    """One story as a compact row: its rank (or day), town · board · day, the item's line, and the stage word.
+    The row links to the meeting's page, where the detail lives."""
     when = f'<time datetime="{st["meeting_date"]}">{e(day_label(st["meeting_date"], ctx))}</time>' if st["meeting_date"] else "Date not set"
+    first = f'<span class="row-rank">{rank}</span>' if rank else f'<span class="row-day" data-slop-ignore>{when}</span>'
+    day_meta = f'<span>{when}</span>' if rank else ""
     town = f'{e(st["town"])}{", " + e(st["state"]) if st["state"] != "MA" else ""}'
     # "New" rides the meta line, so every headline starts at the same edge
     new = '<span class="is-new">New on an agenda</span>' if st["new"] else ""
     board = f'<span>{e(st["board"])}</span>' if st.get("board") else ""
     stage = stage_html({"stage": st.get("stage")}, {"date": st.get("meeting_date")}, ctx)
     line = headline(st["line"])
-    why = f'<span class="row-why">{e("; ".join(st.get("why") or []))}</span>' if st.get("why") else ""
+    reasons = story_reasons(st)
+    why = f'<span class="row-why">{"".join(f"<span>{e(r)}</span>" for r in reasons)}</span>' if reasons else ""
     return f"""<li class="row" data-id="{e(st['id'])}" data-date="{e(st.get('meeting_date') or '')}" data-topics="{e(' '.join(st.get('topics') or []))}">
-  <a href="{e(st['href'])}"><span class="row-day" data-slop-ignore>{when}</span><span class="row-when" data-slop-ignore><span class="row-town">{town}</span>{board}{new}</span>
+  <a href="{e(st['href'])}">{first}<span class="row-when" data-slop-ignore><span class="row-town">{town}</span>{board}{day_meta}{new}</span>
   <span class="row-line">{e(line)}</span>{why}{stage}</a>
 </li>"""
 
@@ -3078,9 +3096,9 @@ def trending_json(stories, weights):
 def build_trending(ctx):
     stories, _ = trending_stories(ctx)
     top = stories[:20]
-    items = "".join(story_html(ctx, st, level=2) for st in top) if top else ""
-    topic_boxes = "".join(f'<label><input type="checkbox" name="topic" value="{k}"> {e(re.sub(r" \(.*\)$", "", v))}</label>'
-                          for k, v in TOPIC_LABELS.items() if k not in GATED_TOPICS and k != "wetlands_filing")
+    items = "".join(story_html(ctx, st, level=2, rank=i + 1) for i, st in enumerate(top)) if top else ""
+    topic_boxes = "".join(f'<label><input type="checkbox" name="topic" value="{k}"> {e(v)}</label>'
+                          for k, v in TOPIC_LABELS.items() if k not in GATED_TOPICS)
     body = f"""
 <div class="wrap narrow">
 <h1 id="trend-title">Biggest stories coming up</h1>
@@ -3210,12 +3228,14 @@ def next_door_html(ctx, t):
         ups = upcoming_meetings(ctx, other)
         st = f", {o['state']}" if o["state"] != t["state"] else ""
         if ups:
-            note = f"{plural(len(ups), 'meeting')}, next {day_label(min(m['date'] for m in ups), ctx)}"
+            first = min(ups, key=lambda m: m["date"])
+            tops = ordered_topics({tp for en in first["lines"].values() for tp in (en.get("topics") or [])})
+            about = join_and([TOPIC_LABELS.get(k, k).lower() for k in tops[:2]])
+            note = f"{day_label(first['date'], ctx)}: {about}" if about else f"{plural(len(ups), 'meeting')}, next {day_label(first['date'], ctx)}"
         else:
-            note = "Nothing coming up" if o["monitored"] else "Can’t read yet"
-        why = "" if o["monitored"] else REASON_TAG.get(o.get("reason_code") or "", "")
-        title = f' title="{e(first_up(why))}"' if why else ""
-        parts.append(f'<li><a href="{town_path(o["state"], o["town"])}">{e(o["town"])}{e(st)}</a> <span{title}>{e(note)}</span></li>')
+            why = "" if o["monitored"] else REASON_TAG.get(o.get("reason_code") or "", "")
+            note = "Nothing coming up" if o["monitored"] else (f"Can’t read yet ({why})" if why else "Can’t read yet")
+        parts.append(f'<li><a href="{town_path(o["state"], o["town"])}">{e(o["town"])}{e(st)}</a> <span>{e(note)}</span></li>')
     if not parts:
         return ""
     return (f'<div class="next-door"><h2 class="next-door-head">{"Next door" if listed else "Nearby"}</h2>'
@@ -3355,7 +3375,7 @@ def continued_html(ctx, rows):
                      f'<span class="row-line">{e(headline(plain_say(text)))}</span>'
                      f'<span class="{stage_class(continued_status(note))}">{e(continued_status(note))}</span></a></li>')
     return f"""<section class="continued" aria-labelledby="continued-title">
-<h2 id="continued-title">Also ahead, from earlier agendas</h2>
+<h2 id="continued-title">Also coming up, dated from earlier agendas</h2>
 <p class="form-note">The agenda for that day isn’t posted yet; the date comes from the earlier agenda.</p>
 <ol class="rows continued-list">{"".join(items)}</ol>
 </section>"""
@@ -3379,11 +3399,11 @@ def news_html(ctx, t):
     return f'<section class="in-news" aria-labelledby="news-title"><h2 id="news-title">In the news</h2><ul class="news-list">{items}</ul></section>'
 
 
-def town_summary(ctx, t, up_m):
+def town_summary(ctx, t, up_m, past_m=None):
     """The town page's opening: what is coming up, in one sentence with numbers and the next date, and when we
     last read the town's agendas."""
     if up_m:
-        items = sum(len(real_lines(m)) or len(m["lines"]) for m in up_m)
+        items = sum(len(staying_lines(m)) or len(m["lines"]) for m in up_m)
         topics = Counter(tp for m in up_m for en in m["lines"].values() for tp in ordered_topics(en.get("topics") or [])[:1])
         about = join_and([TOPIC_LABELS.get(k, k).lower() for k, _ in topics.most_common(2)])
         first = next((m for m in up_m if not m.get("cancelled")), up_m[0])
@@ -3392,8 +3412,13 @@ def town_summary(ctx, t, up_m):
                 + f". Next: the {meeting_board(first)}, {day_label(first['date'], ctx)}.")
     else:
         nxt = next_posted(ctx, t)
-        lead = ("Nothing on solar, batteries, data centers, zoning, housing, cell towers or wetlands in the agendas posted so far."
-                + (f" The next agenda we know of: {nxt[1]}, {day_label(nxt[0], ctx)}." if nxt else ""))
+        last = next((m for m in (past_m or []) if real_lines(m)), None)
+        recent = ""
+        if last:
+            text, _ = real_lines(last)[0]
+            recent = f" Most recent: {day_label(last['date'], ctx)}, {meeting_board(last)}: {headline(plain_say(text))}."
+        lead = ("Nothing coming up on solar, battery storage, data centers, moratoriums, zoning, housing, cell towers or wetlands."
+                + recent + (f" The next agenda we know of: {nxt[1]}, {day_label(nxt[0], ctx)}." if nxt else ""))
     health = (ctx.health or {}).get(t["id"]) or {}
     when = et_when(health["last_success"]) if health.get("last_success") else ""
     checked = f'<p class="checked">Checked {e(when)} from the agendas {e(t["town"])} posts online.</p>' if when else ""
@@ -3446,13 +3471,13 @@ def build_town_page(ctx, t):
 {rules_html(ctx, tracked, ag_rows, town)}<p class="small"><a href="/attorney-general">Massachusetts Attorney General rulings</a></p></details>""")
     report = ""  # the page-end strip carries "Report a problem with this page"
 
-    head_lines = town_summary(ctx, t, up_m) if t["monitored"] else ""
+    head_lines = town_summary(ctx, t, up_m, past_m) if t["monitored"] else ""
     body = f"""
 <div class="wrap narrow">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/towns">Towns</a></li><li><a href="/towns#{state.lower()}">{e(state_name)}</a></li><li><span aria-current="page">{e(town)}</span></li></ol></nav>
 <div class="page-grid with-head">
 <div class="grid-head">
-<h1 id="town-title">{e(town)}</h1>
+<h1 id="town-title">{e(town)}, {e(state)}</h1>
 {head_lines}
 </div>
 <div class="page-main">
@@ -3672,6 +3697,11 @@ def carried_over(entry):
         return True  # "Continued Discussion – Data Centers": the reading found the continuation
     text = " ".join([str(entry.get("say") or ""), str(entry.get("quote") or "")] + [str(q) for q in (entry.get("quotes") or [])])
     return bool(CONTINUED.search(text))
+
+
+def staying_lines(m):
+    """real_lines without the items the agenda itself moves to a later meeting: they count on their new day."""
+    return [(t, en) for t, en in real_lines(m) if not str(en.get("stage") or "").startswith(("Postponed", "Asks to postpone", "Moved"))]
 
 
 def real_lines(m):

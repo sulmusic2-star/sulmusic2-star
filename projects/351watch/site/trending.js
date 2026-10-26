@@ -40,27 +40,34 @@ function stageWord(s) {
   const relDates = (root) => { if (window.w351 && window.w351.relDates) window.w351.relDates(root); };
 
   // As story_html() in build.py: a box with the day, town and board, the item's line and the status.
-  function storyNode(st) {
+  function storyNode(st, i) {
     const li = el('li', 'row');
     li.dataset.date = st.meeting_date || '';
     li.dataset.topics = (st.topics || []).join(' ');
     const a = el('a');
     a.href = st.href;
-    const day = el('span', 'row-day');
-    if (st.meeting_date) {
-      const t = el('time', '', dayLabel(st.meeting_date));
-      t.dateTime = st.meeting_date;
-      day.append(t);
-    } else day.append('Date not set');
+    const rank = el('span', 'row-rank', String((Number.isInteger(i) ? i : 0) + 1));
     const when = el('span', 'row-when');
     when.append(el('span', 'row-town', `${st.town}${st.state !== 'MA' ? `, ${st.state}` : ''}`));
     if (st.board) when.append(el('span', '', st.board));
+    if (st.meeting_date) {
+      const t = el('time', '', dayLabel(st.meeting_date));
+      t.dateTime = st.meeting_date;
+      const d = el('span'); d.append(t); when.append(d);
+    } else when.append(el('span', '', 'Date not set'));
     if (st.new) when.append(el('span', 'is-new', 'New on an agenda'));
     const line = el('span', 'row-line');
     const words = (st.line || st.headline || '').replace(' (no vote listed)', '').replace('; no vote listed)', ')');
     line.append(/[a-z0-9)]\.$/.test(words) && !/\b(St|Rd|Ave|Dr|Ln|Blvd|Mt|No|Art|Sec|Inc|Corp|LLC|Co)\.$/.test(words) ? words.slice(0, -1) : words);
-    a.append(day, when, line);
-    if (st.why && st.why.length) a.append(el('span', 'row-why', st.why.join('; ')));
+    a.append(rank, when, line);
+    const chips = (st.reasons || []).filter((c) => c && !c.startsWith('Also next door'));
+    const wave = (st.reasons || []).filter((c) => c && c.startsWith('Also next door'));
+    const reasons = (chips.length >= 2 ? chips.slice(0, 2) : chips.concat(wave.slice(0, 1))).slice(0, 2);
+    if (reasons.length) {
+      const why = el('span', 'row-why');
+      reasons.forEach((r) => why.append(el('span', '', r)));
+      a.append(why);
+    }
     if (st.stage) {
       // the same dot as the page: filled when the board acts (a vote or hearing), hollow otherwise
       a.append(el('span', stageClass(st.stage), stageWord(st.stage)));
@@ -160,7 +167,7 @@ function stageWord(s) {
       all.hidden = false;
       if (active && stories.length) {
         const matches = stories.filter((st) => keep(st.meeting_date || '', st.topics || []));
-        all.replaceChildren(...matches.map(storyNode));
+        all.replaceChildren(...matches.map((st, i) => storyNode(st, i)));
         relDates(all);
         say(`${matches.length} ${matches.length === 1 ? 'story' : 'stories'}`);
       } else {
@@ -175,16 +182,16 @@ function stageWord(s) {
     const picked = stories
       .map((st, i) => ({ st, i, mine: (st.towns || []).some((t) => own.has(t)), next: (st.towns || []).some((t) => nextDoor.has(t)) }))
       .filter((x) => (x.mine || x.next) && keep(x.st.meeting_date || '', x.st.topics || []))
-      // your own towns' stories in the order they happen
-      .sort((a, b) => (a.st.meeting_date || '9999').localeCompare(b.st.meeting_date || '9999') || Number(b.mine) - Number(a.mine) || b.st.score - a.st.score)
+      // still ranked: your own towns' stories first, then by what is at stake
+      .sort((a, b) => Number(b.mine) - Number(a.mine) || b.st.score - a.st.score || (a.st.meeting_date || '9999').localeCompare(b.st.meeting_date || '9999'))
       .map((x) => x.st);
-    mine.replaceChildren(...picked.map(storyNode));
+    mine.replaceChildren(...picked.map((st, i) => storyNode(st, i)));
     relDates(mine);
     mine.hidden = false;
     all.hidden = true;
     const shown = [...mine.children].filter((li) => !li.hidden).length;
     const where = near.checked ? `${chosen.map(nameOf).join(', ')} and the towns next to them` : listNames(chosen);
-    if (shown) say(`${shown} ${shown === 1 ? 'story' : 'stories'} in ${where}, by date`);
+    if (shown) say(`${shown} ${shown === 1 ? 'story' : 'stories'} in ${where}, biggest first`);
     else say(`Nothing big coming up in ${where} right now.`, ['See everything coming up', '/upcoming']);
   }
 
