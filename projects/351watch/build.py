@@ -206,12 +206,15 @@ TOPIC_PAGE_BY_KEY = {tp["key"]: tp for tp in TOPIC_PAGES}
 TRACER_LANE = "2022-06-02"
 # G.L. c. 40A, § 3 protects solar by statute. Battery storage has that protection only through Land Court
 # (trial court) rulings, so it is not settled law for batteries. Used on /attorney-general and /how-it-works.
-LAW_SOLAR = ("State zoning law (G.L. c. 40A, § 3) says a town may not prohibit solar energy systems, or regulate them "
-             "unreasonably, except where needed to protect public health, safety or welfare.")
-LAW_BATTERY = ("Battery storage has that protection only through two Land Court rulings, and the Land Court is a trial court, "
-               "so for batteries this isn’t settled law the way it is for solar. The rulings are NextSun Energy LLC v. Fernandes "
-               "(2023) and Duxbury Energy Storage, LLC v. Town of Duxbury Zoning Board of Appeals (June 23, 2025); both applied "
-               "the reasoning of the Supreme Judicial Court in Tracer Lane II Realty, LLC v. City of Waltham (2022).")
+LAW_SOLAR = ("State zoning law (G.L. c. 40A, § 3, ninth paragraph) says no zoning bylaw or ordinance may prohibit or unreasonably "
+             "regulate solar energy systems, or the structures that facilitate collecting solar energy, except where necessary to "
+             "protect public health, safety or welfare. It binds cities as well as towns.")
+LAW_BATTERY = ("Battery storage has that protection only through Land Court rulings that read a battery as a structure that "
+               "facilitates collecting solar energy, and the Land Court is a trial court, so for batteries this isn’t settled law the "
+               "way it is for solar. The rulings are NextSun Energy LLC v. Fernandes (Norton, May 9, 2023), Duxbury Energy Storage, LLC "
+               "v. Town of Duxbury Zoning Board of Appeals (June 23, 2025) and Town of Wendell v. Campbell (March 12, 2026), which "
+               "upheld the Attorney General’s disapproval of a licensing bylaw for battery storage; all three follow the Supreme Judicial "
+               "Court’s reasoning in Tracer Lane II Realty, LLC v. City of Waltham (2022).")
 e = escape
 
 
@@ -424,7 +427,13 @@ class Ctx:
             names = by_case.get(str(r.get("case_number") or ""), set())
             subject = (r.get("portal_document_name") or "").rsplit(" - ", 1)[-1].strip()
             # a note the data carries ("revised letter") stands when the case has one letter
-            r["letter_note"] = (f" ({subject.lower()} letter)" if len(names) > 1 and subject and not subject[0].isdigit() else "") or r.get("letter_note") or ""
+            if len(names) > 1 and subject and not subject[0].isdigit() and subject.lower() not in ("letter", "decision") \
+                    and ag_town(r.get("town") or "").lower() not in subject.lower():
+                r["letter_note"] = f" ({subject.lower()} letter)"
+            elif len(names) > 1 and r.get("decision_date"):
+                r["letter_note"] = f" (letter dated {fmt_date(r['decision_date'])})"
+            else:
+                r["letter_note"] = r.get("letter_note") or ""
         self.hits = [h for h in self.hits_doc["hits"] if h.get("state", "MA") in self.states and not off_subject(h)]
         # A warrant read twice, once with its date and once without: the undated twin is dropped.
         dated = {(h["state"], h["town"], quote_key(h.get("snippet") or "")[:80]) for h in self.hits
@@ -2571,7 +2580,8 @@ def ag_row(ctx, r, filters=False):
              f' data-tech="{e(r.get("technology", ""))}" data-year="{year}" data-county="{e(r.get("county") or "")}"'
              + (f' data-csv="{r["_csv"]}"' if "_csv" in r else "")) if filters else ""
     case = f", case {e(str(r['case_number']))}{e(r.get('letter_note', ''))}" if r.get("case_number") else ""
-    label = "Decision letter" if r.get("record_type") == "ag_decision" else "Source"
+    posted_copy = "copy of the letter the town posted" in (r.get("portal_document_name") or "")
+    label = ("Town Clerk’s posting of the decision" if posted_copy else "Decision letter") if r.get("record_type") == "ag_decision" else "Source"
     letter = (f'<a href="{e(r["letter_url"])}" rel="nofollow noopener" target="_blank">{label}{case}</a>'
               if r.get("letter_url") else "")
     town = ag_town(r.get("town"))
@@ -2594,6 +2604,9 @@ def ag_row(ctx, r, filters=False):
     tech = r.get("technology") or ""
     d = r.get("decision_date") or ""
     when = (fmt_date(d) if len(d) == 10 else datetime.strptime(d, "%Y-%m").strftime("%b %Y") if len(d) == 7 else d) if d else "Awaiting a decision"
+    dn = re.match(r"decided between (\w+ \d+) and (\w+ \d+), (\d{4})", r.get("date_note") or "")
+    if dn:
+        when = f"decided {dn.group(1)} to {dn.group(2)}, {dn.group(3)}"
     outcome = first_up(r.get("outcome") or "pending")
     meeting = " (meeting date)" if r.get("decision_date") and (r.get("outcome") or "").startswith(("proposed", "pending")) else ""
     sub = court_cite(r) if r.get("record_type") == "court_ruling" else r.get("article", "")
@@ -2602,8 +2615,22 @@ def ag_row(ctx, r, filters=False):
             f'<p>{e(smart_quotes(r.get("summary", "")))}</p>'
             f'<p class="rec-links">{letter}{cite_btn}</p>'
             + (f'<p class="rec-links"><a href="{town_path("MA", town)}">Everything about {e(town)}</a></p>' if f"MA:{town}" in ctx.town_by_id else ""))
+    if r.get("record_type") == "pending_ag_review":
+        attrs += ' data-nocount="1"'
     return rec_li(f"{e(town)}{e(city)}", f"{e(kind)}{', ' + e(tech) if tech else ''}",
-                  f"<b>{e(outcome)}</b>, {when}{meeting}", body, attrs)
+                  f'<b class="tag {outcome_tag(r.get("outcome"))}">{e(outcome)}</b>, {when}{meeting}', body, attrs)
+
+
+def outcome_tag(outcome):
+    """One look per outcome: approved and wins for solar green, approved in part amber, disapproved red, the rest grey."""
+    o = (outcome or "").lower()
+    if o == "approved in part":
+        return "tag-part"
+    if o.startswith("disapproved") or "upheld" in o or o.startswith("expired"):
+        return "tag-no"
+    if o.startswith("approved") or "vacated" in o or "annulled" in o or "enforced" in o or "protected" in o or o.startswith("ruled for") or o.startswith("adopted") or o.startswith("in effect"):
+        return "tag-ok"
+    return "tag-wait"
 
 
 def court_cite(r):
@@ -2681,7 +2708,7 @@ def ag_table(ctx, rows, table_id=None, filters=False, group=None, by_year=False)
         if not years or years[-1][0] != y:
             years.append((y, []))
         years[-1][1].append(r)
-    out = "".join(f'<section class="rec-group" data-year-group><h2 class="rec-head">{e(y)} <span class="sub-count">{plural(len(rs), "ruling")}</span></h2>'
+    out = "".join(f'<section class="rec-group" data-year-group><h2 class="rec-head">{e(y)} <span class="sub-count">{plural(len(rs), "bylaw" if y == "Awaiting a decision" else "ruling")}</span></h2>'
                   f'<ul class="recs">{"".join(ag_row(ctx, r, filters) for r in rs)}</ul></section>' for y, rs in years)
     return f'<div class="rec-list"{tid}{grp}>{out}</div>'
 
@@ -2721,7 +2748,7 @@ def moratorium_lines(ag):
             notes.append(f"{ag_town(r['town'])}’s, which the Attorney General didn’t rule on because the town replaced it ({when})"
                          if "moot" in (r.get("outcome") or "") else f"{ag_town(r['town'])}’s ({r.get('outcome')}, {when})")
     both = notes[0] if len(notes) == 1 else ", ".join(notes[:-1]) + ", and " + notes[-1] if notes else ""
-    extra = (f"The table above also counts {plural(len(notes), 'other moratorium letter')}: {both}." if notes else "")
+    extra = (f"The table above also counts {plural(len(notes), 'other moratorium ruling')}: {both}." if notes else "")
     return lead + detail, extra, rec
 
 
@@ -3104,6 +3131,11 @@ def build_trending(ctx):
 
 # ---------------------------------------------------------------- town pages
 
+def rules_count(tracked, ag_rows):
+    ruled = {r.get("decision_date") for r in ag_rows}
+    return len([i for i in tracked if not (i.get("key_date") in ruled and "attorney general" in (i.get("status") or "").lower())]) + len(ag_rows)
+
+
 def rules_html(ctx, tracked, ag_rows, town):
     parts = []
     ruled = {r.get("decision_date") for r in ag_rows}
@@ -3410,7 +3442,7 @@ def build_town_page(ctx, t):
         more.append(f"""<details class="disclose" id="warrants"><summary>Town Meeting warrants with no date we could read ({len(und_m)})</summary>
 {meeting_list(ctx, und_m, show_town=False, shown=5)}</details>""")
     if tracked or ag_rows:
-        more.append(f"""<details class="disclose"><summary>Bylaw rulings and town actions ({len(tracked) + len(ag_rows)})</summary>
+        more.append(f"""<details class="disclose"><summary>Bylaw rulings and town actions ({rules_count(tracked, ag_rows)})</summary>
 {rules_html(ctx, tracked, ag_rows, town)}<p class="small"><a href="/attorney-general">Massachusetts Attorney General rulings</a></p></details>""")
     report = ""  # the page-end strip carries "Report a problem with this page"
 
@@ -4033,7 +4065,7 @@ def build_how(ctx):
 
 <section aria-labelledby="attorney-general">
   <h2 id="attorney-general">Attorney General rulings</h2>
-  <p>In Massachusetts, a town bylaw takes effect only after the Attorney General reviews it. {headline} <a href="/attorney-general">Every ruling, with its letter</a>.</p>
+  <p>In Massachusetts, the Attorney General reviews every town bylaw before it can take effect. {headline} <a href="/attorney-general">Every ruling, with its letter</a>.</p>
 </section>
 
 <section aria-labelledby="crawler">
@@ -4137,7 +4169,9 @@ def framework_list(framework):
     """State rules and rulings as a dated list, oldest first; undated entries last."""
     entries = []
     for f in sorted(framework, key=lambda f: (not f.get("date"), f.get("date") or "")):
-        when = (f'<time datetime="{e(f["date"])}">{fmt_date(f["date"])}</time>' if f.get("date") else "No single date")
+        d = f.get("date") or ""
+        shown = fmt_date(d) if len(d) == 10 else datetime.strptime(d, "%Y-%m").strftime("%b %Y") if len(d) == 7 else d
+        when = (f'<time datetime="{e(d)}">{shown}</time>' if d else "No single date")
         entries.append(f"""<li><p class="when">{when}</p><div><h3>{e(f['title'])}</h3><p>{e(f.get('summary', ''))}</p>{sources_html(f.get('sources', []))}</div></li>""")
     return f'<ol class="timeline">{"".join(entries)}</ol>'
 
@@ -4167,8 +4201,8 @@ def ag_summary_line(n):
 
 
 AG_PAGES = [("/attorney-general", "What a town can do"), ("/attorney-general/rulings", "Every ruling"),
-            ("/attorney-general/town-actions", "Town and city actions"), ("/attorney-general/data-centers", "Data-center moratoriums"),
-            ("/attorney-general/law", "State law and court rulings")]
+            ("/attorney-general/town-actions", "Town actions"), ("/attorney-general/data-centers", "Data-center ledger"),
+            ("/attorney-general/law", "State law")]
 
 # The data-center ledger: one row per town measure (moratorium or ban), with every date the record has.
 # Rows come from data/data_center_ledger.json, compiled by hand from the towns' warrants, the Attorney General's
@@ -4392,7 +4426,7 @@ def build_data_center_ledger(ctx):
         if nxt and r["status"] in ("proposed", "adopted", "reported", "in effect"):
             pairs.insert(0, ("Next on an agenda", f'<a href="/m/{nxt["id"][2:]}">{e(meeting_board(nxt))}, {e(day_label(nxt["date"], ctx))}</a>'))
         # the group heading names the status, so the row's key is the date that matters for it
-        key = {"in effect": f"To {fmt_date(r['in_effect_to'])}" if r.get("in_effect_to") else "No end date found",
+        key = {"in effect": f"To {fmt_date(r['in_effect_to'])}" if r.get("in_effect_to") else "No end date",
                "expired": f"Ended {fmt_date(r['in_effect_to'])}" if r.get("in_effect_to") else "Ended",
                "adopted": fmt_date(r["adopted_date"]) if r.get("adopted_date") else "Date not found",
                "proposed": fmt_date(r["proposed_date"]) if r.get("proposed_date") else "Date not found",
@@ -4411,9 +4445,10 @@ def build_data_center_ledger(ctx):
                                               f' data-search="{e(search)}" data-status="{e(r["status"])}"', rid)))
     body = f"""
 <div class="wrap">
-<h1 id="ledger-title">Data-center moratoriums and bans, town by town</h1>
-<p class="lead">Every town and city with a data-center moratorium or ban, proposed, in effect or ended: {plural(len(rows), 'measure')} in {len({(r.get('state'), r.get('town')) for r in rows})} places. Tap one for its dates and sources. Checked {generated}.</p>
 {ag_nav("/attorney-general/data-centers")}
+<h1 id="ledger-title">Data-center ledger</h1>
+<p class="lead">Every town and city with a data-center moratorium or ban, proposed, in effect or ended: {plural(len(rows), 'measure')} in {len({(r.get('state'), r.get('town')) for r in rows})} places. Tap one for its dates and sources. Checked {generated}.</p>
+{ag_checked(ctx)}
 <form class="filterbar" data-list-filter data-noun="measures">
   <label>Status<select data-status><option value="">All</option>{status_opts}</select></label>
   <label>Town, county, state or words<input type="search" data-search autocomplete="off"></label>
@@ -4453,9 +4488,26 @@ def site_checked(ctx):
 
 def ag_nav(current):
     ledger = (DATA / "data_center_ledger.json").exists()
-    return '<nav class="tabs" aria-label="Rulings pages"><ul>' + "".join(
+    crumbs = "" if current == "/attorney-general" else (
+        '<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/attorney-general">Rulings</a></li>'
+        f'<li><span aria-current="page">{e(dict(AG_PAGES).get(current, ""))}</span></li></ol></nav>')
+    return crumbs + '<nav class="tabs" aria-label="Rulings pages"><ul>' + "".join(
         f'<li>{"<span aria-current=\"page\">" + e(label) + "</span>" if href == current else f"<a href={chr(34)}{href}{chr(34)}>{e(label)}</a>"}</li>'
         for href, label in AG_PAGES if ledger or not href.endswith("/data-centers")) + "</ul></nav>"
+
+
+def city_words_count(ag):
+    """"1 city ordinance adopted and 2 proposed": city items by what happened to them."""
+    rows = [r for r in ag if r.get("record_type") == "city_ordinance"]
+    done = [r for r in rows if not (r.get("outcome") or "").startswith("proposed")]
+    prop = len(rows) - len(done)
+    return (f"{plural(len(done), 'city ordinance')} adopted" + (f" and {prop} proposed" if prop else "")) if done else f"{plural(prop, 'city ordinance')} proposed"
+
+
+def ag_checked(ctx):
+    """"Checked Oct 10 from the Attorney General’s decision letters": when the rulings data was last gone over."""
+    when = ctx.tracker.get("generated") or ""
+    return f'<p class="checked">Checked {fmt_date(when)} from the Attorney General’s decision letters and the towns’ postings.</p>' if when else ""
 
 
 def build_ag(ctx):
@@ -4481,7 +4533,11 @@ def build_ag(ctx):
 
     zr = [r for r in dec if r.get("bylaw_type") == "zoning regulation"]
     zp = [r for r in dec if r.get("bylaw_type") == "zoning prohibition"]
-    gl = [r for r in dec if (r.get("bylaw_type") or "").startswith("general bylaw (licensing)")]
+    gl = [r for r in dec if (r.get("bylaw_type") or "").startswith("general bylaw")]
+    # a ban on stand-alone or principal-use battery storage, whatever kind of article carried it
+    sb = [r for r in dec if "stand-alone battery storage ban" in (r.get("provisions") or [])]
+    sb_struck = [r for r in sb if r["outcome"] in ("disapproved", "approved in part")]
+    sb_ok = [r for r in sb if r["outcome"] == "approved"]
     cp = [r for r in dec if r.get("bylaw_type") == "consolidated permit bylaw"]
     part = [r for r in dec if r["outcome"] == "approved in part"]
     herb = [r for r in part if re.search(r"herbicid|pesticid", r.get("summary", "") + " " + r.get("legal_basis", ""), re.I)]
@@ -4496,8 +4552,10 @@ def build_ag(ctx):
          "Disapproved", f"{rec['disapproved']} of {rec['total']} ruled on, in {plural(rec['towns'], 'town')}", examples(rec["rows"])),
         ("Zoning that sets rules for solar or battery storage: size tiers, districts, special permits, site plan review, setbacks",
          "Approved, often with some parts struck", ratio(zr), examples(zr)),
-        ("A ban on battery storage across the town, or on stand-alone battery storage, written into zoning",
-         "Usually struck", ratio(zp), examples(zp)),
+        ("A ban on stand-alone or principal-use battery storage, in any kind of article",
+         "Struck every time since March 2023", f"{len(sb_struck)} struck, {len(sb_ok)} approved (of {len(sb)})"
+         + (f"; the approval was {', '.join(ag_town(r['town']) + ' on ' + fmt_date(r['decision_date']) for r in sb_ok)}" if sb_ok else ""),
+         examples(sb_struck)),
         ("Licensing or another general (non-zoning) bylaw for battery storage",
          "Disapproved: it has to be adopted as zoning", ratio(gl), examples(gl)),
         ("Bans on weed killers or pesticides at solar or battery storage sites",
@@ -4512,25 +4570,26 @@ def build_ag(ctx):
     all_n = rec["total"]
     body = f"""
 <div class="wrap narrow">
+{ag_nav("/attorney-general")}
 <h1 id="ag-title">What a town can do</h1>
 <p class="lead">A Massachusetts town can set rules for solar and battery storage, but pausing or banning them almost never gets past the state. It can pause or ban data centers. The state’s Attorney General reviews every town bylaw before it takes effect; here is how those reviews have gone.</p>
-{ag_nav("/attorney-general")}
+{ag_checked(ctx)}
 <ul class="answers">
   <li class="answer"><b>A moratorium on solar or battery storage</b><span>Disapproved every time since June 2022: {rec['disapproved']} of {all_n}, in {plural(rec['towns'], 'town')}.</span><a href="/attorney-general/rulings?bylaw=moratorium">See them</a></li>
   <li class="answer"><b>Zoning rules for solar or battery storage</b><span>Approved {n['ruled_ok']} times out of {n['ruled']}: {n['ruled_full']} in full and {n['ruled_part']} with some parts struck.</span><a href="/attorney-general/rulings?bylaw=zoning+regulation">See them</a></li>
-  <li class="answer"><b>A moratorium or ban on data centers</b><span>Approved: moratoriums in Shutesbury, Templeton and Gill (where the battery-storage half of the same article was struck), and Shutesbury’s ban in every district. State law doesn’t protect data centers.</span><a href="/attorney-general/data-centers">The data-center ledger</a></li>
-  <li class="answer"><b>New in 2026</b><span>The state’s highest court ruled in Sunpin (Jul 14, 2026) that a town may deny a special permit for a protected solar project only when needed to protect public health, safety or welfare. Since Oct 1, 2026, every town must take consolidated permit applications for small clean-energy projects and decide them within 12 months, or the project is approved.</span><a href="/attorney-general/law">State law and court rulings</a></li>
+  <li class="answer"><b>A moratorium or ban on data centers</b><span>Approved: moratoriums in Shutesbury, Templeton and Gill (where the battery-storage half of the same article was struck), and Shutesbury’s ban in every district. State law doesn’t protect data centers.</span><a href="/attorney-general/data-centers">Data-center ledger</a></li>
+  <li class="answer"><b>New in 2026</b><span>The state’s highest court ruled in Sunpin (Jul 14, 2026) that a town may deny a special permit for a protected solar project only when necessary to protect public health, safety or welfare. Since Oct 1, 2026, every town must take consolidated permit applications for small clean-energy projects and decide them within 12 months, or the project is approved.</span><a href="/attorney-general/law">State law</a></li>
 </ul>
-<p class="small">{n['letters']} decisions in {n['towns']} towns, letters dated {fmt_date(dates[0]) if dates else ''} to {fmt_date(dates[-1]) if dates else ''}, plus {plural(n['rt'].get('court_ruling', 0), 'court ruling')}, {plural(n['rt'].get('city_ordinance', 0), 'city ordinance')} and {n['rt'].get('pending_ag_review', 0)} awaiting review.</p>
+<p class="small">{plural(len(dec), 'ruling')} in {plural(n['letters'], 'case')} to {plural(n['towns'], 'town')}, letters dated {fmt_date(dates[0]) if dates else ''} to {fmt_date(dates[-1]) if dates else ''}; plus {plural(n['rt'].get('court_ruling', 0), 'court ruling')}, {city_words_count(ag)} and {plural(n['rt'].get('pending_ag_review', 0), 'bylaw')} awaiting a decision.</p>
 <h2 id="survives-title">How the Attorney General has ruled, by kind of bylaw</h2>
 <div class="table-wrap"><table class="stack"><thead><tr><th scope="col">Kind of bylaw</th><th scope="col">Result</th><th scope="col">Count</th><th scope="col">Recent examples</th></tr></thead><tbody>{pattern_rows}</tbody></table></div>
 <p class="small">{e(n['also'])} The three data-center letters are in the rulings list too: Shutesbury’s (case 12047, Jan 20, 2026) and Templeton’s (case 12294, decided between Sep 14 and Sep 22, 2026) as the towns posted them, and Gill’s (case 12422, Sep 24, 2026), which struck the battery-storage half of the same article.</p>
 <h2 id="why-title">Why</h2>
-<p>A town bylaw takes effect only after the Attorney General’s office reviews it; city ordinances don’t go there. {LAW_SOLAR} Since Tracer Lane II, the Attorney General judges what a bylaw is for against how much it burdens solar, and many approvals warn that using a bylaw to deny a project <q>would run a serious risk of violating</q> § 3.</p>
+<p>The Attorney General reviews every town bylaw (G.L. c. 40, § 32); one the office doesn’t act on in time counts as approved. Once a zoning bylaw is approved and posted, it takes effect as of the Town Meeting vote (G.L. c. 40A, § 5). City ordinances don’t go to the Attorney General. {LAW_SOLAR} Since Tracer Lane II, the Attorney General judges what a bylaw is for against how much it burdens solar, and many approvals warn that using a bylaw to deny a project <q>would run a serious risk of violating</q> § 3.</p>
 <p>{LAW_BATTERY}</p>
 <p>The Attorney General approved data-center moratoriums in Shutesbury, Templeton and Gill, because state law doesn’t protect data centers the way it protects solar; the letters are in <a href="/attorney-general/rulings">the rulings list</a>. Missing or out of date? <a href="/contact">Send a correction</a>.</p>
 <details class="disclose"><summary>Words on this page</summary>
-<p class="terms"><dfn>Tracer Lane II</dfn>: the 2022 ruling by the state’s highest court that a town can’t use zoning to ban solar. <dfn>G.L. c. 40A, § 3</dfn>: the state zoning law’s solar clause; a town can’t prohibit solar or restrict it unreasonably. <dfn>225 CMR 29.00</dfn>: the state’s 2025 rules for permitting clean-energy projects, with one consolidated local permit. <dfn>Land Court</dfn>: a state trial court for land disputes; its rulings carry less weight than the highest court’s.</p>
+<p class="terms"><dfn>Tracer Lane II</dfn>: the 2022 ruling by the state’s highest court that a town can’t use zoning to ban solar. <dfn>G.L. c. 40A, § 3</dfn>: the state zoning law’s solar clause; a town can’t prohibit solar or restrict it unreasonably. <dfn>225 CMR 29.00</dfn>: the state’s rules, final in February 2026, for permitting small clean-energy projects with one consolidated local permit. <dfn>Land Court</dfn>: a state trial court for land disputes; its rulings carry less weight than the highest court’s.</p>
 </details>
 </div>
 """
@@ -4564,10 +4623,11 @@ def build_ag_rulings(ctx):
         r["_csv"] = i
     body = f"""
 <div class="wrap">
+{ag_nav("/attorney-general/rulings")}
 <h1 id="ag-title">Every ruling</h1>
 <p class="lead">Every decision the Massachusetts Attorney General has made on a town’s solar, battery storage or data-center bylaw since 2022, newest first. Tap one for the letter.</p>
-<p class="checked">{plural(len(n["dec"]), "ruling")} in {plural(n["letters"], "decision letter")} to {plural(n["towns"], "town")}{f', {fmt_date(n["dates"][0])} to {fmt_date(n["dates"][-1])}' if n["dates"] else ""}. {"Some letters rule on more than one bylaw. " if len(n["dec"]) > n["letters"] else ""}{plural(sum(1 for r in ag if r.get("record_type") == "pending_ag_review"), "bylaw")} awaiting a decision.</p>
-{ag_nav("/attorney-general/rulings")}
+<p class="checked">{plural(len(n["dec"]), "ruling")} in {plural(n["letters"], "case")} to {plural(n["towns"], "town")}{f', {fmt_date(n["dates"][0])} to {fmt_date(n["dates"][-1])}' if n["dates"] else ""}. A case can have more than one letter, and Gill’s one letter rules on two bylaws. {plural(sum(1 for r in ag if r.get("record_type") == "pending_ag_review"), "bylaw")} awaiting a decision is listed at the end.</p>
+{ag_checked(ctx)}
 <details class="filter-box"><summary>Filter the rulings</summary>
 <div class="filterbar" data-filters="ag-ledger">
   <label>Outcome<select data-key="outcome"><option value="">All</option>{opts(outcomes)}</select></label>
@@ -4580,7 +4640,7 @@ def build_ag_rulings(ctx):
 </details>
 <p class="results-head" data-count-for="ag-ledger" aria-live="polite"></p>
 {ag_table(ctx, decisions, table_id='ag-ledger', filters=True, by_year=True)}
-<p class="action-row"><a href="/attorney-general/rulings.csv" download data-csv-for="ag-ledger">Download every ruling (CSV)</a></p>
+<p class="action-row"><a href="/attorney-general/rulings.csv" download data-csv-for="ag-ledger">Download everything as a CSV ({len(ag)} rows: {len(n["dec"])} rulings, {n["rt"].get("court_ruling", 0)} court rulings, {n["rt"].get("city_ordinance", 0)} city items, {n["rt"].get("pending_ag_review", 0)} awaiting a decision)</a></p>
 <h2 id="ag-context">Court rulings and city ordinances</h2>
 <p>For context: the courts’ rulings on these bylaws, and what cities (which adopt ordinances without Attorney General review) have done.</p>
 {ag_table(ctx, context, table_id='ag-context', filters=True, group='ag-ledger')}
@@ -4601,9 +4661,10 @@ def build_ag_actions(ctx):
     verified = fmt_date(ctx.tracker.get("generated", date.today().isoformat()))
     body = f"""
 <div class="wrap">
-<h1 id="ag-title">Town and city actions on battery storage and solar</h1>
-<p class="lead">What towns and cities have done about battery storage and solar: moratoriums, special acts, zoning bylaws and permit rules. Tap one for its sources. Checked {verified}.</p>
 {ag_nav("/attorney-general/town-actions")}
+<h1 id="ag-title">Town actions</h1>
+<p class="lead">What towns and cities have done about battery storage and solar: moratoriums, special acts, zoning bylaws and permit rules. Tap one for its sources. Checked {verified}.</p>
+{ag_checked(ctx)}
 <details class="filter-box"><summary>Filter the actions</summary>
 <div class="filterbar">
   <label>Status<select id="f-status"><option value="">All</option><option value="pending">Pending</option><option value="active">In effect or adopted</option><option value="cleared">Not in effect</option><option value="info">Permit rules</option></select></label>
@@ -4636,6 +4697,7 @@ def build_ag_law(ctx):
         cells = (("Approved", a), ("In part", p), ("Disapproved", d), ("Other", k - a - p - d), ("Total", k))
         return "".join(f"<td class='num' data-label='{label}'>{v}</td>" for label, v in cells)
 
+    dec = [r for r in dec if r.get("technology") != "data center"]  # data-center moratoriums have their own page
     types = Counter(r.get("bylaw_type") for r in dec)
     type_rows = "".join(
         f"<tr><th scope='row'>{e(first_up(t))}</th>{count_cells(a, p, d, k)}</tr>"
@@ -4649,15 +4711,18 @@ def build_ag_law(ctx):
                 '<th scope="col" class="num">Disapproved</th><th scope="col" class="num">Other</th><th scope="col" class="num">Total</th></tr></thead>')
     body = f"""
 <div class="wrap narrow">
-<h1 id="ag-title">State law and court rulings on solar and battery storage</h1>
-<p class="lead">{LAW_SOLAR} {LAW_BATTERY}</p>
 {ag_nav("/attorney-general/law")}
+<h1 id="ag-title">State law</h1>
+<p class="lead">{LAW_SOLAR}</p>
+{ag_checked(ctx)}
+<p>{LAW_BATTERY}</p>
 <p class="section-lead">Since October 1, 2026, every Massachusetts city and town has had to accept consolidated permit applications for small clean-energy projects and decide them within 12 months.</p>
 {framework_list(ctx.tracker.get('framework', []))}
-<h2 id="bytype-title">Attorney General outcomes by type and year</h2>
+<h2 id="bytype-title">Attorney General rulings on solar and battery-storage bylaws, by kind and by year</h2>
+<p class="small">{plural(len(dec), 'ruling')}. Data-center moratoriums are counted on <a href="/attorney-general/data-centers">the data-center ledger</a>.</p>
 <div class="cols">
-  <div class="table-wrap" tabindex="0" role="region" aria-label="Outcomes by kind of bylaw"><table class="stack counts">{cnt_head.format('Kind of bylaw')}<tbody>{type_rows}</tbody></table></div>
-  <div class="table-wrap" tabindex="0" role="region" aria-label="Outcomes by year"><table class="stack counts">{cnt_head.format('Year')}<tbody>{year_rows}</tbody></table></div>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Outcomes by kind of bylaw"><table class="stack counts"><caption>By kind of bylaw</caption>{cnt_head.format('Kind of bylaw')}<tbody>{type_rows}</tbody></table></div>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Outcomes by year"><table class="stack counts"><caption>By year</caption>{cnt_head.format('Year')}<tbody>{year_rows}</tbody></table></div>
 </div>
 </div>
 """

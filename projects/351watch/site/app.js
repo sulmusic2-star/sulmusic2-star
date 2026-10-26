@@ -327,7 +327,7 @@ function setupGenericFilters() {
       });
       const on = selects.some((s) => s.value) || (search && search.value.trim());
       // the count is for the main list (the Attorney General's rulings), not the court rulings filtered with it
-      const own = rows.filter((r) => !home || home.contains(r));
+      const own = rows.filter((r) => (!home || home.contains(r)) && !r.dataset.nocount);
       const ownShown = own.filter((r) => !r.hidden).length;
       const said = on ? (ownShown ? `${ownShown} of ${own.length} shown` : `None of the ${own.length} match. Try fewer words or another filter.`) : '';
       if (count) count.textContent = said;

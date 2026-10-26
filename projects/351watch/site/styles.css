@@ -655,3 +655,21 @@ form[data-list-filter] label { flex: 1 1 100%; }
 .inline-links { list-style: none; margin: var(--s2) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); }
 .others { margin-top: var(--s7); padding-top: var(--s5); border-top: 1px solid var(--rule); }
 .others .small { margin: 0; }
+
+/* Rulings: outcome tags in the four spec colors; a timeline's source links are a plain list; the tab row fades at its edge on a phone. */
+.tag { display: inline-block; font-weight: 600; padding: 0 6px; border-radius: 3px; font-size: var(--t-sm); }
+.tag-ok { color: #1c5a2a; background: #e4f3e7; }
+.tag-part { color: var(--warn); background: var(--warn-wash); }
+.tag-no { color: #8a1c1c; background: #f8e5e5; }
+.tag-wait { color: var(--muted); background: var(--land); }
+.timeline li { display: block; border-bottom: 0; padding: 0; }
+.timeline > li { display: grid; grid-template-columns: 140px 1fr; gap: var(--s4); padding: var(--s4) 0; border-bottom: 1px solid var(--rule); }
+.timeline .sources { margin: var(--s2) 0 0; padding: 0; list-style: none; }
+.timeline .sources li { padding: 2px 0; }
+table.counts caption { text-align: left; font-weight: 600; padding: 0 0 var(--s2); }
+@media (max-width: 760px) {
+  .tabs { position: relative; }
+  .tabs::after { content: ""; position: absolute; top: 0; right: 0; bottom: 1px; width: 40px; pointer-events: none;
+    background: linear-gradient(90deg, rgba(255,255,255,0), var(--paper, #fff)); }
+  .timeline > li { grid-template-columns: 1fr; gap: var(--s1); }
+}
