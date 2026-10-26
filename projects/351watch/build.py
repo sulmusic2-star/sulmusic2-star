@@ -61,7 +61,7 @@ def owner_html(cls="owner"):
     return f'<p class="{cls}">{escape(OWNER_LINE)}</p>' if OWNER_LINE else ""
 # The crawler's name and the User-Agent it sends (shown on How it works, #crawler).
 BOT_NAME = "AgendaAheadBot"
-BOT_UA = "AgendaAheadBot/0.1 (+https://agendaahead.com/bot)"
+BOT_UA = "AgendaAheadBot/0.1 (+https://agendaahead.vercel.app/bot)"
 
 STATE_NAMES = {
     "MA": "Massachusetts", "NY": "New York", "RI": "Rhode Island", "CT": "Connecticut", "NH": "New Hampshire",
@@ -2485,7 +2485,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     if not full:
         # the time in its own column; the day is the heading above the day's meetings
         when = (f'<span class="meet-when"><time datetime="{m["date"]}">{e(m["time"])}</time></span>' if m["time"] and m["date"]
-                else '<span class="meet-when none">Time not given</span>')
+                else '<span class="meet-when none">No time listed</span>')
     head = "" if full else f'<p class="meet-head" data-slop-ignore>{meeting_head(ctx, m, show_town, with_when=False, doc_link=link)}</p>'
     speak_html = f'<p class="speak-line"><b>Speaking:</b> {e(speak)}</p>' if speak else ""
     terms = terms_html(m, source) if full and not m.get("cancelled") else ""
@@ -2830,6 +2830,7 @@ def build_index(ctx):
 <section class="home-hero" aria-labelledby="hero-title">
   <h1 id="hero-title">See what’s coming up at your town meetings</h1>
   <p class="lead">We read <a href="/how-it-works#coverage">{towns_read} towns’</a> agendas in {e(abbr)} every morning and tell you when solar, battery storage, a data center, a zoning change, affordable housing or a cell tower is on one. Free, with no account.</p>
+  {site_checked(ctx)}
   {town_box(ctx)}
   {owner_html()}
 </section>
@@ -3608,6 +3609,7 @@ def build_towns_index(ctx):
 <section class="page-head" aria-labelledby="towns-title">
   <h1 id="towns-title">Find your town</h1>
   <p class="lead">Pick your town to see what its boards have coming up.</p>
+  {site_checked(ctx)}
   <noscript><p class="notice">The town box needs JavaScript. Every town is listed below, by state and county.</p></noscript>
   <form class="filterbar" data-list-filter role="search" action="/towns" method="get">
     <label>Town or county<input type="search" name="q" data-search autocomplete="off" autocapitalize="words" spellcheck="false"></label>
@@ -3843,6 +3845,7 @@ def build_search(ctx):
 <div class="wrap narrow">
 <h1 id="search-title">Search agendas</h1>
 <p class="lead">The full text of every flagged item on {sum(m for _, m, _ in ctx.coverage())} towns’ agendas, past meetings and coming up.</p>
+{site_checked(ctx)}
 <form id="search-form" class="searchform" action="/search" method="get" role="search" data-towns="{sum(m for _, m, _ in ctx.coverage())}">
   <label for="search-q">Search for</label>
   <div class="field-row">
@@ -3892,7 +3895,7 @@ def build_watch(ctx, groups=False):
     topic_count = Counter(t for h in ctx.hits for t in h.get("topics", []))
     topics = [k for k in TOPIC_LABELS if topic_count.get(k) or k not in GATED_TOPICS | {"wetlands_filing"}]
     topics += sorted(k for k in topic_count if k not in TOPIC_LABELS)
-    preset = ("solar", "battery_storage", "data_center")
+    preset = tuple(topics)  # every subject, unless the person narrows them: following for 40B or cell towers must not come up empty
     topic_boxes = "".join(
         f'<li><label class="check"><input type="checkbox" name="topics" value="{e(k)}"{" checked" if k in preset else ""}>'
         f'<span>{e(TOPIC_LABELS.get(k, k))}</span></label></li>'
@@ -3934,6 +3937,7 @@ def build_watch(ctx, groups=False):
 <p class="notice err" id="watch-error" role="alert" hidden></p>
 <h1 id="watch-title" tabindex="-1" data-start="{e(title)}">{e(title)}</h1>
 {f'<p class="lead">{e(lead)}</p>' if lead else ""}
+{site_checked(ctx)}
 {more}
 <noscript><p class="notice">Following a town needs JavaScript. You can still <a href="/towns">find your town</a> and read what’s coming up there.</p></noscript>
 <form id="watch-form" class="watch-form" data-mode="{'groups' if groups else 'residents'}" novalidate>
@@ -3975,7 +3979,7 @@ def build_watch(ctx, groups=False):
       <p class="form-note" id="near-note" hidden></p>
       <p class="form-note cant-note" id="cant-note" hidden></p>
     </fieldset>
-    <p class="topic-line" id="topic-line">Topics: <span id="topic-names">solar, battery storage, data centers</span>. <button type="button" class="link-btn" id="topics-change">Change</button></p>
+    <p class="topic-line" id="topic-line">Topics: <span id="topic-names">{e(join_and(TOPIC_LABELS.get(k, k)[0].lower() + TOPIC_LABELS.get(k, k)[1:] for k in topics))}</span>. <button type="button" class="link-btn" id="topics-change">Change topics</button></p>
     <details class="disclose" id="other-ways"><summary>Other ways: topics, towns, calendar, RSS</summary>
       <fieldset class="near" id="topics-step">
         <legend class="big-legend">Topics</legend>

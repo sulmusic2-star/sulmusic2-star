@@ -873,7 +873,10 @@ function setupCopyAndShare() {
     const post = data.text ? `${data.text}\n${data.url}` : data.url;
     flash(share, (await copyText(post)) ? 'Copied, ready to paste' : 'Couldn’t copy');
   });
-  for (const b of document.querySelectorAll('[data-copy][hidden], [data-share][hidden]')) b.hidden = false;
+  for (const b of document.querySelectorAll('[data-copy][hidden], [data-share][hidden]')) {
+    b.hidden = false;
+    if (b.matches('[data-share]') && !navigator.share) b.textContent = 'Copy link';
+  }
 }
 
 followOldAnchors();

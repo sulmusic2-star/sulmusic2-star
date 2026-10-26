@@ -81,7 +81,7 @@ PORTAL = HOST + "/portal"
 RECORD_PAGE = PORTAL + "#!/wire/{id}"                      # public detail page for one filing
 RESULTS_PAGE = PORTAL + "#!/search/wire/results?{qs}"      # public results page (town + dates)
 
-USER_AGENT = "351WatchBot/0.1 (+contact: hello@351watch.example)"
+USER_AGENT = "AgendaAheadBot/0.1 (+https://agendaahead.vercel.app/bot)"
 ROBOTS_AGENT = "351WatchBot"
 MIN_INTERVAL = 1.05          # seconds between requests to the host (<= 1 request/second)
 PAGE = 200                   # list page size
