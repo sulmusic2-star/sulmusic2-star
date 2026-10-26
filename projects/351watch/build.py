@@ -733,11 +733,9 @@ class DotMap:
 
 # ---------------------------------------------------------------- shared markup
 
-NAV = [
+NAV = [  # three places to go; Topics and Rulings are reached from the home page and the footer
     ("/upcoming", "Coming up"),
     ("/towns", "Towns"),
-    ("/topics", "Topics"),
-    ("/attorney-general", "Rulings"),
     ("/search", "Search"),
 ]
 FOLLOW = ("/watch", "Follow a town")
@@ -2880,46 +2878,55 @@ def home_map(ctx):
 
 
 def build_index(ctx):
-    states = join_and(STATE_NAMES.get(x, x) for x in ctx.states)
+    """The first screen: one question, one box, then this week's three biggest items, how it works in three
+    lines, and the subjects. Everything else is a tap away."""
     stories, _ = trending_stories(ctx)
     week_end = (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=7)).strftime("%Y-%m-%d")
     week = [st for st in stories if st["meeting_date"] and st["meeting_date"] <= week_end][:3]
-    big_title = f"{len(week)} to watch this week" if week else "Biggest stories coming up"
     week = sorted(week, key=lambda st: st["meeting_date"]) or stories[:3]  # the biggest three, in the order they happen
-    next_html = (f'<ol class="rows">{"".join(story_html(ctx, st) for st in week)}</ol>' if week
+    next_html = (f'<ol class="rows">{"".join(story_html(ctx, st, reasons=False) for st in week)}</ol>' if week
                  else '<p class="empty">Nothing big on the agendas posted so far.</p>')
     towns_read = sum(m for _, m, _ in ctx.coverage())
-    abbr = join_and(ctx.states)
+    states = join_and(STATE_NAMES.get(x, x) for x in ctx.states)
     ahead = upcoming_hits(ctx)
     ahead_towns = len({(h.get("state"), h.get("town")) for h in ahead})
-    ahead_lines = sum(len(m["lines"]) for m in group_meetings(ctx, ahead))  # what /upcoming lists, not raw windows
-    see_all = (f"See all {ahead_lines:,} items coming up in {ahead_towns} towns" if ahead else "See everything coming up")
+    checked = et_when(ctx.hits_doc.get("generated") or "")
     body = f"""
 <div class="wrap narrow home">
 <section class="home-hero" aria-labelledby="hero-title">
-  <h1 id="hero-title">See what’s coming up at your town meetings</h1>
-  <p class="lead">We read <a href="/how-it-works#coverage">{towns_read} towns’</a> agendas in {e(abbr)} every morning and tell you when solar, battery storage, a data center, a zoning change, affordable housing or a cell tower is on one. Free, with no account.</p>
-  {site_checked(ctx)}
-  {town_box(ctx)}
+  <h1 id="hero-title">See what your town is about to decide</h1>
+  <p class="lead">Type your town. You’ll see its next meetings about solar, battery storage, data centers, zoning, housing and cell towers, each in one plain sentence, with a link to the agenda.</p>
+  {town_box(ctx, label="Your town")}
+  <p class="small home-note">Free, no account.{f" Updated every morning; last checked {e(checked)}." if checked else ""}</p>
   {owner_html()}
 </section>
 <section class="next" aria-labelledby="next-title">
-  <h2 id="next-title">{big_title}</h2>
+  <h2 id="next-title">This week</h2>
   {next_html}
-  <p class="more-link"><a href="/upcoming">{see_all}</a></p>
+  <p class="more-link"><a href="/upcoming">Everything coming up in {ahead_towns} towns, by date</a></p>
+</section>
+<section class="next" aria-labelledby="how-title">
+  <h2 id="how-title">How it works</h2>
+  <ol class="steps">
+    <li>Every morning we read the agendas that <a href="/how-it-works#coverage">{towns_read} towns</a> in {e(states)} post online.</li>
+    <li>We pick out the items about {SUBJECTS}, and put each one in a plain sentence.</li>
+    <li>Follow your town and you get a page and a calendar feed for it and the towns next door, updated every morning.</li>
+  </ol>
+  <p class="more-link"><a href="/how-it-works">More about how it works</a></p>
 </section>
 <section class="next" aria-labelledby="topics-title">
-  <h2 id="topics-title">By topic</h2>
+  <h2 id="topics-title">Browse by subject</h2>
   <ul class="topic-links">{"".join(f'<li><a href="/topics/{tp["slug"]}">{e(tp["name"])}</a></li>' for tp in TOPIC_PAGES)}</ul>
+  <p class="small">Wondering what a town is allowed to do? <a href="/attorney-general">How the state has ruled on town bylaws</a>.</p>
 </section>
 </div>
 """
     return page(
         ctx,
-        f"See what’s coming up at your town meetings | {SITE_NAME}",
-        f"Find out when solar, battery storage or data centers are on your town board’s agenda in {join_and(ctx.states)}. "
+        f"See what your town is about to decide | {SITE_NAME}",
+        f"Type your town to see its next meetings about solar, battery storage, data centers, zoning and housing in {join_and(ctx.states)}. "
         "Free, with no account.",
-        body, "/", og_title="See what’s coming up at your town meetings",
+        body, "/", og_title="See what your town is about to decide",
     )
 
 
@@ -3074,7 +3081,8 @@ def build_upcoming(ctx):
 <div class="wrap narrow">
 <section class="page-head" aria-labelledby="up-title">
   <h1 id="up-title">Coming up</h1>
-  <p class="lead">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {plural(n_towns, 'town')}: {SUBJECTS} on town agendas.</p>
+  <p class="lead">Every meeting in the next few weeks with {SUBJECTS_OR} on the agenda, soonest first. Narrow it by county, subject or town.</p>
+  <p class="small">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {plural(n_towns, 'town')}.</p>
   {site_checked(ctx)}
   {tabs(COMING_TABS, "/upcoming", "Coming up")}
   {list_tools_html(counties, cant_read_by_county(ctx), topics={t for m in meetings for v in m["lines"].values() for t in (v.get("topics") or [])})}
@@ -3216,7 +3224,7 @@ def story_reasons(st):
     return (chips[:2] if len(chips) >= 2 else chips + wave[:1])[:2]
 
 
-def story_html(ctx, st, level=3, rank=None):
+def story_html(ctx, st, level=3, rank=None, reasons=True):
     """One story as a compact row: its rank (or day), town · board · day, the item's line, and the stage word.
     The row links to the meeting's page, where the detail lives."""
     when = f'<time datetime="{st["meeting_date"]}">{e(day_label(st["meeting_date"], ctx))}</time>' if st["meeting_date"] else "Date not set"
@@ -3231,8 +3239,8 @@ def story_html(ctx, st, level=3, rank=None):
     if stage and STATUS_PREFIX.match(line):
         line = STATUS_PREFIX.sub("", line)
         line = line[:1].upper() + line[1:]
-    reasons = story_reasons(st)
-    why = f'<span class="row-why">{"".join(f"<span>{e(r)}</span>" for r in reasons)}</span>' if reasons else ""
+    why_list = story_reasons(st) if reasons else []
+    why = f'<span class="row-why">{"".join(f"<span>{e(r)}</span>" for r in why_list)}</span>' if why_list else ""
     return f"""<li class="row" data-id="{e(st['id'])}" data-date="{e(st.get('meeting_date') or '')}" data-topics="{e(' '.join(st.get('topics') or []))}">
   <a href="{e(st['href'])}">{first}<span class="row-when" data-slop-ignore><span class="row-town">{town}</span>{board}{day_meta}{new}</span>
   <span class="row-line">{e(line)}</span>{why}{stage}</a>
@@ -3926,8 +3934,7 @@ def build_topics_index(ctx):
 <div class="wrap narrow">
 <section class="page-head" aria-labelledby="topics-title">
   <h1 id="topics-title">Topics</h1>
-  <p class="lead">The {len(rows)} subjects we look for on every agenda, and how many meetings coming up touch each one.
-  A meeting with two of them on its agenda counts under both.</p>
+  <p class="lead">Pick a subject to see every meeting about it. A meeting with two subjects on its agenda counts under both.</p>
   {site_checked(ctx)}
 </section>
 <ul class="topic-boxes">{''.join(rows)}</ul>
@@ -3952,7 +3959,7 @@ def build_search(ctx):
     body = f"""
 <div class="wrap narrow">
 <h1 id="search-title">Search agendas</h1>
-<p class="lead">The full text of every flagged item on {sum(m for _, m, _ in ctx.coverage())} towns’ agendas, past meetings and coming up.</p>
+<p class="lead">Search the words of every agenda we’ve read, past and coming up: a project, a street, a company, a bylaw.</p>
 {site_checked(ctx)}
 <form id="search-form" class="searchform" action="/search" method="get" role="search" data-towns="{sum(m for _, m, _ in ctx.coverage())}">
   <label for="search-q">Search for</label>
@@ -4036,7 +4043,8 @@ def build_watch(ctx, groups=False):
         more = '<p class="form-note">Watching many towns? <a href="/contact">Tell us what you need</a>.</p>'
         switch = ""
     else:
-        title, lead, more = "Follow a town", "Free for your town and the towns next to it. No account needed.", ""
+        title, lead, more = "Follow a town", ("Your town’s meetings on the subjects you choose, in a page and a calendar feed that "
+                                             "update every morning. Free for your town and the towns next to it; no account."), ""
         switch = 'Want them in Slack, Teams or Discord? <a href="/alerts-for-groups">Post to a chat app</a>.'
 
     body = f"""
