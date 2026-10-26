@@ -47,15 +47,21 @@ All three run on the crawler, the writer and the pages we have. Each needs a new
 
 ## 3. How the people who did this did it
 
-Patterns from Appendix A, each with the case that proves it:
+Patterns from Appendix A, each with the case that proves it.
 
-- **The first ten customers already paid someone to read badly.** D.C. brokers after the 1989 crash (CoStar), Wisconsin contractors bidding late (Curate), lobbyists (Politico Pro). Nobody started with the general public.
-- **Price per organization per topic; sell the cheap tier to individuals, but the organizations pay the bills.** Over 95% of Politico Pro's buyers were organizations; its renewal rate was 96%.
-- **One geography until renewal is proven, then expand.** CoStar stayed in Washington for seven years; Curate was Wisconsin-only before six Midwest states, then fifty.
-- **The moat is upstream access and the archive, not the scraper.** Glenigan's exclusive gets UK planning applications three weeks before council websites. Dodge's edge in 1891 was a man with index cards who knew the clerks. For us: the 315 town clerks who email us packets on filing, and a tagged history that a buyer can query ("which towns moved on battery bylaws this quarter, and what passed").
-- **Fund the first year with a sponsor or two anchor customers.** Punchbowl's $10 million first year was mostly sponsorship; Bloomberg's first customer paid $30 million for twenty terminals before anyone else could buy.
-- **Edges die four ways**: the government publishes the record well (free EDGAR killed the resellers), the subjects opt out, the input commoditizes, or the firm outgrows its renewing customers. Assume Massachusetts or a vendor will one day publish a free statewide agenda search; sell the synthesis, the history and the clerk relationships, which stay valuable when the raw feed is free.
-- **The legal lines are clear**: read only what boards post; never copy another service's write-ups or photos (CoStar won $500 million from Xceligent); respect portal terms of service (hiQ paid and died); build no profiles of residents who speak at hearings; never act on anything a staffer tells you before it is posted.
+The first ten customers were always people who already paid someone to read badly: Washington brokers after the 1989 crash for CoStar, Wisconsin contractors bidding late for Curate, lobbyists for Politico Pro. Nobody started with the general public.
+
+The price is per organization per topic. A cheap tier for individuals works, but the organizations pay the bills: over 95% of Politico Pro's buyers were organizations, and its renewal rate was 96%. Renewal is the business.
+
+Every winner stayed in one geography until renewal was proven. CoStar stayed in Washington for seven years; Curate was Wisconsin-only before six Midwest states, then fifty.
+
+The moat was never the scraper. It was upstream access and the archive. Glenigan's exclusive gets UK planning applications three weeks before council websites; Dodge's edge in 1891 was a man with index cards who knew the clerks. For us that means the 315 town clerks who would email us packets on filing, and a tagged history a buyer can query: which towns moved on battery bylaws this quarter, and what passed.
+
+The first year was funded by a sponsor or an anchor customer, not by seats. Punchbowl's $10 million first year was mostly sponsorship; Bloomberg's first customer paid $30 million for twenty terminals before anyone else could buy.
+
+Edges die four ways: the government publishes the record well (free EDGAR killed the resellers), the subjects opt out, the input commoditizes, or the firm outgrows its renewing customers. Assume Massachusetts or a vendor will one day publish a free statewide agenda search, and sell the synthesis, the history and the clerk relationships, which stay valuable when the raw feed is free.
+
+The legal lines are clear. Read only what boards post. Never copy another service's write-ups or photos (CoStar won $500 million from Xceligent). Respect portal terms of service (hiQ paid and died). Build no profiles of residents who speak at hearings. Never act on anything a staffer tells you before it is posted.
 
 ## 4. Recommendation
 
