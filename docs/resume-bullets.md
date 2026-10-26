@@ -1,39 +1,17 @@
-# Skills Snapshot
+# Selected skills and examples
 
-I build practical product systems: mobile apps, workflow tools, tested code paths, evidence-backed packets, review queues, and demos that make the work easy to evaluate.
+## Property-record workflows
 
-## Strongest skills
+[Lasting Ground public examples](https://github.com/sulmusic2-star/lasting-ground-showcase) cover source-lane validation, evidence scoring, uncertainty states and report assembly on synthetic input. The application source is private.
 
-- Product UX and evaluation surfaces: building demos, mobile-style flows, proof pages, sample artifacts, and reviewer-friendly paths through the work.
+## Mobile application logic
 
-- **Mobile product development:** React Native, Expo, TypeScript, mobile UI flows, game loops, progression systems, and Firebase-backed architecture.
-- **Full-stack workflow design:** turning scattered inputs into structured states, review queues, backend rules, and usable outputs.
-- **Evidence-backed systems:** source registries, validation gates, support-depth rules, readable proof artifacts, and careful claim handling.
-- **AI-assisted operations:** using AI as part of a controlled workflow with review steps, structured outputs, and human approval where it matters.
-- **Product packaging:** demos, screenshots, sample PDFs, unit tests, coverage summaries, CI checks, engineering decision notes, and GitHub case studies that make projects easy to evaluate.
+[SquadBrain public examples](https://github.com/sulmusic2-star/squadbrain-showcase) cover session state, ranking, practice selection, matchmaking and submitted-result checks. SquadBrain is listed on the App Store under Timothy Sullivan. The public examples are a selected portion of the application.
 
-## Selected work
+## Data verification
 
-- Selected work: https://sulmusic2-star.github.io/proof/
-- Interactive systems lab: https://sulmusic2-star.github.io/lab/
-- SquadBrain case study: https://sulmusic2-star.github.io/case-studies/squadbrain/
-- Lasting Ground case study: https://sulmusic2-star.github.io/case-studies/lasting-ground/
+[GroundTruth-Geo](https://github.com/sulmusic2-star/groundtruth-geo) contains a small property-record test set, dated official-source receipts, geometry checks and an answer grader. The selected cases are not a representative accuracy study.
 
-- Built **SquadBrain**, a mobile sports roster memorization game with practice loops, quick-match competition, achievements, leaderboards, and Firebase-backed product architecture.
-- Built **Lasting Ground**, a source-backed property review system that turns fragmented public/official context into structured packets with validation gates and clear uncertainty handling.
-- Created demos, sample packets, documentation, project pages, tested code examples, coverage summaries, CI checks, and an interactive systems lab so the work can be reviewed without needing a long explanation.
-- Designed workflows around queues, decision states, generated artifacts, QA checks, and approval points.
+## Developer tools
 
-## Roles this fits
-
-- Solutions Engineer
-- Implementation Specialist
-- Technical Customer Success
-- AI Workflow / Automation Specialist
-- Product Operations
-- Technical Product Analyst
-- Founder Associate / Technical Operator
-
-## Short summary
-
-I work best where product, systems, and operations meet: translating complex processes into usable tools, validation logic, and clear artifacts.
+[Agent Vigil](https://github.com/sulmusic2-star/agent-vigil) contains pull-request verification tooling. [Patch Lab](https://github.com/sulmusic2-star/patch-lab) is a public alpha for repository evidence and migration checks.
