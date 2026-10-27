@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T11:22:23+00:00",
+ "generated": "2026-10-27T11:18:35+00:00",
  "states": {
   "CT": {
    "data_center": 1,
@@ -9,7 +9,7 @@
   },
   "MA": {
    "battery_storage": 1,
-   "data_center": 34,
+   "data_center": 37,
    "moratorium": 4,
    "solar": 1,
    "wind": 3
@@ -23,8 +23,9 @@
    "moratorium": 2
   },
   "RI": {
+   "battery_storage": 1,
    "data_center": 4,
-   "solar": 1,
+   "solar": 2,
    "wind": 2
   }
  },

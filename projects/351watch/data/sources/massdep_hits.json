@@ -1,15 +1,15 @@
 {
- "generated": "2026-10-26T11:02:01+00:00",
+ "generated": "2026-10-27T11:02:19+00:00",
  "source": "massdep_wetlands",
  "source_name": "MassDEP Wetlands Protection Act filings (EEA Data Portal, WIRe)",
  "window": {
   "start": "2025-10-10",
-  "end": "2026-10-26"
+  "end": "2026-10-27"
  },
  "states": [
   "MA"
  ],
- "filings_total": 4786,
+ "filings_total": 4805,
  "hits_count": 95,
  "notes": "meeting_date is the DEP filing date (the API has no hearing date); the Conservation Commission must open its hearing within 21 days of filing (310 CMR 10.05(5)(b)). Extra per-hit fields are under 'details'.",
  "hits": [
@@ -336,7 +336,7 @@
    }
   },
   {
-   "id": "6443b018eb19",
+   "id": "34d5c3883aeb",
    "state": "MA",
    "town": "Whately",
    "county": "Franklin",
@@ -347,7 +347,7 @@
     "wetlands_filing",
     "solar"
    ],
-   "snippet": "NOI, Jake Marley With Hyperion Systems, LLC: Application for a proposed 400.00 kW AC (590.40 kW DC) large-scale, ground-mounted, elevated, dual-use solar array located at 299 river road. 299 River Rd.",
+   "snippet": "NOI, Hyperion Systems, LLC: Application for a proposed 400.00 kW AC (590.40 kW DC) large-scale, ground-mounted, elevated, dual-use solar array located at 299 river road. 299 River Rd.",
    "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213344",
    "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
    "document_title": "MassDEP wetlands filing 339-0142 — Notice of Intent, Whately",
@@ -361,11 +361,11 @@
     "filing_type": "Notice of Intent",
     "project_type": "Commercial/Industrial",
     "received_date": "2026-09-29",
-    "issued_date": null,
-    "status": "file_number_issued",
+    "issued_date": "2026-10-26",
+    "status": "decision_issued",
     "soc_requested": false,
     "meeting_date_basis": "filing_date",
-    "applicant": "JAKE MARLEY WITH HYPERION SYSTEMS, LLC",
+    "applicant": "HYPERION SYSTEMS, LLC",
     "payor": null,
     "parent": null,
     "parent_link": "unresolved",

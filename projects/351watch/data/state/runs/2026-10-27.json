@@ -1,0 +1,201 @@
+{
+ "by_state": {
+  "MA": {
+   "new_documents": 86,
+   "new_hits": 51,
+   "towns_attempted": 243,
+   "towns_succeeded": 242
+  },
+  "NY": {
+   "new_documents": 11,
+   "new_hits": 2,
+   "towns_attempted": 33,
+   "towns_succeeded": 33
+  },
+  "RI": {
+   "new_documents": 8,
+   "new_hits": 4,
+   "towns_attempted": 39,
+   "towns_succeeded": 39
+  }
+ },
+ "date": "2026-10-27",
+ "document_errors": 1,
+ "documents_already_indexed": 2853,
+ "documents_deferred": 0,
+ "documents_listed": 2960,
+ "documents_needing_ocr": 1,
+ "documents_rematched": 0,
+ "documents_retried": 1,
+ "documents_too_large": [
+  {
+   "error": "too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
+   "meeting_date": "2026-10-26",
+   "state": "MA",
+   "town": "Bedford",
+   "url": "https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560",
+   "meeting_date": "2026-10-14",
+   "state": "MA",
+   "town": "Franklin",
+   "url": "https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586",
+   "meeting_date": "2026-09-28",
+   "state": "MA",
+   "town": "Great Barrington",
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577",
+   "meeting_date": "2026-10-06",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577"
+  },
+  {
+   "error": "too large (55940673 > 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634"
+  },
+  {
+   "error": "too large (42216812 > 41943040 bytes): https://cms2.revize.com/revize/westportma/Documents/Departments/Planning/Agendas ",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Westport",
+   "url": "https://www.westport-ma.com/Documents/Departments/Planning/Agendas And Minutes/2026/Packets/Packet 2026-10-20.pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Cortlandt",
+   "url": "https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109",
+   "meeting_date": "2026-09-14",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114",
+   "meeting_date": "2026-10-19",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Kent",
+   "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
+  }
+ ],
+ "duration_seconds": 871.6,
+ "errors": [
+  {
+   "error": "document: extract failed (content-type image/jpeg): https://www.clintonma.gov/AgendaCenter/ViewFile/Agenda/_10272026-2553",
+   "town": "MA:Clinton"
+  },
+  {
+   "error": "listing civicplus: https://www.dracutma.gov/AgendaCenter/Search/?term=&CIDs=5%2C11%2C19%2C9%2C&startDate=09%2F27%2F2026&endDate=02%2F24%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='www.dracutma.gov', port=443): Read timed out. (read timeout=45)",
+   "town": "MA:Dracut"
+  }
+ ],
+ "errors_total": 2,
+ "finished": "2026-10-27T11:18:00+00:00",
+ "hits_current": 1504,
+ "index": {
+  "by_state": {
+   "MA": 3718,
+   "NY": 249,
+   "RI": 423
+  },
+  "by_status": {
+   "error": 19,
+   "needs_ocr": 4,
+   "ok": 4304,
+   "replaced": 63
+  },
+  "by_text_source": {
+   "docx": 21,
+   "html": 218,
+   "none": 21,
+   "ocr": 994,
+   "pdf": 3136
+  },
+  "documents": 4390,
+  "hits": 1677,
+  "pruned": 13,
+  "towns": 310,
+  "with_hits": 868
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 40012254,
+   "listing": 135389538,
+   "robots": 1264
+  },
+  "cache_hits": 250,
+  "errors": 2,
+  "requests": 767,
+  "requests_by_purpose": {
+   "document": 88,
+   "listing": 676,
+   "robots": 3
+  },
+  "robots_blocked": 0
+ },
+ "new_alert_items": 12,
+ "new_alert_items_by_topic": {
+  "40b_comprehensive_permit": 1,
+  "battery_storage": 2,
+  "data_center": 1,
+  "moratorium": 2,
+  "solar": 4,
+  "wetlands_filing": 1,
+  "zoning_amendment": 3
+ },
+ "new_documents": 105,
+ "new_hits": 57,
+ "new_hits_by_topic": {
+  "40b_comprehensive_permit": 5,
+  "battery_storage": 12,
+  "data_center": 9,
+  "moratorium": 2,
+  "solar": 23,
+  "zoning_amendment": 20
+ },
+ "options": {
+  "matcher_version": "4f9bcaade9",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-10-27T11:03:28+00:00",
+ "states": [
+  "MA",
+  "NY",
+  "RI"
+ ],
+ "towns_attempted": 315,
+ "towns_failed": [
+  "MA:Dracut"
+ ],
+ "towns_partial": [],
+ "towns_succeeded": 314,
+ "window": {
+  "end": "2027-02-24",
+  "start": "2026-09-27"
+ }
+}

@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T11:02:01+00:00",
+ "generated": "2026-10-27T11:02:19+00:00",
  "source": "massdep_wetlands",
  "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
  "link_types": {
@@ -2648,6 +2648,46 @@
    ]
   },
   {
+   "applicant": "HYPERION SYSTEMS, LLC",
+   "parent": null,
+   "parent_kind": null,
+   "link": null,
+   "confidence": null,
+   "filings": 2,
+   "towns": [
+    "Hadley",
+    "Whately"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "solar": 2
+   },
+   "evidence": [
+    {
+     "dep_file_number": "170-0313",
+     "town": "Hadley",
+     "received_date": "2026-02-27",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "unresolved",
+     "how": null,
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210485"
+    },
+    {
+     "dep_file_number": "339-0142",
+     "town": "Whately",
+     "received_date": "2026-09-29",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "unresolved",
+     "how": null,
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213344"
+    }
+   ],
+   "shares_contact_with": []
+  },
+  {
    "applicant": "STONE STREET SOLAR, LLC",
    "parent": null,
    "parent_kind": null,
@@ -2813,34 +2853,6 @@
    ]
   },
   {
-   "applicant": "HYPERION SYSTEMS, LLC",
-   "parent": null,
-   "parent_kind": null,
-   "link": null,
-   "confidence": null,
-   "filings": 1,
-   "towns": [
-    "Hadley"
-   ],
-   "payors": [],
-   "consultants": [],
-   "categories": {
-    "solar": 1
-   },
-   "evidence": [
-    {
-     "dep_file_number": "170-0313",
-     "town": "Hadley",
-     "received_date": "2026-02-27",
-     "filing_type": "Notice of Intent",
-     "payor": null,
-     "link": "unresolved",
-     "how": null,
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210485"
-    }
-   ]
-  },
-  {
    "applicant": "INC",
    "parent": null,
    "parent_kind": null,
@@ -2865,34 +2877,6 @@
      "link": "unresolved",
      "how": null,
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211072"
-    }
-   ]
-  },
-  {
-   "applicant": "JAKE MARLEY WITH HYPERION SYSTEMS, LLC",
-   "parent": null,
-   "parent_kind": null,
-   "link": null,
-   "confidence": null,
-   "filings": 1,
-   "towns": [
-    "Whately"
-   ],
-   "payors": [],
-   "consultants": [],
-   "categories": {
-    "solar": 1
-   },
-   "evidence": [
-    {
-     "dep_file_number": "339-0142",
-     "town": "Whately",
-     "received_date": "2026-09-29",
-     "filing_type": "Notice of Intent",
-     "payor": null,
-     "link": "unresolved",
-     "how": null,
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213344"
     }
    ]
   },
@@ -3211,15 +3195,15 @@
    "kind": "consultant"
   },
   {
-   "payor": "FALMOUTH ENG",
-   "filings": 20,
-   "towns": 4,
+   "payor": "CC ENG",
+   "filings": 21,
+   "towns": 7,
    "kind": "consultant"
   },
   {
-   "payor": "CC ENG",
+   "payor": "FALMOUTH ENG",
    "filings": 20,
-   "towns": 7,
+   "towns": 4,
    "kind": "consultant"
   },
   {
@@ -3313,15 +3297,15 @@
    "kind": "consultant"
   },
   {
-   "payor": "MCKENZIE ENG",
+   "payor": "BLUEFLAX DESIGN",
    "filings": 9,
-   "towns": 7,
+   "towns": 6,
    "kind": "consultant"
   },
   {
-   "payor": "BLUEFLAX DESIGN",
-   "filings": 8,
-   "towns": 6,
+   "payor": "MCKENZIE ENG",
+   "filings": 9,
+   "towns": 7,
    "kind": "consultant"
   },
   {
