@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T11:18:35+00:00",
+ "generated": "2026-10-27T18:36:46+00:00",
  "window": {
   "start": "2026-10-27",
   "end": "2027-02-24"
@@ -775,8 +775,8 @@
     "1055586933ce",
     "11a71666e894",
     "15f6b82adbad",
-    "5e0403385e0c",
     "a20db8285d12",
+    "b47f907e87e5",
     "ec83bdbea385"
    ]
   },
@@ -1320,6 +1320,7 @@
    ],
    "hit_ids": [
     "1289179f15b6",
+    "5e9306dfb15d",
     "95590555ca85",
     "c76a680e57d2"
    ]
@@ -1514,6 +1515,116 @@
    ],
    "hit_ids": [
     "1ae05bea2b2f"
+   ]
+  },
+  {
+   "id": "7326794bc492",
+   "score": 9.9,
+   "headline": "Stony Point Town Board holds hearing on zoning changes",
+   "dek": "The Town Board meets Tuesday, Oct 27. The agenda lists a public hearing on zoning changes.",
+   "quote": "The requested hardship variance is separate from, and would not itself constitute approval of, any zoning amendment or development application.",
+   "reasons": [
+    "Public hearing",
+    "Also on the Sep 22 agenda",
+    "Hearing Oct 27"
+   ],
+   "why": [],
+   "stakes": 5.6,
+   "buzz": 1.0,
+   "topics": [
+    "moratorium",
+    "zoning_amendment"
+   ],
+   "state": "NY",
+   "town": "Stony Point",
+   "county": "Rockland",
+   "towns": [
+    "NY:Stony Point"
+   ],
+   "board": "Town Board",
+   "board_key": "select_board",
+   "meeting_date": "2026-10-27",
+   "meeting_date_source": "agenda",
+   "days_until": 0,
+   "first_seen": "2026-10-10T22:22:39+00:00",
+   "is_new": false,
+   "source_url": "https://www.stonypointny.gov/userfiles/october_27th_town_board_packet_5889.pdf",
+   "town_path": "/ny/stony-point",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Stony Point",
+     "board": "Town Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-27"
+    }
+   ],
+   "hit_ids": [
+    "28155ef502c7",
+    "52990661df43",
+    "908e4c9acf73",
+    "b6ae1a5b51d1",
+    "e364ed0849b4"
+   ]
+  },
+  {
+   "id": "390b3d523c3c",
+   "score": 9.75,
+   "headline": "Yarmouth Select Board discusses zoning changes",
+   "dek": "The Select Board meets Tuesday, Oct 27. The agenda lists an item on zoning changes. It is also on the Planning Board agenda for Oct 27.",
+   "quote": "STR Zoning Amendment:",
+   "reasons": [
+    "Draft rules",
+    "2 town boards",
+    "Meeting Oct 27"
+   ],
+   "why": [],
+   "stakes": 4.0,
+   "buzz": 2.5,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Yarmouth",
+   "county": "Barnstable",
+   "towns": [
+    "MA:Yarmouth"
+   ],
+   "board": "Select Board",
+   "board_key": "select_board",
+   "meeting_date": "2026-10-27",
+   "meeting_date_source": "agenda",
+   "days_until": 0,
+   "first_seen": "2026-10-23T11:15:17+00:00",
+   "is_new": false,
+   "source_url": "https://www.yarmouth.ma.us/AgendaCenter/ViewFile/Agenda/_10272026-5086",
+   "town_path": "/ma/yarmouth",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Yarmouth",
+     "board": "Select Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-27"
+    },
+    {
+     "town": "Yarmouth",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-27"
+    }
+   ],
+   "hit_ids": [
+    "1114f956bb69",
+    "35ff8dc30bc1",
+    "507ba4c63e50",
+    "52c047789a6c",
+    "5c086720943a",
+    "bdc89d1b36b6",
+    "c01749c754b5",
+    "e806b5eadd9a",
+    "ee8b1897a7a0",
+    "ee8b255768d7"
    ]
   },
   {
@@ -2318,51 +2429,6 @@
    ]
   },
   {
-   "id": "9123c48913c4",
-   "score": 7.5,
-   "headline": "Wellesley Select Board discusses zoning changes",
-   "dek": "The Select Board meets Tuesday, Oct 27. The agenda lists an item on zoning changes.",
-   "quote": "Committee to evaluate the governance of the Council on Aging No motion No 2020 ATM 41 Amend Zoning Bylaw (sponsor shown as Planning Board) No motion No 2020 ATM 42 Indigenous Peoples Day (as amended)…",
-   "reasons": [
-    "Draft rules",
-    "Meeting Oct 27"
-   ],
-   "why": [],
-   "stakes": 5.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Wellesley",
-   "county": "Norfolk",
-   "towns": [
-    "MA:Wellesley"
-   ],
-   "board": "Select Board",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-27",
-   "meeting_date_source": "agenda",
-   "days_until": 0,
-   "first_seen": "2026-10-26T11:10:26+00:00",
-   "is_new": true,
-   "source_url": "https://www.wellesleyma.gov/AgendaCenter/ViewFile/Agenda/_10272026-9730",
-   "town_path": "/ma/wellesley",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Wellesley",
-     "board": "Select Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-27"
-    }
-   ],
-   "hit_ids": [
-    "66d2ad231150",
-    "f4c435e5b4d4"
-   ]
-  },
-  {
    "id": "d204dcd8ae36",
    "score": 7.5,
    "headline": "Westborough Select Board discusses zoning changes",
@@ -2725,54 +2791,6 @@
    ],
    "hit_ids": [
     "a4cffa48807f"
-   ]
-  },
-  {
-   "id": "390b3d523c3c",
-   "score": 6.0,
-   "headline": "Yarmouth planners discuss zoning changes",
-   "dek": "The Planning Board meets Tuesday, Oct 27. The agenda lists an item on zoning changes.",
-   "quote": "STR Zoning Amendment:",
-   "reasons": [
-    "Draft rules",
-    "Meeting Oct 27"
-   ],
-   "why": [],
-   "stakes": 4.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Yarmouth",
-   "county": "Barnstable",
-   "towns": [
-    "MA:Yarmouth"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-27",
-   "meeting_date_source": "agenda",
-   "days_until": 0,
-   "first_seen": "2026-10-23T11:15:17+00:00",
-   "is_new": false,
-   "source_url": "https://www.yarmouth.ma.us/AgendaCenter/ViewFile/Agenda/_10272026-5084",
-   "town_path": "/ma/yarmouth",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Yarmouth",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-27"
-    }
-   ],
-   "hit_ids": [
-    "1114f956bb69",
-    "52c047789a6c",
-    "5c086720943a",
-    "c01749c754b5",
-    "ee8b255768d7"
    ]
   },
   {
@@ -3184,6 +3202,96 @@
    ]
   },
   {
+   "id": "acd54ccc13d2",
+   "score": 4.79,
+   "headline": "Shirley planners discuss 40B housing",
+   "dek": "The Planning Board meets Wednesday, Nov 4. The agenda lists a discussion of 40B housing.",
+   "quote": "Review requested Planning Board-related waivers for Parker Village 40B discussion lead by Town Planner Mark Archambault followed by Planning Board vote on requested waivers.",
+   "reasons": [
+    "Meeting Nov 4",
+    "Also next door in Ayer and Harvard"
+   ],
+   "why": [
+    "Also next door in Ayer and Harvard"
+   ],
+   "stakes": 2.93,
+   "buzz": 2.0,
+   "topics": [
+    "40b_comprehensive_permit"
+   ],
+   "state": "MA",
+   "town": "Shirley",
+   "county": "Middlesex",
+   "towns": [
+    "MA:Shirley"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 8,
+   "first_seen": "2026-10-27T18:34:45+00:00",
+   "is_new": true,
+   "source_url": "https://www.shirley-ma.gov/AgendaCenter/ViewFile/Agenda/_11042026-1290",
+   "town_path": "/ma/shirley",
+   "action": "discussion",
+   "boards": [
+    {
+     "town": "Shirley",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-04"
+    }
+   ],
+   "hit_ids": [
+    "16d3ce2c4557"
+   ]
+  },
+  {
+   "id": "e41accfcae39",
+   "score": 4.5,
+   "headline": "Mansfield planners discuss zoning changes",
+   "dek": "The Planning Board meets Monday, Nov 16. The agenda lists an item on zoning changes.",
+   "quote": "Identify potential short-term zoning amendments",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 16"
+   ],
+   "why": [],
+   "stakes": 5.0,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Mansfield",
+   "county": "Bristol",
+   "towns": [
+    "MA:Mansfield"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-16",
+   "meeting_date_source": "agenda",
+   "days_until": 20,
+   "first_seen": "2026-10-27T18:34:02+00:00",
+   "is_new": true,
+   "source_url": "https://www.mansfieldma.com/AgendaCenter/ViewFile/Agenda/_11162026-3940",
+   "town_path": "/ma/mansfield",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Mansfield",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-16"
+    }
+   ],
+   "hit_ids": [
+    "f88a70efd31d"
+   ]
+  },
+  {
    "id": "0a1755a33f61",
    "score": 4.2,
    "headline": "Sutton Town Meeting takes up zoning changes",
@@ -3320,52 +3428,6 @@
    ]
   },
   {
-   "id": "7326794bc492",
-   "score": 3.45,
-   "headline": "Stony Point Town Board takes up South Liberty Partners moratorium permit extension",
-   "dek": "The Town Board meets Tuesday, Oct 27. The agenda lists a public hearing on a variance for South Liberty Partners.",
-   "quote": "October 13, 2026 Correspondence Public Input-Limited to 3 minutes Public Hearing-Local Law to Override Tax Cap Public Hearing-2027 Preliminary Budget Public Hearing-Sewer Extension-67 Park Road…",
-   "reasons": [
-    "Public hearing",
-    "Also on the Sep 22 agenda",
-    "Hearing Oct 27"
-   ],
-   "why": [],
-   "stakes": 1.3,
-   "buzz": 1.0,
-   "topics": [
-    "moratorium"
-   ],
-   "state": "NY",
-   "town": "Stony Point",
-   "county": "Rockland",
-   "towns": [
-    "NY:Stony Point"
-   ],
-   "board": "Town Board",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-27",
-   "meeting_date_source": "agenda",
-   "days_until": 0,
-   "first_seen": "2026-10-10T22:22:39+00:00",
-   "is_new": false,
-   "source_url": "https://www.stonypointny.gov/userfiles/october_27th_1427.pdf",
-   "town_path": "/ny/stony-point",
-   "action": "project_hearing",
-   "boards": [
-    {
-     "town": "Stony Point",
-     "board": "Town Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-27"
-    }
-   ],
-   "hit_ids": [
-    "b6ae1a5b51d1",
-    "e364ed0849b4"
-   ]
-  },
-  {
    "id": "341d4dd8062e",
    "score": 3.3,
    "headline": "Solar item on Greenfield Planning Board agenda",
@@ -3413,50 +3475,6 @@
     "977c01069765",
     "ae8f1b360bdb",
     "c92dca8d1b66"
-   ]
-  },
-  {
-   "id": "5cf4cc945fe9",
-   "score": 3.0,
-   "headline": "Wellesley Select Board discusses local rules",
-   "dek": "The Select Board meets Tuesday, Oct 27. The agenda lists an item on local rules.",
-   "quote": "Establish a Committee to Conduct Analysis on Impacts of Nighttime Sports and Events - Moratorium No motion No 2024 ATM 46 To Garage Weed Harvester at Morses Pond No motion No 2024 ATM 47 Amend ZBL…",
-   "reasons": [
-    "Draft rules",
-    "Meeting Oct 27"
-   ],
-   "why": [],
-   "stakes": 2.0,
-   "buzz": 0.0,
-   "topics": [
-    "moratorium"
-   ],
-   "state": "MA",
-   "town": "Wellesley",
-   "county": "Norfolk",
-   "towns": [
-    "MA:Wellesley"
-   ],
-   "board": "Select Board",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-27",
-   "meeting_date_source": "agenda",
-   "days_until": 0,
-   "first_seen": "2026-10-26T11:10:26+00:00",
-   "is_new": true,
-   "source_url": "https://www.wellesleyma.gov/AgendaCenter/ViewFile/Agenda/_10272026-9730",
-   "town_path": "/ma/wellesley",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Wellesley",
-     "board": "Select Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-27"
-    }
-   ],
-   "hit_ids": [
-    "1a970d2d19ea"
    ]
   },
   {
@@ -3547,11 +3565,11 @@
    ]
   },
   {
-   "id": "253640f2c49b",
+   "id": "c8a94875b6e8",
    "score": 1.31,
-   "headline": "Solar item on Wellesley Select Board agenda",
+   "headline": "Solar item on Yarmouth Select Board agenda",
    "dek": "The Select Board meets Tuesday, Oct 27. The agenda lists an item on solar.",
-   "quote": "Moreover, it recognizes and respects the prior commitments to other Town projects such as the RDF Administration Building and the school solar project and allows FMD staff the time to adequately and…",
+   "quote": "Yarmouth Library, future operating and staffing considerations, project costs, potential solar installation, sustainability incentives, and the importance of providing residents with complete cost…",
    "reasons": [
     "Meeting Oct 27"
    ],
@@ -3562,33 +3580,33 @@
     "solar"
    ],
    "state": "MA",
-   "town": "Wellesley",
-   "county": "Norfolk",
+   "town": "Yarmouth",
+   "county": "Barnstable",
    "towns": [
-    "MA:Wellesley"
+    "MA:Yarmouth"
    ],
    "board": "Select Board",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "meeting_date_source": "agenda",
    "days_until": 0,
-   "first_seen": "2026-10-26T11:10:26+00:00",
+   "first_seen": "2026-10-26T11:10:58+00:00",
    "is_new": true,
-   "source_url": "https://www.wellesleyma.gov/AgendaCenter/ViewFile/Agenda/_10272026-9730",
-   "town_path": "/ma/wellesley",
+   "source_url": "https://www.yarmouth.ma.us/AgendaCenter/ViewFile/Agenda/_10272026-5086",
+   "town_path": "/ma/yarmouth",
    "action": "mention",
    "boards": [
     {
-     "town": "Wellesley",
+     "town": "Yarmouth",
      "board": "Select Board",
      "board_key": "select_board",
      "meeting_date": "2026-10-27"
     }
    ],
    "hit_ids": [
-    "5138f1b972de",
-    "cf160eec95dc",
-    "dc73d0f674a5"
+    "04de5b6ba329",
+    "3076f433da75",
+    "69f1b17ad31e"
    ]
   },
   {

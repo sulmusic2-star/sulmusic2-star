@@ -1,32 +1,32 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 86,
-   "new_hits": 51,
-   "towns_attempted": 243,
-   "towns_succeeded": 242
+   "new_documents": 8,
+   "new_hits": 11,
+   "towns_attempted": 48,
+   "towns_succeeded": 48
   },
   "NY": {
-   "new_documents": 11,
-   "new_hits": 2,
-   "towns_attempted": 33,
-   "towns_succeeded": 33
+   "new_documents": 2,
+   "new_hits": 4,
+   "towns_attempted": 2,
+   "towns_succeeded": 2
   },
   "RI": {
-   "new_documents": 8,
-   "new_hits": 4,
-   "towns_attempted": 39,
-   "towns_succeeded": 39
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 4,
+   "towns_succeeded": 4
   }
  },
  "date": "2026-10-27",
- "document_errors": 1,
- "documents_already_indexed": 2853,
+ "document_errors": 0,
+ "documents_already_indexed": 531,
  "documents_deferred": 0,
- "documents_listed": 2960,
- "documents_needing_ocr": 1,
- "documents_rematched": 0,
- "documents_retried": 1,
+ "documents_listed": 644,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 103,
+ "documents_retried": 0,
  "documents_too_large": [
   {
    "error": "too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
@@ -99,80 +99,67 @@
    "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
   }
  ],
- "duration_seconds": 871.6,
- "errors": [
-  {
-   "error": "document: extract failed (content-type image/jpeg): https://www.clintonma.gov/AgendaCenter/ViewFile/Agenda/_10272026-2553",
-   "town": "MA:Clinton"
-  },
-  {
-   "error": "listing civicplus: https://www.dracutma.gov/AgendaCenter/Search/?term=&CIDs=5%2C11%2C19%2C9%2C&startDate=09%2F27%2F2026&endDate=02%2F24%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='www.dracutma.gov', port=443): Read timed out. (read timeout=45)",
-   "town": "MA:Dracut"
-  }
- ],
- "errors_total": 2,
- "finished": "2026-10-27T11:18:00+00:00",
- "hits_current": 1504,
+ "duration_seconds": 182.6,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-10-27T18:36:07+00:00",
+ "hits_current": 1512,
  "index": {
   "by_state": {
-   "MA": 3718,
-   "NY": 249,
+   "MA": 3724,
+   "NY": 251,
    "RI": 423
   },
   "by_status": {
    "error": 19,
    "needs_ocr": 4,
-   "ok": 4304,
-   "replaced": 63
+   "ok": 4311,
+   "replaced": 64
   },
   "by_text_source": {
    "docx": 21,
    "html": 218,
    "none": 21,
-   "ocr": 994,
-   "pdf": 3136
+   "ocr": 996,
+   "pdf": 3142
   },
-  "documents": 4390,
-  "hits": 1677,
-  "pruned": 13,
+  "documents": 4398,
+  "hits": 1686,
+  "pruned": 2,
   "towns": 310,
-  "with_hits": 868
+  "with_hits": 871
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 40012254,
-   "listing": 135389538,
-   "robots": 1264
+   "document": 80018326,
+   "listing": 25030773,
+   "robots": 131631
   },
-  "cache_hits": 250,
-  "errors": 2,
-  "requests": 767,
+  "cache_hits": 22,
+  "errors": 0,
+  "requests": 286,
   "requests_by_purpose": {
-   "document": 88,
-   "listing": 676,
-   "robots": 3
+   "document": 118,
+   "listing": 113,
+   "robots": 55
   },
   "robots_blocked": 0
  },
- "new_alert_items": 12,
+ "new_alert_items": 15,
  "new_alert_items_by_topic": {
   "40b_comprehensive_permit": 1,
-  "battery_storage": 2,
-  "data_center": 1,
   "moratorium": 2,
   "solar": 4,
-  "wetlands_filing": 1,
-  "zoning_amendment": 3
+  "zoning_amendment": 8
  },
- "new_documents": 105,
- "new_hits": 57,
+ "new_documents": 10,
+ "new_hits": 15,
  "new_hits_by_topic": {
-  "40b_comprehensive_permit": 5,
-  "battery_storage": 12,
-  "data_center": 9,
-  "moratorium": 2,
-  "solar": 23,
-  "zoning_amendment": 20
+  "40b_comprehensive_permit": 1,
+  "data_center": 6,
+  "moratorium": 3,
+  "solar": 3,
+  "zoning_amendment": 4
  },
  "options": {
   "matcher_version": "4f9bcaade9",
@@ -182,18 +169,32 @@
   "tesseract": true,
   "workers": 16
  },
- "started": "2026-10-27T11:03:28+00:00",
+ "previous_runs_today": [
+  {
+   "duration_seconds": 871.6,
+   "new_documents": 105,
+   "new_hits": 57,
+   "requests": 767,
+   "started": "2026-10-27T11:03:28+00:00",
+   "states": [
+    "MA",
+    "NY",
+    "RI"
+   ],
+   "towns_attempted": 315,
+   "towns_succeeded": 314
+  }
+ ],
+ "started": "2026-10-27T18:33:04+00:00",
  "states": [
   "MA",
   "NY",
   "RI"
  ],
- "towns_attempted": 315,
- "towns_failed": [
-  "MA:Dracut"
- ],
+ "towns_attempted": 54,
+ "towns_failed": [],
  "towns_partial": [],
- "towns_succeeded": 314,
+ "towns_succeeded": 54,
  "window": {
   "end": "2027-02-24",
   "start": "2026-09-27"
