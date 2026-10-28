@@ -1,0 +1,37 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-leominster-planning-board-2026-11-02@agendaahead
+DTSTAMP:20261028T120000Z
+DTSTART;TZID=America/New_York:20261102T183000
+DTEND;TZID=America/New_York:20261102T203000
+SUMMARY:Leominster Planning Board: Discusses a zoning change (no vote liste
+ d).
+LOCATION:Director City Hall\, Leominster\, MA
+DESCRIPTION:• Discusses a zoning change (no vote listed).\n\nAgenda: http
+ s://www.leominster-ma.gov/AgendaCenter/ViewFile/Agenda/_11022026-2172\nPag
+ e: https://agendaahead.vercel.app/m/leominster-planning-board-2026-11-02\n
+ Confirm the time and place with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/leominster-planning-board-2026-11-02
+END:VEVENT
+END:VCALENDAR

@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T18:36:46+00:00",
+ "generated": "2026-10-28T11:18:50+00:00",
  "states": {
   "CT": {
    "data_center": 1,
@@ -9,7 +9,7 @@
   },
   "MA": {
    "battery_storage": 1,
-   "data_center": 37,
+   "data_center": 38,
    "moratorium": 4,
    "solar": 1,
    "wind": 3
@@ -31,6 +31,17 @@
   }
  },
  "towns": {
+  "MA:Bedford": [
+   {
+    "link": "https://newbedfordlight.org/new-bedford-advances-measure-to-ban-data-centers/",
+    "published": "2026-10-27T19:19:52+00:00",
+    "source": "New Bedford Light",
+    "title": "New Bedford advances measure to ban data centers",
+    "topics": [
+     "data_center"
+    ]
+   }
+  ],
   "MA:Boston": [
    {
     "link": "https://www.masslive.com/boston/2026/09/boston-councilor-calls-for-citywide-ban-on-data-centers.html",
@@ -62,6 +73,17 @@
     "topics": [
      "data_center",
      "moratorium"
+    ]
+   }
+  ],
+  "MA:New Bedford": [
+   {
+    "link": "https://newbedfordlight.org/new-bedford-advances-measure-to-ban-data-centers/",
+    "published": "2026-10-27T19:19:52+00:00",
+    "source": "New Bedford Light",
+    "title": "New Bedford advances measure to ban data centers",
+    "topics": [
+     "data_center"
     ]
    }
   ],

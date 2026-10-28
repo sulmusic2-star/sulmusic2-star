@@ -1,0 +1,383 @@
+{
+ "by_state": {
+  "MA": {
+   "new_documents": 55,
+   "new_hits": 35,
+   "towns_attempted": 243,
+   "towns_succeeded": 232
+  },
+  "NY": {
+   "new_documents": 6,
+   "new_hits": 0,
+   "towns_attempted": 33,
+   "towns_succeeded": 32
+  },
+  "RI": {
+   "new_documents": 6,
+   "new_hits": 0,
+   "towns_attempted": 39,
+   "towns_succeeded": 39
+  }
+ },
+ "date": "2026-10-28",
+ "document_errors": 2,
+ "documents_already_indexed": 2878,
+ "documents_deferred": 0,
+ "documents_listed": 2951,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 0,
+ "documents_retried": 4,
+ "documents_too_large": [
+  {
+   "error": "too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
+   "meeting_date": "2026-10-26",
+   "state": "MA",
+   "town": "Bedford",
+   "url": "https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788"
+  },
+  {
+   "error": "too large (69979402 > 41943040 bytes): https://dighton-ma.gov/AgendaCenter/ViewFile/Agenda/_10282026-2839",
+   "meeting_date": "2026-10-28",
+   "state": "MA",
+   "town": "Dighton",
+   "url": "https://dighton-ma.gov/AgendaCenter/ViewFile/Agenda/_10282026-2839"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560",
+   "meeting_date": "2026-10-14",
+   "state": "MA",
+   "town": "Franklin",
+   "url": "https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586",
+   "meeting_date": "2026-09-28",
+   "state": "MA",
+   "town": "Great Barrington",
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577",
+   "meeting_date": "2026-10-06",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577"
+  },
+  {
+   "error": "too large (55940673 > 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634"
+  },
+  {
+   "error": "too large (42216812 > 41943040 bytes): https://cms2.revize.com/revize/westportma/Documents/Departments/Planning/Agendas ",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Westport",
+   "url": "https://www.westport-ma.com/Documents/Departments/Planning/Agendas And Minutes/2026/Packets/Packet 2026-10-20.pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Cortlandt",
+   "url": "https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109",
+   "meeting_date": "2026-09-14",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114",
+   "meeting_date": "2026-10-19",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114"
+  },
+  {
+   "error": "too large (112326792 > 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_11092026-122",
+   "meeting_date": "2026-11-09",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_11092026-122"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Kent",
+   "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
+  }
+ ],
+ "duration_seconds": 912.9,
+ "errors": [
+  {
+   "error": "listing generic: listing https://www.charlemont-ma.us/f/0/1006/Select-Board-Meetings returned HTTP 502",
+   "town": "MA:Charlemont"
+  },
+  {
+   "error": "listing generic: listing https://www.charlemont-ma.us/f/0/1019/Planning-Board-Meetings returned HTTP 502",
+   "town": "MA:Charlemont"
+  },
+  {
+   "error": "listing generic: listing https://www.charlemont-ma.us/f/0/1011/Conservation-Commission-Meetings returned HTTP 502",
+   "town": "MA:Charlemont"
+  },
+  {
+   "error": "listing generic: listing https://colrain-ma.gov/government returned HTTP 502",
+   "town": "MA:Colrain"
+  },
+  {
+   "error": "listing generic: listing https://colrain-ma.gov/g/46/Planning-Board returned HTTP 502",
+   "town": "MA:Colrain"
+  },
+  {
+   "error": "listing generic: listing https://colrain-ma.gov/f/0/2061/Zoning-Board-Meetings returned HTTP 502",
+   "town": "MA:Colrain"
+  },
+  {
+   "error": "listing generic: listing https://colrain-ma.gov/g/47/Select-Board returned HTTP 502",
+   "town": "MA:Colrain"
+  },
+  {
+   "error": "listing generic: listing https://colrain-ma.gov/f/0/8/Town-Meeting-Warrants-and-Results returned HTTP 502",
+   "town": "MA:Colrain"
+  },
+  {
+   "error": "listing generic: listing https://www.conwayma.gov/p/119/TOWN-MEETING returned HTTP 502",
+   "town": "MA:Conway"
+  },
+  {
+   "error": "listing generic: listing https://www.conwayma.gov/calendar returned HTTP 502",
+   "town": "MA:Conway"
+  },
+  {
+   "error": "listing generic: listing https://www.conwayma.gov/government returned HTTP 502",
+   "town": "MA:Conway"
+  },
+  {
+   "error": "listing generic: listing https://www.conwayma.gov/g/59/Planning-Board returned HTTP 502",
+   "town": "MA:Conway"
+  },
+  {
+   "error": "document: too large (69979402 > 41943040 bytes): https://dighton-ma.gov/AgendaCenter/ViewFile/Agenda/_10282026-2839",
+   "town": "MA:Dighton"
+  },
+  {
+   "error": "listing generic: listing https://www.gillmass.org/g/16/SelectboardSewer-Commissioners returned HTTP 502",
+   "town": "MA:Gill"
+  },
+  {
+   "error": "listing generic: listing https://www.gillmass.org/government returned HTTP 502",
+   "town": "MA:Gill"
+  },
+  {
+   "error": "listing generic: listing https://www.gillmass.org/government returned HTTP 502",
+   "town": "MA:Gill"
+  },
+  {
+   "error": "listing generic: listing https://www.gillmass.org/g/14/Planning-Board returned HTTP 502",
+   "town": "MA:Gill"
+  },
+  {
+   "error": "listing generic: listing https://www.gillmass.org/f/0/58/Town-Meetings returned HTTP 502",
+   "town": "MA:Gill"
+  },
+  {
+   "error": "listing generic: listing https://townofheath.org/government returned HTTP 502",
+   "town": "MA:Heath"
+  },
+  {
+   "error": "listing generic: listing https://townofheath.org/f/0/5/Planning-Board-Meetings returned HTTP 502",
+   "town": "MA:Heath"
+  },
+  {
+   "error": "listing generic: listing https://townofheath.org/f/0/1094/Select-Board-Agendas returned HTTP 502",
+   "town": "MA:Heath"
+  },
+  {
+   "error": "listing generic: listing https://www.leverett.ma.us/government returned HTTP 502",
+   "town": "MA:Leverett"
+  },
+  {
+   "error": "listing generic: listing https://www.leverett.ma.us/g/58/Planning-Board returned HTTP 502",
+   "town": "MA:Leverett"
+  },
+  {
+   "error": "listing generic: listing https://www.leverett.ma.us/g/64/Selectboard returned HTTP 502",
+   "town": "MA:Leverett"
+  },
+  {
+   "error": "listing generic: listing https://www.townofleyden.com/f/0/26/Planning-Board-Meetings returned HTTP 502",
+   "town": "MA:Leyden"
+  },
+  {
+   "error": "listing generic: listing https://www.townofleyden.com/f/0/1057/Conservation-Commission-Meetings returned HTTP 502",
+   "town": "MA:Leyden"
+  },
+  {
+   "error": "listing generic: listing https://www.townofleyden.com/f/0/13/Select-Board-Meetings returned HTTP 502",
+   "town": "MA:Leyden"
+  },
+  {
+   "error": "listing generic: listing https://www.townofleyden.com/f/0/1053/Elections-and-Town-Meetings returned HTTP 502",
+   "town": "MA:Leyden"
+  },
+  {
+   "error": "listing generic: listing https://montague-ma.gov/g/46/Selectboard returned HTTP 502",
+   "town": "MA:Montague"
+  },
+  {
+   "error": "listing generic: listing https://rowe-ma.gov/government returned HTTP 502",
+   "town": "MA:Rowe"
+  },
+  {
+   "error": "listing generic: listing https://rowe-ma.gov/government returned HTTP 502",
+   "town": "MA:Rowe"
+  },
+  {
+   "error": "listing generic: listing https://rowe-ma.gov/g/55/Planning-Board returned HTTP 502",
+   "town": "MA:Rowe"
+  },
+  {
+   "error": "listing generic: listing https://townofshelburnema.gov/government returned HTTP 502",
+   "town": "MA:Shelburne"
+  },
+  {
+   "error": "listing generic: listing https://townofshelburnema.gov/government returned HTTP 502",
+   "town": "MA:Shelburne"
+  },
+  {
+   "error": "listing generic: listing https://townofshelburnema.gov/f/0/12/Planning-Board-Meetings returned HTTP 502",
+   "town": "MA:Shelburne"
+  },
+  {
+   "error": "listing generic: listing https://townofshelburnema.gov/f/0/18/Zoning-Board-of-Appeals-Meetings returned HTTP 502",
+   "town": "MA:Shelburne"
+  },
+  {
+   "error": "listing generic: listing https://townofshelburnema.gov/f/0/27/Election--Town-Meeting returned HTTP 502",
+   "town": "MA:Shelburne"
+  },
+  {
+   "error": "listing civicplus: https://www.tyngsboroughma.gov/AgendaCenter/Search/?term=&CIDs=7%2C12%2C14%2C16%2C&startDate=09%2F28%2F2026&endDate=02%2F25%2F2027&dateRange=&dateSelector=",
+   "town": "MA:Tyngsborough"
+  },
+  {
+   "error": "listing generic: https://www.tyngsboroughma.gov/376/Town-Meeting",
+   "town": "MA:Tyngsborough"
+  },
+  {
+   "error": "listing generic: https://www.winchester.us/1383/2026-Town-Meetings: HTTPSConnectionPool(host='www.winchester.us', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Winchester"
+  },
+  {
+   "error": "document: too large (112326792 > 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_11092026-122",
+   "town": "NY:Glenville"
+  },
+  {
+   "error": "listing generic_ny: listing https://stanfordny.gov/advisory-committees/town-laws/minsagenda/planning-board-agendas-archives/ returned HTTP 521",
+   "town": "NY:Stanford"
+  }
+ ],
+ "errors_total": 42,
+ "finished": "2026-10-28T11:18:15+00:00",
+ "hits_current": 1518,
+ "index": {
+  "by_state": {
+   "MA": 3770,
+   "NY": 258,
+   "RI": 429
+  },
+  "by_status": {
+   "error": 21,
+   "needs_ocr": 4,
+   "ok": 4367,
+   "replaced": 65
+  },
+  "by_text_source": {
+   "docx": 21,
+   "html": 220,
+   "none": 23,
+   "ocr": 1012,
+   "pdf": 3181
+  },
+  "documents": 4457,
+  "hits": 1692,
+  "pruned": 10,
+  "towns": 310,
+  "with_hits": 875
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 11189623,
+   "listing": 130627445,
+   "robots": 749261
+  },
+  "cache_hits": 248,
+  "errors": 40,
+  "requests": 962,
+  "requests_by_purpose": {
+   "document": 64,
+   "listing": 668,
+   "robots": 230
+  },
+  "robots_blocked": 2
+ },
+ "new_alert_items": 6,
+ "new_alert_items_by_topic": {
+  "battery_storage": 1,
+  "solar": 1,
+  "zoning_amendment": 5
+ },
+ "new_documents": 67,
+ "new_hits": 35,
+ "new_hits_by_topic": {
+  "40b_comprehensive_permit": 3,
+  "battery_storage": 4,
+  "data_center": 6,
+  "solar": 10,
+  "zoning_amendment": 20
+ },
+ "options": {
+  "matcher_version": "4f9bcaade9",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-10-28T11:03:02+00:00",
+ "states": [
+  "MA",
+  "NY",
+  "RI"
+ ],
+ "towns_attempted": 315,
+ "towns_failed": [
+  "MA:Charlemont",
+  "MA:Colrain",
+  "MA:Conway",
+  "MA:Gill",
+  "MA:Heath",
+  "MA:Leverett",
+  "MA:Leyden",
+  "MA:Montague",
+  "MA:Rowe",
+  "MA:Shelburne",
+  "MA:Tyngsborough",
+  "NY:Stanford"
+ ],
+ "towns_partial": [
+  "MA:Winchester"
+ ],
+ "towns_succeeded": 303,
+ "window": {
+  "end": "2027-02-25",
+  "start": "2026-09-28"
+ }
+}
