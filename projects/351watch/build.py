@@ -30,7 +30,7 @@ import os
 import re
 from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta
-from html import escape
+from html import escape, unescape as html_unescape
 import sys
 from pathlib import Path
 from urllib.parse import quote, urlparse
@@ -2896,7 +2896,7 @@ def build_index(ctx):
 <div class="wrap narrow home">
 <section class="home-hero" aria-labelledby="hero-title">
   <h1 id="hero-title">See what your town is about to decide</h1>
-  <p class="lead">Type your town. We’ll tell you, in plain words, what its boards have coming up on solar, battery storage, data centers, zoning, housing and cell towers, with a link to each agenda.</p>
+  <p class="lead">Type your town. We’ll tell you in plain words what its boards have coming up, with a link to each agenda.</p>
   {town_box(ctx, label="Your town")}
   <p class="small home-note">It’s free and you don’t need an account.{f" We read the agendas every morning; last checked {e(checked)}." if checked else ""}</p>
   {owner_html()}
@@ -2911,10 +2911,10 @@ def build_index(ctx):
   <h2 id="how-title">How it works</h2>
   <ol class="steps">
     <li>Every morning we read the agendas that <a href="/how-it-works#coverage">{towns_read} towns</a> in {e(states)} post online.</li>
-    <li>We pick out the items about {SUBJECTS}, and say what the board is doing with each one in a plain sentence.</li>
+    <li>We pick out the items about {topic_links}, and say what the board is doing with each one in a plain sentence.</li>
     <li>Follow your town and you get a page and a calendar feed for it and the towns next door, updated every morning.</li>
   </ol>
-  <p>You can also read by subject: {topic_links}. If you want to know what a town is allowed to do, see <a href="/attorney-general">how the state has ruled on town bylaws</a>.</p>
+  <p>If you want to know what a town is allowed to do, see <a href="/attorney-general">how the state has ruled on town bylaws</a>.</p>
 </section>
 </div>
 """
@@ -3043,7 +3043,7 @@ def list_tools_html(counties, cant=None, topics=None):
     cant_html = "".join(
         f'<p class="form-note cant-list" data-cant-county="{e(c)}" hidden>We can’t read these {e(county_label(c))} towns yet: {e(v)}. <a href="/how-it-works#gaps">Why</a></p>'
         for c, v in sorted((cant or {}).items()) if c in counties)
-    return f"""<details class="narrow" data-narrow><summary>Narrow this list by county, subject or town</summary>
+    return f"""<details class="narrow" data-narrow><summary>Narrow by county, subject or town</summary>
   <div class="filterbar list-tools" data-meeting-filter>
     {county}
     {topic}
@@ -3110,7 +3110,7 @@ def build_upcoming(ctx):
 <div class="wrap narrow">
 <section class="page-head" aria-labelledby="up-title">
   <h1 id="up-title">Coming up</h1>
-  <p class="lead">Every meeting in the next few weeks where a town board takes up {SUBJECTS_OR}, soonest first.</p>
+  <p class="lead">Every town meeting in the next few weeks about solar, batteries, data centers, zoning, housing or cell towers, soonest first.</p>
   {tabs(COMING_TABS, "/upcoming", "Coming up")}
   {list_tools_html(counties, cant_read_by_county(ctx), topics={t for m in meetings for v in m["lines"].values() for t in (v.get("topics") or [])})}
 </section>
@@ -3124,7 +3124,7 @@ def build_upcoming(ctx):
   {week_folds(ctx, later) if later else '<p class="empty">Nothing later yet.</p>'}
 </section>
 <p class="more-link"><a href="/search?upcoming=1">Search these agendas</a></p>
-<p class="small">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {plural(n_towns, 'town')}.{f" We read the agendas towns post online at {e(checked)}." if checked else ""}</p>
+<p class="small">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {plural(n_towns, 'town')}.{f" We read the agendas towns post online at {e(checked)}." if checked else ""} A program writes each sentence from the agenda; the link under it is the source.</p>
 </div>
 """
     return page(ctx, f"Coming up at town meetings | {SITE_NAME}",
@@ -3681,6 +3681,34 @@ def doc_link_html(ctx, m, verb=True):
             f'<span class="sr-only">: {e(where)}</span></a>')
 
 
+# A bare acronym the first time it appears in a row gets its plain words. Applied once per row, subject first.
+FIRST_USE = [
+    (re.compile(r"\bZBA\b"), "Zoning Board of Appeals (ZBA)"),
+    (re.compile(r"\bB\.?E\.?S\.?S\.?\b"), "battery storage (BESS)"),
+    (re.compile(r"\bNOI\b"), "wetlands permit request (NOI)"),
+    (re.compile(r"\bFRCOG\b"), "Franklin Regional Council of Governments (FRCOG)"),
+    (re.compile(r"\bMBTA Communities\b"), "MBTA Communities (the state’s rule that towns near transit allow apartments by right)"),
+    (re.compile(r"\b40R\b"), "40R (state-backed zoning for denser housing)"),
+    (re.compile(r"\bANR\b"), "ANR (a lot split that needs no subdivision approval)"),
+    (re.compile(r"\bRDA\b"), "RDA (a request to the Conservation Commission to rule whether wetlands rules apply)"),
+    (re.compile(r"\bOSRD\b"), "OSRD (open-space residential design)"),
+]
+
+
+def explain_terms(parts):
+    """The list of strings for one row, with each acronym's plain words on its first use only."""
+    out, seen = [], set()
+    for text in parts:
+        for rx, words in FIRST_USE:
+            if rx.pattern in seen:
+                continue
+            if rx.search(text) and words.lower() not in text.lower():
+                text = rx.sub(words, text, count=1)
+                seen.add(rx.pattern)
+        out.append(text)
+    return out
+
+
 def meeting_row(ctx, m, show_town=True):
     """The meeting as a neighbour tells it: (subject, who-line html, sentences, main entry). The subject is the
     main item; the who-line is town, board, time and place; the sentences say what the board does, what the
@@ -3732,12 +3760,19 @@ def meeting_row(ctx, m, show_town=True):
         if rest:
             more = f", and {len(parts) - 4} more" if len(parts) > 4 else ""
             where = "warrant" if m["board_key"] == "town_meeting" else "agenda"
-            sents.append(sentence(f"Also on the {where}, it " + join_and(rest) + more))
+            also = f"Also on the {where}, it " + join_and(rest) + more
+            if len(also.split()) > LONG_SENTENCE_WORDS:  # the short names instead of the full clauses
+                names = [lower_first(item_subject(t, en, m.get("date") or "")) for t, en, _ in parts[1:4]]
+                also = f"Also on the {where}: " + "; ".join(names) + more
+            if len(also.split()) > LONG_SENTENCE_WORDS:
+                also = f"Also on the {where}: {names[0]}" + (f", and {len(parts) - 2} more" if len(parts) > 2 else "")
+            sents.append(sentence(also))
     for x in moved_sentences(m):
         if m.get("date") and m["date"] < ctx.today:
             x = re.sub(r"\bmoves to\b", "moved to", x)
             x = re.sub(r"\bis canceled\b", "was canceled", x)
         sents.append(x)
+    subject, *sents = explain_terms([subject] + sents)
     return subject, who_html, sents, main
 
 
@@ -3968,7 +4003,7 @@ def town_lead_text(ctx, t, up_m, past_m=None):
                 f"{day_label(first['date'], ctx)}, about {subj}.")
     nxt = next_posted(ctx, t)
     moved = continued_ahead(ctx, (past_m or [])[:12], up_m)
-    out = [f"Nothing is on {town}’s agendas right now about solar, battery storage, data centers, zoning, housing, cell towers or wetlands."]
+    out = [f"Nothing is on {town}’s agendas right now about solar, batteries, data centers, zoning or housing."]
     if moved:
         names = []
         for d, m, text, note in moved[:2]:
@@ -3995,7 +4030,7 @@ def town_summary(ctx, t, up_m, past_m=None):
     lead = town_lead_text(ctx, t, up_m, past_m)
     health = (ctx.health or {}).get(t["id"]) or {}
     when = et_when(health["last_success"]) if health.get("last_success") else ""
-    checked = f'<p class="checked small">We read the agendas {e(t["town"])} posts online {e(when)}.</p>' if when else ""
+    checked = f'<p class="checked small">We read the agendas {e(t["town"])} posts online {e(when)}. A program writes each sentence from the agenda; the link under it is the source.</p>' if when else ""
     return f'<p class="lead">{e(lead)}</p>{checked}'
 
 
@@ -4065,11 +4100,9 @@ def build_town_page(ctx, t):
 <div class="disclosures">{''.join(more)}</div>
 </div>
 """
-    title = f"{town}, {state} town agendas: solar and battery storage | {SITE_NAME}"
+    title = f"{town}, {state_name}: what the town is about to decide | {SITE_NAME}"
     if len(title) > 70:
-        title = f"{town}, {state}: solar and battery storage on agendas | {SITE_NAME}"
-    if len(title) > 70:
-        title = f"{town}, {state}: solar and battery storage | {SITE_NAME}"
+        title = f"{town}, {state_name} | {SITE_NAME}"
     if up_m:
         first = best_meeting(up_m)
         desc = f"{town}, {state}, {meeting_board(first)}, {when_text(ctx, first)}: {plain_say(next(iter(first['lines'])))}"
@@ -4468,7 +4501,7 @@ def build_watch(ctx, groups=False):
 
     body = f"""
 <div class="wrap narrow watch">
-<p class="notice" id="edit-banner" hidden>Editing <b id="edit-name">your alerts</b>. <a href="{'/alerts-for-groups' if groups else '/watch'}">Set up new alerts instead</a></p>
+<p class="notice" id="edit-banner" hidden>You’re changing <b id="edit-name">the alerts you set up</b> on this device. <a href="{'/alerts-for-groups' if groups else '/watch'}">Start new alerts instead</a></p>
 <p class="notice err" id="watch-error" role="alert" hidden></p>
 <h1 id="watch-title" tabindex="-1" data-start="{e(title)}">{e(title)}</h1>
 {f'<p class="lead">{e(lead)}</p>' if lead else ""}
@@ -5620,10 +5653,30 @@ def build_meeting_page(ctx, m):
                 source=f"{prov} {copy}")
 
 
+LONG_SENTENCE_WORDS = 25
+_long_sentences = []
+
+
+def check_sentences(rel, html):
+    """Count the sentences we wrote that run past 25 words (GOV.UK's limit), leaving out quoted agenda text,
+    the item rows under Details and the footer. Printed at the end of the build so the wording gets fixed at
+    the generator, not by hand."""
+    if not rel.endswith(".html"):
+        return
+    body = re.sub(r"<(blockquote|details|footer|q|script|style|nav|aside|dl|form|table)\b.*?</\1>", " ", html, flags=re.S)
+    for para in re.findall(r"<p\b[^>]*>(.*?)</p>", body, flags=re.S):
+        text = html_unescape(re.sub(r"<[^>]+>", " ", para))
+        for sent in re.split(r"(?<=[.!?])\s+", text):
+            words = sent.split()
+            if len(words) > LONG_SENTENCE_WORDS and not re.search(r"\b(?:LLC|Inc|Article)\b|\d{3,}", sent):
+                _long_sentences.append((rel, len(words), " ".join(words[:12])))
+
+
 def write(rel, text):
     path = SITE / rel
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text)
+    check_sentences(rel, text)
 
 
 def main():
@@ -5696,6 +5749,11 @@ def main():
           f"{len(ctx.tracker.get('items', []))} tracker rows, {len(ctx.hits)} agenda hits, "
           f"{len(ctx.ag)} AG rows, {len(ctx.points)} map points, town health {'present' if ctx.health is not None else 'absent'}, "
           f"{len(BRIEFS)} written briefs shown ({ctx.briefs_dropped} not verified)")
+    if _long_sentences:
+        by_page = Counter(rel for rel, _, _ in _long_sentences)
+        print(f"{len(_long_sentences)} sentences over {LONG_SENTENCE_WORDS} words on {len(by_page)} pages; the longest:")
+        for rel, n, start in sorted(_long_sentences, key=lambda x: -x[1])[:8]:
+            print(f"  {rel}: {n} words: {start}…")
 
 
 if __name__ == "__main__":

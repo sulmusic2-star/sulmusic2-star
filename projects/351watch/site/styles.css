@@ -315,7 +315,8 @@ details.more > summary:hover, details.disclose > summary:hover { text-decoration
 .meet-who a { color: var(--ink); font-weight: 600; text-decoration: none; }
 .meet-who a:hover { text-decoration: underline; }
 .meet-say { margin: 0 0 var(--s2); }
-.meet-link { margin: 0 0 var(--s1); font-size: var(--t-sm); }
+.meet-link { margin: 0; font-size: var(--t-sm); }
+.meet-link a { display: inline-flex; align-items: center; min-height: 36px; }
 .item-link { font-weight: 600; }
 .meet-details { margin: 0; }
 .meet-details > summary { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: var(--t-sm); text-decoration: underline; text-underline-offset: 0.18em; }
