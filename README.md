@@ -8,7 +8,7 @@ My main project is Lasting Ground, a property research tool. I also work on sour
 
 Property research with official records and their sources in view. The public repository contains synthetic Python examples of source validation, uncertainty handling and report assembly; the full application source is private.
 
-[![Lasting Ground public search interface, captured October 26, 2026](https://raw.githubusercontent.com/sulmusic2-star/sulmusic2-star.github.io/main/assets/property-search-20261026.png)](https://lastingground.com)
+[![Lasting Ground case study with an illustrative 3D boundary model](https://raw.githubusercontent.com/sulmusic2-star/sulmusic2-star.github.io/main/assets/lasting-ground-cover.webp)](https://sulmusic2-star.github.io/case-studies/lasting-ground/)
 
 [Code and technical notes](https://github.com/sulmusic2-star/lasting-ground-showcase) · [Project](https://sulmusic2-star.github.io/case-studies/lasting-ground/)
 
@@ -18,14 +18,13 @@ A companion evaluation project from Lasting Ground development. It pairs 33 sele
 
 The public set is small and dated; it does not establish Lasting Ground’s production accuracy or geographic coverage.
 
-[Code and reference cases](https://github.com/sulmusic2-star/groundtruth-geo) · [Recorded run and its limits](https://github.com/sulmusic2-star/groundtruth-geo#observed-closed-book-run)
+[Interactive evidence study](https://sulmusic2-star.github.io/case-studies/lasting-ground/#evidence) · [Code and reference cases](https://github.com/sulmusic2-star/groundtruth-geo) · [Recorded run and its limits](https://github.com/sulmusic2-star/groundtruth-geo#observed-closed-book-run)
 
 ## SquadBrain
 
 A sports roster learning app for iPhone and iPad, listed on the App Store under Timothy Sullivan. The public examples cover ranking, practice selection, matchmaking and submitted-result validation. The full app source is private.
 
-<a href="https://apps.apple.com/us/app/squadbrain/id6756122317"><img src="https://raw.githubusercontent.com/sulmusic2-star/squadbrain-showcase/main/screenshots/01-squad-brain-1.png" alt="SquadBrain app home screen in its published product presentation" width="32%"></a>
-<a href="https://apps.apple.com/us/app/squadbrain/id6756122317"><img src="https://raw.githubusercontent.com/sulmusic2-star/squadbrain-showcase/main/screenshots/02-real-squad-brain-2.png" alt="SquadBrain roster quiz in its published product presentation" width="32%"></a>
+[![SquadBrain, using cropped published product images](https://raw.githubusercontent.com/sulmusic2-star/sulmusic2-star.github.io/main/assets/squadbrain-cover.webp)](https://sulmusic2-star.github.io/case-studies/squadbrain/)
 
 [Code and technical notes](https://github.com/sulmusic2-star/squadbrain-showcase) · [App Store](https://apps.apple.com/us/app/squadbrain/id6756122317)
 
