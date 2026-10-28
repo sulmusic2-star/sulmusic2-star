@@ -3363,6 +3363,160 @@ def upcoming_meetings(ctx, tid):
     return cache[tid]
 
 
+# ---------------------------------------------------------------- the plain-voice paragraph
+# One to three sentences per meeting, the way a neighbour would tell you: when, who, what, where, whether you can
+# speak, what moved. Composed from the same lines the rows show; the rows stay under "Details".
+
+def relative_when(ctx, m):
+    """"Tonight at 6:30 pm", "Tomorrow at 7 pm", "Tuesday at 6:30 pm", "Next Tuesday (Nov 3) at 7 pm", "On Nov 17"."""
+    if not m.get("date"):
+        return "At a date not set yet"
+    today = datetime.strptime(ctx.today, "%Y-%m-%d").date()
+    d = datetime.strptime(m["date"][:10], "%Y-%m-%d").date()
+    days = (d - today).days
+    t = m.get("time") or ""
+    at = f" at {t}" if t else ""
+    if days == 0:
+        return ("Tonight" + at) if (not t or time_key(m) >= 17 * 60) else ("Today" + at)
+    if days == 1:
+        return "Tomorrow" + at
+    if 1 < days < 7:
+        return d.strftime("%A") + at
+    if 7 <= days < 14:
+        return f"Next {d.strftime('%A')} ({d.strftime('%b %-d')})" + at
+    return f"On {d.strftime('%b %-d')}" + (f", {d.year}" if d.year != today.year else "") + at
+
+
+ITEM_SUFFIX = re.compile(r"^(?P<what>.+?):\s*(?P<how>(?:[\w ,]*?\s)?(?:hearing|discussion|vote|Town Meeting vote)(?:\s*\(Article \d+\))?(?:\s+continues(?:\s+from)?(?:\s+[A-Z][a-z]{2}\s+\d{1,2})?)?)$")
+
+
+def lower_first(s):
+    return s[:1].lower() + s[1:] if s and not re.match(r"^(?:[A-Z]{2,}|\d|[A-Z][a-z]+ [A-Z])", s) else s
+
+
+def sentence(s):
+    s = s.strip()
+    return s if s.endswith((".", "!", "?", "…")) else s + "."
+
+
+def item_clause(text, entry, board, mdate=""):
+    """One verb phrase for one item, to follow "the Planning Board": "holds a hearing on a solar farm at 5 Main St",
+    "talks about battery storage", "may vote on …", "votes on … (Article 15)". None for a bare mention."""
+    stage = str(entry.get("stage") or "")
+    t = headline(plain_say(text)).strip()
+    t = STATUS_PREFIX.sub("", t)
+    t = re.sub(r"\ban item (?:on|about) ", "", t)
+    continued = bool(re.search(r"\s*\(continued from an earlier meeting\)", t))
+    t = re.sub(r"\s*\(continued from an earlier meeting\)", "", t)
+    if entry.get("kind") == "mention" and re.match(r"Mentions\b", t):
+        return None
+    if stage.startswith(("Postponed", "Asks to postpone", "Moved", "Asked to move", "Canceled", "Withdrawn")):
+        return None  # these get their own sentence (moved_sentences)
+    m = ITEM_SUFFIX.match(t)
+    if m:
+        what, how = lower_first(m.group("what").strip()), m.group("how")
+        art = re.search(r"\(Article \d+\)", how)
+        tail = f" {art.group(0)}" if art else ""
+        cont = re.search(r"continues(?:\s+from)?(?:\s+([A-Z][a-z]{2}\s+\d{1,2}))?", how)
+        if cont:
+            frm, day = "from" in cont.group(0), cont.group(1) or ""
+            same_day = bool(day) and mdate and datetime.strptime(mdate[:10], "%Y-%m-%d").strftime("%b %-d") == day
+            tail = "" if (not day or same_day) else (f" from {day}" if frm else f" on {day}")
+            return f"continues its hearing on {what}{tail}"
+        if "vote" in how:
+            verb = "may vote on" if stage.startswith("Possible vote") else "votes on"
+            return f"{verb} {what}{tail}"
+        if "hearing" in how:
+            return f"continues its hearing on {what}" if continued else f"holds a hearing on {what}"
+        return f"continues talking about {what}" if continued else f"talks about {what}"
+    for rx, verb in ((r"^Holds a hearing on (.+)$", "holds a hearing on {}"), (r"^Discusses (.+)$", "talks about {}"),
+                     (r"^Votes on (.+)$", "votes on {}"), (r"^Decides on (.+)$", "decides on {}"),
+                     (r"^Signs the decision: (.+)$", "signs its decision on {}"), (r"^Mentions (.+)$", "mentions {}")):
+        mm = re.match(rx, t)
+        if mm:
+            what = re.sub(r"\s*\(no vote listed\)$", "", mm.group(1)).rstrip(".")
+            if stage.startswith("Possible vote") and verb.startswith("talks"):
+                return f"talks about {lower_first(what)}, and may vote"
+            if continued and verb.startswith(("talks", "holds")):
+                verb = verb.replace("holds a hearing on", "continues its hearing on").replace("talks about", "continues talking about")
+            return verb.format(lower_first(what))
+    if re.match(r"^Withdraws ", t):
+        return None
+    return "takes up " + lower_first(t.rstrip("."))
+
+
+def moved_sentences(m):
+    """"Federal Pond Solar’s hearing at 104 Tremont Street moves to Nov 10 (the applicant asked)." and the like."""
+    out = []
+    for text, entry in m["lines"].items():
+        stage = str(entry.get("stage") or "")
+        t = STATUS_PREFIX.sub("", headline(plain_say(text))).rstrip(".")
+        if stage.startswith(("Postponed", "Asks to postpone", "Moved", "Asked to move")):
+            t = re.sub(r"\bmoves to (Mon|Tue|Wed|Thu|Fri|Sat|Sun) ", "moves to ", t)
+            out.append(t[:1].upper() + t[1:] + ".")
+        elif stage.startswith("Canceled"):
+            out.append((t if re.search(r"\bcancel", t, re.I) else f"{t} is canceled")[:1].upper() + (t if re.search(r"\bcancel", t, re.I) else f"{t} is canceled")[1:] + ".")
+        elif stage.startswith("Withdrawn"):
+            t2 = re.sub(r"^Withdraws ", "The applicant withdraws ", t)
+            out.append(t2[:1].upper() + t2[1:] + ".")
+    return out
+
+
+def meeting_paragraph(ctx, m):
+    """The meeting in plain words. Returns (sentences, main_entry)."""
+    board = meeting_board(m)
+    ordered = sorted(m["lines"].items(), key=lambda kv: kv[1].get("rank", 60))
+    clauses = []
+    for t, en in ordered:
+        c = item_clause(t, en, board, m.get("date") or "")
+        if not c:
+            continue
+        k = quote_key(c)
+        if any(k[:48] == quote_key(c2)[:48] or k in quote_key(c2) or quote_key(c2) in k for c2, _ in clauses):
+            continue
+        clauses.append((c, en))
+    when = relative_when(ctx, m)
+    subject = "Town Meeting" if m["board_key"] == "town_meeting" else f"the {board}"
+    out = []
+    if m.get("cancelled"):
+        out.append(f"{board}’s meeting {when[:1].lower() + when[1:]} is canceled.")
+    elif clauses:
+        first = clauses[0][0]
+        if len(clauses) == 1:
+            out.append(sentence(f"{when}, {subject} {first}"))
+        elif len(clauses) == 2:
+            out.append(sentence(f"{when}, {subject} {first}, and {clauses[1][0]}"))
+        else:
+            out.append(sentence(f"{when}, {subject} {first}"))
+            rest = [c for c, _ in clauses[1:4]]
+            out.append(sentence("Also on the agenda, it " + "; ".join(rest) + ("" if len(clauses) <= 4 else f"; and {len(clauses) - 4} more")))
+    else:
+        mentions = [t for t, en in ordered if en.get("kind") == "mention"]
+        if mentions:
+            subj = ", ".join(sorted({TOPIC_LABELS.get(x, x).lower() for en in m["lines"].values() for x in (en.get("topics") or [])})[:3])
+            out.append(f"{when}, {subject} meets. {(subj or 'One of our subjects')[:1].upper() + (subj or 'one of our subjects')[1:]} comes up on the agenda, but there’s no separate item on it.")
+    main = clauses[0][1] if clauses else (ordered[0][1] if ordered else {})
+    b = (main or {}).get("brief") or {}
+    what = (b.get("what") or "").strip()
+    if what and len(what) <= 260 and quote_key(what)[:40] != quote_key(out[0] if out else "")[:40]:
+        out.append(sentence(what))
+    place = place_text(m["place"]) if m.get("place") and m.get("source") != "massdep_wetlands" else ""
+    place = re.sub(rf",\s*{re.escape(m['town'])}\b,?\s*(?:MA|NY|RI|Massachusetts)?\.?\s*(?:\d{{5}})?(?=,|$)", "", place).strip(" ,")
+    online = place == "Online meeting"
+    where = "It’s online" if online else (f"It’s at {place}" if place else "")
+    hearing = any(str(en.get("stage") or "").startswith("Hearing") for _, en in ordered)
+    if m["board_key"] == "town_meeting":
+        out.append((f"{where}; " if where else "") + f"registered voters of {m['town']} decide.")
+    elif where and hearing:
+        out.append(f"{where}, and anyone can go and speak.")
+    elif where:
+        out.append(where + ".")
+    elif hearing:
+        out.append("Anyone can go and speak.")
+    out += moved_sentences(m)
+    return out, main
+
+
 def plain_say(say):
     """A sentence for a summary: the agenda quote left out (it is one click away)."""
     return re.sub(r":\s*“.*”$", ".", say)
