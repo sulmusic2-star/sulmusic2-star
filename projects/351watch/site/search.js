@@ -217,7 +217,9 @@
     if (tools) tools.hidden = true;
     if (more) more.hidden = true;
     document.title = q ? `${q} | ${baseTitle}` : baseTitle;
-    if (!narrowed && !upcoming) {
+    // An open with nothing typed and no filter shows nothing: listing every meeting ahead would load the whole
+    // index (6 MB) for what /upcoming already shows.
+    if (!narrowed) {
       say("");
       return;
     }

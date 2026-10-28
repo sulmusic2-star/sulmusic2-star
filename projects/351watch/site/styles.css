@@ -322,7 +322,10 @@ details.more > summary:hover, details.disclose > summary:hover { text-decoration
 .meet-details > summary { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: var(--t-sm); text-decoration: underline; text-underline-offset: 0.18em; }
 .meet-details > summary:hover { color: var(--ink); }
 .meet-details[open] { padding-bottom: var(--s2); }
-.meet-details[open] > .lines, .meet-details[open] > .speak-line { margin-top: var(--s2); padding-left: var(--s4); border-left: 3px solid var(--rule); }
+.meet-details[open] > .lines, .meet-details[open] > .speak-line, .meet-details[open] > .meet-extras { margin-top: var(--s2); padding-left: var(--s4); border-left: 3px solid var(--rule); }
+.meet-extras { display: flex; flex-wrap: wrap; gap: 0 var(--s5); font-size: var(--t-sm); margin-bottom: 0; }
+.meet-extras a { display: inline-flex; align-items: center; min-height: 40px; }
+@media (max-width: 640px) { .follow-row .small { display: none; } }
 .meetings.one .meeting { max-width: none; }
 .meet-canceled { color: var(--err); font-weight: 600; }
 

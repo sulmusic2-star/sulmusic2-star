@@ -2546,15 +2546,27 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     subject, who, sents, main = meeting_row(ctx, m, show_town)
     ahead = m.get("date") and m["date"] >= ctx.today
     subj = f'<a class="line-link" href="/m/{m["id"][2:]}">{e(subject)}</a>' if ahead else e(subject)
-    speak = speak_rule(m)
-    speak_html = f'<p class="speak-line"><b>Speaking:</b> {e(speak)}</p>' if speak and len(speak) > 140 else ""
+    # What the meeting's own page says that the row doesn't, so nobody has to open it and come back: the agenda's
+    # own speaking rule (or that none is listed), the calendar file, and the page itself for sharing.
+    speak = speak_rule(m) if not m.get("cancelled") else ""
+    hearing = any(str(en.get("stage") or "").startswith("Hearing") for en in m["lines"].values())
+    if speak and len(speak) > 140:
+        speak_html = f'<p class="speak-line"><b>Speaking:</b> {e(speak)}</p>'
+    elif not speak and not hearing and not m.get("cancelled") and m["board_key"] != "town_meeting" and m["source"] != "massdep_wetlands":
+        speak_html = f'<p class="speak-line">{e(SPEAK_NONE)}</p>'
+    else:
+        speak_html = ""
+    extras = ""
+    if ahead:
+        extras = (f'<p class="meet-extras"><a href="/m/{m["id"][2:]}.ics" download="{e(m["id"][2:])}.ics">Add this meeting to my calendar</a>'
+                  f'<a href="/m/{m["id"][2:]}">This meeting’s own page</a></p>')
     link = doc_link_html(ctx, m)
     return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" {attrs}>
   <p class="meet-subject">{subj}</p>
   <p class="meet-who" data-slop-ignore>{who}</p>
   <p class="meet-say">{" ".join(e(x) for x in sents)}</p>
   {f'<p class="meet-link">{link}</p>' if link else ''}
-  <details class="meet-details"><summary>Details</summary>{speak_html}<ul class="lines">{lines}</ul></details>
+  <details class="meet-details"><summary>Details</summary>{speak_html}<ul class="lines">{lines}</ul>{extras}</details>
 </li>"""
 
 
