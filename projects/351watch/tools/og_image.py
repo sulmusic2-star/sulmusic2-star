@@ -1,8 +1,8 @@
 """Draw site/og.png, the 1200x630 picture shown when someone shares a link to the site.
 
 usage: python3 tools/og_image.py   (needs Pillow, fontTools and brotli to read the site's own fonts)
-Same look as the site: the agenda-sheet mark, the product name in Barlow Semi Condensed Bold, one line
-in Barlow, on the paper color. Rerun it when SITE_NAME changes.
+Same look as the site: the agenda-sheet mark, the product name in Public Sans SemiBold, one line
+in Public Sans, on the paper color. Rerun it when SITE_NAME changes.
 """
 import io
 import sys
@@ -35,10 +35,10 @@ d.rectangle([0, 560, 1200, 630], fill=LAND)
 d.rounded_rectangle([84, 76, 180, 196], radius=8, fill=PAPER, outline=INK, width=5)
 for y, w, c in ((108, 48, DOT), (131, 48, MARK), (158, 32, DOT)):
     d.rectangle([108, y, 108 + w, y + (14 if c == MARK else 10)], fill=c)
-d.text((210, 92), SITE_NAME, font=font("barlow-semicondensed-bold.woff2", 96), fill=INK)
-d.text((80, 270), "See what’s coming up at", font=font("barlow-semicondensed-bold.woff2", 84), fill=INK)
-d.text((80, 365), "your town meetings", font=font("barlow-semicondensed-bold.woff2", 84), fill=INK)
+d.text((210, 92), SITE_NAME, font=font("public-sans-semibold.woff2", 96), fill=INK)
+d.text((80, 270), "See what’s coming up at", font=font("public-sans-semibold.woff2", 84), fill=INK)
+d.text((80, 365), "your town meetings", font=font("public-sans-semibold.woff2", 84), fill=INK)
 d.text((80, 478), "Solar, batteries and data centers on town agendas, in plain words.",
-       font=font("barlow-regular.woff2", 34), fill=MUTED)
+       font=font("public-sans-regular.woff2", 34), fill=MUTED)
 img.save(ROOT / "site" / "og.png", optimize=True)
 print("wrote site/og.png")

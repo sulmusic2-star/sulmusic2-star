@@ -39,7 +39,7 @@ function stageWord(s) {
   const dayLabel = (iso) => new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' }).replace(/^(\w{3}),/, '$1');
   const relDates = (root) => { if (window.w351 && window.w351.relDates) window.w351.relDates(root); };
 
-  // As story_html() in build.py: a box with the day, town and board, the item's line and the status.
+  // As story_html() in build.py: the subject, then town, board and day, then what the board does.
   function storyNode(st, i) {
     const li = el('li', 'row');
     li.dataset.date = st.meeting_date || '';
@@ -47,19 +47,21 @@ function stageWord(s) {
     const a = el('a');
     a.href = st.href;
     const rank = el('span', 'row-rank', String((Number.isInteger(i) ? i : 0) + 1));
+    const line = el('span', 'row-line');
+    const words = st.subject || (st.line || st.headline || '').replace(' (no vote listed)', '').replace('; no vote listed)', ')');
+    line.append(/[a-z0-9)]\.$/.test(words) && !/\b(St|Rd|Ave|Dr|Ln|Blvd|Mt|No|Art|Sec|Inc|Corp|LLC|Co)\.$/.test(words) ? words.slice(0, -1) : words);
     const when = el('span', 'row-when');
+    when.dataset.slopIgnore = '';
     when.append(el('span', 'row-town', `${st.town}${st.state !== 'MA' ? `, ${st.state}` : ''}`));
-    if (st.board) when.append(el('span', '', st.board));
+    if (st.board) when.append(document.createTextNode(`, ${st.board}`));
     if (st.meeting_date) {
       const t = el('time', '', dayLabel(st.meeting_date));
       t.dateTime = st.meeting_date;
-      const d = el('span'); d.append(t); when.append(d);
-    } else when.append(el('span', '', 'Date not set'));
-    if (st.new) when.append(el('span', 'is-new', 'New on an agenda'));
-    const line = el('span', 'row-line');
-    const words = (st.line || st.headline || '').replace(' (no vote listed)', '').replace('; no vote listed)', ')');
-    line.append(/[a-z0-9)]\.$/.test(words) && !/\b(St|Rd|Ave|Dr|Ln|Blvd|Mt|No|Art|Sec|Inc|Corp|LLC|Co)\.$/.test(words) ? words.slice(0, -1) : words);
-    a.append(rank, when, line);
+      when.append(document.createTextNode(', '), t);
+    } else when.append(document.createTextNode(', date not set'));
+    if (st.new) when.append(document.createTextNode(' '), el('span', 'is-new', 'New on an agenda'));
+    a.append(rank, line, when);
+    if (st.say) a.append(el('span', 'row-say', st.say));
     const chips = (st.reasons || []).filter((c) => c && !c.startsWith('Also next door'));
     const wave = (st.reasons || []).filter((c) => c && c.startsWith('Also next door'));
     const reasons = (chips.length >= 2 ? chips.slice(0, 2) : chips.concat(wave.slice(0, 1))).slice(0, 2);
@@ -67,10 +69,6 @@ function stageWord(s) {
       const why = el('span', 'row-why');
       reasons.forEach((r) => why.append(el('span', '', r)));
       a.append(why);
-    }
-    if (st.stage) {
-      // the same dot as the page: filled when the board acts (a vote or hearing), hollow otherwise
-      a.append(el('span', stageClass(st.stage), stageWord(st.stage)));
     }
     li.append(a);
     return li;

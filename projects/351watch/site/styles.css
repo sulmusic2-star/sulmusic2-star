@@ -1,17 +1,17 @@
-/* Agenda Ahead: one stylesheet, written once from research_notes/Design/finished_site_spec.md.
+/* Agenda Ahead: one stylesheet, written to research_notes/Design/human_first_spec.md.
 
-   The site is a well-kept public list: dated, ruled, labelled. One centered column (880 px) on every page;
-   every meeting, story and record is the same kind of box (1 px rule, 10 px corners, 16 px inside); grey
-   panels hold only filters, fact boxes and the footer. One ink for text and links, one purple for the single
-   primary button, focus and the wordmark; green, amber and red mean outcomes and schedule changes, nothing else.
+   The site reads like a neighbour telling you what the town is about to decide. One column of running text
+   (760 px, 66 characters a line); a meeting is a dated paragraph under a hairline, not a card; the day sits in a
+   left column from 760 px up. One ink for text and links, one plum for the wordmark's bar, the single solid
+   button and focus; amber only for a changed date, said in words. No dots, no badges, nothing under 16 px.
 
-   Type: Barlow for reading and operating, Barlow Semi Condensed Bold for headings and dates (both OFL,
-   self-hosted, fonts/OFL-Barlow.txt). Six sizes: 40 (H1), 26 (H2), 20 (summary, card titles), 18 (body),
-   16 (small), 14 (table heads). Spacing from one scale: 4 8 12 16 24 32 48 64. */
+   Type: Public Sans (SIL OFL 1.1, fonts/LICENSE-PublicSans.md), Regular, Italic and SemiBold, self-hosted.
+   Sizes: 40/32 (the one h1), 24 (h2), 20 (h3, the lead, a meeting's subject), 18 body at 1.55, 16 small.
+   Spacing on a 4 px grid: 4 8 12 16 24 32 48 64. */
 
-@font-face { font-family: "Barlow"; src: url("/fonts/barlow-regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Barlow"; src: url("/fonts/barlow-semibold.woff2") format("woff2"); font-weight: 600 700; font-style: normal; font-display: swap; }
-@font-face { font-family: "Barlow Semi Condensed"; src: url("/fonts/barlow-semicondensed-bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Public Sans"; src: url("/fonts/public-sans-regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Public Sans"; src: url("/fonts/public-sans-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Public Sans"; src: url("/fonts/public-sans-semibold.woff2") format("woff2"); font-weight: 600 700; font-style: normal; font-display: swap; }
 
 /* ================================================================ tokens */
 :root {
@@ -31,18 +31,19 @@
   --warn: #7a4d00; --warn-wash: #fbf0d9;
   --err: #a3261b;  --err-wash: #fbeae7;
 
-  --f-body: "Barlow", "Segoe UI", system-ui, sans-serif;
-  --f-head: "Barlow Semi Condensed", "Barlow", "Arial Narrow", sans-serif;
-  --t-h1: 2.5rem;      /* 40 */
-  --t-h2: 1.625rem;    /* 26 */
+  --f-body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --t-h1: 2rem;        /* 32 on a phone, 40 from 641px */
+  --t-h2: 1.5rem;      /* 24 */
   --t-h3: 1.25rem;     /* 20 */
   --t-body: 1.125rem;  /* 18 */
   --t-sm: 1rem;        /* 16 */
   --t-xs: 0.875rem;    /* 14: table heads and tags only */
 
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px;
-  --frame: 880px;      /* the one column */
-  --measure: 64ch;     /* running text */
+  --frame: 760px;      /* the one column */
+  --when: 11rem;       /* the day column beside a list of meetings, from 760px up */
+  --measure: 66ch;     /* running text */
   --gutter: 24px;
   --radius: 4px;       /* controls */
   --box: 10px;         /* boxes */
@@ -74,10 +75,12 @@ img, svg { max-width: 100%; }
 a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
 a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 3px solid var(--mark); outline-offset: 2px; }
-h1, h2, h3 { font-family: var(--f-head); font-weight: 700; margin: 0; text-wrap: balance; }
-h1 { font-size: var(--t-h1); line-height: 1.1; letter-spacing: -0.01em; margin: var(--s7) 0 var(--s3); }
-h2 { font-size: var(--t-h2); line-height: 1.2; margin: var(--s7) 0 var(--s3); }
+h1, h2, h3 { font-family: var(--f-head); font-weight: 600; margin: 0; text-wrap: balance; }
+h1 { font-size: var(--t-h1); line-height: 1.15; letter-spacing: -0.01em; margin: var(--s6) 0 var(--s4); max-width: 24ch; }
+h2 { font-size: var(--t-h2); line-height: 1.25; margin: var(--s7) 0 var(--s4); }
 h3 { font-size: var(--t-h3); line-height: 1.3; margin: var(--s5) 0 var(--s2); }
+@media (min-width: 641px) { :root { --t-h1: 2.5rem; } }
+b, strong { font-weight: 600; }
 p { margin: 0 0 var(--s3); }
 ul, ol { margin: 0 0 var(--s3); }
 small, .small { font-size: var(--t-sm); }
@@ -112,7 +115,7 @@ details > summary { font-weight: 600; color: var(--ink); }
 header.site { border-bottom: 1px solid var(--rule); }
 header.site .wrap { display: flex; align-items: center; gap: var(--s3) var(--s5); flex-wrap: wrap; padding-top: var(--s3); padding-bottom: var(--s3); }
 .brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--ink); text-decoration: none;
-  font: 700 1.5rem/1 var(--f-head); letter-spacing: -0.005em; white-space: nowrap; }
+  font: 600 1.25rem/1 var(--f-head); white-space: nowrap; }
 .brand-mark { width: 26px; height: 20px; flex: none; fill: var(--ink); }
 .brand-mark .hi { fill: var(--mark); }
 nav.top { flex: 1 1 auto; }
@@ -133,7 +136,7 @@ nav.top a[aria-current="page"] { border-bottom-color: var(--ink); }
 /* footer: who runs it, the sections, the about pages */
 footer.site { background: var(--land); padding: var(--s7) 0 var(--s8); color: var(--muted); font-size: var(--t-sm); }
 footer.site .wrap { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--s5) var(--s6); }
-.foot-brand { display: inline-flex; align-items: center; gap: 10px; font: 700 1.25rem/1 var(--f-head); color: var(--ink); margin: 0 0 var(--s3); }
+.foot-brand { display: inline-flex; align-items: center; gap: 10px; font: 600 1.125rem/1 var(--f-head); color: var(--ink); margin: 0 0 var(--s3); }
 .foot-brand .brand-mark { width: 22px; height: 17px; }
 .foot-who p:last-child { max-width: 42ch; }
 .foot-head { font-weight: 600; color: var(--ink); margin: 0 0 var(--s2); }
@@ -147,8 +150,15 @@ footer.site .wrap { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(
 .crumbs li + li::before { content: "›"; margin-right: var(--s2); }
 .crumbs + h1, .crumbs + .page-grid h1, .crumbs + * h1:first-child { margin-top: var(--s2); }
 .page-head { margin-bottom: var(--s5); }
-.lead { font-size: var(--t-h3); line-height: 1.5; max-width: 40em; color: var(--ink); margin: 0 0 var(--s2); }
+.lead { font-size: var(--t-h3); line-height: 1.45; max-width: var(--measure); color: var(--ink); margin: 0 0 var(--s3); }
 .checked { color: var(--muted); font-size: var(--t-sm); margin: 0 0 var(--s4); }
+.follow-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3) var(--s5); margin: var(--s5) 0 var(--s6); }
+.follow-row .small { margin: 0; max-width: 40ch; color: var(--muted); }
+details.narrow { margin: var(--s4) 0 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+details.narrow > summary { display: flex; align-items: center; gap: var(--s2); min-height: 52px; padding: var(--s2) 0; color: var(--ink); text-decoration: underline; text-underline-offset: 0.18em; }
+details.narrow > summary:hover { text-decoration-thickness: 2px; }
+details.narrow[open] { padding-bottom: var(--s4); }
+details.narrow .filterbar { margin-top: var(--s2); }
 .section-lead { max-width: var(--measure); }
 .sub-count { color: var(--muted); font-weight: 400; font-size: var(--t-sm); }
 
@@ -275,55 +285,45 @@ details.more > summary:hover, details.disclose > summary:hover { text-decoration
 
 /* ================================================================ status: one vocabulary */
 .stage { white-space: nowrap; font-size: var(--t-sm); color: var(--muted); }
-.stage::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; vertical-align: 1px; border: 1.5px solid var(--rule-strong); }
-.stage.act { color: var(--ink); font-weight: 600; }
-.stage.act::before { background: var(--ink); border-color: var(--ink); }
+.stage.act { color: var(--ink); }
 .stage.maybe { color: var(--ink); }
-.stage.maybe::before { border-color: var(--ink); }
-.stage.moved { color: var(--warn); background: var(--warn-wash); font-weight: 600; padding: 1px 8px; border-radius: 3px; }
-.stage.moved::before { display: none; }
+.stage.moved { color: var(--warn); font-weight: 600; }
 .stage.off { color: var(--muted); text-decoration: line-through; }
-.stage.off::before { display: none; }
-.is-new { display: inline-block; font-size: var(--t-xs); font-weight: 600; color: var(--mark); background: var(--mark-wash); padding: 0 8px; border-radius: 3px; }
+.is-new { display: inline-block; font-size: var(--t-sm); font-weight: 600; color: var(--mark); }
 
 /* ================================================================ lists of meetings */
+/* A day is a heading; from 760px up it sits in a left column beside that day's meetings. A meeting is the subject,
+   who and where, what the board does in a sentence or two, one link, and "Details" folded. Hairlines, no boxes. */
 .days { margin: 0; }
-.day-group + .day-group { margin-top: var(--s6); }
-.day { font: 700 var(--t-h3)/1.3 var(--f-head); color: var(--ink); margin: 0 0 var(--s3); }
+.day-group { border-top: 1px solid var(--rule); padding: var(--s4) 0 var(--s2); }
+.day { font: 600 var(--t-h3)/1.3 var(--f-head); color: var(--ink); margin: 0 0 var(--s3); }
 .meetings { list-style: none; margin: 0; padding: 0; }
-
-/* the meeting card: the same box on every list */
-.meeting { margin: 0; border: 1px solid var(--rule); border-radius: var(--box); padding: var(--s4); background: var(--paper); }
-.meeting + .meeting { margin-top: var(--s2); }
-.meeting.canceled { opacity: 0.8; }
+@media (min-width: 760px) {
+  .day-group { display: grid; grid-template-columns: var(--when) minmax(0, 1fr); column-gap: var(--s5); padding: var(--s5) 0 var(--s3); }
+  .day { grid-column: 1; margin: 0; padding-top: 2px; }
+  .day-group > .meetings { grid-column: 2; }
+}
+.meeting { margin: 0; padding: 0 0 var(--s4); max-width: var(--measure); }
+.meeting + .meeting { border-top: 1px solid var(--rule); padding-top: var(--s4); }
+.meeting.canceled .meet-subject { color: var(--muted); }
 .meeting:target { animation: landed 1.5s ease-out 1; }
 @keyframes landed { from { background: var(--mark-wash); } to { background: var(--paper); } }
-@media (min-width: 760px) {
-  .meeting { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); column-gap: var(--s4); align-items: baseline; }
-  .meeting > .meet-when { grid-column: 1; grid-row: 1; }
-  .meeting > :not(.meet-when) { grid-column: 2; }
-}
-.meet-when { font-weight: 600; color: var(--ink); white-space: nowrap; }
-.meet-when.none { color: var(--muted); font-weight: 400; font-size: var(--t-sm); white-space: normal; }
-.meet-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s2); margin: 0 0 var(--s2); color: var(--ink); }
-.meet-head > span + span:not(.meet-place)::before { content: "\00B7"; margin-right: var(--s2); color: var(--muted); }
-.meet-town a { color: var(--ink); font-weight: 600; text-decoration: none; }
-.meet-town a:hover { text-decoration: underline; }
-.meet-day { font-weight: 600; }
-.meet-place { flex-basis: 100%; color: var(--muted); font-size: var(--t-sm); }
-.meet-canceled { color: var(--err); font-weight: 600; }
-.meet-doc .item-link { font-size: var(--t-sm); }
-.meet-src { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--s4); margin: var(--s3) 0 0; font-size: var(--t-sm); }
-.meet-src .link-btn { font-size: var(--t-sm); font-weight: 600; }
+.meet-subject { margin: 0 0 var(--s1); font: 600 var(--t-h3)/1.3 var(--f-head); text-wrap: pretty; }
+.meet-subject a { color: var(--ink); text-decoration-color: var(--rule-strong); }
+.meet-subject a:hover, .meet-subject a:focus-visible { text-decoration-color: var(--ink); }
+.meet-who { margin: 0 0 var(--s2); color: var(--muted); font-size: var(--t-sm); }
+.meet-who a { color: var(--ink); font-weight: 600; text-decoration: none; }
+.meet-who a:hover { text-decoration: underline; }
+.meet-say { margin: 0 0 var(--s2); }
+.meet-link { margin: 0 0 var(--s1); font-size: var(--t-sm); }
 .item-link { font-weight: 600; }
-@media (max-width: 759px) {
-  .meeting > .meet-when { display: inline; margin-right: var(--s2); }
-  .meeting > .meet-head { display: inline; }
-  .meeting > .meet-when + .meet-head::before { content: "\00B7"; margin-right: var(--s2); color: var(--muted); }
-  .meet-head > span + span:not(.meet-place) { margin-left: var(--s2); }
-  .meet-place { display: block; margin-top: var(--s1); }
-  .meet-head + .lines, .meet-head + .speak-line { margin-top: var(--s2); }
-}
+.meet-details { margin: 0; }
+.meet-details > summary { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: var(--t-sm); text-decoration: underline; text-underline-offset: 0.18em; }
+.meet-details > summary:hover { color: var(--ink); }
+.meet-details[open] { padding-bottom: var(--s2); }
+.meet-details[open] > .lines, .meet-details[open] > .speak-line { margin-top: var(--s2); padding-left: var(--s4); border-left: 3px solid var(--rule); }
+.meetings.one .meeting { max-width: none; }
+.meet-canceled { color: var(--err); font-weight: 600; }
 
 /* the items inside a meeting */
 .lines { list-style: none; margin: 0; padding: 0; }
@@ -353,37 +353,19 @@ details.more > summary:hover, details.disclose > summary:hover { text-decoration
   .line-say .stage { display: block; margin-top: var(--s1); }
 }
 
-/* the short list: each box is the meeting's line and its headlines */
-.compact .meetings :is(.brief-what, .line-before, .line-facts, .line-next, .line-note, .speak-line, .meet-src) { display: none; }
-.compact .lines > .line + .line { margin-top: var(--s2); }
-.meet-doc { display: none; }
-.compact .meetings .meet-doc { display: inline; }
-@media (min-width: 760px) { .compact .meetings .meet-place { order: 2; } }
-@media (max-width: 759px) {
-  .compact .meetings .meet-doc { display: block; margin: 0; }
-  .compact .meetings .meet-doc::before { content: none; }
-}
-.compact .meetings .meet-src { display: none; }
-
 /* ================================================================ stories (ranked rows) */
-.rows { list-style: none; margin: 0; padding: 0; }
-.row { border: 1px solid var(--rule); border-radius: var(--box); background: var(--paper); }
-.row + .row { margin-top: var(--s2); }
-.row a { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "day when" "line line" "why why" "stage stage";
-  column-gap: var(--s3); align-items: baseline; padding: var(--s4); color: var(--ink); text-decoration: none; border-radius: var(--box); }
-.row a:hover { background: var(--land); }
+.rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.row { border-bottom: 1px solid var(--rule); }
+.row a { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "rank line" "rank when" "rank say" "rank why";
+  column-gap: var(--s3); align-items: baseline; padding: var(--s4) 0; color: var(--ink); text-decoration: none; max-width: var(--measure); }
 .row a:hover .row-line { text-decoration: underline; text-decoration-color: var(--rule-strong); }
-.row-day { grid-area: day; font-size: var(--t-sm); font-weight: 600; white-space: nowrap; }
-.row-when { grid-area: when; display: flex; flex-wrap: wrap; gap: 0 var(--s3); font-size: var(--t-sm); color: var(--muted); }
+.row-rank { grid-area: rank; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 1.5em; }
+.row-line { grid-area: line; font: 600 var(--t-h3)/1.3 var(--f-head); text-wrap: pretty; }
+.row-when { grid-area: when; font-size: var(--t-sm); color: var(--muted); margin-top: var(--s1); }
 .row-town { color: var(--ink); font-weight: 600; }
-.row-line { grid-area: line; font-weight: 600; max-width: 64ch; margin-top: var(--s1); }
-.row-why { grid-area: why; display: flex; flex-wrap: wrap; gap: 0 var(--s2); color: var(--muted); font-size: var(--t-sm); margin-top: var(--s1); }
+.row-say { grid-area: say; margin-top: var(--s2); }
+.row-why { grid-area: why; display: flex; flex-wrap: wrap; gap: 0 var(--s2); color: var(--muted); font-size: var(--t-sm); margin-top: var(--s2); }
 .row-why > span + span::before { content: "\00B7"; margin-right: var(--s2); }
-.row .stage { grid-area: stage; margin-top: var(--s1); justify-self: start; }
-@media (min-width: 760px) {
-  .row a { grid-template-columns: 6.5rem minmax(0, 1fr) 9rem; grid-template-areas: "day when stage" "day line stage" "day why stage"; column-gap: var(--s4); }
-  .row .stage { margin: 0; }
-}
 .trend-foot { color: var(--muted); font-size: var(--t-sm); max-width: 70ch; }
 .trend-filters { display: grid; gap: var(--s2); margin: var(--s4) 0; font-size: var(--t-sm); }
 .trend-filters fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
@@ -500,8 +482,8 @@ td small, th small { display: block; color: var(--muted); font-weight: 400; }
 .ticket-speak { color: var(--muted); }
 .ticket-canceled { font-weight: 600; }
 .ticket .actions { margin: var(--s4) 0 0; }
-.ticket .ticket-links { display: flex; flex-wrap: wrap; gap: 0 var(--s4); margin: var(--s2) 0 0; font-size: var(--t-sm); }
-.ticket .ticket-links a, .ticket .ticket-links .link-btn { font-weight: 600; min-height: 40px; display: inline-flex; align-items: center; }
+.ticket-links { display: flex; flex-wrap: wrap; gap: 0 var(--s5); margin: var(--s2) 0 0; font-size: var(--t-sm); }
+.ticket-links a, .ticket-links .link-btn { font-weight: 600; min-height: 40px; display: inline-flex; align-items: center; }
 .meetings.one .meeting { border: 0; padding: 0; border-radius: 0; background: none; display: block; }
 .meetings.one .line { margin-bottom: var(--s5); }
 .meetings.one .line-say { font-size: var(--t-h3); line-height: 1.35; }
@@ -659,7 +641,10 @@ form[data-list-filter] label { flex: 1 1 100%; }
 .page-end { width: 100%; }
 .ticket .facts-list { gap: var(--s2) var(--s5); }
 .ticket .facts-list dt { font-weight: 600; font-size: var(--t-sm); padding-top: 2px; }
-.follow-box { margin-top: var(--s6); }
+.follow-box { margin-top: var(--s7); padding-top: var(--s5); border-top: 1px solid var(--rule); }
+.example-quote { margin: 0; padding: var(--s1) 0 var(--s1) var(--s4); border-left: 3px solid var(--mark); }
+.example-quote p { max-width: var(--measure); }
+.example-quote p:last-child { margin-bottom: 0; }
 .follow-box h2 { font-size: var(--t-h3); margin: 0 0 var(--s2); }
 .page-end .link-btn { min-height: 0; font-size: var(--t-sm); color: var(--muted); }
 /* an item's facts, labelled */

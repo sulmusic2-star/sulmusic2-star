@@ -1056,12 +1056,11 @@ function setupMeetingFilter() {
         for (const m of week ? week.querySelectorAll('.meeting:not([hidden])') : []) {
           const day = m.closest('.day-group');
           const when = day ? day.querySelector('.day').textContent.trim() : '';
-          const time = m.querySelector('.meet-when time');
-          const head = Array.from(m.querySelectorAll('.meet-head > span:not(.meet-place):not(.meet-day):not(.meet-doc)'))
-            .map((s) => s.textContent.trim()).filter((t) => t && !/^(?:Agenda|Warrant|Packet)\b/.test(t)).join(' ');
-          const item = m.querySelector('.line-link');
-          const link = item ? `${location.origin}${item.getAttribute('href')}` : '';
-          lines.push(`${head}, ${when}${time ? `, ${time.textContent.trim()}` : ''}: ${item ? item.textContent.trim() : ''}. ${link}`.replace(/\s+\./g, '.'));
+          const who = m.querySelector('.meet-who');
+          const head = who ? who.textContent.trim() : '';
+          const item = m.querySelector('.meet-subject a, .meet-subject');
+          const link = item && item.getAttribute('href') ? `${location.origin}${item.getAttribute('href')}` : '';
+          lines.push(`${head}, ${when}: ${item ? item.textContent.trim() : ''}. ${link}`.replace(/\s+\./g, '.'));
         }
         copyBtn.dataset.copy = lines.join('\n');
       }
@@ -1128,7 +1127,7 @@ function markPastDays() {
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   for (const g of document.querySelectorAll('.day-group')) {
     const t = g.querySelector('.day time[datetime]');
-    if (t && t.getAttribute('datetime') < today && !g.closest('details.disclose')) {
+    if (t && t.getAttribute('datetime') < today && !g.closest('details.disclose') && !g.closest('[data-past]')) {
       g.classList.add('past');
       g.hidden = true;
     }
