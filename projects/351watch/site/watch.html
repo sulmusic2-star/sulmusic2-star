@@ -15,9 +15,8 @@
 <meta property="og:image:alt" content="Agenda Ahead: what's coming up at your town meetings">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
-<link rel="preload" href="/fonts/barlow-regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/barlow-semibold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/barlow-semicondensed-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/public-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/public-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctitle%3EAgenda%20Ahead%3C/title%3E%3Crect x='4' y='7' width='18' height='4' rx='1' fill='%231f2724'/%3E%3Crect x='4' y='14' width='24' height='4' rx='1' fill='%237a2c80'/%3E%3Crect x='4' y='21' width='18' height='4' rx='1' fill='%231f2724'/%3E%3C/svg%3E">
 </head>
@@ -34,14 +33,13 @@
 <p class="notice" id="edit-banner" hidden>Editing <b id="edit-name">your alerts</b>. <a href="/watch">Set up new alerts instead</a></p>
 <p class="notice err" id="watch-error" role="alert" hidden></p>
 <h1 id="watch-title" tabindex="-1" data-start="Follow a town">Follow a town</h1>
-<p class="lead">Your town’s meetings on the subjects you choose, in a page and a calendar feed that update every morning. Free for your town and the towns next to it; no account.</p>
-<p class="checked">Checked Oct 28, 7:18 am from the agendas towns post online.</p>
+<p class="lead">Every morning we read your town’s agendas. You get a page and a calendar feed with what its boards have coming up on the subjects you choose, for your town and the towns next door. Free, no account.</p>
 
 <noscript><p class="notice">Following a town needs JavaScript. You can still <a href="/towns">find your town</a> and read what’s coming up there.</p></noscript>
 <form id="watch-form" class="watch-form" data-mode="residents" novalidate>
   <div class="step" id="step-town">
-    <label for="home-town" class="big-q">Which town?</label>
-    <p class="form-note" id="town-help">You get a private page that updates every morning and a calendar feed for it and the towns next to it.</p>
+    <label for="home-town" class="big-q">Your town</label>
+    <p class="form-note" id="town-help">Start typing and pick it from the list.</p>
     <div class="combo" data-town-box="pick">
       <input id="home-town" class="big-input" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" aria-describedby="town-help home-read towns-error">
       <ul class="suggest" id="home-town-list" role="listbox" aria-label="Matching towns" hidden></ul>
