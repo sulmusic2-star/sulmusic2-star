@@ -8,7 +8,7 @@ My main project is Lasting Ground, a property research tool. I also work on sour
 
 Property research with official records and their sources in view. The public repository contains synthetic Python examples of source validation, uncertainty handling and report assembly; the full application source is private.
 
-[![Lasting Ground, showing the actual property-search interface](https://raw.githubusercontent.com/sulmusic2-star/sulmusic2-star.github.io/main/assets/lasting-ground-product-cover.png)](https://sulmusic2-star.github.io/case-studies/lasting-ground/)
+[![Lasting Ground: actual public interface with fictional source-check and report examples](https://raw.githubusercontent.com/sulmusic2-star/sulmusic2-star.github.io/main/assets/lasting-ground-studio-cover.png)](https://sulmusic2-star.github.io/case-studies/lasting-ground/)
 
 [Code and technical notes](https://github.com/sulmusic2-star/lasting-ground-showcase) · [Project](https://sulmusic2-star.github.io/case-studies/lasting-ground/)
 
