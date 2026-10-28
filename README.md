@@ -1,6 +1,6 @@
 # Tim Sullivan
 
-I work on property research tools, mobile apps and software verification. My projects combine product design with application logic and careful handling of source data.
+My main project is Lasting Ground, a property research tool. I also work on source evaluation, mobile apps and software verification.
 
 [Selected work](https://sulmusic2-star.github.io/) · [Email](mailto:hello@lastingground.com)
 
@@ -11,6 +11,14 @@ Property research with official records and their sources in view. The public re
 [![Lasting Ground public search interface, captured October 26, 2026](https://raw.githubusercontent.com/sulmusic2-star/sulmusic2-star.github.io/main/assets/property-search-20261026.png)](https://lastingground.com)
 
 [Code and technical notes](https://github.com/sulmusic2-star/lasting-ground-showcase) · [Project](https://sulmusic2-star.github.io/case-studies/lasting-ground/)
+
+## GroundTruth-Geo
+
+A companion evaluation project from Lasting Ground development. It pairs 33 selected property questions with dated official-source receipts, geometry checks and a deterministic answer grader. The examples make wrong-property answers, unsupported claims and abstention inspectable.
+
+The public set is small and dated; it does not establish Lasting Ground’s production accuracy or geographic coverage.
+
+[Code and reference cases](https://github.com/sulmusic2-star/groundtruth-geo) · [Recorded run and its limits](https://github.com/sulmusic2-star/groundtruth-geo#observed-closed-book-run)
 
 ## SquadBrain
 
@@ -25,7 +33,6 @@ A sports roster learning app for iPhone and iPad, listed on the App Store under 
 
 | Project | What to inspect |
 | --- | --- |
-| [GroundTruth-Geo](https://github.com/sulmusic2-star/groundtruth-geo) | A small property-record test set with dated official-source receipts, geometry checks and an answer grader. |
 | [Agent Vigil](https://github.com/sulmusic2-star/agent-vigil) | Pull-request verification tooling: commit identity, test evidence and policy checks. |
 | [Patch Lab](https://github.com/sulmusic2-star/patch-lab) | A public alpha for local repository evidence and migration checks. |
 
