@@ -6,7 +6,7 @@ My main project is Lasting Ground, a property research tool. I also work on sour
 
 ## Lasting Ground
 
-Property research with official records and their sources in view. The public repository contains synthetic Python examples of source validation, uncertainty handling and report assembly; the full application source is private.
+A property research tool that brings questions and official source records into one interface. The public repository contains synthetic Python examples of source validation, uncertainty handling and report assembly; the full application source is private.
 
 [![Lasting Ground: actual public interface with fictional source-check and report examples](https://raw.githubusercontent.com/sulmusic2-star/sulmusic2-star.github.io/main/assets/lasting-ground-studio-cover.png)](https://sulmusic2-star.github.io/case-studies/lasting-ground/)
 
@@ -20,9 +20,9 @@ A sports roster learning app for iPhone and iPad, listed on the App Store under 
 
 [Code and technical notes](https://github.com/sulmusic2-star/squadbrain-showcase) · [App Store](https://apps.apple.com/us/app/squadbrain/id6756122317)
 
-## Supporting engineering
+## GroundTruth-Geo
 
-A companion evaluation project from Lasting Ground development. It pairs 33 selected property questions with dated official-source receipts, geometry checks and a deterministic answer grader. The examples make wrong-property answers, unsupported claims and abstention inspectable.
+I developed GroundTruth-Geo alongside Lasting Ground to check property answers against saved official records. Its 33 selected questions cover wrong-property matches, unsupported answers and cases where the system should abstain. The repository includes dated source receipts, geometry checks and a deterministic grader.
 
 The public set is small and dated; it does not establish Lasting Ground’s production accuracy or geographic coverage.
 
@@ -30,9 +30,8 @@ The public set is small and dated; it does not establish Lasting Ground’s prod
 
 ## More code
 
-| Project | What to inspect |
+| Project | Description |
 | --- | --- |
 | [Agent Vigil](https://github.com/sulmusic2-star/agent-vigil) | Pull-request verification tooling: commit identity, test evidence and policy checks. |
 | [Patch Lab](https://github.com/sulmusic2-star/patch-lab) | A public alpha for local repository evidence and migration checks. |
 
-The repositories describe the scope of each example and how to run it.
