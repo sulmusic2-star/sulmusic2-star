@@ -2,13 +2,13 @@
 
 [![Tim Sullivan: property research, mobile learning and working code. Boston municipal geometry portfolio study.](https://raw.githubusercontent.com/sulmusic2-star/sulmusic2-star.github.io/main/assets/profile-atlas-cover.png)](https://sulmusic2-star.github.io/)
 
-My main project is Lasting Ground, a property research tool. I also work on source evaluation, mobile apps and software verification.
+My main project is Lasting Ground, a property research tool. I also build mobile apps and test how software handles incomplete or conflicting information.
 
 [Selected work](https://sulmusic2-star.github.io/) · [Email](mailto:hello@lastingground.com)
 
 ## Lasting Ground
 
-A property research tool that brings questions and official source records into one interface. The public repository contains synthetic Python examples of source validation, uncertainty handling and report assembly; the full application source is private.
+A property research tool that brings questions and official records into one interface. The public repository contains Python examples of record checks, uncertainty handling and report assembly using fictional data; the full application source is private.
 
 [Code and technical notes](https://github.com/sulmusic2-star/lasting-ground-showcase) · [Project](https://sulmusic2-star.github.io/case-studies/lasting-ground/)
 
@@ -20,7 +20,7 @@ A sports roster learning app for iPhone and iPad, listed on the App Store under 
 
 ## GroundTruth-Geo
 
-I developed GroundTruth-Geo alongside Lasting Ground to check property answers against saved official records. Its 33 selected questions cover wrong-property matches, unsupported answers and cases where the system should abstain. The repository includes dated source receipts, geometry checks and a deterministic grader.
+I developed GroundTruth-Geo alongside Lasting Ground to check property answers against saved official records. Its 33 selected questions cover wrong-property matches, unsupported answers and cases where the system should abstain. The repository includes dated government responses, geometry checks and a deterministic grader.
 
 The public set is small and dated; it does not establish Lasting Ground’s production accuracy or geographic coverage.
 
@@ -28,9 +28,9 @@ The public set is small and dated; it does not establish Lasting Ground’s prod
 
 ## Municipal geometry study
 
-The portfolio includes an interactive model of 540 City of Boston building records. Switch between plan and volume, inspect a selected building and open its municipal source. It is a separate portfolio study, not a Lasting Ground feature or a survey.
+The portfolio includes an interactive model of 540 City of Boston building records. Switch between plan and volume, inspect a selected building and open its city record. It is a separate portfolio study, not a Lasting Ground feature or a survey.
 
-[Try the study](https://sulmusic2-star.github.io/) · [Rendering and source mapping](https://github.com/sulmusic2-star/sulmusic2-star.github.io/blob/main/assets/js/city-study.mjs)
+[Try the study](https://sulmusic2-star.github.io/) · [Rendering and record mapping](https://github.com/sulmusic2-star/sulmusic2-star.github.io/blob/main/assets/js/city-study.mjs)
 
 ## More code
 
