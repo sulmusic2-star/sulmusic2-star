@@ -1,31 +1,31 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 225,
-   "new_hits": 100,
-   "towns_attempted": 243,
-   "towns_succeeded": 243
+   "new_documents": 6,
+   "new_hits": 10,
+   "towns_attempted": 19,
+   "towns_succeeded": 19
   },
   "NY": {
-   "new_documents": 11,
-   "new_hits": 3,
-   "towns_attempted": 33,
-   "towns_succeeded": 33
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 2,
+   "towns_succeeded": 2
   },
   "RI": {
-   "new_documents": 31,
-   "new_hits": 10,
-   "towns_attempted": 39,
-   "towns_succeeded": 39
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 2,
+   "towns_succeeded": 2
   }
  },
  "date": "2026-10-30",
- "document_errors": 2,
- "documents_already_indexed": 2735,
+ "document_errors": 0,
+ "documents_already_indexed": 246,
  "documents_deferred": 0,
- "documents_listed": 3004,
- "documents_needing_ocr": 1,
- "documents_rematched": 0,
+ "documents_listed": 278,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 26,
  "documents_retried": 0,
  "documents_too_large": [
   {
@@ -120,84 +120,64 @@
    "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
   }
  ],
- "duration_seconds": 1156.2,
- "errors": [
-  {
-   "error": "document: too large (43384324 > 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2642",
-   "town": "MA:Great Barrington"
-  },
-  {
-   "error": "document: extract failed (content-type application/msword): https://www.westport-ma.com/11-24-26.doc",
-   "town": "MA:Westport"
-  }
- ],
- "errors_total": 2,
- "finished": "2026-10-30T11:26:55+00:00",
- "hits_current": 1596,
+ "duration_seconds": 106.8,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-10-30T18:33:56+00:00",
+ "hits_current": 1598,
  "index": {
   "by_state": {
-   "MA": 3984,
+   "MA": 3990,
    "NY": 269,
    "RI": 460
   },
   "by_status": {
    "error": 23,
    "needs_ocr": 5,
-   "ok": 4615,
-   "replaced": 70
+   "ok": 4620,
+   "replaced": 71
   },
   "by_text_source": {
    "docx": 23,
    "html": 229,
    "none": 25,
-   "ocr": 1064,
-   "pdf": 3372
+   "ocr": 1066,
+   "pdf": 3376
   },
-  "documents": 4713,
-  "hits": 1774,
-  "pruned": 13,
+  "documents": 4719,
+  "hits": 1784,
+  "pruned": 0,
   "towns": 309,
-  "with_hits": 919
+  "with_hits": 921
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 199580888,
-   "listing": 135732712,
-   "robots": 898072
+   "document": 48218264,
+   "listing": 10681916
   },
-  "cache_hits": 241,
+  "cache_hits": 21,
   "errors": 1,
-  "requests": 1253,
+  "requests": 89,
   "requests_by_purpose": {
-   "document": 280,
-   "listing": 684,
-   "robots": 289
+   "document": 35,
+   "listing": 54
   },
   "robots_blocked": 0
  },
- "new_alert_items": 78,
+ "new_alert_items": 4,
  "new_alert_items_by_topic": {
-  "40b_comprehensive_permit": 15,
-  "battery_storage": 10,
-  "clean_energy_siting": 1,
-  "data_center": 14,
-  "moratorium": 6,
-  "solar": 28,
-  "wetlands_filing": 2,
-  "wireless_telecom": 2,
-  "zoning_amendment": 18
+  "40b_comprehensive_permit": 1,
+  "solar": 1,
+  "zoning_amendment": 2
  },
- "new_documents": 267,
- "new_hits": 113,
+ "new_documents": 6,
+ "new_hits": 10,
  "new_hits_by_topic": {
-  "40b_comprehensive_permit": 18,
-  "battery_storage": 19,
-  "clean_energy_siting": 1,
-  "data_center": 16,
-  "moratorium": 7,
-  "solar": 41,
+  "40b_comprehensive_permit": 2,
+  "data_center": 2,
+  "solar": 1,
   "wireless_telecom": 2,
-  "zoning_amendment": 33
+  "zoning_amendment": 3
  },
  "options": {
   "matcher_version": "4f9bcaade9",
@@ -207,16 +187,32 @@
   "tesseract": true,
   "workers": 16
  },
- "started": "2026-10-30T11:07:39+00:00",
+ "previous_runs_today": [
+  {
+   "duration_seconds": 1156.2,
+   "new_documents": 267,
+   "new_hits": 113,
+   "requests": 1253,
+   "started": "2026-10-30T11:07:39+00:00",
+   "states": [
+    "MA",
+    "NY",
+    "RI"
+   ],
+   "towns_attempted": 315,
+   "towns_succeeded": 315
+  }
+ ],
+ "started": "2026-10-30T18:32:09+00:00",
  "states": [
   "MA",
   "NY",
   "RI"
  ],
- "towns_attempted": 315,
+ "towns_attempted": 23,
  "towns_failed": [],
  "towns_partial": [],
- "towns_succeeded": 315,
+ "towns_succeeded": 23,
  "window": {
   "end": "2027-02-27",
   "start": "2026-09-30"
