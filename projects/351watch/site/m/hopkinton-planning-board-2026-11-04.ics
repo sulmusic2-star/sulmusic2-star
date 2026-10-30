@@ -1,0 +1,36 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-hopkinton-planning-board-2026-11-04@agendaahead
+DTSTAMP:20261030T120000Z
+DTSTART;TZID=America/New_York:20261104T190000
+DTEND;TZID=America/New_York:20261104T210000
+SUMMARY:Hopkinton Planning Board
+LOCATION:Town Council Chambers\, or join online\, Hopkinton\, RI
+DESCRIPTION:\nAgenda: https://opengov.sos.ri.gov/Common/DownloadMeetingFile
+ s?FilePath=%5CNotices%5C4514%5C2026%5C570240.pdf\nPage: https://agendaahea
+ d.vercel.app/m/hopkinton-planning-board-2026-11-04\nConfirm the time and p
+ lace with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/hopkinton-planning-board-2026-11-04
+END:VEVENT
+END:VCALENDAR

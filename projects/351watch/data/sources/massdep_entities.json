@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T11:01:34+00:00",
+ "generated": "2026-10-30T11:03:06+00:00",
  "source": "massdep_wetlands",
  "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
  "link_types": {
@@ -836,6 +836,41 @@
    "distinct_sites": 1,
    "in_target_list": true,
    "target_segment": "solar; storage"
+  },
+  {
+   "parent": "Agilitas Energy",
+   "kind": "developer",
+   "filings": 1,
+   "project_applicants": [
+    "AGILITAS ENERGY, INC."
+   ],
+   "sites": [
+    "Williamsburg: 10 RIVER RD"
+   ],
+   "towns": [
+    "Williamsburg"
+   ],
+   "categories": {
+    "developer_other": 1
+   },
+   "links": {
+    "applicant_name": 1
+   },
+   "consultants": [],
+   "dep_files": [
+    {
+     "dep_file_number": null,
+     "town": "Williamsburg",
+     "applicant": "AGILITAS ENERGY, INC.",
+     "received_date": "2026-10-26",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213736",
+     "evidence": "applicant name 'AGILITAS ENERGY, INC.' matches Agilitas Energy"
+    }
+   ],
+   "distinct_applicants": 1,
+   "distinct_sites": 1,
+   "in_target_list": true,
+   "target_segment": "storage; solar"
   },
   {
    "parent": "All Energy Solar",
@@ -1988,6 +2023,34 @@
    ]
   },
   {
+   "applicant": "AGILITAS ENERGY, INC.",
+   "parent": "Agilitas Energy",
+   "parent_kind": "developer",
+   "link": "applicant_name",
+   "confidence": "high",
+   "filings": 1,
+   "towns": [
+    "Williamsburg"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "developer_other": 1
+   },
+   "evidence": [
+    {
+     "dep_file_number": null,
+     "town": "Williamsburg",
+     "received_date": "2026-10-26",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'AGILITAS ENERGY, INC.' matches Agilitas Energy",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213736"
+    }
+   ]
+  },
+  {
    "applicant": "ALL ENERGY SOLAR",
    "parent": "All Energy Solar",
    "parent_kind": "developer",
@@ -3085,6 +3148,34 @@
    "shares_contact_with": []
   },
   {
+   "applicant": "TA SOLAR 400, LLC",
+   "parent": null,
+   "parent_kind": null,
+   "link": null,
+   "confidence": null,
+   "filings": 1,
+   "towns": [
+    "Ludlow"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "solar": 1
+   },
+   "evidence": [
+    {
+     "dep_file_number": "207-0687",
+     "town": "Ludlow",
+     "received_date": "2026-10-28",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": null,
+     "link": "unresolved",
+     "how": null,
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213713"
+    }
+   ]
+  },
+  {
    "applicant": "TREMONT STREET SOLAR 1, LLC",
    "parent": null,
    "parent_kind": null,
@@ -3165,6 +3256,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "OAKHILL ENG",
+   "filings": 32,
+   "towns": 6,
+   "kind": "consultant"
+  },
+  {
    "payor": "GRADY CONSULT",
    "filings": 30,
    "towns": 15,
@@ -3174,12 +3271,6 @@
    "payor": "JM O'REILLY & ASSOC",
    "filings": 28,
    "towns": 10,
-   "kind": "consultant"
-  },
-  {
-   "payor": "OAKHILL ENG",
-   "filings": 26,
-   "towns": 6,
    "kind": "consultant"
   },
   {
@@ -3195,15 +3286,15 @@
    "kind": "consultant"
   },
   {
-   "payor": "CC ENG",
+   "payor": "FALMOUTH ENG",
    "filings": 21,
-   "towns": 7,
+   "towns": 4,
    "kind": "consultant"
   },
   {
-   "payor": "FALMOUTH ENG",
-   "filings": 20,
-   "towns": 4,
+   "payor": "CC ENG",
+   "filings": 21,
+   "towns": 7,
    "kind": "consultant"
   },
   {
@@ -3214,7 +3305,7 @@
   },
   {
    "payor": "GRADY CONSULTING",
-   "filings": 18,
+   "filings": 19,
    "towns": 12,
    "kind": "consultant"
   },
@@ -3243,15 +3334,27 @@
    "kind": "consultant"
   },
   {
-   "payor": "PMP CONSULTING",
-   "filings": 12,
-   "towns": 10,
+   "payor": "JC ELLIS DESIGN",
+   "filings": 14,
+   "towns": 4,
    "kind": "consultant"
   },
   {
    "payor": "JC ENG",
-   "filings": 12,
+   "filings": 13,
    "towns": 5,
+   "kind": "consultant"
+  },
+  {
+   "payor": "SITE DESIGN ENG",
+   "filings": 13,
+   "towns": 1,
+   "kind": "consultant"
+  },
+  {
+   "payor": "PMP CONSULTING",
+   "filings": 12,
+   "towns": 10,
    "kind": "consultant"
   },
   {
@@ -3261,28 +3364,16 @@
    "kind": "consultant"
   },
   {
-   "payor": "JC ELLIS DESIGN",
-   "filings": 12,
-   "towns": 4,
-   "kind": "consultant"
+   "payor": "CRAWFORD LAND MGMT",
+   "filings": 11,
+   "towns": 7,
+   "kind": "company"
   },
   {
    "payor": "RIM ENG",
    "filings": 11,
    "towns": 5,
    "kind": "consultant"
-  },
-  {
-   "payor": "SITE DESIGN ENG",
-   "filings": 11,
-   "towns": 1,
-   "kind": "consultant"
-  },
-  {
-   "payor": "CRAWFORD LAND MGMT",
-   "filings": 10,
-   "towns": 6,
-   "kind": "company"
   },
   {
    "payor": "SOUTHCOAST ENG",
@@ -3393,6 +3484,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "CAB ENG",
+   "filings": 4,
+   "towns": 1,
+   "kind": "consultant"
+  },
+  {
    "payor": "LLC",
    "filings": 4,
    "towns": 4,
@@ -3438,12 +3535,6 @@
    "payor": "WILKINSON ECO DESIGN",
    "filings": 3,
    "towns": 3,
-   "kind": "consultant"
-  },
-  {
-   "payor": "CAB ENG",
-   "filings": 3,
-   "towns": 1,
    "kind": "consultant"
   },
   {

@@ -1,0 +1,40 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-andover-zoning-board-of-appeals-2026-11-05@agendaahead
+DTSTAMP:20261030T120000Z
+DTSTART;TZID=America/New_York:20261105T183000
+DTEND;TZID=America/New_York:20261105T203000
+SUMMARY:Andover Zoning Board of Appeals: the hearing on an affordable housi
+ ng project at 84 & 88 Andover Street moves to Thu Dec 3 (the applicant ask
+ ed).
+LOCATION:Andover\, MA
+DESCRIPTION:• Postponed: the hearing on an affordable housing project at 
+ 84 & 88 Andover Street moves to Thu Dec 3 (the applicant asked).\n\nAgenda
+ : https://www.andoverma.gov/AgendaCenter/ViewFile/Agenda/_11052026-7855\nP
+ age: https://agendaahead.vercel.app/m/andover-zoning-board-of-appeals-2026
+ -11-05\nConfirm the time and place with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/andover-zoning-board-of-appeals-2026-1
+ 1-05
+END:VEVENT
+END:VCALENDAR

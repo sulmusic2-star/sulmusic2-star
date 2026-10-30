@@ -1,0 +1,224 @@
+{
+ "by_state": {
+  "MA": {
+   "new_documents": 225,
+   "new_hits": 100,
+   "towns_attempted": 243,
+   "towns_succeeded": 243
+  },
+  "NY": {
+   "new_documents": 11,
+   "new_hits": 3,
+   "towns_attempted": 33,
+   "towns_succeeded": 33
+  },
+  "RI": {
+   "new_documents": 31,
+   "new_hits": 10,
+   "towns_attempted": 39,
+   "towns_succeeded": 39
+  }
+ },
+ "date": "2026-10-30",
+ "document_errors": 2,
+ "documents_already_indexed": 2735,
+ "documents_deferred": 0,
+ "documents_listed": 3004,
+ "documents_needing_ocr": 1,
+ "documents_rematched": 0,
+ "documents_retried": 0,
+ "documents_too_large": [
+  {
+   "error": "too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
+   "meeting_date": "2026-10-26",
+   "state": "MA",
+   "town": "Bedford",
+   "url": "https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788"
+  },
+  {
+   "error": "too large (69979402 > 41943040 bytes): https://dighton-ma.gov/AgendaCenter/ViewFile/Agenda/_10282026-2839",
+   "meeting_date": "2026-10-28",
+   "state": "MA",
+   "town": "Dighton",
+   "url": "https://dighton-ma.gov/AgendaCenter/ViewFile/Agenda/_10282026-2839"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560",
+   "meeting_date": "2026-10-14",
+   "state": "MA",
+   "town": "Franklin",
+   "url": "https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586",
+   "meeting_date": "2026-09-28",
+   "state": "MA",
+   "town": "Great Barrington",
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586"
+  },
+  {
+   "error": "too large (43384324 > 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2642",
+   "meeting_date": "2026-10-26",
+   "state": "MA",
+   "town": "Great Barrington",
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2642"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577",
+   "meeting_date": "2026-10-06",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577"
+  },
+  {
+   "error": "too large (55940673 > 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634"
+  },
+  {
+   "error": "too large (42216812 > 41943040 bytes): https://cms2.revize.com/revize/westportma/Documents/Departments/Planning/Agendas ",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Westport",
+   "url": "https://www.westport-ma.com/Documents/Departments/Planning/Agendas And Minutes/2026/Packets/Packet 2026-10-20.pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Cortlandt",
+   "url": "https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109",
+   "meeting_date": "2026-09-14",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114",
+   "meeting_date": "2026-10-19",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114"
+  },
+  {
+   "error": "too large (112326792 > 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_11092026-122",
+   "meeting_date": "2026-11-09",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_11092026-122"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Kent",
+   "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
+  }
+ ],
+ "duration_seconds": 1156.2,
+ "errors": [
+  {
+   "error": "document: too large (43384324 > 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2642",
+   "town": "MA:Great Barrington"
+  },
+  {
+   "error": "document: extract failed (content-type application/msword): https://www.westport-ma.com/11-24-26.doc",
+   "town": "MA:Westport"
+  }
+ ],
+ "errors_total": 2,
+ "finished": "2026-10-30T11:26:55+00:00",
+ "hits_current": 1596,
+ "index": {
+  "by_state": {
+   "MA": 3984,
+   "NY": 269,
+   "RI": 460
+  },
+  "by_status": {
+   "error": 23,
+   "needs_ocr": 5,
+   "ok": 4615,
+   "replaced": 70
+  },
+  "by_text_source": {
+   "docx": 23,
+   "html": 229,
+   "none": 25,
+   "ocr": 1064,
+   "pdf": 3372
+  },
+  "documents": 4713,
+  "hits": 1774,
+  "pruned": 13,
+  "towns": 309,
+  "with_hits": 919
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 199580888,
+   "listing": 135732712,
+   "robots": 898072
+  },
+  "cache_hits": 241,
+  "errors": 1,
+  "requests": 1253,
+  "requests_by_purpose": {
+   "document": 280,
+   "listing": 684,
+   "robots": 289
+  },
+  "robots_blocked": 0
+ },
+ "new_alert_items": 78,
+ "new_alert_items_by_topic": {
+  "40b_comprehensive_permit": 15,
+  "battery_storage": 10,
+  "clean_energy_siting": 1,
+  "data_center": 14,
+  "moratorium": 6,
+  "solar": 28,
+  "wetlands_filing": 2,
+  "wireless_telecom": 2,
+  "zoning_amendment": 18
+ },
+ "new_documents": 267,
+ "new_hits": 113,
+ "new_hits_by_topic": {
+  "40b_comprehensive_permit": 18,
+  "battery_storage": 19,
+  "clean_energy_siting": 1,
+  "data_center": 16,
+  "moratorium": 7,
+  "solar": 41,
+  "wireless_telecom": 2,
+  "zoning_amendment": 33
+ },
+ "options": {
+  "matcher_version": "4f9bcaade9",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-10-30T11:07:39+00:00",
+ "states": [
+  "MA",
+  "NY",
+  "RI"
+ ],
+ "towns_attempted": 315,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 315,
+ "window": {
+  "end": "2027-02-27",
+  "start": "2026-09-30"
+ }
+}

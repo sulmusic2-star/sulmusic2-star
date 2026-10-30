@@ -1,0 +1,40 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-amesbury-zoning-board-of-appeals-2026-11-19@agendaahead
+DTSTAMP:20261030T120000Z
+DTSTART;TZID=America/New_York:20261119T190000
+DTEND;TZID=America/New_York:20261119T210000
+SUMMARY:Amesbury Zoning Board of Appeals: Discusses an affordable housing p
+ ermit (40B) for a housing project by MP Properties IV at 27 Kimball Road (
+ no vote listed).
+LOCATION:City Hall\, Amesbury\, MA
+DESCRIPTION:• Discusses an affordable housing permit (40B) for a housing 
+ project by MP Properties IV at 27 Kimball Road (no vote listed).\n\nAgenda
+ : https://www.amesburyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-4242\n
+ Page: https://agendaahead.vercel.app/m/amesbury-zoning-board-of-appeals-20
+ 26-11-19\nConfirm the time and place with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/amesbury-zoning-board-of-appeals-2026-
+ 11-19
+END:VEVENT
+END:VCALENDAR

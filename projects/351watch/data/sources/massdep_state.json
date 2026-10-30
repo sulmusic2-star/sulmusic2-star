@@ -1,64 +1,65 @@
 {
  "coverage": {
   "from": "2025-10-10",
-  "to": "2026-10-28"
+  "to": "2026-10-30"
  },
  "source": "massdep_wetlands",
  "api": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire",
  "cursor": {
-  "max_filing_date": "2026-10-27",
-  "max_noi_id": 213710
+  "max_filing_date": "2026-10-29",
+  "max_noi_id": 213761
  },
  "lookback_days": 45,
  "last_run": {
-  "at": "2026-10-28T11:01:34+00:00",
+  "at": "2026-10-30T11:03:06+00:00",
   "offline": false,
   "blocked": null,
-  "rebuilt_from_cache": 4805,
-  "listed": 597,
-  "details_needed": 56,
-  "changed": 41,
-  "details_fetched": 56,
-  "new": 15,
-  "http_requests": 65
+  "rebuilt_from_cache": 4820,
+  "listed": 631,
+  "refetch_no_description": 152,
+  "details_needed": 234,
+  "changed": 31,
+  "details_fetched": 234,
+  "new": 51,
+  "http_requests": 243
  },
  "summary": {
-  "filings_total": 4820,
+  "filings_total": 4871,
   "filings_by_type": {
-   "Notice of Intent": 2554,
-   "Notice of Intent (buffer zone only)": 2049,
-   "ANRAD (resource area delineation)": 217
+   "Notice of Intent": 2578,
+   "Notice of Intent (buffer zone only)": 2072,
+   "ANRAD (resource area delineation)": 221
   },
-  "energy_hits": 95,
+  "energy_hits": 97,
   "energy_by_category": {
    "transmission_substation": 43,
-   "solar": 29,
-   "developer_other": 7,
+   "solar": 30,
+   "developer_other": 8,
    "solar_and_storage": 6,
    "energy_name_only": 6,
    "battery_storage": 3,
    "wind_or_marine": 1
   },
   "energy_by_topic": {
-   "solar": 45,
+   "solar": 47,
    "battery_storage": 11
   },
   "energy_by_filing_type": {
-   "Notice of Intent": 66,
-   "Notice of Intent (buffer zone only)": 22,
+   "Notice of Intent": 67,
+   "Notice of Intent (buffer zone only)": 23,
    "ANRAD (resource area delineation)": 7
   },
   "energy_by_confidence": {
-   "high": 45,
-   "medium": 36,
+   "high": 46,
+   "medium": 37,
    "low": 14
   },
-  "energy_towns": 71,
+  "energy_towns": 72,
   "all_categories_incl_excluded": {
    "transmission_substation": 43,
-   "utility_routine": 38,
-   "solar": 29,
-   "developer_other": 7,
+   "utility_routine": 39,
+   "solar": 30,
+   "developer_other": 8,
    "solar_and_storage": 6,
    "energy_name_only": 6,
    "solar_residential": 4,
@@ -66,7 +67,7 @@
    "ev_charging": 1,
    "wind_or_marine": 1
   },
-  "energy_with_parent": 72,
+  "energy_with_parent": 73,
   "top_parents": [
    {
     "parent": "National Grid (New England Power / Mass. Electric)",
@@ -118,6 +119,13 @@
     "towns": 1
    },
    {
+    "parent": "Agilitas Energy",
+    "kind": "developer",
+    "filings": 1,
+    "sites": 1,
+    "towns": 1
+   },
+   {
     "parent": "All Energy Solar",
     "kind": "developer",
     "filings": 1,
@@ -165,27 +173,10 @@
     "filings": 1,
     "sites": 1,
     "towns": 1
-   },
-   {
-    "parent": "Unitil",
-    "kind": "utility",
-    "filings": 1,
-    "sites": 1,
-    "towns": 1
    }
   ]
  },
  "runs": [
-  {
-   "at": "2026-10-16T21:11:20+00:00",
-   "offline": false,
-   "blocked": null,
-   "listed": 605,
-   "new": 0,
-   "changed": 0,
-   "details_fetched": 0,
-   "hits": 93
-  },
   {
    "at": "2026-10-17T13:14:46+00:00",
    "offline": false,
@@ -275,6 +266,16 @@
    "changed": 41,
    "details_fetched": 56,
    "hits": 95
+  },
+  {
+   "at": "2026-10-30T11:03:06+00:00",
+   "offline": false,
+   "blocked": null,
+   "listed": 631,
+   "new": 51,
+   "changed": 31,
+   "details_fetched": 234,
+   "hits": 97
   }
  ]
 }

@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-groton-planning-board-2026-11-05@agendaahead
+DTSTAMP:20261030T120000Z
+DTSTART;TZID=America/New_York:20261105T190000
+DTEND;TZID=America/New_York:20261105T210000
+SUMMARY:Groton Planning Board: Discusses site plans for a battery storage p
+ roject at 600 Cow Pond Brook Road (no vote listed).
+LOCATION:Town Hall\, Groton\, MA
+DESCRIPTION:• Discusses site plans for a battery storage project at 600 C
+ ow Pond Brook Road (no vote listed).\n\nAgenda: https://portal.grotonma.go
+ v/public/meetings/17700\nPage: https://agendaahead.vercel.app/m/groton-pla
+ nning-board-2026-11-05\nConfirm the time and place with the town\; agendas
+  can change.
+URL:https://agendaahead.vercel.app/m/groton-planning-board-2026-11-05
+END:VEVENT
+END:VCALENDAR

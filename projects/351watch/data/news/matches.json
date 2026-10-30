@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T11:18:50+00:00",
+ "generated": "2026-10-30T11:27:44+00:00",
  "states": {
   "CT": {
    "data_center": 1,
@@ -9,18 +9,18 @@
   },
   "MA": {
    "battery_storage": 1,
-   "data_center": 38,
-   "moratorium": 4,
+   "data_center": 39,
+   "moratorium": 3,
    "solar": 1,
    "wind": 3
   },
   "NH": {
-   "data_center": 3,
+   "data_center": 4,
    "moratorium": 1
   },
   "NY": {
    "battery_storage": 1,
-   "data_center": 26,
+   "data_center": 25,
    "moratorium": 2
   },
   "RI": {
@@ -64,15 +64,14 @@
     ]
    }
   ],
-  "MA:Ludlow": [
+  "MA:Holyoke": [
    {
-    "link": "https://www.masslive.com/westernmass/2026/09/ludlow-joins-wmass-communities-debating-data-center-moratorium.html",
-    "published": "2026-09-15T10:00:10+00:00",
-    "source": "MassLive",
-    "title": "Ludlow joins wmass communities debating data center moratorium",
+    "link": "https://www.wwlp.com/news/local-news/hampden-county/holyoke-seeks-resident-members-for-data-center-impact-committee/",
+    "published": "2026-10-29T13:00:00+00:00",
+    "source": "WWLP",
+    "title": "Holyoke seeks resident members for data center impact committee",
     "topics": [
-     "data_center",
-     "moratorium"
+     "data_center"
     ]
    }
   ],
