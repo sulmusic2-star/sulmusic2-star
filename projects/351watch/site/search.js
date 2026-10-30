@@ -455,6 +455,9 @@
 
   // Pagefind excerpts are text with <mark> around matches: build text and <mark> nodes, never innerHTML.
   function excerpt(node, html) {
+    // a snippet made of a portal's own chrome ("Loading…", "Sign in") tells nobody anything
+    if (/\b(?:Loading\.{0,3}|Loading…|Sign in|Skip to main content|Enable JavaScript)\b/i.test(html.replace(/<[^>]+>/g, ""))
+        && !/<mark>/.test(html)) html = "";
     const decode = (s) => s.replace(/&(#x?[0-9a-f]+|amp|lt|gt|quot|apos);/gi, (_, e) =>
       e[0] === "#" ? String.fromCodePoint(/^#x/i.test(e) ? parseInt(e.slice(2), 16) : +e.slice(1))
         : { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'" }[e.toLowerCase()]);

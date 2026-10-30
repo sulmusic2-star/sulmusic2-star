@@ -1766,7 +1766,9 @@ def meeting_place(header, iso=None):
 
 
 def is_pdf(g):
-    return g["source_url"].lower().split("?")[0].endswith(".pdf") or "(pdf)" in (g.get("document_title") or "").lower()
+    """The crawler read the file: "pdf" and "ocr" (a scanned PDF) say so even when the link has no .pdf."""
+    return (g.get("text_source") in ("pdf", "ocr") or g["source_url"].lower().split("?")[0].endswith(".pdf")
+            or "(pdf)" in (g.get("document_title") or "").lower())
 
 
 def day_label(iso, ctx):
@@ -2545,7 +2547,8 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     # item rows folded under "Details".
     subject, who, sents, main = meeting_row(ctx, m, show_town)
     ahead = m.get("date") and m["date"] >= ctx.today
-    subj = f'<a class="line-link" href="/m/{m["id"][2:]}">{e(subject)}</a>' if ahead else e(subject)
+    tail = f'<span class="sr-only"> ({e(m["town"])}, {e(short_day(m["date"]))})</span>' if ahead and m.get("date") else ""
+    subj = f'<a class="line-link" href="/m/{m["id"][2:]}">{e(subject)}{tail}</a>' if ahead else e(subject)
     # What the meeting's own page says that the row doesn't, so nobody has to open it and come back: the agenda's
     # own speaking rule (or that none is listed), the calendar file, and the page itself for sharing.
     speak = speak_rule(m) if not m.get("cancelled") else ""
@@ -3059,7 +3062,8 @@ def list_tools_html(counties, cant=None, topics=None):
   <div class="filterbar list-tools" data-meeting-filter>
     {county}
     {topic}
-    <label>Town<input type="search" data-key="town" placeholder="Type a town" title="Several towns: put commas between them; a state after a comma (Amherst, NY) picks that state" autocomplete="off"></label>
+    <label>Town<input type="search" data-key="town" autocomplete="off" aria-describedby="town-hint"></label>
+    <p class="form-note" id="town-hint">One town, or several with commas. “Amherst, NY” picks that state.</p>
     <p class="count" data-count aria-live="polite"></p>
     <p class="form-note clear-row"><button type="button" class="link-btn" data-clear-filters hidden>Clear filters</button></p>
     <p class="form-note mine-row"><button type="button" class="link-btn" data-my-towns hidden>Only my towns</button></p>
@@ -3539,6 +3543,19 @@ def item_clause(text, entry, board, mdate=""):
     return clause_text(p) if p else None
 
 
+GENERIC_SUBJECTS = {"zoning change", "zoning changes", "battery storage", "solar", "affordable housing", "data centers",
+                    "a zoning change", "cell tower", "wetlands permit", "zoning"}
+
+
+def tidy_subject(what):
+    """Parcel codes and map-lot numbers out of a heading: "001- 0555 Morses Lane Solar 1 LLC at 001-0555 Morses Lane"
+    -> "Morses Lane Solar 1 LLC on Morses Lane"."""
+    what = re.sub(r"^(?:map|lot|parcel)?\s*\d{1,3}\s*-\s*\d{2,5}\s*[,:]?\s+", "", what, flags=re.I)
+    what = re.sub(r"\bat\s+\d{1,3}\s*-\s*\d{2,5}\s+(?=[A-Z])", "on ", what)
+    what = re.sub(r"\s*\((?:map|lot|parcel)[^)]*\)", "", what, flags=re.I)
+    return what.strip()
+
+
 def item_subject(text, entry, mdate=""):
     """The item as a heading: "Solar farm at 235 Main Street", "Temporary ban on new data centers (a moratorium)"."""
     p = item_parts(text, entry, mdate)
@@ -3551,6 +3568,7 @@ def item_subject(text, entry, mdate=""):
         t = re.sub(r"\s+(?:moves|moved|is moved|postponed|continued|is continued|is canceled|is cancelled)\b.*$", "", t, flags=re.I)
         t = re.sub(r":\s*[^:]*\b(?:hearing|discussion|vote)\b[^:]*$", "", t)
         what = ARTICLE_RE.sub("", t)
+    what = tidy_subject(what)
     what = what[:1].upper() + what[1:]
     return what[:110].rsplit(" ", 1)[0] + "…" if len(what) > 110 else what
 
@@ -3744,6 +3762,8 @@ def meeting_row(ctx, m, show_town=True):
     else:
         text, main, mp = "", {}, None
     subject = item_subject(text, main, m.get("date") or "") if text else board
+    if show_town and subject.lower() in GENERIC_SUBJECTS:
+        subject = f"{subject} in {m['town']}"  # nine rows that all say "Zoning change" tell nobody apart
     if m.get("cancelled"):
         subject = f"Canceled: {subject[:1].lower() + subject[1:] if not re.match(r'^[A-Z][A-Z0-9]|^\d', subject) else subject}"
     who = []
@@ -3766,7 +3786,8 @@ def meeting_row(ctx, m, show_town=True):
         sents.append(stage_sentence(mp, board, m, speak=speak, past=past))
         b = (main or {}).get("brief") or {}
         what = (b.get("what") or "").strip()
-        if what and len(what) <= 260 and quote_key(what)[:40] != quote_key(subject)[:40]:
+        # a write-up under 25 words rides the row; a longer one waits under Details, where the item row prints it
+        if what and len(what.split()) <= LONG_SENTENCE_WORDS and quote_key(what)[:40] != quote_key(subject)[:40]:
             sents.append(sentence(what))
         rest = [clause_text(p, past=past) for _, _, p in parts[1:4]]
         if rest:
@@ -3967,14 +3988,32 @@ def continued_html(ctx, rows):
     items = []
     for d, m, text, note in rows:
         board = "Town Meeting" if note.startswith("named on") else meeting_board(m)
-        subject = item_subject(text, m["lines"].get(text) or {}, m.get("date") or "")
-        items.append(f'<li class="row"><a href="{town_path(m["state"], m["town"])}#{m["id"]}">'
-                     f'<span class="row-line">{e(subject)}</span>'
-                     f'<span class="row-when" data-slop-ignore>{e(board)}, <time datetime="{d.isoformat()}">{e(day_label(d.isoformat(), ctx))}</time></span>'
-                     f'<span class="row-say">{e(continued_status(note))}. The agenda for that day isn’t posted yet; the date comes from the {e(short_day(m["date"]))} agenda.</span></a></li>')
+        entry = m["lines"].get(text) or {}
+        subject = item_subject(text, entry, m.get("date") or "")
+        p = item_parts(STATUS_PREFIX.sub("", headline(plain_say(text))), {**entry, "stage": "Hearing" if re.search(r"\bhearing\b", text, re.I) else ""}, "")
+        hearing = bool(re.search(r"\bhearing\b", text, re.I)) or str(entry.get("stage") or "").startswith("Hearing")
+        say = [f"The town hasn’t posted that agenda yet, so there’s no time; the date comes from the {short_day(m['date'])} agenda."]
+        if hearing and board != "Town Meeting":
+            say.append("It’s a public hearing, so anyone can go and speak.")
+        why = continued_status(note)
+        if why.startswith("Moved from") and re.search(r"\bcontinued\b", text, re.I) and "applicant" not in text.lower():
+            say.append(why.replace("Moved from", "The hearing continues from") + ".")
+        elif why.startswith("Moved from"):
+            say.append(why.replace("Moved from", "It moved from") + (" because the applicant asked." if "applicant" in text.lower() else "."))
+        elif why == "Asked to move here":
+            say.append("The applicant asked for this date; the board decides.")
+        elif why == "Warrant not posted yet":
+            say[0] = f"The town hasn’t posted the warrant yet; the date comes from the {short_day(m['date'])} agenda."
+        link = (f'<a class="item-link" href="{e(m["docs"][0]["url"])}" rel="nofollow noopener" target="_blank">Read the {e(short_day(m["date"]))} agenda that set the date'
+                f'{" (PDF)" if m["docs"][0]["pdf"] else ""}<span class="sr-only">: {e(m["town"])} {e(board)}</span></a>') if m.get("docs") else ""
+        items.append(f'<li class="meeting" id="ahead-{m["id"]}-{d.isoformat()}" data-state="{e(m["state"])}" data-town="{e(m["town"])}">'
+                     f'<p class="meet-subject">{e(subject)}</p>'
+                     f'<p class="meet-who" data-slop-ignore>{e(board)}, <time datetime="{d.isoformat()}">{e(day_label(d.isoformat(), ctx))}</time></p>'
+                     f'<p class="meet-say">{e(" ".join(say))}</p>'
+                     + (f'<p class="meet-link">{link}</p>' if link else "") + '</li>')
     return f"""<section class="continued" aria-labelledby="continued-title">
-<h2 id="continued-title">Also coming up, dated from earlier agendas</h2>
-<ol class="rows continued-list">{"".join(items)}</ol>
+<h2 id="continued-title">Coming up, dated from earlier agendas</h2>
+<ol class="meetings continued-list">{"".join(items)}</ol>
 </section>"""
 
 
@@ -4013,25 +4052,38 @@ def town_lead_text(ctx, t, up_m, past_m=None):
         return (f"{town} has {NUM_WORDS.get(len(live), str(len(live)))} meetings coming up"
                 + (f", on {about}" if about else "") + f". The first is the {meeting_board(first)} on "
                 f"{day_label(first['date'], ctx)}, about {subj}.")
-    nxt = next_posted(ctx, t)
     moved = continued_ahead(ctx, (past_m or [])[:12], up_m)
     out = [f"Nothing is on {town}’s agendas right now about solar, batteries, data centers, zoning or housing."]
     if moved:
-        names = []
-        for d, m, text, note in moved[:2]:
-            subject = item_subject(text, m["lines"].get(text) or {}, m.get("date") or "")
-            names.append(f"{lower_first(subject)} (now {day_label(d.isoformat(), ctx)})")
-        out.append(("One item has moved to a later day: " if len(moved) == 1 else f"{NUM_WORDS.get(len(moved), str(len(moved))).capitalize()} items have moved to later days: ")
-                   + join_and(names) + ".")
+        month = datetime.strptime(moved[0][0].isoformat(), "%Y-%m-%d").strftime("%B")
+        out[0] = (f"Nothing new is on {town}’s agendas about solar, batteries, data centers, zoning or housing, but "
+                  + ("one item has moved" if len(moved) == 1 else f"{NUM_WORDS.get(len(moved), str(len(moved)))} items have moved")
+                  + f" to {month}, listed below.")
     elif past_m:
         last = next((m for m in past_m if real_lines(m)), None)
         if last:
             text, _ = real_lines(last)[0]
             subject = item_subject(text, last["lines"].get(text) or {}, last.get("date") or "")
             out.append(f"The last was the {meeting_board(last)} on {day_label(last['date'], ctx)}, about {lower_first(subject)}.")
-    if nxt:
-        out.append(f"The next agenda we know of is the {nxt[1]}’s, for {day_label(nxt[0], ctx)}.")
     return " ".join(out)
+
+
+def next_agenda_html(ctx, t, up_m):
+    """"The Select Board meets Thu Oct 29; its agenda has nothing on these subjects. Read the Oct 29 agenda (PDF)."
+    A line only when the agenda is posted and we can link it; never a date without its document."""
+    if up_m:
+        return ""
+    ahead = []
+    for d in ctx.docs_by_town.get(t["id"], []):
+        day = (d.get("meeting_date") or ctx.doc_dates.get(d.get("url")) or "")[:10]
+        if day >= ctx.today and d.get("url"):
+            ahead.append((day, board_label(d), d["url"], d))
+    if not ahead:
+        return ""
+    day, board, url, d = sorted(ahead)[0]
+    pdf = " (PDF)" if (d.get("text_source") in ("pdf", "ocr") or url.lower().split("?")[0].endswith(".pdf")) else ""
+    return (f'<p class="small next-agenda">The {e(board)} meets {e(day_label(day, ctx))}; its agenda has nothing on these subjects. '
+            f'<a href="{e(url)}" rel="nofollow noopener" target="_blank">Read the {e(short_day(day))} agenda{pdf}</a>.</p>')
 
 
 NUM_WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten"}
@@ -4074,13 +4126,17 @@ def build_town_page(ctx, t):
         recent = ""
         if up_m and past_m:
             recent = f'<section data-past><h2>The last {"two meetings" if len(past_m) > 1 else "meeting"}</h2>{meeting_list(ctx, past_m[:2], show_town=False, shown=2)}</section>'
-        coming = f"""{follow}
+        ahead_rows = continued_html(ctx, continued_ahead(ctx, up_m + past_m, up_m))
+        coming = f"""{ahead_rows if not up_m else ''}
+{next_agenda_html(ctx, t, up_m)}
+{follow}
 <h2 class="sr-only">Coming up</h2>
 {listing}
-{continued_html(ctx, continued_ahead(ctx, up_m + past_m, up_m))}
+{ahead_rows if up_m else ''}
+{next_door_html(ctx, t)}
 {recent}
 {news_html(ctx, t)}"""
-        rail = next_door_html(ctx, t)
+        rail = ""
     else:
         coming = cant_check_html(ctx, t, up_m)
         rail = ""
@@ -4169,10 +4225,10 @@ def build_towns_index(ctx):
                 groups.append(f'<details class="county"><summary>{e(label)} <span class="sub-count">{count}</span></summary>'
                               f'<ul class="town-cols" data-filter-list>{items}</ul></details>')
         mon = sum(1 for t in towns if t["monitored"])
-        sections.append(f"""<details class="state-towns" id="{state.lower()}">
-  <summary>{e(STATE_NAMES.get(state, state))} <span class="sub-count">{len(towns)} towns, {mon} checked every morning</span></summary>
+        sections.append(f"""<section class="state-towns" id="{state.lower()}" aria-labelledby="state-{state.lower()}">
+  <h2 id="state-{state.lower()}">{e(STATE_NAMES.get(state, state))} <span class="sub-count">{len(towns)} towns, {mon} we read every morning</span></h2>
   <div class="counties">{''.join(groups)}</div>
-</details>""")
+</section>""")
     body = f"""
 <div class="wrap narrow towns">
 <section class="page-head" aria-labelledby="towns-title">
@@ -4548,9 +4604,9 @@ def build_watch(ctx, groups=False):
       <label class="check" id="email-remove-row" hidden><input type="checkbox" id="email-remove"> Stop emails and remove the address</label>
       <p class="field-error" id="email-error" hidden></p>
     </div>
-    <p class="form-note" id="no-email" hidden>The next page has your calendar feed and a private page for these towns.</p>
+    <p class="form-note" id="no-email" hidden>You get this two ways: a page you can bookmark that updates every morning, and a feed for your phone’s calendar. We can’t email yet.</p>
     {hook}
-    <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+    <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off" aria-hidden="true"></label></div>
     <fieldset class="near" id="near-step">
       <legend class="sr-only">Towns</legend>
       <label class="check big" id="near-all-row"><input type="checkbox" id="near-all" checked> <span id="near-all-text">Also the towns next to <span id="home-name">your town</span></span></label>
@@ -4559,14 +4615,14 @@ def build_watch(ctx, groups=False):
       <p class="form-note cant-note" id="cant-note" hidden></p>
     </fieldset>
     <p class="topic-line" id="topic-line">Topics: <span id="topic-names">{e(join_and(TOPIC_LABELS.get(k, k)[0].lower() + TOPIC_LABELS.get(k, k)[1:] for k in topics))}</span>. <button type="button" class="link-btn" id="topics-change">Change topics</button></p>
-    <details class="disclose" id="other-ways"><summary>Other ways: topics, towns, calendar, RSS</summary>
+    <details class="disclose" id="other-ways"><summary>Choose topics or towns</summary>
       <fieldset class="near" id="topics-step">
         <legend class="big-legend">Topics</legend>
         <ul class="check-cols topic-list" id="topics-details">{topic_boxes}</ul>
         <p class="field-error" id="topics-error" hidden></p>
       </fieldset>
       {near_more}
-      <p class="form-note">After you save, the next page has a calendar link and an RSS feed for these alerts.</p>
+      <p class="form-note">After you save, the next page has a calendar link and a feed for a news app.</p>
     </details>
     <div class="submit-row">
       <button class="btn" type="submit" id="watch-submit">Send me these</button>
@@ -5593,6 +5649,16 @@ def lines_json(ctx):
     }, separators=(",", ":"), ensure_ascii=False)
 
 
+BOARD_GLOSS = {
+    "Zoning Board of Appeals": "the board that grants exceptions to the zoning rules",
+    "Conservation Commission": "the board that protects wetlands",
+    "Planning Board": "the board that reviews projects and proposes zoning",
+    "Board of Selectmen": "the town’s executive board",
+    "Select Board": "the town’s executive board",
+    "Board of Health": "the board that sets health rules",
+}
+
+
 def build_meeting_page(ctx, m):
     """/m/<id>: one upcoming meeting. The board as the heading, the day and place once, each item in full
     (with the agenda's wording behind a tap), where it came from, and the one action row on the site."""
@@ -5633,14 +5699,18 @@ def build_meeting_page(ctx, m):
         facts.append(("Public comment" if m["board_key"] != "town_meeting" else "Who votes", e(speak)))
     if link:
         facts.append(("Agenda" if what != "warrant" else "Warrant", link + (f' <span class="muted">({e(posted)})</span>' if posted else "")))
-    ticket = ('<div class="ticket"><dl class="facts-list">'
-              + "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in facts) + "</dl></div>")
+    facts.append(("Calendar", f'<a href="/m/{m["id"][2:]}.ics" download="{e(m["id"][2:])}.ics">Add this meeting to my calendar</a>'))
+    ticket = '<dl class="facts-list meeting-facts">' + "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in facts) + "</dl>"
     follow = f"""<section class="follow-box" aria-labelledby="follow-title">
   <h2 id="follow-title">Follow {e(m['town'])}</h2>
   <p>You get a page and a calendar feed for {e(m['town'])} and the towns next door, updated every morning. Free, no account.</p>
   <p class="actions"><a class="btn" href="{e(alerts_url(t.get('id')))}">Follow {e(m['town'])}’s meetings</a></p>
-  <p class="ticket-links">{share}<a class="link-btn" href="/m/{m['id'][2:]}.ics" download="{e(m['id'][2:])}.ics">Add this meeting to my calendar</a></p>
+  <p class="ticket-links">{share}</p>
 </section>"""
+    for name, gloss in BOARD_GLOSS.items():  # a stranger lands here from a link: the board's job, once
+        if sents and name in sents[0] and gloss not in sents[0]:
+            sents[0] = sents[0].replace(name, f"{name} ({gloss})", 1)
+            break
     when_lead = relative_when(ctx, m) if m.get("date") and m["date"] >= ctx.today else (day_label(m["date"], ctx) if m.get("date") else "")
     pl = row_place(m)
     where_lead = ("online" if pl == "online" else f"at {pl}") if pl else ""

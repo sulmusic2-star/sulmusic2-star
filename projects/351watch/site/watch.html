@@ -65,9 +65,9 @@
       <label class="check" id="email-remove-row" hidden><input type="checkbox" id="email-remove"> Stop emails and remove the address</label>
       <p class="field-error" id="email-error" hidden></p>
     </div>
-    <p class="form-note" id="no-email" hidden>The next page has your calendar feed and a private page for these towns.</p>
+    <p class="form-note" id="no-email" hidden>You get this two ways: a page you can bookmark that updates every morning, and a feed for your phone’s calendar. We can’t email yet.</p>
     
-    <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+    <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off" aria-hidden="true"></label></div>
     <fieldset class="near" id="near-step">
       <legend class="sr-only">Towns</legend>
       <label class="check big" id="near-all-row"><input type="checkbox" id="near-all" checked> <span id="near-all-text">Also the towns next to <span id="home-name">your town</span></span></label>
@@ -76,7 +76,7 @@
       <p class="form-note cant-note" id="cant-note" hidden></p>
     </fieldset>
     <p class="topic-line" id="topic-line">Topics: <span id="topic-names">solar, battery storage, data centers, moratoriums, clean-energy permit rules, zoning changes, affordable housing (40B), cell towers and wetlands permits</span>. <button type="button" class="link-btn" id="topics-change">Change topics</button></p>
-    <details class="disclose" id="other-ways"><summary>Other ways: topics, towns, calendar, RSS</summary>
+    <details class="disclose" id="other-ways"><summary>Choose topics or towns</summary>
       <fieldset class="near" id="topics-step">
         <legend class="big-legend">Topics</legend>
         <ul class="check-cols topic-list" id="topics-details"><li><label class="check"><input type="checkbox" name="topics" value="solar" checked><span>Solar</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="battery_storage" checked><span>Battery storage</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="data_center" checked><span>Data centers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="moratorium" checked><span>Moratoriums</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="clean_energy_siting" checked><span>Clean-energy permit rules</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="zoning_amendment" checked><span>Zoning changes</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="40b_comprehensive_permit" checked><span>Affordable housing (40B)</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wireless_telecom" checked><span>Cell towers</span></label></li><li><label class="check"><input type="checkbox" name="topics" value="wetlands_filing" checked><span>Wetlands permits</span></label></li></ul>
@@ -89,7 +89,7 @@
           <ul class="check-cols" id="extra-list"></ul>
         </div>
       </details>
-      <p class="form-note">After you save, the next page has a calendar link and an RSS feed for these alerts.</p>
+      <p class="form-note">After you save, the next page has a calendar link and a feed for a news app.</p>
     </details>
     <div class="submit-row">
       <button class="btn" type="submit" id="watch-submit">Send me these</button>

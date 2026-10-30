@@ -131,7 +131,13 @@ nav.top a[aria-current="page"] { border-bottom-color: var(--ink); }
 .page-end { margin-top: var(--s8); padding-top: var(--s4); padding-bottom: var(--s4); color: var(--muted); font-size: var(--t-sm); }
 .page-end::before { content: ""; display: block; border-top: 1px solid var(--rule); margin-bottom: var(--s4); }
 .page-end p { margin: 0 0 var(--s1); max-width: var(--measure); }
-.page-end a { color: var(--muted); }
+.page-end a, .page-end .link-btn { color: var(--muted); display: inline-flex; align-items: center; min-height: 44px; }
+.meeting-facts { margin: var(--s4) 0 var(--s5); }
+.meeting-facts dd a { display: inline-flex; align-items: center; min-height: 40px; }
+.next-agenda { margin: 0 0 var(--s4); }
+@media (max-width: 359px) { .field-row { flex-direction: column; } .field-row .combo, .field-row input { width: 100%; } }
+header.site .wrap { flex-wrap: wrap; }
+.town-cols a { display: inline-flex; align-items: center; min-height: 40px; }
 
 /* footer: who runs it, the sections, the about pages */
 footer.site { background: var(--land); padding: var(--s7) 0 var(--s8); color: var(--muted); font-size: var(--t-sm); }
@@ -309,7 +315,8 @@ details.more > summary:hover, details.disclose > summary:hover { text-decoration
 .meeting:target { animation: landed 1.5s ease-out 1; }
 @keyframes landed { from { background: var(--mark-wash); } to { background: var(--paper); } }
 .meet-subject { margin: 0 0 var(--s1); font: 600 var(--t-h3)/1.3 var(--f-head); text-wrap: pretty; }
-.meet-subject a { color: var(--ink); text-decoration-color: var(--rule-strong); }
+.meet-subject a { color: var(--ink); text-decoration-color: var(--rule-strong); display: inline-block; padding: 5px 0; margin: -5px 0; }
+.meet-subject a:visited, .row a:visited .row-line { color: var(--muted); text-decoration-color: var(--rule); }
 .meet-subject a:hover, .meet-subject a:focus-visible { text-decoration-color: var(--ink); }
 .meet-who { margin: 0 0 var(--s2); color: var(--muted); font-size: var(--t-sm); }
 .meet-who a { color: var(--ink); font-weight: 600; text-decoration: none; }
@@ -498,10 +505,9 @@ td small, th small { display: block; color: var(--muted); font-weight: 400; }
 .town-cols a { font-weight: 600; }
 .town-cols a[title] { color: var(--muted); font-weight: 400; }
 .town-cols .n { color: var(--muted); font-size: var(--t-sm); }
-.state-towns { border: 1px solid var(--rule); border-radius: var(--box); padding: 0 var(--s4); background: var(--paper); }
-.state-towns + .state-towns { margin-top: var(--s2); }
-.state-towns > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s3); font: 700 var(--t-h3)/1.3 var(--f-head); padding: var(--s4) 0; }
-.state-towns > summary .sub-count { font-family: var(--f-body); }
+.state-towns { margin: 0; }
+.state-towns > h2 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s3); }
+.state-towns > h2 .sub-count { font-family: var(--f-body); font-size: var(--t-sm); }
 .counties { padding-bottom: var(--s3); }
 .county { margin-left: var(--s4); }
 .county > summary { display: block; padding: 10px 0; }

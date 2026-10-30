@@ -203,7 +203,7 @@ function setupListFilter() {
   const status = form.querySelector('[data-status]');
   const noun = form.dataset.noun || 'towns';
   const items = Array.from(document.querySelectorAll('[data-filter-list] li, [data-filter-list] tr[data-search]'));
-  const groups = Array.from(document.querySelectorAll('details.state-towns, details.county'));
+  const groups = Array.from(document.querySelectorAll('details.county'));
   const sections = Array.from(document.querySelectorAll('.rec-group'));
   const params = new URLSearchParams(location.search);
   if (params.get('q')) search.value = params.get('q');
@@ -1026,7 +1026,16 @@ function setupMeetingFilter() {
     // under a chosen county, the towns there we can't read
     for (const p of bar.querySelectorAll('[data-cant-county]')) p.hidden = p.dataset.cantCounty !== county;
     const items = meetings.filter((m) => !m.hidden).reduce((n, m) => n + m.querySelectorAll('.line').length, 0);
-    count.textContent = narrowed ? (shown ? `${shown} of ${meetings.length} meetings, ${items} ${items === 1 ? 'item' : 'items'}` : 'Nothing coming up for that choice.') : '';
+    // several towns named: say what each has, and which have nothing, so a comparison reads in one line
+    let byTown = '';
+    if (wants.length > 1 && shown) {
+      const have = {};
+      for (const m of meetings.filter((x) => !x.hidden)) have[m.dataset.town] = (have[m.dataset.town] || 0) + 1;
+      const parts = Object.entries(have).map(([t, n]) => `${t}: ${n} ${n === 1 ? 'meeting' : 'meetings'}`);
+      const empty = wants.filter((w) => !Object.keys(have).some((t) => norm(t).startsWith(w.name))).map((w) => w.name.replace(/\b\w/g, (c) => c.toUpperCase()));
+      byTown = parts.join('. ') + (empty.length ? `. Nothing for ${joinAnd(empty)} in the next few weeks.` : '.');
+    }
+    count.textContent = narrowed ? (shown ? (byTown || `${shown} of ${meetings.length} meetings, ${items} ${items === 1 ? 'item' : 'items'}`) : 'Nothing coming up for that choice.') : '';
     sayUnread();
     // the address bar carries the choice, so the page can be shared or bookmarked
     const p = new URLSearchParams(location.search);
