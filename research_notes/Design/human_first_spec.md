@@ -50,3 +50,17 @@ The home page's "This week" and the Biggest stories list use the same row with t
 ## Checks before it ships
 
 slop_lint.py on every built page; the four test files; screenshots at 390 and 1366 of home, /upcoming, /ma/carver, a meeting page and /watch; the first meeting row inside the first 500 px on a phone; no horizontal scroll at 320; every control 44 px or taller; nothing under 16 px.
+
+## Added Oct 30, from the websites study and the simulated testers
+
+Sources: `how_websites_should_be.md` (62 voices, with a click-cost study) and `simulated_testers_oct28.md` (eight evidence-based testers walked through the live site).
+
+12. The deciding facts live in the row; the click is for the source document. A row's Details holds what the meeting page adds (the speaking rule or that none is listed, the calendar file, the page link), so nobody opens a page and comes back. The meeting page exists for sharing and search.
+13. Never name a date or an agenda the page does not link or list. A moved hearing is a row under "Coming up" with the day, the right to speak and the agenda that set the date; the next posted agenda is a linked line.
+14. Link text is unique per destination: a generic subject ("Zoning change") names the town in a list, and every subject link carries the town and day for a screen reader.
+15. A heading starts with the thing, never a parcel code; "(PDF)" comes from what the crawler read, not from the URL.
+16. The search page loads nothing until someone searches.
+17. A write-up over 25 words waits under Details; the row keeps the short sentence.
+18. One level of folds on any page; /towns shows the states as headings.
+19. The follow page says how you will be told before the button, and says we can't email yet while that is true.
+20. A visited link in a list looks visited.
