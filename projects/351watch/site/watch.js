@@ -90,7 +90,7 @@
     $('step-town').hidden = step !== 'town';
     $('step-send').hidden = step !== 'send';
     title.textContent = step === 'town' ? title.dataset.start
-      : `${editId ? 'Edit updates for' : 'Follow'} ${homeId ? label(homeId) : 'your town'}`;
+      : (editId ? `Edit updates for ${homeId ? label(homeId) : 'your town'}` : `Step 2 of 2: what you get for ${homeId ? label(homeId) : 'your town'}`);
     if (step === 'send') renderPreview();
   }
 
@@ -358,22 +358,22 @@
     } else {
       const lead = el('p');
       const next = ahead.length ? (ahead.length > 3 ? `${ahead.length} more are coming up. The next 2:` : 'Coming up next:') : 'Nothing else is on an agenda yet.';
-      if (past) lead.append(`Over the last 30 days, ${where} had `, el('b', '', plural(past, 'meeting')), ' on these topics, so expect about that many alerts a month. ', next);
-      else lead.append(`Nothing on these topics in ${where} in the last 30 days, so alerts will be rare. `, next);
+      if (past) lead.append(`Over the last 30 days, ${where} had `, el('b', '', plural(past, 'meeting')), ' on these topics, so expect about that many a month on your page. ', next);
+      else lead.append(`Nothing on these topics in ${where} in the last 30 days, so the page will be quiet. `, next);
       nodes.push(lead);
       if (ahead.length) {
         const list = el('ul', 'preview-lines');
         for (const m of ahead.slice(0, 2)) {
           const li = el('li');
-          const head = el('p', 'meet-head');
-          head.append(el('span', '', label(m.tid, homeId)), el('span', '', m.board), el('span', 'meet-day', dayLabel(m.d)));
+          const head = el('p', 'meet-who');
+          head.append(document.createTextNode(`${label(m.tid, homeId)}, ${m.board}, ${dayLabel(m.d)}`));
           // The most specific line first (the lowest rank), as the town page orders them.
           const said = m.ids.map((id) => (lines.lines[id] || [])[0]).filter(Boolean);
           const rank = (id) => Number(((lines.lines[id] || [])[6]) ?? 60);
           const bestId = m.ids.slice().sort((a, b) => rank(a) - rank(b))[0];
           const best = ((lines.lines[bestId] || [])[0] || said[0] || 'Agenda item').replace(/:\s*“.*”$/, '.');
           const others = new Set(said).size - 1;
-          li.append(head, el('p', 'line-say', best));
+          li.append(el('p', 'meet-subject', best), head);
           if (others > 0) li.append(el('p', 'meet-found', `and ${plural(others, 'more item')}`));
           list.append(li);
         }

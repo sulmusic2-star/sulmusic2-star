@@ -36,9 +36,11 @@ d.rounded_rectangle([84, 76, 180, 196], radius=8, fill=PAPER, outline=INK, width
 for y, w, c in ((108, 48, DOT), (131, 48, MARK), (158, 32, DOT)):
     d.rectangle([108, y, 108 + w, y + (14 if c == MARK else 10)], fill=c)
 d.text((210, 92), SITE_NAME, font=font("public-sans-semibold.woff2", 96), fill=INK)
-d.text((80, 270), "See what’s coming up at", font=font("public-sans-semibold.woff2", 84), fill=INK)
-d.text((80, 365), "your town meetings", font=font("public-sans-semibold.woff2", 84), fill=INK)
-d.text((80, 478), "Solar, batteries and data centers on town agendas, in plain words.",
-       font=font("public-sans-regular.woff2", 34), fill=MUTED)
+d.text((80, 250), "Know what your town is about to decide", font=font("public-sans-semibold.woff2", 64), fill=INK)
+d.text((80, 335), "on solar, data centers, zoning and housing", font=font("public-sans-semibold.woff2", 64), fill=INK)
+d.text((80, 450), "We read the agendas towns post and say what each board will decide,",
+       font=font("public-sans-regular.woff2", 32), fill=MUTED)
+d.text((80, 492), "and whether you can speak. Massachusetts, New York and Rhode Island.",
+       font=font("public-sans-regular.woff2", 32), fill=MUTED)
 img.save(ROOT / "site" / "og.png", optimize=True)
 print("wrote site/og.png")

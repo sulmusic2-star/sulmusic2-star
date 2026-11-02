@@ -733,6 +733,40 @@ class DotMap:
 
 # ---------------------------------------------------------------- shared markup
 
+# Who makes the site, for the home page, /about and the footer. Fill in what you want public; blank parts are left out.
+OWNER_NAME = ""      # e.g. "Sam Lee"
+OWNER_TOWN = ""      # e.g. "Carver, Massachusetts"
+OWNER_EMAIL = ""     # e.g. "hello@agendaahead.com"; the contact form works without it
+
+
+def who_makes_this_html(ctx):
+    """One paragraph: a person, a place, why, that nobody pays for it, how to reach them, and that a program writes
+    the sentences. Only the parts the owner has filled in are said."""
+    who = f"{OWNER_NAME} in {OWNER_TOWN}" if OWNER_NAME and OWNER_TOWN else (OWNER_NAME or ("one person in " + OWNER_TOWN if OWNER_TOWN else "one person"))
+    reach = (f'write to <a href="mailto:{e(OWNER_EMAIL)}">{e(OWNER_EMAIL)}</a> or use the <a href="/contact">contact page</a>' if OWNER_EMAIL
+             else 'use the <a href="/contact">contact page</a>')
+    return (f'<p>{e(SITE_NAME)} is made by {e(who)}, not by a company or a town, and no town or company pays for it. '
+            f'It exists because the agendas that decide these things are posted as PDFs a few days before each meeting, '
+            f'and most people find out after the vote. A program reads the agendas every morning and writes each sentence '
+            f'from them; the link under a sentence is its source. If a sentence is wrong, {reach} and we’ll fix it and say so. '
+            f'<a href="/about">More about who makes this</a>.</p>')
+
+
+def updated_line(ctx):
+    """"Updated Mon Nov 2, 2026, 7:03 am Eastern." for the footer of every page, or an honest amber line when the
+    morning's reading is more than a day old."""
+    iso = ctx.hits_doc.get("generated") or ""
+    try:
+        dt = datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone(ZoneInfo("America/New_York"))
+    except (ValueError, AttributeError):
+        return ""
+    when = f"{dt.strftime('%a %b')} {dt.day}, {dt.year}, {dt.strftime('%-I:%M %p').lower()} Eastern"
+    now = datetime.now(ZoneInfo("America/New_York"))
+    if (now - dt).total_seconds() > 26 * 3600:
+        return f'<span class="stale">We haven’t been able to check the agendas since {e(when)}.</span>'
+    return f"Updated {e(when)}."
+
+
 NAV = [  # three places to go; Topics and Rulings are reached from the home page and the footer
     ("/upcoming", "Coming up"),
     ("/towns", "Towns"),
@@ -741,7 +775,7 @@ NAV = [  # three places to go; Topics and Rulings are reached from the home page
 FOLLOW = ("/watch", "Follow a town")
 FOOTER_EXPLORE = [("/upcoming", "Coming up"), ("/trending", "Biggest stories"), ("/towns", "Towns"), ("/topics", "Topics"),
                   ("/attorney-general", "Rulings"), ("/search", "Search")]
-FOOTER_ABOUT = [("/how-it-works", "How it works"), ("/watch", "Follow a town"), ("/privacy", "Privacy"),
+FOOTER_ABOUT = [("/how-it-works", "How it works"), ("/about", "Who makes this"), ("/watch", "Follow a town"), ("/privacy", "Privacy"),
                 ("/contact", "Contact"), ("/bot", "For website managers")]
 # The mark: three agenda lines, the middle one longer and purple (the item coming up). The header draws it
 # inline (BRAND_MARK), the favicon draws the same, and tools/og_image.py draws it on the share image.
@@ -785,14 +819,17 @@ def page_end(path, source=""):
     """The strip at the end of every page: where the page's facts come from (when it has one source) and a way
     to report a problem with this page."""
     report = f'<a href="/contact?about={quote(path or "/")}">Report a problem with this page</a>'
-    return f'<aside class="page-end wrap narrow" aria-label="About this page">{f"<p>{source}</p>" if source else ""}<p>{report}</p></aside>'
+    program = ("A program writes each sentence from the agenda; the link under it is the source. If a sentence is wrong, "
+               "tell us and we’ll fix it and say so here.")
+    return (f'<aside class="page-end wrap narrow" aria-label="About this page">{f"<p>{source}</p>" if source else ""}'
+            f'<p>{program}</p><p>{report}</p></aside>')
 
 
 def page(ctx, title, description, body, path, scripts=(), noindex=False, head="", og_title=None, source=""):
     current = nav_section(path)
     nav = "".join(f'<li><a href="{href}"{" aria-current=\"page\"" if href == current else ""}>{label}</a></li>'
                   for href, label in NAV)
-    follow = (f'<a class="nav-follow" href="{FOLLOW[0]}"{" aria-current=\"page\"" if current == FOLLOW[0] else ""}>'
+    follow = (f'<a class="nav-plain" href="{FOLLOW[0]}"{" aria-current=\"page\"" if current == FOLLOW[0] else ""}>'
               f'{FOLLOW[1]}</a>')
     robots = '<meta name="robots" content="noindex">\n' if noindex else ""
     canonical = "" if noindex else f'<link rel="canonical" href="{BASE_URL}{"" if path == "/" else path}">\n'
@@ -818,13 +855,16 @@ def page(ctx, title, description, body, path, scripts=(), noindex=False, head=""
 <meta property="og:site_name" content="{e(SITE_NAME)}">
 <meta property="og:url" content="{BASE_URL}{"" if path == "/" else path}">
 <meta property="og:image" content="{BASE_URL}/og.png">
-<meta property="og:image:alt" content="{e(SITE_NAME)}: what's coming up at your town meetings">
+<meta property="og:image:alt" content="{e(HEADLINE)}">
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
 <link rel="preload" href="/fonts/public-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/public-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="{FAVICON}">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
 {head}</head>
 <body{' class="compact"' if 'data-view-switch' in body else ''}>
 <a class="skip" href="#main">Skip to content</a>
@@ -841,7 +881,7 @@ def page(ctx, title, description, body, path, scripts=(), noindex=False, head=""
   <div class="foot-who"><p class="foot-brand">{BRAND_MARK}<span>{e(SITE_NAME)}</span></p><p>{e(who)}</p></div>
   <nav class="foot-col" aria-label="Explore"><p class="foot-head">Explore</p><ul>{explore}</ul></nav>
   <nav class="foot-col" aria-label="About"><p class="foot-head">About</p><ul>{about}</ul></nav>
-  <p class="foot-last">Not legal advice. Confirm dates with the town clerk.</p>
+  <p class="foot-last">{updated_line(ctx)} Not legal advice. Confirm dates with the town clerk.</p>
 </div></footer>
 {script_tags}</body>
 </html>
@@ -2856,24 +2896,25 @@ def town_options(ctx):
     return f'<datalist id="town-names">{opts}</datalist>'
 
 
-def town_box(ctx, label="Type your town", button="Find my town", examples=True):
+def town_box(ctx, label="Type your town", button="Find my town", examples=True, suffix=""):
     eg = ""
     if examples:
         picks = [t for t in ("MA:Carver", "MA:Amherst", "NY:Clay") if t in ctx.town_by_id][:3]
         links = [f'<a href="{town_path(*p.split(":", 1))}">{e(p.split(":", 1)[1])}{", " + p[:2] if p[:2] != "MA" else ""}</a>' for p in picks]
         eg = (f'<p class="eg">Or try {", ".join(links[:-1])} or {links[-1]}.</p>' if len(links) > 1
               else (f'<p class="eg">Or try {links[0]}.</p>' if links else ""))
+    i = f"town-q{suffix}"
     return f"""<form class="townbox" action="/towns" method="get" role="search" data-town-form>
-  <label for="town-q">{label}</label>
-  <div class="field-row"><div class="combo"><input id="town-q" name="q" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" required>
-  <ul class="suggest" id="town-q-list" role="listbox" aria-label="Matching towns" hidden></ul></div>
+  <label for="{i}">{label}</label>
+  <div class="field-row"><div class="combo"><input id="{i}" name="q" type="text" list="town-names" autocomplete="off" autocapitalize="words" spellcheck="false" required>
+  <ul class="suggest" id="{i}-list" role="listbox" aria-label="Matching towns" hidden></ul></div>
   <button class="btn" type="submit">{button}</button></div>
-  <p class="field-error" id="town-q-error" role="alert" hidden></p>
-  <p class="sr-only" id="town-q-status" aria-live="polite"></p>
+  <p class="field-error" id="{i}-error" role="alert" hidden></p>
+  <p class="sr-only" id="{i}-status" aria-live="polite"></p>
   <p class="eg" data-your-towns hidden></p>
   {eg}
 </form>
-{town_options(ctx)}"""
+{town_options(ctx) if not suffix else ""}"""
 
 
 def upcoming_hits(ctx, keep=lambda h: True):
@@ -2896,8 +2937,21 @@ def build_index(ctx):
     lines, and the subjects. Everything else is a tap away."""
     stories, _ = trending_stories(ctx)
     week_end = (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=7)).strftime("%Y-%m-%d")
-    week = [st for st in stories if st["meeting_date"] and st["meeting_date"] <= week_end][:3]
-    week = sorted(week, key=lambda st: st["meeting_date"]) or stories[:3]  # the biggest three, in the order they happen
+    soon = [st for st in stories if st["meeting_date"] and st["meeting_date"] <= week_end]
+    def kind(st):
+        sg = str(st.get("stage") or "")
+        return "hearing" if sg.startswith("Hearing") else ("vote" if sg.startswith(("Vote", "Possible vote", "Final")) else "other")
+    week = []
+    for want in ("hearing", "vote", "other"):  # one of each kind where the week has them, biggest first
+        pick = next((st for st in soon if kind(st) == want and st not in week), None)
+        if pick:
+            week.append(pick)
+    for st in soon:
+        if len(week) >= 3:
+            break
+        if st not in week:
+            week.append(st)
+    week = sorted(week, key=lambda st: st["meeting_date"]) or stories[:3]
     next_html = (f'<ol class="rows">{"".join(story_html(ctx, st, reasons=False) for st in week)}</ol>' if week
                  else '<p class="empty">Nothing big on the agendas posted so far.</p>')
     towns_read = sum(m for _, m, _ in ctx.coverage())
@@ -2905,15 +2959,14 @@ def build_index(ctx):
     ahead = upcoming_hits(ctx)
     ahead_towns = len({(h.get("state"), h.get("town")) for h in ahead})
     checked = et_when(ctx.hits_doc.get("generated") or "")
-    example = home_example_html(ctx, week)
-    topic_links = join_and([f'<a href="/topics/{tp["slug"]}">{e(tp["name"].lower())}</a>' for tp in TOPIC_PAGES])
+    example = home_example_html(ctx, stories)
     body = f"""
 <div class="wrap narrow home">
 <section class="home-hero" aria-labelledby="hero-title">
-  <h1 id="hero-title">See what your town is about to decide</h1>
-  <p class="lead">Type your town. We’ll tell you in plain words what its boards have coming up, with a link to each agenda.</p>
-  {town_box(ctx, label="Your town")}
-  <p class="small home-note">It’s free and you don’t need an account.{f" We read the agendas every morning; last checked {e(checked)}." if checked else ""}</p>
+  <h1 id="hero-title">{e(HEADLINE)}</h1>
+  <p class="lead">{e(EXPLANATION)}</p>
+  {town_box(ctx, label="Your town", button="Show my town’s meetings")}
+  <p class="small home-note">Towns in {e(states)}. Free, no account.</p>
   {owner_html()}
 </section>
 <section class="next" aria-labelledby="next-title">
@@ -2926,52 +2979,82 @@ def build_index(ctx):
   <h2 id="how-title">How it works</h2>
   <ol class="steps">
     <li>Every morning we read the agendas that <a href="/how-it-works#coverage">{towns_read} towns</a> in {e(states)} post online.</li>
-    <li>We pick out the items about {topic_links}, and say what the board is doing with each one in a plain sentence.</li>
+    <li>We pick out the items about <a href="/topics/solar">solar</a>, <a href="/topics/battery-storage">batteries</a> and <a href="/topics/data-centers">data centers</a>; <a href="/topics/zoning-changes">zoning</a> and <a href="/topics/40b-housing">affordable housing (40B)</a>; <a href="/topics/cell-towers">cell towers</a> and <a href="/topics/wetlands">wetlands permits</a>. Each one gets a plain sentence that says what the board is doing with it.</li>
     <li>Follow your town and you get a page and a calendar feed for it and the towns next door, updated every morning.</li>
   </ol>
   <p>If you want to know what a town is allowed to do, see <a href="/attorney-general">how the state has ruled on town bylaws</a>.</p>
+</section>
+<section class="next" aria-labelledby="who-title">
+  <h2 id="who-title">Who makes this</h2>
+  {who_makes_this_html(ctx)}
+</section>
+<section class="next" aria-labelledby="again-title">
+  <h2 id="again-title">Type your town</h2>
+  {town_box(ctx, label="Your town", button="Show my town’s meetings", examples=False, suffix="-2")}
 </section>
 </div>
 """
     return page(
         ctx,
-        f"See what your town is about to decide | {SITE_NAME}",
-        f"Type your town to see its next meetings about solar, battery storage, data centers, zoning and housing in {join_and(ctx.states)}. "
-        "Free, with no account.",
-        body, "/", og_title="See what your town is about to decide",
+        f"{SITE_NAME}: know what your town is about to decide",
+        EXPLANATION,
+        body, "/", og_title=HEADLINE,
     )
 
 
-def home_example_html(ctx, week):
-    """One real example of what a town's page says this morning, so a first visit shows the thing before asking for a town."""
+HEADLINE = "Know what your town is about to decide on solar, data centers, zoning and housing"
+EXPLANATION = ("Towns post agendas as PDFs a few days before each meeting. We read them for you and say what each board "
+               "will discuss or vote on, and whether you can speak.")
+
+
+def home_example_html(ctx, stories):
+    """One real example: the next public hearing anyone can go to, in two sentences, with the town's page linked. The
+    example is the promise, so it is a hearing people can still attend, not the most recent past meeting."""
+    week_end = (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=10)).strftime("%Y-%m-%d")
     pick = None
-    for tid in ["MA:Carver"] + [f"{st['state']}:{st['town']}" for st in week]:
-        t = ctx.town_by_id.get(tid)
-        if t and t.get("monitored") and (upcoming_meetings(ctx, tid) or ctx.hits_by_town.get(tid)):
-            pick = t
-            break
+    for st in stories:
+        if st.get("meeting_date") and ctx.today <= st["meeting_date"] <= week_end and str(st.get("stage") or "").startswith("Hearing"):
+            t = ctx.town_by_id.get(f"{st['state']}:{st['town']}")
+            if t and t.get("monitored"):
+                pick = t
+                break
     if not pick:
         return ""
-    tid = pick["id"]
-    up_m = upcoming_meetings(ctx, tid)
-    _, past, _ = split_hits(ctx, ctx.hits_by_town.get(tid, []))
-    past_m = group_meetings(ctx, past)
-    lead = town_lead_text(ctx, pick, up_m, past_m)
-    m = next((x for x in up_m if not x.get("cancelled")), None) or (past_m[0] if past_m else None)
-    para = ""
-    if m:
-        subject, who, sents, _ = meeting_row(ctx, m, show_town=False)
-        when = relative_when(ctx, m) if m["date"] >= ctx.today else f"On {day_label(m['date'], ctx)}"
-        para = f"<p><b>{e(subject)}.</b> {e(when)}, {re.sub(r'<[^>]+>', '', who)}. {e(' '.join(sents))}</p>"
+    up_m = [m for m in upcoming_meetings(ctx, pick["id"]) if not m.get("cancelled")
+            and any(str(en.get("stage") or "").startswith("Hearing") for en in m["lines"].values())]
+    if not up_m:
+        return ""
+    m = up_m[0]
+    subject, who, sents, _ = meeting_row(ctx, m, show_town=False)
     name = f"{pick['town']}{'' if pick['state'] == 'MA' else ', ' + pick['state']}"
     return f"""<section class="next example" aria-labelledby="eg-title">
-  <h2 id="eg-title">What {e(name)}’s page says this morning</h2>
+  <h2 id="eg-title">What {e(name)}’s page says today</h2>
   <blockquote class="example-quote">
-    <p>{e(lead)}</p>
-    {para}
+    <p><b>{e(subject)}.</b> {e(relative_when(ctx, m, with_time=False))}, {re.sub(r'<[^>]+>', '', who)}. {e(sents[0] if sents else '')}</p>
   </blockquote>
   <p class="more-link"><a href="{town_path(pick['state'], pick['town'])}">Read {e(name)}’s page</a></p>
 </section>"""
+
+
+def build_about(ctx):
+    """/about: who makes the site, why, how it is paid for, how the sentences are written, how to reach us."""
+    towns_read = sum(m for _, m, _ in ctx.coverage())
+    states = join_and(STATE_NAMES.get(x, x) for x in ctx.states)
+    body = f"""
+<div class="wrap narrow">
+<h1 id="about-title">Who makes {e(SITE_NAME)}</h1>
+{who_makes_this_html(ctx).replace(' <a href="/about">More about who makes this</a>.', '')}
+<h2>How the sentences are written</h2>
+<p>Every morning a program reads the agendas that {towns_read} towns in {e(states)} post online, picks out the items about {SUBJECTS}, and writes one sentence for each that says what the board is doing with it. It quotes the agenda and links to it, and it never adds a fact the agenda doesn’t carry. When an agenda doesn’t say whether people can speak, the page says so. <a href="/how-it-works">More about how it works</a>.</p>
+<h2>What it costs</h2>
+<p>Nothing, for your town and the towns next to it. You don’t need an account, and there is nothing advertised. If that changes, this page will say so first.</p>
+<h2>Getting it wrong</h2>
+<p>A sentence can be wrong: an agenda is scanned badly, a board changes its name, a hearing moves. Tell us through the <a href="/contact">contact page</a>{f' or at <a href="mailto:{e(OWNER_EMAIL)}">{e(OWNER_EMAIL)}</a>' if OWNER_EMAIL else ''} and we fix it and note the fix on the page. The agenda itself is always one tap away, and the town clerk is the last word on dates.</p>
+</div>
+"""
+    return page(ctx, f"Who makes {SITE_NAME} | {SITE_NAME}",
+                f"Who makes {SITE_NAME}, why, how the sentences are written from the agendas, what it costs, and how to report a mistake.",
+                body, "/about")
 
 
 def build_404(ctx):
@@ -2982,7 +3065,7 @@ def build_404(ctx):
 <section class="page-head" aria-labelledby="nf-title">
   <h1 id="nf-title">That page isn’t here</h1>
   <p class="lead">The link may be old: a meeting’s page goes when the meeting has passed or its agenda was replaced. Type your town to see what’s coming up there.</p>
-  {town_box(ctx)}
+  {town_box(ctx, button="Show my town’s meetings")}
   <ul class="inline-links"><li><a href="/upcoming">Everything coming up</a></li><li><a href="/towns">All towns</a></li><li><a href="/search">Search the agendas</a></li></ul>
 </section>
 </div>
@@ -3140,7 +3223,7 @@ def build_upcoming(ctx):
   {week_folds(ctx, later) if later else '<p class="empty">Nothing later yet.</p>'}
 </section>
 <p class="more-link"><a href="/search?upcoming=1">Search these agendas</a></p>
-<p class="small">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {plural(n_towns, 'town')}.{f" We read the agendas towns post online at {e(checked)}." if checked else ""} A program writes each sentence from the agenda; the link under it is the source.</p>
+<p class="small">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {plural(n_towns, 'town')}.</p>
 </div>
 """
     return page(ctx, f"Coming up at town meetings | {SITE_NAME}",
@@ -3434,24 +3517,17 @@ def upcoming_meetings(ctx, tid):
 # One to three sentences per meeting, the way a neighbour would tell you: when, who, what, where, whether you can
 # speak, what moved. Composed from the same lines the rows show; the rows stay under "Details".
 
-def relative_when(ctx, m):
+def relative_when(ctx, m, with_time=True):
     """"Tonight at 6:30 pm", "Tomorrow at 7 pm", "Tuesday at 6:30 pm", "Next Tuesday (Nov 3) at 7 pm", "On Nov 17"."""
     if not m.get("date"):
         return "At a date not set yet"
     today = datetime.strptime(ctx.today, "%Y-%m-%d").date()
     d = datetime.strptime(m["date"][:10], "%Y-%m-%d").date()
     days = (d - today).days
-    t = m.get("time") or ""
+    t = (m.get("time") or "") if with_time else ""
     at = f" at {t}" if t else ""
-    if days == 0:
-        return ("Tonight" + at) if (not t or time_key(m) >= 17 * 60) else ("Today" + at)
-    if days == 1:
-        return "Tomorrow" + at
-    if 1 < days < 7:
-        return d.strftime("%A") + at
-    if 7 <= days < 14:
-        return f"Next {d.strftime('%A')} ({d.strftime('%b %-d')})" + at
-    return f"On {d.strftime('%b %-d')}" + (f", {d.year}" if d.year != today.year else "") + at
+    # absolute, with the day name: a page built in the morning is read that night and the next day
+    return d.strftime("%a %b %-d") + ("" if d.year == today.year else f", {d.year}") + at
 
 
 ITEM_SUFFIX = re.compile(r"^(?P<what>.+?):\s*(?P<how>(?:[\w ,]*?\s)?(?:hearing|discussion|vote|Town Meeting vote)(?:\s*\(Article \d+\))?(?:\s+continues(?:\s+from)?(?:\s+[A-Z][a-z]{2}\s+\d{1,2})?)?)$")
@@ -3992,9 +4068,10 @@ def continued_html(ctx, rows):
         subject = item_subject(text, entry, m.get("date") or "")
         p = item_parts(STATUS_PREFIX.sub("", headline(plain_say(text))), {**entry, "stage": "Hearing" if re.search(r"\bhearing\b", text, re.I) else ""}, "")
         hearing = bool(re.search(r"\bhearing\b", text, re.I)) or str(entry.get("stage") or "").startswith("Hearing")
-        say = [f"The town hasn’t posted that agenda yet, so there’s no time; the date comes from the {short_day(m['date'])} agenda."]
+        say = []
         if hearing and board != "Town Meeting":
             say.append("It’s a public hearing, so anyone can go and speak.")
+        say.append(f"The town hasn’t posted that agenda yet, so there’s no time; the date comes from the {short_day(m['date'])} agenda.")
         why = continued_status(note)
         if why.startswith("Moved from") and re.search(r"\bcontinued\b", text, re.I) and "applicant" not in text.lower():
             say.append(why.replace("Moved from", "The hearing continues from") + ".")
@@ -4012,7 +4089,7 @@ def continued_html(ctx, rows):
                      f'<p class="meet-say">{e(" ".join(say))}</p>'
                      + (f'<p class="meet-link">{link}</p>' if link else "") + '</li>')
     return f"""<section class="continued" aria-labelledby="continued-title">
-<h2 id="continued-title">Coming up, dated from earlier agendas</h2>
+<h2 id="continued-title">Coming up</h2>
 <ol class="meetings continued-list">{"".join(items)}</ol>
 </section>"""
 
@@ -4055,12 +4132,25 @@ def town_lead_text(ctx, t, up_m, past_m=None):
     moved = continued_ahead(ctx, (past_m or [])[:12], up_m)
     out = [f"Nothing is on {town}’s agendas right now about solar, batteries, data centers, zoning or housing."]
     if moved:
-        month = datetime.strptime(moved[0][0].isoformat(), "%Y-%m-%d").strftime("%B")
-        out[0] = (f"Nothing new is on {town}’s agendas about solar, batteries, data centers, zoning or housing, but "
-                  + ("one item has moved" if len(moved) == 1 else f"{NUM_WORDS.get(len(moved), str(len(moved)))} items have moved")
-                  + f" to {month}, listed below.")
+        # the lead agrees with the rows under it: the hearings, their boards and days, and the right to speak
+        parts, hearings = [], 0
+        for d, m, text, note in moved[:3]:
+            subject = item_subject(text, m["lines"].get(text) or {}, m.get("date") or "")
+            if re.search(r"\bhearing\b", text, re.I):
+                hearings += 1
+            parts.append(f"the {meeting_board(m)} on {day_label(d.isoformat(), ctx)} about {lower_first(subject)}")
+        n = NUM_WORDS.get(len(moved), str(len(moved)))
+        if hearings == len(moved):
+            out = [f"{n.capitalize()} public hearing{'s are' if len(moved) > 1 else ' is'} coming up in {town}: " + join_and(parts) + ". Anyone can go and speak."]
+        else:
+            out = [f"{n.capitalize()} meeting{'s are' if len(moved) > 1 else ' is'} coming up in {town}: " + join_and(parts) + "."]
     elif past_m:
         last = next((m for m in past_m if real_lines(m)), None)
+        n_items = sum(len(real_lines(m)) for m in past_m)
+        since = past_m[-1]["date"]
+        since_word = datetime.strptime(since[:10], "%Y-%m-%d").strftime("%B") if since else ""
+        out.append(f"We check again every morning. {town} has had {plural(n_items, 'item')} on these subjects"
+                   + (f" since {since_word}" if since_word else "") + ".")
         if last:
             text, _ = real_lines(last)[0]
             subject = item_subject(text, last["lines"].get(text) or {}, last.get("date") or "")
@@ -4094,7 +4184,7 @@ def town_summary(ctx, t, up_m, past_m=None):
     lead = town_lead_text(ctx, t, up_m, past_m)
     health = (ctx.health or {}).get(t["id"]) or {}
     when = et_when(health["last_success"]) if health.get("last_success") else ""
-    checked = f'<p class="checked small">We read the agendas {e(t["town"])} posts online {e(when)}. A program writes each sentence from the agenda; the link under it is the source.</p>' if when else ""
+    checked = f'<p class="checked small">Read {e(when)}.</p>' if when else ""
     return f'<p class="lead">{e(lead)}</p>{checked}'
 
 
@@ -4127,9 +4217,9 @@ def build_town_page(ctx, t):
         if up_m and past_m:
             recent = f'<section data-past><h2>The last {"two meetings" if len(past_m) > 1 else "meeting"}</h2>{meeting_list(ctx, past_m[:2], show_town=False, shown=2)}</section>'
         ahead_rows = continued_html(ctx, continued_ahead(ctx, up_m + past_m, up_m))
-        coming = f"""{ahead_rows if not up_m else ''}
+        coming = f"""{follow}
+{ahead_rows if not up_m else ''}
 {next_agenda_html(ctx, t, up_m)}
-{follow}
 <h2 class="sr-only">Coming up</h2>
 {listing}
 {ahead_rows if up_m else ''}
@@ -4562,9 +4652,9 @@ def build_watch(ctx, groups=False):
         more = '<p class="form-note">Watching many towns? <a href="/contact">Tell us what you need</a>.</p>'
         switch = ""
     else:
-        title, lead, more = "Follow a town", ("Every morning we read your town’s agendas. You get a page and a calendar feed "
-                                             "with what its boards have coming up on the subjects you choose, for your town and "
-                                             "the towns next door. Free, no account."), ""
+        title, lead, more = "Get your town’s meetings every morning", (
+            "Every morning we read your town’s agendas and put what its boards have coming up on a page and a calendar "
+            "feed, for your town and the towns next door. It’s free, you don’t need an account, and we don’t email you."), ""
         switch = 'Want them in Slack, Teams or Discord? <a href="/alerts-for-groups">Post to a chat app</a>.'
 
     body = f"""
@@ -4584,14 +4674,14 @@ def build_watch(ctx, groups=False):
       <ul class="suggest" id="home-town-list" role="listbox" aria-label="Matching towns" hidden></ul>
     </div>
     <datalist id="town-names"></datalist>
-    <p class="form-note" id="home-read" aria-live="polite">Pick it from the list as you type.</p>
+    <p class="form-note" id="home-read" aria-live="polite"></p>
     <div class="request" id="home-request" hidden>
       <p id="home-request-text"></p>
       <button type="button" class="btn quiet" id="home-request-btn">Ask us to add this town</button>
       <p class="form-status" id="home-request-status" role="status" aria-live="polite"></p>
     </div>
     <p class="field-error" id="towns-error" hidden></p>
-    <div class="actions"><button type="button" class="btn" id="town-next">Continue</button></div>
+    <div class="actions"><button type="button" class="btn" id="town-next">Next: what you get</button></div>
     {f'<p class="form-note">{switch}</p>' if switch else ""}
   </div>
 
@@ -4625,7 +4715,7 @@ def build_watch(ctx, groups=False):
       <p class="form-note">After you save, the next page has a calendar link and a feed for a news app.</p>
     </details>
     <div class="submit-row">
-      <button class="btn" type="submit" id="watch-submit">Send me these</button>
+      <button class="btn" type="submit" id="watch-submit">Make my page and calendar feed</button>
       <p class="form-status" id="watch-status" role="status" aria-live="polite"></p>
     </div>
   </div>
@@ -5691,30 +5781,29 @@ def build_meeting_page(ctx, m):
     if m.get("cancelled"):
         when += ' <b class="ticket-canceled">Canceled by the town</b>'
     # The meeting's facts, labelled, where someone deciding whether to go looks first; the follow box after the items.
-    facts = [("When", when), ("Where", e(place) if place else "Not on the agenda")]
+    facts = [] if (m.get("date") and (place or True)) else [("When", when)]
+    if m.get("cancelled"):
+        facts.append(("When", when))
     if m.get("watch"):
         facts.append(("Watch", e(" or ".join(m["watch"]))))
     speak = " ".join(x for x in (speak_top, who_votes_text(m)) if x)
     if speak:
         facts.append(("Public comment" if m["board_key"] != "town_meeting" else "Who votes", e(speak)))
     if link:
-        facts.append(("Agenda" if what != "warrant" else "Warrant", link + (f' <span class="muted">({e(posted)})</span>' if posted else "")))
+        facts.append(("Agenda" if what != "warrant" else "Warrant", link))
     facts.append(("Calendar", f'<a href="/m/{m["id"][2:]}.ics" download="{e(m["id"][2:])}.ics">Add this meeting to my calendar</a>'))
     ticket = '<dl class="facts-list meeting-facts">' + "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in facts) + "</dl>"
-    follow = f"""<section class="follow-box" aria-labelledby="follow-title">
-  <h2 id="follow-title">Follow {e(m['town'])}</h2>
-  <p>You get a page and a calendar feed for {e(m['town'])} and the towns next door, updated every morning. Free, no account.</p>
-  <p class="actions"><a class="btn" href="{e(alerts_url(t.get('id')))}">Follow {e(m['town'])}’s meetings</a></p>
-  <p class="ticket-links">{share}</p>
-</section>"""
+    follow = (f'<p class="ticket-links meeting-links"><a href="{town_path(m["state"], m["town"])}">Everything coming up in {e(m["town"])}</a>'
+              f'<a href="{e(alerts_url(t.get("id")))}">Follow {e(m["town"])}’s meetings</a>{share}</p>')
     for name, gloss in BOARD_GLOSS.items():  # a stranger lands here from a link: the board's job, once
         if sents and name in sents[0] and gloss not in sents[0]:
             sents[0] = sents[0].replace(name, f"{name} ({gloss})", 1)
             break
-    when_lead = relative_when(ctx, m) if m.get("date") and m["date"] >= ctx.today else (day_label(m["date"], ctx) if m.get("date") else "")
+    when_lead = relative_when(ctx, m, with_time=False) if m.get("date") and m["date"] >= ctx.today else (day_label(m["date"], ctx) if m.get("date") else "")
     pl = row_place(m)
     where_lead = ("online" if pl == "online" else f"at {pl}") if pl else ""
-    lead = e(", ".join(x for x in (when_lead, where_lead) if x)) + ". " if (when_lead or where_lead) else ""
+    time_lead = f"at {m['time']}" if m.get("time") else ""
+    lead = e(", ".join(x for x in (when_lead, time_lead, where_lead) if x)) + ". " if (when_lead or where_lead) else ""
     body = f"""
 <div class="wrap narrow">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/towns">Towns</a></li><li><a href="{town_path(m['state'], m['town'])}">{e(m['town'])}</a></li><li><span aria-current="page">{e(meeting_board(m))}</span></li></ol></nav>
@@ -5724,7 +5813,6 @@ def build_meeting_page(ctx, m):
 <h2>On the {e(what)}</h2>
 <ol class="meetings one">{meeting_html(ctx, m, show_town=False, lines_shown=20, full=True)}</ol>
 {follow}
-<p class="more-link"><a href="{town_path(m['state'], m['town'])}">Everything coming up in {e(m['town'])}</a></p>
 </div>
 """
     desc = share_text(ctx, m, plain_say(first))
@@ -5770,6 +5858,7 @@ def main():
         "upcoming.html": (build_upcoming(ctx), "/upcoming"),
         "trending.html": (build_trending(ctx), "/trending"),
         "how-it-works.html": (build_how(ctx), "/how-it-works"),
+        "about.html": (build_about(ctx), "/about"),
         "privacy.html": (build_privacy(ctx), "/privacy"),
         "contact.html": (build_contact(ctx), "/contact"),
         "search.html": (build_search(ctx), "/search"),

@@ -123,9 +123,12 @@ nav.top ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0 var(
 nav.top a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
 nav.top a:hover { border-bottom-color: var(--rule-strong); }
 nav.top a[aria-current="page"] { border-bottom-color: var(--ink); }
-.nav-follow { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s4); border: 2px solid var(--mark-fill); border-radius: var(--radius);
-  color: var(--ink); font-weight: 600; text-decoration: none; white-space: nowrap; }
-.nav-follow:hover, .nav-follow[aria-current="page"] { background: var(--mark-fill); color: var(--on-mark); }
+.nav-plain { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+.nav-plain:hover { border-bottom-color: var(--rule-strong); }
+.nav-plain[aria-current="page"] { border-bottom-color: var(--ink); }
+.foot-last .stale { color: var(--warn); font-weight: 600; }
+.meeting-links { margin-top: var(--s5); padding-top: var(--s4); border-top: 1px solid var(--rule); }
+.preview-lines .meet-subject { font-size: var(--t-body); margin-bottom: 0; }
 
 /* the strip at the end of every page */
 .page-end { margin-top: var(--s8); padding-top: var(--s4); padding-bottom: var(--s4); color: var(--muted); font-size: var(--t-sm); }
@@ -135,7 +138,8 @@ nav.top a[aria-current="page"] { border-bottom-color: var(--ink); }
 .meeting-facts { margin: var(--s4) 0 var(--s5); }
 .meeting-facts dd a { display: inline-flex; align-items: center; min-height: 40px; }
 .next-agenda { margin: 0 0 var(--s4); }
-@media (max-width: 359px) { .field-row { flex-direction: column; } .field-row .combo, .field-row input { width: 100%; } }
+@media (max-width: 520px) { .townbox .field-row { flex-direction: column; align-items: stretch; } .townbox .field-row .combo { flex: 0 0 auto; } .townbox .field-row .combo, .townbox .field-row input, .townbox .field-row .btn { width: 100%; } }
+@media (max-width: 640px) { header.site .wrap { padding-top: var(--s2); padding-bottom: 0; row-gap: 0; } header.site .brand { font-size: var(--t-body); } }
 header.site .wrap { flex-wrap: wrap; }
 .town-cols a { display: inline-flex; align-items: center; min-height: 40px; }
 
