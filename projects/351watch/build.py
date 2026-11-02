@@ -3005,7 +3005,9 @@ def build_index(ctx):
     for st in stories:
         if not (st.get("meeting_date") and ctx.today <= st["meeting_date"] <= two_weeks):
             continue
-        main_topic = (st.get("topics") or ["other"])[0]
+        tps = set(st.get("topics") or [])
+        main_topic = next((k for k in ("data_center", "solar", "battery_storage", "40b_comprehensive_permit", "wireless_telecom",
+                                       "wetlands_filing", "clean_energy_siting", "zoning_amendment", "moratorium") if k in tps), "other")
         if per_topic[main_topic] >= 2:
             continue
         per_topic[main_topic] += 1
