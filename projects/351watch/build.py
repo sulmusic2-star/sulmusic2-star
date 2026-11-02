@@ -779,14 +779,15 @@ FOOTER_ABOUT = [("/how-it-works", "How it works"), ("/about", "Who makes this"),
                 ("/contact", "Contact"), ("/bot", "For website managers")]
 # The mark: three agenda lines, the middle one longer and purple (the item coming up). The header draws it
 # inline (BRAND_MARK), the favicon draws the same, and tools/og_image.py draws it on the share image.
-FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctitle%3E"
+FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='9' fill='%23ffffff'/%3E"
+           "%3Ccircle cx='10' cy='10' r='5.5' fill='%23b3261e'/%3E%3C/svg%3E")
+FAVICON_OLD = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctitle%3E"
            + quote(SITE_NAME) + "%3C/title%3E"
            "%3Crect x='4' y='7' width='18' height='4' rx='1' fill='%231f2724'/%3E"
            "%3Crect x='4' y='14' width='24' height='4' rx='1' fill='%237a2c80'/%3E"
            "%3Crect x='4' y='21' width='18' height='4' rx='1' fill='%231f2724'/%3E%3C/svg%3E")
-BRAND_MARK = ('<svg class="brand-mark" viewBox="0 0 26 20" aria-hidden="true" focusable="false">'
-              '<rect x="0" y="1" width="19" height="4" rx="1"/><rect class="hi" x="0" y="8" width="26" height="4" rx="1"/>'
-              '<rect x="0" y="15" width="19" height="4" rx="1"/></svg>')
+BRAND_MARK = ('<svg class="brand-mark" viewBox="0 0 20 20" aria-hidden="true" focusable="false">'
+              '<circle class="pin-halo" cx="10" cy="10" r="9"/><circle class="pin-dot" cx="10" cy="10" r="5.5"/></svg>')
 
 
 def nav_section(path):
@@ -825,11 +826,31 @@ def page_end(path, source=""):
             f'<p>{program}</p><p>{report}</p></aside>')
 
 
+def page_kind(path):
+    """home, list, town, meeting or page: the body class the stylesheet shapes each kind of page by."""
+    p = path or "/"
+    if p == "/":
+        return "home"
+    if p.startswith("/m/"):
+        return "meeting"
+    if re.match(r"^/(ma|ny|ri)/[^/]+$", p):
+        return "town"
+    if p in ("/upcoming", "/trending") or p.startswith("/topics/"):
+        return "list"
+    return "page"
+
+
+def long_date(iso):
+    """"Monday, November 2, 2026" for the masthead."""
+    d = datetime.strptime(iso[:10], "%Y-%m-%d")
+    return d.strftime("%A, %B %-d, %Y")
+
+
 def page(ctx, title, description, body, path, scripts=(), noindex=False, head="", og_title=None, source=""):
     current = nav_section(path)
     nav = "".join(f'<li><a href="{href}"{" aria-current=\"page\"" if href == current else ""}>{label}</a></li>'
                   for href, label in NAV)
-    follow = (f'<a class="nav-plain" href="{FOLLOW[0]}"{" aria-current=\"page\"" if current == FOLLOW[0] else ""}>'
+    follow = (f'<a class="nav-follow" href="{FOLLOW[0]}"{" aria-current=\"page\"" if current == FOLLOW[0] else ""}>'
               f'{FOLLOW[1]}</a>')
     robots = '<meta name="robots" content="noindex">\n' if noindex else ""
     canonical = "" if noindex else f'<link rel="canonical" href="{BASE_URL}{"" if path == "/" else path}">\n'
@@ -860,18 +881,19 @@ def page(ctx, title, description, body, path, scripts=(), noindex=False, head=""
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
-<link rel="preload" href="/fonts/public-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/public-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/newsreader-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/newsreader-text.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/libre-franklin-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="{FAVICON}">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 {head}</head>
-<body{' class="compact"' if 'data-view-switch' in body else ''}>
+<body class="page-{page_kind(path)}">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap">
   <a class="brand" href="/">{BRAND_MARK}<span>{e(SITE_NAME)}</span></a>
-  <nav class="top" aria-label="Main"><ul>{nav}</ul></nav>
-  {follow}
+  <p class="dateline"><time datetime="{ctx.today}">{e(long_date(ctx.today))}</time></p>
+  <nav class="top" aria-label="Main"><ul>{nav}<li>{follow}</li></ul></nav>
 </div></header>
 <main id="main">
 {body}
@@ -2654,7 +2676,8 @@ def day_groups(ctx, meetings, show_town=True, lines_shown=4, details=True):
             rows += (f'<li class="meeting also-row" data-kind="mention"><details class="also"><summary>Also on agendas: {e(join_and(names))}{e(more)}. '
                      f'Nothing is set to be discussed or decided.</summary><ol class="meetings">'
                      + "".join(meeting_html(ctx, m, show_town, lines_shown, details=False) for m in also) + "</ol></details></li>")
-        out.append(f'<section class="day-group"><h3 class="day">{label}</h3><ol class="meetings">{rows}</ol></section>')
+        today = " today" if key == ctx.today else ""
+        out.append(f'<section class="day-group{today}"{f' id="d-{key}"' if key else ""}><h3 class="day">{label}</h3><ol class="meetings">{rows}</ol></section>')
     return f'<div class="days">{"".join(out)}</div>'
 
 
@@ -2912,7 +2935,7 @@ def town_options(ctx):
     return f'<datalist id="town-names">{opts}</datalist>'
 
 
-def town_box(ctx, label="Type your town", button="Find my town", examples=True, suffix=""):
+def town_box(ctx, label="Type your town", button="Find my town", examples=True, suffix="", options=True):
     eg = ""
     if examples:
         picks = [t for t in ("MA:Carver", "MA:Amherst", "NY:Clay") if t in ctx.town_by_id][:3]
@@ -2930,7 +2953,7 @@ def town_box(ctx, label="Type your town", button="Find my town", examples=True, 
   <p class="eg" data-your-towns hidden></p>
   {eg}
 </form>
-{town_options(ctx) if not suffix else ""}"""
+{town_options(ctx) if (options and not suffix) else ""}"""
 
 
 def upcoming_hits(ctx, keep=lambda h: True):
@@ -2974,19 +2997,25 @@ def build_index(ctx):
     states = join_and(STATE_NAMES.get(x, x) for x in ctx.states)
     ahead = upcoming_hits(ctx)
     ahead_towns = len({(h.get("state"), h.get("town")) for h in ahead})
+    ahead_meetings = group_meetings(ctx, ahead)
     checked = et_when(ctx.hits_doc.get("generated") or "")
     example = home_example_html(ctx, stories)
     body = f"""
 <div class="wrap narrow home">
 <section class="home-hero" aria-labelledby="hero-title">
   <h1 id="hero-title">{e(HEADLINE)}</h1>
+  <div class="hero-words">
   <p class="lead">{e(EXPLANATION)}</p>
-  {town_box(ctx, label="Your town", button="Show my town’s meetings")}
+  {town_box(ctx, label="Your town", button="Show my town’s meetings", options=False)}
   <p class="small home-note">Towns in {e(states)}. Free, with no account to make.</p>
   {owner_html()}
+  </div>
+  <figure class="map-figure region">{region_map_svg(ctx)}<figcaption>Each dot is a town. The dark ones we read every morning; the red ones have a meeting this week.</figcaption></figure>
 </section>
+{town_options(ctx)}
 <section class="next" aria-labelledby="next-title">
   <h2 id="next-title">This week</h2>
+  {week_strip_html(ctx, ahead_meetings, "/upcoming")}
   {next_html}
   <p class="more-link"><a href="/upcoming">Everything coming up in {ahead_towns} towns, by date</a></p>
 </section>
@@ -3016,6 +3045,65 @@ def build_index(ctx):
         EXPLANATION,
         body, "/", og_title=HEADLINE,
     )
+
+
+def this_week_towns(ctx, days=7):
+    """The towns with a meeting on one of our subjects in the next seven days: the red pins."""
+    end = (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=days)).strftime("%Y-%m-%d")
+    return {f"{m['state']}:{m['town']}" for m in group_meetings(ctx, upcoming_hits(ctx)) if m.get("date") and m["date"] <= end and not m.get("cancelled")}
+
+
+def region_map_svg(ctx, title_id="map-region-title"):
+    """The three states with every town as a dot: faint for a town we can't read yet, dark for one we read every
+    morning, a red pin for one with a meeting this week. The outlines come from geo/region_land.json (Census
+    state boundaries, rendered once); the dots from geo/town_points.json. Pins link to town pages for a mouse
+    and are skipped by the keyboard (every pinned town is also a row on the page)."""
+    land_path = GEO / "region_land.json"
+    if not land_path.exists() or not ctx.points:
+        return ""
+    land = json.loads(land_path.read_text())
+    lon0, lat1, k, scale = land["lon0"], land["lat1"], land["k"], land["scale"]
+    X = lambda lon: (lon - lon0) * k * scale
+    Y = lambda lat: (lat1 - lat) * scale
+    week = this_week_towns(ctx)
+    read = {t["id"] for t in ctx.towns if t.get("monitored")}
+    def inside(tid):
+        la, lo = ctx.points[tid]
+        return land["lon0"] - 0.2 <= lo <= land["lon1"] + 0.2 and land["lat0"] - 0.2 <= la <= land["lat1"] + 0.2
+    dot = lambda tid: f'<path d="M{X(ctx.points[tid][1]):.1f} {Y(ctx.points[tid][0]):.1f}h0"/>'
+    unread = "".join(dot(t) for t in ctx.points if inside(t) and t not in read and t not in week)
+    strong = "".join(dot(t) for t in ctx.points if inside(t) and t in read and t not in week)
+    pins = []
+    for t in sorted(week):
+        if t not in ctx.points or not inside(t):
+            continue
+        st, town = t.split(":", 1)
+        pins.append(f'<a href="{town_path(st, town)}" tabindex="-1"><path class="pin" d="M{X(ctx.points[t][1]):.1f} {Y(ctx.points[t][0]):.1f}h0"/>'
+                    f'<title>{e(town)}{"" if st == "MA" else ", " + st}</title></a>')
+    n_read, n_week = len(read & set(ctx.points)), len([t for t in week if t in ctx.points])
+    return (f'<svg class="map" viewBox="0 0 {land["width"]} {land["height"]}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="{title_id}">'
+            f'<title id="{title_id}">Massachusetts, New York and Rhode Island: every town, with the {n_week} that have a meeting this week marked</title>'
+            f'<g class="land-faint">{land["land_faint"]}</g><g class="land">{land["land"]}</g>'
+            f'<g class="towns-unread">{unread}</g><g class="towns-read">{strong}</g>'
+            f'<g class="towns-week" aria-hidden="true">{"".join(pins)}</g></svg>')
+
+
+def week_strip_html(ctx, meetings, prefix=""):
+    """Seven cells, today first, each with the day's count linking to that day's anchor on the list."""
+    counts = Counter(m["date"] for m in meetings if m.get("date") and not m.get("cancelled"))
+    cells = []
+    start = datetime.strptime(ctx.today, "%Y-%m-%d")
+    for i in range(7):
+        d = start + timedelta(days=i)
+        iso = d.strftime("%Y-%m-%d")
+        c = counts.get(iso, 0)
+        inner = f'<span class="dow">{d.strftime("%a")}</span><b class="dnum">{d.day}</b>'
+        cls = ' class="today"' if i == 0 else ""
+        if c:
+            cells.append(f'<li{cls}><a href="{prefix}#d-{iso}">{inner}<span class="n"><b>{c}</b> <span class="w">{"meeting" if c == 1 else "meetings"}</span></span></a></li>')
+        else:
+            cells.append(f'<li{cls}><span class="cell">{inner}<span class="n"></span></span></li>')
+    return '<nav class="week-strip" aria-label="The next seven days"><ol>' + "".join(cells) + "</ol></nav>"
 
 
 HEADLINE = "Know what your town is about to decide on solar, data centers, zoning and housing"
@@ -3226,6 +3314,7 @@ def build_upcoming(ctx):
   {tabs(COMING_TABS, "/upcoming", "Coming up")}
   {list_tools_html(counties, cant_read_by_county(ctx), topics={t for m in meetings for v in m["lines"].values() for t in (v.get("topics") or [])})}
 </section>
+{week_strip_html(ctx, meetings)}
 <section aria-labelledby="soon-title" data-meet-section>
   <h2 id="soon-title" class="week-head">This week</h2>
   {meeting_list(ctx, soon, shown=max(len(soon), 1), empty="Nothing on an agenda yet for the next 7 days. Agendas usually go up a few days before a meeting.")}
@@ -4251,14 +4340,15 @@ def build_town_page(ctx, t):
             recent = f'<section data-past><h2>The last {"two meetings" if len(past_m) > 1 else "meeting"}</h2>{meeting_list(ctx, past_m[:2], show_town=False, shown=2)}</section>'
         ahead_rows = continued_html(ctx, continued_ahead(ctx, up_m + past_m, up_m))
         coming = f"""{follow}
+<div class="town-cols"><div class="town-main">
 {ahead_rows if not up_m else ''}
 {next_agenda_html(ctx, t, up_m)}
 <h2 class="sr-only">Coming up</h2>
 {listing}
 {ahead_rows if up_m else ''}
-{next_door_html(ctx, t)}
 {recent}
-{news_html(ctx, t)}"""
+{news_html(ctx, t)}
+</div><aside class="town-rail" aria-label="Next door">{next_door_html(ctx, t)}</aside></div>"""
         rail = ""
     else:
         coming = cant_check_html(ctx, t, up_m)
