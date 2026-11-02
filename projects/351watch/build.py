@@ -2999,32 +2999,50 @@ def build_index(ctx):
     ahead_towns = len({(h.get("state"), h.get("town")) for h in ahead})
     ahead_meetings = group_meetings(ctx, ahead)
     checked = et_when(ctx.hits_doc.get("generated") or "")
-    example = home_example_html(ctx, stories)
+    two_weeks = (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=14)).strftime("%Y-%m-%d")
+    # the five biggest in the next two weeks, at most two on one subject so the front page shows the breadth
+    front, per_topic = [], Counter()
+    for st in stories:
+        if not (st.get("meeting_date") and ctx.today <= st["meeting_date"] <= two_weeks):
+            continue
+        main_topic = (st.get("topics") or ["other"])[0]
+        if per_topic[main_topic] >= 2:
+            continue
+        per_topic[main_topic] += 1
+        front.append(st)
+        if len(front) == 5:
+            break
+    front_html = (f'<ol class="front">{"".join(front_story_html(ctx, st) for st in front)}</ol>' if front
+                  else '<p class="empty">Nothing big on the agendas posted so far.</p>')
     body = f"""
 <div class="wrap narrow home">
 <section class="home-hero" aria-labelledby="hero-title">
   <h1 id="hero-title">{e(HEADLINE)}</h1>
   <div class="hero-words">
   <p class="lead">{e(EXPLANATION)}</p>
+  <p class="small home-note">Start with the biggest stories below, a subject, or your town. Free, with no account to make.</p>
   {town_box(ctx, label="Your town", button="Show my town’s meetings", options=False)}
-  <p class="small home-note">Towns in {e(states)}. Free, with no account to make.</p>
   {owner_html()}
   </div>
   <figure class="map-figure region">{region_map_svg(ctx)}<figcaption>Each dot is a town. The dark ones we read every morning; the red ones have a meeting this week.</figcaption></figure>
 </section>
 {town_options(ctx)}
-<section class="next" aria-labelledby="next-title">
-  <h2 id="next-title">This week</h2>
+<section class="next" aria-labelledby="front-title">
+  <h2 id="front-title">The biggest stories this week</h2>
+  {front_html}
+  <p class="more-link"><a href="/trending">All the biggest stories, ranked</a></p>
+</section>
+<section class="next" aria-labelledby="subjects-title">
+  <h2 id="subjects-title">This week, by subject</h2>
+  {subjects_this_week_html(ctx, ahead_meetings)}
   {week_strip_html(ctx, ahead_meetings, "/upcoming")}
-  {next_html}
   <p class="more-link"><a href="/upcoming">Everything coming up in {ahead_towns} towns, by date</a></p>
 </section>
-{example}
 <section class="next" aria-labelledby="how-title">
   <h2 id="how-title">How it works</h2>
   <ol class="steps">
     <li>Every morning we read the agendas that <a href="/how-it-works#coverage">{towns_read} towns</a> in {e(states)} post online.</li>
-    <li>We pick out the items about <a href="/topics/solar">solar</a>, <a href="/topics/battery-storage">batteries</a> and <a href="/topics/data-centers">data centers</a>; <a href="/topics/zoning-changes">zoning</a> and <a href="/topics/40b-housing">affordable housing (40B)</a>; <a href="/topics/cell-towers">cell towers</a> and <a href="/topics/wetlands">wetlands permits</a>. Each one gets a plain sentence that says what the board is doing with it.</li>
+    <li>We pick out the items about <a href="/topics/solar">solar</a>, <a href="/topics/battery-storage">batteries</a> and <a href="/topics/data-centers">data centers</a>; <a href="/topics/zoning">zoning</a> and <a href="/topics/40b-housing">affordable housing (40B)</a>; <a href="/topics/cell-towers">cell towers</a> and <a href="/topics/wetlands">wetlands permits</a>. Each one gets a plain sentence that says what the board is doing with it.</li>
     <li>Follow your town and you get a page and a calendar feed for it and the towns next door, updated every morning.</li>
   </ol>
   <p>If you want to know what a town is allowed to do, see <a href="/attorney-general">how the state has ruled on town bylaws</a>.</p>
@@ -3106,9 +3124,37 @@ def week_strip_html(ctx, meetings, prefix=""):
     return '<nav class="week-strip" aria-label="The next seven days"><ol>' + "".join(cells) + "</ol></nav>"
 
 
-HEADLINE = "Know what your town is about to decide on solar, data centers, zoning and housing"
-EXPLANATION = ("Towns post agendas as PDFs a few days before each meeting. We read them and say what each board "
-               "will decide, and whether you can speak.")
+HEADLINE = "What towns across Massachusetts, New York and Rhode Island are about to decide"
+EXPLANATION = ("Every morning we read the agendas 315 towns post and say, in a sentence each, what their boards will "
+               "decide on solar, data centers, zoning and housing, and whether you can speak.")
+
+
+def front_story_html(ctx, st):
+    """A front-page story: the headline as the link, then town, board and day, then what the board does."""
+    _, say = story_words(st)
+    when = f'<time datetime="{st["meeting_date"]}">{e(day_label(st["meeting_date"], ctx))}</time>' if st.get("meeting_date") else "Date not set"
+    town = f'{e(st["town"])}{", " + e(st["state"]) if st["state"] != "MA" else ""}'
+    who = ", ".join(x for x in (town, e(st["board"]) if st.get("board") else "", when) if x)
+    head = st.get("headline") or story_words(st)[0]
+    return (f'<li class="front-story"><a href="{e(st["href"])}"><span class="front-head">{e(head)}</span></a>'
+            f'<p class="meet-who" data-slop-ignore>{who}</p><p class="meet-say">{e(say)}</p></li>')
+
+
+def subjects_this_week_html(ctx, meetings):
+    """"Data centers: 11 meetings" for each subject with a meeting in the next seven days, linking to its page."""
+    end = (datetime.strptime(ctx.today, "%Y-%m-%d") + timedelta(days=7)).strftime("%Y-%m-%d")
+    counts = Counter()
+    for m in meetings:
+        if not m.get("date") or m["date"] > end or m.get("cancelled"):
+            continue
+        for key in {tp for en in m["lines"].values() for tp in (en.get("topics") or [])}:
+            counts[key] += 1
+    items = []
+    for tp in TOPIC_PAGES:
+        n = counts.get(tp["key"], 0)
+        if n:
+            items.append(f'<li><a href="/topics/{tp["slug"]}">{e(tp["name"])}</a> <span class="n">{plural(n, "meeting")}</span></li>')
+    return f'<ul class="subject-counts">{"".join(items)}</ul>' if items else ""
 
 
 def home_example_html(ctx, stories):
