@@ -3037,25 +3037,11 @@ def build_index(ctx):
 <section class="next" aria-labelledby="subjects-title">
   <h2 id="subjects-title">This week, by subject</h2>
   {subjects_this_week_html(ctx, ahead_meetings)}
-  {week_strip_html(ctx, ahead_meetings, "/upcoming")}
   <p class="more-link"><a href="/upcoming">Everything coming up in {ahead_towns} towns, by date</a></p>
 </section>
-<section class="next" aria-labelledby="how-title">
-  <h2 id="how-title">How it works</h2>
-  <ol class="steps">
-    <li>Every morning we read the agendas that <a href="/how-it-works#coverage">{towns_read} towns</a> in {e(states)} post online.</li>
-    <li>We pick out the items about <a href="/topics/solar">solar</a>, <a href="/topics/battery-storage">batteries</a> and <a href="/topics/data-centers">data centers</a>; <a href="/topics/zoning">zoning</a> and <a href="/topics/40b-housing">affordable housing (40B)</a>; <a href="/topics/cell-towers">cell towers</a> and <a href="/topics/wetlands">wetlands permits</a>. Each one gets a plain sentence that says what the board is doing with it.</li>
-    <li>Follow your town and you get a page and a calendar feed for it and the towns next door, updated every morning.</li>
-  </ol>
-  <p>If you want to know what a town is allowed to do, see <a href="/attorney-general">how the state has ruled on town bylaws</a>.</p>
-</section>
-<section class="next" aria-labelledby="who-title">
-  <h2 id="who-title">Who makes this</h2>
-  {who_makes_this_html(ctx)}
-</section>
-<section class="next" aria-labelledby="again-title">
-  <h2 id="again-title">Type your town</h2>
-  {town_box(ctx, label="Your town", button="Show my town’s meetings", examples=False, suffix="-2")}
+<section class="next about-line" aria-labelledby="how-title">
+  <h2 id="how-title" class="sr-only">How it works</h2>
+  <p>Every morning a program reads the agendas that <a href="/how-it-works#coverage">{towns_read} towns</a> post online and writes one sentence for each item about {SUBJECTS}, with the agenda linked as its source. <a href="/how-it-works">How it works</a>. Made by one person, not a company or a town. <a href="/about">Who makes this</a>.</p>
 </section>
 </div>
 """
