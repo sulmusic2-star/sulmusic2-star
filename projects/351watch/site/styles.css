@@ -33,7 +33,7 @@
 
   --f-body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
   --f-head: "Public Sans", "Helvetica Neue", Arial, sans-serif;
-  --t-h1: 2rem;        /* 32 on a phone, 40 from 641px */
+  --t-h1: 1.75rem;     /* 28 on a phone, 40 from 641px */
   --t-h2: 1.5rem;      /* 24 */
   --t-h3: 1.25rem;     /* 20 */
   --t-body: 1.125rem;  /* 18 */
@@ -46,7 +46,7 @@
   --measure: 66ch;     /* running text */
   --gutter: 24px;
   --radius: 4px;       /* controls */
-  --box: 10px;         /* boxes */
+  --box: 4px;          /* the few remaining panels share the controls' radius */
   --ctl: 48px;         /* every input, select and button */
   color-scheme: light;
 }
@@ -313,24 +313,40 @@ details.more > summary:hover, details.disclose > summary:hover { text-decoration
   .day { grid-column: 1; margin: 0; padding-top: 2px; }
   .day-group > .meetings { grid-column: 2; }
 }
-.meeting { margin: 0; padding: 0 0 var(--s4); max-width: var(--measure); }
-.meeting + .meeting { border-top: 1px solid var(--rule); padding-top: var(--s4); }
+.meeting { margin: 0; padding: 0 0 var(--s3); max-width: var(--measure); }
+.meeting + .meeting { border-top: 1px solid var(--rule); padding-top: var(--s3); }
+@media print {
+  header.site nav, .nav-plain, footer.site nav, .page-end, .meet-details > summary, details.narrow, .btn, .link-btn { display: none !important; }
+  .meet-details, details.more, details.disclose { display: block; }
+  .meet-details > *, details.more > *, details.disclose > * { display: block; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #555; }
+  body { font-size: 11pt; }
+}
 .meeting.canceled .meet-subject { color: var(--muted); }
 .meeting:target { animation: landed 1.5s ease-out 1; }
 @keyframes landed { from { background: var(--mark-wash); } to { background: var(--paper); } }
-.meet-subject { margin: 0 0 var(--s1); font: 600 var(--t-h3)/1.3 var(--f-head); text-wrap: pretty; }
+.meet-subject { margin: 0 0 2px; font: 600 var(--t-body)/1.35 var(--f-head); text-wrap: pretty; }
 .meet-subject a { color: var(--ink); text-decoration-color: var(--rule-strong); display: inline-block; padding: 5px 0; margin: -5px 0; }
 .meet-subject a:visited, .row a:visited .row-line { color: var(--muted); text-decoration-color: var(--rule); }
 .meet-subject a:hover, .meet-subject a:focus-visible { text-decoration-color: var(--ink); }
-.meet-who { margin: 0 0 var(--s2); color: var(--muted); font-size: var(--t-sm); }
+.meet-who { margin: 0 0 var(--s1); color: var(--muted); font-size: var(--t-sm); }
+.meet-doc::before { content: "\00B7"; margin: 0 var(--s2); }
+.meet-doc a { display: inline-flex; align-items: center; min-height: 32px; }
+.week-head { font-size: var(--t-h3); margin: var(--s6) 0 var(--s2); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s3); }
+.week-head .sub-count { font-weight: 400; }
+.also-row { padding: 0; }
+.also-row > details > summary { display: block; min-height: 44px; padding: var(--s2) 0; color: var(--muted); font-size: var(--t-sm); text-decoration: underline; text-underline-offset: 0.18em; }
+.also-row > details[open] > .meetings { margin-top: var(--s2); padding-left: var(--s4); border-left: 3px solid var(--rule); }
+.not-yet { color: var(--muted); margin: var(--s2) 0 var(--s3); }
 .meet-who a { color: var(--ink); font-weight: 600; text-decoration: none; }
 .meet-who a:hover { text-decoration: underline; }
-.meet-say { margin: 0 0 var(--s2); }
+.meet-say { margin: 0; display: inline; }
 .meet-link { margin: 0; font-size: var(--t-sm); }
 .meet-link a { display: inline-flex; align-items: center; min-height: 36px; }
 .item-link { font-weight: 600; }
-.meet-details { margin: 0; }
-.meet-details > summary { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: var(--t-sm); text-decoration: underline; text-underline-offset: 0.18em; }
+.meet-details { margin: 0; display: inline; }
+.meet-details > summary { display: inline-flex; align-items: center; min-height: 32px; margin-left: var(--s2); color: var(--muted); font-size: var(--t-sm); text-decoration: underline; text-underline-offset: 0.18em; }
+.meet-details[open] { display: block; margin-top: var(--s1); }
 .meet-details > summary:hover { color: var(--ink); }
 .meet-details[open] { padding-bottom: var(--s2); }
 .meet-details[open] > .lines, .meet-details[open] > .speak-line, .meet-details[open] > .meet-extras { margin-top: var(--s2); padding-left: var(--s4); border-left: 3px solid var(--rule); }

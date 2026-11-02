@@ -1011,16 +1011,15 @@ function setupMeetingFilter() {
       if (summary && /\(\d+\)/.test(summary.textContent)) summary.textContent = summary.textContent.replace(/\(\d+\)/, `(${n})`);
       det.hidden = n === 0;
     }
-    // a week's fold says what the filter leaves in it, opens when something does, and goes at none
-    for (const det of document.querySelectorAll('details.week')) {
-      const left = Array.from(det.querySelectorAll('.meeting:not([hidden])'));
-      const items = left.reduce((n, m) => n + m.querySelectorAll('.line').length, 0);
-      const label = det.querySelector('[data-week-count]');
-      if (label) label.textContent = `${items} ${items === 1 ? 'item' : 'items'} at ${left.length} ${left.length === 1 ? 'meeting' : 'meetings'}`;
-      det.hidden = left.length === 0;
-      if (narrowed && left.length) det.open = true;
-      else if (!narrowed) det.open = false;
+    // a week's heading says what the filter leaves in it, and goes at none
+    for (const sec of document.querySelectorAll('.week')) {
+      const left = Array.from(sec.querySelectorAll('.meeting:not([hidden]):not(.also-row)'));
+      const label = sec.querySelector('[data-week-count]');
+      if (label) label.textContent = `${left.length} ${left.length === 1 ? 'meeting' : 'meetings'}`;
+      sec.hidden = left.length === 0;
     }
+    // the "Also on agendas" line of a day goes when the filter leaves nothing under it
+    for (const li of document.querySelectorAll('.also-row')) li.hidden = !li.querySelector('.meeting:not([hidden])');
     if (clearBtn) clearBtn.hidden = !narrowed;
     followFilter(narrowed);
     // under a chosen county, the towns there we can't read

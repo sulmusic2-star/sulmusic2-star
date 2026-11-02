@@ -2491,7 +2491,7 @@ def terms_html(m, source):
             + " ".join(f"<dfn>{e(name)}</dfn>: {e(plain)}." for name, plain in found) + "</p>")
 
 
-def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
+def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False, details=True):
     """One meeting in the site's one item format: a meeting line (town, board, day and time, place), then
     per item one line that starts with the stage, the brief's sentence when there is one, a grey facts
     line with the stage word, and at the end one source link. `full` (the meeting's own page) adds the
@@ -2603,13 +2603,14 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False):
     if ahead:
         extras = (f'<p class="meet-extras"><a href="/m/{m["id"][2:]}.ics" download="{e(m["id"][2:])}.ics">Add this meeting to my calendar</a>'
                   f'<a href="/m/{m["id"][2:]}">This meeting’s own page</a></p>')
-    link = doc_link_html(ctx, m)
-    return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" {attrs}>
+    link = doc_link_html(ctx, m, short=True)
+    fold = (f'<details class="meet-details"><summary>Details</summary>{speak_html}<ul class="lines">{lines}</ul>{extras}</details>'
+            if details else "")
+    return f"""<li class="meeting{' canceled' if m.get('cancelled') else ''}" {attrs} data-kind="{meeting_kind(m)}">
   <p class="meet-subject">{subj}</p>
-  <p class="meet-who" data-slop-ignore>{who}</p>
+  <p class="meet-who" data-slop-ignore>{who}{f'<span class="meet-doc">{link}</span>' if link else ''}</p>
   <p class="meet-say">{" ".join(e(x) for x in sents)}</p>
-  {f'<p class="meet-link">{link}</p>' if link else ''}
-  <details class="meet-details"><summary>Details</summary>{speak_html}<ul class="lines">{lines}</ul>{extras}</details>
+  {fold}
 </li>"""
 
 
@@ -2622,7 +2623,7 @@ def time_key(m):
     return h * 60 + int(mt.group(2) or 0)
 
 
-def day_groups(ctx, meetings, show_town=True, lines_shown=4):
+def day_groups(ctx, meetings, show_town=True, lines_shown=4, details=True):
     """Meetings under a heading per day, in the day order given; within a day in time order, no time last."""
     groups = []
     for m in meetings:
@@ -2633,25 +2634,40 @@ def day_groups(ctx, meetings, show_town=True, lines_shown=4):
             groups.append((key, [m]))
     out = []
     for key, ms in groups:
-        ms = sorted(ms, key=time_key)
+        ms = sorted(ms, key=lambda m: (KIND_ORDER.get(meeting_kind(m), 6), time_key(m)))
         if key:
             label = f'<time datetime="{key}">{e(day_label(key, ctx))}</time>'
         else:
             label = "Date not found on the warrant"
-        out.append(f'<section class="day-group"><h3 class="day">{label}</h3><ol class="meetings">'
-                   + "".join(meeting_html(ctx, m, show_town, lines_shown) for m in ms) + "</ol></section>")
+        main = [m for m in ms if meeting_kind(m) != "mention"]
+        also = [m for m in ms if meeting_kind(m) == "mention"]
+        if not main and also:  # a day of mentions only stays a plain list
+            main, also = also, []
+        rows = "".join(meeting_html(ctx, m, show_town, lines_shown, details=details) for m in main)
+        if also:
+            names = []
+            for m in also[:3]:
+                tops = ordered_topics({tp for en in m["lines"].values() for tp in (en.get("topics") or [])})
+                about = TOPIC_LABELS.get(tops[0], tops[0]).lower() if tops else "one of our subjects"
+                names.append(f"{about} in {m['town']}" if show_town else about)
+            more = f" and {len(also) - 3} more" if len(also) > 3 else ""
+            rows += (f'<li class="meeting also-row" data-kind="mention"><details class="also"><summary>Also on agendas: {e(join_and(names))}{e(more)}. '
+                     f'Nothing is set to be discussed or decided.</summary><ol class="meetings">'
+                     + "".join(meeting_html(ctx, m, show_town, lines_shown, details=False) for m in also) + "</ol></details></li>")
+        out.append(f'<section class="day-group"><h3 class="day">{label}</h3><ol class="meetings">{rows}</ol></section>')
     return f'<div class="days">{"".join(out)}</div>'
 
 
-def meeting_list(ctx, meetings, show_town=True, shown=3, more="Show more", empty="", lines_shown=4):
-    """The first few meetings, grouped by day, the rest behind one "Show more"."""
+def meeting_list(ctx, meetings, show_town=True, shown=3, more="Show more", empty="", lines_shown=4, details=True):
+    """The first few meetings, grouped by day, the rest behind one "Show more" (whose rows carry no Details of their
+    own: one level of folding on a page)."""
     if not meetings:
         return f'<p class="empty">{empty}</p>' if empty else ""
-    html = day_groups(ctx, meetings[:shown], show_town, lines_shown)
+    html = day_groups(ctx, meetings[:shown], show_town, lines_shown, details=details)
     rest = meetings[shown:]
     if rest:
         html += (f'<details class="more"><summary>{more} ({len(rest)})</summary>'
-                 + day_groups(ctx, rest, show_town, lines_shown) + '</details>')
+                 + day_groups(ctx, rest, show_town, lines_shown, details=False) + '</details>')
     return html
 
 
@@ -2966,7 +2982,7 @@ def build_index(ctx):
   <h1 id="hero-title">{e(HEADLINE)}</h1>
   <p class="lead">{e(EXPLANATION)}</p>
   {town_box(ctx, label="Your town", button="Show my town’s meetings")}
-  <p class="small home-note">Towns in {e(states)}. Free, no account.</p>
+  <p class="small home-note">Towns in {e(states)}. Free, with no account to make.</p>
   {owner_html()}
 </section>
 <section class="next" aria-labelledby="next-title">
@@ -3003,8 +3019,8 @@ def build_index(ctx):
 
 
 HEADLINE = "Know what your town is about to decide on solar, data centers, zoning and housing"
-EXPLANATION = ("Towns post agendas as PDFs a few days before each meeting. We read them for you and say what each board "
-               "will discuss or vote on, and whether you can speak.")
+EXPLANATION = ("Towns post agendas as PDFs a few days before each meeting. We read them and say what each board "
+               "will decide, and whether you can speak.")
 
 
 def home_example_html(ctx, stories):
@@ -3138,9 +3154,7 @@ def list_tools_html(counties, cant=None, topics=None):
     if topics:
         t_opts = "".join(f'<option value="{e(k)}">{e(TOPIC_LABELS.get(k, k))}</option>' for k in TOPIC_LABELS if k in topics)
         topic = f'<label>Topic<select data-key="topic"><option value="">All</option>{t_opts}</select></label>'
-    cant_html = "".join(
-        f'<p class="form-note cant-list" data-cant-county="{e(c)}" hidden>We can’t read these {e(county_label(c))} towns yet: {e(v)}. <a href="/how-it-works#gaps">Why</a></p>'
-        for c, v in sorted((cant or {}).items()) if c in counties)
+    cant_html = ""  # the towns we can't read are listed on /towns under their county, not inside a filter
     return f"""<details class="narrow" data-narrow><summary>Narrow by county, subject or town</summary>
   <div class="filterbar list-tools" data-meeting-filter>
     {county}
@@ -3183,11 +3197,10 @@ def week_folds(ctx, meetings):
             weeks.append((monday, [m]))
     out = []
     for monday, ms in weeks:
-        n_items = sum(len(m["lines"]) for m in ms)
         label = datetime.strptime(monday, "%Y-%m-%d").strftime("%b %-d")
-        out.append(f'<details class="week"><summary><span>Week of {label}</span>'
-                   f'<span class="sub-count" data-week-count>{plural(n_items, "item")} at {plural(len(ms), "meeting")}</span></summary>'
-                   + day_groups(ctx, ms) + "</details>")
+        out.append(f'<section class="week" aria-labelledby="week-{monday}"><h2 id="week-{monday}" class="week-head">Week of {label}'
+                   f' <span class="sub-count" data-week-count>{plural(len(ms), "meeting")}</span></h2>'
+                   + day_groups(ctx, ms) + "</section>")
     return "".join(out)
 
 
@@ -3209,17 +3222,17 @@ def build_upcoming(ctx):
 <div class="wrap narrow">
 <section class="page-head" aria-labelledby="up-title">
   <h1 id="up-title">Coming up</h1>
-  <p class="lead">Every town meeting in the next few weeks about solar, batteries, data centers, zoning, housing or cell towers, soonest first.</p>
+  <p class="lead">Town meetings in the next few weeks about solar, batteries, data centers, zoning, housing and cell towers.</p>
   {tabs(COMING_TABS, "/upcoming", "Coming up")}
   {list_tools_html(counties, cant_read_by_county(ctx), topics={t for m in meetings for v in m["lines"].values() for t in (v.get("topics") or [])})}
 </section>
 <section aria-labelledby="soon-title" data-meet-section>
-  <h2 id="soon-title">This week</h2>
+  <h2 id="soon-title" class="week-head">This week</h2>
   {meeting_list(ctx, soon, shown=max(len(soon), 1), empty="Nothing on an agenda yet for the next 7 days. Agendas usually go up a few days before a meeting.")}
   {tools}
 </section>
 <section aria-labelledby="later-title" data-meet-section>
-  <h2 id="later-title">Later, by week</h2>
+  <h2 id="later-title" class="sr-only">Later, by week</h2>
   {week_folds(ctx, later) if later else '<p class="empty">Nothing later yet.</p>'}
 </section>
 <p class="more-link"><a href="/search?upcoming=1">Search these agendas</a></p>
@@ -3672,16 +3685,16 @@ def stage_sentence(p, board, m, speak="", past=False):
     if k == "maybe_vote":
         return f"{B} could vote on this." if past else f"{B} may vote on this; the agenda doesn’t say for sure."
     if k == "talk":
-        return f"{B} talked about this; no vote was listed." if past else f"{B} talks about this. No vote is listed."
+        return f"{B} talked about this; no vote was listed." if past else "Discussion only; no vote is listed."
     if k == "talk_again":
-        return f"{B} picked this up again." if past else f"{B} picks this up again. No vote is listed."
+        return f"{B} picked this up again." if past else "Discussion again; no vote is listed."
     if k == "sign":
         return f"{B} signed its decision." if past else f"{B} signs its decision."
     if k == "decide":
         return f"{B} decided on this." if past else f"{B} decides on this."
     if k == "mention":
         return (f"It came up on {b}’s agenda, with nothing set to be discussed or decided." if past
-                else f"It comes up on {b}’s agenda, but nothing is set to be discussed or decided.")
+                else "Comes up on the agenda; nothing is set to be discussed or decided.")
     return f"{B} took this up." if past else f"{B} takes this up."
 
 
@@ -3770,7 +3783,7 @@ def row_place(m):
     return place
 
 
-def doc_link_html(ctx, m, verb=True):
+def doc_link_html(ctx, m, verb=True, short=False):
     """"Read the Oct 28 agenda (PDF)": one link per meeting, named for what it opens, the town and board for a screen reader."""
     d = m["docs"][0] if m["docs"] else None
     if not d:
@@ -3783,6 +3796,9 @@ def doc_link_html(ctx, m, verb=True):
         what = f"the {short_day(m['date'])} agenda" if m.get("date") else "the agenda"
     label = (f"Read {what}" if verb else what[:1].upper() + what[1:]) + (" (PDF)" if d["pdf"] else "")
     where = f"{m['town']} {meeting_board(m)}"
+    if short:  # in a row's who-line: "Agenda (PDF)", the town, board and day for a screen reader
+        label = ("Warrant" if m["board_key"] == "town_meeting" else ("Filing" if m["source"] == "massdep_wetlands" else "Agenda")) + (" (PDF)" if d["pdf"] else "")
+        where = f"{m['town']} {meeting_board(m)}, {short_day(m['date']) if m.get('date') else 'undated'}"
     return (f'<a class="item-link" href="{e(d["url"])}" rel="nofollow noopener" target="_blank">{e(label)}'
             f'<span class="sr-only">: {e(where)}</span></a>')
 
@@ -3813,6 +3829,23 @@ def explain_terms(parts):
                 seen.add(rx.pattern)
         out.append(text)
     return out
+
+
+KIND_ORDER = {"hearing": 0, "continues": 0, "vote": 1, "maybe_vote": 1, "decide": 1, "sign": 2, "talk": 3, "talk_again": 3,
+              "takeup": 3, "mention": 5, "none": 6}
+
+
+def meeting_kind(m):
+    """"hearing", "vote", "talk" or "mention": the main item's kind, so a day lists what people can act on first."""
+    if m.get("cancelled"):
+        return "none"
+    best = None
+    for t, en in sorted(m["lines"].items(), key=lambda kv: kv[1].get("rank", 60)):
+        p = item_parts(t, en, m.get("date") or "")
+        k = p["kind"] if p else ("mention" if en.get("kind") == "mention" else "none")
+        if best is None or KIND_ORDER.get(k, 6) < KIND_ORDER.get(best, 6):
+            best = k
+    return best or "none"
 
 
 def meeting_row(ctx, m, show_town=True):
@@ -4237,10 +4270,10 @@ def build_town_page(ctx, t):
         oldest = earlier[-1]["date"]
         back = f", back to {datetime.strptime(oldest[:10], '%Y-%m-%d').strftime('%B')}" if oldest else ""
         more.append(f"""<details class="disclose"><summary>Earlier meetings{e(back)}</summary>
-{meeting_list(ctx, earlier, show_town=False, shown=5, more="Show older")}</details>""")
+{meeting_list(ctx, earlier, show_town=False, shown=5, more="Show older", details=False)}</details>""")
     if und_m:
         more.append(f"""<details class="disclose" id="warrants"><summary>Town Meeting warrants with no date we could read</summary>
-{meeting_list(ctx, und_m, show_town=False, shown=5)}</details>""")
+{meeting_list(ctx, und_m, show_town=False, shown=5, details=False)}</details>""")
     if tracked or ag_rows:
         more.append(f"""<details class="disclose"><summary>What the state has said about {e(town)}’s bylaws</summary>
 {rules_html(ctx, tracked, ag_rows, town)}<p class="small"><a href="/attorney-general">Massachusetts Attorney General rulings</a></p></details>""")
@@ -4310,13 +4343,14 @@ def build_towns_index(ctx):
                 groups.append(f'<ul class="town-cols" data-filter-list>{items}</ul>')
             else:
                 label = f"{county} County" if county else "Other towns"
-                unread = sum(1 for t in by_county[county] if not t["monitored"])
-                count = f"{plural(len(by_county[county]), 'town')}" + (f", {unread} we can’t read yet" if unread else "")
-                groups.append(f'<details class="county"><summary>{e(label)} <span class="sub-count">{count}</span></summary>'
-                              f'<ul class="town-cols" data-filter-list>{items}</ul></details>')
+                read = sum(1 for t in by_county[county] if t["monitored"])
+                gaps = cant_read_by_county(ctx).get(f"{state}:{county}", "")
+                not_yet = f'<p class="small not-yet">Not yet: {e(gaps)}. <a href="/how-it-works#gaps">Why</a></p>' if gaps else ""
+                groups.append(f'<details class="county"><summary>{e(label)} <span class="sub-count">{plural(read, "town")} we read</span></summary>'
+                              f'<ul class="town-cols" data-filter-list>{items}</ul>{not_yet}</details>')
         mon = sum(1 for t in towns if t["monitored"])
         sections.append(f"""<section class="state-towns" id="{state.lower()}" aria-labelledby="state-{state.lower()}">
-  <h2 id="state-{state.lower()}">{e(STATE_NAMES.get(state, state))} <span class="sub-count">{len(towns)} towns, {mon} we read every morning</span></h2>
+  <h2 id="state-{state.lower()}">{e(STATE_NAMES.get(state, state))} <span class="sub-count">{plural(mon, "town")} we read every morning</span></h2>
   <div class="counties">{''.join(groups)}</div>
 </section>""")
     body = f"""
