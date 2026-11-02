@@ -35,7 +35,7 @@ Generated 2026-11-02 by `projects/351watch/tools/where_people_care.py` (rerun it
 ## By what it takes
 
 - **unblock request** (65): Hadley, MA, Becket, MA, Duxbury, MA, New Bedford, MA, Shutesbury, MA, Templeton, MA, Berkley, MA, Hanson, MA, Middleborough, MA, Rehoboth, MA, Berlin, MA, Bernardston, MA, Brookfield, MA, Dalton, MA, Danvers, MA and 50 more
-- **add to the New York list** (78): Ballston, NY, Philipstown, NY, Amenia, NY, Charlton, NY, Greenfield, NY, Haverstraw, NY, Hillsdale, NY, Malta, NY, Niskayuna, NY, Pawling, NY, Peekskill, NY, Salina, NY, Saratoga Springs, NY, Schroeppel, NY, Washington, NY and 63 more
+- **add to the New York list** (101): Ballston, NY, Philipstown, NY, Amenia, NY, Bethlehem, NY, Charlton, NY, Colonie, NY, Greenfield, NY, Haverstraw, NY, Hillsdale, NY, Malta, NY, Niskayuna, NY, North Greenbush, NY, Pawling, NY, Rensselaer, NY, Salina, NY and 86 more
 - **our work: a reader for a browser-only page** (10): Westminster, MA, Foxborough, MA, Medway, MA, Lynn, MA, Ashfield, MA, North Reading, MA, West Brookfield, MA, Cheshire, MA, Savoy, MA, Spafford, NY
 - **find dated agendas** (13): Granby, MA, Douglas, MA, Millis, MA, Abington, MA, Florida, MA, Russell, MA, Stoneham, MA, Warwick, MA, Georgetown, MA, Groveland, MA, Hawley, MA, Montgomery, MA, Mount Washington, MA
 - **unblock request to the agenda host** (7): Hopkinton, MA, Framingham, MA, Cambridge, MA, Revere, MA, Worcester, MA, New Castle, NY, Southampton, NY
@@ -48,5 +48,5 @@ Generated 2026-11-02 by `projects/351watch/tools/where_people_care.py` (rerun it
 
 Regional news stories naming a siting subject in the state (feeds we read: CT Mirror, NHPR and the Massachusetts, New York and Rhode Island newsrooms that cover their neighbors).
 
-- Connecticut: 6 (data centers 1, moratoriums 1, solar 2, wind 2)
+- Connecticut: 5 (data centers 1, moratoriums 1, solar 2, wind 1)
 - New Hampshire: 5 (data centers 4, moratoriums 1)

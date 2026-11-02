@@ -1,0 +1,642 @@
+{
+ "alexandria": {
+  "status": 200,
+  "ok": true,
+  "sample": [
+   [
+    "Planning Commission Public Hearing",
+    "2026-12-01"
+   ],
+   [
+    "Board of Architectural Review Public Hearing",
+    "2026-11-18"
+   ],
+   [
+    "Board of Zoning Appeals Public Hearing",
+    "2026-11-09"
+   ]
+  ]
+ },
+ "arlington": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "arlingtonva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "richmondva": {
+  "status": 200,
+  "ok": true,
+  "sample": [
+   [
+    "City Council",
+    "2027-12-13"
+   ],
+   [
+    "Informal Meeting",
+    "2027-12-13"
+   ],
+   [
+    "City Council",
+    "2027-11-08"
+   ]
+  ]
+ },
+ "richmond": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "norfolk": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "norfolkva": {
+  "status": 200,
+  "ok": true,
+  "sample": []
+ },
+ "hampton": {
+  "status": 200,
+  "ok": true,
+  "sample": [
+   [
+    "City Council Special Session",
+    "2026-12-09"
+   ],
+   [
+    "City Council Legislative Session",
+    "2026-10-28"
+   ],
+   [
+    "City Council Ceremonial Session",
+    "2026-10-28"
+   ]
+  ]
+ },
+ "hamptonva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "newportnews": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "newportnewsva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "nnva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "portsmouthva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "portsmouth": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "roanokeva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "roanoke": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "lynchburgva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "lynchburg": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "suffolkva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "suffolk": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "charlottesville": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "cvilleva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "fairfaxva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "fairfax": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "fallschurch": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "fallschurch-va": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "fredericksburg": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "fredericksburgva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "winchesterva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "winchester": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "harrisonburg": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "harrisonburgva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "danvilleva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "danville": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "petersburg": {
+  "status": 200,
+  "ok": true,
+  "sample": [
+   [
+    "Planning Commission",
+    "2021-06-08"
+   ],
+   [
+    "Borough Assembly",
+    "2021-06-02"
+   ],
+   [
+    "Borough Assembly",
+    "2021-06-01"
+   ]
+  ]
+ },
+ "petersburgva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "hopewell": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "hopewellva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "chesapeake": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "virginiabeach": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "vbgov": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "staunton": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "waynesboro": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "williamsburg": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "manassas": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "manassasva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "manassaspark": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "leesburg": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "leesburgva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "herndon": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "vienna": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "blacksburg": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "loudoun": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "loudouncounty": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "pwc": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "pwcva": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "fairfaxcounty": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "henrico": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "chesterfield": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "baltimore": {
+  "status": 200,
+  "ok": true,
+  "sample": [
+   [
+    "Housing & Economic Development Committee",
+    "2027-01-19"
+   ],
+   [
+    "Board of Estimates",
+    "2027-01-06"
+   ],
+   [
+    "Board of Estimates",
+    "2026-12-16"
+   ]
+  ]
+ },
+ "baltimorecity": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "baltimorecounty": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "baltimorecountymd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "aacounty": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "annearundel": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "montgomerycountymd": {
+  "status": 200,
+  "ok": true,
+  "sample": [
+   [
+    "Council Session",
+    "2023-02-01"
+   ],
+   [
+    "Council Session",
+    "2023-01-31"
+   ],
+   [
+    "Council Session",
+    "2022-12-15"
+   ]
+  ]
+ },
+ "mocomd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "howardcounty": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "howardcountymd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "frederickcountymd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "fredco": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "harfordcountymd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "harford": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "cityoffrederick": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "frederick": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "gaithersburg": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "gaithersburgmd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "rockville": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "rockvillemd": {
+  "status": 200,
+  "ok": true,
+  "sample": [
+   [
+    "ZZZ - Not a Board - Large Attachment Folder",
+    "9999-09-10"
+   ],
+   [
+    "Mayor and Council",
+    "9999-09-08"
+   ],
+   [
+    "Mayor and Council",
+    "9999-09-05"
+   ]
+  ]
+ },
+ "annapolis": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "annapolismd": {
+  "status": 200,
+  "ok": true,
+  "sample": [
+   [
+    "City Council",
+    "2026-11-13"
+   ],
+   [
+    "Rules and City Government Committee",
+    "2026-11-05"
+   ],
+   [
+    "Economic Matters Committee",
+    "2026-11-04"
+   ]
+  ]
+ },
+ "hagerstown": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "hagerstownmd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "bowie": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "bowiemd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "collegepark": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "collegeparkmd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "greenbelt": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "greenbeltmd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "hyattsville": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "hyattsvillemd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "laurel": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "laurelmd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "takomapark": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "takomaparkmd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "pgcounty": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "princegeorgescountymd": {
+  "status": 200,
+  "ok": true,
+  "sample": [
+   [
+    "Task Forces-Workgroups",
+    "2026-12-09"
+   ],
+   [
+    "Task Forces-Workgroups",
+    "2026-11-18"
+   ],
+   [
+    "Task Forces-Workgroups",
+    "2026-11-16"
+   ]
+  ]
+ },
+ "charlescountymd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "calvertcountymd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "stmarysmd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "cecilcountymd": {
+  "status": 500,
+  "ok": false,
+  "sample": null
+ },
+ "boston": {
+  "status": 200,
+  "ok": true,
+  "sample": [
+   [
+    "Boston School Committee",
+    "2026-12-16"
+   ],
+   [
+    "Public Facilities",
+    "2026-12-16"
+   ],
+   [
+    "Zoning Board of Appeal",
+    "2026-12-15"
+   ]
+  ]
+ }
+}

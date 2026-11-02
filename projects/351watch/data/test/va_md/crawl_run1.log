@@ -1,0 +1,8 @@
+2026-11-02 19:36:56,851 INFO watch351.fulltext: search: 719 rows written (9 files)
+daily 2026-11-02: towns 138/138 ok (0 partial, 0 failed); listed 743, already indexed 5, new 723, retried 0, rematched 0, needs OCR 4, deferred 0, doc errors 15
+  new hits 915 {'zoning_amendment': 362, 'solar': 229, 'data_center': 212, 'clean_energy_siting': 126, 'battery_storage': 91, 'wireless_telecom': 71, 'moratorium': 36}; new alert items 0; hits_current 872; index 738 docs
+  network 924 requests {'document': 769, 'listing': 155}, 1563.2 MB; cache hits 141; runtime 369.8s
+/usr/bin/python3 -m watch351.daily --states VA,MD --output-dir /home/user/sulmusic2-star/projects/351watch/data/test/va_md --hits-name hits_va_md.json --days-back 45 --days-ahead 120 --workers 16 --request-log /home/user/sulmusic2-star/projects/351watch/data/test/va_md/requests_run1.tsv
+exit 0, wall 371s
+saved /home/user/sulmusic2-star/projects/351watch/data/test/va_md/runs/run_run1.json
+CRAWLDONE

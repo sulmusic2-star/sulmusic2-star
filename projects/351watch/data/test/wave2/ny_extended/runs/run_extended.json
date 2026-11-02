@@ -1,0 +1,473 @@
+{
+ "by_state": {
+  "NY": {
+   "new_documents": 196,
+   "new_hits": 86,
+   "towns_attempted": 28,
+   "towns_succeeded": 28
+  }
+ },
+ "date": "2026-11-02",
+ "document_errors": 88,
+ "documents_already_indexed": 9,
+ "documents_deferred": 0,
+ "documents_listed": 293,
+ "documents_needing_ocr": 4,
+ "documents_rematched": 0,
+ "documents_retried": 0,
+ "documents_too_large": [
+  {
+   "error": "too large (86013651 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/10.13.26 pb packet.pdf",
+   "meeting_date": "2026-10-13",
+   "state": "NY",
+   "town": "Mount Kisco",
+   "url": "https://www.mountkiscony.gov/10.13.26 pb packet.pdf"
+  },
+  {
+   "error": "too large (67328669 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/7.14.26 PB Packet1.pdf",
+   "meeting_date": "2026-07-14",
+   "state": "NY",
+   "town": "Mount Kisco",
+   "url": "https://www.mountkiscony.gov/7.14.26 PB Packet1.pdf"
+  },
+  {
+   "error": "too large (86107579 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/Packet 9.9.26 r2.pdf",
+   "meeting_date": "2026-09-09",
+   "state": "NY",
+   "town": "Mount Kisco",
+   "url": "https://www.mountkiscony.gov/Packet 9.9.26 r2.pdf"
+  },
+  {
+   "error": "too large (47041700 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/ZBA packet 9.15.26.pdf",
+   "meeting_date": "2026-09-15",
+   "state": "NY",
+   "town": "Mount Kisco",
+   "url": "https://www.mountkiscony.gov/ZBA packet 9.15.26.pdf"
+  }
+ ],
+ "duration_seconds": 311.7,
+ "errors": [
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Bergen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Carrollton"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Goshen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Goshen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Goshen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Goshen"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Jay"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Jay"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Jay"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Jay"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Jay"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Jay"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Jay"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Jay"
+  },
+  {
+   "error": "document: https://cms7files1.revize.com/townofjohnstownny/07-2026 MEETING NOTICE.doc",
+   "town": "NY:Johnstown"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Johnstown"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device: '/home/user/sulmusic2-star/projects/351watch/crawler/.cache/d2/d25bff9224c7f33181a1d2cd08d1eb41.body'",
+   "town": "NY:Lake George"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Moreau"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: too large (86013651 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/10.13.26 pb packet.pdf",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: too large (86107579 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/Packet 9.9.26 r2.pdf",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: too large (67328669 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/7.14.26 PB Packet1.pdf",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: too large (47041700 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/ZBA packet 9.15.26.pdf",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Mount Kisco"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:North Elba"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Pendleton"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Pendleton"
+  },
+  {
+   "error": "document: extract failed (content-type application/msword): https://cmm.compassweb.dev/files/64670352-2a92-4c91-9975-d22a2ce2129b/view",
+   "town": "NY:Ripley"
+  },
+  {
+   "error": "document: extract failed (content-type application/msword): https://cmm.compassweb.dev/files/824b79b9-aae8-469e-aa13-b0c65b5f4336/view",
+   "town": "NY:Ripley"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Salem"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Salem"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:St. Armand"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Troy"
+  },
+  {
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "NY:Troy"
+  }
+ ],
+ "errors_total": 88,
+ "finished": "2026-11-02T19:34:02+00:00",
+ "hits_current": 68,
+ "index": {
+  "by_state": {
+   "NY": 284
+  },
+  "by_status": {
+   "error": 88,
+   "needs_ocr": 4,
+   "ok": 192
+  },
+  "by_text_source": {
+   "docx": 33,
+   "html": 1,
+   "none": 88,
+   "ocr": 21,
+   "pdf": 141
+  },
+  "documents": 284,
+  "hits": 86,
+  "pruned": 0,
+  "towns": 28,
+  "with_hits": 41
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 182557159,
+   "listing": 497603
+  },
+  "cache_hits": 194,
+  "errors": 0,
+  "requests": 215,
+  "requests_by_purpose": {
+   "document": 209,
+   "listing": 6
+  },
+  "robots_blocked": 1
+ },
+ "new_alert_items": 0,
+ "new_alert_items_by_topic": {},
+ "new_documents": 196,
+ "new_hits": 86,
+ "new_hits_by_topic": {
+  "battery_storage": 42,
+  "data_center": 25,
+  "moratorium": 33,
+  "solar": 28,
+  "wireless_telecom": 3
+ },
+ "options": {
+  "matcher_version": "e94d3fc5c8",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 12
+ },
+ "started": "2026-11-02T19:28:50+00:00",
+ "states": [
+  "NY"
+ ],
+ "towns_attempted": 28,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 28,
+ "window": {
+  "end": "2027-03-02",
+  "start": "2026-06-15"
+ }
+}

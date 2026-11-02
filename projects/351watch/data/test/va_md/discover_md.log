@@ -1,0 +1,44 @@
+2026-11-02 19:12:34,407 WARNING watch351.fetch: robots.txt https://www.laytonsvillemd.gov/robots.txt unreachable (https://www.laytonsvillemd.gov/robots.txt: HTTPSConnectionPool(host='www.laytonsvillemd.gov', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 502 Bad Gateway')))); skipping host
+2026-11-02 19:12:41,171 WARNING watch351.fetch: robots.txt https://www.barnesvillemd.gov/robots.txt unreachable (https://www.barnesvillemd.gov/robots.txt: HTTPSConnectionPool(host='www.barnesvillemd.gov', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 502 Bad Gateway')))); skipping host
+MD: 40 discovered in 432s; fetcher {'network': 640, 'cache': 350, 'robots_blocked': 7, 'errors': 89}
+  Allegany County                civicclerk          3 AUTO: 
+  Anne Arundel County            civicclerk          2 AUTO: 
+  Baltimore County               -                   0 waf_block: HTTP 403 from the site's firewall to AgendaAheadBot; not bypassed
+  Calvert County                 civicplus           3 AUTO: 
+  Caroline County                civicplus           3 AUTO: 
+  Carroll County                 -                   0 robots_disallow: robots.txt on the site disallows AgendaAheadBot (https://www.carrollcountymd.gov/)
+  Cecil County                   civicclerk          3 AUTO: 
+  Charles County                 -                   0 waf_block: HTTP 403 from Akamai to AgendaAheadBot; not bypassed
+  Dorchester County              civicplus           2 AUTO: 
+  Frederick County               civicplus           3 AUTO: 
+  Garrett County                 agenda_page         1 AUTO: 
+  Harford County                 granicus            0 vendor_blocked: agendas on granicus: robots.txt on harfordcountymd.granicus.com disallows AgendaAheadBot
+  Howard County                  diligent_community  0 vendor_blocked: agendas on diligent_community: robots.txt on hcpss-org.community.diligentoneplatform.com disallows AgendaAhead
+  Kent County                    civicclerk          3 AUTO: 
+  Montgomery County              granicus            0 vendor_blocked: agendas on granicus: robots.txt on montgomerycountymd.granicus.com disallows AgendaAheadBot
+  Prince George's County         legistar            1 AUTO: 
+  Queen Anne's County            civicplus           4 AUTO: 
+  Somerset County                -                   0 robots_disallow: robots.txt on the site disallows AgendaAheadBot (https://www.somersetmd.us/)
+  St. Mary's County              agenda_page         3 AUTO: 
+  Talbot County                  granicus            0 vendor_blocked: agendas on granicus: robots.txt on talbot-md.granicus.com disallows AgendaAheadBot
+  Washington County              agenda_page         2 AUTO: 
+  Wicomico County                civicplus           3 AUTO: 
+  Worcester County               agenda_page         2 AUTO: 
+  Baltimore City                 agenda_page         1 AUTO: 
+  City of Frederick              granicus            0 vendor_blocked: agendas on granicus: robots.txt on cityoffrederick.granicus.com disallows AgendaAheadBot
+  City of Gaithersburg           -                   0 waf_block: HTTP 403 from Akamai to AgendaAheadBot; not bypassed
+  City of Rockville              legistar            1 AUTO: 
+  Town of Poolesville            civicplus           2 AUTO: 
+  Town of Laytonsville           -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Town of Barnesville            -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Town of Brookeville            agenda_page         1 AUTO: 
+  Town of Washington Grove       agenda_page         2 AUTO: 
+  City of Takoma Park            civicplus           1 AUTO: 
+  City of Laurel                 civicclerk          3 AUTO: 
+  City of Bowie                  civicclerk          1 AUTO: 
+  City of College Park           civicplus           2 AUTO: 
+  City of Greenbelt              civicclerk          1 AUTO: 
+  City of Hyattsville            civicclerk          2 AUTO: 
+  City of Annapolis              civicplus           5 AUTO: 
+  City of Hagerstown             agenda_page         2 AUTO: 
+DONE

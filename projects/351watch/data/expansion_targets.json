@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T13:55:28",
+ "generated": "2026-11-02T19:39:53",
  "today": "2026-11-02",
  "towns": [
   {
@@ -986,6 +986,30 @@
    ]
   },
   {
+   "id": "NY:Bethlehem",
+   "state": "NY",
+   "town": "Bethlehem",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Albany, East Greenbush): battery storage"
+   ]
+  },
+  {
+   "id": "NY:Brookhaven",
+   "state": "NY",
+   "town": "Brookhaven",
+   "county": "Suffolk",
+   "score": 2.0,
+   "takes": "unblock request",
+   "reason_code": "bot_challenge",
+   "why": [
+    "2 neighbors we read have it on agendas (Riverhead, Smithtown): battery storage, moratoriums, cell towers"
+   ]
+  },
+  {
    "id": "NY:Charlton",
    "state": "NY",
    "town": "Charlton",
@@ -995,6 +1019,18 @@
    "reason_code": "not_listed",
    "why": [
     "2 neighbors we read have it on agendas (Glenville, Milton): solar"
+   ]
+  },
+  {
+   "id": "NY:Colonie",
+   "state": "NY",
+   "town": "Colonie",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Albany, Clifton Park): battery storage, moratoriums, solar"
    ]
   },
   {
@@ -1082,6 +1118,18 @@
    ]
   },
   {
+   "id": "NY:North Greenbush",
+   "state": "NY",
+   "town": "North Greenbush",
+   "county": null,
+   "score": 2.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "2 neighbors we read have it on agendas (Albany, East Greenbush): battery storage"
+   ]
+  },
+  {
    "id": "NY:Pawling",
    "state": "NY",
    "town": "Pawling",
@@ -1094,15 +1142,15 @@
    ]
   },
   {
-   "id": "NY:Peekskill",
+   "id": "NY:Rensselaer",
    "state": "NY",
-   "town": "Peekskill",
+   "town": "Rensselaer",
    "county": null,
    "score": 2.0,
    "takes": "add to the New York list",
    "reason_code": "not_listed",
    "why": [
-    "2 neighbors we read have it on agendas (Cortlandt, Stony Point): moratoriums, solar, cell towers"
+    "2 neighbors we read have it on agendas (Albany, East Greenbush): battery storage"
    ]
   },
   {
@@ -1139,6 +1187,18 @@
    "reason_code": "not_listed",
    "why": [
     "2 neighbors we read have it on agendas (Clay, Lysander): battery storage, data centers, moratoriums, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Southampton",
+   "state": "NY",
+   "town": "Southampton",
+   "county": "Suffolk",
+   "score": 2.0,
+   "takes": "unblock request to the agenda host",
+   "reason_code": "vendor_blocked",
+   "why": [
+    "2 neighbors we read have it on agendas (Riverhead, Southold): battery storage, cell towers"
    ]
   },
   {
@@ -1442,6 +1502,42 @@
    ]
   },
   {
+   "id": "NY:Addison",
+   "state": "NY",
+   "town": "Addison",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Campbell): battery storage, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "NY:Allen",
+   "state": "NY",
+   "town": "Allen",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Angelica): battery storage"
+   ]
+  },
+  {
+   "id": "NY:Amity",
+   "state": "NY",
+   "town": "Amity",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Angelica): battery storage"
+   ]
+  },
+  {
    "id": "NY:Austerlitz",
    "state": "NY",
    "town": "Austerlitz",
@@ -1451,6 +1547,30 @@
    "reason_code": "not_listed",
    "why": [
     "1 neighbors we read have it on agendas (West Stockbridge): solar"
+   ]
+  },
+  {
+   "id": "NY:Bath",
+   "state": "NY",
+   "town": "Bath",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Campbell): battery storage, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "NY:Belfast",
+   "state": "NY",
+   "town": "Belfast",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Angelica): battery storage"
    ]
   },
   {
@@ -1466,15 +1586,27 @@
    ]
   },
   {
-   "id": "NY:Bethlehem",
+   "id": "NY:Bradford",
    "state": "NY",
-   "town": "Bethlehem",
+   "town": "Bradford",
    "county": null,
    "score": 1.0,
    "takes": "add to the New York list",
    "reason_code": "not_listed",
    "why": [
-    "1 neighbors we read have it on agendas (East Greenbush): battery storage"
+    "1 neighbors we read have it on agendas (Campbell): battery storage, moratoriums, solar"
+   ]
+  },
+  {
+   "id": "NY:Brasher",
+   "state": "NY",
+   "town": "Brasher",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Norfolk): solar"
    ]
   },
   {
@@ -1490,15 +1622,15 @@
    ]
   },
   {
-   "id": "NY:Brookhaven",
+   "id": "NY:Bristol",
    "state": "NY",
-   "town": "Brookhaven",
-   "county": "Suffolk",
+   "town": "Bristol",
+   "county": null,
    "score": 1.0,
-   "takes": "unblock request",
-   "reason_code": "bot_challenge",
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
    "why": [
-    "1 neighbors we read have it on agendas (Smithtown): battery storage, moratoriums"
+    "1 neighbors we read have it on agendas (West Bloomfield): moratoriums, solar"
    ]
   },
   {
@@ -1586,18 +1718,6 @@
    ]
   },
   {
-   "id": "NY:Colonie",
-   "state": "NY",
-   "town": "Colonie",
-   "county": null,
-   "score": 1.0,
-   "takes": "add to the New York list",
-   "reason_code": "not_listed",
-   "why": [
-    "1 neighbors we read have it on agendas (Clifton Park): moratoriums, solar"
-   ]
-  },
-  {
    "id": "NY:Copake",
    "state": "NY",
    "town": "Copake",
@@ -1607,6 +1727,18 @@
    "reason_code": "not_listed",
    "why": [
     "1 neighbors we read have it on agendas (Egremont): battery storage, clean-energy permits, solar"
+   ]
+  },
+  {
+   "id": "NY:East Bloomfield",
+   "state": "NY",
+   "town": "East Bloomfield",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (West Bloomfield): moratoriums, solar"
    ]
   },
   {
@@ -1622,6 +1754,18 @@
    ]
   },
   {
+   "id": "NY:Erwin",
+   "state": "NY",
+   "town": "Erwin",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Campbell): battery storage, moratoriums, solar"
+   ]
+  },
+  {
    "id": "NY:Fayette",
    "state": "NY",
    "town": "Fayette",
@@ -1631,6 +1775,18 @@
    "reason_code": "not_listed",
    "why": [
     "1 neighbors we read have it on agendas (Geneva): battery storage, solar"
+   ]
+  },
+  {
+   "id": "NY:French Creek",
+   "state": "NY",
+   "town": "French Creek",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Clymer): solar"
    ]
   },
   {
@@ -1682,18 +1838,6 @@
    ]
   },
   {
-   "id": "NY:Glen Cove",
-   "state": "NY",
-   "town": "Glen Cove",
-   "county": null,
-   "score": 1.0,
-   "takes": "add to the New York list",
-   "reason_code": "not_listed",
-   "why": [
-    "1 neighbors we read have it on agendas (Oyster Bay): solar, cell towers"
-   ]
-  },
-  {
    "id": "NY:Granby",
    "state": "NY",
    "town": "Granby",
@@ -1718,6 +1862,18 @@
    ]
   },
   {
+   "id": "NY:Guilderland",
+   "state": "NY",
+   "town": "Guilderland",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Albany): battery storage"
+   ]
+  },
+  {
    "id": "NY:Halfmoon",
    "state": "NY",
    "town": "Halfmoon",
@@ -1727,6 +1883,18 @@
    "reason_code": "bot_challenge",
    "why": [
     "1 neighbors we read have it on agendas (Clifton Park): moratoriums, solar"
+   ]
+  },
+  {
+   "id": "NY:Harmony",
+   "state": "NY",
+   "town": "Harmony",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Clymer): solar"
    ]
   },
   {
@@ -1751,6 +1919,18 @@
    "reason_code": "not_listed",
    "why": [
     "1 neighbors we read have it on agendas (Stony Point): moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Hornby",
+   "state": "NY",
+   "town": "Hornby",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Campbell): battery storage, moratoriums, solar"
    ]
   },
   {
@@ -1790,6 +1970,18 @@
    ]
   },
   {
+   "id": "NY:Lima",
+   "state": "NY",
+   "town": "Lima",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (West Bloomfield): moratoriums, solar"
+   ]
+  },
+  {
    "id": "NY:Livingston",
    "state": "NY",
    "town": "Livingston",
@@ -1802,6 +1994,18 @@
    ]
   },
   {
+   "id": "NY:Louisville",
+   "state": "NY",
+   "town": "Louisville",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Norfolk): solar"
+   ]
+  },
+  {
    "id": "NY:Macedon",
    "state": "NY",
    "town": "Macedon",
@@ -1811,6 +2015,30 @@
    "reason_code": "not_listed",
    "why": [
     "1 neighbors we read have it on agendas (Penfield): solar, cell towers"
+   ]
+  },
+  {
+   "id": "NY:Madrid",
+   "state": "NY",
+   "town": "Madrid",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Norfolk): solar"
+   ]
+  },
+  {
+   "id": "NY:Mendon",
+   "state": "NY",
+   "town": "Mendon",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (West Bloomfield): moratoriums, solar"
    ]
   },
   {
@@ -1874,18 +2102,6 @@
    ]
   },
   {
-   "id": "NY:North Greenbush",
-   "state": "NY",
-   "town": "North Greenbush",
-   "county": null,
-   "score": 1.0,
-   "takes": "add to the New York list",
-   "reason_code": "not_listed",
-   "why": [
-    "1 neighbors we read have it on agendas (East Greenbush): battery storage"
-   ]
-  },
-  {
    "id": "NY:Northumberland",
    "state": "NY",
    "town": "Northumberland",
@@ -1907,6 +2123,18 @@
    "reason_code": "not_listed",
    "why": [
     "1 neighbors we read have it on agendas (Marcellus): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Orange",
+   "state": "NY",
+   "town": "Orange",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Campbell): battery storage, moratoriums, solar"
    ]
   },
   {
@@ -1994,6 +2222,18 @@
    ]
   },
   {
+   "id": "NY:Potsdam",
+   "state": "NY",
+   "town": "Potsdam",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Norfolk): solar"
+   ]
+  },
+  {
    "id": "NY:Pound Ridge",
    "state": "NY",
    "town": "Pound Ridge",
@@ -2006,27 +2246,15 @@
    ]
   },
   {
-   "id": "NY:Rensselaer",
+   "id": "NY:Richmond",
    "state": "NY",
-   "town": "Rensselaer",
+   "town": "Richmond",
    "county": null,
    "score": 1.0,
    "takes": "add to the New York list",
    "reason_code": "not_listed",
    "why": [
-    "1 neighbors we read have it on agendas (East Greenbush): battery storage"
-   ]
-  },
-  {
-   "id": "NY:Riverhead",
-   "state": "NY",
-   "town": "Riverhead",
-   "county": null,
-   "score": 1.0,
-   "takes": "add to the New York list",
-   "reason_code": "not_listed",
-   "why": [
-    "1 neighbors we read have it on agendas (Southold): cell towers"
+    "1 neighbors we read have it on agendas (West Bloomfield): moratoriums, solar"
    ]
   },
   {
@@ -2114,6 +2342,18 @@
    ]
   },
   {
+   "id": "NY:Sherman",
+   "state": "NY",
+   "town": "Sherman",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Clymer): solar"
+   ]
+  },
+  {
    "id": "NY:Skaneateles",
    "state": "NY",
    "town": "Skaneateles",
@@ -2138,18 +2378,6 @@
    ]
   },
   {
-   "id": "NY:Southampton",
-   "state": "NY",
-   "town": "Southampton",
-   "county": "Suffolk",
-   "score": 1.0,
-   "takes": "unblock request to the agenda host",
-   "reason_code": "vendor_blocked",
-   "why": [
-    "1 neighbors we read have it on agendas (Southold): cell towers"
-   ]
-  },
-  {
    "id": "NY:Spafford",
    "state": "NY",
    "town": "Spafford",
@@ -2159,6 +2387,18 @@
    "reason_code": "js_only",
    "why": [
     "1 neighbors we read have it on agendas (Marcellus): battery storage, data centers, moratoriums"
+   ]
+  },
+  {
+   "id": "NY:Stockholm",
+   "state": "NY",
+   "town": "Stockholm",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Norfolk): solar"
    ]
   },
   {
@@ -2183,6 +2423,18 @@
    "reason_code": "not_listed",
    "why": [
     "1 neighbors we read have it on agendas (Claverack): solar"
+   ]
+  },
+  {
+   "id": "NY:Thurston",
+   "state": "NY",
+   "town": "Thurston",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Campbell): battery storage, moratoriums, solar"
    ]
   },
   {
@@ -2234,6 +2486,18 @@
    ]
   },
   {
+   "id": "NY:Victor",
+   "state": "NY",
+   "town": "Victor",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (West Bloomfield): moratoriums, solar"
+   ]
+  },
+  {
    "id": "NY:Walworth",
    "state": "NY",
    "town": "Walworth",
@@ -2270,6 +2534,18 @@
    ]
   },
   {
+   "id": "NY:West Almond",
+   "state": "NY",
+   "town": "West Almond",
+   "county": null,
+   "score": 1.0,
+   "takes": "add to the New York list",
+   "reason_code": "not_listed",
+   "why": [
+    "1 neighbors we read have it on agendas (Angelica): battery storage"
+   ]
+  },
+  {
    "id": "NY:Woodbury",
    "state": "NY",
    "town": "Woodbury",
@@ -2297,12 +2573,12 @@
  "states": [
   {
    "state": "CT",
-   "stories": 6,
+   "stories": 5,
    "topics": {
     "data_center": 1,
     "moratorium": 1,
     "solar": 2,
-    "wind": 2
+    "wind": 1
    }
   },
   {

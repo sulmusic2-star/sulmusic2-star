@@ -1,0 +1,2656 @@
+[
+ {
+  "town": "Chester",
+  "state": "NY",
+  "county": "Orange",
+  "kind": "town",
+  "website": "http://chester-ny.gov/",
+  "website_candidates": [
+   "http://chester-ny.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_moratorium",
+  "selection_reason": "BESS moratorium ACTIVE, listed end 2026-08-26: extension or law due. The pilot swapped Chester for Warwick when its guessed domain failed; the official site is chester-ny.gov (Wikipedia infobox)",
+  "selection_source": "https://carina.energy/bess-moratoriums/"
+ },
+ {
+  "town": "Freedom",
+  "state": "NY",
+  "county": "Cattaraugus",
+  "kind": "town",
+  "website": "https://www.freedomny.gov/",
+  "website_candidates": [
+   "https://www.freedomny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_moratorium",
+  "selection_reason": "BESS moratorium ACTIVE, no end date listed",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townoffreedom.org/",
+    "error": "https://www.townoffreedom.org/"
+   },
+   {
+    "url": "https://townoffreedom.org/",
+    "error": "https://townoffreedom.org/"
+   },
+   {
+    "url": "https://www.freedomny.gov/",
+    "final_url": "https://www.freedomny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Mina",
+  "state": "NY",
+  "county": "Chautauqua",
+  "kind": "town",
+  "website": "http://www.townofmina.info",
+  "website_candidates": [
+   "http://www.townofmina.info"
+  ],
+  "website_source": "Wikipedia infobox (Mina, New York), 2026-11-02",
+  "selection_group": "bess_moratorium",
+  "selection_reason": "BESS moratorium ACTIVE, listed end 2026-06-30: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.minany.com/",
+    "final_url": "https://www.minany.com/",
+    "status": 200,
+    "names_place": false
+   }
+  ],
+  "wikipedia": {
+   "tried": [
+    "Mina, New York"
+   ],
+   "title": "Mina, New York"
+  }
+ },
+ {
+  "town": "Cameron",
+  "state": "NY",
+  "county": "Steuben",
+  "kind": "town",
+  "website": "https://www.townofcameron.us/",
+  "website_candidates": [
+   "https://www.townofcameron.us/"
+  ],
+  "website_source": "web search 2026-11-02",
+  "selection_group": "bess_moratorium",
+  "selection_reason": "BESS moratorium ACTIVE, listed end 2026-08-31: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofcameron.com/",
+    "final_url": "https://www.townofcameron.com/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://townofcameron.com/",
+    "final_url": "https://townofcameron.com/",
+    "status": 200,
+    "names_place": false
+   }
+  ],
+  "wikipedia": {
+   "tried": [
+    "Cameron, New York",
+    "Cameron (town), New York",
+    "Cameron, Steuben County, New York",
+    "Cameron (town), Steuben County, New York"
+   ],
+   "title": null
+  }
+ },
+ {
+  "town": "Gloversville",
+  "state": "NY",
+  "county": "Fulton",
+  "kind": "city",
+  "website": "https://cityofgloversvilleny.gov/",
+  "website_candidates": [
+   "https://cityofgloversvilleny.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_moratorium",
+  "selection_reason": "BESS moratorium ACTIVE, listed end 2026-08-31: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/"
+ },
+ {
+  "town": "Oswego",
+  "state": "NY",
+  "county": "Oswego",
+  "kind": "city",
+  "website": "https://www.oswegony.gov/",
+  "website_candidates": [
+   "https://www.oswegony.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_moratorium",
+  "selection_reason": "BESS moratorium ACTIVE (Carina: 'Oswego City'), no end date listed",
+  "selection_source": "https://carina.energy/bess-moratoriums/"
+ },
+ {
+  "town": "Parishville",
+  "state": "NY",
+  "county": "St. Lawrence",
+  "kind": "town",
+  "website": "https://parishvilleny.gov/",
+  "website_candidates": [
+   "https://parishvilleny.gov/",
+   "https://www.parishvilleny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_moratorium",
+  "selection_reason": "BESS moratorium ACTIVE, listed end 2026-08-31: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.parishvilleny.gov/",
+    "final_url": "https://parishvilleny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Jay",
+  "state": "NY",
+  "county": "Essex",
+  "kind": "town",
+  "website": "https://www.townofjayny.gov/",
+  "website_candidates": [
+   "https://www.townofjayny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_moratorium",
+  "selection_reason": "BESS moratorium ACTIVE, listed end 2026-06-18: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofjayny.gov/",
+    "final_url": "https://www.townofjayny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Southport",
+  "state": "NY",
+  "county": "Chemung",
+  "kind": "town",
+  "website": "https://townofsouthportny.gov/",
+  "website_candidates": [
+   "https://townofsouthportny.gov/",
+   "https://www.townofsouthportny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_moratorium",
+  "selection_reason": "BESS moratorium ACTIVE, listed end 2026-08-31: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofsouthportny.gov/",
+    "final_url": "https://townofsouthportny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Poland",
+  "state": "NY",
+  "county": "Chautauqua",
+  "kind": "town",
+  "website": "https://www.townofpolandny.gov/",
+  "website_candidates": [
+   "https://www.townofpolandny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_moratorium",
+  "selection_reason": "BESS moratorium ACTIVE, listed end 2026-08-31: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofpolandny.gov/",
+    "final_url": "https://www.townofpolandny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Willing",
+  "state": "NY",
+  "county": "Allegany",
+  "kind": "town",
+  "website": "https://www.willingny.gov/",
+  "website_candidates": [
+   "https://www.willingny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_moratorium",
+  "selection_reason": "BESS moratorium (all BESS) listed EXPIRED with end date 2027-06-01; Carina's status and date disagree",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.willingny.gov/",
+    "final_url": "https://www.willingny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Athens",
+  "state": "NY",
+  "county": "Greene",
+  "kind": "town",
+  "website": "https://townofathensny.gov/",
+  "website_candidates": [
+   "https://townofathensny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_review",
+  "selection_reason": "BESS moratorium (all BESS) UNDER_REVIEW, listed date 2026-03-01",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://townofathensny.gov/",
+    "final_url": "https://townofathensny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "German Flatts",
+  "state": "NY",
+  "county": "Herkimer",
+  "kind": "town",
+  "website": "http://germanflatts.org",
+  "website_candidates": [
+   "http://germanflatts.org"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_review",
+  "selection_reason": "BESS moratorium UNDER_REVIEW, listed date 2026-05-31",
+  "selection_source": "https://carina.energy/bess-moratoriums/"
+ },
+ {
+  "town": "Barker",
+  "state": "NY",
+  "county": "Broome",
+  "kind": "town",
+  "website": "https://www.townofbarkerny.gov/",
+  "website_candidates": [
+   "https://www.townofbarkerny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_review",
+  "selection_reason": "BESS moratorium UNDER_REVIEW, listed date 2026-04-22",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofbarkerny.gov/",
+    "final_url": "https://www.townofbarkerny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Victory",
+  "state": "NY",
+  "county": "Cayuga",
+  "kind": "town",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "selection_group": "bess_review",
+  "selection_reason": "BESS moratorium UNDER_REVIEW, listed date 2026-03-13",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": []
+ },
+ {
+  "town": "Fort Ann",
+  "state": "NY",
+  "county": "Washington",
+  "kind": "town",
+  "website": "https://www.townoffortannny.gov/",
+  "website_candidates": [
+   "https://www.townoffortannny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_review",
+  "selection_reason": "BESS moratorium PENDING, listed date 2026-02-21",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townoffortannny.gov/",
+    "final_url": "https://www.townoffortannny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Florence",
+  "state": "NY",
+  "county": "Oneida",
+  "kind": "town",
+  "website": "https://www.florenceny.gov/",
+  "website_candidates": [
+   "https://www.florenceny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_review",
+  "selection_reason": "BESS moratorium UNDER_REVIEW, listed date 2026-05-01",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.florenceny.gov/",
+    "final_url": "https://www.florenceny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Salem",
+  "state": "NY",
+  "county": "Washington",
+  "kind": "town",
+  "website": "https://townofsalemny.gov/",
+  "website_candidates": [
+   "https://townofsalemny.gov/",
+   "https://www.townofsalemny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_review",
+  "selection_reason": "BESS moratorium UNDER_REVIEW, listed date 2026-04-28",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofsalemny.gov/",
+    "final_url": "https://townofsalemny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Naples",
+  "state": "NY",
+  "county": "Ontario",
+  "kind": "town",
+  "website": "https://naplesny.us/",
+  "website_candidates": [
+   "https://naplesny.us/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_review",
+  "selection_reason": "BESS moratorium UNDER_REVIEW, listed date 2026-02-28",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofnaples.org/",
+    "final_url": "https://www.townofnaples.org/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://townofnaples.org/",
+    "final_url": "https://www.townofnaples.org/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://www.naplesny.gov/",
+    "final_url": "https://www.naplesny.gov/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://naplesny.gov/",
+    "final_url": "https://naplesny.gov/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://www.naplesny.com/",
+    "error": "https://www.naplesny.com/"
+   },
+   {
+    "url": "https://naplesny.us/",
+    "final_url": "https://naplesny.us/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Albion",
+  "state": "NY",
+  "county": "Orleans",
+  "kind": "town",
+  "website": "https://townofalbionnyorco.gov/",
+  "website_candidates": [
+   "https://townofalbionnyorco.gov/",
+   "https://www.townofalbion.com/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium LIFTED: law adopted, applications next (Carina lists 'Albion'; taken as the town)",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofalbion.com/",
+    "final_url": "https://townofalbionnyorco.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Chautauqua",
+  "state": "NY",
+  "county": "Chautauqua",
+  "kind": "town",
+  "website": "https://www.townofchautauqua.gov/",
+  "website_candidates": [
+   "https://www.townofchautauqua.gov/",
+   "https://www.townofchautauqua.com/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED 2025-09-03",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofchautauqua.com/",
+    "final_url": "https://www.townofchautauqua.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Harrison",
+  "state": "NY",
+  "county": "Westchester",
+  "kind": "town",
+  "website": "http://www.harrison-ny.gov",
+  "website_candidates": [
+   "http://www.harrison-ny.gov"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED 2025-09-06",
+  "selection_source": "https://carina.energy/bess-moratoriums/"
+ },
+ {
+  "town": "Johnstown",
+  "state": "NY",
+  "county": "Fulton",
+  "kind": "town",
+  "website": "https://www.townofjohnstown.org/",
+  "website_candidates": [
+   "https://www.townofjohnstown.org/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED 2025-08-03 (Carina lists 'Johnstown'; taken as the town)",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofjohnstown.org/",
+    "final_url": "https://www.townofjohnstown.org/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Mamaroneck (village)",
+  "state": "NY",
+  "county": "Westchester",
+  "kind": "village",
+  "website": "https://www.villageofmamaroneckny.gov/",
+  "website_candidates": [
+   "https://www.villageofmamaroneckny.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium LIFTED 2026-05-01",
+  "selection_source": "https://carina.energy/bess-moratoriums/"
+ },
+ {
+  "town": "Mount Kisco",
+  "state": "NY",
+  "county": "Westchester",
+  "kind": "village",
+  "website": "http://www.mountkiscony.gov/",
+  "website_candidates": [
+   "http://www.mountkiscony.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED 2025-06-03",
+  "selection_source": "https://carina.energy/bess-moratoriums/"
+ },
+ {
+  "town": "Newstead",
+  "state": "NY",
+  "county": "Erie",
+  "kind": "town",
+  "website": "https://www4.erie.gov/newstead/",
+  "website_candidates": [
+   "https://www4.erie.gov/newstead/",
+   "https://www.townofnewstead.com/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED 2026-03-31",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofnewstead.com/",
+    "final_url": "https://www4.erie.gov/newstead/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Pound Ridge",
+  "state": "NY",
+  "county": "Westchester",
+  "kind": "town",
+  "website": "https://www.townofpoundridge.gov/",
+  "website_candidates": [
+   "https://www.townofpoundridge.gov/",
+   "https://www.townofpoundridge.com/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium (all BESS) LIFTED 2026-02-28",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofpoundridge.com/",
+    "final_url": "https://www.townofpoundridge.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Ripley",
+  "state": "NY",
+  "county": "Chautauqua",
+  "kind": "town",
+  "website": "https://www.ripleyny.gov/",
+  "website_candidates": [
+   "https://www.ripleyny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED (no date listed)",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.ripleyny.gov/",
+    "final_url": "https://www.ripleyny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Rotterdam",
+  "state": "NY",
+  "county": "Schenectady",
+  "kind": "town",
+  "website": "https://www.townofrotterdam.gov/",
+  "website_candidates": [
+   "https://www.townofrotterdam.gov/",
+   "https://www.rotterdamny.org/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED 2025-05-03",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.rotterdamny.org/",
+    "final_url": "https://www.townofrotterdam.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Royalton",
+  "state": "NY",
+  "county": "Niagara",
+  "kind": "town",
+  "website": "https://townofroyaltonny.gov/",
+  "website_candidates": [
+   "https://townofroyaltonny.gov/",
+   "https://www.townofroyaltonny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium LIFTED 2026-03-31",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofroyaltonny.gov/",
+    "final_url": "https://townofroyaltonny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Walworth",
+  "state": "NY",
+  "county": "Wayne",
+  "kind": "town",
+  "website": "https://townofwalworthny.gov/",
+  "website_candidates": [
+   "https://townofwalworthny.gov/"
+  ],
+  "website_source": "web search 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium LIFTED 2026-05-30",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofwalworthny.gov/",
+    "final_url": "https://townofwalworthny.gov/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://townofwalworthny.gov/",
+    "final_url": "https://townofwalworthny.gov/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://www.townofwalworth.com/",
+    "final_url": "https://townofwalworthwi.gov/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://townofwalworth.com/",
+    "final_url": "https://townofwalworthwi.gov/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://www.townofwalworthny.com/",
+    "error": "https://www.townofwalworthny.com/"
+   },
+   {
+    "url": "https://www.walworthny.org/",
+    "final_url": "https://walworthny.org/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://walworthny.org/",
+    "final_url": "https://walworthny.org/",
+    "status": 200,
+    "names_place": false
+   }
+  ]
+ },
+ {
+  "town": "Wilson",
+  "state": "NY",
+  "county": "Niagara",
+  "kind": "town",
+  "website": "https://www.wilsonnewyork.com/",
+  "website_candidates": [
+   "https://www.wilsonnewyork.com/"
+  ],
+  "website_source": "web search 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED 2026-03-31",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofwilsonny.gov/",
+    "error": "https://www.townofwilsonny.gov/"
+   },
+   {
+    "url": "https://townofwilsonny.gov/",
+    "error": "https://townofwilsonny.gov/"
+   },
+   {
+    "url": "https://www.townofwilson.com/",
+    "error": "https://www.townofwilson.com/"
+   },
+   {
+    "url": "https://townofwilson.com/",
+    "error": "https://townofwilson.com/"
+   },
+   {
+    "url": "https://www.townofwilsonny.com/",
+    "error": "https://www.townofwilsonny.com/"
+   },
+   {
+    "url": "https://www.wilsonny.com/",
+    "final_url": "https://www.wilsonny.com/",
+    "status": 200,
+    "names_place": false
+   }
+  ]
+ },
+ {
+  "town": "Frankfort",
+  "state": "NY",
+  "county": "Herkimer",
+  "kind": "town",
+  "website": "https://www.townoffrankfortny.gov/",
+  "website_candidates": [
+   "https://www.townoffrankfortny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium LIFTED 2026-04-27",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townoffrankfortny.gov/",
+    "final_url": "https://www.townoffrankfortny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Le Ray",
+  "state": "NY",
+  "county": "Jefferson",
+  "kind": "town",
+  "website": "https://www.townofleray.gov/",
+  "website_candidates": [
+   "https://www.townofleray.gov/",
+   "https://www.townofleray.org/"
+  ],
+  "website_source": "web search 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED 2025-08-18",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofleray.org/",
+    "error": "https://www.townofleray.org/"
+   },
+   {
+    "url": "https://townofleray.org/",
+    "error": "https://townofleray.org/"
+   }
+  ]
+ },
+ {
+  "town": "Turin",
+  "state": "NY",
+  "county": "Lewis",
+  "kind": "town",
+  "website": "https://townofturinny.gov/",
+  "website_candidates": [
+   "https://townofturinny.gov/",
+   "https://www.townofturinny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED 2025-12-06",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofturinny.gov/",
+    "final_url": "https://townofturinny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Pendleton",
+  "state": "NY",
+  "county": "Niagara",
+  "kind": "town",
+  "website": "https://pendletonny.gov/",
+  "website_candidates": [
+   "https://pendletonny.gov/",
+   "https://www.pendletonny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED 2025-12-27",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofpendleton.org/",
+    "final_url": "https://www.townofpendleton.org/Home",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://townofpendleton.org/",
+    "final_url": "https://www.townofpendleton.org/Home",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://www.pendletonny.gov/",
+    "final_url": "https://pendletonny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Carrollton",
+  "state": "NY",
+  "county": "Cattaraugus",
+  "kind": "town",
+  "website": "https://www.carrolltonny.gov/",
+  "website_candidates": [
+   "https://www.carrolltonny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium EXPIRED 2025-04-29",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.carrolltonny.gov/",
+    "final_url": "https://www.carrolltonny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Elba",
+  "state": "NY",
+  "county": "Genesee",
+  "kind": "town",
+  "website": "https://townofelbany.gov/",
+  "website_candidates": [
+   "https://townofelbany.gov/",
+   "https://www.townofelbany.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_law",
+  "selection_reason": "BESS moratorium LIFTED 2025-10-31",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "domain_probe": [
+   {
+    "url": "https://www.townofelbany.gov/",
+    "final_url": "https://townofelbany.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "North Elba",
+  "state": "NY",
+  "county": "Essex",
+  "kind": "town",
+  "website": "https://www.northelba.org/",
+  "website_candidates": [
+   "https://www.northelba.org/",
+   "https://northelba.org/",
+   "https://northelba.villageoflakeplacid.ny.gov/"
+  ],
+  "website_source": "web search 2026-11-02",
+  "selection_group": "bess_2026",
+  "selection_reason": "One-year BESS moratorium approved October 2026 (WCAX, 2026-10-16)",
+  "selection_source": "https://www.wcax.com/2026/10/16/north-elba-approves-one-year-moratorium-battery-energy-storage-systems/",
+  "domain_probe": []
+ },
+ {
+  "town": "Newcomb",
+  "state": "NY",
+  "county": "Essex",
+  "kind": "town",
+  "website": "https://newcombny.gov/",
+  "website_candidates": [
+   "https://newcombny.gov/",
+   "https://www.newcombny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_2026",
+  "selection_reason": "12-month moratorium on permits for commercial and industrial BESS (news summary; adoption date to verify)",
+  "selection_source": "https://www.thecooldown.com/?p=750647",
+  "domain_probe": [
+   {
+    "url": "https://www.newcombny.gov/",
+    "final_url": "https://newcombny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Ticonderoga",
+  "state": "NY",
+  "county": "Essex",
+  "kind": "town",
+  "website": "https://townofticonderoga.gov/",
+  "website_candidates": [
+   "https://townofticonderoga.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_2026",
+  "selection_reason": "Town Board hearing 2026-05-14 on a temporary BESS moratorium (hearing notice read 2026-11-02)",
+  "selection_source": "https://townofticonderoga.gov/wp-content/uploads/Notice-of-Public-Hearing-1.pdf"
+ },
+ {
+  "town": "St. Armand",
+  "state": "NY",
+  "county": "Essex",
+  "kind": "town",
+  "website": "https://townofstarmandny.gov/",
+  "website_candidates": [
+   "https://townofstarmandny.gov/",
+   "https://www.townofstarmandny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_2026",
+  "selection_reason": "One-year BESS moratorium passed March 2026 (Environment+Energy Leader summary of Carina's release; to verify)",
+  "selection_source": "https://www.environmentenergyleader.com/stories/new-york-battery-storage-moratoriums-hit-98-municipalities,126655",
+  "domain_probe": [
+   {
+    "url": "https://www.townofstarmandny.gov/",
+    "final_url": "https://townofstarmandny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Lake George",
+  "state": "NY",
+  "county": "Warren",
+  "kind": "town",
+  "website": "https://www.townoflakegeorge.gov/",
+  "website_candidates": [
+   "https://www.townoflakegeorge.gov/",
+   "https://lakegeorgetown.org/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_2026",
+  "selection_reason": "Local Law 2 of 2026 establishing a BESS moratorium (law text read 2026-11-02)",
+  "selection_source": "https://www.townoflakegeorge.gov/DocumentCenter/View/1246"
+ },
+ {
+  "town": "Chester (Warren County)",
+  "state": "NY",
+  "county": "Warren",
+  "kind": "town",
+  "website": "https://www.chesterwcny.gov/",
+  "website_candidates": [
+   "https://www.chesterwcny.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_2026",
+  "selection_reason": "A BESS-moratorium document on the town site matched the search; the site answers HTTP 403 to the bot, so it is unread",
+  "selection_source": "https://www.chesterwcny.gov/media/7606"
+ },
+ {
+  "town": "Walton",
+  "state": "NY",
+  "county": "Delaware",
+  "kind": "town",
+  "website": "https://townofwaltonny.gov/",
+  "website_candidates": [
+   "https://townofwaltonny.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_2026",
+  "selection_reason": "Local Law 2 of 2026: a one-year BESS moratorium; the site asks a 30 s crawl delay, over the 10 s document cap",
+  "selection_source": "https://townofwaltonny.gov/local-law-2-of-2026-a-local-law-establishing-a-one-1-year-moratorium-on-battery-energy-storage-systems-in-the-town-of-walton/"
+ },
+ {
+  "town": "Bergen",
+  "state": "NY",
+  "county": "Genesee",
+  "kind": "town",
+  "website": "https://www.townofbergenny.gov/",
+  "website_candidates": [
+   "https://www.townofbergenny.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_2026",
+  "selection_reason": "Local Law 3 of 2026: a nine-month BESS moratorium, hearing 2026-05-19 (legal notice read 2026-11-02)",
+  "selection_source": "https://www.townofbergenny.gov/documents/3-2026-legal-notice-for-moratorium-battery-storage-systems-may-2026.docx"
+ },
+ {
+  "town": "Webb",
+  "state": "NY",
+  "county": "Herkimer",
+  "kind": "town",
+  "website": "https://www.townofwebbny.gov/",
+  "website_candidates": [
+   "https://www.townofwebbny.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "bess_2026",
+  "selection_reason": "A public-hearing notice on the town site matched the BESS-moratorium search; the site answers HTTP 403 to the bot (to verify)",
+  "selection_source": "https://www.townofwebbny.gov/media/2131"
+ },
+ {
+  "town": "Goshen",
+  "state": "NY",
+  "county": "Orange",
+  "kind": "town",
+  "website": "https://townofgoshenny.gov/",
+  "website_candidates": [
+   "https://townofgoshenny.gov/",
+   "https://www.townofgoshenny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "bess_2026",
+  "selection_reason": "Residents and officials urged a BESS moratorium while the town studies safety and zoning (Citizen Portal summary; to verify)",
+  "selection_source": "https://cpo.soar.com/articles/6447040/Goshen/Orange-County/New-York/Residents-and-officials-urge-moratorium-on-battery-storage-projects-while-town-studies-safety-and-zoning",
+  "domain_probe": [
+   {
+    "url": "https://www.townofgoshenny.gov/",
+    "final_url": "https://townofgoshenny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Troy",
+  "state": "NY",
+  "county": "Rensselaer",
+  "kind": "city",
+  "website": "http://troyny.gov",
+  "website_candidates": [
+   "http://troyny.gov"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "capital_region",
+  "selection_reason": "City Council six-month BESS moratorium, 2026-02-06 (Spectrum News, cited in where_it_pays_2026.md [40])",
+  "selection_source": "https://spectrumlocalnews.com/nys/capital-region/news/2026/02/06/troy-council-approves-moratorium-on-battery-energy-storage-systems-"
+ },
+ {
+  "town": "Moreau",
+  "state": "NY",
+  "county": "Saratoga",
+  "kind": "town",
+  "website": "https://www.townofmoreau.org/",
+  "website_candidates": [
+   "https://www.townofmoreau.org/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "capital_region",
+  "selection_reason": "Capital Region town named in where_it_pays_2026.md; proposed Local Law 2 of 2026, a BESS moratorium (law text read 2026-11-02)",
+  "selection_source": "https://www.townofmoreau.org/2026-LL2-Battery-Moratorium.pdf"
+ },
+ {
+  "town": "Waterford",
+  "state": "NY",
+  "county": "Saratoga",
+  "kind": "town",
+  "website": "https://www.townofwaterfordny.gov/",
+  "website_candidates": [
+   "https://www.townofwaterfordny.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "capital_region",
+  "selection_reason": "Capital Region town named in where_it_pays_2026.md; notice of adoption of Local Law 1 of 2026 (BESS moratorium); the notice answers HTTP 403 to the bot",
+  "selection_source": "https://www.townofwaterfordny.gov/town-board/files/notice-adoption-local-law-no-1-2026"
+ },
+ {
+  "town": "New Windsor",
+  "state": "NY",
+  "county": "Orange",
+  "kind": "town",
+  "website": "http://newwindsor-ny.gov",
+  "website_candidates": [
+   "http://newwindsor-ny.gov"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "data_center_fight",
+  "selection_reason": "Temporary moratorium on warehouses and self-storage, August 2026 (data_center_and_other_fights.md)",
+  "selection_source": "https://citizenportal.ai/articles/10203240/new-york/orange-county/new-windsor/new-windsor-adopts-temporary-moratorium-on-warehouses-and-self-storage-excludes-airport-zone"
+ },
+ {
+  "town": "Alabama",
+  "state": "NY",
+  "county": "Genesee",
+  "kind": "town",
+  "website": "https://townofalabamany.gov/",
+  "website_candidates": [
+   "https://townofalabamany.gov/"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "data_center_fight",
+  "selection_reason": "STREAM US Data Centers' $19.5B proposal at STAMP: Planning Board site plan and SEQR findings through 2026 (ny_pilot.md next-50 #48)",
+  "selection_source": "https://townofalabamany.gov/2026/04/"
+ },
+ {
+  "town": "Essex County",
+  "state": "NY",
+  "county": "Essex",
+  "kind": "county",
+  "website": "http://essexcountyny.gov",
+  "website_candidates": [
+   "http://essexcountyny.gov"
+  ],
+  "website_source": "document or Wikipedia infobox, 2026-11-02",
+  "selection_group": "county_moratorium",
+  "selection_reason": "County-wide BESS moratorium ACTIVE on Carina's monitor (listed date 2026-03-16); five Essex towns are wave-2 targets",
+  "selection_source": "https://carina.energy/bess-moratoriums/"
+ },
+ {
+  "town": "Carlisle",
+  "state": "NY",
+  "county": "Schoharie",
+  "kind": "town",
+  "website": "https://www2.schohariecounty-ny.gov/EdocWebApp/faces/TownCar/index.xhtml",
+  "website_candidates": [
+   "https://www2.schohariecounty-ny.gov/EdocWebApp/faces/TownCar/index.xhtml",
+   "https://www4.schohariecounty-ny.gov/government/town-of-carlisle/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: the county-hosted town page (www4.schohariecounty-ny.gov/government/town-of-carlisle/) answers HTTP 404. Originally: BESS moratorium ACTIVE, ends 2026-10-21",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "http_error",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Gainesville",
+  "state": "NY",
+  "county": "Wyoming",
+  "kind": "town",
+  "website": "https://www.townofgainesvilleny.gov/",
+  "website_candidates": [
+   "https://www.townofgainesvilleny.gov/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no website: no town website found (web search 2026-10-12); county-hosted notices at most. Originally: BESS moratorium (all BESS) ACTIVE, ends 2026-10-20",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_website",
+  "wave1_listings": [],
+  "wave1_curation_note": null,
+  "domain_probe": [
+   {
+    "url": "https://www.townofgainesvilleny.gov/",
+    "final_url": "https://www.townofgainesvilleny.gov/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Brasher",
+  "state": "NY",
+  "county": "St. Lawrence",
+  "kind": "town",
+  "website": "https://townofbrasher.gov/",
+  "website_candidates": [
+   "https://townofbrasher.gov/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: townofbrasher.gov is reachable but lists no agendas for the Town Board, Planning Board or ZBA. Originally: BESS moratorium ACTIVE, ends 2026-10-31",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_agendas_found",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Sherman",
+  "state": "NY",
+  "county": "Chautauqua",
+  "kind": "town",
+  "website": "https://www.shermanny.gov/",
+  "website_candidates": [
+   "https://www.shermanny.gov/",
+   "https://townofsherman.net/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: shermanny.gov carries Town Board minutes only; the Planning Board and ZBA agendas there are the Village of Sherman's. Originally: BESS moratorium ACTIVE, ends 2026-10-31",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_recent_agendas",
+  "wave1_listings": [],
+  "wave1_curation_note": "checked by hand 2026-10-12: shermanny.gov carries Town Board minutes only; the agendas there (planning board, ZBA) are the Village of Sherman's"
+ },
+ {
+  "town": "Schroeppel",
+  "state": "NY",
+  "county": "Oswego",
+  "kind": "town",
+  "website": "https://schroeppelny.gov/",
+  "website_candidates": [
+   "https://schroeppelny.gov/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: unreachable: robots.txt answered 5xx or timed out from this sandbox on 2026-10-12 and 10-13 (RFC 9309: treated as disallow); retried in wave 2. Originally: Solar-plus-storage moratorium ACTIVE, ends 2027-02-10",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "unreachable",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Lewis",
+  "state": "NY",
+  "county": "Lewis",
+  "kind": "town",
+  "website": "https://townoflewislcny.gov/",
+  "website_candidates": [
+   "https://townoflewislcny.gov/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: agendas undated: Town Board agendas are posted as monthly public notices named only by month ('Agenda for September 2026', a .docx), so no meeting date can be read. Originally: BESS moratorium ACTIVE, ends 2027-03-16",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": null,
+  "wave1_listings": [
+   {
+    "board": "Town Board",
+    "board_key": "select_board",
+    "platform": "generic_ny",
+    "url": "https://townoflewislcny.gov/resources/public-notices/",
+    "link_pattern": "agenda-for",
+    "follow_pages": true,
+    "follow_doc": "\\.(?:docx?|pdf)(?:\\?|$)",
+    "month_only": true
+   }
+  ],
+  "wave1_curation_note": "Town Board monthly agendas as public notices with a .docx attachment (board pages and meeting archives load by script)"
+ },
+ {
+  "town": "Northampton",
+  "state": "NY",
+  "county": "Fulton",
+  "kind": "town",
+  "website": "http://townofnorthampton.com/",
+  "website_candidates": [
+   "http://townofnorthampton.com/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: unreachable: robots.txt answered 5xx or timed out from this sandbox on 2026-10-12 and 10-13 (RFC 9309: treated as disallow); retried in wave 2. Originally: BESS moratorium (all BESS) ACTIVE, ends 2027-03-30",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "unreachable",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Mayville",
+  "state": "NY",
+  "county": "Chautauqua",
+  "kind": "village",
+  "website": "https://www.mayvilleny.gov/",
+  "website_candidates": [
+   "https://www.mayvilleny.gov/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: mayvilleny.gov is reachable but lists no agendas for the tracked boards. Originally: BESS moratorium ACTIVE, ends 2027-06-01",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_agendas_found",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Benson",
+  "state": "NY",
+  "county": "Hamilton",
+  "kind": "town",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "no_website_note": "no town website found (web search 2026-10-12)",
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no website: no town website found (townofbenson.com is Benson, North Carolina; web search 2026-10-12). Originally: BESS moratorium (all BESS) ACTIVE, ends 2027-06-09",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_website",
+  "wave1_listings": [],
+  "wave1_curation_note": null,
+  "domain_probe": [
+   {
+    "url": "https://www.townofbenson.org/",
+    "error": "https://www.townofbenson.org/"
+   },
+   {
+    "url": "https://townofbenson.org/",
+    "error": "https://townofbenson.org/"
+   },
+   {
+    "url": "https://www.townofbenson.com/",
+    "final_url": "https://www.townofbenson.com/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://townofbenson.com/",
+    "final_url": "https://townofbenson.com/",
+    "status": 200,
+    "names_place": false
+   }
+  ]
+ },
+ {
+  "town": "Collins",
+  "state": "NY",
+  "county": "Erie",
+  "kind": "town",
+  "website": "https://www.townofcollins.com/",
+  "website_candidates": [
+   "https://www.townofcollins.com/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: robots disallow: robots.txt on townofcollinsny.gov disallows the agenda documents. Originally: BESS moratorium ACTIVE, ended 2026-09-30: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "documents_blocked",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Virgil",
+  "state": "NY",
+  "county": "Cortland",
+  "kind": "town",
+  "website": "https://virgilny.gov/",
+  "website_candidates": [
+   "https://virgilny.gov/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: unreachable: robots.txt answered 5xx or timed out from this sandbox on 2026-10-12 and 10-13 (RFC 9309: treated as disallow); retried in wave 2. Originally: BESS moratorium ACTIVE, ended 2026-09-30: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "unreachable",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Oswegatchie",
+  "state": "NY",
+  "county": "St. Lawrence",
+  "kind": "town",
+  "website": "https://www.townofoswegatchie.gov/",
+  "website_candidates": [
+   "https://www.townofoswegatchie.gov/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: agendas undated: monthly Town Board agendas (2026_<month>_agenda.pdf) are posted without a day, and the latest was August 2026, before the window. Originally: BESS moratorium ACTIVE, ended 2026-09-30: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_recent_agendas",
+  "wave1_listings": [],
+  "wave1_curation_note": "checked by hand 2026-10-12: monthly Town Board agendas (2026_<month>_agenda.pdf) are posted, but the latest is August 2026, before the window"
+ },
+ {
+  "town": "Palatine",
+  "state": "NY",
+  "county": "Montgomery",
+  "kind": "town",
+  "website": "http://townofpalatine.org/",
+  "website_candidates": [
+   "http://townofpalatine.org/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: the Town Council page links a Google Drive folder; no dated agenda listing on townofpalatine.org. Originally: BESS moratorium ACTIVE, ended 2026-09-30: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_recent_agendas",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Pike",
+  "state": "NY",
+  "county": "Wyoming",
+  "kind": "town",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "no_website_note": "no town website found (web search 2026-10-12)",
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no website: no town website found (web search 2026-10-12). Originally: BESS moratorium ACTIVE, ended 2026-09-30: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_website",
+  "wave1_listings": [],
+  "wave1_curation_note": null,
+  "domain_probe": []
+ },
+ {
+  "town": "Mentz",
+  "state": "NY",
+  "county": "Cayuga",
+  "kind": "town",
+  "website": "http://townofmentz.com/",
+  "website_candidates": [
+   "http://townofmentz.com/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: robots disallow: robots.txt on townofmentz.com disallows AgendaAheadBot. Originally: BESS moratorium ACTIVE, ended 2026-09-30: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "robots_disallow",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Carlton",
+  "state": "NY",
+  "county": "Orleans",
+  "kind": "town",
+  "website": "https://townofcarltonny.gov/",
+  "website_candidates": [
+   "https://townofcarltonny.gov/",
+   "https://townofcarlton.org/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: the town posts hearing and meeting notices on its homepage only (one dated ZBA hearing notice in the window); kept in the test config for the county route. Originally: BESS moratorium ACTIVE, ends 2027-04-14 (extended)",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": null,
+  "wave1_listings": [
+   {
+    "board": "Town Board",
+    "board_key": "select_board",
+    "platform": "generic_ny",
+    "url": "https://townofcarltonny.gov/",
+    "link_pattern": "hearing|notice-of-public|public-meeting|agenda",
+    "exclude_pattern": "minutes|cancel",
+    "follow_pages": true,
+    "date_regex": "(?:hold|held|have|having)\\s+(?:a\\s+|its\\s+|their\\s+)?(?:public\\s+hearing|(?:public|regular|special)\\s+meeting|meeting)\\b.{0,160}?\\bon\\s+(?:[A-Za-z]+day,?\\s+)?(?P<m>[A-Za-z]+)\\.?\\s+(?P<d>\\d{1,2})\\D{0,3}?,?\\s*(?P<y>20\\d\\d)",
+    "board_rules": [
+     [
+      "zoning",
+      "Zoning Board of Appeals",
+      "zoning_board_of_appeals"
+     ],
+     [
+      "planning",
+      "Planning Board",
+      "planning_board"
+     ],
+     [
+      ".",
+      "Town Board",
+      "select_board"
+     ]
+    ]
+   }
+  ],
+  "wave1_curation_note": "public hearing and meeting notices posted on the homepage (no agenda listing)"
+ },
+ {
+  "town": "Allen",
+  "state": "NY",
+  "county": "Allegany",
+  "kind": "town",
+  "website": "https://townclerktownofall.wixsite.com/town-of-allen-ny",
+  "website_candidates": [
+   "https://townclerktownofall.wixsite.com/town-of-allen-ny"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: the Wix site is reachable but lists no agendas for the tracked boards. Originally: BESS moratorium ACTIVE, ended 2026-09-30: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_agendas_found",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Westfield",
+  "state": "NY",
+  "county": "Chautauqua",
+  "kind": "town",
+  "website": "http://www.townofwestfield.org/",
+  "website_candidates": [
+   "http://www.townofwestfield.org/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: agendas undated: Town Board agendas on the year page are named only by month ('September Agenda'); no meeting date can be read. Originally: BESS moratorium ACTIVE, ended 2026-08-31: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": null,
+  "wave1_listings": [
+   {
+    "board": "Town Board",
+    "board_key": "select_board",
+    "platform": "generic_ny",
+    "url": "https://westfieldny.com/town-westfield/{year}-town-agendas-and-minutes",
+    "link_pattern": "agenda",
+    "exclude_pattern": "minutes|cancel",
+    "doc_href": "\\.pdf",
+    "month_only": true,
+    "assume_year": "url",
+    "skip_missing_months": true
+   }
+  ],
+  "wave1_curation_note": "Town Board monthly agendas on the year page (month names only; meeting date left empty)"
+ },
+ {
+  "town": "Root",
+  "state": "NY",
+  "county": "Montgomery",
+  "kind": "town",
+  "website": "https://www.montgomerycountyny.gov/web/municipal/root/",
+  "website_candidates": [
+   "https://www.montgomerycountyny.gov/web/municipal/root/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: the county-hosted town pages (montgomerycountyny.gov/web/municipal/root/) show board pages but no agenda dated within 120 days of the run. Originally: BESS moratorium ACTIVE, ended 2026-08-31: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_recent_agendas",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Greenwood",
+  "state": "NY",
+  "county": "Steuben",
+  "kind": "town",
+  "website": "https://greenwoodny.gov/",
+  "website_candidates": [
+   "https://greenwoodny.gov/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: unreachable: robots.txt answered 5xx or timed out from this sandbox on 2026-10-12 and 10-13 (RFC 9309: treated as disallow); retried in wave 2. Originally: BESS moratorium ACTIVE, ended 2026-08-31: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "unreachable",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Prattsburgh",
+  "state": "NY",
+  "county": "Steuben",
+  "kind": "town",
+  "website": "https://www.townofprattsburgh.org/",
+  "website_candidates": [
+   "https://www.townofprattsburgh.org/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: the Town Board page lists monthly minutes only. Originally: BESS moratorium ACTIVE, ended 2026-08-31: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_recent_agendas",
+  "wave1_listings": [],
+  "wave1_curation_note": "checked by hand 2026-10-12: Town Board page lists monthly minutes only"
+ },
+ {
+  "town": "North Harmony",
+  "state": "NY",
+  "county": "Chautauqua",
+  "kind": "town",
+  "website": "https://townofnorthharmony.gov/",
+  "website_candidates": [
+   "https://townofnorthharmony.gov/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: board pages found (townofnorthharmony.gov/townboard) but no agenda dated within 120 days of the run. Originally: BESS moratorium ACTIVE, ended 2026-08-30: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_recent_agendas",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Rose",
+  "state": "NY",
+  "county": "Wayne",
+  "kind": "town",
+  "website": "https://roseny.gov/",
+  "website_candidates": [
+   "https://roseny.gov/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: board pages found (roseny.gov/town-boards) but no agenda dated within 120 days of the run. Originally: BESS moratorium ACTIVE, ended 2026-07-03: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_recent_agendas",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Stockport",
+  "state": "NY",
+  "county": "Columbia",
+  "kind": "town",
+  "website": "https://www.stockportny.gov/",
+  "website_candidates": [
+   "https://www.stockportny.gov/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: the Town Board page posts minutes; no agenda dated within 120 days of the run. Originally: BESS moratorium ACTIVE, ended 2026-06-01: extension or law due",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_recent_agendas",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Yorktown",
+  "state": "NY",
+  "county": "Westchester",
+  "kind": "town",
+  "website": "https://www.yorktownny.gov/",
+  "website_candidates": [
+   "https://www.yorktownny.gov/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: bot wall: agendas are on calendar.yorktownny.gov, which answers HTTP 403 'blocked due to security reasons' to AgendaAheadBot (robots.txt too); not bypassed. Originally: BESS moratorium EXPIRED 2026-01-14: BESS law follow-up",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "documents_blocked",
+  "wave1_listings": [],
+  "wave1_curation_note": "checked by hand 2026-10-12"
+ },
+ {
+  "town": "Montgomery",
+  "state": "NY",
+  "county": "Orange",
+  "kind": "town",
+  "website": "https://townofmontgomery.com/",
+  "website_candidates": [
+   "https://townofmontgomery.com/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: JavaScript only: 'Agendas, Minutes, & Videos' is a DNN document library filled by script, with no static listing to read. Originally: BESS moratorium LIFTED 2026-03-31: law adopted, applications next",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "no_recent_agendas",
+  "wave1_listings": [],
+  "wave1_curation_note": "checked by hand 2026-10-12: 'Agendas, Minutes, & Videos' is a DNN document library filled by script, with no static listing to read"
+ },
+ {
+  "town": "Somerset",
+  "state": "NY",
+  "county": "Niagara",
+  "kind": "town",
+  "website": "http://www.somersetny.org/",
+  "website_candidates": [
+   "http://www.somersetny.org/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: bot wall: Cloudflare-style bot challenge (HTTP 403) on www.somersetny.gov; not bypassed. Originally: BESS moratorium LIFTED 2026-03-31; former coal-plant site",
+  "selection_source": "https://carina.energy/bess-moratoriums/",
+  "wave1_reason_code": "bot_challenge",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Sherburne",
+  "state": "NY",
+  "county": "Chenango",
+  "kind": "town",
+  "website": "https://townofsherburne.gov/",
+  "website_candidates": [
+   "https://townofsherburne.gov/",
+   "https://townofsherburne.net/"
+  ],
+  "website_source": "web search 2026-10-12",
+  "no_website_note": null,
+  "selection_group": "wave1_retry",
+  "selection_reason": "Wave 1, not promoted: no agenda page: the newest Town Board agenda document is from June 2024; nothing dated within 120 days of the run. Originally: January 2026 moratorium hearing tied to a Nexamp BESS proposal",
+  "selection_source": "https://eticaag.com/sherburne-ny-approves-battery-storage-moratorium/",
+  "wave1_reason_code": "no_recent_agendas",
+  "wave1_listings": [],
+  "wave1_curation_note": null
+ },
+ {
+  "town": "Albany County",
+  "state": "NY",
+  "county": "Albany",
+  "kind": "county",
+  "website": "https://www.albanycountyny.gov/",
+  "website_candidates": [
+   "https://www.albanycountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Albany County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Berne (site town, not read))",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Albany County, New York"
+   ],
+   "title": "Albany County, New York"
+  }
+ },
+ {
+  "town": "Allegany County",
+  "state": "NY",
+  "county": "Allegany",
+  "kind": "county",
+  "website": "https://www.alleganyco.gov/",
+  "website_candidates": [
+   "https://www.alleganyco.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Allegany County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Allen, Willing)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Allegany County, New York"
+   ],
+   "title": "Allegany County, New York"
+  }
+ },
+ {
+  "town": "Broome County",
+  "state": "NY",
+  "county": "Broome",
+  "kind": "county",
+  "website": "https://broomecountyny.gov/",
+  "website_candidates": [
+   "https://broomecountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Broome County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Barker)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Broome County, New York"
+   ],
+   "title": "Broome County, New York"
+  }
+ },
+ {
+  "town": "Cattaraugus County",
+  "state": "NY",
+  "county": "Cattaraugus",
+  "kind": "county",
+  "website": "https://www.cattco.org/",
+  "website_candidates": [
+   "https://www.cattco.org/"
+  ],
+  "website_source": "Wikipedia infobox (Cattaraugus County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Carrollton, Freedom)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Cattaraugus County, New York"
+   ],
+   "title": "Cattaraugus County, New York"
+  }
+ },
+ {
+  "town": "Cayuga County",
+  "state": "NY",
+  "county": "Cayuga",
+  "kind": "county",
+  "website": "https://www.cayugacounty.gov/",
+  "website_candidates": [
+   "https://www.cayugacounty.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Cayuga County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Mentz, Victory)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Cayuga County, New York"
+   ],
+   "title": "Cayuga County, New York"
+  }
+ },
+ {
+  "town": "Chautauqua County",
+  "state": "NY",
+  "county": "Chautauqua",
+  "kind": "county",
+  "website": "https://chqgov.com",
+  "website_candidates": [
+   "https://chqgov.com"
+  ],
+  "website_source": "Wikipedia infobox (Chautauqua County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 8 target places we cannot read directly or have not read yet (Chautauqua, Mayville, Mina, North Harmony, Poland, Ripley, Sherman, Westfield)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Chautauqua County, New York"
+   ],
+   "title": "Chautauqua County, New York"
+  }
+ },
+ {
+  "town": "Chemung County",
+  "state": "NY",
+  "county": "Chemung",
+  "kind": "county",
+  "website": "https://www.chemungcountyny.gov/",
+  "website_candidates": [
+   "https://www.chemungcountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Chemung County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Southport)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Chemung County, New York"
+   ],
+   "title": "Chemung County, New York"
+  }
+ },
+ {
+  "town": "Chenango County",
+  "state": "NY",
+  "county": "Chenango",
+  "kind": "county",
+  "website": "https://www.chenangocountyny.gov/",
+  "website_candidates": [
+   "https://www.chenangocountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Chenango County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Sherburne)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Chenango County, New York"
+   ],
+   "title": "Chenango County, New York"
+  }
+ },
+ {
+  "town": "Columbia County",
+  "state": "NY",
+  "county": "Columbia",
+  "kind": "county",
+  "website": "http://www.columbiacountyny.com/",
+  "website_candidates": [
+   "http://www.columbiacountyny.com/"
+  ],
+  "website_source": "Wikipedia infobox (Columbia County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Livingston (site town, not read), Stockport)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Columbia County, New York"
+   ],
+   "title": "Columbia County, New York"
+  }
+ },
+ {
+  "town": "Cortland County",
+  "state": "NY",
+  "county": "Cortland",
+  "kind": "county",
+  "website": "https://www.cortlandcountyny.gov",
+  "website_candidates": [
+   "https://www.cortlandcountyny.gov"
+  ],
+  "website_source": "Wikipedia infobox (Cortland County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Virgil)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Cortland County, New York"
+   ],
+   "title": "Cortland County, New York"
+  }
+ },
+ {
+  "town": "Delaware County",
+  "state": "NY",
+  "county": "Delaware",
+  "kind": "county",
+  "website": "http://delcony.us",
+  "website_candidates": [
+   "http://delcony.us"
+  ],
+  "website_source": "Wikipedia infobox (Delaware County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Walton)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Delaware County, New York"
+   ],
+   "title": "Delaware County, New York"
+  }
+ },
+ {
+  "town": "Erie County",
+  "state": "NY",
+  "county": "Erie",
+  "kind": "county",
+  "website": "https://erie.gov",
+  "website_candidates": [
+   "https://erie.gov"
+  ],
+  "website_source": "Wikipedia infobox (Erie County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Boston (site town, not read), Collins, Newstead)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [
+   {
+    "url": "https://www.eriecountygov.com/",
+    "final_url": "https://www.eriecountygov.com/",
+    "status": 200,
+    "names_place": false
+   },
+   {
+    "url": "https://eriecountygov.com/",
+    "final_url": "https://eriecountygov.com/",
+    "status": 200,
+    "names_place": false
+   }
+  ],
+  "wikipedia": {
+   "tried": [
+    "Erie County, New York"
+   ],
+   "title": "Erie County, New York"
+  }
+ },
+ {
+  "town": "Fulton County",
+  "state": "NY",
+  "county": "Fulton",
+  "kind": "county",
+  "website": "https://fultoncountyny.gov",
+  "website_candidates": [
+   "https://fultoncountyny.gov"
+  ],
+  "website_source": "Wikipedia infobox (Fulton County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 4 target places we cannot read directly or have not read yet (Gloversville, Johnstown, Northampton, Perth (site town, not read))",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Fulton County, New York"
+   ],
+   "title": "Fulton County, New York"
+  }
+ },
+ {
+  "town": "Genesee County",
+  "state": "NY",
+  "county": "Genesee",
+  "kind": "county",
+  "website": "https://www.geneseeny.gov/Home",
+  "website_candidates": [
+   "https://www.geneseeny.gov/Home"
+  ],
+  "website_source": "Wikipedia infobox (Genesee County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Alabama, Bergen, Elba)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Genesee County, New York"
+   ],
+   "title": "Genesee County, New York"
+  }
+ },
+ {
+  "town": "Greene County",
+  "state": "NY",
+  "county": "Greene",
+  "kind": "county",
+  "website": "https://greenecountyny.gov/",
+  "website_candidates": [
+   "https://greenecountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Greene County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Athens)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Greene County, New York"
+   ],
+   "title": "Greene County, New York"
+  }
+ },
+ {
+  "town": "Hamilton County",
+  "state": "NY",
+  "county": "Hamilton",
+  "kind": "county",
+  "website": "https://www.hamiltoncountyny.gov/",
+  "website_candidates": [
+   "https://www.hamiltoncountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Hamilton County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Benson)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Hamilton County, New York"
+   ],
+   "title": "Hamilton County, New York"
+  }
+ },
+ {
+  "town": "Herkimer County",
+  "state": "NY",
+  "county": "Herkimer",
+  "kind": "county",
+  "website": "https://www.herkimercountyny.gov/",
+  "website_candidates": [
+   "https://www.herkimercountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Herkimer County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 4 target places we cannot read directly or have not read yet (Frankfort, German Flatts, Webb, Winfield (site town, not read))",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Herkimer County, New York"
+   ],
+   "title": "Herkimer County, New York"
+  }
+ },
+ {
+  "town": "Jefferson County",
+  "state": "NY",
+  "county": "Jefferson",
+  "kind": "county",
+  "website": "https://www.jeffersoncountyny.gov/",
+  "website_candidates": [
+   "https://www.jeffersoncountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Jefferson County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Le Ray)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Jefferson County, New York"
+   ],
+   "title": "Jefferson County, New York"
+  }
+ },
+ {
+  "town": "Lewis County",
+  "state": "NY",
+  "county": "Lewis",
+  "kind": "county",
+  "website": "https://lewiscountyny.gov/",
+  "website_candidates": [
+   "https://lewiscountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Lewis County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Lewis, Turin)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Lewis County, New York"
+   ],
+   "title": "Lewis County, New York"
+  }
+ },
+ {
+  "town": "Livingston County",
+  "state": "NY",
+  "county": "Livingston",
+  "kind": "county",
+  "website": "https://www.livingstoncountyny.gov/",
+  "website_candidates": [
+   "https://www.livingstoncountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Livingston County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (York (site town, not read))",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Livingston County, New York"
+   ],
+   "title": "Livingston County, New York"
+  }
+ },
+ {
+  "town": "Montgomery County",
+  "state": "NY",
+  "county": "Montgomery",
+  "kind": "county",
+  "website": "http://www.montgomerycountyny.gov",
+  "website_candidates": [
+   "http://www.montgomerycountyny.gov"
+  ],
+  "website_source": "Wikipedia infobox (Montgomery County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Palatine, Root)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Montgomery County, New York"
+   ],
+   "title": "Montgomery County, New York"
+  }
+ },
+ {
+  "town": "Niagara County",
+  "state": "NY",
+  "county": "Niagara",
+  "kind": "county",
+  "website": "http://www.niagaracounty.com",
+  "website_candidates": [
+   "http://www.niagaracounty.com"
+  ],
+  "website_source": "Wikipedia infobox (Niagara County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 5 target places we cannot read directly or have not read yet (Newfane (site town, not read), Pendleton, Royalton, Somerset, Wilson)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Niagara County, New York"
+   ],
+   "title": "Niagara County, New York"
+  }
+ },
+ {
+  "town": "Oneida County",
+  "state": "NY",
+  "county": "Oneida",
+  "kind": "county",
+  "website": "http://oneidacountyny.gov/",
+  "website_candidates": [
+   "http://oneidacountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Oneida County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Florence)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Oneida County, New York"
+   ],
+   "title": "Oneida County, New York"
+  }
+ },
+ {
+  "town": "Onondaga County",
+  "state": "NY",
+  "county": "Onondaga",
+  "kind": "county",
+  "website": "https://onondaga.gov/",
+  "website_candidates": [
+   "https://onondaga.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Onondaga County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Camillus (site town, not read), Cicero (site town, not read), Spafford (site town, not read))",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Onondaga County, New York"
+   ],
+   "title": "Onondaga County, New York"
+  }
+ },
+ {
+  "town": "Ontario County",
+  "state": "NY",
+  "county": "Ontario",
+  "kind": "county",
+  "website": "https://www.ontariocountyny.gov",
+  "website_candidates": [
+   "https://www.ontariocountyny.gov"
+  ],
+  "website_source": "Wikipedia infobox (Ontario County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Naples)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Ontario County, New York"
+   ],
+   "title": "Ontario County, New York"
+  }
+ },
+ {
+  "town": "Orange County",
+  "state": "NY",
+  "county": "Orange",
+  "kind": "county",
+  "website": "https://www.orangecountygov.com",
+  "website_candidates": [
+   "https://www.orangecountygov.com"
+  ],
+  "website_source": "Wikipedia infobox (Orange County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 4 target places we cannot read directly or have not read yet (Chester, Goshen, Montgomery, New Windsor)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [
+   {
+    "url": "https://www.orangecountygov.com/",
+    "final_url": "http://www.orangecountyny.gov/",
+    "status": 403,
+    "names_place": false
+   },
+   {
+    "url": "https://orangecountygov.com/",
+    "error": "https://orangecountygov.com/"
+   }
+  ],
+  "wikipedia": {
+   "tried": [
+    "Orange County, New York"
+   ],
+   "title": "Orange County, New York"
+  }
+ },
+ {
+  "town": "Orleans County",
+  "state": "NY",
+  "county": "Orleans",
+  "kind": "county",
+  "website": "https://www.orleanscountyny.gov/",
+  "website_candidates": [
+   "https://www.orleanscountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Orleans County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Albion, Carlton)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Orleans County, New York"
+   ],
+   "title": "Orleans County, New York"
+  }
+ },
+ {
+  "town": "Oswego County",
+  "state": "NY",
+  "county": "Oswego",
+  "kind": "county",
+  "website": "https://www.oswegocountyny.gov/",
+  "website_candidates": [
+   "https://www.oswegocountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Oswego County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Oswego, Schroeppel)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Oswego County, New York"
+   ],
+   "title": "Oswego County, New York"
+  }
+ },
+ {
+  "town": "Putnam County",
+  "state": "NY",
+  "county": "Putnam",
+  "kind": "county",
+  "website": "https://www.putnamcountyny.gov/",
+  "website_candidates": [
+   "https://www.putnamcountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Putnam County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Carmel (site town, not read))",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [
+   {
+    "url": "https://www.putnamcountygov.com/",
+    "error": "https://www.putnamcountygov.com/"
+   },
+   {
+    "url": "https://putnamcountygov.com/",
+    "error": "https://putnamcountygov.com/"
+   }
+  ],
+  "wikipedia": {
+   "tried": [
+    "Putnam County, New York"
+   ],
+   "title": "Putnam County, New York"
+  }
+ },
+ {
+  "town": "Rensselaer County",
+  "state": "NY",
+  "county": "Rensselaer",
+  "kind": "county",
+  "website": "http://www.rensco.com",
+  "website_candidates": [
+   "http://www.rensco.com"
+  ],
+  "website_source": "Wikipedia infobox (Rensselaer County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Troy)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Rensselaer County, New York"
+   ],
+   "title": "Rensselaer County, New York"
+  }
+ },
+ {
+  "town": "Saratoga County",
+  "state": "NY",
+  "county": "Saratoga",
+  "kind": "county",
+  "website": "http://saratogacountyny.gov",
+  "website_candidates": [
+   "http://saratogacountyny.gov"
+  ],
+  "website_source": "Wikipedia infobox (Saratoga County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Halfmoon (site town, not read), Moreau, Waterford)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Saratoga County, New York"
+   ],
+   "title": "Saratoga County, New York"
+  }
+ },
+ {
+  "town": "Schenectady County",
+  "state": "NY",
+  "county": "Schenectady",
+  "kind": "county",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Duanesburg (site town, not read), Rotterdam)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Schenectady County, New York"
+   ],
+   "title": null
+  },
+  "no_website_note": "no matching Wikipedia article found, 2026-11-02"
+ },
+ {
+  "town": "Schoharie County",
+  "state": "NY",
+  "county": "Schoharie",
+  "kind": "county",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Carlisle)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Schoharie County, New York"
+   ],
+   "title": null
+  },
+  "no_website_note": "no matching Wikipedia article found, 2026-11-02"
+ },
+ {
+  "town": "St. Lawrence County",
+  "state": "NY",
+  "county": "St. Lawrence",
+  "kind": "county",
+  "website": "https://www.stlawco.gov/",
+  "website_candidates": [
+   "https://www.stlawco.gov/"
+  ],
+  "website_source": "Wikipedia infobox (St. Lawrence County, New York), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Brasher, Oswegatchie, Parishville)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "St. Lawrence County, New York"
+   ],
+   "title": "St. Lawrence County, New York"
+  }
+ },
+ {
+  "town": "Steuben County",
+  "state": "NY",
+  "county": "Steuben",
+  "kind": "county",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Cameron, Greenwood, Prattsburgh)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": []
+ },
+ {
+  "town": "Suffolk County",
+  "state": "NY",
+  "county": "Suffolk",
+  "kind": "county",
+  "website": "http://www.suffolkcountyny.gov",
+  "website_candidates": [
+   "http://www.suffolkcountyny.gov"
+  ],
+  "website_source": "Wikipedia infobox probe, 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 4 target places we cannot read directly or have not read yet (Brookhaven (site town, not read), Huntington (site town, not read), Islip (site town, not read), Southampton (site town, not read))",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": []
+ },
+ {
+  "town": "Sullivan County",
+  "state": "NY",
+  "county": "Sullivan",
+  "kind": "county",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Highland (site town, not read))",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": []
+ },
+ {
+  "town": "Tompkins County",
+  "state": "NY",
+  "county": "Tompkins",
+  "kind": "county",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Lansing (site town, not read))",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": []
+ },
+ {
+  "town": "Ulster County",
+  "state": "NY",
+  "county": "Ulster",
+  "kind": "county",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Gardiner (site town, not read), Hurley (site town, not read), Wawarsing (site town, not read))",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": []
+ },
+ {
+  "town": "Warren County",
+  "state": "NY",
+  "county": "Warren",
+  "kind": "county",
+  "website": "https://www.warrencountygov.com/",
+  "website_candidates": [
+   "https://www.warrencountygov.com/"
+  ],
+  "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Chester (Warren County), Horicon (site town, not read), Lake George)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [
+   {
+    "url": "https://www.warrencountygov.com/",
+    "final_url": "https://www.warrencountygov.com/",
+    "status": 200,
+    "names_place": true
+   }
+  ]
+ },
+ {
+  "town": "Washington County",
+  "state": "NY",
+  "county": "Washington",
+  "kind": "county",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Fort Ann, Salem)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": []
+ },
+ {
+  "town": "Wayne County",
+  "state": "NY",
+  "county": "Wayne",
+  "kind": "county",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Rose, Walworth)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [
+   {
+    "url": "https://www.waynecountygov.com/",
+    "error": "https://www.waynecountygov.com/"
+   },
+   {
+    "url": "https://waynecountygov.com/",
+    "error": "https://waynecountygov.com/"
+   }
+  ]
+ },
+ {
+  "town": "Westchester County",
+  "state": "NY",
+  "county": "Westchester",
+  "kind": "county",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 6 target places we cannot read directly or have not read yet (Harrison, Mamaroneck (village), Mount Kisco, New Castle (site town, not read), Pound Ridge, Yorktown)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": [
+   {
+    "url": "https://www.westchestercountygov.com/",
+    "error": "https://www.westchestercountygov.com/"
+   },
+   {
+    "url": "https://westchestercountygov.com/",
+    "error": "https://westchestercountygov.com/"
+   }
+  ]
+ },
+ {
+  "town": "Wyoming County",
+  "state": "NY",
+  "county": "Wyoming",
+  "kind": "county",
+  "website": null,
+  "website_candidates": [],
+  "website_source": null,
+  "selection_group": "county_planning",
+  "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Gainesville, Pike)",
+  "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+  "domain_probe": []
+ }
+]

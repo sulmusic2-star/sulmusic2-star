@@ -1,0 +1,523 @@
+VA {
+ "by_kind": {
+  "city": {
+   "attempted": 38,
+   "readable": 26,
+   "no_agendas_online": 2,
+   "blocked": 9,
+   "automated_no_docs_in_window": 1,
+   "readable_share": 0.684,
+   "bodies_targeted": 114,
+   "bodies_readable": 45,
+   "bodies_readable_share": 0.395,
+   "blocked_how": {
+    "vendor: granicus": 2,
+    "Cloudflare challenge": 2,
+    "WAF 403": 2,
+    "vendor: icompass_civicweb": 2,
+    "crawl-delay > 10 s": 1
+   },
+   "no_agendas_how": {
+    "document_store": 1,
+    "js_only": 1
+   },
+   "platforms_readable": {
+    "legistar": 4,
+    "agenda_page": 6,
+    "civicclerk": 6,
+    "civicplus": 10
+   }
+  },
+  "county": {
+   "attempted": 95,
+   "blocked": 20,
+   "readable": 62,
+   "error_unreachable": 9,
+   "no_agendas_online": 3,
+   "automated_no_docs_in_window": 1,
+   "readable_share": 0.653,
+   "bodies_targeted": 285,
+   "bodies_readable": 113,
+   "bodies_readable_share": 0.396,
+   "blocked_how": {
+    "vendor: boarddocs": 4,
+    "WAF 403": 6,
+    "crawl-delay > 10 s": 1,
+    "robots.txt": 2,
+    "Cloudflare challenge": 3,
+    "documents robots/403": 2,
+    "vendor: icompass_civicweb": 1,
+    "vendor: iqm2": 1
+   },
+   "no_agendas_how": {
+    "no_recent_agendas": 1,
+    "no_agendas_found": 1,
+    "document_store": 1
+   },
+   "platforms_readable": {
+    "agenda_page": 17,
+    "civicclerk": 20,
+    "onbase_agenda": 1,
+    "civicplus": 22,
+    "escribe": 2
+   }
+  },
+  "town": {
+   "attempted": 41,
+   "blocked": 9,
+   "readable": 18,
+   "no_agendas_online": 10,
+   "error_unreachable": 4,
+   "readable_share": 0.439,
+   "bodies_targeted": 123,
+   "bodies_readable": 28,
+   "bodies_readable_share": 0.228,
+   "blocked_how": {
+    "WAF 403": 3,
+    "Cloudflare challenge": 3,
+    "vendor: iqm2": 1,
+    "vendor: granicus": 1,
+    "vendor: boarddocs": 1
+   },
+   "no_agendas_how": {
+    "no_recent_agendas": 7,
+    "js_only": 2,
+    "no_agendas_found": 1
+   },
+   "platforms_readable": {
+    "civicclerk": 5,
+    "legistar": 1,
+    "civicplus": 3,
+    "agenda_page": 9
+   }
+  }
+ },
+ "by_platform": {
+  "agenda_page": {
+   "readable": 32,
+   "automated_no_docs_in_window": 1
+  },
+  "boarddocs": {
+   "blocked": 5
+  },
+  "bot_challenge": {
+   "blocked": 8
+  },
+  "civicclerk": {
+   "readable": 31
+  },
+  "civicplus": {
+   "readable": 35,
+   "automated_no_docs_in_window": 1
+  },
+  "crawl_delay_exceeds_cap": {
+   "blocked": 2
+  },
+  "document_store": {
+   "no_agendas_online": 2
+  },
+  "documents_blocked": {
+   "blocked": 2
+  },
+  "escribe": {
+   "readable": 2
+  },
+  "granicus": {
+   "blocked": 3
+  },
+  "http_error": {
+   "error_unreachable": 1
+  },
+  "icompass_civicweb": {
+   "blocked": 3
+  },
+  "iqm2": {
+   "blocked": 2
+  },
+  "js_only": {
+   "no_agendas_online": 3
+  },
+  "legistar": {
+   "readable": 5
+  },
+  "no_agendas_found": {
+   "no_agendas_online": 2
+  },
+  "no_recent_agendas": {
+   "no_agendas_online": 8
+  },
+  "onbase_agenda": {
+   "readable": 1
+  },
+  "robots_disallow": {
+   "blocked": 2
+  },
+  "unreachable": {
+   "error_unreachable": 12
+  },
+  "waf_block": {
+   "blocked": 11
+  }
+ },
+ "bodies": {
+  "city:select_board": {
+   "read": 25,
+   "not_read": 13
+  },
+  "city:planning_board": {
+   "read": 15,
+   "not_read": 23
+  },
+  "city:zoning_board_of_appeals": {
+   "read": 5,
+   "not_read": 33
+  },
+  "county:select_board": {
+   "read": 60,
+   "not_read": 35
+  },
+  "county:planning_board": {
+   "read": 42,
+   "not_read": 53
+  },
+  "county:zoning_board_of_appeals": {
+   "read": 11,
+   "not_read": 84
+  },
+  "town:select_board": {
+   "read": 17,
+   "not_read": 24
+  },
+  "town:planning_board": {
+   "read": 7,
+   "not_read": 34
+  },
+  "town:zoning_board_of_appeals": {
+   "read": 4,
+   "not_read": 37
+  }
+ },
+ "output": {
+  "documents_listed_run1": {
+   "new_documents": 538,
+   "new_hits": 810,
+   "towns_attempted": 108,
+   "towns_succeeded": 108
+  },
+  "documents_indexed": 553,
+  "documents_by_status": {
+   "ok": 534,
+   "needs_ocr": 4,
+   "error": 15
+  },
+  "documents_read_by_text_source": {
+   "pdf": 435,
+   "html": 60,
+   "ocr": 33,
+   "docx": 6
+  },
+  "hits": 774,
+  "hits_by_topic": {
+   "zoning_amendment": 318,
+   "data_center": 188,
+   "solar": 174,
+   "clean_energy_siting": 109,
+   "battery_storage": 80,
+   "wireless_telecom": 67,
+   "moratorium": 21
+  },
+  "hits_by_board": {
+   "planning_board": 309,
+   "select_board": 461,
+   "zoning_board_of_appeals": 4
+  },
+  "towns_with_hits": 73,
+  "hits_upcoming": 112
+ },
+ "freshness": {
+  "documents_read_with_meeting_date": 532,
+  "documents_for_meetings_still_ahead": 75,
+  "share_still_ahead": 0.141,
+  "lead_time_days_by_source": {
+   "revize_upload_stamp": {
+    "n": 78,
+    "median": 3.2,
+    "p10": -0.7,
+    "p90": 5.5,
+    "share_ge_3d": 0.71,
+    "share_negative": 0.15
+   },
+   "http_last_modified": {
+    "n": 116,
+    "median": 3.2,
+    "p10": -23.8,
+    "p90": 6.2,
+    "share_ge_3d": 0.53,
+    "share_negative": 0.34
+   },
+   "pdf_moddate_or_creationdate": {
+    "n": 374,
+    "median": 4.2,
+    "p10": -0.7,
+    "p90": 8.3,
+    "share_ge_3d": 0.72,
+    "share_negative": 0.14
+   },
+   "civicclerk_publishOn": {
+    "n": 179,
+    "median": 4.3,
+    "p10": -0.5,
+    "p90": 6.3,
+    "share_ge_3d": 0.72,
+    "share_negative": 0.15
+   },
+   "civicplus_posted_stamp": {
+    "n": 101,
+    "median": 4.0,
+    "p10": -0.7,
+    "p90": 6.2,
+    "share_ge_3d": 0.7,
+    "share_negative": 0.15
+   },
+   "wordpress_upload_month_lower_bound": {
+    "n": 11,
+    "median": -6,
+    "p10": -25,
+    "p90": 2,
+    "share_ge_3d": 0.09,
+    "share_negative": 0.64
+   },
+   "our_first_fetch_upcoming_only": {
+    "n": 65,
+    "median": 1.2,
+    "p10": -0.8,
+    "p90": 14.2,
+    "share_ge_3d": 0.23,
+    "share_negative": 0.17
+   }
+  }
+ }
+}
+MD {
+ "by_kind": {
+  "city": {
+   "attempted": 12,
+   "readable": 10,
+   "blocked": 2,
+   "readable_share": 0.833,
+   "bodies_targeted": 36,
+   "bodies_readable": 17,
+   "bodies_readable_share": 0.472,
+   "blocked_how": {
+    "vendor: granicus": 1,
+    "WAF 403": 1
+   },
+   "no_agendas_how": {},
+   "platforms_readable": {
+    "legistar": 2,
+    "civicplus": 3,
+    "civicclerk": 4,
+    "agenda_page": 1
+   }
+  },
+  "county": {
+   "attempted": 23,
+   "readable": 17,
+   "blocked": 6,
+   "readable_share": 0.739,
+   "bodies_targeted": 69,
+   "bodies_readable": 33,
+   "bodies_readable_share": 0.478,
+   "blocked_how": {
+    "WAF 403": 2,
+    "robots.txt": 2,
+    "vendor: granicus": 2
+   },
+   "no_agendas_how": {},
+   "platforms_readable": {
+    "civicclerk": 4,
+    "civicplus": 6,
+    "agenda_page": 6,
+    "legistar": 1
+   }
+  },
+  "town": {
+   "attempted": 5,
+   "readable": 3,
+   "error_unreachable": 2,
+   "readable_share": 0.6,
+   "bodies_targeted": 15,
+   "bodies_readable": 4,
+   "bodies_readable_share": 0.267,
+   "blocked_how": {},
+   "no_agendas_how": {},
+   "platforms_readable": {
+    "civicplus": 1,
+    "agenda_page": 2
+   }
+  }
+ },
+ "by_platform": {
+  "agenda_page": {
+   "readable": 9
+  },
+  "civicclerk": {
+   "readable": 8
+  },
+  "civicplus": {
+   "readable": 10
+  },
+  "granicus": {
+   "blocked": 3
+  },
+  "legistar": {
+   "readable": 3
+  },
+  "robots_disallow": {
+   "blocked": 2
+  },
+  "unreachable": {
+   "error_unreachable": 2
+  },
+  "waf_block": {
+   "blocked": 3
+  }
+ },
+ "bodies": {
+  "city:select_board": {
+   "read": 9,
+   "not_read": 3
+  },
+  "city:planning_board": {
+   "read": 5,
+   "not_read": 7
+  },
+  "city:zoning_board_of_appeals": {
+   "read": 3,
+   "not_read": 9
+  },
+  "county:select_board": {
+   "read": 13,
+   "not_read": 10
+  },
+  "county:planning_board": {
+   "read": 11,
+   "not_read": 12
+  },
+  "county:zoning_board_of_appeals": {
+   "read": 9,
+   "not_read": 14
+  },
+  "town:select_board": {
+   "read": 2,
+   "not_read": 3
+  },
+  "town:planning_board": {
+   "read": 2,
+   "not_read": 3
+  },
+  "town:zoning_board_of_appeals": {
+   "read": 0,
+   "not_read": 5
+  }
+ },
+ "output": {
+  "documents_listed_run1": {
+   "new_documents": 185,
+   "new_hits": 105,
+   "towns_attempted": 30,
+   "towns_succeeded": 30
+  },
+  "documents_indexed": 185,
+  "documents_by_status": {
+   "ok": 185
+  },
+  "documents_read_by_text_source": {
+   "pdf": 148,
+   "html": 33,
+   "ocr": 4
+  },
+  "hits": 98,
+  "hits_by_topic": {
+   "solar": 47,
+   "zoning_amendment": 25,
+   "data_center": 22,
+   "moratorium": 7,
+   "clean_energy_siting": 7,
+   "battery_storage": 3,
+   "wireless_telecom": 2
+  },
+  "hits_by_board": {
+   "planning_board": 46,
+   "select_board": 51,
+   "zoning_board_of_appeals": 1
+  },
+  "towns_with_hits": 15,
+  "hits_upcoming": 21
+ },
+ "freshness": {
+  "documents_read_with_meeting_date": 185,
+  "documents_for_meetings_still_ahead": 33,
+  "share_still_ahead": 0.178,
+  "lead_time_days_by_source": {
+   "civicclerk_publishOn": {
+    "n": 49,
+    "median": 3.2,
+    "p10": -0.7,
+    "p90": 6.5,
+    "share_ge_3d": 0.51,
+    "share_negative": 0.24
+   },
+   "pdf_moddate_or_creationdate": {
+    "n": 117,
+    "median": 3.3,
+    "p10": -0.8,
+    "p90": 22.2,
+    "share_ge_3d": 0.64,
+    "share_negative": 0.19
+   },
+   "civicplus_posted_stamp": {
+    "n": 49,
+    "median": 4.2,
+    "p10": 1.0,
+    "p90": 14.4,
+    "share_ge_3d": 0.82,
+    "share_negative": 0.06
+   },
+   "posted_text_on_page": {
+    "n": 8,
+    "median": 3.3,
+    "p10": 1.8,
+    "p90": 4.8,
+    "share_ge_3d": 0.5,
+    "share_negative": 0.0
+   },
+   "http_last_modified": {
+    "n": 17,
+    "median": 5.4,
+    "p10": -0.8,
+    "p90": 23.2,
+    "share_ge_3d": 0.65,
+    "share_negative": 0.18
+   },
+   "wordpress_upload_month_lower_bound": {
+    "n": 2,
+    "median": -4.5,
+    "p10": -12,
+    "p90": 3,
+    "share_ge_3d": 0.5,
+    "share_negative": 0.5
+   },
+   "our_first_fetch_upcoming_only": {
+    "n": 29,
+    "median": 2.2,
+    "p10": -0.8,
+    "p90": 13.2,
+    "share_ge_3d": 0.31,
+    "share_negative": 0.17
+   }
+  }
+ }
+}
+contract errors: []
+ANALYZEDONE

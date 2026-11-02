@@ -1,0 +1,194 @@
+2026-11-02 18:51:43,989 WARNING watch351.fetch: robots.txt https://www.bathcountyva.org/robots.txt unreachable (https://www.bathcountyva.org/robots.txt: HTTPSConnectionPool(host='www.bathcountyva.org', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 502 Bad Gateway')))); skipping host
+2026-11-02 18:51:46,947 WARNING watch351.fetch: robots.txt https://www.buchanancountyonline.com/robots.txt unreachable (https://www.buchanancountyonline.com/robots.txt: HTTPSConnectionPool(host='www.buchanancountyonline.com', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 502 Bad Gateway')))); skipping host
+2026-11-02 18:54:10,409 WARNING watch351.fetch: robots.txt https://www.gilescounty.org/robots.txt unreachable (https://www.gilescounty.org/robots.txt: HTTPSConnectionPool(host='www.gilescounty.org', port=443): Read timed out. (read timeout=10)); skipping host
+2026-11-02 18:55:50,510 WARNING watch351.fetch: robots.txt https://www.leecova.org/robots.txt unreachable (https://www.leecova.org/robots.txt: HTTPSConnectionPool(host='www.leecova.org', port=443): Read timed out. (read timeout=10)); skipping host
+2026-11-02 18:56:45,883 WARNING watch351.fetch: robots.txt https://www.co.new-kent.va.us/robots.txt unreachable (https://www.co.new-kent.va.us/robots.txt: HTTPSConnectionPool(host='www.co.new-kent.va.us', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 502 Bad Gateway')))); skipping host
+2026-11-02 18:57:15,758 WARNING watch351.fetch: robots.txt https://lfportal.loudoun.gov/robots.txt unreachable (https://lfportal.loudoun.gov/robots.txt: HTTPSConnectionPool(host='lfportal.loudoun.gov', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))); skipping host
+2026-11-02 18:57:49,461 WARNING watch351.fetch: robots.txt https://www.russellcountyva.org/robots.txt unreachable (https://www.russellcountyva.org/robots.txt: HTTPSConnectionPool(host='www.russellcountyva.org', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 502 Bad Gateway')))); skipping host
+2026-11-02 18:59:04,434 WARNING watch351.fetch: robots.txt https://www.tazewellcounty.org/robots.txt unreachable (https://www.tazewellcounty.org/robots.txt: HTTPSConnectionPool(host='www.tazewellcounty.org', port=443): Max retries exceeded with url: /robots.txt (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1032)')))); skipping host
+2026-11-02 18:59:40,019 WARNING watch351.fetch: robots.txt https://goochlandcountyva.iqm2.com/robots.txt unreachable (https://goochlandcountyva.iqm2.com/robots.txt: HTTPSConnectionPool(host='goochlandcountyva.iqm2.com', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))); skipping host
+2026-11-02 19:00:12,044 WARNING watch351.fetch: robots.txt https://washingtoncountyva.iqm2.com/robots.txt unreachable (https://washingtoncountyva.iqm2.com/robots.txt: HTTPSConnectionPool(host='washingtoncountyva.iqm2.com', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))); skipping host
+2026-11-02 19:01:32,545 WARNING watch351.fetch: robots.txt https://www.franklinva.com/robots.txt unreachable (https://www.franklinva.com/robots.txt: HTTPSConnectionPool(host='www.franklinva.com', port=443): Max retries exceeded with url: /robots.txt (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.franklinva.com'. (_ssl.c:1032)")))); skipping host
+2026-11-02 19:04:07,525 WARNING watch351.fetch: robots.txt https://norfolkcityva.iqm2.com/robots.txt unreachable (https://norfolkcityva.iqm2.com/robots.txt: HTTPSConnectionPool(host='norfolkcityva.iqm2.com', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))); skipping host
+2026-11-02 19:04:11,833 WARNING watch351.fetch: robots.txt http://roanokecountyva.iqm2.com/robots.txt unreachable (http://roanokecountyva.iqm2.com/robots.txt: HTTPConnectionPool(host='roanokecountyva.iqm2.com', port=80): Read timed out. (read timeout=45)); skipping host
+2026-11-02 19:04:36,709 WARNING watch351.fetch: robots.txt https://www.town.hamilton.va.us/robots.txt unreachable (https://www.town.hamilton.va.us/robots.txt: HTTPSConnectionPool(host='www.town.hamilton.va.us', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 502 Bad Gateway')))); skipping host
+2026-11-02 19:05:34,291 WARNING watch351.fetch: robots.txt https://www.townofwoodstockva.gov/robots.txt unreachable (https://www.townofwoodstockva.gov/robots.txt: HTTPSConnectionPool(host='www.townofwoodstockva.gov', port=443): Max retries exceeded with url: /robots.txt (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)')))); skipping host
+2026-11-02 19:05:49,130 WARNING watch351.fetch: robots.txt https://www.stephenscity.us/robots.txt unreachable (https://www.stephenscity.us/robots.txt: HTTPSConnectionPool(host='www.stephenscity.us', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 502 Bad Gateway')))); skipping host
+2026-11-02 19:07:44,051 WARNING watch351.fetch: robots.txt https://wmc.wytheville.org/robots.txt unreachable (https://wmc.wytheville.org/robots.txt: HTTPSConnectionPool(host='wmc.wytheville.org', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 502 Bad Gateway')))); skipping host
+2026-11-02 19:08:11,851 WARNING watch351.fetch: robots.txt https://www.gordonsville.org/robots.txt unreachable (https://www.gordonsville.org/robots.txt: HTTPSConnectionPool(host='www.gordonsville.org', port=443): Max retries exceeded with url: /robots.txt (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 502 Bad Gateway')))); skipping host
+2026-11-02 19:09:34,336 WARNING watch351.fetch: robots.txt http://haymarkettownva.iqm2.com/robots.txt unreachable (http://haymarkettownva.iqm2.com/robots.txt: HTTPConnectionPool(host='haymarkettownva.iqm2.com', port=80): Read timed out. (read timeout=45)); skipping host
+VA: 174 discovered in 1090s; fetcher {'network': 2181, 'cache': 1627, 'robots_blocked': 32, 'errors': 258}
+  Accomack County                boarddocs           0 vendor_blocked: agendas on boarddocs: go.boarddocs.com answers HTTP 403 to AgendaAheadBot
+  Albemarle County               -                   0 waf_block: HTTP 403 from Akamai to AgendaAheadBot; not bypassed
+  Alleghany County               -                   0 crawl_delay_exceeds_cap: robots.txt asks for a Crawl-delay above the 20 s listing cap (60.0s too long for prototype); host skipped
+  Amelia County                  agenda_page         3 AUTO: 
+  Amherst County                 civicclerk          3 AUTO: 
+  Appomattox County              civicclerk          2 AUTO: 
+  Arlington County               -                   0 no_agendas_found: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, o
+  Augusta County                 civicclerk          3 AUTO: 
+  Bath County                    -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Bedford County                 -                   0 waf_block: HTTP 403 from Akamai to AgendaAheadBot; not bypassed
+  Bland County                   agenda_page         1 AUTO: 
+  Botetourt County               civicplus           3 AUTO: 
+  Brunswick County               agenda_page         1 AUTO: 
+  Buchanan County                -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Buckingham County              agenda_page         2 AUTO: 
+  Campbell County                civicplus           2 AUTO: 
+  Caroline County                civicplus           3 AUTO: 
+  Carroll County                 agenda_page         1 AUTO: 
+  Charles City County            civicplus           3 AUTO: 
+  Charlotte County               -                   0 robots_disallow: robots.txt on the site disallows AgendaAheadBot (https://www.charlottecountyva.gov/)
+  Chesterfield County            civicclerk          3 AUTO: 
+  Clarke County                  -                   0 waf_block: HTTP 403 from Akamai to AgendaAheadBot; not bypassed
+  Craig County                   civicplus           2 AUTO: 
+  Culpeper County                -                   0 bot_challenge: Cloudflare-style bot challenge (HTTP 403) on https://web.culpepercounty.gov/; not bypassed
+  Cumberland County              civicplus           2 AUTO: 
+  Dickenson County               -                   0 no_recent_agendas: board pages found (e.g. https://www.dickensonva.org/AgendaCenter/Board-of-Supervisors-2) but no agenda dated w
+  Dinwiddie County               civicplus           2 AUTO: 
+  Essex County                   civicplus           2 AUTO: 
+  Fairfax County                 -                   0 robots_disallow: robots.txt disallows agenda pages: http://video.fairfaxcounty.gov/ViewPublisher.php?view_id=7
+  Fauquier County                -                   0 waf_block: HTTP 403 from Akamai to AgendaAheadBot; not bypassed
+  Floyd County                   -                   0 http_error: homepage HTTP 404
+  Fluvanna County                -                   0 documents_blocked: documents on www.fluvanna.gov need a crawl delay above the 10 s document cap
+  Franklin County                civicplus           2 AUTO: 
+  Frederick County               -                   0 waf_block: HTTP 403 from Akamai to AgendaAheadBot; not bypassed
+  Giles County                   -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Gloucester County              escribe             2 AUTO: 
+  Goochland County               civicclerk          2 AUTO: 
+  Grayson County                 -                   0 no_agendas_found: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, o
+  Greene County                  civicclerk          2 AUTO: 
+  Greensville County             agenda_page         2 AUTO: 
+  Halifax County                 civicplus           2 AUTO: 
+  Hanover County                 civicclerk          3 AUTO: 
+  Henrico County                 agenda_page         2 AUTO: 
+  Henry County                   civicplus           3 AUTO: 
+  Highland County                -                   0 bot_challenge: Cloudflare-style bot challenge (HTTP 403) on https://www.highlandcova.org/; not bypassed
+  Isle of Wight County           civicclerk          3 AUTO: 
+  James City County              -                   0 bot_challenge: Cloudflare-style bot challenge (HTTP 403) on https://www.jamescitycountyva.gov/; not bypassed
+  King George County             civicplus           2 AUTO: 
+  King William County            civicclerk          2 AUTO: 
+  King and Queen County          agenda_page         2 AUTO: 
+  Lancaster County               icompass_civicweb   0 vendor_blocked: agendas on icompass_civicweb: robots.txt on lancova.civicweb.net disallows AgendaAheadBot
+  Lee County                     -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Loudoun County                 escribe             2 AUTO: 
+  Louisa County                  civicclerk          2 AUTO: 
+  Lunenburg County               agenda_page         1 AUTO: 
+  Madison County                 civicplus           3 AUTO: 
+  Mathews County                 civicclerk          5 AUTO: 
+  Mecklenburg County             civicplus           2 AUTO: 
+  Middlesex County               civicplus           3 AUTO: 
+  Montgomery County              -                   0 document_store: agendas kept in a Laserfiche WebLink repository (https://weblink.montva.com//WebLink/Browse.aspx?id=801&amp;db
+  Nelson County                  -                   0 waf_block: HTTP 403 from the site's firewall to AgendaAheadBot; not bypassed
+  New Kent County                -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Northampton County             boarddocs           0 vendor_blocked: agendas on boarddocs: www.boarddocs.com answers HTTP 403 to AgendaAheadBot
+  Northumberland County          civicplus           2 AUTO: 
+  Nottoway County                agenda_page         1 AUTO: 
+  Orange County                  civicclerk          2 AUTO: 
+  Page County                    civicplus           3 AUTO: 
+  Patrick County                 civicplus           1 AUTO: 
+  Pittsylvania County            civicclerk          3 AUTO: 
+  Powhatan County                civicplus           2 AUTO: 
+  Prince Edward County           agenda_page         1 AUTO: 
+  Prince George County           boarddocs           0 vendor_blocked: agendas on boarddocs: go.boarddocs.com answers HTTP 403 to AgendaAheadBot
+  Prince William County          agenda_page         1 AUTO: 
+  Pulaski County                 boarddocs           0 vendor_blocked: agendas on boarddocs: www.boarddocs.com answers HTTP 403 to AgendaAheadBot
+  Rappahannock County            -                   0 robots_disallow: robots.txt on the site disallows AgendaAheadBot (https://www.rappahannockcountyva.gov/)
+  Richmond County                -                   0 documents_blocked: robots.txt disallows documents on co.richmond.va.us
+  Roanoke County                 agenda_page         1 AUTO: 
+  Rockbridge County              civicplus           3 AUTO: 
+  Rockingham County              -                   0 unreachable: homepage unreachable: https://www.rockinghamcountyva.gov/: HTTPSConnectionPool(host='www.rockinghamcountyva.go
+  Russell County                 -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Scott County                   civicclerk          1 AUTO: 
+  Shenandoah County              civicplus           2 AUTO: 
+  Smyth County                   agenda_page         2 AUTO: 
+  Southampton County             agenda_page         1 AUTO: 
+  Spotsylvania County            civicclerk          3 AUTO: 
+  Stafford County                civicclerk          3 AUTO: 
+  Surry County                   civicclerk          1 AUTO: 
+  Sussex County                  agenda_page         1 AUTO: 
+  Tazewell County                -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Warren County                  civicclerk          3 AUTO: 
+  Washington County              iqm2                0 vendor_blocked: agendas on iqm2: robots.txt on washingtoncountyva.iqm2.com disallows AgendaAheadBot
+  Westmoreland County            civicclerk          2 AUTO: 
+  Wise County                    civicplus           1 AUTO: 
+  Wythe County                   civicplus           3 AUTO: 
+  York County                    civicclerk          2 AUTO: 
+  City of Alexandria             granicus            0 vendor_blocked: agendas on granicus: robots.txt on alexandria.granicus.com disallows AgendaAheadBot
+  City of Bristol                -                   0 document_store: agendas kept in a Laserfiche WebLink repository (http://www.mccinnovations.com/weblink/login.aspx?LogName=Bris
+  City of Buena Vista            agenda_page         1 AUTO: 
+  City of Charlottesville        civicclerk          2 AUTO: 
+  City of Chesapeake             civicplus           1 AUTO: 
+  City of Colonial Heights       civicplus           2 AUTO: 
+  City of Covington              agenda_page         1 AUTO: 
+  City of Danville               agenda_page         3 AUTO: 
+  City of Emporia                civicplus           2 AUTO: 
+  City of Fairfax                granicus            0 vendor_blocked: agendas on granicus: robots.txt on fairfax.granicus.com disallows AgendaAheadBot
+  City of Falls Church           civicplus           4 AUTO: 
+  City of Franklin               civicclerk          2 AUTO: 
+  City of Fredericksburg         -                   0 bot_challenge: Cloudflare-style bot challenge (HTTP 403) on https://www.fredericksburgva.gov/; not bypassed
+  City of Galax                  agenda_page         1 AUTO: 
+  City of Hampton                -                   0 bot_challenge: Cloudflare-style bot challenge (HTTP 403) on https://www.hampton.gov; not bypassed
+  City of Harrisonburg           legistar            2 AUTO: 
+  City of Hopewell               civicplus           2 AUTO: 
+  City of Lexington              -                   0 waf_block: HTTP 403 from Akamai to AgendaAheadBot; not bypassed
+  City of Lynchburg              civicclerk          1 AUTO: 
+  City of Manassas               granicus            0 vendor_blocked: agendas on granicus: robots.txt on manassascity.granicus.com disallows AgendaAheadBot
+  City of Manassas Park          -                   0 js_only: homepage renders client-side (no server HTML to read)
+  City of Martinsville           civicclerk          2 AUTO: 
+  City of Newport News           icompass_civicweb   0 vendor_blocked: agendas on icompass_civicweb: robots.txt on nngov.civicweb.net disallows AgendaAheadBot
+  City of Norfolk                civicplus           2 AUTO: 
+  City of Norton                 agenda_page         1 AUTO: 
+  City of Petersburg             civicplus           3 AUTO: 
+  City of Poquoson               civicplus           2 AUTO: 
+  City of Portsmouth             -                   0 no_recent_agendas: board pages found (e.g. https://www.portsmouthva.gov/city-council-meeting-calendar) but no agenda dated within
+  City of Radford                civicplus           2 AUTO: 
+  City of Richmond               legistar            3 AUTO: 
+  City of Roanoke                civicclerk          1 AUTO: 
+  City of Salem                  civicclerk          3 AUTO: 
+  City of Staunton               -                   0 waf_block: HTTP 403 from Akamai to AgendaAheadBot; not bypassed
+  City of Suffolk                civicplus           7 AUTO: 
+  City of Virginia Beach         -                   0 document_store: agendas kept in a Laserfiche WebLink repository (https://edocs.vbgov.com/WebLink/Browse.aspx?id=49637280&amp;d
+  City of Waynesboro             -                   0 bot_challenge: Cloudflare-style bot challenge (HTTP 403) on https://www.waynesboro.va.us/; not bypassed
+  City of Williamsburg           icompass_civicweb   0 vendor_blocked: agendas on icompass_civicweb: robots.txt on williamsburg.civicweb.net disallows AgendaAheadBot
+  City of Winchester             agenda_page         1 AUTO: 
+  Town of Leesburg               -                   0 waf_block: HTTP 403 from Akamai to AgendaAheadBot; not bypassed
+  Town of Purcellville           civicclerk          1 AUTO: 
+  Town of Lovettsville           -                   0 bot_challenge: Cloudflare-style bot challenge (HTTP 403) on https://www.lovettsvilleva.gov/; not bypassed
+  Town of Round Hill             -                   0 no_recent_agendas: board pages found (e.g. https://www.roundhillva.gov/1224/Town-Council) but no agenda dated within the last 120
+  Town of Hamilton               -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Town of Middleburg             -                   0 no_recent_agendas: board pages found (e.g. https://www.middleburgva.gov/154/Mayor-and-Council) but no agenda dated within the las
+  Town of Haymarket              iqm2                0 vendor_blocked: agendas on iqm2: robots.txt on haymarkettownva.iqm2.com disallows AgendaAheadBot
+  Town of Dumfries               -                   0 js_only: homepage renders client-side (no server HTML to read)
+  Town of Herndon                civicclerk          5 AUTO: 
+  Town of Vienna                 legistar            4 AUTO: 
+  Town of Front Royal            civicplus           3 AUTO: 
+  Town of Strasburg              -                   0 bot_challenge: Cloudflare-style bot challenge (HTTP 403) on https://www.strasburgva.com/; not bypassed
+  Town of Woodstock              -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Town of Berryville             civicclerk          3 AUTO: 
+  Town of Luray                  -                   0 no_recent_agendas: board pages found (e.g. https://www.townofluray.com/town-council-meetings/june-10-2024---town-council-meeting-
+  Town of Stephens City          -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Town of Orange                 -                   0 no_recent_agendas: board pages found (e.g. https://www.townoforangeva.gov/55/Town-Council) but no agenda dated within the last 12
+  Town of Louisa                 agenda_page         1 AUTO: 
+  Town of Ashland                granicus            0 vendor_blocked: agendas on granicus: robots.txt on ashland-va.granicus.com disallows AgendaAheadBot
+  Town of Bowling Green          agenda_page         1 AUTO: 
+  Town of Remington              agenda_page         1 AUTO: 
+  Town of Culpeper               boarddocs           0 vendor_blocked: agendas on boarddocs: www.boarddocs.com answers HTTP 403 to AgendaAheadBot
+  Town of Warrenton              agenda_page         2 AUTO: 
+  Town of Farmville              civicclerk          3 AUTO: 
+  Town of South Hill             agenda_page         1 AUTO: 
+  Town of South Boston           agenda_page         1 AUTO: 
+  Town of Chase City             -                   0 waf_block: HTTP 403 from the site's firewall to AgendaAheadBot; not bypassed
+  Town of Clarksville            -                   0 js_only: homepage renders client-side (no server HTML to read)
+  Town of Blackstone             -                   0 no_agendas_found: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, o
+  Town of Blacksburg             -                   0 waf_block: HTTP 403 from Akamai to AgendaAheadBot; not bypassed
+  Town of Christiansburg         -                   0 no_recent_agendas: board pages found (e.g. https://www.christiansburg.org/411/Meeting-Videos) but no agenda dated within the last
+  Town of Smithfield             civicplus           4 AUTO: 
+  Town of Windsor                agenda_page         1 AUTO: 
+  Town of Bedford                civicplus           3 AUTO: 
+  Town of Rocky Mount            civicclerk          3 AUTO: 
+  Town of Wytheville             agenda_page         1 AUTO: 
+  Town of Abingdon               -                   0 no_recent_agendas: board pages found (e.g. https://www.abingdon-va.gov/documents/town-council/town-hall-meetings/town-hall-agenda
+  Town of Altavista              agenda_page         2 AUTO: 
+  Town of Chatham                -                   0 bot_challenge: Cloudflare-style bot challenge (HTTP 403) on https://www.chatham-va.gov/; not bypassed
+  Town of Gordonsville           -                   0 unreachable: robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped
+  Town of Vinton                 -                   0 no_recent_agendas: board pages found (e.g. https://www.vintonva.gov/81/Town-Council) but no agenda dated within the last 120 or n

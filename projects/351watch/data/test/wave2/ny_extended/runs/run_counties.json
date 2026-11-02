@@ -1,0 +1,147 @@
+{
+ "by_state": {
+  "NY": {
+   "new_documents": 20,
+   "new_hits": 40,
+   "towns_attempted": 6,
+   "towns_succeeded": 6
+  }
+ },
+ "date": "2026-11-02",
+ "document_errors": 1,
+ "documents_already_indexed": 0,
+ "documents_deferred": 0,
+ "documents_listed": 21,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 0,
+ "documents_retried": 0,
+ "documents_too_large": [
+  {
+   "error": "too large (86013651 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/10.13.26 pb packet.pdf",
+   "meeting_date": "2026-10-13",
+   "state": "NY",
+   "town": "Mount Kisco",
+   "url": "https://www.mountkiscony.gov/10.13.26 pb packet.pdf"
+  },
+  {
+   "error": "too large (67328669 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/7.14.26 PB Packet1.pdf",
+   "meeting_date": "2026-07-14",
+   "state": "NY",
+   "town": "Mount Kisco",
+   "url": "https://www.mountkiscony.gov/7.14.26 PB Packet1.pdf"
+  },
+  {
+   "error": "too large (86107579 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/Packet 9.9.26 r2.pdf",
+   "meeting_date": "2026-09-09",
+   "state": "NY",
+   "town": "Mount Kisco",
+   "url": "https://www.mountkiscony.gov/Packet 9.9.26 r2.pdf"
+  },
+  {
+   "error": "too large (47041700 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/ZBA packet 9.15.26.pdf",
+   "meeting_date": "2026-09-15",
+   "state": "NY",
+   "town": "Mount Kisco",
+   "url": "https://www.mountkiscony.gov/ZBA packet 9.15.26.pdf"
+  }
+ ],
+ "duration_seconds": 40.5,
+ "errors": [
+  {
+   "error": "document: extract failed (content-type application/msword): https://www.chemungcountyny.gov/DocumentCenter/View/20876/Oct-2026-PB-Agenda",
+   "town": "NY:Chemung County"
+  }
+ ],
+ "errors_total": 1,
+ "finished": "2026-11-02T19:37:45+00:00",
+ "hits_current": 104,
+ "index": {
+  "by_state": {
+   "NY": 305
+  },
+  "by_status": {
+   "error": 89,
+   "needs_ocr": 4,
+   "ok": 212
+  },
+  "by_text_source": {
+   "docx": 33,
+   "html": 1,
+   "none": 89,
+   "ocr": 21,
+   "pdf": 161
+  },
+  "documents": 305,
+  "hits": 126,
+  "pruned": 0,
+  "towns": 34,
+  "with_hits": 53
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 38263253,
+   "listing": 250557
+  },
+  "cache_hits": 13,
+  "errors": 0,
+  "requests": 27,
+  "requests_by_purpose": {
+   "document": 25,
+   "listing": 2
+  },
+  "robots_blocked": 0
+ },
+ "new_alert_items": 36,
+ "new_alert_items_by_topic": {
+  "battery_storage": 10,
+  "data_center": 10,
+  "moratorium": 18,
+  "solar": 8,
+  "wireless_telecom": 4,
+  "zoning_amendment": 4
+ },
+ "new_documents": 20,
+ "new_hits": 40,
+ "new_hits_by_topic": {
+  "battery_storage": 10,
+  "data_center": 10,
+  "moratorium": 21,
+  "solar": 8,
+  "wireless_telecom": 5,
+  "zoning_amendment": 4
+ },
+ "options": {
+  "matcher_version": "e94d3fc5c8",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 6
+ },
+ "previous_runs_today": [
+  {
+   "duration_seconds": 311.7,
+   "new_documents": 196,
+   "new_hits": 86,
+   "requests": 215,
+   "started": "2026-11-02T19:28:50+00:00",
+   "states": [
+    "NY"
+   ],
+   "towns_attempted": 28,
+   "towns_succeeded": 28
+  }
+ ],
+ "started": "2026-11-02T19:37:05+00:00",
+ "states": [
+  "NY"
+ ],
+ "towns_attempted": 6,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 6,
+ "window": {
+  "end": "2027-03-02",
+  "start": "2026-06-15"
+ }
+}

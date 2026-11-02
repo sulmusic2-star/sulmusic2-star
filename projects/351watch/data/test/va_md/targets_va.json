@@ -1,0 +1,2394 @@
+[
+ {
+  "town": "Accomack County",
+  "state": "VA",
+  "county": "Accomack",
+  "kind": "county",
+  "website": "https://www.accomack.gov",
+  "selection_group": "eastern_shore",
+  "selection_reason": "solar; offshore-wind staging; agendas on BoardDocs",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "vendor_closed",
+   "platform_or_block": "boarddocs",
+   "vendors": "boarddocs=https://go.boarddocs.com/va/coa/Board.nsf/Public"
+  }
+ },
+ {
+  "town": "Albemarle County",
+  "state": "VA",
+  "county": "Albemarle",
+  "kind": "county",
+  "website": "https://www.albemarle.org/",
+  "selection_group": "central",
+  "selection_reason": "data-center and solar rezonings; Akamai-walled site",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "akamai_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Alleghany County",
+  "state": "VA",
+  "county": "Alleghany",
+  "kind": "county",
+  "website": "https://www.co.alleghany.va.us/",
+  "selection_group": "shenandoah_valley",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "slow_crawl_ok",
+   "platform_or_block": "crawl_delay_over_cap",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Amelia County",
+  "state": "VA",
+  "county": "Amelia",
+  "kind": "county",
+  "website": "http://www.ameliacova.com",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "http_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Amherst County",
+  "state": "VA",
+  "county": "Amherst",
+  "kind": "county",
+  "website": "https://www.countyofamherst.com/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "slow_crawl_ok",
+   "platform_or_block": "crawl_delay_over_cap",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Appomattox County",
+  "state": "VA",
+  "county": "Appomattox",
+  "kind": "county",
+  "website": "https://www.appomattoxcountyva.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": "ecode360=https://ecode360.com/AP1396"
+  }
+ },
+ {
+  "town": "Arlington County",
+  "state": "VA",
+  "county": "Arlington",
+  "kind": "county",
+  "website": "https://www.arlingtonva.us/Home",
+  "selection_group": "nova",
+  "selection_reason": "Northern Virginia data-center market; county board on Legistar",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "generic_hand_listing",
+   "platform_or_block": "site pages (recent agenda links)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Augusta County",
+  "state": "VA",
+  "county": "Augusta",
+  "kind": "county",
+  "website": "https://www.co.augusta.va.us/",
+  "selection_group": "shenandoah_valley",
+  "selection_reason": "solar ordinance; Weyers Cave data-center rezonings; hotspot area 9",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "akamai_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Bath County",
+  "state": "VA",
+  "county": "Bath",
+  "kind": "county",
+  "website": "https://www.bathcountyva.org/",
+  "selection_group": "shenandoah_valley",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "unreachable",
+   "platform_or_block": "robots_unreachable(5xx/timeout)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Bedford County",
+  "state": "VA",
+  "county": "Bedford",
+  "kind": "county",
+  "website": "https://www.bedfordcountyva.gov/",
+  "selection_group": "southwest",
+  "selection_reason": "solar ordinance; Akamai-walled site",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "akamai_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Bland County",
+  "state": "VA",
+  "county": "Bland",
+  "kind": "county",
+  "website": "https://www.blandcountyva.gov/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "generic_hand_listing",
+   "platform_or_block": "site pages (recent agenda links)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Botetourt County",
+  "state": "VA",
+  "county": "Botetourt",
+  "kind": "county",
+  "website": "https://www.botetourtva.gov/",
+  "selection_group": "roanoke_valley",
+  "selection_reason": "Rocky Forge wind project; data-center rezoning",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Brunswick County",
+  "state": "VA",
+  "county": "Brunswick",
+  "kind": "county",
+  "website": "https://www.brunswickco.com/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); 2.9 GW PJM queue; Sabin whole-county restriction",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "generic_hand_listing",
+   "platform_or_block": "site pages (recent agenda links)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Buchanan County",
+  "state": "VA",
+  "county": "Buchanan",
+  "kind": "county",
+  "website": "https://www.buchanancountyonline.com/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "unreachable",
+   "platform_or_block": "robots_unreachable(5xx/timeout)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Buckingham County",
+  "state": "VA",
+  "county": "Buckingham",
+  "kind": "county",
+  "website": "http://www.buckinghamcountyva.org",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "http_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Campbell County",
+  "state": "VA",
+  "county": "Campbell",
+  "kind": "county",
+  "website": "https://www.co.campbell.va.us/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Opposes a $1B 765 kV transmission line (Sep 2026)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Caroline County",
+  "state": "VA",
+  "county": "Caroline",
+  "kind": "county",
+  "website": "https://co.caroline.va.us/",
+  "selection_group": "piedmont",
+  "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Carroll County",
+  "state": "VA",
+  "county": "Carroll",
+  "kind": "county",
+  "website": "https://carrollcountyva.gov/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "generic_hand_listing",
+   "platform_or_block": "site pages (recent agenda links)",
+   "vendors": "ecode360=https://ecode360.com/CA1276"
+  }
+ },
+ {
+  "town": "Charles City County",
+  "state": "VA",
+  "county": "Charles City",
+  "kind": "county",
+  "website": "https://www.charlescityva.us/",
+  "selection_group": "richmond_metro",
+  "selection_reason": "solar; Southside hotspot (area 2)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Charlotte County",
+  "state": "VA",
+  "county": "Charlotte",
+  "kind": "county",
+  "website": "https://www.charlottecountyva.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "robots_disallow",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Chesterfield County",
+  "state": "VA",
+  "county": "Chesterfield",
+  "kind": "county",
+  "website": "https://www.chesterfield.gov/",
+  "selection_group": "richmond_metro",
+  "selection_reason": "Old Bermuda data-center denial upheld Jun 3, 2026",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicclerk",
+   "vendors": "civicclerk=https://chesterfieldcova.portal.civicclerk.com/"
+  }
+ },
+ {
+  "town": "Clarke County",
+  "state": "VA",
+  "county": "Clarke",
+  "kind": "county",
+  "website": "https://www.clarkecounty.gov/",
+  "selection_group": "shenandoah_valley",
+  "selection_reason": "Valley North 765 kV line; solar ordinance",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "unreachable",
+   "platform_or_block": "robots_unreachable(5xx/timeout)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Craig County",
+  "state": "VA",
+  "county": "Craig",
+  "kind": "county",
+  "website": "https://www.craigcountyva.gov/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Culpeper County",
+  "state": "VA",
+  "county": "Culpeper",
+  "kind": "county",
+  "website": "https://web.culpepercounty.gov/",
+  "selection_group": "piedmont",
+  "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); $12B data-center delay; Maroon / North Ridge solar canceled",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Cumberland County",
+  "state": "VA",
+  "county": "Cumberland",
+  "kind": "county",
+  "website": "https://www.cumberlandcounty.virginia.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Dickenson County",
+  "state": "VA",
+  "county": "Dickenson",
+  "kind": "county",
+  "website": "https://www.dickensonva.org/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "agenda_links_no_recent_date",
+   "platform_or_block": "agenda links, no Aug26+ date seen",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Dinwiddie County",
+  "state": "VA",
+  "county": "Dinwiddie",
+  "kind": "county",
+  "website": "http://www.dinwiddieva.us",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Essex County",
+  "state": "VA",
+  "county": "Essex",
+  "kind": "county",
+  "website": "https://www.essexva.gov/",
+  "selection_group": "northern_neck",
+  "selection_reason": "solar; Piedmont / North hotspot (area 9)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "vendor_closed",
+   "platform_or_block": "boarddocs",
+   "vendors": "boarddocs=https://go.boarddocs.com/va/essexco/Board.nsf"
+  }
+ },
+ {
+  "town": "Fairfax County",
+  "state": "VA",
+  "county": "Fairfax",
+  "kind": "county",
+  "website": "https://www.fairfaxcounty.gov/",
+  "selection_group": "nova",
+  "selection_reason": "data-center zoning amendment (2024); $165M project delayed; agendas on iCompass/CivicWeb",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "vendor_closed",
+   "platform_or_block": "diligent_icompass",
+   "vendors": "diligent_icompass=https://fairfaxcounty.civicweb.net/filepro/documents/8339"
+  }
+ },
+ {
+  "town": "Fauquier County",
+  "state": "VA",
+  "county": "Fauquier",
+  "kind": "county",
+  "website": "https://www.fauquiercounty.gov/",
+  "selection_group": "piedmont",
+  "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); Ended by-right data centers Oct 8, 2026; Remington gas fuel cells; Almeda / Bealeton solar canceled",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "akamai_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Floyd County",
+  "state": "VA",
+  "county": "Floyd",
+  "kind": "county",
+  "website": "https://www.floydcova.org/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "unreachable",
+   "platform_or_block": "http_404",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Fluvanna County",
+  "state": "VA",
+  "county": "Fluvanna",
+  "kind": "county",
+  "website": "https://www.fluvannacounty.org/",
+  "selection_group": "piedmont",
+  "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "unreachable",
+   "platform_or_block": "robots_unreachable(5xx/timeout)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Franklin County",
+  "state": "VA",
+  "county": "Franklin",
+  "kind": "county",
+  "website": "https://www.franklincountyva.gov/",
+  "selection_group": "southwest",
+  "selection_reason": "solar ordinance",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Frederick County",
+  "state": "VA",
+  "county": "Frederick",
+  "kind": "county",
+  "website": "https://www.fcva.us/",
+  "selection_group": "shenandoah_valley",
+  "selection_reason": "Winchester-corridor data centers; Valley North 765 kV line",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "akamai_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Giles County",
+  "state": "VA",
+  "county": "Giles",
+  "kind": "county",
+  "website": "https://www.gilescounty.org/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "unreachable",
+   "platform_or_block": "robots_unreachable(5xx/timeout)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Gloucester County",
+  "state": "VA",
+  "county": "Gloucester",
+  "kind": "county",
+  "website": "https://www.gloucesterva.gov/",
+  "selection_group": "hampton_roads",
+  "selection_reason": "solar",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "unreachable",
+   "platform_or_block": "robots_unreachable(5xx/timeout)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Goochland County",
+  "state": "VA",
+  "county": "Goochland",
+  "kind": "county",
+  "website": "https://www.goochlandva.us/",
+  "selection_group": "piedmont",
+  "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "vendor_closed",
+   "platform_or_block": "iqm2",
+   "vendors": "iqm2=https://goochlandcountyva.iqm2.com/citizens/default.aspx;swagit=https://goochlandva.new.swagit.com/views/248/"
+  }
+ },
+ {
+  "town": "Grayson County",
+  "state": "VA",
+  "county": "Grayson",
+  "kind": "county",
+  "website": "https://www.graysoncountyva.com/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Greene County",
+  "state": "VA",
+  "county": "Greene",
+  "kind": "county",
+  "website": "https://www.greenecountyva.gov/",
+  "selection_group": "central",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "unreachable",
+   "platform_or_block": "robots_unreachable(5xx/timeout)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Greensville County",
+  "state": "VA",
+  "county": "Greensville",
+  "kind": "county",
+  "website": "https://www.greensvillecountyva.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Removed utility-scale solar as a use (Jun 2024); 2.3 GW PJM",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "agenda_links_no_recent_date",
+   "platform_or_block": "agenda links, no Aug26+ date seen",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Halifax County",
+  "state": "VA",
+  "county": "Halifax",
+  "kind": "county",
+  "website": "https://www.halifaxcountyva.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Tightened solar rules after a moratorium (late 2024); 2.0 GW PJM",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Hanover County",
+  "state": "VA",
+  "county": "Hanover",
+  "kind": "county",
+  "website": "https://www.hanovercounty.gov",
+  "selection_group": "piedmont",
+  "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); Data-center rezoning rejected May 27, 2026; North Anna River solar canceled",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicclerk",
+   "vendors": "civicclerk=https://hanovercova.portal.civicclerk.com/event/2689/overview"
+  }
+ },
+ {
+  "town": "Henrico County",
+  "state": "VA",
+  "county": "Henrico",
+  "kind": "county",
+  "website": "https://henrico.gov/",
+  "selection_group": "richmond_metro",
+  "selection_reason": "DC Blox $500M project withdrawn (2025); data-center overlay",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "generic_hand_listing",
+   "platform_or_block": "site pages (recent agenda links)",
+   "vendors": "swagit=https://henricocountyva.new.swagit.com/views/91/"
+  }
+ },
+ {
+  "town": "Henry County",
+  "state": "VA",
+  "county": "Henry",
+  "kind": "county",
+  "website": "https://www.henrycountyva.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Solar land cap (Cardinal News)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Highland County",
+  "state": "VA",
+  "county": "Highland",
+  "kind": "county",
+  "website": "https://www.highlandcova.org/",
+  "selection_group": "shenandoah_valley",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "cloudflare_challenge",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Isle of Wight County",
+  "state": "VA",
+  "county": "Isle of Wight",
+  "kind": "county",
+  "website": "https://www.isleofwight.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Carver / Sycamore Cross solar canceled (Sabin)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicclerk",
+   "vendors": "civicclerk=https://isleofwightcova.boardportal.civicclerk.com/;laserfiche=http://lfweb.isleofwightus.net/WebLink/Browse.aspx?dbid=1&startid=422"
+  }
+ },
+ {
+  "town": "James City County",
+  "state": "VA",
+  "county": "James City",
+  "kind": "county",
+  "website": "https://www.jamescitycountyva.gov/",
+  "selection_group": "hampton_roads",
+  "selection_reason": "solar; Cloudflare-walled site",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "cloudflare_challenge",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "King George County",
+  "state": "VA",
+  "county": "King George",
+  "kind": "county",
+  "website": "http://www.king-george.va.us",
+  "selection_group": "piedmont",
+  "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); AWS withdrew its data-center permit application Aug 26, 2026",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "King William County",
+  "state": "VA",
+  "county": "King William",
+  "kind": "county",
+  "website": "https://www.kwc.gov/",
+  "selection_group": "northern_neck",
+  "selection_reason": "solar; hotspot area 9",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "King and Queen County",
+  "state": "VA",
+  "county": "King and Queen",
+  "kind": "county",
+  "website": "https://kingandqueenco.net/",
+  "selection_group": "northern_neck",
+  "selection_reason": "solar; hotspot area 9",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "generic_hand_listing",
+   "platform_or_block": "site pages (recent agenda links)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Lancaster County",
+  "state": "VA",
+  "county": "Lancaster",
+  "kind": "county",
+  "website": "https://www.lancova.com/",
+  "selection_group": "northern_neck",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "vendor_closed",
+   "platform_or_block": "diligent_icompass",
+   "vendors": "diligent_icompass=https://lancova.civicweb.net/portal/"
+  }
+ },
+ {
+  "town": "Lee County",
+  "state": "VA",
+  "county": "Lee",
+  "kind": "county",
+  "website": "https://www.leecova.org/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Loudoun County",
+  "state": "VA",
+  "county": "Loudoun",
+  "kind": "county",
+  "website": "https://www.loudoun.gov/",
+  "selection_group": "nova",
+  "selection_reason": "data-center capital: by-right data centers ended Mar 18, 2025; 23 grandfathered projects and a 12-month pause drafted Sep 15, 2026; opposes the Valley North 765 kV line",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "vendor_closed",
+   "platform_or_block": "granicus",
+   "vendors": "granicus=https://loudoun.granicus.com/ViewPublisher.php?view_id=92;escribe=https://pub-loudoun.escribemeetings.com/"
+  }
+ },
+ {
+  "town": "Louisa County",
+  "state": "VA",
+  "county": "Louisa",
+  "kind": "county",
+  "website": "https://www.louisacounty.gov/",
+  "selection_group": "piedmont",
+  "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); Piedmont data-center belt; Sabin whole-county restriction",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicclerk",
+   "vendors": "civicclerk=https://louisacova.portal.civicclerk.com/subscriptions"
+  }
+ },
+ {
+  "town": "Lunenburg County",
+  "state": "VA",
+  "county": "Lunenburg",
+  "kind": "county",
+  "website": "https://lunenburgva.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "http_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Madison County",
+  "state": "VA",
+  "county": "Madison",
+  "kind": "county",
+  "website": "https://www.madisonco.virginia.gov/",
+  "selection_group": "piedmont",
+  "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Mathews County",
+  "state": "VA",
+  "county": "Mathews",
+  "kind": "county",
+  "website": "https://www.mathewscountyva.gov/",
+  "selection_group": "northern_neck",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": "ecode360=https://ecode360.com/MA1886?needHash=true"
+  }
+ },
+ {
+  "town": "Mecklenburg County",
+  "state": "VA",
+  "county": "Mecklenburg",
+  "kind": "county",
+  "website": "https://www.mecklenburgva.com",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Removed utility-scale solar as a future use (Apr 14, 2025); 2,325-acre cap race; 2.6 GW PJM; Microsoft data-center campus",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Middlesex County",
+  "state": "VA",
+  "county": "Middlesex",
+  "kind": "county",
+  "website": "https://www.co.middlesex.va.us/",
+  "selection_group": "northern_neck",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "robots_disallow",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Montgomery County",
+  "state": "VA",
+  "county": "Montgomery",
+  "kind": "county",
+  "website": "https://www.montva.com/",
+  "selection_group": "southwest",
+  "selection_reason": "New River Valley (Blacksburg, Christiansburg)",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Nelson County",
+  "state": "VA",
+  "county": "Nelson",
+  "kind": "county",
+  "website": "https://www.nelsoncounty-va.gov/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "http_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "New Kent County",
+  "state": "VA",
+  "county": "New Kent",
+  "kind": "county",
+  "website": "https://www.co.new-kent.va.us/",
+  "selection_group": "richmond_metro",
+  "selection_reason": "solar and data-center rezonings along I-64",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "unreachable",
+   "platform_or_block": "robots_unreachable(5xx/timeout)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Northampton County",
+  "state": "VA",
+  "county": "Northampton",
+  "kind": "county",
+  "website": "https://www.co.northampton.va.us/",
+  "selection_group": "eastern_shore",
+  "selection_reason": "solar ordinance",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Northumberland County",
+  "state": "VA",
+  "county": "Northumberland",
+  "kind": "county",
+  "website": "https://www.co.northumberland.va.us/",
+  "selection_group": "northern_neck",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Nottoway County",
+  "state": "VA",
+  "county": "Nottoway",
+  "kind": "county",
+  "website": "http://www.nottoway.org",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "http_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Orange County",
+  "state": "VA",
+  "county": "Orange",
+  "kind": "county",
+  "website": "https://orangecountyva.gov/",
+  "selection_group": "piedmont",
+  "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9); Cunningham Springs, Orange Road and Sunfish solar canceled (Sabin)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicclerk",
+   "vendors": "civicclerk=https://orangecova.portal.civicclerk.com/"
+  }
+ },
+ {
+  "town": "Page County",
+  "state": "VA",
+  "county": "Page",
+  "kind": "county",
+  "website": "https://www.pagecounty.virginia.gov/",
+  "selection_group": "shenandoah_valley",
+  "selection_reason": "solar ordinance; hotspot area 9",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "unreachable",
+   "platform_or_block": "robots_unreachable(5xx/timeout)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Patrick County",
+  "state": "VA",
+  "county": "Patrick",
+  "kind": "county",
+  "website": "https://www.co.patrick.va.us/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Pittsylvania County",
+  "state": "VA",
+  "county": "Pittsylvania",
+  "kind": "county",
+  "website": "https://www.pittsylvaniacountyva.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); 5-mile spacing and 2% acreage cap (2023); data-center rejection Apr 15, 2025",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "generic_hand_listing",
+   "platform_or_block": "site pages (recent agenda links)",
+   "vendors": "laserfiche=https://weblink.pittgov.net/WebLink/"
+  }
+ },
+ {
+  "town": "Powhatan County",
+  "state": "VA",
+  "county": "Powhatan",
+  "kind": "county",
+  "website": "https://www.powhatanva.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Prince Edward County",
+  "state": "VA",
+  "county": "Prince Edward",
+  "kind": "county",
+  "website": "https://www.co.prince-edward.va.us/Home",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Gabriel and Old Ridge Road solar canceled (Sabin)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "generic_hand_listing",
+   "platform_or_block": "site pages (recent agenda links)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Prince George County",
+  "state": "VA",
+  "county": "Prince George",
+  "kind": "county",
+  "website": "https://www.princegeorgecountyva.gov/",
+  "selection_group": "richmond_metro",
+  "selection_reason": "solar; Southside hotspot (area 2)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "unreachable",
+   "platform_or_block": "robots_unreachable(5xx/timeout)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Prince William County",
+  "state": "VA",
+  "county": "Prince William",
+  "kind": "county",
+  "website": "https://www.pwcva.gov/",
+  "selection_group": "nova",
+  "selection_reason": "Digital Gateway rezonings voided Aug 2025, affirmed Mar 31, 2026, QTS exit Jul 2, 2026 ($24.7B); 12 of 12 interconnection requests include storage",
+  "selection_source": "research_notes/Meeting monitor national expansion/data_center_and_other_fights.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "cloudflare_challenge",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Pulaski County",
+  "state": "VA",
+  "county": "Pulaski",
+  "kind": "county",
+  "website": "https://www.pulaskicounty.org/",
+  "selection_group": "southwest",
+  "selection_reason": "New River Valley data-center and solar items; agendas on BoardDocs",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "vendor_closed",
+   "platform_or_block": "boarddocs",
+   "vendors": "boarddocs=https://www.boarddocs.com/va/copva/Board.nsf"
+  }
+ },
+ {
+  "town": "Rappahannock County",
+  "state": "VA",
+  "county": "Rappahannock",
+  "kind": "county",
+  "website": "https://www.rappahannockcountyva.gov/",
+  "selection_group": "nova",
+  "selection_reason": "solar cap; Piedmont",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "http_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Richmond County",
+  "state": "VA",
+  "county": "Richmond",
+  "kind": "county",
+  "website": "https://co.richmond.va.us/",
+  "selection_group": "northern_neck",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Roanoke County",
+  "state": "VA",
+  "county": "Roanoke",
+  "kind": "county",
+  "website": "https://www.roanokecountyva.gov/",
+  "selection_group": "roanoke_valley",
+  "selection_reason": "Roanoke Valley; agendas on iQM2",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "vendor_closed",
+   "platform_or_block": "iqm2",
+   "vendors": "iqm2=http://roanokecountyva.iqm2.com/Citizens/default.aspx"
+  }
+ },
+ {
+  "town": "Rockbridge County",
+  "state": "VA",
+  "county": "Rockbridge",
+  "kind": "county",
+  "website": "https://www.co.rockbridge.va.us/",
+  "selection_group": "shenandoah_valley",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Rockingham County",
+  "state": "VA",
+  "county": "Rockingham",
+  "kind": "county",
+  "website": "https://www.rockinghamcountyva.gov/",
+  "selection_group": "shenandoah_valley",
+  "selection_reason": "solar and data-center rezonings; hotspot area 9",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Russell County",
+  "state": "VA",
+  "county": "Russell",
+  "kind": "county",
+  "website": "https://www.russellcountyva.org/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Scott County",
+  "state": "VA",
+  "county": "Scott",
+  "kind": "county",
+  "website": "https://www.scottcountyva.gov/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicclerk",
+   "vendors": "civicclerk=https://scottcova.portal.civicclerk.com/"
+  }
+ },
+ {
+  "town": "Shenandoah County",
+  "state": "VA",
+  "county": "Shenandoah",
+  "kind": "county",
+  "website": "https://www.shenandoahcountyva.gov/",
+  "selection_group": "shenandoah_valley",
+  "selection_reason": "data-center ordinance (2025) and solar ordinance; hotspot area 9",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Smyth County",
+  "state": "VA",
+  "county": "Smyth",
+  "kind": "county",
+  "website": "https://www.smythcounty.org/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "http_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Southampton County",
+  "state": "VA",
+  "county": "Southampton",
+  "kind": "county",
+  "website": "https://www.southamptoncounty.org/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Sabin whole-county restriction",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": "swagit=https://southamptoncountyva.new.swagit.com/views/278/"
+  }
+ },
+ {
+  "town": "Spotsylvania County",
+  "state": "VA",
+  "county": "Spotsylvania",
+  "kind": "county",
+  "website": "https://www.spotsylvania.va.us/",
+  "selection_group": "piedmont",
+  "selection_reason": "Piedmont / North hotspot county (energy_siting_hotspots.md area 9)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicclerk",
+   "vendors": "civicclerk=https://spotsylvaniacova.civicclerk.com/web/home.aspx"
+  }
+ },
+ {
+  "town": "Stafford County",
+  "state": "VA",
+  "county": "Stafford",
+  "kind": "county",
+  "website": "https://staffordcountyva.gov/",
+  "selection_group": "nova",
+  "selection_reason": "I-95 data-center rezonings; Piedmont / North hotspot (area 9)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "blocked",
+   "platform_or_block": "http_403",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Surry County",
+  "state": "VA",
+  "county": "Surry",
+  "kind": "county",
+  "website": "https://www.surrycountyva.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); Sycamore Cross solar canceled (Sabin)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicclerk",
+   "vendors": "civicclerk=https://surrycova.civicclerk.com/web/home.aspx"
+  }
+ },
+ {
+  "town": "Sussex County",
+  "state": "VA",
+  "county": "Sussex",
+  "kind": "county",
+  "website": "https://sussexcountyva.gov/",
+  "selection_group": "southside",
+  "selection_reason": "Southside hotspot county (energy_siting_hotspots.md area 2); 3.5 GW PJM queue (largest in Southside)",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "generic_hand_listing",
+   "platform_or_block": "site pages (recent agenda links)",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Tazewell County",
+  "state": "VA",
+  "county": "Tazewell",
+  "kind": "county",
+  "website": "https://www.tazewellcounty.org/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata) corrected by hand, 2026-11",
+  "census_oct_2026": {
+   "bucket": "no_agenda_found",
+   "platform_or_block": "no agenda listing found in 7 pages",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Warren County",
+  "state": "VA",
+  "county": "Warren",
+  "kind": "county",
+  "website": "https://www.warrencountyva.gov/",
+  "selection_group": "shenandoah_valley",
+  "selection_reason": "Front Royal (Avtex site) data-center fight; Piedmont / North hotspot",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicclerk",
+   "vendors": "civicclerk=https://warrencountyva.portal.civicclerk.com/"
+  }
+ },
+ {
+  "town": "Washington County",
+  "state": "VA",
+  "county": "Washington",
+  "kind": "county",
+  "website": "https://www.washcova.com/",
+  "selection_group": "southwest",
+  "selection_reason": "solar; agendas on iQM2",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "vendor_closed",
+   "platform_or_block": "granicus",
+   "vendors": "iqm2=https://washingtoncountyva.iqm2.com/citizens/default.aspx?frame=no;granicus=https://washcova.granicus.com/ViewPublisher.php?view_id=2"
+  }
+ },
+ {
+  "town": "Westmoreland County",
+  "state": "VA",
+  "county": "Westmoreland",
+  "kind": "county",
+  "website": "https://www.westmoreland-county.org/",
+  "selection_group": "northern_neck",
+  "selection_reason": "solar; hotspot area 9",
+  "selection_source": "research_notes/Meeting monitor national expansion/energy_siting_hotspots.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicclerk",
+   "vendors": "civicclerk=https://westmorelandcova.v8.civicclerk.com/img/NoMediaFile.png"
+  }
+ },
+ {
+  "town": "Wise County",
+  "state": "VA",
+  "county": "Wise",
+  "kind": "county",
+  "website": "https://www.wisecounty.org/",
+  "selection_group": "southwest",
+  "selection_reason": "statewide county list (all 95); no specific 2025-26 fight in our notes",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "Wythe County",
+  "state": "VA",
+  "county": "Wythe",
+  "kind": "county",
+  "website": "https://www.wytheco.org/",
+  "selection_group": "southwest",
+  "selection_reason": "solar and industrial rezonings (Progress Park)",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicplus_agendacenter",
+   "vendors": ""
+  }
+ },
+ {
+  "town": "York County",
+  "state": "VA",
+  "county": "York",
+  "kind": "county",
+  "website": "https://www.yorkcounty.gov/",
+  "selection_group": "hampton_roads",
+  "selection_reason": "Hampton Roads; CivicClerk",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "October county census (Wikidata)",
+  "census_oct_2026": {
+   "bucket": "stock_adapter",
+   "platform_or_block": "civicclerk",
+   "vendors": "civicclerk=https://yorkcova.portal.civicclerk.com/event/2142/files"
+  }
+ },
+ {
+  "town": "City of Alexandria",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.alexandriava.gov/",
+  "selection_group": "city",
+  "selection_reason": "NoVa; council and planning commission on Legistar",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+  "legistar_client": "alexandria"
+ },
+ {
+  "town": "City of Bristol",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.bristolva.org/",
+  "selection_group": "city",
+  "selection_reason": "statewide city list",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Buena Vista",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.buenavistava.org/",
+  "selection_group": "city",
+  "selection_reason": "statewide city list",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Charlottesville",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.charlottesville.gov/",
+  "selection_group": "city",
+  "selection_reason": "central Virginia; solar and zoning rewrite",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Chesapeake",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.cityofchesapeake.net/",
+  "selection_group": "city",
+  "selection_reason": "data centers and solar; agendas on Granicus",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Colonial Heights",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.colonialheightsva.gov/",
+  "selection_group": "city",
+  "selection_reason": "Richmond metro",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Covington",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.covington.va.us/",
+  "selection_group": "city",
+  "selection_reason": "statewide city list",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Danville",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.danvilleva.gov/",
+  "selection_group": "city",
+  "selection_reason": "Southside; data-center and industrial rezonings",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Emporia",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.ci.emporia.va.us/",
+  "selection_group": "city",
+  "selection_reason": "Southside",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Fairfax",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.fairfaxva.gov/",
+  "selection_group": "city",
+  "selection_reason": "NoVa",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Falls Church",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.fallschurchva.gov/",
+  "selection_group": "city",
+  "selection_reason": "NoVa",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Franklin",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.franklinva.com/",
+  "selection_group": "city",
+  "selection_reason": "Southside",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Fredericksburg",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.fredericksburgva.gov/",
+  "selection_group": "city",
+  "selection_reason": "I-95 data-center corridor",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Galax",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.galaxva.com/",
+  "selection_group": "city",
+  "selection_reason": "statewide city list",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Hampton",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://hampton.gov/",
+  "selection_group": "city",
+  "selection_reason": "Hampton Roads",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+  "legistar_client": "hampton"
+ },
+ {
+  "town": "City of Harrisonburg",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.harrisonburgva.gov/",
+  "selection_group": "city",
+  "selection_reason": "Shenandoah Valley",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Hopewell",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.hopewellva.gov/",
+  "selection_group": "city",
+  "selection_reason": "Richmond metro; industrial",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Lexington",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.lexingtonva.gov/",
+  "selection_group": "city",
+  "selection_reason": "statewide city list",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Lynchburg",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.lynchburgva.gov/",
+  "selection_group": "city",
+  "selection_reason": "central; data-center rezonings",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Manassas",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.manassasva.gov/",
+  "selection_group": "city",
+  "selection_reason": "data centers (Digital Gateway neighbour); agendas on Granicus",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Manassas Park",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.cityofmanassaspark.us/",
+  "selection_group": "city",
+  "selection_reason": "NoVa data-center corridor",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Martinsville",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.martinsville-va.gov/",
+  "selection_group": "city",
+  "selection_reason": "Southside",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Newport News",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.nnva.gov/",
+  "selection_group": "city",
+  "selection_reason": "Hampton Roads",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Norfolk",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.norfolk.gov/",
+  "selection_group": "city",
+  "selection_reason": "Hampton Roads; Legistar",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Norton",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.nortonva.gov/",
+  "selection_group": "city",
+  "selection_reason": "statewide city list",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Petersburg",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.petersburgva.gov/",
+  "selection_group": "city",
+  "selection_reason": "Richmond metro; industrial",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Poquoson",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.ci.poquoson.va.us/",
+  "selection_group": "city",
+  "selection_reason": "statewide city list",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Portsmouth",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.portsmouthva.gov/",
+  "selection_group": "city",
+  "selection_reason": "Hampton Roads",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Radford",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.radfordva.gov/",
+  "selection_group": "city",
+  "selection_reason": "New River Valley",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Richmond",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.rva.gov/",
+  "selection_group": "city",
+  "selection_reason": "state capital; Legistar",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+  "legistar_client": "richmondva"
+ },
+ {
+  "town": "City of Roanoke",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.roanokeva.gov/",
+  "selection_group": "city",
+  "selection_reason": "Roanoke Valley",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Salem",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.salemva.gov/",
+  "selection_group": "city",
+  "selection_reason": "Roanoke Valley",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Staunton",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.ci.staunton.va.us/",
+  "selection_group": "city",
+  "selection_reason": "Shenandoah Valley",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Suffolk",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.suffolkva.us/",
+  "selection_group": "city",
+  "selection_reason": "Hampton Roads; solar and data-center rezonings",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Virginia Beach",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://virginiabeach.gov/",
+  "selection_group": "city",
+  "selection_reason": "Hampton Roads; data centers and offshore-wind landing",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Waynesboro",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.waynesboro.va.us/",
+  "selection_group": "city",
+  "selection_reason": "Shenandoah Valley",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Williamsburg",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.williamsburgva.gov/",
+  "selection_group": "city",
+  "selection_reason": "Hampton Roads",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "City of Winchester",
+  "state": "VA",
+  "county": null,
+  "kind": "city",
+  "website": "https://www.winchesterva.gov/",
+  "selection_group": "city",
+  "selection_reason": "Winchester-corridor data centers",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Leesburg",
+  "state": "VA",
+  "county": "Loudoun",
+  "kind": "town",
+  "website": "https://www.leesburgva.gov/",
+  "selection_group": "town",
+  "selection_reason": "data centers (Loudoun); Akamai-walled in October",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Purcellville",
+  "state": "VA",
+  "county": "Loudoun",
+  "kind": "town",
+  "website": "https://www.purcellvilleva.gov/",
+  "selection_group": "town",
+  "selection_reason": "western Loudoun data-center fights",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Lovettsville",
+  "state": "VA",
+  "county": "Loudoun",
+  "kind": "town",
+  "website": "https://www.lovettsvilleva.gov/",
+  "selection_group": "town",
+  "selection_reason": "western Loudoun; Valley North line",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Round Hill",
+  "state": "VA",
+  "county": "Loudoun",
+  "kind": "town",
+  "website": "https://www.roundhillva.org/",
+  "selection_group": "town",
+  "selection_reason": "western Loudoun",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Hamilton",
+  "state": "VA",
+  "county": "Loudoun",
+  "kind": "town",
+  "website": "https://www.town.hamilton.va.us/",
+  "selection_group": "town",
+  "selection_reason": "western Loudoun",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Middleburg",
+  "state": "VA",
+  "county": "Loudoun",
+  "kind": "town",
+  "website": "https://www.middleburgva.gov/",
+  "selection_group": "town",
+  "selection_reason": "western Loudoun; Piedmont Environmental Council area",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Haymarket",
+  "state": "VA",
+  "county": "Prince William",
+  "kind": "town",
+  "website": "https://www.townofhaymarket.org/",
+  "selection_group": "town",
+  "selection_reason": "Digital Gateway neighbour",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Dumfries",
+  "state": "VA",
+  "county": "Prince William",
+  "kind": "town",
+  "website": "https://www.dumfriesva.gov/",
+  "selection_group": "town",
+  "selection_reason": "I-95 data-center corridor",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Herndon",
+  "state": "VA",
+  "county": "Fairfax",
+  "kind": "town",
+  "website": "https://www.herndon-va.gov/",
+  "selection_group": "town",
+  "selection_reason": "Dulles data-center corridor",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Vienna",
+  "state": "VA",
+  "county": "Fairfax",
+  "kind": "town",
+  "website": "https://www.viennava.gov/",
+  "selection_group": "town",
+  "selection_reason": "NoVa",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Front Royal",
+  "state": "VA",
+  "county": "Warren",
+  "kind": "town",
+  "website": "https://www.frontroyalva.com/",
+  "selection_group": "town",
+  "selection_reason": "Avtex-site data-center fight",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Strasburg",
+  "state": "VA",
+  "county": "Shenandoah",
+  "kind": "town",
+  "website": "https://www.strasburgva.com/",
+  "selection_group": "town",
+  "selection_reason": "data-center rezoning (2025)",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Woodstock",
+  "state": "VA",
+  "county": "Shenandoah",
+  "kind": "town",
+  "website": "https://www.townofwoodstockva.gov/",
+  "selection_group": "town",
+  "selection_reason": "Shenandoah County seat",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Berryville",
+  "state": "VA",
+  "county": "Clarke",
+  "kind": "town",
+  "website": "https://www.berryvilleva.gov/",
+  "selection_group": "town",
+  "selection_reason": "Clarke County seat; Valley North line",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Luray",
+  "state": "VA",
+  "county": "Page",
+  "kind": "town",
+  "website": "https://www.townofluray.com/",
+  "selection_group": "town",
+  "selection_reason": "Page County seat",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Stephens City",
+  "state": "VA",
+  "county": "Frederick",
+  "kind": "town",
+  "website": "https://www.stephenscity.us/",
+  "selection_group": "town",
+  "selection_reason": "Frederick County data-center corridor",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Orange",
+  "state": "VA",
+  "county": "Orange",
+  "kind": "town",
+  "website": "https://www.townoforangeva.org/",
+  "selection_group": "town",
+  "selection_reason": "solar (Grassland Solar SUP in the county)",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Louisa",
+  "state": "VA",
+  "county": "Louisa",
+  "kind": "town",
+  "website": "https://www.louisatown.org/",
+  "selection_group": "town",
+  "selection_reason": "Amazon data centers at Lake Anna (county)",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Ashland",
+  "state": "VA",
+  "county": "Hanover",
+  "kind": "town",
+  "website": "https://www.ashlandva.gov/",
+  "selection_group": "town",
+  "selection_reason": "Hanover data-center rezonings",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Bowling Green",
+  "state": "VA",
+  "county": "Caroline",
+  "kind": "town",
+  "website": "https://www.townofbowlinggreen.com/",
+  "selection_group": "town",
+  "selection_reason": "Caroline data-center and quarry rezonings",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Remington",
+  "state": "VA",
+  "county": "Fauquier",
+  "kind": "town",
+  "website": "https://www.remington-va.gov/",
+  "selection_group": "town",
+  "selection_reason": "Remington Technology Park gas fuel cells (Jul 10, 2026)",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Culpeper",
+  "state": "VA",
+  "county": "Culpeper",
+  "kind": "town",
+  "website": "https://www.culpeperva.gov/",
+  "selection_group": "town",
+  "selection_reason": "data centers ($12B Culpeper Acquisitions); BoardDocs",
+  "selection_source": "research_notes/Meeting monitor national expansion/coverage_sample_jurisdictions.csv",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Warrenton",
+  "state": "VA",
+  "county": "Fauquier",
+  "kind": "town",
+  "website": "https://www.warrentonva.gov/",
+  "selection_group": "town",
+  "selection_reason": "Amazon data-center fight; Municode Meetings",
+  "selection_source": "research_notes/Meeting monitor national expansion/coverage_sample_jurisdictions.csv",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Farmville",
+  "state": "VA",
+  "county": "Prince Edward",
+  "kind": "town",
+  "website": "https://www.farmvilleva.com/",
+  "selection_group": "town",
+  "selection_reason": "Southside town",
+  "selection_source": "research_notes/Meeting monitor national expansion/coverage_sample_jurisdictions.csv",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of South Hill",
+  "state": "VA",
+  "county": "Mecklenburg",
+  "kind": "town",
+  "website": "https://www.southhillva.org/",
+  "selection_group": "town",
+  "selection_reason": "Microsoft Boydton neighbour",
+  "selection_source": "research_notes/Meeting monitor national expansion/coverage_sample_jurisdictions.csv",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of South Boston",
+  "state": "VA",
+  "county": "Halifax",
+  "kind": "town",
+  "website": "https://www.southboston.com/",
+  "selection_group": "town",
+  "selection_reason": "Halifax's largest town (solar, industrial rezonings)",
+  "selection_source": "research_notes/Meeting monitor national expansion/coverage_sample_jurisdictions.csv",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Chase City",
+  "state": "VA",
+  "county": "Mecklenburg",
+  "kind": "town",
+  "website": "https://www.chasecity.org/",
+  "selection_group": "town",
+  "selection_reason": "Mecklenburg solar cap",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Clarksville",
+  "state": "VA",
+  "county": "Mecklenburg",
+  "kind": "town",
+  "website": "https://www.clarksvilleva.com/",
+  "selection_group": "town",
+  "selection_reason": "Microsoft Boydton neighbour",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Blackstone",
+  "state": "VA",
+  "county": "Nottoway",
+  "kind": "town",
+  "website": "https://www.blackstoneva.com/",
+  "selection_group": "town",
+  "selection_reason": "Southside; Fort Barfoot",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Blacksburg",
+  "state": "VA",
+  "county": "Montgomery",
+  "kind": "town",
+  "website": "https://www.blacksburg.gov/",
+  "selection_group": "town",
+  "selection_reason": "New River Valley",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Christiansburg",
+  "state": "VA",
+  "county": "Montgomery",
+  "kind": "town",
+  "website": "https://www.christiansburg.org/",
+  "selection_group": "town",
+  "selection_reason": "New River Valley data-center items",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Smithfield",
+  "state": "VA",
+  "county": "Isle of Wight",
+  "kind": "town",
+  "website": "https://www.smithfieldva.gov/",
+  "selection_group": "town",
+  "selection_reason": "Isle of Wight solar",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Windsor",
+  "state": "VA",
+  "county": "Isle of Wight",
+  "kind": "town",
+  "website": "https://www.windsor-va.gov/",
+  "selection_group": "town",
+  "selection_reason": "Isle of Wight solar",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Bedford",
+  "state": "VA",
+  "county": "Bedford",
+  "kind": "town",
+  "website": "https://www.bedfordva.gov/",
+  "selection_group": "town",
+  "selection_reason": "Bedford County solar",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Rocky Mount",
+  "state": "VA",
+  "county": "Franklin",
+  "kind": "town",
+  "website": "https://www.rockymountva.org/",
+  "selection_group": "town",
+  "selection_reason": "Franklin County solar",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Wytheville",
+  "state": "VA",
+  "county": "Wythe",
+  "kind": "town",
+  "website": "https://www.wytheville.org/",
+  "selection_group": "town",
+  "selection_reason": "Progress Park industrial",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Abingdon",
+  "state": "VA",
+  "county": "Washington",
+  "kind": "town",
+  "website": "https://www.abingdon-va.gov/",
+  "selection_group": "town",
+  "selection_reason": "southwest",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Altavista",
+  "state": "VA",
+  "county": "Campbell",
+  "kind": "town",
+  "website": "https://www.altavistava.gov/",
+  "selection_group": "town",
+  "selection_reason": "Campbell County solar",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Chatham",
+  "state": "VA",
+  "county": "Pittsylvania",
+  "kind": "town",
+  "website": "https://www.chatham-va.gov/",
+  "selection_group": "town",
+  "selection_reason": "Pittsylvania County seat",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Gordonsville",
+  "state": "VA",
+  "county": "Orange",
+  "kind": "town",
+  "website": "https://www.gordonsville.org/",
+  "selection_group": "town",
+  "selection_reason": "Orange County solar",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ },
+ {
+  "town": "Town of Vinton",
+  "state": "VA",
+  "county": "Roanoke",
+  "kind": "town",
+  "website": "https://www.vintonva.gov/",
+  "selection_group": "town",
+  "selection_reason": "Roanoke Valley",
+  "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+  "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)"
+ }
+]

@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/user/sulmusic2-star/projects/351watch/crawler/experiments/keyword_regression.py", line 121, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/user/sulmusic2-star/projects/351watch/crawler/experiments/keyword_regression.py", line 81, in main
+    resp = fetcher.get(url)
+  File "/home/user/sulmusic2-star/projects/351watch/crawler/watch351/fetch.py", line 328, in get
+    cached = self._read_cache(url, max_age)
+  File "/home/user/sulmusic2-star/projects/351watch/crawler/watch351/fetch.py", line 163, in _read_cache
+    meta = json.loads(meta_p.read_text())
+  File "/usr/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+REGDONE

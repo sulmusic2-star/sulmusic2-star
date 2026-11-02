@@ -1,0 +1,105 @@
+{
+ "by_state": {
+  "NY": {
+   "new_documents": 112,
+   "new_hits": 54,
+   "towns_attempted": 28,
+   "towns_succeeded": 28
+  }
+ },
+ "date": "2026-11-02",
+ "document_errors": 1,
+ "documents_already_indexed": 4,
+ "documents_deferred": 0,
+ "documents_listed": 117,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 0,
+ "documents_retried": 0,
+ "documents_too_large": [
+  {
+   "error": "too large (86013651 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/10.13.26 pb packet.pdf",
+   "meeting_date": "2026-10-13",
+   "state": "NY",
+   "town": "Mount Kisco",
+   "url": "https://www.mountkiscony.gov/10.13.26 pb packet.pdf"
+  }
+ ],
+ "duration_seconds": 144.0,
+ "errors": [
+  {
+   "error": "document: too large (86013651 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/10.13.26 pb packet.pdf",
+   "town": "NY:Mount Kisco"
+  }
+ ],
+ "errors_total": 1,
+ "finished": "2026-11-02T19:27:54+00:00",
+ "hits_current": 44,
+ "index": {
+  "by_state": {
+   "NY": 113
+  },
+  "by_status": {
+   "error": 1,
+   "ok": 112
+  },
+  "by_text_source": {
+   "docx": 18,
+   "none": 1,
+   "ocr": 20,
+   "pdf": 74
+  },
+  "documents": 113,
+  "hits": 54,
+  "pruned": 0,
+  "towns": 27,
+  "with_hits": 24
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 217459027,
+   "listing": 300239,
+   "robots": 263
+  },
+  "cache_hits": 93,
+  "errors": 0,
+  "requests": 121,
+  "requests_by_purpose": {
+   "document": 116,
+   "listing": 4,
+   "robots": 1
+  },
+  "robots_blocked": 0
+ },
+ "new_alert_items": 0,
+ "new_alert_items_by_topic": {},
+ "new_documents": 112,
+ "new_hits": 54,
+ "new_hits_by_topic": {
+  "battery_storage": 17,
+  "data_center": 20,
+  "moratorium": 10,
+  "solar": 13,
+  "wireless_telecom": 2,
+  "zoning_amendment": 5
+ },
+ "options": {
+  "matcher_version": "e94d3fc5c8",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 12
+ },
+ "started": "2026-11-02T19:25:30+00:00",
+ "states": [
+  "NY"
+ ],
+ "towns_attempted": 28,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 28,
+ "window": {
+  "end": "2027-03-02",
+  "start": "2026-09-18"
+ }
+}

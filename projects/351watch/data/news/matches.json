@@ -1,15 +1,15 @@
 {
- "generated": "2026-11-02T13:55:10+00:00",
+ "generated": "2026-11-02T19:39:36+00:00",
  "states": {
   "CT": {
    "data_center": 1,
    "moratorium": 1,
    "solar": 2,
-   "wind": 2
+   "wind": 1
   },
   "MA": {
    "battery_storage": 1,
-   "data_center": 38,
+   "data_center": 37,
    "moratorium": 4,
    "solar": 1,
    "wind": 3
@@ -25,8 +25,8 @@
   "RI": {
    "battery_storage": 1,
    "data_center": 4,
-   "solar": 2,
-   "wind": 2
+   "solar": 3,
+   "wind": 1
   }
  },
  "towns": {
@@ -129,6 +129,17 @@
     "title": "Zoom meeting set for servistar data center permit decision in Westfield",
     "topics": [
      "data_center"
+    ]
+   }
+  ],
+  "RI:Newport": [
+   {
+    "link": "https://ecori.org/newport-council-approves-next-step-in-school-solar-proposal/",
+    "published": "2026-11-02T18:12:32+00:00",
+    "source": "ecoRI News",
+    "title": "Newport Council Approves Next Step in School Solar Proposal",
+    "topics": [
+     "solar"
     ]
    }
   ]

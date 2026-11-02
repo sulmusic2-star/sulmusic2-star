@@ -1,0 +1,594 @@
+{
+ "generated": "2026-11-02T19:08:15+00:00",
+ "note": "days from the stamp to 00:00 of the meeting day (most boards meet 6 to 7:30 pm, so these understate the lead); share_72h = at least 2.21 days, i.e. 72 hours before a 7 pm meeting",
+ "civicplus_posted": {
+  "n": 69,
+  "median_days": 2.4,
+  "p10_days": 2.3,
+  "share_72h": 94,
+  "posted_after_meeting": 2,
+  "by_town": {
+   "Peekskill": {
+    "n": 69,
+    "median_days": 2.4,
+    "share_72h": 94,
+    "posted_after_meeting": 2
+   }
+  }
+ },
+ "own_first_fetch_wave2": {
+  "n": 0,
+  "median_days": null,
+  "note": "bounded by the test run dates; a daily crawl would see agendas as soon as they post"
+ },
+ "stamps": [
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-01-01",
+   "posted": "2025-12-29T17:34:00",
+   "days_before": 2.27,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_01012026-1131"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-01-05",
+   "posted": "2026-01-02T15:45:00",
+   "days_before": 2.34,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_01052026-1134"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-01-12",
+   "posted": "2026-01-09T14:54:00",
+   "days_before": 2.38,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_01122026-1160"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-01-12",
+   "posted": "2026-01-09T15:19:00",
+   "days_before": 2.36,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_01122026-1161"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Planning Commission",
+   "meeting_date": "2026-01-13",
+   "posted": "2026-01-09T17:31:00",
+   "days_before": 3.27,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_01132026-1162"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-01-20",
+   "posted": "2026-01-16T15:21:00",
+   "days_before": 3.36,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_01202026-1164"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-01-26",
+   "posted": "2026-01-23T16:03:00",
+   "days_before": 2.33,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_01262026-1166"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-02-02",
+   "posted": "2026-01-30T15:39:00",
+   "days_before": 2.35,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_02022026-1169"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-02-09",
+   "posted": "2026-02-06T15:48:00",
+   "days_before": 2.34,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_02092026-1170"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-02-09",
+   "posted": "2026-02-06T16:45:00",
+   "days_before": 2.3,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_02092026-1174"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-02-11",
+   "posted": "2026-02-06T16:30:00",
+   "days_before": 4.31,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_02112026-1173"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-02-17",
+   "posted": "2026-02-13T15:07:00",
+   "days_before": 3.37,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_02172026-1175"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-02-23",
+   "posted": "2026-02-24T10:13:00",
+   "days_before": -1.43,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_02232026-1183"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-03-02",
+   "posted": "2026-02-27T15:57:00",
+   "days_before": 2.34,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_03022026-1184"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-03-09",
+   "posted": "2026-03-06T16:14:00",
+   "days_before": 2.32,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_03092026-1185"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Planning Commission",
+   "meeting_date": "2026-03-10",
+   "posted": "2026-03-06T22:25:00",
+   "days_before": 3.07,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_03102026-1187"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Zoning Board of Appeals",
+   "meeting_date": "2026-03-19",
+   "posted": "2026-03-18T17:22:00",
+   "days_before": 0.28,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_03192026-1192"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Zoning Board of Appeals",
+   "meeting_date": "2026-03-19",
+   "posted": "2026-03-18T18:11:00",
+   "days_before": 0.24,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_03192026-1193"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-03-23",
+   "posted": "2026-03-20T15:15:00",
+   "days_before": 2.36,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_03232026-1194"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-03-23",
+   "posted": "2026-03-20T16:54:00",
+   "days_before": 2.3,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_03232026-1195"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-04-06",
+   "posted": "2026-04-03T15:28:00",
+   "days_before": 2.36,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_04062026-1208"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-04-13",
+   "posted": "2026-04-10T15:25:00",
+   "days_before": 2.36,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_04132026-1209"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-04-13",
+   "posted": "2026-04-10T16:47:00",
+   "days_before": 2.3,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_04132026-1210"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Planning Commission",
+   "meeting_date": "2026-04-14",
+   "posted": "2026-04-10T17:13:00",
+   "days_before": 3.28,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_04142026-1211"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-04-20",
+   "posted": "2026-04-17T16:23:00",
+   "days_before": 2.32,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_04202026-1212"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-04-27",
+   "posted": "2026-04-24T16:01:00",
+   "days_before": 2.33,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_04272026-1214"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-04-27",
+   "posted": "2026-04-24T16:44:00",
+   "days_before": 2.3,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_04272026-1215"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-05-04",
+   "posted": "2026-05-01T15:09:00",
+   "days_before": 2.37,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_05042026-1219"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-05-11",
+   "posted": "2026-05-08T15:42:00",
+   "days_before": 2.35,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_05112026-1220"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-05-11",
+   "posted": "2026-05-08T16:47:00",
+   "days_before": 2.3,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_05112026-1222"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Planning Commission",
+   "meeting_date": "2026-05-12",
+   "posted": "2026-05-08T16:01:00",
+   "days_before": 3.33,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_05122026-1221"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-05-18",
+   "posted": "2026-05-15T15:21:00",
+   "days_before": 2.36,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_05182026-1223"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Zoning Board of Appeals",
+   "meeting_date": "2026-05-21",
+   "posted": "2026-05-15T16:36:00",
+   "days_before": 5.31,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_05212026-1224"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-05-26",
+   "posted": "2026-05-22T16:09:00",
+   "days_before": 3.33,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_05262026-1225"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-05-26",
+   "posted": "2026-05-22T16:17:00",
+   "days_before": 3.32,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_05262026-1226"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-06-01",
+   "posted": "2026-05-29T16:39:00",
+   "days_before": 2.31,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_06012026-1231"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-06-08",
+   "posted": "2026-06-05T16:05:00",
+   "days_before": 2.33,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_06082026-1232"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-06-08",
+   "posted": "2026-06-05T17:11:00",
+   "days_before": 2.28,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_06082026-1234"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Planning Commission",
+   "meeting_date": "2026-06-09",
+   "posted": "2026-06-05T16:07:00",
+   "days_before": 3.33,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_06092026-1233"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-06-15",
+   "posted": "2026-06-12T15:36:00",
+   "days_before": 2.35,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_06152026-1239"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Zoning Board of Appeals",
+   "meeting_date": "2026-06-18",
+   "posted": "2026-06-12T13:20:00",
+   "days_before": 5.44,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_06182026-1238"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-06-22",
+   "posted": "2026-06-18T16:33:00",
+   "days_before": 3.31,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_06222026-1241"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-06-22",
+   "posted": "2026-06-18T17:01:00",
+   "days_before": 3.29,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_06222026-1242"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-07-06",
+   "posted": "2026-07-02T16:12:00",
+   "days_before": 3.33,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_07062026-1247"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-07-13",
+   "posted": "2026-07-10T14:29:00",
+   "days_before": 2.4,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_07132026-1248"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Zoning Board of Appeals",
+   "meeting_date": "2026-07-16",
+   "posted": "2026-07-15T16:15:00",
+   "days_before": 0.32,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_07162026-1251"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-07-27",
+   "posted": "2026-07-24T14:52:00",
+   "days_before": 2.38,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_07272026-1253"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-08-17",
+   "posted": "2026-08-14T15:06:00",
+   "days_before": 2.37,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_08172026-1258"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-08-17",
+   "posted": "2026-08-14T15:13:00",
+   "days_before": 2.37,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_08172026-1259"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Zoning Board of Appeals",
+   "meeting_date": "2026-08-20",
+   "posted": "2026-08-11T14:42:00",
+   "days_before": 8.39,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_08202026-1257"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-08-31",
+   "posted": "2026-08-28T14:27:00",
+   "days_before": 2.4,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_08312026-1262"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-08-31",
+   "posted": "2026-08-28T15:30:00",
+   "days_before": 2.35,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_08312026-1263"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-09-08",
+   "posted": "2026-09-04T14:32:00",
+   "days_before": 3.39,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_09082026-1264"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Planning Commission",
+   "meeting_date": "2026-09-09",
+   "posted": "2026-09-04T15:35:00",
+   "days_before": 4.35,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_09092026-1265"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-09-14",
+   "posted": "2026-09-11T15:52:00",
+   "days_before": 2.34,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_09142026-1266"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-09-14",
+   "posted": "2026-09-11T16:03:00",
+   "days_before": 2.33,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_09142026-1267"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Zoning Board of Appeals",
+   "meeting_date": "2026-09-17",
+   "posted": "2026-09-14T16:47:00",
+   "days_before": 2.3,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_09172026-1268"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-09-22",
+   "posted": "2026-09-18T15:57:00",
+   "days_before": 3.34,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_09222026-1269"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-09-28",
+   "posted": "2026-09-25T15:51:00",
+   "days_before": 2.34,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_09282026-1273"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-09-30",
+   "posted": "2026-09-25T16:07:00",
+   "days_before": 4.33,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_09302026-1275"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-10-05",
+   "posted": "2026-10-02T16:11:00",
+   "days_before": 2.33,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_10052026-1276"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-10-07",
+   "posted": "2026-10-02T16:18:00",
+   "days_before": 4.32,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_10072026-1277"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-10-13",
+   "posted": "2026-10-09T14:38:00",
+   "days_before": 3.39,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_10132026-1278"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-10-13",
+   "posted": "2026-10-09T14:44:00",
+   "days_before": 3.39,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_10132026-1280"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-10-14",
+   "posted": "2026-10-09T14:40:00",
+   "days_before": 4.39,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_10142026-1279"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Planning Commission",
+   "meeting_date": "2026-10-15",
+   "posted": "2026-10-15T16:37:00",
+   "days_before": -0.69,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_10152026-1282"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-10-19",
+   "posted": "2026-10-16T14:04:00",
+   "days_before": 2.41,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_10192026-1283"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Zoning Board of Appeals",
+   "meeting_date": "2026-10-22",
+   "posted": "2026-10-20T18:20:00",
+   "days_before": 1.24,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_10222026-1284"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-10-26",
+   "posted": "2026-10-23T16:28:00",
+   "days_before": 2.31,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_10262026-1285"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-10-26",
+   "posted": "2026-10-23T17:23:00",
+   "days_before": 2.28,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_10262026-1286"
+  },
+  {
+   "town": "Peekskill",
+   "category": "Common Council",
+   "meeting_date": "2026-11-02",
+   "posted": "2026-10-30T14:51:00",
+   "days_before": 2.38,
+   "url": "https://www.cityofpeekskillny.gov/AgendaCenter/ViewFile/Agenda/_11022026-1288"
+  }
+ ]
+}

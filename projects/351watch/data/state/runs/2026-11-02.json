@@ -1,32 +1,32 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 79,
-   "new_hits": 84,
-   "towns_attempted": 243,
-   "towns_succeeded": 242
+   "new_documents": 11,
+   "new_hits": 11,
+   "towns_attempted": 48,
+   "towns_succeeded": 48
   },
   "NY": {
-   "new_documents": 13,
-   "new_hits": 5,
-   "towns_attempted": 33,
-   "towns_succeeded": 33
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 7,
+   "towns_succeeded": 7
   },
   "RI": {
-   "new_documents": 9,
+   "new_documents": 0,
    "new_hits": 0,
-   "towns_attempted": 39,
-   "towns_succeeded": 39
+   "towns_attempted": 6,
+   "towns_succeeded": 6
   }
  },
  "date": "2026-11-02",
- "document_errors": 1,
- "documents_already_indexed": 2806,
+ "document_errors": 2,
+ "documents_already_indexed": 101,
  "documents_deferred": 0,
- "documents_listed": 2909,
- "documents_needing_ocr": 1,
- "documents_rematched": 0,
- "documents_retried": 1,
+ "documents_listed": 736,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 622,
+ "documents_retried": 0,
  "documents_too_large": [
   {
    "error": "too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
@@ -127,111 +127,112 @@
    "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
   }
  ],
- "duration_seconds": 1004.0,
+ "duration_seconds": 525.0,
  "errors": [
   {
-   "error": "listing agenda_page: https://www.actonma.gov/Archive.aspx?AMID=90: HTTPSConnectionPool(host='www.actonma.gov', port=443): Read timed out. (read timeout=10)",
-   "town": "MA:Acton"
+   "error": "document: OSError: [Errno 28] No space left on device",
+   "town": "MA:Blackstone"
   },
   {
-   "error": "listing civicplus: https://www.littletonma.org/AgendaCenter/Search/?term=&CIDs=13%2C36%2C16%2C29%2C&startDate=10%2F03%2F2026&endDate=03%2F02%2F2027&dateRange=&dateSelector=",
-   "town": "MA:Littleton"
-  },
-  {
-   "error": "document: too large (46611012 > 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_11042026-1662",
-   "town": "MA:Wellfleet"
+   "error": "document: https://www.townofblackstone.org/AgendaCenter/ViewFile/Agenda/_11052026-6590: HTTPSConnectionPool(host='www.townofblackstone.org', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Blackstone"
   }
  ],
- "errors_total": 3,
- "finished": "2026-11-02T13:54:20+00:00",
- "hits_current": 1652,
+ "errors_total": 2,
+ "finished": "2026-11-02T19:39:12+00:00",
+ "hits_current": 1686,
  "index": {
   "by_state": {
-   "MA": 4050,
-   "NY": 282,
+   "MA": 4059,
+   "NY": 391,
    "RI": 469
   },
   "by_status": {
-   "error": 24,
-   "needs_ocr": 5,
-   "ok": 4699,
-   "replaced": 73
+   "error": 27,
+   "needs_ocr": 6,
+   "ok": 4811,
+   "replaced": 75
   },
   "by_text_source": {
-   "docx": 23,
-   "html": 230,
-   "none": 26,
-   "ocr": 1081,
-   "pdf": 3441
+   "docx": 26,
+   "html": 235,
+   "none": 29,
+   "ocr": 1095,
+   "pdf": 3534
   },
-  "documents": 4801,
-  "hits": 1817,
-  "pruned": 20,
-  "towns": 309,
-  "with_hits": 935
+  "documents": 4919,
+  "hits": 1850,
+  "pruned": 4,
+  "towns": 331,
+  "with_hits": 954
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 89899157,
-   "listing": 134781312,
-   "robots": 893145
+   "document": 425018754,
+   "listing": 51864921,
+   "robots": 2643
   },
-  "cache_hits": 252,
-  "errors": 3,
-  "requests": 1053,
+  "cache_hits": 38,
+  "errors": 2,
+  "requests": 892,
   "requests_by_purpose": {
-   "document": 97,
-   "listing": 671,
-   "robots": 285
+   "document": 741,
+   "listing": 150,
+   "robots": 1
   },
-  "robots_blocked": 1
+  "robots_blocked": 0
  },
- "new_alert_items": 55,
+ "new_alert_items": 35,
  "new_alert_items_by_topic": {
-  "40b_comprehensive_permit": 6,
-  "battery_storage": 13,
-  "clean_energy_siting": 5,
-  "data_center": 5,
-  "moratorium": 4,
-  "solar": 18,
-  "wetlands_filing": 1,
+  "40b_comprehensive_permit": 1,
+  "battery_storage": 17,
+  "data_center": 2,
+  "moratorium": 8,
+  "solar": 8,
   "wireless_telecom": 3,
-  "zoning_amendment": 11
+  "zoning_amendment": 7
  },
- "new_documents": 101,
- "new_hits": 89,
+ "new_documents": 11,
+ "new_hits": 11,
  "new_hits_by_topic": {
-  "40b_comprehensive_permit": 9,
-  "battery_storage": 24,
-  "clean_energy_siting": 6,
-  "data_center": 7,
-  "moratorium": 5,
-  "solar": 32,
-  "wireless_telecom": 3,
-  "zoning_amendment": 25
+  "40b_comprehensive_permit": 1,
+  "solar": 3,
+  "zoning_amendment": 7
  },
  "options": {
-  "matcher_version": "4f9bcaade9",
+  "matcher_version": "e94d3fc5c8",
   "no_network_docs": false,
   "ocr_max_pages": 6,
   "pdftotext": true,
   "tesseract": true,
   "workers": 16
  },
- "started": "2026-11-02T13:37:37+00:00",
+ "previous_runs_today": [
+  {
+   "duration_seconds": 1004.0,
+   "new_documents": 101,
+   "new_hits": 89,
+   "requests": 1053,
+   "started": "2026-11-02T13:37:37+00:00",
+   "states": [
+    "MA",
+    "NY",
+    "RI"
+   ],
+   "towns_attempted": 315,
+   "towns_succeeded": 314
+  }
+ ],
+ "started": "2026-11-02T19:30:27+00:00",
  "states": [
   "MA",
   "NY",
   "RI"
  ],
- "towns_attempted": 315,
- "towns_failed": [
-  "MA:Littleton"
- ],
- "towns_partial": [
-  "MA:Acton"
- ],
- "towns_succeeded": 314,
+ "towns_attempted": 61,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 61,
  "window": {
   "end": "2027-03-02",
   "start": "2026-10-03"

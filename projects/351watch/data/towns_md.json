@@ -1,0 +1,3360 @@
+{
+ "_about": "Agenda Ahead Maryland (2026-11, gated): the 23 counties and Baltimore City (council or county commissioners, planning commission or M-NCPPC planning board, board of appeals) plus 17 Montgomery, Prince George's, Frederick, Anne Arundel and Washington County municipalities. Same row shape as towns_ma_all.json plus state, kind, zoning_power (own / county: Prince George's and Montgomery municipalities other than Laurel, Rockville, Gaithersburg, Poolesville and four small towns have no zoning power; the District Council zones), selection_group / selection_reason / selection_source. Built by `python3 experiments/va_md_wave.py discover --state MD`.",
+ "generated": "2026-11-02T19:24:17+00:00",
+ "state": "MD",
+ "gated": true,
+ "gate_note": "Test state: not part of the production daily run. Crawled only by `python3 -m watch351.daily --states VA,MD --output-dir ../data/test/va_md --hits-name hits_va_md.json` (experiments/va_md_wave.py crawl).",
+ "boards_tracked": [
+  "select_board",
+  "planning_board",
+  "zoning_board_of_appeals"
+ ],
+ "board_key_mapping": {
+  "County Council / Board of County Commissioners / District Council, City or Town Council, Mayor and Board of Aldermen": "select_board",
+  "Planning Commission, Planning Board (M-NCPPC)": "planning_board",
+  "Board of Appeals / Board of Zoning Appeals / Board of Municipal and Zoning Appeals": "zoning_board_of_appeals"
+ },
+ "evidence_rule": "a board is automated only if its listing shows >=1 agenda/packet/notice dated within [today-120d, today+120d] and the first such document is fetchable under robots.txt",
+ "count": 40,
+ "automated": 30,
+ "towns": [
+  {
+   "town": "Allegany County",
+   "state": "MD",
+   "county": "Allegany",
+   "kind": "county",
+   "website": "https://www.alleganygov.org/",
+   "selection_group": "western",
+   "selection_reason": "statewide county list; CivicClerk",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.alleganygov.org/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "alleganycomd",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Commission of Allegany County",
+     "board_key": "planning_board",
+     "url": "https://alleganycomd.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of Zoning Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://alleganycomd.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of County Commissioners",
+     "board_key": "select_board",
+     "url": "https://alleganycomd.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission of Allegany County",
+     "source": "civicclerk",
+     "url": "https://alleganycomd.portal.civicclerk.com",
+     "n_recent": 3,
+     "latest": "2026-09-30"
+    },
+    "select_board": {
+     "board": "Board of County Commissioners",
+     "source": "civicclerk",
+     "url": "https://alleganycomd.portal.civicclerk.com",
+     "n_recent": 13,
+     "latest": "2026-10-15"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicclerk",
+     "url": "https://alleganycomd.portal.civicclerk.com",
+     "n_recent": 1,
+     "latest": "2026-08-05"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://alleganycomd.portal.civicclerk.com/"
+     ],
+     "tenant": "alleganycomd",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 22,
+   "discovered_at": "2026-11-02T19:12:18+00:00"
+  },
+  {
+   "town": "Anne Arundel County",
+   "state": "MD",
+   "county": "Anne Arundel",
+   "kind": "county",
+   "website": "https://www.aacounty.org/",
+   "selection_group": "baltimore_metro",
+   "selection_reason": "data-center zoning (2026); county council",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.aacounty.org/",
+   "cms": [
+    "drupal"
+   ],
+   "tenant": "annearundelcomd",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "County Council",
+     "board_key": "select_board",
+     "url": "https://annearundelcomd.portal.civicclerk.com"
+    },
+    {
+     "board": "County Council Work Sessions",
+     "board_key": "select_board",
+     "url": "https://annearundelcomd.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "County Council",
+     "source": "civicclerk",
+     "url": "https://annearundelcomd.portal.civicclerk.com",
+     "n_recent": 7,
+     "latest": "2026-12-07"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "About Us",
+     "source": "agenda_page",
+     "url": "https://www.aacounty.org/board-of-appeals/about-us",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://annearundelcomd.portal.civicclerk.com"
+     ],
+     "tenant": "annearundelcomd",
+     "found_by": "tenant probe",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 30,
+   "discovered_at": "2026-11-02T19:09:54+00:00"
+  },
+  {
+   "town": "Baltimore County",
+   "state": "MD",
+   "county": "Baltimore",
+   "kind": "county",
+   "website": "https://www.baltimorecountymd.gov/",
+   "selection_group": "baltimore_metro",
+   "selection_reason": "data-center moratorium Jun 16, 2026; MPRP 500 kV line",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "status": "not_automated",
+   "reason_code": "waf_block",
+   "reason": "HTTP 403 from the site's firewall to AgendaAheadBot; not bypassed",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 0,
+   "discovered_at": "2026-11-02T19:09:43+00:00"
+  },
+  {
+   "town": "Calvert County",
+   "state": "MD",
+   "county": "Calvert",
+   "kind": "county",
+   "website": "https://www.calvertcountymd.gov/",
+   "selection_group": "southern",
+   "selection_reason": "AWS withdrawal; data-center pause (2026); agendas on Granicus",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.calvertcountymd.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of County Commissioners",
+     "board_key": "select_board",
+     "category_id": "8",
+     "url": "https://www.calvertcountymd.gov/AgendaCenter/Board-of-County-Commissioners-8"
+    },
+    {
+     "board": "Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "6",
+     "url": "https://www.calvertcountymd.gov/AgendaCenter/Board-of-Appeals-6"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "3",
+     "url": "https://www.calvertcountymd.gov/AgendaCenter/Planning-Commission-3"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.calvertcountymd.gov/AgendaCenter/Planning-Commission-3",
+     "n_recent": 6,
+     "latest": "2026-10-21"
+    },
+    "select_board": {
+     "board": "Board of County Commissioners",
+     "source": "civicplus",
+     "url": "https://www.calvertcountymd.gov/AgendaCenter/Board-of-County-Commissioners-8",
+     "n_recent": 13,
+     "latest": "2026-10-27"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "civicplus",
+     "url": "https://www.calvertcountymd.gov/AgendaCenter/Board-of-Appeals-6",
+     "n_recent": 4,
+     "latest": "2026-11-05"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "granicus": {
+     "urls": [
+      "https://calvertcounty.granicus.com/ViewPublisher.php?view_id=24",
+      "https://calvertcounty.granicus.com/boards/w/4a594e3e528f9548"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on calvertcounty.granicus.com disallows AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 52 categories, 3 tracked"
+   ],
+   "pages_fetched": 6,
+   "discovered_at": "2026-11-02T19:11:00+00:00"
+  },
+  {
+   "town": "Caroline County",
+   "state": "MD",
+   "county": "Caroline",
+   "kind": "county",
+   "website": "https://www.carolinemd.org/",
+   "selection_group": "eastern_shore",
+   "selection_reason": "solar ordinance; CivicPlus",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.carolinemd.org/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "County Commissioners",
+     "board_key": "select_board",
+     "category_id": "3",
+     "url": "https://www.carolinemd.org/AgendaCenter/County-Commissioners-3"
+    },
+    {
+     "board": "Board of Zoning Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "2",
+     "url": "https://www.carolinemd.org/AgendaCenter/Board-of-Zoning-Appeals-2"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "1",
+     "url": "https://www.carolinemd.org/AgendaCenter/Planning-Commission-1"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.carolinemd.org/AgendaCenter/Planning-Commission-1",
+     "n_recent": 5,
+     "latest": "2026-10-14"
+    },
+    "select_board": {
+     "board": "County Commissioners",
+     "source": "civicplus",
+     "url": "https://www.carolinemd.org/AgendaCenter/County-Commissioners-3",
+     "n_recent": 12,
+     "latest": "2026-11-03"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.carolinemd.org/AgendaCenter/Board-of-Zoning-Appeals-2",
+     "n_recent": 3,
+     "latest": "2026-10-20"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 17 categories, 3 tracked"
+   ],
+   "pages_fetched": 5,
+   "discovered_at": "2026-11-02T19:11:14+00:00"
+  },
+  {
+   "town": "Carroll County",
+   "state": "MD",
+   "county": "Carroll",
+   "kind": "county",
+   "website": "https://www.carrollcountymd.gov/",
+   "selection_group": "baltimore_metro",
+   "selection_reason": "MPRP 500 kV line; solar ordinance; robots.txt disallowed us in October",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "status": "not_automated",
+   "reason_code": "robots_disallow",
+   "reason": "robots.txt on the site disallows AgendaAheadBot (https://www.carrollcountymd.gov/)",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 0,
+   "discovered_at": "2026-11-02T19:09:43+00:00"
+  },
+  {
+   "town": "Cecil County",
+   "state": "MD",
+   "county": "Cecil",
+   "kind": "county",
+   "website": "https://www.cecilcountymd.gov/",
+   "selection_group": "baltimore_metro",
+   "selection_reason": "Perryville data centers; solar; CivicClerk",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.cecilcountymd.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "cecilcomd",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "County Council",
+     "board_key": "select_board",
+     "url": "https://cecilcomd.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://cecilcomd.portal.civicclerk.com"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://cecilcomd.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://cecilcomd.portal.civicclerk.com",
+     "n_recent": 5,
+     "latest": "2026-11-16"
+    },
+    "select_board": {
+     "board": "County Council",
+     "source": "civicclerk",
+     "url": "https://cecilcomd.portal.civicclerk.com",
+     "n_recent": 23,
+     "latest": "2026-10-20"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "civicclerk",
+     "url": "https://cecilcomd.portal.civicclerk.com",
+     "n_recent": 5,
+     "latest": "2026-11-23"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://cecilcomd.portal.civicclerk.com"
+     ],
+     "tenant": "cecilcomd",
+     "found_by": "tenant probe",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 34,
+   "discovered_at": "2026-11-02T19:13:28+00:00"
+  },
+  {
+   "town": "Charles County",
+   "state": "MD",
+   "county": "Charles",
+   "kind": "county",
+   "website": "https://www.charlescountymd.gov/",
+   "selection_group": "southern",
+   "selection_reason": "Open Meetings Compliance Board ruling on data-center sessions Jun 4, 2026; Akamai-walled",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "status": "not_automated",
+   "reason_code": "waf_block",
+   "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 0,
+   "discovered_at": "2026-11-02T19:09:44+00:00"
+  },
+  {
+   "town": "Dorchester County",
+   "state": "MD",
+   "county": "Dorchester",
+   "kind": "county",
+   "website": "https://dorchestercountymd.com/",
+   "selection_group": "eastern_shore",
+   "selection_reason": "solar",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.dorchestermd.gov",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "3",
+     "url": "https://www.dorchestermd.gov/AgendaCenter/Board-of-Appeals-3"
+    },
+    {
+     "board": "County Council",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://www.dorchestermd.gov/AgendaCenter/County-Council-2"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [
+    "planning_board"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "County Council",
+     "source": "civicplus",
+     "url": "https://www.dorchestermd.gov/AgendaCenter/County-Council-2",
+     "n_recent": 10,
+     "latest": "2026-11-02"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "civicplus",
+     "url": "https://www.dorchestermd.gov/AgendaCenter/Board-of-Appeals-3",
+     "n_recent": 1,
+     "latest": "2026-07-23"
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.dorchestermd.gov/AgendaCenter/Planning-Commission-9",
+     "n_recent": 0,
+     "latest": "2026-06-03"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 8 categories, 3 tracked"
+   ],
+   "pages_fetched": 15,
+   "discovered_at": "2026-11-02T19:12:28+00:00"
+  },
+  {
+   "town": "Frederick County",
+   "state": "MD",
+   "county": "Frederick",
+   "kind": "county",
+   "website": "https://frederickcountymd.gov/",
+   "selection_group": "frederick",
+   "selection_reason": "Quantum Frederick moratorium extended to Jul 1, 2027; MPRP and Valley North lines",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://frederickcountymd.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "31",
+     "url": "https://frederickcountymd.gov/AgendaCenter/Board-of-Appeals-31"
+    },
+    {
+     "board": "Council Member Carter's Newsletters",
+     "board_key": "select_board",
+     "category_id": "40",
+     "url": "https://frederickcountymd.gov/AgendaCenter/Council-Member-Carter-s-Newsletters-40"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "33",
+     "url": "https://frederickcountymd.gov/AgendaCenter/Planning-Commission-33"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://frederickcountymd.gov/AgendaCenter/Planning-Commission-33",
+     "n_recent": 4,
+     "latest": "2026-10-14"
+    },
+    "select_board": {
+     "board": "Council Member Carter's Newsletters",
+     "source": "civicplus",
+     "url": "https://frederickcountymd.gov/AgendaCenter/Council-Member-Carter-s-Newsletters-40",
+     "n_recent": 1,
+     "latest": "2026-07-23"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "civicplus",
+     "url": "https://frederickcountymd.gov/AgendaCenter/Board-of-Appeals-31",
+     "n_recent": 3,
+     "latest": "2026-09-24"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 47 categories, 4 tracked"
+   ],
+   "pages_fetched": 3,
+   "discovered_at": "2026-11-02T19:10:24+00:00"
+  },
+  {
+   "town": "Garrett County",
+   "state": "MD",
+   "county": "Garrett",
+   "kind": "county",
+   "website": "https://www.garrettcountymd.gov/",
+   "selection_group": "western",
+   "selection_reason": "wind and solar",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.garrettcountymd.gov/",
+   "cms": [
+    "drupal"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://www.garrettcountymd.gov/community-development/planning-land-management/planning-commission",
+     "platform": "agenda_page",
+     "board_exclude": "county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board"
+   ],
+   "boards_missing": [
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "agenda_page",
+     "url": "https://www.garrettcountymd.gov/community-development/planning-land-management/planning-commission",
+     "n_recent": 3,
+     "latest": "2026-11-04",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-08-05",
+       "url": "https://www.garrettcountymd.gov/sites/default/files/public-meeting-archive/planning-commission-public-meetings/2026/agenda/08-05-2026.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-09-02",
+       "url": "https://www.garrettcountymd.gov/sites/default/files/public-meeting-archive/planning-commission-public-meetings/2026/agenda/09-02-2026.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-11-04",
+       "url": "https://www.garrettcountymd.gov/sites/default/files/public-meeting-archive/planning-commission-public-meetings/2026/agenda/11-04-2026.pdf",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "select_board": {
+     "board": "Board of County Commissioners",
+     "source": "agenda_page",
+     "url": "https://www.garrettcountymd.gov/commissioners",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Deep Creek Board of Zoning Appeals",
+     "source": "agenda_page",
+     "url": "https://www.garrettcountymd.gov/community-development/planning-land-management/deep-creek-zoning-appeals",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 20,
+   "discovered_at": "2026-11-02T19:10:04+00:00"
+  },
+  {
+   "town": "Harford County",
+   "state": "MD",
+   "county": "Harford",
+   "kind": "county",
+   "website": "https://www.harfordcountymd.gov/",
+   "selection_group": "baltimore_metro",
+   "selection_reason": "data-center ordinance / ban Jun 10, 2026",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.harfordcountymd.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platform": "granicus",
+   "status": "not_automated",
+   "reason_code": "vendor_blocked",
+   "reason": "agendas on granicus: robots.txt on harfordcountymd.granicus.com disallows AgendaAheadBot",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {
+    "select_board": {
+     "board": "Council Worksessions with Municipalities",
+     "source": "civicplus",
+     "url": "https://www.harfordcountymd.gov/AgendaCenter/Council-Worksessions-with-Municipalities-69",
+     "n_recent": 0,
+     "latest": null
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://www.harfordcountymd.gov/1567/Zoning-Board-of-Appeals",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "laserfiche": {
+     "urls": [
+      "http://hcgweb01.harfordcountymd.gov/weblink/Browse.aspx?startid=10004",
+      "http://hcgweb01.harfordcountymd.gov/weblink/Browse.aspx?startid=73&amp;dbid=0"
+     ],
+     "status": "document_store"
+    },
+    "granicus": {
+     "urls": [
+      "https://harfordcountymd.granicus.com/boards/forms/782/apply/"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on harfordcountymd.granicus.com disallows AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 51 categories, 1 tracked"
+   ],
+   "pages_fetched": 34,
+   "discovered_at": "2026-11-02T19:12:51+00:00"
+  },
+  {
+   "town": "Howard County",
+   "state": "MD",
+   "county": "Howard",
+   "kind": "county",
+   "website": "https://www.howardcountymd.gov/",
+   "selection_group": "baltimore_metro",
+   "selection_reason": "data-center zoning; agendas on Granicus",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.howardcountymd.gov/",
+   "cms": [
+    "drupal"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "platform": "agenda_page",
+     "url": "https://apps.howardcountymd.gov/Olis/UpcomingHearings",
+     "unlabeled": true,
+     "follow": false,
+     "board_pattern": "\\bBA\\b|board\\s+of\\s+appeals"
+    },
+    {
+     "board": "County Council",
+     "board_key": "select_board",
+     "platform": "agenda_page",
+     "url": "https://apps.howardcountymd.gov/Olis/UpcomingHearings",
+     "unlabeled": true,
+     "follow": false,
+     "board_pattern": "legislative|council|\\bCB\\b|\\bCR\\b|public\\s+hearing",
+     "board_exclude": "\\bBA\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [
+    "planning_board"
+   ],
+   "board_evidence": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://apps.howardcountymd.gov/Olis/UpcomingHearings",
+     "n_recent": null,
+     "latest": null,
+     "note": "curated listing (checked by hand)"
+    },
+    "select_board": {
+     "board": "County Council",
+     "source": "agenda_page",
+     "url": "https://apps.howardcountymd.gov/Olis/UpcomingHearings",
+     "n_recent": null,
+     "latest": null,
+     "note": "curated listing (checked by hand)"
+    }
+   },
+   "board_stale": {
+    "select_board": {
+     "board": "County Council",
+     "source": "agenda_page",
+     "url": "https://cc.howardcountymd.gov/",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board",
+     "source": "agenda_page",
+     "url": "https://cc.howardcountymd.gov/zoning-land-use/zoning-board",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "diligent_community": {
+     "urls": [
+      "https://hcpss-org.community.diligentoneplatform.com/document/35a0d337-c503-412b-905d-a9eca4038283/"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on hcpss-org.community.diligentoneplatform.com disallows AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 34,
+   "discovered_at": "2026-11-02T19:10:39+00:00",
+   "platforms": [
+    "agenda_page"
+   ],
+   "curation_note": "OLIS upcoming hearings (Board of Appeals cases now; council sessions when listed); the Diligent portal discovery found belongs to the school system; Granicus is the video host",
+   "curated": true
+  },
+  {
+   "town": "Kent County",
+   "state": "MD",
+   "county": "Kent",
+   "kind": "county",
+   "website": "https://www.kentcounty.com/",
+   "selection_group": "eastern_shore",
+   "selection_reason": "solar; CivicClerk",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.kentcounty.com/",
+   "cms": [
+    "revize"
+   ],
+   "tenant": "kentcountymd",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "County Commissioners",
+     "board_key": "select_board",
+     "url": "https://kentcountymd.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of Zoning Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://kentcountymd.portal.civicclerk.com"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://kentcountymd.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://kentcountymd.portal.civicclerk.com",
+     "n_recent": 4,
+     "latest": "2026-11-05"
+    },
+    "select_board": {
+     "board": "County Commissioners",
+     "source": "civicclerk",
+     "url": "https://kentcountymd.portal.civicclerk.com",
+     "n_recent": 13,
+     "latest": "2026-10-27"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicclerk",
+     "url": "https://kentcountymd.portal.civicclerk.com",
+     "n_recent": 4,
+     "latest": "2026-10-19"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://kentcountymd.portal.civicclerk.com/"
+     ],
+     "tenant": "kentcountymd",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 16,
+   "discovered_at": "2026-11-02T19:10:52+00:00"
+  },
+  {
+   "town": "Montgomery County",
+   "state": "MD",
+   "county": "Montgomery",
+   "kind": "county",
+   "website": "https://www.montgomerycountymd.gov/",
+   "selection_group": "dc_suburbs",
+   "selection_reason": "six-month data-center pause Aug 10, 2026; ZTA; Planning Board is M-NCPPC",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.montgomerycountymd.gov/",
+   "cms": [],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "County Council",
+     "board_key": "select_board",
+     "platform": "agenda_page",
+     "url": "https://www.montgomerycountymd.gov/government/legislative-branch/county-council/council-meetings-agendas",
+     "doc_href_extra": "archival-document\\?document=",
+     "unlabeled": true,
+     "follow": false,
+     "board_exclude": "summary|speakers?|confirmations"
+    },
+    {
+     "board": "Montgomery Planning Board",
+     "board_key": "planning_board",
+     "platform": "agenda_page",
+     "url": "https://montgomeryplanningboard.org/agendas/",
+     "date_from_url": true,
+     "meeting_page_self": true
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "County Council",
+     "source": "agenda_page",
+     "url": "https://www.montgomerycountymd.gov/government/legislative-branch/county-council/council-meetings-agendas",
+     "n_recent": null,
+     "latest": null,
+     "note": "curated listing (checked by hand)"
+    },
+    "planning_board": {
+     "board": "Montgomery Planning Board",
+     "source": "agenda_page",
+     "url": "https://montgomeryplanningboard.org/agendas/",
+     "n_recent": null,
+     "latest": null,
+     "note": "curated listing (checked by hand)"
+    }
+   },
+   "board_stale": {
+    "select_board": {
+     "board": "Legislative Branch Offices",
+     "source": "agenda_page",
+     "url": "https://www.montgomerycountymd.gov/government/legislative-branch/county-council/about-council/legislative-branch-offices",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "granicus": {
+     "urls": [
+      "https://montgomerycountymd.granicus.com/ViewPublisher.php?view_id=169"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on montgomerycountymd.granicus.com disallows AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 20,
+   "discovered_at": "2026-11-02T19:10:49+00:00",
+   "platforms": [
+    "agenda_page"
+   ],
+   "curation_note": "council weekly agenda PDFs behind a viewer link (doc_href_extra); M-NCPPC Planning Board meeting pages read as the agenda (date_from_url, meeting_page_self); Granicus is the video host",
+   "curated": true
+  },
+  {
+   "town": "Prince George's County",
+   "state": "MD",
+   "county": "Prince George's",
+   "kind": "county",
+   "website": "https://www.princegeorgescountymd.gov/",
+   "selection_group": "dc_suburbs",
+   "selection_reason": "two-year data-center moratorium Jul 6, 2026 (8-3); council on Legistar; Planning Board is M-NCPPC",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "legistar_client": "princegeorgescountymd",
+   "client": "princegeorgescountymd",
+   "platform": "legistar",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "County Council",
+     "board_key": "select_board",
+     "url": "https://princegeorgescountymd.legistar.com/Calendar.aspx",
+     "client": "princegeorgescountymd",
+     "platform": "legistar"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "County Council",
+     "source": "legistar",
+     "url": "https://princegeorgescountymd.legistar.com/Calendar.aspx",
+     "n_recent": 16,
+     "latest": "2026-10-27",
+     "kinds": [
+      "agenda"
+     ]
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "legistar",
+     "url": "https://princegeorgescountymd.legistar.com/Calendar.aspx",
+     "n_recent": 0,
+     "latest": null,
+     "kinds": [
+      "agenda"
+     ]
+    }
+   },
+   "vendors": {
+    "legistar": {
+     "urls": [
+      "https://princegeorgescountymd.legistar.com/Calendar.aspx"
+     ],
+     "client": "princegeorgescountymd",
+     "found_by": "target row",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "homepage: HTTP 403 from Akamai to AgendaAheadBot; not bypassed"
+   ],
+   "pages_fetched": 1,
+   "discovered_at": "2026-11-02T19:10:52+00:00",
+   "curation_note": "County Council (and District Council zoning sessions) on Legistar; the M-NCPPC Planning Board's agendas load by script on pgplanningboard.org, not found as documents; county homepage behind Akamai",
+   "curated": true
+  },
+  {
+   "town": "Queen Anne's County",
+   "state": "MD",
+   "county": "Queen Anne's",
+   "kind": "county",
+   "website": "https://www.qac.org/",
+   "selection_group": "eastern_shore",
+   "selection_reason": "data-center moratorium Jun 4, 2026",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.qac.org/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "1. Board of County Commissioners",
+     "board_key": "select_board",
+     "category_id": "4",
+     "url": "https://www.qac.org/AgendaCenter/1-Board-of-County-Commissioners-4"
+    },
+    {
+     "board": "2. Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "5",
+     "url": "https://www.qac.org/AgendaCenter/2-Planning-Commission-5"
+    },
+    {
+     "board": "Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "3",
+     "url": "https://www.qac.org/AgendaCenter/Board-of-Appeals-3"
+    },
+    {
+     "board": "Council of Governments",
+     "board_key": "select_board",
+     "category_id": "13",
+     "url": "https://www.qac.org/AgendaCenter/Council-of-Governments-13"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "2. Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.qac.org/AgendaCenter/2-Planning-Commission-5",
+     "n_recent": 5,
+     "latest": "2026-11-12"
+    },
+    "select_board": {
+     "board": "1. Board of County Commissioners",
+     "source": "civicplus",
+     "url": "https://www.qac.org/AgendaCenter/1-Board-of-County-Commissioners-4",
+     "n_recent": 8,
+     "latest": "2026-10-27"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "civicplus",
+     "url": "https://www.qac.org/AgendaCenter/Board-of-Appeals-3",
+     "n_recent": 4,
+     "latest": "2026-10-21"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 23 categories, 4 tracked"
+   ],
+   "pages_fetched": 6,
+   "discovered_at": "2026-11-02T19:12:33+00:00"
+  },
+  {
+   "town": "Somerset County",
+   "state": "MD",
+   "county": "Somerset",
+   "kind": "county",
+   "website": "https://www.somersetmd.us/",
+   "selection_group": "eastern_shore",
+   "selection_reason": "solar",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "status": "not_automated",
+   "reason_code": "robots_disallow",
+   "reason": "robots.txt on the site disallows AgendaAheadBot (https://www.somersetmd.us/)",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 0,
+   "discovered_at": "2026-11-02T19:10:57+00:00"
+  },
+  {
+   "town": "St. Mary's County",
+   "state": "MD",
+   "county": "St. Mary's",
+   "kind": "county",
+   "website": "https://www.stmaryscountymd.gov/",
+   "selection_group": "southern",
+   "selection_reason": "data centers and solar",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.stmaryscountymd.gov/",
+   "cms": [],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Commissioners of St. Mary's County",
+     "board_key": "select_board",
+     "url": "https://www.stmaryscountymd.gov/Boards/42/MinutesAndAgendas/",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+commission|planning\\s+board|\\bPC\\b|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://www.stmaryscountymd.gov/Boards/17/MinutesAndAgendas/",
+     "platform": "agenda_page",
+     "board_exclude": "county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Nov 12 6:30 PM Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://www.stmaryscountymd.gov/Boards/1/",
+     "platform": "agenda_page",
+     "board_exclude": "county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|planning\\s+commission|planning\\s+board|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "agenda_page",
+     "url": "https://www.stmaryscountymd.gov/Boards/17/MinutesAndAgendas/",
+     "n_recent": 1,
+     "latest": "2026-11-02",
+     "kinds": [
+      "notice"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-02",
+       "url": "https://www.stmaryscountymd.gov/pio/docs/2026-205NewsReleaseTemporary_Lane_Closures_Planned.pdf",
+       "title": "Traffic Notice: FDR Blvd. Southbound Lane Closure on Nov. 2 from 8 am-4 pm"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Commissioners of St. Mary's County",
+     "source": "agenda_page",
+     "url": "https://www.stmaryscountymd.gov/Boards/42/MinutesAndAgendas/",
+     "n_recent": 1,
+     "latest": "2026-11-02",
+     "kinds": [
+      "notice"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-02",
+       "url": "https://www.stmaryscountymd.gov/pio/docs/2026-205NewsReleaseTemporary_Lane_Closures_Planned.pdf",
+       "title": "Traffic Notice: FDR Blvd. Southbound Lane Closure on Nov. 2 from 8 am-4 pm"
+      }
+     ]
+    },
+    "zoning_board_of_appeals": {
+     "board": "Nov 12 6:30 PM Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://www.stmaryscountymd.gov/Boards/1/",
+     "n_recent": 1,
+     "latest": "2026-11-02",
+     "kinds": [
+      "notice"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-02",
+       "url": "https://www.stmaryscountymd.gov/pio/docs/2026-205NewsReleaseTemporary_Lane_Closures_Planned.pdf",
+       "title": "Traffic Notice: FDR Blvd. Southbound Lane Closure on Nov. 2 from 8 am-4 pm"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "diligent_community": {
+     "urls": [
+      "https://stmarys-countymd.community.diligentoneplatform.com/Portal/"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on stmarys-countymd.community.diligentoneplatform.com disallows AgendaAheadBot"
+    },
+    "granicus": {
+     "urls": [
+      "https://stmarysmd.granicus.com/boards/w/98cf7731a653b4b6/boards/7782",
+      "https://stmarysmd.granicus.com/boards/forms/199/apply"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on stmarysmd.granicus.com disallows AgendaAheadBot"
+    },
+    "boarddocs": {
+     "urls": [
+      "https://go.boarddocs.com/md/stmarysco/Board.nsf/Public"
+     ],
+     "status": "vendor_blocked",
+     "detail": "go.boarddocs.com answers HTTP 403 to AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [
+    "https://www.stmaryscountymd.gov/Boards/4/MinutesAndAgendas/2026/",
+    "https://www.stmaryscountymd.gov/Boards/25/MinutesAndAgendas/2026/",
+    "https://www.stmaryscountymd.gov/Boards/1/MinutesAndAgendas/2026/"
+   ],
+   "notes": [],
+   "pages_fetched": 14,
+   "discovered_at": "2026-11-02T19:11:13+00:00"
+  },
+  {
+   "town": "Talbot County",
+   "state": "MD",
+   "county": "Talbot",
+   "kind": "county",
+   "website": "https://talbotcountymd.gov/",
+   "selection_group": "eastern_shore",
+   "selection_reason": "solar; agendas on Granicus",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://talbotcountymd.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platform": "granicus",
+   "status": "not_automated",
+   "reason_code": "vendor_blocked",
+   "reason": "agendas on granicus: robots.txt on talbot-md.granicus.com disallows AgendaAheadBot",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {
+    "select_board": {
+     "board": "here",
+     "source": "agenda_page",
+     "url": "https://talbotcountymd.gov/About-Us/County_Council/council-meeting-videos",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "agenda_page",
+     "url": "https://talbotcountymd.gov/planning-commission",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Decisions",
+     "source": "agenda_page",
+     "url": "https://talbotcountymd.gov/About-Us/boards/board-of-appeals/decisions",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "granicus": {
+     "urls": [
+      "https://talbot-md.granicus.com/ViewPublisher.php?view_id=4",
+      "https://talbot-md.granicus.com/ViewPublisher.php?view_id=6"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on talbot-md.granicus.com disallows AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 34,
+   "discovered_at": "2026-11-02T19:11:18+00:00"
+  },
+  {
+   "town": "Washington County",
+   "state": "MD",
+   "county": "Washington",
+   "kind": "county",
+   "website": "https://www.washco-md.net/",
+   "selection_group": "western",
+   "selection_reason": "data-center pause (2026); Hagerstown",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.washco-md.net/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.washco-md.net/county-commissioners/bocc-agendas-and-minutes/",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+commission|planning\\s+board|\\bPC\\b|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.washco-md.net/county-clerk/boards-commissions/",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
+     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.washco-md.net/county-clerk/boards-commissions/",
+     "n_recent": 1,
+     "latest": "2026-08-31",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-08-31",
+       "url": "https://www.washco-md.net/wp-content/uploads/8-31-26-Agenda-Revised-8-28-26-1.pdf",
+       "title": "8-31-2026 Agenda"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.washco-md.net/county-commissioners/bocc-agendas-and-minutes/",
+     "n_recent": 8,
+     "latest": "2026-10-13",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-13",
+       "url": "https://www.washco-md.net/wp-content/uploads/10132026-Open-Agenda-PACKET.pdf",
+       "title": "BOCC Meeting Agenda - October 13, 2026"
+      },
+      {
+       "date": "2026-09-29",
+       "url": "https://www.washco-md.net/wp-content/uploads/09292026-Open-Agenda-PACKET.pdf",
+       "title": "09-29-2026"
+      },
+      {
+       "date": "2026-09-22",
+       "url": "https://www.washco-md.net/wp-content/uploads/09222026-Open-Agenda-PACKET.pdf",
+       "title": "09-22-2026"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "laserfiche": {
+     "urls": [
+      "http://lfportal.washco-md.net/WebLink/Browse.aspx?id=5085&#038;dbid=0&#038;repo=PUB-LF9",
+      "http://lfportal.washco-md.net/WebLink/Browse.aspx?id=5085&amp;dbid=0&amp;repo=PUB-LF9"
+     ],
+     "status": "document_store"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 16,
+   "discovered_at": "2026-11-02T19:11:32+00:00"
+  },
+  {
+   "town": "Wicomico County",
+   "state": "MD",
+   "county": "Wicomico",
+   "kind": "county",
+   "website": "https://www.wicomicocounty.org/",
+   "selection_group": "eastern_shore",
+   "selection_reason": "solar; CivicPlus",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://www.wicomicocounty.org/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "14",
+     "url": "https://www.wicomicocounty.org/AgendaCenter/Board-of-Appeals-14"
+    },
+    {
+     "board": "County Council",
+     "board_key": "select_board",
+     "category_id": "3",
+     "url": "https://www.wicomicocounty.org/AgendaCenter/County-Council-3"
+    },
+    {
+     "board": "Planning and Zoning Commission",
+     "board_key": "planning_board",
+     "category_id": "1",
+     "url": "https://www.wicomicocounty.org/AgendaCenter/Planning-and-Zoning-Commission-1"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning and Zoning Commission",
+     "source": "civicplus",
+     "url": "https://www.wicomicocounty.org/AgendaCenter/Planning-and-Zoning-Commission-1",
+     "n_recent": 8,
+     "latest": "2026-10-15"
+    },
+    "select_board": {
+     "board": "County Council",
+     "source": "civicplus",
+     "url": "https://www.wicomicocounty.org/AgendaCenter/County-Council-3",
+     "n_recent": 11,
+     "latest": "2026-11-03"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "civicplus",
+     "url": "https://www.wicomicocounty.org/AgendaCenter/Board-of-Appeals-14",
+     "n_recent": 2,
+     "latest": "2026-09-24"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 24 categories, 3 tracked"
+   ],
+   "pages_fetched": 5,
+   "discovered_at": "2026-11-02T19:12:25+00:00"
+  },
+  {
+   "town": "Worcester County",
+   "state": "MD",
+   "county": "Worcester",
+   "kind": "county",
+   "website": "https://worcestermd.gov/",
+   "selection_group": "eastern_shore",
+   "selection_reason": "solar; offshore-wind landing",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "October county census (Wikidata), checked by hand 2026-11",
+   "final_url": "https://worcestermd.gov/",
+   "cms": [
+    "drupal"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://worcestermd.gov/minutes",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
+     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://worcestermd.gov/minutes",
+     "platform": "agenda_page",
+     "board_pattern": "board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|\\bBOA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment",
+     "board_exclude": "building|construction|code\\s+appeals|license|liquor|tax|assessment|personnel|animal|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|planning\\s+commission|planning\\s+board|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [
+    "select_board"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://worcestermd.gov/minutes",
+     "n_recent": 6,
+     "latest": "2026-11-05",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-05",
+       "url": "https://worcestermd.gov/sites/default/files/2026-10/110526_PC_Agenda.pdf",
+       "title": "Planning Commission Agenda 11.05.26"
+      },
+      {
+       "date": "2026-11-05",
+       "url": "https://worcestermd.gov/sites/default/files/2026-10/110526_PC_Packet.pdf",
+       "title": "Planning Commission Packet 11.05.26"
+      },
+      {
+       "date": "2026-10-01",
+       "url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Agenda.pdf",
+       "title": "Oct. 1, 2026 Planning Commission Agenda"
+      }
+     ]
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://worcestermd.gov/minutes",
+     "n_recent": 8,
+     "latest": "2026-11-12",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-12",
+       "url": "https://worcestermd.gov/sites/default/files/2026-10/11.12.2026%20BZA%20Agenda1.pdf",
+       "title": "11.12.2026 BZA Agenda1.pdf"
+      },
+      {
+       "date": "2026-11-12",
+       "url": "https://worcestermd.gov/sites/default/files/2026-11/BZA%20PACKET%201_Redacted.pdf",
+       "title": "BZA PACKET 1_Redacted.pdf"
+      },
+      {
+       "date": "2026-10-08",
+       "url": "https://worcestermd.gov/sites/default/files/2026-09/10.08.26%20BZA%20Agenda.pdf",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "select_board": {
+     "board": "County Commissioners",
+     "source": "agenda_page",
+     "url": "https://worcestermd.gov/commissioners",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 14,
+   "discovered_at": "2026-11-02T19:11:32+00:00"
+  },
+  {
+   "town": "Baltimore City",
+   "state": "MD",
+   "county": null,
+   "kind": "city",
+   "website": "https://www.baltimorecity.gov/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "independent city; council on Legistar; Planning Commission and BMZA",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "legistar_client": "baltimore",
+   "final_url": "https://www.baltimorecity.gov/",
+   "cms": [
+    "drupal"
+   ],
+   "client": "baltimore",
+   "platforms": [
+    "legistar",
+    "agenda_page"
+   ],
+   "platform": "legistar",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://www.baltimorecity.gov/pc",
+     "platform": "agenda_page",
+     "board_exclude": "county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Baltimore City Council",
+     "board_key": "select_board",
+     "url": "https://baltimore.legistar.com/Calendar.aspx",
+     "client": "baltimore",
+     "platform": "legistar"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "agenda_page",
+     "url": "https://www.baltimorecity.gov/pc",
+     "n_recent": 6,
+     "latest": "2026-10-29",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-16",
+       "url": "https://s3.amazonaws.com/baltimorecity.gov.if-us-east-1/s3fs-public/2026-07/PC%20Agenda%20-%20July%2016%2C%202026%20-%20Final%20rev.pdf",
+       "title": "July 16, 2026"
+      },
+      {
+       "date": "2026-08-06",
+       "url": "https://s3.amazonaws.com/baltimorecity.gov.if-us-east-1/s3fs-public/2026-08/PC Agenda - Aug 6, 2026 - Final rev.pdf",
+       "title": "August 6, 2026"
+      },
+      {
+       "date": "2026-08-27",
+       "url": "https://s3.amazonaws.com/baltimorecity.gov.if-us-east-1/s3fs-public/2026-08/PC Agenda - Aug 27, 2026 - Final rev.pdf",
+       "title": "August 27, 2026"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Baltimore City Council",
+     "source": "legistar",
+     "url": "https://baltimore.legistar.com/Calendar.aspx",
+     "n_recent": 5,
+     "latest": "2026-10-26",
+     "kinds": [
+      "agenda"
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "legistar": {
+     "urls": [
+      "https://baltimore.legistar.com/Legislation.aspx",
+      "https://baltimore.legistar.com/Calendar.aspx"
+     ],
+     "client": "baltimore",
+     "found_by": "target row",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 14,
+   "discovered_at": "2026-11-02T19:24:17+00:00"
+  },
+  {
+   "town": "City of Frederick",
+   "state": "MD",
+   "county": "Frederick",
+   "kind": "city",
+   "website": "https://www.cityoffrederickmd.gov/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "Quantum Frederick area; Granicus",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://www.cityoffrederickmd.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platform": "granicus",
+   "status": "not_automated",
+   "reason_code": "vendor_blocked",
+   "reason": "agendas on granicus: robots.txt on cityoffrederick.granicus.com disallows AgendaAheadBot",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {
+    "select_board": {
+     "board": "City Council Meetings",
+     "source": "agenda_page",
+     "url": "https://www.cityoffrederickmd.gov/417/City-Council-Meetings",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "agenda_page",
+     "url": "https://www.cityoffrederickmd.gov/348/Planning-Commission",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals (ZBA)",
+     "source": "agenda_page",
+     "url": "https://www.cityoffrederickmd.gov/146/Zoning-Board-of-Appeals-ZBA",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "granicus": {
+     "urls": [
+      "https://cityoffrederick.granicus.com/ViewPublisher.php?view_id=12",
+      "https://cityoffrederick.granicus.com/ViewPublisher.php?view_id=15",
+      "https://cityoffrederick.granicus.com/ViewPublisher.php?view_id=16",
+      "https://cityoffrederick.granicus.com/ViewPublisher.php?view_id=17"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on cityoffrederick.granicus.com disallows AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 34,
+   "discovered_at": "2026-11-02T19:14:20+00:00"
+  },
+  {
+   "town": "City of Gaithersburg",
+   "state": "MD",
+   "county": "Montgomery",
+   "kind": "city",
+   "website": "https://www.gaithersburgmd.gov/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "own planning and zoning",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "status": "not_automated",
+   "reason_code": "waf_block",
+   "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 0,
+   "discovered_at": "2026-11-02T19:11:52+00:00"
+  },
+  {
+   "town": "City of Rockville",
+   "state": "MD",
+   "county": "Montgomery",
+   "kind": "city",
+   "website": "https://www.rockvillemd.gov/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "own planning and zoning",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://www.rockvillemd.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "client": "rockvillemd",
+   "platforms": [
+    "legistar"
+   ],
+   "platform": "legistar",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Mayor and Council",
+     "board_key": "select_board",
+     "url": "https://rockvillemd.legistar.com/Calendar.aspx",
+     "client": "rockvillemd",
+     "platform": "legistar"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Mayor and Council",
+     "source": "legistar",
+     "url": "https://rockvillemd.legistar.com/Calendar.aspx",
+     "n_recent": 10,
+     "latest": "2026-11-09",
+     "kinds": [
+      "agenda"
+     ]
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "legistar",
+     "url": "https://rockvillemd.legistar.com/Calendar.aspx",
+     "n_recent": 0,
+     "latest": null,
+     "kinds": [
+      "agenda"
+     ]
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "legistar",
+     "url": "https://rockvillemd.legistar.com/Calendar.aspx",
+     "n_recent": 0,
+     "latest": null,
+     "kinds": [
+      "agenda"
+     ]
+    }
+   },
+   "vendors": {
+    "legistar": {
+     "urls": [
+      "http://rockvillemd.legistar.com",
+      "https://rockvillemd.legistar.com/DepartmentDetail.aspx?ID=45463&amp;GUID=CE9D2157-F016-4632-9E90-EAE857B88681&amp;Search=",
+      "https://rockvillemd.legistar.com/DepartmentDetail.aspx?ID=54104&amp;GUID=695512BD-A3D2-493B-AF7D-962681163E5E&amp;Search=",
+      "https://rockvillemd.legistar.com/DepartmentDetail.aspx?ID=45463&#038;GUID=CE9D2157-F016-4632-9E90-EAE857B88681&#038;Search="
+     ],
+     "client": "rockvillemd",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "DOCS HTTP 410 https://rockvillemd.legistar.com/View.ashx?M=A&ID=1365497&GUID=9E3B4443-83C3-4800-B151-DB6AD6F30109",
+    "DOCS HTTP 410 https://rockvillemd.legistar.com/View.ashx?M=A&ID=1443041&GUID=E1041C1D-8961-43C2-8136-20B27196F3D0"
+   ],
+   "pages_fetched": 11,
+   "discovered_at": "2026-11-02T19:12:12+00:00"
+  },
+  {
+   "town": "Town of Poolesville",
+   "state": "MD",
+   "county": "Montgomery",
+   "kind": "town",
+   "website": "https://www.poolesvillemd.gov/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "own zoning (Agricultural Reserve)",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://www.poolesvillemd.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus",
+    "agenda_page"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "2",
+     "url": "https://www.poolesvillemd.gov/AgendaCenter/Planning-Commission-2"
+    },
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.poolesvillemd.gov/agendacenter",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+commission|planning\\s+board|\\bPC\\b|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b|\\bplanning\\b|\\bzoning\\s+(?:board|appeals)|\\bZBA\\b|\\bBZA\\b|\\bappeals\\b",
+     "board_default": true
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.poolesvillemd.gov/AgendaCenter/Planning-Commission-2",
+     "n_recent": 4,
+     "latest": "2026-10-14"
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.poolesvillemd.gov/agendacenter",
+     "n_recent": 48,
+     "latest": "2026-11-04",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-19",
+       "url": "https://www.poolesvillemd.gov/AgendaCenter/ViewFile/Agenda/_10192026-905?html=true",
+       "title": "Agenda for the October 19, 2026, Commissioners Meeting"
+      },
+      {
+       "date": "2026-10-19",
+       "url": "https://www.poolesvillemd.gov/AgendaCenter/ViewFile/Agenda/_10192026-905",
+       "title": " 10192026-905"
+      },
+      {
+       "date": "2026-10-19",
+       "url": "https://www.poolesvillemd.gov/AgendaCenter/ViewFile/Agenda/_10192026-905?packet=true",
+       "title": "Packet"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "civicplus",
+     "url": "https://www.poolesvillemd.gov/AgendaCenter/Board-of-Zoning-Appeals-7",
+     "n_recent": 0,
+     "latest": "2026-01-22"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 7 categories, 2 tracked",
+    "governing body assigned by default on https://www.poolesvillemd.gov/agendacenter"
+   ],
+   "pages_fetched": 9,
+   "discovered_at": "2026-11-02T19:13:29+00:00"
+  },
+  {
+   "town": "Town of Laytonsville",
+   "state": "MD",
+   "county": "Montgomery",
+   "kind": "town",
+   "website": "https://www.laytonsvillemd.gov/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "own zoning; small town",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "status": "not_automated",
+   "reason_code": "unreachable",
+   "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 0,
+   "discovered_at": "2026-11-02T19:12:38+00:00",
+   "sandbox_note": "unreachable from the test sandbox (the egress proxy answered 502 to CONNECT, or robots.txt timed out, on three tries, 2026-11-02); not a block by the site. Retry from the production host before treating it as down.",
+   "curated": true
+  },
+  {
+   "town": "Town of Barnesville",
+   "state": "MD",
+   "county": "Montgomery",
+   "kind": "town",
+   "website": "https://www.barnesvillemd.gov/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "own zoning; small town",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "status": "not_automated",
+   "reason_code": "unreachable",
+   "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 0,
+   "discovered_at": "2026-11-02T19:12:45+00:00",
+   "sandbox_note": "unreachable from the test sandbox (the egress proxy answered 502 to CONNECT, or robots.txt timed out, on three tries, 2026-11-02); not a block by the site. Retry from the production host before treating it as down.",
+   "curated": true
+  },
+  {
+   "town": "Town of Brookeville",
+   "state": "MD",
+   "county": "Montgomery",
+   "kind": "town",
+   "website": "https://www.townofbrookevillemd.org/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "own zoning; small town",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://townofbrookevillemd.org/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://townofbrookevillemd.org/",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
+     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board"
+   ],
+   "boards_missing": [
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://townofbrookevillemd.org/",
+     "n_recent": 1,
+     "latest": "2026-11-03",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-03",
+       "url": "https://townofbrookevillemd.org/wp-content/uploads/2026/10/2026-11-03.BPC-Agenda.pdf",
+       "title": "2026-11-03.BPC Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 10,
+   "discovered_at": "2026-11-02T19:12:40+00:00"
+  },
+  {
+   "town": "Town of Washington Grove",
+   "state": "MD",
+   "county": "Montgomery",
+   "kind": "town",
+   "website": "https://www.washingtongrovemd.org/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "own zoning; small town",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://washingtongrovemd.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://washingtongrovemd.gov/",
+     "platform": "agenda_page",
+     "board_pattern": "county\\s+council|\\bcouncil\\b|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|\\bBCC\\b|mayor\\s+(?:and|&)\\s+(?:city\\s+|town\\s+)?council|board\\s+of\\s+alder(?:men|s)|district\\s+council|legislative\\s+(?:session|day|meeting)",
+     "board_exclude": "school\\s+board|board\\s+of\\s+education|library\\s+board|liquor|ethics|committee|advisory|housing\\s+authority|board\\s+of\\s+(?:health|elections|estimates|license)|youth\\s+council|planning\\s+commission|planning\\s+board|\\bPC\\b|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://washingtongrovemd.gov/",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
+     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://washingtongrovemd.gov/",
+     "n_recent": 3,
+     "latest": "2026-09-02",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-01",
+       "url": "https://washingtongrovemd.gov/wp-content/uploads/2026/08/Agenda-for-July-2026-Planning-Commission-Meeting.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-09-02",
+       "url": "https://washingtongrovemd.gov/wp-content/uploads/2026/09/Agenda-for-September-2-2026-Planning-Commission-Meeting.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-08-05",
+       "url": "https://washingtongrovemd.gov/wp-content/uploads/2026/08/Agenda-for-August-5-2026-Planning-Commission-Meeting.pdf",
+       "title": "Agenda"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://washingtongrovemd.gov/",
+     "n_recent": 4,
+     "latest": "2026-10-19",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-19",
+       "url": "https://washingtongrovemd.gov/wp-content/uploads/2026/10/101926-Agenda-for-Town-Council-meeting-approved-101926.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-09-14",
+       "url": "https://washingtongrovemd.gov/wp-content/uploads/2026/09/Agenda-for-September-14-2026-Town-Council-Meeting.docx",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-08-01",
+       "url": "https://washingtongrovemd.gov/wp-content/uploads/2026/08/Agenda-for-August-1-2026-Town-Council-Meeting.docx",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "agenda_page",
+     "url": "https://washingtongrovemd.gov/government/town-commissions-boards/board-of-zoning-appeals/",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 33,
+   "discovered_at": "2026-11-02T19:13:26+00:00"
+  },
+  {
+   "town": "City of Takoma Park",
+   "state": "MD",
+   "county": "Montgomery",
+   "kind": "city",
+   "website": "https://takomaparkmd.gov/",
+   "zoning_power": "county",
+   "selection_group": "municipality",
+   "selection_reason": "zoning stays with the Montgomery District Council; council comments",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://takomaparkmd.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "City Council",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://takomaparkmd.gov/AgendaCenter/City-Council-2"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "City Council",
+     "source": "civicplus",
+     "url": "https://takomaparkmd.gov/AgendaCenter/City-Council-2",
+     "n_recent": 15,
+     "latest": "2026-10-29"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 16 categories, 1 tracked"
+   ],
+   "pages_fetched": 10,
+   "discovered_at": "2026-11-02T19:13:34+00:00"
+  },
+  {
+   "town": "City of Laurel",
+   "state": "MD",
+   "county": "Prince George's",
+   "kind": "city",
+   "website": "https://www.cityoflaurel.org/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "the one Prince George's municipality with its own zoning; Municode Meetings",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://www.cityoflaurel.org/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "laurelmd",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://laurelmd.portal.civicclerk.com"
+    },
+    {
+     "board": "Mayor & City Council",
+     "board_key": "select_board",
+     "url": "https://laurelmd.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://laurelmd.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicclerk",
+     "url": "https://laurelmd.portal.civicclerk.com",
+     "n_recent": 3,
+     "latest": "2026-10-20"
+    },
+    "select_board": {
+     "board": "Mayor & City Council",
+     "source": "civicclerk",
+     "url": "https://laurelmd.portal.civicclerk.com",
+     "n_recent": 10,
+     "latest": "2026-11-04"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "civicclerk",
+     "url": "https://laurelmd.portal.civicclerk.com",
+     "n_recent": 1,
+     "latest": "2026-09-24"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://laurelmd.portal.civicclerk.com"
+     ],
+     "tenant": "laurelmd",
+     "found_by": "tenant probe",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 34,
+   "discovered_at": "2026-11-02T19:15:40+00:00"
+  },
+  {
+   "town": "City of Bowie",
+   "state": "MD",
+   "county": "Prince George's",
+   "kind": "city",
+   "website": "https://www.cityofbowie.org/",
+   "zoning_power": "county",
+   "selection_group": "municipality",
+   "selection_reason": "zoning stays with the Prince George's District Council; council reviews",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://www.cityofbowie.org/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "bowiemd",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "City Council",
+     "board_key": "select_board",
+     "url": "https://bowiemd.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "City Council",
+     "source": "civicclerk",
+     "url": "https://bowiemd.portal.civicclerk.com",
+     "n_recent": 11,
+     "latest": "2026-11-02"
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Advisory Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.cityofbowie.org/308/Advisory-Planning-Board",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://bowiemd.portal.civicclerk.com"
+     ],
+     "tenant": "bowiemd",
+     "found_by": "tenant probe",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 4 categories, 0 tracked"
+   ],
+   "pages_fetched": 18,
+   "discovered_at": "2026-11-02T19:14:01+00:00"
+  },
+  {
+   "town": "City of College Park",
+   "state": "MD",
+   "county": "Prince George's",
+   "kind": "city",
+   "website": "https://www.collegeparkmd.gov/",
+   "zoning_power": "county",
+   "selection_group": "municipality",
+   "selection_reason": "zoning stays with the District Council; council reviews",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://www.collegeparkmd.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus",
+    "agenda_page"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Mayor & City Council",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://www.collegeparkmd.gov/AgendaCenter/Mayor-City-Council-2"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.collegeparkmd.gov/agendacenter",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
+     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.collegeparkmd.gov/agendacenter",
+     "n_recent": 3,
+     "latest": "2026-11-05",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-05",
+       "url": "https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_11052026-2348",
+       "title": "Advisory Planning Commission Hybrid Meeting"
+      },
+      {
+       "date": "2026-10-01",
+       "url": "https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_10012026-2328",
+       "title": "Advisory Planning Commission Hybrid Meeting"
+      },
+      {
+       "date": "2026-09-03",
+       "url": "https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_09032026-2311",
+       "title": "Advisory Planning Commission Hybrid Meeting"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Mayor & City Council",
+     "source": "civicplus",
+     "url": "https://www.collegeparkmd.gov/AgendaCenter/Mayor-City-Council-2",
+     "n_recent": 19,
+     "latest": "2026-11-03"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "granicus": {
+     "urls": [
+      "https://college-park.granicus.com/boards/forms/751/apply/"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on college-park.granicus.com disallows AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 33 categories, 1 tracked"
+   ],
+   "pages_fetched": 12,
+   "discovered_at": "2026-11-02T19:14:19+00:00"
+  },
+  {
+   "town": "City of Greenbelt",
+   "state": "MD",
+   "county": "Prince George's",
+   "kind": "city",
+   "website": "https://www.greenbeltmd.gov/",
+   "zoning_power": "county",
+   "selection_group": "municipality",
+   "selection_reason": "zoning stays with the District Council; council reviews",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://www.greenbeltmd.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "greenbeltmd",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "City Council",
+     "board_key": "select_board",
+     "url": "https://greenbeltmd.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "City Council",
+     "source": "civicclerk",
+     "url": "https://greenbeltmd.portal.civicclerk.com",
+     "n_recent": 7,
+     "latest": "2026-10-26"
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Advisory Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.greenbeltmd.gov/226/Advisory-Planning-Board",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://www.greenbeltmd.gov/305/Board-of-Appeals",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://greenbeltmd.portal.civicclerk.com/"
+     ],
+     "tenant": "greenbeltmd",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 30,
+   "discovered_at": "2026-11-02T19:15:32+00:00"
+  },
+  {
+   "town": "City of Hyattsville",
+   "state": "MD",
+   "county": "Prince George's",
+   "kind": "city",
+   "website": "https://www.hyattsville.org/",
+   "zoning_power": "county",
+   "selection_group": "municipality",
+   "selection_reason": "zoning stays with the District Council; council reviews",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://www.hyattsville.org/",
+   "cms": [
+    "civicplus"
+   ],
+   "tenant": "hyattsvillemd",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "City Council",
+     "board_key": "select_board",
+     "url": "https://hyattsvillemd.portal.civicclerk.com"
+    },
+    {
+     "board": "Board of Supervisors of Election",
+     "board_key": "select_board",
+     "url": "https://hyattsvillemd.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "City Council",
+     "source": "civicclerk",
+     "url": "https://hyattsvillemd.portal.civicclerk.com",
+     "n_recent": 7,
+     "latest": "2026-11-02"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://hyattsvillemd.portal.civicclerk.com/"
+     ],
+     "tenant": "hyattsvillemd",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 2 categories, 0 tracked"
+   ],
+   "pages_fetched": 10,
+   "discovered_at": "2026-11-02T19:14:39+00:00"
+  },
+  {
+   "town": "City of Annapolis",
+   "state": "MD",
+   "county": "Anne Arundel",
+   "kind": "city",
+   "website": "https://www.annapolis.gov/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "state capital; own zoning",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://www.annapolis.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "12",
+     "url": "https://www.annapolis.gov/AgendaCenter/Board-of-Appeals-12"
+    },
+    {
+     "board": "Board of Supervisors of Elections",
+     "board_key": "select_board",
+     "category_id": "13",
+     "url": "https://www.annapolis.gov/AgendaCenter/Board-of-Supervisors-of-Elections-13"
+    },
+    {
+     "board": "Building Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "14",
+     "url": "https://www.annapolis.gov/AgendaCenter/Building-Board-of-Appeals-14"
+    },
+    {
+     "board": "City Council",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://www.annapolis.gov/AgendaCenter/City-Council-2"
+    },
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "category_id": "21",
+     "url": "https://www.annapolis.gov/AgendaCenter/Planning-Commission-21"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "civicplus",
+     "url": "https://www.annapolis.gov/AgendaCenter/Planning-Commission-21",
+     "n_recent": 4,
+     "latest": "2026-10-15"
+    },
+    "select_board": {
+     "board": "Board of Supervisors of Elections",
+     "source": "civicplus",
+     "url": "https://www.annapolis.gov/AgendaCenter/Board-of-Supervisors-of-Elections-13",
+     "n_recent": 4,
+     "latest": "2026-10-15"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "civicplus",
+     "url": "https://www.annapolis.gov/AgendaCenter/Board-of-Appeals-12",
+     "n_recent": 3,
+     "latest": "2026-10-06"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "legistar": {
+     "urls": [
+      "https://annapolismd.legistar.com/DepartmentDetail.aspx?ID=23680&amp;GUID=8CC9DA25-D92A-491F-984C-946DCA0F51DE&amp;Mode=MainBody",
+      "https://annapolismd.legistar.com/Legislation.aspx"
+     ],
+     "status": "open"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 39 categories, 5 tracked"
+   ],
+   "pages_fetched": 3,
+   "discovered_at": "2026-11-02T19:14:11+00:00"
+  },
+  {
+   "town": "City of Hagerstown",
+   "state": "MD",
+   "county": "Washington",
+   "kind": "city",
+   "website": "https://www.hagerstownmd.org/",
+   "zoning_power": "own",
+   "selection_group": "municipality",
+   "selection_reason": "data centers (Washington County)",
+   "selection_source": "research_notes/Expansion/where_it_pays_2026.md",
+   "website_source": "hand list, 2026-11; verified by discovery (the site must name the place)",
+   "final_url": "https://www.hagerstownmd.org/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "url": "https://www.hagerstownmd.org/Archive.aspx?AMID=41",
+     "platform": "agenda_page",
+     "board_exclude": "county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Board of Zoning Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://www.hagerstownmd.org/549/Board-of-Zoning-Appeals",
+     "platform": "agenda_page",
+     "board_exclude": "county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|planning\\s+commission|planning\\s+board|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [
+    "select_board"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Commission",
+     "source": "agenda_page",
+     "url": "https://www.hagerstownmd.org/Archive.aspx?AMID=41",
+     "n_recent": 6,
+     "latest": "2026-10-28",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-28",
+       "url": "https://www.hagerstownmd.org/Archive.aspx?ADID=3437",
+       "title": "October 28, 2026"
+      },
+      {
+       "date": "2026-09-30",
+       "url": "https://www.hagerstownmd.org/Archive.aspx?ADID=3383",
+       "title": "September 30, 2026"
+      },
+      {
+       "date": "2026-09-09",
+       "url": "https://www.hagerstownmd.org/Archive.aspx?ADID=3376",
+       "title": "September 9, 2026"
+      }
+     ]
+    },
+    "zoning_board_of_appeals": {
+     "board": "Board of Zoning Appeals",
+     "source": "agenda_page",
+     "url": "https://www.hagerstownmd.org/549/Board-of-Zoning-Appeals",
+     "n_recent": 2,
+     "latest": "2026-10-21",
+     "kinds": [
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-21",
+       "url": "https://www.hagerstownmd.org/DocumentCenter/View/20787",
+       "title": "2026 Board of Zoning Appeals Meeting Schedule"
+      },
+      {
+       "date": "2026-10-21",
+       "url": "https://www.hagerstownmd.org/DocumentCenter/View/23364",
+       "title": "Special Meeting Packet October 21, 2026"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "select_board": {
+     "board": "Council Minutes",
+     "source": "agenda_page",
+     "url": "https://www.hagerstownmd.org/578/Minutes",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "novusagenda": {
+     "urls": [
+      "https://hagerstown.novusagenda.com/agendapublic/"
+     ],
+     "status": "open"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 33,
+   "discovered_at": "2026-11-02T19:16:50+00:00"
+  }
+ ]
+}

@@ -1,0 +1,254 @@
+{
+ "by_state": {
+  "MD": {
+   "new_documents": 185,
+   "new_hits": 105,
+   "towns_attempted": 30,
+   "towns_succeeded": 30
+  },
+  "VA": {
+   "new_documents": 538,
+   "new_hits": 810,
+   "towns_attempted": 108,
+   "towns_succeeded": 108
+  }
+ },
+ "date": "2026-11-02",
+ "document_errors": 15,
+ "documents_already_indexed": 5,
+ "documents_deferred": 0,
+ "documents_listed": 743,
+ "documents_needing_ocr": 4,
+ "documents_rematched": 0,
+ "documents_retried": 0,
+ "documents_too_large": [
+  {
+   "error": "too large (62620388 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-761",
+   "meeting_date": "2026-10-13",
+   "state": "VA",
+   "town": "Botetourt County",
+   "url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-761"
+  },
+  {
+   "error": "too large (47850552 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-763",
+   "meeting_date": "2026-10-13",
+   "state": "VA",
+   "town": "Botetourt County",
+   "url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-763"
+  },
+  {
+   "error": "too large (55951595 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10232026-766",
+   "meeting_date": "2026-10-23",
+   "state": "VA",
+   "town": "Botetourt County",
+   "url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10232026-766"
+  },
+  {
+   "error": "too large (46088347 > 41943040 bytes): https://www.colonialheightsva.gov/AgendaCenter/ViewFile/Agenda/_11042026-812",
+   "meeting_date": "2026-11-04",
+   "state": "VA",
+   "town": "City of Colonial Heights",
+   "url": "https://www.colonialheightsva.gov/AgendaCenter/ViewFile/Agenda/_11042026-812"
+  },
+  {
+   "error": "too large (90452290 > 41943040 bytes): https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10132026-3833",
+   "meeting_date": "2026-10-13",
+   "state": "VA",
+   "town": "City of Suffolk",
+   "url": "https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10132026-3833"
+  },
+  {
+   "error": "too large (45633511 > 41943040 bytes): https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10212026-3839",
+   "meeting_date": "2026-10-21",
+   "state": "VA",
+   "town": "City of Suffolk",
+   "url": "https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10212026-3839"
+  },
+  {
+   "error": "too large (58877117 > 41943040 bytes): https://www.franklincountyva.gov/AgendaCenter/ViewFile/Agenda/_10202026-822",
+   "meeting_date": "2026-10-20",
+   "state": "VA",
+   "town": "Franklin County",
+   "url": "https://www.franklincountyva.gov/AgendaCenter/ViewFile/Agenda/_10202026-822"
+  },
+  {
+   "error": "too large (46433239 > 41943040 bytes): https://cms7files.revize.com/greensvillecountyva25/Documents Center/Agenda & Minu",
+   "meeting_date": "2026-10-05",
+   "state": "VA",
+   "town": "Greensville County",
+   "url": "https://www.greensvillecountyva.gov/Documents Center/Agenda & Minutes/Board of Supervisors/2026/Agenda/Board of Supervisors Agenda - 10052026.pdf"
+  },
+  {
+   "error": "too large (241819661 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_10052026-790",
+   "meeting_date": "2026-10-05",
+   "state": "VA",
+   "town": "Halifax County",
+   "url": "https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_10052026-790"
+  },
+  {
+   "error": "too large (292957981 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_11022026-799",
+   "meeting_date": "2026-11-02",
+   "state": "VA",
+   "town": "Halifax County",
+   "url": "https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_11022026-799"
+  },
+  {
+   "error": "too large (85135107 > 41943040 bytes): https://cms7files1.revize.com/southamptoncountyva/BOS Agendas 2026/October 2026/N",
+   "meeting_date": "2026-10-27",
+   "state": "VA",
+   "town": "Southampton County",
+   "url": "https://www.southamptoncounty.org/BOS Agendas 2026/October 2026/No. 11 B - Public Hearing - CUP 2026-02 - Cenergy Power - BAP Power LLC plus final updates and appl.pdf"
+  },
+  {
+   "error": "too large (69549427 > 41943040 bytes): https://louisava.gov/wp-content/uploads/2026/07/July-Planning-Commission-Agenda-2",
+   "meeting_date": "2026-10-26",
+   "state": "VA",
+   "town": "Town of Louisa",
+   "url": "https://louisava.gov/wp-content/uploads/2026/07/July-Planning-Commission-Agenda-2.pdf"
+  },
+  {
+   "error": "too large (64101491 > 41943040 bytes): https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_10132026-993",
+   "meeting_date": "2026-10-13",
+   "state": "VA",
+   "town": "Town of Smithfield",
+   "url": "https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_10132026-993"
+  }
+ ],
+ "duration_seconds": 369.8,
+ "errors": [
+  {
+   "error": "document: too large (55951595 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10232026-766",
+   "town": "VA:Botetourt County"
+  },
+  {
+   "error": "document: too large (47850552 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-763",
+   "town": "VA:Botetourt County"
+  },
+  {
+   "error": "document: too large (62620388 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-761",
+   "town": "VA:Botetourt County"
+  },
+  {
+   "error": "document: https://cms7files.revize.com/carrollcounty/Documents/Government/Board Of Supervisors/Meeting Documentation/2026/October/Agenda -  October 5 2026.docx",
+   "town": "VA:Carroll County"
+  },
+  {
+   "error": "document: too large (46088347 > 41943040 bytes): https://www.colonialheightsva.gov/AgendaCenter/ViewFile/Agenda/_11042026-812",
+   "town": "VA:City of Colonial Heights"
+  },
+  {
+   "error": "document: too large (45633511 > 41943040 bytes): https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10212026-3839",
+   "town": "VA:City of Suffolk"
+  },
+  {
+   "error": "document: too large (90452290 > 41943040 bytes): https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10132026-3833",
+   "town": "VA:City of Suffolk"
+  },
+  {
+   "error": "document: too large (58877117 > 41943040 bytes): https://www.franklincountyva.gov/AgendaCenter/ViewFile/Agenda/_10202026-822",
+   "town": "VA:Franklin County"
+  },
+  {
+   "error": "document: too large (46433239 > 41943040 bytes): https://cms7files.revize.com/greensvillecountyva25/Documents Center/Agenda & Minutes/Board of Supervisors/2026/Agenda/Board of Supervisors Agenda - 10052026.pdf",
+   "town": "VA:Greensville County"
+  },
+  {
+   "error": "document: too large (292957981 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_11022026-799",
+   "town": "VA:Halifax County"
+  },
+  {
+   "error": "document: too large (241819661 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_10052026-790",
+   "town": "VA:Halifax County"
+  },
+  {
+   "error": "document: https://cms8.revize.com/revize/nottowaycountyva/Agenda BoS Special Meeting September 30, 2026.docx",
+   "town": "VA:Nottoway County"
+  },
+  {
+   "error": "document: too large (85135107 > 41943040 bytes): https://cms7files1.revize.com/southamptoncountyva/BOS Agendas 2026/October 2026/No. 11 B - Public Hearing - CUP 2026-02 - Cenergy Power - BAP Power LLC plus final updates and appl.pdf",
+   "town": "VA:Southampton County"
+  },
+  {
+   "error": "document: too large (69549427 > 41943040 bytes): https://louisava.gov/wp-content/uploads/2026/07/July-Planning-Commission-Agenda-2.pdf",
+   "town": "VA:Town of Louisa"
+  },
+  {
+   "error": "document: too large (64101491 > 41943040 bytes): https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_10132026-993",
+   "town": "VA:Town of Smithfield"
+  }
+ ],
+ "errors_total": 15,
+ "finished": "2026-11-02T19:36:56+00:00",
+ "hits_current": 872,
+ "index": {
+  "by_state": {
+   "MD": 185,
+   "VA": 553
+  },
+  "by_status": {
+   "error": 15,
+   "needs_ocr": 4,
+   "ok": 719
+  },
+  "by_text_source": {
+   "docx": 6,
+   "html": 93,
+   "none": 15,
+   "ocr": 37,
+   "pdf": 587
+  },
+  "documents": 738,
+  "hits": 915,
+  "pruned": 0,
+  "towns": 137,
+  "with_hits": 223
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 1552341895,
+   "listing": 10873804
+  },
+  "cache_hits": 141,
+  "errors": 0,
+  "requests": 924,
+  "requests_by_purpose": {
+   "document": 769,
+   "listing": 155
+  },
+  "robots_blocked": 2
+ },
+ "new_alert_items": 0,
+ "new_alert_items_by_topic": {},
+ "new_documents": 723,
+ "new_hits": 915,
+ "new_hits_by_topic": {
+  "battery_storage": 91,
+  "clean_energy_siting": 126,
+  "data_center": 212,
+  "moratorium": 36,
+  "solar": 229,
+  "wireless_telecom": 71,
+  "zoning_amendment": 362
+ },
+ "options": {
+  "matcher_version": "e94d3fc5c8",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-11-02T19:30:47+00:00",
+ "states": [
+  "MD",
+  "VA"
+ ],
+ "towns_attempted": 138,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 138,
+ "window": {
+  "end": "2027-03-02",
+  "start": "2026-09-18"
+ }
+}

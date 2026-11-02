@@ -1,0 +1,5105 @@
+{
+ "generated": "2026-11-02T19:37:50+00:00",
+ "crawl_day": "2026-11-02",
+ "window": {
+  "end": "2027-03-02",
+  "start": "2026-09-18"
+ },
+ "contract_validation_errors": [],
+ "states": {
+  "VA": {
+   "coverage": {
+    "by_kind": {
+     "city": {
+      "attempted": 38,
+      "readable": 26,
+      "no_agendas_online": 2,
+      "blocked": 9,
+      "automated_no_docs_in_window": 1,
+      "readable_share": 0.684,
+      "bodies_targeted": 114,
+      "bodies_readable": 45,
+      "bodies_readable_share": 0.395,
+      "blocked_how": {
+       "vendor: granicus": 2,
+       "Cloudflare challenge": 2,
+       "WAF 403": 2,
+       "vendor: icompass_civicweb": 2,
+       "crawl-delay > 10 s": 1
+      },
+      "no_agendas_how": {
+       "document_store": 1,
+       "js_only": 1
+      },
+      "platforms_readable": {
+       "legistar": 4,
+       "agenda_page": 6,
+       "civicclerk": 6,
+       "civicplus": 10
+      }
+     },
+     "county": {
+      "attempted": 95,
+      "blocked": 20,
+      "readable": 62,
+      "error_unreachable": 9,
+      "no_agendas_online": 3,
+      "automated_no_docs_in_window": 1,
+      "readable_share": 0.653,
+      "bodies_targeted": 285,
+      "bodies_readable": 113,
+      "bodies_readable_share": 0.396,
+      "blocked_how": {
+       "vendor: boarddocs": 4,
+       "WAF 403": 6,
+       "crawl-delay > 10 s": 1,
+       "robots.txt": 2,
+       "Cloudflare challenge": 3,
+       "documents robots/403": 2,
+       "vendor: icompass_civicweb": 1,
+       "vendor: iqm2": 1
+      },
+      "no_agendas_how": {
+       "no_recent_agendas": 1,
+       "no_agendas_found": 1,
+       "document_store": 1
+      },
+      "platforms_readable": {
+       "agenda_page": 17,
+       "civicclerk": 20,
+       "onbase_agenda": 1,
+       "civicplus": 22,
+       "escribe": 2
+      }
+     },
+     "town": {
+      "attempted": 41,
+      "blocked": 9,
+      "readable": 18,
+      "no_agendas_online": 10,
+      "error_unreachable": 4,
+      "readable_share": 0.439,
+      "bodies_targeted": 123,
+      "bodies_readable": 28,
+      "bodies_readable_share": 0.228,
+      "blocked_how": {
+       "WAF 403": 3,
+       "Cloudflare challenge": 3,
+       "vendor: iqm2": 1,
+       "vendor: granicus": 1,
+       "vendor: boarddocs": 1
+      },
+      "no_agendas_how": {
+       "no_recent_agendas": 7,
+       "js_only": 2,
+       "no_agendas_found": 1
+      },
+      "platforms_readable": {
+       "civicclerk": 5,
+       "legistar": 1,
+       "civicplus": 3,
+       "agenda_page": 9
+      }
+     }
+    },
+    "by_selection_group": {
+     "central": {
+      "attempted": 2,
+      "readable": 1,
+      "readable_share": 0.5
+     },
+     "city": {
+      "attempted": 38,
+      "readable": 26,
+      "readable_share": 0.684
+     },
+     "eastern_shore": {
+      "attempted": 2,
+      "readable": 0,
+      "readable_share": 0.0
+     },
+     "hampton_roads": {
+      "attempted": 3,
+      "readable": 2,
+      "readable_share": 0.667
+     },
+     "northern_neck": {
+      "attempted": 9,
+      "readable": 6,
+      "readable_share": 0.667
+     },
+     "nova": {
+      "attempted": 6,
+      "readable": 5,
+      "readable_share": 0.833
+     },
+     "piedmont": {
+      "attempted": 11,
+      "readable": 8,
+      "readable_share": 0.727
+     },
+     "richmond_metro": {
+      "attempted": 5,
+      "readable": 3,
+      "readable_share": 0.6
+     },
+     "roanoke_valley": {
+      "attempted": 2,
+      "readable": 2,
+      "readable_share": 1.0
+     },
+     "shenandoah_valley": {
+      "attempted": 11,
+      "readable": 5,
+      "readable_share": 0.455
+     },
+     "southside": {
+      "attempted": 21,
+      "readable": 20,
+      "readable_share": 0.952
+     },
+     "southwest": {
+      "attempted": 23,
+      "readable": 10,
+      "readable_share": 0.435
+     },
+     "town": {
+      "attempted": 41,
+      "readable": 18,
+      "readable_share": 0.439
+     }
+    },
+    "places": [
+     {
+      "town": "Accomack County",
+      "kind": "county",
+      "group": "eastern_shore",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "boarddocs",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on boarddocs: go.boarddocs.com answers HTTP 403 to AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "Albemarle County",
+      "kind": "county",
+      "group": "central",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Alleghany County",
+      "kind": "county",
+      "group": "shenandoah_valley",
+      "class": "blocked",
+      "reason_code": "crawl_delay_exceeds_cap",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt asks for a Crawl-delay above the 20 s listing cap (60.0s too long for prototype); host skipped",
+      "health": null
+     },
+     {
+      "town": "Amelia County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Amherst County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Appomattox County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Arlington County",
+      "kind": "county",
+      "group": "nova",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "onbase_agenda",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Augusta County",
+      "kind": "county",
+      "group": "shenandoah_valley",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Bath County",
+      "kind": "county",
+      "group": "shenandoah_valley",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Bedford County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Bland County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Botetourt County",
+      "kind": "county",
+      "group": "roanoke_valley",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Brunswick County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Buchanan County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Buckingham County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Campbell County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Caroline County",
+      "kind": "county",
+      "group": "piedmont",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Carroll County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Charles City County",
+      "kind": "county",
+      "group": "richmond_metro",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Charlotte County",
+      "kind": "county",
+      "group": "southside",
+      "class": "blocked",
+      "reason_code": "robots_disallow",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt on the site disallows AgendaAheadBot (https://www.charlottecountyva.gov/)",
+      "health": null
+     },
+     {
+      "town": "Chesterfield County",
+      "kind": "county",
+      "group": "richmond_metro",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Clarke County",
+      "kind": "county",
+      "group": "shenandoah_valley",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Craig County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Culpeper County",
+      "kind": "county",
+      "group": "piedmont",
+      "class": "blocked",
+      "reason_code": "bot_challenge",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "Cloudflare-style bot challenge (HTTP 403) on https://web.culpepercounty.gov/; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Cumberland County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Dickenson County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "no_agendas_online",
+      "reason_code": "no_recent_agendas",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "board pages found (e.g. https://www.dickensonva.org/AgendaCenter/Board-of-Supervisors-2) but no agenda dated within the last 120 or next 120 days could be read from them",
+      "health": null
+     },
+     {
+      "town": "Dinwiddie County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Essex County",
+      "kind": "county",
+      "group": "northern_neck",
+      "class": "automated_no_docs_in_window",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Fairfax County",
+      "kind": "county",
+      "group": "nova",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Fauquier County",
+      "kind": "county",
+      "group": "piedmont",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Floyd County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "error_unreachable",
+      "reason_code": "http_error",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "homepage HTTP 404",
+      "health": null
+     },
+     {
+      "town": "Fluvanna County",
+      "kind": "county",
+      "group": "piedmont",
+      "class": "blocked",
+      "reason_code": "documents_blocked",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "documents on www.fluvanna.gov need a crawl delay above the 10 s document cap",
+      "health": null
+     },
+     {
+      "town": "Franklin County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Frederick County",
+      "kind": "county",
+      "group": "shenandoah_valley",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Giles County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Gloucester County",
+      "kind": "county",
+      "group": "hampton_roads",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "escribe",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Goochland County",
+      "kind": "county",
+      "group": "piedmont",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Grayson County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "no_agendas_online",
+      "reason_code": "no_agendas_found",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+      "health": null
+     },
+     {
+      "town": "Greene County",
+      "kind": "county",
+      "group": "central",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Greensville County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Halifax County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Hanover County",
+      "kind": "county",
+      "group": "piedmont",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Henrico County",
+      "kind": "county",
+      "group": "richmond_metro",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Henry County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Highland County",
+      "kind": "county",
+      "group": "shenandoah_valley",
+      "class": "blocked",
+      "reason_code": "bot_challenge",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "Cloudflare-style bot challenge (HTTP 403) on https://www.highlandcova.org/; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Isle of Wight County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "James City County",
+      "kind": "county",
+      "group": "hampton_roads",
+      "class": "blocked",
+      "reason_code": "bot_challenge",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "Cloudflare-style bot challenge (HTTP 403) on https://www.jamescitycountyva.gov/; not bypassed",
+      "health": null
+     },
+     {
+      "town": "King George County",
+      "kind": "county",
+      "group": "piedmont",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "King William County",
+      "kind": "county",
+      "group": "northern_neck",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "King and Queen County",
+      "kind": "county",
+      "group": "northern_neck",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Lancaster County",
+      "kind": "county",
+      "group": "northern_neck",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "icompass_civicweb",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on icompass_civicweb: robots.txt on lancova.civicweb.net disallows AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "Lee County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Loudoun County",
+      "kind": "county",
+      "group": "nova",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "escribe",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Louisa County",
+      "kind": "county",
+      "group": "piedmont",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Lunenburg County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Madison County",
+      "kind": "county",
+      "group": "piedmont",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Mathews County",
+      "kind": "county",
+      "group": "northern_neck",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Mecklenburg County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Middlesex County",
+      "kind": "county",
+      "group": "northern_neck",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Montgomery County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "no_agendas_online",
+      "reason_code": "document_store",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas kept in a Laserfiche WebLink repository (https://weblink.montva.com//WebLink/Browse.aspx?id=801&amp;dbid=4&amp;repo=PIO); no listing with dates",
+      "health": null
+     },
+     {
+      "town": "Nelson County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from the site's firewall to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "New Kent County",
+      "kind": "county",
+      "group": "richmond_metro",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Northampton County",
+      "kind": "county",
+      "group": "eastern_shore",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "boarddocs",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on boarddocs: www.boarddocs.com answers HTTP 403 to AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "Northumberland County",
+      "kind": "county",
+      "group": "northern_neck",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Nottoway County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Orange County",
+      "kind": "county",
+      "group": "piedmont",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Page County",
+      "kind": "county",
+      "group": "shenandoah_valley",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Patrick County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Pittsylvania County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Powhatan County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Prince Edward County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Prince George County",
+      "kind": "county",
+      "group": "richmond_metro",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "boarddocs",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on boarddocs: go.boarddocs.com answers HTTP 403 to AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "Prince William County",
+      "kind": "county",
+      "group": "nova",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board"
+      ],
+      "boards_automated": [
+       "planning_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Pulaski County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "boarddocs",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on boarddocs: www.boarddocs.com answers HTTP 403 to AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "Rappahannock County",
+      "kind": "county",
+      "group": "nova",
+      "class": "blocked",
+      "reason_code": "robots_disallow",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt on the site disallows AgendaAheadBot (https://www.rappahannockcountyva.gov/)",
+      "health": null
+     },
+     {
+      "town": "Richmond County",
+      "kind": "county",
+      "group": "northern_neck",
+      "class": "blocked",
+      "reason_code": "documents_blocked",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt disallows documents on co.richmond.va.us",
+      "health": null
+     },
+     {
+      "town": "Roanoke County",
+      "kind": "county",
+      "group": "roanoke_valley",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Rockbridge County",
+      "kind": "county",
+      "group": "shenandoah_valley",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Rockingham County",
+      "kind": "county",
+      "group": "shenandoah_valley",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "homepage unreachable: https://www.rockinghamcountyva.gov/: HTTPSConnectionPool(host='www.rockinghamcountyva.gov', port=443): Read timed out. (read timeout=10)",
+      "health": null
+     },
+     {
+      "town": "Russell County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Scott County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Shenandoah County",
+      "kind": "county",
+      "group": "shenandoah_valley",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Smyth County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Southampton County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Spotsylvania County",
+      "kind": "county",
+      "group": "piedmont",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Stafford County",
+      "kind": "county",
+      "group": "nova",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Surry County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Sussex County",
+      "kind": "county",
+      "group": "southside",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Tazewell County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Warren County",
+      "kind": "county",
+      "group": "shenandoah_valley",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Washington County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "iqm2",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on iqm2: robots.txt on washingtoncountyva.iqm2.com disallows AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "Westmoreland County",
+      "kind": "county",
+      "group": "northern_neck",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Wise County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Wythe County",
+      "kind": "county",
+      "group": "southwest",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "York County",
+      "kind": "county",
+      "group": "hampton_roads",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Alexandria",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "legistar",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Bristol",
+      "kind": "city",
+      "group": "city",
+      "class": "no_agendas_online",
+      "reason_code": "document_store",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas kept in a Laserfiche WebLink repository (http://www.mccinnovations.com/weblink/login.aspx?LogName=Bristol); no listing with dates",
+      "health": null
+     },
+     {
+      "town": "City of Buena Vista",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Charlottesville",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Chesapeake",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Colonial Heights",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Covington",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Danville",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Emporia",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Fairfax",
+      "kind": "city",
+      "group": "city",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "granicus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on granicus: robots.txt on fairfax.granicus.com disallows AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "City of Falls Church",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Franklin",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Fredericksburg",
+      "kind": "city",
+      "group": "city",
+      "class": "blocked",
+      "reason_code": "bot_challenge",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "Cloudflare-style bot challenge (HTTP 403) on https://www.fredericksburgva.gov/; not bypassed",
+      "health": null
+     },
+     {
+      "town": "City of Galax",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Hampton",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "legistar",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Harrisonburg",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "legistar",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Hopewell",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Lexington",
+      "kind": "city",
+      "group": "city",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "City of Lynchburg",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Manassas",
+      "kind": "city",
+      "group": "city",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "granicus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on granicus: robots.txt on manassascity.granicus.com disallows AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "City of Manassas Park",
+      "kind": "city",
+      "group": "city",
+      "class": "no_agendas_online",
+      "reason_code": "js_only",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "homepage renders client-side (no server HTML to read)",
+      "health": null
+     },
+     {
+      "town": "City of Martinsville",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Newport News",
+      "kind": "city",
+      "group": "city",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "icompass_civicweb",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on icompass_civicweb: robots.txt on nngov.civicweb.net disallows AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "City of Norfolk",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Norton",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Petersburg",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Poquoson",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Portsmouth",
+      "kind": "city",
+      "group": "city",
+      "class": "blocked",
+      "reason_code": "crawl_delay_exceeds_cap",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt on www.portsmouthva.gov asks for a Crawl-delay of 20 s: at the listing cap, above the 10 s document cap, so agenda files cannot be fetched; CivicClerk V8 portal (portsmouthva.v8.civicclerk.",
+      "health": null
+     },
+     {
+      "town": "City of Radford",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Richmond",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "legistar",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Roanoke",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Salem",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Staunton",
+      "kind": "city",
+      "group": "city",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "City of Suffolk",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Virginia Beach",
+      "kind": "city",
+      "group": "city",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Waynesboro",
+      "kind": "city",
+      "group": "city",
+      "class": "blocked",
+      "reason_code": "bot_challenge",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "Cloudflare-style bot challenge (HTTP 403) on https://www.waynesboro.va.us/; not bypassed",
+      "health": null
+     },
+     {
+      "town": "City of Williamsburg",
+      "kind": "city",
+      "group": "city",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "icompass_civicweb",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on icompass_civicweb: robots.txt on williamsburg.civicweb.net disallows AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "City of Winchester",
+      "kind": "city",
+      "group": "city",
+      "class": "automated_no_docs_in_window",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Leesburg",
+      "kind": "town",
+      "group": "town",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Town of Purcellville",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Lovettsville",
+      "kind": "town",
+      "group": "town",
+      "class": "blocked",
+      "reason_code": "bot_challenge",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "Cloudflare-style bot challenge (HTTP 403) on https://www.lovettsvilleva.gov/; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Town of Round Hill",
+      "kind": "town",
+      "group": "town",
+      "class": "no_agendas_online",
+      "reason_code": "no_recent_agendas",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "board pages found (e.g. https://www.roundhillva.gov/1224/Town-Council) but no agenda dated within the last 120 or next 120 days could be read from them",
+      "health": null
+     },
+     {
+      "town": "Town of Hamilton",
+      "kind": "town",
+      "group": "town",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Town of Middleburg",
+      "kind": "town",
+      "group": "town",
+      "class": "no_agendas_online",
+      "reason_code": "no_recent_agendas",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "board pages found (e.g. https://www.middleburgva.gov/154/Mayor-and-Council) but no agenda dated within the last 120 or next 120 days could be read from them",
+      "health": null
+     },
+     {
+      "town": "Town of Haymarket",
+      "kind": "town",
+      "group": "town",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "iqm2",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on iqm2: robots.txt on haymarkettownva.iqm2.com disallows AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "Town of Dumfries",
+      "kind": "town",
+      "group": "town",
+      "class": "no_agendas_online",
+      "reason_code": "js_only",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "homepage renders client-side (no server HTML to read)",
+      "health": null
+     },
+     {
+      "town": "Town of Herndon",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Vienna",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "legistar",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Front Royal",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Strasburg",
+      "kind": "town",
+      "group": "town",
+      "class": "blocked",
+      "reason_code": "bot_challenge",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "Cloudflare-style bot challenge (HTTP 403) on https://www.strasburgva.com/; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Town of Woodstock",
+      "kind": "town",
+      "group": "town",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Town of Berryville",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Luray",
+      "kind": "town",
+      "group": "town",
+      "class": "no_agendas_online",
+      "reason_code": "no_recent_agendas",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "board pages found (e.g. https://www.townofluray.com/town-council-meetings/june-10-2024---town-council-meeting-agenda-copy) but no agenda dated within the last 120 or next 120 days could be read from t",
+      "health": null
+     },
+     {
+      "town": "Town of Stephens City",
+      "kind": "town",
+      "group": "town",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Town of Orange",
+      "kind": "town",
+      "group": "town",
+      "class": "no_agendas_online",
+      "reason_code": "no_recent_agendas",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "board pages found (e.g. https://www.townoforangeva.gov/55/Town-Council) but no agenda dated within the last 120 or next 120 days could be read from them",
+      "health": null
+     },
+     {
+      "town": "Town of Louisa",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board"
+      ],
+      "boards_automated": [
+       "planning_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Ashland",
+      "kind": "town",
+      "group": "town",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "granicus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on granicus: robots.txt on ashland-va.granicus.com disallows AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "Town of Bowling Green",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Remington",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Culpeper",
+      "kind": "town",
+      "group": "town",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "boarddocs",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on boarddocs: www.boarddocs.com answers HTTP 403 to AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "Town of Warrenton",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Farmville",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of South Hill",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of South Boston",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Chase City",
+      "kind": "town",
+      "group": "town",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from the site's firewall to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Town of Clarksville",
+      "kind": "town",
+      "group": "town",
+      "class": "no_agendas_online",
+      "reason_code": "js_only",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "homepage renders client-side (no server HTML to read)",
+      "health": null
+     },
+     {
+      "town": "Town of Blackstone",
+      "kind": "town",
+      "group": "town",
+      "class": "no_agendas_online",
+      "reason_code": "no_agendas_found",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+      "health": null
+     },
+     {
+      "town": "Town of Blacksburg",
+      "kind": "town",
+      "group": "town",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Town of Christiansburg",
+      "kind": "town",
+      "group": "town",
+      "class": "no_agendas_online",
+      "reason_code": "no_recent_agendas",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "board pages found (e.g. https://www.christiansburg.org/411/Meeting-Videos) but no agenda dated within the last 120 or next 120 days could be read from them",
+      "health": null
+     },
+     {
+      "town": "Town of Smithfield",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Windsor",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Bedford",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Rocky Mount",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Wytheville",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Abingdon",
+      "kind": "town",
+      "group": "town",
+      "class": "no_agendas_online",
+      "reason_code": "no_recent_agendas",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "board pages found (e.g. https://www.abingdon-va.gov/documents/town-council/town-hall-meetings/town-hall-agendas/803648) but no agenda dated within the last 120 or next 120 days could be read from them",
+      "health": null
+     },
+     {
+      "town": "Town of Altavista",
+      "kind": "town",
+      "group": "town",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Chatham",
+      "kind": "town",
+      "group": "town",
+      "class": "blocked",
+      "reason_code": "bot_challenge",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "Cloudflare-style bot challenge (HTTP 403) on https://www.chatham-va.gov/; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Town of Gordonsville",
+      "kind": "town",
+      "group": "town",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Town of Vinton",
+      "kind": "town",
+      "group": "town",
+      "class": "no_agendas_online",
+      "reason_code": "no_recent_agendas",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "board pages found (e.g. https://www.vintonva.gov/81/Town-Council) but no agenda dated within the last 120 or next 120 days could be read from them",
+      "health": null
+     }
+    ],
+    "by_platform": {
+     "agenda_page": {
+      "readable": 32,
+      "automated_no_docs_in_window": 1
+     },
+     "boarddocs": {
+      "blocked": 5
+     },
+     "bot_challenge": {
+      "blocked": 8
+     },
+     "civicclerk": {
+      "readable": 31
+     },
+     "civicplus": {
+      "readable": 35,
+      "automated_no_docs_in_window": 1
+     },
+     "crawl_delay_exceeds_cap": {
+      "blocked": 2
+     },
+     "document_store": {
+      "no_agendas_online": 2
+     },
+     "documents_blocked": {
+      "blocked": 2
+     },
+     "escribe": {
+      "readable": 2
+     },
+     "granicus": {
+      "blocked": 3
+     },
+     "http_error": {
+      "error_unreachable": 1
+     },
+     "icompass_civicweb": {
+      "blocked": 3
+     },
+     "iqm2": {
+      "blocked": 2
+     },
+     "js_only": {
+      "no_agendas_online": 3
+     },
+     "legistar": {
+      "readable": 5
+     },
+     "no_agendas_found": {
+      "no_agendas_online": 2
+     },
+     "no_recent_agendas": {
+      "no_agendas_online": 8
+     },
+     "onbase_agenda": {
+      "readable": 1
+     },
+     "robots_disallow": {
+      "blocked": 2
+     },
+     "unreachable": {
+      "error_unreachable": 12
+     },
+     "waf_block": {
+      "blocked": 11
+     }
+    },
+    "bodies": {
+     "city:select_board": {
+      "read": 25,
+      "not_read": 13
+     },
+     "city:planning_board": {
+      "read": 15,
+      "not_read": 23
+     },
+     "city:zoning_board_of_appeals": {
+      "read": 5,
+      "not_read": 33
+     },
+     "county:select_board": {
+      "read": 60,
+      "not_read": 35
+     },
+     "county:planning_board": {
+      "read": 42,
+      "not_read": 53
+     },
+     "county:zoning_board_of_appeals": {
+      "read": 11,
+      "not_read": 84
+     },
+     "town:select_board": {
+      "read": 17,
+      "not_read": 24
+     },
+     "town:planning_board": {
+      "read": 7,
+      "not_read": 34
+     },
+     "town:zoning_board_of_appeals": {
+      "read": 4,
+      "not_read": 37
+     }
+    }
+   },
+   "output": {
+    "documents_listed_run1": {
+     "new_documents": 538,
+     "new_hits": 810,
+     "towns_attempted": 108,
+     "towns_succeeded": 108
+    },
+    "documents_indexed": 553,
+    "documents_by_status": {
+     "ok": 534,
+     "needs_ocr": 4,
+     "error": 15
+    },
+    "documents_read_by_text_source": {
+     "pdf": 435,
+     "html": 60,
+     "ocr": 33,
+     "docx": 6
+    },
+    "hits": 774,
+    "hits_by_topic": {
+     "zoning_amendment": 318,
+     "data_center": 188,
+     "solar": 174,
+     "clean_energy_siting": 109,
+     "battery_storage": 80,
+     "wireless_telecom": 67,
+     "moratorium": 21
+    },
+    "hits_by_board": {
+     "planning_board": 309,
+     "select_board": 461,
+     "zoning_board_of_appeals": 4
+    },
+    "towns_with_hits": 73,
+    "hits_upcoming": 112
+   },
+   "freshness": {
+    "documents_read_with_meeting_date": 532,
+    "documents_for_meetings_still_ahead": 75,
+    "share_still_ahead": 0.141,
+    "lead_time_days_by_source": {
+     "revize_upload_stamp": {
+      "n": 78,
+      "median": 3.2,
+      "p10": -0.7,
+      "p90": 5.5,
+      "share_ge_3d": 0.71,
+      "share_negative": 0.15
+     },
+     "http_last_modified": {
+      "n": 116,
+      "median": 3.2,
+      "p10": -23.8,
+      "p90": 6.2,
+      "share_ge_3d": 0.53,
+      "share_negative": 0.34
+     },
+     "pdf_moddate_or_creationdate": {
+      "n": 374,
+      "median": 4.2,
+      "p10": -0.7,
+      "p90": 8.3,
+      "share_ge_3d": 0.72,
+      "share_negative": 0.14
+     },
+     "civicclerk_publishOn": {
+      "n": 179,
+      "median": 4.3,
+      "p10": -0.5,
+      "p90": 6.3,
+      "share_ge_3d": 0.72,
+      "share_negative": 0.15
+     },
+     "civicplus_posted_stamp": {
+      "n": 101,
+      "median": 4.0,
+      "p10": -0.7,
+      "p90": 6.2,
+      "share_ge_3d": 0.7,
+      "share_negative": 0.15
+     },
+     "wordpress_upload_month_lower_bound": {
+      "n": 11,
+      "median": -6,
+      "p10": -25,
+      "p90": 2,
+      "share_ge_3d": 0.09,
+      "share_negative": 0.64
+     },
+     "our_first_fetch_upcoming_only": {
+      "n": 65,
+      "median": 1.2,
+      "p10": -0.8,
+      "p90": 14.2,
+      "share_ge_3d": 0.23,
+      "share_negative": 0.17
+     }
+    }
+   }
+  },
+  "MD": {
+   "coverage": {
+    "by_kind": {
+     "city": {
+      "attempted": 12,
+      "readable": 10,
+      "blocked": 2,
+      "readable_share": 0.833,
+      "bodies_targeted": 36,
+      "bodies_readable": 17,
+      "bodies_readable_share": 0.472,
+      "blocked_how": {
+       "vendor: granicus": 1,
+       "WAF 403": 1
+      },
+      "no_agendas_how": {},
+      "platforms_readable": {
+       "legistar": 2,
+       "civicplus": 3,
+       "civicclerk": 4,
+       "agenda_page": 1
+      }
+     },
+     "county": {
+      "attempted": 23,
+      "readable": 17,
+      "blocked": 6,
+      "readable_share": 0.739,
+      "bodies_targeted": 69,
+      "bodies_readable": 33,
+      "bodies_readable_share": 0.478,
+      "blocked_how": {
+       "WAF 403": 2,
+       "robots.txt": 2,
+       "vendor: granicus": 2
+      },
+      "no_agendas_how": {},
+      "platforms_readable": {
+       "civicclerk": 4,
+       "civicplus": 6,
+       "agenda_page": 6,
+       "legistar": 1
+      }
+     },
+     "town": {
+      "attempted": 5,
+      "readable": 3,
+      "error_unreachable": 2,
+      "readable_share": 0.6,
+      "bodies_targeted": 15,
+      "bodies_readable": 4,
+      "bodies_readable_share": 0.267,
+      "blocked_how": {},
+      "no_agendas_how": {},
+      "platforms_readable": {
+       "civicplus": 1,
+       "agenda_page": 2
+      }
+     }
+    },
+    "by_selection_group": {
+     "baltimore_metro": {
+      "attempted": 6,
+      "readable": 3,
+      "readable_share": 0.5
+     },
+     "dc_suburbs": {
+      "attempted": 2,
+      "readable": 2,
+      "readable_share": 1.0
+     },
+     "eastern_shore": {
+      "attempted": 8,
+      "readable": 6,
+      "readable_share": 0.75
+     },
+     "frederick": {
+      "attempted": 1,
+      "readable": 1,
+      "readable_share": 1.0
+     },
+     "municipality": {
+      "attempted": 17,
+      "readable": 13,
+      "readable_share": 0.765
+     },
+     "southern": {
+      "attempted": 3,
+      "readable": 2,
+      "readable_share": 0.667
+     },
+     "western": {
+      "attempted": 3,
+      "readable": 3,
+      "readable_share": 1.0
+     }
+    },
+    "places": [
+     {
+      "town": "Allegany County",
+      "kind": "county",
+      "group": "western",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Anne Arundel County",
+      "kind": "county",
+      "group": "baltimore_metro",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Baltimore County",
+      "kind": "county",
+      "group": "baltimore_metro",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from the site's firewall to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Calvert County",
+      "kind": "county",
+      "group": "southern",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Caroline County",
+      "kind": "county",
+      "group": "eastern_shore",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Carroll County",
+      "kind": "county",
+      "group": "baltimore_metro",
+      "class": "blocked",
+      "reason_code": "robots_disallow",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt on the site disallows AgendaAheadBot (https://www.carrollcountymd.gov/)",
+      "health": null
+     },
+     {
+      "town": "Cecil County",
+      "kind": "county",
+      "group": "baltimore_metro",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Charles County",
+      "kind": "county",
+      "group": "southern",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "Dorchester County",
+      "kind": "county",
+      "group": "eastern_shore",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Frederick County",
+      "kind": "county",
+      "group": "frederick",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Garrett County",
+      "kind": "county",
+      "group": "western",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board"
+      ],
+      "boards_automated": [
+       "planning_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Harford County",
+      "kind": "county",
+      "group": "baltimore_metro",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "granicus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on granicus: robots.txt on harfordcountymd.granicus.com disallows AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "Howard County",
+      "kind": "county",
+      "group": "baltimore_metro",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Kent County",
+      "kind": "county",
+      "group": "eastern_shore",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Montgomery County",
+      "kind": "county",
+      "group": "dc_suburbs",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Prince George's County",
+      "kind": "county",
+      "group": "dc_suburbs",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "legistar",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Queen Anne's County",
+      "kind": "county",
+      "group": "eastern_shore",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Somerset County",
+      "kind": "county",
+      "group": "eastern_shore",
+      "class": "blocked",
+      "reason_code": "robots_disallow",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt on the site disallows AgendaAheadBot (https://www.somersetmd.us/)",
+      "health": null
+     },
+     {
+      "town": "St. Mary's County",
+      "kind": "county",
+      "group": "southern",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Talbot County",
+      "kind": "county",
+      "group": "eastern_shore",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "granicus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on granicus: robots.txt on talbot-md.granicus.com disallows AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "Washington County",
+      "kind": "county",
+      "group": "western",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Wicomico County",
+      "kind": "county",
+      "group": "eastern_shore",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Worcester County",
+      "kind": "county",
+      "group": "eastern_shore",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Baltimore City",
+      "kind": "city",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "legistar",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Frederick",
+      "kind": "city",
+      "group": "municipality",
+      "class": "blocked",
+      "reason_code": "vendor_blocked",
+      "platform": "granicus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "agendas on granicus: robots.txt on cityoffrederick.granicus.com disallows AgendaAheadBot",
+      "health": null
+     },
+     {
+      "town": "City of Gaithersburg",
+      "kind": "city",
+      "group": "municipality",
+      "class": "blocked",
+      "reason_code": "waf_block",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "HTTP 403 from Akamai to AgendaAheadBot; not bypassed",
+      "health": null
+     },
+     {
+      "town": "City of Rockville",
+      "kind": "city",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "legistar",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Poolesville",
+      "kind": "town",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Laytonsville",
+      "kind": "town",
+      "group": "municipality",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Town of Barnesville",
+      "kind": "town",
+      "group": "municipality",
+      "class": "error_unreachable",
+      "reason_code": "unreachable",
+      "platform": null,
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [],
+      "boards_automated": [],
+      "reason": "robots.txt answered 5xx / timed out (RFC 9309: treat as disallow for this run); host skipped",
+      "health": null
+     },
+     {
+      "town": "Town of Brookeville",
+      "kind": "town",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board"
+      ],
+      "boards_automated": [
+       "planning_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "Town of Washington Grove",
+      "kind": "town",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Takoma Park",
+      "kind": "city",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Laurel",
+      "kind": "city",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Bowie",
+      "kind": "city",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of College Park",
+      "kind": "city",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Greenbelt",
+      "kind": "city",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Hyattsville",
+      "kind": "city",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicclerk",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "select_board"
+      ],
+      "boards_automated": [
+       "select_board"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Annapolis",
+      "kind": "city",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "civicplus",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "select_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     },
+     {
+      "town": "City of Hagerstown",
+      "kind": "city",
+      "group": "municipality",
+      "class": "readable",
+      "reason_code": null,
+      "platform": "agenda_page",
+      "boards_tracked": [
+       "select_board",
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_read": [
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "boards_automated": [
+       "planning_board",
+       "zoning_board_of_appeals"
+      ],
+      "reason": "",
+      "health": "ok"
+     }
+    ],
+    "by_platform": {
+     "agenda_page": {
+      "readable": 9
+     },
+     "civicclerk": {
+      "readable": 8
+     },
+     "civicplus": {
+      "readable": 10
+     },
+     "granicus": {
+      "blocked": 3
+     },
+     "legistar": {
+      "readable": 3
+     },
+     "robots_disallow": {
+      "blocked": 2
+     },
+     "unreachable": {
+      "error_unreachable": 2
+     },
+     "waf_block": {
+      "blocked": 3
+     }
+    },
+    "bodies": {
+     "city:select_board": {
+      "read": 9,
+      "not_read": 3
+     },
+     "city:planning_board": {
+      "read": 5,
+      "not_read": 7
+     },
+     "city:zoning_board_of_appeals": {
+      "read": 3,
+      "not_read": 9
+     },
+     "county:select_board": {
+      "read": 13,
+      "not_read": 10
+     },
+     "county:planning_board": {
+      "read": 11,
+      "not_read": 12
+     },
+     "county:zoning_board_of_appeals": {
+      "read": 9,
+      "not_read": 14
+     },
+     "town:select_board": {
+      "read": 2,
+      "not_read": 3
+     },
+     "town:planning_board": {
+      "read": 2,
+      "not_read": 3
+     },
+     "town:zoning_board_of_appeals": {
+      "read": 0,
+      "not_read": 5
+     }
+    }
+   },
+   "output": {
+    "documents_listed_run1": {
+     "new_documents": 185,
+     "new_hits": 105,
+     "towns_attempted": 30,
+     "towns_succeeded": 30
+    },
+    "documents_indexed": 185,
+    "documents_by_status": {
+     "ok": 185
+    },
+    "documents_read_by_text_source": {
+     "pdf": 148,
+     "html": 33,
+     "ocr": 4
+    },
+    "hits": 98,
+    "hits_by_topic": {
+     "solar": 47,
+     "zoning_amendment": 25,
+     "data_center": 22,
+     "moratorium": 7,
+     "clean_energy_siting": 7,
+     "battery_storage": 3,
+     "wireless_telecom": 2
+    },
+    "hits_by_board": {
+     "planning_board": 46,
+     "select_board": 51,
+     "zoning_board_of_appeals": 1
+    },
+    "towns_with_hits": 15,
+    "hits_upcoming": 21
+   },
+   "freshness": {
+    "documents_read_with_meeting_date": 185,
+    "documents_for_meetings_still_ahead": 33,
+    "share_still_ahead": 0.178,
+    "lead_time_days_by_source": {
+     "civicclerk_publishOn": {
+      "n": 49,
+      "median": 3.2,
+      "p10": -0.7,
+      "p90": 6.5,
+      "share_ge_3d": 0.51,
+      "share_negative": 0.24
+     },
+     "pdf_moddate_or_creationdate": {
+      "n": 117,
+      "median": 3.3,
+      "p10": -0.8,
+      "p90": 22.2,
+      "share_ge_3d": 0.64,
+      "share_negative": 0.19
+     },
+     "civicplus_posted_stamp": {
+      "n": 49,
+      "median": 4.2,
+      "p10": 1.0,
+      "p90": 14.4,
+      "share_ge_3d": 0.82,
+      "share_negative": 0.06
+     },
+     "posted_text_on_page": {
+      "n": 8,
+      "median": 3.3,
+      "p10": 1.8,
+      "p90": 4.8,
+      "share_ge_3d": 0.5,
+      "share_negative": 0.0
+     },
+     "http_last_modified": {
+      "n": 17,
+      "median": 5.4,
+      "p10": -0.8,
+      "p90": 23.2,
+      "share_ge_3d": 0.65,
+      "share_negative": 0.18
+     },
+     "wordpress_upload_month_lower_bound": {
+      "n": 2,
+      "median": -4.5,
+      "p10": -12,
+      "p90": 3,
+      "share_ge_3d": 0.5,
+      "share_negative": 0.5
+     },
+     "our_first_fetch_upcoming_only": {
+      "n": 29,
+      "median": 2.2,
+      "p10": -0.8,
+      "p90": 13.2,
+      "share_ge_3d": 0.31,
+      "share_negative": 0.17
+     }
+    }
+   }
+  }
+ },
+ "reliability": {
+  "run1": {
+   "duration_seconds": 369.8,
+   "towns_attempted": 138,
+   "towns_succeeded": 138,
+   "towns_failed": [],
+   "towns_partial": [],
+   "documents_listed": 743,
+   "documents_already_indexed": 5,
+   "new_documents": 723,
+   "documents_retried": 0,
+   "document_errors": 15,
+   "network": {
+    "bytes_by_purpose": {
+     "document": 1552341895,
+     "listing": 10873804
+    },
+    "cache_hits": 141,
+    "errors": 0,
+    "requests": 924,
+    "requests_by_purpose": {
+     "document": 769,
+     "listing": 155
+    },
+    "robots_blocked": 2
+   },
+   "new_hits": 915,
+   "hits_current": 872,
+   "errors_total": 15
+  }
+ }
+}
