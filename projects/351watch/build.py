@@ -3022,8 +3022,7 @@ def build_index(ctx):
   <h1 id="hero-title">{e(HEADLINE)}</h1>
   <div class="hero-words">
   <p class="lead">{e(EXPLANATION)}</p>
-  <p class="small home-note">Start with the biggest stories below, a subject, or your town. Free, with no account to make.</p>
-  {town_box(ctx, label="Your town", button="Show my town’s meetings", options=False)}
+  {town_box(ctx, label="Your town", button="Show my town", options=False)}
   {owner_html()}
   </div>
   <figure class="map-figure region">{region_map_svg(ctx)}<figcaption>Each dot is a town. The dark ones we read every morning; the red ones have a meeting this week.</figcaption></figure>
@@ -3038,10 +3037,6 @@ def build_index(ctx):
   <h2 id="subjects-title">This week, by subject</h2>
   {subjects_this_week_html(ctx, ahead_meetings)}
   <p class="more-link"><a href="/upcoming">Everything coming up in {ahead_towns} towns, by date</a></p>
-</section>
-<section class="next about-line" aria-labelledby="how-title">
-  <h2 id="how-title" class="sr-only">How it works</h2>
-  <p>Every morning a program reads the agendas that <a href="/how-it-works#coverage">{towns_read} towns</a> post online and writes one sentence for each item about {SUBJECTS}, with the agenda linked as its source. <a href="/how-it-works">How it works</a>. Made by one person, not a company or a town. <a href="/about">Who makes this</a>.</p>
 </section>
 </div>
 """
@@ -3113,8 +3108,8 @@ def week_strip_html(ctx, meetings, prefix=""):
 
 
 HEADLINE = "What towns across Massachusetts, New York and Rhode Island are about to decide"
-EXPLANATION = ("Every morning we read the agendas 315 towns post and say, in a sentence each, what their boards will "
-               "decide on solar, data centers, zoning and housing, and whether you can speak.")
+EXPLANATION = ("One plain sentence for every agenda item about solar, data centers, zoning and housing, "
+               "every morning, from 315 towns, with whether you can speak.")
 
 
 def front_story_html(ctx, st):
