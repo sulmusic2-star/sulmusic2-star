@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-30T18:31:37+00:00",
+ "generated": "2026-11-02T13:33:16+00:00",
  "source": "massdep_wetlands",
  "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
  "link_types": {
@@ -17,7 +17,7 @@
   {
    "parent": "National Grid (New England Power / Mass. Electric)",
    "kind": "utility",
-   "filings": 34,
+   "filings": 35,
    "project_applicants": [
     "MASSACHUSETTS ELECTRIC COMPANY",
     "NEP",
@@ -45,6 +45,7 @@
     "Leicester: 408 STAFFORD ST",
     "Littleton: K137E L138E 337 TRANSMISSION LINE ROW",
     "Marlborough: 365 SOUTH ST",
+    "Millbury: 33 PROVIDENCE ST",
     "Millbury: E5 F6 TRANSMISSION LINES RIGHT OF WAY",
     "North Brookfield: 39 EAST BROOKFIELD RD",
     "Northborough: LINE W23",
@@ -95,10 +96,10 @@
     "Winchendon"
    ],
    "categories": {
-    "transmission_substation": 34
+    "transmission_substation": 35
    },
    "links": {
-    "applicant_name": 33,
+    "applicant_name": 34,
     "description_mention": 1
    },
    "consultants": [],
@@ -374,10 +375,18 @@
      "received_date": "2026-10-19",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213590",
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Millbury",
+     "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
+     "received_date": "2026-10-28",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213765",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)"
     }
    ],
    "distinct_applicants": 7,
-   "distinct_sites": 33,
+   "distinct_sites": 34,
    "in_target_list": true,
    "target_segment": "transmission/utility"
   },
@@ -1415,11 +1424,12 @@
    "parent_kind": "utility",
    "link": "applicant_name",
    "confidence": "high",
-   "filings": 8,
+   "filings": 9,
    "towns": [
     "Boxford",
     "Clinton",
     "Georgetown",
+    "Millbury",
     "Northborough",
     "Shirley",
     "Wendell",
@@ -1429,7 +1439,7 @@
    "payors": [],
    "consultants": [],
    "categories": {
-    "transmission_substation": 8
+    "transmission_substation": 9
    },
    "evidence": [
     {
@@ -1511,9 +1521,20 @@
      "link": "applicant_name",
      "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213590"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Millbury",
+     "received_date": "2026-10-28",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213765"
     }
    ],
    "shares_contact_with": [
+    "MASSACHUSETTS ELECTRIC COMPANY (MECO)",
     "NATIONAL GRID",
     "NEW ENGLAND POWER COMPANY"
    ]
@@ -3275,8 +3296,8 @@
   },
   {
    "payor": "Farland Corp",
-   "filings": 26,
-   "towns": 14,
+   "filings": 27,
+   "towns": 15,
    "kind": "consultant"
   },
   {
@@ -3400,6 +3421,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "SFG ASSOC",
+   "filings": 8,
+   "towns": 3,
+   "kind": "consultant"
+  },
+  {
    "payor": "New Leaf Energy",
    "filings": 7,
    "towns": 3,
@@ -3415,12 +3442,6 @@
    "payor": "AM WILSON ASSOC",
    "filings": 7,
    "towns": 3,
-   "kind": "consultant"
-  },
-  {
-   "payor": "SFG ASSOC",
-   "filings": 7,
-   "towns": 2,
    "kind": "consultant"
   },
   {

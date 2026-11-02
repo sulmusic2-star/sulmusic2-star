@@ -1,18 +1,63 @@
 {
- "generated": "2026-10-30T18:31:37+00:00",
+ "generated": "2026-11-02T13:33:16+00:00",
  "source": "massdep_wetlands",
  "source_name": "MassDEP Wetlands Protection Act filings (EEA Data Portal, WIRe)",
  "window": {
   "start": "2025-10-10",
-  "end": "2026-10-30"
+  "end": "2026-11-02"
  },
  "states": [
   "MA"
  ],
- "filings_total": 4871,
- "hits_count": 97,
+ "filings_total": 4896,
+ "hits_count": 98,
  "notes": "meeting_date is the DEP filing date (the API has no hearing date); the Conservation Commission must open its hearing within 21 days of filing (310 CMR 10.05(5)(b)). Extra per-hit fields are under 'details'.",
  "hits": [
+  {
+   "id": "173f5527aa4c",
+   "state": "MA",
+   "town": "Millbury",
+   "county": "Worcester",
+   "board": "Conservation Commission (wetlands filing)",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-10-28",
+   "topics": [
+    "wetlands_filing"
+   ],
+   "snippet": "Buffer-zone NOI, New England Power Company (NEP): no description. 33 Providence Street.",
+   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213765",
+   "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
+   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent (buffer zone only), Millbury",
+   "text_source": "api",
+   "first_seen": "2026-11-02T13:33:16+00:00",
+   "days_before_meeting": -5.6,
+   "source": "massdep_wetlands",
+   "details": {
+    "noi_id": "213765",
+    "dep_file_number": null,
+    "filing_type": "Notice of Intent (buffer zone only)",
+    "project_type": null,
+    "received_date": "2026-10-28",
+    "issued_date": null,
+    "status": "received",
+    "soc_requested": false,
+    "meeting_date_basis": "filing_date",
+    "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
+    "payor": null,
+    "parent": "National Grid (New England Power / Mass. Electric)",
+    "parent_link": "applicant_name",
+    "parent_confidence": "high",
+    "consultant": null,
+    "project_address": "33 PROVIDENCE STREET",
+    "description": null,
+    "category": "transmission_substation",
+    "confidence": "low",
+    "signals": [
+     "name:New England Power (transmission owner)"
+    ],
+    "api_url": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire/213765"
+   }
+  },
   {
    "id": "4c4e7f7677bb",
    "state": "MA",

@@ -493,7 +493,7 @@ class Ctx:
         # off-subject hits (the CSV and the copied week already left it out).
         self.hits = [h for h in self.hits if not OFF_ITEM.search((BRIEFS.get(h["id"]) or {}).get("line") or "")]
         for h in self.hits:  # a Town Meeting warrant a town posts under its Select Board listing is a Town Meeting
-            if h.get("board_key") != "town_meeting" and TM_TITLE.search(h.get("document_title") or ""):
+            if h.get("board_key") != "town_meeting" and TM_WARRANT_DOC.search(h.get("document_title") or ""):
                 h["board"], h["board_key"] = "Town Meeting", "town_meeting"
         for h in self.hits:
             h["topics"] = item_topics(h)
@@ -1512,7 +1512,7 @@ def analysis_text(h, a):
         if a["subject"] in ("zoning_amendment", "general_bylaw", "other"):
             title = TM_TITLE.search(a["item"])
             change = "a zoning change" if a["subject"] == "zoning_amendment" else "a bylaw change"
-            if title:
+            if title and title.lastindex and (title.group(1) or "").strip():
                 return done(f"Votes on {change}: {title.group(1).strip()}.", stage="Vote")
             return done(quoted(f"Votes on an article about {noun}", f"Votes on {change}"), stage="Vote")
         return done(f"Votes on an article about {rules}.", stage="Vote")
@@ -4369,7 +4369,7 @@ def moratorium_word(b):
 
 
 OFF_ITEM = re.compile(r"\(not an? [a-z0-9 -]+ item\)|\(attachment text\b|^(?:Existing|Standing notice)\b[^(]*\(not a project\)", re.I)
-TM_TITLE = re.compile(r"\btown meeting\b[^|]{0,60}\bwarrant\b|\bwarrant\b[^|]{0,60}\btown meeting\b", re.I)  # a writer's note that the flagged words were incidental
+TM_WARRANT_DOC = re.compile(r"\btown meeting\b[^|]{0,60}\bwarrant\b|\bwarrant\b[^|]{0,60}\btown meeting\b", re.I)  # a writer's note that the flagged words were incidental
 
 
 def carried_over(entry):

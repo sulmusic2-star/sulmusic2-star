@@ -1,16 +1,16 @@
 {
- "generated": "2026-10-30T18:34:20+00:00",
+ "generated": "2026-11-02T13:55:10+00:00",
  "states": {
   "CT": {
    "data_center": 1,
    "moratorium": 1,
-   "solar": 1,
+   "solar": 2,
    "wind": 2
   },
   "MA": {
    "battery_storage": 1,
-   "data_center": 39,
-   "moratorium": 3,
+   "data_center": 38,
+   "moratorium": 4,
    "solar": 1,
    "wind": 3
   },
@@ -19,7 +19,6 @@
    "moratorium": 1
   },
   "NY": {
-   "battery_storage": 1,
    "data_center": 24,
    "moratorium": 2
   },
@@ -37,17 +36,6 @@
     "published": "2026-10-27T19:19:52+00:00",
     "source": "New Bedford Light",
     "title": "New Bedford advances measure to ban data centers",
-    "topics": [
-     "data_center"
-    ]
-   }
-  ],
-  "MA:Boston": [
-   {
-    "link": "https://www.masslive.com/boston/2026/09/boston-councilor-calls-for-citywide-ban-on-data-centers.html",
-    "published": "2026-09-16T22:01:30+00:00",
-    "source": "MassLive",
-    "title": "Boston councilor calls for citywide ban on data centers",
     "topics": [
      "data_center"
     ]
@@ -139,15 +127,6 @@
     "published": "2026-10-08T11:46:04+00:00",
     "source": "MassLive",
     "title": "Zoom meeting set for servistar data center permit decision in Westfield",
-    "topics": [
-     "data_center"
-    ]
-   },
-   {
-    "link": "https://www.masslive.com/westfieldnews/2026/09/westfield-planning-board-postpones-decision-on-data-center-permit-extension.html",
-    "published": "2026-09-17T10:02:23+00:00",
-    "source": "MassLive",
-    "title": "Westfield planning board postpones decision on data center permit extension",
     "topics": [
      "data_center"
     ]

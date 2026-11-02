@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-weymouth-town-council-2026-11-05@agendaahead
+DTSTAMP:20261102T120000Z
+DTSTART;TZID=America/New_York:20261105T183000
+DTEND;TZID=America/New_York:20261105T203000
+SUMMARY:Weymouth Town Council: Discusses a temporary ban on new data center
+ s (a moratorium\; no vote listed).
+LOCATION:Town Council Chambers\, Weymouth\, MA
+DESCRIPTION:• Discusses a temporary ban on new data centers (a moratorium
+ \; no vote listed).\n\nAgenda: https://www.weymouth.ma.us/AgendaCenter/Vie
+ wFile/Agenda/_11052026-549\nPage: https://agendaahead.vercel.app/m/weymout
+ h-town-council-2026-11-05\nConfirm the time and place with the town\; agen
+ das can change.
+URL:https://agendaahead.vercel.app/m/weymouth-town-council-2026-11-05
+END:VEVENT
+END:VCALENDAR
