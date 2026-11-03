@@ -21,7 +21,7 @@
   const FILTERS = ["state", "town", "topic", "board"];
   const LABELS = {
     state: { MA: "Massachusetts", NY: "New York", RI: "Rhode Island", CT: "Connecticut", NH: "New Hampshire",
-      VT: "Vermont", ME: "Maine", NJ: "New Jersey", PA: "Pennsylvania" },
+      VT: "Vermont", ME: "Maine", NJ: "New Jersey", PA: "Pennsylvania", VA: "Virginia", MD: "Maryland", MI: "Michigan", OH: "Ohio" },
     topic: { battery_storage: "Battery storage", solar: "Solar", data_center: "Data centers",
       moratorium: "Moratoriums", clean_energy_siting: "Clean-energy permit rules",
       "40b_comprehensive_permit": "Affordable housing (40B)", wireless_telecom: "Cell towers",

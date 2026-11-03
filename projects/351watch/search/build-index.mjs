@@ -15,7 +15,7 @@ import { join } from "node:path";
 import { close, createIndex } from "pagefind";
 
 const STATE_NAMES = { MA: "Massachusetts", NY: "New York", RI: "Rhode Island", CT: "Connecticut", NH: "New Hampshire",
-  VT: "Vermont", ME: "Maine", NJ: "New Jersey", PA: "Pennsylvania" };
+  VT: "Vermont", ME: "Maine", NJ: "New Jersey", PA: "Pennsylvania", VA: "Virginia", MD: "Maryland", MI: "Michigan", OH: "Ohio" };
 
 const [dataDir, outDir] = process.argv.slice(2);
 if (!dataDir || !outDir) {

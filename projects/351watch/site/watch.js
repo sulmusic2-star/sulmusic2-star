@@ -140,10 +140,12 @@
     ['wireless_telecom', /\b(cell (towers?|phones?)|wireless|telecom|antennas?)\b/],
     ['wetlands_filing', /\b(wetlands?( filings?)?)\b/],
   ].filter(([k]) => topicBoxes.some((t) => t.value === k));
-  const STATES = { ma: 'MA', mass: 'MA', massachusetts: 'MA', ny: 'NY', 'new york': 'NY', ri: 'RI', 'rhode island': 'RI' };
+  const STATES = { ma: 'MA', mass: 'MA', massachusetts: 'MA', ny: 'NY', 'new york': 'NY', ri: 'RI', 'rhode island': 'RI',
+    va: 'VA', virginia: 'VA', md: 'MD', maryland: 'MD', mi: 'MI', michigan: 'MI', oh: 'OH', ohio: 'OH' };
   const FILLER = new Set(['in', 'and', 'or', 'for', 'about', 'the', 'of', 'on', 'to', 'me', 'my', 'any', 'all', 'near',
     'items', 'item', 'news', 'alerts', 'alert', 'town', 'towns', 'city', 'project', 'projects', 'proposals', 'energy',
-    'watch', 'tell', 'when', 'comes', 'up', 'with', 'a', 'an', 'ma', 'ny', 'ri', 'massachusetts', 'new', 'york', 'rhode', 'island']);
+    'watch', 'tell', 'when', 'comes', 'up', 'with', 'a', 'an', 'ma', 'ny', 'ri', 'massachusetts', 'new', 'york', 'rhode', 'island',
+    'va', 'virginia', 'md', 'maryland', 'mi', 'michigan', 'oh', 'ohio']);
 
   function parse(text) {
     let rest = ` ${plain(text)} `;

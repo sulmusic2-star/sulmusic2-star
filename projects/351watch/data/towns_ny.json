@@ -5482,18 +5482,20 @@
    "automated": true,
    "listings": [
     {
-     "board": "Click here for additional Planning Board Documents",
+     "board": "Planning Board",
      "board_key": "planning_board",
      "url": "https://glencoveny.gov/planning-board",
      "platform": "agenda_page",
-     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Click here for additional Planning Board Documents"
     },
     {
-     "board": "Click here for additional Board of Zoning Appeals Documents",
+     "board": "Board of Zoning Appeals",
      "board_key": "zoning_board_of_appeals",
      "url": "https://glencoveny.gov/board-of-zoning-appeals",
      "platform": "agenda_page",
-     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|planning\\s+board|planning\\s+commission|\\bPB\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|planning\\s+board|planning\\s+commission|\\bPB\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Click here for additional Board of Zoning Appeals Documents"
     },
     {
      "board": "City Council",
@@ -9752,18 +9754,20 @@
    "automated": true,
    "listings": [
     {
-     "board": "Town Board Agendas →",
+     "board": "Town Board",
      "board_key": "select_board",
      "url": "https://www.townofbergenny.gov/town-board-agendas/",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Town Board Agendas →"
     },
     {
-     "board": "Planning Board Agendas →",
+     "board": "Planning Board",
      "board_key": "planning_board",
      "url": "https://www.townofbergenny.gov/planning-board-agendas/",
      "platform": "agenda_page",
-     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Board Agendas →"
     }
    ],
    "boards_tracked": [

@@ -2,8 +2,7 @@
  "_about": "Agenda Ahead Maryland (2026-11, gated): the 23 counties and Baltimore City (council or county commissioners, planning commission or M-NCPPC planning board, board of appeals) plus 17 Montgomery, Prince George's, Frederick, Anne Arundel and Washington County municipalities. Same row shape as towns_ma_all.json plus state, kind, zoning_power (own / county: Prince George's and Montgomery municipalities other than Laurel, Rockville, Gaithersburg, Poolesville and four small towns have no zoning power; the District Council zones), selection_group / selection_reason / selection_source. Built by `python3 experiments/va_md_wave.py discover --state MD`.",
  "generated": "2026-11-02T19:24:17+00:00",
  "state": "MD",
- "gated": true,
- "gate_note": "Test state: not part of the production daily run. Crawled only by `python3 -m watch351.daily --states VA,MD --output-dir ../data/test/va_md --hits-name hits_va_md.json` (experiments/va_md_wave.py crawl).",
+ "promotion_note": "Promoted 2026-11-03: part of the production daily run and the site. Until then a test state, crawled only with --output-dir (experiments). Rows carry kind (county, city, town, township), county, coverage and, where they apply, zoning_power and coverage_county_body; build.py reads them.",
  "boards_tracked": [
   "select_board",
   "planning_board",

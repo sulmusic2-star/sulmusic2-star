@@ -2,8 +2,7 @@
  "_about": "Agenda Ahead Michigan test rows: the 2026-10 test places (southern Michigan and the Thumb) plus, from 2026-11, every township in the twelve southeast Michigan counties (Washtenaw, Livingston, Oakland, Macomb, Monroe, Lenawee, Jackson, Genesee, Lapeer, St. Clair, Shiawassee, Ingham) and their county planning commissions (the MCL 125.3307 route). Same row shape as towns_ma_all.json plus state, kind, county, selection_group / selection_reason / selection_source, coverage fields. Built by `python3 experiments/mi_va_test.py discover --state MI` (2026-10) and `python3 experiments/great_lakes_test.py discover --state MI` (2026-11).",
  "generated": "2026-11-02T19:50:41+00:00",
  "state": "MI",
- "gated": true,
- "gate_note": "Test state: not part of the production daily run. Crawled only by `python3 -m watch351.daily --states MI,OH --output-dir ../data/test/great_lakes --hits-name hits_great_lakes.json` (Michigan also by the 2026-10 test command with --states MI,VA --output-dir ../data/test).",
+ "promotion_note": "Promoted 2026-11-03: part of the production daily run and the site. Until then a test state, crawled only with --output-dir (experiments). Rows carry kind (county, city, town, township), county, coverage and, where they apply, zoning_power and coverage_county_body; build.py reads them.",
  "boards_tracked": [
   "select_board",
   "planning_board",
@@ -15,7 +14,7 @@
   "Zoning Board of Appeals": "zoning_board_of_appeals"
  },
  "evidence_rule": "a board is automated only if its listing shows >=1 agenda/packet/notice dated within [today-120d, today+120d] and the first such document is fetchable under robots.txt",
- "count": 312,
+ "count": 308,
  "automated": 102,
  "towns": [
   {
@@ -1909,46 +1908,6 @@
    "coverage_note": "Zoning changes reach us through the Huron County Planning Commission, and so do special approvals where the county administers zoning; other project permits may not."
   },
   {
-   "town": "Brookfield Township",
-   "state": "MI",
-   "county": "Huron",
-   "kind": "township",
-   "website": null,
-   "website_source": null,
-   "pop_2020": 875,
-   "selection_group": "mta_sample",
-   "selection_reason": "MTA directory sample (first 60 in Wikidata order); MTA lists no website",
-   "selection_source": "research_notes/Meeting monitor national expansion/coverage_mi_township_websites.csv",
-   "selection_source_url": "https://michigantownships.org/find-a-township/?fips=10940",
-   "no_website_note": "no township website found (MTA directory lists none; domain patterns <name>township/.twp/.townshipmi .org/.com/.gov/.us checked)",
-   "status": "not_automated",
-   "reason_code": "no_website",
-   "reason": "no township website found (MTA directory lists none; domain patterns <name>township/.twp/.townshipmi .org/.com/.gov/.us checked)",
-   "automated": false,
-   "listings": [],
-   "boards_tracked": [
-    "select_board",
-    "planning_board",
-    "zoning_board_of_appeals"
-   ],
-   "boards_found": [],
-   "boards_missing": [
-    "select_board",
-    "planning_board",
-    "zoning_board_of_appeals"
-   ],
-   "board_evidence": {},
-   "board_stale": {},
-   "vendors": {},
-   "robots_blocked": [],
-   "notes": [],
-   "pages_fetched": 0,
-   "discovered_at": "2026-10-12T15:00:45+00:00",
-   "coverage": "via_county",
-   "coverage_county_body": "Huron County Planning Commission",
-   "coverage_note": "Zoning changes reach us through the Huron County Planning Commission, and so do special approvals where the county administers zoning; other project permits may not."
-  },
-  {
    "town": "Buel Township",
    "state": "MI",
    "county": "Sanilac",
@@ -3756,46 +3715,6 @@
    "coverage": "none",
    "coverage_county_body": null,
    "coverage_note": null
-  },
-  {
-   "town": "Bingham Township",
-   "state": "MI",
-   "county": "Huron",
-   "kind": "township",
-   "website": null,
-   "website_source": null,
-   "pop_2020": 1682,
-   "selection_group": "mta_sample",
-   "selection_reason": "MTA directory sample (random (seed 7)); MTA lists no website",
-   "selection_source": "research_notes/Meeting monitor national expansion/coverage_mi_township_websites.csv",
-   "selection_source_url": "https://michigantownships.org/find-a-township/?fips=08420",
-   "no_website_note": "no township website found (MTA directory lists none; domain patterns <name>township/.twp/.townshipmi .org/.com/.gov/.us checked)",
-   "status": "not_automated",
-   "reason_code": "no_website",
-   "reason": "no township website found (MTA directory lists none; domain patterns <name>township/.twp/.townshipmi .org/.com/.gov/.us checked)",
-   "automated": false,
-   "listings": [],
-   "boards_tracked": [
-    "select_board",
-    "planning_board",
-    "zoning_board_of_appeals"
-   ],
-   "boards_found": [],
-   "boards_missing": [
-    "select_board",
-    "planning_board",
-    "zoning_board_of_appeals"
-   ],
-   "board_evidence": {},
-   "board_stale": {},
-   "vendors": {},
-   "robots_blocked": [],
-   "notes": [],
-   "pages_fetched": 0,
-   "discovered_at": "2026-10-12T15:01:47+00:00",
-   "coverage": "via_county",
-   "coverage_county_body": "Huron County Planning Commission",
-   "coverage_note": "Zoning changes reach us through the Huron County Planning Commission, and so do special approvals where the county administers zoning; other project permits may not."
   },
   {
    "town": "Sunfield Township",
@@ -8426,73 +8345,6 @@
    "coverage_note": null
   },
   {
-   "town": "Fremont Township",
-   "state": "MI",
-   "county": "Tuscola",
-   "kind": "township",
-   "website": "http://www.fremonttownship.org/",
-   "website_source": "research notes / MTA directory / county site",
-   "pop_2020": null,
-   "selection_group": "county_list",
-   "selection_reason": "listed on the Tuscola County municipalities page",
-   "selection_source": "research_notes/Meeting monitor national expansion/coverage_mi_township_websites.csv",
-   "selection_source_url": "https://www.tuscolacounty.org/localgov",
-   "final_url": "http://www.fremonttownship.org/",
-   "cms": [],
-   "platform": null,
-   "status": "not_automated",
-   "reason_code": "no_recent_agendas",
-   "reason": "board pages found (e.g. http://www.fremonttownship.org/MINUTES/TownshipBoardMinutes/tabid/69/Default.aspx) but no agenda dated within the last 120 or next 120 days could be read from them",
-   "automated": false,
-   "listings": [],
-   "boards_tracked": [
-    "select_board",
-    "planning_board",
-    "zoning_board_of_appeals"
-   ],
-   "boards_found": [],
-   "boards_missing": [
-    "select_board",
-    "planning_board",
-    "zoning_board_of_appeals"
-   ],
-   "board_evidence": {},
-   "board_stale": {
-    "select_board": {
-     "board": "Township Board Minutes",
-     "source": "agenda_page",
-     "url": "http://www.fremonttownship.org/MINUTES/TownshipBoardMinutes/tabid/69/Default.aspx",
-     "n_recent": 0,
-     "latest": null,
-     "note": "board page found, no dated agendas in window"
-    },
-    "planning_board": {
-     "board": "Planning Commission Minutes",
-     "source": "agenda_page",
-     "url": "http://www.fremonttownship.org/MINUTES/PlanningCommissionMinutes/tabid/70/Default.aspx",
-     "n_recent": 0,
-     "latest": null,
-     "note": "board page found, no dated agendas in window"
-    },
-    "zoning_board_of_appeals": {
-     "board": "Zoning Board of Appeals Minutes",
-     "source": "agenda_page",
-     "url": "http://www.fremonttownship.org/MINUTES/ZoningBoardofAppealsMinutes/tabid/71/Default.aspx",
-     "n_recent": 0,
-     "latest": null,
-     "note": "board page found, no dated agendas in window"
-    }
-   },
-   "vendors": {},
-   "robots_blocked": [],
-   "notes": [],
-   "pages_fetched": 27,
-   "discovered_at": "2026-10-12T15:06:49+00:00",
-   "coverage": "none",
-   "coverage_county_body": null,
-   "coverage_note": null
-  },
-  {
    "town": "Gilford Township",
    "state": "MI",
    "county": "Tuscola",
@@ -8894,48 +8746,6 @@
    "notes": [],
    "pages_fetched": 34,
    "discovered_at": "2026-10-12T15:06:48+00:00",
-   "coverage": "none",
-   "coverage_county_body": null,
-   "coverage_note": null
-  },
-  {
-   "town": "Watertown Township",
-   "state": "MI",
-   "county": "Tuscola",
-   "kind": "township",
-   "website": "http://www.watertowntownship.org",
-   "website_source": "research notes / MTA directory / county site",
-   "pop_2020": null,
-   "selection_group": "county_list",
-   "selection_reason": "listed on the Tuscola County municipalities page",
-   "selection_source": "research_notes/Meeting monitor national expansion/coverage_mi_township_websites.csv",
-   "selection_source_url": "https://www.tuscolacounty.org/localgov",
-   "final_url": "http://www.watertowntownship.org/",
-   "cms": [],
-   "platform": null,
-   "status": "not_automated",
-   "reason_code": "no_agendas_found",
-   "reason": "site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
-   "automated": false,
-   "listings": [],
-   "boards_tracked": [
-    "select_board",
-    "planning_board",
-    "zoning_board_of_appeals"
-   ],
-   "boards_found": [],
-   "boards_missing": [
-    "select_board",
-    "planning_board",
-    "zoning_board_of_appeals"
-   ],
-   "board_evidence": {},
-   "board_stale": {},
-   "vendors": {},
-   "robots_blocked": [],
-   "notes": [],
-   "pages_fetched": 9,
-   "discovered_at": "2026-10-12T15:06:55+00:00",
    "coverage": "none",
    "coverage_county_body": null,
    "coverage_note": null

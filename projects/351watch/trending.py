@@ -614,8 +614,8 @@ def _address_at(item, town, m):
     before = item[max(0, m.start() - 45):m.start()]
     if re.match(r"\s*,?\s*(?:Suite|Ste\.?|Unit|Floor|Fl\.?|#)", after, re.I):
         return None
-    tm = re.match(r"\s*,?\s*([A-Z][a-z]+(?:[\s-][A-Z][a-z]+)?),\s*(?:MA|RI|NY|CT|NH|VT|ME|NJ|PA|CA|FL|TX|"
-                  r"Massachusetts|Rhode Island|New York)\b", after)
+    tm = re.match(r"\s*,?\s*([A-Z][a-z]+(?:[\s-][A-Z][a-z]+)?),\s*(?:MA|RI|NY|CT|NH|VT|ME|NJ|PA|CA|FL|TX|VA|MD|MI|OH|"
+                  r"Massachusetts|Rhode Island|New York|Virginia|Maryland|Michigan|Ohio)\b", after)
     if tm and tm.group(1).lower() != town.lower():
         return None
     if PLACE_WORDS.search(before[-30:]) or re.match(r"\s*,?\s*[^,.]{0,12}?(?:Town Hall|City Hall|Senior Center|"

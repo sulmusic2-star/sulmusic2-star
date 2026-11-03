@@ -1,5 +1,5 @@
 {
-"_about": "Town centroids (internal points) from the U.S. Census Bureau 2024 Gazetteer, county subdivisions (https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_Gaz_cousubs_national.zip). Public domain. Used only to draw the dot maps on the site.",
+"_about": "Place centroids (internal points) from the U.S. Census Bureau 2024 Gazetteer: county subdivisions for Massachusetts, Rhode Island, New York, Michigan and Ohio towns, cities and townships; counties for Virginia, Maryland, Michigan and Ohio counties and Virginia's and Baltimore's independent cities; places for Virginia towns and Maryland municipalities (https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/). Public domain. Used only to draw the maps on the site.",
 "points": {
 "MA:Abington": [
 42.1158,
@@ -1405,6 +1405,1410 @@
 41.6749,
 -70.226
 ],
+"MD:Allegany County": [
+39.6123,
+-78.7031
+],
+"MD:Anne Arundel County": [
+38.9916,
+-76.5609
+],
+"MD:Baltimore City": [
+39.3,
+-76.6105
+],
+"MD:Baltimore County": [
+39.4432,
+-76.6166
+],
+"MD:Calvert County": [
+38.5227,
+-76.5298
+],
+"MD:Caroline County": [
+38.8715,
+-75.8317
+],
+"MD:Carroll County": [
+39.5633,
+-77.0153
+],
+"MD:Cecil County": [
+39.5624,
+-75.9416
+],
+"MD:Charles County": [
+38.4729,
+-77.0154
+],
+"MD:City of Annapolis": [
+38.9722,
+-76.5053
+],
+"MD:City of Bowie": [
+38.9547,
+-76.7388
+],
+"MD:City of College Park": [
+38.9963,
+-76.9356
+],
+"MD:City of Frederick": [
+39.4341,
+-77.4145
+],
+"MD:City of Gaithersburg": [
+39.1486,
+-77.1951
+],
+"MD:City of Greenbelt": [
+38.9947,
+-76.8854
+],
+"MD:City of Hagerstown": [
+39.6402,
+-77.7227
+],
+"MD:City of Hyattsville": [
+38.9612,
+-76.9549
+],
+"MD:City of Laurel": [
+39.0951,
+-76.8612
+],
+"MD:City of Rockville": [
+39.0837,
+-77.1556
+],
+"MD:City of Takoma Park": [
+38.9803,
+-77.0023
+],
+"MD:Dorchester County": [
+38.4292,
+-76.0474
+],
+"MD:Frederick County": [
+39.4702,
+-77.3976
+],
+"MD:Garrett County": [
+39.5473,
+-79.2746
+],
+"MD:Harford County": [
+39.5374,
+-76.2998
+],
+"MD:Howard County": [
+39.2523,
+-76.9244
+],
+"MD:Kent County": [
+39.2413,
+-76.126
+],
+"MD:Montgomery County": [
+39.1374,
+-77.2031
+],
+"MD:Prince George's County": [
+38.8293,
+-76.8482
+],
+"MD:Queen Anne's County": [
+39.0407,
+-76.0824
+],
+"MD:Somerset County": [
+38.0744,
+-75.8533
+],
+"MD:St. Mary's County": [
+38.2231,
+-76.5345
+],
+"MD:Talbot County": [
+38.7483,
+-76.1785
+],
+"MD:Town of Barnesville": [
+39.2239,
+-77.3761
+],
+"MD:Town of Brookeville": [
+39.1825,
+-77.0597
+],
+"MD:Town of Laytonsville": [
+39.2087,
+-77.1353
+],
+"MD:Town of Poolesville": [
+39.1418,
+-77.4105
+],
+"MD:Town of Washington Grove": [
+39.1407,
+-77.1745
+],
+"MD:Washington County": [
+39.6036,
+-77.8147
+],
+"MD:Wicomico County": [
+38.3674,
+-75.6321
+],
+"MD:Worcester County": [
+38.2221,
+-75.3099
+],
+"MI:Adams Township": [
+41.944,
+-84.5357
+],
+"MI:Addison Township": [
+42.8465,
+-83.1632
+],
+"MI:Adrian Charter Township": [
+41.9491,
+-84.0749
+],
+"MI:Alaiedon Township": [
+42.6329,
+-84.4256
+],
+"MI:Almer Township": [
+43.546,
+-83.4065
+],
+"MI:Almont Township": [
+42.9302,
+-83.04
+],
+"MI:Ann Arbor Charter Township": [
+42.3236,
+-83.6908
+],
+"MI:Antrim Township": [
+42.8277,
+-84.1061
+],
+"MI:Arbela Township": [
+43.2644,
+-83.6395
+],
+"MI:Arcadia Township": [
+43.1067,
+-83.1654
+],
+"MI:Argentine Township": [
+42.8325,
+-83.864
+],
+"MI:Armada Township": [
+42.8559,
+-82.9124
+],
+"MI:Ash Township": [
+42.056,
+-83.3657
+],
+"MI:Atlas Township": [
+42.9199,
+-83.517
+],
+"MI:Attica Township": [
+43.0244,
+-83.161
+],
+"MI:Augusta Charter Township": [
+42.131,
+-83.5924
+],
+"MI:Aurelius Township": [
+42.5557,
+-84.5467
+],
+"MI:Bedford Charter Township": [
+42.3827,
+-85.2394
+],
+"MI:Bedford Township": [
+41.773,
+-83.5965
+],
+"MI:Bennington Township": [
+42.9102,
+-84.217
+],
+"MI:Berlin Township": [
+42.0287,
+-83.255
+],
+"MI:Bethany Township": [
+43.4259,
+-84.5428
+],
+"MI:Bingham Township": [
+43.7234,
+-82.9347
+],
+"MI:Blackman Charter Township": [
+42.2965,
+-84.4249
+],
+"MI:Blissfield Township": [
+41.8555,
+-83.8586
+],
+"MI:Bloomfield Charter Township": [
+42.5779,
+-83.2745
+],
+"MI:Branch County": [
+41.9185,
+-85.0669
+],
+"MI:Brandon Charter Township": [
+42.8429,
+-83.3971
+],
+"MI:Bridgeport Charter Township": [
+43.3475,
+-83.8749
+],
+"MI:Bridgewater Township": [
+42.118,
+-83.9583
+],
+"MI:Brighton Township": [
+42.5588,
+-83.7276
+],
+"MI:Brockway Township": [
+43.1121,
+-82.81
+],
+"MI:Bronson Township": [
+41.846,
+-85.2417
+],
+"MI:Brookfield Township": [
+43.7141,
+-83.2961
+],
+"MI:Bruce Township": [
+42.8454,
+-83.0394
+],
+"MI:Buel Township": [
+43.2957,
+-82.6992
+],
+"MI:Bunker Hill Township": [
+42.4708,
+-84.309
+],
+"MI:Burlington Township": [
+42.1131,
+-85.1196
+],
+"MI:Burns Township": [
+42.8286,
+-83.9859
+],
+"MI:Burnside Township": [
+43.2196,
+-83.0626
+],
+"MI:Burtchville Township": [
+43.1187,
+-82.5165
+],
+"MI:Bushnell Township": [
+43.1701,
+-85.01
+],
+"MI:Butler Township": [
+42.0273,
+-84.8767
+],
+"MI:Caledonia Charter Township": [
+43.0005,
+-84.1034
+],
+"MI:Calhoun County": [
+42.243,
+-85.0124
+],
+"MI:California Township": [
+41.7915,
+-84.8877
+],
+"MI:Cambridge Township": [
+42.023,
+-84.1802
+],
+"MI:Camden Township": [
+41.7567,
+-84.7759
+],
+"MI:Campbell Township": [
+42.8204,
+-85.252
+],
+"MI:Carmel Township": [
+42.5462,
+-84.9049
+],
+"MI:Casco Township": [
+42.7646,
+-82.6668
+],
+"MI:Caseville Township": [
+43.913,
+-83.3819
+],
+"MI:Cato Township": [
+43.4169,
+-85.2732
+],
+"MI:Chandler Township": [
+43.8978,
+-83.1725
+],
+"MI:Chapin Township": [
+43.1673,
+-84.3364
+],
+"MI:Chester Township": [
+42.634,
+-84.9071
+],
+"MI:Chesterfield Charter Township": [
+42.6795,
+-82.8063
+],
+"MI:China Charter Township": [
+42.7723,
+-82.562
+],
+"MI:City of Howell": [
+42.6081,
+-83.9343
+],
+"MI:City of Lansing": [
+42.7103,
+-84.5495
+],
+"MI:City of Marshall": [
+42.2627,
+-84.9675
+],
+"MI:City of Monroe": [
+41.9166,
+-83.3843
+],
+"MI:City of Saline": [
+42.1738,
+-83.7769
+],
+"MI:Clarence Township": [
+42.3711,
+-84.7755
+],
+"MI:Clay Township": [
+42.6102,
+-82.622
+],
+"MI:Clayton Charter Township": [
+43.0046,
+-83.8697
+],
+"MI:Clinton Charter Township": [
+42.5903,
+-82.917
+],
+"MI:Clinton County": [
+42.9505,
+-84.5917
+],
+"MI:Clinton Township": [
+42.0585,
+-83.9472
+],
+"MI:Clyde Township": [
+43.0405,
+-82.5711
+],
+"MI:Cohoctah Township": [
+42.7325,
+-83.9748
+],
+"MI:Colfax Township": [
+43.8063,
+-83.0661
+],
+"MI:Columbia Township": [
+43.6268,
+-83.4128
+],
+"MI:Columbus Township": [
+42.8593,
+-82.6831
+],
+"MI:Commerce Charter Township": [
+42.5739,
+-83.4957
+],
+"MI:Concord Township": [
+42.2069,
+-84.6468
+],
+"MI:Conway Township": [
+42.7386,
+-84.0906
+],
+"MI:Cottrellville Township": [
+42.693,
+-82.5605
+],
+"MI:Danby Township": [
+42.8064,
+-84.9007
+],
+"MI:Davison Township": [
+42.999,
+-83.5158
+],
+"MI:Deerfield Township": [
+42.7467,
+-83.8658
+],
+"MI:Delaware Township": [
+43.6453,
+-82.6823
+],
+"MI:Delhi Charter Township": [
+42.6258,
+-84.5331
+],
+"MI:Delta Charter Township": [
+42.728,
+-84.6614
+],
+"MI:Denmark Township": [
+43.4281,
+-83.6295
+],
+"MI:Dexter Township": [
+42.3825,
+-83.9406
+],
+"MI:Dover Township": [
+41.857,
+-84.1771
+],
+"MI:Dryden Township": [
+42.9376,
+-83.174
+],
+"MI:Dundee Township": [
+41.9586,
+-83.6765
+],
+"MI:East China Charter Township": [
+42.7638,
+-82.4881
+],
+"MI:Easton Township": [
+42.9929,
+-85.1417
+],
+"MI:Eaton County": [
+42.5895,
+-84.8465
+],
+"MI:Eaton Rapids Township": [
+42.5564,
+-84.6705
+],
+"MI:Elba Township": [
+43.0159,
+-83.3923
+],
+"MI:Elkland Township": [
+43.6313,
+-83.1737
+],
+"MI:Elmwood Township": [
+43.6338,
+-83.2833
+],
+"MI:Emerson Township": [
+43.3382,
+-84.5368
+],
+"MI:Emmett Township": [
+43.0234,
+-82.8024
+],
+"MI:Erie Township": [
+41.7747,
+-83.482
+],
+"MI:Essex Township": [
+43.0718,
+-84.6581
+],
+"MI:Exeter Township": [
+42.0458,
+-83.4831
+],
+"MI:Fairfield Township (Lenawee County)": [
+41.7659,
+-84.0591
+],
+"MI:Fairfield Township (Shiawassee County)": [
+43.0804,
+-84.3373
+],
+"MI:Fairhaven Township": [
+43.7981,
+-83.4748
+],
+"MI:Fenton Charter Township": [
+42.8303,
+-83.7517
+],
+"MI:Flint Charter Township": [
+43.0044,
+-83.7656
+],
+"MI:Flushing Charter Township": [
+43.0962,
+-83.8746
+],
+"MI:Forest Township": [
+43.1772,
+-83.5274
+],
+"MI:Fort Gratiot Charter Township": [
+43.0464,
+-82.4852
+],
+"MI:Franklin Township": [
+42.0316,
+-84.0745
+],
+"MI:Fredonia Township": [
+42.1987,
+-85.0092
+],
+"MI:Freedom Township": [
+42.2126,
+-83.9639
+],
+"MI:Fremont Township": [
+43.3593,
+-83.4026
+],
+"MI:Frenchtown Township": [
+41.961,
+-83.3581
+],
+"MI:Gaines Township": [
+42.9055,
+-83.8799
+],
+"MI:Genesee Charter Township": [
+43.0955,
+-83.6302
+],
+"MI:Genesee County": [
+43.0211,
+-83.7064
+],
+"MI:Genoa Township": [
+42.5507,
+-83.8595
+],
+"MI:Gilford Township": [
+43.5194,
+-83.6317
+],
+"MI:Goodland Township": [
+43.1059,
+-83.0548
+],
+"MI:Gore Township": [
+43.949,
+-82.7136
+],
+"MI:Grand Blanc Charter Township": [
+42.9147,
+-83.6336
+],
+"MI:Grant Township": [
+43.7241,
+-83.1733
+],
+"MI:Grass Lake Charter Township": [
+42.2515,
+-84.1932
+],
+"MI:Gratiot County": [
+43.2923,
+-84.6047
+],
+"MI:Green Oak Charter Township": [
+42.4702,
+-83.7294
+],
+"MI:Greenwood Township": [
+43.117,
+-82.6917
+],
+"MI:Groveland Township": [
+42.8371,
+-83.5108
+],
+"MI:Hadley Township": [
+42.9264,
+-83.3912
+],
+"MI:Hamburg Township": [
+42.4746,
+-83.8479
+],
+"MI:Handy Township": [
+42.6318,
+-84.0871
+],
+"MI:Hanover Township": [
+42.1229,
+-84.5274
+],
+"MI:Harrison Charter Township": [
+42.5871,
+-82.8172
+],
+"MI:Hartland Township": [
+42.6493,
+-83.7407
+],
+"MI:Hazelton Township": [
+43.0896,
+-83.9912
+],
+"MI:Henrietta Township": [
+42.377,
+-84.3186
+],
+"MI:Highland Charter Township": [
+42.6558,
+-83.6214
+],
+"MI:Hillsdale County": [
+41.9275,
+-84.6375
+],
+"MI:Holly Township": [
+42.8336,
+-83.6284
+],
+"MI:Home Township": [
+43.437,
+-85.0328
+],
+"MI:Howell Township": [
+42.6445,
+-83.9744
+],
+"MI:Hudson Township": [
+41.8518,
+-84.2965
+],
+"MI:Huron County": [
+43.9076,
+-82.857
+],
+"MI:Ida Township": [
+41.8671,
+-83.5985
+],
+"MI:Imlay Township": [
+43.0245,
+-83.0453
+],
+"MI:Independence Charter Township": [
+42.7474,
+-83.3918
+],
+"MI:Indianfields Township": [
+43.4494,
+-83.4027
+],
+"MI:Ingham County": [
+42.6035,
+-84.3738
+],
+"MI:Ingham Township": [
+42.5597,
+-84.309
+],
+"MI:Ionia County": [
+42.9447,
+-85.0738
+],
+"MI:Iosco Township": [
+42.5533,
+-84.0803
+],
+"MI:Ira Township": [
+42.6973,
+-82.6579
+],
+"MI:Jackson County": [
+42.2485,
+-84.4209
+],
+"MI:Jonesfield Township": [
+43.4395,
+-84.3205
+],
+"MI:Kalamo Township": [
+42.5566,
+-85.0217
+],
+"MI:Kenockee Township": [
+43.032,
+-82.694
+],
+"MI:Kimball Township": [
+42.9502,
+-82.5616
+],
+"MI:Koylton Township": [
+43.3726,
+-83.1601
+],
+"MI:LaSalle Township": [
+41.8578,
+-83.4783
+],
+"MI:Lake Township": [
+43.9856,
+-83.1705
+],
+"MI:Lakefield Township": [
+43.3438,
+-84.3226
+],
+"MI:Lamotte Township": [
+43.4598,
+-83.0478
+],
+"MI:Lansing Charter Township": [
+42.7376,
+-84.5881
+],
+"MI:Lapeer County": [
+43.0886,
+-83.2243
+],
+"MI:Lapeer Township": [
+43.0058,
+-83.2714
+],
+"MI:Lenawee County": [
+41.896,
+-84.0744
+],
+"MI:Lenox Township": [
+42.7606,
+-82.7984
+],
+"MI:Leoni Township": [
+42.2734,
+-84.3015
+],
+"MI:Leroy Township": [
+42.6356,
+-84.2147
+],
+"MI:Leslie Township": [
+42.4726,
+-84.4157
+],
+"MI:Liberty Township": [
+42.1104,
+-84.4171
+],
+"MI:Lima Township": [
+42.2926,
+-83.9455
+],
+"MI:Livingston County": [
+42.6025,
+-83.9117
+],
+"MI:Locke Township": [
+42.7339,
+-84.2064
+],
+"MI:Lodi Township": [
+42.2192,
+-83.8515
+],
+"MI:London Township": [
+42.0373,
+-83.6053
+],
+"MI:Lyndon Township": [
+42.3873,
+-84.0768
+],
+"MI:Lynn Township": [
+43.1118,
+-82.936
+],
+"MI:Lyon Charter Township": [
+42.4836,
+-83.6027
+],
+"MI:Macomb County": [
+42.6716,
+-82.9115
+],
+"MI:Macomb Township": [
+42.674,
+-82.9168
+],
+"MI:Macon Township": [
+42.04,
+-83.8277
+],
+"MI:Madison Charter Township": [
+41.8527,
+-84.0731
+],
+"MI:Manchester Township": [
+42.1229,
+-84.0729
+],
+"MI:Marathon Township": [
+43.1928,
+-83.398
+],
+"MI:Marion Township": [
+42.5532,
+-83.9729
+],
+"MI:Mayfield Township": [
+43.1049,
+-83.289
+],
+"MI:Meade Township": [
+43.8868,
+-83.0674
+],
+"MI:Medina Township": [
+41.7623,
+-84.2955
+],
+"MI:Meridian Charter Township": [
+42.7253,
+-84.4197
+],
+"MI:Metamora Township": [
+42.9348,
+-83.2736
+],
+"MI:Middlebury Township": [
+43.0022,
+-84.3183
+],
+"MI:Milan Township": [
+42.036,
+-83.724
+],
+"MI:Milford Charter Township": [
+42.5677,
+-83.6109
+],
+"MI:Millington Township": [
+43.2585,
+-83.5166
+],
+"MI:Monroe Charter Township": [
+41.8931,
+-83.4244
+],
+"MI:Monroe County": [
+41.9161,
+-83.4871
+],
+"MI:Montcalm County": [
+43.3128,
+-85.1495
+],
+"MI:Montcalm Township": [
+43.2432,
+-85.2635
+],
+"MI:Montrose Charter Township": [
+43.1801,
+-83.8694
+],
+"MI:Mount Morris Charter Township": [
+43.0924,
+-83.7596
+],
+"MI:Mundy Charter Township": [
+42.9082,
+-83.7561
+],
+"MI:Mussey Township": [
+43.0257,
+-82.9316
+],
+"MI:Napoleon Township": [
+42.1756,
+-84.2966
+],
+"MI:New Haven Township": [
+43.0905,
+-84.1011
+],
+"MI:Newton Township": [
+42.1998,
+-85.1272
+],
+"MI:Noble Township": [
+41.7873,
+-85.2317
+],
+"MI:North Branch Township": [
+43.1972,
+-83.1797
+],
+"MI:North Shade Township": [
+43.1601,
+-84.7771
+],
+"MI:Northfield Township": [
+42.3886,
+-83.729
+],
+"MI:Norvell Township": [
+42.1294,
+-84.1628
+],
+"MI:Novesta Township": [
+43.5435,
+-83.1715
+],
+"MI:Novi Township": [
+42.457,
+-83.4825
+],
+"MI:Oakland Charter Township": [
+42.753,
+-83.1544
+],
+"MI:Oakland County": [
+42.6605,
+-83.3842
+],
+"MI:Oceola Township": [
+42.6517,
+-83.8611
+],
+"MI:Ogden Township": [
+41.7637,
+-83.9458
+],
+"MI:Onondaga Township": [
+42.475,
+-84.5476
+],
+"MI:Oregon Township": [
+43.09,
+-83.3987
+],
+"MI:Orion Charter Township": [
+42.7569,
+-83.2619
+],
+"MI:Owosso Charter Township": [
+42.9997,
+-84.2393
+],
+"MI:Oxford Charter Township": [
+42.845,
+-83.2931
+],
+"MI:Palmyra Township": [
+41.8682,
+-83.9546
+],
+"MI:Parma Township": [
+42.2884,
+-84.6622
+],
+"MI:Perry Township": [
+42.7999,
+-84.1884
+],
+"MI:Pittsfield Charter Township": [
+42.2084,
+-83.7156
+],
+"MI:Pittsford Township": [
+41.8558,
+-84.4183
+],
+"MI:Port Huron Charter Township": [
+42.9777,
+-82.4793
+],
+"MI:Portland Township": [
+42.9062,
+-84.8992
+],
+"MI:Pulaski Township": [
+42.1203,
+-84.6572
+],
+"MI:Putnam Township": [
+42.4654,
+-83.9685
+],
+"MI:Raisin Charter Township": [
+41.947,
+-83.9444
+],
+"MI:Raisinville Township": [
+41.96,
+-83.5032
+],
+"MI:Ransom Township": [
+41.7752,
+-84.5349
+],
+"MI:Ray Township": [
+42.7622,
+-82.9205
+],
+"MI:Rich Township": [
+43.2785,
+-83.2941
+],
+"MI:Richfield Township": [
+43.0974,
+-83.5248
+],
+"MI:Richland Township": [
+43.4394,
+-84.2397
+],
+"MI:Richmond Township": [
+42.8508,
+-82.8072
+],
+"MI:Ridgeway Township": [
+41.9726,
+-83.8349
+],
+"MI:Riga Township": [
+41.7699,
+-83.8328
+],
+"MI:Riley Township": [
+42.9479,
+-82.8071
+],
+"MI:Rives Township": [
+42.3725,
+-84.4221
+],
+"MI:Rollin Township": [
+41.9361,
+-84.2998
+],
+"MI:Rome Township": [
+41.9425,
+-84.1851
+],
+"MI:Rose Township": [
+42.7412,
+-83.6251
+],
+"MI:Roxand Township": [
+42.7283,
+-84.9014
+],
+"MI:Royal Oak Charter Township": [
+42.4498,
+-83.1624
+],
+"MI:Rush Township": [
+43.0849,
+-84.2296
+],
+"MI:Saginaw County": [
+43.3283,
+-84.0554
+],
+"MI:Salem Township": [
+42.39,
+-83.6066
+],
+"MI:Saline Township": [
+42.1179,
+-83.8415
+],
+"MI:Sandstone Charter Township": [
+42.2873,
+-84.5457
+],
+"MI:Sanilac County": [
+43.4492,
+-82.6428
+],
+"MI:Scio Township": [
+42.2962,
+-83.8449
+],
+"MI:Sciota Township": [
+42.9076,
+-84.3224
+],
+"MI:Seneca Township": [
+41.7616,
+-84.1681
+],
+"MI:Seville Township": [
+43.4183,
+-84.7764
+],
+"MI:Sharon Township": [
+42.2072,
+-84.0825
+],
+"MI:Shelby Charter Township": [
+42.6731,
+-83.0366
+],
+"MI:Shiawassee County": [
+42.9515,
+-84.1464
+],
+"MI:Shiawassee Township": [
+42.9162,
+-84.0955
+],
+"MI:Southfield Township": [
+42.5204,
+-83.2648
+],
+"MI:Spaulding Township": [
+43.3415,
+-83.9861
+],
+"MI:Spring Arbor Township": [
+42.2055,
+-84.5379
+],
+"MI:Springfield Charter Township": [
+42.7469,
+-83.5012
+],
+"MI:Springport Township": [
+42.3866,
+-84.6528
+],
+"MI:St. Clair County": [
+42.9288,
+-82.6689
+],
+"MI:St. Clair Township": [
+42.8613,
+-82.5541
+],
+"MI:Stockbridge Township": [
+42.4645,
+-84.201
+],
+"MI:Summerfield Township": [
+41.8704,
+-83.712
+],
+"MI:Summit Township": [
+42.1988,
+-84.4295
+],
+"MI:Sumner Township": [
+43.3353,
+-84.7856
+],
+"MI:Sunfield Township": [
+42.7198,
+-85.0246
+],
+"MI:Superior Township": [
+42.3039,
+-83.6005
+],
+"MI:Sylvan Township": [
+42.2944,
+-84.0795
+],
+"MI:Tecumseh Township": [
+42.0303,
+-83.9176
+],
+"MI:Thetford Township": [
+43.1721,
+-83.6301
+],
+"MI:Tompkins Township": [
+42.3772,
+-84.5402
+],
+"MI:Tuscola County": [
+43.4879,
+-83.4366
+],
+"MI:Tuscola Township": [
+43.3494,
+-83.6379
+],
+"MI:Tyrone Township": [
+42.7381,
+-83.7429
+],
+"MI:Unadilla Township": [
+42.472,
+-84.0746
+],
+"MI:Vassar Township": [
+43.3481,
+-83.5263
+],
+"MI:Venice Township": [
+43.0092,
+-83.9964
+],
+"MI:Vernon Township": [
+42.8882,
+-83.9529
+],
+"MI:Vevay Township": [
+42.5401,
+-84.4167
+],
+"MI:Vienna Charter Township": [
+43.1803,
+-83.7611
+],
+"MI:Wales Township": [
+42.9443,
+-82.694
+],
+"MI:Washington Charter Township": [
+42.7655,
+-83.0467
+],
+"MI:Washtenaw County": [
+42.2522,
+-83.8434
+],
+"MI:Waterford Charter Township": [
+42.662,
+-83.3879
+],
+"MI:Waterloo Township": [
+42.3717,
+-84.1856
+],
+"MI:Watertown Township": [
+43.279,
+-83.4091
+],
+"MI:Webster Township": [
+42.3773,
+-83.8385
+],
+"MI:West Bloomfield Charter Township": [
+42.5667,
+-83.3871
+],
+"MI:Wheatfield Township": [
+42.6362,
+-84.3182
+],
+"MI:White Lake Charter Township": [
+42.6544,
+-83.5064
+],
+"MI:White Oak Township": [
+42.5625,
+-84.2021
+],
+"MI:Whiteford Township": [
+41.7721,
+-83.7102
+],
+"MI:Williamstown Township": [
+42.7371,
+-84.3122
+],
+"MI:Wisner Township": [
+43.5982,
+-83.6358
+],
+"MI:Woodbridge Township": [
+41.7747,
+-84.6411
+],
+"MI:Woodhull Township": [
+42.8132,
+-84.3185
+],
+"MI:Woodstock Township": [
+42.0285,
+-84.3057
+],
+"MI:York Charter Township": [
+42.1271,
+-83.7225
+],
+"MI:Ypsilanti Charter Township": [
+42.2137,
+-83.5992
+],
+"MI:Zilwaukee Township": [
+43.5022,
+-83.8979
+],
+"NY:Albany": [
+42.6657,
+-73.7984
+],
+"NY:Albion": [
+43.4893,
+-76.0309
+],
+"NY:Allegany County": [
+42.2479,
+-78.0262
+],
 "NY:Amherst": [
 43.0116,
 -78.7571
@@ -1412,6 +2816,14 @@
 "NY:Amsterdam": [
 42.9556,
 -74.1661
+],
+"NY:Angelica": [
+42.304,
+-78.0155
+],
+"NY:Arietta": [
+43.5002,
+-74.5795
 ],
 "NY:Aurora": [
 42.7388,
@@ -1429,6 +2841,10 @@
 41.6035,
 -73.6989
 ],
+"NY:Bergen": [
+43.0962,
+-77.9555
+],
 "NY:Berne": [
 42.6039,
 -74.1304
@@ -1445,9 +2861,25 @@
 43.0662,
 -76.3133
 ],
+"NY:Campbell": [
+42.23,
+-77.1664
+],
 "NY:Carmel": [
 41.3871,
 -73.7227
+],
+"NY:Carrollton": [
+42.0564,
+-78.6379
+],
+"NY:Chautauqua": [
+42.2418,
+-79.5062
+],
+"NY:Chemung County": [
+42.1487,
+-76.7525
 ],
 "NY:Cicero": [
 43.1721,
@@ -1465,6 +2897,10 @@
 42.859,
 -73.823
 ],
+"NY:Clymer": [
+42.049,
+-79.5824
+],
 "NY:Concord": [
 42.5453,
 -78.703
@@ -1473,9 +2909,17 @@
 43.2286,
 -73.9222
 ],
+"NY:Corning": [
+42.1493,
+-77.0142
+],
 "NY:Cortlandt": [
 41.2517,
 -73.9069
+],
+"NY:Denmark": [
+43.9046,
+-75.6234
 ],
 "NY:Dover": [
 41.6791,
@@ -1485,6 +2929,10 @@
 42.778,
 -74.1727
 ],
+"NY:Dunkirk": [
+42.4695,
+-79.3201
+],
 "NY:East Fishkill": [
 41.5572,
 -73.7802
@@ -1492,6 +2940,26 @@
 "NY:East Greenbush": [
 42.6051,
 -73.7003
+],
+"NY:Eden": [
+42.6548,
+-78.8822
+],
+"NY:Ellery": [
+42.1899,
+-79.3536
+],
+"NY:Florence": [
+43.4189,
+-75.7397
+],
+"NY:Fort Ann": [
+43.483,
+-73.5312
+],
+"NY:Frankfort": [
+43.0407,
+-75.1369
 ],
 "NY:Gardiner": [
 41.6916,
@@ -1501,9 +2969,25 @@
 42.8334,
 -77.0055
 ],
+"NY:Glen Cove": [
+40.8848,
+-73.6448
+],
 "NY:Glenville": [
 42.8883,
 -73.9887
+],
+"NY:Goshen": [
+41.3812,
+-74.3525
+],
+"NY:Greene County": [
+42.287,
+-74.1495
+],
+"NY:Greig": [
+43.6918,
+-75.2045
 ],
 "NY:Halfmoon": [
 42.8609,
@@ -1533,13 +3017,33 @@
 40.715,
 -73.1952
 ],
+"NY:Jay": [
+44.3776,
+-73.6965
+],
+"NY:Johnstown": [
+43.0443,
+-74.3983
+],
 "NY:Kent": [
 41.4576,
 -73.7246
 ],
+"NY:Lake George": [
+43.4343,
+-73.7226
+],
 "NY:Lansing": [
 42.5665,
 -76.532
+],
+"NY:Le Ray": [
+44.0787,
+-75.7958
+],
+"NY:Lewis County": [
+43.7827,
+-75.4441
 ],
 "NY:Leyden": [
 43.5345,
@@ -1549,17 +3053,41 @@
 42.1389,
 -73.7971
 ],
+"NY:Livingston County": [
+42.729,
+-77.7785
+],
 "NY:Lysander": [
 43.1842,
 -76.3739
+],
+"NY:Maine": [
+42.1961,
+-76.0166
 ],
 "NY:Marcellus": [
 42.9424,
 -76.3235
 ],
+"NY:Massena": [
+44.962,
+-74.8346
+],
 "NY:Milton": [
 43.0495,
 -73.8976
+],
+"NY:Moreau": [
+43.2474,
+-73.6657
+],
+"NY:Mount Kisco": [
+41.2017,
+-73.7283
+],
+"NY:Mount Pleasant": [
+41.1124,
+-73.8157
 ],
 "NY:New Castle": [
 41.1825,
@@ -1569,13 +3097,41 @@
 43.2902,
 -78.6928
 ],
+"NY:Norfolk": [
+44.8379,
+-74.9357
+],
+"NY:North Elba": [
+44.2066,
+-74.0461
+],
 "NY:North Hempstead": [
 40.8034,
 -73.6784
 ],
+"NY:North Tonawanda": [
+43.0492,
+-78.8712
+],
+"NY:Orleans County": [
+43.3399,
+-78.207
+],
+"NY:Oswego": [
+43.4024,
+-76.555
+],
 "NY:Oyster Bay": [
 40.8005,
 -73.5106
+],
+"NY:Peekskill": [
+41.2874,
+-73.9236
+],
+"NY:Pendleton": [
+43.1044,
+-78.7646
 ],
 "NY:Penfield": [
 43.1515,
@@ -1585,9 +3141,37 @@
 43.0054,
 -74.204
 ],
+"NY:Plattekill": [
+41.6543,
+-74.0742
+],
+"NY:Poland": [
+42.1301,
+-79.1209
+],
+"NY:Pound Ridge": [
+41.2124,
+-73.5838
+],
 "NY:Putnam Valley": [
 41.3954,
 -73.8391
+],
+"NY:Ripley": [
+42.2346,
+-79.7084
+],
+"NY:Riverhead": [
+40.974,
+-72.7147
+],
+"NY:Salem": [
+43.1601,
+-73.323
+],
+"NY:Schoharie County": [
+42.5913,
+-74.4382
 ],
 "NY:Smithtown": [
 40.9188,
@@ -1601,9 +3185,17 @@
 41.139,
 -72.3187
 ],
+"NY:Southport": [
+42.05,
+-76.8774
+],
 "NY:Spafford": [
 42.8297,
 -76.2892
+],
+"NY:St. Armand": [
+44.3757,
+-74.0077
 ],
 "NY:Stanford": [
 41.8988,
@@ -1613,6 +3205,18 @@
 41.2515,
 -74.0037
 ],
+"NY:Ticonderoga": [
+43.8364,
+-73.5532
+],
+"NY:Troy": [
+42.7358,
+-73.6753
+],
+"NY:Walworth": [
+43.1551,
+-77.3126
+],
 "NY:Warwick": [
 41.2598,
 -74.361
@@ -1620,6 +3224,18 @@
 "NY:Wawarsing": [
 41.7469,
 -74.4196
+],
+"NY:Wayne County": [
+43.2181,
+-77.0494
+],
+"NY:West Bloomfield": [
+42.892,
+-77.5013
+],
+"NY:Willing": [
+42.0359,
+-77.8934
 ],
 "NY:Wilton": [
 43.1526,
@@ -1629,9 +3245,889 @@
 42.8971,
 -75.1659
 ],
+"NY:Yonkers": [
+40.9459,
+-73.8674
+],
 "NY:York": [
 42.864,
 -77.8899
+],
+"OH:Adams County": [
+38.8345,
+-83.4781
+],
+"OH:Adams Township": [
+40.2336,
+-83.9599
+],
+"OH:Allen County": [
+40.7716,
+-84.1061
+],
+"OH:Allen Township": [
+40.2454,
+-83.4874
+],
+"OH:Ashland County": [
+40.8433,
+-82.2701
+],
+"OH:Ashtabula County": [
+41.9066,
+-80.7456
+],
+"OH:Athens County": [
+39.3328,
+-82.0459
+],
+"OH:Auglaize County": [
+40.5613,
+-84.224
+],
+"OH:Batavia Township": [
+39.0633,
+-84.1682
+],
+"OH:Belmont County": [
+40.0177,
+-80.9677
+],
+"OH:Bennington Township": [
+40.2257,
+-82.6116
+],
+"OH:Berkshire Township": [
+40.2447,
+-82.8995
+],
+"OH:Berlin Township": [
+40.249,
+-82.9847
+],
+"OH:Blendon Township": [
+40.0966,
+-82.904
+],
+"OH:Bloomfield Township": [
+40.4109,
+-83.9674
+],
+"OH:Bokes Creek Township": [
+40.4539,
+-83.5735
+],
+"OH:Bowling Green Township": [
+39.9349,
+-82.3054
+],
+"OH:Brown County": [
+38.9314,
+-83.8668
+],
+"OH:Brown Township (Delaware County)": [
+40.3236,
+-82.9941
+],
+"OH:Brown Township (Franklin County)": [
+40.003,
+-83.2274
+],
+"OH:Burlington Township": [
+40.2291,
+-82.5161
+],
+"OH:Butler County": [
+39.4397,
+-84.5657
+],
+"OH:Carroll County": [
+40.5799,
+-81.0908
+],
+"OH:Champaign County": [
+40.1328,
+-83.7676
+],
+"OH:Claibourne Township": [
+40.4161,
+-83.3294
+],
+"OH:Clark County": [
+39.917,
+-83.7837
+],
+"OH:Clermont County": [
+39.0521,
+-84.1495
+],
+"OH:Clinton County": [
+39.4167,
+-83.8046
+],
+"OH:Clinton Township": [
+40.0496,
+-82.961
+],
+"OH:Columbiana County": [
+40.7701,
+-80.7785
+],
+"OH:Concord Township (Champaign County)": [
+40.1689,
+-83.8492
+],
+"OH:Concord Township (Delaware County)": [
+40.2202,
+-83.1468
+],
+"OH:Coshocton County": [
+40.2967,
+-81.9301
+],
+"OH:Crawford County": [
+40.8485,
+-82.9248
+],
+"OH:Cuyahoga County": [
+41.555,
+-81.605
+],
+"OH:Darby Township": [
+40.1537,
+-83.3396
+],
+"OH:Darke County": [
+40.1315,
+-84.6212
+],
+"OH:Defiance County": [
+41.3217,
+-84.4864
+],
+"OH:Delaware County": [
+40.2789,
+-83.0075
+],
+"OH:Delaware Township": [
+40.2687,
+-83.0528
+],
+"OH:Dover Township": [
+40.2634,
+-83.2857
+],
+"OH:Eden Township": [
+40.2041,
+-82.3209
+],
+"OH:Erie County": [
+41.3941,
+-82.5868
+],
+"OH:Etna Township": [
+39.952,
+-82.6913
+],
+"OH:Fairfield County": [
+39.7477,
+-82.6267
+],
+"OH:Fairfield Township": [
+39.3898,
+-84.5236
+],
+"OH:Fallsbury Township": [
+40.2084,
+-82.2369
+],
+"OH:Fayette County": [
+39.5552,
+-83.4619
+],
+"OH:Franklin County": [
+39.9699,
+-83.0091
+],
+"OH:Franklin Township (Clermont County)": [
+38.8284,
+-84.09
+],
+"OH:Franklin Township (Franklin County)": [
+39.9082,
+-83.0299
+],
+"OH:Franklin Township (Licking County)": [
+39.9883,
+-82.3477
+],
+"OH:Fulton County": [
+41.5973,
+-84.1243
+],
+"OH:Gallia County": [
+38.817,
+-82.3017
+],
+"OH:Geauga County": [
+41.4993,
+-81.1735
+],
+"OH:Genoa Township": [
+40.173,
+-82.8981
+],
+"OH:Goshen Township (Champaign County)": [
+40.0704,
+-83.5529
+],
+"OH:Goshen Township (Clermont County)": [
+39.2276,
+-84.1576
+],
+"OH:Granville Township": [
+40.0767,
+-82.526
+],
+"OH:Greene County": [
+39.6875,
+-83.8949
+],
+"OH:Guernsey County": [
+40.0567,
+-81.4979
+],
+"OH:Hamilton County": [
+39.1969,
+-84.5442
+],
+"OH:Hamilton Township": [
+39.8498,
+-82.9608
+],
+"OH:Hancock County": [
+41.0002,
+-83.6659
+],
+"OH:Hanover Township (Butler County)": [
+39.436,
+-84.6549
+],
+"OH:Hanover Township (Licking County)": [
+40.063,
+-82.2348
+],
+"OH:Hardin County": [
+40.6604,
+-83.6641
+],
+"OH:Harlem Township": [
+40.1622,
+-82.8036
+],
+"OH:Harrison County": [
+40.2923,
+-81.0916
+],
+"OH:Harrison Township (Champaign County)": [
+40.2403,
+-83.8338
+],
+"OH:Harrison Township (Licking County)": [
+40.0027,
+-82.6211
+],
+"OH:Harrison Township (Logan County)": [
+40.3742,
+-83.8184
+],
+"OH:Hartford Township": [
+40.2356,
+-82.6988
+],
+"OH:Henry County": [
+41.3316,
+-84.0689
+],
+"OH:Highland County": [
+39.1844,
+-83.6014
+],
+"OH:Hocking County": [
+39.4903,
+-82.4834
+],
+"OH:Holmes County": [
+40.5656,
+-81.93
+],
+"OH:Hopewell Township": [
+39.9877,
+-82.2484
+],
+"OH:Huron County": [
+41.1451,
+-82.5946
+],
+"OH:Jackson County": [
+39.0135,
+-82.6141
+],
+"OH:Jackson Township (Champaign County)": [
+40.0942,
+-83.9693
+],
+"OH:Jackson Township (Clermont County)": [
+39.1327,
+-84.038
+],
+"OH:Jackson Township (Franklin County)": [
+39.8547,
+-83.0705
+],
+"OH:Jackson Township (Union County)": [
+40.4883,
+-83.336
+],
+"OH:Jefferson County": [
+40.3994,
+-80.7635
+],
+"OH:Jefferson Township (Franklin County)": [
+40.0244,
+-82.8016
+],
+"OH:Jefferson Township (Logan County)": [
+40.3593,
+-83.6763
+],
+"OH:Jerome Township": [
+40.1466,
+-83.2367
+],
+"OH:Jersey Township": [
+40.0862,
+-82.7157
+],
+"OH:Johnson Township": [
+40.1617,
+-83.9613
+],
+"OH:Kingston Township": [
+40.3196,
+-82.8879
+],
+"OH:Knox County": [
+40.4036,
+-82.4224
+],
+"OH:Lake County": [
+41.7781,
+-81.1973
+],
+"OH:Lake Township": [
+40.3744,
+-83.7514
+],
+"OH:Lawrence County": [
+38.6039,
+-82.5172
+],
+"OH:Leesburg Township": [
+40.3417,
+-83.3031
+],
+"OH:Lemon Township": [
+39.4478,
+-84.3939
+],
+"OH:Liberty Township (Butler County)": [
+39.3993,
+-84.4108
+],
+"OH:Liberty Township (Delaware County)": [
+40.1888,
+-83.0821
+],
+"OH:Liberty Township (Licking County)": [
+40.1622,
+-82.5925
+],
+"OH:Liberty Township (Logan County)": [
+40.2895,
+-83.7657
+],
+"OH:Liberty Township (Union County)": [
+40.3331,
+-83.4818
+],
+"OH:Licking County": [
+40.0915,
+-82.4834
+],
+"OH:Licking Township": [
+39.9773,
+-82.4183
+],
+"OH:Logan County": [
+40.3876,
+-83.7663
+],
+"OH:Logan-Union-Champaign Regional Planning Commission": [
+40.2721,
+-83.6337
+],
+"OH:Lorain County": [
+41.4388,
+-82.1797
+],
+"OH:Lucas County": [
+41.6823,
+-83.4689
+],
+"OH:Mad River Township": [
+40.0814,
+-83.8592
+],
+"OH:Madison County": [
+39.8966,
+-83.4009
+],
+"OH:Madison Township (Butler County)": [
+39.5363,
+-84.4257
+],
+"OH:Madison Township (Franklin County)": [
+39.836,
+-82.8654
+],
+"OH:Madison Township (Licking County)": [
+40.0655,
+-82.3339
+],
+"OH:Mahoning County": [
+41.0109,
+-80.7704
+],
+"OH:Marion County": [
+40.588,
+-83.1688
+],
+"OH:Marlboro Township": [
+40.4165,
+-83.0641
+],
+"OH:Mary Ann Township": [
+40.1362,
+-82.3323
+],
+"OH:McArthur Township": [
+40.4397,
+-83.7971
+],
+"OH:McKean Township": [
+40.1489,
+-82.5117
+],
+"OH:Medina County": [
+41.1162,
+-81.8998
+],
+"OH:Meigs County": [
+39.0898,
+-82.0284
+],
+"OH:Mercer County": [
+40.5353,
+-84.6321
+],
+"OH:Miami County": [
+40.0533,
+-84.2284
+],
+"OH:Miami Township (Clermont County)": [
+39.1987,
+-84.2439
+],
+"OH:Miami Township (Logan County)": [
+40.2943,
+-83.9425
+],
+"OH:Mifflin Township": [
+40.0256,
+-82.8725
+],
+"OH:Milford Township": [
+39.5189,
+-84.6322
+],
+"OH:Millcreek Township": [
+40.2041,
+-83.2325
+],
+"OH:Monroe County": [
+39.7263,
+-81.091
+],
+"OH:Monroe Township (Clermont County)": [
+38.9345,
+-84.1903
+],
+"OH:Monroe Township (Licking County)": [
+40.163,
+-82.7148
+],
+"OH:Monroe Township (Logan County)": [
+40.2731,
+-83.6885
+],
+"OH:Montgomery County": [
+39.7537,
+-84.2906
+],
+"OH:Morgan County": [
+39.6249,
+-81.8617
+],
+"OH:Morgan Township": [
+39.3514,
+-84.7494
+],
+"OH:Morrow County": [
+40.5253,
+-82.7977
+],
+"OH:Muskingum County": [
+39.966,
+-81.9435
+],
+"OH:Newark Township": [
+40.0984,
+-82.4515
+],
+"OH:Newton Township": [
+40.144,
+-82.4197
+],
+"OH:Noble County": [
+39.7672,
+-81.4525
+],
+"OH:Norwich Township": [
+40.0356,
+-83.1421
+],
+"OH:Ohio Township": [
+38.9678,
+-84.2531
+],
+"OH:Orange Township": [
+40.1778,
+-82.9942
+],
+"OH:Ottawa County": [
+41.5455,
+-83.0126
+],
+"OH:Oxford Township (Butler County)": [
+39.5232,
+-84.7613
+],
+"OH:Oxford Township (Delaware County)": [
+40.3897,
+-82.9729
+],
+"OH:Paris Township": [
+40.2484,
+-83.3804
+],
+"OH:Paulding County": [
+41.1189,
+-84.5821
+],
+"OH:Perry County": [
+39.7432,
+-82.238
+],
+"OH:Perry Township (Franklin County)": [
+40.1266,
+-83.0491
+],
+"OH:Perry Township (Licking County)": [
+40.1301,
+-82.2372
+],
+"OH:Perry Township (Logan County)": [
+40.3485,
+-83.5697
+],
+"OH:Pickaway County": [
+39.6489,
+-83.0528
+],
+"OH:Pierce Township": [
+39.0239,
+-84.2675
+],
+"OH:Pike County": [
+39.0713,
+-83.0529
+],
+"OH:Plain Township": [
+40.094,
+-82.8005
+],
+"OH:Pleasant Township (Franklin County)": [
+39.8677,
+-83.1944
+],
+"OH:Pleasant Township (Logan County)": [
+40.3411,
+-83.9382
+],
+"OH:Portage County": [
+41.169,
+-81.197
+],
+"OH:Porter Township": [
+40.3154,
+-82.7955
+],
+"OH:Prairie Township": [
+39.9388,
+-83.1863
+],
+"OH:Preble County": [
+39.7388,
+-84.6448
+],
+"OH:Putnam County": [
+41.0245,
+-84.1299
+],
+"OH:Radnor Township": [
+40.3741,
+-83.167
+],
+"OH:Reily Township": [
+39.4348,
+-84.7598
+],
+"OH:Richland County": [
+40.7742,
+-82.5428
+],
+"OH:Richland Township": [
+40.499,
+-83.8008
+],
+"OH:Ross County": [
+39.3239,
+-83.0595
+],
+"OH:Ross Township": [
+39.3502,
+-84.6473
+],
+"OH:Rush Township": [
+40.1733,
+-83.5462
+],
+"OH:Rushcreek Township": [
+40.4572,
+-83.6693
+],
+"OH:Salem Township": [
+40.1826,
+-83.7248
+],
+"OH:Sandusky County": [
+41.3553,
+-83.1428
+],
+"OH:Scioto County": [
+38.8149,
+-82.9987
+],
+"OH:Scioto Township": [
+40.2895,
+-83.2031
+],
+"OH:Seneca County": [
+41.12,
+-83.1275
+],
+"OH:Sharon Township": [
+40.1009,
+-83.0134
+],
+"OH:Shelby County": [
+40.3367,
+-84.2041
+],
+"OH:St. Albans Township": [
+40.0792,
+-82.6181
+],
+"OH:St. Clair Township": [
+39.4487,
+-84.5367
+],
+"OH:Stark County": [
+40.8141,
+-81.3657
+],
+"OH:Stokes Township": [
+40.4925,
+-83.9368
+],
+"OH:Stonelick Township": [
+39.1575,
+-84.1406
+],
+"OH:Summit County": [
+41.1218,
+-81.5349
+],
+"OH:Tate Township": [
+38.9519,
+-84.1017
+],
+"OH:Taylor Township": [
+40.329,
+-83.3799
+],
+"OH:Thompson Township": [
+40.394,
+-83.2124
+],
+"OH:Trenton Township": [
+40.2374,
+-82.8008
+],
+"OH:Troy Township": [
+40.3641,
+-83.0719
+],
+"OH:Trumbull County": [
+41.3064,
+-80.7704
+],
+"OH:Truro Township": [
+39.9581,
+-82.8068
+],
+"OH:Tuscarawas County": [
+40.4474,
+-81.4712
+],
+"OH:Union County": [
+40.2959,
+-83.367
+],
+"OH:Union Township (Champaign County)": [
+40.0645,
+-83.6434
+],
+"OH:Union Township (Clermont County)": [
+39.1081,
+-84.2658
+],
+"OH:Union Township (Licking County)": [
+39.9837,
+-82.5283
+],
+"OH:Union Township (Logan County)": [
+40.3026,
+-83.839
+],
+"OH:Union Township (Union County)": [
+40.1403,
+-83.4355
+],
+"OH:Urbana Township": [
+40.0713,
+-83.7441
+],
+"OH:Van Wert County": [
+40.8555,
+-84.5858
+],
+"OH:Vinton County": [
+39.252,
+-82.486
+],
+"OH:Warren County": [
+39.4257,
+-84.1699
+],
+"OH:Washington County": [
+39.4507,
+-81.4906
+],
+"OH:Washington Township (Clermont County)": [
+38.8625,
+-84.1759
+],
+"OH:Washington Township (Franklin County)": [
+40.1019,
+-83.1471
+],
+"OH:Washington Township (Licking County)": [
+40.2157,
+-82.4138
+],
+"OH:Washington Township (Logan County)": [
+40.4187,
+-83.8906
+],
+"OH:Washington Township (Union County)": [
+40.4756,
+-83.4528
+],
+"OH:Wayne County": [
+40.8297,
+-81.8872
+],
+"OH:Wayne Township (Butler County)": [
+39.5262,
+-84.5397
+],
+"OH:Wayne Township (Champaign County)": [
+40.1831,
+-83.6242
+],
+"OH:Wayne Township (Clermont County)": [
+39.2168,
+-84.0565
+],
+"OH:West Chester Township": [
+39.3382,
+-84.4171
+],
+"OH:Williams County": [
+41.565,
+-84.5843
+],
+"OH:Williamsburg Township": [
+39.0404,
+-84.0576
+],
+"OH:Wood County": [
+41.3602,
+-83.6227
+],
+"OH:Wyandot County": [
+40.8398,
+-83.3137
+],
+"OH:York Township": [
+40.4077,
+-83.4416
+],
+"OH:Zane Township": [
+40.2765,
+-83.5874
 ],
 "RI:Barrington": [
 41.733,
@@ -1788,6 +4284,702 @@
 "RI:Woonsocket": [
 42.0017,
 -71.4999
+],
+"VA:Accomack County": [
+37.7659,
+-75.7578
+],
+"VA:Albemarle County": [
+38.0242,
+-78.5535
+],
+"VA:Alleghany County": [
+37.7879,
+-80.0087
+],
+"VA:Amelia County": [
+37.3319,
+-77.9775
+],
+"VA:Amherst County": [
+37.6293,
+-79.1548
+],
+"VA:Appomattox County": [
+37.3707,
+-78.8109
+],
+"VA:Arlington County": [
+38.8783,
+-77.1007
+],
+"VA:Augusta County": [
+38.1726,
+-79.141
+],
+"VA:Bath County": [
+38.0684,
+-79.7312
+],
+"VA:Bedford County": [
+37.3123,
+-79.5272
+],
+"VA:Bland County": [
+37.1306,
+-81.1259
+],
+"VA:Botetourt County": [
+37.5655,
+-79.7975
+],
+"VA:Brunswick County": [
+36.7642,
+-77.8615
+],
+"VA:Buchanan County": [
+37.2681,
+-82.0382
+],
+"VA:Buckingham County": [
+37.5739,
+-78.5292
+],
+"VA:Campbell County": [
+37.2102,
+-79.0954
+],
+"VA:Caroline County": [
+38.028,
+-77.3537
+],
+"VA:Carroll County": [
+36.732,
+-80.7278
+],
+"VA:Charles City County": [
+37.3611,
+-77.0542
+],
+"VA:Charlotte County": [
+37.009,
+-78.6586
+],
+"VA:Chesterfield County": [
+37.3784,
+-77.5858
+],
+"VA:City of Alexandria": [
+38.8193,
+-77.0837
+],
+"VA:City of Bristol": [
+36.617,
+-82.1576
+],
+"VA:City of Buena Vista": [
+37.7293,
+-79.3581
+],
+"VA:City of Charlottesville": [
+38.0377,
+-78.4854
+],
+"VA:City of Chesapeake": [
+36.6794,
+-76.3018
+],
+"VA:City of Colonial Heights": [
+37.2617,
+-77.3968
+],
+"VA:City of Covington": [
+37.7811,
+-79.9854
+],
+"VA:City of Danville": [
+36.5833,
+-79.4081
+],
+"VA:City of Emporia": [
+36.6962,
+-77.536
+],
+"VA:City of Fairfax": [
+38.8532,
+-77.299
+],
+"VA:City of Falls Church": [
+38.8847,
+-77.1756
+],
+"VA:City of Franklin": [
+36.684,
+-76.9414
+],
+"VA:City of Fredericksburg": [
+38.2993,
+-77.4867
+],
+"VA:City of Galax": [
+36.6656,
+-80.9143
+],
+"VA:City of Hampton": [
+37.048,
+-76.2973
+],
+"VA:City of Harrisonburg": [
+38.4363,
+-78.8733
+],
+"VA:City of Hopewell": [
+37.291,
+-77.2989
+],
+"VA:City of Lexington": [
+37.7823,
+-79.4443
+],
+"VA:City of Lynchburg": [
+37.399,
+-79.1955
+],
+"VA:City of Manassas": [
+38.7468,
+-77.4826
+],
+"VA:City of Manassas Park": [
+38.7694,
+-77.4423
+],
+"VA:City of Martinsville": [
+36.6835,
+-79.8636
+],
+"VA:City of Newport News": [
+37.0761,
+-76.522
+],
+"VA:City of Norfolk": [
+36.923,
+-76.2446
+],
+"VA:City of Norton": [
+36.9315,
+-82.626
+],
+"VA:City of Petersburg": [
+37.2047,
+-77.3924
+],
+"VA:City of Poquoson": [
+37.1284,
+-76.3035
+],
+"VA:City of Portsmouth": [
+36.8593,
+-76.357
+],
+"VA:City of Radford": [
+37.1201,
+-80.5591
+],
+"VA:City of Richmond": [
+37.5314,
+-77.476
+],
+"VA:City of Roanoke": [
+37.2785,
+-79.9582
+],
+"VA:City of Salem": [
+37.2853,
+-80.0552
+],
+"VA:City of Staunton": [
+38.158,
+-79.0619
+],
+"VA:City of Suffolk": [
+36.6972,
+-76.6348
+],
+"VA:City of Virginia Beach": [
+36.7795,
+-76.0291
+],
+"VA:City of Waynesboro": [
+38.0672,
+-78.9014
+],
+"VA:City of Williamsburg": [
+37.2695,
+-76.7082
+],
+"VA:City of Winchester": [
+39.1739,
+-78.1764
+],
+"VA:Clarke County": [
+39.1153,
+-77.9907
+],
+"VA:Craig County": [
+37.4736,
+-80.2311
+],
+"VA:Culpeper County": [
+38.4859,
+-77.9565
+],
+"VA:Cumberland County": [
+37.5202,
+-78.2528
+],
+"VA:Dickenson County": [
+37.1367,
+-82.3492
+],
+"VA:Dinwiddie County": [
+37.0735,
+-77.6355
+],
+"VA:Essex County": [
+37.9364,
+-76.9337
+],
+"VA:Fairfax County": [
+38.8295,
+-77.2733
+],
+"VA:Fauquier County": [
+38.7441,
+-77.8215
+],
+"VA:Floyd County": [
+36.9314,
+-80.3503
+],
+"VA:Fluvanna County": [
+37.8306,
+-78.2835
+],
+"VA:Franklin County": [
+36.9912,
+-79.8827
+],
+"VA:Frederick County": [
+39.2037,
+-78.2638
+],
+"VA:Giles County": [
+37.3181,
+-80.6983
+],
+"VA:Gloucester County": [
+37.4035,
+-76.5235
+],
+"VA:Goochland County": [
+37.7188,
+-77.9176
+],
+"VA:Grayson County": [
+36.6522,
+-81.2153
+],
+"VA:Greene County": [
+38.298,
+-78.4702
+],
+"VA:Greensville County": [
+36.6803,
+-77.5603
+],
+"VA:Halifax County": [
+36.7665,
+-78.9396
+],
+"VA:Hanover County": [
+37.7602,
+-77.4913
+],
+"VA:Henrico County": [
+37.4375,
+-77.3003
+],
+"VA:Henry County": [
+36.6206,
+-79.9807
+],
+"VA:Highland County": [
+38.3662,
+-79.5645
+],
+"VA:Isle of Wight County": [
+36.9014,
+-76.7076
+],
+"VA:James City County": [
+37.3248,
+-76.7779
+],
+"VA:King George County": [
+38.2772,
+-77.1626
+],
+"VA:King William County": [
+37.7083,
+-77.0911
+],
+"VA:King and Queen County": [
+37.7178,
+-76.9056
+],
+"VA:Lancaster County": [
+37.7048,
+-76.4127
+],
+"VA:Lee County": [
+36.7017,
+-83.1301
+],
+"VA:Loudoun County": [
+39.0812,
+-77.6389
+],
+"VA:Louisa County": [
+37.9727,
+-77.9598
+],
+"VA:Lunenburg County": [
+36.9456,
+-78.2405
+],
+"VA:Madison County": [
+38.4121,
+-78.277
+],
+"VA:Mathews County": [
+37.4253,
+-76.2688
+],
+"VA:Mecklenburg County": [
+36.6873,
+-78.369
+],
+"VA:Middlesex County": [
+37.607,
+-76.5281
+],
+"VA:Montgomery County": [
+37.1755,
+-80.3878
+],
+"VA:Nelson County": [
+37.7891,
+-78.8834
+],
+"VA:New Kent County": [
+37.5102,
+-76.9993
+],
+"VA:Northampton County": [
+37.3028,
+-75.924
+],
+"VA:Northumberland County": [
+37.857,
+-76.3797
+],
+"VA:Nottoway County": [
+37.1412,
+-78.0539
+],
+"VA:Orange County": [
+38.2493,
+-78.0111
+],
+"VA:Page County": [
+38.6232,
+-78.4919
+],
+"VA:Patrick County": [
+36.6671,
+-80.2864
+],
+"VA:Pittsylvania County": [
+36.8217,
+-79.3985
+],
+"VA:Powhatan County": [
+37.5494,
+-77.9129
+],
+"VA:Prince Edward County": [
+37.2249,
+-78.433
+],
+"VA:Prince George County": [
+37.1873,
+-77.221
+],
+"VA:Prince William County": [
+38.7011,
+-77.4796
+],
+"VA:Pulaski County": [
+37.0634,
+-80.7134
+],
+"VA:Rappahannock County": [
+38.6845,
+-78.1688
+],
+"VA:Richmond County": [
+37.9429,
+-76.7306
+],
+"VA:Roanoke County": [
+37.3308,
+-80.1912
+],
+"VA:Rockbridge County": [
+37.8145,
+-79.4478
+],
+"VA:Rockingham County": [
+38.5076,
+-78.8853
+],
+"VA:Russell County": [
+36.9334,
+-82.0959
+],
+"VA:Scott County": [
+36.7128,
+-82.6136
+],
+"VA:Shenandoah County": [
+38.8562,
+-78.574
+],
+"VA:Smyth County": [
+36.8423,
+-81.5398
+],
+"VA:Southampton County": [
+36.7201,
+-77.1038
+],
+"VA:Spotsylvania County": [
+38.1824,
+-77.6572
+],
+"VA:Stafford County": [
+38.4231,
+-77.458
+],
+"VA:Surry County": [
+37.1198,
+-76.8802
+],
+"VA:Sussex County": [
+36.9266,
+-77.2597
+],
+"VA:Tazewell County": [
+37.1254,
+-81.5629
+],
+"VA:Town of Abingdon": [
+36.7067,
+-81.9716
+],
+"VA:Town of Altavista": [
+37.1234,
+-79.2834
+],
+"VA:Town of Ashland": [
+37.7604,
+-77.4724
+],
+"VA:Town of Bedford": [
+37.34,
+-79.5141
+],
+"VA:Town of Berryville": [
+39.1477,
+-77.9802
+],
+"VA:Town of Blacksburg": [
+37.2313,
+-80.4267
+],
+"VA:Town of Blackstone": [
+37.0818,
+-78.0028
+],
+"VA:Town of Bowling Green": [
+38.0533,
+-77.3475
+],
+"VA:Town of Chase City": [
+36.7998,
+-78.461
+],
+"VA:Town of Chatham": [
+36.8119,
+-79.4001
+],
+"VA:Town of Christiansburg": [
+37.1407,
+-80.4045
+],
+"VA:Town of Clarksville": [
+36.6182,
+-78.5645
+],
+"VA:Town of Culpeper": [
+38.4703,
+-77.9998
+],
+"VA:Town of Dumfries": [
+38.5673,
+-77.3224
+],
+"VA:Town of Farmville": [
+37.2961,
+-78.4004
+],
+"VA:Town of Front Royal": [
+38.925,
+-78.1834
+],
+"VA:Town of Gordonsville": [
+38.1356,
+-78.1874
+],
+"VA:Town of Hamilton": [
+39.135,
+-77.664
+],
+"VA:Town of Haymarket": [
+38.8122,
+-77.6363
+],
+"VA:Town of Herndon": [
+38.9704,
+-77.3871
+],
+"VA:Town of Leesburg": [
+39.1064,
+-77.5592
+],
+"VA:Town of Louisa": [
+38.0166,
+-77.9997
+],
+"VA:Town of Lovettsville": [
+39.2698,
+-77.6404
+],
+"VA:Town of Luray": [
+38.6642,
+-78.4545
+],
+"VA:Town of Middleburg": [
+38.9703,
+-77.7406
+],
+"VA:Town of Orange": [
+38.2478,
+-78.1132
+],
+"VA:Town of Purcellville": [
+39.1375,
+-77.7114
+],
+"VA:Town of Remington": [
+38.5346,
+-77.8082
+],
+"VA:Town of Rocky Mount": [
+37.0044,
+-79.8848
+],
+"VA:Town of Round Hill": [
+39.1315,
+-77.7672
+],
+"VA:Town of Smithfield": [
+36.9724,
+-76.6142
+],
+"VA:Town of South Boston": [
+36.7118,
+-78.9134
+],
+"VA:Town of South Hill": [
+36.7257,
+-78.1289
+],
+"VA:Town of Stephens City": [
+39.0931,
+-78.2183
+],
+"VA:Town of Strasburg": [
+39.0034,
+-78.3495
+],
+"VA:Town of Vienna": [
+38.8986,
+-77.2583
+],
+"VA:Town of Vinton": [
+37.2742,
+-79.8882
+],
+"VA:Town of Warrenton": [
+38.7178,
+-77.7973
+],
+"VA:Town of Windsor": [
+36.8112,
+-76.7384
+],
+"VA:Town of Woodstock": [
+38.8721,
+-78.5171
+],
+"VA:Town of Wytheville": [
+36.9534,
+-81.0884
+],
+"VA:Warren County": [
+38.9082,
+-78.2076
+],
+"VA:Washington County": [
+36.7478,
+-81.9503
+],
+"VA:Westmoreland County": [
+38.1093,
+-76.8039
+],
+"VA:Wise County": [
+36.9746,
+-82.6216
+],
+"VA:Wythe County": [
+36.8999,
+-81.083
+],
+"VA:York County": [
+37.2209,
+-76.3955
 ]
 }
 }

@@ -41,7 +41,8 @@ import briefs as BR  # written briefs: storage, loading and the verifier (tools/
 
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
-SITE = ROOT / "site"
+# SITE_OUT=DIR writes the pages somewhere else (a preview build); the published site is site/.
+SITE = Path(os.environ["SITE_OUT"]) if os.environ.get("SITE_OUT") else ROOT / "site"
 GEO = ROOT / "geo"
 # Canonical base for links, sitemaps and canonical tags. Switches to https://agendaahead.com once the domain is live.
 BASE_URL = "https://agendaahead.vercel.app"
@@ -66,6 +67,7 @@ BOT_UA = "AgendaAheadBot/0.1 (+https://agendaahead.vercel.app/bot)"
 STATE_NAMES = {
     "MA": "Massachusetts", "NY": "New York", "RI": "Rhode Island", "CT": "Connecticut", "NH": "New Hampshire",
     "VT": "Vermont", "ME": "Maine", "NJ": "New Jersey", "PA": "Pennsylvania",
+    "VA": "Virginia", "MD": "Maryland", "MI": "Michigan", "OH": "Ohio",
 }
 
 STATUS_GROUPS = {
@@ -128,6 +130,16 @@ REASON_TEXT = {
     "no_agenda_listing_found": "We couldn’t find where {town} posts its agendas",
     "agendas_stale_or_undated": "{town}’s website has no recent agendas with dates on them",
     "crawl_delay_exceeds_cap": "{town}’s website asks programs like ours to visit less than once a day",
+    # the codes the discovery writes for Virginia, Maryland, Michigan and Ohio
+    "robots_disallow": "{town}’s website asks programs like ours to stay away, and we respect that",
+    "no_agendas_found": "We couldn’t find where {town} posts its agendas",
+    "no_recent_agendas": "{town}’s website has no recent agendas with dates on them",
+    "documents_blocked": "{town}’s website lists its agendas but turns away programs like ours when they open the documents",
+    "document_store": "{town} keeps its agendas in a document system our program can’t open yet",
+    "website_mismatch": "The website listed for {town} turned out to belong to another place, so we have none to read yet",
+    "unreachable": "{town}’s website didn’t answer when our program tried to reach it",
+    "http_error": "{town}’s website answered with an error when our program tried to read it",
+    "no_website": "We couldn’t find a website for {town}",
 }
 REASON_LABELS = {k: v.replace("{town}’s", "the town’s").replace("{town}", "the town") for k, v in REASON_TEXT.items()}
 # The short form, for a list: "(can’t read yet: its site blocks programs)".
@@ -142,6 +154,15 @@ REASON_SHORT = {
     "no_agenda_listing_found": "no agenda listing found",
     "agendas_stale_or_undated": "no dated agendas on its site",
     "crawl_delay_exceeds_cap": "its site allows fewer visits than one a day",
+    "robots_disallow": "its site asks programs to stay away",
+    "no_agendas_found": "no agenda listing found",
+    "no_recent_agendas": "no dated agendas on its site",
+    "documents_blocked": "its site turns away programs that open the documents",
+    "document_store": "a document system we can’t open yet",
+    "website_mismatch": "the website we found belongs to another place",
+    "unreachable": "its site didn’t answer",
+    "http_error": "its site answered with an error",
+    "no_website": "no website found",
 }
 
 
@@ -234,6 +255,181 @@ def load_clerks():
 CLERKS = {}
 CITIES = set()  # "MA:Pittsfield": a city, which adopts ordinances and has no Town Meeting
 REP_TM = set()  # "MA:Dartmouth": a Representative Town Meeting, where elected members vote
+PLACES = {}  # "VA:Loudoun County": the place's row (kind, county, coverage, zoning_power), filled by Ctx
+
+# ---------------------------------------------------------------- kinds of place
+# Massachusetts, New York and Rhode Island rows are towns and cities. Virginia and Maryland add counties and
+# independent cities; Michigan and Ohio add townships and county planning bodies. The shared copy says "town"
+# where the kind is unknown and the kind's own noun where a row is known; a county is "Loudoun County", a
+# township "Pittsfield Township", a chartered place "the City of Manassas".
+KIND_NOUN = {"county": "county", "city": "city", "town": "town", "township": "township", "village": "village",
+             "municipality": "municipality"}
+# Maryland counties governed by a board of county commissioners; the others have a county council.
+MD_COMMISSIONERS = {"Allegany", "Calvert", "Caroline", "Carroll", "Charles", "Garrett", "Kent", "Queen Anne's",
+                    "Queen Anne’s", "St. Mary's", "St. Mary’s", "Somerset", "Washington", "Worcester"}
+# Montgomery and Prince George's: the Planning Board recommends and the Council sits as the District Council.
+MD_DISTRICT_COUNCIL = {"Montgomery", "Prince George's", "Prince George’s"}
+# The states whose rows carry kinds beyond town and city; their shared wording is picked by kind.
+KIND_STATES = ("VA", "MD", "MI", "OH")
+COUNTY_BODY = re.compile(r"\b(?:County|Regional|Metropolitan)\b")
+
+
+def place(state, town):
+    return PLACES.get(f"{state}:{town}") or {}
+
+
+def place_kind(t):
+    """county, city, town, township, village or municipality (town when the row says nothing)."""
+    return (t or {}).get("kind") or "town"
+
+
+def place_name(t):
+    """The name without a disambiguating county: "Fairfield Township" for "Fairfield Township (Lenawee County)"."""
+    return re.sub(r"\s*\([^()]*County\)$", "", (t or {}).get("town") or "")
+
+
+def place_paren(t):
+    """The county a same-named township carries in its row name, or ""."""
+    m = re.search(r"\(([^()]*County)\)$", (t or {}).get("town") or "")
+    return m.group(1) if m else ""
+
+
+def the_place(t, cap=False):
+    """"Loudoun County", "Pittsfield Township", "the City of Manassas", "Carver": the place inside a sentence."""
+    name = place_name(t)
+    if re.match(r"^(?:City|Town|Village) of ", name) or re.search(r"\b(?:Commission|Board|Council|Authority)$", name):
+        return ("The " if cap else "the ") + name
+    return name
+
+
+def bare_name(t):
+    """"Culpeper" for both Culpeper County and the Town of Culpeper; "Pittsfield" for Pittsfield Charter Township."""
+    n = place_name(t)
+    n = re.sub(r"^(?:City|Town|Village) of ", "", n)
+    n = re.sub(r"\s+(?:Charter Township|Township|County|City)$", "", n)
+    return n
+
+
+def place_noun(t):
+    return KIND_NOUN.get(place_kind(t), "town")
+
+
+def md_commissioners(t):
+    """A Maryland county run by county commissioners rather than a council (the row's listing says, else the list)."""
+    boards = " ".join(l.get("board") or "" for l in (t.get("listings") or []) if l.get("board_key") == "select_board")
+    if re.search(r"commissioner", boards, re.I):
+        return True
+    if re.search(r"\bcouncil\b", boards, re.I):
+        return False
+    return (t.get("county") or "") in MD_COMMISSIONERS
+
+
+def clerk_phrase(t):
+    """Who holds the dates: the town clerk, the city clerk, the township clerk, or for a county the office that does."""
+    kind, st = place_kind(t), t.get("state")
+    if kind == "county":
+        if st == "VA":
+            return "the Clerk to the Board of Supervisors"
+        if st == "MD":
+            return "the County Commissioners’ office" if md_commissioners(t) else "the Council’s office"
+        return "the county planning office"
+    if kind in ("township", "village", "city"):
+        return f"the {kind} clerk"
+    return "the town clerk"
+
+
+def hall_phrase(t):
+    """Where the meetings are, when the agenda doesn't say: Town Hall, City Hall, the Township Hall, the county building."""
+    kind, st = place_kind(t), t.get("state")
+    if kind == "county":
+        return "the County Administration Building" if st == "VA" else ("the county government center" if st == "MD" else "the county offices")
+    if kind == "township":
+        return "the Township Hall"
+    if kind == "city":
+        return "City Hall"
+    if kind == "village":
+        return "the Village Hall"
+    return "Town Hall"
+
+
+def county_row(ctx, t):
+    """The county row a town, city or township sits in ("VA:Loudoun County"), or {} (an independent city has none)."""
+    if not t or not t.get("county") or place_kind(t) == "county":
+        return {}
+    return ctx.town_by_id.get(f"{t['state']}:{t['county']} County") or {}
+
+
+def shown_town(m, the=False):
+    """A meeting's place as a page shows it: the row name for Massachusetts, New York and Rhode Island; the display
+    name ("Fairfield Township", "the City of Manassas") for the states whose rows carry kinds."""
+    t = place(m["state"], m["town"])
+    if not t or t.get("state") not in KIND_STATES:
+        return m["town"]
+    return the_place(t) if the else place_name(t)
+
+
+def county_meeting(m):
+    """A meeting filed under a town or township but held by a county or regional body (its zoning changes reach us
+    through the county's agenda). The county row's own meetings are not."""
+    t = place(m["state"], m["town"])
+    return bool(t) and place_kind(t) != "county" and bool(COUNTY_BODY.search(m.get("board") or ""))
+
+
+# Board labels in the state's own words, where the shared keys (ARCHITECTURE.md) stand for different bodies.
+STATE_BOARD_NAMES = {
+    "VA": {"select_board": "Board of Supervisors or council", "planning_board": "Planning Commission",
+           "zoning_board_of_appeals": "Board of Zoning Appeals"},
+    "MD": {"select_board": "County Council or Commissioners", "planning_board": "Planning Commission or Planning Board",
+           "zoning_board_of_appeals": "Board of Appeals"},
+    "MI": {"select_board": "Township Board or city council", "planning_board": "Planning Commission",
+           "zoning_board_of_appeals": "Zoning Board of Appeals"},
+    "OH": {"select_board": "Board of Trustees, council or County Commissioners",
+           "planning_board": "Zoning Commission or Planning Commission", "zoning_board_of_appeals": "Board of Zoning Appeals"},
+}
+
+
+def board_for_place(key, t):
+    """The body a shared key names for one place: a Virginia county's select_board is its Board of Supervisors, an
+    Ohio township's planning_board its Zoning Commission. "" when the state's table has nothing to say."""
+    st, kind = (t or {}).get("state"), place_kind(t)
+    if st not in STATE_BOARD_NAMES:
+        return ""
+    if key == "select_board":
+        if st == "VA":
+            return {"county": "Board of Supervisors", "city": "City Council"}.get(kind, "Town Council")
+        if st == "MD":
+            if kind == "county":
+                return "Board of County Commissioners" if md_commissioners(t) else "County Council"
+            return "City Council" if kind == "city" else "Town Council"
+        if st == "MI":
+            return {"city": "City Council", "county": "Board of Commissioners"}.get(kind, "Township Board")
+        if st == "OH":
+            return {"city": "City Council", "village": "Village Council", "county": "Board of County Commissioners"}.get(kind, "Board of Trustees")
+    if key == "planning_board":
+        if st == "MD" and kind == "county" and (t.get("county") or "") in MD_DISTRICT_COUNCIL:
+            return "Planning Board"
+        if st == "OH":
+            return "Zoning Commission" if kind == "township" else "Planning Commission"
+        return "Planning Commission"
+    if key == "zoning_board_of_appeals":
+        return {"VA": "Board of Zoning Appeals", "MD": "Board of Appeals", "MI": "Zoning Board of Appeals",
+                "OH": "Board of Zoning Appeals"}[st]
+    return ""
+
+
+def board_name(key, state=None):
+    """The label for a board key: the state's table where one exists, else the shared label."""
+    return (STATE_BOARD_NAMES.get(state) or {}).get(key) or BOARD_NAMES.get(key, key)
+
+
+# Topic names where a state's law gives the subject another name. Massachusetts, New York and Rhode Island keep
+# TOPIC_LABELS; the consolidated permit (225 CMR 29) is Massachusetts law.
+STATE_TOPIC_LABELS = {st: {"clean_energy_siting": "Energy facility permits and siting"} for st in KIND_STATES}
+STATE_TOPIC_PHRASES = {st: {"clean_energy_siting": ("energy facility permits", True)} for st in KIND_STATES}
+
+
+def topic_label(key, state=None):
+    return (STATE_TOPIC_LABELS.get(state) or {}).get(key) or TOPIC_LABELS.get(key, key)
 
 
 # Hits about something else (a PFAS moratorium, a utility's pole petition, a general-ordinance amendment) are the
@@ -248,6 +444,7 @@ def load(name, default):
 
 
 def slugify(name):
+    name = re.sub(r"[().]", "", name)  # "Fairfield Township (Lenawee County)" and "St. Armand" lose the marks in their addresses
     return re.sub(r"\s+", "-", name.lower().replace("'", "").replace("’", ""))
 
 
@@ -414,6 +611,13 @@ class Ctx:
         self.towns = [t for t in all_towns if t["state"] in self.states]
         self.town_by_id = {t["id"]: t for t in self.towns}
         CITIES.update(t["id"] for t in self.towns if t.get("kind") == "city")
+        PLACES.update({t["id"]: t for t in all_towns})
+        # The kinds of place on the site. While every row is a town or city the shared copy says "town"; once a
+        # county is published it says "town or county" and counts "places".
+        self.kinds = {place_kind(t) for t in self.towns}
+        self.has_counties = "county" in self.kinds
+        self.place_word = "place" if self.has_counties else "town"
+        self.box_label = "Type your town or county" if self.has_counties else "Type your town"
         REP_TM.update(t["id"] for t in self.towns if t.get("legislative_body") == "Representative Town Meeting")
         for item in self.tracker.get("items", []):
             if f"{item.get('state', 'MA')}:{item['town']}" in CITIES:
@@ -453,6 +657,7 @@ class Ctx:
                 a = TR.analyze_hit(h, self.tr_inputs, today_d)
             except Exception:  # an item the classifier can't place keeps the rule-based sentence
                 continue
+            a["_state"] = h["state"]  # the reading's wording for a subject depends on the state's law
             ANALYSIS[h["id"]] = a
             if not h.get("meeting_date") and a.get("date_source") == "warrant" and a.get("date"):
                 h["meeting_date"] = a["date"].isoformat()  # read from the warrant, as Trending does
@@ -557,6 +762,10 @@ class Ctx:
     def is_upcoming(self, h):
         return bool(h.get("meeting_date")) and h["meeting_date"] >= self.today
 
+    def places(self, n):
+        """"12 towns", or "12 places" once counties and townships are on the site."""
+        return plural(n, self.place_word)
+
     def known_posting(self, state, found, meeting_date):
         start = self.first_sweep.get(state)
         if not (found and start):
@@ -651,6 +860,14 @@ def load_hits(town_by_id):
         doc = {"generated": old.get("generated"), "window": old.get("window"), "states": ["MA"],
                "towns_monitored": {"MA": old.get("towns_automated", 0)}, "hits": hits}
     doc.setdefault("hits", [])
+    # SITE_EXTRA_HITS=path[,path]: a preview build merges a test run's hits (a state under test) into the page
+    # data. ops/daily.sh never sets it; the published site reads hits_current.json alone.
+    for extra in filter(None, (os.environ.get("SITE_EXTRA_HITS") or "").split(",")):
+        more = json.loads(Path(extra).read_text())
+        seen = {h["id"] for h in doc["hits"]}
+        doc["hits"] += [h for h in more.get("hits", []) if h.get("id") not in seen]
+        doc["states"] = sorted(set(doc.get("states") or []) | set(more.get("states") or []))
+        doc.setdefault("towns_monitored", {}).update(more.get("towns_monitored") or {})
     return doc
 
 
@@ -667,7 +884,7 @@ def load_health():
 # New York has its own. Purple dots are towns with solar, battery, data-center, moratorium or
 # permit-rule items on upcoming agendas.
 
-MAP_GROUPS = {"ma-ri": ("MA", "RI"), "ny": ("NY",)}
+MAP_GROUPS = {"ma-ri": ("MA", "RI"), "ny": ("NY",), "va-md": ("VA", "MD"), "mi-oh": ("MI", "OH")}
 MAP_WIDTH = 640
 MAP_COLORS = {"light": {"land": "#eef1ed", "dot": "#a9b3ac", "hot": "#7a2c80"},
               "dark": {"land": "#1d2421", "dot": "#56625b", "hot": "#d59bdc"}}
@@ -833,7 +1050,7 @@ def page_kind(path):
         return "home"
     if p.startswith("/m/"):
         return "meeting"
-    if re.match(r"^/(ma|ny|ri)/[^/]+$", p):
+    if re.match(r"^/[a-z]{2}/[^/]+$", p) and p[1:3].upper() in STATE_NAMES:
         return "town"
     if p in ("/upcoming", "/trending") or p.startswith("/topics/"):
         return "list"
@@ -859,7 +1076,7 @@ def page(ctx, title, description, body, path, scripts=(), noindex=False, head=""
     about = "".join(f'<li><a href="{href}">{label}</a></li>' for href, label in FOOTER_ABOUT)
     read = sum(m for _, m, _ in ctx.coverage())
     who = (OWNER_LINE if OWNER_LINE and e(OWNER_LINE) not in body else
-           f"Every morning, {SITE_NAME} reads the agendas that {read} towns in {join_and(STATE_NAMES.get(x, x) for x in ctx.states)} "
+           f"Every morning, {SITE_NAME} reads the agendas that {ctx.places(read)} in {join_and(STATE_NAMES.get(x, x) for x in ctx.states)} "
            "post online. It isn’t a government website and isn’t part of any town.")
     body = gloss_once(body)
     end = page_end(path or "/", source)
@@ -876,7 +1093,7 @@ def page(ctx, title, description, body, path, scripts=(), noindex=False, head=""
 <meta property="og:site_name" content="{e(SITE_NAME)}">
 <meta property="og:url" content="{BASE_URL}{"" if path == "/" else path}">
 <meta property="og:image" content="{BASE_URL}/og.png">
-<meta property="og:image:alt" content="{e(HEADLINE)}">
+<meta property="og:image:alt" content="{e(site_headline(ctx))}">
 <meta name="theme-color" content="#ffffff">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -919,6 +1136,8 @@ def board_label(h):
     if key == "town_meeting":
         return "Town Meeting"
     b = re.sub(r"\s*\([^)]*\)", "", h.get("board") or "")
+    b = re.sub(r"\s*(?:→|->|»|>)+\s*$", "", b)  # "Town Board Agendas →": a scraped link's arrow
+    b = re.sub(r"^Click here for (?:additional\s+)?(.+?)\s+Documents$", r"\1", b, flags=re.I)
     b = re.sub(r"\s+[-–]\s+.*$", "", b)
     b = re.sub(r"^The\s+", "", b)
     b = re.sub(r"\s+Meetings?$", "", b)
@@ -929,7 +1148,14 @@ def board_label(h):
     b = re.sub(r"^(\w+), (.+ of)$", r"\2 \1", b)  # "Appeals, Zoning Board of"
     if b.isupper() or b.islower():
         b = b.title().replace(" Of ", " of ").replace(" And ", " and ")
-    return b.strip() or BOARD_NAMES.get(key, "town board")
+    b = b.strip()
+    if h.get("state") in STATE_BOARD_NAMES:
+        # the crawler's shared labels ("Select Board / Council", "Planning Board") name the place's own body
+        t = place(h["state"], h.get("town") or "")
+        b = re.sub(r"\s+(?:Business|Legislative|Regular)(?:\s+Meeting)?$", "", b, flags=re.I)
+        if not b or b in ("Select Board", "Select Board / Council", "Selectboard") or (b == "Planning Board" and h["state"] in ("MI", "OH")):
+            b = board_for_place(key, t) or STATE_BOARD_NAMES[h["state"]].get(key) or b
+    return b or BOARD_NAMES.get(key, "town board")
 
 
 def ordered_topics(topics):
@@ -1047,8 +1273,9 @@ PRIMARY = ["special permit", "variance", "permit extension", "wetlands permit re
            "permitting", "public hearing"]
 
 
-def topic_tags(topics):
-    return [TOPIC_TAGS.get(t, t.replace("_", " ")) for t in ordered_topics(topics)]
+def topic_tags(topics, state=None):
+    return [re.sub(r"\s*\(.*\)$", "", topic_label(t, state)) if state in KIND_STATES else TOPIC_TAGS.get(t, t.replace("_", " "))
+            for t in ordered_topics(topics)]
 
 
 def who_label(h):
@@ -1373,6 +1600,8 @@ def subject_noun(a):
         return "solar and battery storage"
     if s == "solar" and "battery_storage" in a["topics"] and TR.SUBJECT_RE["battery_storage"].search(a["item"]):
         return "solar and battery storage"
+    if s == "clean_energy_siting" and a.get("_state") in KIND_STATES:
+        return "energy facility permits"  # the consolidated permit (225 CMR 29) is Massachusetts law
     return SUBJECT_NOUN.get(s, "local rules")
 
 
@@ -1639,7 +1868,8 @@ def analysis_text(h, a):
         target = name or TR.with_article(proj)
         return done(f"Votes on {what} for {target}.", stage="Vote") if f.get("vote") else done(f"Discusses {what} for {target} (no vote listed).")
     if act == "process":
-        core = "the state’s new permit process for small clean-energy projects"
+        core = ("energy facility permits and siting rules" if h.get("state") in KIND_STATES
+                else "the state’s new permit process for small clean-energy projects")
         return done(f"Votes on {core}.", stage="Vote") if f.get("vote") else done(f"Discusses {core} (no vote listed).")
     if act == "cancelled":
         return done(f"Canceled: the hearing on {name or noun}.", kind="list", stage="Canceled")
@@ -2143,8 +2373,8 @@ def citation(ctx, m, entry=None):
     return f"{text}. {url}"
 
 
-def tag_text(topics):
-    tags = topic_tags(topics)
+def tag_text(topics, state=None):
+    tags = topic_tags(topics, state)
     return ", ".join([tags[0]] + [t.lower() for t in tags[1:]]) if tags else ""
 
 
@@ -2161,11 +2391,57 @@ SPEAK_SHORT = {SPEAK_TEXT: "Public hearing: anyone can attend and ask to speak."
 
 
 def for_town(text, state, town):
-    """A city has a city clerk: the default wording says so when the municipality is one."""
-    if text and f"{state}:{town}" in CITIES:
+    """A city has a city clerk: the default wording says so when the municipality is one. A county, township or
+    village (Virginia, Maryland, Michigan, Ohio) gets its own clerk, hall and noun."""
+    if not text:
+        return text
+    t = place(state, town)
+    if f"{state}:{town}" in CITIES or (t and place_kind(t) == "city"):
         return (text.replace("town clerk", "city clerk").replace("Town clerk", "City clerk").replace("Town Clerk", "City Clerk")
                 .replace("town hall", "city hall").replace("Town Hall", "City Hall"))
+    if t and place_kind(t) in ("county", "township", "village"):
+        clerk, hall, noun = clerk_phrase(t), hall_phrase(t), place_noun(t)
+        text = (text.replace("the town clerk", clerk).replace("The town clerk", first_up(clerk))
+                .replace("Town Clerk", first_up(clerk[4:]) if clerk.startswith("the ") else clerk)
+                .replace("the town hall", hall).replace("Town Hall", hall).replace("town hall", hall))
+        text = re.sub(r"\bthe town(’s)?\b", lambda mt: f"the {noun}{mt.group(1) or ''}", text)
+        text = re.sub(r"\bThe town(’s)?\b", lambda mt: f"The {noun}{mt.group(1) or ''}", text)
     return text
+
+
+def for_place(text, state, town):
+    """for_town for the places whose kind is a county, township or village only: the spots that print the shared
+    wording as it is for Massachusetts, New York and Rhode Island rows (their cities included) keep doing so."""
+    t = place(state, town)
+    return for_town(text, state, town) if t and t.get("state") in KIND_STATES else text
+
+
+def md_signup_office(state, town, board=""):
+    """Maryland county councils and the M-NCPPC planning boards take speakers who sign up ahead: the office to sign up
+    with, or "" where people sign up in the room (everywhere else)."""
+    t = place(state, town)
+    if state != "MD" or not t or not (place_kind(t) == "county" or t.get("zoning_power") == "county"):
+        return ""
+    if re.search(r"planning board", board or "", re.I):
+        return "the Planning Board’s office"
+    c = t if place_kind(t) == "county" else {"state": "MD", "county": t.get("county"), "listings": []}
+    return "the County Commissioners’ office" if md_commissioners(c) else "the Council’s office"
+
+
+def speak_default(state, town, board=""):
+    """The hearing line when the agenda gives no rule of its own."""
+    office = md_signup_office(state, town, board)
+    if office:
+        return f"Public hearing: sign up with {office} to speak."
+    return for_town(SPEAK_TEXT, state, town)
+
+
+def speak_anyone(m):
+    """"Anyone can go and speak.", or Maryland's sign-up version, for the row's sentence."""
+    office = md_signup_office(m.get("state") or "", m.get("town") or "", m.get("board") or "")
+    if office:
+        return f"Anyone can speak after signing up with {office}."
+    return "Anyone can go and speak."
 
 
 def clerk_link(ctx, state, town):
@@ -2223,9 +2499,9 @@ def meeting_share_url(ctx, m):
     return f"{BASE_URL}{town_path(m['state'], m['town'])}#{m['id']}"
 
 
-def fact_pairs(entry):
+def fact_pairs(entry, state=None):
     """The item's facts, labelled: Topics, then Where, Size, Applicant or Sponsor."""
-    pairs = [("Topics", tag_text(entry["topics"]))] if entry.get("topics") else []
+    pairs = [("Topics", tag_text(entry["topics"], state))] if entry.get("topics") else []
     pairs += entry.get("fact_pairs") or [("Details", x) for x in (entry.get("facts") or []) if x]
     seen, out = set(), []
     for k, v in pairs:
@@ -2235,9 +2511,9 @@ def fact_pairs(entry):
     return out
 
 
-def facts_text(entry):
+def facts_text(entry, state=None):
     """The grey facts line under an item, in a fixed order: topics, then where, size, who or permit type."""
-    parts = [tag_text(entry["topics"])] + [str(x) for x in (entry.get("facts") or []) if x]
+    parts = [tag_text(entry["topics"], state)] + [str(x) for x in (entry.get("facts") or []) if x]
     seen, out = set(), []
     for x in parts:
         if x and x.lower() not in seen:
@@ -2350,11 +2626,13 @@ def speak_line_full(m):
         return SPEAK_TM_REP if f"{m['state']}:{m['town']}" in REP_TM else SPEAK_TM
     if any(re.search(r"\bhearing\b", str(v.get("stage") or ""), re.I) and not (v.get("brief") or {}).get("can_speak") is False
            for v in entries):
-        return for_town(SPEAK_TEXT, m["state"], m["town"])
+        return speak_default(m["state"], m["town"], m.get("board") or "")
     if any((v.get("brief") or {}).get("can_speak") is True for v in entries):
         return SPEAK_COMMENT  # a vote or discussion with a public comment item on the agenda, not a hearing
     if entries and m.get("board_key") != "town_meeting":
-        return SPEAK_NONE
+        if county_meeting(m):  # a county body's agenda: its office, not the township's clerk, knows
+            return SPEAK_NONE.replace("the town clerk", "the county planning office")
+        return for_place(SPEAK_NONE, m["state"], m["town"])
     return ""
 
 
@@ -2422,6 +2700,66 @@ TERMS = [
 ]
 
 
+# The same, for the words a Virginia, Maryland, Michigan or Ohio agenda uses: (states, pattern, term, plain words).
+# Shown only on those states' meeting pages, so a New England page reads as before.
+STATE_TERMS = [
+    (("VA",), re.compile(r"\bspecial use permit\b|\bSUP\b", re.I), "Special use permit",
+     "permission the zoning ordinance lets the governing body grant for a use allowed only with conditions"),
+    (("VA", "MD", "MI", "OH"), re.compile(r"\bconditional use permit\b|\bCUP\b", re.I), "Conditional use permit",
+     "a permit for a use the zoning rules allow only with conditions, decided after a public hearing"),
+    (("VA",), re.compile(r"\b2232\b|substantial accord", re.I), "2232 review",
+     "the Planning Commission’s finding that a public facility, a utility included, fits the comprehensive plan (Va. Code § 15.2-2232)"),
+    (("VA",), re.compile(r"\bproffer", re.I), "Proffers",
+     "conditions a landowner offers in writing with a rezoning request; once accepted they bind the land"),
+    (("VA", "MD"), re.compile(r"\bby[\s-]right\b", re.I), "By right",
+     "allowed under the zoning rules as they stand, with no special permit or hearing"),
+    (("VA", "MD"), re.compile(r"\bZTA\b|zoning text amendment", re.I), "ZTA",
+     "a zoning text amendment: a change to the words of the zoning ordinance"),
+    (("VA", "MD"), re.compile(r"\bZMAP?\b|zoning map amendment", re.I), "ZMAP",
+     "a zoning map amendment: a rezoning of named land"),
+    (("VA", "MI", "OH"), re.compile(r"\bBZA\b|\bBoard of Zoning Appeals\b", re.I), "Board of Zoning Appeals",
+     "the board that decides variances, appeals of zoning decisions and, in some places, conditional uses"),
+    (("VA",), re.compile(r"\bsiting agreement\b", re.I), "Siting agreement",
+     "a contract between a locality and a solar or battery developer on payments and conditions (Va. Code § 15.2-2316.7)"),
+    (("VA",), re.compile(r"\brevenue[\s-]shar", re.I), "Revenue share",
+     "a per-megawatt payment a locality may charge a solar or battery project instead of part of its property tax"),
+    (("MD",), re.compile(r"\bspecial exception\b|\bconditional use\b", re.I), "Special exception",
+     "permission for a use the zoning ordinance allows only with conditions, after a hearing (also called a conditional use)"),
+    (("MD",), re.compile(r"\bCPCN\b|certificate of public convenience", re.I), "CPCN",
+     "the state Public Service Commission’s permit for a power plant; the county comments but doesn’t decide"),
+    (("MD",), re.compile(r"\bmandatory referral\b", re.I), "Mandatory referral",
+     "a public project sent to the Planning Board for comment, not approval"),
+    (("MD",), re.compile(r"\bgrowth allocation\b", re.I), "Growth allocation",
+     "a county’s limited right to allow denser building in the Chesapeake Bay Critical Area"),
+    (("MD",), re.compile(r"\bsectional map amendment\b|\bSMA\b", re.I), "Sectional map amendment",
+     "a rezoning of a whole area at once to carry out a new master plan"),
+    (("MD",), re.compile(r"\bDistrict Council\b", re.I), "District Council",
+     "the County Council sitting to decide zoning, in Montgomery and Prince George’s counties"),
+    (("MD",), re.compile(r"\bBoard of Appeals\b", re.I), "Board of Appeals",
+     "the board that decides special exceptions, variances and appeals of zoning decisions"),
+    (("MD",), re.compile(r"Renewable Energy Certainty Act", re.I), "Renewable Energy Certainty Act",
+     "the 2025 state law that sets statewide siting standards for solar and battery projects and limits local rules on them"),
+    (("MI", "OH"), re.compile(r"\bTownship Board\b|\bBoard of Trustees\b", re.I), "Township Board",
+     "the township’s elected board, which adopts zoning (in Ohio, the Board of Trustees)"),
+    (("OH",), re.compile(r"\bZoning Commission\b", re.I), "Zoning Commission",
+     "the township board’s advisers on zoning: it holds the first hearing and recommends"),
+    (("OH",), re.compile(r"\bzoning resolution\b", re.I), "Zoning resolution",
+     "an Ohio township’s zoning code; townships zone by resolution, not ordinance"),
+    (("MI",), re.compile(r"125\.3307|\bMCL 125\b", re.I), "MCL 125.3307",
+     "the Michigan law that sends every township zoning change to the county planning commission for review before the township adopts it"),
+    (("OH",), re.compile(r"519\.12", re.I), "ORC 519.12",
+     "the Ohio law that sends a township zoning change to the county or regional planning commission for a recommendation before the trustees vote"),
+    (("MI",), re.compile(r"\bspecial land use\b|\bSLU\b", re.I), "Special land use",
+     "Michigan’s term for a use the zoning ordinance allows only with conditions, after a public hearing"),
+    (("MI",), re.compile(r"\bPA 233\b|Public Act 233|\bCREO\b", re.I), "PA 233",
+     "the 2023 Michigan law that lets the state Public Service Commission site large solar, wind and battery projects unless the township adopts a compatible renewable energy ordinance (CREO)"),
+    (("OH",), re.compile(r"\bSB 52\b|Senate Bill 52", re.I), "SB 52",
+     "the 2021 Ohio law that lets county commissioners bar large solar and wind projects from parts of the county"),
+    (("OH",), re.compile(r"\bOPSB\b|Ohio Power Siting Board", re.I), "OPSB",
+     "the Ohio Power Siting Board, the state body that permits large power projects"),
+]
+
+
 def who_votes_text(m):
     """A Planning Board's hearing on a zoning change is not the vote: the board recommends, Town Meeting (or a
     city's council) adopts. One line in the meeting's ticket, when an item is such a hearing."""
@@ -2430,8 +2768,35 @@ def who_votes_text(m):
     zoning = {"zoning_amendment", "moratorium", "clean_energy_siting"}
     if not any(v.get("stage") == "Hearing" and zoning & set(v.get("topics") or []) for v in m["lines"].values()):
         return ""
-    city = f"{m['state']}:{m['town']}" in CITIES
-    who, what = ("the City Council", "ordinance") if city else ("Town Meeting", "bylaw")
+    st, t = m["state"], place(m["state"], m["town"])
+    kind = place_kind(t) if t else ("city" if f"{m['state']}:{m['town']}" in CITIES else "town")
+    if st == "VA":
+        who = {"county": "the Board of Supervisors", "city": "the City Council"}.get(kind, "the Town Council")
+        return f"After the hearing the Planning Commission makes a recommendation; {who} votes on the ordinance."
+    if st == "MD":
+        if kind == "county" and (t.get("county") or "") in MD_DISTRICT_COUNCIL:
+            return ("After the hearing the Planning Board makes a recommendation; the County Council, sitting as the District "
+                    "Council, decides, after a hearing examiner where one is required.")
+        if kind == "county":
+            who = "the County Commissioners vote" if md_commissioners(t) else "the County Council votes"
+        else:
+            who = ("the City Council" if kind == "city" else "the Town Council") + " votes"
+        return f"After the hearing the Planning Commission makes a recommendation; {who} on the ordinance."
+    if st == "MI":
+        if kind == "county":
+            return "The county planning commission reviews a township’s zoning change and recommends; the township board adopts it."
+        if kind == "city":
+            return "After the hearing the Planning Commission makes a recommendation; the City Council adopts the ordinance."
+        return ("After the hearing the Planning Commission makes a recommendation; the Township Board adopts the ordinance "
+                "after the county planning commission reviews it.")
+    if st == "OH":
+        if kind == "county":
+            return "The planning commission reviews a township’s zoning change and recommends; the township’s trustees adopt it."
+        if kind in ("city", "village"):
+            return f"After the hearing the Planning Commission makes a recommendation; the {'City' if kind == 'city' else 'Village'} Council adopts the ordinance."
+        return ("After the hearing the Zoning Commission makes a recommendation; the Board of Trustees adopts the zoning "
+                "resolution after the county or regional planning commission reviews it.")
+    who, what = ("the City Council", "ordinance") if kind == "city" else ("Town Meeting", "bylaw")
     return f"After the hearing the Planning Board makes a recommendation; {who} votes on the {what}."
 
 
@@ -2498,7 +2863,8 @@ def terms_html(m, source):
         parts += [b.get(k) or "" for k in ("what", "quote", "next", "how_to_speak")]
     text = " ".join(p for p in parts if p)
     found, plains = [], set()
-    for rx, name, plain in TERMS:
+    terms = list(TERMS) + [(rx, name, plain) for states, rx, name, plain in STATE_TERMS if m["state"] in states]
+    for rx, name, plain in terms:
         if not rx.search(text) or plain in plains:
             continue
         # a write-up that already explains the term in passing ("a wetlands permit (a Notice of Intent)") needs no second gloss
@@ -2536,12 +2902,12 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False, details=True
             what = f'<p class="brief-what">{e(w)}</p>'
         if b and b.get("history"):  # what happened on this item before, from our own records
             what += f'<p class="line-before"><b>Before this:</b> {e(b["history"])}</p>'
-        facts = ('<span class="is-new">New on an agenda</span>' if new else "") + "".join(f"<span>{e(x)}</span>" for x in facts_text(entry))
+        facts = ('<span class="is-new">New on an agenda</span>' if new else "") + "".join(f"<span>{e(x)}</span>" for x in facts_text(entry, m["state"]))
         stage = stage_html(entry, m, ctx)
         if entry.get("kind") == "mention" and re.match(r"Mentions\b", text):
             stage = '<span class="stage">Mentioned</span>'  # the word comes up; the agenda lists nothing to discuss or decide
         # a list keeps the headline, the write-up and "New"; the facts line (topics, address, applicant) is on the meeting's page
-        pairs = fact_pairs(entry)
+        pairs = fact_pairs(entry, m["state"])
         facts_html = (((f'<p class="line-facts"><span class="is-new">New on an agenda</span></p>' if new else "")
                        + (f'<dl class="facts-list item-facts">{"".join(f"<dt>{e(k)}</dt><dd>{e(v)}</dd>" for k, v in pairs)}</dl>' if pairs else ""))
                       if full else ('<p class="line-facts"><span class="is-new">New on an agenda</span></p>' if new else ""))
@@ -2618,7 +2984,7 @@ def meeting_html(ctx, m, show_town=True, lines_shown=4, full=False, details=True
     if speak and len(speak) > 140:
         speak_html = f'<p class="speak-line"><b>Speaking:</b> {e(speak)}</p>'
     elif not speak and not hearing and not m.get("cancelled") and m["board_key"] != "town_meeting" and m["source"] != "massdep_wetlands":
-        speak_html = f'<p class="speak-line">{e(SPEAK_NONE)}</p>'
+        speak_html = f'<p class="speak-line">{e(SPEAK_NONE.replace("the town clerk", "the county planning office") if county_meeting(m) else for_place(SPEAK_NONE, m["state"], m["town"]))}</p>'
     else:
         speak_html = ""
     extras = ""
@@ -2930,12 +3296,23 @@ def town_options(ctx):
     """<datalist> of every town, each option carrying its page path for the town box."""
     multi = len(ctx.states) > 1
     opts = "".join(f'<option value="{e(t["town"])}{", " + t["state"] if multi else ""}" data-href="{town_path(t["state"], t["town"])}"'
-                   f' data-up="{len(upcoming_meetings(ctx, t["id"]))}"></option>'
+                   f' data-up="{len(upcoming_meetings(ctx, t["id"]))}"{place_data(t)}></option>'
                    for t in ctx.towns)
     return f'<datalist id="town-names">{opts}</datalist>'
 
 
-def town_box(ctx, label="Type your town", button="Find my town", examples=True, suffix="", options=True):
+def place_data(t):
+    """The town box's extra attributes for a county, township or chartered place: its kind, the bare name shared
+    with another kind ("Culpeper"), the name to show, and the county that tells same-named townships apart."""
+    if t.get("state") not in KIND_STATES:
+        return ""
+    sub = place_paren(t) or ({"county": "county", "township": "township", "city": "city", "town": "town"}.get(place_kind(t), ""))
+    return (f' data-kind="{e(place_kind(t))}" data-bare="{e(bare_name(t))}" data-label="{e(place_name(t))}"'
+            + (f' data-sub="{e(sub)}"' if sub else ""))
+
+
+def town_box(ctx, label=None, button="Find my town", examples=True, suffix="", options=True):
+    label = label or ctx.box_label
     eg = ""
     if examples:
         picks = [t for t in ("MA:Carver", "MA:Amherst", "NY:Clay") if t in ctx.town_by_id][:3]
@@ -3019,13 +3396,13 @@ def build_index(ctx):
     body = f"""
 <div class="wrap narrow home">
 <section class="home-hero" aria-labelledby="hero-title">
-  <h1 id="hero-title">{e(HEADLINE)}</h1>
+  <h1 id="hero-title">{e(site_headline(ctx))}</h1>
   <div class="hero-words">
-  <p class="lead">{e(EXPLANATION)}</p>
-  {town_box(ctx, label="Your town", button="Show my town", options=False)}
+  <p class="lead">{e(site_explanation(ctx))}</p>
+  {town_box(ctx, label="Your town or county" if ctx.has_counties else "Your town", button="Show my town", options=False)}
   {owner_html()}
   </div>
-  <figure class="map-figure region">{region_map_svg(ctx)}<figcaption>Each dot is a town. The dark ones we read every morning; the red ones have a meeting this week.</figcaption></figure>
+  <figure class="map-figure region">{region_map_svg(ctx, group="ne" if set(ctx.states) <= FIRST_STATES else "all")}<figcaption>{"Each dot is a town." if set(ctx.states) <= FIRST_STATES else "Each dot is a town or township and each ring a county."} The dark ones we read every morning; the red ones have a meeting this week.</figcaption></figure>
 </section>
 {town_options(ctx)}
 <section class="next" aria-labelledby="front-title">
@@ -3036,16 +3413,30 @@ def build_index(ctx):
 <section class="next" aria-labelledby="subjects-title">
   <h2 id="subjects-title">This week, by subject</h2>
   {subjects_this_week_html(ctx, ahead_meetings)}
-  <p class="more-link"><a href="/upcoming">Everything coming up in {ahead_towns} towns, by date</a></p>
+  <p class="more-link"><a href="/upcoming">Everything coming up in {ctx.places(ahead_towns)}, by date</a></p>
 </section>
 </div>
 """
     return page(
         ctx,
         f"{SITE_NAME}: know what your town is about to decide",
-        EXPLANATION,
-        body, "/", og_title=HEADLINE,
+        site_explanation(ctx),
+        body, "/", og_title=site_headline(ctx),
     )
+
+
+def region_figure_html(ctx, state):
+    """The region map for a state's section of the directory: Virginia and Maryland share one, Michigan and Ohio
+    another, drawn above the first of the group's published states. The Northeast map stays on the home page."""
+    group = next((g for g, cfg in REGION_MAPS.items() if state in cfg["states"] and g != "ne"), None)
+    if not group or state != next(s for s in REGION_MAPS[group]["states"] if s in ctx.states):
+        return ""
+    svg = region_map_svg(ctx, title_id=f"map-{group}-title", group=group)
+    if not svg:
+        return ""
+    return (f'<figure class="map-figure region">{svg}<figcaption>Each dot is a town or township and each ring a county. '
+            f'The dark ones we read every morning; a thin ring is a township whose zoning changes reach us through its county; '
+            f'the red ones have a meeting this week.</figcaption></figure>')
 
 
 def this_week_towns(ctx, days=7):
@@ -3054,12 +3445,29 @@ def this_week_towns(ctx, days=7):
     return {f"{m['state']}:{m['town']}" for m in group_meetings(ctx, upcoming_hits(ctx)) if m.get("date") and m["date"] <= end and not m.get("cancelled")}
 
 
-def region_map_svg(ctx, title_id="map-region-title"):
-    """The three states with every town as a dot: faint for a town we can't read yet, dark for one we read every
-    morning, a red pin for one with a meeting this week. The outlines come from geo/region_land.json (Census
-    state boundaries, rendered once); the dots from geo/town_points.json. Pins link to town pages for a mouse
-    and are skipped by the keyboard (every pinned town is also a row on the page)."""
-    land_path = GEO / "region_land.json"
+# The region maps: which states each draws, its outline file (geo/region_land.py renders them from the Census
+# 1:5,000,000 state boundaries) and the first words of its title. The Northeast map is the home page's.
+REGION_MAPS = {
+    "ne": {"file": "region_land.json", "states": ("MA", "NY", "RI"),
+           "title": "Massachusetts, New York and Rhode Island: every town"},
+    "va-md": {"file": "va-md_land.json", "states": ("VA", "MD"),
+              "title": "Virginia and Maryland: every county, city and town we list"},
+    "mi-oh": {"file": "mi-oh_land.json", "states": ("MI", "OH"),
+              "title": "Michigan and Ohio: every township, city and county we list"},
+    "all": {"file": "all_land.json", "states": ("MA", "NY", "RI", "VA", "MD", "MI", "OH"),
+            "title": "Massachusetts, New York, Rhode Island, Virginia, Maryland, Michigan and Ohio: every place we list"},
+}
+
+
+def region_map_svg(ctx, title_id="map-region-title", group="ne"):
+    """A region's states with every place marked: a dot for a town or township (faint for one we can't read yet,
+    dark for one we read every morning), a ring for a county (an area, not a point), a thin ring for a township
+    whose zoning changes reach us through its county, a red pin for a place with a meeting this week. The
+    outlines come from geo/<group>_land.json (Census state boundaries, rendered once); the marks from
+    geo/town_points.json. Pins link to the pages for a mouse and are skipped by the keyboard (every pinned
+    place is also a row on the page)."""
+    cfg = REGION_MAPS[group]
+    land_path = GEO / cfg["file"]
     if not land_path.exists() or not ctx.points:
         return ""
     land = json.loads(land_path.read_text())
@@ -3068,22 +3476,31 @@ def region_map_svg(ctx, title_id="map-region-title"):
     Y = lambda lat: (lat1 - lat) * scale
     week = this_week_towns(ctx)
     read = {t["id"] for t in ctx.towns if t.get("monitored")}
+    points = {tid: v for tid, v in ctx.points.items() if tid.split(":", 1)[0] in cfg["states"]}
     def inside(tid):
-        la, lo = ctx.points[tid]
+        la, lo = points[tid]
         return land["lon0"] - 0.2 <= lo <= land["lon1"] + 0.2 and land["lat0"] - 0.2 <= la <= land["lat1"] + 0.2
-    dot = lambda tid: f'<path d="M{X(ctx.points[tid][1]):.1f} {Y(ctx.points[tid][0]):.1f}h0"/>'
-    unread = "".join(dot(t) for t in ctx.points if inside(t) and t not in read and t not in week)
-    strong = "".join(dot(t) for t in ctx.points if inside(t) and t in read and t not in week)
+    def dot(tid, cls=""):
+        la, lo = points[tid]
+        t = PLACES.get(tid) or {}
+        c = f' class="{cls}"' if cls else ""
+        if place_kind(t) == "county":  # an area: a ring, larger than a town's dot
+            return f'<circle class="{(cls + " ") if cls else ""}county" cx="{X(lo):.1f}" cy="{Y(la):.1f}" r="{3 if group == "all" else 5}"/>'
+        if t.get("coverage") == "via_county" and not t.get("monitored"):
+            return f'<circle class="{(cls + " ") if cls else ""}via" cx="{X(lo):.1f}" cy="{Y(la):.1f}" r="{1.5 if group == "all" else 2.2}"/>'
+        return f'<path{c} d="M{X(lo):.1f} {Y(la):.1f}h0"/>'
+    unread = "".join(dot(t) for t in points if inside(t) and t not in read and t not in week)
+    strong = "".join(dot(t) for t in points if inside(t) and t in read and t not in week)
     pins = []
     for t in sorted(week):
-        if t not in ctx.points or not inside(t):
+        if t not in points or not inside(t):
             continue
         st, town = t.split(":", 1)
-        pins.append(f'<a href="{town_path(st, town)}" tabindex="-1"><path class="pin" d="M{X(ctx.points[t][1]):.1f} {Y(ctx.points[t][0]):.1f}h0"/>'
-                    f'<title>{e(town)}{"" if st == "MA" else ", " + st}</title></a>')
-    n_read, n_week = len(read & set(ctx.points)), len([t for t in week if t in ctx.points])
-    return (f'<svg class="map" viewBox="0 0 {land["width"]} {land["height"]}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="{title_id}">'
-            f'<title id="{title_id}">Massachusetts, New York and Rhode Island: every town, with the {n_week} that have a meeting this week marked</title>'
+        pins.append(f'<a href="{town_path(st, town)}" tabindex="-1">{dot(t, "pin")}'
+                    f'<title>{e(place_name(PLACES.get(t)) if st in KIND_STATES else town)}{"" if st == "MA" else ", " + st}</title></a>')
+    n_week = len([t for t in week if t in points])
+    return (f'<svg class="map map-{group}" viewBox="0 0 {land["width"]} {land["height"]}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="{title_id}">'
+            f'<title id="{title_id}">{cfg["title"]}, with the {n_week} that have a meeting this week marked</title>'
             f'<g class="land-faint">{land["land_faint"]}</g><g class="land">{land["land"]}</g>'
             f'<g class="towns-unread">{unread}</g><g class="towns-read">{strong}</g>'
             f'<g class="towns-week" aria-hidden="true">{"".join(pins)}</g></svg>')
@@ -3108,6 +3525,24 @@ def week_strip_html(ctx, meetings, prefix=""):
 
 
 HEADLINE = "What towns across Massachusetts, New York and Rhode Island are about to decide"
+FIRST_STATES = {"MA", "NY", "RI"}
+
+
+def site_headline(ctx):
+    """The home page's heading: the fixed line while the three first states are the site, else one that fits more."""
+    if set(ctx.states) <= FIRST_STATES:
+        return HEADLINE
+    return f"What towns and counties across {NUM_WORDS.get(len(ctx.states), len(ctx.states))} states are about to decide"
+
+
+def site_explanation(ctx):
+    if set(ctx.states) <= FIRST_STATES:
+        return EXPLANATION
+    read = sum(m for _, m, _ in ctx.coverage())
+    names = join_and([STATE_NAMES.get(st, st) for st in ctx.states])
+    return (f"One plain sentence for every agenda item about solar, data centers, zoning and housing, every morning, "
+            f"with whether you can speak. From {read} towns, townships and counties in {names}.")
+NUM_WORDS = {4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten"}
 EXPLANATION = ("One plain sentence for every agenda item about solar, data centers, zoning and housing, "
                "every morning, from 315 towns, with whether you can speak.")
 
@@ -3218,6 +3653,15 @@ REASON_TAG = {
     "no_agenda_listing_found": "no agenda page found",
     "agendas_stale_or_undated": "agendas posted without dates",
     "crawl_delay_exceeds_cap": "website allows fewer than one visit a day",
+    "robots_disallow": "website asks automatic readers to stay away",
+    "no_agendas_found": "no agenda page found",
+    "no_recent_agendas": "no recent dated agendas",
+    "documents_blocked": "website blocks the agenda documents",
+    "document_store": "agenda system we can’t open yet",
+    "website_mismatch": "the website we found is another place’s",
+    "unreachable": "website didn’t answer",
+    "http_error": "website answered with an error",
+    "no_website": "no website found",
 }
 
 
@@ -3245,7 +3689,9 @@ def cant_read_by_county(ctx):
     for t in ctx.towns:
         if t.get("monitored") or not t.get("county"):
             continue
-        by[f"{t['state']}:{t['county']}"][REASON_TAG.get(t.get("reason_code") or "", "not worked out yet")].append(t["town"])
+        why = ("zoning changes reach us through the county" if t.get("coverage") == "via_county"
+               else REASON_TAG.get(t.get("reason_code") or "", "not worked out yet"))
+        by[f"{t['state']}:{t['county']}"][why].append(place_name(t) if t["state"] in KIND_STATES else t["town"])
     out = {}
     for county, reasons in by.items():
         parts = [f"{join_and(sorted(towns))} ({why})" for why, towns in sorted(reasons.items(), key=lambda kv: -len(kv[1]))]
@@ -3354,7 +3800,7 @@ def build_upcoming(ctx):
   {week_folds(ctx, later) if later else '<p class="empty">Nothing later yet.</p>'}
 </section>
 <p class="more-link"><a href="/search?upcoming=1">Search these agendas</a></p>
-<p class="small">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {plural(n_towns, 'town')}.</p>
+<p class="small">{plural(n_items, 'item')} at {plural(len(meetings), 'meeting')} in {ctx.places(n_towns)}.</p>
 </div>
 """
     return page(ctx, f"Coming up at town meetings | {SITE_NAME}",
@@ -3516,7 +3962,7 @@ def story_words(st):
     entry = {"stage": st.get("stage") or "", "kind": "mention" if re.match(r"Mentions\b", headline(line)) else ""}
     subject = item_subject(line, entry, st.get("meeting_date") or "")
     tm = bool(st.get("warrant")) or (st.get("board") or "") == "Town Meeting"
-    pm = {"board_key": "town_meeting" if tm else "", "town": st["town"], "source": ""}
+    pm = {"board_key": "town_meeting" if tm else "", "town": st["town"], "state": st.get("state") or "", "source": ""}
     stage_s = str(st.get("stage") or "")
     if stage_s.startswith(("Postponed", "Asks to postpone", "Moved", "Asked to move", "Canceled", "Withdrawn")):
         say = stage_word(stage_s) + "." if stage_word(stage_s) else ""
@@ -3791,7 +4237,7 @@ def stage_sentence(p, board, m, speak="", past=False):
         return (f"Town Meeting voted on this{art}." if past else f"Town Meeting votes on this{art}. Registered voters of {m['town']} decide.")
     if m.get("source") == "massdep_wetlands":
         return "Filed with the state; the Conservation Commission hasn’t heard it yet."
-    can_speak = ("It was a public hearing." if past else (speak or "Anyone can go and speak."))
+    can_speak = ("It was a public hearing." if past else (speak or speak_anyone(m)))
     own = B + ("’" if B.endswith("s") else "’s")
     if k == "hearing":
         return f"{B} held a public hearing." if past else f"{B} holds a public hearing. {can_speak}"
@@ -3935,11 +4381,24 @@ FIRST_USE = [
 ]
 
 
-def explain_terms(parts):
+# The same for the four states' acronyms; the shared list runs first.
+STATE_FIRST_USE = {
+    "VA": [(re.compile(r"\bBZA\b"), "Board of Zoning Appeals (BZA)"), (re.compile(r"\bSUP\b"), "special use permit (SUP)"),
+           (re.compile(r"\bCUP\b"), "conditional use permit (CUP)"), (re.compile(r"\bZTA\b"), "zoning text amendment (ZTA)"),
+           (re.compile(r"\bZMAP\b"), "zoning map amendment (ZMAP)")],
+    "MD": [(re.compile(r"\bZTA\b"), "zoning text amendment (ZTA)"), (re.compile(r"\bCPCN\b"), "state power-plant permit (CPCN)"),
+           (re.compile(r"\bM-NCPPC\b"), "the Maryland-National Capital Park and Planning Commission (M-NCPPC)"),
+           (re.compile(r"\bSMA\b"), "sectional map amendment (SMA)")],
+    "MI": [(re.compile(r"\bSLU\b"), "special land use (SLU)"), (re.compile(r"\bCREO\b"), "compatible renewable energy ordinance (CREO)")],
+    "OH": [(re.compile(r"\bBZA\b"), "Board of Zoning Appeals (BZA)"), (re.compile(r"\bOPSB\b"), "Ohio Power Siting Board (OPSB)")],
+}
+
+
+def explain_terms(parts, state=None):
     """The list of strings for one row, with each acronym's plain words on its first use only."""
     out, seen = [], set()
     for text in parts:
-        for rx, words in FIRST_USE:
+        for rx, words in FIRST_USE + STATE_FIRST_USE.get(state, []):
             if rx.pattern in seen:
                 continue
             if rx.search(text) and words.lower() not in text.lower():
@@ -3996,7 +4455,8 @@ def meeting_row(ctx, m, show_town=True):
     who = []
     if show_town:
         who.append(ctx.town_link(m["state"], m["town"]) + ("" if m["state"] == "MA" else e(f", {m['state']}")))
-    who.append(e(board) if m["board_key"] != "town_meeting" else "Town Meeting")
+    at_county = county_meeting(m)  # a county body's agenda, filed under the township it concerns
+    who.append(("at the " if at_county else "") + e(board) if m["board_key"] != "town_meeting" else "Town Meeting")
     if m.get("time") and m.get("date"):
         who.append(e(m["time"]))
     place = row_place(m)
@@ -4005,12 +4465,14 @@ def meeting_row(ctx, m, show_town=True):
     who_html = ", ".join(who)
     sents = []
     if m.get("cancelled"):
-        sents.append("The town canceled this meeting.")
+        sents.append(for_place("The town canceled this meeting.", m["state"], m["town"]))
     else:
         rule = speak_rule(m)
         speak = rule if rule and len(rule) <= 140 else ""
         past = bool(m.get("date")) and m["date"] < ctx.today
         sents.append(stage_sentence(mp, board, m, speak=speak, past=past))
+        if at_county:
+            sents.append(f"This is the county’s meeting, not the {place_noun(PLACES.get(m['id'][:0] + m['state'] + ':' + m['town']))}’s own.")
         b = (main or {}).get("brief") or {}
         what = (b.get("what") or "").strip()
         # a write-up under 25 words rides the row; a longer one waits under Details, where the item row prints it
@@ -4032,7 +4494,7 @@ def meeting_row(ctx, m, show_town=True):
             x = re.sub(r"\bmoves to\b", "moved to", x)
             x = re.sub(r"\bis canceled\b", "was canceled", x)
         sents.append(x)
-    subject, *sents = explain_terms([subject] + sents)
+    subject, *sents = explain_terms([subject] + sents, m["state"])
     return subject, who_html, sents, main
 
 
@@ -4059,17 +4521,23 @@ def next_door_html(ctx, t):
     Wareham. We can’t read Middleborough’s agendas yet." One short paragraph of links."""
     ids, listed = near_ids(ctx, t)
     has, quiet, cant = [], [], []
+    inside = set(t.get("covers_counties") or [t.get("county")]) if place_kind(t) == "county" else set()
     for other in ids:
         o = ctx.town_by_id.get(other)
         if not o:
             continue
+        if inside and place_kind(o) != "county" and (o.get("county") or "") in inside:
+            continue  # a county's page lists the places inside it on its own; next door is what touches it
         st = f", {o['state']}" if o["state"] != t["state"] else ""
-        link = f'<a href="{town_path(o["state"], o["town"])}">{e(o["town"])}{e(st)}</a>'
+        shown = o["town"] if place_paren(o) else place_name(o)  # two Harrison Townships keep their counties
+        link = f'<a href="{town_path(o["state"], o["town"])}">{e(shown)}{e(st)}</a>'
+        if o["state"] in KIND_STATES and the_place(o) != place_name(o):
+            link = "the " + link
         ups = upcoming_meetings(ctx, other)
         if ups:
             first = min(ups, key=lambda m: m["date"])
             tops = ordered_topics({tp for en in first["lines"].values() for tp in (en.get("topics") or [])})
-            about = join_and([TOPIC_LABELS.get(k, k).lower() for k in tops[:2]])
+            about = join_and([topic_label(k, o["state"]).lower() for k in tops[:2]])
             has.append(f"{link} has {e(about) if about else 'one of our subjects'} on its agenda for {e(day_label(first['date'], ctx))}")
         elif o["monitored"]:
             quiet.append(link)
@@ -4090,12 +4558,12 @@ def next_door_html(ctx, t):
 
 def about_agendas_html(ctx, t):
     """One sentence on where the town's agendas come from, behind "About <town>'s agendas"."""
-    town = t["town"]
+    town = the_place(t)
     boards = []
     for listing in t.get("listings") or []:
-        name = board_label({"board": listing.get("board"), "board_key": listing.get("board_key")})
+        name = board_label({"board": listing.get("board"), "board_key": listing.get("board_key"), "state": t["state"], "town": t["town"]})
         name = first_up(name)
-        if name and name not in boards:
+        if name and name not in boards and name != t["town"]:  # a regional body's one board is itself
             boards.append(name)
     health = (ctx.health or {}).get(t["id"]) or {}
     last = et_when(health["last_success"]) if health.get("last_success") else ""
@@ -4103,35 +4571,231 @@ def about_agendas_html(ctx, t):
     where = "the Rhode Island Secretary of State’s open meetings website" if ri else "its website"
     what = f"{e(town)}’s {e(join_and(boards))} agendas" if boards else f"{e(town)}’s agendas"
     sentence = f"We read {what} from {where}" + (f", most recently {e(last)}." if last else " every morning.")
-    website = (f' <a href="{e(t["website"])}" rel="nofollow noopener" target="_blank">{e(town)}’s website</a>.'
+    website = (f' <a href="{e(t["website"])}" rel="nofollow noopener" target="_blank">{e(first_up(town))}’s website</a>.'
                if t.get("website") else "")
     return f"""<details class="disclose"><summary>About {e(town)}’s agendas</summary>
 <p>{sentence}{website} <a href="/how-it-works#gaps">Towns we can’t check yet</a>.</p></details>"""
 
 
-def cant_check_html(ctx, t, up_m):
-    """A town we can't read: the plain answer, the towns next door, one button, then the request."""
+def cant_check_html(ctx, t, up_m, past_m=(), after_lead=""):
+    """A town we can't read: the plain answer, the towns next door, one button, then the request. A Michigan or Ohio
+    township whose zoning changes reach us through its county says so instead, and lists those county items."""
     tid, town, state = t["id"], t["town"], t["state"]
-    reason = reason_text(t.get("reason_code"), town)
+    kinded = state in KIND_STATES
+    name, the, The = (place_name(t), the_place(t), the_place(t, cap=True)) if kinded else (town, town, town)
+    noun = place_noun(t)
+    reason = reason_text(t.get("reason_code"), the if kinded else town)
     phone = clerk_phone(t)
     host = re.sub(r"^https?://(www\.)?", "", (t.get("website") or "")).rstrip("/")
     site = (f' or check <a href="{e(t["website"])}" rel="nofollow noopener" target="_blank">{e(host)}</a>' if host else "")
-    call = for_town(f"Call the {e(town)} Town Clerk", state, town) + (f" at {e(phone)}" if phone else "")
+    if kinded:
+        call = f"Call {e(clerk_phrase(t))}" + (f" at {e(phone)}" if phone else "")
+    else:
+        call = for_town(f"Call the {e(town)} Town Clerk", state, town) + (f" at {e(phone)}" if phone else "")
     ids, _ = near_ids(ctx, t)
     n_near = len([x for x in ids if x in ctx.town_by_id])
-    filings = meeting_list(ctx, up_m, show_town=False, shown=3, more="More coming up")
-    return f"""<section class="cant" aria-labelledby="town-title">
-  <p class="lead cant-lead">We can’t read {e(town)}’s agendas yet. {e(for_town(reason, state, town))}. {call}{site}.</p>
-  {next_door_html(ctx, t)}
-  <p class="actions"><a class="btn" href="{e(alerts_url(tid))}">Follow the {n_near} towns next to {e(town)}</a></p>
+    via = t.get("coverage") == "via_county" and t.get("coverage_county_body")
+    if via:
+        lead = via_county_lead(ctx, t)
+        listing = ""
+        if up_m:
+            listing = f'<h2 class="sub-title">At the county</h2>{meeting_list(ctx, up_m, show_town=False, shown=3, more="More at the county")}'
+        past = [m for m in (past_m or []) if county_meeting(m)][:5]
+        if past:
+            listing += (f'<details class="disclose"><summary>Earlier at the county</summary>'
+                        f'{meeting_list(ctx, past, show_town=False, shown=5, details=False)}</details>')
+    else:
+        lead = f"We can’t read {e(the)}’s agendas yet. {e(first_up(for_town(reason, state, town)))}."
+        body_name = t.get("coverage_county_body")
+        if kinded and place_kind(t) == "township":
+            lead += (f" {e(body_name)} would be the other way in, but we can’t read its agendas either." if body_name
+                     else " No county planning commission we can read covers it.")
+        lead += f" {call}{site}."
+        listing = f'<h2 class="sub-title">Filed with the state</h2>{meeting_list(ctx, up_m, show_town=False, shown=3, more="More coming up")}' if up_m else ""
+    near_word = f"the {plural(n_near, 'place')} next to" if kinded else f"the {n_near} towns next to"
+    ask = (f"We’ll ask the {noun} to let us read its agendas." if kinded
+           else for_town("We’ll ask the town hall to let us read its agendas.", state, town))
+    return f"""<section class="cant{' via-county' if via else ''}" aria-labelledby="town-title">
+  {lead if via else f'<p class="lead cant-lead">{lead}</p>'}{after_lead}
+  {listing if via else ''}{next_door_html(ctx, t)}
+  <p class="actions"><a class="btn" href="{e(alerts_url(tid))}">Follow {near_word} {e(the)}</a></p>
   <div class="request" data-request-town="{e(tid)}" data-town-name="{e(town)}, {state}">
-    <p>Want {e(town)} added? {for_town("We’ll ask the town hall to let us read its agendas.", state, town)}</p>
-    <label class="field">Email, if you want to hear when {e(town)} is added<input type="email" name="request_email" autocomplete="email" spellcheck="false"></label>
-    <button type="button" class="btn quiet">Ask us to add {e(town)}</button>
+    <p>Want {e(name)}{'’s own agendas' if via else ''} added? {ask}</p>
+    <label class="field">Email, if you want to hear when {e(name)} is added<input type="email" name="request_email" autocomplete="email" spellcheck="false"></label>
+    <button type="button" class="btn quiet">Ask us to add {e(name)}</button>
     <p class="form-status" role="status" aria-live="polite"></p>
   </div>
-  {f'<h2 class="sub-title">Filed with the state</h2>{filings}' if up_m else ""}
+  {'' if via else listing}
 </section>"""
+
+
+def via_county_lead(ctx, t):
+    """A township we don't read, whose zoning changes reach us through the county: what we see, by what law, and what
+    we won't. The row's coverage_note is the crawler's own sentence; the rest is fixed."""
+    state, body = t["state"], t["coverage_county_body"]
+    The = the_place(t, cap=True)
+    note = (t.get("coverage_note") or "").rstrip(".")
+    law = ("Michigan law (MCL 125.3307) sends every township zoning text and map amendment to the county planning commission "
+           "for review" if state == "MI" else
+           "Ohio law (ORC 519.12) sends a township’s zoning text and map amendments to the county or regional planning "
+           "commission for a recommendation")
+    reason = reason_text(t.get("reason_code"), The)
+    body_row = county_body_row(ctx, t)
+    body_link = (f'<a href="{town_path(body_row["state"], body_row["town"])}">{e(body_name_of(body_row))}</a>'
+                 if body_row else e(body))
+    first = f"We don’t read {e(The)}’s own agendas: {e(lower_first(for_town(reason, state, t['town'])))}."
+    second = (f"Zoning changes still reach us through the {body_link}. {e(law)}, so those appear on its agendas. "
+              f"We won’t see special land uses, site plans, conditional uses, moratorium votes taken by the {e(place_noun(t))} "
+              f"board itself, or anything else the county body doesn’t review.")
+    third = ""
+    if body_row:
+        ups = [m for m in upcoming_meetings(ctx, body_row["id"]) if not m.get("cancelled")]
+        if ups:
+            subject, _, _, _ = meeting_row(ctx, ups[0], show_town=False)
+            third = (f" Its next meeting on these subjects is on {e(day_label(ups[0]['date'], ctx))}, "
+                     f"about {e(lower_first(subject))}.")
+        elif body_row.get("monitored"):
+            third = " Nothing is coming up there on these subjects."
+    return f'<p class="lead cant-lead">{first}</p><p class="lead cant-lead">{second}{third}</p>'
+
+
+def body_name_of(row):
+    """The body a county row stands for: its county_body when named, else the row's name."""
+    return row.get("county_body") or row["town"]
+
+
+def county_body_row(ctx, t):
+    """The county row (or regional body row) whose agendas carry a township's zoning changes."""
+    body = t.get("coverage_county_body") or ""
+    for r in ctx.towns:
+        if r["state"] != t["state"] or place_kind(r) != "county":
+            continue
+        if r["town"] == body or r.get("county_body") == body:
+            return r
+    c = county_row(ctx, t)
+    if c and body.startswith(c["town"]):
+        return c
+    return {}
+
+
+def county_line_html(ctx, t):
+    """One short paragraph linking a town, city or township up to its county: who decides zoning, and what the county
+    has coming up on these subjects. Only for the states whose rows carry counties as places of their own."""
+    if t.get("state") not in KIND_STATES or place_kind(t) == "county":
+        return ""
+    c = county_row(ctx, t)
+    if not c:
+        return ""
+    st, kind = t["state"], place_kind(t)
+    The, county = the_place(t, cap=True), c["town"]
+    link = f'<a href="{town_path(c["state"], c["town"])}">{e(county)}</a>'
+    if st == "VA":
+        first = f"{e(The)} is in {link}, which decides zoning outside the {kind}."
+    elif st == "MD" and t.get("zoning_power") == "county":
+        board = "Prince George’s Planning Board" if "Prince George" in county else "Montgomery Planning Board"
+        first = (f"{e(The)} is in {link}. The County Council, sitting as the District Council, and the {e(board)} decide "
+                 f"zoning for the {kind}; the {kind}’s own council doesn’t.")
+    elif st == "MD":
+        first = f"{e(The)} is in {link}."
+    elif st == "MI" and kind == "township":
+        first = f"{e(The)} is in {link}; the county planning commission reviews its zoning changes before the Township Board adopts them."
+    elif st == "OH" and kind == "township":
+        body = t.get("coverage_county_body") or "the county planning commission"
+        first = f"{e(The)} is in {link}; the {e(body)} reviews its zoning changes before the trustees vote."
+    else:
+        first = f"{e(The)} is in {link}."
+    body = county_body_row(ctx, t) or c  # an Ohio regional planning commission, else the county itself
+    Body = the_place(body, cap=True)
+    ups = [m for m in upcoming_meetings(ctx, body["id"]) if not m.get("cancelled")]
+    if ups:
+        m = ups[0]
+        subject, _, _, _ = meeting_row(ctx, m, show_town=False)
+        second = f"{e(Body)}’s next meeting on these subjects is the {e(meeting_board(m))} on {e(day_label(m['date'], ctx))}, about {e(lower_first(subject))}."
+    elif body.get("monitored"):
+        second = f"Nothing is coming up at {e(the_place(body))} on these subjects."
+    else:
+        second = f"We can’t read {e(the_place(body))}’s agendas yet."
+    return f'<p class="county-line">{first} {second}</p>'
+
+
+def place_status(ctx, r):
+    """A place's read status in a county's list, as words: meetings coming up, read every morning, zoning changes via
+    the county, or not read yet with the short reason."""
+    n_up = len([m for m in upcoming_meetings(ctx, r["id"]) if not m.get("cancelled")])
+    if n_up:
+        return f"{plural(n_up, 'meeting')} coming up"
+    if r.get("state") == "MD" and r.get("zoning_power") == "county":
+        return "read every morning; the county decides its zoning" if r.get("monitored") else "the county decides its zoning"
+    if r.get("monitored"):
+        return "read every morning"
+    if r.get("coverage") == "via_county":
+        return "zoning changes reach us through the county; we don’t read its own agendas"
+    why = REASON_SHORT.get(r.get("reason_code") or "")
+    return f"not read yet ({why})" if why else "no agendas we can read yet"
+
+
+def county_places_html(ctx, t):
+    """On a county's page: the towns, cities and townships inside it, each with its read status."""
+    if place_kind(t) != "county":
+        return ""
+    covered = set(t.get("covers_counties") or [t.get("county")])
+    rows = [r for r in ctx.towns if r["state"] == t["state"] and r["id"] != t["id"] and place_kind(r) != "county"
+            and (r.get("county") or "") in covered]
+    if not rows:
+        return ""
+    rows.sort(key=lambda r: (place_kind(r) == "township", place_name(r)))
+    def link(r, tail=""):
+        name = e(place_name(r)) + (f" ({e(r['county'])} County)" if len(covered) > 1 else "")
+        return f'<a href="{town_path(r["state"], r["town"])}">{name}</a>{tail}'
+    up, read, via, none = [], [], [], []
+    for r in rows:
+        n_up = len([m for m in upcoming_meetings(ctx, r["id"]) if not m.get("cancelled")])
+        county_zoned = r.get("state") == "MD" and r.get("zoning_power") == "county"
+        if n_up:
+            up.append(link(r, f" ({plural(n_up, 'meeting')})"))
+        elif r.get("monitored"):
+            read.append(link(r, " (the county decides its zoning)" if county_zoned else ""))
+        elif r.get("coverage") == "via_county":
+            via.append(link(r))
+        else:
+            why = REASON_SHORT.get(r.get("reason_code") or "")
+            none.append(link(r, f" ({e(why)})" if why else ""))
+    paras = []
+    if up:
+        paras.append(f"{join_and(up)} {'has' if len(up) == 1 else 'have'} meetings coming up on these subjects.")
+    if read:
+        paras.append(f"We read {join_and(read)} every morning.")
+    if via:
+        paras.append(f"Zoning changes from {join_and(via)} reach us through the county; we don’t read "
+                     f"{'its' if len(via) == 1 else 'their'} own agendas.")
+    if none:
+        paras.append(f"We can’t read {join_and(none)} yet.")
+    what = "The townships it covers" if t.get("covers_counties") else f"The places inside {e(t['town'])}"
+    body = "".join(f"<p>{p}</p>" for p in paras)
+    return f'<section class="county-places" aria-labelledby="places-title"><h2 id="places-title">{what}</h2>{body}</section>'
+
+
+def county_reviews_html(ctx, t):
+    """On a county planning body's page (Michigan, Ohio): the township items it reviewed, each linked to its township."""
+    if place_kind(t) != "county" or t["state"] not in ("MI", "OH"):
+        return ""
+    covered = set(t.get("covers_counties") or [t.get("county")])
+    hits = [h for h in ctx.hits if h["state"] == t["state"] and h["town"] != t["town"] and COUNTY_BODY.search(h.get("board") or "")
+            and (place(h["state"], h["town"]).get("county") or "") in covered]
+    if not hits:
+        return ""
+    meetings = sorted(group_meetings(ctx, hits), key=lambda m: (m["date"] < ctx.today, m["date"] if m["date"] >= ctx.today else "", m["date"]), reverse=False)
+    ahead = sorted([m for m in meetings if m["date"] >= ctx.today], key=lambda m: m["date"])
+    past = sorted([m for m in meetings if m["date"] < ctx.today], key=lambda m: m["date"], reverse=True)
+    items = []
+    for m in (ahead + past)[:15]:
+        r = place(m["state"], m["town"])
+        subject, _, _, _ = meeting_row(ctx, m, show_town=False)
+        where = (f'<a href="/m/{m["id"][2:]}">{e(subject)}</a>' if m["date"] >= ctx.today else e(subject))
+        items.append(f'<li><time datetime="{m["date"]}">{e(day_label(m["date"], ctx))}</time>: '
+                     f'<a href="{town_path(m["state"], m["town"])}">{e(place_name(r) if r else m["town"])}</a>, {where}</li>')
+    return (f'<section class="county-reviews" aria-labelledby="reviews-title"><h2 id="reviews-title">Township items reviewed here</h2>'
+            f'<ul class="plain place-list">{"".join(items)}</ul></section>')
 
 
 STAGE_DATE = re.compile(r"^(Postponed|Asks to postpone) to (Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{1,2})$")
@@ -4266,19 +4930,20 @@ def news_html(ctx, t):
 def town_lead_text(ctx, t, up_m, past_m=None):
     """What's coming up in the town, in at most three short sentences: "Carver has two meetings coming up, on solar
     and battery storage. The first is the Conservation Commission on Wed Nov 4." or what moved and the next agenda."""
-    town = t["town"]
+    town, Town = the_place(t), the_place(t, cap=True)
     live = [m for m in up_m if not m.get("cancelled")]
     if live:
         topics = Counter(tp for m in live for en in m["lines"].values() for tp in ordered_topics(en.get("topics") or [])[:1])
-        about = join_and([TOPIC_LABELS.get(k, k).lower() for k, _ in topics.most_common(2)])
+        about = join_and([topic_label(k, t["state"]).lower() for k, _ in topics.most_common(2)])
         first = live[0]
         subject, _, _, _ = meeting_row(ctx, first, show_town=False)
         subj = lower_first(subject)
+        at = "at the " if county_meeting(first) else "the "
         if len(live) == 1:
-            return (f"One meeting is coming up in {town}: the {meeting_board(first)} on {day_label(first['date'], ctx)}, "
+            return (f"One meeting is coming up in {town}: {at}{meeting_board(first)} on {day_label(first['date'], ctx)}, "
                     f"about {subj}.")
-        return (f"{town} has {NUM_WORDS.get(len(live), str(len(live)))} meetings coming up"
-                + (f", on {about}" if about else "") + f". The first is the {meeting_board(first)} on "
+        return (f"{Town} has {NUM_WORDS.get(len(live), str(len(live)))} meetings coming up"
+                + (f", on {about}" if about else "") + f". The first is {at}{meeting_board(first)} on "
                 f"{day_label(first['date'], ctx)}, about {subj}.")
     moved = continued_ahead(ctx, (past_m or [])[:12], up_m)
     out = [f"Nothing is on {town}’s agendas right now about solar, batteries, data centers, zoning or housing."]
@@ -4300,12 +4965,12 @@ def town_lead_text(ctx, t, up_m, past_m=None):
         n_items = sum(len(real_lines(m)) for m in past_m)
         since = past_m[-1]["date"]
         since_word = datetime.strptime(since[:10], "%Y-%m-%d").strftime("%B") if since else ""
-        out.append(f"We check again every morning. {town} has had {plural(n_items, 'item')} on these subjects"
+        out.append(f"We check again every morning. {Town} has had {plural(n_items, 'item')} on these subjects"
                    + (f" since {since_word}" if since_word else "") + ".")
         if last:
             text, _ = real_lines(last)[0]
             subject = item_subject(text, last["lines"].get(text) or {}, last.get("date") or "")
-            out.append(f"The last was the {meeting_board(last)} on {day_label(last['date'], ctx)}, about {lower_first(subject)}.")
+            out.append(f"The last was {'at the ' if county_meeting(last) else 'the '}{meeting_board(last)} on {day_label(last['date'], ctx)}, about {lower_first(subject)}.")
     return " ".join(out)
 
 
@@ -4348,8 +5013,14 @@ def build_town_page(ctx, t):
     ag_rows = ctx.ag_by_town.get(tid, []) if state == "MA" else []
     thin = not (hits or tracked or ag_rows)
     state_name = STATE_NAMES.get(state, state)
+    kinded = state in KIND_STATES  # counties, townships and chartered places: the copy names the kind
+    name = place_name(t) if kinded else town
+    the = the_place(t) if kinded else town
+    noun = place_noun(t) if kinded else "town"
+    near = "the places next door" if kinded else "the towns next door"
 
     rail = ""
+    county_line = "" if (t.get("coverage") == "via_county" and t.get("coverage_county_body") and not t["monitored"]) else county_line_html(ctx, t)
     if t["monitored"]:
         if up_m:
             first = next((m for m in up_m if not m.get("cancelled")), up_m[0])
@@ -4362,8 +5033,8 @@ def build_town_page(ctx, t):
                          + (f" Next agenda posted: {e(nxt[1])}, {day_label(nxt[0], ctx)}." if nxt else ""))
             # The page still shows what the town did most recently, rather than an empty screen.
             listing = (f'<section data-past><h2>Most recent</h2>{meeting_list(ctx, past_m[:2], show_town=False, shown=2)}</section>' if past_m else "")
-        follow = f"""<div class="follow-row"><a class="btn" href="{e(alerts_url(tid))}">Follow {e(town)}’s meetings</a>
-<p class="small">You get a page and a calendar feed for {e(town)} and the towns next door, updated every morning. Free, no account.</p></div>"""
+        follow = f"""<div class="follow-row"><a class="btn" href="{e(alerts_url(tid))}">Follow {e(the)}’s meetings</a>
+<p class="small">You get a page and a calendar feed for {e(the)} and {near}, updated every morning. Free, no account.</p></div>"""
         recent = ""
         if up_m and past_m:
             recent = f'<section data-past><h2>The last {"two meetings" if len(past_m) > 1 else "meeting"}</h2>{meeting_list(ctx, past_m[:2], show_town=False, shown=2)}</section>'
@@ -4380,8 +5051,9 @@ def build_town_page(ctx, t):
 </div><aside class="town-rail" aria-label="Next door">{next_door_html(ctx, t)}</aside></div>"""
         rail = ""
     else:
-        coming = cant_check_html(ctx, t, up_m)
+        coming = cant_check_html(ctx, t, up_m, past_m, after_lead=county_line)
         rail = ""
+    coming += county_places_html(ctx, t) + county_reviews_html(ctx, t)
 
     more = []
     earlier = past_m[2:] if t["monitored"] else past_m  # the two shown above aren't repeated
@@ -4394,40 +5066,46 @@ def build_town_page(ctx, t):
         more.append(f"""<details class="disclose" id="warrants"><summary>Town Meeting warrants with no date we could read</summary>
 {meeting_list(ctx, und_m, show_town=False, shown=5, details=False)}</details>""")
     if tracked or ag_rows:
-        more.append(f"""<details class="disclose"><summary>What the state has said about {e(town)}’s bylaws</summary>
+        more.append(f"""<details class="disclose"><summary>What the state has said about {e(name)}’s bylaws</summary>
 {rules_html(ctx, tracked, ag_rows, town)}<p class="small"><a href="/attorney-general">Massachusetts Attorney General rulings</a></p></details>""")
     if t["monitored"]:
         more.append(about_agendas_html(ctx, t))
 
-    head_lines = town_summary(ctx, t, up_m, past_m) if t["monitored"] else ""
+    head_lines = (town_summary(ctx, t, up_m, past_m) + county_line) if t["monitored"] else ""
+    c_row = county_row(ctx, t) if kinded else {}
+    crumb_county = f'<li><a href="{town_path(c_row["state"], c_row["town"])}">{e(c_row["town"])}</a></li>' if c_row else ""
     body = f"""
 <div class="wrap narrow">
-<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/towns">Towns</a></li><li><a href="/towns#{state.lower()}">{e(state_name)}</a></li><li><span aria-current="page">{e(town)}</span></li></ol></nav>
-<h1 id="town-title">{e(town)}, {e(state_name)}</h1>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/towns">Towns</a></li><li><a href="/towns#{state.lower()}">{e(state_name)}</a></li>{crumb_county}<li><span aria-current="page">{e(name)}</span></li></ol></nav>
+<h1 id="town-title"{' data-slop-ignore' if kinded else ''}>{e(name)}, {e(state_name)}</h1>
 {head_lines}
 {coming}
 {rail}
 <div class="disclosures">{''.join(more)}</div>
 </div>
 """
-    title = f"{town}, {state_name}: what the town is about to decide | {SITE_NAME}"
+    title = f"{name}, {state_name}: what the {noun} is about to decide | {SITE_NAME}"
     if len(title) > 70:
-        title = f"{town}, {state_name} | {SITE_NAME}"
+        title = f"{name}, {state_name} | {SITE_NAME}"
     if up_m:
         first = best_meeting(up_m)
-        desc = f"{town}, {state}, {meeting_board(first)}, {when_text(ctx, first)}: {plain_say(next(iter(first['lines'])))}"
+        desc = f"{name}, {state}, {meeting_board(first)}, {when_text(ctx, first)}: {plain_say(next(iter(first['lines'])))}"
         if len(desc) < 90:
             desc += " See what else is coming up, with a link to each agenda."
         if len(desc) > 165:
             desc = desc[:160].rsplit(" ", 1)[0] + "…"
-        og_title = f"{town}: {plural(len(up_m), 'meeting')} coming up"
+        og_title = f"{name}: {plural(len(up_m), 'meeting')} coming up"
     elif t["monitored"]:
-        desc = (f"What {town}, {state_name} boards have coming up on solar, battery storage, data centers and zoning, "
+        desc = (f"What {name}, {state_name} boards have coming up on solar, battery storage, data centers and zoning, "
                 "with a link to each agenda.")
-        og_title = f"{town}: town meetings coming up"
+        og_title = f"{name}: {noun} meetings coming up"
+    elif t.get("coverage") == "via_county" and t.get("coverage_county_body"):
+        desc = (f"{name}, {state_name}: zoning changes reach us through the {t['coverage_county_body']}; we don't read the "
+                f"{noun}'s own agendas yet.")
+        og_title = f"{name}: zoning changes via the county"
     else:
-        desc = f"{town}, {state_name}: we can't read its agendas yet. How to find out what's coming up, and alerts for the towns next door."
-        og_title = f"{town}: town meetings"
+        desc = f"{name}, {state_name}: we can't read its agendas yet. How to find out what's coming up, and alerts for {near}."
+        og_title = f"{name}: {noun} meetings"
     return page(ctx, title, desc, body, town_path(state, town), noindex=thin, og_title=og_title), thin
 
 
@@ -4436,12 +5114,19 @@ def town_item_html(ctx, t):
     n_up = len(upcoming_meetings(ctx, t["id"]))
     county = f"{t['county']} County" if t.get("county") else ""  # so "Worcester County" finds every town in it
     search = f"{t['town']} {county} {STATE_NAMES.get(t['state'], t['state'])} {t['state']}".lower()
-    status = "up" if n_up else ("monitored" if t["monitored"] else "not")
+    via = t.get("coverage") == "via_county" and not t["monitored"]
+    status = "up" if n_up else ("monitored" if t["monitored"] else ("via" if via else "not"))
     note_html = f' <span class="n">{plural(n_up, "meeting")}</span>' if n_up else ""
+    if via:  # the third look: not read, but its zoning changes reach us through the county
+        note_html += ' <span class="via">zoning changes via the county</span>'
+    elif t.get("state") in KIND_STATES and place_kind(t) == "county" and t.get("county"):
+        note_html += ' <span class="kind">the county</span>'
     why = REASON_SHORT.get(t.get("reason_code") or "")
-    title = "" if t["monitored"] else f' title="We can’t read this town’s agendas yet{": " + why if why else ""}"'
+    noun = place_noun(t) if t.get("state") in KIND_STATES else "town"
+    title = "" if t["monitored"] or via else f' title="We can’t read this {noun}’s agendas yet{": " + why if why else ""}"'
+    label = place_name(t) if t.get("state") in KIND_STATES else t["town"]
     return (f'<li data-search="{e(search)}" data-status="{status}">'
-            f'<a href="{town_path(t["state"], t["town"])}"{title}>{e(t["town"])}</a>{note_html}</li>')
+            f'<a href="{town_path(t["state"], t["town"])}"{title}>{e(label)}</a>{note_html}</li>')
 
 
 def build_towns_index(ctx):
@@ -4452,31 +5137,42 @@ def build_towns_index(ctx):
         towns = [t for t in ctx.towns if t["state"] == state]
         if not towns:
             continue
+        kinded = state in KIND_STATES
+        word = "place" if kinded else "town"
         by_county = {}
         for t in towns:
             by_county.setdefault(t.get("county") or "", []).append(t)
         groups = []
         for county in sorted(by_county, key=lambda c: (c == "", c)):
-            items = "".join(town_item_html(ctx, t) for t in by_county[county])
+            rows = by_county[county]
+            if kinded:  # the county's own row leads its group
+                rows = sorted(rows, key=lambda t: (place_kind(t) != "county", place_name(t)))
+            items = "".join(town_item_html(ctx, t) for t in rows)
             if len(by_county) == 1:
                 groups.append(f'<ul class="town-cols" data-filter-list>{items}</ul>')
             else:
-                label = f"{county} County" if county else "Other towns"
-                read = sum(1 for t in by_county[county] if t["monitored"])
+                if county:
+                    label = f"{county} County"
+                elif all(place_kind(t) == "city" for t in rows):
+                    label = "Independent cities"
+                else:
+                    label = "Other places" if kinded else "Other towns"
+                read = sum(1 for t in rows if t["monitored"])
                 gaps = cant_read_by_county(ctx).get(f"{state}:{county}", "")
                 not_yet = f'<p class="small not-yet">Not yet: {e(gaps)}. <a href="/how-it-works#gaps">Why</a></p>' if gaps else ""
-                groups.append(f'<details class="county"><summary>{e(label)} <span class="sub-count">{plural(read, "town")} we read</span></summary>'
+                groups.append(f'<details class="county"><summary>{e(label)} <span class="sub-count">{plural(read, word)} we read</span></summary>'
                               f'<ul class="town-cols" data-filter-list>{items}</ul>{not_yet}</details>')
         mon = sum(1 for t in towns if t["monitored"])
+        figure = region_figure_html(ctx, state)
         sections.append(f"""<section class="state-towns" id="{state.lower()}" aria-labelledby="state-{state.lower()}">
-  <h2 id="state-{state.lower()}">{e(STATE_NAMES.get(state, state))} <span class="sub-count">{plural(mon, "town")} we read every morning</span></h2>
-  <div class="counties">{''.join(groups)}</div>
+  <h2 id="state-{state.lower()}">{e(STATE_NAMES.get(state, state))} <span class="sub-count">{plural(mon, word)} we read every morning</span></h2>
+  {figure}<div class="counties">{''.join(groups)}</div>
 </section>""")
     body = f"""
 <div class="wrap narrow towns">
 <section class="page-head" aria-labelledby="towns-title">
-  <h1 id="towns-title">Find your town</h1>
-  <p class="lead">Pick your town to see what its boards have coming up.</p>
+  <h1 id="towns-title">Find your town{' or county' if ctx.has_counties else ''}</h1>
+  <p class="lead">Pick your town{' or county' if ctx.has_counties else ''} to see what its boards have coming up.</p>
   <noscript><p class="notice">The town box needs JavaScript. Every town is listed below, by state and county.</p></noscript>
   <form class="filterbar" data-list-filter role="search" action="/towns" method="get">
     <label>Town or county<input type="search" name="q" data-search autocomplete="off" autocapitalize="words" spellcheck="false"></label>
@@ -4551,8 +5247,8 @@ def build_topic_page(ctx, tp):
     n_items = sum(len(m["lines"]) for m in up_m)
     n_towns = len({(m["state"], m["town"]) for m in up_m})
     checked = et_when(ctx.hits_doc.get("generated") or "")
-    coverage = (f'<p class="small">{plural(n_items, "item")} at {plural(len(up_m), "meeting")} in {plural(n_towns, "town")}, from the agendas of '
-                f'{read} of {total} towns in {e(join_and(STATE_NAMES.get(x, x) for x in ctx.states))}'
+    coverage = (f'<p class="small">{plural(n_items, "item")} at {plural(len(up_m), "meeting")} in {ctx.places(n_towns)}, from the agendas of '
+                f'{read} of {total} {ctx.place_word}s in {e(join_and(STATE_NAMES.get(x, x) for x in ctx.states))}'
                 f'{", read " + e(checked) if checked else ""}. <a href="/how-it-works#coverage">Towns we can’t read yet</a>.</p>')
 
     body = f"""
@@ -4594,9 +5290,9 @@ def topic_summary(ctx, up_m):
         first = min(dated, key=lambda m: (m["date"], time_key(m)))
         subject, _, _, _ = meeting_row(ctx, first, show_town=False)
         subj = lower_first(subject)
-        return (f"{plural(n_towns, 'town')} have this on an agenda in the next few weeks. The first is the {e(first['town'])} "
+        return (f"{ctx.places(n_towns)} have this on an agenda in the next few weeks. The first is the {e(first['town'])} "
                 f"{e(meeting_board(first))} on {e(day_label(first['date'], ctx))}, about {e(subj)}.")
-    return f"{plural(n_items, 'item')} at {plural(len(up_m), 'meeting')} coming up in {plural(n_towns, 'town')}."
+    return f"{plural(n_items, 'item')} at {plural(len(up_m), 'meeting')} coming up in {ctx.places(n_towns)}."
 
 
 def moratorium_word(b):
@@ -4992,8 +5688,17 @@ def build_how(ctx):
     coverage_parts = [
         f'<a href="/towns#ma">{m} of the 351 cities and towns</a> in Massachusetts' if s == "MA" and n == 351
         else (f'<a href="/towns#ri">all {n} cities and towns</a> in Rhode Island' if s == "RI" and m == n
-              else f'<a href="/towns#{s.lower()}">{m} towns</a> in {STATE_NAMES.get(s, s)}')
+              else f'<a href="/towns#{s.lower()}">{m} {"places" if s in KIND_STATES else "towns"}</a> in {STATE_NAMES.get(s, s)}')
         for s, m, n in ctx.coverage()]
+    kinded = sorted(set(KIND_STATES) & set(ctx.states), key=ctx.states.index)
+    kinded_note = ""
+    if kinded:
+        parts = []
+        if {"VA", "MD"} & set(kinded):
+            parts.append("in Virginia and Maryland, boards of supervisors and county councils, planning commissions and boards of zoning appeals, for counties, independent cities and towns")
+        if {"MI", "OH"} & set(kinded):
+            parts.append("in Michigan and Ohio, township boards, planning and zoning commissions, and the county planning commissions that review township zoning changes")
+        kinded_note = f"<p>{first_up('; '.join(parts))}.</p>"
     board_rows = "".join(
         f"<tr><th scope='row'>{BOARD_NAMES[k]}</th><td class='num' data-label='Towns'>{v['towns']} of {v['of']}</td></tr>"
         for k, v in boards.items() if k in BOARD_NAMES)
@@ -5012,7 +5717,7 @@ def build_how(ctx):
   <h2 id="coverage">Which towns we check</h2>
   <p>{join_and(coverage_parts)[:1].upper() + join_and(coverage_parts)[1:]}.</p>
   <details class="disclose"><summary>Which boards and topics</summary>
-    <p>Planning boards, zoning boards of appeals, conservation commissions, select boards and city councils, and Town Meeting warrants, wherever the town posts them online. We also include wetlands permit requests for solar and battery projects filed with the state.</p>
+    <p>Planning boards, zoning boards of appeals, conservation commissions, select boards and city councils, and Town Meeting warrants, wherever the town posts them online. We also include wetlands permit requests for solar and battery projects filed with the state.</p>{kinded_note}
     <p data-slop-ignore>Topics: {" · ".join(f'<a href="/topics/{tp["slug"]}">{e(tp["name"])}</a>' for tp in TOPIC_PAGES)} · <a href="/topics">all topics</a>.</p>
   </details>
 </section>
@@ -5841,7 +6546,8 @@ def town_index_json(ctx):
         "generated": ctx.hits_doc.get("generated"),
         "towns": [{"id": t["id"], "state": t["state"], "town": t["town"], "county": t.get("county"),
                    "slug": t["slug"], "monitored": t["monitored"],
-                   **({} if t["monitored"] else {"why": REASON_TAG.get(t.get("reason_code") or "", "not worked out yet")})}
+                   **({} if t["monitored"] else {"why": ("zoning changes reach us through the county" if t.get("coverage") == "via_county"
+                                                            else REASON_TAG.get(t.get("reason_code") or "", "not worked out yet"))})}
                   for t in ctx.towns],
     }, separators=(",", ":"))
 
@@ -5946,8 +6652,8 @@ def build_meeting_page(ctx, m):
         facts.append(("Agenda" if what != "warrant" else "Warrant", link))
     facts.append(("Calendar", f'<a href="/m/{m["id"][2:]}.ics" download="{e(m["id"][2:])}.ics">Add this meeting to my calendar</a>'))
     ticket = '<dl class="facts-list meeting-facts">' + "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in facts) + "</dl>"
-    follow = (f'<p class="ticket-links meeting-links"><a href="{town_path(m["state"], m["town"])}">Everything coming up in {e(m["town"])}</a>'
-              f'<a href="{e(alerts_url(t.get("id")))}">Follow {e(m["town"])}’s meetings</a>{share}</p>')
+    follow = (f'<p class="ticket-links meeting-links"><a href="{town_path(m["state"], m["town"])}">Everything coming up in {e(shown_town(m, the=True))}</a>'
+              f'<a href="{e(alerts_url(t.get("id")))}">Follow {e(shown_town(m, the=True))}’s meetings</a>{share}</p>')
     for name, gloss in BOARD_GLOSS.items():  # a stranger lands here from a link: the board's job, once
         if sents and name in sents[0] and gloss not in sents[0]:
             sents[0] = sents[0].replace(name, f"{name} ({gloss})", 1)
@@ -5959,7 +6665,7 @@ def build_meeting_page(ctx, m):
     lead = e(", ".join(x for x in (when_lead, time_lead, where_lead) if x)) + ". " if (when_lead or where_lead) else ""
     body = f"""
 <div class="wrap narrow">
-<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/towns">Towns</a></li><li><a href="{town_path(m['state'], m['town'])}">{e(m['town'])}</a></li><li><span aria-current="page">{e(meeting_board(m))}</span></li></ol></nav>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/towns">Towns</a></li><li><a href="{town_path(m['state'], m['town'])}">{e(shown_town(m))}</a></li><li><span aria-current="page">{e(meeting_board(m))}</span></li></ol></nav>
 <h1 id="meeting-title">{e(subject)}</h1>
 <p class="lead" data-slop-ignore>{lead}{" ".join(e(x) for x in sents)}</p>
 {ticket}
@@ -6061,8 +6767,10 @@ def main():
     write("sitemap.xml", build_sitemap([p for _, p in pages.values() if p]))
     write("robots.txt", build_robots())
     write("data/towns.json", town_index_json(ctx))
-    (DATA / "search" / "titles.json").write_text(json.dumps(search_titles(ctx), ensure_ascii=False, sort_keys=True, indent=0) + "\n")
-    (DATA / "search" / "pages.json").write_text(json.dumps(search_pages(ctx), ensure_ascii=False, sort_keys=True, indent=0) + "\n")
+    search_dir = DATA / "search" if SITE == ROOT / "site" else SITE / "data" / "search"  # a preview build leaves data/ alone
+    search_dir.mkdir(parents=True, exist_ok=True)
+    (search_dir / "titles.json").write_text(json.dumps(search_titles(ctx), ensure_ascii=False, sort_keys=True, indent=0) + "\n")
+    (search_dir / "pages.json").write_text(json.dumps(search_pages(ctx), ensure_ascii=False, sort_keys=True, indent=0) + "\n")
     write("data/lines.json", lines_json(ctx))
     write("data/trending.json", trending_json(*trending_stories(ctx)))
     stale = SITE / "manifest.txt"

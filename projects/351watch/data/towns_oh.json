@@ -2,8 +2,7 @@
  "_about": "Agenda Ahead Ohio test rows (2026-11): every township in Licking, Union, Franklin, Delaware, Logan, Champaign, Clermont and Butler counties, Ohio's 88 county planning commissions and the regional planning commissions that review township zoning under ORC 519.12. Same row shape as towns_mi.json. Built by `python3 experiments/great_lakes_test.py discover --state OH`.",
  "generated": "2026-11-02T19:50:41+00:00",
  "state": "OH",
- "gated": true,
- "gate_note": "Test state: not part of the production daily run. Crawled only by `python3 -m watch351.daily --states MI,OH --output-dir ../data/test/great_lakes --hits-name hits_great_lakes.json` (Michigan also by the 2026-10 test command with --states MI,VA --output-dir ../data/test).",
+ "promotion_note": "Promoted 2026-11-03: part of the production daily run and the site. Until then a test state, crawled only with --output-dir (experiments). Rows carry kind (county, city, town, township), county, coverage and, where they apply, zoning_power and coverage_county_body; build.py reads them.",
  "boards_tracked": [
   "select_board",
   "planning_board",

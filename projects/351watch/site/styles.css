@@ -785,3 +785,27 @@ table.counts caption {text-align: left; font-weight: 600; padding: 0 0 var(--s2)
 
 .about-line p { max-width: var(--measure); color: var(--muted); font-size: var(--t-sm); }
 .about-line a { color: var(--ink); }
+
+/* ================================================================ counties, townships and the places inside them */
+/* On the maps a county is an area, drawn as a ring; a township whose zoning changes reach us through its county is a thin ring. */
+.map .towns-unread circle.county { fill: none; stroke: var(--town-unread); stroke-width: 1.4px; vector-effect: non-scaling-stroke; }
+.map .towns-read circle.county { fill: none; stroke: var(--town); stroke-width: 2px; vector-effect: non-scaling-stroke; }
+.map .towns-week circle.county { fill: none; stroke: var(--pin); stroke-width: 3px; vector-effect: non-scaling-stroke; }
+.map .towns-unread circle.via { fill: none; stroke: var(--town); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.map .towns-week circle.via { fill: none; stroke: var(--pin); stroke-width: 2.5px; vector-effect: non-scaling-stroke; }
+.map .towns-week a:hover circle { stroke: var(--ink); }
+.county-line { max-width: var(--measure); }
+.place-list li { padding: 6px 0; border-bottom: 1px solid var(--rule); }
+.place-list li:last-child { border-bottom: 0; }
+.place-list time { color: var(--muted); font-family: var(--f-ui); font-size: var(--t-sm); }
+.town-cols .via, .town-cols .kind { color: var(--muted); font-family: var(--f-ui); font-size: var(--t-sm); margin-left: var(--s2); }
+.town-cols li[data-status="not"] > a { color: var(--muted); }
+.cant.via-county .sub-title { margin-top: var(--s5); }
+
+/* The seven-state map on the front page: smaller marks, since it covers four times the area of the Northeast map */
+.map-all .towns-unread path { stroke-width: 1.6px; }
+.map-all .towns-read path { stroke-width: 2.4px; }
+.map-all .towns-week path { stroke-width: 6px; }
+.map-all .towns-unread circle.county { stroke-width: 1px; }
+.map-all .towns-read circle.county { stroke-width: 1.6px; }
+.county-places p { max-width: 70ch; }

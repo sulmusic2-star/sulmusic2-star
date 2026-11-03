@@ -48,8 +48,10 @@ function setupTownBox() {
         read = list.options.length;
         towns = Array.from(list.options).map((o) => {
           const [name, state] = o.value.split(/,\s*/);
-          return { label: name, name: norm(name), full: norm(o.value), state: (state || 'MA').toUpperCase(), st: norm(state || 'ma'),
-            href: o.dataset.href, up: Number(o.dataset.up || 0) };
+          // A county, township or chartered place carries its kind, the display name ("Fairfield Township" without the
+          // county that tells two apart), the bare name two kinds share ("Culpeper") and what to say after the state.
+          return { label: o.dataset.label || name, name: norm(name), full: norm(o.value), state: (state || 'MA').toUpperCase(), st: norm(state || 'ma'),
+            href: o.dataset.href, up: Number(o.dataset.up || 0), kind: o.dataset.kind || 'town', bare: norm(o.dataset.bare || ''), sub: o.dataset.sub || '' };
         });
       }
       return towns;
@@ -69,7 +71,7 @@ function setupTownBox() {
     };
     // Exact name first, then names that start with the typed text, then names that contain it.
     const find = (q) => {
-      const rank = (t) => (t.full === q || t.name === q ? 0 : t.name.startsWith(q) ? 1 : t.full.startsWith(q) ? 2 : t.name.includes(q) ? 3 : 9);
+      const rank = (t) => (t.full === q || t.name === q || (t.bare && t.bare === q) ? 0 : t.name.startsWith(q) || (t.bare && t.bare.startsWith(q)) ? 1 : t.full.startsWith(q) ? 2 : t.name.includes(q) ? 3 : 9);
       return allTowns().map((t) => [rank(t), t]).filter(([r]) => r < 9)
         .sort((a, b) => a[0] - b[0] || a[1].name.localeCompare(b[1].name)).slice(0, 8).map(([, t]) => t);
     };
@@ -107,14 +109,16 @@ function setupTownBox() {
         name.textContent = t.label;
         const st = document.createElement('span');
         st.className = 'st';
-        st.textContent = t.up ? `${t.state} · ${t.up} ${t.up === 1 ? 'meeting' : 'meetings'} coming up` : t.state;
+        const where = t.sub && !t.label.toLowerCase().includes(t.sub.toLowerCase()) ? `${t.state}, ${t.sub}` : t.state;
+        st.textContent = t.up ? `${where} · ${t.up} ${t.up === 1 ? 'meeting' : 'meetings'} coming up` : where;
         li.append(name, st);
         return li;
       }));
       box.hidden = false;
       input.setAttribute('aria-expanded', 'true');
       setActive(-1);
-      say(`${matches.length} ${matches.length === 1 ? 'town matches' : 'towns match'}. Use the arrow keys, then Enter.`);
+      const word = matches.some((t) => t.kind !== 'town' && t.kind !== 'city') ? 'place' : 'town';
+      say(`${matches.length} ${matches.length === 1 ? `${word} matches` : `${word}s match`}. Use the arrow keys, then Enter.`);
     };
     if (box) {
       input.removeAttribute('list');
@@ -150,18 +154,26 @@ function setupTownBox() {
       const q = norm(input.value);
       if (!q) {
         event.preventDefault();
-        fail('Type a town name, like Carver.');
+        fail(list.querySelector('option[data-kind="county"]') ? 'Type a town or county name, like Carver or Loudoun County.' : 'Type a town name, like Carver.');
         input.focus();
         return;
       }
       let hits = allTowns().filter((t) => t.full === q);
       if (!hits.length) hits = allTowns().filter((t) => `${t.name} ${t.st}` === q || `${t.name} ${stateName(t.st)}` === q);
       if (!hits.length) hits = allTowns().filter((t) => t.name === q);
+      if (!hits.length) hits = allTowns().filter((t) => t.bare && t.bare === q);
       if (hits.length > 1) {
-        // The same name in two states: ask, rather than guess.
+        // The same name in two states, or a county and a town of one name, or two townships told apart by their
+        // county: ask, rather than guess.
         event.preventDefault();
-        const states = hits.map((t) => stateName(t.st).replace(/\b\w/g, (c) => c.toUpperCase()));
-        fail(`${hits[0].label} is in ${states.slice(0, -1).join(', ')} and ${states[states.length - 1]}. Which one?`);
+        const cap = (s) => s.replace(/\b\w/g, (c) => c.toUpperCase());
+        const joinAnd = (xs) => (xs.length < 3 ? xs.join(' and ') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
+        const states = [...new Set(hits.map((t) => cap(stateName(t.st))))];
+        const kinds = [...new Set(hits.map((t) => t.kind))];
+        if (states.length > 1) fail(`${hits[0].label} is in ${joinAnd(states)}. Which one?`);
+        else if (kinds.length > 1) fail(`${cap(q)} is ${joinAnd(kinds.map((k) => (k === 'county' ? 'a county' : `a ${k}`)))} in ${states[0]}. Which one?`);
+        else if (hits.every((t) => t.sub)) fail(`${hits[0].label} is in ${joinAnd(hits.map((t) => t.sub))}, ${states[0]}. Which one?`);
+        else fail(`${hits[0].label} matches ${hits.length} places in ${states[0]}. Which one?`);
         open(hits);
         input.focus();
         return;
@@ -190,7 +202,7 @@ function setupTownBox() {
 }
 
 function stateName(code) {
-  return { ma: 'massachusetts', ny: 'new york', ri: 'rhode island' }[code] || code;
+  return { ma: 'massachusetts', ny: 'new york', ri: 'rhode island', va: 'virginia', md: 'maryland', mi: 'michigan', oh: 'ohio' }[code] || code;
 }
 
 // /towns: <form data-list-filter> filters every ul[data-filter-list] li by data-search and data-status.
@@ -959,7 +971,7 @@ function setupMeetingFilter() {
     for (const raw of v.split(',')) {
       const t = norm(raw);
       if (!t) continue;
-      if (/^(ma|ny|ri|ct|nh|vt|me)$/.test(t) && out.length) out[out.length - 1].state = t.toUpperCase();
+      if (/^(ma|ny|ri|ct|nh|vt|me|va|md|mi|oh)$/.test(t) && out.length) out[out.length - 1].state = t.toUpperCase();
       else out.push({ name: t, state: '' });
     }
     return out;
