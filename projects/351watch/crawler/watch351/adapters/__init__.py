@@ -20,3 +20,4 @@ from .generic_ny import GenericNYAdapter; from .escribe import EscribeAdapter; R
 from .agenda_page import AgendaPageAdapter; REGISTRY[AgendaPageAdapter.platform] = AgendaPageAdapter  # MI/VA test: general agenda-page reader (WordPress, Revize, CivicPlus documents, Municode Meetings, plain pages)
 from .cmm_compass import CMMCompassAdapter; REGISTRY[CMMCompassAdapter.platform] = CMMCompassAdapter  # Wave 1 NY: Compass Web Development CMM agenda embeds (Clymer, Ellery, Angelica)
 from .onbase import OnBaseAgendaAdapter; REGISTRY[OnBaseAgendaAdapter.platform] = OnBaseAgendaAdapter  # VA/MD wave: Hyland OnBase "Agenda Online" portals (Arlington County)
+from .munibit import MunibitAdapter; REGISTRY[MunibitAdapter.platform] = MunibitAdapter  # NY follow-up 2026-11: Munibit CMS document module (Perth, Spafford, Boston NY); meeting list from its JSON, files not yet served to the reader

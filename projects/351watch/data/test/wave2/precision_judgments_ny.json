@@ -1,0 +1,429 @@
+{
+ "judged": "2026-11-03T15:31:56+00:00",
+ "definition": "strict, as in test_mi_va.md: a real agenda item, ordinance text or staff or public record about the topic in the land-use or siting sense, and the match is that topic",
+ "n": 40,
+ "true_positives": 38,
+ "precision": 0.95,
+ "precision_if_borderline_count_against": 0.875,
+ "items": [
+  {
+   "id": "7908b42975d2",
+   "town": "Alfred (village)",
+   "board": "Allegany County Planning Board",
+   "topics": [
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "705a80dad7b0",
+   "town": "Amity",
+   "board": "Allegany County Planning Board",
+   "topics": [
+    "battery_storage",
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "acd60c4208ed",
+   "town": "Athens",
+   "board": "Greene County Planning Board",
+   "topics": [
+    "zoning_amendment"
+   ],
+   "judgment": "fp",
+   "note": "snippet is the agenda header; the matched item is not visible, counted against us"
+  },
+  {
+   "id": "408cfec13657",
+   "town": "Bergen",
+   "board": "Town Board Agendas \u2192",
+   "topics": [
+    "battery_storage",
+    "data_center"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "449f04b0d098",
+   "town": "Bergen",
+   "board": "Town Board Agendas \u2192",
+   "topics": [
+    "battery_storage"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "c5c82bdf1dd6",
+   "town": "Bergen",
+   "board": "Town Board Agendas \u2192",
+   "topics": [
+    "data_center"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "e75f7a81b4df",
+   "town": "Bergen",
+   "board": "Town Board Agendas \u2192",
+   "topics": [
+    "data_center"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "36b2a423772f",
+   "town": "Elba",
+   "board": "Town Board Agendas & Minutes",
+   "topics": [
+    "solar"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "76dfd3d2cb9a",
+   "town": "Elba",
+   "board": "Town Board Agendas & Minutes",
+   "topics": [
+    "solar"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "7b5de2ef453f",
+   "town": "Elba",
+   "board": "Town Board Agendas & Minutes",
+   "topics": [
+    "battery_storage",
+    "solar",
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "70a3535a46f2",
+   "town": "Fort Ann",
+   "board": "Town Board Menu",
+   "topics": [
+    "battery_storage"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "3611271d8487",
+   "town": "Frankfort",
+   "board": "Select Board / Council",
+   "topics": [
+    "moratorium",
+    "data_center"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "1347460f7f81",
+   "town": "Greig",
+   "board": "Lewis County Planning Board",
+   "topics": [
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "42b571b8e68b",
+   "town": "Lake George",
+   "board": "Town Board",
+   "topics": [
+    "battery_storage"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "d2a4d0748050",
+   "town": "Lake George",
+   "board": "Town Board",
+   "topics": [
+    "battery_storage"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "d427bcacecb6",
+   "town": "Lake George",
+   "board": "Town Board",
+   "topics": [
+    "battery_storage",
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "28747d1eac00",
+   "town": "Lewis County",
+   "board": "Lewis County Planning Board",
+   "topics": [
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "6bfed117eca2",
+   "town": "Lewis County",
+   "board": "Lewis County Planning Board",
+   "topics": [
+    "wireless_telecom"
+   ],
+   "judgment": "tp",
+   "note": "zoning-law summary naming the telecommunication towers section"
+  },
+  {
+   "id": "fd38009b1661",
+   "town": "Livonia",
+   "board": "Livingston County Planning Board",
+   "topics": [
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": "a moratorium on home occupations: a land-use moratorium, not energy"
+  },
+  {
+   "id": "44519942abb8",
+   "town": "New Hudson",
+   "board": "Allegany County Planning Board",
+   "topics": [
+    "battery_storage",
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "84d67a201a3b",
+   "town": "New Hudson",
+   "board": "Allegany County Planning Board",
+   "topics": [
+    "moratorium",
+    "data_center"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "8923d4e20a7c",
+   "town": "New Hudson",
+   "board": "Allegany County Planning Board",
+   "topics": [
+    "solar",
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "f22b8d2190a3",
+   "town": "New Hudson",
+   "board": "Allegany County Planning Board",
+   "topics": [
+    "battery_storage",
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "1098421946b3",
+   "town": "North Elba",
+   "board": "Select Board / Council",
+   "topics": [
+    "solar",
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "14c0f8d6cf5c",
+   "town": "North Elba",
+   "board": "Select Board / Council",
+   "topics": [
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "5c6e3c27f67c",
+   "town": "North Elba",
+   "board": "Select Board / Council",
+   "topics": [
+    "battery_storage",
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "73c3640e5e8a",
+   "town": "North Elba",
+   "board": "Select Board / Council",
+   "topics": [
+    "battery_storage",
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "bad9b0af59de",
+   "town": "North Elba",
+   "board": "Select Board / Council",
+   "topics": [
+    "solar"
+   ],
+   "judgment": "fp",
+   "note": "a BESS law's definition names solar as an energy source; the item is about battery storage, so the solar tag is a label fault"
+  },
+  {
+   "id": "6774133e16c1",
+   "town": "Orleans County",
+   "board": "Orleans County Planning Board",
+   "topics": [
+    "wireless_telecom"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "5d80165e42c6",
+   "town": "Oswego",
+   "board": "Common Council",
+   "topics": [
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "c974e79fa267",
+   "town": "Poland",
+   "board": "Town Board",
+   "topics": [
+    "solar"
+   ],
+   "judgment": "tp",
+   "note": "'solar project' under Old Business, nature of the project not stated"
+  },
+  {
+   "id": "5317aa514d62",
+   "town": "Port Leyden (village)",
+   "board": "Lewis County Planning Board",
+   "topics": [
+    "moratorium",
+    "data_center"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "534a5de66ddc",
+   "town": "Port Leyden (village)",
+   "board": "Lewis County Planning Board",
+   "topics": [
+    "moratorium"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "e6e35d3b3223",
+   "town": "Ticonderoga",
+   "board": "Select Board / Council",
+   "topics": [
+    "battery_storage"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "ef7ea9d18412",
+   "town": "Ticonderoga",
+   "board": "Select Board / Council",
+   "topics": [
+    "battery_storage"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "3b3f0ce9d705",
+   "town": "Walworth",
+   "board": "Planning Board",
+   "topics": [
+    "battery_storage",
+    "solar"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "52cb229f96fd",
+   "town": "Walworth",
+   "board": "Planning Board",
+   "topics": [
+    "solar"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "b4c89bedcae5",
+   "town": "Walworth",
+   "board": "Planning Board",
+   "topics": [
+    "battery_storage",
+    "solar"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "fb1adc1710c0",
+   "town": "Willing",
+   "board": "Town Board",
+   "topics": [
+    "moratorium",
+    "data_center"
+   ],
+   "judgment": "tp",
+   "note": ""
+  },
+  {
+   "id": "a29a04b42a3c",
+   "town": "York",
+   "board": "Livingston County Planning Board",
+   "topics": [
+    "solar",
+    "moratorium",
+    "data_center"
+   ],
+   "judgment": "tp",
+   "note": ""
+  }
+ ]
+}

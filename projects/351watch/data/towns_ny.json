@@ -1,6 +1,6 @@
 {
- "_about": "351 Watch New York pilot: agenda platform and crawlable listing per tracked board, or the precise reason a town is not automated. Same per-town schema as towns_ma_all.json plus state, agenda_platform and why the town was chosen (selection_reason / selection_source_url). Built by `python3 experiments/ny_pilot.py discover` (watch351.discover_census with NY board names) and hand curation (CURATED in experiments/ny_pilot.py). Listings with \"platform\": \"generic_ny\" or \"escribe\" use the adapters added for this pilot. Wave 1 promotion (2026-11-02): 22 places moved in from data/test/wave1/config/towns_ny.json by `python3 experiments/wave2_test.py promote --wave 1`.",
- "generated": "2026-11-02T18:58:12+00:00",
+ "_about": "351 Watch New York pilot: agenda platform and crawlable listing per tracked board, or the precise reason a town is not automated. Same per-town schema as towns_ma_all.json plus state, agenda_platform and why the town was chosen (selection_reason / selection_source_url). Built by `python3 experiments/ny_pilot.py discover` (watch351.discover_census with NY board names) and hand curation (CURATED in experiments/ny_pilot.py). Listings with \"platform\": \"generic_ny\" or \"escribe\" use the adapters added for this pilot. Wave 1 promotion (2026-11-02): 22 places moved in from data/test/wave1/config/towns_ny.json by `python3 experiments/wave2_test.py promote --wave 1`. Follow-up promotion (2026-11-03): Lansing, Southampton and Pound Ridge, plus the Wayne County and Schoharie County planning boards, from data/test/ny_followup/config/towns_ny.json (experiments/ny_followup.py); the document crawl-delay cap rose to 20 s the same day. Wave 2 promotion (2026-11-03): 26 places moved in from data/test/wave2/config/towns_ny.json by `python3 experiments/wave2_test.py promote --wave 2`; county rows (kind county, attribute_townships, county_body) are county planning boards read for GML 239-m referrals, and places with coverage via_county are read only through them. Wave 2 promotion (2026-11-03): 26 towns by `promote --wave 2`, plus the six county planning boards read in the county run (Allegany, Chemung, Greene, Lewis, Livingston, Orleans) by hand.",
+ "generated": "2026-11-03T15:32:27+00:00",
  "state": "NY",
  "boards_tracked": [
   "planning_board",
@@ -15,8 +15,8 @@
   "Conservation Advisory Council / Conservation Board": "conservation_commission"
  },
  "evidence_rule": "discovery: board automated only if its listing shows >=1 agenda dated in [today-120d, today+120d]; curated listings were checked by hand",
- "count": 79,
- "automated": 55,
+ "count": 114,
+ "automated": 92,
  "towns": [
   {
    "town": "Southold",
@@ -544,10 +544,10 @@
    "legislative_body": "Town Board",
    "has_town_meeting": false,
    "status": "not_automated",
-   "reason_code": "crawl_delay_exceeds_cap",
-   "reason": "huntingtonny.gov robots.txt sets Crawl-delay: 15 for all agents; 351WatchBot skips hosts asking for more than 10 s. Automatable at 1 request per 15 s if the cap is raised.",
+   "reason_code": "vendor_blocked",
+   "reason": "The town site answers at its 15 s crawl delay (honoured since 2026-11-03), but all agendas are on huntingtonny.granicus.com, whose robots.txt disallows AgendaAheadBot; the town's /meetings page lists no documents.",
    "automated": false,
-   "platform": null,
+   "platform": "granicus",
    "listings": [],
    "boards_found": [],
    "boards_missing": [
@@ -563,7 +563,7 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-10-10T22:22:31+00:00",
-   "agenda_platform": "unknown (site not fetched)",
+   "agenda_platform": "Granicus ViewPublisher",
    "curated": true,
    "selection_reason": "BESS moratorium ACTIVE through 2026-06-30 (Carina)",
    "selection_source_url": "https://carina.energy/bess-moratoriums/",
@@ -590,15 +590,51 @@
    ],
    "platform": "escribe",
    "warrants_found": false,
-   "status": "not_automated",
-   "reason_code": "vendor_blocked",
-   "reason": "eSCRIBE agenda downloads return a browser-verification challenge; we don't read around it (the HTML agenda view is not used).",
-   "automated": false,
-   "listings": [],
-   "boards_found": [],
-   "boards_missing": [
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "escribe",
+     "url": "https://pub-southamptonny.escribemeetings.com/",
+     "meeting_type": "^Town Board (Regular Meeting|Special Meeting|Work Session|Special Work Session|Organizational Meeting)$",
+     "format": "html"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "platform": "escribe",
+     "url": "https://pub-southamptonny.escribemeetings.com/",
+     "meeting_type": "^Planning Board",
+     "format": "html"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "platform": "escribe",
+     "url": "https://pub-southamptonny.escribemeetings.com/",
+     "meeting_type": "^Zoning Board of Appeals$",
+     "format": "html"
+    },
+    {
+     "board": "Conservation Board",
+     "board_key": "conservation_commission",
+     "platform": "escribe",
+     "url": "https://pub-southamptonny.escribemeetings.com/",
+     "meeting_type": "^Conservation Board$",
+     "format": "html"
+    }
+   ],
+   "boards_found": [
+    "conservation_commission",
+    "planning_board",
+    "select_board",
     "zoning_board_of_appeals"
    ],
+   "boards_missing": [],
    "board_evidence": {},
    "board_stale": {
     "planning_board": {
@@ -646,7 +682,7 @@
      "urls": [
       "https://pub-southamptonny.escribemeetings.com"
      ],
-     "status": "no_adapter",
+     "status": "supported (HTML view; the PDF download is challenged and never requested)",
      "detail": "escribe pages are reachable; no 351 Watch adapter yet"
     }
    },
@@ -669,9 +705,15 @@
    "curated": true,
    "selection_reason": "BESS moratorium ACTIVE through 2026-06-30 (Carina)",
    "selection_source_url": "https://carina.energy/bess-moratoriums/",
-   "coverage": "none",
+   "coverage": "direct",
    "coverage_county_body": null,
-   "coverage_note": null
+   "followup_source": "data/towns_ny.json",
+   "earlier_reason_code": "vendor_blocked",
+   "earlier_reason": "eSCRIBE agenda downloads return a browser-verification challenge; we don't read around it (the HTML agenda view is not used).",
+   "curation_note": "eSCRIBE portal, HTML agenda view (format html). Agendas appear on the portal a few days before each meeting; past meetings load by POST and are not read. The PDF download (FileStream.ashx) answers a browser challenge and is never requested. The Trustees and the Architectural Review Board are not tracked boards.",
+   "curated_at": "2026-11-03T15:19:16+00:00",
+   "promoted_from": "ny_followup",
+   "promoted_at": "2026-11-03"
   },
   {
    "town": "Babylon",
@@ -3299,13 +3341,28 @@
    "final_url": "https://www.perthny.gov/",
    "cms": [],
    "platforms": [],
-   "platform": null,
+   "platform": "munibit",
    "warrants_found": false,
    "status": "not_automated",
-   "reason_code": "js_only",
-   "reason": "the Agendas & Minutes page is a JavaScript-built document module (page sections are filled client-side from JSON; the server HTML has no agenda links or dates)",
+   "reason_code": "vendor_blocked",
+   "reason": "The Munibit module's JSON lists the agendas (adapters/munibit.py reads it), but the files are served only to the site's own viewer: the download link answers 'Access denied' to AgendaAheadBot and the file address returns the viewer page.",
    "automated": false,
-   "listings": [],
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "munibit",
+     "url": "https://www.perthny.gov/agendasandminutes",
+     "files_readable": false
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "platform": "munibit",
+     "url": "https://www.perthny.gov/agendasandminutes",
+     "files_readable": false
+    }
+   ],
    "boards_found": [],
    "boards_missing": [
     "planning_board",
@@ -3320,7 +3377,7 @@
    "notes": [],
    "pages_fetched": 4,
    "discovered_at": "2026-10-10T23:51:47+00:00",
-   "agenda_platform": "JavaScript CMS (agendasandminutes module)",
+   "agenda_platform": "Munibit CMS document module",
    "curated": true,
    "selection_reason": "BESS moratorium ACTIVE through 2027-01-21 (Carina); Fulton County Planning Board 239 review of the Perth renewable-energy/BESS moratorium, 2026-01-20",
    "selection_source_url": "https://www.fultoncountyny.gov/sites/default/files/_planning/PB-2026-01-20.pdf",
@@ -3719,7 +3776,7 @@
   {
    "town": "Cicero",
    "state": "NY",
-   "website": "https://ciceronewyork.net",
+   "website": "https://cicerony.gov/",
    "county": "Onondaga",
    "kind": "town",
    "pop_2020": null,
@@ -3727,8 +3784,8 @@
    "legislative_body": "Town Board",
    "has_town_meeting": false,
    "status": "not_automated",
-   "reason_code": "crawl_delay_exceeds_cap",
-   "reason": "ciceronewyork.net robots.txt sets Crawl-delay: 20 for all agents; 351WatchBot skips hosts asking for more than 10 s.",
+   "reason_code": "documents_blocked",
+   "reason": "cicerony.gov (ciceronewyork.net redirects there) asks a 20 s crawl delay, now honoured, but its robots.txt disallows /wp-content/uploads/, where every agenda PDF on /meetings/ is kept.",
    "automated": false,
    "platform": null,
    "listings": [],
@@ -3746,13 +3803,14 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-10-10T22:23:14+00:00",
-   "agenda_platform": "WordPress (site not fetched)",
+   "agenda_platform": "WordPress",
    "curated": true,
    "selection_reason": "Local Law 2 of 2026: moratorium on large-scale data centers / AI computing / crypto mining, hearing 2026-07-22",
    "selection_source_url": "https://ciceronewyork.net/?p=28237",
    "coverage": "none",
    "coverage_county_body": null,
-   "coverage_note": null
+   "coverage_note": null,
+   "final_url": "https://cicerony.gov/"
   },
   {
    "town": "Camillus",
@@ -3938,13 +3996,28 @@
    "final_url": "https://www.townofspaffordny.gov/",
    "cms": [],
    "platforms": [],
-   "platform": null,
+   "platform": "munibit",
    "warrants_found": false,
    "status": "not_automated",
-   "reason_code": "js_only",
-   "reason": "the Agendas & Minutes page is a JavaScript-built document module (page sections are filled client-side from JSON; the server HTML has no agenda links or dates)",
+   "reason_code": "vendor_blocked",
+   "reason": "The Munibit module's JSON lists the agendas (adapters/munibit.py reads it), but the files are served only to the site's own viewer: the download link answers 'Access denied' to AgendaAheadBot and the file address returns the viewer page.",
    "automated": false,
-   "listings": [],
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "munibit",
+     "url": "https://www.townofspaffordny.gov/agendasandminutes",
+     "files_readable": false
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "platform": "munibit",
+     "url": "https://www.townofspaffordny.gov/agendasandminutes",
+     "files_readable": false
+    }
+   ],
    "boards_found": [],
    "boards_missing": [
     "planning_board",
@@ -3984,7 +4057,7 @@
    "notes": [],
    "pages_fetched": 6,
    "discovered_at": "2026-10-10T23:51:49+00:00",
-   "agenda_platform": "JavaScript CMS (agendasandminutes module)",
+   "agenda_platform": "Munibit CMS document module",
    "curated": true,
    "selection_reason": "BESS moratorium ACTIVE through 2027-06-09 (Carina)",
    "selection_source_url": "https://carina.energy/bess-moratoriums/",
@@ -4002,33 +4075,107 @@
    "pop_2024_est": null,
    "legislative_body": "Town Board",
    "has_town_meeting": false,
-   "status": "not_automated",
-   "reason_code": "crawl_delay_exceeds_cap",
-   "reason": "lansingtownny.gov robots.txt sets Crawl-delay: 15 for all agents; 351WatchBot skips hosts asking for more than 10 s. Automatable at 1 request per 15 s if the cap is raised.",
-   "automated": false,
-   "platform": null,
-   "listings": [],
-   "boards_found": [],
-   "boards_missing": [
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "platform": "civicplus",
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://www.lansingtownny.gov/AgendaCenter/Town-Board-2",
+     "linked_agenda": true
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "category_id": "5",
+     "url": "https://www.lansingtownny.gov/AgendaCenter/Planning-Board-5",
+     "linked_agenda": true
+    }
+   ],
+   "boards_found": [
     "planning_board",
-    "zoning_board_of_appeals",
-    "conservation_commission",
     "select_board"
    ],
-   "board_evidence": {},
-   "board_stale": {},
-   "vendors": {},
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "civicplus",
+     "url": "https://www.lansingtownny.gov/AgendaCenter/Planning-Board-5",
+     "n_recent": 1,
+     "latest": "2026-11-09"
+    },
+    "select_board": {
+     "board": "Town Board",
+     "source": "civicplus",
+     "url": "https://www.lansingtownny.gov/AgendaCenter/Town-Board-2",
+     "n_recent": 4,
+     "latest": "2026-11-04"
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://www.lansingtownny.gov/1222/Zoning-Board-of-Appeals",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {
+    "laserfiche": {
+     "urls": [
+      "https://lfweb.tompkins-co.org/WebLink/Browse.aspx?id=43452&amp;dbid=7&amp;repo=Lansing",
+      "https://lfweb.tompkins-co.org/WebLink/Browse.aspx?id=44457&amp;dbid=7&amp;repo=Lansing",
+      "https://lfweb.tompkins-co.org/WebLink/Browse.aspx?id=53126&amp;dbid=7&amp;repo=Lansing",
+      "https://lfweb.tompkins-co.org/WebLink/Browse.aspx?startid=45541&amp;dbid=7&amp;cr=1"
+     ],
+     "status": "document_store"
+    }
+   },
    "robots_blocked": [],
-   "notes": [],
-   "pages_fetched": 1,
-   "discovered_at": "2026-10-10T22:23:18+00:00",
+   "notes": [
+    "AgendaCenter: 3 categories, 2 tracked"
+   ],
+   "pages_fetched": 15,
+   "discovered_at": "2026-11-03T15:06:47+00:00",
    "agenda_platform": "unknown (site not fetched)",
    "curated": true,
    "selection_reason": "AI data center proposed at the former Cayuga coal plant; town-wide zoning moratorium debate",
    "selection_source_url": "https://www.wskg.org/regional-news/2025-10-15/lansing-town-board-to-discuss-zoning-moratorium-amid-controversy-over-data-center",
-   "coverage": "none",
+   "coverage": "direct",
    "coverage_county_body": null,
-   "coverage_note": null
+   "followup_source": "data/towns_ny.json",
+   "earlier_reason_code": "crawl_delay_exceeds_cap",
+   "earlier_reason": "lansingtownny.gov robots.txt sets Crawl-delay: 15 for all agents; 351WatchBot skips hosts asking for more than 10 s. Automatable at 1 request per 15 s if the cap is raised.",
+   "final_url": "https://www.lansingtownny.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "website_candidates": [
+    "https://www.lansingtownny.gov"
+   ],
+   "followup_discovered_at": "2026-11-03T15:06:47+00:00",
+   "curation_note": "CivicPlus AgendaCenter whose agenda PDFs are cover sheets linking the real agenda and packet in the DocumentCenter; listings carry linked_agenda so the linked agenda file is read (2026-11-03).",
+   "curated_at": "2026-11-03T15:19:16+00:00",
+   "promoted_from": "ny_followup",
+   "promoted_at": "2026-11-03",
+   "note": "robots.txt asks 10 s since 2026-10-20. The AgendaCenter agenda files are cover sheets; linked_agenda reads the DocumentCenter agenda they link. ZBA agendas are not posted; older records are in a Laserfiche WebLink repository (not read)."
   },
   {
    "town": "Geneva",
@@ -4645,13 +4792,35 @@
    "final_url": "https://www.bostonny.gov/",
    "cms": [],
    "platforms": [],
-   "platform": null,
+   "platform": "munibit",
    "warrants_found": false,
    "status": "not_automated",
-   "reason_code": "js_only",
-   "reason": "the Agendas & Minutes page is a JavaScript-built document module (page sections are filled client-side from JSON; the server HTML has no agenda links or dates)",
+   "reason_code": "vendor_blocked",
+   "reason": "The Munibit module's JSON lists the agendas (adapters/munibit.py reads it), but the files are served only to the site's own viewer: the download link answers 'Access denied' to AgendaAheadBot and the file address returns the viewer page.",
    "automated": false,
-   "listings": [],
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "munibit",
+     "url": "https://www.bostonny.gov/townboard",
+     "files_readable": false
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "platform": "munibit",
+     "url": "https://www.bostonny.gov/planningboard",
+     "files_readable": false
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "platform": "munibit",
+     "url": "https://www.bostonny.gov/ZBA",
+     "files_readable": false
+    }
+   ],
    "boards_found": [],
    "boards_missing": [
     "planning_board",
@@ -4666,7 +4835,7 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-10-10T22:23:33+00:00",
-   "agenda_platform": "JavaScript CMS (agendasandminutes module)",
+   "agenda_platform": "Munibit CMS document module",
    "curated": true,
    "selection_reason": "BESS moratorium ACTIVE through 2026-12-03 (Carina)",
    "selection_source_url": "https://carina.energy/bess-moratoriums/",
@@ -6933,6 +7102,3657 @@
    "coverage": "direct",
    "promoted_from": "wave1",
    "promoted_at": "2026-11-02"
+  },
+  {
+   "town": "Pound Ridge",
+   "state": "NY",
+   "county": "Westchester",
+   "kind": "town",
+   "website": "https://www.townofpoundridge.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_law",
+   "selection_reason": "BESS moratorium (all BESS) LIFTED 2026-02-28",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.townofpoundridge.com/",
+     "final_url": "https://www.townofpoundridge.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://www.townofpoundridge.gov/",
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "coverage": "direct",
+   "coverage_county_body": null,
+   "followup_source": "data/test/wave2/config/towns_ny.json",
+   "earlier_reason_code": "documents_blocked",
+   "earlier_reason": "documents on www.townofpoundridge.gov need a crawl delay above the 10 s document cap",
+   "cms": [
+    "municode_web",
+    "drupal"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "listings": [
+    {
+     "board": "Town Board Meeting (courtroom)",
+     "board_key": "select_board",
+     "url": "https://www.townofpoundridge.gov/boardsandcommissions-tb/town-board-meeting-courtroom-60",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Town Board Meeting (courtroom)",
+     "source": "agenda_page",
+     "url": "https://www.townofpoundridge.gov/boardsandcommissions-tb/town-board-meeting-courtroom-60",
+     "n_recent": 3,
+     "latest": "2026-11-04",
+     "kinds": [
+      "agenda",
+      "notice",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-04",
+       "url": "https://www.townofpoundridge.gov/sites/default/files/fileattachments/town_board/meeting/41258/11.4.26_tbm_agenda.pdf",
+       "title": "11.4.26_tbm_agenda.pdf"
+      },
+      {
+       "date": "2026-11-04",
+       "url": "https://www.townofpoundridge.gov/sites/default/files/fileattachments/town_board/meeting/packets/41258/backup_for_11.4.26_tbm.pdf",
+       "title": "backup_for_11.4.26_tbm.pdf"
+      },
+      {
+       "date": "2026-11-04",
+       "url": "https://www.townofpoundridge.gov/sites/default/files/fileattachments/town_board/meeting/41258/proposed_lls_on_exemptions.pdf",
+       "title": "Notice of Public Hearing on Changes to Real Property Tax Exemptions"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning Board meeting",
+     "source": "agenda_page",
+     "url": "https://www.townofpoundridge.gov/boardsandcommissions-pb/planning-board-meeting-164",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals Meeting",
+     "source": "agenda_page",
+     "url": "https://www.townofpoundridge.gov/boardsandcommissions-zb/zoning-board-appeals-meeting-44",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 31,
+   "discovered_at": "2026-11-03T15:07:01+00:00",
+   "website_candidates": [
+    "https://www.townofpoundridge.gov/",
+    "https://www.townofpoundridge.com/"
+   ],
+   "followup_discovered_at": "2026-11-03T15:07:01+00:00",
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03",
+   "note": "robots.txt asks 15 s, honoured since the document cap rose to 20 s on 2026-11-03; Planning Board and ZBA pages list no dated agendas."
+  },
+  {
+   "town": "Wayne County",
+   "state": "NY",
+   "county": "Wayne",
+   "kind": "county",
+   "website": "https://www.waynecountyny.gov/",
+   "website_source": "polite probe from the sandbox, 2026-11-03 (wave2_test.WEBSITES)",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals (Walworth, Rose and other Wayne places not read directly)",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "followup_source": "data/test/wave2/targets_ny.json",
+   "final_url": "https://www.waynecountyny.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Wayne County Planning Board",
+     "board_key": "planning_board",
+     "category_id": "7",
+     "url": "https://www.waynecountyny.gov/AgendaCenter/Wayne-County-Planning-Board-7"
+    }
+   ],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [
+    "planning_board"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Wayne County Planning Board",
+     "source": "civicplus",
+     "url": "https://www.waynecountyny.gov/AgendaCenter/Wayne-County-Planning-Board-7",
+     "n_recent": 4,
+     "latest": "2026-10-28"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 17 categories, 1 tracked"
+   ],
+   "pages_fetched": 3,
+   "discovered_at": "2026-11-03T15:08:56+00:00",
+   "website_candidates": [
+    "https://www.waynecountyny.gov/",
+    "https://web.co.wayne.ny.us/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Wayne County Planning Board",
+   "followup_discovered_at": "2026-11-03T15:08:56+00:00",
+   "coverage": "direct",
+   "coverage_county_body": null,
+   "coverage_note": null,
+   "promoted_from": "ny_followup",
+   "promoted_at": "2026-11-03",
+   "legislative_body": "Board of Supervisors",
+   "agenda_platform": "CivicPlus AgendaCenter"
+  },
+  {
+   "town": "Schoharie County",
+   "state": "NY",
+   "county": "Schoharie",
+   "kind": "county",
+   "website": "https://www.schohariecounty-ny.gov/",
+   "website_source": "polite probe from the sandbox, 2026-11-03 (wave2_test.WEBSITES)",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning commission (first Monday of the month): GML 239-m referrals from Carlisle and the other Schoharie places not read directly",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "followup_source": "data/test/wave2/targets_ny.json",
+   "final_url": "https://www.schohariecounty-ny.gov/",
+   "cms": [
+    "revize"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Schoharie County Planning Commission",
+     "board_key": "planning_board",
+     "platform": "agenda_page",
+     "url": "https://schohariecounty-ny.gov/departments/community_development/planning_zoning/planning_commission.php",
+     "strip_doc_query": true
+    }
+   ],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [
+    "planning_board"
+   ],
+   "boards_missing": [],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 9,
+   "discovered_at": "2026-11-03T15:07:56+00:00",
+   "website_candidates": [
+    "https://www.schohariecounty-ny.gov/",
+    "https://schohariecounty-ny.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Schoharie County Planning Commission",
+   "followup_discovered_at": "2026-11-03T15:08:01+00:00",
+   "curation_note": "Planning Commission page on the county's Revize site: dated agendas (first Monday of the month) and the referral documents of each meeting; the general agenda-page reader takes the agendas. Found by hand on 2026-11-03 after discovery read the department pages only.",
+   "curated": true,
+   "curated_at": "2026-11-03T15:19:16+00:00",
+   "coverage": "direct",
+   "coverage_county_body": null,
+   "coverage_note": null,
+   "promoted_from": "ny_followup",
+   "promoted_at": "2026-11-03",
+   "legislative_body": "Board of Supervisors",
+   "agenda_platform": "town website (general agenda-page reader)"
+  },
+  {
+   "town": "Oswego",
+   "state": "NY",
+   "county": "Oswego",
+   "kind": "city",
+   "website": "https://www.oswegony.gov/",
+   "website_source": "document or Wikipedia infobox, 2026-11-02",
+   "selection_group": "bess_moratorium",
+   "selection_reason": "BESS moratorium ACTIVE (Carina: 'Oswego City'), no end date listed",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "final_url": "https://www.oswegony.gov/",
+   "cms": [
+    "revize"
+   ],
+   "tenant": "oswegony",
+   "platforms": [
+    "civicclerk"
+   ],
+   "platform": "civicclerk",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Common Council",
+     "board_key": "select_board",
+     "url": "https://oswegony.portal.civicclerk.com"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Common Council",
+     "source": "civicclerk",
+     "url": "https://oswegony.portal.civicclerk.com",
+     "n_recent": 8,
+     "latest": "2026-10-26"
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://oswegony.portal.civicclerk.com/"
+     ],
+     "tenant": "oswegony",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 13,
+   "discovered_at": "2026-11-02T19:09:45+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "CivicClerk",
+   "legislative_body": "Common Council",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Jay",
+   "state": "NY",
+   "county": "Essex",
+   "kind": "town",
+   "website": "https://www.townofjayny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_moratorium",
+   "selection_reason": "BESS moratorium ACTIVE, listed end 2026-06-18: extension or law due",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.townofjayny.gov/",
+     "final_url": "https://www.townofjayny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://www.townofjayny.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.townofjayny.gov/meeting-minutes/",
+     "platform": "agenda_page",
+     "board_pattern": "town\\s+board|\\bTB\\b|board\\s+of\\s+trustees|village\\s+board|\\btrustees\\b|city\\s+council|common\\s+council|town\\s+council|\\bboard\\s+(?:regular\\s+|special\\s+)?meeting|\\bregular\\s+(?:town\\s+)?board|\\bboard\\s+agenda|^\\s*TB\\b|work(?:shop)?\\s+session",
+     "board_exclude": "library\\s+board|parks?\\s+(?:and|&)\\s+rec|recreation\\s+(?:board|commission)|cemetery|board\\s+of\\s+assessment|assessment\\s+review|school\\s+board|board\\s+of\\s+education|ethics|committee|housing\\s+authority|\\bIDA\\b|fire\\s+district|planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.townofjayny.gov/meeting-minutes/",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+board|planning\\s+commission|\\bPB\\b|planning\\b",
+     "board_exclude": "county\\s+planning|regional|committee|comprehensive\\s+plan|town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.townofjayny.gov/meeting-minutes/",
+     "n_recent": 3,
+     "latest": "2026-08-12",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-08-12",
+       "url": "https://www.townofjayny.gov/wp-content/uploads/2026/08/Town-of-Jay-Planning-Board-Public-Hearing-Agenda-Ignatuk-08_12_2026-1.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-08-12",
+       "url": "https://www.townofjayny.gov/wp-content/uploads/2026/08/Town-of-Jay-Planning-Board-Public-Hearing-Agenda-Carey-08_12_2026-1.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-08-12",
+       "url": "https://www.townofjayny.gov/wp-content/uploads/2026/08/Town-of-Jay-Planning-Board-Regular-Mtg-Agenda-08122026-1.pdf",
+       "title": "Agenda"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.townofjayny.gov/meeting-minutes/",
+     "n_recent": 8,
+     "latest": "2026-10-27",
+     "kinds": [
+      "agenda",
+      "notice"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-22",
+       "url": "https://www.townofjayny.gov/wp-content/uploads/2026/07/072226-Au-Sable-Forks-Water-District-Public-Hearing.pdf",
+       "title": "AFWD Public Hearing Agenda"
+      },
+      {
+       "date": "2026-07-22",
+       "url": "https://www.townofjayny.gov/wp-content/uploads/2026/07/072226-Jay-Water-District-Public-Hearing.pdf",
+       "title": "JWD Public Hearing Agend"
+      },
+      {
+       "date": "2026-07-22",
+       "url": "https://www.townofjayny.gov/wp-content/uploads/2026/07/072226-Upper-Jay-Water-District-Public-Hearing.pdf",
+       "title": "UJWD Public Hearing Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 9,
+   "discovered_at": "2026-11-02T19:09:08+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Southport",
+   "state": "NY",
+   "county": "Chemung",
+   "kind": "town",
+   "website": "https://townofsouthportny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_moratorium",
+   "selection_reason": "BESS moratorium ACTIVE, listed end 2026-08-31: extension or law due",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.townofsouthportny.gov/",
+     "final_url": "https://townofsouthportny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://townofsouthportny.gov/",
+   "cms": [],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://townofsouthportny.gov/post.php?pid=4",
+     "platform": "agenda_page",
+     "board_pattern": "town\\s+board|\\bTB\\b|board\\s+of\\s+trustees|village\\s+board|\\btrustees\\b|city\\s+council|common\\s+council|town\\s+council|\\bboard\\s+(?:regular\\s+|special\\s+)?meeting|\\bregular\\s+(?:town\\s+)?board|\\bboard\\s+agenda|^\\s*TB\\b|work(?:shop)?\\s+session",
+     "board_exclude": "library\\s+board|parks?\\s+(?:and|&)\\s+rec|recreation\\s+(?:board|commission)|cemetery|board\\s+of\\s+assessment|assessment\\s+review|school\\s+board|board\\s+of\\s+education|ethics|committee|housing\\s+authority|\\bIDA\\b|fire\\s+district|planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://townofsouthportny.gov/post.php?pid=4",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+board|planning\\s+commission|\\bPB\\b|planning\\b",
+     "board_exclude": "county\\s+planning|regional|committee|comprehensive\\s+plan|town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://townofsouthportny.gov/post.php?pid=4",
+     "n_recent": 1,
+     "latest": "2026-11-02",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-02",
+       "url": "https://townofsouthportny.gov/post/_docs/AgendaPlanningBoard2026_11_02.pdf",
+       "title": "Nov 2 2026"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://townofsouthportny.gov/post.php?pid=4",
+     "n_recent": 1,
+     "latest": "2026-11-04",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-04",
+       "url": "https://townofsouthportny.gov/post/_docs/AgendaTownBoard2026_11_04Preli.pdf",
+       "title": "Nov 4 2026 Prelim Bdgt"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://townofsouthportny.gov/post.php?pid=23",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 16,
+   "discovered_at": "2026-11-02T19:09:00+00:00",
+   "coverage": "direct",
+   "coverage_county_body": "Chemung County Planning Board",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Poland",
+   "state": "NY",
+   "county": "Chautauqua",
+   "kind": "town",
+   "website": "https://www.townofpolandny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_moratorium",
+   "selection_reason": "BESS moratorium ACTIVE, listed end 2026-08-31: extension or law due",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.townofpolandny.gov/",
+     "final_url": "https://www.townofpolandny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://www.townofpolandny.gov/",
+   "cms": [
+    "drupal"
+   ],
+   "platform": "cmm_compass",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "cmm_compass",
+     "url": "https://cmm.compassweb.dev/embeds/46/agendas",
+     "board_rules": [
+      [
+       "planning",
+       "Planning Board",
+       "planning_board"
+      ],
+      [
+       "zoning|ZBA|appeals",
+       "Zoning Board of Appeals",
+       "zoning_board_of_appeals"
+      ]
+     ]
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 14,
+   "discovered_at": "2026-11-02T19:08:54+00:00",
+   "curation_note": "agendas in the CMM embed (iframe on minutes--agendas.html); one dated Town Board agenda in the window",
+   "platforms": [
+    "cmm_compass"
+   ],
+   "curated": true,
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "Compass Web Development CMM embed",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Willing",
+   "state": "NY",
+   "county": "Allegany",
+   "kind": "town",
+   "website": "https://www.willingny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_moratorium",
+   "selection_reason": "BESS moratorium (all BESS) listed EXPIRED with end date 2027-06-01; Carina's status and date disagree",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.willingny.gov/",
+     "final_url": "https://www.willingny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://www.willingny.gov/",
+   "cms": [],
+   "platform": "cmm_compass",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "cmm_compass",
+     "url": "https://cmm.compassweb.dev/embeds/13/agendas",
+     "board_rules": [
+      [
+       "planning",
+       "Planning Board",
+       "planning_board"
+      ],
+      [
+       "zoning|ZBA|appeals",
+       "Zoning Board of Appeals",
+       "zoning_board_of_appeals"
+      ]
+     ]
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 9,
+   "discovered_at": "2026-11-02T19:08:53+00:00",
+   "curation_note": "agendas in the CMM embed (iframe on minutes--agendas.html)",
+   "platforms": [
+    "cmm_compass"
+   ],
+   "curated": true,
+   "coverage": "direct",
+   "coverage_county_body": "Allegany County Planning Board",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "Compass Web Development CMM embed",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Fort Ann",
+   "state": "NY",
+   "county": "Washington",
+   "kind": "town",
+   "website": "https://www.townoffortannny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_review",
+   "selection_reason": "BESS moratorium PENDING, listed date 2026-02-21",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.townoffortannny.gov/",
+     "final_url": "https://www.townoffortannny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://www.townoffortannny.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board Menu",
+     "board_key": "select_board",
+     "url": "https://www.townoffortannny.gov/tb-agendas.html",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board Menu",
+     "board_key": "planning_board",
+     "url": "https://www.townoffortannny.gov/pb-agendas.html",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board Menu",
+     "source": "agenda_page",
+     "url": "https://www.townoffortannny.gov/pb-agendas.html",
+     "n_recent": 5,
+     "latest": "2026-11-03",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-07",
+       "url": "https://www.townoffortannny.gov/uploads/7/3/6/3/73635113/july_meeting_agenda.pdf",
+       "title": "Download file: July 7th, 2026"
+      },
+      {
+       "date": "2026-08-04",
+       "url": "https://www.townoffortannny.gov/uploads/7/3/6/3/73635113/aug_meeting_agenda.pdf",
+       "title": "Download file: August 4th, 2026"
+      },
+      {
+       "date": "2026-09-01",
+       "url": "https://www.townoffortannny.gov/uploads/7/3/6/3/73635113/sept_2026_mtg_agenda.pdf",
+       "title": "Download file: September 1st, 2026"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Town Board Menu",
+     "source": "agenda_page",
+     "url": "https://www.townoffortannny.gov/tb-agendas.html",
+     "n_recent": 5,
+     "latest": "2026-10-13",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-13",
+       "url": "https://www.townoffortannny.gov/uploads/7/3/6/3/73635113/7.13.26_tbm_agenda.pdf",
+       "title": "Download file: July 13th, 2026"
+      },
+      {
+       "date": "2026-08-17",
+       "url": "https://www.townoffortannny.gov/uploads/7/3/6/3/73635113/8.17.26_tbm_agenda.pdf",
+       "title": "Download file: August 17th, 2026"
+      },
+      {
+       "date": "2026-09-14",
+       "url": "https://www.townoffortannny.gov/uploads/7/3/6/3/73635113/9.14.26_tbm_agenda.pdf",
+       "title": "Download file: September 14th, 2026"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 18,
+   "discovered_at": "2026-11-02T19:09:34+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Florence",
+   "state": "NY",
+   "county": "Oneida",
+   "kind": "town",
+   "website": "https://www.florenceny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_review",
+   "selection_reason": "BESS moratorium UNDER_REVIEW, listed date 2026-05-01",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.florenceny.gov/",
+     "final_url": "https://www.florenceny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://www.florenceny.gov/",
+   "cms": [],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://florenceny.gov/meetings/meetings/Town%20Board/2026",
+     "platform": "agenda_page",
+     "board_pattern": "town\\s+board|\\bTB\\b|board\\s+of\\s+trustees|village\\s+board|\\btrustees\\b|city\\s+council|common\\s+council|town\\s+council|\\bboard\\s+(?:regular\\s+|special\\s+)?meeting|\\bregular\\s+(?:town\\s+)?board|\\bboard\\s+agenda|^\\s*TB\\b|work(?:shop)?\\s+session",
+     "board_exclude": "library\\s+board|parks?\\s+(?:and|&)\\s+rec|recreation\\s+(?:board|commission)|cemetery|board\\s+of\\s+assessment|assessment\\s+review|school\\s+board|board\\s+of\\s+education|ethics|committee|housing\\s+authority|\\bIDA\\b|fire\\s+district|planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://florenceny.gov/meetings/meetings/Town%20Board/2026",
+     "n_recent": 3,
+     "latest": "2026-10-12",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-12",
+       "url": "https://florenceny.gov/application/files/4017/9191/5241/October_2026_Agenda_Town_board.docx",
+       "title": "October_2026_Agenda_Town_board.docx"
+      },
+      {
+       "date": "2026-09-14",
+       "url": "https://florenceny.gov/application/files/7817/8950/1619/September_2026_Agenda_Town_board.docx",
+       "title": "September_2026_Agenda_Town_board.docx"
+      },
+      {
+       "date": "2026-08-10",
+       "url": "https://florenceny.gov/application/files/7317/8647/9204/August_2026_Agenda_Town_board.docx",
+       "title": "August_2026_Agenda_Town_board.docx"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://florenceny.gov/meetings/meetings/Planning%20Board/2026",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 25,
+   "discovered_at": "2026-11-02T19:09:33+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Salem",
+   "state": "NY",
+   "county": "Washington",
+   "kind": "town",
+   "website": "https://townofsalemny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_review",
+   "selection_reason": "BESS moratorium UNDER_REVIEW, listed date 2026-04-28",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.townofsalemny.gov/",
+     "final_url": "https://townofsalemny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://townofsalemny.gov/",
+   "cms": [
+    "civicplus",
+    "wordpress",
+    "squarespace"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board Meetings",
+     "board_key": "select_board",
+     "url": "https://townofsalemny.gov/town-board-meetings/",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://townofsalemny.gov/planning-board/",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://townofsalemny.gov/planning-board/",
+     "n_recent": 1,
+     "latest": "2026-11-09",
+     "kinds": [
+      "notice"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-09",
+       "url": "https://static1.squarespace.com/static/68e3e71c469b344b888d0dbc/t/6adb90d7b3532f6027b836b9/1792774359620/00+-+Draft+Comp+Plan+-no+appendices_sm.pdf",
+       "title": "Draft Comprehensive Plan"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Town Board Meetings",
+     "source": "agenda_page",
+     "url": "https://townofsalemny.gov/town-board-meetings/",
+     "n_recent": 13,
+     "latest": "2026-11-09",
+     "kinds": [
+      "agenda",
+      "notice"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-04",
+       "url": "https://townofsalemny.gov/wp-content/uploads/2026/11/TOS-Budget-Mtg-Agenda-11-4-2026.pdf",
+       "title": "November 4, 2026"
+      },
+      {
+       "date": "2026-10-27",
+       "url": "https://townofsalemny.gov/wp-content/uploads/2026/10/TOS-Budgety-Mtg-Agenda-10-27-2026.pdf",
+       "title": "October 27, 2026"
+      },
+      {
+       "date": "2026-10-27",
+       "url": "https://townofsalemny.gov/wp-content/uploads/2026/10/Local-Law-5-of-2026-to-override-the-2027-tax-cap-for-the-TOS.pdf",
+       "title": "Local Law # 5 of 2026"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 12,
+   "discovered_at": "2026-11-02T19:09:16+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Albion",
+   "state": "NY",
+   "county": "Orleans",
+   "kind": "town",
+   "website": "https://townofalbionnyorco.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_law",
+   "selection_reason": "BESS moratorium LIFTED: law adopted, applications next (Carina lists 'Albion'; taken as the town)",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.townofalbion.com/",
+     "final_url": "https://townofalbionnyorco.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://townofalbionnyorco.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://townofalbionnyorco.gov/minutes/",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b|\\bplanning\\b|\\bzoning\\s+(?:board|appeals)|\\bZBA\\b|\\bBZA\\b|\\bappeals\\b",
+     "board_default": true
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://townofalbionnyorco.gov/minutes/",
+     "n_recent": 1,
+     "latest": "2026-10-26",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-26",
+       "url": "https://townofalbionnyorco.gov/wp-content/uploads/2026/10/2026-10-26-Meeting-Public-Hearing-Agenda.pdf",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "governing body assigned by default on https://townofalbionnyorco.gov/minutes/"
+   ],
+   "pages_fetched": 22,
+   "discovered_at": "2026-11-02T19:09:27+00:00",
+   "coverage": "direct",
+   "coverage_county_body": "Orleans County Planning Board",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Chautauqua",
+   "state": "NY",
+   "county": "Chautauqua",
+   "kind": "town",
+   "website": "https://www.townofchautauqua.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_law",
+   "selection_reason": "BESS moratorium EXPIRED 2025-09-03",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.townofchautauqua.com/",
+     "final_url": "https://www.townofchautauqua.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://www.townofchautauqua.gov/",
+   "cms": [
+    "drupal"
+   ],
+   "platform": "cmm_compass",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "cmm_compass",
+     "url": "https://cmm.compassweb.dev/embeds/48/agendas",
+     "board_rules": [
+      [
+       "planning",
+       "Planning Board",
+       "planning_board"
+      ],
+      [
+       "zoning|ZBA|appeals",
+       "Zoning Board of Appeals",
+       "zoning_board_of_appeals"
+      ]
+     ]
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 19,
+   "discovered_at": "2026-11-02T19:09:33+00:00",
+   "curation_note": "agendas in the CMM embed (iframe on town-clerk.html); the Legals & Notices page also posts local laws and hearing notices as .doc files without dates",
+   "platforms": [
+    "cmm_compass"
+   ],
+   "curated": true,
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "Compass Web Development CMM embed",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Johnstown",
+   "state": "NY",
+   "county": "Fulton",
+   "kind": "town",
+   "website": "https://www.townofjohnstown.org/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_law",
+   "selection_reason": "BESS moratorium EXPIRED 2025-08-03 (Carina lists 'Johnstown'; taken as the town)",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.townofjohnstown.org/",
+     "final_url": "https://www.townofjohnstown.org/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://www.townofjohnstown.org/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "url": "https://www.townofjohnstown.org/government/town_board.php",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.townofjohnstown.org/government/planning_board.php",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://www.townofjohnstown.org/government/zoning_board_of_appeals.php",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|planning\\s+board|planning\\s+commission|\\bPB\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.townofjohnstown.org/government/planning_board.php",
+     "n_recent": 2,
+     "latest": "2026-09-08",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-09-08",
+       "url": "https://www.townofjohnstown.org/09-2026 MEETING NOTICE.pdf",
+       "title": "Agenda Documents"
+      },
+      {
+       "date": "2026-07-14",
+       "url": "https://www.townofjohnstown.org/07-2026 MEETING NOTICE.doc",
+       "title": "Agenda Documents"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Town Board",
+     "source": "agenda_page",
+     "url": "https://www.townofjohnstown.org/government/town_board.php",
+     "n_recent": 4,
+     "latest": "2026-10-14",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-14",
+       "url": "https://www.townofjohnstown.org/Oct 26 Agenda_.pdf",
+       "title": "Agenda Documents"
+      },
+      {
+       "date": "2026-09-14",
+       "url": "https://www.townofjohnstown.org/sept 26.pdf",
+       "title": "Agenda Documents"
+      },
+      {
+       "date": "2026-08-10",
+       "url": "https://www.townofjohnstown.org/August 26 Agenda.pdf",
+       "title": "Agenda Documents"
+      }
+     ]
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://www.townofjohnstown.org/government/zoning_board_of_appeals.php",
+     "n_recent": 3,
+     "latest": "2026-09-24",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-09-24",
+       "url": "https://www.townofjohnstown.org/1549_001.pdf",
+       "title": "Agenda Documents"
+      },
+      {
+       "date": "2026-08-27",
+       "url": "https://www.townofjohnstown.org/1540_001.pdf",
+       "title": "Agenda Documents"
+      },
+      {
+       "date": "2026-07-23",
+       "url": "https://www.townofjohnstown.org/1514_001.pdf",
+       "title": "Agenda Documents"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 8,
+   "discovered_at": "2026-11-02T19:10:25+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Mount Kisco",
+   "state": "NY",
+   "county": "Westchester",
+   "kind": "village",
+   "website": "http://www.mountkiscony.gov/",
+   "website_source": "document or Wikipedia infobox, 2026-11-02",
+   "selection_group": "bess_law",
+   "selection_reason": "BESS moratorium EXPIRED 2025-06-03",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "final_url": "https://www.mountkiscony.gov/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Village Board of Trustees",
+     "board_key": "select_board",
+     "url": "https://www.mountkiscony.gov/government/agendas_and_minutes_central/village_board_of_trustees.php",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.mountkiscony.gov/government/agendas_and_minutes_central/planning_board.php",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://www.mountkiscony.gov/government/agendas_and_minutes_central/zoning_board_of_appeals.php",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|planning\\s+board|planning\\s+commission|\\bPB\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.mountkiscony.gov/government/agendas_and_minutes_central/planning_board.php",
+     "n_recent": 12,
+     "latest": "2026-10-27",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-27",
+       "url": "https://www.mountkiscony.gov/PB 10.27.26 Agenda.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-27",
+       "url": "https://www.mountkiscony.gov/PB packet 10.27.26.pdf",
+       "title": "Packet"
+      },
+      {
+       "date": "2026-10-13",
+       "url": "https://www.mountkiscony.gov/October 13, 2026 Agenda r2.pdf",
+       "title": "Agenda"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Village Board of Trustees",
+     "source": "agenda_page",
+     "url": "https://www.mountkiscony.gov/government/agendas_and_minutes_central/village_board_of_trustees.php",
+     "n_recent": 18,
+     "latest": "2026-11-02",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-02",
+       "url": "https://www.mountkiscony.gov/0) Agenda-11.2.2026.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-11-02",
+       "url": "https://www.mountkiscony.gov/Public Packet - 11.2.2026.pdf",
+       "title": "Packet"
+      },
+      {
+       "date": "2026-11-02",
+       "url": "https://www.mountkiscony.gov/9) Bills 11.2.2026.pdf",
+       "title": "Bills"
+      }
+     ]
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://www.mountkiscony.gov/government/agendas_and_minutes_central/zoning_board_of_appeals.php",
+     "n_recent": 6,
+     "latest": "2026-10-20",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-20",
+       "url": "https://www.mountkiscony.gov/ZBA 10.20.26 Agenda.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-20",
+       "url": "https://www.mountkiscony.gov/10.20.26 zba packet.pdf",
+       "title": "Packet"
+      },
+      {
+       "date": "2026-09-15",
+       "url": "https://www.mountkiscony.gov/ZBA Agenda 9.15.26.pdf",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 10,
+   "discovered_at": "2026-11-02T19:11:29+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Village Board of Trustees",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Ripley",
+   "state": "NY",
+   "county": "Chautauqua",
+   "kind": "town",
+   "website": "https://www.ripleyny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_law",
+   "selection_reason": "BESS moratorium EXPIRED (no date listed)",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.ripleyny.gov/",
+     "final_url": "https://www.ripleyny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://www.ripleyny.gov/",
+   "cms": [],
+   "platform": "cmm_compass",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "cmm_compass",
+     "url": "https://cmm.compassweb.dev/embeds/14/agendas",
+     "board_rules": [
+      [
+       "planning",
+       "Planning Board",
+       "planning_board"
+      ],
+      [
+       "zoning|ZBA|appeals",
+       "Zoning Board of Appeals",
+       "zoning_board_of_appeals"
+      ]
+     ]
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 14,
+   "discovered_at": "2026-11-02T19:09:43+00:00",
+   "curation_note": "agendas in the CMM embed (iframe on minutes.html)",
+   "platforms": [
+    "cmm_compass"
+   ],
+   "curated": true,
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "Compass Web Development CMM embed",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Walworth",
+   "state": "NY",
+   "county": "Wayne",
+   "kind": "town",
+   "website": "https://townofwalworthny.gov/",
+   "website_source": "web search 2026-11-02",
+   "selection_group": "bess_law",
+   "selection_reason": "BESS moratorium LIFTED 2026-05-30",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "final_url": "https://townofwalworthny.gov/",
+   "cms": [],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "agenda_page",
+     "url": "https://townofwalworthny.gov/government/minutes-agendas/",
+     "board_pattern": "town\\s+board",
+     "board_exclude": "planning|zoning"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "platform": "agenda_page",
+     "url": "https://townofwalworthny.gov/government/minutes-agendas/",
+     "board_pattern": "planning\\s+board",
+     "board_exclude": "town\\s+board|zoning"
+    },
+    {
+     "board": "Zoning Board",
+     "board_key": "zoning_board_of_appeals",
+     "platform": "agenda_page",
+     "url": "https://townofwalworthny.gov/government/minutes-agendas/",
+     "board_pattern": "zoning\\s+board",
+     "board_exclude": "town\\s+board|planning"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 4,
+   "discovered_at": "2026-11-02T19:16:21+00:00",
+   "curation_note": "Minutes & Agendas page (WordPress, paginated) with dated agenda PDFs for the Town Board, Planning Board and Zoning Board; the homepage is script-rendered, which is why discovery found nothing",
+   "platforms": [
+    "agenda_page"
+   ],
+   "curated": true,
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03",
+   "coverage_county_body": "Wayne County Planning Board"
+  },
+  {
+   "town": "Frankfort",
+   "state": "NY",
+   "county": "Herkimer",
+   "kind": "town",
+   "website": "https://www.townoffrankfortny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_law",
+   "selection_reason": "BESS moratorium LIFTED 2026-04-27",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.townoffrankfortny.gov/",
+     "final_url": "https://www.townoffrankfortny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://www.townoffrankfortny.gov/",
+   "cms": [],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.townoffrankfortny.gov/government/meetings-minutes-agendas/",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b|\\bplanning\\b|\\bzoning\\s+(?:board|appeals)|\\bZBA\\b|\\bBZA\\b|\\bappeals\\b",
+     "board_default": true
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.townoffrankfortny.gov/government/meetings-minutes-agendas/",
+     "n_recent": 8,
+     "latest": "2026-10-22",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-22",
+       "url": "https://www.townoffrankfortny.gov/download/view/document/381",
+       "title": "381"
+      },
+      {
+       "date": "2026-10-22",
+       "url": "https://www.townoffrankfortny.gov/download/document/381",
+       "title": "381"
+      },
+      {
+       "date": "2026-09-24",
+       "url": "https://www.townoffrankfortny.gov/download/view/document/369",
+       "title": "369"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.townoffrankfortny.gov/government/planning-board/",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board",
+     "source": "agenda_page",
+     "url": "https://www.townoffrankfortny.gov/government/zoning-board/",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "governing body assigned by default on https://www.townoffrankfortny.gov/government/meetings-minutes-agendas/"
+   ],
+   "pages_fetched": 27,
+   "discovered_at": "2026-11-02T19:11:12+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Le Ray",
+   "state": "NY",
+   "county": "Jefferson",
+   "kind": "town",
+   "website": "https://www.townofleray.gov/",
+   "website_source": "web search 2026-11-02",
+   "selection_group": "bess_law",
+   "selection_reason": "BESS moratorium EXPIRED 2025-08-18",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "final_url": "https://www.townofleray.gov/",
+   "cms": [
+    "wix"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.townofleray.gov/planning-board",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://www.townofleray.gov/planning-board",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b|\\bplanning\\b|\\bzoning\\s+(?:board|appeals)|\\bZBA\\b|\\bBZA\\b|\\bappeals\\b",
+     "board_default": true
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.townofleray.gov/planning-board",
+     "n_recent": 5,
+     "latest": "2026-11-05",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-05",
+       "url": "https://www.townofleray.gov/_files/ugd/e97b12_f53251eee6a54270a27282b327e1c636.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-01",
+       "url": "https://www.townofleray.gov/_files/ugd/e97b12_5d4ffca9a6c84a08a27dbd67c38a13d1.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-09-03",
+       "url": "https://www.townofleray.gov/_files/ugd/e97b12_ad53d598b6bb4727bb1b7227fed33558.pdf",
+       "title": "Agenda"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://www.townofleray.gov/planning-board",
+     "n_recent": 5,
+     "latest": "2026-11-05",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-05",
+       "url": "https://www.townofleray.gov/_files/ugd/e97b12_f53251eee6a54270a27282b327e1c636.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-01",
+       "url": "https://www.townofleray.gov/_files/ugd/e97b12_5d4ffca9a6c84a08a27dbd67c38a13d1.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-09-03",
+       "url": "https://www.townofleray.gov/_files/ugd/e97b12_ad53d598b6bb4727bb1b7227fed33558.pdf",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://www.townofleray.gov/zoning-board-of-appeals",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "governing body assigned by default on https://www.townofleray.gov/planning-board"
+   ],
+   "pages_fetched": 23,
+   "discovered_at": "2026-11-02T19:16:34+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Pendleton",
+   "state": "NY",
+   "county": "Niagara",
+   "kind": "town",
+   "website": "https://pendletonny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_law",
+   "selection_reason": "BESS moratorium EXPIRED 2025-12-27",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.townofpendleton.org/",
+     "final_url": "https://www.townofpendleton.org/Home",
+     "status": 200,
+     "names_place": false
+    },
+    {
+     "url": "https://townofpendleton.org/",
+     "final_url": "https://www.townofpendleton.org/Home",
+     "status": 200,
+     "names_place": false
+    },
+    {
+     "url": "https://www.pendletonny.gov/",
+     "final_url": "https://pendletonny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://pendletonny.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board <br>Meeting Agendas and Minutes",
+     "board_key": "select_board",
+     "url": "https://pendletonny.gov/meeting-minutes/town-board-minutes/",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board Meeting Agendas and Minutes",
+     "board_key": "planning_board",
+     "url": "https://pendletonny.gov/meeting-minutes/planning-board-meeting-minutes/",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board Meeting Agendas and Minutes",
+     "source": "agenda_page",
+     "url": "https://pendletonny.gov/meeting-minutes/planning-board-meeting-minutes/",
+     "n_recent": 4,
+     "latest": "2026-10-20",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-21",
+       "url": "https://pendletonny.gov/wp-content/uploads/2026/03/Planning-Board-Agenda-July-21-2026.pdf",
+       "title": "July"
+      },
+      {
+       "date": "2026-08-18",
+       "url": "https://pendletonny.gov/wp-content/uploads/2026/08/Planning-Board-Agenda-August-18-2026.pdf",
+       "title": "August"
+      },
+      {
+       "date": "2026-09-15",
+       "url": "https://pendletonny.gov/wp-content/uploads/2026/09/Planning-Board-Agenda-Sept-15-2026.pdf",
+       "title": "September"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Town Board <br>Meeting Agendas and Minutes",
+     "source": "agenda_page",
+     "url": "https://pendletonny.gov/meeting-minutes/town-board-minutes/",
+     "n_recent": 7,
+     "latest": "2026-10-26",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-13",
+       "url": "https://pendletonny.gov/wp-content/uploads/2026/07/AGENDA-TB-Regular-Meeting-7.13.26-1.pdf",
+       "title": "July 13, 2026"
+      },
+      {
+       "date": "2026-07-20",
+       "url": "https://pendletonny.gov/wp-content/uploads/2026/07/AGENDA-TB-Special-Meeting-7.20.26-1.pdf",
+       "title": "July 20, 2026"
+      },
+      {
+       "date": "2026-07-30",
+       "url": "https://pendletonny.gov/wp-content/uploads/2026/07/AGENDA-TB-Special-Meeting-7.30.26-2.pdf",
+       "title": "July 30, 2026"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals <br>Meeting Agendas and Minutes",
+     "source": "agenda_page",
+     "url": "https://pendletonny.gov/meeting-minutes/zoning-board-minutes/",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 22,
+   "discovered_at": "2026-11-02T19:10:42+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Carrollton",
+   "state": "NY",
+   "county": "Cattaraugus",
+   "kind": "town",
+   "website": "https://www.carrolltonny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_law",
+   "selection_reason": "BESS moratorium EXPIRED 2025-04-29",
+   "selection_source": "https://carina.energy/bess-moratoriums/",
+   "domain_probe": [
+    {
+     "url": "https://www.carrolltonny.gov/",
+     "final_url": "https://www.carrolltonny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://www.carrolltonny.gov/",
+   "cms": [],
+   "platform": "cmm_compass",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "cmm_compass",
+     "url": "https://cmm.compassweb.dev/embeds/22/agendas",
+     "board_rules": [
+      [
+       "planning",
+       "Planning Board",
+       "planning_board"
+      ],
+      [
+       "zoning|ZBA|appeals",
+       "Zoning Board of Appeals",
+       "zoning_board_of_appeals"
+      ]
+     ]
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {},
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning & Zoning Boards",
+     "source": "agenda_page",
+     "url": "https://www.carrolltonny.gov/planning--zoning-boards.html",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 15,
+   "discovered_at": "2026-11-02T19:09:54+00:00",
+   "curation_note": "agendas in the CMM embed (iframe on minutes--agendas.html)",
+   "platforms": [
+    "cmm_compass"
+   ],
+   "curated": true,
+   "coverage": "direct",
+   "selection_source_url": "https://carina.energy/bess-moratoriums/",
+   "agenda_platform": "Compass Web Development CMM embed",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "North Elba",
+   "state": "NY",
+   "county": "Essex",
+   "kind": "town",
+   "website": "https://www.northelba.org/",
+   "website_source": "web search 2026-11-02",
+   "selection_group": "bess_2026",
+   "selection_reason": "One-year BESS moratorium approved October 2026 (WCAX, 2026-10-16)",
+   "selection_source": "https://www.wcax.com/2026/10/16/north-elba-approves-one-year-moratorium-battery-energy-storage-systems/",
+   "final_url": "https://northelba.villageoflakeplacid.ny.gov/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://northelba.villageoflakeplacid.ny.gov/departments/town_clerk_/agendas___minutes_.php",
+     "platform": "agenda_page",
+     "board_pattern": "town\\s+board|\\bTB\\b|board\\s+of\\s+trustees|village\\s+board|\\btrustees\\b|city\\s+council|common\\s+council|town\\s+council|\\bboard\\s+(?:regular\\s+|special\\s+)?meeting|\\bregular\\s+(?:town\\s+)?board|\\bboard\\s+agenda|^\\s*TB\\b|work(?:shop)?\\s+session",
+     "board_exclude": "library\\s+board|parks?\\s+(?:and|&)\\s+rec|recreation\\s+(?:board|commission)|cemetery|board\\s+of\\s+assessment|assessment\\s+review|school\\s+board|board\\s+of\\s+education|ethics|committee|housing\\s+authority|\\bIDA\\b|fire\\s+district|planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://northelba.villageoflakeplacid.ny.gov/departments/building___planning/zoning_board_of_appeals/index.php",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|planning\\s+board|planning\\s+commission|\\bPB\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [
+    "planning_board"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://northelba.villageoflakeplacid.ny.gov/departments/town_clerk_/agendas___minutes_.php",
+     "n_recent": 14,
+     "latest": "2026-11-03",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-03",
+       "url": "https://northelba.villageoflakeplacid.ny.gov/11 - November Agenda Setting Meeting.docx",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-11-03",
+       "url": "https://northelba.villageoflakeplacid.ny.gov/2026.11.03 - Agenda Setting Supporting Information.pdf",
+       "title": "Packet"
+      },
+      {
+       "date": "2026-10-13",
+       "url": "https://northelba.villageoflakeplacid.ny.gov/2026-10-13 Town Board Meeting Agenda.docx",
+       "title": "Agenda"
+      }
+     ]
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://northelba.villageoflakeplacid.ny.gov/departments/building___planning/zoning_board_of_appeals/index.php",
+     "n_recent": 4,
+     "latest": "2026-10-26",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-26",
+       "url": "https://northelba.villageoflakeplacid.ny.gov/Document Center/Department/Building & Planning/Zoning Board of Appeals/Agenda 2025/Agenda 2026/ZBA Agenda 10-26-26.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-09-27",
+       "url": "https://northelba.villageoflakeplacid.ny.gov/Document Center/Department/Building & Planning/Zoning Board of Appeals/Agenda 2025/Agenda 2026/ZBA Agenda 9-27-26.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-08-31",
+       "url": "https://northelba.villageoflakeplacid.ny.gov/Document Center/Department/Building & Planning/Zoning Board of Appeals/Agenda 2025/Agenda 2026/ZBA Agenda 8-31-26.pdf",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 15,
+   "discovered_at": "2026-11-02T19:16:37+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://www.wcax.com/2026/10/16/north-elba-approves-one-year-moratorium-battery-energy-storage-systems/",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Ticonderoga",
+   "state": "NY",
+   "county": "Essex",
+   "kind": "town",
+   "website": "https://townofticonderoga.gov/",
+   "website_source": "document or Wikipedia infobox, 2026-11-02",
+   "selection_group": "bess_2026",
+   "selection_reason": "Town Board hearing 2026-05-14 on a temporary BESS moratorium (hearing notice read 2026-11-02)",
+   "selection_source": "https://townofticonderoga.gov/wp-content/uploads/Notice-of-Public-Hearing-1.pdf",
+   "final_url": "https://townofticonderoga.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://townofticonderoga.gov/town-meeting-minutes/",
+     "platform": "agenda_page",
+     "board_pattern": "town\\s+board|\\bTB\\b|board\\s+of\\s+trustees|village\\s+board|\\btrustees\\b|city\\s+council|common\\s+council|town\\s+council|\\bboard\\s+(?:regular\\s+|special\\s+)?meeting|\\bregular\\s+(?:town\\s+)?board|\\bboard\\s+agenda|^\\s*TB\\b|work(?:shop)?\\s+session",
+     "board_exclude": "library\\s+board|parks?\\s+(?:and|&)\\s+rec|recreation\\s+(?:board|commission)|cemetery|board\\s+of\\s+assessment|assessment\\s+review|school\\s+board|board\\s+of\\s+education|ethics|committee|housing\\s+authority|\\bIDA\\b|fire\\s+district|planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://townofticonderoga.gov/town-meeting-minutes/",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+board|planning\\s+commission|\\bPB\\b|planning\\b",
+     "board_exclude": "county\\s+planning|regional|committee|comprehensive\\s+plan|town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://townofticonderoga.gov/town-meeting-minutes/",
+     "n_recent": 1,
+     "latest": "2026-09-03",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-09-03",
+       "url": "https://townofticonderoga.gov/wp-content/uploads/PZB-Agenda.pdf",
+       "title": "Planning/Zoning Board Agenda (Thursday-September 3, 2026)"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://townofticonderoga.gov/town-meeting-minutes/",
+     "n_recent": 5,
+     "latest": "2026-10-08",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-09",
+       "url": "https://townofticonderoga.gov/wp-content/uploads/AGENDA.pdf",
+       "title": "Town Board Meeting Agenda (Thursday, July 9, 2026)"
+      },
+      {
+       "date": "2026-08-13",
+       "url": "https://townofticonderoga.gov/wp-content/uploads/Town-Board-Meeting-Agenda-Format-08.pdf",
+       "title": "Town Board Meeting Agenda (Thursday August 13, 2026)"
+      },
+      {
+       "date": "2026-09-03",
+       "url": "https://townofticonderoga.gov/wp-content/uploads/PZB-Agenda.pdf",
+       "title": "Planning/Zoning Board Agenda (Thursday-September 3, 2026)"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 10,
+   "discovered_at": "2026-11-02T19:10:12+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://townofticonderoga.gov/wp-content/uploads/Notice-of-Public-Hearing-1.pdf",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "St. Armand",
+   "state": "NY",
+   "county": "Essex",
+   "kind": "town",
+   "website": "https://townofstarmandny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_2026",
+   "selection_reason": "One-year BESS moratorium passed March 2026 (Environment+Energy Leader summary of Carina's release; to verify)",
+   "selection_source": "https://www.environmentenergyleader.com/stories/new-york-battery-storage-moratoriums-hit-98-municipalities,126655",
+   "domain_probe": [
+    {
+     "url": "https://www.townofstarmandny.gov/",
+     "final_url": "https://townofstarmandny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://townofstarmandny.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://townofstarmandny.gov/zoning/",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b|\\bplanning\\b|\\bzoning\\s+(?:board|appeals)|\\bZBA\\b|\\bBZA\\b|\\bappeals\\b",
+     "board_default": true
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "select_board"
+   ],
+   "boards_missing": [
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://townofstarmandny.gov/zoning/",
+     "n_recent": 1,
+     "latest": "2026-10-27",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-27",
+       "url": "https://townofstarmandny.gov/wp-content/uploads/2026/10/Zoning-Meeting-Documents-October-27-2026.pdf",
+       "title": "Tuesday, October 27th – Agenda and Handouts (PDF)"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "governing body assigned by default on https://townofstarmandny.gov/zoning/"
+   ],
+   "pages_fetched": 13,
+   "discovered_at": "2026-11-02T19:10:18+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://www.environmentenergyleader.com/stories/new-york-battery-storage-moratoriums-hit-98-municipalities,126655",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Lake George",
+   "state": "NY",
+   "county": "Warren",
+   "kind": "town",
+   "website": "https://www.townoflakegeorge.gov/",
+   "website_source": "document or Wikipedia infobox, 2026-11-02",
+   "selection_group": "bess_2026",
+   "selection_reason": "Local Law 2 of 2026 establishing a BESS moratorium (law text read 2026-11-02)",
+   "selection_source": "https://www.townoflakegeorge.gov/DocumentCenter/View/1246",
+   "final_url": "https://www.townoflakegeorge.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "category_id": "5",
+     "url": "https://www.townoflakegeorge.gov/AgendaCenter/Planning-Board-5"
+    },
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "category_id": "6",
+     "url": "https://www.townoflakegeorge.gov/AgendaCenter/Town-Board-6"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "4",
+     "url": "https://www.townoflakegeorge.gov/AgendaCenter/Zoning-Board-of-Appeals-4"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "civicplus",
+     "url": "https://www.townoflakegeorge.gov/AgendaCenter/Planning-Board-5",
+     "n_recent": 5,
+     "latest": "2026-11-10"
+    },
+    "select_board": {
+     "board": "Town Board",
+     "source": "civicplus",
+     "url": "https://www.townoflakegeorge.gov/AgendaCenter/Town-Board-6",
+     "n_recent": 6,
+     "latest": "2026-11-02"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "civicplus",
+     "url": "https://www.townoflakegeorge.gov/AgendaCenter/Zoning-Board-of-Appeals-4",
+     "n_recent": 4,
+     "latest": "2026-11-04"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 4 categories, 3 tracked"
+   ],
+   "pages_fetched": 3,
+   "discovered_at": "2026-11-02T19:10:44+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://www.townoflakegeorge.gov/DocumentCenter/View/1246",
+   "agenda_platform": "CivicPlus AgendaCenter",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Bergen",
+   "state": "NY",
+   "county": "Genesee",
+   "kind": "town",
+   "website": "https://www.townofbergenny.gov/",
+   "website_source": "document or Wikipedia infobox, 2026-11-02",
+   "selection_group": "bess_2026",
+   "selection_reason": "Local Law 3 of 2026: a nine-month BESS moratorium, hearing 2026-05-19 (legal notice read 2026-11-02)",
+   "selection_source": "https://www.townofbergenny.gov/documents/3-2026-legal-notice-for-moratorium-battery-storage-systems-may-2026.docx",
+   "final_url": "https://www.townofbergenny.gov/",
+   "cms": [],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board Agendas →",
+     "board_key": "select_board",
+     "url": "https://www.townofbergenny.gov/town-board-agendas/",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board Agendas →",
+     "board_key": "planning_board",
+     "url": "https://www.townofbergenny.gov/planning-board-agendas/",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_missing": [
+    "zoning_board_of_appeals"
+   ],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board Agendas →",
+     "source": "agenda_page",
+     "url": "https://www.townofbergenny.gov/planning-board-agendas/",
+     "n_recent": 8,
+     "latest": "2026-10-29",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-29",
+       "url": "https://www.townofbergenny.gov/documents/October-29-2026-Planning-Board-Agenda.docx",
+       "title": "October 29, 2026 Planning Board Agenda"
+      },
+      {
+       "date": "2026-09-24",
+       "url": "https://www.townofbergenny.gov/documents/September-24-2026-Planning-Board-Agenda.pdf",
+       "title": "September 24, 2026 Planning Board Agenda"
+      },
+      {
+       "date": "2026-08-27",
+       "url": "https://www.townofbergenny.gov/documents/August-27-2026-Planning-Board-Agenda.docx",
+       "title": "August 27, 2026 Planning Board Agenda"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Town Board Agendas →",
+     "source": "agenda_page",
+     "url": "https://www.townofbergenny.gov/town-board-agendas/",
+     "n_recent": 7,
+     "latest": "2026-10-20",
+     "kinds": [
+      "agenda",
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-20",
+       "url": "https://www.townofbergenny.gov/documents/DOC101626-10162026.pdf",
+       "title": "Town Board Meeting — October 20, 2026 — Agenda PDF Open document"
+      },
+      {
+       "date": "2026-10-20",
+       "url": "https://www.townofbergenny.gov/documents/Agenda-for-Oct-2026-Final.docx",
+       "title": "10-20-2026 Town Board Agenda DOCX Open document"
+      },
+      {
+       "date": "2026-10-20",
+       "url": "https://www.townofbergenny.gov/documents/Data-Centers-and-Cryptocurrency-Facilities.pdf",
+       "title": "10-20-2026 Data Centers & Cryptocurrency Facilities PDF Open document"
+      }
+     ]
+    }
+   },
+   "board_stale": {
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board Minutes →",
+     "source": "agenda_page",
+     "url": "https://www.townofbergenny.gov/zoning-board-minutes/",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 12,
+   "discovered_at": "2026-11-02T19:10:38+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://www.townofbergenny.gov/documents/3-2026-legal-notice-for-moratorium-battery-storage-systems-may-2026.docx",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Goshen",
+   "state": "NY",
+   "county": "Orange",
+   "kind": "town",
+   "website": "https://townofgoshenny.gov/",
+   "website_source": "domain pattern probe (homepage names the place), 2026-11-02",
+   "selection_group": "bess_2026",
+   "selection_reason": "Residents and officials urged a BESS moratorium while the town studies safety and zoning (Citizen Portal summary; to verify)",
+   "selection_source": "https://cpo.soar.com/articles/6447040/Goshen/Orange-County/New-York/Residents-and-officials-urge-moratorium-on-battery-storage-projects-while-town-studies-safety-and-zoning",
+   "domain_probe": [
+    {
+     "url": "https://www.townofgoshenny.gov/",
+     "final_url": "https://townofgoshenny.gov/",
+     "status": 200,
+     "names_place": true
+    }
+   ],
+   "final_url": "https://townofgoshenny.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Select Board / Council",
+     "board_key": "select_board",
+     "url": "https://townofgoshenny.gov/meeting-minutes-agendas/",
+     "platform": "agenda_page",
+     "board_pattern": "town\\s+board|\\bTB\\b|board\\s+of\\s+trustees|village\\s+board|\\btrustees\\b|city\\s+council|common\\s+council|town\\s+council|\\bboard\\s+(?:regular\\s+|special\\s+)?meeting|\\bregular\\s+(?:town\\s+)?board|\\bboard\\s+agenda|^\\s*TB\\b|work(?:shop)?\\s+session",
+     "board_exclude": "library\\s+board|parks?\\s+(?:and|&)\\s+rec|recreation\\s+(?:board|commission)|cemetery|board\\s+of\\s+assessment|assessment\\s+review|school\\s+board|board\\s+of\\s+education|ethics|committee|housing\\s+authority|\\bIDA\\b|fire\\s+district|planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://townofgoshenny.gov/meeting-minutes-agendas/",
+     "platform": "agenda_page",
+     "board_pattern": "planning\\s+board|planning\\s+commission|\\bPB\\b|planning\\b",
+     "board_exclude": "county\\s+planning|regional|committee|comprehensive\\s+plan|town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://townofgoshenny.gov/meeting-minutes-agendas/",
+     "platform": "agenda_page",
+     "board_pattern": "zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals",
+     "board_exclude": "building|construction|code\\s+appeals|assessment\\s+review|town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|planning\\s+board|planning\\s+commission|\\bPB\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://townofgoshenny.gov/meeting-minutes-agendas/",
+     "n_recent": 4,
+     "latest": "2026-11-05",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-11-05",
+       "url": "https://townofgoshenny.gov/wp-admin/admin-ajax.php?action=wpmf_onedrive_business_download&id=016HDFUIKYE7GBRDRV4NBLJAJPFUAOHY36&link=true&dl=0",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-15",
+       "url": "https://townofgoshenny.gov/wp-admin/admin-ajax.php?action=wpmf_onedrive_business_download&id=016HDFUING3US33JPYCZAKZE6ANAEERI26&link=true&dl=0",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-09-17",
+       "url": "https://townofgoshenny.gov/wp-admin/admin-ajax.php?action=wpmf_onedrive_business_download&id=016HDFUIPYWOYQSDFZOFEYPHZTDMNAS3TH&link=true&dl=0",
+       "title": "Agenda"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Select Board / Council",
+     "source": "agenda_page",
+     "url": "https://townofgoshenny.gov/meeting-minutes-agendas/",
+     "n_recent": 4,
+     "latest": "2026-10-22",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-22",
+       "url": "https://townofgoshenny.gov/wp-content/uploads/2026/09/10-22-26-TB-Agenda.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-08",
+       "url": "https://townofgoshenny.gov/wp-content/uploads/2026/09/10-08-26-TB-Agenda.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-09-24",
+       "url": "https://townofgoshenny.gov/wp-content/uploads/2026/08/09-24-2026-TB-Agenda.pdf",
+       "title": "Agenda"
+      }
+     ]
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "agenda_page",
+     "url": "https://townofgoshenny.gov/meeting-minutes-agendas/",
+     "n_recent": 3,
+     "latest": "2026-10-20",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-20",
+       "url": "https://townofgoshenny.gov/wp-admin/admin-ajax.php?action=wpmf_onedrive_business_download&id=016HDFUINAER4ZJR5OBJBLDVHJIITHJP5T&link=true&dl=0",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-10-06",
+       "url": "https://townofgoshenny.gov/wp-admin/admin-ajax.php?action=wpmf_onedrive_business_download&id=016HDFUIKSUQU4JNJPY5EKVI4MQOETMN4Z&link=true&dl=0",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-09-15",
+       "url": "https://townofgoshenny.gov/wp-admin/admin-ajax.php?action=wpmf_onedrive_business_download&id=016HDFUINCN5HUDK7OCRELLGAD3ZXQLVQF&link=true&dl=0",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "HTTP 404 https://townofgoshenny.gov/public-notices/"
+   ],
+   "pages_fetched": 17,
+   "discovered_at": "2026-11-02T19:11:20+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://cpo.soar.com/articles/6447040/Goshen/Orange-County/New-York/Residents-and-officials-urge-moratorium-on-battery-storage-projects-while-town-studies-safety-and-zoning",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Troy",
+   "state": "NY",
+   "county": "Rensselaer",
+   "kind": "city",
+   "website": "http://troyny.gov",
+   "website_source": "document or Wikipedia infobox, 2026-11-02",
+   "selection_group": "capital_region",
+   "selection_reason": "City Council six-month BESS moratorium, 2026-02-06 (Spectrum News, cited in where_it_pays_2026.md [40])",
+   "selection_source": "https://spectrumlocalnews.com/nys/capital-region/news/2026/02/06/troy-council-approves-moratorium-on-battery-energy-storage-systems-",
+   "final_url": "https://troyny.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "City Council",
+     "board_key": "select_board",
+     "category_id": "11",
+     "url": "https://troyny.gov/AgendaCenter/City-Council-11"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "category_id": "17",
+     "url": "https://troyny.gov/AgendaCenter/Planning-Board-17"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "category_id": "9",
+     "url": "https://troyny.gov/AgendaCenter/Zoning-Board-of-Appeals-9"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "civicplus",
+     "url": "https://troyny.gov/AgendaCenter/Planning-Board-17",
+     "n_recent": 4,
+     "latest": "2026-10-21"
+    },
+    "select_board": {
+     "board": "City Council",
+     "source": "civicplus",
+     "url": "https://troyny.gov/AgendaCenter/City-Council-11",
+     "n_recent": 29,
+     "latest": "2026-11-05"
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board of Appeals",
+     "source": "civicplus",
+     "url": "https://troyny.gov/AgendaCenter/Zoning-Board-of-Appeals-9",
+     "n_recent": 4,
+     "latest": "2026-11-04"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 12 categories, 4 tracked"
+   ],
+   "pages_fetched": 4,
+   "discovered_at": "2026-11-02T19:11:24+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://spectrumlocalnews.com/nys/capital-region/news/2026/02/06/troy-council-approves-moratorium-on-battery-energy-storage-systems-",
+   "agenda_platform": "CivicPlus AgendaCenter",
+   "legislative_body": "City Council",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Moreau",
+   "state": "NY",
+   "county": "Saratoga",
+   "kind": "town",
+   "website": "https://www.townofmoreau.org/",
+   "website_source": "document or Wikipedia infobox, 2026-11-02",
+   "selection_group": "capital_region",
+   "selection_reason": "Capital Region town named in where_it_pays_2026.md; proposed Local Law 2 of 2026, a BESS moratorium (law text read 2026-11-02)",
+   "selection_source": "https://www.townofmoreau.org/2026-LL2-Battery-Moratorium.pdf",
+   "final_url": "https://www.townofmoreau.org/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Town Board Agenda",
+     "board_key": "select_board",
+     "url": "https://www.townofmoreau.org/townboard_agenda.asp",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.townofmoreau.org/planningboard_agenda.asp",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    },
+    {
+     "board": "Zoning Board",
+     "board_key": "zoning_board_of_appeals",
+     "url": "https://www.townofmoreau.org/zoningboard_agenda.asp",
+     "platform": "agenda_page",
+     "board_exclude": "town\\s+board|board\\s+of\\s+trustees|village\\s+board|city\\s+council|common\\s+council|\\bTB\\b|planning\\s+board|planning\\s+commission|\\bPB\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "select_board",
+    "planning_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_found": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.townofmoreau.org/planningboard_agenda.asp",
+     "n_recent": 1,
+     "latest": "2026-10-19",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-19",
+       "url": "https://www.townofmoreau.org/PB%20-%20Agenda%20-%20October%2019%202026.pdf",
+       "title": "PLANNING BOARD AGENDA"
+      }
+     ]
+    },
+    "select_board": {
+     "board": "Town Board Agenda",
+     "source": "agenda_page",
+     "url": "https://www.townofmoreau.org/townboard_agenda.asp",
+     "n_recent": 8,
+     "latest": "2026-10-27",
+     "kinds": [
+      "packet"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-27",
+       "url": "https://www.townofmoreau.org/2026-10-27_AgendaDocs.pdf",
+       "title": "2026-10-27 Agenda with Supporting Docs"
+      },
+      {
+       "date": "2026-10-13",
+       "url": "https://www.townofmoreau.org/2026-10-13_Town_Board_Agenda.pdf",
+       "title": "2026-10-13_Agenda with Supporting Docs"
+      },
+      {
+       "date": "2026-09-22",
+       "url": "https://www.townofmoreau.org/2026-09-22_Agenda_Docs.pdf",
+       "title": "2026-09-22_Agenda with Supporting Docs"
+      }
+     ]
+    },
+    "zoning_board_of_appeals": {
+     "board": "Zoning Board",
+     "source": "agenda_page",
+     "url": "https://www.townofmoreau.org/zoningboard_agenda.asp",
+     "n_recent": 2,
+     "latest": "2026-10-28",
+     "kinds": [
+      "agenda",
+      "notice"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-28",
+       "url": "https://www.townofmoreau.org/ZBA%20Agenda%2010-28-26.pdf",
+       "title": "ZONING BOARD AGENDA"
+      },
+      {
+       "date": "2026-10-28",
+       "url": "https://www.townofmoreau.org/ZBA%20PH%20Notice%2010-28-26.pdf",
+       "title": "Public Hearing Notice"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 10,
+   "discovered_at": "2026-11-02T19:10:42+00:00",
+   "coverage": "direct",
+   "selection_source_url": "https://www.townofmoreau.org/2026-LL2-Battery-Moratorium.pdf",
+   "agenda_platform": "town website (general agenda-page reader)",
+   "legislative_body": "Town Board",
+   "has_town_meeting": false,
+   "pop_2020": null,
+   "promoted_from": "wave2",
+   "promoted_at": "2026-11-03"
+  },
+  {
+   "town": "Allegany County",
+   "state": "NY",
+   "county": "Allegany",
+   "kind": "county",
+   "website": "https://www.alleganyco.gov/",
+   "website_source": "Wikipedia infobox (Allegany County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Allen, Willing)",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "https://www.alleganyco.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.alleganyco.gov/meeting-minutes/",
+     "platform": "agenda_page",
+     "board_pattern": "county\\s+planning\\s+(?:board|commission|agency)|planning\\s+(?:board|commission|agency)|\\bPB\\b|\\b239(?:-|\\s)?m\\b|referral|planning\\b",
+     "board_exclude": "regional|committee|comprehensive\\s+plan|transportation|agricultural|\\bMPO\\b|environmental\\s+management|soil\\s+and\\s+water|industrial\\s+development|\\bIDA\\b|board\\s+of\\s+supervisors|county\\s+legislature|\\bBOS\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [
+    "planning_board"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.alleganyco.gov/meeting-minutes/",
+     "n_recent": 1,
+     "latest": "2026-10-21",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-21",
+       "url": "https://www.alleganyco.gov/wp-content/uploads/FinalOctober2026BinderCompressed.pdf",
+       "title": "https://www.alleganyco.gov/wp-content/uploads/FinalOctober2026BinderCompressed.p"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "pages_fetched": 7,
+   "discovered_at": "2026-11-02T19:31:36+00:00",
+   "website_candidates": [
+    "https://www.alleganyco.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Allegany County Planning Board",
+   "coverage": "direct",
+   "coverage_county_body": null,
+   "coverage_note": null,
+   "promoted_from": "wave2_counties",
+   "promoted_at": "2026-11-03",
+   "promotion_note": "Promoted by hand 2026-11-03: read in the wave-2 county run (data/test/wave2/ny_extended), which the promote command does not look at.",
+   "legislative_body": "Board of Supervisors / Legislature"
+  },
+  {
+   "town": "Chemung County",
+   "state": "NY",
+   "county": "Chemung",
+   "kind": "county",
+   "website": "https://www.chemungcountyny.gov/",
+   "website_source": "Wikipedia infobox (Chemung County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Southport)",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "https://www.chemungcountyny.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Chemung County Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.chemungcountyny.gov/506/Chemung-County-Planning-Board",
+     "platform": "agenda_page",
+     "board_exclude": "board\\s+of\\s+supervisors|county\\s+legislature|\\bBOS\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [
+    "planning_board"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Chemung County Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.chemungcountyny.gov/506/Chemung-County-Planning-Board",
+     "n_recent": 1,
+     "latest": "2026-10-22",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-22",
+       "url": "https://www.chemungcountyny.gov/DocumentCenter/View/20876/Oct-2026-PB-Agenda",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "civicclerk": {
+     "urls": [
+      "https://chemungcony.portal.civicclerk.com/"
+     ],
+     "tenant": "chemungcony",
+     "status": "open"
+    },
+    "granicus": {
+     "urls": [
+      "https://chemungny.granicus.com/ViewPublisher.php?view_id=1"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on chemungny.granicus.com disallows AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [],
+   "pages_fetched": 11,
+   "discovered_at": "2026-11-02T19:33:25+00:00",
+   "website_candidates": [
+    "https://www.chemungcountyny.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Chemung County Planning Board",
+   "coverage": "direct",
+   "coverage_county_body": null,
+   "coverage_note": null,
+   "promoted_from": "wave2_counties",
+   "promoted_at": "2026-11-03",
+   "promotion_note": "Promoted by hand 2026-11-03: read in the wave-2 county run (data/test/wave2/ny_extended), which the promote command does not look at.",
+   "legislative_body": "Board of Supervisors / Legislature"
+  },
+  {
+   "town": "Greene County",
+   "state": "NY",
+   "county": "Greene",
+   "kind": "county",
+   "website": "https://greenecountyny.gov/",
+   "website_source": "Wikipedia infobox (Greene County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Athens)",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "https://greenecountyny.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "url": "https://greenecountyny.gov/departments/planning/",
+     "platform": "agenda_page",
+     "board_exclude": "board\\s+of\\s+supervisors|county\\s+legislature|\\bBOS\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [
+    "planning_board"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "agenda_page",
+     "url": "https://greenecountyny.gov/departments/planning/",
+     "n_recent": 4,
+     "latest": "2026-10-21",
+     "kinds": [
+      "agenda"
+     ],
+     "examples": [
+      {
+       "date": "2026-07-15",
+       "url": "http://greenecountyny.gov/wp-content/uploads/2026/07/7.15.2026-Meeting-Agenda.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-08-19",
+       "url": "http://greenecountyny.gov/wp-content/uploads/2026/08/8.19.2026-Meeting-Agenda.pdf",
+       "title": "Agenda"
+      },
+      {
+       "date": "2026-09-16",
+       "url": "http://greenecountyny.gov/wp-content/uploads/2026/09/9.16.2026-Meeting-Agenda.pdf",
+       "title": "Agenda"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {
+    "iqm2": {
+     "urls": [
+      "https://greenecountyny.iqm2.com/Citizens/Default.aspx"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on greenecountyny.iqm2.com disallows AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [],
+   "pages_fetched": 5,
+   "discovered_at": "2026-11-02T19:32:48+00:00",
+   "website_candidates": [
+    "https://greenecountyny.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Greene County Planning Board",
+   "coverage": "direct",
+   "coverage_county_body": null,
+   "coverage_note": null,
+   "promoted_from": "wave2_counties",
+   "promoted_at": "2026-11-03",
+   "promotion_note": "Promoted by hand 2026-11-03: read in the wave-2 county run (data/test/wave2/ny_extended), which the promote command does not look at.",
+   "legislative_body": "Board of Supervisors / Legislature"
+  },
+  {
+   "town": "Lewis County",
+   "state": "NY",
+   "county": "Lewis",
+   "kind": "county",
+   "website": "https://lewiscountyny.gov/",
+   "website_source": "Wikipedia infobox (Lewis County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Lewis, Turin)",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "https://lewiscountyny.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Lewis County Planning Board",
+     "board_key": "planning_board",
+     "url": "https://lewiscountyny.gov/departments/planning-and-community-development/county-planning-board/",
+     "platform": "agenda_page",
+     "board_exclude": "board\\s+of\\s+supervisors|county\\s+legislature|\\bBOS\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [
+    "planning_board"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "County Planning Board",
+     "source": "agenda_page",
+     "url": "https://lewiscountyny.gov/departments/planning-and-community-development/county-planning-board/",
+     "n_recent": 4,
+     "latest": "2026-10-15",
+     "kinds": [
+      "agenda",
+      "unknown"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-15",
+       "url": "https://lewiscountyny.gov/wp-content/uploads/2026/10/DRAFT-OCTOBER-2026-CPB-MIN.pdf",
+       "title": "DRAFT OCTOBER 2026 CPB MIN Download"
+      },
+      {
+       "date": "2026-09-17",
+       "url": "https://lewiscountyny.gov/wp-content/uploads/2026/09/CANCELED-CPB-AGENDA-SEPTEMBER-2026.pdf",
+       "title": "CANCELED CPB AGENDA SEPTEMBER 2026 Download"
+      },
+      {
+       "date": "2026-08-20",
+       "url": "https://lewiscountyny.gov/wp-content/uploads/2026/08/AUGUST-2026-CPB-MIN.pdf",
+       "title": "AUGUST 2026 CPB MIN Download"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "pages_fetched": 6,
+   "discovered_at": "2026-11-02T19:31:58+00:00",
+   "website_candidates": [
+    "https://lewiscountyny.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Lewis County Planning Board",
+   "coverage": "direct",
+   "coverage_county_body": null,
+   "coverage_note": null,
+   "promoted_from": "wave2_counties",
+   "promoted_at": "2026-11-03",
+   "promotion_note": "Promoted by hand 2026-11-03: read in the wave-2 county run (data/test/wave2/ny_extended), which the promote command does not look at.",
+   "legislative_body": "Board of Supervisors / Legislature"
+  },
+  {
+   "town": "Livingston County",
+   "state": "NY",
+   "county": "Livingston",
+   "kind": "county",
+   "website": "https://www.livingstoncountyny.gov/",
+   "website_source": "Wikipedia infobox (Livingston County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (York (site town, not read))",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "https://www.livingstoncountyny.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platforms": [
+    "civicplus"
+   ],
+   "platform": "civicplus",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "category_id": "11",
+     "url": "https://www.livingstoncountyny.gov/AgendaCenter/Planning-Board-11"
+    }
+   ],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [
+    "planning_board"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "Planning Board",
+     "source": "civicplus",
+     "url": "https://www.livingstoncountyny.gov/AgendaCenter/Planning-Board-11",
+     "n_recent": 4,
+     "latest": "2026-10-08"
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "pages_fetched": 4,
+   "discovered_at": "2026-11-02T19:32:49+00:00",
+   "website_candidates": [
+    "https://www.livingstoncountyny.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Livingston County Planning Board",
+   "coverage": "direct",
+   "coverage_county_body": null,
+   "coverage_note": null,
+   "promoted_from": "wave2_counties",
+   "promoted_at": "2026-11-03",
+   "promotion_note": "Promoted by hand 2026-11-03: read in the wave-2 county run (data/test/wave2/ny_extended), which the promote command does not look at.",
+   "legislative_body": "Board of Supervisors / Legislature"
+  },
+  {
+   "town": "Orleans County",
+   "state": "NY",
+   "county": "Orleans",
+   "kind": "county",
+   "website": "https://www.orleanscountyny.gov/",
+   "website_source": "Wikipedia infobox (Orleans County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Albion, Carlton)",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "https://www.orleanscountyny.gov/",
+   "cms": [
+    "revize"
+   ],
+   "platforms": [
+    "agenda_page"
+   ],
+   "platform": "agenda_page",
+   "status": "automated",
+   "reason_code": null,
+   "reason": null,
+   "automated": true,
+   "listings": [
+    {
+     "board": "Orleans County Planning Board",
+     "board_key": "planning_board",
+     "url": "https://www.orleanscountyny.gov/departments/planning/county_planning_board.php",
+     "platform": "agenda_page",
+     "board_exclude": "board\\s+of\\s+supervisors|county\\s+legislature|\\bBOS\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [
+    "planning_board"
+   ],
+   "boards_missing": [],
+   "board_evidence": {
+    "planning_board": {
+     "board": "County Planning Board",
+     "source": "agenda_page",
+     "url": "https://www.orleanscountyny.gov/departments/planning/county_planning_board.php",
+     "n_recent": 4,
+     "latest": "2026-10-22",
+     "kinds": [
+      "agenda",
+      "notice"
+     ],
+     "examples": [
+      {
+       "date": "2026-10-22",
+       "url": "https://www.orleanscountyny.gov/Document_center/Department/Planning/CPB Agenda October 2026 - updated.pdf",
+       "title": "CPB Agenda October 2026 - updated.pdf"
+      },
+      {
+       "date": "2026-09-24",
+       "url": "https://www.orleanscountyny.gov/Document_center/Department/Planning/CPB Agenda September 2026.pdf",
+       "title": "CPB Agenda September 2026.pdf"
+      },
+      {
+       "date": "2026-08-27",
+       "url": "https://www.orleanscountyny.gov/Document_center/Department/Planning/CPB Agenda August 2026.pdf",
+       "title": "CPB Agenda August 2026.pdf"
+      }
+     ]
+    }
+   },
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "pages_fetched": 6,
+   "discovered_at": "2026-11-02T19:32:06+00:00",
+   "website_candidates": [
+    "https://www.orleanscountyny.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Orleans County Planning Board",
+   "coverage": "direct",
+   "coverage_county_body": null,
+   "coverage_note": null,
+   "promoted_from": "wave2_counties",
+   "promoted_at": "2026-11-03",
+   "promotion_note": "Promoted by hand 2026-11-03: read in the wave-2 county run (data/test/wave2/ny_extended), which the promote command does not look at.",
+   "legislative_body": "Board of Supervisors / Legislature"
   }
  ]
 }

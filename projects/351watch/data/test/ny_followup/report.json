@@ -1,0 +1,419 @@
+{
+ "generated": "2026-11-03T15:20:19+00:00",
+ "run": "2026-11-03",
+ "rows": [
+  {
+   "town": "Huntington",
+   "kind": "town",
+   "county": "Suffolk",
+   "platform": "granicus",
+   "automated": false,
+   "status": "not automated",
+   "boards_ok": [],
+   "boards_failed": [],
+   "documents_ok": 0,
+   "documents_dated": 0,
+   "meeting_dates": [],
+   "hits": 0,
+   "reason": "vendor_blocked: agendas on granicus: robots.txt on huntingtonny.granicus.com disallows AgendaAheadBot",
+   "listings": [],
+   "earlier_reason_code": "crawl_delay_exceeds_cap",
+   "website": "https://www.huntingtonny.gov/"
+  },
+  {
+   "town": "Lansing",
+   "kind": "town",
+   "county": "Tompkins",
+   "platform": "civicplus",
+   "automated": true,
+   "status": "ok",
+   "boards_ok": [
+    "planning_board",
+    "select_board"
+   ],
+   "boards_failed": [],
+   "documents_ok": 7,
+   "documents_dated": 7,
+   "meeting_dates": [
+    "2026-09-23",
+    "2026-09-23",
+    "2026-09-29",
+    "2026-09-29",
+    "2026-10-21",
+    "2026-11-04",
+    "2026-11-09"
+   ],
+   "hits": 0,
+   "reason": "",
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "category_id": "2",
+     "url": "https://www.lansingtownny.gov/AgendaCenter/Town-Board-2",
+     "linked_agenda": true
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "category_id": "5",
+     "url": "https://www.lansingtownny.gov/AgendaCenter/Planning-Board-5",
+     "linked_agenda": true
+    }
+   ],
+   "earlier_reason_code": "crawl_delay_exceeds_cap",
+   "website": "https://www.lansingtownny.gov/"
+  },
+  {
+   "town": "Cicero",
+   "kind": "town",
+   "county": "Onondaga",
+   "platform": null,
+   "automated": false,
+   "status": "not automated",
+   "boards_ok": [],
+   "boards_failed": [],
+   "documents_ok": 0,
+   "documents_dated": 0,
+   "meeting_dates": [],
+   "hits": 0,
+   "reason": "documents_blocked: robots.txt disallows documents on cicerony.gov",
+   "listings": [],
+   "earlier_reason_code": "crawl_delay_exceeds_cap",
+   "website": "https://cicerony.gov/"
+  },
+  {
+   "town": "Pound Ridge",
+   "kind": "town",
+   "county": "Westchester",
+   "platform": "agenda_page",
+   "automated": true,
+   "status": "ok",
+   "boards_ok": [
+    "select_board"
+   ],
+   "boards_failed": [],
+   "documents_ok": 3,
+   "documents_dated": 3,
+   "meeting_dates": [
+    "2026-11-04",
+    "2026-11-04",
+    "2026-11-04"
+   ],
+   "hits": 0,
+   "reason": "",
+   "listings": [
+    {
+     "board": "Town Board Meeting (courtroom)",
+     "board_key": "select_board",
+     "url": "https://www.townofpoundridge.gov/boardsandcommissions-tb/town-board-meeting-courtroom-60",
+     "platform": "agenda_page",
+     "board_exclude": "planning\\s+board|planning\\s+commission|\\bPB\\b|zoning\\s+board\\s+of\\s+appeals|\\bZBA\\b|board\\s+of\\s+(?:zoning\\s+)?appeals|zoning\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+    }
+   ],
+   "earlier_reason_code": "documents_blocked",
+   "website": "https://www.townofpoundridge.gov/"
+  },
+  {
+   "town": "Southampton",
+   "kind": "town",
+   "county": "Suffolk",
+   "platform": "escribe",
+   "automated": true,
+   "status": "ok",
+   "boards_ok": [
+    "conservation_commission",
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "boards_failed": [],
+   "documents_ok": 2,
+   "documents_dated": 2,
+   "meeting_dates": [
+    "2026-11-04",
+    "2026-11-05"
+   ],
+   "hits": 0,
+   "reason": "",
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "escribe",
+     "url": "https://pub-southamptonny.escribemeetings.com/",
+     "meeting_type": "^Town Board (Regular Meeting|Special Meeting|Work Session|Special Work Session|Organizational Meeting)$",
+     "format": "html"
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "platform": "escribe",
+     "url": "https://pub-southamptonny.escribemeetings.com/",
+     "meeting_type": "^Planning Board",
+     "format": "html"
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "platform": "escribe",
+     "url": "https://pub-southamptonny.escribemeetings.com/",
+     "meeting_type": "^Zoning Board of Appeals$",
+     "format": "html"
+    },
+    {
+     "board": "Conservation Board",
+     "board_key": "conservation_commission",
+     "platform": "escribe",
+     "url": "https://pub-southamptonny.escribemeetings.com/",
+     "meeting_type": "^Conservation Board$",
+     "format": "html"
+    }
+   ],
+   "earlier_reason_code": "vendor_blocked",
+   "website": "https://www.southamptontownny.gov/"
+  },
+  {
+   "town": "Perth",
+   "kind": "town",
+   "county": "Fulton",
+   "platform": "munibit",
+   "automated": true,
+   "status": "failed",
+   "boards_ok": [],
+   "boards_failed": [
+    "planning_board",
+    "select_board"
+   ],
+   "documents_ok": 0,
+   "documents_dated": 0,
+   "meeting_dates": [],
+   "hits": 0,
+   "reason": "meeting list read: 5 agenda files in the window {'select_board': 2, 'planning_board': 3}; files not served to the reader (see munibit_meetings.json). ",
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "munibit",
+     "url": "https://www.perthny.gov/agendasandminutes",
+     "files_readable": false
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "platform": "munibit",
+     "url": "https://www.perthny.gov/agendasandminutes",
+     "files_readable": false
+    }
+   ],
+   "earlier_reason_code": "js_only",
+   "website": "https://www.perthny.gov/"
+  },
+  {
+   "town": "Spafford",
+   "kind": "town",
+   "county": "Onondaga",
+   "platform": "munibit",
+   "automated": true,
+   "status": "failed",
+   "boards_ok": [],
+   "boards_failed": [
+    "planning_board",
+    "select_board"
+   ],
+   "documents_ok": 0,
+   "documents_dated": 0,
+   "meeting_dates": [],
+   "hits": 0,
+   "reason": "meeting list read: 2 agenda files in the window {'planning_board': 1, 'select_board': 1}; files not served to the reader (see munibit_meetings.json). ",
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "munibit",
+     "url": "https://www.townofspaffordny.gov/agendasandminutes",
+     "files_readable": false
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "platform": "munibit",
+     "url": "https://www.townofspaffordny.gov/agendasandminutes",
+     "files_readable": false
+    }
+   ],
+   "earlier_reason_code": "js_only",
+   "website": "https://www.townofspaffordny.gov/"
+  },
+  {
+   "town": "Boston",
+   "kind": "town",
+   "county": "Erie",
+   "platform": "munibit",
+   "automated": true,
+   "status": "failed",
+   "boards_ok": [],
+   "boards_failed": [
+    "planning_board",
+    "select_board",
+    "zoning_board_of_appeals"
+   ],
+   "documents_ok": 0,
+   "documents_dated": 0,
+   "meeting_dates": [],
+   "hits": 0,
+   "reason": "meeting list read: 3 agenda files in the window {'select_board': 3}; files not served to the reader (see munibit_meetings.json). ",
+   "listings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "platform": "munibit",
+     "url": "https://www.bostonny.gov/townboard",
+     "files_readable": false
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "platform": "munibit",
+     "url": "https://www.bostonny.gov/planningboard",
+     "files_readable": false
+    },
+    {
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "platform": "munibit",
+     "url": "https://www.bostonny.gov/ZBA",
+     "files_readable": false
+    }
+   ],
+   "earlier_reason_code": "js_only",
+   "website": "https://www.bostonny.gov/"
+  },
+  {
+   "town": "Schoharie County",
+   "kind": "county",
+   "county": "Schoharie",
+   "platform": "agenda_page",
+   "automated": true,
+   "status": "ok",
+   "boards_ok": [
+    "planning_board"
+   ],
+   "boards_failed": [],
+   "documents_ok": 1,
+   "documents_dated": 1,
+   "meeting_dates": [
+    "2026-11-02"
+   ],
+   "hits": 0,
+   "reason": "",
+   "listings": [
+    {
+     "board": "Schoharie County Planning Commission",
+     "board_key": "planning_board",
+     "platform": "agenda_page",
+     "url": "https://schohariecounty-ny.gov/departments/community_development/planning_zoning/planning_commission.php",
+     "strip_doc_query": true
+    }
+   ],
+   "earlier_reason_code": null,
+   "website": "https://www.schohariecounty-ny.gov/"
+  },
+  {
+   "town": "Schenectady County",
+   "kind": "county",
+   "county": "Schenectady",
+   "platform": null,
+   "automated": false,
+   "status": "not automated",
+   "boards_ok": [],
+   "boards_failed": [],
+   "documents_ok": 0,
+   "documents_dated": 0,
+   "meeting_dates": [],
+   "hits": 0,
+   "reason": "no_agendas_found: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "listings": [],
+   "earlier_reason_code": null,
+   "website": "https://www.schenectadycountyny.gov/"
+  },
+  {
+   "town": "Tompkins County",
+   "kind": "county",
+   "county": "Tompkins",
+   "platform": "iqm2",
+   "automated": false,
+   "status": "not automated",
+   "boards_ok": [],
+   "boards_failed": [],
+   "documents_ok": 0,
+   "documents_dated": 0,
+   "meeting_dates": [],
+   "hits": 0,
+   "reason": "vendor_blocked: agendas on iqm2: robots.txt on tompkinscountyny.iqm2.com disallows AgendaAheadBot",
+   "listings": [],
+   "earlier_reason_code": null,
+   "website": "https://www.tompkinscountyny.gov/Home"
+  },
+  {
+   "town": "Wayne County",
+   "kind": "county",
+   "county": "Wayne",
+   "platform": "civicplus",
+   "automated": true,
+   "status": "ok",
+   "boards_ok": [
+    "planning_board"
+   ],
+   "boards_failed": [],
+   "documents_ok": 1,
+   "documents_dated": 1,
+   "meeting_dates": [
+    "2026-10-28"
+   ],
+   "hits": 0,
+   "reason": "",
+   "listings": [
+    {
+     "board": "Wayne County Planning Board",
+     "board_key": "planning_board",
+     "category_id": "7",
+     "url": "https://www.waynecountyny.gov/AgendaCenter/Wayne-County-Planning-Board-7"
+    }
+   ],
+   "earlier_reason_code": null,
+   "website": "https://www.waynecountyny.gov/"
+  },
+  {
+   "town": "Steuben County",
+   "kind": "county",
+   "county": "Steuben",
+   "platform": null,
+   "automated": false,
+   "status": "not automated",
+   "boards_ok": [],
+   "boards_failed": [],
+   "documents_ok": 0,
+   "documents_dated": 0,
+   "meeting_dates": [],
+   "hits": 0,
+   "reason": "no_recent_agendas: board pages found (e.g. https://www.steubencountyny.gov/220/Planning) but no agenda dated within the last 120 or next 120 days could be read from them",
+   "listings": [],
+   "earlier_reason_code": null,
+   "website": "https://www.steubencountyny.gov/"
+  }
+ ],
+ "network": {
+  "bytes_by_purpose": {
+   "document": 979832
+  },
+  "cache_hits": 7,
+  "errors": 0,
+  "requests": 7,
+  "requests_by_purpose": {
+   "document": 7
+  },
+  "robots_blocked": 0,
+  "slow_host_documents": {}
+ }
+}

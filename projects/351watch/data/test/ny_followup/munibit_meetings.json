@@ -1,0 +1,204 @@
+{
+ "generated": "2026-11-03T15:06:51+00:00",
+ "window": {
+  "start": "2026-09-19",
+  "end": "2027-03-03"
+ },
+ "note": "Meeting list from the Munibit module's JSON (adapters/munibit.py). viewer_url is the stable address of each file; a plain GET of it returns the site's viewer page, not the file, and the download link answers 'Access denied' to AgendaAheadBot, so no document text is read.",
+ "towns": {
+  "Perth": {
+   "library_files": 45,
+   "in_window": 5,
+   "by_board": {
+    "select_board": 2,
+    "planning_board": 3
+   },
+   "meetings": [
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "date": null,
+     "month": "2026-09",
+     "title": "09-2026 Meeting Notice",
+     "kind": "notice",
+     "posted": "2026-08-19",
+     "viewer_url": "https://www.perthny.gov/api/blob/viewBlob?rf=t&i=6uBrCHJ7ZmVnbtw77vWl1Z0ht%252BtyVLlb7qQkBgUq%252BFBcU816Ot3XX3MfDDqNl0qm",
+     "file_id": "bkU88C9pY0LcDizPFVFUxA==",
+     "path": [
+      "Agendas & Minutes",
+      "Planning Board",
+      "Agendas",
+      "2026"
+     ]
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "date": null,
+     "month": "2026-10",
+     "title": "10-2026 Meeting Notice",
+     "kind": "notice",
+     "posted": "2026-09-30",
+     "viewer_url": "https://www.perthny.gov/api/blob/viewBlob?rf=t&i=6uBrCHJ7ZmVnbtw77vWl1Yig3Z%2FprH1BUojNu6Enf%2FBESdeRUhwMd9b7rHyFUn6M",
+     "file_id": "MsMG9Kf4nNycmpBa7sRP/w==",
+     "path": [
+      "Agendas & Minutes",
+      "Planning Board",
+      "Agendas",
+      "2026"
+     ]
+    },
+    {
+     "board": "Town Board Agendas",
+     "board_key": "select_board",
+     "date": "2026-10-01",
+     "month": null,
+     "title": "10.01.2026 TB Agenda",
+     "kind": "agenda",
+     "posted": "2026-09-30",
+     "viewer_url": "https://www.perthny.gov/api/blob/viewBlob?rf=t&i=6uBrCHJ7ZmVnbtw77vWl1Y%252Boc1q8bIN%252BJkUxWFksdBcggQNFxE8pXW1k3Jm63e74",
+     "file_id": "x79MSFiw9t3275e1mMA7JA==",
+     "path": [
+      "Agendas & Minutes",
+      "Town Board Agendas",
+      "2026"
+     ]
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "date": null,
+     "month": "2026-11",
+     "title": "11-2026 Meeting Notice",
+     "kind": "notice",
+     "posted": "2026-10-30",
+     "viewer_url": "https://www.perthny.gov/api/blob/viewBlob?rf=t&i=6uBrCHJ7ZmVnbtw77vWl1V9Tr%252B4NtC6CdKALjATEtATgOFzA9ItHGR2yhreLdXAf",
+     "file_id": "bp2kbxdldvt4axaW0lCNFg==",
+     "path": [
+      "Agendas & Minutes",
+      "Planning Board",
+      "Agendas",
+      "2026"
+     ]
+    },
+    {
+     "board": "Town Board Agendas",
+     "board_key": "select_board",
+     "date": "2026-11-05",
+     "month": null,
+     "title": "11.05.2026 TB Agenda and Public Hearing Materials",
+     "kind": "agenda",
+     "posted": "2026-10-30",
+     "viewer_url": "https://www.perthny.gov/api/blob/viewBlob?rf=t&i=6uBrCHJ7ZmVnbtw77vWl1VycAuJk7jO8Ae7YXBNDLMkWGj5lk7b5eczHKMTnKnUJ",
+     "file_id": "yUHQ/VIHhqzC4bWm5gd2pw==",
+     "path": [
+      "Agendas & Minutes",
+      "Town Board Agendas",
+      "2026"
+     ]
+    }
+   ]
+  },
+  "Spafford": {
+   "library_files": 14,
+   "in_window": 2,
+   "by_board": {
+    "planning_board": 1,
+    "select_board": 1
+   },
+   "meetings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "date": "2026-10-08",
+     "month": null,
+     "title": "Agenda 10.8.2026",
+     "kind": "agenda",
+     "posted": "2026-10-05",
+     "viewer_url": "https://www.townofspaffordny.gov/api/blob/viewBlob?rf=t&i=5KfPKBbdVVcJaXEoG3KdlFolBiXRuKI04%2FoMmeuWzi%2F%2FocdjLWS2Jp1ihnVnzsqi",
+     "file_id": "v/2eO3Q0Ms7r6Urxd5AwPQ==",
+     "path": [
+      "Agendas & Minutes",
+      "Town Board",
+      "Agendas & Meeting Documents",
+      "2026",
+      "October 8, 2026 Agenda & Documents"
+     ]
+    },
+    {
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "date": "2026-10-15",
+     "month": null,
+     "title": "oct.15, 2026",
+     "kind": "agenda",
+     "posted": "2026-10-13",
+     "viewer_url": "https://www.townofspaffordny.gov/api/blob/viewBlob?rf=t&i=nEPkXWuZvo7MXbAG0CUkoMm9uFf%2F18P5XKnnSL13SHLhtXYMTIOfUPAdVF%252B36icd",
+     "file_id": "zFQJ%2B%2B2KmeeVJ3SWiipuDg==",
+     "path": [
+      "Agendas & Minutes",
+      "Planning Board",
+      "Agendas"
+     ]
+    }
+   ]
+  },
+  "Boston": {
+   "library_files": 149,
+   "in_window": 3,
+   "by_board": {
+    "select_board": 3
+   },
+   "meetings": [
+    {
+     "board": "Town Board",
+     "board_key": "select_board",
+     "date": "2026-09-30",
+     "month": null,
+     "title": "TB 2026-09-30 Agenda & Minutes",
+     "kind": "agenda",
+     "posted": "2026-10-22",
+     "viewer_url": "https://www.bostonny.gov/api/blob/viewBlob?rf=t&i=AzKCdOd0qZgU0AgM0dctmC%2FTqFNZGiZ9PTOezFP6zeYarLM6OHOphDcyiVY2d3HW",
+     "file_id": "jYPvElFik8%2BItzeHhL%2BeHw==",
+     "path": [
+      "Town Board",
+      "Agendas & Minutes",
+      "2026"
+     ]
+    },
+    {
+     "board": "Town Board Packets",
+     "board_key": "select_board",
+     "date": "2026-09-30",
+     "month": null,
+     "title": "TB 2026-09-30 Agenda Packet",
+     "kind": "packet",
+     "posted": "2026-09-30",
+     "viewer_url": "https://www.bostonny.gov/api/blob/viewBlob?rf=t&i=AzKCdOd0qZgU0AgM0dctmNCUbXdlP%2FX24%252BurKXEXW8RGuhCJIisd%2FFxOvwRYM47h",
+     "file_id": "gqiBh%2BJM6O/StxRXHLneaw==",
+     "path": [
+      "Town Board",
+      "Town Board Packets",
+      "2026"
+     ]
+    },
+    {
+     "board": "Town Board Packets",
+     "board_key": "select_board",
+     "date": "2026-10-21",
+     "month": null,
+     "title": "TB 2026-10-21 Agenda Packet",
+     "kind": "packet",
+     "posted": "2026-10-21",
+     "viewer_url": "https://www.bostonny.gov/api/blob/viewBlob?rf=t&i=AzKCdOd0qZgU0AgM0dctmEUEXys0Ey7Yhy39dZmdQPgR9nyiBjogQfIDkwqScGC9",
+     "file_id": "jq7RmIW39u6IDocX9TbI5g==",
+     "path": [
+      "Town Board",
+      "Town Board Packets",
+      "2026"
+     ]
+    }
+   ]
+  }
+ }
+}

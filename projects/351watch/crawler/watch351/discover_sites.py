@@ -38,7 +38,7 @@ from .adapters.agenda_page import AgendaPageAdapter
 from .adapters.civicplus import CivicPlusAdapter, _slug
 from .boards import BOARD_LABELS, classify_board
 from .discover_census import CF_MARKERS, civicplus_rows, cms_of
-from .fetch import FetchError, PoliteFetcher, Response, RobotsDisallowed
+from .fetch import CRAWL_DELAY_CAP, FetchError, PoliteFetcher, Response, RobotsDisallowed
 from .models import Window
 
 log = logging.getLogger(__name__)
@@ -556,8 +556,10 @@ def do_legistar(st: SiteState, client: str, found_by: str) -> bool:
 # ------------------------------------------------------------------ eSCRIBE
 def do_escribe(st: SiteState, url: str) -> bool:
     """eSCRIBE published-meetings portal: one listing per tracked meeting type with meetings in the
-    window. PDFs (FileStream.ashx) behind a 'Verifying your browser' page are never fetched: the
-    listing then reads the portal's own HTML agenda view (format: html)."""
+    window. When the portal offers its own HTML agenda view (Meeting.aspx?...&Agenda=Agenda) the listing
+    reads that (format: html) and the PDF (FileStream.ashx) is never requested: on some tenants
+    (Southampton NY) the PDF download answers a 'Verifying your browser' challenge, which is never
+    solved. The PDF is probed only when no HTML view is offered."""
     from .adapters.escribe import EscribeAdapter
     m = re.match(r"https?://pub-[a-z0-9-]+\.escribemeetings\.com", url, re.I)
     if not m:
@@ -580,15 +582,16 @@ def do_escribe(st: SiteState, url: str) -> bool:
         listing = {"board": mtype, "board_key": key, "platform": "escribe", "url": portal,
                    "meeting_type": "^" + re.escape(mtype) + "$"}
         pdf = next((x.get("Agenda") for x in recent if x.get("Agenda")), None)
-        if pdf:
-            try:
-                r = st.fetcher.get(pdf)
-                if not (r.ok and r.is_pdf):
-                    listing["format"] = "html"
-            except FetchError:
-                listing["format"] = "html"
-        elif any(x.get("HTML") for x in recent):
+        if any(x.get("HTML") for x in recent):
             listing["format"] = "html"
+        elif pdf:
+            try:
+                with st.fetcher.purpose("document"):
+                    r = st.fetcher.get(pdf)
+                if not (r.ok and r.is_pdf):
+                    recent = []   # the only agenda file is challenged or not a PDF: nothing readable
+            except FetchError:
+                recent = []
         if recent:
             st.listings.append(listing)
             found = True
@@ -725,7 +728,7 @@ def try_listing(st: SiteState, key: str, url: str, label: str, hub: bool, extra:
                 break
             blocked = f"HTTP {r.status} {d.url}"
         except RobotsDisallowed as e:
-            blocked = (f"documents on {urlsplit(d.url).netloc} need a crawl delay above the 10 s document cap"
+            blocked = (f"documents on {urlsplit(d.url).netloc} need a crawl delay above the {CRAWL_DELAY_CAP:g} s document cap"
                        if "crawl-delay" in str(e) else f"robots.txt disallows documents on {urlsplit(d.url).netloc}")
         except FetchError as e:
             blocked = f"document fetch error: {str(e)[:80]}"
@@ -868,8 +871,8 @@ def _fetch_home(st: SiteState, website: str) -> tuple[Response | None, tuple | N
 def discover_place(fetcher: PoliteFetcher, row: dict, state: str, tracked: list[str],
                    today: date | None = None) -> dict:
     """Discovery record for one place, in the towns_*.json row shape. Pages are read as
-    listing pages (crawl-delay cap 20 s); the probe of a listed document uses the document
-    rules (cap 10 s), as the daily run does."""
+    listing pages (fetch.LISTING_CRAWL_DELAY_CAP); the probe of a listed document uses the
+    document rules (fetch.CRAWL_DELAY_CAP, the slow-host budget), as the daily run does."""
     with fetcher.purpose("listing"):
         return _discover_place(fetcher, row, state, tracked, today)
 

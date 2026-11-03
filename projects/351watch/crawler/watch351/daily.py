@@ -26,7 +26,8 @@ data/towns.json is not read):
 6. write data/state/runs/YYYY-MM-DD.json and data/state/town_health.json.
 
 All requests go through PoliteFetcher (robots.txt on every host and redirect hop,
-<= 1 request/second/host, 351WatchBot user agent, crawl-delay > 10 s skipped).
+<= 1 request/second/host, AgendaAheadBot user agent, Crawl-delay honoured up to 20 s; a host
+asking more than 10 s gets at most 20 document downloads per run, the rest are deferred).
 """
 
 from __future__ import annotations
@@ -47,7 +48,7 @@ from pathlib import Path
 from . import attribution, current, extract
 from .adapters import REGISTRY
 from .crawl import scan_document_full, town_configs
-from .fetch import DEFAULT_CACHE_DIR, FetchError, PoliteFetcher
+from .fetch import DEFAULT_CACHE_DIR, FetchError, PoliteFetcher, SlowHostBudget
 from .fulltext import FullText
 from .dates import warrant_date, warrant_redate
 from .keywords import MATCHER_VERSION
@@ -197,6 +198,11 @@ class DailyRun:
         if not self.can_extract or (self.no_network_docs and not self.fetcher.is_cached(doc.url)):
             out.deferred += 1
             return
+        if not self.fetcher.is_cached(doc.url) and self.fetcher.slow_host_budget_left(doc.url) == 0:
+            # a slow host (Crawl-delay over fetch.SLOW_HOST_DELAY): this run's document budget for it is spent;
+            # the document is still on the listing tomorrow and is read then. No error record, no attempt used.
+            out.deferred += 1
+            return
         prev_attempts = (rec or {}).get("attempts", 0)
         try:
             with self.fetcher.purpose("document"):
@@ -216,6 +222,11 @@ class DailyRun:
                         "source_url": source_url, "listing_url": doc.listing_url, "document_title": doc.title,
                         "text_source": "ocr" if ex.ocr else ex.kind}
                 hits.extend(attribution.split_items(hits, ex.text, {**row, "state": state}, names, base, county_of))
+        except SlowHostBudget:
+            # the budget ran out between the check above and the fetch (another thread took the last slot, or a
+            # landing page's PDF was the one over): deferred like the check, not an error
+            out.deferred += 1
+            return
         except Exception as e:  # noqa: BLE001 - one bad document must not stop the town
             msg = f"{type(e).__name__}: {e}" if not isinstance(e, FetchError) else str(e)
             if rematch:  # keep the good record; re-matching is best effort
@@ -407,6 +418,9 @@ class DailyRun:
                 "cache_hits": f.stats["cache"],
                 "robots_blocked": f.stats["robots_blocked"],
                 "errors": f.stats["errors"],
+                # documents downloaded this run from hosts whose Crawl-delay is over fetch.SLOW_HOST_DELAY
+                # (each capped at fetch.SLOW_HOST_DOC_BUDGET; the rest were deferred)
+                "slow_host_documents": dict(f.slow_host_docs),
             },
             "errors_total": len(errors),
             "errors": errors[:MAX_ERRORS_REPORTED],

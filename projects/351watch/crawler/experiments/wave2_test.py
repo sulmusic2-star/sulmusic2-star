@@ -174,7 +174,7 @@ NY_TARGETS = [
      "A BESS-moratorium document on the town site matched the search; the site answers HTTP 403 to the bot, so it is unread",
      "https://www.chesterwcny.gov/media/7606"),
     ("Walton", "Delaware", "town", "bess_2026",
-     "Local Law 2 of 2026: a one-year BESS moratorium; the site asks a 30 s crawl delay, over the 10 s document cap",
+     "Local Law 2 of 2026: a one-year BESS moratorium; the site asks a 30 s crawl delay, over the 20 s cap",
      "https://townofwaltonny.gov/local-law-2-of-2026-a-local-law-establishing-a-one-1-year-moratorium-on-battery-energy-storage-systems-in-the-town-of-walton/"),
     ("Bergen", "Genesee", "town", "bess_2026",
      "Local Law 3 of 2026: a nine-month BESS moratorium, hearing 2026-05-19 (legal notice read 2026-11-02)",
@@ -231,6 +231,14 @@ WEBSITES: dict[str, list[str]] = {
     "Alabama": ["https://townofalabamany.gov/"],
     "Essex County": ["http://essexcountyny.gov"],
     "Suffolk County": ["http://www.suffolkcountyny.gov"],
+    # counties the 2026-11-02 discovery filed as "no website found"; a polite probe on 2026-11-03 found these answer
+    # (web.co.wayne.ny.us redirects to waynecountyny.gov; schohariecounty-ny.gov redirects to a Revize-hosted site;
+    # steubencountyny.gov reset the connection once and gets one more try). Run: experiments/ny_followup.py discover --counties
+    "Schenectady County": ["https://www.schenectadycountyny.gov/", "https://schenectadycountyny.gov/"],
+    "Tompkins County": ["https://www.tompkinscountyny.gov/", "https://tompkinscountyny.gov/"],
+    "Wayne County": ["https://www.waynecountyny.gov/", "https://web.co.wayne.ny.us/"],
+    "Schoharie County": ["https://www.schohariecounty-ny.gov/", "https://schohariecounty-ny.gov/"],
+    "Steuben County": ["https://www.steubencountyny.gov/", "https://steubencountyny.gov/"],
 }
 # Wave-1 places kept out of wave 2 even though they were not promoted: none (every one comes back for a second
 # look and the county route). Wave-1 towns with no website at all still get a county row.
@@ -911,7 +919,6 @@ JUDGE_W2.update({
     "Mamaroneck (village)": "vendor blocked: agendas are on Destiny (public.destinyhosted.com), a closed vendor",
     "Newstead": "no agenda page: the county-hosted site posts legal notices (hearing notices, SEQR letters, a rezoning application) but no "
                 "agendas",
-    "Pound Ridge": "crawl delay over cap: the agenda documents on townofpoundridge.gov need a crawl delay above the 10 s document cap",
     "Rotterdam": "JavaScript only: the Meetings pages (Town Board, Planning Commission, ZBA) list no documents in server HTML",
     "Royalton": "JavaScript only: the Minutes & Agendas page renders its document list by script",
     "Wilson": "JavaScript only: the CivicPlus Document Center folder 'Minutes and Agendas' renders by script; the site has no AgendaCenter",
@@ -1118,7 +1125,7 @@ KEY_DIR = "https://agendaahead.vercel.app/.well-known/http-message-signatures-di
 DRAFT_KINDS = {   # reason code -> (kind of ask, the one-line explanation of what we saw)
     "bot_challenge": ("cloudflare", "answers a Cloudflare bot check (HTTP 403, 'Just a moment') to our reader"),
     "waf_block": ("firewall", "answers HTTP 403 from its firewall to our reader on every page"),
-    "crawl_delay_exceeds_cap": ("crawl_delay", "asks in robots.txt for a crawl delay longer than the 10 seconds we honour for documents"),
+    "crawl_delay_exceeds_cap": ("crawl_delay", "asks in robots.txt for a crawl delay longer than the 20 seconds we honour"),
     "robots_disallow": ("robots", "disallows our reader in robots.txt"),
     "documents_blocked": ("robots", "disallows the agenda documents in robots.txt"),
     "vendor_blocked": ("vendor", "keeps its agendas on a vendor host that turns automatic readers away"),
@@ -1142,8 +1149,8 @@ def _draft(place: dict) -> str | None:
         "cloudflare": (f"add AgendaAheadBot to the allow list in your Cloudflare dashboard (Security, Bots: allow verified bots, or a "
                        f"WAF rule for the user agent AgendaAheadBot), or ask Cloudflare to pass it through"),
         "firewall": "allow the user agent AgendaAheadBot through the firewall rule that returns 403, for the agenda pages only",
-        "crawl_delay": ("confirm that one request every 15 to 20 seconds is acceptable for the agenda pages, or lower the Crawl-delay "
-                        "in robots.txt to 10 seconds for User-agent: AgendaAheadBot"),
+        "crawl_delay": ("lower the Crawl-delay in robots.txt to 20 seconds or less for User-agent: AgendaAheadBot (we read a few "
+                        "agenda files a day, never faster than the delay asks)"),
         "robots": "add two lines to robots.txt: User-agent: AgendaAheadBot and Allow: / (or Allow: for the agenda folder only)",
         "vendor": ("ask your agenda vendor to allow the user agent AgendaAheadBot on the public agenda pages, or post the agenda "
                    "PDFs on your own site as well"),

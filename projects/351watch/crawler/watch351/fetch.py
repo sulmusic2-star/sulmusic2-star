@@ -8,7 +8,9 @@ the politeness rules live in exactly one place:
   5xx / network failure = disallow the host for this run)
 * waits at least `min_interval` seconds between requests to the same host
   (or the robots.txt Crawl-delay, whichever is larger); a host asking for more than
-  CRAWL_DELAY_CAP (10 s) is skipped, or LISTING_CRAWL_DELAY_CAP (20 s) for listing pages
+  CRAWL_DELAY_CAP (20 s; LISTING_CRAWL_DELAY_CAP for listing pages, the same value) is skipped
+* a host asking for more than SLOW_HOST_DELAY (10 s) gets at most SLOW_HOST_DOC_BUDGET (20)
+  document downloads per run, so one slow host cannot hold a worker for hours
 * caches every response body under crawler/.cache/ so re-runs are cheap
 * never logs in, never sends cookies it was not given, never retries a
   403/429 aggressively
@@ -42,12 +44,19 @@ DEFAULT_CACHE_DIR = Path(__file__).resolve().parent.parent / ".cache"
 # Hosts that rate-limit below our default 1 request/second (seconds between requests).
 HOST_MIN_INTERVAL = {"opengov.sos.ri.gov": 2.5}
 MAX_BYTES = 40 * 1024 * 1024  # skip anything bigger than 40 MB
-# Longest robots.txt Crawl-delay we honour (seconds). A host asking for more is skipped.
-# Listing pages (a few requests per host per day) may wait up to 20 s; documents and
-# everything else keep the 10 s cap.
-CRAWL_DELAY_CAP = 10.0
+# Longest robots.txt Crawl-delay we honour (seconds). A host asking for more is skipped. Raised from 10 s
+# to 20 s on 2026-11-03 so that Huntington (15 s), Cicero (20 s) and Pound Ridge (15 s) can be read: a few
+# files a day at one request every 15 to 20 s is harmless. Listing pages keep their own constant (the same
+# value today; it was the higher of the two).
+CRAWL_DELAY_CAP = 20.0
 LISTING_CRAWL_DELAY_CAP = 20.0
 LISTING_PURPOSES = frozenset({"listing"})
+# A host whose Crawl-delay is above SLOW_HOST_DELAY is slow: one PoliteFetcher (one run) downloads at most
+# SLOW_HOST_DOC_BUDGET documents from it (network requests made with purpose "document"; cached copies are
+# free). The rest wait for the next run: daily.py defers them without recording an error. At 20 s a request,
+# 20 documents are about seven minutes on one worker; a backlog of 100 would otherwise take half an hour.
+SLOW_HOST_DELAY = 10.0
+SLOW_HOST_DOC_BUDGET = 20
 
 
 @dataclass
@@ -99,6 +108,10 @@ class RobotsDisallowed(FetchError):
     pass
 
 
+class SlowHostBudget(FetchError):
+    """This run's document budget for a slow host (Crawl-delay above SLOW_HOST_DELAY) is spent."""
+
+
 class PoliteFetcher:
     def __init__(self, cache_dir: Path = DEFAULT_CACHE_DIR, min_interval: float = 1.0,
                  timeout: tuple[float, float] = (10, 45), offline: bool = False):
@@ -121,6 +134,8 @@ class PoliteFetcher:
         self._stats_lock = threading.Lock()
         self._ctx = threading.local()
         self.stats = {"network": 0, "cache": 0, "robots_blocked": 0, "errors": 0}
+        # network document fetches per slow host this run (SLOW_HOST_DOC_BUDGET)
+        self.slow_host_docs: Counter = Counter()
         # Network requests and bytes by purpose ("robots", "listing", "document", ...),
         # set per thread with `with fetcher.purpose("listing"): ...`.
         self.requests_by_purpose: Counter = Counter()
@@ -227,6 +242,40 @@ class PoliteFetcher:
         rp = self._robots_for(url)
         return rp is not None and all(rp.can_fetch(a, url) for a in (ROBOTS_AGENT, *FORMER_ROBOTS_AGENTS))
 
+    def host_delay(self, url: str) -> float:
+        """The robots.txt Crawl-delay for the URL's host, in seconds (0 when there is none, or when
+        robots.txt could not be read)."""
+        rp = self._robots_for(url)
+        if rp is None:
+            return 0.0
+        delays = [float(d) for d in (rp.crawl_delay(a) for a in (ROBOTS_AGENT, *FORMER_ROBOTS_AGENTS)) if d]
+        return max(delays) if delays else 0.0
+
+    def is_slow_host(self, url: str) -> bool:
+        return self.host_delay(url) > SLOW_HOST_DELAY
+
+    def slow_host_budget_left(self, url: str) -> int | None:
+        """Documents this run may still download from the URL's host: None for an ordinary host, else
+        SLOW_HOST_DOC_BUDGET minus the documents already fetched from it (0 when the budget is spent)."""
+        if not self.is_slow_host(url):
+            return None
+        with self._stats_lock:
+            return max(0, SLOW_HOST_DOC_BUDGET - self.slow_host_docs[urlsplit(url).netloc])
+
+    def _charge_slow_host(self, url: str) -> None:
+        """Count one network document fetch against a slow host's budget; raise when it is spent."""
+        if getattr(self._ctx, "kind", None) != "document":
+            return
+        delay = self.host_delay(url)
+        if delay <= SLOW_HOST_DELAY:
+            return
+        host = urlsplit(url).netloc
+        with self._stats_lock:
+            if self.slow_host_docs[host] >= SLOW_HOST_DOC_BUDGET:
+                raise SlowHostBudget(f"{url}: {SLOW_HOST_DOC_BUDGET} documents already fetched from {host} this run "
+                                     f"(Crawl-delay {delay:g} s); the rest wait for the next run")
+            self.slow_host_docs[host] += 1
+
     # --------------------------------------------------------------- throttle
     def _throttle(self, host: str, interval: float) -> None:
         """Block until `interval` seconds have passed since the previous request
@@ -289,12 +338,12 @@ class PoliteFetcher:
         delay = max(delays) if delays else None
         interval = max(self.min_interval, HOST_MIN_INTERVAL.get(urlsplit(url).netloc, 0.0),
                        float(delay) if delay else 0.0)
-        # Cap absurd crawl-delays so one host cannot stall the whole run; if a site asks
-        # for more than the cap we skip it instead of hammering. Listing pages (purpose
-        # "listing") may wait longer than documents.
+        # A site asking for more than the cap is skipped instead of hammered (listing pages have their own
+        # cap). Hosts between SLOW_HOST_DELAY and the cap are honoured as asked, with a per-run document
+        # budget (_charge_slow_host) so one of them cannot stall a worker.
         cap = LISTING_CRAWL_DELAY_CAP if getattr(self._ctx, "kind", None) in LISTING_PURPOSES else CRAWL_DELAY_CAP
         if interval > cap:
-            raise RobotsDisallowed(f"{url} (crawl-delay {interval}s too long for prototype)")
+            raise RobotsDisallowed(f"{url} (crawl-delay {interval}s above the {cap:g} s cap)")
         return interval
 
     def _get_following_redirects(self, url: str, max_hops: int = 5):
@@ -336,6 +385,7 @@ class PoliteFetcher:
             return cached
         if self.offline:
             raise FetchError(f"offline mode and not cached: {url}")
+        self._charge_slow_host(url)   # a document from a slow host: within this run's budget, or SlowHostBudget
 
         r, body, final_url = self._get_following_redirects(url)
         resp = Response(url, final_url, r.status_code, r.headers.get("Content-Type", ""), body,

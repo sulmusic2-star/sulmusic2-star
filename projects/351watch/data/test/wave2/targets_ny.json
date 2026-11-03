@@ -2438,9 +2438,12 @@
   "state": "NY",
   "county": "Schenectady",
   "kind": "county",
-  "website": null,
-  "website_candidates": [],
-  "website_source": null,
+  "website": "https://www.schenectadycountyny.gov/",
+  "website_candidates": [
+   "https://www.schenectadycountyny.gov/",
+   "https://schenectadycountyny.gov/"
+  ],
+  "website_source": "polite probe from the sandbox, 2026-11-03 (wave2_test.WEBSITES; experiments/ny_followup.py discover --counties)",
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Duanesburg (site town, not read), Rotterdam)",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
@@ -2450,17 +2453,19 @@
     "Schenectady County, New York"
    ],
    "title": null
-  },
-  "no_website_note": "no matching Wikipedia article found, 2026-11-02"
+  }
  },
  {
   "town": "Schoharie County",
   "state": "NY",
   "county": "Schoharie",
   "kind": "county",
-  "website": null,
-  "website_candidates": [],
-  "website_source": null,
+  "website": "https://www.schohariecounty-ny.gov/",
+  "website_candidates": [
+   "https://www.schohariecounty-ny.gov/",
+   "https://schohariecounty-ny.gov/"
+  ],
+  "website_source": "polite probe from the sandbox, 2026-11-03 (wave2_test.WEBSITES; experiments/ny_followup.py discover --counties)",
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Carlisle)",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
@@ -2470,8 +2475,7 @@
     "Schoharie County, New York"
    ],
    "title": null
-  },
-  "no_website_note": "no matching Wikipedia article found, 2026-11-02"
+  }
  },
  {
   "town": "St. Lawrence County",
@@ -2499,9 +2503,12 @@
   "state": "NY",
   "county": "Steuben",
   "kind": "county",
-  "website": null,
-  "website_candidates": [],
-  "website_source": null,
+  "website": "https://www.steubencountyny.gov/",
+  "website_candidates": [
+   "https://www.steubencountyny.gov/",
+   "https://steubencountyny.gov/"
+  ],
+  "website_source": "polite probe from the sandbox, 2026-11-03 (wave2_test.WEBSITES; experiments/ny_followup.py discover --counties)",
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Cameron, Greenwood, Prattsburgh)",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
@@ -2511,8 +2518,7 @@
     "Steuben County, New York"
    ],
    "title": null
-  },
-  "no_website_note": "no matching Wikipedia article found, 2026-11-02"
+  }
  },
  {
   "town": "Suffolk County",
@@ -2555,9 +2561,12 @@
   "state": "NY",
   "county": "Tompkins",
   "kind": "county",
-  "website": null,
-  "website_candidates": [],
-  "website_source": null,
+  "website": "https://www.tompkinscountyny.gov/",
+  "website_candidates": [
+   "https://www.tompkinscountyny.gov/",
+   "https://tompkinscountyny.gov/"
+  ],
+  "website_source": "polite probe from the sandbox, 2026-11-03 (wave2_test.WEBSITES; experiments/ny_followup.py discover --counties)",
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Lansing (site town, not read))",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
@@ -2567,8 +2576,7 @@
     "Tompkins County, New York"
    ],
    "title": null
-  },
-  "no_website_note": "no matching Wikipedia article found, 2026-11-02"
+  }
  },
  {
   "town": "Ulster County",
@@ -2639,9 +2647,12 @@
   "state": "NY",
   "county": "Wayne",
   "kind": "county",
-  "website": null,
-  "website_candidates": [],
-  "website_source": null,
+  "website": "https://www.waynecountyny.gov/",
+  "website_candidates": [
+   "https://www.waynecountyny.gov/",
+   "https://web.co.wayne.ny.us/"
+  ],
+  "website_source": "polite probe from the sandbox, 2026-11-03 (wave2_test.WEBSITES; experiments/ny_followup.py discover --counties)",
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Rose, Walworth)",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
@@ -2660,8 +2671,7 @@
     "Wayne County, New York"
    ],
    "title": null
-  },
-  "no_website_note": "no matching Wikipedia article found, 2026-11-02"
+  }
  },
  {
   "town": "Westchester County",

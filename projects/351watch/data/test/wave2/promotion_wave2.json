@@ -1,0 +1,2456 @@
+{
+ "judged": "2026-11-03T15:32:27+00:00",
+ "config": "data/test/wave2/config/towns_ny.json",
+ "run_report": "2026-11-02",
+ "rows": [
+  {
+   "town": "Chester",
+   "county": "Orange",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the Minutes | Agendas page lists the boards but no documents (its lists are filled by script); the board pages carry forms and fee schedules only",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Freedom",
+   "county": "Cattaraugus",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the Minutes page lists meeting audio recordings (.m4a) and a CMM minutes embed; no agendas are posted",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Mina",
+   "county": "Chautauqua",
+   "kind": "town",
+   "promote": false,
+   "notes": "no website: townofmina.info (the Wikipedia infobox site) answers HTTP 404 and no other town site was found",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Cameron",
+   "county": "Steuben",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: townofcameron.us posts the meeting schedule and minutes only",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Gloversville",
+   "county": "Fulton",
+   "kind": "city",
+   "promote": false,
+   "notes": "vendor blocked: Common Council agendas and minutes are kept in a Dropbox folder, whose robots.txt disallows all readers; the calendar's event pages carry no agenda",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Oswego",
+   "county": "Oswego",
+   "kind": "city",
+   "promote": true,
+   "notes": null,
+   "platform": "civicclerk",
+   "evidence": {
+    "documents_ok": 3,
+    "documents_ok_dated": 3,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Parishville",
+   "county": "St. Lawrence",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the Town Council page links board minutes only",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Jay",
+   "county": "Essex",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 2,
+    "documents_ok_dated": 2,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Southport",
+   "county": "Chemung",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 2,
+    "documents_ok_dated": 2,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "planning_board",
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Poland",
+   "county": "Chautauqua",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "cmm_compass",
+   "evidence": {
+    "documents_ok": 1,
+    "documents_ok_dated": 1,
+    "hits": 1,
+    "health": "ok",
+    "boards_ok": [
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Willing",
+   "county": "Allegany",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "cmm_compass",
+   "evidence": {
+    "documents_ok": 1,
+    "documents_ok_dated": 1,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Athens",
+   "county": "Greene",
+   "kind": "town",
+   "promote": false,
+   "notes": "bot wall: the Town Board page answers a Cloudflare check ('One moment, please...') to AgendaAheadBot; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "German Flatts",
+   "county": "Herkimer",
+   "kind": "town",
+   "promote": false,
+   "notes": "no website: germanflatts.org (the Wikipedia infobox site) answers HTTP 404",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Barker",
+   "county": "Broome",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the dated Town Board documents on the Meetings page are minutes; legal notices are page text",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Victory",
+   "county": "Cayuga",
+   "kind": "town",
+   "promote": false,
+   "notes": "no website: no town website found (web search 2026-11-02; the county site lists the board schedule only)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Fort Ann",
+   "county": "Washington",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 4,
+    "documents_ok_dated": 4,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "planning_board",
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Florence",
+   "county": "Oneida",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 1,
+    "documents_ok_dated": 1,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Salem",
+   "county": "Washington",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 7,
+    "documents_ok_dated": 7,
+    "hits": 6,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Naples",
+   "county": "Ontario",
+   "kind": "town",
+   "promote": false,
+   "notes": "vendor blocked: legal notices and minutes are Google Drive folders; Drive's download endpoint is disallowed by robots.txt and the folder view renders by script",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Albion",
+   "county": "Orleans",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 1,
+    "documents_ok_dated": 1,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Chautauqua",
+   "county": "Chautauqua",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "cmm_compass",
+   "evidence": {
+    "documents_ok": 2,
+    "documents_ok_dated": 2,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Harrison",
+   "county": "Westchester",
+   "kind": "town",
+   "promote": false,
+   "notes": "bot wall: Cloudflare-style bot challenge (HTTP 403) on https://www.harrison-ny.gov/; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Johnstown",
+   "county": "Fulton",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 2,
+    "documents_ok_dated": 2,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board",
+     "zoning_board_of_appeals"
+    ]
+   }
+  },
+  {
+   "town": "Mamaroneck (village)",
+   "county": "Westchester",
+   "kind": "village",
+   "promote": false,
+   "notes": "vendor blocked: agendas are on Destiny (public.destinyhosted.com), a closed vendor",
+   "platform": "destiny",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Mount Kisco",
+   "county": "Westchester",
+   "kind": "village",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 19,
+    "documents_ok_dated": 19,
+    "hits": 1,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 1,
+    "boards_with_dated_docs": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ]
+   }
+  },
+  {
+   "town": "Newstead",
+   "county": "Erie",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the county-hosted site posts legal notices (hearing notices, SEQR letters, a rezoning application) but no agendas",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Pound Ridge",
+   "county": "Westchester",
+   "kind": "town",
+   "promote": false,
+   "notes": "robots disallow: documents on www.townofpoundridge.gov need a crawl delay above the 10 s document cap",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Ripley",
+   "county": "Chautauqua",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "cmm_compass",
+   "evidence": {
+    "documents_ok": 1,
+    "documents_ok_dated": 1,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Rotterdam",
+   "county": "Schenectady",
+   "kind": "town",
+   "promote": false,
+   "notes": "JavaScript only: the Meetings pages (Town Board, Planning Commission, ZBA) list no documents in server HTML",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Royalton",
+   "county": "Niagara",
+   "kind": "town",
+   "promote": false,
+   "notes": "JavaScript only: the Minutes & Agendas page renders its document list by script",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Walworth",
+   "county": "Wayne",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 7,
+    "documents_ok_dated": 7,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ]
+   }
+  },
+  {
+   "town": "Wilson",
+   "county": "Niagara",
+   "kind": "town",
+   "promote": false,
+   "notes": "JavaScript only: the CivicPlus Document Center folder 'Minutes and Agendas' renders by script; the site has no AgendaCenter",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Frankfort",
+   "county": "Herkimer",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 4,
+    "documents_ok_dated": 4,
+    "hits": 4,
+    "health": "ok",
+    "boards_ok": [
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Le Ray",
+   "county": "Jefferson",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 2,
+    "documents_ok_dated": 2,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "planning_board"
+    ]
+   }
+  },
+  {
+   "town": "Turin",
+   "county": "Lewis",
+   "kind": "town",
+   "promote": false,
+   "notes": "JavaScript only: meeting archives load by script and the public-notices posts carry no agendas (the same CMS as Lewis)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Pendleton",
+   "county": "Niagara",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 3,
+    "documents_ok_dated": 3,
+    "hits": 1,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "planning_board",
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Carrollton",
+   "county": "Cattaraugus",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "cmm_compass",
+   "evidence": {
+    "documents_ok": 1,
+    "documents_ok_dated": 1,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Elba",
+   "county": "Genesee",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the listing read without error but listed no document in the window",
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "North Elba",
+   "county": "Essex",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 7,
+    "documents_ok_dated": 7,
+    "hits": 12,
+    "health": "ok",
+    "boards_ok": [
+     "select_board",
+     "zoning_board_of_appeals"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board",
+     "zoning_board_of_appeals"
+    ]
+   }
+  },
+  {
+   "town": "Newcomb",
+   "county": "Essex",
+   "kind": "town",
+   "promote": false,
+   "notes": "vendor blocked: Town Board agendas are Google Drive files; Drive's download endpoint is disallowed by robots.txt and the file page is a script viewer",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Ticonderoga",
+   "county": "Essex",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 1,
+    "documents_ok_dated": 1,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "St. Armand",
+   "county": "Essex",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 1,
+    "documents_ok_dated": 1,
+    "hits": 2,
+    "health": "ok",
+    "boards_ok": [
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Lake George",
+   "county": "Warren",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "civicplus",
+   "evidence": {
+    "documents_ok": 7,
+    "documents_ok_dated": 7,
+    "hits": 2,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ]
+   }
+  },
+  {
+   "town": "Chester (Warren County)",
+   "county": "Warren",
+   "kind": "town",
+   "promote": false,
+   "notes": "bot wall: Cloudflare-style bot challenge (HTTP 403) on https://www.chesterwcny.gov/; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Walton",
+   "county": "Delaware",
+   "kind": "town",
+   "promote": false,
+   "notes": "crawl delay over cap: robots.txt asks for a Crawl-delay above the 20 s listing cap (30.0s too long for prototype); host skipped",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Bergen",
+   "county": "Genesee",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 6,
+    "documents_ok_dated": 6,
+    "hits": 16,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "planning_board",
+     "select_board"
+    ]
+   }
+  },
+  {
+   "town": "Webb",
+   "county": "Herkimer",
+   "kind": "town",
+   "promote": false,
+   "notes": "bot wall: Cloudflare-style bot challenge (HTTP 403) on https://www.townofwebbny.gov/; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Goshen",
+   "county": "Orange",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 7,
+    "documents_ok_dated": 7,
+    "hits": 2,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ]
+   }
+  },
+  {
+   "town": "Troy",
+   "county": "Rensselaer",
+   "kind": "city",
+   "promote": true,
+   "notes": null,
+   "platform": "civicplus",
+   "evidence": {
+    "documents_ok": 13,
+    "documents_ok_dated": 13,
+    "hits": 1,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ]
+   }
+  },
+  {
+   "town": "Moreau",
+   "county": "Saratoga",
+   "kind": "town",
+   "promote": true,
+   "notes": null,
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 6,
+    "documents_ok_dated": 6,
+    "hits": 6,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": [
+     "planning_board",
+     "select_board",
+     "zoning_board_of_appeals"
+    ]
+   }
+  },
+  {
+   "town": "Waterford",
+   "county": "Saratoga",
+   "kind": "town",
+   "promote": false,
+   "notes": "bot wall: Cloudflare-style bot challenge (HTTP 403) on https://www.townofwaterfordny.gov/; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "New Windsor",
+   "county": "Orange",
+   "kind": "town",
+   "promote": false,
+   "notes": "vendor blocked: agendas and minutes are kept in a Laserfiche Portal repository (portal.laserfiche.com), which renders by script and has no static listing",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Alabama",
+   "county": "Genesee",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the Town Board and Planning Board pages post meeting notices (a cancellation, one data-center information post) but no agendas; the Board Meeting Minutes page lists nothing in server HTML",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Essex County",
+   "county": "Essex",
+   "kind": "county",
+   "promote": false,
+   "notes": "agendas undated: board pages found (e.g. https://essexcountyny.gov/clerk-of-the-board-of-supervisors/‎) but no agenda dated within the last 120 or next 120 days could be read from them",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Carlisle",
+   "county": "Schoharie",
+   "kind": "town",
+   "promote": false,
+   "notes": "no website: the county-hosted town page answers HTTP 404 and the Wikipedia infobox lists no site",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Gainesville",
+   "county": "Wyoming",
+   "kind": "town",
+   "promote": false,
+   "notes": "JavaScript only: townofgainesvilleny.gov (found this wave) is a Wix site whose Agendas & Minutes page renders by script",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Brasher",
+   "county": "St. Lawrence",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: townofbrasher.gov is reachable but lists no agendas for the Town Board, Planning Board or ZBA",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Sherman",
+   "county": "Chautauqua",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: shermanny.gov carries Town Board minutes only; the Planning Board and ZBA agendas there are the Village of Sherman's",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Schroeppel",
+   "county": "Oswego",
+   "kind": "town",
+   "promote": false,
+   "notes": "unreachable: robots.txt answered 5xx or timed out from this sandbox on 2026-10-12 and 10-13 (RFC 9309: treated as disallow); retried in wave 2",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Lewis",
+   "county": "Lewis",
+   "kind": "town",
+   "promote": false,
+   "notes": "agendas undated: Town Board agendas are posted as monthly public notices named only by month ('Agenda for September 2026', a .docx), so no meeting date can be read",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Northampton",
+   "county": "Fulton",
+   "kind": "town",
+   "promote": false,
+   "notes": "unreachable: robots.txt answered 5xx or timed out from this sandbox on 2026-10-12 and 10-13 (RFC 9309: treated as disallow); retried in wave 2",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Mayville",
+   "county": "Chautauqua",
+   "kind": "village",
+   "promote": false,
+   "notes": "no agenda page: the village posts notices through a CMM notices embed (nothing dated in the window) and minutes; Village Board agendas are not online",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Benson",
+   "county": "Hamilton",
+   "kind": "town",
+   "promote": false,
+   "notes": "no website: no town website found (townofbenson.com is Benson, North Carolina; web search 2026-10-12)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Collins",
+   "county": "Erie",
+   "kind": "town",
+   "promote": false,
+   "notes": "robots disallow: robots.txt on townofcollinsny.gov disallows the agenda documents",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Virgil",
+   "county": "Cortland",
+   "kind": "town",
+   "promote": false,
+   "notes": "unreachable: robots.txt answered 5xx or timed out from this sandbox on 2026-10-12 and 10-13 (RFC 9309: treated as disallow); retried in wave 2",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Oswegatchie",
+   "county": "St. Lawrence",
+   "kind": "town",
+   "promote": false,
+   "notes": "agendas undated: monthly Town Board agendas (2026_<month>_agenda.pdf) are posted without a day; the latest was August 2026",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Palatine",
+   "county": "Montgomery",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the Town Council page links a Google Drive folder; no dated agenda listing on townofpalatine.org",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Pike",
+   "county": "Wyoming",
+   "kind": "town",
+   "promote": false,
+   "notes": "no website: no town website found (web search 2026-10-12)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Mentz",
+   "county": "Cayuga",
+   "kind": "town",
+   "promote": false,
+   "notes": "robots disallow: robots.txt on townofmentz.com disallows AgendaAheadBot",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Carlton",
+   "county": "Orleans",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the town posts hearing and meeting notices on its homepage only (one dated ZBA hearing notice in the window); kept in the test config for the county route",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Allen",
+   "county": "Allegany",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the Wix site is reachable but lists no agendas for the tracked boards",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Westfield",
+   "county": "Chautauqua",
+   "kind": "town",
+   "promote": false,
+   "notes": "agendas undated: documents read but none carries a meeting date",
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 1,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": "ok",
+    "boards_ok": [
+     "planning_board",
+     "select_board"
+    ],
+    "boards_failed": [],
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Root",
+   "county": "Montgomery",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the county-hosted town pages (montgomerycountyny.gov/web/municipal/root/) show board pages but no agenda dated within 120 days of the run",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Greenwood",
+   "county": "Steuben",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the Minutes and Agenda page's newest council agenda is October 2023",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Prattsburgh",
+   "county": "Steuben",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the Town Board page lists monthly minutes only",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "North Harmony",
+   "county": "Chautauqua",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: board pages found (townofnorthharmony.gov/townboard) but no agenda dated within 120 days of the run",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Rose",
+   "county": "Wayne",
+   "kind": "town",
+   "promote": false,
+   "notes": "unreachable: robots.txt answered 5xx or timed out from this sandbox (RFC 9309: treated as disallow); reachable in the pilot",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Stockport",
+   "county": "Columbia",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the Town Board page posts minutes; no agenda dated within 120 days of the run",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Yorktown",
+   "county": "Westchester",
+   "kind": "town",
+   "promote": false,
+   "notes": "bot wall: agendas are on calendar.yorktownny.gov (HTTP 403 'blocked due to security reasons') and ecode360.com/documents (robots.txt disallows all agents); the public-notices page carries a few hearing notices; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Montgomery",
+   "county": "Orange",
+   "kind": "town",
+   "promote": false,
+   "notes": "JavaScript only: 'Agendas, Minutes, & Videos' is a DNN document library filled by script, with no static listing to read",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Somerset",
+   "county": "Niagara",
+   "kind": "town",
+   "promote": false,
+   "notes": "bot wall: Cloudflare-style bot challenge (HTTP 403) on www.somersetny.gov; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Sherburne",
+   "county": "Chenango",
+   "kind": "town",
+   "promote": false,
+   "notes": "no agenda page: the newest Town Board agenda document is from June 2024; nothing dated within 120 days of the run",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Albany County",
+   "county": "Albany",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Allegany County",
+   "county": "Allegany",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: the listing read without error but listed no document in the window",
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Broome County",
+   "county": "Broome",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Cattaraugus County",
+   "county": "Cattaraugus",
+   "kind": "county",
+   "promote": false,
+   "notes": "agendas undated: board pages found (e.g. https://www.cattco.gov/meeting/county-planning-board-meeting-june-2026-15844) but no agenda dated within the last 120 or next 120 days could be read from them",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Cayuga County",
+   "county": "Cayuga",
+   "kind": "county",
+   "promote": false,
+   "notes": "bot wall: Cloudflare-style bot challenge (HTTP 403) on https://www.cayugacounty.gov/; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Chautauqua County",
+   "county": "Chautauqua",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Chemung County",
+   "county": "Chemung",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: the listing read without error but listed no document in the window",
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Chenango County",
+   "county": "Chenango",
+   "kind": "county",
+   "promote": false,
+   "notes": "bot wall: Cloudflare-style bot challenge (HTTP 403) on https://www.chenangocountyny.gov/; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Columbia County",
+   "county": "Columbia",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Cortland County",
+   "county": "Cortland",
+   "kind": "county",
+   "promote": false,
+   "notes": "vendor blocked: agendas on iqm2: robots.txt on cortlandcountyny.iqm2.com disallows AgendaAheadBot",
+   "platform": "iqm2",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Delaware County",
+   "county": "Delaware",
+   "kind": "county",
+   "promote": false,
+   "notes": "bot wall: HTTP 403 from the site's firewall to AgendaAheadBot; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Erie County",
+   "county": "Erie",
+   "kind": "county",
+   "promote": false,
+   "notes": "vendor blocked: agendas on destiny: destiny pages answer, but the platform is on the closed list",
+   "platform": "destiny",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Fulton County",
+   "county": "Fulton",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Genesee County",
+   "county": "Genesee",
+   "kind": "county",
+   "promote": false,
+   "notes": "robots disallow: robots.txt disallows agenda pages: https://www.geneseeny.gov/Business-Development/Development/Planning-Board",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Greene County",
+   "county": "Greene",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: the listing read without error but listed no document in the window",
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Hamilton County",
+   "county": "Hamilton",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Herkimer County",
+   "county": "Herkimer",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Jefferson County",
+   "county": "Jefferson",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Lewis County",
+   "county": "Lewis",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: the listing read without error but listed no document in the window",
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Livingston County",
+   "county": "Livingston",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: the listing read without error but listed no document in the window",
+   "platform": "civicplus",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Montgomery County",
+   "county": "Montgomery",
+   "kind": "county",
+   "promote": false,
+   "notes": "robots disallow: robots.txt disallows agenda pages: https://www.montgomerycountyny.gov/systems/proceedings/packet.asp?id=2889",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Niagara County",
+   "county": "Niagara",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Oneida County",
+   "county": "Oneida",
+   "kind": "county",
+   "promote": false,
+   "notes": "vendor blocked: agendas on primegov: robots.txt on oneidacounty.primegov.com disallows AgendaAheadBot",
+   "platform": "primegov",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Onondaga County",
+   "county": "Onondaga",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Ontario County",
+   "county": "Ontario",
+   "kind": "county",
+   "promote": false,
+   "notes": "bot wall: Cloudflare-style bot challenge (HTTP 403) on https://www.ontariocountyny.gov/; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Orange County",
+   "county": "Orange",
+   "kind": "county",
+   "promote": false,
+   "notes": "bot wall: Cloudflare-style bot challenge (HTTP 403) on http://www.orangecountyny.gov/; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Orleans County",
+   "county": "Orleans",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: the listing read without error but listed no document in the window",
+   "platform": "agenda_page",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Oswego County",
+   "county": "Oswego",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Putnam County",
+   "county": "Putnam",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Rensselaer County",
+   "county": "Rensselaer",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Saratoga County",
+   "county": "Saratoga",
+   "kind": "county",
+   "promote": false,
+   "notes": "agendas undated: board pages found (e.g. https://www.saratogacountyny.gov/departments/planning/) but no agenda dated within the last 120 or next 120 days could be read from them",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "St. Lawrence County",
+   "county": "St. Lawrence",
+   "kind": "county",
+   "promote": false,
+   "notes": "agendas undated: board pages found (e.g. https://www.stlawco.gov/Departments/Planning) but no agenda dated within the last 120 or next 120 days could be read from them",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Suffolk County",
+   "county": "Suffolk",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Sullivan County",
+   "county": "Sullivan",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Ulster County",
+   "county": "Ulster",
+   "kind": "county",
+   "promote": false,
+   "notes": "vendor blocked: agendas on granicus: robots.txt on ulstercountyny.granicus.com disallows AgendaAheadBot",
+   "platform": "granicus",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Warren County",
+   "county": "Warren",
+   "kind": "county",
+   "promote": false,
+   "notes": "no agenda page: site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Washington County",
+   "county": "Washington",
+   "kind": "county",
+   "promote": false,
+   "notes": "bot wall: Cloudflare-style bot challenge (HTTP 403) on https://www.washingtoncountyny.gov/; not bypassed",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Westchester County",
+   "county": "Westchester",
+   "kind": "county",
+   "promote": false,
+   "notes": "vendor blocked: agendas on granicus: robots.txt on westchestercountynyexec.granicus.com disallows AgendaAheadBot",
+   "platform": "granicus",
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  },
+  {
+   "town": "Wyoming County",
+   "county": "Wyoming",
+   "kind": "county",
+   "promote": false,
+   "notes": "agendas undated: board pages found (e.g. http://www.wyomingcountyny.gov/484/Wyoming-County-Planning-Board-WCPB) but no agenda dated within the last 120 or next 120 days could be read from them",
+   "platform": null,
+   "evidence": {
+    "documents_ok": 0,
+    "documents_ok_dated": 0,
+    "hits": 0,
+    "health": null,
+    "boards_ok": null,
+    "boards_failed": null,
+    "listing_errors": [],
+    "document_errors": 0,
+    "boards_with_dated_docs": []
+   }
+  }
+ ]
+}

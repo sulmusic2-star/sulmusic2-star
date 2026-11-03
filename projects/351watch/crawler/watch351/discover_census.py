@@ -936,7 +936,7 @@ def discover_municipality(fetcher: PoliteFetcher, muni: dict, today: date | None
             parts_ = urlsplit(v)
             origin_ = f"{parts_.scheme}://{parts_.netloc}"
             if "crawl-delay" in str(e):
-                err = ("crawl_delay_exceeds_cap", "robots.txt asks for a Crawl-delay above the crawler's 10 s cap "
+                err = ("crawl_delay_exceeds_cap", "robots.txt asks for a Crawl-delay above the crawler's cap "
                        f"({str(e)[-40:].strip('() ')}); host skipped (a slower production schedule could honor it)")
             elif fetcher._robots.get(origin_, "missing") is None:
                 err = ("robots_unavailable", "robots.txt answered 5xx / timed out, which RFC 9309 treats as "

@@ -9,6 +9,12 @@ The most common platform among Massachusetts towns. Layout:
                                         range (one request per town)
 * /AgendaCenter/ViewFile/Agenda/_MMDDYYYY-<agendaId>
                                       - the agenda itself (usually a PDF)
+
+Listing option "linked_agenda": true (Lansing NY, 2026-11): the town's AgendaCenter "agenda" is a
+one-line cover sheet whose only content is two links, "Meeting Agenda" and "Meeting Packet", to
+DocumentCenter files. The adapter then reads the row's HTML view (?html=true, one listing request
+per meeting, cached like a listing page) and takes the first link whose text says "agenda" (not
+"packet") as the document; a row whose HTML view has no such link keeps the cover-sheet PDF.
 """
 
 from __future__ import annotations
@@ -71,6 +77,7 @@ class CivicPlusAdapter(Adapter):
         if not resp.ok:
             raise RuntimeError(f"AgendaCenter search returned HTTP {resp.status}")
         docs: list[AgendaDoc] = []
+        linked: dict[str, str | None] = {}
         for block in self.soup(resp).select("div.listing"):
             h2 = block.find("h2")
             if not h2:
@@ -90,9 +97,28 @@ class CivicPlusAdapter(Adapter):
                                   strong.get_text(" ", strip=True) if strong else None, href)
                 if when not in window:
                     continue
+                url = self.abs_url(website + "/", href)
+                if listing.get("linked_agenda"):
+                    if url not in linked:
+                        linked[url] = self.linked_agenda(url)
+                    url = linked[url] or url
                 docs.append(AgendaDoc(
                     town=cfg["town"], board=name, board_key=listing["board_key"],
                     meeting_date=when, title=link.get_text(" ", strip=True),
-                    url=self.abs_url(website + "/", href), listing_url=listing["url"],
+                    url=url, listing_url=listing["url"],
                 ))
         return docs
+
+    def linked_agenda(self, agenda_url: str) -> str | None:
+        """The document the agenda's HTML view links as the agenda ("Meeting Agenda" ->
+        /DocumentCenter/View/712), when the AgendaCenter file itself is only a cover sheet."""
+        resp = self.get_listing(agenda_url + "?html=true")
+        if not resp.ok:
+            return None
+        best = None
+        for a in self.soup(resp).find_all("a", href=True):
+            text = " ".join(a.get_text(" ", strip=True).split())
+            if re.search(r"agenda", text, re.I) and not re.search(r"packet|minutes", text, re.I):
+                best = self.abs_url(resp.final_url, a["href"])
+                break
+        return best

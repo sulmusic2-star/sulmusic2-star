@@ -300,7 +300,7 @@ class AgendaPageAdapter(Adapter):
         from ..extract import extract
         from ..fetch import FetchError
         try:
-            with self.fetcher.purpose("document"):   # a document: document rules (crawl-delay cap 10 s)
+            with self.fetcher.purpose("document"):   # a document: document rules (crawl-delay cap, slow-host budget)
                 resp = self.fetcher.get(url)
         except FetchError:
             return None

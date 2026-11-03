@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Check that production does not pick up anything under test: the gated states (MI, VA; VT and CT for
-the Wave 1 state feeds), the Wave 1 New York towns (data/test/wave1/config/towns_ny.json, outside the
+"""Check that production does not pick up anything under test: the gated states (VT and CT for the Wave 1
+state feeds; MI, VA, MD and OH were promoted on 2026-11-03), the Wave 1 New York towns (data/test/wave1/config/towns_ny.json, outside the
 data/towns_*.json glob) and the Wave 1 state-feed outputs (data/test/wave1/sources/, never data/sources/).
 
     python3 experiments/gate_check.py
@@ -34,8 +34,9 @@ default_rows = daily.select_towns(DATA, None, None)
 states = Counter(r["state"] for r in default_rows)
 print("default daily selection (no --states):", dict(states))
 check(not (set(states) & gated), "no gated state in the default daily selection")
-check(dict(states) == {"MA": 243, "NY": 55, "RI": 39}, "default selection is MA 243, NY 55, RI 39 (NY: 33 pilot + 22 "
-                                                        "promoted from wave 1 on 2026-11-02)")
+check(dict(states) == {"MA": 243, "NY": 92, "RI": 39, "VA": 108, "MD": 30, "MI": 101, "OH": 33},
+      "default selection is MA 243, NY 92, RI 39 (NY: 33 pilot + 22 promoted from wave 1 on 2026-11-02 + 5 from the "
+      "2026-11-03 follow-up + 26 towns and 6 county boards from wave 2), VA 108, MD 30, MI 101, OH 33 (promoted 2026-11-03)")
 doc = current.build(DATA, archive=False)
 print("production hits_current build: states", doc["states"], "towns_monitored", doc["towns_monitored"])
 check(not (set(doc["states"]) & gated), "no gated state in a production hits_current build")
@@ -57,10 +58,13 @@ check("NY" in current.gated_states(WAVE1_CONFIG) if (WAVE1_CONFIG / "towns_ny.js
 # Wave 2 New York rows (data/test/wave2/config/towns_ny.json): the same gate
 w2_file = WAVE2_CONFIG / "towns_ny.json"
 w2 = current.load_towns(WAVE2_CONFIG, include_gated={"NY"}) if w2_file.exists() else []
-check(not ({r["town"] for r in w2} & prod_ny), f"none of the {len(w2)} wave 2 NY rows is in the production NY selection")
+promoted_w2 = {r["town"] for r in default_rows if r["state"] == "NY" and str(r.get("promoted_from", "")).startswith("wave2")}
+check(not ({r["town"] for r in w2} & prod_ny - promoted_w2),
+      f"none of the {len(w2)} wave 2 NY rows is in the production NY selection, except the {len(promoted_w2)} promoted "
+      "from it with promoted_from = wave2 or wave2_counties")
 check("NY" in current.gated_states(WAVE2_CONFIG) if w2_file.exists() else True, "the wave 2 NY config is gated")
 # naming a gated state without --output-dir must be refused (exit 2) before any request
-for argv, label in ((["--states", "VA"], "VA"),
+for argv, label in ((["--states", "VT"], "VT"),
                     (["--data-dir", str(WAVE1_CONFIG), "--states", "NY"], "wave 1 NY"),
                     (["--data-dir", str(WAVE2_CONFIG), "--states", "NY"], "wave 2 NY")):
     proc = subprocess.run([sys.executable, "-m", "watch351.daily", *argv, "--no-network-docs"],
@@ -77,8 +81,8 @@ for d in (DATA, DATA / "sources"):
     except SystemExit:
         refused = True
     check(refused, f"state feeds refuse --out-dir {d.relative_to(CRAWLER.parent)}")
-# Great Lakes wave (2026-11): Ohio joins Michigan behind the gate
-check("OH" in gated, "data/towns_oh.json is gated")
+# Virginia, Maryland, Michigan and Ohio were promoted on 2026-11-03: their towns files are no longer gated
+check(not ({"VA", "MD", "MI", "OH"} & gated), "data/towns_va.json, towns_md.json, towns_mi.json and towns_oh.json are not gated")
 gl = Counter(r["state"] for r in daily.select_towns(DATA, {"MI", "OH"}, None))
 print("explicit --states MI,OH selection:", dict(gl))
 check(set(gl) == {"MI", "OH"} if gated >= {"MI", "OH"} else True, "--states MI,OH selects MI and OH only")

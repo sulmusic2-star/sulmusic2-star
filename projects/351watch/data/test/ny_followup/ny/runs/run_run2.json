@@ -1,0 +1,106 @@
+{
+ "by_state": {
+  "NY": {
+   "new_documents": 1,
+   "new_hits": 0,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
+  }
+ },
+ "date": "2026-11-03",
+ "document_errors": 0,
+ "documents_already_indexed": 0,
+ "documents_deferred": 0,
+ "documents_listed": 1,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 0,
+ "documents_retried": 0,
+ "documents_too_large": [
+  {
+   "error": "too large (86818080 > 41943040 bytes): https://www.waynecountyny.gov/AgendaCenter/ViewFile/Agenda/_09232026-1559",
+   "meeting_date": "2026-09-23",
+   "state": "NY",
+   "town": "Wayne County",
+   "url": "https://www.waynecountyny.gov/AgendaCenter/ViewFile/Agenda/_09232026-1559"
+  }
+ ],
+ "duration_seconds": 2.1,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-11-03T15:13:53+00:00",
+ "hits_current": 0,
+ "index": {
+  "by_state": {
+   "NY": 13
+  },
+  "by_status": {
+   "error": 1,
+   "ok": 12
+  },
+  "by_text_source": {
+   "html": 2,
+   "none": 1,
+   "ocr": 4,
+   "pdf": 6
+  },
+  "documents": 13,
+  "hits": 0,
+  "pruned": 0,
+  "towns": 5,
+  "with_hits": 0
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 183109,
+   "robots": 414
+  },
+  "cache_hits": 1,
+  "errors": 0,
+  "requests": 3,
+  "requests_by_purpose": {
+   "document": 2,
+   "robots": 1
+  },
+  "robots_blocked": 0,
+  "slow_host_documents": {}
+ },
+ "new_alert_items": 0,
+ "new_alert_items_by_topic": {},
+ "new_documents": 1,
+ "new_hits": 0,
+ "new_hits_by_topic": {},
+ "options": {
+  "matcher_version": "ca9b9d486f",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 2
+ },
+ "previous_runs_today": [
+  {
+   "duration_seconds": 50.3,
+   "new_documents": 11,
+   "new_hits": 0,
+   "requests": 13,
+   "started": "2026-11-03T15:11:28+00:00",
+   "states": [
+    "NY"
+   ],
+   "towns_attempted": 7,
+   "towns_succeeded": 4
+  }
+ ],
+ "started": "2026-11-03T15:13:51+00:00",
+ "states": [
+  "NY"
+ ],
+ "towns_attempted": 1,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 1,
+ "window": {
+  "end": "2027-03-03",
+  "start": "2026-09-19"
+ }
+}
