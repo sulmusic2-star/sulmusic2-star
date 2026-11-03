@@ -2505,7 +2505,14 @@
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Cameron, Greenwood, Prattsburgh)",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
-  "domain_probe": []
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Steuben County, New York"
+   ],
+   "title": null
+  },
+  "no_website_note": "no matching Wikipedia article found, 2026-11-02"
  },
  {
   "town": "Suffolk County",
@@ -2527,13 +2534,21 @@
   "state": "NY",
   "county": "Sullivan",
   "kind": "county",
-  "website": null,
-  "website_candidates": [],
-  "website_source": null,
+  "website": "https://www.sullivanny.gov/",
+  "website_candidates": [
+   "https://www.sullivanny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Sullivan County, New York), 2026-11-02",
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Highland (site town, not read))",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
-  "domain_probe": []
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Sullivan County, New York"
+   ],
+   "title": "Sullivan County, New York"
+  }
  },
  {
   "town": "Tompkins County",
@@ -2546,20 +2561,35 @@
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Lansing (site town, not read))",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
-  "domain_probe": []
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Tompkins County, New York"
+   ],
+   "title": null
+  },
+  "no_website_note": "no matching Wikipedia article found, 2026-11-02"
  },
  {
   "town": "Ulster County",
   "state": "NY",
   "county": "Ulster",
   "kind": "county",
-  "website": null,
-  "website_candidates": [],
-  "website_source": null,
+  "website": "https://www.ulstercountyny.gov/",
+  "website_candidates": [
+   "https://www.ulstercountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Ulster County, New York), 2026-11-02",
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Gardiner (site town, not read), Hurley (site town, not read), Wawarsing (site town, not read))",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
-  "domain_probe": []
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Ulster County, New York"
+   ],
+   "title": "Ulster County, New York"
+  }
  },
  {
   "town": "Warren County",
@@ -2588,13 +2618,21 @@
   "state": "NY",
   "county": "Washington",
   "kind": "county",
-  "website": null,
-  "website_candidates": [],
-  "website_source": null,
+  "website": "http://www.washingtoncountyny.gov/",
+  "website_candidates": [
+   "http://www.washingtoncountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Washington County, New York), 2026-11-02",
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Fort Ann, Salem)",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
-  "domain_probe": []
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Washington County, New York"
+   ],
+   "title": "Washington County, New York"
+  }
  },
  {
   "town": "Wayne County",
@@ -2616,16 +2654,25 @@
     "url": "https://waynecountygov.com/",
     "error": "https://waynecountygov.com/"
    }
-  ]
+  ],
+  "wikipedia": {
+   "tried": [
+    "Wayne County, New York"
+   ],
+   "title": null
+  },
+  "no_website_note": "no matching Wikipedia article found, 2026-11-02"
  },
  {
   "town": "Westchester County",
   "state": "NY",
   "county": "Westchester",
   "kind": "county",
-  "website": null,
-  "website_candidates": [],
-  "website_source": null,
+  "website": "https://www.westchestercountyny.gov/",
+  "website_candidates": [
+   "https://www.westchestercountyny.gov/"
+  ],
+  "website_source": "Wikipedia infobox (Westchester County, New York), 2026-11-02",
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 6 target places we cannot read directly or have not read yet (Harrison, Mamaroneck (village), Mount Kisco, New Castle (site town, not read), Pound Ridge, Yorktown)",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
@@ -2638,19 +2685,33 @@
     "url": "https://westchestercountygov.com/",
     "error": "https://westchestercountygov.com/"
    }
-  ]
+  ],
+  "wikipedia": {
+   "tried": [
+    "Westchester County, New York"
+   ],
+   "title": "Westchester County, New York"
+  }
  },
  {
   "town": "Wyoming County",
   "state": "NY",
   "county": "Wyoming",
   "kind": "county",
-  "website": null,
-  "website_candidates": [],
-  "website_source": null,
+  "website": "https://www.wyomingco.net/",
+  "website_candidates": [
+   "https://www.wyomingco.net/"
+  ],
+  "website_source": "Wikipedia infobox (Wyoming County, New York), 2026-11-02",
   "selection_group": "county_planning",
   "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Gainesville, Pike)",
   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
-  "domain_probe": []
+  "domain_probe": [],
+  "wikipedia": {
+   "tried": [
+    "Wyoming County, New York"
+   ],
+   "title": "Wyoming County, New York"
+  }
  }
 ]

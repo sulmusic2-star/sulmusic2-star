@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T19:36:56+00:00",
+ "generated": "2026-11-02T19:55:16+00:00",
  "window": {
   "start": "2026-07-05",
   "end": "2027-03-02"
@@ -299,7 +299,7 @@
    "state": "VA",
    "town": "Town of Bowling Green",
    "county": "Caroline",
-   "board": "Select Board / Council",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-11-05",
    "topics": [
@@ -1026,7 +1026,7 @@
    "state": "MD",
    "town": "Worcester County",
    "county": "Worcester",
-   "board": "Planning Board",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-11-05",
    "topics": [
@@ -1046,7 +1046,7 @@
    "state": "MD",
    "town": "Worcester County",
    "county": "Worcester",
-   "board": "Planning Board",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-11-05",
    "topics": [
@@ -1063,71 +1063,11 @@
    "source": "agenda"
   },
   {
-   "id": "90c02cbe3282",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-05",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "10.22 LEGEND Property Line Adjacent Property Line Building Restriction Line 10 EP 9.39 PV 9.65 Existing Edge of Pavement PV 9.16 EP 9.42 EP 9.84 W 9.86 W 9.92 EP 9.77 Proposed EOP & Asphalt PV 8.66 EP 8.22 6 7 8 EP 9.35 EP 9.79 FFE 10.00",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-10/110526_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Planning Commission Packet 11.05.26",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:30:53+00:00",
-   "days_before_meeting": 2.2,
-   "source": "agenda"
-  },
-  {
-   "id": "7e28ad0bc6cc",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-05",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "9.45 EP 9.82 FFE 9.50 +++ Proposed 10-Ft Utility Easement  EP 9.80 BUILDING A EP 9.49 PV 8.71 6 7 FFE 10.00  FFE 9.50 Proposed MDOT SHA Entrance  ±8,960 SF FFE 9.50' Proposed Buildings 8 N21 W 9.92 EP 9.49 BUILDING B Non-Tidal Wetland",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-10/110526_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Planning Commission Packet 11.05.26",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:30:53+00:00",
-   "days_before_meeting": 2.2,
-   "source": "agenda"
-  },
-  {
-   "id": "7c966e9732dc",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-05",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "EP 9.67 9 PV 8.34  Proposed Treeline 8 9 8 W 9.91 FFE 10.00 Proposed Swale Centerline  PV 9.26 PV 8.72 7 Proposed Under Drain  PV 9.09 EP 9.38 PV 8.25 SWM AREA B EP 8.22  6 W 9.38  FFE 10.00 PV 8.67 EP 9.36 FFE 10.00 EP 9.39 PV 8.41",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-10/110526_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Planning Commission Packet 11.05.26",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:30:53+00:00",
-   "days_before_meeting": 2.2,
-   "source": "agenda"
-  },
-  {
    "id": "46ab9f113ad9",
    "state": "MD",
    "town": "Worcester County",
    "county": "Worcester",
-   "board": "Planning Board",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-11-05",
    "topics": [
@@ -1143,31 +1083,11 @@
    "source": "agenda"
   },
   {
-   "id": "2829b4db6f6a",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-05",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "C2 6 9 6 EP 9.19 SS SS 7 PV 8.52 SS BOAT STORAGE AREA ±3.13 AC Centerline Spot Grades SS 9 SS 8 EP 9.01 8 EP 8.22 PV 8.71 SS SS 8 EP 8.97 Edge of Pavement Spot Grades  EP 8.76 7 LOD 7 SS 7 EP 8.55 PV 8.90 PV 8.34 EP 8.51 8 SS 6 SS 8 SS EP",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-10/110526_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Planning Commission Packet 11.05.26",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:30:53+00:00",
-   "days_before_meeting": 2.2,
-   "source": "agenda"
-  },
-  {
    "id": "22b7f093f8b9",
    "state": "MD",
    "town": "Worcester County",
    "county": "Worcester",
-   "board": "Planning Board",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-11-05",
    "topics": [
@@ -2219,7 +2139,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2240,7 +2160,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2260,7 +2180,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2281,7 +2201,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2302,7 +2222,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2323,7 +2243,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2343,7 +2263,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2363,7 +2283,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2384,7 +2304,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2404,7 +2324,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2424,7 +2344,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2444,7 +2364,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2568,7 +2488,7 @@
    "state": "VA",
    "town": "Carroll County",
    "county": "Carroll",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-11-02",
    "topics": [
@@ -2950,7 +2870,7 @@
    "state": "VA",
    "town": "Amelia County",
    "county": "Amelia",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-28",
    "topics": [
@@ -2970,7 +2890,7 @@
    "state": "VA",
    "town": "Amelia County",
    "county": "Amelia",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-28",
    "topics": [
@@ -2990,7 +2910,7 @@
    "state": "VA",
    "town": "Amelia County",
    "county": "Amelia",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-28",
    "topics": [
@@ -3010,7 +2930,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3030,7 +2950,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3050,7 +2970,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3070,7 +2990,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3090,7 +3010,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3110,7 +3030,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3130,7 +3050,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3152,7 +3072,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3173,7 +3093,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3193,7 +3113,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3213,7 +3133,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3235,7 +3155,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3255,7 +3175,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3275,7 +3195,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3296,7 +3216,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3317,7 +3237,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3337,7 +3257,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3357,7 +3277,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3377,7 +3297,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3398,7 +3318,7 @@
    "state": "VA",
    "town": "Southampton County",
    "county": "Southampton",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3907,7 +3827,7 @@
    "state": "VA",
    "town": "Henrico County",
    "county": "Henrico",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3927,7 +3847,7 @@
    "state": "VA",
    "town": "Henrico County",
    "county": "Henrico",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3948,7 +3868,7 @@
    "state": "VA",
    "town": "Henrico County",
    "county": "Henrico",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -3968,7 +3888,7 @@
    "state": "VA",
    "town": "Henrico County",
    "county": "Henrico",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-27",
    "topics": [
@@ -4740,7 +4660,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -4761,7 +4681,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -4781,7 +4701,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -4803,7 +4723,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -4823,7 +4743,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -4843,7 +4763,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -4863,7 +4783,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -4884,7 +4804,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -4904,7 +4824,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -4925,7 +4845,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -4945,7 +4865,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -4966,7 +4886,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5311,7 +5231,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5331,7 +5251,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5351,7 +5271,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5371,7 +5291,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5391,7 +5311,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5412,7 +5332,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5432,7 +5352,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5452,7 +5372,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5472,7 +5392,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5492,7 +5412,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5512,7 +5432,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5532,7 +5452,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-26",
    "topics": [
@@ -5592,7 +5512,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5612,7 +5532,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5633,7 +5553,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5654,7 +5574,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5674,7 +5594,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5694,7 +5614,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5714,7 +5634,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5734,7 +5654,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5755,7 +5675,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5776,7 +5696,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5796,7 +5716,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5816,7 +5736,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5836,7 +5756,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5856,7 +5776,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5877,7 +5797,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5898,7 +5818,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5918,7 +5838,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5939,7 +5859,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5960,7 +5880,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -5981,7 +5901,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-22",
    "topics": [
@@ -6194,26 +6114,6 @@
    "document_title": "Board of Supervisors Regular Work Session",
    "text_source": "pdf",
    "first_seen": "2026-11-02T19:32:10+00:00",
-   "days_before_meeting": -12.8,
-   "source": "agenda"
-  },
-  {
-   "id": "625121f71f18",
-   "state": "VA",
-   "town": "City of Suffolk",
-   "county": null,
-   "board": "City Council Meeting Agendas",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-21",
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "An ordinance to rezone and amend the official zoning map of the City of Suffolk in order to amend previously approved proffered conditions for property located at 1407, 1419 and 1427 Holland Road, Zoning Map 33, Parcels 66, 66C and 66D",
-   "source_url": "https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10212026-3838",
-   "listing_url": "https://www.suffolkva.us/AgendaCenter/City-Council-Meeting-Agendas-11",
-   "document_title": "City Council Regular Meeting Agenda (PDF)",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:34:42+00:00",
    "days_before_meeting": -12.8,
    "source": "agenda"
   },
@@ -7150,7 +7050,7 @@
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "Planning Commission Meeting Packets",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-20",
    "topics": [
@@ -7170,7 +7070,7 @@
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "Planning Commission Meeting Packets",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-20",
    "topics": [
@@ -7190,7 +7090,7 @@
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "Planning Commission Meeting Packets",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-20",
    "topics": [
@@ -7210,7 +7110,7 @@
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "Planning Commission Meeting Packets",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-20",
    "topics": [
@@ -7230,7 +7130,7 @@
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "Planning Commission Meeting Packets",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-20",
    "topics": [
@@ -7250,7 +7150,7 @@
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "Planning Commission Meeting Packets",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-20",
    "topics": [
@@ -7267,11 +7167,31 @@
    "source": "agenda"
   },
   {
+   "id": "382e413d1a44",
+   "state": "VA",
+   "town": "City of Suffolk",
+   "county": null,
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-10-20",
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "to rezone and amend the official zoning map of the City of Suffolk in order to change the zoning Page 1 from RE, Rural Estate zoning district to RM, Residential Medium Density (Conditional) Zoning District and B-2, General Commercial",
+   "source_url": "https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10202026-3836",
+   "listing_url": "https://www.suffolkva.us/AgendaCenter/Planning-Commission-Meeting-Agendas-12",
+   "document_title": "Planning Commission Meeting Agenda (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-02T19:36:02+00:00",
+   "days_before_meeting": -13.8,
+   "source": "agenda"
+  },
+  {
    "id": "32dd80f8bdfa",
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "Planning Commission Meeting Packets",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-20",
    "topics": [
@@ -7291,7 +7211,7 @@
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "Planning Commission Meeting Packets",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-20",
    "topics": [
@@ -7303,26 +7223,6 @@
    "document_title": "Planning Commission Meeting Packet (PDF)",
    "text_source": "pdf",
    "first_seen": "2026-11-02T19:36:12+00:00",
-   "days_before_meeting": -13.8,
-   "source": "agenda"
-  },
-  {
-   "id": "382e413d1a44",
-   "state": "VA",
-   "town": "City of Suffolk",
-   "county": null,
-   "board": "Planning Commission Meeting Agendas",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-20",
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "to rezone and amend the official zoning map of the City of Suffolk in order to change the zoning Page 1 from RE, Rural Estate zoning district to RM, Residential Medium Density (Conditional) Zoning District and B-2, General Commercial",
-   "source_url": "https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10202026-3836",
-   "listing_url": "https://www.suffolkva.us/AgendaCenter/Planning-Commission-Meeting-Agendas-12",
-   "document_title": "Planning Commission Meeting Agenda (PDF)",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:36:02+00:00",
    "days_before_meeting": -13.8,
    "source": "agenda"
   },
@@ -7404,26 +7304,6 @@
    "document_title": "10-20-2026 CPC  Revised Agenda with Map",
    "text_source": "pdf",
    "first_seen": "2026-11-02T19:31:37+00:00",
-   "days_before_meeting": -13.8,
-   "source": "agenda"
-  },
-  {
-   "id": "8f9266047837",
-   "state": "MD",
-   "town": "Prince George's County",
-   "county": "Prince George's",
-   "board": "County Council",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-20",
-   "topics": [
-    "data_center"
-   ],
-   "snippet": "shut-offs for residents of Prince George's County, with special attention on the role of data centers in neighboring communities, as well as the impact of last winter and this summer on utility increases; requesting additional customer",
-   "source_url": "https://princegeorgescountymd.legistar.com/MeetingDetail.aspx?LEGID=12219&GID=242&G=F27536A6-66B6-476A-98DA-4A69995461A9",
-   "listing_url": "https://princegeorgescountymd.legistar.com/Calendar.aspx",
-   "document_title": "County Council 2026-10-20 agenda items",
-   "text_source": "html",
-   "first_seen": "2026-11-02T19:31:01+00:00",
    "days_before_meeting": -13.8,
    "source": "agenda"
   },
@@ -7586,26 +7466,6 @@
    "document_title": "10.19.26 Agenda Titles",
    "text_source": "pdf",
    "first_seen": "2026-11-02T19:34:45+00:00",
-   "days_before_meeting": -14.8,
-   "source": "agenda"
-  },
-  {
-   "id": "f9fbff239b47",
-   "state": "VA",
-   "town": "Page County",
-   "county": "Page",
-   "board": "Board of Supervisors",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-19",
-   "topics": [
-    "data_center"
-   ],
-   "snippet": "rates when the upgrades are being done to serve outside third party interests such as data center development in other jurisdictions; and WHEREAS, the Board finds that complete and transparent information is necessary for informed public",
-   "source_url": "https://www.pagecounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_10192026-1129",
-   "listing_url": "https://www.pagecounty.virginia.gov/AgendaCenter/Board-of-Supervisors-2",
-   "document_title": "Board of Supervisors Regular Meeting",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:33:39+00:00",
    "days_before_meeting": -14.8,
    "source": "agenda"
   },
@@ -8418,7 +8278,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8438,7 +8298,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8458,7 +8318,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8478,7 +8338,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8498,7 +8358,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8518,7 +8378,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8538,7 +8398,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8558,7 +8418,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8578,7 +8438,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8598,7 +8458,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8618,7 +8478,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8638,7 +8498,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -8658,7 +8518,7 @@
    "state": "VA",
    "town": "Nottoway County",
    "county": "Nottoway",
-   "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-15",
    "topics": [
@@ -9812,7 +9672,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -9832,7 +9692,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -9852,7 +9712,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -9872,7 +9732,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -9892,7 +9752,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -9912,7 +9772,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -9932,7 +9792,7 @@
    "state": "VA",
    "town": "Town of Warrenton",
    "county": "Fauquier",
-   "board": "Select Board / Council",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -9952,7 +9812,7 @@
    "state": "VA",
    "town": "Town of Warrenton",
    "county": "Fauquier",
-   "board": "Select Board / Council",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -9972,7 +9832,7 @@
    "state": "VA",
    "town": "Town of Warrenton",
    "county": "Fauquier",
-   "board": "Select Board / Council",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10153,7 +10013,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10173,7 +10033,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10193,7 +10053,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10213,7 +10073,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10233,7 +10093,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10253,7 +10113,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10273,7 +10133,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10295,7 +10155,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10315,7 +10175,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10336,7 +10196,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10356,7 +10216,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10378,7 +10238,7 @@
    "state": "VA",
    "town": "Mecklenburg County",
    "county": "Mecklenburg",
-   "board": "Board of Supervisors Monthly Meetings",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10660,7 +10520,7 @@
    "state": "VA",
    "town": "Henrico County",
    "county": "Henrico",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10680,7 +10540,7 @@
    "state": "VA",
    "town": "Henrico County",
    "county": "Henrico",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10700,7 +10560,7 @@
    "state": "VA",
    "town": "Henrico County",
    "county": "Henrico",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -10720,7 +10580,7 @@
    "state": "VA",
    "town": "Henrico County",
    "county": "Henrico",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-13",
    "topics": [
@@ -11583,7 +11443,7 @@
    "state": "VA",
    "town": "Lunenburg County",
    "county": "Lunenburg",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-08",
    "topics": [
@@ -11603,7 +11463,7 @@
    "state": "VA",
    "town": "Lunenburg County",
    "county": "Lunenburg",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-10-08",
    "topics": [
@@ -11990,7 +11850,7 @@
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "City Council Meeting Packets",
+   "board": "City Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-07",
    "topics": [
@@ -12011,7 +11871,7 @@
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "City Council Meeting Packets",
+   "board": "City Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-07",
    "topics": [
@@ -12032,7 +11892,7 @@
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "City Council Meeting Packets",
+   "board": "City Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-07",
    "topics": [
@@ -12053,7 +11913,7 @@
    "state": "VA",
    "town": "City of Suffolk",
    "county": null,
-   "board": "City Council Meeting Packets",
+   "board": "City Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-07",
    "topics": [
@@ -12813,26 +12673,6 @@
    "source": "agenda"
   },
   {
-   "id": "c94356eaf5a0",
-   "state": "MD",
-   "town": "Prince George's County",
-   "county": "Prince George's",
-   "board": "County Council",
-   "board_key": "select_board",
-   "meeting_date": "2026-10-06",
-   "topics": [
-    "data_center"
-   ],
-   "snippet": "shut-offs for residents of Prince George's County, with special attention on the role of data centers in neighboring communities, as well as the impact of last winter and this summer on utility increases; requesting additional customer",
-   "source_url": "https://princegeorgescountymd.legistar.com/MeetingDetail.aspx?LEGID=12216&GID=242&G=F27536A6-66B6-476A-98DA-4A69995461A9",
-   "listing_url": "https://princegeorgescountymd.legistar.com/Calendar.aspx",
-   "document_title": "County Council 2026-10-06 agenda items",
-   "text_source": "html",
-   "first_seen": "2026-11-02T19:30:57+00:00",
-   "days_before_meeting": -27.8,
-   "source": "agenda"
-  },
-  {
    "id": "d2a3448e44f9",
    "state": "MD",
    "town": "Kent County",
@@ -13080,7 +12920,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-05",
    "topics": [
@@ -13100,7 +12940,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-05",
    "topics": [
@@ -13120,7 +12960,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-05",
    "topics": [
@@ -13140,7 +12980,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-05",
    "topics": [
@@ -13160,7 +13000,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-05",
    "topics": [
@@ -13180,7 +13020,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-05",
    "topics": [
@@ -13200,7 +13040,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-05",
    "topics": [
@@ -13220,7 +13060,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-05",
    "topics": [
@@ -13241,7 +13081,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-10-05",
    "topics": [
@@ -13263,7 +13103,7 @@
    "state": "VA",
    "town": "Town of Altavista",
    "county": "Campbell",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-05",
    "topics": [
@@ -13283,7 +13123,7 @@
    "state": "VA",
    "town": "Town of Altavista",
    "county": "Campbell",
-   "board": "Planning Commission Agendas & Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-05",
    "topics": [
@@ -14152,229 +13992,6 @@
    "source": "agenda"
   },
   {
-   "id": "fe57c9c3d5f9",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "To ensure zoning clarity, we are requesting a zoning text amendment to the County Code to add a PFE building and international telecommunications cable as permitted uses on Commercial Airport (CA) zoned land only. Previous plans for a",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Oct. 1, 2026 Planning Commission Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:31:01+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
-   "id": "f52b410932c7",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "Major Site Plan Review – Woodside Solar Project – 5589 Woodside Lane Mr. Charles Walker and Ms. Kendra Knupp from ARM Group approached the table. Mr. Walker asked the commissioners to provide feedback on the updating plans and documents",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Oct. 1, 2026 Planning Commission Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:31:01+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
-   "id": "e0a2487b24fa",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "Major Site Plan Review & Waiver Request – Snow Solar Project – 6413 Timmons Road Mr. Charles Walker and Ms. Kendra Knupp from ARM Group remained at the table to discuss the project. Mr. Walker gave a brief overview of the project. Mr.",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Oct. 1, 2026 Planning Commission Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:31:01+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
-   "id": "92ee0202ce98",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "moratorium",
-    "data_center"
-   ],
-   "snippet": "they should wait to make a recommendation for the Comprehensive Plan until after the moratorium on data centers is lifted, so that the plan would be able to address data centers as well. Mrs. Keener stated that the Comprehensive Plan could",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Oct. 1, 2026 Planning Commission Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:31:01+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
-   "id": "7c17ac143d53",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "OF WORCESTER COUNTY, MARYLAND, that a new Subsection § ZS 1-303(c)(9) of the Zoning and Zoning Text Amendment Request – PFE Building Background The PFE Building and Amazon's Fastnet System Fastnet is a submarine cable system that Amazon is",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Oct. 1, 2026 Planning Commission Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:31:01+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
-   "id": "79b7046de9a9",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "wireless_telecom"
-   ],
-   "snippet": "A single-story telecommunications facility with a maximum power connection of 350 kilowatts, that provides electrical power to an international telecommunications cable and amplifies optical signals for relay to landbased",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Oct. 1, 2026 Planning Commission Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:31:01+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
-   "id": "748b573ae617",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "moratorium"
-   ],
-   "snippet": "legislative petition is a transparent attempt to bypass the county's current 12-month moratorium by selectively segmenting a massive infrastructure footprint into artificially isolated, smaller zoning requests. The Board and Commission",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Oct. 1, 2026 Planning Commission Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:31:01+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
-   "id": "59149dc2cd2e",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "data_center"
-   ],
-   "snippet": "and background information provided by the applicants, this structure is not a data center, cable landing station or other public utility structure. The intent is to provide electrical power to the subsea cable line such that the",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Oct. 1, 2026 Planning Commission Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:31:01+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
-   "id": "39194f91cbd1",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "moratorium",
-    "data_center"
-   ],
-   "snippet": "In July 2026, Worcester County issued a one-year moratorium on all data centers and cable landing stations within the County. Amazon understands and respects the community concerns that motivated the moratorium and is no longer pursuing",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Oct. 1, 2026 Planning Commission Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:31:01+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
-   "id": "31b799e9d2c5",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "moratorium",
-    "data_center"
-   ],
-   "snippet": "It does not authorize the broader development prohibited by the moratorium on data centers and cable landing stations, which a future text amendment will address. This application is unique because only one property carries a CA District",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Oct. 1, 2026 Planning Commission Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:31:01+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
-   "id": "21c002a6e3ca",
-   "state": "MD",
-   "town": "Worcester County",
-   "county": "Worcester",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "data_center"
-   ],
-   "snippet": "station, electrical substation, power distribution facility, public utility structure, data center, or cable landing station. Section 3. BE IT ENACTED BY THE COUNTY COMMISSIONERS OF WORCESTER COUNTY, MARYLAND, that a new Subsection § ZS",
-   "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
-   "listing_url": "https://worcestermd.gov/minutes",
-   "document_title": "Oct. 1, 2026 Planning Commission Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:31:01+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
    "id": "3563322e9d46",
    "state": "MD",
    "town": "Kent County",
@@ -14395,18 +14012,18 @@
    "source": "agenda"
   },
   {
-   "id": "fb84528da96a",
+   "id": "b62bc3004b54",
    "state": "MD",
    "town": "City of College Park",
    "county": "Prince George's",
-   "board": "Planning Board",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-01",
    "topics": [
     "battery_storage",
     "solar"
    ],
-   "snippet": "The solar panels would charge a 200 amp-hour battery, which would supply a 3,000-watt inverter and a 120volt Class 1 electric vehicle charger. 6. The applicant's plans show the solar array located on the east side of the house, facing the",
+   "snippet": "12volt solar panels providing approximately 1,200 watts of generating capacity 5. The solar panels would charge a 200 amp-hour battery, which would supply a 3,000-watt inverter and a 120volt Class 1 electric vehicle charger. 6. The",
    "source_url": "https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_10012026-2328",
    "listing_url": "https://www.collegeparkmd.gov/agendacenter",
    "document_title": "Advisory Planning Commission Hybrid Meeting",
@@ -14416,17 +14033,17 @@
    "source": "agenda"
   },
   {
-   "id": "f7f86a104b08",
+   "id": "90654bc8f474",
    "state": "MD",
    "town": "City of College Park",
    "county": "Prince George's",
-   "board": "Planning Board",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-01",
    "topics": [
     "solar"
    ],
-   "snippet": "would be approximately ten (10) feet six (6) inches in height and would support a solar array intended to provide power for an electric vehicle charging system. The proposed structure would be located within the required twenty-five (25)",
+   "snippet": "The construction explanation describes the proposed system as an off-grid solar car charger located within the existing driveway along the side street of the property. 4. The proposed system would consist of six 200-watt, 12volt solar",
    "source_url": "https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_10012026-2328",
    "listing_url": "https://www.collegeparkmd.gov/agendacenter",
    "document_title": "Advisory Planning Commission Hybrid Meeting",
@@ -14436,17 +14053,17 @@
    "source": "agenda"
   },
   {
-   "id": "c4ac13a038ed",
+   "id": "4bda33924003",
    "state": "MD",
    "town": "City of College Park",
    "county": "Prince George's",
-   "board": "Planning Board",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-01",
    "topics": [
     "solar"
    ],
-   "snippet": "lot to permit construction of an approximately twelve (12) foot by twelve (12) foot solar carport over a portion of the existing driveway. Requirements: 1. Section 27-5202(c)(4)(A) – Accessory Structure Location Requirements, which",
+   "snippet": "The applicant submitted a variance application and construction plans for an off-grid solar car charger. 2. The variance application identifies the property as 4719 Lackawanna Street. 3. The construction explanation describes the proposed",
    "source_url": "https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_10012026-2328",
    "listing_url": "https://www.collegeparkmd.gov/agendacenter",
    "document_title": "Advisory Planning Commission Hybrid Meeting",
@@ -14456,37 +14073,17 @@
    "source": "agenda"
   },
   {
-   "id": "8e737e4848e5",
+   "id": "3d65ac78728f",
    "state": "MD",
    "town": "City of College Park",
    "county": "Prince George's",
-   "board": "Planning Board",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-01",
    "topics": [
     "solar"
    ],
-   "snippet": "to permit construction of the approximately 12-foot by 12-foot open-frame solar carport, approximately 10 feet 6 inches in height, over the existing driveway and approximately 8 feet 6 inches from the side street, in order to: 1. Provide",
-   "source_url": "https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_10012026-2328",
-   "listing_url": "https://www.collegeparkmd.gov/agendacenter",
-   "document_title": "Advisory Planning Commission Hybrid Meeting",
-   "text_source": "pdf",
-   "first_seen": "2026-11-02T19:33:19+00:00",
-   "days_before_meeting": -32.8,
-   "source": "agenda"
-  },
-  {
-   "id": "1b904c7958f9",
-   "state": "MD",
-   "town": "City of College Park",
-   "county": "Prince George's",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-10-01",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "Provide an off-grid solar charging system for an electric vehicle. 2. Utilize the existing driveway rather than creating a new parking area. 3. Locate the solar array in the portion of the property identified by the applicant as receiving",
+   "snippet": "The applicant's plans show the solar array located on the east side of the house, facing the side street, to capture available sunlight. 7. The proposed solar array is approximately twelve (12) feet by twelve (12) feet 8. The proposed",
    "source_url": "https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_10012026-2328",
    "listing_url": "https://www.collegeparkmd.gov/agendacenter",
    "document_title": "Advisory Planning Commission Hybrid Meeting",
@@ -14500,7 +14097,7 @@
    "state": "MD",
    "town": "City of College Park",
    "county": "Prince George's",
-   "board": "Planning Board",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-10-01",
    "topics": [
@@ -14680,7 +14277,7 @@
    "state": "VA",
    "town": "City of Norfolk",
    "county": null,
-   "board": "City Council Agendas",
+   "board": "City Council",
    "board_key": "select_board",
    "meeting_date": "2026-09-29",
    "topics": [
@@ -14740,7 +14337,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -14761,7 +14358,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -14781,7 +14378,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -14801,7 +14398,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -14821,7 +14418,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -14841,7 +14438,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -14862,7 +14459,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -14882,7 +14479,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -14902,7 +14499,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -14923,7 +14520,7 @@
    "state": "VA",
    "town": "Town of Front Royal",
    "county": "Warren",
-   "board": "Town Council Meeting Agendas",
+   "board": "Town Council",
    "board_key": "select_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15183,7 +14780,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15203,7 +14800,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15223,7 +14820,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15243,7 +14840,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15263,7 +14860,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15285,7 +14882,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15305,7 +14902,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15327,7 +14924,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15347,7 +14944,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15367,7 +14964,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15387,7 +14984,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15408,7 +15005,7 @@
    "state": "VA",
    "town": "Buckingham County",
    "county": "Buckingham",
-   "board": "Planning Commission Packet/Minutes",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-09-28",
    "topics": [
@@ -15488,7 +15085,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-24",
    "topics": [
@@ -15508,7 +15105,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-24",
    "topics": [
@@ -15528,7 +15125,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-24",
    "topics": [
@@ -15548,7 +15145,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-24",
    "topics": [
@@ -15569,7 +15166,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-24",
    "topics": [
@@ -15589,7 +15186,7 @@
    "state": "VA",
    "town": "Smyth County",
    "county": "Smyth",
-   "board": "Board of Supervisors Agendas & Minutes",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-24",
    "topics": [
@@ -15689,7 +15286,7 @@
    "state": "VA",
    "town": "Amelia County",
    "county": "Amelia",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-23",
    "topics": [
@@ -15709,7 +15306,7 @@
    "state": "VA",
    "town": "Amelia County",
    "county": "Amelia",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-23",
    "topics": [
@@ -15729,7 +15326,7 @@
    "state": "VA",
    "town": "Amelia County",
    "county": "Amelia",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-23",
    "topics": [
@@ -15749,7 +15346,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-22",
    "topics": [
@@ -15769,7 +15366,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-22",
    "topics": [
@@ -15789,7 +15386,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-22",
    "topics": [
@@ -15809,7 +15406,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-22",
    "topics": [
@@ -15829,7 +15426,7 @@
    "state": "VA",
    "town": "Wythe County",
    "county": "Wythe",
-   "board": "Board of Supervisors Packages (BOS Pack)",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-22",
    "topics": [
@@ -16354,7 +15951,7 @@
    "state": "VA",
    "town": "Henrico County",
    "county": "Henrico",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-22",
    "topics": [
@@ -16374,7 +15971,7 @@
    "state": "VA",
    "town": "Henrico County",
    "county": "Henrico",
-   "board": "Select Board / Council",
+   "board": "Board of Supervisors",
    "board_key": "select_board",
    "meeting_date": "2026-09-22",
    "topics": [

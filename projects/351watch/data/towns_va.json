@@ -204,12 +204,13 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "url": "https://www.ameliacova.com/departments/boards_and_commissions/agendas_and_minutes.php",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
-     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     },
     {
      "board": "Planning Commission",
@@ -219,12 +220,13 @@
      "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
     },
     {
-     "board": "Zoning Board of Appeals",
+     "board": "Board of Zoning Appeals",
      "board_key": "zoning_board_of_appeals",
      "url": "https://www.ameliacova.com/departments/boards_and_commissions/board_of_zoning_appeal.php",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals",
-     "board_exclude": "building|construction|fire|code\\s+appeals|board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|planning\\s+commission|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "building|construction|fire|code\\s+appeals|board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|planning\\s+commission|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Zoning Board of Appeals"
     }
    ],
    "boards_tracked": [
@@ -791,11 +793,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "url": "https://www.blandcountyva.gov/government/board_of_supervisors/agendas_and_minutes.php",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -1115,11 +1118,12 @@
      "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
     },
     {
-     "board": "Planning Commission Packet/Minutes",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://www.buckinghamcountyva.org/administration/boards___commissions/planning_commission.php",
      "platform": "agenda_page",
-     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Commission Packet/Minutes"
     }
    ],
    "boards_tracked": [
@@ -1326,10 +1330,11 @@
      "url": "https://co.caroline.va.us/AgendaCenter/Planning-Commission-3"
     },
     {
-     "board": "Zoning Board of Appeals",
+     "board": "Board of Zoning Appeals",
      "board_key": "zoning_board_of_appeals",
      "category_id": "4",
-     "url": "https://co.caroline.va.us/AgendaCenter/Zoning-Board-of-Appeals-4"
+     "url": "https://co.caroline.va.us/AgendaCenter/Zoning-Board-of-Appeals-4",
+     "board_label_was": "Zoning Board of Appeals"
     }
    ],
    "boards_tracked": [
@@ -1405,11 +1410,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "url": "https://carrollcountyva.gov/government/board_of_supervisors/meeting_documentation.php",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -2977,11 +2983,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "url": "https://www.greensvillecountyva.gov/boards___commissions/board_of_supervisors/agendas___minutes/board_of_supervisors.php",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     },
     {
      "board": "Planning Commission",
@@ -3297,18 +3304,20 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "url": "https://henrico.gov/supervisors/supervisors-agenda-o-gram/",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     },
     {
-     "board": "Planning Board",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://henrico.gov/planning/",
      "platform": "agenda_page",
-     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Board"
     }
    ],
    "boards_tracked": [
@@ -4338,11 +4347,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "url": "https://lunenburgva.gov/government/board_of_supervisors/agendas___minutes.php",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -4627,10 +4637,11 @@
    "automated": true,
    "listings": [
     {
-     "board": "Board of Supervisors Monthly Meetings",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "category_id": "2",
-     "url": "https://www.mecklenburgva.com/AgendaCenter/Board-of-Supervisors-Monthly-Meetings-2"
+     "url": "https://www.mecklenburgva.com/AgendaCenter/Board-of-Supervisors-Monthly-Meetings-2",
+     "board_label_was": "Board of Supervisors Monthly Meetings"
     },
     {
      "board": "Planning Commission",
@@ -5135,11 +5146,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "url": "https://nottoway.org/administration/boards___commissions/board_of_supervisors_(bos)/board_agendas_minutes.php",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "09/14/2023 Board of Supervisors Worksession & Special Meeting"
     }
    ],
    "boards_tracked": [
@@ -5693,11 +5705,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "url": "https://www.co.prince-edward.va.us/Government/Board-of-Supervisors/Board-Meeting-Agendas-and-Meeting-Minutes",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -6589,18 +6602,20 @@
    "automated": true,
    "listings": [
     {
-     "board": "Board of Supervisors Agendas & Minutes",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "url": "https://www.smythcounty.gov/government/agendas___minutes_/board_of_supervisors_agendas___minutes.php",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Board of Supervisors Agendas & Minutes"
     },
     {
-     "board": "Planning Commission Agendas & Minutes",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://www.smythcounty.gov/government/agendas___minutes_/planning_commission_agendas___minutes.php",
      "platform": "agenda_page",
-     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Commission Agendas & Minutes"
     }
    ],
    "boards_tracked": [
@@ -6718,11 +6733,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "url": "https://www.southamptoncounty.org/departments/board_of_supervisors/bos_agendas_2026.php",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -6822,11 +6838,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Board of Zoning Appeals Agendas",
+     "board": "Board of Zoning Appeals",
      "board_key": "zoning_board_of_appeals",
      "url": "https://www.spotsylvania.va.us/3242/Board-of-Zoning-Appeals-Agendas",
      "platform": "agenda_page",
-     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|planning\\s+commission|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|planning\\s+commission|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Board of Zoning Appeals Agendas"
     },
     {
      "board": "Planning Commission",
@@ -7134,12 +7151,13 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "url": "https://sussexcountyva.gov/agendas-and-minutes/",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
-     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -7622,16 +7640,18 @@
    "automated": true,
    "listings": [
     {
-     "board": "Board of Supervisors (BOS) Agendas & Minutes",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "category_id": "6",
-     "url": "https://www.wytheco.org/AgendaCenter/Board-of-Supervisors-BOS-Agendas-Minutes-6"
+     "url": "https://www.wytheco.org/AgendaCenter/Board-of-Supervisors-BOS-Agendas-Minutes-6",
+     "board_label_was": "Board of Supervisors (BOS) Agendas & Minutes"
     },
     {
-     "board": "Board of Supervisors Packages (BOS Pack)",
+     "board": "Board of Supervisors",
      "board_key": "select_board",
      "category_id": "7",
-     "url": "https://www.wytheco.org/AgendaCenter/Board-of-Supervisors-Packages-BOS-Pack-7"
+     "url": "https://www.wytheco.org/AgendaCenter/Board-of-Supervisors-Packages-BOS-Pack-7",
+     "board_label_was": "Board of Supervisors Packages (BOS Pack)"
     },
     {
      "board": "Planning Commission",
@@ -7987,11 +8007,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "City Council",
      "board_key": "select_board",
      "url": "https://buenavistava.gov/government/city-council/agenda-and-minutes/",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -8413,28 +8434,31 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "City Council",
      "board_key": "select_board",
      "url": "https://www.danvilleva.gov/m/newsflash/home/detail/6718",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
-     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     },
     {
-     "board": "Planning Board",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://www.danvilleva.gov/m/newsflash/home/detail/6718",
      "platform": "agenda_page",
      "board_pattern": "planning\\s+commission|\\bPC\\b",
-     "board_exclude": "planning\\s+district|regional|emergency\\s+planning|committee|\\bPDC\\b|board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+district|regional|emergency\\s+planning|committee|\\bPDC\\b|board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Board"
     },
     {
-     "board": "Zoning Board of Appeals",
+     "board": "Board of Zoning Appeals",
      "board_key": "zoning_board_of_appeals",
      "url": "https://www.danvilleva.gov/m/newsflash/home/detail/6718",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals",
-     "board_exclude": "building|construction|fire|code\\s+appeals|board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|planning\\s+commission|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "building|construction|fire|code\\s+appeals|board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|planning\\s+commission|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Zoning Board of Appeals"
     }
    ],
    "boards_tracked": [
@@ -8683,10 +8707,11 @@
      "url": "https://www.fallschurchva.gov/AgendaCenter/City-Council-54"
     },
     {
-     "board": "City Council: Council Agenda Meeting with Staff",
+     "board": "City Council",
      "board_key": "select_board",
      "category_id": "52",
-     "url": "https://www.fallschurchva.gov/AgendaCenter/City-Council-Council-Agenda-Meeting-with-Staff-52"
+     "url": "https://www.fallschurchva.gov/AgendaCenter/City-Council-Council-Agenda-Meeting-with-Staff-52",
+     "board_label_was": "City Council: Council Agenda Meeting with Staff"
     },
     {
      "board": "Planning Commission",
@@ -8863,11 +8888,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "City Council",
      "board_key": "select_board",
      "url": "https://galaxva.com/2026-city-council-agendas/",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -9601,10 +9627,11 @@
    "automated": true,
    "listings": [
     {
-     "board": "City Council Agendas",
+     "board": "City Council",
      "board_key": "select_board",
      "category_id": "25",
-     "url": "https://www.norfolk.gov/AgendaCenter/City-Council-Agendas-25"
+     "url": "https://www.norfolk.gov/AgendaCenter/City-Council-Agendas-25",
+     "board_label_was": "City Council Agendas"
     },
     {
      "board": "City Planning Commission Public Hearings",
@@ -9707,11 +9734,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "City Council Agendas",
+     "board": "City Council",
      "board_key": "select_board",
      "url": "https://www.nortonva.gov/Archive.aspx?AMID=37",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "City Council Agendas"
     }
    ],
    "boards_tracked": [
@@ -10423,16 +10451,18 @@
    "automated": true,
    "listings": [
     {
-     "board": "City Council Meeting Agendas",
+     "board": "City Council",
      "board_key": "select_board",
      "category_id": "11",
-     "url": "https://www.suffolkva.us/AgendaCenter/City-Council-Meeting-Agendas-11"
+     "url": "https://www.suffolkva.us/AgendaCenter/City-Council-Meeting-Agendas-11",
+     "board_label_was": "City Council Meeting Agendas"
     },
     {
-     "board": "City Council Meeting Packets",
+     "board": "City Council",
      "board_key": "select_board",
      "category_id": "4",
-     "url": "https://www.suffolkva.us/AgendaCenter/City-Council-Meeting-Packets-4"
+     "url": "https://www.suffolkva.us/AgendaCenter/City-Council-Meeting-Packets-4",
+     "board_label_was": "City Council Meeting Packets"
     },
     {
      "board": "City Council Work Sessions",
@@ -10441,28 +10471,32 @@
      "url": "https://www.suffolkva.us/AgendaCenter/City-Council-Work-Sessions-10"
     },
     {
-     "board": "Board of Zoning Appeals Meeting Agendas",
+     "board": "Board of Zoning Appeals",
      "board_key": "zoning_board_of_appeals",
      "category_id": "20",
-     "url": "https://www.suffolkva.us/AgendaCenter/Board-of-Zoning-Appeals-Meeting-Agendas-20"
+     "url": "https://www.suffolkva.us/AgendaCenter/Board-of-Zoning-Appeals-Meeting-Agendas-20",
+     "board_label_was": "Board of Zoning Appeals Meeting Agendas"
     },
     {
-     "board": "Board of Zoning Appeals Meeting Packets",
+     "board": "Board of Zoning Appeals",
      "board_key": "zoning_board_of_appeals",
      "category_id": "21",
-     "url": "https://www.suffolkva.us/AgendaCenter/Board-of-Zoning-Appeals-Meeting-Packets-21"
+     "url": "https://www.suffolkva.us/AgendaCenter/Board-of-Zoning-Appeals-Meeting-Packets-21",
+     "board_label_was": "Board of Zoning Appeals Meeting Packets"
     },
     {
-     "board": "Planning Commission Meeting Agendas",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "category_id": "12",
-     "url": "https://www.suffolkva.us/AgendaCenter/Planning-Commission-Meeting-Agendas-12"
+     "url": "https://www.suffolkva.us/AgendaCenter/Planning-Commission-Meeting-Agendas-12",
+     "board_label_was": "Planning Commission Meeting Agendas"
     },
     {
-     "board": "Planning Commission Meeting Packets",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "category_id": "3",
-     "url": "https://www.suffolkva.us/AgendaCenter/Planning-Commission-Meeting-Packets-3"
+     "url": "https://www.suffolkva.us/AgendaCenter/Planning-Commission-Meeting-Packets-3",
+     "board_label_was": "Planning Commission Meeting Packets"
     }
    ],
    "boards_tracked": [
@@ -11441,10 +11475,11 @@
      "url": "https://www.frontroyalva.com/AgendaCenter/Planning-Commission-3"
     },
     {
-     "board": "Town Council Meeting Agendas",
+     "board": "Town Council",
      "board_key": "select_board",
      "category_id": "2",
-     "url": "https://www.frontroyalva.com/AgendaCenter/Town-Council-Meeting-Agendas-2"
+     "url": "https://www.frontroyalva.com/AgendaCenter/Town-Council-Meeting-Agendas-2",
+     "board_label_was": "Town Council Meeting Agendas"
     }
    ],
    "boards_tracked": [
@@ -11846,11 +11881,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Planning Commission Agenda’s and Dates",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://louisava.gov/planning-commission-dates/",
      "platform": "agenda_page",
-     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Commission Agenda’s and Dates"
     }
    ],
    "boards_tracked": [
@@ -11987,11 +12023,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Town Council",
      "board_key": "select_board",
      "url": "https://www.townofbowlinggreenva.gov/town-council/meeting/town-council-meeting-166",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -12090,12 +12127,13 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Town Council",
      "board_key": "select_board",
      "url": "https://www.remington-va.gov/government/agendas",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
-     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -12243,22 +12281,24 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Town Council",
      "board_key": "select_board",
      "url": "https://warrenton-va.municodemeetings.com/",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
      "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
-     "vendor": "municode_meetings"
+     "vendor": "municode_meetings",
+     "board_label_was": "Select Board / Council"
     },
     {
-     "board": "Planning Board",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://warrenton-va.municodemeetings.com/",
      "platform": "agenda_page",
      "board_pattern": "planning\\s+commission|\\bPC\\b",
      "board_exclude": "planning\\s+district|regional|emergency\\s+planning|committee|\\bPDC\\b|board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
-     "vendor": "municode_meetings"
+     "vendor": "municode_meetings",
+     "board_label_was": "Planning Board"
     }
    ],
    "boards_tracked": [
@@ -12477,12 +12517,13 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Town Council",
      "board_key": "select_board",
      "url": "https://www.southhillva.org/procurement.php",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
-     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -12547,12 +12588,13 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Town Council",
      "board_key": "select_board",
      "url": "https://www.southboston.com/departments/council/council_minutes_of_meetings.php",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
-     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -12941,11 +12983,12 @@
    "automated": true,
    "listings": [
     {
-     "board": "Town Council Agendas and Minutes",
+     "board": "Town Council",
      "board_key": "select_board",
      "url": "https://www.windsor-va.gov/government/town_council/town_council_agendas_and_minutes/index.php",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Town Council Agendas and Minutes"
     }
    ],
    "boards_tracked": [
@@ -13211,13 +13254,14 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Town Council",
      "board_key": "select_board",
      "url": "https://meetings.municode.com/PublishPage/index?cid=WYTHEVILVA&ppid=dd3e12be-0db5-4371-8a7b-41369f93e324&p=1",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
      "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
-     "vendor": "municode_meetings"
+     "vendor": "municode_meetings",
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -13384,19 +13428,21 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Town Council",
      "board_key": "select_board",
      "url": "https://www.altavistava.gov/government/town_meetings/council_agendas___minutes.php",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+supervisors|\\bBOS\\b|supervisors|town\\s+council|city\\s+council|council\\s+meeting",
-     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "school\\s+board|social\\s+services|electoral|committee|\\bEDA\\b|economic\\s+development\\s+authority|industrial\\s+development\\s+authority|planning\\s+commission|\\bPC\\b|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     },
     {
-     "board": "Planning Commission Agendas & Minutes",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://www.altavistava.gov/government/town_meetings/planning_commission_agendas___minutes.php",
      "platform": "agenda_page",
-     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "board\\s+of\\s+supervisors|\\bBOS\\b|town\\s+council|city\\s+council|board\\s+of\\s+zoning\\s+appeals|\\bBZA\\b|zoning\\s+appeals|board\\s+of\\s+appeals|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Commission Agendas & Minutes"
     }
    ],
    "boards_tracked": [

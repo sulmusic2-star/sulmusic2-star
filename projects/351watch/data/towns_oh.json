@@ -1,6 +1,6 @@
 {
  "_about": "Agenda Ahead Ohio test rows (2026-11): every township in Licking, Union, Franklin, Delaware, Logan, Champaign, Clermont and Butler counties, Ohio's 88 county planning commissions and the regional planning commissions that review township zoning under ORC 519.12. Same row shape as towns_mi.json. Built by `python3 experiments/great_lakes_test.py discover --state OH`.",
- "generated": "2026-11-02T19:37:11+00:00",
+ "generated": "2026-11-02T19:50:41+00:00",
  "state": "OH",
  "gated": true,
  "gate_note": "Test state: not part of the production daily run. Crawled only by `python3 -m watch351.daily --states MI,OH --output-dir ../data/test/great_lakes --hits-name hits_great_lakes.json` (Michigan also by the 2026-10 test command with --states MI,VA --output-dir ../data/test).",
@@ -7413,7 +7413,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:18:03+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Allen County",
@@ -7444,7 +7445,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:07+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Ashland County",
@@ -7478,7 +7480,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:18:10+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Ashtabula County",
@@ -7534,7 +7537,8 @@
    ],
    "pages_fetched": 3,
    "discovered_at": "2026-11-02T19:19:51+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Athens County",
@@ -7570,7 +7574,8 @@
    "notes": [],
    "pages_fetched": 5,
    "discovered_at": "2026-11-02T19:18:16+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Auglaize County",
@@ -7601,7 +7606,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:18:51+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Belmont County",
@@ -7637,7 +7643,8 @@
    "notes": [],
    "pages_fetched": 3,
    "discovered_at": "2026-11-02T19:18:20+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Brown County",
@@ -7682,7 +7689,8 @@
    "notes": [],
    "pages_fetched": 6,
    "discovered_at": "2026-11-02T19:18:19+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Butler County",
@@ -7752,7 +7760,8 @@
     "agenda_page"
    ],
    "curation_note": "Planning Commission agendas on the Development department page (the commissioners' iQM2 portal refuses the bot)",
-   "curated": true
+   "curated": true,
+   "attribute_known_only": true
   },
   {
    "town": "Carroll County",
@@ -7795,7 +7804,8 @@
    "notes": [],
    "pages_fetched": 9,
    "discovered_at": "2026-11-02T19:18:22+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Champaign County",
@@ -7829,7 +7839,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:18:18+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Clark County",
@@ -7897,7 +7908,8 @@
    ],
    "pages_fetched": 3,
    "discovered_at": "2026-11-02T19:19:10+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Clermont County",
@@ -7970,7 +7982,8 @@
    "notes": [],
    "pages_fetched": 6,
    "discovered_at": "2026-11-02T19:18:23+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Clinton County",
@@ -8004,7 +8017,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:18:22+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Columbiana County",
@@ -8040,7 +8054,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:18:24+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Coshocton County",
@@ -8076,7 +8091,8 @@
    "notes": [],
    "pages_fetched": 3,
    "discovered_at": "2026-11-02T19:18:25+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Crawford County",
@@ -8107,7 +8123,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:18:26+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Cuyahoga County",
@@ -8141,7 +8158,8 @@
    "notes": [],
    "pages_fetched": 3,
    "discovered_at": "2026-11-02T19:18:27+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Darke County",
@@ -8172,7 +8190,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:14+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Defiance County",
@@ -8206,7 +8225,8 @@
    "notes": [],
    "pages_fetched": 3,
    "discovered_at": "2026-11-02T19:18:28+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Delaware County",
@@ -8286,7 +8306,8 @@
    "county_body": "Delaware County Regional Planning Commission",
    "township_bare_names": true,
    "curation_note": "the county's planning body is the Regional Planning Commission; its monthly mailing page lists each item as its own document (\"07-25.1 / Estates at Berlin Sec 1 / Berlin / 25 lots\"), the township by bare name (attribution.bare_township), about two and a half weeks before the meeting",
-   "curated": true
+   "curated": true,
+   "attribute_known_only": true
   },
   {
    "town": "Erie County",
@@ -8329,7 +8350,8 @@
    "notes": [],
    "pages_fetched": 5,
    "discovered_at": "2026-11-02T19:18:32+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Fairfield County",
@@ -8363,7 +8385,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:18:30+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Fayette County",
@@ -8410,7 +8433,8 @@
    ],
    "pages_fetched": 11,
    "discovered_at": "2026-11-02T19:19:52+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Franklin County",
@@ -8506,7 +8530,8 @@
    "discovered_at": "2026-11-02T19:34:32+00:00",
    "attribute_townships": true,
    "curation_note": "EDP meetings page (PC and RZC agendas, notices and packets), replacing the single meeting page discovery found",
-   "curated": true
+   "curated": true,
+   "attribute_known_only": true
   },
   {
    "town": "Fulton County",
@@ -8544,7 +8569,8 @@
    ],
    "pages_fetched": 4,
    "discovered_at": "2026-11-02T19:19:19+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Gallia County",
@@ -8580,7 +8606,8 @@
    "notes": [],
    "pages_fetched": 7,
    "discovered_at": "2026-11-02T19:18:39+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Geauga County",
@@ -8611,7 +8638,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:18:37+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Greene County",
@@ -8642,7 +8670,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:13+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Guernsey County",
@@ -8678,7 +8707,8 @@
    "notes": [],
    "pages_fetched": 7,
    "discovered_at": "2026-11-02T19:18:44+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Hamilton County",
@@ -8723,7 +8753,8 @@
    "notes": [],
    "pages_fetched": 15,
    "discovered_at": "2026-11-02T19:18:47+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Hancock County",
@@ -8769,7 +8800,8 @@
    ],
    "pages_fetched": 11,
    "discovered_at": "2026-11-02T19:20:05+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Hardin County",
@@ -8800,7 +8832,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:43+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Harrison County",
@@ -8843,7 +8876,8 @@
    "notes": [],
    "pages_fetched": 10,
    "discovered_at": "2026-11-02T19:18:55+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Henry County",
@@ -8890,7 +8924,8 @@
    ],
    "pages_fetched": 9,
    "discovered_at": "2026-11-02T19:20:19+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Highland County",
@@ -8924,7 +8959,8 @@
    "notes": [],
    "pages_fetched": 5,
    "discovered_at": "2026-11-02T19:18:54+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Hocking County",
@@ -8969,7 +9005,8 @@
    "notes": [],
    "pages_fetched": 3,
    "discovered_at": "2026-11-02T19:18:56+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Holmes County",
@@ -9003,7 +9040,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:18:57+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Huron County",
@@ -9041,7 +9079,8 @@
    ],
    "pages_fetched": 3,
    "discovered_at": "2026-11-02T19:19:04+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Jackson County",
@@ -9073,7 +9112,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:06+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Jefferson County",
@@ -9107,7 +9147,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:19:00+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Knox County",
@@ -9138,7 +9179,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:32+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Lake County",
@@ -9174,7 +9216,8 @@
    "notes": [],
    "pages_fetched": 3,
    "discovered_at": "2026-11-02T19:19:14+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Lawrence County",
@@ -9208,7 +9251,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:19:11+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Licking County",
@@ -9224,8 +9268,8 @@
    "cms": [],
    "platform": null,
    "status": "not_automated",
-   "reason_code": "no_agendas_found",
-   "reason": "site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "reason_code": "documents_blocked",
+   "reason": "Licking County Planning Commission agendas are listed at lickingcounty.gov/depts/planning/planning/agendas/default.htm, but the documents are civicax/filebank/blobdload.aspx links that the county's robots.txt disallows; not fetched",
    "automated": false,
    "listings": [],
    "boards_tracked": [
@@ -9241,8 +9285,11 @@
    "robots_blocked": [],
    "notes": [],
    "pages_fetched": 1,
-   "discovered_at": "2026-11-02T19:19:08+00:00",
-   "attribute_townships": true
+   "discovered_at": "2026-11-02T19:50:41+00:00",
+   "attribute_townships": true,
+   "attribute_known_only": true,
+   "curation_note": "agenda page found by hand; documents robots-disallowed (CivicaSoft file bank)",
+   "curated": true
   },
   {
    "town": "Logan County",
@@ -9276,7 +9323,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:19:38+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Lorain County",
@@ -9322,7 +9370,8 @@
    ],
    "pages_fetched": 9,
    "discovered_at": "2026-11-02T19:20:14+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Lucas County",
@@ -9370,7 +9419,8 @@
    ],
    "pages_fetched": 7,
    "discovered_at": "2026-11-02T19:21:00+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Madison County",
@@ -9436,7 +9486,8 @@
    "notes": [],
    "pages_fetched": 7,
    "discovered_at": "2026-11-02T19:19:24+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Mahoning County",
@@ -9483,7 +9534,8 @@
    ],
    "pages_fetched": 9,
    "discovered_at": "2026-11-02T19:20:19+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Marion County",
@@ -9528,7 +9580,8 @@
    "notes": [],
    "pages_fetched": 14,
    "discovered_at": "2026-11-02T19:19:26+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Medina County",
@@ -9604,7 +9657,8 @@
    "notes": [],
    "pages_fetched": 8,
    "discovered_at": "2026-11-02T19:19:36+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Meigs County",
@@ -9640,7 +9694,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:19:24+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Mercer County",
@@ -9685,7 +9740,8 @@
    "notes": [],
    "pages_fetched": 12,
    "discovered_at": "2026-11-02T19:19:35+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Miami County",
@@ -9716,7 +9772,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:58+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Monroe County",
@@ -9752,7 +9809,8 @@
    "notes": [],
    "pages_fetched": 7,
    "discovered_at": "2026-11-02T19:19:32+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Montgomery County",
@@ -9783,7 +9841,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:33+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Morgan County",
@@ -9817,7 +9876,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:19:35+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Morrow County",
@@ -9862,7 +9922,8 @@
    "notes": [],
    "pages_fetched": 11,
    "discovered_at": "2026-11-02T19:19:42+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Muskingum County",
@@ -9893,7 +9954,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:20:39+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Noble County",
@@ -9924,7 +9986,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:39+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Ottawa County",
@@ -9962,7 +10025,8 @@
    ],
    "pages_fetched": 6,
    "discovered_at": "2026-11-02T19:20:22+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Paulding County",
@@ -9993,7 +10057,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:40+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Perry County",
@@ -10029,7 +10094,8 @@
    "notes": [],
    "pages_fetched": 7,
    "discovered_at": "2026-11-02T19:19:47+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Pickaway County",
@@ -10072,7 +10138,8 @@
    "notes": [],
    "pages_fetched": 9,
    "discovered_at": "2026-11-02T19:19:48+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Pike County",
@@ -10106,7 +10173,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:19:44+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Portage County",
@@ -10137,7 +10205,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:55+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Preble County",
@@ -10199,7 +10268,8 @@
    ],
    "pages_fetched": 4,
    "discovered_at": "2026-11-02T19:20:46+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Putnam County",
@@ -10230,7 +10300,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:48+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Richland County",
@@ -10264,7 +10335,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:19:55+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Ross County",
@@ -10295,7 +10367,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:52+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Sandusky County",
@@ -10331,7 +10404,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:19:53+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Scioto County",
@@ -10365,7 +10439,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:19:56+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Seneca County",
@@ -10399,7 +10474,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:19:56+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Shelby County",
@@ -10437,7 +10513,8 @@
    ],
    "pages_fetched": 6,
    "discovered_at": "2026-11-02T19:20:26+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Stark County",
@@ -10468,7 +10545,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:20:59+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Summit County",
@@ -10499,7 +10577,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:19:59+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Trumbull County",
@@ -10542,7 +10621,8 @@
    "notes": [],
    "pages_fetched": 8,
    "discovered_at": "2026-11-02T19:20:02+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Tuscarawas County",
@@ -10587,7 +10667,8 @@
    "notes": [],
    "pages_fetched": 14,
    "discovered_at": "2026-11-02T19:20:11+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Union County",
@@ -10621,7 +10702,8 @@
    "notes": [],
    "pages_fetched": 3,
    "discovered_at": "2026-11-02T19:20:00+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Van Wert County",
@@ -10666,7 +10748,8 @@
    "notes": [],
    "pages_fetched": 8,
    "discovered_at": "2026-11-02T19:20:13+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Vinton County",
@@ -10697,7 +10780,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:20:34+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Warren County",
@@ -10770,7 +10854,8 @@
    "notes": [],
    "pages_fetched": 5,
    "discovered_at": "2026-11-02T19:20:07+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Washington County",
@@ -10806,7 +10891,8 @@
    "notes": [],
    "pages_fetched": 4,
    "discovered_at": "2026-11-02T19:20:37+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Wayne County",
@@ -10843,7 +10929,8 @@
    "notes": [],
    "pages_fetched": 9,
    "discovered_at": "2026-11-02T19:20:24+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Williams County",
@@ -10881,7 +10968,8 @@
    ],
    "pages_fetched": 8,
    "discovered_at": "2026-11-02T19:21:21+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Wood County",
@@ -10915,7 +11003,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:20:16+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Wyandot County",
@@ -10963,7 +11052,8 @@
    ],
    "pages_fetched": 4,
    "discovered_at": "2026-11-02T19:21:04+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Logan-Union-Champaign Regional Planning Commission",
@@ -11020,7 +11110,8 @@
    ],
    "county_body": "Logan-Union-Champaign Regional Planning Commission",
    "curation_note": "regional body for Logan, Union and Champaign counties; This Month at LUC page, documents dated from their text",
-   "curated": true
+   "curated": true,
+   "attribute_known_only": true
   }
  ]
 }

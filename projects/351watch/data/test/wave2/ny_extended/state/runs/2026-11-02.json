@@ -1,19 +1,19 @@
 {
  "by_state": {
   "NY": {
-   "new_documents": 20,
-   "new_hits": 40,
+   "new_documents": 0,
+   "new_hits": 0,
    "towns_attempted": 6,
    "towns_succeeded": 6
   }
  },
  "date": "2026-11-02",
- "document_errors": 1,
- "documents_already_indexed": 0,
+ "document_errors": 0,
+ "documents_already_indexed": 1,
  "documents_deferred": 0,
  "documents_listed": 21,
  "documents_needing_ocr": 0,
- "documents_rematched": 0,
+ "documents_rematched": 20,
  "documents_retried": 0,
  "documents_too_large": [
   {
@@ -45,15 +45,10 @@
    "url": "https://www.mountkiscony.gov/ZBA packet 9.15.26.pdf"
   }
  ],
- "duration_seconds": 40.5,
- "errors": [
-  {
-   "error": "document: extract failed (content-type application/msword): https://www.chemungcountyny.gov/DocumentCenter/View/20876/Oct-2026-PB-Agenda",
-   "town": "NY:Chemung County"
-  }
- ],
- "errors_total": 1,
- "finished": "2026-11-02T19:37:45+00:00",
+ "duration_seconds": 8.6,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-11-02T19:49:54+00:00",
  "hits_current": 104,
  "index": {
   "by_state": {
@@ -78,40 +73,20 @@
   "with_hits": 53
  },
  "network": {
-  "bytes_by_purpose": {
-   "document": 38263253,
-   "listing": 250557
-  },
-  "cache_hits": 13,
+  "bytes_by_purpose": {},
+  "cache_hits": 31,
   "errors": 0,
-  "requests": 27,
-  "requests_by_purpose": {
-   "document": 25,
-   "listing": 2
-  },
+  "requests": 0,
+  "requests_by_purpose": {},
   "robots_blocked": 0
  },
- "new_alert_items": 36,
- "new_alert_items_by_topic": {
-  "battery_storage": 10,
-  "data_center": 10,
-  "moratorium": 18,
-  "solar": 8,
-  "wireless_telecom": 4,
-  "zoning_amendment": 4
- },
- "new_documents": 20,
- "new_hits": 40,
- "new_hits_by_topic": {
-  "battery_storage": 10,
-  "data_center": 10,
-  "moratorium": 21,
-  "solar": 8,
-  "wireless_telecom": 5,
-  "zoning_amendment": 4
- },
+ "new_alert_items": 0,
+ "new_alert_items_by_topic": {},
+ "new_documents": 0,
+ "new_hits": 0,
+ "new_hits_by_topic": {},
  "options": {
-  "matcher_version": "e94d3fc5c8",
+  "matcher_version": "564b245418",
   "no_network_docs": false,
   "ocr_max_pages": 6,
   "pdftotext": true,
@@ -130,9 +105,21 @@
    ],
    "towns_attempted": 28,
    "towns_succeeded": 28
+  },
+  {
+   "duration_seconds": 40.5,
+   "new_documents": 20,
+   "new_hits": 40,
+   "requests": 27,
+   "started": "2026-11-02T19:37:05+00:00",
+   "states": [
+    "NY"
+   ],
+   "towns_attempted": 6,
+   "towns_succeeded": 6
   }
  ],
- "started": "2026-11-02T19:37:05+00:00",
+ "started": "2026-11-02T19:49:46+00:00",
  "states": [
   "NY"
  ],

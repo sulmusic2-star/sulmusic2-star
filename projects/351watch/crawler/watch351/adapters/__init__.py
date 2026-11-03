@@ -19,3 +19,4 @@ from .ri_sos import RISOSAdapter; REGISTRY[RISOSAdapter.platform] = RISOSAdapter
 from .generic_ny import GenericNYAdapter; from .escribe import EscribeAdapter; REGISTRY.update({GenericNYAdapter.platform: GenericNYAdapter, EscribeAdapter.platform: EscribeAdapter})  # NY pilot: hand listings with month pages / compact dates; eSCRIBE portals
 from .agenda_page import AgendaPageAdapter; REGISTRY[AgendaPageAdapter.platform] = AgendaPageAdapter  # MI/VA test: general agenda-page reader (WordPress, Revize, CivicPlus documents, Municode Meetings, plain pages)
 from .cmm_compass import CMMCompassAdapter; REGISTRY[CMMCompassAdapter.platform] = CMMCompassAdapter  # Wave 1 NY: Compass Web Development CMM agenda embeds (Clymer, Ellery, Angelica)
+from .onbase import OnBaseAgendaAdapter; REGISTRY[OnBaseAgendaAdapter.platform] = OnBaseAgendaAdapter  # VA/MD wave: Hyland OnBase "Agenda Online" portals (Arlington County)

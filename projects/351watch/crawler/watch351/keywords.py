@@ -260,6 +260,27 @@ STATE_TOPICS: dict[str, list[tuple]] = {
         ("clean_energy_siting", r"\bindustrial\s+facilit(?:y|ies)\s+(?:tax\s+)?exemption\b|\bIFT\b|\bP\.?\s?A\.?\s*198\b",
          _near(_ENERGY_CTX, 200, 200)),
     ],
+    "OH": _STATE_SHARED + [
+        # Ohio townships zone by resolution (ORC 519), so their amendments are "zoning resolution
+        # amendments" / "amendments to the zoning resolution"; county and regional planning commissions
+        # review every one of them under ORC 519.12 before the township zoning commission's hearing
+        ("zoning_amendment", r"\bzoning\s+resolution\s+(?:text\s+|map\s+)?amendments?\b|"
+                             r"\bamend(?:ing|ment|ments)?\s+(?:to\s+)?(?:the\s+)?(?:\w+\s+){0,3}zoning\s+resolutions?\b|"
+                             r"\b(?:text|map)\s+amendments?\s+to\s+the\s+(?:\w+\s+){0,3}zoning\s+resolution\b|"
+                             r"\b(?:ORC|R\.?C\.?|section)\s*519\.12\b", None),
+        # SB 52 (2021): county commissioners may designate restricted areas for large solar and wind
+        # facilities, and the Ohio Power Siting Board certifies them (not a county's "restricted parking")
+        ("clean_energy_siting", r"\b(?:Senate\s+Bill|S\.?\s?B\.?)\s*52\b",
+         _near(re.compile(r"solar|wind|energy|utility|siting|restricted|facilit", re.I), 200, 200)),
+        ("clean_energy_siting", r"\brestricted\s+areas?\b",
+         _near(re.compile(r"solar|wind\s+(?:farm|energy|turbine)|\bSB\s*52\b|utility[\s-]+scale|economically\s+"
+                          r"significant|large\s+(?:solar|wind)|power\s+siting", re.I), 200, 200)),
+        ("clean_energy_siting", r"\bOhio\s+Power\s+Siting\s+Board\b|\bOPSB\b",
+         lambda t, m: not (_ENERGY_CTX.search(_around(t, m, 250, 250)) or _DC_CTX.search(_around(t, m, 250, 250)))),
+        ("clean_energy_siting", _RENEWABLE_ORD, None),
+        # payment in lieu of taxes for a qualified energy project (ORC 5727.75)
+        ("clean_energy_siting", r"\bqualified\s+energy\s+projects?\b|\b5727\.75\b", None),
+    ],
     "VA": _STATE_SHARED + [
         # Code of Virginia 15.2-2232 review ("substantial accord") of an energy facility
         ("clean_energy_siting", r"(?:§+\s*|section\s+|sec\.\s*|15\.2-)2232\b|\b2232\s+(?:review|determination|"
@@ -267,6 +288,22 @@ STATE_TOPICS: dict[str, list[tuple]] = {
         ("clean_energy_siting", r"\bsiting\s+agreements?\b", None),
         ("clean_energy_siting", r"\brevenue\s+share\b", _near(_ENERGY_CTX, 200, 200)),
         ("clean_energy_siting", _RENEWABLE_ORD, None),
+    ],
+    # Maryland (VA/MD wave, 2026-11): the PSC's Certificate of Public Convenience and Necessity (PUA 7-207)
+    # for a generating station or line, which counties comment on; the Renewable Energy Certainty Act (2025)
+    # solar siting standards; Montgomery / Prince George's zoning map amendments (sectional, local,
+    # countywide) when they rezone for industry, energy or data centers. Shared MI/VA guards apply.
+    "MD": _STATE_SHARED + [
+        ("clean_energy_siting", r"\bCPCN\b|certificate\s+of\s+public\s+convenience\s+and\s+necessity",
+         _near(_ENERGY_CTX, 250, 250)),
+        ("clean_energy_siting", r"\brenewable\s+energy\s+certainty\s+act\b|\bRECA\b|"
+                                r"\b(?:PUA|public\s+utilit(?:y|ies)\s+article)\s*(?:§|section|sec\.)?\s*7-207\b",
+         _near(_ENERGY_CTX, 250, 250)),
+        ("clean_energy_siting", _RENEWABLE_ORD, None),
+        ("zoning_amendment", r"\bsectional\s+map\s+amendments?\b|\b(?:local|countywide|zoning)\s+map\s+amendments?\b|"
+                             r"\b(?:SMA|CMA|ZMA|LMA)[\s#-]*\d",
+         lambda t, m: not (_INDUSTRIAL_TARGET.search(_around(t, m, 100, 250))
+                           or _ENERGY_CTX.search(_around(t, m, 100, 250)))),
     ],
 }
 _STATE_COMPILED = {st: [(topic, re.compile(rx, re.I), guard) for topic, rx, guard in entries]
@@ -347,8 +384,218 @@ def _record_log(t: str, m: re.Match) -> bool:
             or len(_REGISTER_WORDS.findall(_around(t, m, 300, 300))) >= 2)
 
 
+# Round-6 false-positive classes from the Michigan hand check (research_notes/Expansion/test_mi_va.md):
+# a fire chief's emergency-preparedness report on a solar facility under construction (operations, not
+# land use); a list of reference checklists ("Adoption of a Zoning Ordinance Amendment"); a master plan
+# five-year review whose scope cites "zoning amendments since adoption"; planning commission bylaws
+# boilerplate on hearing notices. Each guard needs the class's own words and no siting words nearby.
+_OPERATIONS_REPORT = re.compile(r"fire\s+chief|chief'?s\s+report|emergency\s+(?:preparedness|response\s+plan|"
+                                r"management)|pre-?incident\s+plan|\bdrill\b|training\s+exercise|mutual\s+aid|"
+                                r"first\s+responders?|\bEMS\b|fire\s+department\s+report", re.I)
+_SITING_ACTION = re.compile(r"special\s+(?:land\s+)?use|conditional\s+use|site\s+plan|rezon|public\s+hearing|"
+                            r"applica(?:nt|tion)|permit\s+(?:request|application)|variance|ordinance\s+amendment|"
+                            r"text\s+amendment|proposed\s+(?:solar|wind|battery|project|facility)|\bcase\s*(?:no|#)",
+                            re.I)
+_REFERENCE_LIST = re.compile(r"checklists?|sample\s+(?:ordinance|resolution|form)|templates?|publications?|"
+                             r"handbook|guidebook|fact\s+sheets?|\bMSU\s+Extension\b|Michigan\s+Townships\s+Association|"
+                             r"\bMTA\b|\bOTA\b|resource\s+(?:list|library|center)|reference\s+(?:list|materials?)|"
+                             r"available\s+(?:at|from|online)|\bwebsite\s+links?\b|"
+                             # Great Lakes round 1: a fire department's permit fee table ("Energy Storage (Battery)
+                             # System", "Solar Photovoltaic System" as permit types) and a zoning resolution's table
+                             # of contents ("Overlay District removed 7/2025")
+                             r"operational\s+permits?|construction\s+permits?|permit\s+fees?|fee\s+schedule|"
+                             r"\btable\s+[A-H]\b|prevention\s+bureau|fire\s+marshal|table\s+of\s+contents", re.I)
+_PLAN_REVIEW_SCOPE = re.compile(r"(?:five|5)[\s-]+year\s+(?:review|update)|master\s+plan\s+(?:review|update|"
+                                r"progress)|comprehensive\s+plan\s+(?:review|update|progress)|since\s+(?:its\s+|the\s+)?"
+                                r"adoption|review\s+of\s+the\s+(?:master|comprehensive)\s+plan|"
+                                r"(?:MCL|section)\s*125\.3845", re.I)
+_BYLAWS_BOILERPLATE = re.compile(r"by-?laws\s+(?:of|for)\s+the\s+(?:planning|zoning)|rules\s+of\s+procedure|"
+                                 r"notice\s+(?:of\s+(?:the\s+|a\s+)?(?:public\s+)?hearing\s+)?shall\s+be\s+"
+                                 r"(?:published|given|mailed|sent|posted)|not\s+less\s+than\s+(?:fifteen|15|ten|10)\s+days|"
+                                 r"article\s+[IVX]+\s*[.:-]|quorum\s+shall", re.I)
+
+
+def _beside(t: str, m: re.Match, before: int, after: int) -> str:
+    """The text around a match without the match itself (so "zoning ordinance amendment" does not count
+    as its own siting action)."""
+    return t[max(0, m.start() - before):m.start()] + " | " + t[m.end():m.end() + after]
+
+
+def _operations_report(t: str, m: re.Match) -> bool:
+    w = _around(t, m, 250, 250)
+    return len(_OPERATIONS_REPORT.findall(w)) >= 2 and not _SITING_ACTION.search(_beside(t, m, 250, 250))
+
+
+def _reference_list(t: str, m: re.Match) -> bool:
+    w = _around(t, m, 250, 250)
+    return len(_REFERENCE_LIST.findall(w)) >= 2 and not _SITING_ACTION.search(_beside(t, m, 120, 120))
+
+
+def _plan_review_scope(t: str, m: re.Match) -> bool:
+    w = _around(t, m, 200, 200)
+    return bool(_PLAN_REVIEW_SCOPE.search(w)) and not _SITING_ACTION.search(_beside(t, m, 120, 160))
+
+
+# a bylaws page says "public hearing" and "ordinance amendment" as a matter of course, so only a concrete
+# matter (an applicant, a case, a parcel, a named project) counts against the bylaws guard
+_CONCRETE_MATTER = re.compile(r"special\s+(?:land\s+)?use|conditional\s+use|site\s+plan|rezon|applica(?:nt|tion)|"
+                              r"\bcase\s*(?:no|#)|variance|parcel|\bMW\b|megawatt|acres?\b|\bLLC\b|petition", re.I)
+
+
+def _bylaws_boilerplate(t: str, m: re.Match) -> bool:
+    w = _around(t, m, 250, 250)
+    cues = len(_BYLAWS_BOILERPLATE.findall(w))
+    return (cues >= 2 or (cues >= 1 and bool(re.search(r"\barticle\s+[IVX\d]+\b|\bsection\s+\d+\.\d", w, re.I)))) \
+        and bool(re.search(r"\bshall\b", w)) and not _CONCRETE_MATTER.search(_beside(t, m, 150, 150))
+
+
+# Great Lakes round 1 (research_notes/Expansion/great_lakes_wave.md): Ohio county planning commissions attach a
+# township's whole adopted zoning resolution to the packet (or a whole-resolution redline) when they review one
+# text amendment under ORC 519.12. Accessory solar rules, wind turbine definitions, overlay purpose clauses and
+# the zoning inspector's duties in that attachment are reference text, not the matter; the staff report is.
+# A document is codified text when its head names a zoning resolution / ordinance with an adoption, approval,
+# certification or effective-date marker and nothing that reads as an agenda, minutes, hearing notice, staff
+# report, draft or new ordinance. Hits near "proposed", "draft" or redline words are kept.
+_CODIFIED_NAME = re.compile(r"zoning\s+(?:resolution|ordinance|regulations|code)\b", re.I)
+_CODIFIED_MARK = re.compile(r"\b(?:adopted|approved\s+by|certif(?:y|ication)|effective|revised|re-?codified|"
+                            r"eff\.)\b|table\s+of\s+contents|\barticle\s+(?:I|1|II|2)\b\s*[-–:]?\s*(?:title|definitions|general)",
+                            re.I)
+_LIVE_MATTER_HEAD = re.compile(r"\bagenda\b|\bminutes\b|meeting\s+of|\bhearing\b|staff\s+report|memorandum|"
+                               r"\bdraft\b|proposed\s+(?:amendments?|text|language|changes?)|redline|strike|underlin|"
+                               r"ordinance\s+(?:no\.?|#)\s*\d|an\s+ordinance\s+to\s+amend|be\s+it\s+(?:ordained|resolved)|"
+                               r"\bnotice\b|\bapplicant\b|\bcase\s*(?:no|#)", re.I)
+# ordinance text says "the proposed structure" on every page, so only amendment words count as a live matter
+# ("proposed amendments" is itself boilerplate: "to review all proposed amendments to this Zoning Resolution")
+_PROPOSED_NEAR = re.compile(r"proposed\s+(?:text|language|changes?|revisions?)|"
+                            r"\bdraft\b|redline|underlin|strike|new\s+(?:text|language|section)|"
+                            r"\b(?:added|deleted)\s+(?:text|language|section)", re.I)
+
+
+def _codified_doc(t: str) -> bool:
+    head = t[:2500]
+    return bool(_CODIFIED_NAME.search(head)) and bool(_CODIFIED_MARK.search(head)) \
+        and not _LIVE_MATTER_HEAD.search(head)
+
+
+def _reference_code(t: str, m: re.Match) -> bool:
+    return _codified_doc(t) and not _PROPOSED_NEAR.search(_around(t, m, 300, 300))
+
+
+# a variance "to amend the Zoning Resolution, Article 5" (a fence) is a variance, not an amendment
+_VARIANCE = re.compile(r"\bvariances?\b", re.I)
+_AMENDMENT_PROPER = re.compile(r"rezon|text\s+amendment|map\s+amendment|zoning\s+amendment\s+application|"
+                               r"amendment\s+(?:no|#|application)|\bZTA\b|\bZOA\b|\bTA\b", re.I)
+
+
+# Great Lakes round 2: a fire code fee schedule's footnotes ("systems over 20 KWH for non-liquid battery
+# systems", "2025 OFC Table 5003.1.1") and a zoning report's permit tally ("seven swimming pools, four solar")
+_FIRE_CODE = re.compile(r"\bOFC\b|fire\s+code|1301:7-7|administrative\s+code|operational\s+permits?|fee\s+schedule", re.I)
+_TALLY_WORDS = re.compile(r"zoning\s+report|permits?\s+issued|total\s+this\s+year|year\s+to\s+date|\bYTD\b", re.I)
+_COUNT_WORD = r"(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|\d{1,3})"
+
+
+def _fire_code_footnote(t: str, m: re.Match) -> bool:
+    return len(_FIRE_CODE.findall(_around(t, m, 400, 400))) >= 2 and not _SITING_ACTION.search(_beside(t, m, 150, 150))
+
+
+def _permit_tally(t: str, m: re.Match) -> bool:
+    before = t[max(0, m.start() - 14):m.start()]
+    return bool(re.search(_COUNT_WORD + r"\s*$", before, re.I)) and bool(_TALLY_WORDS.search(_around(t, m, 250, 100))) \
+        and len(re.findall(_COUNT_WORD + r"\s+[a-z]+", _around(t, m, 200, 100), re.I)) >= 4
+
+
+def _variance_only(t: str, m: re.Match) -> bool:
+    w = _around(t, m, 150, 150)
+    return bool(_VARIANCE.search(w)) and not _AMENDMENT_PROPER.search(_beside(t, m, 150, 150))
+
+
+# a permit fee table runs for pages ("Table C - Operational Permits ... Energy Storage (Battery) System ...
+# Solar Photovoltaic System ..."), so its cues sit farther from the term than a reference list's
+def _reference_table(t: str, m: re.Match) -> bool:
+    w = _around(t, m, 600, 600)
+    return len(_REFERENCE_LIST.findall(w)) >= 3 and not _SITING_ACTION.search(_beside(t, m, 150, 150)) \
+        and _distinct_actions(_around(t, m, 300, 300)) <= 2   # an agenda sheet ("adopt ... draft ... motion") is not a table
+
+
+# a run of Title Case entries with no sentences around the term (a permit type list, an index, a legend):
+# 50+ words, at most two sentence marks, seven in ten words capitalized, no action or siting words
+_WORD = re.compile(r"[A-Za-z][A-Za-z'&/-]*")
+
+
+def _distinct_actions(w: str) -> int:
+    return len({x.lower()[:6] for x in _ACTION_WORDS.findall(w)})
+
+
+def _caption_list(t: str, m: re.Match) -> bool:
+    w = _around(t, m, 300, 300)
+    words = _WORD.findall(w)
+    if len(words) < 50 or len(re.findall(r"[.;:?!]", w)) > 3 or _ITEM_BOUNDARY.search(w) or _SITING_ACTION.search(w):
+        return False   # sentences or agenda numbering around the term: not a bare list
+    caps = sum(1 for x in words if x[0].isupper() or x.lower() in ("of", "and", "or", "the", "for", "a", "an", "&"))
+    ratio, actions = caps / len(words), _distinct_actions(w)
+    return (ratio >= 0.7 and actions == 0) or (ratio >= 0.9 and actions <= 1)
+
+
+# VA/MD wave hand check (research_notes/Expansion/va_md_wave.md): "PV" as a pavement elevation on an engineering
+# drawing ("EP 9.49 PV 8.71 FFE 10.00"), a finance policy's definition of proffers ("at the time of a rezoning"), a
+# utility-rate or shut-off resolution that names data centers, and a homeowner's solar carport or panel-roof variance.
+_DRAWING_WORDS = re.compile(r"\bFFE\b|\bEP\b|\bTC\b|\bBC\b|\bINV\b|\bRIM\b|contour|swale|\bSWM\b|easement", re.I)
+_FINANCE_POLICY = re.compile(r"capital\s+assets?|depreciat|useful\s+life|\bGASB\b|capitalization\s+threshold|"
+                             r"financial\s+reporting", re.I)
+_UTILITY_RATES = re.compile(r"shut-?offs?|disconnect|utility\s+(?:rates?|bills?|increases?)|ratepayers?|"
+                            r"rais(?:e|ing)\s+(?:\w+\s+){0,2}rates\b|electric(?:ity)?\s+(?:compan(?:y|ies)|rates?|bills?)|"
+                            r"public\s+service\s+commission\b", re.I)
+_RESIDENTIAL_SOLAR = re.compile(r"carport|panel[\s-]+roof|driveway|dwelling|single[\s-]+family|homeowner|"
+                                r"accessory\s+structure|side[\s-]+yard|setback\s+applicable\s+to\s+a\s+corner\s+lot", re.I)
+_UTILITY_SCALE = re.compile(r"\bMW\b|megawatt|acres?|utility[\s-]+scale|solar\s+(?:farm|facility|facilities|project|"
+                            r"energy\s+system|ordinance)|ground[\s-]+mounted|special\s+exception|conditional\s+use|"
+                            r"\bCUP\b|\bSUP\b|zoning\s+text", re.I)
+
+
+def _pavement_pv(t: str, m: re.Match) -> bool:
+    if m.group(0).upper() != "PV":
+        return False
+    w = _around(t, m, 120, 120)
+    return len(re.findall(r"\b\d{1,3}\.\d\d?\b", w)) >= 4 and bool(_DRAWING_WORDS.search(w))
+
+
 STATE_FALSE_POSITIVE: list[tuple] = [   # (topic or None for every topic, test(text, match) -> True = drop)
     (None, _tabular),
+    ("solar", _pavement_pv),
+    ("zoning_amendment", lambda t, m: bool(re.search(r"rezon", m.group(0), re.I))
+     and bool(_FINANCE_POLICY.search(_around(t, m, 300, 300)))),
+    ("data_center", lambda t, m: bool(_UTILITY_RATES.search(_around(t, m, 250, 250)))
+     and not re.search(r"zoning|rezon|site\s+plan|special\s+(?:use|exception)|conditional\s+use|overlay|"
+                       r"moratorium\s+on\s+(?:new\s+)?data|by[\s-]+right|text\s+amendment",
+                       _around(t, m, 250, 250), re.I)),
+    ("solar", lambda t, m: bool(_RESIDENTIAL_SOLAR.search(_around(t, m, 200, 200)))
+     and len(_RESIDENTIAL_SOLAR.findall(_around(t, m, 300, 300))) >= 2
+     and not _UTILITY_SCALE.search(_around(t, m, 300, 300))),
+    # round-6 classes (above): operations reports, reference lists, plan-review scope, bylaws boilerplate
+    ("solar", _operations_report),
+    ("battery_storage", _operations_report),
+    ("clean_energy_siting", _operations_report),
+    ("zoning_amendment", _reference_list),
+    ("zoning_amendment", _plan_review_scope),
+    ("zoning_amendment", _bylaws_boilerplate),
+    ("moratorium", _reference_list),
+    # Great Lakes round 1 (above): permit fee tables (the energy topics take the wider table guard, not the
+    # reference-list guard: "An MTA sample ordinance is attached" is a live agenda item), attached adopted zoning
+    # resolutions, a variance worded as an amendment
+    ("solar", _reference_table),
+    ("battery_storage", _reference_table),
+    ("clean_energy_siting", _reference_table),
+    ("data_center", _reference_table),
+    ("solar", _fire_code_footnote),
+    ("battery_storage", _fire_code_footnote),
+    ("solar", _permit_tally),
+    ("battery_storage", _permit_tally),
+    ("solar", _caption_list),
+    ("battery_storage", _caption_list),
+    ("clean_energy_siting", _caption_list),
+    ("data_center", _caption_list),
+    (None, _reference_code),
+    ("zoning_amendment", _variance_only),
     (None, _billing),
     (None, _record_log),
     # a general (non-zoning) ordinance amendment: land-use words must be in the item itself, not in the
@@ -389,9 +636,13 @@ STATE_FALSE_POSITIVE: list[tuple] = [   # (topic or None for every topic, test(t
 ]
 
 
-def _state_false_positive(text: str, m: re.Match, topic: str, state: str | None) -> bool:
+def _state_false_positive(text: str, m: re.Match, topic: str, state: str | None, codified: bool = False) -> bool:
+    """`codified`: the whole document is adopted zoning text (_codified_doc on the full text); the page-level
+    guards only see one page, so find_hits works it out once per document and passes it down."""
     if (state or "").upper() not in STATE_TOPICS:
         return False
+    if codified and not _PROPOSED_NEAR.search(_around(text, m, 300, 300)):
+        return True
     return any((tp is None or tp == topic) and test(text, m) for tp, test in STATE_FALSE_POSITIVE)
 
 
@@ -590,13 +841,14 @@ def _is_false_positive(text: str, m: re.Match) -> bool:
     return any(kw.fullmatch(m.group(0)) and test(text, m) for kw, test in _FALSE_POSITIVE)
 
 
-def _state_matches(text: str, state: str | None, spans=None, full: tuple[str, int] | None = None):
+def _state_matches(text: str, state: str | None, spans=None, full: tuple[str, int] | None = None,
+                   codified: bool = False):
     """(start, end, topic) for the state-specific patterns that survive their guards (and, with
     `spans` from _page_spans, the section rules). `full` = (whole document text, offset of `text`
     in it): the section rules' evidence window may reach into the neighbouring page."""
     for topic, rx, guard in _STATE_COMPILED.get((state or "").upper(), ()):
         for m in rx.finditer(text):
-            if (guard is None or not guard(text, m)) and not _state_false_positive(text, m, topic, state):
+            if (guard is None or not guard(text, m)) and not _state_false_positive(text, m, topic, state, codified):
                 if full is not None:
                     rejected = _section_reject(full[0], full[1] + m.start(), full[1] + m.end(), spans)
                 else:
@@ -654,6 +906,7 @@ def find_hits(raw_text: str, max_per_doc: int = 12, state: str | None = None) ->
         # MI / VA: each page is classified (agenda, minutes, ordinance, attachment, noise) and matched
         # on its own, so a guard's look-around never reaches into the next page
         text, spans = _page_spans(raw_text)
+        codified = _codified_doc(text)   # an attached adopted zoning resolution: judged on the document, not the page
         for s, e, cls in spans:
             if cls.startswith("noise:"):
                 continue
@@ -663,10 +916,11 @@ def find_hits(raw_text: str, max_per_doc: int = 12, state: str | None = None) ->
             for topic, rxs in _COMPILED.items():
                 for rx in rxs:
                     for m in rx.finditer(page):
-                        if (not _is_false_positive(page, m) and not _state_false_positive(page, m, topic, state)
+                        if (not _is_false_positive(page, m)
+                                and not _state_false_positive(page, m, topic, state, codified)
                                 and not _section_reject(text, s + m.start(), s + m.end(), spans)):
                             matches.append((s + m.start(), s + m.end(), topic))
-            matches.extend((s + a, s + b, t) for a, b, t in _state_matches(page, state, spans, (text, s)))
+            matches.extend((s + a, s + b, t) for a, b, t in _state_matches(page, state, spans, (text, s), codified))
     else:
         text = clean_text(raw_text)
         for topic, rxs in _COMPILED.items():

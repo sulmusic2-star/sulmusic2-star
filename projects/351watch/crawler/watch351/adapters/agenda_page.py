@@ -25,7 +25,14 @@ Listing keys (towns_*.json), all optional except board / board_key / url:
      "unlabeled": true,                    # keep dated documents with no agenda/minutes label
                                            #   (a page that holds agendas only)
      "follow": true,                       # follow year-folder links one level (default true)
-     "resolve_pdf": false}
+     "resolve_pdf": false,
+     "date_from_url": true,                # VA/MD wave: a same-site page link whose URL slug carries the meeting
+                                           #   date ("/oct-13-2026-meeting", "/agenda-item/november-5-2026/") is one
+                                           #   meeting's page even when its link text has no date
+     "doc_href_extra": "archival-document\\?document=",   # VA/MD wave: more link addresses that are documents
+     "meeting_page_self": true}            # VA/MD wave: read a meeting page's own text as the agenda (keyed
+                                           #   #meeting-YYYY-MM-DD) instead of the documents it links (staff
+                                           #   reports, attachments), e.g. the Montgomery Planning Board
 
 Extras recorded on each AgendaDoc for lead-time analysis: kind, uploaded (Revize ?t=
 stamp), uploaded_month (WordPress /uploads/YYYY/MM/), posted (a "Posted ..." date in the row).
@@ -96,7 +103,12 @@ def _norm(s: str | None) -> str:
 def filename_of(href: str) -> str:
     parts = urlsplit(href)
     dn = re.search(r"(?:^|&)dn=([^&]+)", parts.query)   # Wix file links: ...docx?dn=Agenda%201.26.26.docx
-    name = unquote(dn.group(1)) if dn else unquote(parts.path.rstrip("/").rsplit("/", 1)[-1])
+    # a viewer page wrapping the file: /archival-document?document=https%3A%2F%2F...%2FAg2026_102826.pdf (Montgomery County, MD)
+    wrapped = re.search(r"(?:^|&)document=(https?[^&]+)", parts.query, re.I)
+    if wrapped and not dn:
+        name = unquote(unquote(wrapped.group(1))).rstrip("/").rsplit("/", 1)[-1]
+    else:
+        name = unquote(dn.group(1)) if dn else unquote(parts.path.rstrip("/").rsplit("/", 1)[-1])
     return re.sub(r"[_+]", " ", name)
 
 
@@ -125,6 +137,26 @@ def compact_date(s: str) -> date | None:
                 continue
             if 2020 <= dt.year <= 2030:
                 return dt
+    return None
+
+
+def slug_date(url: str) -> date | None:
+    """The meeting date written into a page address: '/oct-13-2026-meeting', '/agenda-item/november-5-2026/',
+    '/meetings/2026-11-05-board-meeting'. Only the path is read; nothing else about the URL."""
+    path = unquote(urlsplit(url).path)
+    words = re.sub(r"[-_/.]+", " ", path)
+    m = re.search(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\s+(\d{1,2})\s+(20\d\d)\b", words, re.I)
+    if m:
+        try:
+            return date(int(m.group(3)), MONTHS[m.group(1)[:3].lower()], int(m.group(2)))
+        except ValueError:
+            return None
+    m = re.search(r"\b(20\d\d)\s+(\d{1,2})\s+(\d{1,2})\b", words)
+    if m:
+        try:
+            return date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        except ValueError:
+            return None
     return None
 
 
@@ -329,6 +361,7 @@ class AgendaPageAdapter(Adapter):
             page_year = int(ym.group(1))
         board_rx = re.compile(listing["board_pattern"], re.I) if listing.get("board_pattern") else None
         board_ex = re.compile(listing["board_exclude"], re.I) if listing.get("board_exclude") else None
+        doc_extra = re.compile(listing["doc_href_extra"], re.I) if listing.get("doc_href_extra") else None
         unlabeled_ok = bool(listing.get("unlabeled")) or page_kind == "agenda" or date_hint is not None
         if date_hint is not None:
             board_rx = board_ex = None   # the link to this meeting page was already matched to the board
@@ -351,7 +384,14 @@ class AgendaPageAdapter(Adapter):
             text = _norm(a.get_text(" ", strip=True)) or _norm(a.get("title") or a.get("aria-label") or "")
             fname = filename_of(abs_url)
             fwords = fname.replace("-", " ")   # "REGULAR-BOARD-MEETING-AGENDA-September-21-2026" -> words
-            is_doc = bool(DOC_HREF.search(abs_url))
+            is_doc = bool(DOC_HREF.search(abs_url)) or bool(doc_extra and doc_extra.search(abs_url))
+            if doc_extra and doc_extra.search(abs_url):
+                # a viewer page wrapping the file (/archival-document?document=https%3A...pdf): read the file itself
+                inner = re.search(r"(?:^|[?&])document=(https?[^&]+)", abs_url, re.I)
+                if inner:
+                    abs_url = unquote(inner.group(1))
+                    fname = filename_of(abs_url)
+                    fwords = fname.replace("-", " ")
             n_doc_links += is_doc
             if not is_doc:
                 # a dated "Agenda"/"Packet" link to an HTML page is the agenda itself (Genoa, Drupal nodes)
@@ -370,6 +410,18 @@ class AgendaPageAdapter(Adapter):
                           and urlsplit(abs_url).netloc == urlsplit(resp.final_url).netloc
                           and not MINUTES.search(text) and not MEDIA.search(abs_url)):
                         d = parse_date(text)
+                        slug_d = slug_date(abs_url) if listing.get("date_from_url") else None
+                        if slug_d is not None and (d is None or not _DATE_FIRST.match(text)):
+                            # "/boardofsupervisors/oct-13-2026-meeting", "/agenda-item/november-5-2026/": the date is
+                            # in the address, the link text is "Board of Supervisors Meeting" or a day number
+                            d = slug_d
+                            if d in window:
+                                mrow = _small_container(a)
+                                mctx = (f"{text} {_norm(mrow.get_text(' ', strip=True)) if mrow is not None else ''} "
+                                        f"{headings.before(a)} {abs_url}")
+                                if (not board_rx or board_rx.search(mctx)) and not (board_ex and board_ex.search(text)):
+                                    meeting_links.append((abs_url, d))
+                            continue
                         if d is not None and d in window and _DATE_FIRST.match(text):
                             mrow = _small_container(a)
                             mctx = (f"{text} {_norm(mrow.get_text(' ', strip=True)) if mrow is not None else ''} "
@@ -459,6 +511,18 @@ class AgendaPageAdapter(Adapter):
                     out.extend(self.page_docs(cfg, listing, y_url, window, depth + 1, seen_pages))
                 except RuntimeError:
                     continue
+        # A meeting page (reached from a dated link) whose own text is the agenda: the item titles on the
+        # page, not the staff reports and attachments it links ("meeting_page_self").
+        if date_hint is not None and listing.get("meeting_page_self"):
+            for tag in soup(["header", "nav", "footer"]):
+                tag.decompose()
+            main = soup.find("main") or soup.find(id=re.compile("content|main", re.I)) or soup.body or soup
+            body_text = _norm(main.get_text(" ", strip=True))
+            if len(body_text) > 200:
+                return [AgendaDoc(
+                    town=cfg["town"], board=listing["board"], board_key=listing["board_key"], meeting_date=date_hint,
+                    title=(title or "Agenda")[:200], url=f"{resp.final_url.split('#')[0]}#meeting-{date_hint.isoformat()}",
+                    listing_url=listing["url"], extra={"kind": "agenda", "self_page": True})]
         # A page that is itself the agenda ("Upcoming Meeting Agenda" in HTML, no document links): read
         # the page, keyed by meeting date (#meeting-YYYY-MM-DD) so each new agenda is a new document.
         # "self_page": "force" (a curated listing) reads the page as the agenda even though its navigation

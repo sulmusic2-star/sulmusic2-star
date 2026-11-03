@@ -83,6 +83,57 @@ STATE_BOARD_PATTERNS: dict[str, dict[str, tuple[str, str]]] = {
             r"building|construction|code|fire|sub-?committee",
         ),
     },
+    # Maryland (VA/MD wave, 2026-11): county councils (charter counties) and boards of county
+    # commissioners (commission and code counties), the District Council (Montgomery and Prince
+    # George's councils sitting on zoning), city and town councils, Frederick's Mayor and Board of
+    # Aldermen; county and municipal planning commissions and the two M-NCPPC planning boards;
+    # county boards of appeals (zoning appeals, special exceptions, variances), Baltimore's Board
+    # of Municipal and Zoning Appeals. A "hearing examiner" is an officer, not a board.
+    "MD": {
+        "select_board": (
+            r"\bcounty\s+council\b|^council\b|board\s+of\s+(?:county\s+)?commissioners|"
+            r"^(?:county\s+|board\s+of\s+)?commissioners\b|\b(?:city|town)\s+council\b|"
+            r"^mayor\s+(?:and|&)\s+(?:city\s+|town\s+)?council\b|^mayor\s+(?:and|&)\s+board\s+of\s+alder(?:men|s)\b|"
+            r"^board\s+of\s+alder(?:men|s)\b|^district\s+council\b|^city\s+commission\b|^board\s+of\s+town\s+commissioners",
+            r"committee|sub-?committee|school|library|liquor|ethics|housing|advisory|work\s+group|"
+            r"board\s+of\s+(?:education|health|elections|estimates|license)",
+        ),
+        "planning_board": (
+            r"planning\s+(?:commission|board)|planning\s*(?:&|and)\s*zoning\s+(?:commission|board)",
+            r"regional|sub-?committee|committee|advisory|historic|economic|steering|metropolitan|"
+            r"district\s+planning|agricultural|transportation\s+planning",
+        ),
+        "zoning_board_of_appeals": (
+            r"board\s+of\s+(?:zoning\s+|municipal\s+and\s+zoning\s+)?appeals|\bBZA\b|\bBMZA\b|zoning\s+appeals|"
+            r"board\s+of\s+adjustment",
+            r"building|construction|code|fire|plumbing|electrical|license|liquor|tax|assessment|personnel|"
+            r"ethics|animal|sub-?committee|property\s+tax",
+        ),
+    },
+    # Ohio (Great Lakes wave, discovery and county-route rows): township boards of trustees, city /
+    # village councils, county commissioners; township zoning commissions (ORC 519: the township's
+    # planning body), county and regional planning commissions (ORC 519.12 review of township
+    # amendments; "regional" is a county-level body here, not an excluded one); boards of zoning
+    # appeals. "Rural Zoning Commission" is a county body that zones unincorporated townships.
+    "OH": {
+        "select_board": (
+            r"^(?:township\s+)?board\s+of\s+(?:township\s+)?trustees\b|^(?:regular\s+|special\s+)?"
+            r"(?:township\s+)?trustees?\b(?:\s+meeting)?|^township\s+board\b|^(?:city|village)\s+council\b|"
+            r"^(?:board\s+of\s+)?(?:county\s+)?commissioners\b|^county\s+commission\b",
+            r"committee|sub-?committee|joint|school|library|housing|cemetery|park|fire|ad hoc|records",
+        ),
+        "planning_board": (
+            r"planning\s+commission|regional\s+planning|planning\s+(?:&|and)\s+zoning\s+commission|"
+            r"^(?:township\s+)?zoning\s+commission\b|rural\s+zoning\s+commission|zoning\s+commission\b|"
+            r"planning\s+board",
+            r"sub-?committee|committee|advisory|emergency|historic|economic|steering|executive|\bMPO\b|"
+            r"transportation|board\s+of\s+zoning",
+        ),
+        "zoning_board_of_appeals": (
+            r"board\s+of\s+zoning\s+appeals|\bBZA\b|zoning\s+board\s+of\s+appeals|\bZBA\b|zoning\s+appeals",
+            r"building|construction|code|sub-?committee|review",
+        ),
+    },
     # New York (Wave 1 discovery only: production NY callers pass no state): town boards, village
     # boards of trustees, city / common councils; town, village and city planning boards; ZBAs.
     "NY": {

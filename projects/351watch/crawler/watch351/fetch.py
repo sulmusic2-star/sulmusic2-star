@@ -160,7 +160,12 @@ class PoliteFetcher:
         body_p, meta_p = self._cache_paths(url)
         if not (body_p.exists() and meta_p.exists()):
             return None
-        meta = json.loads(meta_p.read_text())
+        try:
+            meta = json.loads(meta_p.read_text())
+        except ValueError:
+            # a meta file another process is writing this instant (two runs sharing the cache), or a
+            # truncated one: treat the entry as not cached rather than crash the run
+            return None
         if max_age is not None and not self.offline and time.time() - meta["fetched_at"] > max_age:
             return None
         return Response(url=url, final_url=meta["final_url"], status=meta["status"],

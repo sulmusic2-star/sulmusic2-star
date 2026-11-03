@@ -1,0 +1,1024 @@
+{
+ "round": 1,
+ "drawn": "2026-11-02, stratified random sample VA 40 / MD 20 of 872 hits (seed 2026), judged from about 1,500 characters of document text; definition as in test_mi_va.md (real agenda item, ordinance text or staff/public record on the topic in the land-use or siting sense; passing mentions, non-zoning policy text and non-land-use items are false positives)",
+ "results": {
+  "VA": {
+   "n": 40,
+   "tp": 34,
+   "precision": 85.0,
+   "wilson95": [
+    70.9,
+    92.9
+   ],
+   "tp_with_all_tags_right": 33,
+   "precision_tags": 82.5
+  },
+  "MD": {
+   "n": 20,
+   "tp": 15,
+   "precision": 75.0,
+   "wilson95": [
+    53.1,
+    88.8
+   ],
+   "tp_with_all_tags_right": 14,
+   "precision_tags": 70.0
+  },
+  "ALL": {
+   "n": 60,
+   "tp": 49,
+   "precision": 81.7,
+   "wilson95": [
+    70.1,
+    89.4
+   ],
+   "tp_with_all_tags_right": 47,
+   "precision_tags": 78.3
+  }
+ },
+ "false_positive_patterns": {
+  "passing mentions (administrator calendar, CIP discussion, comments about another county, a political comment)": 4,
+  "non-land-use text that uses the words (utility shut-off resolution, capital asset policy)": 2,
+  "residential or building solar (carport variance x2, community center memo)": 3,
+  "'PV' as a pavement elevation on a drawing": 1,
+  "a past zoning map amendment mentioned in a housing item": 1
+ },
+ "rounds": [
+  {
+   "round": 1,
+   "items": [
+    {
+     "id": "740086e46501",
+     "state": "MD",
+     "town": "Anne Arundel County",
+     "board": "County Council",
+     "meeting_date": "2026-10-05",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "recommendations to the County Executive and the County Council regarding regulation of data storage centers in the County; and generally relating to data storage centers. Introduced by Mr. Volke BILL NO. 66-26 (Amendment Proposed) – AN",
+     "source_url": "https://annearundelcomd.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1273,plainText=false)",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Anne Arundel bill: data-storage-center moratorium and regulation (zoning)"
+    },
+    {
+     "id": "66205cef6b1b",
+     "state": "MD",
+     "town": "Baltimore City",
+     "board": "Baltimore City Council",
+     "meeting_date": "2026-10-19",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Not available Not available 26-0149 0 Ordinance Rezoning – 2441-2449 W Baltimore Street FOR the purpose of changing the zoning for the property known as 2441-2449 W Baltimore Street (Block 2152, Lot 001), as outlined in red on the",
+     "source_url": "https://baltimore.legistar.com/MeetingDetail.aspx?LEGID=5191&GID=140&G=14BCFA42-2F78-4BCF-8819-CD3B96A3ECE2",
+     "text_source": "html",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Baltimore ordinance rezoning 2441-2449 W Baltimore St, I-1 to C-2 (zoning map change)"
+    },
+    {
+     "id": "63bd4300d4da",
+     "state": "MD",
+     "town": "Calvert County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-21",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Long Range Planning: None Items for Discussion and/or Action: a. Work Session - Proposed Comprehensive Plan Amendment: Rezoning Industrial-2 Districts to Their Previous Zoning Designations Memo, Tay Harris, Long Range Planner, P&Z",
+     "source_url": "https://www.calvertcountymd.gov/AgendaCenter/ViewFile/Agenda/_10212026-5251",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Calvert PC work session: comp plan amendment rezoning Industrial-2 districts; zoning text amendment 26-31"
+    },
+    {
+     "id": "62ebf82832f5",
+     "state": "MD",
+     "town": "Cecil County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-11-16",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Meeting ID: 995 7145 4444 / Passcode: 357027 1. Zoning Ordinance – Text Amendments A. 2. DATA CENTERS - Article II, Section 12 – Definitions - Article IV, Section 54.4 – Table of Permissible Uses - Article V, Part VIII, Section 115A – Data",
+     "source_url": "https://cecilcomd.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=10656,plainText=false)",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Cecil PC: zoning ordinance text amendments on data centers"
+    },
+    {
+     "id": "8e737e4848e5",
+     "state": "MD",
+     "town": "City of College Park",
+     "board": "Planning Board",
+     "meeting_date": "2026-10-01",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "to permit construction of the approximately 12-foot by 12-foot open-frame solar carport, approximately 10 feet 6 inches in height, over the existing driveway and approximately 8 feet 6 inches from the side street, in order to: 1. Provide",
+     "source_url": "https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_10012026-2328",
+     "text_source": "pdf",
+     "tp": false,
+     "tags_ok": true,
+     "reason": "residential variance for a 12 x 12 ft solar carport over a driveway: a homeowner's accessory structure, not siting (the rooftop-solar rule of the MI/VA test)"
+    },
+    {
+     "id": "f7f86a104b08",
+     "state": "MD",
+     "town": "City of College Park",
+     "board": "Planning Board",
+     "meeting_date": "2026-10-01",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "would be approximately ten (10) feet six (6) inches in height and would support a solar array intended to provide power for an electric vehicle charging system. The proposed structure would be located within the required twenty-five (25)",
+     "source_url": "https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_10012026-2328",
+     "text_source": "pdf",
+     "tp": false,
+     "tags_ok": true,
+     "reason": "same College Park carport variance, second passage of the same item"
+    },
+    {
+     "id": "1d1ff685efba",
+     "state": "MD",
+     "town": "Dorchester County",
+     "board": "County Council",
+     "meeting_date": "2026-10-20",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "Disposal System Acknowledgement Hotel Tax Rate Increase Priority Preservation Area Solar Payment In Lieu of Taxes Upon motion by Councilman Travers, seconded by Councilman Kramer, the Council unanimously adjourned into Legislative Session.",
+     "source_url": "https://www.dorchestermd.gov/AgendaCenter/ViewFile/Agenda/_10202026-262",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": false,
+     "reason": "Dorchester council adds 'Priority Preservation Area Solar' to its General Assembly initiatives (solar siting on farmland); PILOT tag is a separate initiative, so clean_energy_siting is wrong"
+    },
+    {
+     "id": "2cf438d8abce",
+     "state": "MD",
+     "town": "Dorchester County",
+     "board": "County Council",
+     "meeting_date": "2026-11-02",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "Authorize counties to establish enforceable siting standards for utility-scale solar projects, including restrictions or heightened review for prime and productive agricultural soils and designated Priority Preservation Areas; require",
+     "source_url": "https://www.dorchestermd.gov/AgendaCenter/ViewFile/Agenda/_11022026-263",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Dorchester legislative proposal: counties to set enforceable siting standards for utility-scale solar"
+    },
+    {
+     "id": "b26d361850c0",
+     "state": "MD",
+     "town": "Dorchester County",
+     "board": "County Council",
+     "meeting_date": "2026-10-06",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "FORM – OPEN SESSION AGENDA TITLE (to be completed by Council's Office) Introduction - Zoning Amendment - Accessory Dwelling Unit OVERVIEW Submitted By Submission Date Meeting Date Project Deadline Date Review Completed By 9/29/2026",
+     "source_url": "https://www.dorchestermd.gov/AgendaCenter/ViewFile/Agenda/_10062026-255",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Dorchester introduction of a zoning amendment (accessory dwelling units)"
+    },
+    {
+     "id": "08969214691e",
+     "state": "MD",
+     "town": "Frederick County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-14",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Hubbard, Principal Planner II b) Bauxite III Data Center Expansion, Quantum Frederick Section 1, Lot 102 - The Applicant is requesting Site Development Plan approval to expand a previously approved Critical Digital Infrastructure Facility",
+     "source_url": "https://frederickcountymd.gov/AgendaCenter/ViewFile/Agenda/_10142026-1185",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Frederick PC: Quantum Frederick data center expansion site plans (CDI overlay zone)"
+    },
+    {
+     "id": "8f9266047837",
+     "state": "MD",
+     "town": "Prince George's County",
+     "board": "County Council",
+     "meeting_date": "2026-10-20",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "shut-offs for residents of Prince George's County, with special attention on the role of data centers in neighboring communities, as well as the impact of last winter and this summer on utility increases; requesting additional customer",
+     "source_url": "https://princegeorgescountymd.legistar.com/MeetingDetail.aspx?LEGID=12219&GID=242&G=F27536A6-66B6-476A-98DA-4A69995461A9",
+     "text_source": "html",
+     "tp": false,
+     "tags_ok": true,
+     "reason": "PG council resolution on a utility shut-off moratorium that mentions data centers' role in rates: not a land-use item"
+    },
+    {
+     "id": "7030e5ca98e1",
+     "state": "MD",
+     "town": "Wicomico County",
+     "board": "Planning and Zoning Commission",
+     "meeting_date": "2026-10-15",
+     "topics": [
+      "solar",
+      "zoning_amendment"
+     ],
+     "snippet": "the County Attorney and staff for considering public comments before voting on the Zoning Text Amendment. Mr. Morton reiterated the importance of the County intervening in ongoing meetings and hearings to review local solar projects. To",
+     "source_url": "https://www.wicomicocounty.org/AgendaCenter/ViewFile/Agenda/_10152026-1621",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Wicomico P&Z minutes in the packet: solar zoning text amendment, CPCN solar cases"
+    },
+    {
+     "id": "c35d1de80406",
+     "state": "MD",
+     "town": "Wicomico County",
+     "board": "Planning and Zoning Commission",
+     "meeting_date": "2026-10-15",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "allows affected counties and municipalities to be notified at least 90 days before the CPCN is filed. Mr. Morton then provided examples of pre-application solar projects, including a 51-acre site located east of Allen Volunteer Fire",
+     "source_url": "https://www.wicomicocounty.org/AgendaCenter/ViewFile/Agenda/_10152026-1621",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Wicomico: CPCN solar projects and PSC rulemaking discussed by the commission"
+    },
+    {
+     "id": "e92d64e0dab1",
+     "state": "MD",
+     "town": "Wicomico County",
+     "board": "County Council",
+     "meeting_date": "2026-11-03",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "Uses-Designations\" to Regulate the Installation, Construction, Location, and Size of Solar Energy Systems In Wicomico County - Ms. Tracey Taylor, Director of Planning, Zoning and Community Development Laura Hurley, Council Administrator",
+     "source_url": "https://www.wicomicocounty.org/AgendaCenter/ViewFile/Agenda/_11032026-1627",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Wicomico council public hearing on Bill 2026-13 regulating solar energy systems"
+    },
+    {
+     "id": "f96dec15f586",
+     "state": "MD",
+     "town": "Wicomico County",
+     "board": "Planning and Zoning Commission",
+     "meeting_date": "2026-10-15",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Taylor and staff for their due diligence in addressing concerns about the Zoning Text Amendment. Although there was no public hearing at this meeting, Chairman Dashiell welcomed Mr. Nathaniel Morton, who lives on Union Church Road and",
+     "source_url": "https://www.wicomicocounty.org/AgendaCenter/ViewFile/Agenda/_10152026-1621",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Wicomico: same ZTA discussion (second passage)"
+    },
+    {
+     "id": "748b573ae617",
+     "state": "MD",
+     "town": "Worcester County",
+     "board": "Planning Board",
+     "meeting_date": "2026-10-01",
+     "topics": [
+      "moratorium"
+     ],
+     "snippet": "legislative petition is a transparent attempt to bypass the county's current 12-month moratorium by selectively segmenting a massive infrastructure footprint into artificially isolated, smaller zoning requests. The Board and Commission",
+     "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Worcester PC packet: public comment letter on bypassing the county's 12-month data-center moratorium (judged from the snippet; the re-fetched PDF returned no text)"
+    },
+    {
+     "id": "7c17ac143d53",
+     "state": "MD",
+     "town": "Worcester County",
+     "board": "Planning Board",
+     "meeting_date": "2026-10-01",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "OF WORCESTER COUNTY, MARYLAND, that a new Subsection § ZS 1-303(c)(9) of the Zoning and Zoning Text Amendment Request – PFE Building Background The PFE Building and Amazon's Fastnet System Fastnet is a submarine cable system that Amazon is",
+     "source_url": "https://worcestermd.gov/sites/default/files/2026-09/100126_PC_Packet.pdf",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Worcester PC: zoning text amendment request for Amazon Fastnet's PFE building (judged from the snippet)"
+    },
+    {
+     "id": "7e28ad0bc6cc",
+     "state": "MD",
+     "town": "Worcester County",
+     "board": "Planning Board",
+     "meeting_date": "2026-11-05",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "9.45 EP 9.82 FFE 9.50 +++ Proposed 10-Ft Utility Easement  EP 9.80 BUILDING A EP 9.49 PV 8.71 6 7 FFE 10.00  FFE 9.50 Proposed MDOT SHA Entrance  ±8,960 SF FFE 9.50' Proposed Buildings 8 N21 W 9.92 EP 9.49 BUILDING B Non-Tidal Wetland",
+     "source_url": "https://worcestermd.gov/sites/default/files/2026-10/110526_PC_Packet.pdf",
+     "text_source": "pdf",
+     "tp": false,
+     "tags_ok": true,
+     "reason": "'PV 8.71' on a site plan is a pavement elevation, not photovoltaics"
+    },
+    {
+     "id": "c49897fd0a42",
+     "state": "MD",
+     "town": "Worcester County",
+     "board": "Planning Board",
+     "meeting_date": "2026-11-05",
+     "topics": [
+      "moratorium",
+      "data_center"
+     ],
+     "snippet": "concerns a power feed equipment (PFE) building, not a cable landing station (CLS) or data center, which are subject to the moratorium. The proposal is for one 1,200-square-foot building on a 3,500-square-foot site at the airport. The",
+     "source_url": "https://worcestermd.gov/sites/default/files/2026-10/110526_PC_Packet.pdf",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Worcester PC: PFE text amendment discussed against the data-center / cable-landing moratorium"
+    },
+    {
+     "id": "f71f4b7fb118",
+     "state": "MD",
+     "town": "Worcester County",
+     "board": "Planning Board",
+     "meeting_date": "2026-11-05",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Phyllis Wimbrow asked if the owner was aware growth allocation would be needed when the zoning map amendment was approved in 2025. Mr. Cropper replied that the Critical Area designation was discussed by the Planning Commission and County",
+     "source_url": "https://worcestermd.gov/sites/default/files/2026-10/110526_PC_Packet.pdf",
+     "text_source": "pdf",
+     "tp": false,
+     "tags_ok": true,
+     "reason": "growth-allocation request for infill housing; the 'zoning map amendment approved in 2025' is a past event, not the item"
+    },
+    {
+     "id": "abc9299440ba",
+     "state": "VA",
+     "town": "Botetourt County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-05",
+     "topics": [
+      "battery_storage",
+      "solar"
+     ],
+     "snippet": "Botetourt County Planning Commission Agenda Packet Worksession – Solar & Battery Storage Text Amendment, Comp Plan Addendum October 05, 2026 ITEM 1 Proposed Timelines for Adoption Following the September 14 Worksession, staﬀ worked with",
+     "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10052026-759",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Botetourt PC worksession: solar and battery storage text amendment, comp plan addendum"
+    },
+    {
+     "id": "b6abd0e1edf2",
+     "state": "VA",
+     "town": "Brunswick County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-21",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Case. 26038 John Tucker Stevens R1 to R2 Staff Analysis 18.4 Schedule a Public Hearing: Ordinance Amendment Case #26-048 – Proposed Amendment to Article 2. Definitions, Article 9. Business District, B-1, and Article 10. Industrial",
+     "source_url": "https://brunswick.hosted.civiclive.com/UserFiles/Servers/Server_10858796/File/Agenda%2010-21-26.pdf",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Brunswick BOS schedules hearing on ordinance amendment 26-048: data center and energy generation utility definitions, B-1 and I-1 districts"
+    },
+    {
+     "id": "19c6865d87a7",
+     "state": "VA",
+     "town": "Charles City County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-27",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "introducing rigorous safety and technical performance standards, and requiring a Special Use Permit (SUP) within appropriate Zoning Districts will provide necessary local oversight, site-specific conditions, and vital public hearing",
+     "source_url": "https://www.charlescityva.us/AgendaCenter/ViewFile/Agenda/_10272026-652",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Charles City resolution initiating ZTA to require a Special Use Permit for BESS"
+    },
+    {
+     "id": "ab87aa97441d",
+     "state": "VA",
+     "town": "Charles City County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-27",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "transparency regarding DEQ consent orders and wastewater projects and urged review of data center actions for consistency with the executive order she referenced. She also raised concerns about the canceled BZA hearing, alleged errors in",
+     "source_url": "https://www.charlescityva.us/AgendaCenter/ViewFile/Agenda/_10272026-652",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Charles City public comments urging removal of data centers as a by-right use (a pending zoning question before the board)"
+    },
+    {
+     "id": "cc5aa72f6bb2",
+     "state": "VA",
+     "town": "Charles City County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-27",
+     "topics": [
+      "battery_storage",
+      "zoning_amendment"
+     ],
+     "snippet": "Resolution Directing the Charles City County Planning Commission to Prepare Comprehensive Plan Amendments and Initiate Zoning Text Amendments Regarding Battery Energy Storage System C. Resolution Initiating Comprehensive Plan and Zoning",
+     "source_url": "https://www.charlescityva.us/AgendaCenter/ViewFile/Agenda/_10272026-652",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Charles City resolutions: comp plan and zoning text amendments for BESS and data centers"
+    },
+    {
+     "id": "e6e43be0c653",
+     "state": "VA",
+     "town": "Charles City County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-09-22",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Petitions VIII. Public Comment Period IX. County Administrator's Report - Pgs. 32-35 A. Data Center Update B. Upcoming events/meetings X. Board Comments XI. Adjournment Charles City County Board of Supervisors Page 1 of 36 Page 2 of 36",
+     "source_url": "https://www.charlescityva.us/AgendaCenter/ViewFile/Agenda/_09222026-645",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Charles City agenda item: County Administrator's Data Center Update"
+    },
+    {
+     "id": "4df70d137dac",
+     "state": "VA",
+     "town": "Chesterfield County",
+     "board": "Board of Zoning Appeals",
+     "meeting_date": "2026-10-07",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "written determination of the Director of Planning stating that as of January 1, 2026 data center use on the Property requires conditional use approval from the Board of Supervisors pursuant to the zoning ordinance and is not permitted by",
+     "source_url": "https://chesterfieldcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5260,plainText=false)",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Chesterfield BZA appeal: whether data center use needs conditional use approval (TradePort 95)"
+    },
+    {
+     "id": "c696d0955324",
+     "state": "VA",
+     "town": "City of Colonial Heights",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-06",
+     "topics": [
+      "wireless_telecom"
+     ],
+     "snippet": "September and October, the Planning Commission is expected to review a site plan for a monopole wireless telecommunications facility. The applicant will need site plan approval. He also stated that a revised subdivision plan for Magnolia",
+     "source_url": "https://www.colonialheightsva.gov/AgendaCenter/ViewFile/Agenda/_10062026-807",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Colonial Heights PC: site plan for a monopole wireless telecommunications facility coming to the commission"
+    },
+    {
+     "id": "936e39eabc1e",
+     "state": "VA",
+     "town": "City of Falls Church",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-21",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "Housing Fund Guildines c) Correspondence (1) Attachment 1 – ESC Memo Community Center Solar 8) Adjournment (9:50 PM) Planning Commission Staff liaison: Jack Trainor (703)-248-5330, jtrainor@fallschurchva.gov Planning Commission City",
+     "source_url": "https://www.fallschurchva.gov/AgendaCenter/ViewFile/Agenda/_10212026-3367",
+     "text_source": "pdf",
+     "tp": false,
+     "tags_ok": true,
+     "reason": "'ESC Memo Community Center Solar': correspondence about solar on a city building, not a siting item"
+    },
+    {
+     "id": "0530979163ac",
+     "state": "VA",
+     "town": "City of Hampton",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-22",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Map Rezoning Application by Leonard Powell, to Rezone +/- 0.2454 Acres at 914 N Armistead Avenue,With Proffered Conditions, and to Rezone +/- .2510 Acres at 916 N Armistead Avenue, Without Proffered Conditions, From Heavy Manufacturing",
+     "source_url": "https://hampton.legistar.com/MeetingDetail.aspx?LEGID=2434&GID=258&G=93A1DD85-5337-45E4-84FB-33D8A24FF2FB",
+     "text_source": "html",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Hampton PC: map rezoning M-3 to R-9 (zoning map change)"
+    },
+    {
+     "id": "7d2577f8d04d",
+     "state": "VA",
+     "town": "City of Petersburg",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-01",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "approval of a request by Fielding Quarles, on behalf of Roslyn Farm Corporation, to rezone property at 1801 Squirrel Level Road and 2101 Defense Road, Parcel IDs 051060800 and 070050801, from the R-1 Single-Family Residence Zoning District",
+     "source_url": "https://www.petersburgva.gov/AgendaCenter/ViewFile/Agenda/_10012026-1003",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Petersburg PC hearing: rezoning R-1 to M-1 light industrial with comp plan amendment"
+    },
+    {
+     "id": "8c9ec387f695",
+     "state": "VA",
+     "town": "City of Petersburg",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-26",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "ZONING AND SUBDIVISION ORDINANCE AMENDMENT AND READOPTION: The City's Zoning Ordinance is proposed to be holistically repealed and replaced with a reorganized and updated Zoning/Subdivision Ordinance. The proposed Ordinance reorganizes",
+     "source_url": "https://www.petersburgva.gov/AgendaCenter/ViewFile/Agenda/_10262026-1007",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Petersburg PC: zoning and subdivision ordinance repeal and readoption"
+    },
+    {
+     "id": "be7cb608e19d",
+     "state": "VA",
+     "town": "City of Suffolk",
+     "board": "City Council Meeting Packets",
+     "meeting_date": "2026-10-07",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "use in all zoning districts on any parcel of land that is subject to an approved special exception (Conditional Use Permit) for a solar facility. Referring to the presentation, Mayor Duman queried about the State Code change related to the",
+     "source_url": "https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10072026-3827",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Suffolk council text amendment: accessory battery storage at solar CUP sites (state code change)"
+    },
+    {
+     "id": "00683637ebb1",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-19",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "PC Minutes 20250721 24 Page 1 of 6 OLD BUSINESS Potential Code Amendments and Solar Regulations Staff reported that there were no updates on proposed zoning code amendments or solar ordinance revisions. These items remained on the agenda",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_10192026-782",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Cumberland PC old business 'Potential Code Amendments and Solar Regulations' (standing item, no update; low value)"
+    },
+    {
+     "id": "42f1b6c35eff",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-20",
+     "topics": [
+      "battery_storage"
+     ],
+     "snippet": "with the Project, including but not limited to energy generation equipment, substations, battery energy storage systems, transmission facilities, electrical infrastructure, or operational facilities, shall be constructed, installed, or",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_10202026-781",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": false,
+     "reason": "Cumberland CUP conditions for the Cumberland Energy Center (laydown yard bars BESS and substations): an energy siting permit; the battery_storage tag is a stretch"
+    },
+    {
+     "id": "46d2a4a32735",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-19",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "Paving at Hamilton could be delayed until after work associated with a potential solar-project electrical easement to avoid damaging new pavement. Concrete was discussed as a longer-lasting option but was estimated to cost substantially",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_10192026-782",
+     "text_source": "pdf",
+     "tp": false,
+     "tags_ok": true,
+     "reason": "transfer-station paving timed around a solar project's easement work: passing mention in a CIP discussion"
+    },
+    {
+     "id": "755452320726",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-13",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "OLD BUSINESS Staff reported no updates regarding potential code amendments or solar projects. PLANNING COMMISSION VACANCY Staff reminded commissioners that two volunteer applications had been received for the Planning Commission vacancy.",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_10132026-780",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Cumberland: standing old-business item on code amendments and solar projects (no update; low value)"
+    },
+    {
+     "id": "cffba0100c57",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-09-21",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "She encouraged consideration of a Comprehensive Plan amendment before proceeding with the project. Stephanie Osl addressed the Commission regarding preservation of Cumberland County's rural character. She requested consideration of larger",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_09212026-778",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Cumberland public comment asking for a comprehensive plan amendment before the Energy Center project proceeds"
+    },
+    {
+     "id": "d60233942e1d",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-09-21",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "snippet": "Conditional Use Permit 26-03, Cumberland Energy Center, a request to develop a dual-fuel combined-cycle power station on eight parcels in the northwestern portion of Cumberland County. Staff reported that a dedicated project page had been",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_09212026-778",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Cumberland PC: CUP 26-03 Cumberland Energy Center, dual-fuel combined-cycle power station"
+    },
+    {
+     "id": "d9737b2c3a29",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-09-21",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "OLD BUSINESS Staff reported no updates regarding potential code amendments or solar projects. PLANNING COMMISSION VACANCY Staff reminded commissioners that two volunteer applications had been received for the Planning Commission vacancy.",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_09212026-778",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Cumberland: standing old-business item on solar projects (no update; duplicate passage, low value)"
+    },
+    {
+     "id": "fe3e53568d12",
+     "state": "VA",
+     "town": "Cumberland County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-13",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "to the Board of Supervisors for endorsement and eventual preparation for public hearing. SOLAR UPDATE Staff reported no significant additional solar updates following the recent workshop. 97 PC Minutes 20260112 Page 9 of 12 A commissioner",
+     "source_url": "https://www.cumberlandcounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_10132026-780",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Cumberland 'Solar Update' item: construction-site mud complaints at the solar projects"
+    },
+    {
+     "id": "1888b6959cbc",
+     "state": "VA",
+     "town": "Goochland County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-06",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Resolution extending time for Planning Commission action on amendments to the Zoning Ordinance (County Code Chapter 15) and the County's Comprehensive Plan referred to the Planning Commission on September 1, 2026 16. New Business A.",
+     "source_url": "https://goochlandcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2213,plainText=false)",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Goochland resolution extending time for PC action on zoning ordinance and comp plan amendments"
+    },
+    {
+     "id": "6ab5fc7a5d0f",
+     "state": "VA",
+     "town": "Henrico County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-09-22",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Harrison, residents of the Three Chopt District, voiced concerns about the proposed data centers in Goochland County and asked the County to help. Aria Sears, a resident of the Varina District, voiced concerns about Flock cameras. John",
+     "source_url": "https://henrico.gov/pdfs/manager/meetings2026/9-22-26Agend-O-Gram.pdf",
+     "text_source": "pdf",
+     "tp": false,
+     "tags_ok": true,
+     "reason": "Henrico citizens' comments about proposed data centers in Goochland County: not an item before Henrico"
+    },
+    {
+     "id": "5e1cf9f0e075",
+     "state": "VA",
+     "town": "King and Queen County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-11-02",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "snippet": "Single-Family Home Construction) – Steve & Terry Stone (Public Hearing) b. CUP26-03 – Conditional Use Permit (Utility Scale Solar Facility) - Shirleyville LLC, C/o William Moye, II (Public Hearing) Old Business a. 7. Review Chapter 3, King",
+     "source_url": "https://kingandqueenco.net/wp-content/uploads/2026/10/AGENDA-PC-11.02.2026.pdf",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "King and Queen PC hearing: CUP26-03 utility-scale solar facility"
+    },
+    {
+     "id": "e535b5b755d5",
+     "state": "VA",
+     "town": "Lunenburg County",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-10-08",
+     "topics": [
+      "solar"
+     ],
+     "snippet": "meeting – Advanced Knowledge Center – South Hill, VA September 30 – Laurel Branch Solar – project kick-off meeting September 30 – Tracy 2.5hrs STO – child's dental appt. October 1 – Tracy 5hrs STO – father's appt. October 2 – HR1 Work",
+     "source_url": "https://lunenburgva.gov/October 8, 2026 Board Packet.pdf",
+     "text_source": "pdf",
+     "tp": false,
+     "tags_ok": true,
+     "reason": "county administrator's calendar line 'Laurel Branch Solar project kick-off meeting': passing mention"
+    },
+    {
+     "id": "b848cbf3199b",
+     "state": "VA",
+     "town": "Nottoway County",
+     "board": "09/14/2023 Board of Supervisors Worksession & Special Meeting",
+     "meeting_date": "2026-10-15",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "proposes the Planning Commission itself would serve as the primary review board for amendments or changes within a designated historic overlay district. Key Discussion Points & Open Questions: o Scope of Designation: Districts can be areas",
+     "source_url": "https://nottoway.org/2026 Oct 15 BoS Pkg.pdf",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Nottoway worksession: historic overlay district ordinance overhaul (zoning text); the board label and date come from a mislabeled document title"
+    },
+    {
+     "id": "51df783d4427",
+     "state": "VA",
+     "town": "Orange County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-09-22",
+     "topics": [
+      "battery_storage"
+     ],
+     "snippet": "full-time; Glenda Paul, County Administrator MATTERS FOR DISCUSSION OR CONSIDERATION a. Battery Energy Storage Systems (BESS) Presentation by Delafield Energy; Chairman Nicol 8. DEPARTMENT DIRECTOR / CONSTITUTIONAL OFFICER REPORTS 9.",
+     "source_url": "https://orangecova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1122,plainText=false)",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Orange BOS: BESS presentation by Delafield Energy"
+    },
+    {
+     "id": "1e9461a42cba",
+     "state": "VA",
+     "town": "Page County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-19",
+     "topics": [
+      "moratorium"
+     ],
+     "snippet": "and A temporary moratorium on new non-owner-occupied STR permits while the County completes its regulatory review. We respectfully ask both the Planning Commission and Board of Supervisors to carefully consider these recommendations before",
+     "source_url": "https://www.pagecounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_10192026-1129",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Page County: residents ask for a moratorium on new short-term rental permits (a land-use moratorium)"
+    },
+    {
+     "id": "24eb0e95bce9",
+     "state": "VA",
+     "town": "Page County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-19",
+     "topics": [
+      "moratorium"
+     ],
+     "snippet": "This individual claimed that implementing a proposed twoyear moratorium on new STRs, which would simply prevent new buyers from immediately flipping residential properties into vacation rentals, would cause the entire economy of Page",
+     "source_url": "https://www.pagecounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_10192026-1129",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Page County letter on a two-year STR moratorium (land-use moratorium)"
+    },
+    {
+     "id": "f645e27e9131",
+     "state": "VA",
+     "town": "Powhatan County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-26",
+     "topics": [
+      "solar",
+      "zoning_amendment"
+     ],
+     "snippet": "legislation affecting the County's Zoning Ordinance related to manufactured homes, solar projects, high energy use facilities, off-street parking requirements, and home-based child care. The attached ordinance amendments incorporate these",
+     "source_url": "https://www.powhatanva.gov/AgendaCenter/ViewFile/Agenda/_10262026-1499",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Powhatan zoning ordinance amendments: solar projects, high energy use facilities"
+    },
+    {
+     "id": "221e4d9b68e9",
+     "state": "VA",
+     "town": "Rockbridge County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-14",
+     "topics": [
+      "solar",
+      "data_center"
+     ],
+     "snippet": "Subrizi noted that the Solar Ordinance took two years to develop. Mr. Slaydon said he felt that developing regulations pertaining to data centers could be a shorter process than the solar ordinance. Mr. Slaydon reviewed that at the",
+     "source_url": "https://www.co.rockbridge.va.us/AgendaCenter/ViewFile/Agenda/_10142026-1106",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Rockbridge PC: developing data center regulations, with the solar ordinance as precedent"
+    },
+    {
+     "id": "1f718703072d",
+     "state": "VA",
+     "town": "Shenandoah County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-27",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Consideration of Zoning Text Amendment 26-10-03 - Dwelling, Accessory Detached. RECOMMENDATION: At its October 1 , 2026 meeting, the Planning Commission voted 7-0 to reconunend approval of Zoning Text Amendment 26-10-03. BACKGROUND: An",
+     "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_10272026-746",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Shenandoah BOS: ZTA 26-10-03 accessory dwellings"
+    },
+    {
+     "id": "832dd2243c7d",
+     "state": "VA",
+     "town": "Shenandoah County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-13",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "ofStrasburgsaidhewas on a previous SttasburgTown Councilandhowhe learned about data centers. He stated that initially he thought the tax revenue would be great and that data centers would cause more problems than anything and opposes data",
+     "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_10132026-737",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Shenandoah public comments opposing the data center proposal before the county (minutes in the packet)"
+    },
+    {
+     "id": "a59dea3338f7",
+     "state": "VA",
+     "town": "Shenandoah County",
+     "board": "Planning Commission",
+     "meeting_date": "2026-10-01",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "Zoning Text Amendment (Zoning Text Amendment Number 26-10-04): A Zoning Ordinance Text Amendment to Section 165-4 of the County Code to create a new definition for \"Dwelling, Accessory Attached\", which definition will also contain certain",
+     "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_10012026-722",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Shenandoah PC public hearing on zoning text amendments"
+    },
+    {
+     "id": "c32b21a58638",
+     "state": "VA",
+     "town": "Shenandoah County",
+     "board": "Board of Supervisors",
+     "meeting_date": "2026-10-27",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "of Strasburg said he was on a previous Strasburg Town Council and how he learned about data centers. He stated that initially he thought the tax revenue would begreat and that data centers would cause more problems than anything and",
+     "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_10272026-746",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Shenandoah: same comments in the approved minutes (second document)"
+    },
+    {
+     "id": "68ef0bfbd538",
+     "state": "VA",
+     "town": "Smyth County",
+     "board": "Board of Supervisors Agendas & Minutes",
+     "meeting_date": "2026-09-24",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "in the discussion regarding the proposed zoning ordinance language related to data centers. The Board agreed to address Item 9c at this time. 09/10/2026 5:04 PM Assistant County Administrator – Development Clegg Williams presented the",
+     "source_url": "https://www.smythcounty.gov/Document Centers/Agendas & Minutes/Board Of Supervisors Agendas & Minutes/2026/Agendas/FULL BOS MEETING PACKET_09242026.pdf",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Smyth BOS: text amendment adding Section 4-19, Data Centers"
+    },
+    {
+     "id": "a93bde8ca114",
+     "state": "VA",
+     "town": "Town of Altavista",
+     "board": "Planning Commission Agendas & Minutes",
+     "meeting_date": "2026-10-05",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "6. PUBLIC HEARING(S) 7. UNFINISHED BUSINESS 7.1 Review of upcoming Chapter 86 - Zoning Text Amendments attachment. Zoning Action Summary Discussion PC Meeting OCT05.pdf 8. NEW BUSINESS 9. MATTERS FROM THE PLANNING COMMISSION 10. MATTERS",
+     "source_url": "https://www.altavistava.gov/Altavista Planning Commission Meeting Agenda 05OCT26.pdf",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Altavista PC: review of Chapter 86 zoning text amendments"
+    },
+    {
+     "id": "95e0fc5b8fc5",
+     "state": "VA",
+     "town": "Town of Front Royal",
+     "board": "Town Council Meeting Agendas",
+     "meeting_date": "2026-10-26",
+     "topics": [
+      "moratorium",
+      "data_center"
+     ],
+     "snippet": "Proposed Extension of Moratorium on Data Center Applications- Council is requested to consider adoption of a Resolution extending the current temporary 90-day moratorium on the acceptance of land use applications for data center",
+     "source_url": "https://www.frontroyalva.com/AgendaCenter/ViewFile/Agenda/_10262026-1506",
+     "text_source": "pdf",
+     "tp": true,
+     "tags_ok": true,
+     "reason": "Front Royal council: extension of the moratorium on data center applications"
+    },
+    {
+     "id": "72d703c7cf3b",
+     "state": "VA",
+     "town": "Town of Warrenton",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-10-13",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "snippet": "– Tangible assets (or cash) offered for donation by property owners at the time of a rezoning to help defray the cost of capital facilities associated with the development of the property. Service Utility – The ability of an asset to",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Packet-8440fd5a85d641a798587f4cdae0d3c6.pdf",
+     "text_source": "pdf",
+     "tp": false,
+     "tags_ok": true,
+     "reason": "capital asset policy definition of 'proffered assets ... at the time of a rezoning': finance policy, not a zoning item"
+    },
+    {
+     "id": "fbe951173e1f",
+     "state": "VA",
+     "town": "Town of Warrenton",
+     "board": "Select Board / Council",
+     "meeting_date": "2026-10-13",
+     "topics": [
+      "data_center"
+     ],
+     "snippet": "Ward (192 Pinnacle Court) criticized the Mayor for his past votes regarding the Amazon data center and the use of nondisclosure agreements. He defended the Transparency Commission, asserting that the former town manager obstructed its",
+     "source_url": "https://mccmeetings.blob.core.usgovcloudapi.net/warrntonva-pubu/MEET-Packet-8440fd5a85d641a798587f4cdae0d3c6.pdf",
+     "text_source": "pdf",
+     "tp": false,
+     "tags_ok": true,
+     "reason": "public comment criticizing the mayor's past Amazon data center votes: political comment, no item"
+    }
+   ]
+  }
+ ]
+}

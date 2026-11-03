@@ -1,0 +1,363 @@
+{
+ "documents": {
+  "not_cached": 3838,
+  "matched": 973,
+  "text_ocr": 215,
+  "skipped_not_ok": 108,
+  "text_pdf": 722,
+  "text_html": 35,
+  "text_docx": 1
+ },
+ "records": 4919,
+ "hit_counts": {
+  "old": {
+   "MA:40b_comprehensive_permit": 35,
+   "MA:battery_storage": 60,
+   "MA:clean_energy_siting": 9,
+   "MA:data_center": 44,
+   "MA:hits": 307,
+   "MA:moratorium": 20,
+   "MA:solar": 102,
+   "MA:wireless_telecom": 9,
+   "MA:zoning_amendment": 97,
+   "NY:battery_storage": 3,
+   "NY:data_center": 1,
+   "NY:hits": 10,
+   "NY:moratorium": 1,
+   "NY:solar": 5,
+   "NY:wireless_telecom": 2,
+   "NY:zoning_amendment": 1,
+   "RI:40b_comprehensive_permit": 2,
+   "RI:data_center": 9,
+   "RI:hits": 33,
+   "RI:solar": 10,
+   "RI:wireless_telecom": 2,
+   "RI:zoning_amendment": 13
+  },
+  "new": {
+   "MA:40b_comprehensive_permit": 35,
+   "MA:battery_storage": 60,
+   "MA:clean_energy_siting": 9,
+   "MA:data_center": 44,
+   "MA:hits": 307,
+   "MA:moratorium": 20,
+   "MA:solar": 102,
+   "MA:wireless_telecom": 9,
+   "MA:zoning_amendment": 97,
+   "NY:battery_storage": 3,
+   "NY:data_center": 1,
+   "NY:hits": 10,
+   "NY:moratorium": 1,
+   "NY:solar": 5,
+   "NY:wireless_telecom": 2,
+   "NY:zoning_amendment": 1,
+   "RI:40b_comprehensive_permit": 2,
+   "RI:data_center": 9,
+   "RI:hits": 33,
+   "RI:solar": 10,
+   "RI:wireless_telecom": 2,
+   "RI:zoning_amendment": 13
+  },
+  "new_mi": {
+   "MA:battery_storage": 54,
+   "MA:clean_energy_siting": 28,
+   "MA:data_center": 43,
+   "MA:hits": 264,
+   "MA:moratorium": 20,
+   "MA:solar": 87,
+   "MA:wireless_telecom": 9,
+   "MA:zoning_amendment": 89,
+   "NY:battery_storage": 3,
+   "NY:clean_energy_siting": 2,
+   "NY:data_center": 1,
+   "NY:hits": 8,
+   "NY:moratorium": 1,
+   "NY:solar": 3,
+   "NY:wireless_telecom": 1,
+   "NY:zoning_amendment": 1,
+   "RI:clean_energy_siting": 1,
+   "RI:data_center": 9,
+   "RI:hits": 29,
+   "RI:solar": 8,
+   "RI:wireless_telecom": 2,
+   "RI:zoning_amendment": 13
+  },
+  "new_va": {
+   "MA:battery_storage": 54,
+   "MA:clean_energy_siting": 28,
+   "MA:data_center": 43,
+   "MA:hits": 264,
+   "MA:moratorium": 20,
+   "MA:solar": 87,
+   "MA:wireless_telecom": 9,
+   "MA:zoning_amendment": 89,
+   "NY:battery_storage": 3,
+   "NY:clean_energy_siting": 2,
+   "NY:data_center": 1,
+   "NY:hits": 8,
+   "NY:moratorium": 1,
+   "NY:solar": 3,
+   "NY:wireless_telecom": 1,
+   "NY:zoning_amendment": 1,
+   "RI:clean_energy_siting": 1,
+   "RI:data_center": 9,
+   "RI:hits": 29,
+   "RI:solar": 8,
+   "RI:wireless_telecom": 2,
+   "RI:zoning_amendment": 13
+  }
+ },
+ "documents_with_changed_hits": 0,
+ "diffs": [],
+ "ma_examples_if_mi_patterns_were_enabled": [
+  {
+   "url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_10142026-160",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "246 College Street 17k Substation (089-0719) d. Request to Amend Order of Conditions i. 30 Wildflower Drive (DEP#089-0757) ii. 37 Bay Road (DEP#089-0689) e. Monitoring Reports 8. Public Comment 9. Topics Not Anticipated by the Chair 48"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.burlington.org/AgendaCenter/ViewFile/Agenda/_10282026-3471",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Street AGENDA Site visit to Eversource's proposed Burlington Energy Project – viewing substation and success road proposed locations. 29 CENTER STREET ⚫ BURLINGTON, MASSACHUSETTS 01803 ⚫ TEL (781) 270-1660 ⚫ FAX (781) 238-4692"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_10272026-645",
+   "added_with_MI_patterns": [
+    [
+     [
+      "zoning_amendment"
+     ],
+     "To consider proposed amendments to the Carver Zoning Bylaw and Zoning Map to establish a new Article 4-13, Smart Growth Overlay District. 7. To consider proposed amendments to the Carver Zoning Bylaw, Temporary Event Parking on Private"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_10272026-647",
+   "added_with_MI_patterns": [
+    [
+     [
+      "zoning_amendment"
+     ],
+     "To consider proposed amendments to the Carver Zoning Bylaw and Zoning Map to establish a new Article 4-13, Smart Growth Overlay District. 7. To consider proposed amendments to the Carver Zoning Bylaw, Temporary Event Parking on Private"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.chelmsfordma.gov/AgendaCenter/ViewFile/Agenda/_10282026-8192",
+   "added_with_MI_patterns": [
+    [
+     [
+      "battery_storage",
+      "solar",
+      "clean_energy_siting"
+     ],
+     "NMCOG – Department of Energy (DOER)'s Clean Energy siting and Permitting Regulations for Solar, Small Clean Energy Facilities, and Battery Energy Storage Systems (BESS)"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.falmouthma.gov/DocumentCenter/View/22133/October-2026-Warrant---Final",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "any required on-site or off-site electric infrastructure improvements, including substations, feeders, or transmission upgrades, and demonstrate coordination with the local electricity provider. The applicant shall also provide a"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.cityoflawrence.com/AgendaCenter/ViewFile/Agenda/_10062026-1974",
+   "added_with_MI_patterns": [
+    [
+     [
+      "zoning_amendment"
+     ],
+     "Fidelina Santiago 46/25 Rezoning a Portion of City Land off of Bay State Road and Jordan Street from General Industrial (I-2) to Open Space Recreation (OCR) – Dan McCarthy, Acting Planning Director 1 341/26 An Act Compelling City Agencies"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.cityoflawrence.com/AgendaCenter/ViewFile/Agenda/_10202026-1988",
+   "added_with_MI_patterns": [
+    [
+     [
+      "zoning_amendment"
+     ],
+     "Fidelina Santiago 46/25 Rezoning a Portion of City Land off of Bay State Road and Jordan Street from General Industrial (I-2) to Open Space Recreation (OCR) – Dan McCarthy, Acting Planning Director 323/26 Create Ordinance: Annual Review"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.cityoflawrence.com/AgendaCenter/ViewFile/Agenda/_10202026-1989",
+   "added_with_MI_patterns": [
+    [
+     [
+      "zoning_amendment"
+     ],
+     "Fidelina Santiago 46/25 Rezoning a Portion of City Land off of Bay State Road and Jordan Street from General Industrial (I-2) to Open Space Recreation (OCR) – Dan McCarthy, Acting Planning Director 447/25 School Parking Only - Chestnut"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.cityoflawrence.com/AgendaCenter/ViewFile/Agenda/_10222026-1983",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Merrimack Street and South Canal Substation #1 Applicant: Andrew Cole for MECO Owner: Mass Electric Co. Notice of Intent DEP File No. 195-0230 Site Locus: 264-272 Lowell Street and adjacent parcels Applicant: Civil Design Consultants Inc."
+    ]
+   ]
+  },
+  {
+   "url": "https://www.salemma.gov/AgendaCenter/ViewFile/Agenda/_10192026-8443",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Roof-Mounted wind Energy Systems Ordinance. In person shall be the primary method of public access to such meetings. A secondary method of public access may be provided, if technologically feasible through Salem Access Television, and/or"
+    ],
+    [
+     [
+      "clean_energy_siting",
+      "zoning_amendment"
+     ],
+     "and quantity of zoning ordinance if in full or summarized Below are summaries of each zoning ordinance amendments. SUMMARY Ordinance relative to Zoning - Roof-Mounted wind Energy Systems Ordinance Section 1. Section 3.1 Table of Principal"
+    ],
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Use RC R1 R2 R3 B1 B2 B4 B5 BPD I NRCC Wind Energy System, Y Y Y Y Y Y Y Y Y Y Y Roof-Mounted Section 2. Section 4.1.2 Notes to Table of Dimensional Requirements is hereby amended by inserting the line \"and roof-mounted wind energy"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.salemma.gov/AgendaCenter/ViewFile/Agenda/_10192026-8468",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Roof-Mounted wind Energy Systems Ordinance. In person shall be the primary method of public access to such meetings. A secondary method of public access may be provided, if technologically feasible through Salem Access Television, and/or"
+    ],
+    [
+     [
+      "clean_energy_siting",
+      "zoning_amendment"
+     ],
+     "and quantity of zoning ordinance if in full or summarized Below are summaries of each zoning ordinance amendments. SUMMARY Ordinance relative to Zoning - Roof-Mounted wind Energy Systems Ordinance Section 1. Section 3.1 Table of Principal"
+    ],
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "Use RC R1 R2 R3 B1 B2 B4 B5 BPD I NRCC Wind Energy System, Y Y Y Y Y Y Y Y Y Y Y Roof-Mounted Section 2. Section 4.1.2 Notes to Table of Dimensional Requirements is hereby amended by inserting the line \"and roof-mounted wind energy"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.chicopeema.gov/AgendaCenter/ViewFile/Agenda/_11052026-2940",
+   "added_with_MI_patterns": [
+    [
+     [
+      "battery_storage"
+     ],
+     "A systematic process that provides documented confirmation that a battery energy storage system functions according to the intended design criteria and complies with applicable code requirements. Enerqv Storage Svstems (ESS), Accessory"
+    ],
+    [
+     [
+      "battery_storage"
+     ],
+     "storage capacity to serve the principal use only and not the electric power grid; Energy Storage Systems (ESS), Stand Alone: ESS store energy for industrial and general uses utilizing various technologies. Chemical batteries are a type of"
+    ],
+    [
+     [
+      "solar"
+     ],
+     "An active solar energy system that converts solar energy directly into electricity. Rated Nameplate Capacity: The maximum rated output of electric power production of the photovoltaic system in watts of Direct Current (DC). Solar Energy"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.falmouthma.gov/AgendaCenter/ViewFile/Agenda/_11022026-17077",
+   "added_with_MI_patterns": [
+    [
+     [
+      "clean_energy_siting"
+     ],
+     "21(a)(3) to discuss strategy with respect to litigation before the Energy Facility Siting Board (EFSB) OPEN SESSION - 6:30 PM a. Call to Order b. Pledge of Allegiance c. Proclamation 1) Proclamation - Eagle Scout Julian Christopher Cowan"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.greenfield-ma.gov/Document_Center/Government/Planning Board/11.05.26 Planning Board Agenda_amended.pdf",
+   "added_with_MI_patterns": [
+    [
+     [
+      "battery_storage",
+      "clean_energy_siting"
+     ],
+     "to be consistent with the Downtown Design Guidelines. 7. Discussion Items: a. Clean energy facility permitting and zoning - local consolidated permitting for clean energy facilities, battery energy storage systems zoning, and timeline for"
+    ],
+    [
+     [
+      "battery_storage",
+      "clean_energy_siting",
+      "data_center"
+     ],
+     "energy facilities, battery energy storage systems zoning, and timeline for drafting data center zoning b. Review draft Battery Energy Storage System Zoning Ordinance c. Presentation by FRCOG on Green River Action Plan d. Grant funding"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.cityoflawrence.com/AgendaCenter/ViewFile/Agenda/_11042026-1999",
+   "added_with_MI_patterns": [
+    [
+     [
+      "zoning_amendment"
+     ],
+     "Fidelina Santiago 1 46/25 Rezoning a Portion of City Land off of Bay State Road and Jordan Street from General Industrial (I-2) to Open Space Recreation (OCR) – Dan McCarthy, Acting Planning Director 165/26 Loading Zone – 67 Jackson Street"
+    ]
+   ]
+  },
+  {
+   "url": "https://www.whately.org/Documents/Departments/Town Clerk or Board of Registrars/Town Meeting/Warrant/- 2026 Annual Town Meeting Warrant - FINAL.pdf",
+   "added_with_MI_patterns": [
+    [
+     [
+      "battery_storage",
+      "solar"
+     ],
+     "This article seeks to amend the existing zoning regulations for Solar Electric Generating Facilities in order to put them in line with the Battery Energy Storage System bylaw amendment proposed in the article above. If that article fails"
+    ],
+    [
+     [
+      "battery_storage"
+     ],
+     "Annual Town Meeting Warrant Finance Committee – favorable action 16 Appendix A: Proposed Battery Energy Storage System Bylaw Amend §171-43 (B) to add the following definitions in alphabetic order: Accessory Use BESS A BESS Installation is"
+    ],
+    [
+     [
+      "solar"
+     ],
+     "developed within or directly adjacent to the boundaries of an existing or proposed solar electric generating installation, power generating station, or electrical substation. DOER The Massachusetts Department of Energy Resources. NFPA The"
+    ]
+   ]
+  }
+ ]
+}

@@ -147,10 +147,20 @@ class DailyRun:
 
     def _attribution_names(self, row: dict) -> dict[str, str]:
         rows = self.report_towns if self.report_towns is not None else current.load_towns(self.towns_dir)
-        return attribution.known_townships(rows, row.get("county") or "")
+        # a regional planning commission covers several counties (attribution.covered_counties)
+        return attribution.known_townships(rows, attribution.covered_counties(row))
+
+    def _attribution_counties(self, row: dict) -> dict[str, str]:
+        rows = self.report_towns if self.report_towns is not None else current.load_towns(self.towns_dir)
+        return attribution.township_counties(rows, attribution.covered_counties(row))
 
     def process_doc(self, doc: AgendaDoc, state: str, out: TownOutcome, row: dict | None = None) -> None:
-        if row is not None and row.get("attribute_townships") and "county" not in doc.board.lower():
+        if row is not None and row.get("attribute_townships") and row.get("county_body") \
+                and doc.board_key == "planning_board":
+            # the body's own name ("Delaware County Regional Planning Commission",
+            # "Logan-Union-Champaign Regional Planning Commission"), set on the row
+            doc.board = row["county_body"]
+        elif row is not None and row.get("attribute_townships") and "county" not in doc.board.lower():
             # "Calhoun County Planning Commission" (a Michigan county planning commission under the
             # MZEA, whatever the listing's own label), so a township page can name the body
             label = "Planning Commission" if doc.board_key == "planning_board" else doc.board
@@ -199,12 +209,13 @@ class DailyRun:
                 # county planning commission items -> the township they name (attribution.py),
                 # one hit per township-named item
                 names = self._attribution_names(row)
-                attribution.attribute(hits, ex.text, row, names)
+                county_of = self._attribution_counties(row)
+                attribution.attribute(hits, ex.text, row, names, county_of)
                 base = {"town": doc.town, "board": doc.board, "board_key": doc.board_key,
                         "meeting_date": doc.meeting_date.isoformat() if doc.meeting_date else None,
                         "source_url": source_url, "listing_url": doc.listing_url, "document_title": doc.title,
                         "text_source": "ocr" if ex.ocr else ex.kind}
-                hits.extend(attribution.split_items(hits, ex.text, {**row, "state": state}, names, base))
+                hits.extend(attribution.split_items(hits, ex.text, {**row, "state": state}, names, base, county_of))
         except Exception as e:  # noqa: BLE001 - one bad document must not stop the town
             msg = f"{type(e).__name__}: {e}" if not isinstance(e, FetchError) else str(e)
             if rematch:  # keep the good record; re-matching is best effort

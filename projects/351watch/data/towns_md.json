@@ -1631,19 +1631,21 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Board of County Commissioners",
      "board_key": "select_board",
      "url": "https://www.washco-md.net/county-commissioners/bocc-agendas-and-minutes/",
      "platform": "agenda_page",
-     "board_exclude": "planning\\s+commission|planning\\s+board|\\bPC\\b|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "planning\\s+commission|planning\\s+board|\\bPC\\b|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     },
     {
-     "board": "Planning Board",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://www.washco-md.net/county-clerk/boards-commissions/",
      "platform": "agenda_page",
      "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
-     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Board"
     }
    ],
    "boards_tracked": [
@@ -1829,20 +1831,22 @@
    "automated": true,
    "listings": [
     {
-     "board": "Planning Board",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://worcestermd.gov/minutes",
      "platform": "agenda_page",
      "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
-     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Board"
     },
     {
-     "board": "Zoning Board of Appeals",
+     "board": "Board of Appeals",
      "board_key": "zoning_board_of_appeals",
      "url": "https://worcestermd.gov/minutes",
      "platform": "agenda_page",
      "board_pattern": "board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|\\bBOA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment",
-     "board_exclude": "building|construction|code\\s+appeals|license|liquor|tax|assessment|personnel|animal|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|planning\\s+commission|planning\\s+board|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "building|construction|code\\s+appeals|license|liquor|tax|assessment|personnel|animal|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|planning\\s+commission|planning\\s+board|\\bPC\\b|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Zoning Board of Appeals"
     }
    ],
    "boards_tracked": [
@@ -2284,12 +2288,13 @@
      "url": "https://www.poolesvillemd.gov/AgendaCenter/Planning-Commission-2"
     },
     {
-     "board": "Select Board / Council",
+     "board": "Town Council",
      "board_key": "select_board",
      "url": "https://www.poolesvillemd.gov/agendacenter",
      "platform": "agenda_page",
      "board_exclude": "planning\\s+commission|planning\\s+board|\\bPC\\b|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b|\\bplanning\\b|\\bzoning\\s+(?:board|appeals)|\\bZBA\\b|\\bBZA\\b|\\bappeals\\b",
-     "board_default": true
+     "board_default": true,
+     "board_label_was": "Select Board / Council"
     }
    ],
    "boards_tracked": [
@@ -2458,12 +2463,13 @@
    "automated": true,
    "listings": [
     {
-     "board": "Planning Board",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://townofbrookevillemd.org/",
      "platform": "agenda_page",
      "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
-     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Board"
     }
    ],
    "boards_tracked": [
@@ -2529,20 +2535,22 @@
    "automated": true,
    "listings": [
     {
-     "board": "Select Board / Council",
+     "board": "Town Council",
      "board_key": "select_board",
      "url": "https://washingtongrovemd.gov/",
      "platform": "agenda_page",
      "board_pattern": "county\\s+council|\\bcouncil\\b|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|\\bBCC\\b|mayor\\s+(?:and|&)\\s+(?:city\\s+|town\\s+)?council|board\\s+of\\s+alder(?:men|s)|district\\s+council|legislative\\s+(?:session|day|meeting)",
-     "board_exclude": "school\\s+board|board\\s+of\\s+education|library\\s+board|liquor|ethics|committee|advisory|housing\\s+authority|board\\s+of\\s+(?:health|elections|estimates|license)|youth\\s+council|planning\\s+commission|planning\\s+board|\\bPC\\b|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "school\\s+board|board\\s+of\\s+education|library\\s+board|liquor|ethics|committee|advisory|housing\\s+authority|board\\s+of\\s+(?:health|elections|estimates|license)|youth\\s+council|planning\\s+commission|planning\\s+board|\\bPC\\b|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Select Board / Council"
     },
     {
-     "board": "Planning Board",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://washingtongrovemd.gov/",
      "platform": "agenda_page",
      "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
-     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Board"
     }
    ],
    "boards_tracked": [
@@ -2892,12 +2900,13 @@
      "url": "https://www.collegeparkmd.gov/AgendaCenter/Mayor-City-Council-2"
     },
     {
-     "board": "Planning Board",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "url": "https://www.collegeparkmd.gov/agendacenter",
      "platform": "agenda_page",
      "board_pattern": "planning\\s+commission|planning\\s+board|\\bPC\\b|planning\\b",
-     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b"
+     "board_exclude": "regional|metropolitan|committee|agricultural|transportation\\s+planning|comprehensive\\s+plan|county\\s+council|board\\s+of\\s+(?:county\\s+)?commissioners|county\\s+commissioners|\\bBOCC\\b|city\\s+council|town\\s+council|mayor\\s+(?:and|&)\\s+council|board\\s+of\\s+alder(?:men|s)|district\\s+council|board\\s+of\\s+(?:zoning\\s+|municipal\\s+and\\s+zoning\\s+)?appeals|\\bBZA\\b|\\bBMZA\\b|zoning\\s+appeals|board\\s+of\\s+adjustment|electoral\\s+board|\\bEB\\b|school\\s+board|social\\s+services|economic\\s+development|\\bEDA\\b|\\bIDA\\b|industrial\\s+development\\s+authority|library\\s+board|emergency\\s+planning|\\bLEPC\\b|board\\s+of\\s+equalization|board\\s+of\\s+review|building\\s+code\\s+appeals|wetlands\\s+board|recreation\\s+(?:board|commission|advisory)|parks\\s+(?:and|&)\\s+rec|tourism|airport\\s+(?:commission|authority)|broadband|\\bDDA\\b|downtown\\s+development|brownfield|cemetery|personnel\\s+committee|finance\\s+committee|audit\\s+committee|transportation\\s+safety|historic\\s+(?:district|commission)|youth\\s+council|beautification|community\\s+policy|\\bCPMT\\b|\\bFAPT\\b",
+     "board_label_was": "Planning Board"
     }
    ],
    "boards_tracked": [

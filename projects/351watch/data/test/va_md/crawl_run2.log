@@ -1,0 +1,8 @@
+2026-11-02 19:48:41,736 INFO watch351.fulltext: search: 6 rows written (6 files)
+daily 2026-11-02: towns 138/138 ok (0 partial, 0 failed); listed 743, already indexed 138, new 0, retried 4, rematched 599, needs OCR 4, deferred 0, doc errors 2
+  new hits 0 {}; new alert items 4; hits_current 853; index 738 docs
+  network 3 requests {'document': 2, 'listing': 1}, 1.9 MB; cache hits 858; runtime 94.9s
+/usr/bin/python3 -m watch351.daily --states VA,MD --output-dir /home/user/sulmusic2-star/projects/351watch/data/test/va_md --hits-name hits_va_md.json --days-back 45 --days-ahead 120 --workers 16 --request-log /home/user/sulmusic2-star/projects/351watch/data/test/va_md/requests_run2.tsv
+exit 0, wall 95s
+saved /home/user/sulmusic2-star/projects/351watch/data/test/va_md/runs/run_run2.json
+CRAWLDONE

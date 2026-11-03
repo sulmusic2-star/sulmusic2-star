@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T19:37:50+00:00",
+ "generated": "2026-11-02T19:55:16+00:00",
  "crawl_day": "2026-11-02",
  "window": {
   "end": "2027-03-02",
@@ -3860,20 +3860,21 @@
     },
     "documents_indexed": 553,
     "documents_by_status": {
-     "ok": 534,
+     "ok": 532,
      "needs_ocr": 4,
-     "error": 15
+     "error": 14,
+     "replaced": 3
     },
     "documents_read_by_text_source": {
-     "pdf": 435,
+     "pdf": 433,
      "html": 60,
      "ocr": 33,
      "docx": 6
     },
-    "hits": 774,
+    "hits": 772,
     "hits_by_topic": {
-     "zoning_amendment": 318,
-     "data_center": 188,
+     "zoning_amendment": 317,
+     "data_center": 187,
      "solar": 174,
      "clean_energy_siting": 109,
      "battery_storage": 80,
@@ -3882,16 +3883,16 @@
     },
     "hits_by_board": {
      "planning_board": 309,
-     "select_board": 461,
+     "select_board": 459,
      "zoning_board_of_appeals": 4
     },
     "towns_with_hits": 73,
     "hits_upcoming": 112
    },
    "freshness": {
-    "documents_read_with_meeting_date": 532,
+    "documents_read_with_meeting_date": 530,
     "documents_for_meetings_still_ahead": 75,
-    "share_still_ahead": 0.141,
+    "share_still_ahead": 0.142,
     "lead_time_days_by_source": {
      "revize_upload_stamp": {
       "n": 78,
@@ -3902,20 +3903,20 @@
       "share_negative": 0.15
      },
      "http_last_modified": {
-      "n": 116,
+      "n": 103,
       "median": 3.2,
-      "p10": -23.8,
-      "p90": 6.2,
+      "p10": -20.8,
+      "p90": 6.3,
       "share_ge_3d": 0.53,
-      "share_negative": 0.34
+      "share_negative": 0.33
      },
      "pdf_moddate_or_creationdate": {
-      "n": 374,
+      "n": 336,
       "median": 4.2,
-      "p10": -0.7,
-      "p90": 8.3,
-      "share_ge_3d": 0.72,
-      "share_negative": 0.14
+      "p10": -0.6,
+      "p90": 8.5,
+      "share_ge_3d": 0.71,
+      "share_negative": 0.15
      },
      "civicclerk_publishOn": {
       "n": 179,
@@ -3926,7 +3927,7 @@
       "share_negative": 0.15
      },
      "civicplus_posted_stamp": {
-      "n": 101,
+      "n": 100,
       "median": 4.0,
       "p10": -0.7,
       "p90": 6.2,
@@ -3942,11 +3943,11 @@
       "share_negative": 0.64
      },
      "our_first_fetch_upcoming_only": {
-      "n": 65,
+      "n": 59,
       "median": 1.2,
       "p10": -0.8,
-      "p90": 14.2,
-      "share_ge_3d": 0.23,
+      "p90": 9.2,
+      "share_ge_3d": 0.24,
       "share_negative": 0.17
      }
     }
@@ -4984,27 +4985,27 @@
      "ok": 185
     },
     "documents_read_by_text_source": {
-     "pdf": 148,
-     "html": 33,
+     "pdf": 147,
+     "html": 34,
      "ocr": 4
     },
-    "hits": 98,
+    "hits": 80,
     "hits_by_topic": {
-     "solar": 47,
-     "zoning_amendment": 25,
-     "data_center": 22,
-     "moratorium": 7,
+     "solar": 40,
+     "zoning_amendment": 23,
+     "data_center": 15,
      "clean_energy_siting": 7,
+     "moratorium": 3,
      "battery_storage": 3,
-     "wireless_telecom": 2
+     "wireless_telecom": 1
     },
     "hits_by_board": {
-     "planning_board": 46,
-     "select_board": 51,
+     "planning_board": 30,
+     "select_board": 49,
      "zoning_board_of_appeals": 1
     },
     "towns_with_hits": 15,
-    "hits_upcoming": 21
+    "hits_upcoming": 17
    },
    "freshness": {
     "documents_read_with_meeting_date": 185,
@@ -5020,11 +5021,11 @@
       "share_negative": 0.24
      },
      "pdf_moddate_or_creationdate": {
-      "n": 117,
+      "n": 120,
       "median": 3.3,
       "p10": -0.8,
       "p90": 22.2,
-      "share_ge_3d": 0.64,
+      "share_ge_3d": 0.62,
       "share_negative": 0.19
      },
      "civicplus_posted_stamp": {
@@ -5044,12 +5045,12 @@
       "share_negative": 0.0
      },
      "http_last_modified": {
-      "n": 17,
-      "median": 5.4,
-      "p10": -0.8,
+      "n": 20,
+      "median": 3.7,
+      "p10": -26.8,
       "p90": 23.2,
-      "share_ge_3d": 0.65,
-      "share_negative": 0.18
+      "share_ge_3d": 0.5,
+      "share_negative": 0.35
      },
      "wordpress_upload_month_lower_bound": {
       "n": 2,
@@ -5060,12 +5061,12 @@
       "share_negative": 0.5
      },
      "our_first_fetch_upcoming_only": {
-      "n": 29,
+      "n": 31,
       "median": 2.2,
       "p10": -0.8,
       "p90": 13.2,
-      "share_ge_3d": 0.31,
-      "share_negative": 0.17
+      "share_ge_3d": 0.29,
+      "share_negative": 0.19
      }
     }
    }
@@ -5100,6 +5101,62 @@
    "new_hits": 915,
    "hits_current": 872,
    "errors_total": 15
+  },
+  "run2": {
+   "duration_seconds": 94.9,
+   "towns_attempted": 138,
+   "towns_succeeded": 138,
+   "towns_failed": [],
+   "towns_partial": [],
+   "documents_listed": 743,
+   "documents_already_indexed": 138,
+   "new_documents": 0,
+   "documents_retried": 4,
+   "document_errors": 2,
+   "network": {
+    "bytes_by_purpose": {
+     "document": 493,
+     "listing": 1880164
+    },
+    "cache_hits": 858,
+    "errors": 0,
+    "requests": 3,
+    "requests_by_purpose": {
+     "document": 2,
+     "listing": 1
+    },
+    "robots_blocked": 2
+   },
+   "new_hits": 0,
+   "hits_current": 853,
+   "errors_total": 2
+  },
+  "run3": {
+   "duration_seconds": 42.6,
+   "towns_attempted": 138,
+   "towns_succeeded": 138,
+   "towns_failed": [],
+   "towns_partial": [],
+   "documents_listed": 722,
+   "documents_already_indexed": 716,
+   "new_documents": 0,
+   "documents_retried": 4,
+   "document_errors": 2,
+   "network": {
+    "bytes_by_purpose": {
+     "document": 493
+    },
+    "cache_hits": 260,
+    "errors": 0,
+    "requests": 2,
+    "requests_by_purpose": {
+     "document": 2
+    },
+    "robots_blocked": 2
+   },
+   "new_hits": 0,
+   "hits_current": 852,
+   "errors_total": 2
   }
  }
 }

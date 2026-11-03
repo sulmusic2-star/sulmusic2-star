@@ -1,6 +1,6 @@
 {
- "_about": "Agenda Ahead New York wave 2 (2026-11): 114 more New York towns, villages, cities and county planning boards (battery-storage moratoria per Carina's monitor and 2026 town documents, data-center and warehouse fights, the Capital Region, the wave-1 places not promoted, and the counties' 239-m referral boards). Same row shape as towns_ny.json plus kind, selection_group / selection_reason / selection_source; county rows carry attribute_townships and county_body; places read only through their county carry coverage \"via_county\". Built by `python3 experiments/wave2_test.py discover`. Kept outside data/towns_*.json because New York is a published state; promotion = `wave2_test.py promote --wave 2`, which moves rows into data/towns_ny.json.",
- "generated": "2026-11-02T19:40:00+00:00",
+ "_about": "Agenda Ahead New York wave 2 (2026-11): 121 more New York towns, villages, cities and county planning boards (battery-storage moratoria per Carina's monitor and 2026 town documents, data-center and warehouse fights, the Capital Region, the wave-1 places not promoted, and the counties' 239-m referral boards). Same row shape as towns_ny.json plus kind, selection_group / selection_reason / selection_source; county rows carry attribute_townships and county_body; places read only through their county carry coverage \"via_county\". Built by `python3 experiments/wave2_test.py discover`. Kept outside data/towns_*.json because New York is a published state; promotion = `wave2_test.py promote --wave 2`, which moves rows into data/towns_ny.json.",
+ "generated": "2026-11-02T19:49:45+00:00",
  "state": "NY",
  "gated": true,
  "gate_note": "Wave 2 test rows: not part of the production daily run or site (this file is outside the data/towns_*.json glob). Crawled only by `python3 -m watch351.daily --data-dir ../data/test/wave2/config --states NY --output-dir ../data/test/wave2/ny --hits-name hits_ny_wave2.json` (experiments/wave2_test.py crawl).",
@@ -15,7 +15,7 @@
   "Zoning Board of Appeals": "zoning_board_of_appeals"
  },
  "evidence_rule": "a board is automated only if its listing shows >=1 agenda/packet/notice dated within [today-120d, today+120d] and the first such document is fetchable under robots.txt",
- "count": 114,
+ "count": 121,
  "automated": 34,
  "towns": [
   {
@@ -1584,7 +1584,7 @@
     "https://www.townofalbion.com/"
    ],
    "coverage": "direct",
-   "coverage_county_body": "County Planning Board"
+   "coverage_county_body": "Orleans County Planning Board"
   },
   {
    "town": "Chautauqua",
@@ -2888,8 +2888,8 @@
     "https://www.townofturinny.gov/"
    ],
    "coverage": "via_county",
-   "coverage_county_body": "County Planning Board",
-   "coverage_note": "Zoning changes reach us through the County Planning Board; project permits may not."
+   "coverage_county_body": "Lewis County Planning Board",
+   "coverage_note": "Zoning changes reach us through the Lewis County Planning Board; project permits may not."
   },
   {
    "town": "Pendleton",
@@ -4934,8 +4934,8 @@
     }
    ],
    "coverage": "via_county",
-   "coverage_county_body": "County Planning Board",
-   "coverage_note": "Zoning changes reach us through the County Planning Board; project permits may not."
+   "coverage_county_body": "Lewis County Planning Board",
+   "coverage_note": "Zoning changes reach us through the Lewis County Planning Board; project permits may not."
   },
   {
    "town": "Northampton",
@@ -5496,8 +5496,8 @@
     }
    ],
    "coverage": "via_county",
-   "coverage_county_body": "County Planning Board",
-   "coverage_note": "Zoning changes reach us through the County Planning Board; project permits may not."
+   "coverage_county_body": "Orleans County Planning Board",
+   "coverage_note": "Zoning changes reach us through the Orleans County Planning Board; project permits may not."
   },
   {
    "town": "Allen",
@@ -7179,7 +7179,7 @@
    "automated": true,
    "listings": [
     {
-     "board": "County Planning Board",
+     "board": "Lewis County Planning Board",
      "board_key": "planning_board",
      "url": "https://lewiscountyny.gov/departments/planning-and-community-development/county-planning-board/",
      "platform": "agenda_page",
@@ -7233,7 +7233,7 @@
     "https://lewiscountyny.gov/"
    ],
    "attribute_townships": true,
-   "county_body": "County Planning Board"
+   "county_body": "Lewis County Planning Board"
   },
   {
    "town": "Livingston County",
@@ -7566,7 +7566,7 @@
    "automated": true,
    "listings": [
     {
-     "board": "County Planning Board",
+     "board": "Orleans County Planning Board",
      "board_key": "planning_board",
      "url": "https://www.orleanscountyny.gov/departments/planning/county_planning_board.php",
      "platform": "agenda_page",
@@ -7620,7 +7620,7 @@
     "https://www.orleanscountyny.gov/"
    ],
    "attribute_townships": true,
-   "county_body": "County Planning Board"
+   "county_body": "Orleans County Planning Board"
   },
   {
    "town": "Oswego County",
@@ -7755,6 +7755,104 @@
    "county_body": "Rensselaer County Planning Board"
   },
   {
+   "town": "Saratoga County",
+   "state": "NY",
+   "county": "Saratoga",
+   "kind": "county",
+   "website": "http://saratogacountyny.gov",
+   "website_source": "Wikipedia infobox (Saratoga County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Halfmoon (site town, not read), Moreau, Waterford)",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "https://www.saratogacountyny.gov/",
+   "cms": [
+    "wordpress"
+   ],
+   "platform": null,
+   "status": "not_automated",
+   "reason_code": "no_recent_agendas",
+   "reason": "board pages found (e.g. https://www.saratogacountyny.gov/departments/planning/) but no agenda dated within the last 120 or next 120 days could be read from them",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "planning_board"
+   ],
+   "board_evidence": {},
+   "board_stale": {
+    "planning_board": {
+     "board": "Annual Planning Conference & Training",
+     "source": "agenda_page",
+     "url": "https://www.saratogacountyny.gov/departments/planning/",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 13,
+   "discovered_at": "2026-11-02T19:42:51+00:00",
+   "website_candidates": [
+    "http://saratogacountyny.gov"
+   ],
+   "attribute_townships": true,
+   "county_body": "Saratoga County Planning Board"
+  },
+  {
+   "town": "St. Lawrence County",
+   "state": "NY",
+   "county": "St. Lawrence",
+   "kind": "county",
+   "website": "https://www.stlawco.gov/",
+   "website_source": "Wikipedia infobox (St. Lawrence County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Brasher, Oswegatchie, Parishville)",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "https://www.stlawco.gov/",
+   "cms": [
+    "drupal"
+   ],
+   "platform": null,
+   "status": "not_automated",
+   "reason_code": "no_recent_agendas",
+   "reason": "board pages found (e.g. https://www.stlawco.gov/Departments/Planning) but no agenda dated within the last 120 or next 120 days could be read from them",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "planning_board"
+   ],
+   "board_evidence": {},
+   "board_stale": {
+    "planning_board": {
+     "board": "Planning",
+     "source": "agenda_page",
+     "url": "https://www.stlawco.gov/Departments/Planning",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 13,
+   "discovered_at": "2026-11-02T19:42:55+00:00",
+   "website_candidates": [
+    "https://www.stlawco.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "St. Lawrence County Planning Board"
+  },
+  {
    "town": "Suffolk County",
    "state": "NY",
    "county": "Suffolk",
@@ -7791,6 +7889,113 @@
    ],
    "attribute_townships": true,
    "county_body": "Suffolk County Planning Board"
+  },
+  {
+   "town": "Sullivan County",
+   "state": "NY",
+   "county": "Sullivan",
+   "kind": "county",
+   "website": "https://www.sullivanny.gov/",
+   "website_source": "Wikipedia infobox (Sullivan County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 1 target place we cannot read directly or have not read yet (Highland (site town, not read))",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "https://www.sullivanny.gov/",
+   "cms": [
+    "drupal"
+   ],
+   "platform": null,
+   "status": "not_automated",
+   "reason_code": "no_agendas_found",
+   "reason": "site reachable, but no agenda listing for the tracked boards was found (agendas may be posted only on paper, only as minutes, or on pages the heuristics missed)",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "planning_board"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {
+    "legistar": {
+     "urls": [
+      "https://sullivancountyny.legistar.com/Gateway.aspx?M=MD&amp;From=RSS&amp;ID=1437432&amp;GUID=34BFCC78-939B-44FD-82A4-7DF1E77E9CC6",
+      "https://sullivancountyny.legistar.com/Gateway.aspx?M=MD&amp;From=RSS&amp;ID=1437433&amp;GUID=9CD94CD4-3883-429C-9AB2-6113B8BF10F0",
+      "https://sullivancountyny.legistar.com/Gateway.aspx?M=MD&amp;From=RSS&amp;ID=1425694&amp;GUID=B456928F-5994-40E7-9520-0BE06B0A2717",
+      "https://sullivancountyny.legistar.com/Gateway.aspx?M=MD&amp;From=RSS&amp;ID=1437436&amp;GUID=322928C4-1C6C-4EA0-B581-513AFF72BB24"
+     ],
+     "client": "sullivancountyny",
+     "found_by": "linked from site",
+     "status": "supported"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 9,
+   "discovered_at": "2026-11-02T19:42:47+00:00",
+   "website_candidates": [
+    "https://www.sullivanny.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Sullivan County Planning Board"
+  },
+  {
+   "town": "Ulster County",
+   "state": "NY",
+   "county": "Ulster",
+   "kind": "county",
+   "website": "https://www.ulstercountyny.gov/",
+   "website_source": "Wikipedia infobox (Ulster County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 3 target places we cannot read directly or have not read yet (Gardiner (site town, not read), Hurley (site town, not read), Wawarsing (site town, not read))",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "https://www.ulstercountyny.gov/Home",
+   "cms": [
+    "granicus_govaccess"
+   ],
+   "platform": "granicus",
+   "status": "not_automated",
+   "reason_code": "vendor_blocked",
+   "reason": "agendas on granicus: robots.txt on ulstercountyny.granicus.com disallows AgendaAheadBot",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "planning_board"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {
+    "granicus": {
+     "urls": [
+      "https://ulstercountyny.granicus.com/boards/w/ca047f2b7ef517c0/boards"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on ulstercountyny.granicus.com disallows AgendaAheadBot"
+    },
+    "iqm2": {
+     "urls": [
+      "https://ulstercountyny.iqm2.com/Citizens/Default.aspx"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on ulstercountyny.iqm2.com disallows AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 9,
+   "discovered_at": "2026-11-02T19:48:54+00:00",
+   "website_candidates": [
+    "https://www.ulstercountyny.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Ulster County Planning Board"
   },
   {
    "town": "Warren County",
@@ -7831,6 +8036,140 @@
    ],
    "attribute_townships": true,
    "county_body": "Warren County Planning Board"
+  },
+  {
+   "town": "Washington County",
+   "state": "NY",
+   "county": "Washington",
+   "kind": "county",
+   "website": "http://www.washingtoncountyny.gov/",
+   "website_source": "Wikipedia infobox (Washington County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Fort Ann, Salem)",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "status": "not_automated",
+   "reason_code": "bot_challenge",
+   "reason": "Cloudflare-style bot challenge (HTTP 403) on https://www.washingtoncountyny.gov/; not bypassed",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "planning_board"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 0,
+   "discovered_at": "2026-11-02T19:47:43+00:00",
+   "website_candidates": [
+    "http://www.washingtoncountyny.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Washington County Planning Board"
+  },
+  {
+   "town": "Westchester County",
+   "state": "NY",
+   "county": "Westchester",
+   "kind": "county",
+   "website": "https://www.westchestercountyny.gov/",
+   "website_source": "Wikipedia infobox (Westchester County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 6 target places we cannot read directly or have not read yet (Harrison, Mamaroneck (village), Mount Kisco, New Castle (site town, not read), Pound Ridge, Yorktown)",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "https://www.westchestercountyny.gov/",
+   "cms": [
+    "joomla"
+   ],
+   "platform": "granicus",
+   "status": "not_automated",
+   "reason_code": "vendor_blocked",
+   "reason": "agendas on granicus: robots.txt on westchestercountynyexec.granicus.com disallows AgendaAheadBot",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "planning_board"
+   ],
+   "board_evidence": {},
+   "board_stale": {},
+   "vendors": {
+    "granicus": {
+     "urls": [
+      "https://westchestercountynyexec.granicus.com/boards/w/7c8bae4b0c35b92c"
+     ],
+     "status": "vendor_blocked",
+     "detail": "robots.txt on westchestercountynyexec.granicus.com disallows AgendaAheadBot"
+    }
+   },
+   "robots_blocked": [],
+   "notes": [],
+   "pages_fetched": 1,
+   "discovered_at": "2026-11-02T19:47:44+00:00",
+   "website_candidates": [
+    "https://www.westchestercountyny.gov/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Westchester County Planning Board"
+  },
+  {
+   "town": "Wyoming County",
+   "state": "NY",
+   "county": "Wyoming",
+   "kind": "county",
+   "website": "https://www.wyomingco.net/",
+   "website_source": "Wikipedia infobox (Wyoming County, New York), 2026-11-02",
+   "selection_group": "county_planning",
+   "selection_reason": "County planning board: GML 239-m referrals from 2 target places we cannot read directly or have not read yet (Gainesville, Pike)",
+   "selection_source": "research_notes/Expansion/cheap_township_coverage.md (county review route) and ny_pilot.md recommendation 6",
+   "final_url": "http://www.wyomingcountyny.gov/",
+   "cms": [
+    "civicplus"
+   ],
+   "platform": null,
+   "status": "not_automated",
+   "reason_code": "no_recent_agendas",
+   "reason": "board pages found (e.g. http://www.wyomingcountyny.gov/484/Wyoming-County-Planning-Board-WCPB) but no agenda dated within the last 120 or next 120 days could be read from them",
+   "automated": false,
+   "listings": [],
+   "boards_tracked": [
+    "planning_board"
+   ],
+   "boards_found": [],
+   "boards_missing": [
+    "planning_board"
+   ],
+   "board_evidence": {},
+   "board_stale": {
+    "planning_board": {
+     "board": "Wyoming County Planning Board (WCPB)",
+     "source": "agenda_page",
+     "url": "http://www.wyomingcountyny.gov/484/Wyoming-County-Planning-Board-WCPB",
+     "n_recent": 0,
+     "latest": null,
+     "note": "board page found, no dated agendas in window"
+    }
+   },
+   "vendors": {},
+   "robots_blocked": [],
+   "notes": [
+    "AgendaCenter: 12 categories, 0 tracked"
+   ],
+   "pages_fetched": 12,
+   "discovered_at": "2026-11-02T19:49:12+00:00",
+   "website_candidates": [
+    "https://www.wyomingco.net/"
+   ],
+   "attribute_townships": true,
+   "county_body": "Wyoming County Planning Board"
   }
  ]
 }

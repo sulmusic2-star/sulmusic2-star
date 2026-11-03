@@ -1,0 +1,214 @@
+{
+ "by_state": {
+  "MD": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 30,
+   "towns_succeeded": 30
+  },
+  "VA": {
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 108,
+   "towns_succeeded": 108
+  }
+ },
+ "date": "2026-11-02",
+ "document_errors": 2,
+ "documents_already_indexed": 716,
+ "documents_deferred": 0,
+ "documents_listed": 722,
+ "documents_needing_ocr": 4,
+ "documents_rematched": 0,
+ "documents_retried": 4,
+ "documents_too_large": [
+  {
+   "error": "too large (62620388 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-761",
+   "meeting_date": "2026-10-13",
+   "state": "VA",
+   "town": "Botetourt County",
+   "url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-761"
+  },
+  {
+   "error": "too large (47850552 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-763",
+   "meeting_date": "2026-10-13",
+   "state": "VA",
+   "town": "Botetourt County",
+   "url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-763"
+  },
+  {
+   "error": "too large (55951595 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10232026-766",
+   "meeting_date": "2026-10-23",
+   "state": "VA",
+   "town": "Botetourt County",
+   "url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10232026-766"
+  },
+  {
+   "error": "too large (46088347 > 41943040 bytes): https://www.colonialheightsva.gov/AgendaCenter/ViewFile/Agenda/_11042026-812",
+   "meeting_date": "2026-11-04",
+   "state": "VA",
+   "town": "City of Colonial Heights",
+   "url": "https://www.colonialheightsva.gov/AgendaCenter/ViewFile/Agenda/_11042026-812"
+  },
+  {
+   "error": "too large (90452290 > 41943040 bytes): https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10132026-3833",
+   "meeting_date": "2026-10-13",
+   "state": "VA",
+   "town": "City of Suffolk",
+   "url": "https://www.suffolkva.us/AgendaCenter/ViewFile/Agenda/_10132026-3833"
+  },
+  {
+   "error": "too large (58877117 > 41943040 bytes): https://www.franklincountyva.gov/AgendaCenter/ViewFile/Agenda/_10202026-822",
+   "meeting_date": "2026-10-20",
+   "state": "VA",
+   "town": "Franklin County",
+   "url": "https://www.franklincountyva.gov/AgendaCenter/ViewFile/Agenda/_10202026-822"
+  },
+  {
+   "error": "too large (46433239 > 41943040 bytes): https://cms7files.revize.com/greensvillecountyva25/Documents Center/Agenda & Minu",
+   "meeting_date": "2026-10-05",
+   "state": "VA",
+   "town": "Greensville County",
+   "url": "https://www.greensvillecountyva.gov/Documents Center/Agenda & Minutes/Board of Supervisors/2026/Agenda/Board of Supervisors Agenda - 10052026.pdf"
+  },
+  {
+   "error": "too large (241819661 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_10052026-790",
+   "meeting_date": "2026-10-05",
+   "state": "VA",
+   "town": "Halifax County",
+   "url": "https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_10052026-790"
+  },
+  {
+   "error": "too large (292957981 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_11022026-799",
+   "meeting_date": "2026-11-02",
+   "state": "VA",
+   "town": "Halifax County",
+   "url": "https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_11022026-799"
+  },
+  {
+   "error": "too large (85135107 > 41943040 bytes): https://cms7files1.revize.com/southamptoncountyva/BOS Agendas 2026/October 2026/N",
+   "meeting_date": "2026-10-27",
+   "state": "VA",
+   "town": "Southampton County",
+   "url": "https://www.southamptoncounty.org/BOS Agendas 2026/October 2026/No. 11 B - Public Hearing - CUP 2026-02 - Cenergy Power - BAP Power LLC plus final updates and appl.pdf"
+  },
+  {
+   "error": "too large (69549427 > 41943040 bytes): https://louisava.gov/wp-content/uploads/2026/07/July-Planning-Commission-Agenda-2",
+   "meeting_date": "2026-10-26",
+   "state": "VA",
+   "town": "Town of Louisa",
+   "url": "https://louisava.gov/wp-content/uploads/2026/07/July-Planning-Commission-Agenda-2.pdf"
+  },
+  {
+   "error": "too large (64101491 > 41943040 bytes): https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_10132026-993",
+   "meeting_date": "2026-10-13",
+   "state": "VA",
+   "town": "Town of Smithfield",
+   "url": "https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_10132026-993"
+  }
+ ],
+ "duration_seconds": 42.6,
+ "errors": [
+  {
+   "error": "document: https://cms7files.revize.com/carrollcounty/Documents/Government/Board Of Supervisors/Meeting Documentation/2026/October/Agenda -  October 5 2026.docx",
+   "town": "VA:Carroll County"
+  },
+  {
+   "error": "document: https://cms8.revize.com/revize/nottowaycountyva/Agenda BoS Special Meeting September 30, 2026.docx",
+   "town": "VA:Nottoway County"
+  }
+ ],
+ "errors_total": 2,
+ "finished": "2026-11-02T19:50:42+00:00",
+ "hits_current": 852,
+ "index": {
+  "by_state": {
+   "MD": 185,
+   "VA": 553
+  },
+  "by_status": {
+   "error": 14,
+   "needs_ocr": 4,
+   "ok": 717,
+   "replaced": 3
+  },
+  "by_text_source": {
+   "docx": 6,
+   "html": 94,
+   "none": 15,
+   "ocr": 37,
+   "pdf": 586
+  },
+  "documents": 738,
+  "hits": 894,
+  "pruned": 0,
+  "towns": 137,
+  "with_hits": 220
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 493
+  },
+  "cache_hits": 260,
+  "errors": 0,
+  "requests": 2,
+  "requests_by_purpose": {
+   "document": 2
+  },
+  "robots_blocked": 2
+ },
+ "new_alert_items": 0,
+ "new_alert_items_by_topic": {},
+ "new_documents": 0,
+ "new_hits": 0,
+ "new_hits_by_topic": {},
+ "options": {
+  "matcher_version": "564b245418",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "previous_runs_today": [
+  {
+   "duration_seconds": 369.8,
+   "new_documents": 723,
+   "new_hits": 915,
+   "requests": 924,
+   "started": "2026-11-02T19:30:47+00:00",
+   "states": [
+    "MD",
+    "VA"
+   ],
+   "towns_attempted": 138,
+   "towns_succeeded": 138
+  },
+  {
+   "duration_seconds": 94.9,
+   "new_documents": 0,
+   "new_hits": 0,
+   "requests": 3,
+   "started": "2026-11-02T19:47:06+00:00",
+   "states": [
+    "MD",
+    "VA"
+   ],
+   "towns_attempted": 138,
+   "towns_succeeded": 138
+  }
+ ],
+ "started": "2026-11-02T19:49:59+00:00",
+ "states": [
+  "MD",
+  "VA"
+ ],
+ "towns_attempted": 138,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 138,
+ "window": {
+  "end": "2027-03-02",
+  "start": "2026-09-18"
+ }
+}

@@ -1,6 +1,6 @@
 {
  "_about": "Agenda Ahead Michigan test rows: the 2026-10 test places (southern Michigan and the Thumb) plus, from 2026-11, every township in the twelve southeast Michigan counties (Washtenaw, Livingston, Oakland, Macomb, Monroe, Lenawee, Jackson, Genesee, Lapeer, St. Clair, Shiawassee, Ingham) and their county planning commissions (the MCL 125.3307 route). Same row shape as towns_ma_all.json plus state, kind, county, selection_group / selection_reason / selection_source, coverage fields. Built by `python3 experiments/mi_va_test.py discover --state MI` (2026-10) and `python3 experiments/great_lakes_test.py discover --state MI` (2026-11).",
- "generated": "2026-11-02T19:36:33+00:00",
+ "generated": "2026-11-02T19:50:41+00:00",
  "state": "MI",
  "gated": true,
  "gate_note": "Test state: not part of the production daily run. Crawled only by `python3 -m watch351.daily --states MI,OH --output-dir ../data/test/great_lakes --hits-name hits_great_lakes.json` (Michigan also by the 2026-10 test command with --states MI,VA --output-dir ../data/test).",
@@ -9306,7 +9306,8 @@
    ],
    "pages_fetched": 8,
    "discovered_at": "2026-10-12T15:05:55+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Lenawee County",
@@ -9335,8 +9336,7 @@
      "platform": "agenda_page",
      "url": "https://www.region2planning.com/lenawee-county-planning-commission/",
      "board_pattern": "packet|\\bLCPC\\b",
-     "board_exclude": "minutes|worksheet|form|\\bTAC\\b|policy|R2PC",
-     "date_from_document": true
+     "board_exclude": "worksheet|form|\\bTAC\\b|policy|R2PC"
     }
    ],
    "boards_tracked": [
@@ -9361,12 +9361,13 @@
    "robots_blocked": [],
    "notes": [],
    "pages_fetched": 4,
-   "discovered_at": "2026-11-02T19:36:07+00:00",
+   "discovered_at": "2026-11-02T19:50:25+00:00",
    "attribute_townships": true,
+   "attribute_known_only": true,
    "platforms": [
     "agenda_page"
    ],
-   "curation_note": "LCPC packets on the Region 2 Planning Commission site, dated from the packet text",
+   "curation_note": "LCPC packets on the Region 2 Planning Commission site (dated from the file name; the page listed January to June 2026 on 2026-11-02, nothing later)",
    "curated": true
   },
   {
@@ -9631,7 +9632,8 @@
     "agenda_page"
    ],
    "curation_note": "JCPC packets on the Region 2 Planning Commission site (the county's own agendas are on BoardDocs)",
-   "curated": true
+   "curated": true,
+   "attribute_known_only": true
   },
   {
    "town": "Washtenaw County",
@@ -9678,7 +9680,8 @@
    "notes": [],
    "pages_fetched": 2,
    "discovered_at": "2026-10-12T20:54:23+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Livingston County",
@@ -9742,7 +9745,8 @@
     "agenda_page"
    ],
    "curation_note": "Planning Commission page under the Planning department (2026 agendas and packets)",
-   "curated": true
+   "curated": true,
+   "attribute_known_only": true
   },
   {
    "town": "Ingham County",
@@ -9773,7 +9777,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-10-12T15:05:52+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Eaton County",
@@ -9921,7 +9926,8 @@
    "notes": [],
    "pages_fetched": 5,
    "discovered_at": "2026-10-12T15:06:33+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Montcalm County",
@@ -18705,80 +18711,37 @@
    "state": "MI",
    "county": "Macomb",
    "kind": "township",
-   "website": "https://www.cityofrichmond.net/",
-   "website_source": "regional / county agency member-links page (macomb), 2026-11-02",
+   "website": null,
+   "website_source": "none: the Macomb County member-links page gave https://www.cityofrichmond.net/, which is the City of Richmond (a separate municipality that shares the name); removed 2026-11-02 after the round-2 hand check filed the city council's solar ordinance under the township",
    "no_website_note": null,
    "pop_2020": 3544,
    "selection_group": "se_michigan",
    "selection_reason": "southeast Michigan township, Macomb County (data-center and solar fights; county route MCL 125.3307)",
    "selection_source": "research_notes/Expansion/where_it_pays_2026.md section 2 (areas 2 and 3), section 4 recommendation 3",
    "selection_source_url": "https://en.wikipedia.org/wiki/Richmond_Township,_Macomb_County,_Michigan",
-   "final_url": "https://www.cityofrichmond.net/",
-   "cms": [
-    "civicplus"
-   ],
+   "final_url": null,
+   "cms": [],
    "platforms": [
     "civicplus"
    ],
-   "platform": "civicplus",
-   "status": "automated",
-   "reason_code": null,
-   "reason": null,
-   "automated": true,
-   "listings": [
-    {
-     "board": "Board of Zoning Appeals",
-     "board_key": "zoning_board_of_appeals",
-     "category_id": "4",
-     "url": "https://www.cityofrichmond.net/AgendaCenter/Board-of-Zoning-Appeals-4"
-    },
-    {
-     "board": "City Council",
-     "board_key": "select_board",
-     "category_id": "1",
-     "url": "https://www.cityofrichmond.net/AgendaCenter/City-Council-1"
-    },
-    {
-     "board": "Planning Commission",
-     "board_key": "planning_board",
-     "category_id": "2",
-     "url": "https://www.cityofrichmond.net/AgendaCenter/Planning-Commission-2"
-    }
-   ],
+   "platform": null,
+   "status": "not_automated",
+   "reason_code": "website_mismatch",
+   "reason": "the listed website (https://www.cityofrichmond.net/) is the City of Richmond, not Richmond Township; no township website found",
+   "automated": false,
+   "listings": [],
    "boards_tracked": [
     "select_board",
     "planning_board",
     "zoning_board_of_appeals"
    ],
-   "boards_found": [
-    "planning_board",
+   "boards_found": [],
+   "boards_missing": [
     "select_board",
+    "planning_board",
     "zoning_board_of_appeals"
    ],
-   "boards_missing": [],
-   "board_evidence": {
-    "planning_board": {
-     "board": "Planning Commission",
-     "source": "civicplus",
-     "url": "https://www.cityofrichmond.net/AgendaCenter/Planning-Commission-2",
-     "n_recent": 3,
-     "latest": "2026-10-08"
-    },
-    "select_board": {
-     "board": "City Council",
-     "source": "civicplus",
-     "url": "https://www.cityofrichmond.net/AgendaCenter/City-Council-1",
-     "n_recent": 12,
-     "latest": "2026-11-02"
-    },
-    "zoning_board_of_appeals": {
-     "board": "Board of Zoning Appeals",
-     "source": "civicplus",
-     "url": "https://www.cityofrichmond.net/AgendaCenter/Board-of-Zoning-Appeals-4",
-     "n_recent": 2,
-     "latest": "2026-08-13"
-    }
-   },
+   "board_evidence": {},
    "board_stale": {},
    "vendors": {},
    "robots_blocked": [],
@@ -18787,7 +18750,7 @@
    ],
    "pages_fetched": 3,
    "discovered_at": "2026-11-02T19:20:50+00:00",
-   "coverage": "direct",
+   "coverage": "none",
    "coverage_county_body": null,
    "coverage_note": null
   },
@@ -21709,7 +21672,8 @@
    "notes": [],
    "pages_fetched": 9,
    "discovered_at": "2026-11-02T19:21:43+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Macomb County",
@@ -21750,7 +21714,8 @@
    "notes": [],
    "pages_fetched": 0,
    "discovered_at": "2026-11-02T19:22:47+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "Genesee County",
@@ -21773,7 +21738,6 @@
      "platform": "agenda_page",
      "url": "https://gcmpc.org/genesee-county-metropolitan-planning-commission/",
      "board_pattern": "agenda",
-     "board_exclude": "minutes",
      "date_from_document": true
     }
    ],
@@ -21790,8 +21754,9 @@
    "robots_blocked": [],
    "notes": [],
    "pages_fetched": 0,
-   "discovered_at": "2026-11-02T19:35:50+00:00",
+   "discovered_at": "2026-11-02T19:50:41+00:00",
    "attribute_townships": true,
+   "attribute_known_only": true,
    "platform": "agenda_page",
    "platforms": [
     "agenda_page"
@@ -21834,7 +21799,8 @@
    "notes": [],
    "pages_fetched": 1,
    "discovered_at": "2026-11-02T19:21:51+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   },
   {
    "town": "St. Clair County",
@@ -21887,7 +21853,8 @@
    "notes": [],
    "pages_fetched": 11,
    "discovered_at": "2026-11-02T19:22:00+00:00",
-   "attribute_townships": true
+   "attribute_townships": true,
+   "attribute_known_only": true
   }
  ]
 }

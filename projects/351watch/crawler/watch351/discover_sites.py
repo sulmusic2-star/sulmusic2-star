@@ -110,6 +110,39 @@ BOARD_RX = {
         "zoning_board_of_appeals": (r"board\s+of\s+zoning\s+appeals|\bBZA\b|zoning\s+appeals|board\s+of\s+appeals",
                                     r"building|construction|fire|code\s+appeals"),
     },
+    # Maryland (VA/MD wave): county councils / boards of county commissioners / District Council, city and
+    # town councils, Frederick's Mayor and Board of Aldermen; planning commissions and the M-NCPPC planning
+    # boards; county boards of appeals (zoning), Baltimore's BMZA
+    "MD": {
+        "select_board": (r"county\s+council|\bcouncil\b|board\s+of\s+(?:county\s+)?commissioners|county\s+commissioners|"
+                         r"\bBOCC\b|\bBCC\b|mayor\s+(?:and|&)\s+(?:city\s+|town\s+)?council|board\s+of\s+alder(?:men|s)|"
+                         r"district\s+council|legislative\s+(?:session|day|meeting)",
+                         r"school\s+board|board\s+of\s+education|library\s+board|liquor|ethics|committee|advisory|"
+                         r"housing\s+authority|board\s+of\s+(?:health|elections|estimates|license)|youth\s+council"),
+        "planning_board": (r"planning\s+commission|planning\s+board|\bPC\b|planning\b",
+                           r"regional|metropolitan|committee|agricultural|transportation\s+planning|comprehensive\s+plan"),
+        "zoning_board_of_appeals": (r"board\s+of\s+(?:zoning\s+|municipal\s+and\s+zoning\s+)?appeals|\bBZA\b|\bBMZA\b|\bBOA\b|"
+                                    r"zoning\s+appeals|board\s+of\s+adjustment",
+                                    r"building|construction|code\s+appeals|license|liquor|tax|assessment|personnel|animal"),
+    },
+    # Ohio (Great Lakes wave): township boards of trustees; township zoning commissions (the planning body
+    # under ORC 519), county / regional planning commissions and county rural zoning commissions; BZAs
+    "OH": {
+        "select_board": (r"board\s+of\s+trustees|\btrustees\b|township\s+board|\bBOT\b|city\s+council|village\s+council|"
+                         r"board\s+of\s+(?:county\s+)?commissioners|\bcommissioners\b|"
+                         r"\bboard\s+(?:regular\s+|special\s+)?meeting|\bregular\s+board|\bboard\s+agenda",
+                         r"park\s+board|parks?\s+(?:and|&)\s+rec|recreation\s+(?:board|commission)|cemetery|"
+                         r"board\s+of\s+health|school\s+board|board\s+of\s+education|fire\s+board|records\s+commission|"
+                         r"committee|\bJEDD\b|\bCIC\b|land\s+bank"),
+        "planning_board": (r"planning\s+commission|regional\s+planning|zoning\s+commission|\bRZC\b|\bZC\b|\bRPC\b|"
+                           r"planning\s+(?:&|and)\s+zoning|\bPC\b|planning\b|\bzoning\b",
+                           r"board\s+of\s+zoning\s+appeals|\bBZA\b|zoning\s+appeals|emergency\s+planning|committee|"
+                           r"\bMPO\b|transportation\s+(?:planning|improvement)|zoning\s+(?:inspector|permit|certificate|"
+                           r"resolution\s*$|map\s*$|fees?)"),
+        "zoning_board_of_appeals": (r"board\s+of\s+zoning\s+appeals|\bBZA\b|zoning\s+board\s+of\s+appeals|\bZBA\b|"
+                                    r"zoning\s+appeals|board\s+of\s+appeals",
+                                    r"building|construction|code\s+appeals|property\s+maintenance"),
+    },
     # New York (Wave 1): town boards, village boards of trustees, city / common councils
     "NY": {
         "select_board": (r"town\s+board|\bTB\b|board\s+of\s+trustees|village\s+board|\btrustees\b|city\s+council|"
@@ -134,6 +167,16 @@ BOARD_NAME = {  # strict names, used to drop another board's links
     "VA": {"select_board": r"board\s+of\s+supervisors|\bBOS\b|town\s+council|city\s+council",
            "planning_board": r"planning\s+commission|\bPC\b",
            "zoning_board_of_appeals": r"board\s+of\s+zoning\s+appeals|\bBZA\b|zoning\s+appeals|board\s+of\s+appeals"},
+    "MD": {"select_board": r"county\s+council|board\s+of\s+(?:county\s+)?commissioners|county\s+commissioners|\bBOCC\b|"
+                           r"city\s+council|town\s+council|mayor\s+(?:and|&)\s+council|board\s+of\s+alder(?:men|s)|district\s+council",
+           "planning_board": r"planning\s+commission|planning\s+board|\bPC\b",
+           "zoning_board_of_appeals": r"board\s+of\s+(?:zoning\s+|municipal\s+and\s+zoning\s+)?appeals|\bBZA\b|\bBMZA\b|"
+                                      r"zoning\s+appeals|board\s+of\s+adjustment"},
+    "OH": {"select_board": r"board\s+of\s+trustees|\btrustees\b|township\s+board|city\s+council|village\s+council|"
+                           r"board\s+of\s+(?:county\s+)?commissioners|\bBOT\b",
+           "planning_board": r"planning\s+commission|regional\s+planning|zoning\s+commission|\bRZC\b|\bRPC\b|\bPC\b",
+           "zoning_board_of_appeals": r"board\s+of\s+zoning\s+appeals|\bBZA\b|zoning\s+board\s+of\s+appeals|\bZBA\b|"
+                                      r"zoning\s+appeals"},
     "NY": {"select_board": r"town\s+board|board\s+of\s+trustees|village\s+board|city\s+council|common\s+council|"
                            r"\bTB\b",
            "planning_board": r"planning\s+board|planning\s+commission|\bPB\b",
@@ -142,11 +185,23 @@ BOARD_NAME = {  # strict names, used to drop another board's links
 }
 SLUG_HINTS = {
     "select_board": r"township[-_ ]?board|board[-_ ]of[-_ ]trustees|trustees|board[-_ ]of[-_ ]supervisors|supervisors|"
-                    r"town[-_ ]council|city[-_ ]council|city[-_ ]commission|village[-_ ]council|/bos\b",
+                    r"town[-_ ]council|city[-_ ]council|city[-_ ]commission|village[-_ ]council|/bos\b|"
+                    r"county[-_ ]council|board[-_ ]of[-_ ](?:county[-_ ])?commissioners|county[-_ ]commissioners|"
+                    r"mayor[-_ ](?:and|&)[-_ ]council|board[-_ ]of[-_ ]alder",
     "planning_board": r"planning[-_ ]?commission|planning[-_ ]?board|/planning/?$|/pc/?$",
     "zoning_board_of_appeals": r"zoning[-_ ]board[-_ ]of[-_ ]appeals|board[-_ ]of[-_ ]zoning[-_ ]appeals|/zba\b|/bza\b|"
                                r"zoning[-_ ]appeals|board[-_ ]of[-_ ]appeals",
 }
+# Per-state additions to SLUG_HINTS (Ohio: a township's planning body is its zoning commission; county
+# bodies are regional planning commissions). Other states' slug hints are unchanged.
+STATE_SLUG_HINTS = {
+    "OH": {"planning_board": r"zoning[-_ ]?commission|regional[-_ ]?planning|/zoning/?$|/rpc/?$|/zc/?$|rural[-_ ]zoning"},
+}
+
+
+def slug_hint(state: str, key: str) -> str:
+    extra = STATE_SLUG_HINTS.get(state, {}).get(key)
+    return SLUG_HINTS[key] + ("|" + extra if extra else "")
 
 
 def _now() -> str:
@@ -280,7 +335,7 @@ def note_vendors(st: SiteState, page: Page) -> None:
 
 def _quality(ev: dict) -> int:
     """Agenda platforms and pages with agendas / packets beat pages that only post meeting notices."""
-    if ev["source"] in ("civicplus", "civicclerk", "escribe"):
+    if ev["source"] in ("civicplus", "civicclerk", "escribe", "legistar"):
         return 2
     return 2 if set(ev.get("kinds") or []) & {"agenda", "packet"} else 1
 
@@ -400,7 +455,8 @@ def do_civicclerk(st: SiteState, tenant: str, found_by: str) -> bool:
 
 
 def civicclerk_guesses(row: dict, state: str) -> list[str]:
-    name = re.sub(r"\b(?:charter\s+)?township\b|\bcounty\b|\bcity\s+of\b|\btown\s+of\b|\bcity\b|\btown\b", "",
+    # "Liberty Township (Delaware County)": a same-named township carries its county in parentheses
+    name = re.sub(r"\s*\([^)]*\)|\b(?:charter\s+)?township\b|\bcounty\b|\bcity\s+of\b|\btown\s+of\b|\bcity\b|\btown\b", "",
                   row["town"], flags=re.I)
     n = re.sub(r"[^a-z]", "", name.lower())
     kind = row.get("kind")
@@ -413,6 +469,16 @@ def civicclerk_guesses(row: dict, state: str) -> list[str]:
             return [f"{n}mi", f"cityof{n}mi"]
         # not "<name>mi": that is the city's tenant pattern (portlandmi is the City of Portland)
         return [f"{n}twpmi", f"{n}townshipmi", f"{n}chartertwpmi"]
+    if state == "MD":   # alleganycomd, cecilcomd, kentcountymd (counties); towns and cities "<name>md"
+        if kind == "county":
+            return [f"{n}comd", f"{n}countymd", f"{n}md"]
+        return [f"{n}md", f"cityof{n}md", f"townof{n}md"]
+    if state == "OH":   # Lucas County is lucascooh (coverage_county_census.csv)
+        if kind == "county":
+            return [f"{n}cooh", f"{n}countyoh"]
+        if kind == "city":
+            return [f"{n}oh", f"cityof{n}oh"]
+        return [f"{n}twpoh", f"{n}townshipoh", f"{n}oh"]
     if state == "NY":   # NY pilot tenants: doverny, amherstny, northhempsteadny, smithtownny
         if kind == "city":
             return [f"{n}ny", f"cityof{n}ny"]
@@ -420,6 +486,71 @@ def civicclerk_guesses(row: dict, state: str) -> list[str]:
             return [f"villageof{n}ny", f"{n}villageny"]
         return [f"{n}ny", f"townof{n}ny"]
     return []
+
+
+# ------------------------------------------------------------------ Legistar
+def legistar_client_of(url: str) -> str | None:
+    m = re.match(r"https?://([a-z0-9-]+)\.legistar\.com", url, re.I)
+    return m.group(1).lower() if m else None
+
+
+def do_legistar(st: SiteState, client: str, found_by: str) -> bool:
+    """Granicus Legistar (VA/MD wave): the public web API (webapi.legistar.com, no key) lists each body's
+    meetings with EventAgendaFile and EventInSiteURL. The adapter reads the meeting's detail page on
+    <client>.legistar.com (agenda item titles), never the PDFs on legistar1.com, whose robots.txt
+    disallows every bot. A board is automated when a meeting in the window has a published agenda and
+    its detail page answers under robots.txt."""
+    from .adapters.legistar import LegistarAdapter
+    ad = LegistarAdapter(st.fetcher)
+    cfg = {"client": client, "town": st.row["town"]}
+    try:
+        events = ad.events(cfg, st.window)
+    except (FetchError, RuntimeError, ValueError) as e:
+        st.notes.append(f"Legistar {client}: {str(e)[:100]}")
+        return False
+    st.pages_fetched += 1
+    cal = f"https://{client}.legistar.com/Calendar.aspx"
+    v = st.vendors.setdefault("legistar", {"urls": [cal]})
+    v.update(client=client, found_by=found_by, status="supported")
+    per: dict = {}
+    for ev in events:
+        name = (ev.get("EventBodyName") or "").strip()
+        key = classify_board(name, st.state)
+        if key not in st.tracked:
+            continue
+        per.setdefault((name, key), []).append(ev)
+    found = False
+    probed: dict[str, bool] = {}
+    for (name, key), evs in per.items():
+        with_files = [e for e in evs if e.get("EventAgendaFile") and e.get("EventInSiteURL")]
+        if with_files:
+            # the detail page of one published meeting must answer (robots.txt, no challenge)
+            url = with_files[0]["EventInSiteURL"]
+            host = urlsplit(url).netloc
+            if host not in probed:
+                try:
+                    with st.fetcher.purpose("document"):
+                        r = st.fetcher.get(url)
+                    probed[host] = r.ok and not is_challenge(r.status, r.text)
+                    if not probed[host]:
+                        st.notes.append(f"DOCS HTTP {r.status} {url}")
+                except RobotsDisallowed:
+                    probed[host] = False
+                    st.notes.append(f"DOCS robots.txt disallows meeting pages on {host}")
+                except FetchError as e:
+                    probed[host] = False
+                    st.notes.append(f"DOCS fetch error: {str(e)[:80]}")
+            if not probed[host]:
+                with_files = []
+        dates = [e["EventDate"][:10] for e in with_files]
+        if with_files:
+            st.listings.append({"board": name, "board_key": key, "url": cal, "client": client, "platform": "legistar"})
+            found = True
+        record(st, key, {"board": name, "source": "legistar", "url": cal, "n_recent": len(with_files),
+                         "latest": max(dates) if dates else None, "kinds": ["agenda"]})
+    if found:
+        st.row["client"] = client
+    return found
 
 
 # ------------------------------------------------------------------ eSCRIBE
@@ -537,6 +668,28 @@ def other_boards(st: SiteState, key: str) -> str:
 ALL_BOARDS = ["select_board", "planning_board", "zoning_board_of_appeals"]
 
 
+# Default board labels for a shared ("hub") listing page, by state and kind of place. New England's
+# "Select Board / Council" is wrong for a Virginia county (Board of Supervisors) or a Maryland one.
+STATE_BOARD_LABELS = {
+    "VA": {"county": {"select_board": "Board of Supervisors", "planning_board": "Planning Commission",
+                      "zoning_board_of_appeals": "Board of Zoning Appeals"},
+           "city": {"select_board": "City Council", "planning_board": "Planning Commission",
+                    "zoning_board_of_appeals": "Board of Zoning Appeals"},
+           "town": {"select_board": "Town Council", "planning_board": "Planning Commission",
+                    "zoning_board_of_appeals": "Board of Zoning Appeals"}},
+    "MD": {"county": {"select_board": "County Council", "planning_board": "Planning Commission",
+                      "zoning_board_of_appeals": "Board of Appeals"},
+           "city": {"select_board": "City Council", "planning_board": "Planning Commission",
+                    "zoning_board_of_appeals": "Board of Appeals"},
+           "town": {"select_board": "Town Council", "planning_board": "Planning Commission",
+                    "zoning_board_of_appeals": "Board of Appeals"}},
+}
+
+
+def default_label(state: str, kind: str | None, key: str) -> str:
+    return STATE_BOARD_LABELS.get(state, {}).get(kind or "", {}).get(key) or BOARD_LABELS[key]
+
+
 def try_listing(st: SiteState, key: str, url: str, label: str, hub: bool, extra: dict | None = None,
                 require_agenda: bool = False) -> bool:
     """Read `url` with the agenda-page reader for board `key`; keep it if it shows dated agendas."""
@@ -585,7 +738,8 @@ def try_listing(st: SiteState, key: str, url: str, label: str, hub: bool, extra:
     dates = sorted(day(d) for d in docs)
     kinds = sorted({d.extra.get("kind") for d in docs})
     if "board" not in (extra or {}):
-        listing["board"] = BOARD_LABELS[key] if hub or not classify_board(label, st.state) == key else label[:80]
+        listing["board"] = (default_label(st.state, st.row.get("kind"), key)
+                            if hub or not classify_board(label, st.state) == key else label[:80])
     ev = {"board": listing["board"], "source": "agenda_page", "url": url, "n_recent": len(docs),
           "latest": dates[-1], "kinds": kinds, "examples": [{"date": day(d), "url": d.url,
                                                              "title": d.title[:80]} for d in docs[:3]]}
@@ -623,7 +777,7 @@ def board_candidates(st: SiteState, pages: list[Page], key: str) -> list[Link]:
             if not same_site(st, l.url) or SKIP_LINK.search(l.url) or len(l.text) > 70:
                 continue
             k = classify_board(l.text, st.state)
-            slug = re.search(SLUG_HINTS[key], urlsplit(l.url).path, re.I)
+            slug = re.search(slug_hint(st.state, key), urlsplit(l.url).path, re.I)
             if k == key or (slug and not re.search(r"minutes", l.text, re.I) and
                             (k is None or k == key)):
                 cands.append(l)
@@ -635,7 +789,7 @@ def board_candidates(st: SiteState, pages: list[Page], key: str) -> list[Link]:
 def names_board(st: SiteState, key: str, page: Page) -> bool:
     """The page is this board's own page: its title / h1 names the board, or its URL has the board's slug."""
     inc = re.compile(board_rx(st, key)[0], re.I)
-    return bool(inc.search(f"{page.title} {page.h1}") or re.search(SLUG_HINTS[key], urlsplit(page.final_url).path, re.I))
+    return bool(inc.search(f"{page.title} {page.h1}") or re.search(slug_hint(st.state, key), urlsplit(page.final_url).path, re.I))
 
 
 def try_board_page(st: SiteState, key: str, link: Link) -> bool:
@@ -749,7 +903,12 @@ def _discover_place(fetcher: PoliteFetcher, row: dict, state: str, tracked: list
         website = "http://" + website
     resp, err = _fetch_home(st, website.rstrip("/") + "/")
     if resp is None:
-        # the place may still be readable through a CivicClerk tenant (its API is a separate host)
+        # the place may still be readable through a Legistar client named on the target row (its web API is a
+        # separate host) or a CivicClerk tenant
+        if row.get("legistar_client") and do_legistar(st, row["legistar_client"], "target row"):
+            rec["platform"] = "legistar"
+            st.notes.append(f"homepage: {err[1]}")
+            return finish("automated", None, None)
         for t in civicclerk_guesses(row, state):
             if do_civicclerk(st, t, "tenant probe"):
                 rec["platform"] = "civicclerk"
@@ -760,8 +919,8 @@ def _discover_place(fetcher: PoliteFetcher, row: dict, state: str, tracked: list
     st.pages[home.url] = home
     st.home_host = urlsplit(home.final_url).netloc.lower()
     # an expired or re-registered domain (the MTA directory still lists it): the page never names the place
-    short = re.sub(r"\b(?:charter\s+)?township\b|\bcounty\b|\bcity\s+of\b|\btown\s+of\b", "", row["town"],
-                   flags=re.I).strip().lower()
+    short = re.sub(r"\s*\([^)]*\)|\b(?:charter\s+)?township\b|\bcounty\b|\bcity\s+of\b|\btown\s+of\b", "", row["town"],
+                   flags=re.I).strip().lower()   # the "(X County)" suffix of a same-named township is not on its page
     if short and short not in BeautifulSoup(home.html, "lxml").get_text(" ", strip=True).lower() \
             and short.replace(" ", "") not in home.final_url.lower():
         rec["final_url"] = home.final_url
@@ -792,6 +951,12 @@ def _discover_place(fetcher: PoliteFetcher, row: dict, state: str, tracked: list
                 break
             if try_board_page(st, key, l):
                 break
+    # Legistar: a client named on the target row, else the one the site links (VA cities, MD councils)
+    lg = row.get("legistar_client") or next((legistar_client_of(u) for u in (st.vendors.get("legistar") or {}).get("urls", [])
+                                             if legistar_client_of(u)), None)
+    if lg and any(k not in st.boards or _quality(st.boards[k]) < 2 for k in tracked):
+        if do_legistar(st, lg, "target row" if row.get("legistar_client") else "linked from site"):
+            platforms.append("legistar")
     # board pages often link the vendor portal (CivicClerk "View agendas")
     cc = st.vendors.get("civicclerk") or st.vendors.get("civicclerk_legacy")
     if cc and cc.get("tenant") and any(k not in st.boards or _quality(st.boards[k]) < 2 for k in tracked):
@@ -813,7 +978,7 @@ def _discover_place(fetcher: PoliteFetcher, row: dict, state: str, tracked: list
                 # loose names too: "July 2026 Planning Agenda" belongs to the planning commission
                 exclude = "|".join((other_boards(st, "select_board"), DEFAULT_RULE_EXCLUDE))
                 if try_listing(st, "select_board", p.final_url, l.text, hub=False,
-                               extra={"board": BOARD_LABELS["select_board"], "board_default": True,
+                               extra={"board": default_label(st.state, row.get("kind"), "select_board"), "board_default": True,
                                       "board_exclude": exclude},
                                require_agenda=True):
                     st.notes.append(f"governing body assigned by default on {p.final_url}")
@@ -847,13 +1012,16 @@ def _discover_place(fetcher: PoliteFetcher, row: dict, state: str, tracked: list
                 return "civicplus"
             if "civicclerk.com" in l.get("url", ""):
                 return "civicclerk"
+            if "client" in l:
+                return "legistar"
             return "agenda_page"
-        src = {"civicplus": "civicplus", "civicclerk": "civicclerk", "agenda_page": "agenda_page", "escribe": "escribe"}
+        src = {"civicplus": "civicplus", "civicclerk": "civicclerk", "agenda_page": "agenda_page", "escribe": "escribe",
+               "legistar": "legistar"}
         # keep only the listing that backs each board's best evidence
         st.listings = [l for l in st.listings if l["board_key"] in st.boards and
                        plat(l) == src.get(st.boards[l["board_key"]]["source"]) and
                        (plat(l) != "agenda_page" or l["url"] == st.boards[l["board_key"]]["url"])]
-        order = ["civicplus", "civicclerk", "escribe", "agenda_page"]
+        order = ["civicplus", "civicclerk", "legistar", "escribe", "agenda_page"]
         rec["platforms"] = sorted({plat(l) for l in st.listings}, key=order.index)
         rec["platform"] = rec["platforms"][0]
         return finish("automated", None, None)
