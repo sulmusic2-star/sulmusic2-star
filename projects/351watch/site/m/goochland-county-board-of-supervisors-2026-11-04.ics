@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:m-goochland-county-board-of-supervisors-2026-11-04@agendaahead
+DTSTAMP:20261103T120000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:Goochland County Board of Supervisors: Holds a hearing on a request
+  to rezone land.
+LOCATION:Goochland County\, VA
+DESCRIPTION:• Holds a hearing on a request to rezone land.\n\nAgenda: htt
+ ps://goochlandcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fil
+ eId=2262\,plainText=false)\nPage: https://agendaahead.vercel.app/m/goochla
+ nd-county-board-of-supervisors-2026-11-04\nConfirm the time and place with
+  the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/goochland-county-board-of-supervisors-
+ 2026-11-04
+END:VEVENT
+END:VCALENDAR

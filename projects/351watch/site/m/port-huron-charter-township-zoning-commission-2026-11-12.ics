@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-port-huron-charter-township-zoning-commission-2026-11-12@agendaahead
+DTSTAMP:20261103T120000Z
+DTSTART;TZID=America/New_York:20261112T190000
+DTEND;TZID=America/New_York:20261112T210000
+SUMMARY:Port Huron Charter Township Zoning Commission: Discusses data-cente
+ r rules (no vote listed).
+LOCATION:Port Huron Charter Township\, MI
+DESCRIPTION:• Discusses data-center rules (no vote listed).\n\nAgenda: ht
+ tps://www.porthurontownship.org/getattachment/15128ffb-1221-4bab-8549-cfd4
+ 15aa37d9/20261112.aspx\nPage: https://agendaahead.vercel.app/m/port-huron-
+ charter-township-zoning-commission-2026-11-12\nConfirm the time and place 
+ with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/port-huron-charter-township-zoning-com
+ mission-2026-11-12
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-royal-oak-charter-township-planning-commission-2026-11-04@agendaahead
+DTSTAMP:20261103T120000Z
+DTSTART;TZID=America/New_York:20261104T183000
+DTEND;TZID=America/New_York:20261104T203000
+SUMMARY:Royal Oak Charter Township Planning Commission: Holds a hearing on 
+ a zoning change.
+LOCATION:Royal Oak Charter Township\, MI
+DESCRIPTION:• Holds a hearing on a zoning change.\n\nAgenda: https://www.
+ royaloaktwp.com/documents/2026/Planning Commission Public Hearing Notice M
+ arihuana 10.14.32026.pdf\nPage: https://agendaahead.vercel.app/m/royal-oak
+ -charter-township-planning-commission-2026-11-04\nConfirm the time and pla
+ ce with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/royal-oak-charter-township-planning-co
+ mmission-2026-11-04
+END:VEVENT
+END:VCALENDAR

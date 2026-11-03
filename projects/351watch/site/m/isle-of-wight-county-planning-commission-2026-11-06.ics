@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:m-isle-of-wight-county-planning-commission-2026-11-06@agendaahead
+DTSTAMP:20261103T120000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:Isle of Wight County Planning Commission
+LOCATION:Isle of Wight County\, VA
+DESCRIPTION:\nAgenda: https://isleofwightcova.api.civicclerk.com/v1/Meeting
+ s/GetMeetingFileStream(fileId=7803\,plainText=false)\nPage: https://agenda
+ ahead.vercel.app/m/isle-of-wight-county-planning-commission-2026-11-06\nCo
+ nfirm the time and place with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/isle-of-wight-county-planning-commissi
+ on-2026-11-06
+END:VEVENT
+END:VCALENDAR

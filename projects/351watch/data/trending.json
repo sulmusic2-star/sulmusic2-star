@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T12:31:53+00:00",
+ "generated": "2026-11-03T15:53:28+00:00",
  "window": {
   "start": "2026-11-03",
   "end": "2027-03-03"
@@ -107,6 +107,12 @@
    "action": "project_hearing",
    "boards": [
     {
+     "town": "Carver",
+     "board": "Conservation Commission",
+     "board_key": "conservation_commission",
+     "meeting_date": "2026-11-04"
+    },
+    {
      "town": "Plympton",
      "board": "Planning Board",
      "board_key": "planning_board",
@@ -117,12 +123,6 @@
      "board": "Planning Board",
      "board_key": "planning_board",
      "meeting_date": "2026-10-27"
-    },
-    {
-     "town": "Carver",
-     "board": "Conservation Commission",
-     "board_key": "conservation_commission",
-     "meeting_date": "2026-10-21"
     },
     {
      "town": "Easton",
@@ -141,6 +141,7 @@
     "59b8555a3552",
     "744985fc0796",
     "7bdece78956c",
+    "9e6a80baf8e3",
     "c3247776a91f",
     "c757a7867796",
     "d5665e74c013",
@@ -207,6 +208,71 @@
     "ad0cbf76c0f0",
     "aea0b511658e",
     "c3d20d0f122a"
+   ]
+  },
+  {
+   "id": "1411ce96b457",
+   "score": 26.33,
+   "headline": "Howell Township weighs a data-center moratorium",
+   "dek": "The Zoning Board of Appeals Minutes meets Tuesday, Nov 10. The agenda lists a moratorium on data centers.",
+   "quote": "Data Center Moratorium Extension Motion by Wilson, Second by Hohenstein, \"To accept the Data Center Moratorium Ordinance No. 299.\" Board discussion",
+   "reasons": [
+    "Proposed moratorium",
+    "2 town boards",
+    "Meeting Nov 10"
+   ],
+   "why": [],
+   "stakes": 17.0,
+   "buzz": 2.5,
+   "topics": [
+    "data_center",
+    "moratorium",
+    "zoning_amendment"
+   ],
+   "state": "MI",
+   "town": "Howell Township",
+   "county": "Livingston",
+   "towns": [
+    "MI:Howell Township"
+   ],
+   "board": "Zoning Board of Appeals Minutes",
+   "board_key": "zoning_board_of_appeals",
+   "meeting_date": "2026-11-10",
+   "meeting_date_source": "agenda",
+   "days_until": 7,
+   "first_seen": "2026-11-02T19:37:28+00:00",
+   "is_new": true,
+   "source_url": "https://howelltownshipmi.org/wp-content/uploads/2026/11/ZBA-Packet-11.10.26.pdf",
+   "town_path": "/mi/howell-township",
+   "action": "moratorium",
+   "boards": [
+    {
+     "town": "Howell Township",
+     "board": "Zoning Board of Appeals Minutes",
+     "board_key": "zoning_board_of_appeals",
+     "meeting_date": "2026-11-10"
+    },
+    {
+     "town": "Howell Township",
+     "board": "Board of Trustees Minutes",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-13"
+    }
+   ],
+   "hit_ids": [
+    "09b994d515cc",
+    "572145652d10",
+    "5e931a3c3c21",
+    "841e1d95a1d8",
+    "bf1834f88360",
+    "ced1aa95bb18",
+    "d02932adddd6",
+    "d0504aa39b05",
+    "d614a8ccd878",
+    "d738e042f17f",
+    "e1ab0e3950ed",
+    "e42aa68d2bab",
+    "ecb907871570"
    ]
   },
   {
@@ -423,6 +489,204 @@
    "hit_ids": [
     "602a6b543095",
     "a13398217127"
+   ]
+  },
+  {
+   "id": "5b4589f1c1d4",
+   "score": 22.5,
+   "headline": "North Elba Select Board holds hearing on a data-center law",
+   "dek": "The Select Board meets Tuesday, Nov 3. The agenda lists a public hearing on a data-center law.",
+   "quote": "November 17th) Data Center Law E-Bike Law Roofing bids Generator Contract Compensation Time Policy Craig Wood Winter Contract Cascade Acres District Formation",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 3"
+   ],
+   "why": [],
+   "stakes": 15.0,
+   "buzz": 0.0,
+   "topics": [
+    "data_center"
+   ],
+   "state": "NY",
+   "town": "North Elba",
+   "county": "Essex",
+   "towns": [
+    "NY:North Elba"
+   ],
+   "board": "Select Board / Council",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-03",
+   "meeting_date_source": "agenda",
+   "days_until": 0,
+   "first_seen": "2026-11-02T19:16:32+00:00",
+   "is_new": true,
+   "source_url": "https://northelba.villageoflakeplacid.ny.gov/11 - November Agenda Setting Meeting.docx",
+   "town_path": "/ny/north-elba",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "North Elba",
+     "board": "Select Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-03"
+    }
+   ],
+   "hit_ids": [
+    "6efed82a727c"
+   ]
+  },
+  {
+   "id": "8323b4905f2b",
+   "score": 22.5,
+   "headline": "City of Petersburg City Council holds hearing on a data-center ordinance",
+   "dek": "The City Council meets Wednesday, Nov 4. The agenda lists a public hearing on a data-center ordinance.",
+   "quote": "First Read and Schedule a Public Hearing for Consideration of an Ordinance Amending the Zoning Ordinance of the City of Petersburg for the Purpose of Introducing Additional Zoning Regulations…",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 4"
+   ],
+   "why": [],
+   "stakes": 15.0,
+   "buzz": 0.0,
+   "topics": [
+    "data_center",
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "City of Petersburg",
+   "county": null,
+   "towns": [
+    "VA:City of Petersburg"
+   ],
+   "board": "City Council",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-02T19:35:25+00:00",
+   "is_new": true,
+   "source_url": "https://petersburgva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2103,plainText=false)",
+   "town_path": "/va/city-of-petersburg",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "City of Petersburg",
+     "board": "City Council",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-04"
+    },
+    {
+     "town": "City of Petersburg",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "4333f458bbc0",
+    "6d907c1a3583",
+    "864234607cfb",
+    "b5288214008c",
+    "d4dcdf4e430d",
+    "d7aa657aa912"
+   ]
+  },
+  {
+   "id": "07e265303151",
+   "score": 20.4,
+   "headline": "Loudoun County Board of Supervisors holds hearing on a data-center ordinance",
+   "dek": "The Board of Supervisors meets Thursday, Nov 12. The agenda lists a public hearing on a data-center ordinance.",
+   "quote": "Industrial Park (PD-IP) Zoning District under the 1972 Loudoun County Zoning Ordinance (1972 Zoning Ordinance) to the Industrial Park (IP) Zoning District under the Loudoun County Zoning Ordinance…",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 12",
+    "Also next door in Frederick County and Fairfax County"
+   ],
+   "why": [
+    "Also next door in Frederick County and Fairfax County"
+   ],
+   "stakes": 15.0,
+   "buzz": 2.0,
+   "topics": [
+    "data_center"
+   ],
+   "state": "VA",
+   "town": "Loudoun County",
+   "county": "Loudoun",
+   "towns": [
+    "VA:Loudoun County"
+   ],
+   "board": "Board of Supervisors Public Hearing",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-12",
+   "meeting_date_source": "agenda",
+   "days_until": 9,
+   "first_seen": "2026-11-02T19:32:36+00:00",
+   "is_new": true,
+   "source_url": "https://pub-loudoun.escribemeetings.com/Meeting.aspx?Id=91057f16-68ae-4bb1-9ecb-3dcc04467555&Agenda=Agenda&lang=English",
+   "town_path": "/va/loudoun-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Loudoun County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-12"
+    }
+   ],
+   "hit_ids": [
+    "d98c83825f70"
+   ]
+  },
+  {
+   "id": "20d34891ad23",
+   "score": 20.25,
+   "headline": "Shenandoah County planners hold hearing on data-center rules",
+   "dek": "The Planning Commission meets Thursday, Nov 5. The agenda lists a public hearing on data-center rules.",
+   "quote": "A Zoning Text Amendment to amend Article I, \"Purpose, Title and Definitions,\" Article III, \"District Regulations,\" Article XXI, \"Decommissioning,\" Article XXII, \"Energy Facilities,\" and Article…",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 5"
+   ],
+   "why": [],
+   "stakes": 15.0,
+   "buzz": 0.0,
+   "topics": [
+    "clean_energy_siting",
+    "data_center",
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "towns": [
+    "VA:Shenandoah County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-03T15:50:50+00:00",
+   "is_new": true,
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11052026-748",
+   "town_path": "/va/shenandoah-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Shenandoah County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "10d99e8bb97b",
+    "25044075ec5f",
+    "2bf08ec96e25",
+    "6b5eef1b48a4",
+    "c18c1aadaf04",
+    "f9b131faed9d"
    ]
   },
   {
@@ -827,6 +1091,318 @@
    ]
   },
   {
+   "id": "e9695273a274",
+   "score": 18.23,
+   "headline": "Meridian Charter Township Township Board discusses data-center rules",
+   "dek": "The Township Board meets Thursday, Nov 5. The agenda lists an item on data-center rules. It was on the Planning Commission agenda Oct 26.",
+   "quote": "The Meridian Township Planning Commission has proposed to amend several sections of the Zoning Ordinance to add definitions related to data centers and battery storage centers and add data centers…",
+   "reasons": [
+    "Draft rules",
+    "2 town boards",
+    "Meeting Nov 5"
+   ],
+   "why": [],
+   "stakes": 11.0,
+   "buzz": 2.5,
+   "topics": [
+    "battery_storage",
+    "clean_energy_siting",
+    "data_center",
+    "moratorium",
+    "zoning_amendment"
+   ],
+   "state": "MI",
+   "town": "Meridian Charter Township",
+   "county": "Ingham",
+   "towns": [
+    "MI:Meridian Charter Township"
+   ],
+   "board": "Township Board",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-02T19:37:31+00:00",
+   "is_new": true,
+   "source_url": "https://media-002-us.cdn.govstack.com/meridian-us/media/wvjf2fcr/110526-board-packet.pdf",
+   "town_path": "/mi/meridian-charter-township",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Meridian Charter Township",
+     "board": "Township Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-05"
+    },
+    {
+     "town": "Meridian Charter Township",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-26"
+    }
+   ],
+   "hit_ids": [
+    "135068c2bb85",
+    "15c18c162589",
+    "2a3c57b693ab",
+    "2dff7752250f",
+    "3614da83daf5",
+    "388bceb29eaf",
+    "4d86c5ac59b2",
+    "5e034021d27a",
+    "7107c868b7ab",
+    "a3d0a0f7011d",
+    "b9458d993fae",
+    "b9fc1811b369",
+    "bc47daf75799",
+    "bc7d37c7c536",
+    "c5802b423928",
+    "d253756e727d",
+    "d4e097fb5902",
+    "d74f74916bbc",
+    "eb20153e2ac7"
+   ]
+  },
+  {
+   "id": "dca4be14e43e",
+   "score": 18.15,
+   "headline": "Powhatan County planners hold hearing on zoning changes",
+   "dek": "The Planning Commission meets Wednesday, Nov 4. The agenda lists a public hearing on zoning changes. It was on the Board of Supervisors agenda Oct 26.",
+   "quote": "Motorsports Park An Ordinance amending Powhatan County Code Chapter 83 (Zoning Ordinance), Section 83-162 (Conditional Uses), to remove \"Motorsports Park\" as a use allowable by conditional use permit…",
+   "reasons": [
+    "Public hearing",
+    "2 town boards",
+    "Hearing Nov 4",
+    "Also next door in Amelia County, Chesterfield County and Cumberland County"
+   ],
+   "why": [
+    "Also next door in Amelia County, Chesterfield County and Cumberland County"
+   ],
+   "stakes": 6.6,
+   "buzz": 5.5,
+   "topics": [
+    "clean_energy_siting",
+    "solar",
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Powhatan County",
+   "county": "Powhatan",
+   "towns": [
+    "VA:Powhatan County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-02T19:42:32+00:00",
+   "is_new": true,
+   "source_url": "https://www.powhatanva.gov/AgendaCenter/ViewFile/Agenda/_11042026-1501",
+   "town_path": "/va/powhatan-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Powhatan County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-04"
+    },
+    {
+     "town": "Powhatan County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-26"
+    }
+   ],
+   "hit_ids": [
+    "04e81a0e3868",
+    "0a194f92c4d2",
+    "1caf6ed66dce",
+    "213160b3003a",
+    "22d015e3e4ee",
+    "26a3e3c1a251",
+    "2fe90dba9c46",
+    "30b7fa81d466",
+    "3884be629a44",
+    "3c426b699efd",
+    "4c1993843b0c",
+    "59944e71a0b9",
+    "6b1eaf4323aa",
+    "70df9327ad9e",
+    "8346458b26f5",
+    "8e77761ea498",
+    "c5dd4a7c00dc",
+    "d212fbf3bb8a",
+    "dbe549395245",
+    "e0d71f05492a",
+    "e80c9a7c55c8",
+    "f645e27e9131",
+    "fc96bbf93b3d"
+   ]
+  },
+  {
+   "id": "f1423f3a319f",
+   "score": 18.0,
+   "headline": "Franklin County planners discuss data-center rules",
+   "dek": "The Planning Commission meets Wednesday, Nov 4. The agenda lists an item on data-center rules.",
+   "quote": "…was expanded to include utilities, water, and sewer capacity because of new uses such as data centers.",
+   "reasons": [
+    "Draft rules",
+    "Also on the Oct 28 agenda",
+    "Meeting Nov 4"
+   ],
+   "why": [],
+   "stakes": 11.0,
+   "buzz": 1.0,
+   "topics": [
+    "data_center",
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Franklin County",
+   "county": "Franklin",
+   "towns": [
+    "VA:Franklin County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-02T19:33:02+00:00",
+   "is_new": true,
+   "source_url": "https://www.franklincountyva.gov/AgendaCenter/ViewFile/Agenda/_11042026-827",
+   "town_path": "/va/franklin-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Franklin County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-04"
+    }
+   ],
+   "hit_ids": [
+    "0ed34eea0b91",
+    "16f6406f1fb0",
+    "930cabc336c1",
+    "b129e8954f14",
+    "b5c15251410c",
+    "b6f45d476e3a",
+    "cb91f915c670",
+    "d47681e3814a",
+    "ee436e94cad6"
+   ]
+  },
+  {
+   "id": "f7f899e4370f",
+   "score": 18.0,
+   "headline": "Oxford Charter Township planners hold hearing on a data-center ordinance",
+   "dek": "The Planning Commission meets Monday, Nov 16. The agenda lists a public hearing on a data-center ordinance.",
+   "quote": "The appendix is titled \"Oxford Township Data Center Engineering Requirements\" and provides required information, designs, and standards relating to municipal water supply and sewer, water supply for…",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 16"
+   ],
+   "why": [],
+   "stakes": 15.0,
+   "buzz": 0.0,
+   "topics": [
+    "data_center",
+    "zoning_amendment"
+   ],
+   "state": "MI",
+   "town": "Oxford Charter Township",
+   "county": "Oakland",
+   "towns": [
+    "MI:Oxford Charter Township"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-16",
+   "meeting_date_source": "agenda",
+   "days_until": 13,
+   "first_seen": "2026-11-02T19:20:32+00:00",
+   "is_new": true,
+   "source_url": "https://oxfordtwpmi.gov/wp-content/uploads/2026/10/11-16-26-Planning-Commissing-Meeting-Agenda.pdf",
+   "town_path": "/mi/oxford-charter-township",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Oxford Charter Township",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-16"
+    },
+    {
+     "town": "Oxford Charter Township",
+     "board": "Select Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-14"
+    }
+   ],
+   "hit_ids": [
+    "0c70b40b1672",
+    "434aea51c101",
+    "44f87dbbcf4c",
+    "46adf2b21f69",
+    "5b9a4c0b9c25",
+    "87b63324e8c9",
+    "8b3ff982d916",
+    "99ef50054057",
+    "d94d9d151b53"
+   ]
+  },
+  {
+   "id": "ce5c707e01e4",
+   "score": 18.0,
+   "headline": "Augusta Charter Township planners hold hearing on a 6-month data-center moratorium",
+   "dek": "The Planning Commission meets Wednesday, Nov 18. The agenda lists a public hearing on a temporary moratorium on data centers.",
+   "quote": "The proposed amendment would establish a six (6) month temporary moratorium on certain zoning approvals and applications related to High Resource Demand Facilities, including data centers, while the…",
+   "reasons": [
+    "Moratorium hearing",
+    "Hearing Nov 18",
+    "Also next door in York Charter Township and Ypsilanti Charter Township"
+   ],
+   "why": [
+    "Also next door in York Charter Township and Ypsilanti Charter Township"
+   ],
+   "stakes": 18.0,
+   "buzz": 2.0,
+   "topics": [
+    "data_center",
+    "moratorium"
+   ],
+   "state": "MI",
+   "town": "Augusta Charter Township",
+   "county": "Washtenaw",
+   "towns": [
+    "MI:Augusta Charter Township"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-18",
+   "meeting_date_source": "agenda",
+   "days_until": 15,
+   "first_seen": "2026-11-02T19:37:30+00:00",
+   "is_new": true,
+   "source_url": "https://augustatownship.org/wp-content/uploads/2026/10/High-Demand-Facility-Moratorium-PC-PHN.pdf",
+   "town_path": "/mi/augusta-charter-township",
+   "action": "moratorium",
+   "boards": [
+    {
+     "town": "Augusta Charter Township",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-18"
+    }
+   ],
+   "hit_ids": [
+    "bc7640dbd60f"
+   ]
+  },
+  {
    "id": "1a54bf9dc2dc",
    "score": 17.96,
    "headline": "Whately zoning board hears Hyperion Systems permit request",
@@ -1076,6 +1652,119 @@
    ]
   },
   {
+   "id": "c06d4aa8ea9d",
+   "score": 16.5,
+   "headline": "Middlesex County Board of Supervisors discusses solar and battery storage rules",
+   "dek": "The Board of Supervisors meets Wednesday, Nov 4. The agenda lists an item on solar and battery storage rules.",
+   "quote": "Continue working with Staff re required changes to Zoning Ordinance per new laws (solar, battery storage, manufactured housing, and retail sales of marijuana land-use regulations).",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 4",
+    "Also next door in Gloucester County and King and Queen County"
+   ],
+   "why": [
+    "Also next door in Gloucester County and King and Queen County"
+   ],
+   "stakes": 9.0,
+   "buzz": 2.0,
+   "topics": [
+    "battery_storage",
+    "clean_energy_siting",
+    "solar",
+    "wireless_telecom",
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Middlesex County",
+   "county": "Middlesex",
+   "towns": [
+    "VA:Middlesex County"
+   ],
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-03T15:50:29+00:00",
+   "is_new": true,
+   "source_url": "https://www.co.middlesex.va.us/AgendaCenter/ViewFile/Agenda/_11042026-777",
+   "town_path": "/va/middlesex-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Middlesex County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-04"
+    }
+   ],
+   "hit_ids": [
+    "066f84775eb3",
+    "665d2957fa38",
+    "6eb0ce8805fa",
+    "9caa377d8cb9",
+    "c50ea3d211d5",
+    "e00a09c20682"
+   ]
+  },
+  {
+   "id": "c991c68ee4df",
+   "score": 15.45,
+   "headline": "Liberty Township (Butler County) Board of Trustees hears a rezoning request",
+   "dek": "The Board of Trustees meets Wednesday, Nov 4. The agenda lists a public hearing on a rezoning request.",
+   "quote": "Brent Wilkins, on behalf of M/I Homes of Cincinnati, LLC requests a zoning map amendment from RA-1 to R-PUD for an 88.0545-acre site and a preliminary PUD plan containing 110 single-family…",
+   "reasons": [
+    "Rezoning request",
+    "88.05 acres",
+    "2 town boards",
+    "Hearing Nov 4"
+   ],
+   "why": [
+    "88.05 acres"
+   ],
+   "stakes": 7.8,
+   "buzz": 2.5,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "OH",
+   "town": "Liberty Township (Butler County)",
+   "county": "Butler",
+   "towns": [
+    "OH:Liberty Township (Butler County)"
+   ],
+   "board": "Board of Trustees",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-02T19:41:08+00:00",
+   "is_new": true,
+   "source_url": "https://liberty-township.com/AgendaCenter/ViewFile/Agenda/_11042026-1011",
+   "town_path": "/oh/liberty-township-(butler-county)",
+   "action": "rezoning",
+   "boards": [
+    {
+     "town": "Liberty Township (Butler County)",
+     "board": "Board of Trustees",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-04"
+    },
+    {
+     "town": "Liberty Township (Butler County)",
+     "board": "Zoning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-19"
+    }
+   ],
+   "hit_ids": [
+    "050d552b9291",
+    "119ff749daad",
+    "2fefe5eb7081",
+    "4b8f5a0604c0"
+   ]
+  },
+  {
    "id": "1c226bbc3580",
    "score": 15.0,
    "headline": "Truro planners review permit request for a solar and battery project",
@@ -1173,6 +1862,98 @@
    ]
   },
   {
+   "id": "974723ae18a4",
+   "score": 14.4,
+   "headline": "Port Huron Charter Township Zoning Commission discusses data-center rules",
+   "dek": "The Zoning Commission meets Thursday, Nov 12. The agenda lists an item on data-center rules.",
+   "quote": "Standing Agenda Item- Data Center Ordinance discussion",
+   "reasons": [
+    "Draft rules",
+    "Also on the Oct 8 agenda",
+    "Meeting Nov 12"
+   ],
+   "why": [],
+   "stakes": 11.0,
+   "buzz": 1.0,
+   "topics": [
+    "data_center"
+   ],
+   "state": "MI",
+   "town": "Port Huron Charter Township",
+   "county": "St. Clair",
+   "towns": [
+    "MI:Port Huron Charter Township"
+   ],
+   "board": "Zoning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-12",
+   "meeting_date_source": "agenda",
+   "days_until": 9,
+   "first_seen": "2026-11-02T19:19:49+00:00",
+   "is_new": true,
+   "source_url": "https://www.porthurontownship.org/getattachment/15128ffb-1221-4bab-8549-cfd415aa37d9/20261112.aspx",
+   "town_path": "/mi/port-huron-charter-township",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Port Huron Charter Township",
+     "board": "Zoning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-12"
+    }
+   ],
+   "hit_ids": [
+    "a4450d96c1ca",
+    "deea35666079"
+   ]
+  },
+  {
+   "id": "ee324643b741",
+   "score": 14.4,
+   "headline": "Washington Charter Township planners discuss data-center rules",
+   "dek": "The Planning Commission meets Thursday, Nov 12. The agenda lists an item on data-center rules.",
+   "quote": "Definitions (related to data centers, industrial uses, ESS and shared active and passive recreation amenities)",
+   "reasons": [
+    "Draft rules",
+    "Also on the Oct 8 agenda",
+    "Meeting Nov 12"
+   ],
+   "why": [],
+   "stakes": 11.0,
+   "buzz": 1.0,
+   "topics": [
+    "data_center"
+   ],
+   "state": "MI",
+   "town": "Washington Charter Township",
+   "county": "Macomb",
+   "towns": [
+    "MI:Washington Charter Township"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-12",
+   "meeting_date_source": "agenda",
+   "days_until": 9,
+   "first_seen": "2026-11-02T19:40:37+00:00",
+   "is_new": true,
+   "source_url": "https://washingtonmi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4968,plainText=false)",
+   "town_path": "/mi/washington-charter-township",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Washington Charter Township",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-12"
+    }
+   ],
+   "hit_ids": [
+    "038bec6dfc17",
+    "7146b6012b9f"
+   ]
+  },
+  {
    "id": "950bb1f057fd",
    "score": 13.57,
    "headline": "Falmouth zoning board hears 50-unit 40B housing plan for 066-25 Sandwich Road",
@@ -1221,6 +2002,56 @@
    "hit_ids": [
     "33644fd12c26",
     "605b0b9d5eff"
+   ]
+  },
+  {
+   "id": "e568ec99cba2",
+   "score": 13.2,
+   "headline": "Montgomery County planners review permit request for a solar project",
+   "dek": "The Montgomery Planning Board meets Thursday, Nov 12. The agenda lists an application for a solar project at 9435 Holsey Road.",
+   "quote": "Plan showing disturbance required to construct a Solar Collection System located at located at 9435 Holsey Road, Damascus",
+   "reasons": [
+    "Permit application",
+    "51.59 acres",
+    "Meeting Nov 12",
+    "Also next door in Fairfax County and Loudoun County"
+   ],
+   "why": [
+    "Also next door in Fairfax County and Loudoun County",
+    "51.59 acres"
+   ],
+   "stakes": 9.0,
+   "buzz": 2.0,
+   "topics": [
+    "solar"
+   ],
+   "state": "MD",
+   "town": "Montgomery County",
+   "county": "Montgomery",
+   "towns": [
+    "MD:Montgomery County"
+   ],
+   "board": "Montgomery Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-12",
+   "meeting_date_source": "agenda",
+   "days_until": 9,
+   "first_seen": "2026-11-02T19:31:00+00:00",
+   "is_new": true,
+   "source_url": "https://montgomeryplanningboard.org/agenda-item/november-12-2026/#meeting-2026-11-12",
+   "town_path": "/md/montgomery-county",
+   "action": "project",
+   "boards": [
+    {
+     "town": "Montgomery County",
+     "board": "Montgomery Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-12"
+    }
+   ],
+   "hit_ids": [
+    "65d4a3552cdb",
+    "73a08839a404"
    ]
   },
   {
@@ -1578,6 +2409,54 @@
    ]
   },
   {
+   "id": "b58d0a9b225c",
+   "score": 10.8,
+   "headline": "Oxford Charter Township planners discuss battery storage rules",
+   "dek": "The Planning Commission meets Monday, Nov 16. The agenda lists an item on battery storage rules.",
+   "quote": "…and standards relating to fire protection systems, water supply, battery energy storage systems, backup power generation and fuel storage, emergency access and site operations, pre-incident…",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 16"
+   ],
+   "why": [],
+   "stakes": 9.0,
+   "buzz": 0.0,
+   "topics": [
+    "battery_storage",
+    "solar"
+   ],
+   "state": "MI",
+   "town": "Oxford Charter Township",
+   "county": "Oakland",
+   "towns": [
+    "MI:Oxford Charter Township"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-16",
+   "meeting_date_source": "agenda",
+   "days_until": 13,
+   "first_seen": "2026-11-02T19:20:32+00:00",
+   "is_new": true,
+   "source_url": "https://oxfordtwpmi.gov/wp-content/uploads/2026/10/11-16-26-Planning-Commissing-Meeting-Agenda.pdf",
+   "town_path": "/mi/oxford-charter-township",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Oxford Charter Township",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-16"
+    }
+   ],
+   "hit_ids": [
+    "07f2ffd335e2",
+    "346a3d0b75bc",
+    "931cecedaef5",
+    "e18824d4e8b2"
+   ]
+  },
+  {
    "id": "fdb54a9e8f22",
    "score": 10.5,
    "headline": "Blandford planners review Peebles Brook Solar permit request",
@@ -1678,6 +2557,99 @@
    ]
   },
   {
+   "id": "2dcf0bbc3914",
+   "score": 10.21,
+   "headline": "Loudoun County Board of Supervisors Business discusses data centers",
+   "dek": "The Board of Supervisors Business meets Thursday, Nov 5. The agenda lists a discussion of data centers.",
+   "quote": "To inform the Board of Supervisors (Board) about permissiveness of natural gas turbines Countywide, with the example of the Vantage Data Center VA2 site, Parcel Identification Number (PIN)…",
+   "reasons": [
+    "Meeting Nov 5",
+    "Also next door in Frederick County and Fairfax County"
+   ],
+   "why": [
+    "Also next door in Frederick County and Fairfax County"
+   ],
+   "stakes": 6.5,
+   "buzz": 2.0,
+   "topics": [
+    "data_center"
+   ],
+   "state": "VA",
+   "town": "Loudoun County",
+   "county": "Loudoun",
+   "towns": [
+    "VA:Loudoun County"
+   ],
+   "board": "Board of Supervisors Business Meeting",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-02T19:32:35+00:00",
+   "is_new": true,
+   "source_url": "https://pub-loudoun.escribemeetings.com/Meeting.aspx?Id=e3f455d0-966e-4b24-8d8d-cd5a02f4721c&Agenda=Agenda&lang=English",
+   "town_path": "/va/loudoun-county",
+   "action": "discussion",
+   "boards": [
+    {
+     "town": "Loudoun County",
+     "board": "Board of Supervisors Business",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "71ea545d2d5e"
+   ]
+  },
+  {
+   "id": "7eadb28187c4",
+   "score": 10.2,
+   "headline": "Goochland County Board of Supervisors hears rezoning of land on Ashland Road",
+   "dek": "The Board of Supervisors meets Wednesday, Nov 4. The agenda lists a public hearing on a rezoning request.",
+   "quote": "RZ-2026-00002 Application by KRLB Real Estate Holdings of Rockville, LLC requesting to rezone 17.969 acres from Agricultural, Limited (A-2) to Industrial, General (M-2) with proffered conditions, for…",
+   "reasons": [
+    "Rezoning request",
+    "17.97 acres",
+    "Hearing Nov 4"
+   ],
+   "why": [
+    "17.97 acres"
+   ],
+   "stakes": 6.8,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Goochland County",
+   "county": "Goochland",
+   "towns": [
+    "VA:Goochland County"
+   ],
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-02T19:32:13+00:00",
+   "is_new": true,
+   "source_url": "https://goochlandcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2262,plainText=false)",
+   "town_path": "/va/goochland-county",
+   "action": "rezoning",
+   "boards": [
+    {
+     "town": "Goochland County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-04"
+    }
+   ],
+   "hit_ids": [
+    "d020022da062"
+   ]
+  },
+  {
    "id": "431b15fbb2f8",
    "score": 10.12,
    "headline": "Quincy City Council discusses solar rules",
@@ -1733,6 +2705,141 @@
    ]
   },
   {
+   "id": "cc6a98b09f8a",
+   "score": 9.9,
+   "headline": "Royal Oak Charter Township planners hold hearing on zoning changes",
+   "dek": "The Planning Board meets Wednesday, Nov 4. The agenda lists a public hearing on zoning changes.",
+   "quote": "Zoning Text Amendment:",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 4"
+   ],
+   "why": [],
+   "stakes": 6.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MI",
+   "town": "Royal Oak Charter Township",
+   "county": "Oakland",
+   "towns": [
+    "MI:Royal Oak Charter Township"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-02T19:20:40+00:00",
+   "is_new": true,
+   "source_url": "https://www.royaloaktwp.com/documents/2026/Planning Commission Public Hearing Notice Marihuana 10.14.32026.pdf",
+   "town_path": "/mi/royal-oak-charter-township",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Royal Oak Charter Township",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-04"
+    }
+   ],
+   "hit_ids": [
+    "99e864341bab"
+   ]
+  },
+  {
+   "id": "4ad641095118",
+   "score": 9.45,
+   "headline": "Kent County planners review permit request for solar project at 10263 Worton Rd",
+   "dek": "The Planning Commission meets Thursday, Nov 5. The agenda lists a site plan review for a solar project at 10263 Worton Rd.",
+   "quote": "Utility Scale Solar 10263 Worton Rd, Chestertown",
+   "reasons": [
+    "Permit application",
+    "Meeting Nov 5"
+   ],
+   "why": [],
+   "stakes": 7.0,
+   "buzz": 0.0,
+   "topics": [
+    "solar"
+   ],
+   "state": "MD",
+   "town": "Kent County",
+   "county": "Kent",
+   "towns": [
+    "MD:Kent County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-02T19:31:00+00:00",
+   "is_new": true,
+   "source_url": "https://kentcountymd.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3169,plainText=false)",
+   "town_path": "/md/kent-county",
+   "action": "project",
+   "boards": [
+    {
+     "town": "Kent County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "d423f8929116"
+   ]
+  },
+  {
+   "id": "b430a3d26212",
+   "score": 9.36,
+   "headline": "Liberty Township (Butler County) Zoning Commission takes up a rezoning request",
+   "dek": "The Zoning Commission meets Monday, Nov 16. The agenda lists a rezoning request for 4851 CincinnatiDayton Road.",
+   "quote": "Shawn Bullock, on behalf of NVR Inc., is requesting a Zoning Map Amendment from RA-1 (Residential-Agricultural District) to R-1 (Suburban Residence District) for a 97.38-acre site.",
+   "reasons": [
+    "Rezoning request",
+    "97.38 acres",
+    "Meeting Nov 16"
+   ],
+   "why": [
+    "97.38 acres"
+   ],
+   "stakes": 7.8,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "OH",
+   "town": "Liberty Township (Butler County)",
+   "county": "Butler",
+   "towns": [
+    "OH:Liberty Township (Butler County)"
+   ],
+   "board": "Zoning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-16",
+   "meeting_date_source": "agenda",
+   "days_until": 13,
+   "first_seen": "2026-11-02T19:42:13+00:00",
+   "is_new": true,
+   "source_url": "https://liberty-township.com/AgendaCenter/ViewFile/Agenda/_11162026-1010",
+   "town_path": "/oh/liberty-township-(butler-county)",
+   "action": "rezoning",
+   "boards": [
+    {
+     "town": "Liberty Township (Butler County)",
+     "board": "Zoning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-16"
+    }
+   ],
+   "hit_ids": [
+    "543f0cd90444"
+   ]
+  },
+  {
    "id": "e85ac9153eee",
    "score": 9.19,
    "headline": "Leyden Planning Board takes up state clean energy permit process",
@@ -1778,6 +2885,53 @@
    ],
    "hit_ids": [
     "cab7cde0f77f"
+   ]
+  },
+  {
+   "id": "38bae973d88f",
+   "score": 9.18,
+   "headline": "Washington Township (Franklin County) Select Board hears a rezoning request",
+   "dek": "The Select Board meets Tuesday, Nov 10. The agenda lists a public hearing on a rezoning request.",
+   "quote": "An application by K2 Retail Development to amend the Washington Township Zoning Resolution to rezone approximately 5.8 acres consisting of three parcels along the north side of S.R.",
+   "reasons": [
+    "Rezoning request",
+    "5.8 acres",
+    "Hearing Nov 10"
+   ],
+   "why": [
+    "5.8 acres"
+   ],
+   "stakes": 6.8,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "OH",
+   "town": "Washington Township (Franklin County)",
+   "county": "Franklin",
+   "towns": [
+    "OH:Washington Township (Franklin County)"
+   ],
+   "board": "Select Board / Council",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-10",
+   "meeting_date_source": "agenda",
+   "days_until": 7,
+   "first_seen": "2026-11-02T19:18:02+00:00",
+   "is_new": true,
+   "source_url": "https://wtwpdublinoh.gov/cdn/Trustees-Zoning-Notice-of-Public-Hearing-11.10.2026-website.pdf",
+   "town_path": "/oh/washington-township-(franklin-county)",
+   "action": "rezoning",
+   "boards": [
+    {
+     "town": "Washington Township (Franklin County)",
+     "board": "Select Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-10"
+    }
+   ],
+   "hit_ids": [
+    "1234bf6100b4"
    ]
   },
   {
@@ -1832,6 +2986,231 @@
    ]
   },
   {
+   "id": "9971d561160c",
+   "score": 8.91,
+   "headline": "City of Petersburg planners hold hearing on zoning changes",
+   "dek": "The Planning Commission meets Thursday, Nov 5. The agenda lists a public hearing on zoning changes.",
+   "quote": "ZONING AND SUBDIVISION ORDINANCE AMENDMENT AND READOPTION: The City's Zoning Ordinance is proposed to be holistically repealed and replaced with a reorganized and updated Zoning/Subdivision…",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 5"
+   ],
+   "why": [],
+   "stakes": 6.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "City of Petersburg",
+   "county": null,
+   "towns": [
+    "VA:City of Petersburg"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-03T15:51:38+00:00",
+   "is_new": true,
+   "source_url": "https://www.petersburgva.gov/AgendaCenter/ViewFile/Agenda/_11052026-1044",
+   "town_path": "/va/city-of-petersburg",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "City of Petersburg",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "34a5d3313007"
+   ]
+  },
+  {
+   "id": "a94279de8879",
+   "score": 8.91,
+   "headline": "King William County planners hold hearing on zoning changes",
+   "dek": "The Planning Commission meets Thursday, Nov 5. The agenda lists a public hearing on zoning changes.",
+   "quote": "Discussion of amendments to the Zoning Ordinance regulating adult-use cannabis",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 5"
+   ],
+   "why": [],
+   "stakes": 6.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "King William County",
+   "county": "King William",
+   "towns": [
+    "VA:King William County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-02T19:32:36+00:00",
+   "is_new": true,
+   "source_url": "https://kingwilliamcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3495,plainText=false)",
+   "town_path": "/va/king-william-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "King William County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "1b07fd517340",
+    "b6ba525169b8"
+   ]
+  },
+  {
+   "id": "fcfdfa946765",
+   "score": 8.91,
+   "headline": "Orange County planners hold hearing on zoning changes",
+   "dek": "The Planning Commission meets Thursday, Nov 5. The agenda lists a public hearing on zoning changes.",
+   "quote": "Josh Frederick, Planning and Zoning Services Manager The Planning Commission will consider a proposed amendment to the Orange County Zoning Ordinance.",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 5"
+   ],
+   "why": [],
+   "stakes": 6.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Orange County",
+   "county": "Orange",
+   "towns": [
+    "VA:Orange County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-02T19:33:07+00:00",
+   "is_new": true,
+   "source_url": "https://orangecova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1146,plainText=false)",
+   "town_path": "/va/orange-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Orange County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "25963c882db9",
+    "285e8868d913"
+   ]
+  },
+  {
+   "id": "1577d10f7304",
+   "score": 8.91,
+   "headline": "Shenandoah County planners hold hearing on zoning changes",
+   "dek": "The Planning Commission meets Thursday, Nov 5. The agenda lists a public hearing on zoning changes.",
+   "quote": "McKenzie Allen Zoning Text Amendment (Zoning Text Amendment 26-11-01):",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 5"
+   ],
+   "why": [],
+   "stakes": 6.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "towns": [
+    "VA:Shenandoah County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-03T15:50:50+00:00",
+   "is_new": true,
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11052026-748",
+   "town_path": "/va/shenandoah-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Shenandoah County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "0075a584cf01",
+    "3d2ff72a2535",
+    "a633b4b1e5b8",
+    "c32d6f4a3ad9"
+   ]
+  },
+  {
+   "id": "86bb96591501",
+   "score": 8.91,
+   "headline": "Macomb Township planners hold hearing on zoning changes",
+   "dek": "The Planning Commission meets Monday, Nov 9. The agenda lists a public hearing on zoning changes.",
+   "quote": "Proposed Zoning Ordinance Amendment",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 9"
+   ],
+   "why": [],
+   "stakes": 6.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MI",
+   "town": "Macomb Township",
+   "county": "Macomb",
+   "towns": [
+    "MI:Macomb Township"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-09",
+   "meeting_date_source": "agenda",
+   "days_until": 6,
+   "first_seen": "2026-11-02T19:39:37+00:00",
+   "is_new": true,
+   "source_url": "https://macombtwpmi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2281,plainText=false)",
+   "town_path": "/mi/macomb-township",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Macomb Township",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-09"
+    }
+   ],
+   "hit_ids": [
+    "161b3f176002"
+   ]
+  },
+  {
    "id": "447b66f47316",
    "score": 8.78,
    "headline": "Acushnet planners review Greenbrier Camp Realty permit request",
@@ -1877,6 +3256,255 @@
    "hit_ids": [
     "4f9ad654d155",
     "9e271544e47e"
+   ]
+  },
+  {
+   "id": "44270678b723",
+   "score": 8.78,
+   "headline": "Gloucester County planners review a draft solar ordinance",
+   "dek": "The Planning Commission meets Thursday, Nov 5. The agenda lists a draft solar ordinance.",
+   "quote": "Solar Ordinance Draft with I-1 Wellness Centers, Boutique Hotels",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 5",
+    "Also next door in King and Queen County and Middlesex County"
+   ],
+   "why": [
+    "Also next door in King and Queen County and Middlesex County"
+   ],
+   "stakes": 4.5,
+   "buzz": 2.0,
+   "topics": [
+    "solar"
+   ],
+   "state": "VA",
+   "town": "Gloucester County",
+   "county": "Gloucester",
+   "towns": [
+    "VA:Gloucester County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-02T19:32:05+00:00",
+   "is_new": true,
+   "source_url": "https://pub-gloucesterva.escribemeetings.com/Meeting.aspx?Id=616d51d2-d92c-4a73-bde6-abaeddcc5bd5&Agenda=Agenda&lang=English",
+   "town_path": "/va/gloucester-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Gloucester County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "05c784b37254",
+    "a85620e2adce"
+   ]
+  },
+  {
+   "id": "69c3f7e0bdcb",
+   "score": 8.69,
+   "headline": "Solar item on Orange County Planning Commission agenda",
+   "dek": "The Planning Commission meets Thursday, Nov 5. The agenda lists an item on solar. It was on the Board of Supervisors agenda Oct 27.",
+   "quote": "Grassland Solar 3 Marshall BOS SUP-2026-00561:",
+   "reasons": [
+    "6 MW",
+    "2 town boards",
+    "Meeting Nov 5",
+    "Also next door in Madison County and Spotsylvania County"
+   ],
+   "why": [
+    "Also next door in Madison County and Spotsylvania County",
+    "6 MW"
+   ],
+   "stakes": 4.75,
+   "buzz": 4.5,
+   "topics": [
+    "clean_energy_siting",
+    "solar",
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Orange County",
+   "county": "Orange",
+   "towns": [
+    "VA:Orange County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-02T19:33:05+00:00",
+   "is_new": true,
+   "source_url": "https://orangecova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1146,plainText=false)",
+   "town_path": "/va/orange-county",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Orange County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-05"
+    },
+    {
+     "town": "Orange County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-27"
+    }
+   ],
+   "hit_ids": [
+    "397251a713c8",
+    "5358e9a54a4c",
+    "a818a5e579d0",
+    "e8b31b78007f",
+    "fec17a8fcce4"
+   ]
+  },
+  {
+   "id": "72d268ec166f",
+   "score": 8.4,
+   "headline": "Chesterfield County planners discuss cell tower rules",
+   "dek": "The Planning Commission meets Tuesday, Nov 17. The agenda lists an item on cell tower rules.",
+   "quote": "In Matoaca Magisterial District, Hull Street Road Telecommunication Tower is a request for conditional use to permit a telecommunication tower and amendment of zoning district map in an Agricultural…",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 17",
+    "Also next door in Amelia County, City of Petersburg and Dinwiddie County"
+   ],
+   "why": [
+    "Also next door in Amelia County, City of Petersburg and Dinwiddie County"
+   ],
+   "stakes": 4.0,
+   "buzz": 3.0,
+   "topics": [
+    "wireless_telecom"
+   ],
+   "state": "VA",
+   "town": "Chesterfield County",
+   "county": "Chesterfield",
+   "towns": [
+    "VA:Chesterfield County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-17",
+   "meeting_date_source": "agenda",
+   "days_until": 14,
+   "first_seen": "2026-11-03T15:49:59+00:00",
+   "is_new": true,
+   "source_url": "https://chesterfieldcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5319,plainText=false)",
+   "town_path": "/va/chesterfield-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Chesterfield County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-17"
+    }
+   ],
+   "hit_ids": [
+    "b0cecac52919"
+   ]
+  },
+  {
+   "id": "6ef2bbb583cd",
+   "score": 8.27,
+   "headline": "Clean energy item on Loudoun County Board of Supervisors Business agenda",
+   "dek": "The Board of Supervisors Business meets Thursday, Nov 5. The agenda lists an item on the state's consolidated permit process.",
+   "quote": "To consider a Special Exception (SPEX) to permit a Utility, Major (utility substation) in the Industrial Park (IP) Zoning District, a Minor SPEX to modify buffer requirements, and a SPEX to reduce…",
+   "reasons": [
+    "Meeting Nov 5",
+    "Also next door in Montgomery County and Fairfax County"
+   ],
+   "why": [
+    "Also next door in Montgomery County and Fairfax County"
+   ],
+   "stakes": 4.5,
+   "buzz": 2.0,
+   "topics": [
+    "clean_energy_siting"
+   ],
+   "state": "VA",
+   "town": "Loudoun County",
+   "county": "Loudoun",
+   "towns": [
+    "VA:Loudoun County"
+   ],
+   "board": "Board of Supervisors Business Meeting",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-02T19:32:35+00:00",
+   "is_new": true,
+   "source_url": "https://pub-loudoun.escribemeetings.com/Meeting.aspx?Id=e3f455d0-966e-4b24-8d8d-cd5a02f4721c&Agenda=Agenda&lang=English",
+   "town_path": "/va/loudoun-county",
+   "action": "process",
+   "boards": [
+    {
+     "town": "Loudoun County",
+     "board": "Board of Supervisors Business",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "afd52e4c7403"
+   ]
+  },
+  {
+   "id": "fb2c4b96b2a9",
+   "score": 8.16,
+   "headline": "Orange Township planners hear a rezoning request",
+   "dek": "The Planning Board meets Tuesday, Nov 17. The agenda lists a public hearing on a rezoning request.",
+   "quote": "Zoning Amendment Application #ZON-25-04, Bondada Parktown, Requesting rezone approximately 9.24 acres from Farm Residential (FR-1) District to Planned Commercial and Office (PC) District to allow a…",
+   "reasons": [
+    "Rezoning request",
+    "9.24 acres",
+    "Hearing Nov 17"
+   ],
+   "why": [
+    "9.24 acres"
+   ],
+   "stakes": 6.8,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "OH",
+   "town": "Orange Township",
+   "county": "Delaware",
+   "towns": [
+    "OH:Orange Township"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-17",
+   "meeting_date_source": "agenda",
+   "days_until": 14,
+   "first_seen": "2026-11-03T15:48:40+00:00",
+   "is_new": true,
+   "source_url": "https://www.orangetwp.org/wp-content/uploads/2026/11/ZON-26-08-ZON-25-04-ZC-Legal-Notice.pdf",
+   "town_path": "/oh/orange-township",
+   "action": "rezoning",
+   "boards": [
+    {
+     "town": "Orange Township",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-17"
+    }
+   ],
+   "hit_ids": [
+    "5a947d3b4080"
    ]
   },
   {
@@ -1929,6 +3557,140 @@
    "hit_ids": [
     "d996edf3c017",
     "f9c7cc67d300"
+   ]
+  },
+  {
+   "id": "483cbe623485",
+   "score": 7.92,
+   "headline": "Loudoun County Board of Supervisors holds hearing on zoning changes",
+   "dek": "The Board of Supervisors meets Thursday, Nov 12. The agenda lists a public hearing on zoning changes.",
+   "quote": "To consider a Zoning Ordinance Amendment (ZOAM) to implement new mandates required by Virginia Code §§§ , , and (Virginia Code) relating to the by-right development of affordable housing by religious…",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 12"
+   ],
+   "why": [],
+   "stakes": 6.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Loudoun County",
+   "county": "Loudoun",
+   "towns": [
+    "VA:Loudoun County"
+   ],
+   "board": "Board of Supervisors Public Hearing",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-12",
+   "meeting_date_source": "agenda",
+   "days_until": 9,
+   "first_seen": "2026-11-02T19:32:36+00:00",
+   "is_new": true,
+   "source_url": "https://pub-loudoun.escribemeetings.com/Meeting.aspx?Id=91057f16-68ae-4bb1-9ecb-3dcc04467555&Agenda=Agenda&lang=English",
+   "town_path": "/va/loudoun-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Loudoun County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-12"
+    }
+   ],
+   "hit_ids": [
+    "11e543736777",
+    "43a7e8b6bdc4",
+    "9084645f2239"
+   ]
+  },
+  {
+   "id": "95ae12550bc4",
+   "score": 7.92,
+   "headline": "Chesterfield County planners hold hearing on zoning changes",
+   "dek": "The Planning Commission meets Tuesday, Nov 17. The agenda lists a public hearing on zoning changes.",
+   "quote": "…the recommendation and/or there is public opposition; and zoning ordinance amendments.",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 17"
+   ],
+   "why": [],
+   "stakes": 6.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Chesterfield County",
+   "county": "Chesterfield",
+   "towns": [
+    "VA:Chesterfield County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-17",
+   "meeting_date_source": "agenda",
+   "days_until": 14,
+   "first_seen": "2026-11-03T15:49:59+00:00",
+   "is_new": true,
+   "source_url": "https://chesterfieldcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5319,plainText=false)",
+   "town_path": "/va/chesterfield-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Chesterfield County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-17"
+    }
+   ],
+   "hit_ids": [
+    "c0783b8039f9"
+   ]
+  },
+  {
+   "id": "7b3a40f071dd",
+   "score": 7.83,
+   "headline": "Campbell County Board of Supervisors takes up a rezoning request",
+   "dek": "The Board of Supervisors meets Thursday, Nov 5. The agenda lists a rezoning request for 106 Prestwood Road.",
+   "quote": "8.III. #PL-26-193 REZONING – 106 PRESTWOOD ROAD Request by Russ Nixon of Nixon Land Surveying, agent for Beewrecks, LLC, to rezone property located at 106 Prestwood Road and further identified as tax…",
+   "reasons": [
+    "Rezoning request",
+    "Meeting Nov 5"
+   ],
+   "why": [],
+   "stakes": 5.8,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Campbell County",
+   "county": "Campbell",
+   "towns": [
+    "VA:Campbell County"
+   ],
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-03T15:50:13+00:00",
+   "is_new": true,
+   "source_url": "https://www.co.campbell.va.us/AgendaCenter/ViewFile/Agenda/_11052026-733",
+   "town_path": "/va/campbell-county",
+   "action": "rezoning",
+   "boards": [
+    {
+     "town": "Campbell County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "f741dc6a676d"
    ]
   },
   {
@@ -2116,6 +3878,54 @@
    ]
   },
   {
+   "id": "37a492578fef",
+   "score": 7.5,
+   "headline": "Franklin County planners review a zoning request",
+   "dek": "The Planning Commission meets Wednesday, Nov 4. The agenda lists a site plan review and variance for a property.",
+   "quote": "Applications for Subdivision Site Plans, Variances Appeals, Special Use Permits, Zoning Permits, Land Use Permits, or amendments to the Ordinance or Official Zoning Map Amendment (rezoning) and any…",
+   "reasons": [
+    "Permit application",
+    "Meeting Nov 4"
+   ],
+   "why": [],
+   "stakes": 5.0,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Franklin County",
+   "county": "Franklin",
+   "towns": [
+    "VA:Franklin County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-02T19:33:02+00:00",
+   "is_new": true,
+   "source_url": "https://www.franklincountyva.gov/AgendaCenter/ViewFile/Agenda/_11042026-827",
+   "town_path": "/va/franklin-county",
+   "action": "project",
+   "boards": [
+    {
+     "town": "Franklin County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-04"
+    }
+   ],
+   "hit_ids": [
+    "060f4efb905f",
+    "5a57dd083bdf",
+    "5dd87608923f",
+    "911ad9f91605",
+    "ed7a6d457571"
+   ]
+  },
+  {
    "id": "f80fb39eb806",
    "score": 7.5,
    "headline": "Lawrence City Council discusses zoning changes",
@@ -2157,6 +3967,200 @@
    ],
    "hit_ids": [
     "5d34b4877245"
+   ]
+  },
+  {
+   "id": "ad0a7aa0ffb5",
+   "score": 7.5,
+   "headline": "Madison County planners discuss zoning changes",
+   "dek": "The Planning Commission meets Wednesday, Nov 4. The agenda lists an item on zoning changes.",
+   "quote": "developing a replacement better suited for the County's needs. Page 1 of 2 - (Case No. ZOA-10-26-01) Accessory Dwelling Unit Ordinance Amendment (Second Workshop) Changes to the Accessory Dwelling…",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 4"
+   ],
+   "why": [],
+   "stakes": 5.0,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Madison County",
+   "county": "Madison",
+   "towns": [
+    "VA:Madison County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-03T15:51:37+00:00",
+   "is_new": true,
+   "source_url": "https://www.madisonco.virginia.gov/AgendaCenter/ViewFile/Agenda/_11042026-485",
+   "town_path": "/va/madison-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Madison County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-04"
+    }
+   ],
+   "hit_ids": [
+    "25e2a2bf1e87",
+    "895393d2d312",
+    "9d238b9fd4cb",
+    "ea311db2df0a",
+    "fa12e0626139"
+   ]
+  },
+  {
+   "id": "c390b9a6363c",
+   "score": 7.5,
+   "headline": "Madison County Board of Supervisors discusses zoning changes",
+   "dek": "The Board of Supervisors meets Wednesday, Nov 4. The agenda lists an item on zoning changes.",
+   "quote": "14-3 of the Madison County Zoning Ordinance. .",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 4"
+   ],
+   "why": [],
+   "stakes": 5.0,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Madison County",
+   "county": "Madison",
+   "towns": [
+    "VA:Madison County"
+   ],
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-03T15:50:34+00:00",
+   "is_new": true,
+   "source_url": "https://www.madisonco.virginia.gov/AgendaCenter/ViewFile/Agenda/_11042026-484",
+   "town_path": "/va/madison-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Madison County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-04"
+    }
+   ],
+   "hit_ids": [
+    "6c70576bea75",
+    "7166c3b04c7b",
+    "a945db804eb2",
+    "c10480e96748",
+    "e1582e993357"
+   ]
+  },
+  {
+   "id": "6de8ca8310c9",
+   "score": 7.5,
+   "headline": "Medina County planners discuss zoning changes",
+   "dek": "The Medina County Planning Commission meets Wednesday, Nov 4. The agenda lists an item on zoning changes.",
+   "quote": "Staff recommend the Medina County Planning Commission Approve with Modifications the proposed text amendments to the Chatham Township Zoning Resolution.",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 4"
+   ],
+   "why": [],
+   "stakes": 5.0,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "OH",
+   "town": "Medina County",
+   "county": "Medina",
+   "towns": [
+    "OH:Medina County"
+   ],
+   "board": "Medina County Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-02T19:41:33+00:00",
+   "is_new": true,
+   "source_url": "https://www.medinaco.org/wp-content/uploads/1-Staff-Report-NOV.pdf",
+   "town_path": "/oh/medina-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Medina County",
+     "board": "Medina County Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-04"
+    }
+   ],
+   "hit_ids": [
+    "0a87443a8622",
+    "1f2adff99f07",
+    "4dce7642ae6c",
+    "63d9406c6b15",
+    "c2410568035d",
+    "e144171030a7",
+    "efd2d0952672"
+   ]
+  },
+  {
+   "id": "a642485ed73f",
+   "score": 7.5,
+   "headline": "Middlesex County Board of Supervisors discusses zoning changes",
+   "dek": "The Board of Supervisors meets Wednesday, Nov 4. The agenda lists an item on zoning changes.",
+   "quote": "Consideration of Historical Preservation District Zoning Ordinance Amendment- Heather Lewis & Joyce Wolfe (pages 150-168)",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 4"
+   ],
+   "why": [],
+   "stakes": 5.0,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Middlesex County",
+   "county": "Middlesex",
+   "towns": [
+    "VA:Middlesex County"
+   ],
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-04",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-03T15:50:29+00:00",
+   "is_new": true,
+   "source_url": "https://www.co.middlesex.va.us/AgendaCenter/ViewFile/Agenda/_11042026-777",
+   "town_path": "/va/middlesex-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Middlesex County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-04"
+    }
+   ],
+   "hit_ids": [
+    "62f9f6de2388",
+    "78bc01c69569",
+    "c1dbe909ae19",
+    "cd0fe3a6361b",
+    "f85cb0abed11"
    ]
   },
   {
@@ -2480,6 +4484,53 @@
    ]
   },
   {
+   "id": "7c9d136683b8",
+   "score": 7.35,
+   "headline": "Loudoun County Board of Supervisors takes up state clean energy permit process",
+   "dek": "The Board of Supervisors meets Thursday, Nov 12. The agenda lists an item on the state's consolidated permit process.",
+   "quote": "Matt Kessler & Daniel Galindo, Planning and Zoning Purpose:",
+   "reasons": [
+    "Meeting Nov 12",
+    "Also next door in Montgomery County and Fairfax County"
+   ],
+   "why": [
+    "Also next door in Montgomery County and Fairfax County"
+   ],
+   "stakes": 4.5,
+   "buzz": 2.0,
+   "topics": [
+    "clean_energy_siting",
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Loudoun County",
+   "county": "Loudoun",
+   "towns": [
+    "VA:Loudoun County"
+   ],
+   "board": "Board of Supervisors Public Hearing",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-12",
+   "meeting_date_source": "agenda",
+   "days_until": 9,
+   "first_seen": "2026-11-02T19:32:36+00:00",
+   "is_new": true,
+   "source_url": "https://pub-loudoun.escribemeetings.com/Meeting.aspx?Id=91057f16-68ae-4bb1-9ecb-3dcc04467555&Agenda=Agenda&lang=English",
+   "town_path": "/va/loudoun-county",
+   "action": "process",
+   "boards": [
+    {
+     "town": "Loudoun County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-12"
+    }
+   ],
+   "hit_ids": [
+    "18a8aaea8f63"
+   ]
+  },
+  {
    "id": "193d45950edb",
    "score": 7.09,
    "headline": "Northbridge Planning Board votes on state clean energy permit process",
@@ -2525,6 +4576,276 @@
    ],
    "hit_ids": [
     "d7f43fa3ea3c"
+   ]
+  },
+  {
+   "id": "356b08c386bf",
+   "score": 6.96,
+   "headline": "Franklin County planners take up rezoning request for 1945 Jackson Road",
+   "dek": "The Franklin County Planning Commission meets Thursday, Nov 12. The agenda lists a rezoning request for 1945 Jackson Road.",
+   "quote": "…Private utilities Current zoning Limited Industrial (LI) Request Rezoning from Limited Industrial to Select Commercial Planned District",
+   "reasons": [
+    "Rezoning request",
+    "Meeting Nov 12"
+   ],
+   "why": [],
+   "stakes": 5.8,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "OH",
+   "town": "Franklin County",
+   "county": "Franklin",
+   "towns": [
+    "OH:Franklin County"
+   ],
+   "board": "Franklin County Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-12",
+   "meeting_date_source": "agenda",
+   "days_until": 9,
+   "first_seen": "2026-11-02T19:41:24+00:00",
+   "is_new": true,
+   "source_url": "https://www.franklincountyohio.gov/files/assets/public/v/1/edp/documents/edp-boards-and-commissions/agendas/2026-11-12-pc-agenda.pdf",
+   "town_path": "/oh/franklin-county",
+   "action": "rezoning",
+   "boards": [
+    {
+     "town": "Franklin County",
+     "board": "Franklin County Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-12"
+    }
+   ],
+   "hit_ids": [
+    "cc890f5b81b6"
+   ]
+  },
+  {
+   "id": "795dd38de0db",
+   "score": 6.96,
+   "headline": "Franklin Township (Franklin County) planners hear a rezoning request",
+   "dek": "The Franklin County Planning Commission meets Thursday, Nov 12. The agenda lists a rezoning request.",
+   "quote": "What's being considered ZON-26-10 Franklin Township Hounddogs Towing is asking for a recommendation to rezone approximately 3 acres at 1945 Jackson Road from limited industrial to a select commercial…",
+   "reasons": [
+    "Rezoning request",
+    "Hearing Nov 12"
+   ],
+   "why": [],
+   "stakes": 5.8,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "OH",
+   "town": "Franklin Township (Franklin County)",
+   "county": "Franklin",
+   "towns": [
+    "OH:Franklin Township (Franklin County)"
+   ],
+   "board": "Franklin County Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-12",
+   "meeting_date_source": "agenda",
+   "days_until": 9,
+   "first_seen": "2026-11-02T19:41:23+00:00",
+   "is_new": true,
+   "source_url": "https://www.franklincountyohio.gov/files/assets/public/v/1/edp/documents/edp-boards-and-commissions/public-notices/pc-notices/2026-11-12-pc-notice.pdf",
+   "town_path": "/oh/franklin-township-(franklin-county)",
+   "action": "rezoning",
+   "boards": [
+    {
+     "town": "Franklin Township (Franklin County)",
+     "board": "Franklin County Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-12"
+    }
+   ],
+   "hit_ids": [
+    "eeab8c1266d0"
+   ]
+  },
+  {
+   "id": "d811712782b1",
+   "score": 6.75,
+   "headline": "City of Alexandria planners discuss zoning changes",
+   "dek": "The Planning Commission meets Thursday, Nov 5. The agenda lists an item on zoning changes.",
+   "quote": "…1 7 Land Use and Development (Planning Commission Items) Zoning Text Amendment #2026-00006 Parking Requirements (A) Initiation of a Zoning Text Amendment",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 5"
+   ],
+   "why": [],
+   "stakes": 5.0,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "City of Alexandria",
+   "county": null,
+   "towns": [
+    "VA:City of Alexandria"
+   ],
+   "board": "Planning Commission Public Hearing",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-02T19:33:51+00:00",
+   "is_new": true,
+   "source_url": "https://alexandria.legistar.com/MeetingDetail.aspx?LEGID=2742&GID=239&G=188E7221-51C6-4DB4-965D-DA161BCFB1F6",
+   "town_path": "/va/city-of-alexandria",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "City of Alexandria",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "25e94fb8d418",
+    "79cd1701c944",
+    "9a9eb01b6612",
+    "b15a44bdfa34"
+   ]
+  },
+  {
+   "id": "26970a37ef24",
+   "score": 6.75,
+   "headline": "Montgomery County planners discuss zoning changes",
+   "dek": "The Montgomery Planning Board meets Thursday, Nov 5. The agenda lists an item on zoning changes.",
+   "quote": "Draft Zoning Text Amendment for the proposed Friendship Heights Overlay Zone A. Margolies Item 11 ADDED 10/29 Town of Laytonsville Draft Comprehensive Plan and Municipal Growth Area Review and…",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 5"
+   ],
+   "why": [],
+   "stakes": 5.0,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MD",
+   "town": "Montgomery County",
+   "county": "Montgomery",
+   "towns": [
+    "MD:Montgomery County"
+   ],
+   "board": "Montgomery Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-02T19:30:55+00:00",
+   "is_new": true,
+   "source_url": "https://montgomeryplanningboard.org/agenda-item/november-5-2026/#meeting-2026-11-05",
+   "town_path": "/md/montgomery-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Montgomery County",
+     "board": "Montgomery Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "8a5f55d86181"
+   ]
+  },
+  {
+   "id": "e7599e4f75c6",
+   "score": 6.75,
+   "headline": "Surry County Board of Supervisors discusses zoning changes",
+   "dek": "The Board of Supervisors meets Thursday, Nov 5. The agenda lists an item on zoning changes.",
+   "quote": "A-R, Agricultural-Rural District of the Surry County Zoning Ordinance by amending:",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 5"
+   ],
+   "why": [],
+   "stakes": 5.0,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Surry County",
+   "county": "Surry",
+   "towns": [
+    "VA:Surry County"
+   ],
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-05",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-02T19:33:26+00:00",
+   "is_new": true,
+   "source_url": "https://surrycova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1329,plainText=false)",
+   "town_path": "/va/surry-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Surry County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-05"
+    }
+   ],
+   "hit_ids": [
+    "216aa20cfaf2",
+    "a1f8326979f9"
+   ]
+  },
+  {
+   "id": "689b5f4800eb",
+   "score": 6.75,
+   "headline": "Salem Town Board discusses zoning changes",
+   "dek": "The Town Board meets Monday, Nov 9. The agenda lists an item on zoning changes.",
+   "quote": "…detailed zoning framework provided in Appendix D should serve as the basis for future zoning amendments.",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 9"
+   ],
+   "why": [],
+   "stakes": 5.0,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "NY",
+   "town": "Salem",
+   "county": "Washington",
+   "towns": [
+    "NY:Salem"
+   ],
+   "board": "Town Board Meetings",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-09",
+   "meeting_date_source": "agenda",
+   "days_until": 6,
+   "first_seen": "2026-11-02T19:09:08+00:00",
+   "is_new": true,
+   "source_url": "https://static1.squarespace.com/static/68e3e71c469b344b888d0dbc/t/6adb90d7b3532f6027b836b9/1792774359620/00+-+Draft+Comp+Plan+-no+appendices_sm.pdf",
+   "town_path": "/ny/salem",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Salem",
+     "board": "Town Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-09"
+    }
+   ],
+   "hit_ids": [
+    "266b7e9249e2",
+    "41d36546d3f6",
+    "c6703d63e24e"
    ]
   },
   {
@@ -2670,1568 +4991,92 @@
    ]
   },
   {
-   "id": "82e6654ab860",
-   "score": 6.0,
-   "headline": "Easthampton City Council discusses zoning changes",
-   "dek": "The City Council meets Wednesday, Nov 4. The agenda lists an item on zoning changes.",
-   "quote": "Zoning Ordinance Housekeeping Items from Ordinance Review Committee Report (9-2-26) (12-1-26)",
+   "id": "45e00a1135dc",
+   "score": 6.56,
+   "headline": "Franklin County Planning Commission takes up state clean energy permit process",
+   "dek": "The Planning Commission meets Wednesday, Nov 4. The agenda lists an item on the state's consolidated permit process.",
+   "quote": "deemed necessary to serve the development such as schools, libraries, and police substations. This plan or report shall relate to the sequence of the development schedule if the development is to be…",
    "reasons": [
-    "Draft rules",
     "Meeting Nov 4"
    ],
    "why": [],
-   "stakes": 4.0,
+   "stakes": 4.5,
    "buzz": 0.0,
    "topics": [
-    "zoning_amendment"
+    "clean_energy_siting",
+    "solar"
    ],
-   "state": "MA",
-   "town": "Easthampton",
-   "county": "Hampshire",
-   "towns": [
-    "MA:Easthampton"
-   ],
-   "board": "City Council",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-10-30T11:09:32+00:00",
-   "is_new": false,
-   "source_url": "https://easthamptonma.gov/AgendaCenter/ViewFile/Agenda/_11042026-3725",
-   "town_path": "/ma/easthampton",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Easthampton",
-     "board": "City Council",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "da90404d343b"
-   ]
-  },
-  {
-   "id": "471c0977311a",
-   "score": 6.0,
-   "headline": "Foster planners discuss zoning changes",
-   "dek": "The Planning Board meets Wednesday, Nov 4. The agenda lists an item on zoning changes.",
-   "quote": "Presentation of Final Draft Zoning Amendments by Planning Advisor Peter Lapolla Discussion Peter Lapolla will present to the Planning Board the final draft amendments to the Zoning Chapter of…",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 4"
-   ],
-   "why": [],
-   "stakes": 4.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "RI",
-   "town": "Foster",
-   "county": "Providence",
-   "towns": [
-    "RI:Foster"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-10-30T11:18:05+00:00",
-   "is_new": false,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4333%5C2026%5C570227.pdf",
-   "town_path": "/ri/foster",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Foster",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "8c468a305a44"
-   ]
-  },
-  {
-   "id": "522c00a65c92",
-   "score": 6.0,
-   "headline": "Hull planners discuss zoning changes",
-   "dek": "The Planning Board meets Wednesday, Nov 4. The agenda lists an item on zoning changes.",
-   "quote": "…Schedule of Zoning Bylaw Amendments for Town Meeting Proposed budget request for Master Plan Minutes August 12, 2026 / September 9, 2026 / September 23…",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 4"
-   ],
-   "why": [],
-   "stakes": 4.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Hull",
-   "county": "Plymouth",
-   "towns": [
-    "MA:Hull"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-10-30T11:10:16+00:00",
-   "is_new": false,
-   "source_url": "https://www.town.hull.ma.us/AgendaCenter/ViewFile/Agenda/_11042026-1637",
-   "town_path": "/ma/hull",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Hull",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "5d45688f9e06"
-   ]
-  },
-  {
-   "id": "a44b080e46b5",
-   "score": 6.0,
-   "headline": "Lexington planners discuss zoning changes",
-   "dek": "The Planning Board meets Wednesday, Nov 4. The agenda lists an item on zoning changes.",
-   "quote": "Public meeting for a preliminary subdivision to subdivide the property into 2 lots on a cul-de-sac Zoning Bylaw Amendment Work Session:",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 4"
-   ],
-   "why": [],
-   "stakes": 4.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Lexington",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Lexington"
-   ],
-   "board": "Planning Board (PB)",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-10-30T11:11:25+00:00",
-   "is_new": false,
-   "source_url": "https://www.lexingtonma.gov/AgendaCenter/ViewFile/Agenda/_11042026-4374",
-   "town_path": "/ma/lexington",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Lexington",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "b564e36e80cd"
-   ]
-  },
-  {
-   "id": "f43d79abdac0",
-   "score": 6.0,
-   "headline": "North Attleborough Town Council discusses zoning changes",
-   "dek": "The Town Council meets Wednesday, Nov 4. The agenda lists an item on zoning changes.",
-   "quote": "OFFICES IN DOWNTOWN ALLOWED BYRIGHT ZONING CHANGE.FINAL.SIGNED.PDF V. New Business",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 4"
-   ],
-   "why": [],
-   "stakes": 4.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "North Attleborough",
-   "county": "Bristol",
-   "towns": [
-    "MA:North Attleborough"
-   ],
-   "board": "Town Council FY27",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-10-23T11:11:48+00:00",
-   "is_new": false,
-   "source_url": "https://www.northattleborough.gov/AgendaCenter/ViewFile/Agenda/_11042026-2740",
-   "town_path": "/ma/north-attleborough",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "North Attleborough",
-     "board": "Town Council",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "ea9e96722b99"
-   ]
-  },
-  {
-   "id": "e91e5b2c07d6",
-   "score": 6.0,
-   "headline": "North Providence Town Council discusses zoning changes",
-   "dek": "The Town Council meets Wednesday, Nov 4. The agenda lists an item on zoning changes.",
-   "quote": "Ordinance 26-015Z amending the North Providence Zoning Ordinance establishing a mixed-use commercial corridor overlay district.",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 4"
-   ],
-   "why": [],
-   "stakes": 4.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "RI",
-   "town": "North Providence",
-   "county": "Providence",
-   "towns": [
-    "RI:North Providence"
-   ],
-   "board": "Town Council",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-10-30T11:24:45+00:00",
-   "is_new": false,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4352%5C2026%5C570181.pdf",
-   "town_path": "/ri/north-providence",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "North Providence",
-     "board": "Town Council",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "40e43b62a26f"
-   ]
-  },
-  {
-   "id": "eb3e6ccf5a9e",
-   "score": 6.0,
-   "headline": "Warwick planners discuss zoning changes",
-   "dek": "The Planning Board meets Wednesday, Nov 4. The agenda lists an item on zoning changes.",
-   "quote": "…interested in registering for electronic notice for proposed zoning amendments and/or amendments to the City's Zoning Ordinance and the City's Development Review Regulations governing…",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 4"
-   ],
-   "why": [],
-   "stakes": 4.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "RI",
-   "town": "Warwick",
-   "county": "Kent",
-   "towns": [
-    "RI:Warwick"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-10-30T11:26:26+00:00",
-   "is_new": false,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4383%5C2026%5C570018.pdf",
-   "town_path": "/ri/warwick",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Warwick",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "5449b4cc4061"
-   ]
-  },
-  {
-   "id": "acd54ccc13d2",
-   "score": 5.98,
-   "headline": "Shirley planners discuss 40B housing",
-   "dek": "The Planning Board meets Wednesday, Nov 4. The agenda lists a discussion of 40B housing.",
-   "quote": "Review requested Planning Board-related waivers for Parker Village 40B discussion lead by Town Planner Mark Archambault followed by Planning Board vote on requested waivers.",
-   "reasons": [
-    "Meeting Nov 4",
-    "Also next door in Ayer, Harvard and Lancaster"
-   ],
-   "why": [
-    "Also next door in Ayer, Harvard and Lancaster"
-   ],
-   "stakes": 1.93,
-   "buzz": 3.0,
-   "topics": [
-    "40b_comprehensive_permit"
-   ],
-   "state": "MA",
-   "town": "Shirley",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Shirley"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-10-27T18:34:45+00:00",
-   "is_new": false,
-   "source_url": "https://www.shirley-ma.gov/AgendaCenter/ViewFile/Agenda/_11042026-1290",
-   "town_path": "/ma/shirley",
-   "action": "discussion",
-   "boards": [
-    {
-     "town": "Shirley",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "16d3ce2c4557"
-   ]
-  },
-  {
-   "id": "df93287d251e",
-   "score": 5.94,
-   "headline": "Lenox Select Board's Office reviews Town Meeting article on zoning changes",
-   "dek": "The Select Board's Office meets Thursday, Nov 5. The agenda lists an article on zoning changes.",
-   "quote": "…and formatting as may be necessary to incorporate the amendments into the Zoning Bylaw",
-   "reasons": [
-    "Town Meeting article",
-    "Meeting Nov 5"
-   ],
-   "why": [],
-   "stakes": 4.4,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Lenox",
-   "county": "Berkshire",
-   "towns": [
-    "MA:Lenox"
-   ],
-   "board": "Select Board's Office",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-05",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-23T11:10:42+00:00",
-   "is_new": false,
-   "source_url": "https://www.townoflenox.com/AgendaCenter/ViewFile/Agenda/_11052026-401",
-   "town_path": "/ma/lenox",
-   "action": "warrant_review",
-   "boards": [
-    {
-     "town": "Lenox",
-     "board": "Select Board's Office",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-05"
-    }
-   ],
-   "hit_ids": [
-    "3b81ec749a9e",
-    "a1c277e54df9",
-    "e69e88b56415"
-   ]
-  },
-  {
-   "id": "115ced4a8b3a",
-   "score": 5.6,
-   "headline": "Ludlow wetlands filing lists a solar project",
-   "dek": "MassDEP lists the Notice of Intent as filed Oct 28. The filing describes a solar project.",
-   "quote": "Buffer-zone NOI, Ta Solar 400, LLC:",
-   "reasons": [
-    "State wetlands filing",
-    "Filed Oct 28",
-    "Also next door in Belchertown and Chicopee"
-   ],
-   "why": [
-    "Also next door in Belchertown and Chicopee"
-   ],
-   "stakes": 6.0,
-   "buzz": 1.0,
-   "topics": [
-    "solar",
-    "wetlands_filing"
-   ],
-   "state": "MA",
-   "town": "Ludlow",
-   "county": "Hampden",
-   "towns": [
-    "MA:Ludlow"
-   ],
-   "board": "Conservation Commission (wetlands filing)",
-   "board_key": "conservation_commission",
-   "meeting_date": "2026-10-28",
-   "meeting_date_source": "filing",
-   "days_until": -6,
-   "first_seen": "2026-10-30T11:03:06+00:00",
-   "is_new": false,
-   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213713",
-   "town_path": "/ma/ludlow",
-   "action": "filing",
-   "boards": [
-    {
-     "town": "Ludlow",
-     "board": "Conservation Commission",
-     "board_key": "conservation_commission",
-     "meeting_date": "2026-10-28"
-    }
-   ],
-   "hit_ids": [
-    "4c4e7f7677bb"
-   ]
-  },
-  {
-   "id": "453dec31ef4e",
-   "score": 5.4,
-   "headline": "Greenfield planners discuss zoning changes",
-   "dek": "The Planning Board meets Thursday, Nov 5. The agenda lists an item on zoning changes.",
-   "quote": "Vote to initiate the zoning amendment to amend Section 200-8.4 Site Plan Review submission requirements and approval guidelines for projects in the Central Commercial zoning district to be consistent…",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 5"
-   ],
-   "why": [],
-   "stakes": 4.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Greenfield",
+   "state": "VA",
+   "town": "Franklin County",
    "county": "Franklin",
    "towns": [
-    "MA:Greenfield"
+    "VA:Franklin County"
    ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-05",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-26T11:07:07+00:00",
-   "is_new": false,
-   "source_url": "https://www.greenfield-ma.gov/Document_Center/Government/Planning Board/Planning Board Agenda_11.05.2026.pdf",
-   "town_path": "/ma/greenfield",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Greenfield",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-05"
-    }
-   ],
-   "hit_ids": [
-    "1ad6b26c3a07"
-   ]
-  },
-  {
-   "id": "fe4a5af15499",
-   "score": 5.4,
-   "headline": "Salem planners discuss zoning changes",
-   "dek": "The Planning Board meets Thursday, Nov 5. The agenda lists an item on zoning changes.",
-   "quote": "Old/New Business A. Recommendation to City Council on Zoning Amendment relating to amending sections 6.9, 3.1, 4.1, and 10 to include roof mounted wind.",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 5"
-   ],
-   "why": [],
-   "stakes": 4.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Salem",
-   "county": "Essex",
-   "towns": [
-    "MA:Salem"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-05",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-30T11:13:11+00:00",
-   "is_new": false,
-   "source_url": "https://www.salemma.gov/AgendaCenter/ViewFile/Agenda/_11052026-8491",
-   "town_path": "/ma/salem",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Salem",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-05"
-    }
-   ],
-   "hit_ids": [
-    "9a646a6b06c6"
-   ]
-  },
-  {
-   "id": "4eeb5d024538",
-   "score": 5.4,
-   "headline": "Westport planners discuss zoning changes",
-   "dek": "The Planning Board meets Thursday, Nov 5. The agenda lists an item on zoning changes.",
-   "quote": "Minutes a.October 13, 2026 2027 Annual Town Meeting Zoning Amendments",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 5"
-   ],
-   "why": [],
-   "stakes": 4.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Westport",
-   "county": "Bristol",
-   "towns": [
-    "MA:Westport"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-05",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-30T11:13:57+00:00",
-   "is_new": false,
-   "source_url": "https://www.westport-ma.com/Documents/Departments/Planning/Agendas And Minutes/2026/Agenda/2026 04 November Agenda .docx",
-   "town_path": "/ma/westport",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Westport",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-05"
-    }
-   ],
-   "hit_ids": [
-    "d843eff7e541"
-   ]
-  },
-  {
-   "id": "631a724dbf64",
-   "score": 5.25,
-   "headline": "Hopkinton planners review Atlantic Solar permit request",
-   "dek": "The Planning Board meets Wednesday, Nov 4. The agenda lists an application for Atlantic Solar at 0 Dormar Road.",
-   "quote": "Clark's Falls Road Update; Atlantic Solar Update PLANNER'S REPORT:",
-   "reasons": [
-    "Permit application",
-    "Meeting Nov 4"
-   ],
-   "why": [],
-   "stakes": 3.5,
-   "buzz": 0.0,
-   "topics": [
-    "solar"
-   ],
-   "state": "RI",
-   "town": "Hopkinton",
-   "county": "Washington",
-   "towns": [
-    "RI:Hopkinton"
-   ],
-   "board": "Planning Board",
+   "board": "Planning Commission",
    "board_key": "planning_board",
    "meeting_date": "2026-11-04",
    "meeting_date_source": "agenda",
    "days_until": 1,
-   "first_seen": "2026-10-30T11:18:46+00:00",
-   "is_new": false,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4514%5C2026%5C570240.pdf",
-   "town_path": "/ri/hopkinton",
-   "action": "project",
+   "first_seen": "2026-11-02T19:33:02+00:00",
+   "is_new": true,
+   "source_url": "https://www.franklincountyva.gov/AgendaCenter/ViewFile/Agenda/_11042026-827",
+   "town_path": "/va/franklin-county",
+   "action": "process",
    "boards": [
     {
-     "town": "Hopkinton",
-     "board": "Planning Board",
+     "town": "Franklin County",
+     "board": "Planning Commission",
      "board_key": "planning_board",
      "meeting_date": "2026-11-04"
     }
    ],
    "hit_ids": [
-    "7deea57d4bad"
+    "1bb6000dd78d",
+    "b7d195c02f18"
    ]
   },
   {
-   "id": "6f91b1010af6",
-   "score": 5.0,
-   "headline": "Pepperell zoning board hears Woodland Ridge 40B request",
-   "dek": "The Zoning Board of Appeals meets Wednesday, Nov 18. The agenda lists a comprehensive permit for 40B housing by Woodland Ridge.",
-   "quote": "Woodland Ridge 40B Comprehensive Permit/OpenGov Record No. COMP-25-2:",
+   "id": "08010cd628d7",
+   "score": 6.33,
+   "headline": "Isle of Wight County planners discuss data centers",
+   "dek": "The Planning Commission meets Friday, Nov 6. The agenda lists a discussion of data centers.",
+   "quote": "Data Center Experience Discussion and Training Center Tour (12:30 PM) With Mecklenburg County Economic Development and Southside Community College",
    "reasons": [
-    "Public hearing",
-    "Also on the Sep 16 agenda",
-    "Hearing Nov 18"
+    "Meeting Nov 6"
    ],
    "why": [],
-   "stakes": 4.55,
-   "buzz": 1.0,
-   "topics": [
-    "40b_comprehensive_permit"
-   ],
-   "state": "MA",
-   "town": "Pepperell",
-   "county": "Middlesex",
-   "towns": [
-    "MA:Pepperell"
-   ],
-   "board": "Zoning Board of Appeals",
-   "board_key": "zoning_board_of_appeals",
-   "meeting_date": "2026-11-18",
-   "meeting_date_source": "agenda",
-   "days_until": 15,
-   "first_seen": "2026-10-10T18:44:16+00:00",
-   "is_new": false,
-   "source_url": "https://www.town.pepperell.ma.us/AgendaCenter/ViewFile/Agenda/_11182026-4827",
-   "town_path": "/ma/pepperell",
-   "action": "project_hearing",
-   "boards": [
-    {
-     "town": "Pepperell",
-     "board": "Zoning Board of Appeals",
-     "board_key": "zoning_board_of_appeals",
-     "meeting_date": "2026-11-18"
-    }
-   ],
-   "hit_ids": [
-    "2dfffefdb143",
-    "8032f9fbcb19",
-    "973d0290dfb0",
-    "b89e61203347"
-   ]
-  },
-  {
-   "id": "e41accfcae39",
-   "score": 4.8,
-   "headline": "Mansfield planners discuss zoning changes",
-   "dek": "The Planning Board meets Monday, Nov 16. The agenda lists an item on zoning changes.",
-   "quote": "Identify potential short-term zoning amendments",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 16"
-   ],
-   "why": [],
-   "stakes": 4.0,
+   "stakes": 6.5,
    "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Mansfield",
-   "county": "Bristol",
-   "towns": [
-    "MA:Mansfield"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-16",
-   "meeting_date_source": "agenda",
-   "days_until": 13,
-   "first_seen": "2026-10-27T18:34:02+00:00",
-   "is_new": false,
-   "source_url": "https://www.mansfieldma.com/AgendaCenter/ViewFile/Agenda/_11162026-3940",
-   "town_path": "/ma/mansfield",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Mansfield",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-16"
-    }
-   ],
-   "hit_ids": [
-    "f88a70efd31d"
-   ]
-  },
-  {
-   "id": "92992f28d38b",
-   "score": 4.73,
-   "headline": "Rockport planners review a draft solar bylaw",
-   "dek": "The Planning Board meets Thursday, Nov 5. The agenda lists a draft solar bylaw.",
-   "quote": "A draft by-law changes for ground mounted solar",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 5"
-   ],
-   "why": [],
-   "stakes": 3.5,
-   "buzz": 0.0,
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Rockport",
-   "county": "Essex",
-   "towns": [
-    "MA:Rockport"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-05",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-30T11:12:41+00:00",
-   "is_new": false,
-   "source_url": "https://www.rockportma.gov/DocumentCenter/View/6373/Planning-Board-Agenda-11-5-2026-630-pm-PDF",
-   "town_path": "/ma/rockport",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Rockport",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-05"
-    }
-   ],
-   "hit_ids": [
-    "d9962d0e5130"
-   ]
-  },
-  {
-   "id": "14dd5bca777d",
-   "score": 4.4,
-   "headline": "Agilitas Energy files to build solar project in Williamsburg",
-   "dek": "MassDEP lists the Notice of Intent as filed Oct 26. The filing describes a solar project at 10 River Road.",
-   "quote": "NOI, Agilitas Energy, Inc.:",
-   "reasons": [
-    "State wetlands filing",
-    "Filed Oct 26",
-    "Also next door in Conway, Northampton and Whately"
-   ],
-   "why": [
-    "Also next door in Conway, Northampton and Whately"
-   ],
-   "stakes": 3.5,
-   "buzz": 2.0,
-   "topics": [
-    "solar",
-    "wetlands_filing"
-   ],
-   "state": "MA",
-   "town": "Williamsburg",
-   "county": "Hampshire",
-   "towns": [
-    "MA:Williamsburg"
-   ],
-   "board": "Conservation Commission (wetlands filing)",
-   "board_key": "conservation_commission",
-   "meeting_date": "2026-10-26",
-   "meeting_date_source": "filing",
-   "days_until": -8,
-   "first_seen": "2026-10-30T11:03:06+00:00",
-   "is_new": false,
-   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213736",
-   "town_path": "/ma/williamsburg",
-   "action": "filing",
-   "boards": [
-    {
-     "town": "Williamsburg",
-     "board": "Conservation Commission",
-     "board_key": "conservation_commission",
-     "meeting_date": "2026-10-26"
-    }
-   ],
-   "hit_ids": [
-    "fb33a3f0a04d"
-   ]
-  },
-  {
-   "id": "0a1755a33f61",
-   "score": 4.2,
-   "headline": "Sutton Town Meeting takes up zoning changes",
-   "dek": "The warrant for Sutton's fall Town Meeting gives no date. The warrant lists an article on zoning changes.",
-   "quote": "Mitchell Cohen To see if the Town will vote to amend the Zoning Map to rezone Rural Residential (R-1) portions of 430 Putnam Hill Road (M49-P226) and 434 Putnam Hill Road (M49-P224) to Village (V)…",
-   "reasons": [
-    "Town Meeting vote",
-    "Town Meeting date not in the warrant"
-   ],
-   "why": [],
-   "stakes": 5.6,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Sutton",
-   "county": "Worcester",
-   "towns": [
-    "MA:Sutton"
-   ],
-   "board": "Town Meeting",
-   "board_key": "town_meeting",
-   "meeting_date": null,
-   "meeting_date_source": null,
-   "days_until": null,
-   "first_seen": "2026-10-10T18:46:19+00:00",
-   "is_new": false,
-   "source_url": "https://www.suttonma.gov/DocumentCenter/View/7265/Fall-2026-ATM-Warrant",
-   "town_path": "/ma/sutton",
-   "action": "town_meeting",
-   "boards": [
-    {
-     "town": "Sutton",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": null
-    }
-   ],
-   "hit_ids": [
-    "3f2c3fc80f35"
-   ]
-  },
-  {
-   "id": "cb4dbaedb4e7",
-   "score": 3.56,
-   "headline": "Data-center item on Ashland Town Meeting warrant",
-   "dek": "The warrant for Ashland's fall Town Meeting gives no date. The warrant lists an item on data centers.",
-   "quote": "Amend Chapter 282 Section Planning Board 2/3 3.0 to add Data Centers to the Use Table 10 Citizens Petition:",
-   "reasons": [
-    "Town Meeting date not in the warrant",
-    "Citizen petition"
-   ],
-   "why": [
-    "Citizen petition"
-   ],
-   "stakes": 5.0,
-   "buzz": 2.0,
    "topics": [
     "data_center"
    ],
-   "state": "MA",
-   "town": "Ashland",
-   "county": "Middlesex",
+   "state": "VA",
+   "town": "Isle of Wight County",
+   "county": "Isle of Wight",
    "towns": [
-    "MA:Ashland"
+    "VA:Isle of Wight County"
    ],
-   "board": "Town Meeting",
-   "board_key": "town_meeting",
-   "meeting_date": null,
-   "meeting_date_source": null,
-   "days_until": null,
-   "first_seen": "2026-10-16T11:08:09+00:00",
-   "is_new": false,
-   "source_url": "https://www.ashlandmass.com/DocumentCenter/View/17653/2026-Special-Town-Meeting-Warrant-Posted-by-Constable-October-8-2026",
-   "town_path": "/ma/ashland",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Ashland",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": null
-    }
-   ],
-   "hit_ids": [
-    "2705c51f97f9"
-   ]
-  },
-  {
-   "id": "344857973bc0",
-   "score": 3.43,
-   "headline": "Chapter Ch asks Andover zoning board for continuance to Dec 3",
-   "dek": "The Zoning Board of Appeals meets Thursday, Nov 5. The agenda lists a request to continue the hearing.",
-   "quote": "CONTINUED HEARINGS: 84 & 88 ANDOVER STREET- TRAILSIDE ANDOVER DEVELOPMENT LLC-ZBA-26-29- Request to continue to December 3, 2026 Comprehensive Permit under M.G.L., Chapter Ch 40B to construct 40…",
-   "reasons": [
-    "Continuance requested",
-    "Also on the Oct 1 agenda",
-    "Meeting Nov 5",
-    "Put off from an earlier meeting"
-   ],
-   "why": [
-    "Put off from an earlier meeting"
-   ],
-   "stakes": 1.22,
-   "buzz": 3.0,
-   "topics": [
-    "40b_comprehensive_permit"
-   ],
-   "state": "MA",
-   "town": "Andover",
-   "county": "Essex",
-   "towns": [
-    "MA:Andover"
-   ],
-   "board": "Zoning Board of Appeals",
-   "board_key": "zoning_board_of_appeals",
-   "meeting_date": "2026-11-05",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-10T14:41:21+00:00",
-   "is_new": false,
-   "source_url": "https://www.andoverma.gov/AgendaCenter/ViewFile/Agenda/_11052026-7855",
-   "town_path": "/ma/andover",
-   "action": "continuance",
-   "boards": [
-    {
-     "town": "Andover",
-     "board": "Zoning Board of Appeals",
-     "board_key": "zoning_board_of_appeals",
-     "meeting_date": "2026-11-05"
-    }
-   ],
-   "hit_ids": [
-    "7185040d0ef8",
-    "b77a4f3cde7a",
-    "d51c55152f61"
-   ]
-  },
-  {
-   "id": "8474093af255",
-   "score": 3.3,
-   "headline": "40B item on Lancaster Annual Town Meetings warrant",
-   "dek": "Lancaster's Town Meeting is Monday, Nov 16. The warrant lists an item on 40B housing.",
-   "quote": "in a project containing rental units must be affordable rental units pursuant to MGL c. 40R. For purposes of calculating the number of units of affordable housing required within a project, any…",
-   "reasons": [
-    "Town Meeting Nov 16",
-    "Also next door in Bolton, Clinton and 2 more"
-   ],
-   "why": [
-    "Also next door in Bolton, Clinton and 2 more"
-   ],
-   "stakes": 2.75,
-   "buzz": 3.0,
-   "topics": [
-    "40b_comprehensive_permit"
-   ],
-   "state": "MA",
-   "town": "Lancaster",
-   "county": "Worcester",
-   "towns": [
-    "MA:Lancaster"
-   ],
-   "board": "Annual Town Meetings",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-11-16",
-   "meeting_date_source": "agenda",
-   "days_until": 13,
-   "first_seen": "2026-11-02T13:40:05+00:00",
-   "is_new": true,
-   "source_url": "https://www.ci.lancaster.ma.us/DocumentCenter/View/4698/Certified-Warrant-Special-Town-Meeting-November-16-2026",
-   "town_path": "/ma/lancaster",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Lancaster",
-     "board": "Annual Town Meetings",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-11-16"
-    }
-   ],
-   "hit_ids": [
-    "e2840dc1feee"
-   ]
-  },
-  {
-   "id": "341d4dd8062e",
-   "score": 2.87,
-   "headline": "Solar item on Greenfield Planning Board agenda",
-   "dek": "The Planning Board meets Tuesday, Nov 10. The agenda lists an item on solar.",
-   "quote": "…landscaping, and building placement to make maximum use of solar energy, protect the character of the environs, and protect scenic views seen from public ways.",
-   "reasons": [
-    "Meeting Nov 10",
-    "Also next door in Colrain, Deerfield and 3 more"
-   ],
-   "why": [
-    "Also next door in Colrain, Deerfield and 3 more"
-   ],
-   "stakes": 1.75,
-   "buzz": 3.0,
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "towns": [
-    "MA:Greenfield"
-   ],
-   "board": "Planning Board",
+   "board": "Planning Commission",
    "board_key": "planning_board",
-   "meeting_date": "2026-11-10",
+   "meeting_date": "2026-11-06",
    "meeting_date_source": "agenda",
-   "days_until": 7,
-   "first_seen": "2026-10-26T11:07:06+00:00",
-   "is_new": false,
-   "source_url": "https://www.greenfield-ma.gov/Document_Center/Government/Planning Board/Planning Board packet_11.10.2026.pdf",
-   "town_path": "/ma/greenfield",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Greenfield",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-10"
-    }
-   ],
-   "hit_ids": [
-    "3d03a57fa860",
-    "64a45d850130",
-    "977c01069765",
-    "ae8f1b360bdb",
-    "c92dca8d1b66"
-   ]
-  },
-  {
-   "id": "f8c0513b8b17",
-   "score": 2.25,
-   "headline": "Solar item on Easthampton City Council agenda",
-   "dek": "The City Council meets Wednesday, Nov 4. The agenda lists an item on solar.",
-   "quote": "Low-Income Community Shared Solar Agreement 1",
-   "reasons": [
-    "Meeting Nov 4",
-    "Also next door in Holyoke and Northampton"
-   ],
-   "why": [
-    "Also next door in Holyoke and Northampton"
-   ],
-   "stakes": 1.75,
-   "buzz": 2.0,
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Easthampton",
-   "county": "Hampshire",
-   "towns": [
-    "MA:Easthampton"
-   ],
-   "board": "City Council",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-10-30T11:09:32+00:00",
-   "is_new": false,
-   "source_url": "https://easthamptonma.gov/AgendaCenter/ViewFile/Agenda/_11042026-3725",
-   "town_path": "/ma/easthampton",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Easthampton",
-     "board": "City Council",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "dfc2c67a1f6e"
-   ]
-  },
-  {
-   "id": "ad56d5684284",
-   "score": 1.52,
-   "headline": "Zoning item on Belchertown Town Meeting warrant",
-   "dek": "Belchertown's Town Meeting is Monday, Nov 9. The warrant lists an item on zoning changes.",
-   "quote": "Zoning Bylaw Amendment",
-   "reasons": [
-    "Town Meeting Nov 9"
-   ],
-   "why": [],
-   "stakes": 3.0,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Belchertown",
-   "county": "Hampshire",
-   "towns": [
-    "MA:Belchertown"
-   ],
-   "board": "Town Meeting",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-11-09",
-   "meeting_date_source": "warrant",
-   "days_until": 6,
-   "first_seen": "2026-11-03T12:08:34+00:00",
+   "days_until": 3,
+   "first_seen": "2026-11-02T19:32:34+00:00",
    "is_new": true,
-   "source_url": "https://www.belchertown.org/DocumentCenter/View/11194/Enhanced-Warrant-Special-Town-Meeting-November-2026",
-   "town_path": "/ma/belchertown",
-   "action": "mention",
+   "source_url": "https://isleofwightcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=7803,plainText=false)",
+   "town_path": "/va/isle-of-wight-county",
+   "action": "discussion",
    "boards": [
     {
-     "town": "Belchertown",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-11-09"
-    }
-   ],
-   "hit_ids": [
-    "84a8dfb9d7e9"
-   ]
-  },
-  {
-   "id": "ab02fe92886e",
-   "score": 1.31,
-   "headline": "Solar item on Penfield Town Board agenda",
-   "dek": "The Town Board meets Wednesday, Nov 4. The agenda lists an item on solar.",
-   "quote": "Fee (after 2nd failure) Generators Roof (includes certificate of compliance) Solar / Geothermal (includes certificate of compliance) Patio/Sports Court Electrical (includes certificate of compliance)…",
-   "reasons": [
-    "Meeting Nov 4"
-   ],
-   "why": [],
-   "stakes": 2.75,
-   "buzz": 0.0,
-   "topics": [
-    "solar",
-    "wireless_telecom"
-   ],
-   "state": "NY",
-   "town": "Penfield",
-   "county": "Monroe",
-   "towns": [
-    "NY:Penfield"
-   ],
-   "board": "Town Board",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-11-02T13:43:10+00:00",
-   "is_new": true,
-   "source_url": "https://www.penfieldny.gov/Town Site/Boards/Boards/Town Board/2026/Agendas/2026.11.04 Town Board Legislative Agenda.pdf",
-   "town_path": "/ny/penfield",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Penfield",
-     "board": "Town Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "4d12b07a272e",
-    "a34f3fbf3e48"
-   ]
-  },
-  {
-   "id": "7fe730e9b9bf",
-   "score": 1.31,
-   "headline": "40B item on Yarmouth Planning Board agenda",
-   "dek": "The Planning Board meets Wednesday, Nov 4. The agenda lists an item on 40B housing.",
-   "quote": "and (4) the adoption of a smart growth zoning district or starter home zoning district in accordance with section 3 of chapter 40R. Any amendment that requires a simple majority vote shall not be…",
-   "reasons": [
-    "Meeting Nov 4"
-   ],
-   "why": [],
-   "stakes": 2.75,
-   "buzz": 0.0,
-   "topics": [
-    "40b_comprehensive_permit"
-   ],
-   "state": "MA",
-   "town": "Yarmouth",
-   "county": "Barnstable",
-   "towns": [
-    "MA:Yarmouth"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-11-02T13:42:57+00:00",
-   "is_new": true,
-   "source_url": "https://www.yarmouth.ma.us/AgendaCenter/ViewFile/Agenda/_11042026-5097",
-   "town_path": "/ma/yarmouth",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Yarmouth",
-     "board": "Planning Board",
+     "town": "Isle of Wight County",
+     "board": "Planning Commission",
      "board_key": "planning_board",
-     "meeting_date": "2026-11-04"
+     "meeting_date": "2026-11-06"
     }
    ],
    "hit_ids": [
-    "4a8ba72e4163"
-   ]
-  },
-  {
-   "id": "7b0f0956a5cb",
-   "score": 1.05,
-   "headline": "Solar item on Milton Planning Board agenda",
-   "dek": "The Planning Board meets Thursday, Nov 12. The agenda lists an item on solar.",
-   "quote": "Solar Code Changes",
-   "reasons": [
-    "Meeting Nov 12"
-   ],
-   "why": [],
-   "stakes": 2.75,
-   "buzz": 0.0,
-   "topics": [
-    "solar"
-   ],
-   "state": "NY",
-   "town": "Milton",
-   "county": "Saratoga",
-   "towns": [
-    "NY:Milton"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-12",
-   "meeting_date_source": "agenda",
-   "days_until": 9,
-   "first_seen": "2026-11-02T13:42:56+00:00",
-   "is_new": true,
-   "source_url": "https://www.miltonny.gov/Document_center/Planning board/2026/Agenda/2026-11-12 - Planning Board Agenda.pdf",
-   "town_path": "/ny/milton",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Milton",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-12"
-    }
-   ],
-   "hit_ids": [
-    "96ce5e088c49"
-   ]
-  },
-  {
-   "id": "79ee9a8d40d7",
-   "score": 0.94,
-   "headline": "Cell tower item on Penfield Town Board agenda",
-   "dek": "The Town Board meets Wednesday, Nov 4. The agenda lists an item on a cell tower.",
-   "quote": "Infrastructure (excludes replacement or installation of new equipment or infrastructure) Small Cell Telecommunication Poles (Replacement) Small Cell Telecommunication Poles (New Pole) Small Cell…",
-   "reasons": [
-    "Meeting Nov 4"
-   ],
-   "why": [],
-   "stakes": 2.5,
-   "buzz": 0.0,
-   "topics": [
-    "wireless_telecom"
-   ],
-   "state": "NY",
-   "town": "Penfield",
-   "county": "Monroe",
-   "towns": [
-    "NY:Penfield"
-   ],
-   "board": "Town Board",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-11-02T13:43:10+00:00",
-   "is_new": true,
-   "source_url": "https://www.penfieldny.gov/Town Site/Boards/Boards/Town Board/2026/Agendas/2026.11.04 Town Board Legislative Agenda.pdf",
-   "town_path": "/ny/penfield",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Penfield",
-     "board": "Town Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "6f348dc37a39"
-   ]
-  },
-  {
-   "id": "3cbaa849ae8d",
-   "score": 0.34,
-   "headline": "Solar item on Cortlandt Planning Board agenda",
-   "dek": "The Planning Board meets Thursday, Nov 5. The agenda lists an item on solar.",
-   "quote": "Contractor to coordinate solar install with electrician and architect to ensure proper installation and interfacing of all equipment according to code and architectural plans.",
-   "reasons": [
-    "Meeting Nov 5"
-   ],
-   "why": [],
-   "stakes": 1.75,
-   "buzz": 0.0,
-   "topics": [
-    "solar"
-   ],
-   "state": "NY",
-   "town": "Cortlandt",
-   "county": "Westchester",
-   "towns": [
-    "NY:Cortlandt"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-05",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-30T11:14:20+00:00",
-   "is_new": false,
-   "source_url": "https://www.townofcortlandtny.gov/uppages/11_05_2026 PB Agenda Packet_Redacted.pdf",
-   "town_path": "/ny/cortlandt",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Cortlandt",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-05"
-    }
-   ],
-   "hit_ids": [
-    "2ab4d4a42395"
-   ]
-  },
-  {
-   "id": "34611253c773",
-   "score": 0.34,
-   "headline": "Solar item on Salem Planning Board agenda",
-   "dek": "The Planning Board meets Thursday, Nov 5. The agenda lists an item on solar.",
-   "quote": "Other site improvements include landscape improvements, and solar car ports.",
-   "reasons": [
-    "Meeting Nov 5"
-   ],
-   "why": [],
-   "stakes": 1.75,
-   "buzz": 0.0,
-   "topics": [
-    "solar"
-   ],
-   "state": "MA",
-   "town": "Salem",
-   "county": "Essex",
-   "towns": [
-    "MA:Salem"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-05",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-10-30T11:13:11+00:00",
-   "is_new": false,
-   "source_url": "https://www.salemma.gov/AgendaCenter/ViewFile/Agenda/_11052026-8491",
-   "town_path": "/ma/salem",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Salem",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-05"
-    }
-   ],
-   "hit_ids": [
-    "b6fd38e55772"
-   ]
-  },
-  {
-   "id": "30493444bc97",
-   "score": 0.05,
-   "headline": "Moratorium item on Yarmouth Planning Board agenda",
-   "dek": "The Planning Board meets Wednesday, Nov 4. The agenda lists an item on a moratorium.",
-   "quote": "a city or town imposes or has imposed upon it by a state, a federal agency or a court, a moratorium on construction, the issuance of permits or utility connections. When a plan referred to in section…",
-   "reasons": [
-    "Meeting Nov 4"
-   ],
-   "why": [],
-   "stakes": 1.5,
-   "buzz": 0.0,
-   "topics": [
-    "moratorium"
-   ],
-   "state": "MA",
-   "town": "Yarmouth",
-   "county": "Barnstable",
-   "towns": [
-    "MA:Yarmouth"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-04",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-11-02T13:42:57+00:00",
-   "is_new": true,
-   "source_url": "https://www.yarmouth.ma.us/AgendaCenter/ViewFile/Agenda/_11042026-5097",
-   "town_path": "/ma/yarmouth",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Yarmouth",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "bce88904f9a7"
-   ]
-  },
-  {
-   "id": "cd4487989b15",
-   "score": 0.05,
-   "headline": "Bylaw item on Mansfield Town Meeting warrant",
-   "dek": "Mansfield's Town Meeting is Thursday, Nov 12. The warrant lists an item on bylaw changes.",
-   "quote": "The Floodplain District is herein established as an overlay district. The district includes all special flood hazard areas within the Town of Mansfield designated as Zones A and AE on the Bristol…",
-   "reasons": [
-    "Town Meeting Nov 12"
-   ],
-   "why": [],
-   "stakes": 0.5,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Mansfield",
-   "county": "Bristol",
-   "towns": [
-    "MA:Mansfield"
-   ],
-   "board": "Town Meeting",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-11-12",
-   "meeting_date_source": "agenda",
-   "days_until": 9,
-   "first_seen": "2026-10-30T11:11:09+00:00",
-   "is_new": false,
-   "source_url": "https://www.mansfieldma.com/DocumentCenter/View/16224/2026-STM-Warrant---FINAL-PDF",
-   "town_path": "/ma/mansfield",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Mansfield",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-11-12"
-    }
-   ],
-   "hit_ids": [
-    "c4cd962d5500"
-   ]
-  },
-  {
-   "id": "e53fe04da6b5",
-   "score": 0.05,
-   "headline": "Moratorium item on Norwood Town Meeting Notices & Documents warrant",
-   "dek": "Norwood's Town Meeting is Monday, Nov 16. The warrant lists an item on a moratorium.",
-   "quote": "than one (1) extension of a period not to exceed 180 days by a vote of Town Meeting. Moratorium Activity The Planning Board, with support from the Community Development Department, shall consult with…",
-   "reasons": [
-    "Town Meeting Nov 16"
-   ],
-   "why": [],
-   "stakes": 0.5,
-   "buzz": 0.0,
-   "topics": [
-    "moratorium"
-   ],
-   "state": "MA",
-   "town": "Norwood",
-   "county": "Norfolk",
-   "towns": [
-    "MA:Norwood"
-   ],
-   "board": "Town Meeting Notices & Documents",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-11-16",
-   "meeting_date_source": "agenda",
-   "days_until": 13,
-   "first_seen": "2026-10-23T11:12:01+00:00",
-   "is_new": false,
-   "source_url": "https://www.norwoodma.gov/Town Meeting/Signed Warrant 2 for Fall 2026 TM.pdf",
-   "town_path": "/ma/norwood",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Norwood",
-     "board": "Town Meeting Notices & Documents",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-11-16"
-    }
-   ],
-   "hit_ids": [
-    "893aa318a5a5"
-   ]
-  },
-  {
-   "id": "1a98789c34b4",
-   "score": 0.05,
-   "headline": "Cell tower item on Orleans Town Meeting warrant",
-   "dek": "Orleans's Town Meeting is Monday, Nov 16. The warrant lists an item on a cell tower.",
-   "quote": "…(§ 164-7.15) Communication Appurtenance (excluding towers and monopoles) (§ 164-7.18) Communication Buildings (§ 164-7.18) Communication Monopole (§ 164-7.18) Communication Towers (§ 164-7.18)…",
-   "reasons": [
-    "Town Meeting Nov 16"
-   ],
-   "why": [],
-   "stakes": 1.5,
-   "buzz": 0.0,
-   "topics": [
-    "wireless_telecom"
-   ],
-   "state": "MA",
-   "town": "Orleans",
-   "county": "Barnstable",
-   "towns": [
-    "MA:Orleans"
-   ],
-   "board": "Town Meeting",
-   "board_key": "town_meeting",
-   "meeting_date": "2026-11-16",
-   "meeting_date_source": "warrant",
-   "days_until": 13,
-   "first_seen": "2026-10-17T13:18:00+00:00",
-   "is_new": false,
-   "source_url": "https://orleansma.gov/Archive.aspx?ADID=463",
-   "town_path": "/ma/orleans",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Orleans",
-     "board": "Town Meeting",
-     "board_key": "town_meeting",
-     "meeting_date": "2026-11-16"
-    }
-   ],
-   "hit_ids": [
-    "15feba5349c0"
+    "273f3898f73f",
+    "7920c1cf96da"
    ]
   }
  ]

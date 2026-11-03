@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-montgomery-county-montgomery-planning-board-2026-11-05@agendaahead
+DTSTAMP:20261103T120000Z
+DTSTART;TZID=America/New_York:20261105T132500
+DTEND;TZID=America/New_York:20261105T152500
+SUMMARY:Montgomery County Montgomery Planning Board: Discusses a zoning cha
+ nge (no vote listed).
+LOCATION:Montgomery County\, MD
+DESCRIPTION:• Discusses a zoning change (no vote listed).\n\nAgenda: http
+ s://montgomeryplanningboard.org/agenda-item/november-5-2026/#meeting-2026-
+ 11-05\nPage: https://agendaahead.vercel.app/m/montgomery-county-montgomery
+ -planning-board-2026-11-05\nConfirm the time and place with the town\; age
+ ndas can change.
+URL:https://agendaahead.vercel.app/m/montgomery-county-montgomery-planning-
+ board-2026-11-05
+END:VEVENT
+END:VCALENDAR
