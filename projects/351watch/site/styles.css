@@ -809,3 +809,10 @@ table.counts caption {text-align: left; font-weight: 600; padding: 0 0 var(--s2)
 .map-all .towns-unread circle.county { stroke-width: 1px; }
 .map-all .towns-read circle.county { stroke-width: 1.6px; }
 .county-places p { max-width: 70ch; }
+
+/* Seven day cells in 358 px: the word "meetings" no longer fits beside a two-digit count, so phones show the count alone */
+@media (max-width: 520px) {
+  .week-strip a, .week-strip .cell { padding: var(--s2) var(--s1); }
+  .week-strip .n .w { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .week-strip .n { white-space: nowrap; }
+}
