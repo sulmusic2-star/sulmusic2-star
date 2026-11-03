@@ -25,5 +25,5 @@ Wave 2 NY: county route, extended-window crawl and precision sample are finished
 
 ## What is left
 
-- The 5 counties with no website found (Schenectady, Schoharie, Steuben, Tompkins, Wayne) and the 5 behind bot walls, 5 vendor-blocked and 2 robots-closed counties need unblock requests (not yet drafted for New York; the Virginia, Maryland and Great Lakes drafts are the models), or a discovery pass from the production host where the sandbox could not reach them.
+- The 5 behind bot walls, 5 vendor-blocked and 2 robots-closed counties, and the 24 towns we cannot read, have unblock drafts in `ny_unblock_drafts.md` (the owner sends them). The 5 counties filed as "no website found" (Schenectady, Schoharie, Steuben, Tompkins, Wayne) need a discovery pass from the production host; four of the five answered a probe on Nov 3, see the last section of that file.
 - 88 document errors in the extended crawl are not yet characterised; the posting lead time for the new places should be read off the next two weeks of runs.
