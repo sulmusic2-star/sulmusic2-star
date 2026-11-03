@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-charlton-planning-board-2026-11-04@agendaahead
+DTSTAMP:20261103T120000Z
+DTSTART;TZID=America/New_York:20261104T180000
+DTEND;TZID=America/New_York:20261104T200000
+SUMMARY:Charlton Planning Board: Holds a hearing on a solar project at 261 
+ N. Sturbridge Road.
+LOCATION:Charlton\, MA
+DESCRIPTION:• Holds a hearing on a solar project at 261 N. Sturbridge Roa
+ d.\n\nAgenda: https://www.townofcharlton.net/AgendaCenter/ViewFile/Agenda/
+ _11042026-4745\nPage: https://agendaahead.vercel.app/m/charlton-planning-b
+ oard-2026-11-04\nConfirm the time and place with the town\; agendas can ch
+ ange.
+URL:https://agendaahead.vercel.app/m/charlton-planning-board-2026-11-04
+END:VEVENT
+END:VCALENDAR

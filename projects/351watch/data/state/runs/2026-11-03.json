@@ -1,0 +1,252 @@
+{
+ "by_state": {
+  "MA": {
+   "new_documents": 95,
+   "new_hits": 72,
+   "towns_attempted": 243,
+   "towns_succeeded": 242
+  },
+  "NY": {
+   "new_documents": 54,
+   "new_hits": 24,
+   "towns_attempted": 55,
+   "towns_succeeded": 55
+  },
+  "RI": {
+   "new_documents": 10,
+   "new_hits": 1,
+   "towns_attempted": 39,
+   "towns_succeeded": 39
+  }
+ },
+ "date": "2026-11-03",
+ "document_errors": 2,
+ "documents_already_indexed": 1947,
+ "documents_deferred": 0,
+ "documents_listed": 3058,
+ "documents_needing_ocr": 2,
+ "documents_rematched": 946,
+ "documents_retried": 4,
+ "documents_too_large": [
+  {
+   "error": "too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
+   "meeting_date": "2026-10-26",
+   "state": "MA",
+   "town": "Bedford",
+   "url": "https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788"
+  },
+  {
+   "error": "too large (69979402 > 41943040 bytes): https://dighton-ma.gov/AgendaCenter/ViewFile/Agenda/_10282026-2839",
+   "meeting_date": "2026-10-28",
+   "state": "MA",
+   "town": "Dighton",
+   "url": "https://dighton-ma.gov/AgendaCenter/ViewFile/Agenda/_10282026-2839"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560",
+   "meeting_date": "2026-10-14",
+   "state": "MA",
+   "town": "Franklin",
+   "url": "https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586",
+   "meeting_date": "2026-09-28",
+   "state": "MA",
+   "town": "Great Barrington",
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586"
+  },
+  {
+   "error": "too large (43384324 > 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2642",
+   "meeting_date": "2026-10-26",
+   "state": "MA",
+   "town": "Great Barrington",
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2642"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577",
+   "meeting_date": "2026-10-06",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577"
+  },
+  {
+   "error": "too large (55940673 > 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634"
+  },
+  {
+   "error": "too large (46611012 > 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_11042026-1662",
+   "meeting_date": "2026-11-04",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_11042026-1662"
+  },
+  {
+   "error": "too large (42216812 > 41943040 bytes): https://cms2.revize.com/revize/westportma/Documents/Departments/Planning/Agendas ",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Westport",
+   "url": "https://www.westport-ma.com/Documents/Departments/Planning/Agendas And Minutes/2026/Packets/Packet 2026-10-20.pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Cortlandt",
+   "url": "https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109",
+   "meeting_date": "2026-09-14",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114",
+   "meeting_date": "2026-10-19",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114"
+  },
+  {
+   "error": "too large (112326792 > 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_11092026-122",
+   "meeting_date": "2026-11-09",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_11092026-122"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Kent",
+   "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
+  }
+ ],
+ "duration_seconds": 1443.3,
+ "errors": [
+  {
+   "error": "listing agenda_page: https://www.actonma.gov/Archive.aspx?AMID=40: HTTPSConnectionPool(host='www.actonma.gov', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Acton"
+  },
+  {
+   "error": "document: https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_11042026-651: HTTPSConnectionPool(host='www.carverma.gov', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Carver"
+  },
+  {
+   "error": "listing generic: https://www.falmouthma.gov/472/Town-Meeting: HTTPSConnectionPool(host='www.falmouthma.gov', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Falmouth"
+  },
+  {
+   "error": "listing civicplus: https://www.uxbridge-ma.gov/AgendaCenter/Search/?term=&CIDs=7%2C10%2C24%2C28%2C&startDate=10%2F04%2F2026&endDate=03%2F03%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='www.uxbridge-ma.gov', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Uxbridge"
+  },
+  {
+   "error": "document: https://www.westonma.gov/AgendaCenter/ViewFile/Agenda/_11062026-9261: HTTPSConnectionPool(host='www.westonma.gov', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Weston"
+  },
+  {
+   "error": "listing civicplus: https://www.winthropma.gov/AgendaCenter/Search/?term=&CIDs=2%2C8%2C17%2C21%2C&startDate=10%2F04%2F2026&endDate=03%2F03%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='www.winthropma.gov', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Winthrop"
+  }
+ ],
+ "errors_total": 6,
+ "finished": "2026-11-03T12:31:21+00:00",
+ "hits_current": 1718,
+ "index": {
+  "by_state": {
+   "MA": 4136,
+   "NY": 445,
+   "RI": 479
+  },
+  "by_status": {
+   "error": 27,
+   "needs_ocr": 6,
+   "ok": 4947,
+   "replaced": 80
+  },
+  "by_text_source": {
+   "docx": 26,
+   "html": 242,
+   "none": 29,
+   "ocr": 1128,
+   "pdf": 3635
+  },
+  "documents": 5060,
+  "hits": 1891,
+  "pruned": 20,
+  "towns": 331,
+  "with_hits": 978
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 83355659,
+   "listing": 141965971,
+   "robots": 20789
+  },
+  "cache_hits": 1026,
+  "errors": 11,
+  "requests": 1101,
+  "requests_by_purpose": {
+   "document": 178,
+   "listing": 901,
+   "robots": 22
+  },
+  "robots_blocked": 0
+ },
+ "new_alert_items": 38,
+ "new_alert_items_by_topic": {
+  "40b_comprehensive_permit": 4,
+  "battery_storage": 7,
+  "clean_energy_siting": 1,
+  "data_center": 4,
+  "moratorium": 7,
+  "solar": 11,
+  "wireless_telecom": 10,
+  "zoning_amendment": 4
+ },
+ "new_documents": 159,
+ "new_hits": 97,
+ "new_hits_by_topic": {
+  "40b_comprehensive_permit": 7,
+  "battery_storage": 22,
+  "clean_energy_siting": 1,
+  "data_center": 10,
+  "moratorium": 10,
+  "solar": 28,
+  "wireless_telecom": 12,
+  "zoning_amendment": 36
+ },
+ "options": {
+  "matcher_version": "ca9b9d486f",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-11-03T12:07:18+00:00",
+ "states": [
+  "MA",
+  "NY",
+  "RI"
+ ],
+ "towns_attempted": 337,
+ "towns_failed": [
+  "MA:Winthrop"
+ ],
+ "towns_partial": [
+  "MA:Acton",
+  "MA:Falmouth",
+  "MA:Uxbridge"
+ ],
+ "towns_succeeded": 336,
+ "window": {
+  "end": "2027-03-03",
+  "start": "2026-10-04"
+ }
+}
