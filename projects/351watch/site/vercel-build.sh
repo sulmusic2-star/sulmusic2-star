@@ -132,8 +132,8 @@ const config = {
     { src: '^/(.+)\\.html$', status: 308, headers: { Location: '/$1' } },
     // one address per page: no trailing slash (the /w/:id pages keep theirs until the rewrite below)
     { src: '^/((?!api/|w/).+)/$', status: 308, headers: { Location: '/$1' } },
-    // a state's own address goes to that state on the towns page
-    { src: '^/(ma|ny|ri|va|md|mi|oh)/?$', status: 308, headers: { Location: '/towns#$1' } },
+    // a state's own address is its page (ma.html); a trailing slash drops
+    { src: '^/(ma|ny|ri|va|md|mi|oh)/$', status: 308, headers: { Location: '/$1' } },
     { handle: 'filesystem' },
     { src: '^/\\.well-known/http-message-signatures-directory/?$', dest: '/api/key-directory' },
     { src: '^/w/[^/]*/?$', dest: '/w' },
