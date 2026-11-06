@@ -1,0 +1,40 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-shirley-zoning-board-of-appeals-2026-11-12@agendaahead
+DTSTAMP:20261106T120000Z
+DTSTART;TZID=America/New_York:20261112T190000
+DTEND;TZID=America/New_York:20261112T210000
+SUMMARY:Shirley Zoning Board of Appeals: Holds a hearing on an affordable h
+ ousing permit (40B) for a housing project by Parker Village.
+LOCATION:Land Use Conference Room\, Shirley\, MA
+DESCRIPTION:• Holds a hearing on an affordable housing permit (40B) for a
+  housing project by Parker Village.\n• Holds a hearing on an affordable 
+ housing project by Village LLC.\n\nAgenda: https://www.shirley-ma.gov/Agen
+ daCenter/ViewFile/Agenda/_11122026-1296\nPage: https://agendaahead.vercel.
+ app/m/shirley-zoning-board-of-appeals-2026-11-12\nConfirm the time and pla
+ ce with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/shirley-zoning-board-of-appeals-2026-1
+ 1-12
+END:VEVENT
+END:VCALENDAR

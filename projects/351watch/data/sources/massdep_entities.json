@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T15:42:09+00:00",
+ "generated": "2026-11-06T12:01:33+00:00",
  "source": "massdep_wetlands",
  "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
  "link_types": {
@@ -801,6 +801,53 @@
    "target_segment": "solar; storage"
   },
   {
+   "parent": "Agilitas Energy",
+   "kind": "developer",
+   "filings": 2,
+   "project_applicants": [
+    "AE BARK STREET SOLAR ESS, LLC",
+    "AGILITAS ENERGY, INC."
+   ],
+   "sites": [
+    "Swansea: BARK ST",
+    "Williamsburg: 10 RIVER RD"
+   ],
+   "towns": [
+    "Swansea",
+    "Williamsburg"
+   ],
+   "categories": {
+    "developer_other": 2
+   },
+   "links": {
+    "applicant_name": 1,
+    "payor": 1
+   },
+   "consultants": [],
+   "dep_files": [
+    {
+     "dep_file_number": null,
+     "town": "Williamsburg",
+     "applicant": "AGILITAS ENERGY, INC.",
+     "received_date": "2026-10-26",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213736",
+     "evidence": "applicant name 'AGILITAS ENERGY, INC.' matches Agilitas Energy"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Swansea",
+     "applicant": "AE BARK STREET SOLAR ESS, LLC",
+     "received_date": "2026-11-02",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213825",
+     "evidence": "filing fee paid by 'AGILITAS ENERGY'"
+    }
+   ],
+   "distinct_applicants": 2,
+   "distinct_sites": 2,
+   "in_target_list": true,
+   "target_segment": "storage; solar"
+  },
+  {
    "parent": "Black Swan Dev Corp",
    "kind": "developer",
    "filings": 2,
@@ -845,41 +892,6 @@
    "distinct_sites": 1,
    "in_target_list": true,
    "target_segment": "solar; storage"
-  },
-  {
-   "parent": "Agilitas Energy",
-   "kind": "developer",
-   "filings": 1,
-   "project_applicants": [
-    "AGILITAS ENERGY, INC."
-   ],
-   "sites": [
-    "Williamsburg: 10 RIVER RD"
-   ],
-   "towns": [
-    "Williamsburg"
-   ],
-   "categories": {
-    "developer_other": 1
-   },
-   "links": {
-    "applicant_name": 1
-   },
-   "consultants": [],
-   "dep_files": [
-    {
-     "dep_file_number": null,
-     "town": "Williamsburg",
-     "applicant": "AGILITAS ENERGY, INC.",
-     "received_date": "2026-10-26",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213736",
-     "evidence": "applicant name 'AGILITAS ENERGY, INC.' matches Agilitas Energy"
-    }
-   ],
-   "distinct_applicants": 1,
-   "distinct_sites": 1,
-   "in_target_list": true,
-   "target_segment": "storage; solar"
   },
   {
    "parent": "All Energy Solar",
@@ -2040,6 +2052,36 @@
      "link": null,
      "how": null,
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212844"
+    }
+   ]
+  },
+  {
+   "applicant": "AE BARK STREET SOLAR ESS, LLC",
+   "parent": "Agilitas Energy",
+   "parent_kind": "developer",
+   "link": "payor",
+   "confidence": "high",
+   "filings": 1,
+   "towns": [
+    "Swansea"
+   ],
+   "payors": [
+    "AGILITAS ENERGY"
+   ],
+   "consultants": [],
+   "categories": {
+    "developer_other": 1
+   },
+   "evidence": [
+    {
+     "dep_file_number": null,
+     "town": "Swansea",
+     "received_date": "2026-11-02",
+     "filing_type": "ANRAD (resource area delineation)",
+     "payor": "AGILITAS ENERGY",
+     "link": "payor",
+     "how": "filing fee paid by 'AGILITAS ENERGY'",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213825"
     }
    ]
   },
@@ -3266,19 +3308,19 @@
   },
   {
    "payor": "MORSE ENG",
-   "filings": 34,
+   "filings": 35,
    "towns": 8,
    "kind": "consultant"
   },
   {
    "payor": "SULLIVAN ENG",
-   "filings": 33,
+   "filings": 34,
    "towns": 1,
    "kind": "consultant"
   },
   {
    "payor": "OAKHILL ENG",
-   "filings": 32,
+   "filings": 34,
    "towns": 6,
    "kind": "consultant"
   },
@@ -3307,20 +3349,20 @@
    "kind": "consultant"
   },
   {
+   "payor": "CC ENG",
+   "filings": 22,
+   "towns": 7,
+   "kind": "consultant"
+  },
+  {
    "payor": "FALMOUTH ENG",
    "filings": 21,
    "towns": 4,
    "kind": "consultant"
   },
   {
-   "payor": "CC ENG",
-   "filings": 21,
-   "towns": 7,
-   "kind": "consultant"
-  },
-  {
    "payor": "CLARK ENG",
-   "filings": 19,
+   "filings": 21,
    "towns": 3,
    "kind": "consultant"
   },
@@ -3361,6 +3403,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "PMP CONSULTING",
+   "filings": 13,
+   "towns": 10,
+   "kind": "consultant"
+  },
+  {
    "payor": "JC ENG",
    "filings": 13,
    "towns": 5,
@@ -3370,12 +3418,6 @@
    "payor": "SITE DESIGN ENG",
    "filings": 13,
    "towns": 1,
-   "kind": "consultant"
-  },
-  {
-   "payor": "PMP CONSULTING",
-   "filings": 12,
-   "towns": 10,
    "kind": "consultant"
   },
   {
@@ -3571,6 +3613,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "KELLY ENG",
+   "filings": 3,
+   "towns": 3,
+   "kind": "consultant"
+  },
+  {
    "payor": "GAF ENG",
    "filings": 3,
    "towns": 2,
@@ -3611,12 +3659,6 @@
    "filings": 2,
    "towns": 2,
    "kind": "company"
-  },
-  {
-   "payor": "CROCKER DESIGN",
-   "filings": 2,
-   "towns": 1,
-   "kind": "consultant"
   }
  ]
 }

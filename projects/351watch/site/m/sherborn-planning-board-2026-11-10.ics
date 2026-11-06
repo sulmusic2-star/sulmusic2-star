@@ -1,0 +1,37 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-sherborn-planning-board-2026-11-10@agendaahead
+DTSTAMP:20261106T120000Z
+DTSTART;TZID=America/New_York:20261110T190000
+DTEND;TZID=America/New_York:20261110T210000
+SUMMARY:Sherborn Planning Board: Discusses solar and battery storage rules 
+ (no vote listed).
+LOCATION:Online meeting\, Sherborn\, MA
+DESCRIPTION:• Discusses solar and battery storage rules (no vote listed).
+ \n\nAgenda: https://www.sherbornma.org/AgendaCenter/ViewFile/Agenda/_11102
+ 026-2089\nPage: https://agendaahead.vercel.app/m/sherborn-planning-board-2
+ 026-11-10\nConfirm the time and place with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/sherborn-planning-board-2026-11-10
+END:VEVENT
+END:VCALENDAR

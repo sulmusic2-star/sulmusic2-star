@@ -1,18 +1,64 @@
 {
- "generated": "2026-11-03T15:42:09+00:00",
+ "generated": "2026-11-06T12:01:33+00:00",
  "source": "massdep_wetlands",
  "source_name": "MassDEP Wetlands Protection Act filings (EEA Data Portal, WIRe)",
  "window": {
   "start": "2025-10-10",
-  "end": "2026-11-03"
+  "end": "2026-11-06"
  },
  "states": [
   "MA"
  ],
- "filings_total": 4909,
- "hits_count": 98,
+ "filings_total": 4967,
+ "hits_count": 99,
  "notes": "meeting_date is the DEP filing date (the API has no hearing date); the Conservation Commission must open its hearing within 21 days of filing (310 CMR 10.05(5)(b)). Extra per-hit fields are under 'details'.",
  "hits": [
+  {
+   "id": "dcc071884eaf",
+   "state": "MA",
+   "town": "Swansea",
+   "county": "Bristol",
+   "board": "Conservation Commission (wetlands filing)",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-11-02",
+   "topics": [
+    "wetlands_filing",
+    "solar"
+   ],
+   "snippet": "ANRAD, Ae Bark Street Solar Ess, LLC (fee paid by Agilitas Energy): Wetland delineation. 0 Bark Street.",
+   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213825",
+   "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
+   "document_title": "MassDEP wetlands filing (file number pending) — ANRAD (resource area delineation), Swansea",
+   "text_source": "api",
+   "first_seen": "2026-11-06T12:01:33+00:00",
+   "days_before_meeting": -4.5,
+   "source": "massdep_wetlands",
+   "details": {
+    "noi_id": "213825",
+    "dep_file_number": null,
+    "filing_type": "ANRAD (resource area delineation)",
+    "project_type": "Other",
+    "received_date": "2026-11-02",
+    "issued_date": null,
+    "status": "received",
+    "soc_requested": false,
+    "meeting_date_basis": "filing_date",
+    "applicant": "AE BARK STREET SOLAR ESS, LLC",
+    "payor": "AGILITAS ENERGY",
+    "parent": "Agilitas Energy",
+    "parent_link": "payor",
+    "parent_confidence": "high",
+    "consultant": null,
+    "project_address": "0 BARK STREET",
+    "description": "WETLAND DELINEATION",
+    "category": "developer_other",
+    "confidence": "medium",
+    "signals": [
+     "name:Agilitas Energy"
+    ],
+    "api_url": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire/213825"
+   }
+  },
   {
    "id": "173f5527aa4c",
    "state": "MA",
@@ -152,7 +198,7 @@
    }
   },
   {
-   "id": "dc6912b2b2d7",
+   "id": "9cc4030d6ac9",
    "state": "MA",
    "town": "Clinton",
    "county": "Worcester",
@@ -162,7 +208,7 @@
    "topics": [
     "wetlands_filing"
    ],
-   "snippet": "NOI, New England Power Company (NEP): no description. Existing Utility Right-of-way.",
+   "snippet": "NOI, New England Power Company (NEP): NOI submittal materials not uploaded to edep. requested materials on 11/4/2026. Existing Utility Right-of-way.",
    "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213590",
    "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
    "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent, Clinton",
@@ -187,7 +233,7 @@
     "parent_confidence": "high",
     "consultant": null,
     "project_address": "EXISTING UTILITY RIGHT-OF-WAY",
-    "description": null,
+    "description": "NOI SUBMITTAL MATERIALS NOT UPLOADED TO EDEP. REQUESTED MATERIALS ON 11/4/2026.",
     "category": "transmission_substation",
     "confidence": "low",
     "signals": [
@@ -197,7 +243,7 @@
    }
   },
   {
-   "id": "722b6ae26abf",
+   "id": "b2197c57e1f5",
    "state": "MA",
    "town": "West Brookfield",
    "county": "Worcester",
@@ -207,7 +253,7 @@
    "topics": [
     "wetlands_filing"
    ],
-   "snippet": "NOI, New England Power Company: no description. Existing Transmission Line Right Of Way.",
+   "snippet": "NOI, New England Power Company: Asset condition replacement project consisting of improvements to access roads and replacement of all structures and wires on the O15N overhead electric transmission… Existing Transmission Line Right Of Way.",
    "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213522",
    "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
    "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent, West Brookfield",
@@ -219,7 +265,7 @@
     "noi_id": "213522",
     "dep_file_number": null,
     "filing_type": "Notice of Intent",
-    "project_type": "Utilities",
+    "project_type": "Utilities, I-LP: Public utilities",
     "received_date": "2026-10-14",
     "issued_date": null,
     "status": "received",
@@ -232,11 +278,11 @@
     "parent_confidence": "high",
     "consultant": null,
     "project_address": "EXISTING TRANSMISSION LINE RIGHT OF WAY",
-    "description": null,
+    "description": "ASSET CONDITION REPLACEMENT PROJECT CONSISTING OF IMPROVEMENTS TO ACCESS ROADS AND REPLACEMENT OF ALL STRUCTURES AND WIRES ON THE O15N OVERHEAD ELECTRIC TRANSMISSION LINE.",
     "category": "transmission_substation",
-    "confidence": "low",
+    "confidence": "medium",
     "signals": [
-     "name:New England Power (transmission owner)"
+     "desc:TRANSMISSION LINE"
     ],
     "api_url": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire/213522"
    }
@@ -267,8 +313,8 @@
     "filing_type": "Notice of Intent (buffer zone only)",
     "project_type": "Utilities",
     "received_date": "2026-10-13",
-    "issued_date": null,
-    "status": "file_number_issued",
+    "issued_date": "2026-10-27",
+    "status": "decision_issued",
     "soc_requested": false,
     "meeting_date_basis": "filing_date",
     "applicant": "PARALLEL PRODUCTS SOLAR ENERGY LLC",

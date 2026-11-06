@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:m-isle-of-wight-county-planning-commission-2026-11-10@agendaahead
+DTSTAMP:20261106T120000Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:Isle of Wight County Planning Commission: Holds a hearing on Joest 
+ Properties.
+LOCATION:Isle of Wight County\, VA
+DESCRIPTION:• Holds a hearing on Joest Properties.\n• Holds a hearing o
+ n Carver Solar.\n• Holds a hearing on a data-center ordinance.\n• Hold
+ s a hearing on a request to rezone land.\n\nAgenda: https://isleofwightcov
+ a.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=7812\,plainTe
+ xt=false)\nPage: https://agendaahead.vercel.app/m/isle-of-wight-county-pla
+ nning-commission-2026-11-10\nConfirm the time and place with the town\; ag
+ endas can change.
+URL:https://agendaahead.vercel.app/m/isle-of-wight-county-planning-commissi
+ on-2026-11-10
+END:VEVENT
+END:VCALENDAR

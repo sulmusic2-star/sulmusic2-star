@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:m-city-of-charlottesville-planning-commission-2026-11-10@agendaahead
+DTSTAMP:20261106T120000Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:City of Charlottesville Planning Commission: Discusses a zoning cha
+ nge (no vote listed).
+LOCATION:East Main Street City Council Chambers\, or join online\, City of 
+ Charlottesville\, VA
+DESCRIPTION:• Discusses a zoning change (no vote listed).\n\nAgenda: http
+ s://charlottesvilleva.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(
+ fileId=6691\,plainText=false)\nPage: https://agendaahead.vercel.app/m/city
+ -of-charlottesville-planning-commission-2026-11-10\nConfirm the time and p
+ lace with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/city-of-charlottesville-planning-commi
+ ssion-2026-11-10
+END:VEVENT
+END:VCALENDAR

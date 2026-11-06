@@ -1,15 +1,15 @@
 {
- "generated": "2026-11-03T15:53:27+00:00",
+ "generated": "2026-11-06T12:33:14+00:00",
  "states": {
   "CT": {
    "data_center": 1,
    "moratorium": 1,
    "solar": 2,
-   "wind": 1
+   "wind": 2
   },
   "MA": {
-   "battery_storage": 1,
-   "data_center": 37,
+   "battery_storage": 2,
+   "data_center": 41,
    "moratorium": 4,
    "solar": 1,
    "wind": 2
@@ -19,14 +19,14 @@
    "moratorium": 1
   },
   "NY": {
-   "data_center": 25,
-   "moratorium": 2
+   "data_center": 26,
+   "moratorium": 4
   },
   "RI": {
    "battery_storage": 1,
-   "data_center": 4,
+   "data_center": 6,
    "solar": 3,
-   "wind": 1
+   "wind": 2
   }
  },
  "towns": {
@@ -129,6 +129,18 @@
     "title": "Zoom meeting set for servistar data center permit decision in Westfield",
     "topics": [
      "data_center"
+    ]
+   }
+  ],
+  "NY:Lysander": [
+   {
+    "link": "https://www.syracuse.com/news/2026/11/lysander-town-board-approves-extension-of-moratorium-on-data-centers.html",
+    "published": "2026-11-06T04:00:06+00:00",
+    "source": "Syracuse.com",
+    "title": "Lysander town board approves extension of moratorium on data centers",
+    "topics": [
+     "data_center",
+     "moratorium"
     ]
    }
   ],

@@ -1,0 +1,499 @@
+{
+ "by_state": {
+  "MA": {
+   "new_documents": 304,
+   "new_hits": 162,
+   "towns_attempted": 243,
+   "towns_succeeded": 243
+  },
+  "MD": {
+   "new_documents": 8,
+   "new_hits": 0,
+   "towns_attempted": 30,
+   "towns_succeeded": 30
+  },
+  "MI": {
+   "new_documents": 58,
+   "new_hits": 70,
+   "towns_attempted": 101,
+   "towns_succeeded": 101
+  },
+  "NY": {
+   "new_documents": 39,
+   "new_hits": 6,
+   "towns_attempted": 92,
+   "towns_succeeded": 92
+  },
+  "OH": {
+   "new_documents": 10,
+   "new_hits": 4,
+   "towns_attempted": 33,
+   "towns_succeeded": 33
+  },
+  "RI": {
+   "new_documents": 48,
+   "new_hits": 24,
+   "towns_attempted": 39,
+   "towns_succeeded": 39
+  },
+  "VA": {
+   "new_documents": 52,
+   "new_hits": 66,
+   "towns_attempted": 108,
+   "towns_succeeded": 108
+  }
+ },
+ "date": "2026-11-06",
+ "document_errors": 10,
+ "documents_already_indexed": 3632,
+ "documents_deferred": 0,
+ "documents_listed": 4166,
+ "documents_needing_ocr": 4,
+ "documents_rematched": 1,
+ "documents_retried": 4,
+ "documents_too_large": [
+  {
+   "error": "too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
+   "meeting_date": "2026-10-26",
+   "state": "MA",
+   "town": "Bedford",
+   "url": "https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788"
+  },
+  {
+   "error": "too large (69979402 > 41943040 bytes): https://dighton-ma.gov/AgendaCenter/ViewFile/Agenda/_10282026-2839",
+   "meeting_date": "2026-10-28",
+   "state": "MA",
+   "town": "Dighton",
+   "url": "https://dighton-ma.gov/AgendaCenter/ViewFile/Agenda/_10282026-2839"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560",
+   "meeting_date": "2026-10-14",
+   "state": "MA",
+   "town": "Franklin",
+   "url": "https://www.franklinma.gov/AgendaCenter/ViewFile/Agenda/_10142026-2560"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586",
+   "meeting_date": "2026-09-28",
+   "state": "MA",
+   "town": "Great Barrington",
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2586"
+  },
+  {
+   "error": "too large (43384324 > 41943040 bytes): https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2642",
+   "meeting_date": "2026-10-26",
+   "state": "MA",
+   "town": "Great Barrington",
+   "url": "https://www.townofgbma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2642"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577",
+   "meeting_date": "2026-10-06",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10062026-1577"
+  },
+  {
+   "error": "too large (55940673 > 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_10202026-1634"
+  },
+  {
+   "error": "too large (46611012 > 41943040 bytes): https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_11042026-1662",
+   "meeting_date": "2026-11-04",
+   "state": "MA",
+   "town": "Wellfleet",
+   "url": "https://www.wellfleet-ma.gov/AgendaCenter/ViewFile/Agenda/_11042026-1662"
+  },
+  {
+   "error": "too large (42216812 > 41943040 bytes): https://cms2.revize.com/revize/westportma/Documents/Departments/Planning/Agendas ",
+   "meeting_date": "2026-10-20",
+   "state": "MA",
+   "town": "Westport",
+   "url": "https://www.westport-ma.com/Documents/Departments/Planning/Agendas And Minutes/2026/Packets/Packet 2026-10-20.pdf"
+  },
+  {
+   "error": "too large (116241771 > 41943040 bytes): https://cms2.revize.com/revize/bedford/PCMergedPDF.pdf",
+   "meeting_date": "2026-11-17",
+   "state": "MI",
+   "town": "Bedford Charter Township",
+   "url": "https://www.bedfordchartertwpmi.gov/PCMergedPDF.pdf"
+  },
+  {
+   "error": "too large (73079688 > 41943040 bytes): https://www.brightontwp.com/AgendaCenter/ViewFile/Agenda/_11092026-2368",
+   "meeting_date": "2026-11-09",
+   "state": "MI",
+   "town": "Brighton Township",
+   "url": "https://www.brightontwp.com/AgendaCenter/ViewFile/Agenda/_11092026-2368"
+  },
+  {
+   "error": "too large (81348548 > 41943040 bytes): https://webgen1files1.revize.com/eastchinatwpmi/Documents/Departments/BOT agendas",
+   "meeting_date": "2026-10-19",
+   "state": "MI",
+   "town": "East China Charter Township",
+   "url": "https://www.eastchinatownship.org/Documents/Departments/BOT agendas & mins/10-19-2026z-AGENDA_PACKET_.pdf"
+  },
+  {
+   "error": "too large (72784729 > 41943040 bytes): https://webgen1files1.revize.com/eastchinatwpmi/Documents/Departments/BOT agendas",
+   "meeting_date": "2026-10-05",
+   "state": "MI",
+   "town": "East China Charter Township",
+   "url": "https://www.eastchinatownship.org/Documents/Departments/BOT agendas & mins/10-5-2026_AGENDA_PACKET_.pdf"
+  },
+  {
+   "error": "too large (65650622 > 41943040 bytes): https://webgen1files1.revize.com/eastchinatwpmi/Documents/Departments/BOT agendas",
+   "meeting_date": "2026-11-02",
+   "state": "MI",
+   "town": "East China Charter Township",
+   "url": "https://www.eastchinatownship.org/Documents/Departments/BOT agendas & mins/11-2-2026_AGENDA_PACKET_.pdf"
+  },
+  {
+   "error": "too large (55651232 > 41943040 bytes): https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Packet-e1951",
+   "meeting_date": "2026-10-14",
+   "state": "MI",
+   "town": "Hamburg Township",
+   "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Packet-e1951b5ac9ed49708b1aee9bee3133e8.pdf"
+  },
+  {
+   "error": "too large (58142375 > 41943040 bytes): https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-457f1",
+   "meeting_date": "2026-10-06",
+   "state": "MI",
+   "town": "Hartland Township",
+   "url": "https://mccmeetings.blob.core.usgovcloudapi.net/hartlandmi-pubu/MEET-Packet-457f140f78e749a9ba0ca922a0a35954.pdf"
+  },
+  {
+   "error": "too large (47342235 > 41943040 bytes): https://howelltownshipmi.org/wp-content/uploads/2026/10/2026.10.27-PC-Packet.pdf",
+   "meeting_date": "2026-10-27",
+   "state": "MI",
+   "town": "Howell Township",
+   "url": "https://howelltownshipmi.org/wp-content/uploads/2026/10/2026.10.27-PC-Packet.pdf"
+  },
+  {
+   "error": "too large (77012685 > 41943040 bytes): https://howelltownshipmi.org/wp-content/uploads/2026/10/Board-Packet-10.13.2026.p",
+   "meeting_date": "2026-10-13",
+   "state": "MI",
+   "town": "Howell Township",
+   "url": "https://howelltownshipmi.org/wp-content/uploads/2026/10/Board-Packet-10.13.2026.pdf"
+  },
+  {
+   "error": "too large (51966229 > 41943040 bytes): https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_10282026-1026",
+   "meeting_date": "2026-10-28",
+   "state": "MI",
+   "town": "Pittsfield Charter Township",
+   "url": "https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_10282026-1026"
+  },
+  {
+   "error": "too large (51118952 > 41943040 bytes): https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_11052026-1027",
+   "meeting_date": "2026-11-05",
+   "state": "MI",
+   "town": "Pittsfield Charter Township",
+   "url": "https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_11052026-1027"
+  },
+  {
+   "error": "too large (94149703 > 41943040 bytes): https://superiortownship.org/wp-content/uploads/2026/10/10.-October-19-2026-Board",
+   "meeting_date": "2026-10-19",
+   "state": "MI",
+   "town": "Superior Township",
+   "url": "https://superiortownship.org/wp-content/uploads/2026/10/10.-October-19-2026-Board-Packet.pdf"
+  },
+  {
+   "error": "too large (66300314 > 41943040 bytes): https://mccmeetings.blob.core.usgovcloudapi.net/whitelakmi-pubu/MEET-Packet-c90a1",
+   "meeting_date": "2026-10-20",
+   "state": "MI",
+   "town": "White Lake Charter Township",
+   "url": "https://mccmeetings.blob.core.usgovcloudapi.net/whitelakmi-pubu/MEET-Packet-c90a1ffe0602497e825ac47d9bdb8af4.pdf"
+  },
+  {
+   "error": "too large (88080152 > 41943040 bytes): https://files.ypsitownship.org/Documents/Government/Boards-Commissions/Planning-C",
+   "meeting_date": "2026-10-27",
+   "state": "MI",
+   "town": "Ypsilanti Charter Township",
+   "url": "https://ypsitownship.org/Documents/Government/Boards-Commissions/Planning-Commission/2026/Agenda/2026-10-27-Planning-Commission-Agenda.pdf"
+  },
+  {
+   "error": "too large (141670572 > 41943040 bytes): https://files.ypsitownship.org/Documents/Government/Boards-Commissions/Planning-",
+   "meeting_date": "2026-10-13",
+   "state": "MI",
+   "town": "Ypsilanti Charter Township",
+   "url": "https://ypsitownship.org/Documents/Government/Boards-Commissions/Planning-Commission/2026/Packet/2026-10-13-Planning-Commission-Packet-Revised-2026-10-09.pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Cortlandt",
+   "url": "https://www.townofcortlandtny.gov/uppages/10_06_2026 PB Agenda Packet_Redacted(1).pdf"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109",
+   "meeting_date": "2026-09-14",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_09142026-109"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114",
+   "meeting_date": "2026-10-19",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_10192026-114"
+  },
+  {
+   "error": "too large (112326792 > 41943040 bytes): https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_11092026-122",
+   "meeting_date": "2026-11-09",
+   "state": "NY",
+   "town": "Glenville",
+   "url": "https://www.townofglenville.gov/AgendaCenter/ViewFile/Agenda/_11092026-122"
+  },
+  {
+   "error": "too large (> 41943040 bytes): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166",
+   "meeting_date": "2026-10-06",
+   "state": "NY",
+   "town": "Kent",
+   "url": "https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_10062026-166"
+  },
+  {
+   "error": "too large (86013651 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/10.13.26 pb packet.pdf",
+   "meeting_date": "2026-10-13",
+   "state": "NY",
+   "town": "Mount Kisco",
+   "url": "https://www.mountkiscony.gov/10.13.26 pb packet.pdf"
+  },
+  {
+   "error": "too large (86818080 > 41943040 bytes): https://www.waynecountyny.gov/AgendaCenter/ViewFile/Agenda/_09232026-1559",
+   "meeting_date": "2026-09-23",
+   "state": "NY",
+   "town": "Wayne County",
+   "url": "https://www.waynecountyny.gov/AgendaCenter/ViewFile/Agenda/_09232026-1559"
+  },
+  {
+   "error": "too large (62620388 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-761",
+   "meeting_date": "2026-10-13",
+   "state": "VA",
+   "town": "Botetourt County",
+   "url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-761"
+  },
+  {
+   "error": "too large (47850552 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-763",
+   "meeting_date": "2026-10-13",
+   "state": "VA",
+   "town": "Botetourt County",
+   "url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10132026-763"
+  },
+  {
+   "error": "too large (55951595 > 41943040 bytes): https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10232026-766",
+   "meeting_date": "2026-10-23",
+   "state": "VA",
+   "town": "Botetourt County",
+   "url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_10232026-766"
+  },
+  {
+   "error": "too large (46088347 > 41943040 bytes): https://www.colonialheightsva.gov/AgendaCenter/ViewFile/Agenda/_11042026-812",
+   "meeting_date": "2026-11-04",
+   "state": "VA",
+   "town": "City of Colonial Heights",
+   "url": "https://www.colonialheightsva.gov/AgendaCenter/ViewFile/Agenda/_11042026-812"
+  },
+  {
+   "error": "too large (58877117 > 41943040 bytes): https://www.franklincountyva.gov/AgendaCenter/ViewFile/Agenda/_10202026-822",
+   "meeting_date": "2026-10-20",
+   "state": "VA",
+   "town": "Franklin County",
+   "url": "https://www.franklincountyva.gov/AgendaCenter/ViewFile/Agenda/_10202026-822"
+  },
+  {
+   "error": "too large (46433239 > 41943040 bytes): https://cms7files.revize.com/greensvillecountyva25/Documents Center/Agenda & Minu",
+   "meeting_date": "2026-10-05",
+   "state": "VA",
+   "town": "Greensville County",
+   "url": "https://www.greensvillecountyva.gov/Documents Center/Agenda & Minutes/Board of Supervisors/2026/Agenda/Board of Supervisors Agenda - 10052026.pdf"
+  },
+  {
+   "error": "too large (241819661 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_10052026-790",
+   "meeting_date": "2026-10-05",
+   "state": "VA",
+   "town": "Halifax County",
+   "url": "https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_10052026-790"
+  },
+  {
+   "error": "too large (292957981 > 41943040 bytes): https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_11022026-799",
+   "meeting_date": "2026-11-02",
+   "state": "VA",
+   "town": "Halifax County",
+   "url": "https://www.halifaxcountyva.gov/AgendaCenter/ViewFile/Agenda/_11022026-799"
+  },
+  {
+   "error": "too large (85135107 > 41943040 bytes): https://cms7files1.revize.com/southamptoncountyva/BOS Agendas 2026/October 2026/N",
+   "meeting_date": "2026-10-27",
+   "state": "VA",
+   "town": "Southampton County",
+   "url": "https://www.southamptoncounty.org/BOS Agendas 2026/October 2026/No. 11 B - Public Hearing - CUP 2026-02 - Cenergy Power - BAP Power LLC plus final updates and appl.pdf"
+  },
+  {
+   "error": "too large (69549427 > 41943040 bytes): https://louisava.gov/wp-content/uploads/2026/07/July-Planning-Commission-Agenda-2",
+   "meeting_date": "2026-10-26",
+   "state": "VA",
+   "town": "Town of Louisa",
+   "url": "https://louisava.gov/wp-content/uploads/2026/07/July-Planning-Commission-Agenda-2.pdf"
+  },
+  {
+   "error": "too large (64101491 > 41943040 bytes): https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_10132026-993",
+   "meeting_date": "2026-10-13",
+   "state": "VA",
+   "town": "Town of Smithfield",
+   "url": "https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_10132026-993"
+  },
+  {
+   "error": "too large (85519828 > 41943040 bytes): https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_11102026-996",
+   "meeting_date": "2026-11-10",
+   "state": "VA",
+   "town": "Town of Smithfield",
+   "url": "https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_11102026-996"
+  }
+ ],
+ "duration_seconds": 1525.3,
+ "errors": [
+  {
+   "error": "document: https://www.cityofmethuen.net/AgendaCenter/ViewFile/Agenda/_11092026-1177: HTTPSConnectionPool(host='www.cityofmethuen.net', port=443): Read timed out. (read timeout=10)",
+   "town": "MA:Methuen"
+  },
+  {
+   "error": "document: HTTP 520: https://www.rockland-ma.gov/AgendaCenter/ViewFile/Agenda/_11102026-3347",
+   "town": "MA:Rockland"
+  },
+  {
+   "error": "document: extract failed (content-type application/msword): https://townofshelburnema.gov/files/Zoning_Board_of_Appeals_2026-11-05_Agenda.doc",
+   "town": "MA:Shelburne"
+  },
+  {
+   "error": "document: too large (116241771 > 41943040 bytes): https://cms2.revize.com/revize/bedford/PCMergedPDF.pdf",
+   "town": "MI:Bedford Charter Township"
+  },
+  {
+   "error": "document: https://cms3.revize.com/revize/bridgeporttwpmi/2026 1020 Special Agenda.docx",
+   "town": "MI:Bridgeport Charter Township"
+  },
+  {
+   "error": "document: too large (73079688 > 41943040 bytes): https://www.brightontwp.com/AgendaCenter/ViewFile/Agenda/_11092026-2368",
+   "town": "MI:Brighton Township"
+  },
+  {
+   "error": "document: https://cms4files1.revize.com/summitmi/DEC 2026 AGENDA JG DRAFT 2.docx",
+   "town": "MI:Summit Township"
+  },
+  {
+   "error": "document: extract failed (content-type application/rtf;charset=utf-8): https://townofwilton.ny.gov/government/meeting-agendas/town-board-agenda-11-05-26-federal-aid-local-project-agreement/",
+   "town": "NY:Wilton"
+  },
+  {
+   "error": "document: too large (46088347 > 41943040 bytes): https://www.colonialheightsva.gov/AgendaCenter/ViewFile/Agenda/_11042026-812",
+   "town": "VA:City of Colonial Heights"
+  },
+  {
+   "error": "document: too large (85519828 > 41943040 bytes): https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_11102026-996",
+   "town": "VA:Town of Smithfield"
+  }
+ ],
+ "errors_total": 10,
+ "finished": "2026-11-06T12:32:21+00:00",
+ "hits_current": 2950,
+ "index": {
+  "by_state": {
+   "MA": 4423,
+   "MD": 147,
+   "MI": 357,
+   "NY": 639,
+   "OH": 140,
+   "RI": 527,
+   "VA": 441
+  },
+  "by_status": {
+   "error": 66,
+   "needs_ocr": 10,
+   "ok": 6492,
+   "replaced": 106
+  },
+  "by_text_source": {
+   "docx": 57,
+   "html": 351,
+   "none": 68,
+   "ocr": 1342,
+   "pdf": 4856
+  },
+  "documents": 6674,
+  "hits": 3240,
+  "pruned": 21,
+  "towns": 612,
+  "with_hits": 1408
+ },
+ "network": {
+  "bytes_by_purpose": {
+   "document": 462709890,
+   "listing": 233807033,
+   "robots": 1637130
+  },
+  "cache_hits": 358,
+  "errors": 6,
+  "requests": 2479,
+  "requests_by_purpose": {
+   "document": 546,
+   "listing": 1310,
+   "robots": 623
+  },
+  "robots_blocked": 2,
+  "slow_host_documents": {}
+ },
+ "new_alert_items": 260,
+ "new_alert_items_by_topic": {
+  "40b_comprehensive_permit": 21,
+  "battery_storage": 35,
+  "clean_energy_siting": 21,
+  "data_center": 66,
+  "moratorium": 26,
+  "solar": 59,
+  "wetlands_filing": 3,
+  "wireless_telecom": 21,
+  "zoning_amendment": 90
+ },
+ "new_documents": 519,
+ "new_hits": 332,
+ "new_hits_by_topic": {
+  "40b_comprehensive_permit": 24,
+  "battery_storage": 51,
+  "clean_energy_siting": 22,
+  "data_center": 77,
+  "moratorium": 35,
+  "solar": 78,
+  "wireless_telecom": 23,
+  "zoning_amendment": 128
+ },
+ "options": {
+  "matcher_version": "ca9b9d486f",
+  "no_network_docs": false,
+  "ocr_max_pages": 6,
+  "pdftotext": true,
+  "tesseract": true,
+  "workers": 16
+ },
+ "started": "2026-11-06T12:06:56+00:00",
+ "states": [
+  "MA",
+  "MD",
+  "MI",
+  "NY",
+  "OH",
+  "RI",
+  "VA"
+ ],
+ "towns_attempted": 646,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 646,
+ "window": {
+  "end": "2027-03-06",
+  "start": "2026-10-07"
+ }
+}
