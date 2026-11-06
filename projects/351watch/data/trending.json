@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T12:33:14+00:00",
+ "generated": "2026-11-06T19:35:39+00:00",
  "window": {
   "start": "2026-11-06",
   "end": "2027-03-06"
@@ -743,7 +743,7 @@
   },
   {
    "id": "f923171bce10",
-   "score": 24.3,
+   "score": 22.95,
    "headline": "Rockbridge County planners hold hearing on data-center rules",
    "dek": "The Planning Commission meets Tuesday, Nov 10. The agenda lists a public hearing on data-center rules.",
    "quote": "Zoning Text Amendment (ZTA) to modify Chapter 30, Article III, Sec. 30-12 (Specific Definitions) of the Code to update the definition of \"Public Utility Service, Major\" and add a definition of \"Data…",
@@ -756,7 +756,7 @@
    "why": [
     "Also next door in Augusta County and Botetourt County"
    ],
-   "stakes": 15.0,
+   "stakes": 14.0,
    "buzz": 3.0,
    "topics": [
     "data_center",
@@ -776,7 +776,7 @@
    "meeting_date_source": "agenda",
    "days_until": 4,
    "first_seen": "2026-11-03T15:50:36+00:00",
-   "is_new": true,
+   "is_new": false,
    "source_url": "https://www.co.rockbridge.va.us/AgendaCenter/ViewFile/Agenda/_11102026-1112",
    "town_path": "/va/rockbridge-county",
    "action": "bylaw_hearing",
@@ -805,74 +805,6 @@
     "f06e89bbb02d",
     "f17d1b6d7835",
     "f4479237f2de"
-   ]
-  },
-  {
-   "id": "c06d4aa8ea9d",
-   "score": 23.89,
-   "headline": "Middlesex County planners hold hearing on a solar and battery storage ordinance",
-   "dek": "The Planning Commission meets Thursday, Nov 12. The agenda lists a public hearing on a solar and battery storage ordinance.",
-   "quote": "Solar & Energy Storage Facilities Ordinance Amendments Planning Staff Report Overview Initiated by Request Case Advertised Planner Middlesex County",
-   "reasons": [
-    "Public hearing",
-    "2 town boards",
-    "Hearing Nov 12",
-    "Also next door in Gloucester County, King and Queen County and Mathews County"
-   ],
-   "why": [
-    "Also next door in Gloucester County, King and Queen County and Mathews County"
-   ],
-   "stakes": 12.2,
-   "buzz": 5.5,
-   "topics": [
-    "battery_storage",
-    "clean_energy_siting",
-    "solar",
-    "wireless_telecom",
-    "zoning_amendment"
-   ],
-   "state": "VA",
-   "town": "Middlesex County",
-   "county": "Middlesex",
-   "towns": [
-    "VA:Middlesex County"
-   ],
-   "board": "Planning Commission",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-12",
-   "meeting_date_source": "agenda",
-   "days_until": 6,
-   "first_seen": "2026-11-03T15:50:29+00:00",
-   "is_new": true,
-   "source_url": "https://www.co.middlesex.va.us/AgendaCenter/ViewFile/Agenda/_11122026-780",
-   "town_path": "/va/middlesex-county",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Middlesex County",
-     "board": "Planning Commission",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-12"
-    },
-    {
-     "town": "Middlesex County",
-     "board": "Board of Supervisors",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-04"
-    }
-   ],
-   "hit_ids": [
-    "066f84775eb3",
-    "1b73f492802e",
-    "665d2957fa38",
-    "6eb0ce8805fa",
-    "744fb8919750",
-    "91dabd4332d1",
-    "983b582a87c3",
-    "9caa377d8cb9",
-    "c50ea3d211d5",
-    "df3e028863db",
-    "e00a09c20682"
    ]
   },
   {
@@ -921,6 +853,74 @@
    ],
    "hit_ids": [
     "bc7640dbd60f"
+   ]
+  },
+  {
+   "id": "c06d4aa8ea9d",
+   "score": 22.55,
+   "headline": "Middlesex County planners hold hearing on a solar and battery storage ordinance",
+   "dek": "The Planning Commission meets Thursday, Nov 12. The agenda lists a public hearing on a solar and battery storage ordinance.",
+   "quote": "Solar & Energy Storage Facilities Ordinance Amendments Planning Staff Report Overview Initiated by Request Case Advertised Planner Middlesex County",
+   "reasons": [
+    "Public hearing",
+    "2 town boards",
+    "Hearing Nov 12",
+    "Also next door in Gloucester County, King and Queen County and Mathews County"
+   ],
+   "why": [
+    "Also next door in Gloucester County, King and Queen County and Mathews County"
+   ],
+   "stakes": 11.2,
+   "buzz": 5.5,
+   "topics": [
+    "battery_storage",
+    "clean_energy_siting",
+    "solar",
+    "wireless_telecom",
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Middlesex County",
+   "county": "Middlesex",
+   "towns": [
+    "VA:Middlesex County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-12",
+   "meeting_date_source": "agenda",
+   "days_until": 6,
+   "first_seen": "2026-11-03T15:50:29+00:00",
+   "is_new": false,
+   "source_url": "https://www.co.middlesex.va.us/AgendaCenter/ViewFile/Agenda/_11122026-780",
+   "town_path": "/va/middlesex-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Middlesex County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-12"
+    },
+    {
+     "town": "Middlesex County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-04"
+    }
+   ],
+   "hit_ids": [
+    "066f84775eb3",
+    "1b73f492802e",
+    "665d2957fa38",
+    "6eb0ce8805fa",
+    "744fb8919750",
+    "91dabd4332d1",
+    "983b582a87c3",
+    "9caa377d8cb9",
+    "c50ea3d211d5",
+    "df3e028863db",
+    "e00a09c20682"
    ]
   },
   {
@@ -1232,61 +1232,6 @@
    ]
   },
   {
-   "id": "dae5c6b9cdf8",
-   "score": 18.23,
-   "headline": "Delta Charter Township planners discuss data-center rules",
-   "dek": "The Planning Board meets Monday, Nov 9. The agenda lists an item on data-center rules. It was on the Select Board agenda Oct 5.",
-   "quote": "School zoning amendment",
-   "reasons": [
-    "Draft rules",
-    "2 town boards",
-    "Meeting Nov 9"
-   ],
-   "why": [],
-   "stakes": 11.0,
-   "buzz": 2.5,
-   "topics": [
-    "data_center",
-    "zoning_amendment"
-   ],
-   "state": "MI",
-   "town": "Delta Charter Township",
-   "county": "Eaton",
-   "towns": [
-    "MI:Delta Charter Township"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-09",
-   "meeting_date_source": "agenda",
-   "days_until": 3,
-   "first_seen": "2026-11-03T15:46:01+00:00",
-   "is_new": true,
-   "source_url": "https://www.deltami.gov/Document_Center/Committee Agendas and Minutes/PC/2026/November 9 2026 PC Meeting Packet.pdf",
-   "town_path": "/mi/delta-charter-township",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Delta Charter Township",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-09"
-    },
-    {
-     "town": "Delta Charter Township",
-     "board": "Select Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-05"
-    }
-   ],
-   "hit_ids": [
-    "488f9fcc8613",
-    "69e325e90ea2",
-    "bf9c3acbc7fe",
-    "fc6433323b27"
-   ]
-  },
-  {
    "id": "d8c3e3e92568",
    "score": 18.0,
    "headline": "Lansing Town Board holds hearing on a data-center law",
@@ -1424,6 +1369,61 @@
    ],
    "hit_ids": [
     "413870345b48"
+   ]
+  },
+  {
+   "id": "dae5c6b9cdf8",
+   "score": 16.88,
+   "headline": "Delta Charter Township planners discuss data-center rules",
+   "dek": "The Planning Board meets Monday, Nov 9. The agenda lists an item on data-center rules. It was on the Select Board agenda Oct 5.",
+   "quote": "School zoning amendment",
+   "reasons": [
+    "Draft rules",
+    "2 town boards",
+    "Meeting Nov 9"
+   ],
+   "why": [],
+   "stakes": 10.0,
+   "buzz": 2.5,
+   "topics": [
+    "data_center",
+    "zoning_amendment"
+   ],
+   "state": "MI",
+   "town": "Delta Charter Township",
+   "county": "Eaton",
+   "towns": [
+    "MI:Delta Charter Township"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-09",
+   "meeting_date_source": "agenda",
+   "days_until": 3,
+   "first_seen": "2026-11-03T15:46:01+00:00",
+   "is_new": false,
+   "source_url": "https://www.deltami.gov/Document_Center/Committee Agendas and Minutes/PC/2026/November 9 2026 PC Meeting Packet.pdf",
+   "town_path": "/mi/delta-charter-township",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Delta Charter Township",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-09"
+    },
+    {
+     "town": "Delta Charter Township",
+     "board": "Select Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-05"
+    }
+   ],
+   "hit_ids": [
+    "488f9fcc8613",
+    "69e325e90ea2",
+    "bf9c3acbc7fe",
+    "fc6433323b27"
    ]
   },
   {
@@ -2007,72 +2007,6 @@
    ]
   },
   {
-   "id": "debc01d74df3",
-   "score": 14.85,
-   "headline": "Williamstown Township planners discuss data-center rules",
-   "dek": "The Planning Board meets Tuesday, Nov 10. The agenda lists an item on data-center rules.",
-   "quote": "16 Williamstown Township, Ingham County, MI Data Center Regulations August 31, 2026 WILLIAMSTOWN TOWNSHIP ZONING ORDINANCE Data Center Regulations INTRODUCTION This document contains recommended…",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 10"
-   ],
-   "why": [],
-   "stakes": 11.0,
-   "buzz": 0.0,
-   "topics": [
-    "battery_storage",
-    "data_center",
-    "solar"
-   ],
-   "state": "MI",
-   "town": "Williamstown Township",
-   "county": "Ingham",
-   "towns": [
-    "MI:Williamstown Township"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-10",
-   "meeting_date_source": "agenda",
-   "days_until": 4,
-   "first_seen": "2026-11-03T15:45:52+00:00",
-   "is_new": true,
-   "source_url": "https://williamstownmi.gov/wp-content/uploads/2026/11/Merged-Documents-for-11.10.26-Planning-Commission-Meeting.pdf",
-   "town_path": "/mi/williamstown-township",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Williamstown Township",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-10"
-    },
-    {
-     "town": "Williamstown Township",
-     "board": "Select Board",
-     "board_key": "select_board",
-     "meeting_date": "2026-10-14"
-    }
-   ],
-   "hit_ids": [
-    "09e3c08a586a",
-    "104251e06b35",
-    "27fc5c4fa116",
-    "48e33b918067",
-    "55f6cb8579c3",
-    "86e2da5a257a",
-    "95930be2914b",
-    "98f36be0bcf6",
-    "9ef591698ed8",
-    "ae60aeb71ce9",
-    "cb9279e08005",
-    "dbfffdd63424",
-    "e990ec7abc8e",
-    "edae217c6191",
-    "eea77dd2077c"
-   ]
-  },
-  {
    "id": "974723ae18a4",
    "score": 14.85,
    "headline": "Port Huron Charter Township Zoning Commission discusses data-center rules",
@@ -2220,71 +2154,69 @@
    ]
   },
   {
-   "id": "369f36e79a0a",
+   "id": "debc01d74df3",
    "score": 13.5,
-   "headline": "Botetourt County planners discuss solar and battery storage rules",
-   "dek": "The Planning Commission meets Monday, Nov 9. The agenda lists an item on solar and battery storage rules.",
-   "quote": "Addendum Utility-Scale Solar Energy and Battery Energy Storage Facility Policies Page 11 of 24 A-2 k. The County should annually review related policies and ordinance regulations for consistency with…",
+   "headline": "Williamstown Township planners discuss data-center rules",
+   "dek": "The Planning Board meets Tuesday, Nov 10. The agenda lists an item on data-center rules.",
+   "quote": "16 Williamstown Township, Ingham County, MI Data Center Regulations August 31, 2026 WILLIAMSTOWN TOWNSHIP ZONING ORDINANCE Data Center Regulations INTRODUCTION This document contains recommended…",
    "reasons": [
     "Draft rules",
-    "Also on the Oct 5 agenda",
-    "Meeting Nov 9"
+    "Meeting Nov 10"
    ],
    "why": [],
-   "stakes": 9.0,
-   "buzz": 1.0,
+   "stakes": 10.0,
+   "buzz": 0.0,
    "topics": [
     "battery_storage",
-    "clean_energy_siting",
+    "data_center",
     "solar"
    ],
-   "state": "VA",
-   "town": "Botetourt County",
-   "county": "Botetourt",
+   "state": "MI",
+   "town": "Williamstown Township",
+   "county": "Ingham",
    "towns": [
-    "VA:Botetourt County"
+    "MI:Williamstown Township"
    ],
-   "board": "Planning Commission",
+   "board": "Planning Board",
    "board_key": "planning_board",
-   "meeting_date": "2026-11-09",
+   "meeting_date": "2026-11-10",
    "meeting_date_source": "agenda",
-   "days_until": 3,
-   "first_seen": "2026-11-03T15:50:28+00:00",
-   "is_new": true,
-   "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_11092026-773",
-   "town_path": "/va/botetourt-county",
+   "days_until": 4,
+   "first_seen": "2026-11-03T15:45:52+00:00",
+   "is_new": false,
+   "source_url": "https://williamstownmi.gov/wp-content/uploads/2026/11/Merged-Documents-for-11.10.26-Planning-Commission-Meeting.pdf",
+   "town_path": "/mi/williamstown-township",
    "action": "bylaw_draft",
    "boards": [
     {
-     "town": "Botetourt County",
-     "board": "Planning Commission",
+     "town": "Williamstown Township",
+     "board": "Planning Board",
      "board_key": "planning_board",
-     "meeting_date": "2026-11-09"
+     "meeting_date": "2026-11-10"
+    },
+    {
+     "town": "Williamstown Township",
+     "board": "Select Board",
+     "board_key": "select_board",
+     "meeting_date": "2026-10-14"
     }
    ],
    "hit_ids": [
-    "015980abaef0",
-    "0495f8315477",
-    "2580bcdb80d1",
-    "3274166f4724",
-    "57e8a92cdd82",
-    "6f5d1508f0cb",
-    "719e747c6e13",
-    "75c2e7820c56",
-    "786c9976298c",
-    "802e5bb9a6ce",
-    "88014ff908fa",
-    "88b44e542f48",
-    "8b734f9be6dc",
-    "91dc4aafed1c",
-    "a6ab9b439b7c",
-    "a7d8742ce338",
-    "abc9299440ba",
-    "abec89972be2",
-    "b6b80a52e051",
-    "bb4dcfe5b4dd",
-    "c9083a89d13b",
-    "d16fc0fefa4f"
+    "09e3c08a586a",
+    "104251e06b35",
+    "27fc5c4fa116",
+    "48e33b918067",
+    "55f6cb8579c3",
+    "86e2da5a257a",
+    "95930be2914b",
+    "98f36be0bcf6",
+    "9ef591698ed8",
+    "ae60aeb71ce9",
+    "cb9279e08005",
+    "dbfffdd63424",
+    "e990ec7abc8e",
+    "edae217c6191",
+    "eea77dd2077c"
    ]
   },
   {
@@ -2494,6 +2426,74 @@
    ],
    "hit_ids": [
     "119e8825087b"
+   ]
+  },
+  {
+   "id": "369f36e79a0a",
+   "score": 12.15,
+   "headline": "Botetourt County planners discuss solar and battery storage rules",
+   "dek": "The Planning Commission meets Monday, Nov 9. The agenda lists an item on solar and battery storage rules.",
+   "quote": "Addendum Utility-Scale Solar Energy and Battery Energy Storage Facility Policies Page 11 of 24 A-2 k. The County should annually review related policies and ordinance regulations for consistency with…",
+   "reasons": [
+    "Draft rules",
+    "Also on the Oct 5 agenda",
+    "Meeting Nov 9"
+   ],
+   "why": [],
+   "stakes": 8.0,
+   "buzz": 1.0,
+   "topics": [
+    "battery_storage",
+    "clean_energy_siting",
+    "solar"
+   ],
+   "state": "VA",
+   "town": "Botetourt County",
+   "county": "Botetourt",
+   "towns": [
+    "VA:Botetourt County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-09",
+   "meeting_date_source": "agenda",
+   "days_until": 3,
+   "first_seen": "2026-11-03T15:50:28+00:00",
+   "is_new": false,
+   "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_11092026-773",
+   "town_path": "/va/botetourt-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Botetourt County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-09"
+    }
+   ],
+   "hit_ids": [
+    "015980abaef0",
+    "0495f8315477",
+    "2580bcdb80d1",
+    "3274166f4724",
+    "57e8a92cdd82",
+    "6f5d1508f0cb",
+    "719e747c6e13",
+    "75c2e7820c56",
+    "786c9976298c",
+    "802e5bb9a6ce",
+    "88014ff908fa",
+    "88b44e542f48",
+    "8b734f9be6dc",
+    "91dc4aafed1c",
+    "a6ab9b439b7c",
+    "a7d8742ce338",
+    "abc9299440ba",
+    "abec89972be2",
+    "b6b80a52e051",
+    "bb4dcfe5b4dd",
+    "c9083a89d13b",
+    "d16fc0fefa4f"
    ]
   },
   {
@@ -3327,7 +3327,7 @@
    "hit_ids": [
     "81b2f8460663",
     "c763c2889266",
-    "ddfc5495084c"
+    "ca25afd32c94"
    ]
   },
   {
@@ -3556,6 +3556,51 @@
     "20014f5c2dfe",
     "29b9eb13bcb5",
     "6a028fe9a1eb"
+   ]
+  },
+  {
+   "id": "20740676131f",
+   "score": 8.91,
+   "headline": "North Attleborough planners hold hearing on zoning changes",
+   "dek": "The Planning Board meets Thursday, Nov 12. The agenda lists a public hearing on zoning changes.",
+   "quote": "M.G.L CH.40A AMENDMENTS ZONING UPDATE.PDF V. Planning Board Matters VI.",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 12"
+   ],
+   "why": [],
+   "stakes": 6.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "North Attleborough",
+   "county": "Bristol",
+   "towns": [
+    "MA:North Attleborough"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-12",
+   "meeting_date_source": "agenda",
+   "days_until": 6,
+   "first_seen": "2026-11-06T19:32:23+00:00",
+   "is_new": true,
+   "source_url": "https://www.northattleborough.gov/AgendaCenter/ViewFile/Agenda/_11122026-2758",
+   "town_path": "/ma/north-attleborough",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "North Attleborough",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-12"
+    }
+   ],
+   "hit_ids": [
+    "1d21957c3f82",
+    "756e91257d39"
    ]
   },
   {
@@ -3804,53 +3849,6 @@
    ]
   },
   {
-   "id": "72d268ec166f",
-   "score": 8.4,
-   "headline": "Chesterfield County planners discuss cell tower rules",
-   "dek": "The Planning Commission meets Tuesday, Nov 17. The agenda lists an item on cell tower rules.",
-   "quote": "In Matoaca Magisterial District, Hull Street Road Telecommunication Tower is a request for conditional use to permit a telecommunication tower and amendment of zoning district map in an Agricultural…",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 17",
-    "Also next door in Amelia County, City of Petersburg and Dinwiddie County"
-   ],
-   "why": [
-    "Also next door in Amelia County, City of Petersburg and Dinwiddie County"
-   ],
-   "stakes": 4.0,
-   "buzz": 3.0,
-   "topics": [
-    "wireless_telecom"
-   ],
-   "state": "VA",
-   "town": "Chesterfield County",
-   "county": "Chesterfield",
-   "towns": [
-    "VA:Chesterfield County"
-   ],
-   "board": "Planning Commission",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-17",
-   "meeting_date_source": "agenda",
-   "days_until": 11,
-   "first_seen": "2026-11-03T15:49:59+00:00",
-   "is_new": true,
-   "source_url": "https://chesterfieldcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5319,plainText=false)",
-   "town_path": "/va/chesterfield-county",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Chesterfield County",
-     "board": "Planning Commission",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-17"
-    }
-   ],
-   "hit_ids": [
-    "b0cecac52919"
-   ]
-  },
-  {
    "id": "b430a3d26212",
    "score": 8.16,
    "headline": "Liberty Township (Butler County) Zoning Commission takes up a rezoning request",
@@ -3895,53 +3893,6 @@
    ],
    "hit_ids": [
     "543f0cd90444"
-   ]
-  },
-  {
-   "id": "fb2c4b96b2a9",
-   "score": 8.16,
-   "headline": "Orange Township planners hear a rezoning request",
-   "dek": "The Planning Board meets Tuesday, Nov 17. The agenda lists a public hearing on a rezoning request.",
-   "quote": "Zoning Amendment Application #ZON-25-04, Bondada Parktown, Requesting rezone approximately 9.24 acres from Farm Residential (FR-1) District to Planned Commercial and Office (PC) District to allow a…",
-   "reasons": [
-    "Rezoning request",
-    "9.24 acres",
-    "Hearing Nov 17"
-   ],
-   "why": [
-    "9.24 acres"
-   ],
-   "stakes": 6.8,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "OH",
-   "town": "Orange Township",
-   "county": "Delaware",
-   "towns": [
-    "OH:Orange Township"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-17",
-   "meeting_date_source": "agenda",
-   "days_until": 11,
-   "first_seen": "2026-11-03T15:48:40+00:00",
-   "is_new": true,
-   "source_url": "https://www.orangetwp.org/wp-content/uploads/2026/11/ZON-26-08-ZON-25-04-ZC-Legal-Notice.pdf",
-   "town_path": "/oh/orange-township",
-   "action": "rezoning",
-   "boards": [
-    {
-     "town": "Orange Township",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-17"
-    }
-   ],
-   "hit_ids": [
-    "5a947d3b4080"
    ]
   },
   {
@@ -4091,50 +4042,6 @@
     "9230f2e1d4bd",
     "b9c0c3562e85",
     "ce777738934c"
-   ]
-  },
-  {
-   "id": "95ae12550bc4",
-   "score": 7.92,
-   "headline": "Chesterfield County planners hold hearing on zoning changes",
-   "dek": "The Planning Commission meets Tuesday, Nov 17. The agenda lists a public hearing on zoning changes.",
-   "quote": "…the recommendation and/or there is public opposition; and zoning ordinance amendments.",
-   "reasons": [
-    "Public hearing",
-    "Hearing Nov 17"
-   ],
-   "why": [],
-   "stakes": 6.6,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "VA",
-   "town": "Chesterfield County",
-   "county": "Chesterfield",
-   "towns": [
-    "VA:Chesterfield County"
-   ],
-   "board": "Planning Commission",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-17",
-   "meeting_date_source": "agenda",
-   "days_until": 11,
-   "first_seen": "2026-11-03T15:49:59+00:00",
-   "is_new": true,
-   "source_url": "https://chesterfieldcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5319,plainText=false)",
-   "town_path": "/va/chesterfield-county",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Chesterfield County",
-     "board": "Planning Commission",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-17"
-    }
-   ],
-   "hit_ids": [
-    "c0783b8039f9"
    ]
   },
   {
@@ -4644,6 +4551,53 @@
    ]
   },
   {
+   "id": "72d268ec166f",
+   "score": 7.2,
+   "headline": "Chesterfield County planners discuss cell tower rules",
+   "dek": "The Planning Commission meets Tuesday, Nov 17. The agenda lists an item on cell tower rules.",
+   "quote": "In Matoaca Magisterial District, Hull Street Road Telecommunication Tower is a request for conditional use to permit a telecommunication tower and amendment of zoning district map in an Agricultural…",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 17",
+    "Also next door in Amelia County, City of Petersburg and Dinwiddie County"
+   ],
+   "why": [
+    "Also next door in Amelia County, City of Petersburg and Dinwiddie County"
+   ],
+   "stakes": 3.0,
+   "buzz": 3.0,
+   "topics": [
+    "wireless_telecom"
+   ],
+   "state": "VA",
+   "town": "Chesterfield County",
+   "county": "Chesterfield",
+   "towns": [
+    "VA:Chesterfield County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-17",
+   "meeting_date_source": "agenda",
+   "days_until": 11,
+   "first_seen": "2026-11-03T15:49:59+00:00",
+   "is_new": false,
+   "source_url": "https://chesterfieldcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5319,plainText=false)",
+   "town_path": "/va/chesterfield-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Chesterfield County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-17"
+    }
+   ],
+   "hit_ids": [
+    "b0cecac52919"
+   ]
+  },
+  {
    "id": "4662e9b4f13e",
    "score": 7.09,
    "headline": "Solar item on Harvard Select Board agenda",
@@ -4865,6 +4819,53 @@
    "hit_ids": [
     "1d7fa626c2c4",
     "d4d436f7b5bd"
+   ]
+  },
+  {
+   "id": "fb2c4b96b2a9",
+   "score": 6.96,
+   "headline": "Orange Township planners hear a rezoning request",
+   "dek": "The Planning Board meets Tuesday, Nov 17. The agenda lists a public hearing on a rezoning request.",
+   "quote": "Zoning Amendment Application #ZON-25-04, Bondada Parktown, Requesting rezone approximately 9.24 acres from Farm Residential (FR-1) District to Planned Commercial and Office (PC) District to allow a…",
+   "reasons": [
+    "Rezoning request",
+    "9.24 acres",
+    "Hearing Nov 17"
+   ],
+   "why": [
+    "9.24 acres"
+   ],
+   "stakes": 5.8,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "OH",
+   "town": "Orange Township",
+   "county": "Delaware",
+   "towns": [
+    "OH:Orange Township"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-17",
+   "meeting_date_source": "agenda",
+   "days_until": 11,
+   "first_seen": "2026-11-03T15:48:40+00:00",
+   "is_new": false,
+   "source_url": "https://www.orangetwp.org/wp-content/uploads/2026/11/ZON-26-08-ZON-25-04-ZC-Legal-Notice.pdf",
+   "town_path": "/oh/orange-township",
+   "action": "rezoning",
+   "boards": [
+    {
+     "town": "Orange Township",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-17"
+    }
+   ],
+   "hit_ids": [
+    "5a947d3b4080"
    ]
   },
   {
