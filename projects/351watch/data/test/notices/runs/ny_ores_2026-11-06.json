@@ -1,0 +1,31 @@
+{
+ "source": "ny_ores",
+ "started": "2026-11-06T14:58:43+00:00",
+ "finished": "2026-11-06T14:58:43+00:00",
+ "since": "2026-10-07",
+ "applications": 52,
+ "pending": 9,
+ "hits": 18,
+ "stages": {
+  "Notices of Intent": 1,
+  "Incomplete Applications": 5,
+  "Complete Applications Under Review": 1,
+  "Permitted Applications": 39,
+  "Withdrawn Applications / Relinquished Permits": 2,
+  "Denied Applications": 2,
+  "Request for Declaratory Ruling": 2
+ },
+ "topics": {
+  "solar": 39,
+  "clean_energy_siting": 29,
+  "battery_storage": 6
+ },
+ "towns_unresolved": [],
+ "errors": [],
+ "network": {
+  "requests": 0,
+  "cache_hits": 1,
+  "errors": 0,
+  "robots_blocked": 0
+ }
+}

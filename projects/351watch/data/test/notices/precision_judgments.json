@@ -1,0 +1,1160 @@
+{
+ "definition": "TP = a hearing, comment period, decision or docket entry about one of our topics in the land-use or siting sense (a project being permitted, a zoning law being changed, a mine or quarry being permitted). FP = the notice is about something else, for example a water or air permit renewal at a facility that happens to be a quarry, or a comprehensive plan amendment with no zoning change. town_right = the hit is filed under the place the notice names, resolved to the site's name for it.",
+ "judged_on": "2026-11-06",
+ "judge": "crawler engineer, by hand, from the hit and the source page",
+ "sources": {
+  "ny_enb": {
+   "note": "Sampled 30 of 51 hits from a 60-day run (Sep 7 to Nov 6, 2026); evenly spaced after sorting by town.",
+   "judged": 30,
+   "tp": 26,
+   "fp": 4,
+   "precision": 0.87,
+   "town_right": 30,
+   "on_places_not_readable_today": 2,
+   "on_places_not_on_site": 28,
+   "items": [
+    {
+     "n": 1,
+     "id": "862923186b99",
+     "state": "NY",
+     "town": "Afton",
+     "county": "Chenango",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "Town of Afton - 7-0820-00098 Wacha Quarry: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-30/seqr/town-of-afton-7-0820-00098-wacha-quarry",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "DEC negative declaration on a quarry permit (mined land); extraction, gated topic"
+    },
+    {
+     "n": 2,
+     "id": "786d17e60d25",
+     "state": "NY",
+     "town": "Afton (village)",
+     "county": "Chenango",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-10-30",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "Village of Afton - WACHA Quarry: Notice of Completed Application",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-30/completed-application/village-of-afton-wacha-quarry",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "mined land permit application, 18.2-acre life-of-mine; filed under the village the notice names"
+    },
+    {
+     "n": 3,
+     "id": "53f60803b746",
+     "state": "NY",
+     "town": "Allegany",
+     "county": "Cattaraugus",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Town of Allegany - LSE Armida, LLC - Hayes Anderson Road Solar Project: Negative…",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-09/seqr/town-of-allegany-lse-armida-llc-hayes-anderson-road-solar-project",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "town board negative declaration on a solar project"
+    },
+    {
+     "n": 4,
+     "id": "6851dcfbf091",
+     "state": "NY",
+     "town": "Avon",
+     "county": "Livingston",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "battery_storage"
+     ],
+     "headline": "Town of Avon - Avon Battery Energy Storage System: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-30/seqr/town-of-avon-avon-battery-energy-storage-system",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "planning board negative declaration on a battery energy storage system"
+    },
+    {
+     "n": 5,
+     "id": "d4605a26583e",
+     "state": "NY",
+     "town": "Cambria",
+     "county": "Niagara",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "battery_storage"
+     ],
+     "headline": "Town of Cambria - Cambria ESS LLC: Positive Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-30/seqr/town-of-cambria-cambria-ess-llc",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "planning board positive declaration (EIS required) on an energy storage system"
+    },
+    {
+     "n": 6,
+     "id": "3b1f0d3489ca",
+     "state": "NY",
+     "town": "Cornwall",
+     "county": "Orange",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "headline": "Town of Cornwall - Town Comprehensive Plan Amendment: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-09/seqr/town-of-cornwall-town-comprehensive-plan-amendment",
+     "verdict": "FP",
+     "town_right": true,
+     "reason": "comprehensive plan amendment, no zoning change or siting subject in the notice"
+    },
+    {
+     "n": 7,
+     "id": "25f868767879",
+     "state": "NY",
+     "town": "Delevan (village)",
+     "county": "Cattaraugus",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "headline": "Village of Delevan - Local Law No. 3 of the Year 2026 Amending the Zoning Code to Amend…",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-14/seqr/village-of-delevan-local-law-no-3-of-the-year-2026-amending-the-zoning-code-to-amend-table-51-table-of-dimensional-regulations",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "village local law amending the zoning code"
+    },
+    {
+     "n": 8,
+     "id": "731d2d02ac06",
+     "state": "NY",
+     "town": "Fabius",
+     "county": "Onondaga",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "headline": "Town of Fabius - Local Law Amending Zoning Code: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-30/seqr/town-of-fabius-local-law-amending-zoning-code",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "town local law amending the zoning code"
+    },
+    {
+     "n": 9,
+     "id": "207464dcd12c",
+     "state": "NY",
+     "town": "Gouverneur",
+     "county": "St Lawrence",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-10-29",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "Town of Gouverneur - Gardenscape Seavey Rd Quarry: Notice of Completed Application",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-14/completed-application/town-of-gouverneur-gardenscape-seavey-rd-quarry",
+     "verdict": "FP",
+     "town_right": true,
+     "reason": "water withdrawal permit at an existing quarry, not a siting or expansion decision"
+    },
+    {
+     "n": 10,
+     "id": "ac3f88bc70f9",
+     "state": "NY",
+     "town": "Halfmoon",
+     "county": "Saratoga",
+     "coverage": "not_readable",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "headline": "Town of Halfmoon - Sweeney Planned Development District: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-14/seqr/town-of-halfmoon-sweeney-planned-development-district",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "planned development district (a zoning action) before the town board; Halfmoon is a place we cannot read"
+    },
+    {
+     "n": 11,
+     "id": "96341d3cd8aa",
+     "state": "NY",
+     "town": "Harpersfield",
+     "county": "Delaware",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-11-13",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "Town of Harpersfield - Lizotte Bluestone Quarry: Notice of Completed Application",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-14/completed-application/town-of-harpersfield-lizotte-bluestone-quarry",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "new bluestone quarry permit application with blasting"
+    },
+    {
+     "n": 12,
+     "id": "cd186d3e0749",
+     "state": "NY",
+     "town": "Harpersfield",
+     "county": "Delaware",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-11-13",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "Town of Harpersfield - Quaker Hill Bluestone Quarry: Notice of Completed Application",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-14/completed-application/town-of-harpersfield-quaker-hill-bluestone-quarry",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "new bluestone quarry permit application with blasting"
+    },
+    {
+     "n": 13,
+     "id": "bc4624739338",
+     "state": "NY",
+     "town": "Hilton (village)",
+     "county": "Monroe",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "headline": "Village of Hilton - Village of Hilton Official Zoning Map Update: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-14/seqr/village-of-hilton-village-of-hilton-official-zoning-map-update",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "village zoning map update"
+    },
+    {
+     "n": 14,
+     "id": "c77b7a655354",
+     "state": "NY",
+     "town": "Hurley",
+     "county": "Ulster",
+     "coverage": "not_readable",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "battery_storage"
+     ],
+     "headline": "Town of Hurley - Local Law No. 2 of 2026 Amending Chapter 210 Zoning of the Town Code…",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-23/seqr/town-of-hurley-local-law-no-2-of-2026-amending-chapter-210-zoning-of-the-town-code",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "local law amending the zoning chapter for battery storage; Hurley is a place we cannot read"
+    },
+    {
+     "n": 15,
+     "id": "2e7ad2d094a6",
+     "state": "NY",
+     "town": "Ithaca",
+     "county": "Tompkins",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "battery_storage",
+      "solar",
+      "zoning_amendment"
+     ],
+     "headline": "Town of Ithaca - Bomber Heights Solar Project: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-09/seqr/town-of-ithaca-bomber-heights-solar-project",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "planning board negative declaration on a solar project"
+    },
+    {
+     "n": 16,
+     "id": "8c3c71e22fb6",
+     "state": "NY",
+     "town": "Lewis",
+     "county": "Essex",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-10-16",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "Town of Lewis - NYCO Seventy Road Mine: Notice of Completed Application",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-16/completed-application/town-of-lewis-nyco-seventy-road-mine",
+     "verdict": "FP",
+     "town_right": true,
+     "reason": "SPDES discharge permit at an existing mine, not a land-use decision"
+    },
+    {
+     "n": 17,
+     "id": "1c25788a584c",
+     "state": "NY",
+     "town": "Lyons",
+     "county": "Wayne",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "headline": "Town of Lyons - Town of Lyons Zoning Code Update: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-07/seqr/town-of-lyons-town-of-lyons-zoning-code-update",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "town zoning code update"
+    },
+    {
+     "n": 18,
+     "id": "25e5f0baf3dc",
+     "state": "NY",
+     "town": "Manhattan",
+     "county": "New York",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-11-09",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "headline": "Manhattan - 100 Gold Street Redevelopment Project: Positive Declaration, Availability of…",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-23/seqr/manhattan-100-gold-street-redevelopment-project",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "positive declaration and scoping for a large redevelopment with zoning actions; Manhattan is not on the site"
+    },
+    {
+     "n": 19,
+     "id": "8b8d52747caf",
+     "state": "NY",
+     "town": "Montgomery",
+     "county": "Orange",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-10-22",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "large_development"
+     ],
+     "headline": "Town of Montgomery - 39 Edmunds Lane: Notice of Completed Application",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-21/completed-application/town-of-montgomery-39-edmunds-lane",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "wetland permit for a warehouse development; large_development, gated topic"
+    },
+    {
+     "n": 20,
+     "id": "88145a80ef76",
+     "state": "NY",
+     "town": "North Castle",
+     "county": "Westchester",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "headline": "Town of North Castle - MDM Fit - CB Zoning Text Amendments: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-07/seqr/town-of-north-castle-mdm-fit-cb-zoning-text-amendments",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "zoning text amendments"
+    },
+    {
+     "n": 21,
+     "id": "57960ff8171b",
+     "state": "NY",
+     "town": "Plattsburgh (city)",
+     "county": "Clinton",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-10-30",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "City of Plattsburgh - Beekmantown Sand Pit: Notice of Completed Application",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-30/completed-application/city-of-plattsburgh-beekmantown-sand-pit",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "reissue and 4.9-acre expansion of a sand pit; filed under the city the notice names (the applicant is the Town of Beekmantown)"
+    },
+    {
+     "n": 22,
+     "id": "8c648e3bb993",
+     "state": "NY",
+     "town": "Randolph",
+     "county": "Erie",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Town of Randolph - Sarver Rd A Project, NED-New Energy Solar 1 LLC: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-09/seqr/town-of-randolph-sarver-rd-a-project-ned-new-energy-solar-1-llc",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "zoning board negative declaration on a solar project; the notice itself says Erie County, Randolph is in Cattaraugus County"
+    },
+    {
+     "n": 23,
+     "id": "7b2a78469f53",
+     "state": "NY",
+     "town": "Sanford",
+     "county": "Broome",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "Town of Sanford - 3P Adobe 2 Quarry: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-07/seqr/town-of-sanford-3p-adobe-2-quarry",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "DEC negative declaration on a quarry"
+    },
+    {
+     "n": 24,
+     "id": "52f8af8c9289",
+     "state": "NY",
+     "town": "Stamford",
+     "county": "Delaware",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-10-30",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "Town of Stamford - Eklund Gravel Mine #2: Notice of Completed Application",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-30/completed-application/town-of-stamford-eklund-gravel-mine-2",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "continued operation of a sand and gravel mine, permit renewal; extraction"
+    },
+    {
+     "n": 25,
+     "id": "5f75dc7d57b2",
+     "state": "NY",
+     "town": "Tully",
+     "county": "Onondaga",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "headline": "Town of Tully - Local Law Amending Zoning Code: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-21/seqr/town-of-tully-local-law-amending-zoning-code",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "town local law amending the zoning code"
+    },
+    {
+     "n": 26,
+     "id": "a0fda1154c20",
+     "state": "NY",
+     "town": "Union Vale",
+     "county": "Dutchess",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-11-20",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "Town of Union Vale - Clove Valley Rod & Gun Club: Notice of Completed Application",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-21/completed-application/town-of-union-vale-clove-valley-rod-gun-club",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "mined land permit, 6.9-acre mine expansion"
+    },
+    {
+     "n": 27,
+     "id": "ed6366a1ca09",
+     "state": "NY",
+     "town": "Volney",
+     "county": "Oswego",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-10-15",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "headline": "Town of Volney - Scriba-Volney Line 20 Series Reactor Project: Notice of Completed…",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-30/completed-application/town-of-volney-scriba-volney-line-20-series-reactor-project",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "wetland permit for a transmission series reactor project (utility siting work)"
+    },
+    {
+     "n": 28,
+     "id": "3b07eb163d5b",
+     "state": "NY",
+     "town": "Warren",
+     "county": "Herkimer",
+     "coverage": "not_on_site",
+     "meeting_date": "2026-10-09",
+     "date_kind": "comment_deadline",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "Town of Warren - Heidelberg Jordanville Quarry: Notice of Completed Application",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-09/completed-application/town-of-warren-heidelberg-jordanville-quarry",
+     "verdict": "FP",
+     "town_right": true,
+     "reason": "air (state facility) permit renewal at a quarry, not a land-use decision"
+    },
+    {
+     "n": 29,
+     "id": "c516bbc8bd14",
+     "state": "NY",
+     "town": "Wheatfield",
+     "county": "Niagara",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "zoning_amendment"
+     ],
+     "headline": "Town of Wheatfield - Amendments to Accessory Building Dimensional Requirements: Negative…",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-10-21/seqr/town-of-wheatfield-amendments-to-accessory-building-dimensional-requirements",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "zoning text amendment (accessory building dimensional rules)"
+    },
+    {
+     "n": 30,
+     "id": "143b525c1b81",
+     "state": "NY",
+     "town": "Windsor",
+     "county": "Broome",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "notice",
+     "topics": [
+      "extraction"
+     ],
+     "headline": "Town of Windsor - 7-0350-00157 McAllister Rd Quarry: Negative Declaration",
+     "source_url": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-09-30/seqr/town-of-windsor-7-0350-00157-mcallister-rd-quarry",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "DEC negative declaration on a quarry"
+    }
+   ]
+  },
+  "ny_ores": {
+   "note": "All 18 hits (the whole pending docket on Nov 6, 2026); these are listings, not dated hearings.",
+   "judged": 18,
+   "tp": 18,
+   "fp": 0,
+   "precision": 1.0,
+   "town_right": 18,
+   "on_places_not_readable_today": 0,
+   "on_places_not_on_site": 16,
+   "items": [
+    {
+     "n": 1,
+     "id": "159d91f87b45",
+     "state": "NY",
+     "town": "Addison",
+     "county": "Steuben",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Addison Solar (23-03015): Incomplete Applications",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterSeq=85427&MNO=23-03015",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 2,
+     "id": "669eee752a6a",
+     "state": "NY",
+     "town": "Alabama",
+     "county": "Genesee",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Alabama Solar (23-03016): Incomplete Applications",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterCaseNo=23-03016",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 3,
+     "id": "b7c0048ceed8",
+     "state": "NY",
+     "town": "Altona",
+     "county": "Clinton",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Bull Run Wind (23-02975): Notices of Intent",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterSeq=85361&MNO=23-02975",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 4,
+     "id": "fa90f6115a4b",
+     "state": "NY",
+     "town": "Batavia",
+     "county": "Genesee",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Alabama Solar (23-03016): Incomplete Applications",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterCaseNo=23-03016",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 5,
+     "id": "cc816e0ba477",
+     "state": "NY",
+     "town": "Bellmont",
+     "county": "Clinton",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "headline": "North Country Wind (23-02973): Complete Applications Under Review",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterSeq=85437&MNO=23-02973",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 6,
+     "id": "39c97e5e2202",
+     "state": "NY",
+     "town": "Burke",
+     "county": "Clinton",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "headline": "North Country Wind (23-02973): Complete Applications Under Review",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterSeq=85437&MNO=23-02973",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 7,
+     "id": "a8f8762f18c6",
+     "state": "NY",
+     "town": "Campbell",
+     "county": "Steuben",
+     "coverage": "readable",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Addison Solar (23-03015): Incomplete Applications",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterSeq=85427&MNO=23-03015",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 8,
+     "id": "0ba62a8fd153",
+     "state": "NY",
+     "town": "Chateaugay",
+     "county": "Clinton",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "headline": "North Country Wind (23-02973): Complete Applications Under Review",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterSeq=85437&MNO=23-02973",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 9,
+     "id": "0a144b363718",
+     "state": "NY",
+     "town": "Clinton",
+     "county": "Clinton",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Bull Run Wind (23-02975): Notices of Intent",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterSeq=85361&MNO=23-02975",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 10,
+     "id": "0021993cf7ec",
+     "state": "NY",
+     "town": "Ellenburg",
+     "county": "Clinton",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Bull Run Wind (23-02975): Notices of Intent",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterSeq=85361&MNO=23-02975",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 11,
+     "id": "7d38f5ec09e2",
+     "state": "NY",
+     "town": "Erwin",
+     "county": "Steuben",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Addison Solar (23-03015): Incomplete Applications",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterSeq=85427&MNO=23-03015",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 12,
+     "id": "567c227fdc25",
+     "state": "NY",
+     "town": "Forestburgh",
+     "county": "Sullivan",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "battery_storage",
+      "solar"
+     ],
+     "headline": "Town Line Solar & Storage (24-03035): Incomplete Applications",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterCaseNo=24-03035",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 13,
+     "id": "b674ac08b8c2",
+     "state": "NY",
+     "town": "Fort Covington",
+     "county": "Franklin",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Little Salmon Solar (24-03063): Incomplete Applications",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterCaseNo=24-03063",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 14,
+     "id": "1c8d2de39cd3",
+     "state": "NY",
+     "town": "Lansing",
+     "county": "Tompkins",
+     "coverage": "readable",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Cayuga Solar (23-03014): Incomplete Applications",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterCaseNo=23-03014&CaseSearch=Search",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 15,
+     "id": "efba45af3ffa",
+     "state": "NY",
+     "town": "Mooers",
+     "county": "Clinton",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Bull Run Wind (23-02975): Notices of Intent",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterSeq=85361&MNO=23-02975",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 16,
+     "id": "873f8dade1ba",
+     "state": "NY",
+     "town": "Oakfield",
+     "county": "Genesee",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Alabama Solar (23-03016): Incomplete Applications",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterCaseNo=23-03016",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 17,
+     "id": "09ff2b2800df",
+     "state": "NY",
+     "town": "Thompson",
+     "county": "Sullivan",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "battery_storage",
+      "solar"
+     ],
+     "headline": "Town Line Solar & Storage (24-03035): Incomplete Applications",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterCaseNo=24-03035",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    },
+    {
+     "n": 18,
+     "id": "f54c415e13eb",
+     "state": "NY",
+     "town": "Westville",
+     "county": "Franklin",
+     "coverage": "not_on_site",
+     "meeting_date": null,
+     "date_kind": "listed",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Little Salmon Solar (24-03063): Incomplete Applications",
+     "source_url": "https://documents.dps.ny.gov/public/MatterManagement/CaseMaster.aspx?MatterCaseNo=24-03063",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "ORES siting application (pending); host town named in the application"
+    }
+   ]
+  },
+  "oh_opsb": {
+   "note": "All 5 hits of the 30-day window; the source yields about one event a week.",
+   "judged": 5,
+   "tp": 5,
+   "fp": 0,
+   "precision": 1.0,
+   "town_right": 5,
+   "on_places_not_readable_today": 3,
+   "on_places_not_on_site": 0,
+   "items": [
+    {
+     "n": 1,
+     "id": "170ef0ff020d",
+     "state": "OH",
+     "town": "Highland County",
+     "county": "Highland",
+     "coverage": "not_readable",
+     "meeting_date": "2026-12-15",
+     "date_kind": "hearing",
+     "topics": [
+      "battery_storage",
+      "clean_energy_siting"
+     ],
+     "headline": "26-0498-EL-BGN Barr Energy Storage, LLC",
+     "source_url": "https://dis.puc.state.oh.us/CaseRecord.aspx?CaseNo=26-0498-EL-BGN",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "local public hearing on a battery storage certificate; county taken from the hearing venue (Hillsboro, the Highland County seat)"
+    },
+    {
+     "n": 2,
+     "id": "d6633d6e2160",
+     "state": "OH",
+     "town": "Jackson County",
+     "county": "Jackson",
+     "coverage": "not_readable",
+     "meeting_date": "2026-10-27",
+     "date_kind": "hearing",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "headline": "26-0426-EL-BTX AEP Ohio TransCo: Baku - Gavin 765 kV Transmission Line Project",
+     "source_url": "https://dis.puc.state.oh.us/CaseRecord.aspx?CaseNo=26-0426-EL-BTX",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "local public hearing on a 765 kV transmission line; Jackson County is one of several counties the line crosses"
+    },
+    {
+     "n": 3,
+     "id": "044da8b4522c",
+     "state": "OH",
+     "town": "Madison County",
+     "county": "Madison",
+     "coverage": "readable",
+     "meeting_date": "2026-10-29",
+     "date_kind": "decision",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "headline": "22-0550-EL-BTX Oak Run Solar Project, LLC-Transmission Line in Madison County, Ohio",
+     "source_url": "https://dis.puc.state.oh.us/CaseRecord.aspx?CaseNo=22-0550-EL-BTX",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "Board entry on rehearing in the Oak Run solar transmission case; county named in the title"
+    },
+    {
+     "n": 4,
+     "id": "b6851282384f",
+     "state": "OH",
+     "town": "Madison County",
+     "county": "Madison",
+     "coverage": "readable",
+     "meeting_date": "2026-10-29",
+     "date_kind": "decision",
+     "topics": [
+      "solar",
+      "clean_energy_siting"
+     ],
+     "headline": "22-0549-EL-BGN Oak Run Solar Project, LLC-Solar-Powered Electric Generation Facility in…",
+     "source_url": "https://dis.puc.state.oh.us/CaseRecord.aspx?CaseNo=22-0549-EL-BGN",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "Board entry on rehearing in the Oak Run solar certificate case; county named in the title"
+    },
+    {
+     "n": 5,
+     "id": "d87bb97e09b3",
+     "state": "OH",
+     "town": "Pike County",
+     "county": "Pike",
+     "coverage": "not_readable",
+     "meeting_date": "2026-12-10",
+     "date_kind": "hearing",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "headline": "26-0746-EL-BGN Portsmouth Gas DevCo, LLC",
+     "source_url": "https://dis.puc.state.oh.us/CaseRecord.aspx?CaseNo=26-0746-EL-BGN",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "local public hearing on a gas-fired generating station certificate; county named in the docket"
+    }
+   ]
+  },
+  "md_psc_cpcn": {
+   "note": "All 8 hits (every CPCN public comment hearing listed on Nov 6, 2026).",
+   "judged": 8,
+   "tp": 8,
+   "fp": 0,
+   "precision": 1.0,
+   "town_right": 8,
+   "on_places_not_readable_today": 3,
+   "on_places_not_on_site": 0,
+   "items": [
+    {
+     "n": 1,
+     "id": "c1ec0b288301",
+     "state": "MD",
+     "town": "Caroline County",
+     "county": "Caroline",
+     "coverage": "readable",
+     "meeting_date": "2026-11-09",
+     "date_kind": "hearing",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Case No. 9835 – ICFTS MD Solar, LLC 4.63 MW solar facility (Caroline County)",
+     "source_url": "https://psc.maryland.gov/news-events/upcoming-public-comment-hearings/#case-9835",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "public comment hearing on a solar CPCN"
+    },
+    {
+     "n": 2,
+     "id": "1a5ab29b2332",
+     "state": "MD",
+     "town": "Carroll County",
+     "county": "Carroll",
+     "coverage": "not_readable",
+     "meeting_date": "2026-11-18",
+     "date_kind": "hearing",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Case No. 9824 – Hemlock Lane Solar 1, LLC 4.0 MW solar facility (Carroll County)",
+     "source_url": "https://psc.maryland.gov/news-events/upcoming-public-comment-hearings/#case-9824",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "public comment hearing on a solar CPCN"
+    },
+    {
+     "n": 3,
+     "id": "2a03b8020587",
+     "state": "MD",
+     "town": "Carroll County",
+     "county": "Carroll",
+     "coverage": "not_readable",
+     "meeting_date": "2027-01-25",
+     "date_kind": "hearing",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Case No. 9828 – Chaberton Solar Lambs Knoll LLC 5.0 MW solar facility (Carroll County)",
+     "source_url": "https://psc.maryland.gov/news-events/upcoming-public-comment-hearings/#case-9828",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "public comment hearing on a solar CPCN"
+    },
+    {
+     "n": 4,
+     "id": "e10dbfadd01e",
+     "state": "MD",
+     "town": "Carroll County",
+     "county": "Carroll",
+     "coverage": "not_readable",
+     "meeting_date": "2026-12-09",
+     "date_kind": "hearing",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Case No. 9821 – Eckard Road Solar LLC 3.0 MW solar facility (Carroll County)",
+     "source_url": "https://psc.maryland.gov/news-events/upcoming-public-comment-hearings/#case-9821",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "public comment hearing on a solar CPCN"
+    },
+    {
+     "n": 5,
+     "id": "2b5a8e52250d",
+     "state": "MD",
+     "town": "Prince George's County",
+     "county": "Prince George's",
+     "coverage": "readable",
+     "meeting_date": "2026-11-19",
+     "date_kind": "hearing",
+     "topics": [
+      "clean_energy_siting"
+     ],
+     "headline": "Case No. 9297 – Parkway Generation Keys Energy Center, LLC’s CPCN application to modify…",
+     "source_url": "https://psc.maryland.gov/news-events/upcoming-public-comment-hearings/#case-9297",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "virtual public comment hearing on a gas plant modification CPCN"
+    },
+    {
+     "n": 6,
+     "id": "7cb05759e558",
+     "state": "MD",
+     "town": "Queen Anne's County",
+     "county": "Queen Anne's",
+     "coverage": "readable",
+     "meeting_date": "2026-11-30",
+     "date_kind": "hearing",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Case No. 9834 – Chaberton Solar Hayford LLC 4.0 MW solar facility (Queen Anne’s County)",
+     "source_url": "https://psc.maryland.gov/news-events/upcoming-public-comment-hearings/#case-9834",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "public comment hearing on a solar CPCN"
+    },
+    {
+     "n": 7,
+     "id": "db2db06cd96f",
+     "state": "MD",
+     "town": "Queen Anne's County",
+     "county": "Queen Anne's",
+     "coverage": "readable",
+     "meeting_date": "2027-01-05",
+     "date_kind": "hearing",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Case No. 9827 – LSE Aquarius LLC 2.988 MW solar facility (Queen Anne’s County)",
+     "source_url": "https://psc.maryland.gov/news-events/upcoming-public-comment-hearings/#case-9827",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "public comment hearing on a solar CPCN"
+    },
+    {
+     "n": 8,
+     "id": "4cf4f36a31f8",
+     "state": "MD",
+     "town": "Washington County",
+     "county": "Washington",
+     "coverage": "readable",
+     "meeting_date": "2027-01-12",
+     "date_kind": "hearing",
+     "topics": [
+      "solar"
+     ],
+     "headline": "Case No. 9831 – Resh Road Solar 2 LLC 4.25 MW solar facility (Washington County)",
+     "source_url": "https://psc.maryland.gov/news-events/upcoming-public-comment-hearings/#case-9831",
+     "verdict": "TP",
+     "town_right": true,
+     "reason": "virtual public comment hearing on a solar CPCN"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "source": "ny_enb",
+ "started": "2026-11-06T14:58:43+00:00",
+ "finished": "2026-11-06T14:58:48+00:00",
+ "since": "2026-09-07",
+ "notice_urls_in_window": 267,
+ "notices_read": 267,
+ "robots_skipped": 0,
+ "items_total": 267,
+ "relevant": 52,
+ "hits": 51,
+ "issues": [
+  "2026-09-09",
+  "2026-09-16",
+  "2026-09-23",
+  "2026-09-30",
+  "2026-10-07",
+  "2026-10-14",
+  "2026-10-21"
+ ],
+ "kinds": {
+  "completed_application": 81,
+  "public_notice": 44,
+  "seqr": 97,
+  "permit_notice": 45
+ },
+ "categories": {
+  "Notice of Completed Application": 81,
+  "Negative Declaration": 76,
+  "SPDES permit renewal": 44,
+  "Public Notice": 31,
+  "Adirondack Park Agency Completed Applications": 9,
+  "Statewide Public Notice": 7,
+  "Notice of Acceptance of Final Environmental Impact Statement": 4,
+  "Positive Declaration, Availability of Draft Scope and Public Scoping Session": 3,
+  "Positive Declaration and Availability of Draft Scope": 2,
+  "Notice of Availability of Draft Scope and Public Scoping Session": 2,
+  "Positive Declaration": 2,
+  "Notice of Availability of Final Scope": 2,
+  "Notice of Availability of Draft Scope": 2,
+  "Positive Declaration, Availability of Draft Scop and Public Scoping Session": 1,
+  "Statewide": 1
+ },
+ "topics": {
+  "extraction": 18,
+  "zoning_amendment": 16,
+  "solar": 7,
+  "battery_storage": 6,
+  "clean_energy_siting": 4,
+  "large_development": 3,
+  "data_center": 1,
+  "wireless_telecom": 1
+ },
+ "towns_unresolved": [
+  "New York City",
+  "Statewide"
+ ],
+ "errors": [],
+ "network": {
+  "requests": 0,
+  "cache_hits": 283,
+  "errors": 0,
+  "robots_blocked": 0
+ }
+}

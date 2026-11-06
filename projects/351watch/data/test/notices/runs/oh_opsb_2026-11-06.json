@@ -1,0 +1,32 @@
+{
+ "source": "oh_opsb",
+ "started": "2026-11-06T14:58:49+00:00",
+ "finished": "2026-11-06T14:59:06+00:00",
+ "since": "2026-10-07",
+ "daily_reports": [
+  "2026-10-29",
+  "2026-10-30",
+  "2026-11-02",
+  "2026-11-03",
+  "2026-11-04"
+ ],
+ "cases_in_reports": 53,
+ "open_cases": 322,
+ "records_read": 62,
+ "items": 85,
+ "hits": 5,
+ "hearings_found": 13,
+ "topics": {
+  "clean_energy_siting": 81,
+  "solar": 20,
+  "battery_storage": 3
+ },
+ "counties_unresolved": [],
+ "errors": [],
+ "network": {
+  "requests": 6,
+  "cache_hits": 85,
+  "errors": 0,
+  "robots_blocked": 0
+ }
+}
