@@ -231,7 +231,8 @@ class ToolTests(unittest.TestCase):
 
 
 class RenderTests(unittest.TestCase):
-    """build.py shows a verified brief as the item's heading, its facts and the exact wording."""
+    """build.py shows the agenda's own words as the item's headline, one label for what the board does with it,
+    and on the meeting page the exact wording the write-up rests on."""
 
     def setUp(self):
         import build  # noqa: F401  (imports trending; no side effects at import)
@@ -244,30 +245,47 @@ class RenderTests(unittest.TestCase):
 
     def meeting(self, hit):
         ctx = SimpleNamespace(today="2026-10-12", town_by_id={}, headers={}, is_new=lambda h: False,
-                              known_posting=lambda *a: False)
+                              known_posting=lambda *a: False, hits=[hit], health={},
+                              is_upcoming=lambda h: bool(h.get("meeting_date")) and h["meeting_date"] >= "2026-10-12")
         return ctx, self.build.group_meetings(ctx, [hit])[0]
 
     def test_brief_replaces_the_rules_based_line(self):
         self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True}
         ctx, m = self.meeting(HIT)
         html = self.build.meeting_html(ctx, m, show_town=False)
-        self.assertIn(f'>{GOOD["line"]}</a></span>', html.replace("’", "’"))  # the headline links to the meeting page
-        self.assertIn('</a></span><span class="stage moved">Asked to move</span></p>', html)  # the status sits beside it
-        self.assertIn('<p class="brief-what">Federal Pond Solar wants a special permit', html)
-        self.assertNotIn("104 Tremont Street", html, "a list leaves the facts line to the meeting's own page")
-        full = self.build.meeting_html(ctx, m, show_town=False, full=True)
-        self.assertIn("104 Tremont Street", full)  # the facts line on the meeting page: where, size, who
-        self.assertIn("4.9 MW on 22 acres", full)
-        self.assertIn('<span class="stage moved">Asked to move</span>', html)  # the applicant asked; the board hasn't agreed yet
-        self.assertNotIn("Agenda wording", html, "lists carry no agenda text")
-        self.assertNotIn("Copy citation", html)
-        self.assertNotIn(self.build.SPEAK_TEXT, html, "a postponed hearing gets no speak line")
-        full = self.build.meeting_html(ctx, m, show_town=False, full=True)
-        self.assertIn("<summary>Agenda wording</summary>", full)
-        self.assertIn(GOOD["quote"], full)
-        self.assertIn(GOOD["next"], full)
-        self.assertNotIn("requesting a Special Permit and Site Plan Review", full.split("Agenda wording")[0])
+        # the headline is the agenda's own line for the item (not the writer's), and links to the meeting page
+        self.assertIn('<p class="row-head"><a href="/m/carver-planning-board-2026-10-13" data-slop-ignore>'
+                      'Federal Pond Solar, LLC, requesting a Special Permit and Site Plan Review</a></p>', html)
+        self.assertNotIn(GOOD["line"], html)
+        # the meta line: the label first (the applicant asked; the board hasn't agreed), then the facts in commas
+        self.assertIn('<p class="row-meta">Continuance asked. Planning Board, Tue Oct 13, time not yet posted.', html)
+        self.assertNotIn(GOOD["what"], html, "no composed sentence rides the row")
+        self.assertNotIn("104 Tremont Street", html, "a row leaves the facts to the meeting's own page")
+        self.assertNotIn("Agenda wording", html)
+        self.assertNotIn(self.build.SPEAK_TEXT, html)
+        page = self.build.build_meeting_page(ctx, m)
+        self.assertIn('<dt>Public hearing</dt><dd>Continuance asked</dd>', page)
+        self.assertIn(f'<blockquote class="excerpt"><p>{GOOD["quote"]}</p></blockquote>', page)  # the words, verbatim
+        self.assertNotIn(GOOD["line"], page, "the writer's line is not the page's wording")
         self.assertIn("Read Oct 10, 2026", self.build.citation(ctx, m, next(iter(m["lines"].values()))))
+
+    def test_a_continued_item_is_listed_under_its_later_day(self):
+        # the agenda itself moves the hearing to Oct 27: the Oct 13 row says so, the meeting page says so, and the item
+        # is listed again under Oct 27 as "Continued from Oct 13" with the Oct 13 agenda as its document
+        self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True, "next": "The hearing was continued to Tue Oct 27."}
+        ctx, m = self.meeting(HIT)
+        self.assertIn('<p class="row-meta">Continued to Oct 27. Planning Board, Tue Oct 13', self.build.meeting_html(ctx, m, show_town=False))
+        self.assertIn('<dt>Public hearing</dt><dd>Public hearing continued to Oct 27</dd>', self.build.build_meeting_page(ctx, m))
+        kept, moved_only, virtual = self.build.split_moved(ctx, [m])
+        self.assertEqual((len(kept), len(moved_only), len(virtual)), (0, 1, 1))
+        v = virtual[0]
+        self.assertEqual((v["date"], v["from_date"], v["id"]), ("2026-10-27", "2026-10-13", "m-carver-planning-board-2026-10-27"))
+        html = self.build.meeting_html(ctx, v, show_town=False)
+        self.assertIn('<p class="row-meta">Continued from Oct 13. Planning Board, Tue Oct 27, time not yet posted. ', html)
+        self.assertIn('href="https://www.carverma.gov/AgendaCenter/ViewFile/Agenda/_10132026-616"', html)
+        page = self.build.build_meeting_page(ctx, v)
+        self.assertIn('<dt>When</dt><dd>Tue Oct 27, time not yet posted</dd>', page)
+        self.assertIn('<dt>Public hearing</dt><dd>Public hearing continued from Oct 13</dd>', page)
 
     def test_postponement_names_the_new_day_when_the_brief_has_one(self):
         self.assertEqual(self.build.brief_stage(GOOD), "Asks to postpone")  # GOOD's next: the applicant asked
@@ -283,21 +301,28 @@ class RenderTests(unittest.TestCase):
         ctx, m = self.meeting(HIT)
         self.assertEqual(self.build.speak_line(m), self.build.SPEAK_TEXT)
         html = self.build.meeting_html(ctx, m, show_town=False)
-        # a list prints the agenda's own rule, keyed "Speaking:", once and above the items; never the generic stamp
-        self.assertNotIn(self.build.SPEAK_SHORT[self.build.SPEAK_TEXT], html)
-        rule = self.build.speak_rule(m)
-        if rule:
-            self.assertEqual(html.count("<b>Speaking:</b>"), 1)
-            self.assertLess(html.index("<b>Speaking:</b>"), html.index('<ul class="lines">'))
+        # a live hearing: the fixed label, never a sentence about speaking
+        self.assertIn('<p class="row-meta">Public hearing, anyone can speak. Planning Board, Tue Oct 13', html)
+        self.assertNotIn(self.build.SPEAK_TEXT, html)
+        page = self.build.build_meeting_page(ctx, m)
+        self.assertIn("<dt>Public hearing</dt><dd>Yes, anyone can speak", page)
         self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True, "action": "continued"}
         ctx, m = self.meeting(HIT)
         self.assertEqual(self.build.speak_line(m), "")
+        html = self.build.meeting_html(ctx, m, show_town=False)
+        self.assertIn('<p class="row-meta">Continuance asked. ', html)
 
     def test_without_a_brief_the_rules_line_stays(self):
+        # no write-up: the headline is still the agenda's own words (from the snippet), and the meeting page quotes them
         ctx, m = self.meeting(HIT)
-        html = self.build.meeting_html(ctx, m, show_town=False, full=True)
-        self.assertIn("<summary>Agenda wording</summary>", html)
-        self.assertIn("Federal Pond Solar", html)
+        html = self.build.meeting_html(ctx, m, show_town=False)
+        self.assertIn('data-slop-ignore>Federal Pond Solar, LLC, requesting a Special Permit and Site Plan Review</a>', html)
+        # the rules read a special permit request as a decision for the board: the label says so, in one word
+        self.assertIn('<p class="row-meta">Vote. Planning Board, Tue Oct 13, time not yet posted.', html)
+        page = self.build.build_meeting_page(ctx, m)
+        self.assertIn('<h2>From the agenda</h2><blockquote class="excerpt"><p>Federal Pond Solar, LLC, requesting a Special Permit '
+                      'and Site Plan Review</p></blockquote>', page)
+        self.assertNotIn("no vote is listed", page)
 
     def test_brief_stays_first_and_whole_in_a_meeting(self):
         self.build.BRIEFS[HIT["id"]] = {**GOOD, "verified": True}

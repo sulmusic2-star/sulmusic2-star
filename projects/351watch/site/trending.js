@@ -39,38 +39,29 @@ function stageWord(s) {
   const dayLabel = (iso) => new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' }).replace(/^(\w{3}),/, '$1');
   const relDates = (root) => { if (window.w351 && window.w351.relDates) window.w351.relDates(root); };
 
-  // As story_html() in build.py: the subject, then town, board and day, then what the board does.
+  // The row as build.py drew it (row_html, carried in trending.json as `html`), with its rank in front; a story with
+  // no row of its own (its meeting has no page) gets the headline as a link.
   function storyNode(st, i) {
+    const rank = String((Number.isInteger(i) ? i : 0) + 1);
+    if (st.html) {
+      const tpl = document.createElement('template');
+      tpl.innerHTML = st.html;
+      const li = tpl.content.firstElementChild;
+      const head = li.querySelector('.row-head');
+      if (head) head.prepend(el('span', 'row-rank', rank), ' ');
+      return li;
+    }
     const li = el('li', 'row');
     li.dataset.date = st.meeting_date || '';
     li.dataset.topics = (st.topics || []).join(' ');
-    const a = el('a');
+    const head = el('p', 'row-head');
+    const a = el('a', '', st.headline || st.line || '');
     a.href = st.href;
-    const rank = el('span', 'row-rank', String((Number.isInteger(i) ? i : 0) + 1));
-    const line = el('span', 'row-line');
-    const words = st.subject || (st.line || st.headline || '').replace(' (no vote listed)', '').replace('; no vote listed)', ')');
-    line.append(/[a-z0-9)]\.$/.test(words) && !/\b(St|Rd|Ave|Dr|Ln|Blvd|Mt|No|Art|Sec|Inc|Corp|LLC|Co)\.$/.test(words) ? words.slice(0, -1) : words);
-    const when = el('span', 'row-when');
-    when.dataset.slopIgnore = '';
-    when.append(el('span', 'row-town', `${st.town}${st.state !== 'MA' ? `, ${st.state}` : ''}`));
-    if (st.board) when.append(document.createTextNode(`, ${st.board}`));
-    if (st.meeting_date) {
-      const t = el('time', '', dayLabel(st.meeting_date));
-      t.dateTime = st.meeting_date;
-      when.append(document.createTextNode(', '), t);
-    } else when.append(document.createTextNode(', date not set'));
-    if (st.new) when.append(document.createTextNode(' '), el('span', 'is-new', 'New on an agenda'));
-    a.append(rank, line, when);
-    if (st.say) a.append(el('span', 'row-say', st.say));
-    const chips = (st.reasons || []).filter((c) => c && !c.startsWith('Also next door'));
-    const wave = (st.reasons || []).filter((c) => c && c.startsWith('Also next door'));
-    const reasons = (chips.length >= 2 ? chips.slice(0, 2) : chips.concat(wave.slice(0, 1))).slice(0, 2);
-    if (reasons.length) {
-      const why = el('span', 'row-why');
-      reasons.forEach((r) => why.append(el('span', '', r)));
-      a.append(why);
-    }
-    li.append(a);
+    head.append(el('span', 'row-rank', rank), ' ', a);
+    const meta = el('p', 'row-meta');
+    const parts = [`${st.town}${st.state !== 'MA' ? `, ${st.state}` : ''}`, st.board || '', st.meeting_date ? dayLabel(st.meeting_date) : 'date not set'].filter(Boolean);
+    meta.textContent = `${parts.join(', ')}.`;
+    li.append(head, meta);
     return li;
   }
 

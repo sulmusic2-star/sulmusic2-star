@@ -110,7 +110,7 @@ function setupTownBox() {
         const st = document.createElement('span');
         st.className = 'st';
         const where = t.sub && !t.label.toLowerCase().includes(t.sub.toLowerCase()) ? `${t.state}, ${t.sub}` : t.state;
-        st.textContent = t.up ? `${where} · ${t.up} ${t.up === 1 ? 'meeting' : 'meetings'} coming up` : where;
+        st.textContent = t.up ? `${where}, ${t.up} ${t.up === 1 ? 'meeting' : 'meetings'} coming up` : where;
         li.append(name, st);
         return li;
       }));
@@ -868,16 +868,58 @@ window.w351 = {
   },
 };
 
-// A story or row whose meeting has passed (in Boston time) is hidden. Dates stay as written: "Tue Oct 13".
+// A ranked story whose meeting has passed (in Boston time) is hidden. Dates stay as written: "Tue Oct 13".
 function relDates(root = document) {
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
-  for (const t of root.querySelectorAll('.row time, .story time')) {
-    const iso = t.getAttribute('datetime') || '';
-    if (iso && iso < today) {
-      const item = t.closest('.row, .story');
-      if (item) item.hidden = true;
-    }
+  for (const row of root.querySelectorAll('#trend-all .row, #trend-mine .row, .story')) {
+    const iso = row.dataset.date || (row.querySelector('time') || {}).getAttribute?.('datetime') || '';
+    if (iso && iso < today) row.hidden = true;
   }
+}
+
+// /upcoming: the state and subject checkboxes above the rows. A box ticked in a group narrows the list to that
+// group's ticked values; a group with nothing ticked lets everything through. A day with nothing left goes too.
+function setupRowFilter() {
+  const form = document.querySelector('[data-row-filter]');
+  if (!form) return;
+  const boxes = Array.from(form.querySelectorAll('input[type="checkbox"]'));
+  const rows = Array.from(document.querySelectorAll('.row[data-state]'));
+  const days = Array.from(document.querySelectorAll('.day-group'));
+  const count = form.querySelector('[data-count]');
+  const params = new URLSearchParams(location.search);
+  for (const b of boxes) if (params.getAll(b.name).includes(b.value)) b.checked = true;
+  const apply = () => {
+    const want = {};
+    for (const b of boxes) if (b.checked) (want[b.name] = want[b.name] || []).push(b.value);
+    let shown = 0;
+    for (const r of rows) {
+      const ok = (!want.state || want.state.includes(r.dataset.state))
+        && (!want.topic || (r.dataset.topics || '').split(' ').some((t) => want.topic.includes(t)));
+      r.hidden = !ok;
+      if (ok) shown += 1;
+    }
+    for (const d of days) {
+      const left = d.querySelectorAll('.row:not([hidden])').length;
+      d.hidden = left === 0 || d.classList.contains('past');
+      const n = d.querySelector('[data-day-count]');
+      if (n) n.textContent = `${left} ${left === 1 ? 'meeting' : 'meetings'}`;
+    }
+    for (const det of document.querySelectorAll('details.later')) {  // "Later meetings (N)" counts what the filter leaves
+      const left = det.querySelectorAll('.row:not([hidden])').length;
+      const n = det.querySelector('[data-later-count]');
+      if (n) n.textContent = String(left);
+      det.hidden = left === 0;
+    }
+    const narrowed = Object.keys(want).length > 0;
+    if (count) count.textContent = narrowed ? `${shown} of ${rows.length} meetings` : '';
+    const p = new URLSearchParams();
+    for (const b of boxes) if (b.checked) p.append(b.name, b.value);
+    const qs = p.toString();
+    history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
+  };
+  form.addEventListener('change', apply);
+  form.addEventListener('submit', (event) => event.preventDefault());
+  apply();
 }
 
 // "Copy citation" and "Share this meeting": buttons that need JavaScript, so they start hidden. Share
@@ -1183,8 +1225,8 @@ function openLinkedRecord() {
 
 // Each setup looks for its own markup and returns when the page has none; one that throws on an odd page
 // must not stop the copy buttons, disclosures or past-day hiding after it.
-for (const setup of [setupListFilter, setupTrackerFilter, setupGenericFilters, markPastDays, setupMeetingFilter,
-  openLinkedRecord, setupViewSwitch, setupContactForm, setupSearchResults, setupEmailNotes, setupRequestButtons,
+for (const setup of [setupListFilter, setupTrackerFilter, setupGenericFilters, markPastDays, setupMeetingFilter, setupRowFilter,
+  openLinkedRecord, setupContactForm, setupSearchResults, setupEmailNotes, setupRequestButtons,
   setupDisclosure, setupCopyAndShare, relDates]) {
   try {
     setup();

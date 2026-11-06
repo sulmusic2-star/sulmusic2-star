@@ -91,8 +91,8 @@ function stageWord(s) {
   function lineFor(it) {
     const known = LINES.lines && LINES.lines[it.id];
     const b = LINES.briefs && LINES.briefs[it.id];
-    if (b && known) { // a verified written brief, as brief_text() in build.py
-      return { say: (b.line || b.what || known[0]).trim(), quote: b.quote || known[1], note: '', kind: 'brief', key: known[4] || '',
+    if (b && known) { // a verified written brief, as brief_text() in build.py; the line is the agenda's own (hit_headline)
+      return { say: (known[0] || b.line || b.what).trim(), quote: b.quote || known[1], note: '', kind: 'brief', key: known[4] || '',
         who: known[5] || '', rank: BRIEF_RANK[b.action || 'other'] || 40, no: known[7] || '', subj: known[8] || '', brief: b,
         stage: known[9] || BRIEF_STAGE[b.action || 'other'] || '', facts: [b.where, b.size, b.who].filter(Boolean) };
     }
