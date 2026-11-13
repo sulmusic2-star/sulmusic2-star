@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-weymouth-town-council-2026-11-16@agendaahead
+DTSTAMP:20261113T120000Z
+DTSTART;TZID=America/New_York:20261116T193000
+DTEND;TZID=America/New_York:20261116T213000
+SUMMARY:Weymouth Town Council: Holds a hearing on a temporary ban on new da
+ ta centers (a moratorium\; continued from an earlier meeting).
+LOCATION:Humanities Center Weymouth High School\, Weymouth\, MA
+DESCRIPTION:• Holds a hearing on a temporary ban on new data centers (a m
+ oratorium\; continued from an earlier meeting).\n\nAgenda: https://www.wey
+ mouth.ma.us/AgendaCenter/ViewFile/Agenda/_11162026-567\nPage: https://agen
+ daahead.vercel.app/m/weymouth-town-council-2026-11-16\nConfirm the time an
+ d place with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/weymouth-town-council-2026-11-16
+END:VEVENT
+END:VCALENDAR

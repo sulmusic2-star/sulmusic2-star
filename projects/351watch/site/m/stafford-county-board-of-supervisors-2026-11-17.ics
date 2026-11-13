@@ -1,0 +1,40 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-stafford-county-board-of-supervisors-2026-11-17@agendaahead
+DTSTAMP:20261113T120000Z
+DTSTART;TZID=America/New_York:20261117T170000
+DTEND;TZID=America/New_York:20261117T190000
+SUMMARY:Stafford County Board of Supervisors: Holds a hearing on a zoning c
+ hange.
+LOCATION:Stafford County\, VA
+DESCRIPTION:• Holds a hearing on a zoning change.\n• Discusses an item 
+ on data-center rules (no vote listed).\n\nAgenda: https://staffordcova.api
+ .civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=6432\,plainText=fa
+ lse)\nPage: https://agendaahead.vercel.app/m/stafford-county-board-of-supe
+ rvisors-2026-11-17\nConfirm the time and place with the town\; agendas can
+  change.
+URL:https://agendaahead.vercel.app/m/stafford-county-board-of-supervisors-2
+ 026-11-17
+END:VEVENT
+END:VCALENDAR

@@ -1,15 +1,15 @@
 {
- "generated": "2026-11-06T19:35:39+00:00",
+ "generated": "2026-11-13T12:45:01+00:00",
  "states": {
   "CT": {
-   "data_center": 1,
+   "data_center": 3,
    "moratorium": 1,
    "solar": 2,
    "wind": 2
   },
   "MA": {
    "battery_storage": 3,
-   "data_center": 41,
+   "data_center": 50,
    "moratorium": 4,
    "solar": 1,
    "wind": 2
@@ -19,17 +19,29 @@
    "moratorium": 2
   },
   "NY": {
-   "data_center": 26,
-   "moratorium": 4
+   "data_center": 27,
+   "moratorium": 5
   },
   "RI": {
    "battery_storage": 1,
    "data_center": 6,
+   "moratorium": 1,
    "solar": 3,
    "wind": 2
   }
  },
  "towns": {
+  "CT:Hartford": [
+   {
+    "link": "https://ctmirror.org/2026/11/06/ct-politics-news-pollsters-data-centers-fraud-risk/",
+    "published": "2026-11-06T22:30:00+00:00",
+    "source": "CT Mirror",
+    "title": "Pollsters, data centers and fraud risk: CT politics news",
+    "topics": [
+     "data_center"
+    ]
+   }
+  ],
   "MA:Bedford": [
    {
     "link": "https://newbedfordlight.org/new-bedford-advances-measure-to-ban-data-centers/",
@@ -72,12 +84,97 @@
     ]
    }
   ],
+  "MA:Hudson": [
+   {
+    "link": "https://www.wamc.org/news/2026-11-12/columbia-county-supervisor-hopes-three-month-flock-moratorium-is-a-step-towards-a-permanent-ban",
+    "published": "2026-11-12T22:02:34+00:00",
+    "source": "WAMC",
+    "title": "Columbia County Supervisor hopes three month Flock moratorium is a step towards a permanent ban",
+    "topics": [
+     "moratorium"
+    ]
+   }
+  ],
   "MA:New Bedford": [
    {
     "link": "https://newbedfordlight.org/new-bedford-advances-measure-to-ban-data-centers/",
     "published": "2026-10-27T19:19:52+00:00",
     "source": "New Bedford Light",
     "title": "New Bedford advances measure to ban data centers",
+    "topics": [
+     "data_center"
+    ]
+   }
+  ],
+  "MA:Sutton": [
+   {
+    "link": "https://www.bostonglobe.com/2026/11/13/opinion/letters-data-center-resistance-sutton-mass-kraft/",
+    "published": "2026-11-13T11:16:50+00:00",
+    "source": "Boston Globe",
+    "title": "Battleground grows in Mass. against AI data centers",
+    "topics": [
+     "data_center"
+    ]
+   },
+   {
+    "link": "https://www.wwlp.com/news/massachusetts/ballot-question-would-put-major-restrictions-on-data-centers/",
+    "published": "2026-11-13T11:09:36+00:00",
+    "source": "WWLP",
+    "title": "Ballot question would put major restrictions on data centers",
+    "topics": [
+     "data_center"
+    ]
+   },
+   {
+    "link": "https://wbjournal.com/article/data-center-opponents-kick-off-ballot-question-campaign-to-restrict-projects/",
+    "published": "2026-11-12T21:51:08+00:00",
+    "source": "Worcester Business Journal",
+    "title": "Data center opponents kick off ballot question campaign to restrict projects",
+    "topics": [
+     "data_center"
+    ]
+   },
+   {
+    "link": "https://www.bostonglobe.com/2026/11/12/business/data-center-kraft-sutton-select-board/",
+    "published": "2026-11-12T09:05:04+00:00",
+    "source": "Boston Globe",
+    "title": "Who came up with the idea for a data center in Sutton? It wasn’t the Krafts.",
+    "topics": [
+     "data_center"
+    ]
+   },
+   {
+    "link": "https://wbjournal.com/article/16b-data-center-proposal-met-fierce-resistance-from-sutton-residents/",
+    "published": "2026-11-11T20:53:55+00:00",
+    "source": "Worcester Business Journal",
+    "title": "$16B data center proposal met fierce resistance from Sutton residents",
+    "topics": [
+     "data_center"
+    ]
+   },
+   {
+    "link": "https://www.bostonglobe.com/2026/11/10/business/kraft-group-data-centers-sutton-mass/",
+    "published": "2026-11-11T14:38:23+00:00",
+    "source": "Boston Globe",
+    "title": "The Kraft Group wants to build a $16 billion data center campus in a small Central Mass. town - The Boston Globe",
+    "topics": [
+     "data_center"
+    ]
+   },
+   {
+    "link": "https://www.bostonglobe.com/2026/11/11/business/data-center-kraft-sutton-public-meeting/",
+    "published": "2026-11-11T14:15:18+00:00",
+    "source": "Boston Globe",
+    "title": "Seething Sutton residents packed a Select Board meeting about the Kraft Group’s data center proposal. They did not hold back.",
+    "topics": [
+     "data_center"
+    ]
+   },
+   {
+    "link": "https://wbjournal.com/article/kraft-group-proposes-16b-data-center-complex-in-sutton/",
+    "published": "2026-11-10T21:23:43+00:00",
+    "source": "Worcester Business Journal",
+    "title": "Kraft Group proposes $16B data center complex in Sutton",
     "topics": [
      "data_center"
     ]
@@ -127,6 +224,17 @@
     "published": "2026-10-08T11:46:04+00:00",
     "source": "MassLive",
     "title": "Zoom meeting set for servistar data center permit decision in Westfield",
+    "topics": [
+     "data_center"
+    ]
+   }
+  ],
+  "MA:Worcester": [
+   {
+    "link": "https://www.bostonglobe.com/2026/11/11/business/data-center-kraft-sutton-public-meeting/",
+    "published": "2026-11-11T14:15:18+00:00",
+    "source": "Boston Globe",
+    "title": "Seething Sutton residents packed a Select Board meeting about the Kraft Group’s data center proposal. They did not hold back.",
     "topics": [
      "data_center"
     ]

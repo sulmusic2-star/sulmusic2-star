@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T19:31:07+00:00",
+ "generated": "2026-11-13T12:00:33+00:00",
  "source": "massdep_wetlands",
  "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
  "link_types": {
@@ -17,7 +17,7 @@
   {
    "parent": "National Grid (New England Power / Mass. Electric)",
    "kind": "utility",
-   "filings": 35,
+   "filings": 37,
    "project_applicants": [
     "MASSACHUSETTS ELECTRIC COMPANY",
     "NEP",
@@ -39,6 +39,7 @@
     "Charlton: CARPENTER HILL RD",
     "Chelmsford: K137E L138E 337 TRANSMISSION LINE ROW",
     "Clinton: EXISTING UTILITY RIGHT OF WAY",
+    "Gardner: E5 F6 TRANSMISSION LINE RIGHT OF WAY",
     "Georgetown: 394 AND B154 C155 TAP TRANSMISSION LINE ROW",
     "Groveland: 209 KING ST",
     "Hanover: 191 WATER ST",
@@ -73,6 +74,7 @@
     "Charlton",
     "Chelmsford",
     "Clinton",
+    "Gardner",
     "Georgetown",
     "Groveland",
     "Hanover",
@@ -96,10 +98,10 @@
     "Winchendon"
    ],
    "categories": {
-    "transmission_substation": 35
+    "transmission_substation": 37
    },
    "links": {
-    "applicant_name": 34,
+    "applicant_name": 36,
     "description_mention": 1
    },
    "consultants": [],
@@ -383,10 +385,26 @@
      "received_date": "2026-10-28",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213765",
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY (NEP)' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Marlborough",
+     "applicant": "NEW ENGLAND POWER COMPANY",
+     "received_date": "2026-11-10",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213914",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Gardner",
+     "applicant": "NEP",
+     "received_date": "2026-11-12",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213928",
+     "evidence": "applicant name 'NEP' matches National Grid (New England Power / Mass. Electric)"
     }
    ],
    "distinct_applicants": 7,
-   "distinct_sites": 34,
+   "distinct_sites": 35,
    "in_target_list": true,
    "target_segment": "transmission/utility"
   },
@@ -834,7 +852,7 @@
      "evidence": "applicant name 'AGILITAS ENERGY, INC.' matches Agilitas Energy"
     },
     {
-     "dep_file_number": null,
+     "dep_file_number": "072-1912",
      "town": "Swansea",
      "applicant": "AE BARK STREET SOLAR ESS, LLC",
      "received_date": "2026-11-02",
@@ -1217,7 +1235,7 @@
    "parent_kind": "utility",
    "link": "applicant_name",
    "confidence": "high",
-   "filings": 18,
+   "filings": 19,
    "towns": [
     "Attleboro",
     "Ayer",
@@ -1239,7 +1257,7 @@
    "payors": [],
    "consultants": [],
    "categories": {
-    "transmission_substation": 18
+    "transmission_substation": 19
    },
    "evidence": [
     {
@@ -1421,6 +1439,16 @@
      "link": "applicant_name",
      "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213522"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Marlborough",
+     "received_date": "2026-11-10",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213914"
     }
    ],
    "shares_contact_with": [
@@ -1974,6 +2002,45 @@
    "shares_contact_with": []
   },
   {
+   "applicant": "NEP",
+   "parent": "National Grid (New England Power / Mass. Electric)",
+   "parent_kind": "utility",
+   "link": "applicant_name",
+   "confidence": "high",
+   "filings": 2,
+   "towns": [
+    "Gardner",
+    "Shutesbury"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "transmission_substation": 2
+   },
+   "evidence": [
+    {
+     "dep_file_number": "286-0314",
+     "town": "Shutesbury",
+     "received_date": "2026-10-08",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEP' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213464"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Gardner",
+     "received_date": "2026-11-12",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEP' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213928"
+    }
+   ]
+  },
+  {
    "applicant": "NEW ENGLAND POWER CO AND MASSACHUSETTS ELECTRIC COMPANY",
    "parent": "National Grid (New England Power / Mass. Electric)",
    "parent_kind": "utility",
@@ -2074,7 +2141,7 @@
    },
    "evidence": [
     {
-     "dep_file_number": null,
+     "dep_file_number": "072-1912",
      "town": "Swansea",
      "received_date": "2026-11-02",
      "filing_type": "ANRAD (resource area delineation)",
@@ -2415,34 +2482,6 @@
     }
    ],
    "shares_contact_with": []
-  },
-  {
-   "applicant": "NEP",
-   "parent": "National Grid (New England Power / Mass. Electric)",
-   "parent_kind": "utility",
-   "link": "applicant_name",
-   "confidence": "high",
-   "filings": 1,
-   "towns": [
-    "Shutesbury"
-   ],
-   "payors": [],
-   "consultants": [],
-   "categories": {
-    "transmission_substation": 1
-   },
-   "evidence": [
-    {
-     "dep_file_number": "286-0314",
-     "town": "Shutesbury",
-     "received_date": "2026-10-08",
-     "filing_type": "Notice of Intent",
-     "payor": null,
-     "link": "applicant_name",
-     "how": "applicant name 'NEP' matches National Grid (New England Power / Mass. Electric)",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213464"
-    }
-   ]
   },
   {
    "applicant": "NEW LEAF ENERGY, INC",
@@ -3368,20 +3407,20 @@
   },
   {
    "payor": "GRADY CONSULTING",
-   "filings": 19,
+   "filings": 20,
    "towns": 12,
+   "kind": "consultant"
+  },
+  {
+   "payor": "COLLINS CIVIL ENG",
+   "filings": 16,
+   "towns": 9,
    "kind": "consultant"
   },
   {
    "payor": "ENVIRO CONSULT & RESTOR",
    "filings": 16,
    "towns": 15,
-   "kind": "consultant"
-  },
-  {
-   "payor": "COLLINS CIVIL ENG",
-   "filings": 15,
-   "towns": 9,
    "kind": "consultant"
   },
   {

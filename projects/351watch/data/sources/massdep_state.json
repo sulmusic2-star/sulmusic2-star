@@ -1,34 +1,38 @@
 {
  "coverage": {
   "from": "2025-10-10",
-  "to": "2026-11-06"
+  "to": "2026-11-13"
  },
  "source": "massdep_wetlands",
  "api": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire",
  "cursor": {
-  "max_filing_date": "2026-11-05",
-  "max_noi_id": 213861
+  "max_filing_date": "2026-11-12",
+  "max_noi_id": 213931
  },
  "lookback_days": 45,
  "last_run": {
-  "at": "2026-11-06T19:31:07+00:00",
+  "at": "2026-11-13T12:00:33+00:00",
   "offline": false,
   "blocked": null,
-  "rebuilt_from_cache": 4967,
-  "listed": 637,
-  "details_needed": 0,
-  "http_requests": 9
+  "rebuilt_from_cache": 0,
+  "listed": 707,
+  "refetch_no_description": 118,
+  "details_needed": 282,
+  "changed": 94,
+  "details_fetched": 282,
+  "new": 70,
+  "http_requests": 292
  },
  "summary": {
-  "filings_total": 4967,
+  "filings_total": 5037,
   "filings_by_type": {
-   "Notice of Intent": 2630,
-   "Notice of Intent (buffer zone only)": 2111,
-   "ANRAD (resource area delineation)": 226
+   "Notice of Intent": 2671,
+   "Notice of Intent (buffer zone only)": 2138,
+   "ANRAD (resource area delineation)": 228
   },
-  "energy_hits": 99,
+  "energy_hits": 101,
   "energy_by_category": {
-   "transmission_substation": 44,
+   "transmission_substation": 46,
    "solar": 30,
    "developer_other": 9,
    "solar_and_storage": 6,
@@ -41,19 +45,19 @@
    "battery_storage": 11
   },
   "energy_by_filing_type": {
-   "Notice of Intent": 67,
+   "Notice of Intent": 69,
    "Notice of Intent (buffer zone only)": 24,
    "ANRAD (resource area delineation)": 8
   },
   "energy_by_confidence": {
    "high": 46,
    "medium": 39,
-   "low": 14
+   "low": 16
   },
-  "energy_towns": 72,
+  "energy_towns": 73,
   "all_categories_incl_excluded": {
-   "transmission_substation": 44,
-   "utility_routine": 39,
+   "transmission_substation": 46,
+   "utility_routine": 40,
    "solar": 30,
    "developer_other": 9,
    "solar_and_storage": 6,
@@ -63,14 +67,14 @@
    "ev_charging": 1,
    "wind_or_marine": 1
   },
-  "energy_with_parent": 75,
+  "energy_with_parent": 77,
   "top_parents": [
    {
     "parent": "National Grid (New England Power / Mass. Electric)",
     "kind": "utility",
-    "filings": 35,
-    "sites": 34,
-    "towns": 30
+    "filings": 37,
+    "sites": 35,
+    "towns": 31
    },
    {
     "parent": "New Leaf Energy",
@@ -174,16 +178,6 @@
  },
  "runs": [
   {
-   "at": "2026-10-27T11:02:19+00:00",
-   "offline": false,
-   "blocked": null,
-   "listed": 646,
-   "new": 19,
-   "changed": 22,
-   "details_fetched": 41,
-   "hits": 95
-  },
-  {
    "at": "2026-10-27T18:32:38+00:00",
    "offline": false,
    "blocked": null,
@@ -272,6 +266,16 @@
    "changed": 0,
    "details_fetched": 0,
    "hits": 99
+  },
+  {
+   "at": "2026-11-13T12:00:33+00:00",
+   "offline": false,
+   "blocked": null,
+   "listed": 707,
+   "new": 70,
+   "changed": 94,
+   "details_fetched": 282,
+   "hits": 101
   }
  ]
 }

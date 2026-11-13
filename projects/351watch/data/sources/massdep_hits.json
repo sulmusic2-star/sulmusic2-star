@@ -1,18 +1,108 @@
 {
- "generated": "2026-11-06T19:31:07+00:00",
+ "generated": "2026-11-13T12:00:33+00:00",
  "source": "massdep_wetlands",
  "source_name": "MassDEP Wetlands Protection Act filings (EEA Data Portal, WIRe)",
  "window": {
   "start": "2025-10-10",
-  "end": "2026-11-06"
+  "end": "2026-11-13"
  },
  "states": [
   "MA"
  ],
- "filings_total": 4967,
- "hits_count": 99,
+ "filings_total": 5037,
+ "hits_count": 101,
  "notes": "meeting_date is the DEP filing date (the API has no hearing date); the Conservation Commission must open its hearing within 21 days of filing (310 CMR 10.05(5)(b)). Extra per-hit fields are under 'details'.",
  "hits": [
+  {
+   "id": "c26d66187d5d",
+   "state": "MA",
+   "town": "Gardner",
+   "county": "Worcester",
+   "board": "Conservation Commission (wetlands filing)",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-11-12",
+   "topics": [
+    "wetlands_filing"
+   ],
+   "snippet": "NOI, Nep: no description. E5/f6 Transmission Line Right-of-way (ROW).",
+   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213928",
+   "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
+   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent, Gardner",
+   "text_source": "api",
+   "first_seen": "2026-11-13T12:00:33+00:00",
+   "days_before_meeting": -1.5,
+   "source": "massdep_wetlands",
+   "details": {
+    "noi_id": "213928",
+    "dep_file_number": null,
+    "filing_type": "Notice of Intent",
+    "project_type": "Utilities",
+    "received_date": "2026-11-12",
+    "issued_date": null,
+    "status": "received",
+    "soc_requested": false,
+    "meeting_date_basis": "filing_date",
+    "applicant": "NEP",
+    "payor": null,
+    "parent": "National Grid (New England Power / Mass. Electric)",
+    "parent_link": "applicant_name",
+    "parent_confidence": "high",
+    "consultant": null,
+    "project_address": "E5/F6 TRANSMISSION LINE RIGHT-OF-WAY (ROW)",
+    "description": null,
+    "category": "transmission_substation",
+    "confidence": "low",
+    "signals": [
+     "name:New England Power (transmission owner)"
+    ],
+    "api_url": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire/213928"
+   }
+  },
+  {
+   "id": "403821f37f99",
+   "state": "MA",
+   "town": "Marlborough",
+   "county": "Middlesex",
+   "board": "Conservation Commission (wetlands filing)",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-11-10",
+   "topics": [
+    "wetlands_filing"
+   ],
+   "snippet": "NOI, New England Power Company: no description. 365 South Street.",
+   "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213914",
+   "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
+   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent, Marlborough",
+   "text_source": "api",
+   "first_seen": "2026-11-13T12:00:33+00:00",
+   "days_before_meeting": -3.5,
+   "source": "massdep_wetlands",
+   "details": {
+    "noi_id": "213914",
+    "dep_file_number": null,
+    "filing_type": "Notice of Intent",
+    "project_type": "Utilities",
+    "received_date": "2026-11-10",
+    "issued_date": null,
+    "status": "received",
+    "soc_requested": false,
+    "meeting_date_basis": "filing_date",
+    "applicant": "NEW ENGLAND POWER COMPANY",
+    "payor": null,
+    "parent": "National Grid (New England Power / Mass. Electric)",
+    "parent_link": "applicant_name",
+    "parent_confidence": "high",
+    "consultant": null,
+    "project_address": "365 SOUTH STREET",
+    "description": null,
+    "category": "transmission_substation",
+    "confidence": "low",
+    "signals": [
+     "name:New England Power (transmission owner)"
+    ],
+    "api_url": "https://eeaonline.eea.state.ma.us/EEA/DataLake/V1.0/DataLakeAPI/wire/213914"
+   }
+  },
   {
    "id": "dcc071884eaf",
    "state": "MA",
@@ -28,19 +118,19 @@
    "snippet": "ANRAD, Ae Bark Street Solar Ess, LLC (fee paid by Agilitas Energy): Wetland delineation. 0 Bark Street.",
    "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213825",
    "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
-   "document_title": "MassDEP wetlands filing (file number pending) — ANRAD (resource area delineation), Swansea",
+   "document_title": "MassDEP wetlands filing 072-1912 — ANRAD (resource area delineation), Swansea",
    "text_source": "api",
    "first_seen": "2026-11-06T12:01:33+00:00",
    "days_before_meeting": -4.5,
    "source": "massdep_wetlands",
    "details": {
     "noi_id": "213825",
-    "dep_file_number": null,
+    "dep_file_number": "072-1912",
     "filing_type": "ANRAD (resource area delineation)",
     "project_type": "Other",
     "received_date": "2026-11-02",
     "issued_date": null,
-    "status": "received",
+    "status": "file_number_issued",
     "soc_requested": false,
     "meeting_date_basis": "filing_date",
     "applicant": "AE BARK STREET SOLAR ESS, LLC",
