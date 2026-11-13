@@ -1,56 +1,56 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 455,
-   "new_hits": 182,
-   "towns_attempted": 243,
-   "towns_succeeded": 240
+   "new_documents": 13,
+   "new_hits": 9,
+   "towns_attempted": 18,
+   "towns_succeeded": 18
   },
   "MD": {
-   "new_documents": 26,
-   "new_hits": 7,
-   "towns_attempted": 30,
-   "towns_succeeded": 30
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   },
   "MI": {
-   "new_documents": 82,
-   "new_hits": 135,
-   "towns_attempted": 101,
-   "towns_succeeded": 101
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 4,
+   "towns_succeeded": 4
   },
   "NY": {
-   "new_documents": 76,
-   "new_hits": 22,
-   "towns_attempted": 92,
-   "towns_succeeded": 91
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 2,
+   "towns_succeeded": 2
   },
   "OH": {
-   "new_documents": 16,
-   "new_hits": 20,
-   "towns_attempted": 33,
-   "towns_succeeded": 33
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   },
   "RI": {
-   "new_documents": 57,
-   "new_hits": 17,
-   "towns_attempted": 39,
-   "towns_succeeded": 39
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   },
   "VA": {
-   "new_documents": 86,
-   "new_hits": 160,
-   "towns_attempted": 108,
-   "towns_succeeded": 108
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 6,
+   "towns_succeeded": 6
   }
  },
  "date": "2026-11-13",
- "document_errors": 14,
- "documents_already_indexed": 3320,
+ "document_errors": 0,
+ "documents_already_indexed": 277,
  "documents_deferred": 0,
- "documents_listed": 4137,
- "documents_needing_ocr": 2,
- "documents_rematched": 0,
- "documents_retried": 5,
+ "documents_listed": 337,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 47,
+ "documents_retried": 0,
  "documents_too_large": [
   {
    "error": "too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
@@ -396,115 +396,14 @@
    "url": "https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_11102026-996"
   }
  ],
- "duration_seconds": 2309.2,
- "errors": [
-  {
-   "error": "listing generic: listing https://www.dunstable-ma.gov/planning-board returned HTTP 404",
-   "town": "MA:Dunstable"
-  },
-  {
-   "error": "listing generic: listing https://www.dunstable-ma.gov/conservation-commission returned HTTP 404",
-   "town": "MA:Dunstable"
-  },
-  {
-   "error": "listing civicplus: https://www.townofhatfield.org/AgendaCenter/Search/?term=&CIDs=13%2C25%2C16%2C&startDate=10%2F14%2F2026&endDate=03%2F13%2F2027&dateRange=&dateSelector=",
-   "town": "MA:Hatfield"
-  },
-  {
-   "error": "document: https://www.oakbluffsma.gov/AgendaCenter/ViewFile/Agenda/_11302026-5041: HTTPSConnectionPool(host='www.oakbluffsma.gov', port=443): Read timed out. (read timeout=10)",
-   "town": "MA:Oak Bluffs"
-  },
-  {
-   "error": "listing generic: https://www.provincetown-ma.gov/Archive.aspx?AMID=2119: HTTPSConnectionPool(host='www.provincetown-ma.gov', port=443): Read timed out. (read timeout=10)",
-   "town": "MA:Provincetown"
-  },
-  {
-   "error": "document: extract failed (content-type application/msword): https://townofshelburnema.gov/files/Planning_Board_2026-11-10_Agenda.doc",
-   "town": "MA:Shelburne"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/government/planning_board/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/departments/zoning_board_of_appeals/meeting_minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/departments/conservation_commission/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/government/board_of_selectmen/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "document: extract failed (content-type application/msword): https://www.westport-ma.com/11-24-26 Agenda.doc",
-   "town": "MA:Westport"
-  },
-  {
-   "error": "document: extract failed (content-type application/msword): https://www.westport-ma.com/11-10-26 Agenda.doc",
-   "town": "MA:Westport"
-  },
-  {
-   "error": "document: too large (215650287 > 41943040 bytes): https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_11102026-2355",
-   "town": "MD:City of College Park"
-  },
-  {
-   "error": "document: https://cms3.revize.com/revize/bridgeporttwpmi/2026 1020 Special Agenda.docx",
-   "town": "MI:Bridgeport Charter Township"
-  },
-  {
-   "error": "document: too large (49106904 > 41943040 bytes): https://www.brightontwp.com/AgendaCenter/ViewFile/Agenda/_11182026-2370",
-   "town": "MI:Brighton Township"
-  },
-  {
-   "error": "document: too large (76578498 > 41943040 bytes): https://www.commercetwp.com/media/ss5lhutr/2026-11-16-sp-pln-agenda-7-pm-packet.pdf",
-   "town": "MI:Commerce Charter Township"
-  },
-  {
-   "error": "document: too large (60691250 > 41943040 bytes): https://mccmeetings.blob.core.usgovcloudapi.net/hamburgtmi-pubu/MEET-Packet-7fb3dc0fb99944dba8e383d393d63f5f.pdf",
-   "town": "MI:Hamburg Township"
-  },
-  {
-   "error": "document: too large (43312475 > 41943040 bytes): https://www.region2planning.com/wp-content/uploads/2026/11/November-12-JCPC-Packet.pdf",
-   "town": "MI:Jackson County"
-  },
-  {
-   "error": "document: https://cms4files1.revize.com/summitmi/DEC 2026 AGENDA JG DRAFT 2.docx",
-   "town": "MI:Summit Township"
-  },
-  {
-   "error": "document: too large (43349744 > 41943040 bytes): https://mccmeetings.blob.core.usgovcloudapi.net/whitelakmi-pubu/MEET-Packet-bdcec6d3fa0a441a826d17966c0b6bc2.pdf",
-   "town": "MI:White Lake Charter Township"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/planning-board-2/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/zoning-board-of-appeals-2/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/town-board/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "document: extract failed (content-type image/png): https://www.libertytwp.org/AgendaCenter/ViewFile/Agenda/_11182026-322",
-   "town": "OH:Liberty Township (Delaware County)"
-  },
-  {
-   "error": "document: https://www.colonialheightsva.gov/AgendaCenter/ViewFile/Agenda/_11172026-815: HTTPSConnectionPool(host='www.colonialheightsva.gov', port=443): Read timed out. (read timeout=10)",
-   "town": "VA:City of Colonial Heights"
-  }
- ],
- "errors_total": 25,
- "finished": "2026-11-13T12:44:09+00:00",
- "hits_current": 3373,
+ "duration_seconds": 68.2,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-11-13T19:31:21+00:00",
+ "hits_current": 3379,
  "index": {
   "by_state": {
-   "MA": 4863,
+   "MA": 4871,
    "MD": 174,
    "MI": 444,
    "NY": 715,
@@ -515,62 +414,51 @@
   "by_status": {
    "error": 75,
    "needs_ocr": 9,
-   "ok": 7255,
+   "ok": 7263,
    "replaced": 130
   },
   "by_text_source": {
    "docx": 69,
    "html": 394,
    "none": 78,
-   "ocr": 1481,
-   "pdf": 5447
+   "ocr": 1484,
+   "pdf": 5452
   },
-  "documents": 7469,
-  "hits": 3718,
-  "pruned": 23,
+  "documents": 7477,
+  "hits": 3719,
+  "pruned": 5,
   "towns": 615,
-  "with_hits": 1577
+  "with_hits": 1578
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 991885134,
-   "listing": 237794263,
-   "robots": 1797195
+   "document": 53114815,
+   "listing": 43202512
   },
-  "cache_hits": 109,
-  "errors": 17,
-  "requests": 3059,
+  "cache_hits": 5,
+  "errors": 0,
+  "requests": 146,
   "requests_by_purpose": {
-   "document": 918,
-   "listing": 1509,
-   "robots": 632
+   "document": 71,
+   "listing": 75
   },
-  "robots_blocked": 6,
+  "robots_blocked": 0,
   "slow_host_documents": {}
  },
- "new_alert_items": 434,
+ "new_alert_items": 6,
  "new_alert_items_by_topic": {
-  "40b_comprehensive_permit": 13,
-  "battery_storage": 57,
-  "clean_energy_siting": 48,
-  "data_center": 109,
-  "moratorium": 28,
-  "solar": 78,
-  "wetlands_filing": 2,
-  "wireless_telecom": 28,
-  "zoning_amendment": 173
+  "battery_storage": 2,
+  "data_center": 2,
+  "moratorium": 1,
+  "wireless_telecom": 1,
+  "zoning_amendment": 3
  },
- "new_documents": 798,
- "new_hits": 543,
+ "new_documents": 13,
+ "new_hits": 9,
  "new_hits_by_topic": {
-  "40b_comprehensive_permit": 23,
-  "battery_storage": 80,
-  "clean_energy_siting": 51,
-  "data_center": 121,
-  "moratorium": 40,
-  "solar": 111,
-  "wireless_telecom": 29,
-  "zoning_amendment": 217
+  "40b_comprehensive_permit": 1,
+  "wireless_telecom": 1,
+  "zoning_amendment": 7
  },
  "options": {
   "matcher_version": "ca9b9d486f",
@@ -580,7 +468,27 @@
   "tesseract": true,
   "workers": 16
  },
- "started": "2026-11-13T12:05:40+00:00",
+ "previous_runs_today": [
+  {
+   "duration_seconds": 2309.2,
+   "new_documents": 798,
+   "new_hits": 543,
+   "requests": 3059,
+   "started": "2026-11-13T12:05:40+00:00",
+   "states": [
+    "MA",
+    "MD",
+    "MI",
+    "NY",
+    "OH",
+    "RI",
+    "VA"
+   ],
+   "towns_attempted": 646,
+   "towns_succeeded": 642
+  }
+ ],
+ "started": "2026-11-13T19:30:12+00:00",
  "states": [
   "MA",
   "MD",
@@ -590,17 +498,10 @@
   "RI",
   "VA"
  ],
- "towns_attempted": 646,
- "towns_failed": [
-  "MA:Dunstable",
-  "MA:Hatfield",
-  "MA:Swansea",
-  "NY:Amsterdam"
- ],
- "towns_partial": [
-  "MA:Provincetown"
- ],
- "towns_succeeded": 642,
+ "towns_attempted": 33,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 33,
  "window": {
   "end": "2027-03-13",
   "start": "2026-10-14"
