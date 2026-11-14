@@ -1,56 +1,56 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 165,
-   "new_hits": 114,
-   "towns_attempted": 243,
-   "towns_succeeded": 237
+   "new_documents": 8,
+   "new_hits": 21,
+   "towns_attempted": 42,
+   "towns_succeeded": 42
   },
   "MD": {
-   "new_documents": 21,
-   "new_hits": 10,
-   "towns_attempted": 30,
-   "towns_succeeded": 30
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 3,
+   "towns_succeeded": 3
   },
   "MI": {
-   "new_documents": 25,
-   "new_hits": 47,
-   "towns_attempted": 101,
-   "towns_succeeded": 101
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 15,
+   "towns_succeeded": 15
   },
   "NY": {
-   "new_documents": 27,
-   "new_hits": 13,
-   "towns_attempted": 92,
-   "towns_succeeded": 91
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 8,
+   "towns_succeeded": 8
   },
   "OH": {
-   "new_documents": 8,
-   "new_hits": 6,
-   "towns_attempted": 33,
-   "towns_succeeded": 33
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 4,
+   "towns_succeeded": 4
   },
   "RI": {
-   "new_documents": 24,
-   "new_hits": 6,
-   "towns_attempted": 39,
-   "towns_succeeded": 39
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 4,
+   "towns_succeeded": 4
   },
   "VA": {
-   "new_documents": 49,
-   "new_hits": 63,
-   "towns_attempted": 108,
-   "towns_succeeded": 108
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 16,
+   "towns_succeeded": 16
   }
  },
  "date": "2026-11-14",
- "document_errors": 4,
- "documents_already_indexed": 3846,
+ "document_errors": 0,
+ "documents_already_indexed": 653,
  "documents_deferred": 0,
- "documents_listed": 4172,
- "documents_needing_ocr": 1,
- "documents_rematched": 0,
- "documents_retried": 3,
+ "documents_listed": 815,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 154,
+ "documents_retried": 0,
  "documents_too_large": [
   {
    "error": "too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
@@ -417,95 +417,14 @@
    "url": "https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_11102026-996"
   }
  ],
- "duration_seconds": 1122.2,
- "errors": [
-  {
-   "error": "listing agenda_page: listing https://www.actonma.gov/Archive.aspx?AMID=88 returned HTTP 500",
-   "town": "MA:Acton"
-  },
-  {
-   "error": "listing civicplus: AgendaCenter search returned HTTP 500",
-   "town": "MA:Amherst"
-  },
-  {
-   "error": "listing civicplus: https://www.auburnma.gov/Error.aspx?aspxerrorpath=/AgendaCenter/Search/",
-   "town": "MA:Auburn"
-  },
-  {
-   "error": "listing civicplus: https://www.bedfordma.gov/AgendaCenter/Search/?term=&CIDs=16%2C18%2C34%2C38%2C&startDate=10%2F15%2F2026&endDate=03%2F14%2F2027&dateRange=&dateSelector=: HTTPSConnectionPool(host='www.bedfordma.gov', port=443): Read timed out. (read timeout=10)",
-   "town": "MA:Bedford"
-  },
-  {
-   "error": "listing civicplus: https://www.belmont-ma.gov/Error.aspx?aspxerrorpath=/AgendaCenter/Search/",
-   "town": "MA:Belmont"
-  },
-  {
-   "error": "listing civicplus: https://www.beverlyma.gov/Error.aspx?aspxerrorpath=/AgendaCenter/Search/",
-   "town": "MA:Beverly"
-  },
-  {
-   "error": "listing civicplus: AgendaCenter search returned HTTP 500",
-   "town": "MA:Dartmouth"
-  },
-  {
-   "error": "listing generic: listing https://www.dunstable-ma.gov/planning-board returned HTTP 404",
-   "town": "MA:Dunstable"
-  },
-  {
-   "error": "listing generic: listing https://www.dunstable-ma.gov/conservation-commission returned HTTP 404",
-   "town": "MA:Dunstable"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/government/planning_board/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/departments/zoning_board_of_appeals/meeting_minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/departments/conservation_commission/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/government/board_of_selectmen/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "document: too large (68063800 > 41943040 bytes): https://webgen1files1.revize.com/eastchinatwpmi/Documents/Departments/BOT agendas & mins/11-16-2026_AGENDA_PACKET_.pdf",
-   "town": "MI:East China Charter Township"
-  },
-  {
-   "error": "document: too large (57410870 > 41943040 bytes): https://www.pittsfield-mi.gov/AgendaCenter/ViewFile/Agenda/_11192026-1031",
-   "town": "MI:Pittsfield Charter Township"
-  },
-  {
-   "error": "document: https://cms4files1.revize.com/summitmi/DEC 2026 AGENDA JG DRAFT 2.docx",
-   "town": "MI:Summit Township"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/planning-board-2/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/zoning-board-of-appeals-2/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/town-board/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "document: too large (82960971 > 41943040 bytes): https://www.franklincountyva.gov/AgendaCenter/ViewFile/Agenda/_11172026-829",
-   "town": "VA:Franklin County"
-  }
- ],
- "errors_total": 20,
- "finished": "2026-11-14T12:20:05+00:00",
- "hits_current": 3537,
+ "duration_seconds": 216.8,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-11-14T19:34:42+00:00",
+ "hits_current": 3538,
  "index": {
   "by_state": {
-   "MA": 5013,
+   "MA": 5014,
    "MD": 195,
    "MI": 471,
    "NY": 742,
@@ -516,7 +435,7 @@
   "by_status": {
    "error": 76,
    "needs_ocr": 9,
-   "ok": 7547,
+   "ok": 7548,
    "replaced": 144
   },
   "by_text_source": {
@@ -524,53 +443,47 @@
    "html": 407,
    "none": 79,
    "ocr": 1544,
-   "pdf": 5675
+   "pdf": 5676
   },
-  "documents": 7776,
-  "hits": 3910,
-  "pruned": 23,
+  "documents": 7777,
+  "hits": 3914,
+  "pruned": 7,
   "towns": 616,
-  "with_hits": 1649
+  "with_hits": 1651
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 429023492,
-   "listing": 230719543,
-   "robots": 8430
+   "document": 315103429,
+   "listing": 67010070,
+   "robots": 216003
   },
-  "cache_hits": 354,
-  "errors": 15,
-  "requests": 1632,
+  "cache_hits": 25,
+  "errors": 0,
+  "requests": 504,
   "requests_by_purpose": {
-   "document": 339,
-   "listing": 1285,
-   "robots": 8
+   "document": 184,
+   "listing": 224,
+   "robots": 96
   },
-  "robots_blocked": 7,
+  "robots_blocked": 0,
   "slow_host_documents": {}
  },
- "new_alert_items": 166,
+ "new_alert_items": 6,
  "new_alert_items_by_topic": {
-  "40b_comprehensive_permit": 4,
-  "battery_storage": 15,
-  "clean_energy_siting": 10,
-  "data_center": 47,
-  "moratorium": 9,
-  "solar": 27,
-  "wireless_telecom": 9,
-  "zoning_amendment": 70
+  "40b_comprehensive_permit": 1,
+  "data_center": 2,
+  "moratorium": 2,
+  "zoning_amendment": 4
  },
- "new_documents": 319,
- "new_hits": 259,
+ "new_documents": 8,
+ "new_hits": 21,
  "new_hits_by_topic": {
-  "40b_comprehensive_permit": 7,
-  "battery_storage": 31,
-  "clean_energy_siting": 13,
-  "data_center": 57,
-  "moratorium": 17,
-  "solar": 48,
-  "wireless_telecom": 13,
-  "zoning_amendment": 117
+  "40b_comprehensive_permit": 1,
+  "battery_storage": 6,
+  "data_center": 7,
+  "moratorium": 4,
+  "solar": 1,
+  "zoning_amendment": 14
  },
  "options": {
   "matcher_version": "ca9b9d486f",
@@ -580,7 +493,27 @@
   "tesseract": true,
   "workers": 16
  },
- "started": "2026-11-14T12:01:23+00:00",
+ "previous_runs_today": [
+  {
+   "duration_seconds": 1122.2,
+   "new_documents": 319,
+   "new_hits": 259,
+   "requests": 1632,
+   "started": "2026-11-14T12:01:23+00:00",
+   "states": [
+    "MA",
+    "MD",
+    "MI",
+    "NY",
+    "OH",
+    "RI",
+    "VA"
+   ],
+   "towns_attempted": 646,
+   "towns_succeeded": 639
+  }
+ ],
+ "started": "2026-11-14T19:31:06+00:00",
  "states": [
   "MA",
   "MD",
@@ -590,22 +523,10 @@
   "RI",
   "VA"
  ],
- "towns_attempted": 646,
- "towns_failed": [
-  "MA:Amherst",
-  "MA:Belmont",
-  "MA:Beverly",
-  "MA:Dartmouth",
-  "MA:Dunstable",
-  "MA:Swansea",
-  "NY:Amsterdam"
- ],
- "towns_partial": [
-  "MA:Acton",
-  "MA:Auburn",
-  "MA:Bedford"
- ],
- "towns_succeeded": 639,
+ "towns_attempted": 92,
+ "towns_failed": [],
+ "towns_partial": [],
+ "towns_succeeded": 92,
  "window": {
   "end": "2027-03-14",
   "start": "2026-10-15"
