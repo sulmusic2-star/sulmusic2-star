@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T19:29:51+00:00",
+ "generated": "2026-11-14T12:00:11+00:00",
  "source": "massdep_wetlands",
  "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
  "link_types": {
@@ -844,7 +844,7 @@
    "consultants": [],
    "dep_files": [
     {
-     "dep_file_number": null,
+     "dep_file_number": "342-0160",
      "town": "Williamsburg",
      "applicant": "AGILITAS ENERGY, INC.",
      "received_date": "2026-10-26",
@@ -2169,7 +2169,7 @@
    },
    "evidence": [
     {
-     "dep_file_number": null,
+     "dep_file_number": "342-0160",
      "town": "Williamsburg",
      "received_date": "2026-10-26",
      "filing_type": "Notice of Intent",
@@ -3346,15 +3346,15 @@
    "kind": "consultant"
   },
   {
-   "payor": "MORSE ENG",
+   "payor": "SULLIVAN ENG",
    "filings": 35,
-   "towns": 8,
+   "towns": 1,
    "kind": "consultant"
   },
   {
-   "payor": "SULLIVAN ENG",
-   "filings": 34,
-   "towns": 1,
+   "payor": "MORSE ENG",
+   "filings": 35,
+   "towns": 8,
    "kind": "consultant"
   },
   {
@@ -3442,6 +3442,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "SITE DESIGN ENG",
+   "filings": 14,
+   "towns": 1,
+   "kind": "consultant"
+  },
+  {
    "payor": "PMP CONSULTING",
    "filings": 13,
    "towns": 10,
@@ -3451,12 +3457,6 @@
    "payor": "JC ENG",
    "filings": 13,
    "towns": 5,
-   "kind": "consultant"
-  },
-  {
-   "payor": "SITE DESIGN ENG",
-   "filings": 13,
-   "towns": 1,
    "kind": "consultant"
   },
   {
@@ -3550,6 +3550,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "SAFE HARBOR",
+   "filings": 6,
+   "towns": 3,
+   "kind": "company"
+  },
+  {
    "payor": "GODDARD CONSULTING",
    "filings": 6,
    "towns": 5,
@@ -3566,12 +3572,6 @@
    "filings": 5,
    "towns": 4,
    "kind": "consultant"
-  },
-  {
-   "payor": "SAFE HARBOR",
-   "filings": 5,
-   "towns": 3,
-   "kind": "company"
   },
   {
    "payor": "Beals and Thomas, Inc.",
