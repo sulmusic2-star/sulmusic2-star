@@ -29,6 +29,15 @@
 4. Verify: deployment READY; `https://351watch-sulmusic2-4637s-projects.vercel.app/data/hits_current.json` shows today's `generated`; `/search?q=battery+storage` lists results (the build log prints `search index: N documents from M rows`).
 5. Watch `data/state/town_health.json` for towns with `consecutive_failures` ≥ 3 and `data/state/runs/<date>.json` for errors.
 
+## If the deploy call cannot run
+
+From Nov 13, 2026 the Vercel connection lost its grant for the team `sulmusic2-4637s-projects`: every `create_deployment` call waited on an authorization and the site stayed on the Nov 6 build while the crawls kept committing. Two ways out, either done once by the owner in a browser:
+
+1. Link the Vercel project to the repository so a push deploys itself, with nobody in the loop: Vercel dashboard, project `351watch`, Settings, Git, connect `sulmusic2-star/sulmusic2-star`; set the production branch to `claude/massachusetts-market-service-ead9ho`; set the build command to `sh projects/351watch/site/vercel-build.sh` and leave the output directory empty (the script writes `.vercel/output`, which Vercel picks up). The script takes the commit from `VERCEL_GIT_COMMIT_SHA` when no `SITE_REF` is given. After that, steps 3 and 4 of the daily refresh are only a check that the push deployed.
+2. Or re-authorize the Vercel connector for that team in claude.ai's connector settings, after which the deploy call in step 3 works again.
+
+Until one of these is done, the daily and afternoon runs still crawl, rebuild, commit and push; only the deploy waits.
+
 ## Afternoon re-check (scheduled 2:29 pm America/New_York)
 
 Towns re-post agendas during the day (Carver posted its Oct 20 Select Board agenda three times in one week); a link read at 7 am can be dead by evening. `bash projects/351watch/ops/recheck.sh` reads `data/hits_current.json`, takes every town with an agenda meeting from today through three days ahead (`DAYS=5` widens it), and runs `ops/daily.sh --towns <those> --fresh-listings`: listing pages are fetched again even if cached within six hours, new documents are read, a dropped document is marked replaced, the site is rebuilt, and the run commits "Daily refresh YYYY-MM-DD" and pushes like the morning run. Last printed line = commit SHA; deploy and verify it exactly as in steps 3 and 4 above. With no meetings in the window it prints one line and exits 0 without a commit. Towns the re-check reads keep their place in the morning run; nothing else is touched. Dry run: `bash projects/351watch/ops/recheck.sh --no-commit`.

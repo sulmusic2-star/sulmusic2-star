@@ -13,7 +13,9 @@
 #               api/ tree (for relative imports) and @vercel/blob
 #   config.json headers, clean URLs (overrides), the /w/:id rewrite and the daily cron
 set -eu
-REF="${SITE_REF:-claude/massachusetts-market-service-ead9ho}"
+# The commit to ship: SITE_REF when the deploy call names one; the commit Vercel is building when the
+# project is linked to the GitHub repository (VERCEL_GIT_COMMIT_SHA); else the branch head.
+REF="${SITE_REF:-${VERCEL_GIT_COMMIT_SHA:-claude/massachusetts-market-service-ead9ho}}"
 URL="${SITE_TARBALL_URL:-https://codeload.github.com/sulmusic2-star/sulmusic2-star/tar.gz/${REF}}"
 OUT="${OUTPUT_DIR:-.vercel/output}"
 TMP="$(mktemp -d)"
