@@ -1,55 +1,55 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 28,
-   "new_hits": 73,
-   "towns_attempted": 243,
-   "towns_succeeded": 241
+   "new_documents": 19,
+   "new_hits": 22,
+   "towns_attempted": 58,
+   "towns_succeeded": 58
   },
   "MD": {
    "new_documents": 0,
    "new_hits": 0,
-   "towns_attempted": 30,
-   "towns_succeeded": 30
+   "towns_attempted": 6,
+   "towns_succeeded": 6
   },
   "MI": {
-   "new_documents": 1,
-   "new_hits": 0,
-   "towns_attempted": 101,
-   "towns_succeeded": 101
+   "new_documents": 2,
+   "new_hits": 2,
+   "towns_attempted": 20,
+   "towns_succeeded": 20
   },
   "NY": {
-   "new_documents": 0,
-   "new_hits": 0,
-   "towns_attempted": 92,
-   "towns_succeeded": 91
+   "new_documents": 8,
+   "new_hits": 2,
+   "towns_attempted": 16,
+   "towns_succeeded": 16
   },
   "OH": {
-   "new_documents": 0,
-   "new_hits": 0,
-   "towns_attempted": 33,
-   "towns_succeeded": 33
+   "new_documents": 1,
+   "new_hits": 9,
+   "towns_attempted": 7,
+   "towns_succeeded": 7
   },
   "RI": {
-   "new_documents": 1,
+   "new_documents": 0,
    "new_hits": 0,
-   "towns_attempted": 39,
-   "towns_succeeded": 39
+   "towns_attempted": 7,
+   "towns_succeeded": 7
   },
   "VA": {
-   "new_documents": 1,
+   "new_documents": 2,
    "new_hits": 0,
-   "towns_attempted": 108,
-   "towns_succeeded": 108
+   "towns_attempted": 29,
+   "towns_succeeded": 29
   }
  },
  "date": "2026-11-16",
  "document_errors": 0,
- "documents_already_indexed": 4060,
+ "documents_already_indexed": 839,
  "documents_deferred": 0,
- "documents_listed": 4091,
+ "documents_listed": 1193,
  "documents_needing_ocr": 0,
- "documents_rematched": 0,
+ "documents_rematched": 322,
  "documents_retried": 0,
  "documents_too_large": [
   {
@@ -417,108 +417,79 @@
    "url": "https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_11102026-996"
   }
  ],
- "duration_seconds": 1028.9,
+ "duration_seconds": 352.4,
  "errors": [
   {
-   "error": "listing generic: listing https://www.dunstable-ma.gov/planning-board returned HTTP 404",
-   "town": "MA:Dunstable"
-  },
-  {
-   "error": "listing generic: listing https://www.dunstable-ma.gov/conservation-commission returned HTTP 404",
-   "town": "MA:Dunstable"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/government/planning_board/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/departments/zoning_board_of_appeals/meeting_minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/departments/conservation_commission/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/government/board_of_selectmen/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: https://yarmouth.ma.us/2040/Town-Meeting-Archive: HTTPSConnectionPool(host='yarmouth.ma.us', port=443): Read timed out. (read timeout=10)",
-   "town": "MA:Yarmouth"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/planning-board-2/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/zoning-board-of-appeals-2/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/town-board/",
-   "town": "NY:Amsterdam"
+   "error": "listing civicplus: AgendaCenter search returned HTTP 522",
+   "town": "MA:Halifax"
   }
  ],
- "errors_total": 10,
- "finished": "2026-11-16T12:18:54+00:00",
- "hits_current": 3539,
+ "errors_total": 1,
+ "finished": "2026-11-16T19:36:14+00:00",
+ "hits_current": 3553,
  "index": {
   "by_state": {
-   "MA": 5019,
+   "MA": 5031,
    "MD": 195,
-   "MI": 476,
-   "NY": 744,
-   "OH": 165,
+   "MI": 478,
+   "NY": 752,
+   "OH": 166,
    "RI": 611,
-   "VA": 581
+   "VA": 583
   },
   "by_status": {
    "error": 76,
    "needs_ocr": 9,
-   "ok": 7562,
-   "replaced": 144
+   "ok": 7583,
+   "replaced": 148
   },
   "by_text_source": {
    "docx": 71,
    "html": 409,
    "none": 79,
-   "ocr": 1544,
-   "pdf": 5688
+   "ocr": 1550,
+   "pdf": 5707
   },
-  "documents": 7791,
-  "hits": 3905,
-  "pruned": 25,
+  "documents": 7816,
+  "hits": 3922,
+  "pruned": 7,
   "towns": 616,
-  "with_hits": 1650
+  "with_hits": 1655
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 3689701,
-   "listing": 232199816
+   "document": 515950944,
+   "listing": 85192103,
+   "robots": 9475
   },
-  "cache_hits": 347,
-  "errors": 12,
-  "requests": 1297,
+  "cache_hits": 39,
+  "errors": 1,
+  "requests": 747,
   "requests_by_purpose": {
-   "document": 10,
-   "listing": 1287
+   "document": 393,
+   "listing": 342,
+   "robots": 12
   },
-  "robots_blocked": 3,
+  "robots_blocked": 0,
   "slow_host_documents": {}
  },
- "new_alert_items": 0,
- "new_alert_items_by_topic": {},
- "new_documents": 31,
- "new_hits": 73,
+ "new_alert_items": 16,
+ "new_alert_items_by_topic": {
+  "40b_comprehensive_permit": 1,
+  "battery_storage": 4,
+  "data_center": 2,
+  "solar": 5,
+  "zoning_amendment": 4
+ },
+ "new_documents": 32,
+ "new_hits": 35,
  "new_hits_by_topic": {
-  "40b_comprehensive_permit": 3,
-  "battery_storage": 15,
-  "data_center": 6,
+  "40b_comprehensive_permit": 1,
+  "battery_storage": 10,
+  "data_center": 8,
   "moratorium": 3,
-  "solar": 21,
-  "wireless_telecom": 2,
-  "zoning_amendment": 41
+  "solar": 5,
+  "zoning_amendment": 18
  },
  "options": {
   "matcher_version": "ca9b9d486f",
@@ -528,7 +499,27 @@
   "tesseract": true,
   "workers": 16
  },
- "started": "2026-11-16T12:01:45+00:00",
+ "previous_runs_today": [
+  {
+   "duration_seconds": 1028.9,
+   "new_documents": 31,
+   "new_hits": 73,
+   "requests": 1297,
+   "started": "2026-11-16T12:01:45+00:00",
+   "states": [
+    "MA",
+    "MD",
+    "MI",
+    "NY",
+    "OH",
+    "RI",
+    "VA"
+   ],
+   "towns_attempted": 646,
+   "towns_succeeded": 643
+  }
+ ],
+ "started": "2026-11-16T19:30:22+00:00",
  "states": [
   "MA",
   "MD",
@@ -538,16 +529,12 @@
   "RI",
   "VA"
  ],
- "towns_attempted": 646,
- "towns_failed": [
-  "MA:Dunstable",
-  "MA:Swansea",
-  "NY:Amsterdam"
- ],
+ "towns_attempted": 143,
+ "towns_failed": [],
  "towns_partial": [
-  "MA:Yarmouth"
+  "MA:Halifax"
  ],
- "towns_succeeded": 643,
+ "towns_succeeded": 143,
  "window": {
   "end": "2027-03-16",
   "start": "2026-10-17"

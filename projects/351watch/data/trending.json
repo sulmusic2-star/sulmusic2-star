@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T12:19:27+00:00",
+ "generated": "2026-11-16T19:36:38+00:00",
  "window": {
   "start": "2026-11-16",
   "end": "2027-03-16"
@@ -97,6 +97,65 @@
     "d5665e74c013",
     "d8f0d0636e37",
     "f1cb2c014472"
+   ]
+  },
+  {
+   "id": "5892905dfae9",
+   "score": 34.5,
+   "headline": "Amherst Town Council holds hearing on a data-center moratorium",
+   "dek": "The Town Council meets Monday, Nov 16. The agenda lists a public hearing on a proposed moratorium on data centers.",
+   "quote": "Data Center Moratorium",
+   "reasons": [
+    "Moratorium hearing",
+    "2 town boards",
+    "Hearing Nov 16",
+    "In the news (1 story)",
+    "Also next door in Belchertown and South Hadley"
+   ],
+   "why": [
+    "In the news (1 story)",
+    "Also next door in Belchertown and South Hadley"
+   ],
+   "stakes": 17.0,
+   "buzz": 6.0,
+   "topics": [
+    "data_center",
+    "moratorium",
+    "zoning_amendment"
+   ],
+   "state": "MA",
+   "town": "Amherst",
+   "county": "Hampshire",
+   "towns": [
+    "MA:Amherst"
+   ],
+   "board": "Town Council",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-16",
+   "meeting_date_source": "agenda",
+   "days_until": 0,
+   "first_seen": "2026-10-17T13:16:00+00:00",
+   "is_new": false,
+   "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_11162026-238",
+   "town_path": "/ma/amherst",
+   "action": "moratorium",
+   "boards": [
+    {
+     "town": "Amherst",
+     "board": "Town Council",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-16"
+    },
+    {
+     "town": "Amherst",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-10-22"
+    }
+   ],
+   "hit_ids": [
+    "8de86e72e18a",
+    "e4287d943aab"
    ]
   },
   {
@@ -263,63 +322,6 @@
     "22369f561f88",
     "b877102fa4f2",
     "e66fe267b281"
-   ]
-  },
-  {
-   "id": "5892905dfae9",
-   "score": 32.25,
-   "headline": "Amherst Town Council holds hearing on a data-center moratorium",
-   "dek": "The Town Council meets Monday, Nov 16. The agenda lists a public hearing on a proposed moratorium on data centers.",
-   "quote": "Data Center Moratorium",
-   "reasons": [
-    "Moratorium hearing",
-    "2 town boards",
-    "Hearing Nov 16",
-    "Also next door in Belchertown and South Hadley"
-   ],
-   "why": [
-    "Also next door in Belchertown and South Hadley"
-   ],
-   "stakes": 17.0,
-   "buzz": 4.5,
-   "topics": [
-    "data_center",
-    "moratorium",
-    "zoning_amendment"
-   ],
-   "state": "MA",
-   "town": "Amherst",
-   "county": "Hampshire",
-   "towns": [
-    "MA:Amherst"
-   ],
-   "board": "Town Council",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-16",
-   "meeting_date_source": "agenda",
-   "days_until": 0,
-   "first_seen": "2026-10-17T13:16:00+00:00",
-   "is_new": false,
-   "source_url": "https://www.amherstma.gov/AgendaCenter/ViewFile/Agenda/_11162026-238",
-   "town_path": "/ma/amherst",
-   "action": "moratorium",
-   "boards": [
-    {
-     "town": "Amherst",
-     "board": "Town Council",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-16"
-    },
-    {
-     "town": "Amherst",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-10-22"
-    }
-   ],
-   "hit_ids": [
-    "8de86e72e18a",
-    "e4287d943aab"
    ]
   },
   {
@@ -651,68 +653,6 @@
    ]
   },
   {
-   "id": "ff9038c6b800",
-   "score": 26.33,
-   "headline": "Stafford County planners hold hearing on a data-center ordinance",
-   "dek": "The Planning Commission meets Wednesday, Nov 18. The agenda lists a public hearing on a data-center ordinance.",
-   "quote": "A PORTION OF 59-71, AND A PORTION OF 59-71C (PROJECT KNOWN AS RC25156546; FOREST LANE DATA CENTER) PROPOSED ORDINANCE O26-42 (APPROVAL) PROPOSED RESOLUTION R26-343 (DENIAL) (TIME LIMIT: FEBRUARY 26…",
-   "reasons": [
-    "Public hearing",
-    "2 town boards",
-    "Hearing Nov 18",
-    "Also next door in King George County and Spotsylvania County"
-   ],
-   "why": [
-    "Also next door in King George County and Spotsylvania County"
-   ],
-   "stakes": 15.0,
-   "buzz": 4.5,
-   "topics": [
-    "clean_energy_siting",
-    "data_center"
-   ],
-   "state": "VA",
-   "town": "Stafford County",
-   "county": "Stafford",
-   "towns": [
-    "VA:Stafford County"
-   ],
-   "board": "Planning Commission Meetings",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-18",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-11-13T12:40:49+00:00",
-   "is_new": true,
-   "source_url": "https://staffordcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=6452,plainText=false)",
-   "town_path": "/va/stafford-county",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Stafford County",
-     "board": "Board of Supervisors",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-17"
-    },
-    {
-     "town": "Stafford County",
-     "board": "Planning Commission",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-18"
-    }
-   ],
-   "hit_ids": [
-    "351d4f3d2049",
-    "54d0a840111c",
-    "56a7af72b503",
-    "9e91e6c8ad9f",
-    "b8fe20ebb7c2",
-    "bd19e5981be2",
-    "d0294a694fa7",
-    "e393972c5a78"
-   ]
-  },
-  {
    "id": "ce5c707e01e4",
    "score": 25.65,
    "headline": "Augusta Charter Township planners hold hearing on a 6-month data-center moratorium",
@@ -906,6 +846,68 @@
    ],
    "hit_ids": [
     "bfe406204c28"
+   ]
+  },
+  {
+   "id": "ff9038c6b800",
+   "score": 24.98,
+   "headline": "Stafford County planners hold hearing on a data-center ordinance",
+   "dek": "The Planning Commission meets Wednesday, Nov 18. The agenda lists a public hearing on a data-center ordinance.",
+   "quote": "A PORTION OF 59-71, AND A PORTION OF 59-71C (PROJECT KNOWN AS RC25156546; FOREST LANE DATA CENTER) PROPOSED ORDINANCE O26-42 (APPROVAL) PROPOSED RESOLUTION R26-343 (DENIAL) (TIME LIMIT: FEBRUARY 26…",
+   "reasons": [
+    "Public hearing",
+    "2 town boards",
+    "Hearing Nov 18",
+    "Also next door in King George County and Spotsylvania County"
+   ],
+   "why": [
+    "Also next door in King George County and Spotsylvania County"
+   ],
+   "stakes": 14.0,
+   "buzz": 4.5,
+   "topics": [
+    "clean_energy_siting",
+    "data_center"
+   ],
+   "state": "VA",
+   "town": "Stafford County",
+   "county": "Stafford",
+   "towns": [
+    "VA:Stafford County"
+   ],
+   "board": "Planning Commission Meetings",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-18",
+   "meeting_date_source": "agenda",
+   "days_until": 2,
+   "first_seen": "2026-11-13T12:40:49+00:00",
+   "is_new": false,
+   "source_url": "https://staffordcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=6452,plainText=false)",
+   "town_path": "/va/stafford-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Stafford County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-17"
+    },
+    {
+     "town": "Stafford County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-18"
+    }
+   ],
+   "hit_ids": [
+    "351d4f3d2049",
+    "54d0a840111c",
+    "56a7af72b503",
+    "9e91e6c8ad9f",
+    "b8fe20ebb7c2",
+    "bd19e5981be2",
+    "d0294a694fa7",
+    "e393972c5a78"
    ]
   },
   {
@@ -1234,10 +1236,10 @@
    "reasons": [
     "Draft rules",
     "Meeting Nov 16",
-    "In the news (11 stories)"
+    "In the news (12 stories)"
    ],
    "why": [
-    "In the news (11 stories)"
+    "In the news (12 stories)"
    ],
    "stakes": 10.0,
    "buzz": 3.5,
@@ -1417,59 +1419,73 @@
     "57b735e58982",
     "866c9eff4190",
     "94d060004e87",
+    "a8e13b7d1e9c",
     "acdf04b2c450",
     "c5c82bdf1dd6",
     "e04d8405f693",
-    "e75f7a81b4df"
+    "e75f7a81b4df",
+    "f90510e016da"
    ]
   },
   {
-   "id": "fe303ee65740",
-   "score": 19.5,
-   "headline": "Narragansett planners discuss battery storage rules",
-   "dek": "The Planning Board meets Tuesday, Nov 17. The agenda lists an item on battery storage rules.",
-   "quote": "Brookside Estates Subdivision, Plat H, Lots 92 & 93, located at South Pier Road C.2 Battery Energy Storage Systems (BESS) Model Ordinance:",
+   "id": "8a0cb90f2d43",
+   "score": 19.44,
+   "headline": "Somerset zoning board hears Somerset Energy Storage petition",
+   "dek": "The Zoning Board of Appeals meets Wednesday, Nov 18. The agenda lists a planned development permit for Somerset Energy Storage.",
+   "quote": "Somerset Energy Storage, LLC for 1606 Riverside Ave., Somerset, MA: petition of Somerset Energy Storage, LLC",
    "reasons": [
-    "Draft rules",
-    "First time this has come up in Narragansett",
-    "Meeting Nov 17",
-    "Also next door in North Kingstown and South Kingstown"
+    "Public hearing",
+    "Also on the Nov 12 agenda",
+    "Hearing Nov 18",
+    "Also next door in Dighton and Swansea"
    ],
    "why": [
-    "Also next door in North Kingstown and South Kingstown",
-    "First time this has come up in Narragansett"
+    "Also next door in Dighton and Swansea"
    ],
-   "stakes": 11.0,
-   "buzz": 2.0,
+   "stakes": 10.4,
+   "buzz": 4.0,
    "topics": [
     "battery_storage"
    ],
-   "state": "RI",
-   "town": "Narragansett",
-   "county": "Washington",
+   "state": "MA",
+   "town": "Somerset",
+   "county": "Bristol",
    "towns": [
-    "RI:Narragansett"
+    "MA:Somerset"
    ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-17",
+   "board": "Zoning Board of Appeals",
+   "board_key": "zoning_board_of_appeals",
+   "meeting_date": "2026-11-18",
    "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-11-13T12:41:53+00:00",
-   "is_new": true,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4250%5C2026%5C571238.pdf",
-   "town_path": "/ri/narragansett",
-   "action": "bylaw_draft",
+   "days_until": 2,
+   "first_seen": "2026-10-10T18:46:41+00:00",
+   "is_new": false,
+   "source_url": "https://www.townofsomerset.org/AgendaCenter/ViewFile/Agenda/_11182026-2249",
+   "town_path": "/ma/somerset",
+   "action": "project_hearing",
    "boards": [
     {
-     "town": "Narragansett",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-17"
+     "town": "Somerset",
+     "board": "Zoning Board of Appeals",
+     "board_key": "zoning_board_of_appeals",
+     "meeting_date": "2026-11-18"
     }
    ],
    "hit_ids": [
-    "192f09083a26"
+    "4c407d24234f",
+    "671d68801307",
+    "8caa2f73d6a2",
+    "9f8764147e1d",
+    "a824318d20ed",
+    "b55216bf9892",
+    "bb5d00829fe3",
+    "c2934bfc4ff0",
+    "ca88b9b37d8b",
+    "d94b89004e35",
+    "e1d512f66924",
+    "e3b5ed89079a",
+    "f0df338196f7",
+    "f952435097b5"
    ]
   },
   {
@@ -1623,11 +1639,11 @@
    ]
   },
   {
-   "id": "e950c2105c30",
+   "id": "f52d346709ca",
    "score": 18.9,
    "headline": "Dighton planners review a draft data-center bylaw",
    "dek": "The Planning Board meets Wednesday, Nov 18. The agenda lists a draft data-center bylaw.",
-   "quote": "…Production Plan iii) Brett Zografos, Proposed Data Center Bylaw",
+   "quote": "…Production Plan iii) Brett Zografos, Proposed Data Center Bylaw v Review 2027 Meeting Calendar v) Discussion Regarding Breweries and Brew.12ubs as Permitted Uses Under the Town's Zoning Bylaw…",
    "reasons": [
     "Draft rules",
     "First time this has come up in Dighton",
@@ -1668,7 +1684,7 @@
     }
    ],
    "hit_ids": [
-    "0014ac2b5ce8"
+    "6660d8521327"
    ]
   },
   {
@@ -1977,7 +1993,56 @@
    ]
   },
   {
-   "id": "755b38681aaf",
+   "id": "fe303ee65740",
+   "score": 18.0,
+   "headline": "Narragansett planners discuss battery storage rules",
+   "dek": "The Planning Board meets Tuesday, Nov 17. The agenda lists an item on battery storage rules.",
+   "quote": "Brookside Estates Subdivision, Plat H, Lots 92 & 93, located at South Pier Road C.2 Battery Energy Storage Systems (BESS) Model Ordinance:",
+   "reasons": [
+    "Draft rules",
+    "First time this has come up in Narragansett",
+    "Meeting Nov 17",
+    "Also next door in North Kingstown and South Kingstown"
+   ],
+   "why": [
+    "Also next door in North Kingstown and South Kingstown",
+    "First time this has come up in Narragansett"
+   ],
+   "stakes": 10.0,
+   "buzz": 2.0,
+   "topics": [
+    "battery_storage"
+   ],
+   "state": "RI",
+   "town": "Narragansett",
+   "county": "Washington",
+   "towns": [
+    "RI:Narragansett"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-17",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-13T12:41:53+00:00",
+   "is_new": false,
+   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4250%5C2026%5C571238.pdf",
+   "town_path": "/ri/narragansett",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Narragansett",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-17"
+    }
+   ],
+   "hit_ids": [
+    "192f09083a26"
+   ]
+  },
+  {
+   "id": "c1d750761cdb",
    "score": 18.0,
    "headline": "Tewksbury Select Board discusses data-center rules",
    "dek": "The Select Board meets Tuesday, Nov 17. The agenda lists an item on data-center rules.",
@@ -2020,7 +2085,7 @@
     }
    ],
    "hit_ids": [
-    "17ad71fcf0af"
+    "9f2b2cd5c892"
    ]
   },
   {
@@ -2698,58 +2763,6 @@
    ]
   },
   {
-   "id": "195a33a81bf1",
-   "score": 14.85,
-   "headline": "Hanover County planners discuss solar and battery storage rules",
-   "dek": "The Planning Commission meets Thursday, Nov 19. The agenda lists an item on solar and battery storage rules.",
-   "quote": "Article 5, Site Design Regulations, Division 8, Regulations for Specific Uses, by the addition of new Section 26-292.4.1 to provide that certain battery energy storage systems shall be treated as…",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 19",
-    "Also next door in King William County and Spotsylvania County"
-   ],
-   "why": [
-    "Also next door in King William County and Spotsylvania County"
-   ],
-   "stakes": 9.0,
-   "buzz": 2.0,
-   "topics": [
-    "battery_storage",
-    "clean_energy_siting",
-    "solar"
-   ],
-   "state": "VA",
-   "town": "Hanover County",
-   "county": "Hanover",
-   "towns": [
-    "VA:Hanover County"
-   ],
-   "board": "Planning Commission",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-19",
-   "meeting_date_source": "agenda",
-   "days_until": 3,
-   "first_seen": "2026-11-13T12:39:43+00:00",
-   "is_new": true,
-   "source_url": "https://hanovercova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5958,plainText=false)",
-   "town_path": "/va/hanover-county",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Hanover County",
-     "board": "Planning Commission",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-19"
-    }
-   ],
-   "hit_ids": [
-    "060c703dfb45",
-    "7de800ea14ea",
-    "d8f54081bfb9",
-    "f64abcdd35d8"
-   ]
-  },
-  {
    "id": "25b5af88586d",
    "score": 13.58,
    "headline": "Saugus zoning board hears 300-unit 40B rental plan",
@@ -2803,56 +2816,6 @@
    ]
   },
   {
-   "id": "1bee600febd8",
-   "score": 13.5,
-   "headline": "Fairfax County Board of Supervisors discusses clean energy siting rules",
-   "dek": "The Board of Supervisors meets Tuesday, Nov 17. The agenda lists an item on clean energy siting rules.",
-   "quote": "November 17, 2026 ADMINISTRATIVE ITEMS (continued) 6 Extension of Review Period for 2232 Application for Audrey Moore Rec Center Site (Braddock District) 7 Extension of Review Period for 2232…",
-   "reasons": [
-    "Draft rules",
-    "Meeting Nov 17",
-    "Also next door in Montgomery County, City of Falls Church and Loudoun County"
-   ],
-   "why": [
-    "Also next door in Montgomery County, City of Falls Church and Loudoun County"
-   ],
-   "stakes": 6.0,
-   "buzz": 3.0,
-   "topics": [
-    "clean_energy_siting"
-   ],
-   "state": "VA",
-   "town": "Fairfax County",
-   "county": "Fairfax",
-   "towns": [
-    "VA:Fairfax County"
-   ],
-   "board": "Board of Supervisors",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-17",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-11-13T12:39:33+00:00",
-   "is_new": true,
-   "source_url": "https://www.fairfaxcounty.gov/boardofsupervisors/sites/boardofsupervisors/files/Assets/meeting-materials/2026/November17-Board-Package-Revised.pdf",
-   "town_path": "/va/fairfax-county",
-   "action": "bylaw_draft",
-   "boards": [
-    {
-     "town": "Fairfax County",
-     "board": "Board of Supervisors",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-17"
-    }
-   ],
-   "hit_ids": [
-    "7581faf0967a",
-    "9a33a508e394",
-    "cab36e080a0a",
-    "ecc0b2daf50e"
-   ]
-  },
-  {
    "id": "7d150b4c35c4",
    "score": 13.5,
    "headline": "Amherst planners review Youngs Road Carson Power petition",
@@ -2897,6 +2860,58 @@
    ],
    "hit_ids": [
     "ee8cd6bd1b3b"
+   ]
+  },
+  {
+   "id": "195a33a81bf1",
+   "score": 13.5,
+   "headline": "Hanover County planners discuss solar and battery storage rules",
+   "dek": "The Planning Commission meets Thursday, Nov 19. The agenda lists an item on solar and battery storage rules.",
+   "quote": "Article 5, Site Design Regulations, Division 8, Regulations for Specific Uses, by the addition of new Section 26-292.4.1 to provide that certain battery energy storage systems shall be treated as…",
+   "reasons": [
+    "Draft rules",
+    "Meeting Nov 19",
+    "Also next door in King William County and Spotsylvania County"
+   ],
+   "why": [
+    "Also next door in King William County and Spotsylvania County"
+   ],
+   "stakes": 8.0,
+   "buzz": 2.0,
+   "topics": [
+    "battery_storage",
+    "clean_energy_siting",
+    "solar"
+   ],
+   "state": "VA",
+   "town": "Hanover County",
+   "county": "Hanover",
+   "towns": [
+    "VA:Hanover County"
+   ],
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-19",
+   "meeting_date_source": "agenda",
+   "days_until": 3,
+   "first_seen": "2026-11-13T12:39:43+00:00",
+   "is_new": false,
+   "source_url": "https://hanovercova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5958,plainText=false)",
+   "town_path": "/va/hanover-county",
+   "action": "bylaw_draft",
+   "boards": [
+    {
+     "town": "Hanover County",
+     "board": "Planning Commission",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-19"
+    }
+   ],
+   "hit_ids": [
+    "060c703dfb45",
+    "7de800ea14ea",
+    "d8f54081bfb9",
+    "f64abcdd35d8"
    ]
   },
   {
@@ -3266,50 +3281,53 @@
    ]
   },
   {
-   "id": "fc128478e500",
+   "id": "1bee600febd8",
    "score": 12.0,
-   "headline": "West Greenwich planners review variance request for a solar project",
-   "dek": "The Planning Board meets Monday, Nov 16. The agenda lists a variance for a solar project.",
-   "quote": "Allow structures and driveway within 100' of a Residential Zone (a solar farm)",
+   "headline": "Fairfax County Board of Supervisors discusses clean energy siting rules",
+   "dek": "The Board of Supervisors meets Tuesday, Nov 17. The agenda lists an item on clean energy siting rules.",
+   "quote": "November 17, 2026 ADMINISTRATIVE ITEMS (continued) 6 Extension of Review Period for 2232 Application for Audrey Moore Rec Center Site (Braddock District) 7 Extension of Review Period for 2232…",
    "reasons": [
-    "Permit application",
-    "First time this has come up in West Greenwich",
-    "Meeting Nov 16"
+    "Draft rules",
+    "Meeting Nov 17",
+    "Also next door in Montgomery County, City of Falls Church and Loudoun County"
    ],
    "why": [
-    "First time this has come up in West Greenwich"
+    "Also next door in Montgomery County, City of Falls Church and Loudoun County"
    ],
-   "stakes": 8.0,
-   "buzz": 0.0,
+   "stakes": 5.0,
+   "buzz": 3.0,
    "topics": [
-    "solar"
+    "clean_energy_siting"
    ],
-   "state": "RI",
-   "town": "West Greenwich",
-   "county": "Kent",
+   "state": "VA",
+   "town": "Fairfax County",
+   "county": "Fairfax",
    "towns": [
-    "RI:West Greenwich"
+    "VA:Fairfax County"
    ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-16",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-17",
    "meeting_date_source": "agenda",
-   "days_until": 0,
-   "first_seen": "2026-11-13T12:43:34+00:00",
-   "is_new": true,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4290%5C2026%5C570900.pdf",
-   "town_path": "/ri/west-greenwich",
-   "action": "project",
+   "days_until": 1,
+   "first_seen": "2026-11-13T12:39:33+00:00",
+   "is_new": false,
+   "source_url": "https://www.fairfaxcounty.gov/boardofsupervisors/sites/boardofsupervisors/files/Assets/meeting-materials/2026/November17-Board-Package-Revised.pdf",
+   "town_path": "/va/fairfax-county",
+   "action": "bylaw_draft",
    "boards": [
     {
-     "town": "West Greenwich",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-16"
+     "town": "Fairfax County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-17"
     }
    ],
    "hit_ids": [
-    "4d6bc252edb2"
+    "7581faf0967a",
+    "9a33a508e394",
+    "cab36e080a0a",
+    "ecc0b2daf50e"
    ]
   },
   {
@@ -3403,6 +3421,56 @@
    ],
    "hit_ids": [
     "6eee541e8543"
+   ]
+  },
+  {
+   "id": "f0296019258f",
+   "score": 11.7,
+   "headline": "Liberty Township (Butler County) Board of Trustees takes up a rezoning request",
+   "dek": "The Board of Trustees meets Tuesday, Nov 17. The agenda lists a rezoning request.",
+   "quote": "Shawn Bullock, on behalf of NVR Inc., is requesting a Zoning Map Amendment from RA-1 (Residential-Agricultural District) to R-1 (Suburban Residence District) for a 97.38-acre site.",
+   "reasons": [
+    "Rezoning request",
+    "97.38 acres",
+    "Meeting Nov 17"
+   ],
+   "why": [
+    "97.38 acres"
+   ],
+   "stakes": 7.8,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "OH",
+   "town": "Liberty Township (Butler County)",
+   "county": "Butler",
+   "towns": [
+    "OH:Liberty Township (Butler County)"
+   ],
+   "board": "Board of Trustees",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-17",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-16T19:33:15+00:00",
+   "is_new": true,
+   "source_url": "https://liberty-township.com/AgendaCenter/ViewFile/Agenda/_11172026-1013",
+   "town_path": "/oh/liberty-township-(butler-county)",
+   "action": "rezoning",
+   "boards": [
+    {
+     "town": "Liberty Township (Butler County)",
+     "board": "Board of Trustees",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-17"
+    }
+   ],
+   "hit_ids": [
+    "03392653a70a",
+    "342a309c2ade",
+    "7d8ea45498fe",
+    "c0e3c6491cd4"
    ]
   },
   {
@@ -3564,6 +3632,53 @@
    ]
   },
   {
+   "id": "fc128478e500",
+   "score": 10.5,
+   "headline": "West Greenwich planners review variance request for a solar project",
+   "dek": "The Planning Board meets Monday, Nov 16. The agenda lists a variance for a solar project.",
+   "quote": "Allow structures and driveway within 100' of a Residential Zone (a solar farm)",
+   "reasons": [
+    "Permit application",
+    "First time this has come up in West Greenwich",
+    "Meeting Nov 16"
+   ],
+   "why": [
+    "First time this has come up in West Greenwich"
+   ],
+   "stakes": 7.0,
+   "buzz": 0.0,
+   "topics": [
+    "solar"
+   ],
+   "state": "RI",
+   "town": "West Greenwich",
+   "county": "Kent",
+   "towns": [
+    "RI:West Greenwich"
+   ],
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-16",
+   "meeting_date_source": "agenda",
+   "days_until": 0,
+   "first_seen": "2026-11-13T12:43:34+00:00",
+   "is_new": false,
+   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4290%5C2026%5C570900.pdf",
+   "town_path": "/ri/west-greenwich",
+   "action": "project",
+   "boards": [
+    {
+     "town": "West Greenwich",
+     "board": "Planning Board",
+     "board_key": "planning_board",
+     "meeting_date": "2026-11-16"
+    }
+   ],
+   "hit_ids": [
+    "4d6bc252edb2"
+   ]
+  },
+  {
    "id": "04f148a2809f",
    "score": 10.26,
    "headline": "Pittsfield zoning board holds hearing on zoning changes",
@@ -3710,188 +3825,6 @@
     "9bec26bfb4f7",
     "c718cf2f842c",
     "e63dd7fab9a8"
-   ]
-  },
-  {
-   "id": "f7eb60306051",
-   "score": 9.9,
-   "headline": "King William County Board of Supervisors holds hearing on zoning changes",
-   "dek": "The Board of Supervisors meets Monday, Nov 16. The agenda lists a public hearing on zoning changes.",
-   "quote": "Amendment to the Zoning Ordinance",
-   "reasons": [
-    "Public hearing",
-    "Hearing Nov 16"
-   ],
-   "why": [],
-   "stakes": 6.6,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "VA",
-   "town": "King William County",
-   "county": "King William",
-   "towns": [
-    "VA:King William County"
-   ],
-   "board": "Board of Supervisors",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-16",
-   "meeting_date_source": "agenda",
-   "days_until": 0,
-   "first_seen": "2026-11-13T12:39:50+00:00",
-   "is_new": true,
-   "source_url": "https://kingwilliamcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3511,plainText=false)",
-   "town_path": "/va/king-william-county",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "King William County",
-     "board": "Board of Supervisors",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-16"
-    }
-   ],
-   "hit_ids": [
-    "b0c64317557e",
-    "e7c2dc891915"
-   ]
-  },
-  {
-   "id": "ce01684f76ec",
-   "score": 9.9,
-   "headline": "Fairfax County Board of Supervisors holds hearing on zoning changes",
-   "dek": "The Board of Supervisors meets Tuesday, Nov 17. The agenda lists a public hearing on zoning changes.",
-   "quote": "Public Hearing on a Proposed Zoning Ordinance Amendment Re:",
-   "reasons": [
-    "Public hearing",
-    "Hearing Nov 17"
-   ],
-   "why": [],
-   "stakes": 6.6,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "VA",
-   "town": "Fairfax County",
-   "county": "Fairfax",
-   "towns": [
-    "VA:Fairfax County"
-   ],
-   "board": "Board of Supervisors",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-17",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-11-13T12:39:33+00:00",
-   "is_new": true,
-   "source_url": "https://www.fairfaxcounty.gov/boardofsupervisors/sites/boardofsupervisors/files/Assets/meeting-materials/2026/November17-Board-Package-Revised.pdf",
-   "town_path": "/va/fairfax-county",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Fairfax County",
-     "board": "Board of Supervisors",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-17"
-    }
-   ],
-   "hit_ids": [
-    "8b124358a1a6",
-    "8d0cc9e40250",
-    "b1a6d716029d",
-    "c8a8c23eea31",
-    "e67ff9f5a04f"
-   ]
-  },
-  {
-   "id": "7aa11d7aa630",
-   "score": 9.9,
-   "headline": "Loudoun County Board of Supervisors Business holds hearing on zoning changes",
-   "dek": "The Board of Supervisors Business meets Tuesday, Nov 17. The agenda lists a public hearing on zoning changes.",
-   "quote": "14.g Resolution of Intent to Amend the Loudoun County Zoning Ordinance (ZOAM-2026-0001), Zoning Map (ZMAP-2026-0007), and Facilities Standards Manual (DOAM-2026-0003) Attachments Public Comments",
-   "reasons": [
-    "Public hearing",
-    "Hearing Nov 17"
-   ],
-   "why": [],
-   "stakes": 6.6,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "VA",
-   "town": "Loudoun County",
-   "county": "Loudoun",
-   "towns": [
-    "VA:Loudoun County"
-   ],
-   "board": "Board of Supervisors Business Meeting",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-17",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-11-13T12:39:52+00:00",
-   "is_new": true,
-   "source_url": "https://pub-loudoun.escribemeetings.com/Meeting.aspx?Id=84e92081-0b3f-47be-bd67-8c11aa49730c&Agenda=Agenda&lang=English",
-   "town_path": "/va/loudoun-county",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Loudoun County",
-     "board": "Board of Supervisors Business",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-17"
-    }
-   ],
-   "hit_ids": [
-    "be14ca19e185",
-    "e7e418221f70"
-   ]
-  },
-  {
-   "id": "1e6bf665f6a1",
-   "score": 9.9,
-   "headline": "Stafford County Board of Supervisors holds hearing on zoning changes",
-   "dek": "The Board of Supervisors meets Tuesday, Nov 17. The agenda lists a public hearing on zoning changes.",
-   "quote": "CONSIDER REQUESTING THE PLANNING COMMISSION DRAFT AMENDMENTS TO THE ZONING ORDINANCE TO ESTABLISH SHORT TERM RENTAL REGULATIONS AND DISCUSS POTENTIAL REGULATIONS RELATED TO SHORT TERM RENTALS…",
-   "reasons": [
-    "Public hearing",
-    "Hearing Nov 17"
-   ],
-   "why": [],
-   "stakes": 6.6,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "VA",
-   "town": "Stafford County",
-   "county": "Stafford",
-   "towns": [
-    "VA:Stafford County"
-   ],
-   "board": "Board of Supervisors",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-17",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-11-13T12:40:49+00:00",
-   "is_new": true,
-   "source_url": "https://staffordcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=6432,plainText=false)",
-   "town_path": "/va/stafford-county",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Stafford County",
-     "board": "Board of Supervisors",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-17"
-    }
-   ],
-   "hit_ids": [
-    "1fe8fae6f751"
    ]
   },
   {
@@ -4234,147 +4167,6 @@
    ]
   },
   {
-   "id": "869eb3e50710",
-   "score": 9.0,
-   "headline": "Data-center item on Loudoun County Board of Supervisors Business agenda",
-   "dek": "The Board of Supervisors Business meets Tuesday, Nov 17. The agenda lists an item on data centers.",
-   "quote": "Board of Supervisors Consideration of Legislative Applications for Data Centers and Substations-111726.pdf",
-   "reasons": [
-    "Meeting Nov 17",
-    "Also next door in Frederick County, Montgomery County and 2 more"
-   ],
-   "why": [
-    "Also next door in Frederick County, Montgomery County and 2 more"
-   ],
-   "stakes": 6.0,
-   "buzz": 3.0,
-   "topics": [
-    "clean_energy_siting",
-    "data_center"
-   ],
-   "state": "VA",
-   "town": "Loudoun County",
-   "county": "Loudoun",
-   "towns": [
-    "VA:Loudoun County"
-   ],
-   "board": "Board of Supervisors Business Meeting",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-17",
-   "meeting_date_source": "agenda",
-   "days_until": 1,
-   "first_seen": "2026-11-13T12:39:52+00:00",
-   "is_new": true,
-   "source_url": "https://pub-loudoun.escribemeetings.com/Meeting.aspx?Id=84e92081-0b3f-47be-bd67-8c11aa49730c&Agenda=Agenda&lang=English",
-   "town_path": "/va/loudoun-county",
-   "action": "mention",
-   "boards": [
-    {
-     "town": "Loudoun County",
-     "board": "Board of Supervisors Business",
-     "board_key": "select_board",
-     "meeting_date": "2026-11-17"
-    }
-   ],
-   "hit_ids": [
-    "20be73aa4fa8",
-    "48ecdbc934bc",
-    "50587f1a9f67",
-    "59745827abd5",
-    "7919c2cee407",
-    "c92c75d98cb4"
-   ]
-  },
-  {
-   "id": "f9f2531dc561",
-   "score": 8.91,
-   "headline": "Foster planners hold hearing on zoning changes",
-   "dek": "The Planning Board meets Wednesday, Nov 18. The agenda lists a public hearing on zoning changes.",
-   "quote": "Discussion on Final Draft Zoning Amendments by Planning the Planning Board Discussion/Action The Planning Board will continue its review of the proposed final draft amendments to the Zoning Chapter…",
-   "reasons": [
-    "Public hearing",
-    "Hearing Nov 18"
-   ],
-   "why": [],
-   "stakes": 6.6,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "RI",
-   "town": "Foster",
-   "county": "Providence",
-   "towns": [
-    "RI:Foster"
-   ],
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-18",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-11-13T12:28:19+00:00",
-   "is_new": true,
-   "source_url": "https://opengov.sos.ri.gov/Common/DownloadMeetingFiles?FilePath=%5CNotices%5C4333%5C2026%5C571068.pdf",
-   "town_path": "/ri/foster",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Foster",
-     "board": "Planning Board",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-18"
-    }
-   ],
-   "hit_ids": [
-    "8e76e26c7511"
-   ]
-  },
-  {
-   "id": "018056dc17c4",
-   "score": 8.91,
-   "headline": "Greene County planners hold hearing on zoning changes",
-   "dek": "The Planning Commission meets Wednesday, Nov 18. The agenda lists a public hearing on zoning changes.",
-   "quote": "The purpose of this work session is to review proposed amendments to the Greene County Zoning Ordinance addressing the location and land-use standards for cannabis establishments and to obtain…",
-   "reasons": [
-    "Public hearing",
-    "Hearing Nov 18"
-   ],
-   "why": [],
-   "stakes": 6.6,
-   "buzz": 0.0,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "state": "VA",
-   "town": "Greene County",
-   "county": "Greene",
-   "towns": [
-    "VA:Greene County"
-   ],
-   "board": "Planning Commission",
-   "board_key": "planning_board",
-   "meeting_date": "2026-11-18",
-   "meeting_date_source": "agenda",
-   "days_until": 2,
-   "first_seen": "2026-11-13T12:39:39+00:00",
-   "is_new": true,
-   "source_url": "https://greenecova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3506,plainText=false)",
-   "town_path": "/va/greene-county",
-   "action": "bylaw_hearing",
-   "boards": [
-    {
-     "town": "Greene County",
-     "board": "Planning Commission",
-     "board_key": "planning_board",
-     "meeting_date": "2026-11-18"
-    }
-   ],
-   "hit_ids": [
-    "bc2e368dc40e",
-    "cb4f8eb6f64a"
-   ]
-  },
-  {
    "id": "0b91e30069d9",
    "score": 8.91,
    "headline": "Hanover County Board of Supervisors holds hearing on zoning changes",
@@ -4700,6 +4492,51 @@
    ]
   },
   {
+   "id": "f7eb60306051",
+   "score": 8.4,
+   "headline": "King William County Board of Supervisors holds hearing on zoning changes",
+   "dek": "The Board of Supervisors meets Monday, Nov 16. The agenda lists a public hearing on zoning changes.",
+   "quote": "Amendment to the Zoning Ordinance",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 16"
+   ],
+   "why": [],
+   "stakes": 5.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "King William County",
+   "county": "King William",
+   "towns": [
+    "VA:King William County"
+   ],
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-16",
+   "meeting_date_source": "agenda",
+   "days_until": 0,
+   "first_seen": "2026-11-13T12:39:50+00:00",
+   "is_new": false,
+   "source_url": "https://kingwilliamcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3511,plainText=false)",
+   "town_path": "/va/king-william-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "King William County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-16"
+    }
+   ],
+   "hit_ids": [
+    "b0c64317557e",
+    "e7c2dc891915"
+   ]
+  },
+  {
    "id": "da50bdefa105",
    "score": 8.4,
    "headline": "Norwood Town Meeting takes up zoning changes",
@@ -4838,6 +4675,99 @@
    ]
   },
   {
+   "id": "ce01684f76ec",
+   "score": 8.4,
+   "headline": "Fairfax County Board of Supervisors holds hearing on zoning changes",
+   "dek": "The Board of Supervisors meets Tuesday, Nov 17. The agenda lists a public hearing on zoning changes.",
+   "quote": "Public Hearing on a Proposed Zoning Ordinance Amendment Re:",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 17"
+   ],
+   "why": [],
+   "stakes": 5.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Fairfax County",
+   "county": "Fairfax",
+   "towns": [
+    "VA:Fairfax County"
+   ],
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-17",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-13T12:39:33+00:00",
+   "is_new": false,
+   "source_url": "https://www.fairfaxcounty.gov/boardofsupervisors/sites/boardofsupervisors/files/Assets/meeting-materials/2026/November17-Board-Package-Revised.pdf",
+   "town_path": "/va/fairfax-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Fairfax County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-17"
+    }
+   ],
+   "hit_ids": [
+    "8b124358a1a6",
+    "8d0cc9e40250",
+    "b1a6d716029d",
+    "c8a8c23eea31",
+    "e67ff9f5a04f"
+   ]
+  },
+  {
+   "id": "7aa11d7aa630",
+   "score": 8.4,
+   "headline": "Loudoun County Board of Supervisors Business holds hearing on zoning changes",
+   "dek": "The Board of Supervisors Business meets Tuesday, Nov 17. The agenda lists a public hearing on zoning changes.",
+   "quote": "14.g Resolution of Intent to Amend the Loudoun County Zoning Ordinance (ZOAM-2026-0001), Zoning Map (ZMAP-2026-0007), and Facilities Standards Manual (DOAM-2026-0003) Attachments Public Comments",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 17"
+   ],
+   "why": [],
+   "stakes": 5.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Loudoun County",
+   "county": "Loudoun",
+   "towns": [
+    "VA:Loudoun County"
+   ],
+   "board": "Board of Supervisors Business Meeting",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-17",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-13T12:39:52+00:00",
+   "is_new": false,
+   "source_url": "https://pub-loudoun.escribemeetings.com/Meeting.aspx?Id=84e92081-0b3f-47be-bd67-8c11aa49730c&Agenda=Agenda&lang=English",
+   "town_path": "/va/loudoun-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Loudoun County",
+     "board": "Board of Supervisors Business",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-17"
+    }
+   ],
+   "hit_ids": [
+    "be14ca19e185",
+    "e7e418221f70"
+   ]
+  },
+  {
    "id": "364bc2c835af",
    "score": 8.4,
    "headline": "Oceola Township planners hold hearing on zoning changes",
@@ -4879,6 +4809,50 @@
    ],
    "hit_ids": [
     "0955007062c7"
+   ]
+  },
+  {
+   "id": "1e6bf665f6a1",
+   "score": 8.4,
+   "headline": "Stafford County Board of Supervisors holds hearing on zoning changes",
+   "dek": "The Board of Supervisors meets Tuesday, Nov 17. The agenda lists a public hearing on zoning changes.",
+   "quote": "CONSIDER REQUESTING THE PLANNING COMMISSION DRAFT AMENDMENTS TO THE ZONING ORDINANCE TO ESTABLISH SHORT TERM RENTAL REGULATIONS AND DISCUSS POTENTIAL REGULATIONS RELATED TO SHORT TERM RENTALS…",
+   "reasons": [
+    "Public hearing",
+    "Hearing Nov 17"
+   ],
+   "why": [],
+   "stakes": 5.6,
+   "buzz": 0.0,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "state": "VA",
+   "town": "Stafford County",
+   "county": "Stafford",
+   "towns": [
+    "VA:Stafford County"
+   ],
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-17",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-13T12:40:49+00:00",
+   "is_new": false,
+   "source_url": "https://staffordcova.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=6432,plainText=false)",
+   "town_path": "/va/stafford-county",
+   "action": "bylaw_hearing",
+   "boards": [
+    {
+     "town": "Stafford County",
+     "board": "Board of Supervisors",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-17"
+    }
+   ],
+   "hit_ids": [
+    "1fe8fae6f751"
    ]
   },
   {
@@ -4972,6 +4946,58 @@
     "5b3a5b4519c1",
     "6a0e2eba8b5c",
     "a8dc853daca7"
+   ]
+  },
+  {
+   "id": "869eb3e50710",
+   "score": 8.06,
+   "headline": "Data-center item on Loudoun County Board of Supervisors Business agenda",
+   "dek": "The Board of Supervisors Business meets Tuesday, Nov 17. The agenda lists an item on data centers.",
+   "quote": "Board of Supervisors Consideration of Legislative Applications for Data Centers and Substations-111726.pdf",
+   "reasons": [
+    "Meeting Nov 17",
+    "Also next door in Frederick County, Montgomery County and 2 more"
+   ],
+   "why": [
+    "Also next door in Frederick County, Montgomery County and 2 more"
+   ],
+   "stakes": 5.0,
+   "buzz": 3.0,
+   "topics": [
+    "clean_energy_siting",
+    "data_center"
+   ],
+   "state": "VA",
+   "town": "Loudoun County",
+   "county": "Loudoun",
+   "towns": [
+    "VA:Loudoun County"
+   ],
+   "board": "Board of Supervisors Business Meeting",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-17",
+   "meeting_date_source": "agenda",
+   "days_until": 1,
+   "first_seen": "2026-11-13T12:39:52+00:00",
+   "is_new": false,
+   "source_url": "https://pub-loudoun.escribemeetings.com/Meeting.aspx?Id=84e92081-0b3f-47be-bd67-8c11aa49730c&Agenda=Agenda&lang=English",
+   "town_path": "/va/loudoun-county",
+   "action": "mention",
+   "boards": [
+    {
+     "town": "Loudoun County",
+     "board": "Board of Supervisors Business",
+     "board_key": "select_board",
+     "meeting_date": "2026-11-17"
+    }
+   ],
+   "hit_ids": [
+    "20be73aa4fa8",
+    "48ecdbc934bc",
+    "50587f1a9f67",
+    "59745827abd5",
+    "7919c2cee407",
+    "c92c75d98cb4"
    ]
   },
   {

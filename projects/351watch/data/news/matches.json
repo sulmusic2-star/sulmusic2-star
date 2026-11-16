@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T12:19:27+00:00",
+ "generated": "2026-11-16T19:36:38+00:00",
  "states": {
   "CT": {
    "data_center": 3,
@@ -9,8 +9,8 @@
   },
   "MA": {
    "battery_storage": 3,
-   "data_center": 57,
-   "moratorium": 3,
+   "data_center": 62,
+   "moratorium": 4,
    "solar": 2,
    "wind": 3
   },
@@ -26,7 +26,7 @@
   "RI": {
    "battery_storage": 1,
    "data_center": 6,
-   "moratorium": 1,
+   "moratorium": 2,
    "solar": 2,
    "wind": 2
   }
@@ -40,6 +40,18 @@
     "title": "Pollsters, data centers and fraud risk: CT politics news",
     "topics": [
      "data_center"
+    ]
+   }
+  ],
+  "MA:Amherst": [
+   {
+    "link": "https://gazettenet.com/2026/11/16/amherst-officials-delay-decisions-on-data-center-ban-or-moratorium-until-2027/",
+    "published": "2026-11-16T17:53:35+00:00",
+    "source": "Daily Hampshire Gazette",
+    "title": "Amherst officials delay decisions on data center ban or moratorium until 2027",
+    "topics": [
+     "data_center",
+     "moratorium"
     ]
    }
   ],
@@ -149,6 +161,15 @@
    }
   ],
   "MA:Sutton": [
+   {
+    "link": "https://www.masslive.com/centralmass/2026/11/sutton-petition-for-vote-to-ban-data-centers-hits-signature-goal.html",
+    "published": "2026-11-16T16:51:29+00:00",
+    "source": "MassLive",
+    "title": "Sutton petition for vote to ban data centers hits signature goal",
+    "topics": [
+     "data_center"
+    ]
+   },
    {
     "link": "https://www.masslive.com/centralmass/2026/11/sutton-residents-start-petition-to-block-data-centers-in-town.html",
     "published": "2026-11-13T19:19:22+00:00",
@@ -322,6 +343,15 @@
    }
   ],
   "RI:Newport": [
+   {
+    "link": "https://ecori.org/newport-could-lead-the-way-on-reduction-of-fossil-fuels-with-moratorium-on-new-gas-hookups/",
+    "published": "2026-11-16T17:01:02+00:00",
+    "source": "ecoRI News",
+    "title": "Newport Could Lead the Way on Reduction of Fossil Fuels with Moratorium on New Gas Hookups",
+    "topics": [
+     "moratorium"
+    ]
+   },
    {
     "link": "https://ecori.org/newport-council-approves-next-step-in-school-solar-proposal/",
     "published": "2026-11-02T18:12:32+00:00",
