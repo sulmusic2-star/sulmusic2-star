@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T19:36:38+00:00",
+ "generated": "2026-11-20T12:32:26+00:00",
  "states": {
   "CT": {
    "data_center": 3,
@@ -9,8 +9,8 @@
   },
   "MA": {
    "battery_storage": 3,
-   "data_center": 62,
-   "moratorium": 4,
+   "data_center": 65,
+   "moratorium": 5,
    "solar": 2,
    "wind": 3
   },
@@ -19,8 +19,8 @@
    "moratorium": 2
   },
   "NY": {
-   "battery_storage": 1,
-   "data_center": 22,
+   "battery_storage": 2,
+   "data_center": 20,
    "moratorium": 3
   },
   "RI": {
@@ -161,6 +161,15 @@
    }
   ],
   "MA:Sutton": [
+   {
+    "link": "https://www.wbur.org/news/2026/11/17/kraft-group-data-center-sutton-residents",
+    "published": "2026-11-17T16:49:03+00:00",
+    "source": "WBUR",
+    "title": "Kraft-backed data center proposal met with opposition from Sutton residents",
+    "topics": [
+     "data_center"
+    ]
+   },
    {
     "link": "https://www.masslive.com/centralmass/2026/11/sutton-petition-for-vote-to-ban-data-centers-hits-signature-goal.html",
     "published": "2026-11-16T16:51:29+00:00",
@@ -325,6 +334,17 @@
     "published": "2026-11-11T14:15:18+00:00",
     "source": "Boston Globe",
     "title": "Seething Sutton residents packed a Select Board meeting about the Kraft Group’s data center proposal. They did not hold back.",
+    "topics": [
+     "data_center"
+    ]
+   }
+  ],
+  "NY:Lansing": [
+   {
+    "link": "http://www.spectrumlocalnews.com/nys/central-ny/news/2026/11/18/tompkins-county-data-center-proposal-opposition",
+    "published": "2026-11-18T08:58:00+00:00",
+    "source": "Spectrum News Central NY",
+    "title": "Lansing conditionally passes data center ban",
     "topics": [
      "data_center"
     ]

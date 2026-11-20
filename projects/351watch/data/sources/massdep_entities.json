@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T19:30:10+00:00",
+ "generated": "2026-11-20T12:00:03+00:00",
  "source": "massdep_wetlands",
  "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
  "link_types": {
@@ -17,7 +17,7 @@
   {
    "parent": "National Grid (New England Power / Mass. Electric)",
    "kind": "utility",
-   "filings": 37,
+   "filings": 38,
    "project_applicants": [
     "MASSACHUSETTS ELECTRIC COMPANY",
     "NEP",
@@ -98,10 +98,10 @@
     "Winchendon"
    ],
    "categories": {
-    "transmission_substation": 37
+    "transmission_substation": 38
    },
    "links": {
-    "applicant_name": 36,
+    "applicant_name": 37,
     "description_mention": 1
    },
    "consultants": [],
@@ -390,6 +390,14 @@
      "dep_file_number": null,
      "town": "Marlborough",
      "applicant": "NEW ENGLAND POWER COMPANY",
+     "received_date": "2026-11-05",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/214011",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Marlborough",
+     "applicant": "NEW ENGLAND POWER COMPANY",
      "received_date": "2026-11-10",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213914",
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
@@ -516,6 +524,94 @@
    "target_segment": "solar; storage"
   },
   {
+   "parent": "Eversource (NSTAR Electric)",
+   "kind": "utility",
+   "filings": 6,
+   "project_applicants": [
+    "EVERSOURCE ENERGY SERVICE COMPANY",
+    "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
+    "NSTAR ELECTRIC DBA EVERSOURCE"
+   ],
+   "sites": [
+    "Blandford: 79 NORTH BLANDFORD RD",
+    "Blandford: 79 NORTH BLANDFORD RD 103 NORTH BLANDFORD RD",
+    "Cummington: ROW EASEMENTS OF PORTER HILL RD MOUGIN RD OLD ROUTE 9 BERKSHIRE TRAIL ROUTE 9",
+    "Dartmouth: 630 FISHER RD",
+    "Wareham: N A LINEAR PROJECT",
+    "Weymouth: BROAD ST"
+   ],
+   "towns": [
+    "Blandford",
+    "Cummington",
+    "Dartmouth",
+    "Wareham",
+    "Weymouth"
+   ],
+   "categories": {
+    "transmission_substation": 6
+   },
+   "links": {
+    "applicant_name": 6
+   },
+   "consultants": [
+    "VHB"
+   ],
+   "dep_files": [
+    {
+     "dep_file_number": "111-0065",
+     "town": "Blandford",
+     "applicant": "EVERSOURCE ENERGY SERVICE COMPANY",
+     "received_date": "2026-03-31",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210898",
+     "evidence": "applicant name 'EVERSOURCE ENERGY SERVICE COMPANY' matches Eversource (NSTAR Electric)"
+    },
+    {
+     "dep_file_number": "139-0068",
+     "town": "Cummington",
+     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
+     "received_date": "2026-07-20",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212312",
+     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
+    },
+    {
+     "dep_file_number": "081-1345",
+     "town": "Weymouth",
+     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
+     "received_date": "2026-08-07",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212590",
+     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
+    },
+    {
+     "dep_file_number": "015-2837",
+     "town": "Dartmouth",
+     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
+     "received_date": "2026-08-25",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212831",
+     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
+    },
+    {
+     "dep_file_number": "076-2971",
+     "town": "Wareham",
+     "applicant": "NSTAR ELECTRIC DBA EVERSOURCE",
+     "received_date": "2026-09-01",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212966",
+     "evidence": "applicant name 'NSTAR ELECTRIC DBA EVERSOURCE' matches Eversource (NSTAR Electric)"
+    },
+    {
+     "dep_file_number": "111-0069",
+     "town": "Blandford",
+     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
+     "received_date": "2026-11-16",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213968",
+     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
+    }
+   ],
+   "distinct_applicants": 3,
+   "distinct_sites": 6,
+   "in_target_list": true,
+   "target_segment": "transmission/utility"
+  },
+  {
    "parent": "Parallel Products Solar Energy",
    "kind": "developer",
    "filings": 6,
@@ -602,85 +698,6 @@
    "distinct_sites": 5,
    "in_target_list": true,
    "target_segment": "solar"
-  },
-  {
-   "parent": "Eversource (NSTAR Electric)",
-   "kind": "utility",
-   "filings": 5,
-   "project_applicants": [
-    "EVERSOURCE ENERGY SERVICE COMPANY",
-    "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
-    "NSTAR ELECTRIC DBA EVERSOURCE"
-   ],
-   "sites": [
-    "Blandford: 79 NORTH BLANDFORD RD 103 NORTH BLANDFORD RD",
-    "Cummington: ROW EASEMENTS OF PORTER HILL RD MOUGIN RD OLD ROUTE 9 BERKSHIRE TRAIL ROUTE 9",
-    "Dartmouth: 630 FISHER RD",
-    "Wareham: N A LINEAR PROJECT",
-    "Weymouth: BROAD ST"
-   ],
-   "towns": [
-    "Blandford",
-    "Cummington",
-    "Dartmouth",
-    "Wareham",
-    "Weymouth"
-   ],
-   "categories": {
-    "transmission_substation": 5
-   },
-   "links": {
-    "applicant_name": 5
-   },
-   "consultants": [
-    "VHB"
-   ],
-   "dep_files": [
-    {
-     "dep_file_number": "111-0065",
-     "town": "Blandford",
-     "applicant": "EVERSOURCE ENERGY SERVICE COMPANY",
-     "received_date": "2026-03-31",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/210898",
-     "evidence": "applicant name 'EVERSOURCE ENERGY SERVICE COMPANY' matches Eversource (NSTAR Electric)"
-    },
-    {
-     "dep_file_number": "139-0068",
-     "town": "Cummington",
-     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
-     "received_date": "2026-07-20",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212312",
-     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
-    },
-    {
-     "dep_file_number": "081-1345",
-     "town": "Weymouth",
-     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
-     "received_date": "2026-08-07",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212590",
-     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
-    },
-    {
-     "dep_file_number": "015-2837",
-     "town": "Dartmouth",
-     "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
-     "received_date": "2026-08-25",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212831",
-     "evidence": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)"
-    },
-    {
-     "dep_file_number": "076-2971",
-     "town": "Wareham",
-     "applicant": "NSTAR ELECTRIC DBA EVERSOURCE",
-     "received_date": "2026-09-01",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212966",
-     "evidence": "applicant name 'NSTAR ELECTRIC DBA EVERSOURCE' matches Eversource (NSTAR Electric)"
-    }
-   ],
-   "distinct_applicants": 3,
-   "distinct_sites": 5,
-   "in_target_list": true,
-   "target_segment": "transmission/utility"
   },
   {
    "parent": "NextGrid",
@@ -1235,7 +1252,7 @@
    "parent_kind": "utility",
    "link": "applicant_name",
    "confidence": "high",
-   "filings": 19,
+   "filings": 20,
    "towns": [
     "Attleboro",
     "Ayer",
@@ -1257,7 +1274,7 @@
    "payors": [],
    "consultants": [],
    "categories": {
-    "transmission_substation": 19
+    "transmission_substation": 20
    },
    "evidence": [
     {
@@ -1439,6 +1456,16 @@
      "link": "applicant_name",
      "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213522"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Marlborough",
+     "received_date": "2026-11-05",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/214011"
     },
     {
      "dep_file_number": null,
@@ -1745,6 +1772,75 @@
    "shares_contact_with": []
   },
   {
+   "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
+   "parent": "Eversource (NSTAR Electric)",
+   "parent_kind": "utility",
+   "link": "applicant_name",
+   "confidence": "high",
+   "filings": 4,
+   "towns": [
+    "Blandford",
+    "Cummington",
+    "Dartmouth",
+    "Weymouth"
+   ],
+   "payors": [
+    "VHB"
+   ],
+   "consultants": [
+    "VHB"
+   ],
+   "categories": {
+    "transmission_substation": 4
+   },
+   "evidence": [
+    {
+     "dep_file_number": "139-0068",
+     "town": "Cummington",
+     "received_date": "2026-07-20",
+     "filing_type": "Notice of Intent",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212312"
+    },
+    {
+     "dep_file_number": "081-1345",
+     "town": "Weymouth",
+     "received_date": "2026-08-07",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212590"
+    },
+    {
+     "dep_file_number": "015-2837",
+     "town": "Dartmouth",
+     "received_date": "2026-08-25",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": "VHB",
+     "link": "applicant_name",
+     "how": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212831"
+    },
+    {
+     "dep_file_number": "111-0069",
+     "town": "Blandford",
+     "received_date": "2026-11-16",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213968"
+    }
+   ],
+   "shares_contact_with": [
+    "EVERSOURCE ENERGY",
+    "NSTAR GAS COMPANY D/B/A EVERSOURCE ENERGY"
+   ]
+  },
+  {
    "applicant": "LLC",
    "parent": "BlueWave",
    "parent_kind": "developer",
@@ -1899,64 +1995,6 @@
      "how": "applicant name 'MASSACHUSETTS ELECTRIC COMPANY' matches National Grid (New England Power / Mass. Electric)",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213398"
     }
-   ]
-  },
-  {
-   "applicant": "NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY",
-   "parent": "Eversource (NSTAR Electric)",
-   "parent_kind": "utility",
-   "link": "applicant_name",
-   "confidence": "high",
-   "filings": 3,
-   "towns": [
-    "Cummington",
-    "Dartmouth",
-    "Weymouth"
-   ],
-   "payors": [
-    "VHB"
-   ],
-   "consultants": [
-    "VHB"
-   ],
-   "categories": {
-    "transmission_substation": 3
-   },
-   "evidence": [
-    {
-     "dep_file_number": "139-0068",
-     "town": "Cummington",
-     "received_date": "2026-07-20",
-     "filing_type": "Notice of Intent",
-     "payor": null,
-     "link": "applicant_name",
-     "how": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212312"
-    },
-    {
-     "dep_file_number": "081-1345",
-     "town": "Weymouth",
-     "received_date": "2026-08-07",
-     "filing_type": "Notice of Intent (buffer zone only)",
-     "payor": null,
-     "link": "applicant_name",
-     "how": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212590"
-    },
-    {
-     "dep_file_number": "015-2837",
-     "town": "Dartmouth",
-     "received_date": "2026-08-25",
-     "filing_type": "Notice of Intent (buffer zone only)",
-     "payor": "VHB",
-     "link": "applicant_name",
-     "how": "applicant name 'NSTAR ELECTRIC COMPANY D/B/A EVERSOURCE ENERGY' matches Eversource (NSTAR Electric)",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212831"
-    }
-   ],
-   "shares_contact_with": [
-    "EVERSOURCE ENERGY",
-    "NSTAR GAS COMPANY D/B/A EVERSOURCE ENERGY"
    ]
   },
   {
@@ -3346,21 +3384,21 @@
    "kind": "consultant"
   },
   {
-   "payor": "SULLIVAN ENG",
-   "filings": 35,
-   "towns": 1,
+   "payor": "OAKHILL ENG",
+   "filings": 36,
+   "towns": 6,
    "kind": "consultant"
   },
   {
    "payor": "MORSE ENG",
-   "filings": 35,
+   "filings": 36,
    "towns": 8,
    "kind": "consultant"
   },
   {
-   "payor": "OAKHILL ENG",
-   "filings": 34,
-   "towns": 6,
+   "payor": "SULLIVAN ENG",
+   "filings": 35,
+   "towns": 1,
    "kind": "consultant"
   },
   {
@@ -3388,15 +3426,15 @@
    "kind": "consultant"
   },
   {
-   "payor": "CC ENG",
+   "payor": "FALMOUTH ENG",
    "filings": 22,
-   "towns": 7,
+   "towns": 4,
    "kind": "consultant"
   },
   {
-   "payor": "FALMOUTH ENG",
-   "filings": 21,
-   "towns": 4,
+   "payor": "CC ENG",
+   "filings": 22,
+   "towns": 7,
    "kind": "consultant"
   },
   {
@@ -3407,8 +3445,14 @@
   },
   {
    "payor": "GRADY CONSULTING",
-   "filings": 20,
+   "filings": 21,
    "towns": 12,
+   "kind": "consultant"
+  },
+  {
+   "payor": "PMP CONSULTING",
+   "filings": 17,
+   "towns": 10,
    "kind": "consultant"
   },
   {
@@ -3430,6 +3474,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "JC ENG",
+   "filings": 14,
+   "towns": 5,
+   "kind": "consultant"
+  },
+  {
    "payor": "SOURATI ENG",
    "filings": 14,
    "towns": 5,
@@ -3448,28 +3498,16 @@
    "kind": "consultant"
   },
   {
-   "payor": "PMP CONSULTING",
-   "filings": 13,
-   "towns": 10,
-   "kind": "consultant"
-  },
-  {
-   "payor": "JC ENG",
-   "filings": 13,
-   "towns": 5,
-   "kind": "consultant"
+   "payor": "CRAWFORD LAND MGMT",
+   "filings": 12,
+   "towns": 8,
+   "kind": "company"
   },
   {
    "payor": "VHB",
    "filings": 12,
    "towns": 11,
    "kind": "consultant"
-  },
-  {
-   "payor": "CRAWFORD LAND MGMT",
-   "filings": 11,
-   "towns": 7,
-   "kind": "company"
   },
   {
    "payor": "RIM ENG",
@@ -3479,20 +3517,20 @@
   },
   {
    "payor": "SOUTHCOAST ENG",
-   "filings": 9,
+   "filings": 10,
    "towns": 1,
+   "kind": "consultant"
+  },
+  {
+   "payor": "BLUEFLAX DESIGN",
+   "filings": 10,
+   "towns": 6,
    "kind": "consultant"
   },
   {
    "payor": "BRACKEN ENG",
    "filings": 9,
    "towns": 1,
-   "kind": "consultant"
-  },
-  {
-   "payor": "BLUEFLAX DESIGN",
-   "filings": 9,
-   "towns": 6,
    "kind": "consultant"
   },
   {
@@ -3514,27 +3552,27 @@
    "kind": "developer"
   },
   {
+   "payor": "TIGHE & BOND",
+   "filings": 7,
+   "towns": 4,
+   "kind": "consultant"
+  },
+  {
    "payor": "PMP CONSULT",
    "filings": 7,
    "towns": 5,
    "kind": "consultant"
   },
   {
+   "payor": "W ENG",
+   "filings": 7,
+   "towns": 4,
+   "kind": "consultant"
+  },
+  {
    "payor": "AM WILSON ASSOC",
    "filings": 7,
    "towns": 3,
-   "kind": "consultant"
-  },
-  {
-   "payor": "TIGHE & BOND",
-   "filings": 6,
-   "towns": 3,
-   "kind": "consultant"
-  },
-  {
-   "payor": "W ENG",
-   "filings": 6,
-   "towns": 4,
    "kind": "consultant"
   },
   {
@@ -3574,6 +3612,12 @@
    "kind": "consultant"
   },
   {
+   "payor": "ECOSYSTEM SOLUTIONS",
+   "filings": 5,
+   "towns": 5,
+   "kind": "company"
+  },
+  {
    "payor": "Beals and Thomas, Inc.",
    "filings": 4,
    "towns": 2,
@@ -3598,16 +3642,16 @@
    "kind": "company"
   },
   {
+   "payor": "MT HOPE ENG",
+   "filings": 4,
+   "towns": 3,
+   "kind": "consultant"
+  },
+  {
    "payor": "GORODETSKY ENG",
    "filings": 4,
    "towns": 2,
    "kind": "consultant"
-  },
-  {
-   "payor": "ECOSYSTEM SOLUTIONS",
-   "filings": 4,
-   "towns": 4,
-   "kind": "company"
   },
   {
    "payor": "BAYCOAST BANK",
@@ -3637,12 +3681,6 @@
    "payor": "WILKINSON ECO DESIGN",
    "filings": 3,
    "towns": 3,
-   "kind": "consultant"
-  },
-  {
-   "payor": "MT HOPE ENG",
-   "filings": 3,
-   "towns": 2,
    "kind": "consultant"
   },
   {
