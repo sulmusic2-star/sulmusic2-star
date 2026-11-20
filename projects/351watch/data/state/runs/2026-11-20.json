@@ -1,55 +1,49 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 398,
-   "new_hits": 199,
-   "towns_attempted": 243,
-   "towns_succeeded": 241
-  },
-  "MD": {
-   "new_documents": 12,
-   "new_hits": 1,
-   "towns_attempted": 30,
-   "towns_succeeded": 29
+   "new_documents": 2,
+   "new_hits": 0,
+   "towns_attempted": 15,
+   "towns_succeeded": 15
   },
   "MI": {
-   "new_documents": 43,
-   "new_hits": 45,
-   "towns_attempted": 101,
-   "towns_succeeded": 100
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   },
   "NY": {
-   "new_documents": 56,
-   "new_hits": 26,
-   "towns_attempted": 92,
-   "towns_succeeded": 91
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 2,
+   "towns_succeeded": 2
   },
   "OH": {
-   "new_documents": 14,
-   "new_hits": 2,
-   "towns_attempted": 33,
-   "towns_succeeded": 33
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   },
   "RI": {
-   "new_documents": 35,
-   "new_hits": 13,
-   "towns_attempted": 39,
-   "towns_succeeded": 39
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 3,
+   "towns_succeeded": 3
   },
   "VA": {
-   "new_documents": 41,
-   "new_hits": 73,
-   "towns_attempted": 108,
-   "towns_succeeded": 106
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 2,
+   "towns_succeeded": 2
   }
  },
  "date": "2026-11-20",
- "document_errors": 10,
- "documents_already_indexed": 3471,
+ "document_errors": 0,
+ "documents_already_indexed": 183,
  "documents_deferred": 0,
- "documents_listed": 4080,
- "documents_needing_ocr": 2,
- "documents_rematched": 0,
+ "documents_listed": 215,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 30,
  "documents_retried": 0,
  "documents_too_large": [
   {
@@ -114,13 +108,6 @@
    "state": "MA",
    "town": "Westport",
    "url": "https://www.westport-ma.com/Documents/Departments/Planning/Agendas And Minutes/2026/Packets/Packet 2026-10-20.pdf"
-  },
-  {
-   "error": "too large (215650287 > 41943040 bytes): https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_11102026-2355",
-   "meeting_date": "2026-11-10",
-   "state": "MD",
-   "town": "City of College Park",
-   "url": "https://www.collegeparkmd.gov/AgendaCenter/ViewFile/Agenda/_11102026-2355"
   },
   {
    "error": "too large (156225594 > 41943040 bytes): https://cms2.revize.com/revize/bedford/NOV PC Packet.pdf",
@@ -424,107 +411,14 @@
    "url": "https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_11102026-996"
   }
  ],
- "duration_seconds": 1570.3,
- "errors": [
-  {
-   "error": "document: HTTP 404: https://dighton-ma.gov/AgendaCenter/ViewFile/Agenda/_11182026-2865",
-   "town": "MA:Dighton"
-  },
-  {
-   "error": "listing generic: listing https://www.dunstable-ma.gov/planning-board returned HTTP 404",
-   "town": "MA:Dunstable"
-  },
-  {
-   "error": "listing generic: listing https://www.dunstable-ma.gov/conservation-commission returned HTTP 404",
-   "town": "MA:Dunstable"
-  },
-  {
-   "error": "document: extract failed (content-type application/msword): https://townofshelburnema.gov/files/Planning_Board_2026-12-1_Agenda.doc",
-   "town": "MA:Shelburne"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/government/planning_board/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/departments/zoning_board_of_appeals/meeting_minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/departments/conservation_commission/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/government/board_of_selectmen/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing civicplus: https://www.qac.org/AgendaCenter/Search/?term=&CIDs=4%2C5%2C3%2C13%2C&startDate=10%2F21%2F2026&endDate=03%2F20%2F2027&dateRange=&dateSelector=",
-   "town": "MD:Queen Anne's County"
-  },
-  {
-   "error": "document: too large (156225594 > 41943040 bytes): https://cms2.revize.com/revize/bedford/NOV PC Packet.pdf",
-   "town": "MI:Bedford Charter Township"
-  },
-  {
-   "error": "listing agenda_page: listing https://summerfieldtwpmonroemi.gov/boar-of-trustees-meeting-agenda-september-21st/ returned HTTP 404",
-   "town": "MI:Summerfield Township"
-  },
-  {
-   "error": "document: https://cms4files1.revize.com/summitmi/November 24 2026 Meeting.docx",
-   "town": "MI:Summit Township"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/planning-board-2/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/zoning-board-of-appeals-2/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/town-board/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "document: extract failed (content-type application/msword): https://www.townofkentny.gov/AgendaCenter/ViewFile/Agenda/_11102026-181",
-   "town": "NY:Kent"
-  },
-  {
-   "error": "document: too large (149025616 > 41943040 bytes): https://cms6.revize.com/revize/mountkisco/Packet 11.24.26 v1.pdf",
-   "town": "NY:Mount Kisco"
-  },
-  {
-   "error": "document: extract failed (content-type application/msword): https://cmm.compassweb.dev/files/8443188c-8b5b-43ed-a90f-401fc7a1737a/view",
-   "town": "NY:Ripley"
-  },
-  {
-   "error": "document: https://cms5.revize.com/revize/harlemtwp/11-18-2026 Consent Agenda Content.docx",
-   "town": "OH:Harlem Township"
-  },
-  {
-   "error": "listing agenda_page: listing https://clerk.virginiabeach.gov/city-council returned HTTP 500",
-   "town": "VA:City of Virginia Beach"
-  },
-  {
-   "error": "document: https://www.henrycountyva.gov/AgendaCenter/ViewFile/Agenda/_11252026-408: HTTPSConnectionPool(host='www.henrycountyva.gov', port=443): Read timed out. (read timeout=10)",
-   "town": "VA:Henry County"
-  },
-  {
-   "error": "document: HTTP 404: https://kingandqueenco.net/wp-content/uploads/2026/11/AGENDA-PC-12.01.2026.pdf",
-   "town": "VA:King and Queen County"
-  },
-  {
-   "error": "listing agenda_page: listing https://meetings.municode.com/PublishPage/index?cid=WYTHEVILVA&ppid=dd3e12be-0db5-4371-8a7b-41369f93e324&p=1 returned HTTP 403",
-   "town": "VA:Town of Wytheville"
-  }
- ],
- "errors_total": 23,
- "finished": "2026-11-20T12:31:38+00:00",
- "hits_current": 3775,
+ "duration_seconds": 63.5,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-11-20T19:31:08+00:00",
+ "hits_current": 3780,
  "index": {
   "by_state": {
-   "MA": 5406,
+   "MA": 5408,
    "MD": 207,
    "MI": 523,
    "NY": 811,
@@ -535,7 +429,7 @@
   "by_status": {
    "error": 85,
    "needs_ocr": 11,
-   "ok": 8122,
+   "ok": 8124,
    "replaced": 182
   },
   "by_text_source": {
@@ -543,55 +437,39 @@
    "html": 437,
    "none": 89,
    "ocr": 1669,
-   "pdf": 6130
+   "pdf": 6132
   },
-  "documents": 8400,
+  "documents": 8402,
   "hits": 4203,
-  "pruned": 25,
+  "pruned": 0,
   "towns": 621,
   "with_hits": 1776
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 498297192,
-   "listing": 234349552,
-   "robots": 1924555
+   "document": 49603047,
+   "listing": 10871041
   },
-  "cache_hits": 311,
-  "errors": 19,
-  "requests": 2594,
+  "cache_hits": 17,
+  "errors": 0,
+  "requests": 102,
   "requests_by_purpose": {
-   "document": 648,
-   "listing": 1317,
-   "robots": 629
+   "document": 38,
+   "listing": 64
   },
-  "robots_blocked": 6,
+  "robots_blocked": 0,
   "slow_host_documents": {}
  },
- "new_alert_items": 246,
+ "new_alert_items": 5,
  "new_alert_items_by_topic": {
-  "40b_comprehensive_permit": 24,
-  "battery_storage": 39,
-  "clean_energy_siting": 20,
-  "data_center": 34,
-  "moratorium": 15,
-  "solar": 56,
-  "wetlands_filing": 2,
-  "wireless_telecom": 21,
-  "zoning_amendment": 82
+  "battery_storage": 2,
+  "data_center": 2,
+  "moratorium": 1,
+  "zoning_amendment": 3
  },
- "new_documents": 599,
- "new_hits": 359,
- "new_hits_by_topic": {
-  "40b_comprehensive_permit": 27,
-  "battery_storage": 58,
-  "clean_energy_siting": 22,
-  "data_center": 48,
-  "moratorium": 27,
-  "solar": 88,
-  "wireless_telecom": 24,
-  "zoning_amendment": 140
- },
+ "new_documents": 2,
+ "new_hits": 0,
+ "new_hits_by_topic": {},
  "options": {
   "matcher_version": "ca9b9d486f",
   "no_network_docs": false,
@@ -600,28 +478,39 @@
   "tesseract": true,
   "workers": 16
  },
- "started": "2026-11-20T12:05:28+00:00",
+ "previous_runs_today": [
+  {
+   "duration_seconds": 1570.3,
+   "new_documents": 599,
+   "new_hits": 359,
+   "requests": 2594,
+   "started": "2026-11-20T12:05:28+00:00",
+   "states": [
+    "MA",
+    "MD",
+    "MI",
+    "NY",
+    "OH",
+    "RI",
+    "VA"
+   ],
+   "towns_attempted": 646,
+   "towns_succeeded": 639
+  }
+ ],
+ "started": "2026-11-20T19:30:05+00:00",
  "states": [
   "MA",
-  "MD",
   "MI",
   "NY",
   "OH",
   "RI",
   "VA"
  ],
- "towns_attempted": 646,
- "towns_failed": [
-  "MA:Dunstable",
-  "MA:Swansea",
-  "MD:Queen Anne's County",
-  "MI:Summerfield Township",
-  "NY:Amsterdam",
-  "VA:City of Virginia Beach",
-  "VA:Town of Wytheville"
- ],
+ "towns_attempted": 24,
+ "towns_failed": [],
  "towns_partial": [],
- "towns_succeeded": 639,
+ "towns_succeeded": 24,
  "window": {
   "end": "2027-03-20",
   "start": "2026-10-21"

@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-20T12:32:26+00:00",
+ "generated": "2026-11-20T19:31:33+00:00",
  "states": {
   "CT": {
    "data_center": 3,
@@ -9,7 +9,7 @@
   },
   "MA": {
    "battery_storage": 3,
-   "data_center": 65,
+   "data_center": 63,
    "moratorium": 5,
    "solar": 2,
    "wind": 3
@@ -20,7 +20,7 @@
   },
   "NY": {
    "battery_storage": 2,
-   "data_center": 20,
+   "data_center": 17,
    "moratorium": 3
   },
   "RI": {
@@ -143,6 +143,17 @@
     "published": "2026-11-16T05:01:00+00:00",
     "source": "Boston Globe",
     "title": "In Salem, a data center dispute shows even small projects are feeling the heat",
+    "topics": [
+     "data_center"
+    ]
+   }
+  ],
+  "MA:Shrewsbury": [
+   {
+    "link": "https://www.masslive.com/centralmass/2026/11/central-mass-town-could-restrict-data-centers-next-month-what-to-know.html",
+    "published": "2026-11-20T17:44:26+00:00",
+    "source": "MassLive",
+    "title": "Central Mass. town could restrict data centers next month. What to know",
     "topics": [
      "data_center"
     ]
