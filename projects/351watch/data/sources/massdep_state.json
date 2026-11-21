@@ -11,16 +11,13 @@
  },
  "lookback_days": 45,
  "last_run": {
-  "at": "2026-11-21T11:59:49+00:00",
+  "at": "2026-11-21T19:30:24+00:00",
   "offline": false,
   "blocked": null,
-  "rebuilt_from_cache": 475,
-  "listed": 665,
-  "details_needed": 40,
-  "changed": 16,
-  "details_fetched": 40,
-  "new": 24,
-  "http_requests": 49
+  "rebuilt_from_cache": 507,
+  "listed": 626,
+  "details_needed": 0,
+  "http_requests": 9
  },
  "summary": {
   "filings_total": 5191,
@@ -177,16 +174,6 @@
  },
  "runs": [
   {
-   "at": "2026-11-13T12:00:33+00:00",
-   "offline": false,
-   "blocked": null,
-   "listed": 707,
-   "new": 70,
-   "changed": 94,
-   "details_fetched": 282,
-   "hits": 101
-  },
-  {
    "at": "2026-11-13T19:29:51+00:00",
    "offline": false,
    "blocked": null,
@@ -274,6 +261,16 @@
    "new": 24,
    "changed": 16,
    "details_fetched": 40,
+   "hits": 103
+  },
+  {
+   "at": "2026-11-21T19:30:24+00:00",
+   "offline": false,
+   "blocked": null,
+   "listed": 626,
+   "new": 0,
+   "changed": 0,
+   "details_fetched": 0,
    "hits": 103
   }
  ]
