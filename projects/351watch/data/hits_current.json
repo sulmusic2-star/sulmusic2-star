@@ -1,8 +1,8 @@
 {
- "generated": "2026-11-20T19:31:08+00:00",
+ "generated": "2026-11-21T12:16:40+00:00",
  "window": {
-  "start": "2026-07-23",
-  "end": "2027-03-20"
+  "start": "2026-07-24",
+  "end": "2027-03-21"
  },
  "states": [
   "MA",
@@ -101,6 +101,26 @@
    "text_source": "ocr",
    "first_seen": "2026-11-13T12:12:35+00:00",
    "days_before_meeting": 33.5,
+   "source": "agenda"
+  },
+  {
+   "id": "338548969c6e",
+   "state": "NY",
+   "town": "Smithtown",
+   "county": "Suffolk",
+   "board": "Board of Zoning Appeals",
+   "board_key": "zoning_board_of_appeals",
+   "meeting_date": "2026-12-15",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "side yard setback from 24' to 10' for proposed ground mounted solar panels 1,034 s.f. in area. 19629: David Mikel For Longhorn Steakhouse, . Location: 612 Smith Haven Mall, Lake Grove, NY 11755 , NE/c of Middle Country Rd. & Alexander",
+   "source_url": "https://smithtownny.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=11615,plainText=false)",
+   "listing_url": "https://smithtownny.portal.civicclerk.com/event/4441/files",
+   "document_title": "12-15-26 Board of Zoning Appeals Agenda",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:05:07+00:00",
+   "days_before_meeting": 23.5,
    "source": "agenda"
   },
   {
@@ -284,6 +304,66 @@
    "source": "agenda"
   },
   {
+   "id": "aa73bdf62eb6",
+   "state": "MA",
+   "town": "Salisbury",
+   "county": "Essex",
+   "board": "Zoning Board of Appeals",
+   "board_key": "zoning_board_of_appeals",
+   "meeting_date": "2026-12-08",
+   "topics": [
+    "40b_comprehensive_permit"
+   ],
+   "snippet": "ZBA 26-00018 to discuss proposed modifications to a previously approved Comprehensive Permit. These modifications include: e Modification or elimination of the off-site public walking trail connection requirement. e Modification of the",
+   "source_url": "https://www.salisburyma.gov/AgendaCenter/ViewFile/Agenda/_12082026-438",
+   "listing_url": "https://www.salisburyma.gov/AgendaCenter/Zoning-Board-of-Appeals-21",
+   "document_title": "Zoning Board of Appeals Agenda",
+   "text_source": "ocr",
+   "first_seen": "2026-11-21T12:02:20+00:00",
+   "days_before_meeting": 16.5,
+   "source": "agenda"
+  },
+  {
+   "id": "ed6c58f62ff3",
+   "state": "VA",
+   "town": "Botetourt County",
+   "county": "Botetourt",
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-12-07",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "There will be no public hearing or discussion of the Solar Text Amendment or Comprehensive Plan held as part of the 6 PM regular session. Dr. Elizabeth Leffel, Chairman Fincastle Planning Commission Representative Posted: November 20, 2026",
+   "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_12072026-780",
+   "listing_url": "https://www.botetourtva.gov/AgendaCenter/Planning-Commission-6",
+   "document_title": "Notice of Special Called Meeting of the Planning Commission to discuss proposed revisions to the Comprehensive Plan and Zoning Ordinance related to solar facilities.",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:15:41+00:00",
+   "days_before_meeting": 15.5,
+   "source": "agenda"
+  },
+  {
+   "id": "8ac01977ebf7",
+   "state": "VA",
+   "town": "Botetourt County",
+   "county": "Botetourt",
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-12-07",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "discuss proposed revisions to the Comprehensive Plan and the Zoning Ordinance related to solar facilities. While no public hearing or comment period will be held during the work session, the public is welcome to attend. The regular session",
+   "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_12072026-780",
+   "listing_url": "https://www.botetourtva.gov/AgendaCenter/Planning-Commission-6",
+   "document_title": "Notice of Special Called Meeting of the Planning Commission to discuss proposed revisions to the Comprehensive Plan and Zoning Ordinance related to solar facilities.",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:15:41+00:00",
+   "days_before_meeting": 15.5,
+   "source": "agenda"
+  },
+  {
    "id": "b1c790bd9146",
    "state": "VA",
    "town": "Augusta County",
@@ -326,66 +406,6 @@
    "source": "agenda"
   },
   {
-   "id": "d8c807fa4f31",
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-12-03",
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "Planning Board initiation of proposed zoning amendments to allow residential adaptive reuse of accessory structures The Planning Board considered and deliberated these zoning amendments over the course of multiple meetings from August to",
-   "source_url": "https://www.greenfield-ma.gov/Planning Board packet_12.03.2026 w comments.pdf",
-   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/planning_board.php",
-   "document_title": "Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-20T12:07:41+00:00",
-   "days_before_meeting": 12.5,
-   "source": "agenda"
-  },
-  {
-   "id": "d7d5e43c6cea",
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-12-03",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "[Added by Town Council on July 15, 2009] (17) Small-Scale Ground-Mounted Solar Energy System. [Added by Town Council on December 19, 2012] (18) Unprotected Accessory Dwelling Unit. [Added by City Council on May 8, 2025] (19) Adaptive",
-   "source_url": "https://www.greenfield-ma.gov/Planning Board packet_12.03.2026 w comments.pdf",
-   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/planning_board.php",
-   "document_title": "Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-20T12:07:41+00:00",
-   "days_before_meeting": 12.5,
-   "source": "agenda"
-  },
-  {
-   "id": "d04736231b92",
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-12-03",
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "Moved by Moschella, seconded by Brown-Anson, and voted 5:0:0 to initiate the proposed zoning amendment as further amended below to allow multifamily buildings to consist of more than one building per lot in the Central Commercial, General",
-   "source_url": "https://www.greenfield-ma.gov/Planning Board packet_12.03.2026 w comments.pdf",
-   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/planning_board.php",
-   "document_title": "Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-20T12:07:41+00:00",
-   "days_before_meeting": 12.5,
-   "source": "agenda"
-  },
-  {
    "id": "cf0b076e40c3",
    "state": "MA",
    "town": "Greenfield",
@@ -406,86 +426,6 @@
    "source": "agenda"
   },
   {
-   "id": "c789e14439bd",
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-12-03",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "be made of the topography, landscaping, and building placement to make maximum use of solar energy, protect the character of the environs, and protect scenic views seen from public ways. (67) Parking areas shall be screened from public",
-   "source_url": "https://www.greenfield-ma.gov/Planning Board packet_12.03.2026 w comments.pdf",
-   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/planning_board.php",
-   "document_title": "Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-20T12:07:41+00:00",
-   "days_before_meeting": 12.5,
-   "source": "agenda"
-  },
-  {
-   "id": "c327fe238e63",
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-12-03",
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "Planning Board initiation of proposed zoning amendments to Section 200-7.2 to allow multifamily buildings to consist of more than one building per lot. At its September 3, 2026 meeting, the Planning Board, after careful consideration and",
-   "source_url": "https://www.greenfield-ma.gov/Planning Board packet_12.03.2026 w comments.pdf",
-   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/planning_board.php",
-   "document_title": "Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-20T12:07:41+00:00",
-   "days_before_meeting": 12.5,
-   "source": "agenda"
-  },
-  {
-   "id": "c15657db64d3",
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-12-03",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "[Added by Town Council on July 15, 2009] (18) Small-Scale Ground-Mounted Solar Energy System. [Added by Town Council on December 19, 2012] (19) Unprotected Accessory Dwelling Unit. [Added by City Council on May 8, 2025] (20) Adaptive",
-   "source_url": "https://www.greenfield-ma.gov/Planning Board packet_12.03.2026 w comments.pdf",
-   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/planning_board.php",
-   "document_title": "Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-20T12:07:41+00:00",
-   "days_before_meeting": 12.5,
-   "source": "agenda"
-  },
-  {
-   "id": "bbf126aa5939",
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-12-03",
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "Planning and Development November 10, 2026 Planning Department Review Comments: Proposed Zoning Amendment to remove Zone II Wellhead Protection Zoning Overlay District around Leary Well 1. Summary of Application The proposed zoning",
-   "source_url": "https://www.greenfield-ma.gov/Planning Board packet_12.03.2026 w comments.pdf",
-   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/planning_board.php",
-   "document_title": "Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-20T12:07:41+00:00",
-   "days_before_meeting": 12.5,
-   "source": "agenda"
-  },
-  {
    "id": "71efa6af88e3",
    "state": "MA",
    "town": "Greenfield",
@@ -502,66 +442,6 @@
    "document_title": "Agenda",
    "text_source": "pdf",
    "first_seen": "2026-11-20T12:07:40+00:00",
-   "days_before_meeting": 12.5,
-   "source": "agenda"
-  },
-  {
-   "id": "6b2e1328749e",
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-12-03",
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "order to allow residential adaptive reuse of accessory structures by Special Permit. The zoning amendment includes a new section in the \"Special Regulations\" article, as well as amendments to the \"Use Regulations.\" Recently, two local",
-   "source_url": "https://www.greenfield-ma.gov/Planning Board packet_12.03.2026 w comments.pdf",
-   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/planning_board.php",
-   "document_title": "Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-20T12:07:41+00:00",
-   "days_before_meeting": 12.5,
-   "source": "agenda"
-  },
-  {
-   "id": "633d63d092ee",
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-12-03",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "[Added by Town Council on July 15, 2009] (16) Small-Scale Ground-Mounted Solar Energy System. [Added by Town Council on December 19, 2012] (17) Large-Scale Ground-Mounted Solar Photovoltaic Installations. [Added by Town Council on December",
-   "source_url": "https://www.greenfield-ma.gov/Planning Board packet_12.03.2026 w comments.pdf",
-   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/planning_board.php",
-   "document_title": "Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-20T12:07:41+00:00",
-   "days_before_meeting": 12.5,
-   "source": "agenda"
-  },
-  {
-   "id": "317f732d5756",
-   "state": "MA",
-   "town": "Greenfield",
-   "county": "Franklin",
-   "board": "Planning Board",
-   "board_key": "planning_board",
-   "meeting_date": "2026-12-03",
-   "topics": [
-    "solar"
-   ],
-   "snippet": "[Added by Town Council on July 15, 2009] (17) Small-Scale Ground-Mounted Solar Energy System. [Added by Town Council on December 19, 2012] (18) Large-Scale Ground-Mounted Solar Photovoltaic Installations. [Added by Town Council on December",
-   "source_url": "https://www.greenfield-ma.gov/Planning Board packet_12.03.2026 w comments.pdf",
-   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/planning_board.php",
-   "document_title": "Packet",
-   "text_source": "pdf",
-   "first_seen": "2026-11-20T12:07:41+00:00",
    "days_before_meeting": 12.5,
    "source": "agenda"
   },
@@ -707,6 +587,46 @@
    "source": "agenda"
   },
   {
+   "id": "5f9159771f2d",
+   "state": "VA",
+   "town": "Campbell County",
+   "county": "Campbell",
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-30",
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "by Michael Lawless of TRC Engineers, Inc., agent for Region 2000 Service Authority, to rezone a portion of the property adjacent to 1099 Livestock Road and further identified as tax map parcel 33-A-50A from Agricultural to Industrial",
+   "source_url": "https://www.co.campbell.va.us/AgendaCenter/ViewFile/Agenda/_11302026-737",
+   "listing_url": "https://www.co.campbell.va.us/AgendaCenter/Planning-Commission-6",
+   "document_title": "Planning Commission Regular Meeting Agenda (Available via ZOOM)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:15:35+00:00",
+   "days_before_meeting": 8.5,
+   "source": "agenda"
+  },
+  {
+   "id": "0670e55ba593",
+   "state": "VA",
+   "town": "Campbell County",
+   "county": "Campbell",
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-30",
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "PL-26-218 Request by Shannon Carter to rezone the property located at 1437 Lawyers Road and further identified as tax map parcels 22-A-51 and 22-A-51A from Industrial - Heavy to Agricultural to allow for the continued use of the mobile",
+   "source_url": "https://www.co.campbell.va.us/AgendaCenter/ViewFile/Agenda/_11302026-737",
+   "listing_url": "https://www.co.campbell.va.us/AgendaCenter/Planning-Commission-6",
+   "document_title": "Planning Commission Regular Meeting Agenda (Available via ZOOM)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:15:35+00:00",
+   "days_before_meeting": 8.5,
+   "source": "agenda"
+  },
+  {
    "id": "fce2339dd8be",
    "state": "MA",
    "town": "Townsend",
@@ -786,6 +706,514 @@
    "text_source": "ocr",
    "first_seen": "2026-11-14T12:02:45+00:00",
    "days_before_meeting": 15.5,
+   "source": "agenda"
+  },
+  {
+   "id": "e0f92d11a9ff",
+   "state": "MA",
+   "town": "Eastham",
+   "county": "Barnstable",
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-30",
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "Discussion on timing, schedule and process for zoning amendments (if needed) (votes may be taken) 4. Adjournment",
+   "source_url": "https://www.eastham-ma.gov/AgendaCenter/ViewFile/Agenda/_11302026-4715",
+   "listing_url": "https://www.eastham-ma.gov/AgendaCenter/Planning-Board-36",
+   "document_title": "Planning Board Workshop",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:01:20+00:00",
+   "days_before_meeting": 8.5,
+   "source": "agenda"
+  },
+  {
+   "id": "527199555cbe",
+   "state": "MA",
+   "town": "Eastham",
+   "county": "Barnstable",
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-30",
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "Discussion on proposed zoning amendments for Town Meeting 2027 (Votes may be taken) o Section 7 Residential Site Coverage/Floor Area Ratio/Setbacks o Section 7 Seasonal Communities: Zoning for Undersized Lots and Tiny Houses o Section 21",
+   "source_url": "https://www.eastham-ma.gov/AgendaCenter/ViewFile/Agenda/_11302026-4715",
+   "listing_url": "https://www.eastham-ma.gov/AgendaCenter/Planning-Board-36",
+   "document_title": "Planning Board Workshop",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:01:20+00:00",
+   "days_before_meeting": 8.5,
+   "source": "agenda"
+  },
+  {
+   "id": "4cde360513eb",
+   "state": "VA",
+   "town": "Henry County",
+   "county": "Henry",
+   "board": "Board of Zoning Appeals",
+   "board_key": "zoning_board_of_appeals",
+   "meeting_date": "2026-11-25",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "S-24-09 (Amended) – New Energy Equity / Henry Solar 2, LLC 5. Other Business - None 6. Informational Items A. Building Inspection Report COUNTY OF HENRY BOARD OF ZONING APPEALS PUBLIC HEARING NOTICE Pursuant to Section 15.2-2204 of the",
+   "source_url": "https://www.henrycountyva.gov/AgendaCenter/ViewFile/Agenda/_11252026-408",
+   "listing_url": "https://www.henrycountyva.gov/AgendaCenter/Board-of-Zoning-Appeals-9",
+   "document_title": "Board of Zoning Appeals Meeting Agenda & Public Hearing Notice (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-20T12:29:50+00:00",
+   "days_before_meeting": 4.5,
+   "source": "agenda"
+  },
+  {
+   "id": "266c9fd67a51",
+   "state": "VA",
+   "town": "Henry County",
+   "county": "Henry",
+   "board": "Board of Zoning Appeals",
+   "board_key": "zoning_board_of_appeals",
+   "meeting_date": "2026-11-25",
+   "topics": [
+    "solar",
+    "clean_energy_siting"
+   ],
+   "snippet": "Case S-24-09 (Amended) New Energy Equity / Henry Solar 2, LLC In October of 2024, the Board of Zoning Appeals approved a Special Use Permit to allow for a 2MW, 18.99-acres solar facility accessed off of Meadowood Tr. The applicant has now",
+   "source_url": "https://www.henrycountyva.gov/AgendaCenter/ViewFile/Agenda/_11252026-408",
+   "listing_url": "https://www.henrycountyva.gov/AgendaCenter/Board-of-Zoning-Appeals-9",
+   "document_title": "Board of Zoning Appeals Meeting Agenda & Public Hearing Notice (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-20T12:29:50+00:00",
+   "days_before_meeting": 4.5,
+   "source": "agenda"
+  },
+  {
+   "id": "fad58fb96b46",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "clean_energy_siting",
+    "zoning_amendment"
+   ],
+   "snippet": "voted 7-0 to recommend approval of the ZoningTextAmendment. BACKGROUND: Introduction: Zoning Text Amendment (ZTA) 26-11-01 proposes amendments to Chapter 165 of the Shenandoah County Code addressing definitions, energy facilities",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "ef1b4cea7685",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "clean_energy_siting",
+    "zoning_amendment"
+   ],
+   "snippet": "Supervisorsto assisttheminmaking Public Hearin a decision on this request. Introduction: Zoning Text Amendment (2TA) 26-11-01 proposes amendments to Chapter 165 of the Shenandoah County Code addressing definidons, energy facilities",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "e8c392a0eb91",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "It alsoproposes connecdonto abuttingor adjacentpubUcwateras part of the data center development plan and addidonal doci.imentadon of projected water demand, utility capacity, wastewater,and drought-responsemeasures. The revisions also",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "d73d8e0ca94f",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "Sessions following the approval to review and identify potential updates in the code. A data center ordinance work session was held on July 15, 2026 and an energy ordinance work session was held August 21, 2026. Subsequent review",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "d160c2f0486a",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "November24th, 2026 CONSENT: REGULAR: X ACTION: X INFORMATION: CLOSEDSESSION: ITEM TITLE: Zoning Text Amendment (Zoning Text Amendment 26-11-01): A ZoningText Amendment to amendArticle I, \"Purpose, Tide andDefinitions, \" Article III",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "b6c4af3866af",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "solar",
+    "clean_energy_siting"
+   ],
+   "snippet": "AGROPHOTOVOLTAIC (APV) A photovoltaic system which utilizes the same area of land or space for both solar photovoltaic power as well as for agriculture. AGROVOLTAIC(AV) A Large-Scale Energy Facility or a Small-Scale Energy Facility which",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "7228c2439288",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "clean_energy_siting",
+    "data_center"
+   ],
+   "snippet": "Article XXI, \"Decommissioning, \" Ardcle XXII, \"Energy Facmdes, \" and Article XXIII, \"Data Center Development, \" ofChapter 165 oftheShenandoahCounty Code. TheAmendment updates definitions and regulations applicable to large-scale energy",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "461307a55d0a",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "Jusdn Vanderbrock, owner of the business, gave an update on the solar farm developt nent. He said there have been additional surveys, boring ground satnples, and engineering completed. He stated he was excited about this project and being",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "2b929adfa999",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "solar",
+    "data_center"
+   ],
+   "snippet": "BIOPHOTOVOLTAIC(BPV) A photovoltaic system whichsolely usesbiologicalorganismsin orderto produceenergyor work. DATA CENTER(S)- An establishmentengagingin the storage, management, processing, and/ortransmissionofdigital",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "214e0777f145",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "clean_energy_siting",
+    "data_center"
+   ],
+   "snippet": "Shenandoah County Code addressing definitions, energy facilities, decommissioning, and data center development. The proposed ordinance is presented for Planning Commission public hearing and recommendation to the Board of Supervisors.",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "1efcec1e7a3c",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "clean_energy_siting"
+   ],
+   "snippet": "Adds andrevises terminology for energy facilities, microgrids, emergency standbygenerators, on-site power generadon, datacenters, andrelated technologies to support consistent applicationof the ordinance. . Article XXI,§§165-162through",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "1a70da3b16dd",
+   "state": "VA",
+   "town": "Shenandoah County",
+   "county": "Shenandoah",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center",
+    "zoning_amendment"
+   ],
+   "snippet": "Consideration of a Zoning Text Amendment to amendArticle I, \"Purpose, Tide andDefinidons,\" Article III, \"District Regulations, \" Article XXI, \"Decommissioning, \" Ardcle XXII, \"Energy Facilldes, \" and Article XXIII, \"Data Center",
+   "source_url": "https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Agenda/_11242026-755",
+   "listing_url": "https://www.shenandoahcountyva.gov/AgendaCenter/Board-of-Supervisors-4",
+   "document_title": "Board of Supervisors Regular Meeting (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "831b5d443779",
+   "state": "VA",
+   "town": "Page County",
+   "county": "Page",
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "Roll Call Adoption of Agenda New Business A. Adoption of Minutes: November 10, 2026 B. Zoning Ordinance Amendment Request: Event Venues C. Proposed 2027 Meeting Schedule D. 2027 Budget Discussion Tracy Clatterbuck Josh Hahn Josh Hahn",
+   "source_url": "https://www.pagecounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_11242026-1136",
+   "listing_url": "https://www.pagecounty.virginia.gov/AgendaCenter/Planning-Commission-5",
+   "document_title": "Planning Commission Work Session",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:12+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "6c17130829bf",
+   "state": "VA",
+   "town": "Page County",
+   "county": "Page",
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "See industrial solar as an example. Cutting the maximum review time for all applications will likely force hasty decisions and poor choices where we can least afford them with little to no recourse to the citizens of Page who will be",
+   "source_url": "https://www.pagecounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_11242026-1136",
+   "listing_url": "https://www.pagecounty.virginia.gov/AgendaCenter/Planning-Commission-5",
+   "document_title": "Planning Commission Work Session",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:12+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "3ba1fecfd7b4",
+   "state": "VA",
+   "town": "Page County",
+   "county": "Page",
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "review, and look at it now. It's ugly from everywhere you can see it. The Dogwood solar application went Page 8 of 11 Planning Commission Minutes- November 10, 2026 through multiple rounds but still emerged with little to no protections.",
+   "source_url": "https://www.pagecounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_11242026-1136",
+   "listing_url": "https://www.pagecounty.virginia.gov/AgendaCenter/Planning-Commission-5",
+   "document_title": "Planning Commission Work Session",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:12+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "32106587931b",
+   "state": "VA",
+   "town": "Page County",
+   "county": "Page",
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "the county for decades could be missed. More of these applications will be coming. Data centers, industrial solars under the new rules, and other novel uses we haven't even heard of. Many will require repeated review to undercover the",
+   "source_url": "https://www.pagecounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_11242026-1136",
+   "listing_url": "https://www.pagecounty.virginia.gov/AgendaCenter/Planning-Commission-5",
+   "document_title": "Planning Commission Work Session",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:12+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "15480b405b9d",
+   "state": "VA",
+   "town": "Page County",
+   "county": "Page",
+   "board": "Planning Commission",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "This policy is directly applicable to rezonings that are converting agricultural land to a commercial or industrial district outright. That's not what's being proposed in this special use permit. And, in fact, we took feedback that you all",
+   "source_url": "https://www.pagecounty.virginia.gov/AgendaCenter/ViewFile/Agenda/_11242026-1136",
+   "listing_url": "https://www.pagecounty.virginia.gov/AgendaCenter/Planning-Commission-5",
+   "document_title": "Planning Commission Work Session",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:12+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "fba7be708f77",
+   "state": "VA",
+   "town": "Madison County",
+   "county": "Madison",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "Main Street and the dispatch data center to reduce that building's dependence on the connection through 414 N. Main Street. Additional draft materials remained under staff review, with information anticipated for the next Board meeting.",
+   "source_url": "https://www.madisonco.virginia.gov/AgendaCenter/ViewFile/Agenda/_11242026-488",
+   "listing_url": "https://www.madisonco.virginia.gov/AgendaCenter/Board-of-Supervisors-3",
+   "document_title": "Board of Supervisors' Meeting Agenda Packet (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:10+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "cb9f390e6253",
+   "state": "VA",
+   "town": "Madison County",
+   "county": "Madison",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "performed by a public body, such as the local Planning Commission, rather than by staff. Data Centers The region believes local governments have the right and responsibility to determine if a data center project is the right fit for their",
+   "source_url": "https://www.madisonco.virginia.gov/AgendaCenter/ViewFile/Agenda/_11242026-488",
+   "listing_url": "https://www.madisonco.virginia.gov/AgendaCenter/Board-of-Supervisors-3",
+   "document_title": "Board of Supervisors' Meeting Agenda Packet (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:10+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "13605485fbfe",
+   "state": "VA",
+   "town": "Madison County",
+   "county": "Madison",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "center development, rather than having a one-size-fits-all statewide regulation. While data centers provide positive economic impacts to the locality within which they are located, their collective massive and rapidly growing electricity",
+   "source_url": "https://www.madisonco.virginia.gov/AgendaCenter/ViewFile/Agenda/_11242026-488",
+   "listing_url": "https://www.madisonco.virginia.gov/AgendaCenter/Board-of-Supervisors-3",
+   "document_title": "Board of Supervisors' Meeting Agenda Packet (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:10+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "0307bc90095b",
+   "state": "VA",
+   "town": "Madison County",
+   "county": "Madison",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "Return to Agenda Vice-Chairman Jewett reported on budget discussions concerning data center taxation, competition for data center investment, and the relationship between state revenues and school funding. He also reviewed discussions from",
+   "source_url": "https://www.madisonco.virginia.gov/AgendaCenter/ViewFile/Agenda/_11242026-488",
+   "listing_url": "https://www.madisonco.virginia.gov/AgendaCenter/Board-of-Supervisors-3",
+   "document_title": "Board of Supervisors' Meeting Agenda Packet (PDF)",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:16:10+00:00",
+   "days_before_meeting": 2.5,
    "source": "agenda"
   },
   {
@@ -1048,6 +1476,151 @@
    "text_source": "pdf",
    "first_seen": "2026-11-20T12:28:20+00:00",
    "days_before_meeting": 3.5,
+   "source": "agenda"
+  },
+  {
+   "id": "e883aac984f1",
+   "state": "VA",
+   "town": "Botetourt County",
+   "county": "Botetourt",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "battery_storage"
+   ],
+   "snippet": "The Board will consider the reappointment of Mary Bess Smith and John Alderson. Ms. Smith and Mr. Alderson are both willing to serve and if reappointed their terms will expire November 1, 2030. MOTION: That the Board reappoint Mary Bess",
+   "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_11242026-779",
+   "listing_url": "https://www.botetourtva.gov/AgendaCenter/Board-of-Supervisors-3",
+   "document_title": "Board of Supervisors - Regular Meeting",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:15:32+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "d1b88817506a",
+   "state": "VA",
+   "town": "Botetourt County",
+   "county": "Botetourt",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "battery_storage",
+    "solar",
+    "clean_energy_siting"
+   ],
+   "snippet": "for Planning Commission to review the Zoning Ordinance and Comprehensive Plan related to solar energy facilities and battery energy storage systems. (McCoy) 21. Appointments a. Botetourt County CPMT b. Western Virginia Regional Industrial",
+   "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_11242026-779",
+   "listing_url": "https://www.botetourtva.gov/AgendaCenter/Board-of-Supervisors-3",
+   "document_title": "Board of Supervisors - Regular Meeting",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:15:32+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "ac532b316b48",
+   "state": "VA",
+   "town": "Botetourt County",
+   "county": "Botetourt",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "water study and questions previously raised by Supervisor Hartman regarding the Google data center project. She expressed concerns about potential impacts on surrounding communities, citing reports of noise, lighting, construction",
+   "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_11242026-779",
+   "listing_url": "https://www.botetourtva.gov/AgendaCenter/Board-of-Supervisors-3",
+   "document_title": "Board of Supervisors - Regular Meeting",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:15:32+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "9b0beec63637",
+   "state": "VA",
+   "town": "Botetourt County",
+   "county": "Botetourt",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "Amsterdam District, expressed opposition to the proposed Google data center project, citing concerns regarding its potential environmental impacts and the preservation of County resources. She questioned the status of the previously",
+   "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_11242026-779",
+   "listing_url": "https://www.botetourtva.gov/AgendaCenter/Board-of-Supervisors-3",
+   "document_title": "Board of Supervisors - Regular Meeting",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:15:32+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "9acf57b77dde",
+   "state": "VA",
+   "town": "Botetourt County",
+   "county": "Botetourt",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "battery_storage",
+    "solar",
+    "clean_energy_siting"
+   ],
+   "snippet": "for Planning Commission to review the Zoning Ordinance and Comprehensive Plan related to solar energy facilities and battery energy storage systems. Administrator's Comments: The Board of Supervisors authorized the Planning Commission to",
+   "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_11242026-779",
+   "listing_url": "https://www.botetourtva.gov/AgendaCenter/Board-of-Supervisors-3",
+   "document_title": "Board of Supervisors - Regular Meeting",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:15:32+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "762bc0a7fc6d",
+   "state": "VA",
+   "town": "Botetourt County",
+   "county": "Botetourt",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "and the County's decision-making process, particularly concerning the Google data center project. She referenced studies addressing the potential environmental and economic impacts of data centers and urged the Board to conduct independent",
+   "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_11242026-779",
+   "listing_url": "https://www.botetourtva.gov/AgendaCenter/Board-of-Supervisors-3",
+   "document_title": "Board of Supervisors - Regular Meeting",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:15:32+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "2024d15f8265",
+   "state": "VA",
+   "town": "Botetourt County",
+   "county": "Botetourt",
+   "board": "Board of Supervisors",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "wireless_telecom",
+    "zoning_amendment"
+   ],
+   "snippet": "– Supplemental Regulations of the Botetourt County Code to provide regulations for telecommunications towers. STAFF COMMENT: At the special-called October meeting of the Board, the Board adopted zoning amendments regarding",
+   "source_url": "https://www.botetourtva.gov/AgendaCenter/ViewFile/Agenda/_11242026-779",
+   "listing_url": "https://www.botetourtva.gov/AgendaCenter/Board-of-Supervisors-3",
+   "document_title": "Board of Supervisors - Regular Meeting",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:15:32+00:00",
+   "days_before_meeting": 2.5,
    "source": "agenda"
   },
   {
@@ -1437,6 +2010,47 @@
    "source": "agenda"
   },
   {
+   "id": "877f9ad04c50",
+   "state": "MI",
+   "town": "Grand Blanc Charter Township",
+   "county": "Genesee",
+   "board": "Township Board",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "solar",
+    "data_center"
+   ],
+   "snippet": "will consider a Motion to approve Zoning Case #674(X) — Text Amendment for Roof Mounted Solar Energy Systems. d. The Board will consider a Motion to approve Zoning Case #674(Y) — Text Amendment for Data Centers. e. The Board will consider",
+   "source_url": "https://grandblanctwpmi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2111,plainText=false)",
+   "listing_url": "https://grandblanctwpmi.portal.civicclerk.com/event/515/files",
+   "document_title": "Agenda November 24, 2026",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:04:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "3cb9e6c25842",
+   "state": "MD",
+   "town": "Washington County",
+   "county": "Washington",
+   "board": "Board of County Commissioners",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "Request for information on proposed Statewide legislation concerning the regulation of hyperscale data centers 3. Transition of County Treasurer from elected to appointed position. 4. Enhancing protections for local and state officials and",
+   "source_url": "https://www.washco-md.net/wp-content/uploads/11242026-Open-Agenda-PACKET.pdf",
+   "listing_url": "https://www.washco-md.net/county-commissioners/bocc-agendas-and-minutes/",
+   "document_title": "BOCC Meeting Agenda - November 24, 2026",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:03:25+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
    "id": "4cf5be11062f",
    "state": "MA",
    "town": "Whately",
@@ -1454,6 +2068,106 @@
    "text_source": "pdf",
    "first_seen": "2026-11-20T12:12:34+00:00",
    "days_before_meeting": 3.5,
+   "source": "agenda"
+  },
+  {
+   "id": "d60ffde52560",
+   "state": "MA",
+   "town": "Taunton",
+   "county": "Bristol",
+   "board": "City Council",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "based on ICC Building Valuation Data (BVD) Alterations, repairs, foundations, signs, solar, Commercial change of use and occupancy, and all work not otherwise categorized 1.5% of construction cost ($120 minimum; $500,000 maximum)",
+   "source_url": "https://www.taunton-ma.gov/AgendaCenter/ViewFile/Agenda/_11242026-3034",
+   "listing_url": "https://www.taunton-ma.gov/AgendaCenter/City-Council-14",
+   "document_title": "City Council Agenda, November 24, 2026",
+   "text_source": "ocr",
+   "first_seen": "2026-11-21T12:02:43+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "6b27f5735e96",
+   "state": "MA",
+   "town": "Taunton",
+   "county": "Bristol",
+   "board": "City Council",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "Addition, remodel, garage, shed, podulan mobile $100 home (each unit); in-ground pool: solar panels Generators; aboveground pool: single-meter Residential service; work not otherwise categorized (minimum $75 fee) Residential Bemice!",
+   "source_url": "https://www.taunton-ma.gov/AgendaCenter/ViewFile/Agenda/_11242026-3034",
+   "listing_url": "https://www.taunton-ma.gov/AgendaCenter/City-Council-14",
+   "document_title": "City Council Agenda, November 24, 2026",
+   "text_source": "ocr",
+   "first_seen": "2026-11-21T12:02:43+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "08a7a948c164",
+   "state": "MA",
+   "town": "Taunton",
+   "county": "Bristol",
+   "board": "City Council",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "tents, trailers, solid-fuel-burning appliances, decks, 1.2% of construction cost ($52 solar, and all work not otherwise categorized minimum) All Permits All Certificate of occupancy (per unit) $120 All Temporary certificate of occupancy",
+   "source_url": "https://www.taunton-ma.gov/AgendaCenter/ViewFile/Agenda/_11242026-3034",
+   "listing_url": "https://www.taunton-ma.gov/AgendaCenter/City-Council-14",
+   "document_title": "City Council Agenda, November 24, 2026",
+   "text_source": "ocr",
+   "first_seen": "2026-11-21T12:02:43+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "2af482a2e21c",
+   "state": "MA",
+   "town": "Stow",
+   "county": "Middlesex",
+   "board": "Select Board",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "Zoning Article to Prohibit Data Centers 11/17/26 from Planning Board; Stow Comprehensive Plan 2035 and Action Plan 11/17 & 18 from Laura Diamond; Complaint against the Stow Town Manager–inaction and lack of leadership 11/15/26 from Shawn",
+   "source_url": "https://www.stow-ma.gov/AgendaCenter/ViewFile/Agenda/_11242026-570",
+   "listing_url": "https://www.stow-ma.gov/AgendaCenter/Select-Board-12",
+   "document_title": "Select Board Agenda",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:02:38+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "767dbb202de2",
+   "state": "MA",
+   "town": "Somerville",
+   "county": "Middlesex",
+   "board": "City Council",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "items #26-1509, #26-1510, #26-1511, and #26-1512 requesting zoning amendments. Not available Not available 26-1693 1 9.13. Public Communication Ethan Dussault and Ami Bennitt submitting comments re: item #26-1480, Boynton Yards LandCo LLC",
+   "source_url": "https://somervillema.legistar.com/MeetingDetail.aspx?LEGID=4085&GID=910&G=2A86634D-1000-44A7-991A-A4C8C0762B41",
+   "listing_url": "https://somervillema.legistar.com/Calendar.aspx",
+   "document_title": "City Council 2026-11-24 agenda items",
+   "text_source": "html",
+   "first_seen": "2026-11-21T12:02:17+00:00",
+   "days_before_meeting": 2.5,
    "source": "agenda"
   },
   {
@@ -1761,6 +2475,86 @@
    "source": "agenda"
   },
   {
+   "id": "3bc1b2245ecd",
+   "state": "MA",
+   "town": "Lancaster",
+   "county": "Worcester",
+   "board": "Conservation Commission",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "Continued Notice of Intent – 241 Chace Hill Rd, installation of a ground-mounted solar system, underground conduit and related components within Riverfront Area. Previously continued to December 8, 2026. Discussion - - Regulation Updates",
+   "source_url": "https://www.ci.lancaster.ma.us/AgendaCenter/ViewFile/Agenda/_11242026-1698",
+   "listing_url": "https://www.ci.lancaster.ma.us/AgendaCenter/Conservation-Commission-9",
+   "document_title": "Conservation Commission Meeting Agenda",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:01:44+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "d0699ab5d2c0",
+   "state": "MA",
+   "town": "Greenfield",
+   "county": "Franklin",
+   "board": "Conservation Commission",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "Other Business & Enforcement Updates ➢ New Business o Leary Well Zoning Amendment Discussion – A Zoning Amendment Proposal was initiated with the Planning Board and the Economic Development Committee to remove the Water Supply Protection",
+   "source_url": "https://www.greenfield-ma.gov/2026-11-24-Conservation-Commission-Agenda.pdf",
+   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/conservation_commission.php",
+   "document_title": "Agenda",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:01:24+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "82e440be6d2c",
+   "state": "MA",
+   "town": "Greenfield",
+   "county": "Franklin",
+   "board": "Conservation Commission",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "wireless_telecom"
+   ],
+   "snippet": "building o 112 Newton Street (DEP#: 168-0352, Expires: 3/24/2026, Extension: 3/24/2028) Monopole cell tower installation o Route 2 and Colrain Rd (DEP#: 168-0355 Expires: 5/24/2026, Extension: 5/24/2028) Roadway improvements o 340 Leyden",
+   "source_url": "https://www.greenfield-ma.gov/2026-11-24-Conservation-Commission-Agenda.pdf",
+   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/conservation_commission.php",
+   "document_title": "Agenda",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:01:24+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "4caac2f03315",
+   "state": "MA",
+   "town": "Greenfield",
+   "county": "Franklin",
+   "board": "Conservation Commission",
+   "board_key": "conservation_commission",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "solar"
+   ],
+   "snippet": "o 340 Leyden Road (DEP#: 168-0357 Expires: 10/25/2026, Extension: 10/25/2028) Solar installation o Shelburne Road (DEP#: 168-0358 Expires: 1/24/2027, Extension: 1/24/2029) Culvert replacement o Pickett Lane (Local, Expires: 3/1/2027",
+   "source_url": "https://www.greenfield-ma.gov/2026-11-24-Conservation-Commission-Agenda.pdf",
+   "listing_url": "https://www.greenfield-ma.gov/government/boards_and_commissions/conservation_commission.php",
+   "document_title": "Agenda",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:01:24+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
    "id": "d96b8824f049",
    "state": "MA",
    "town": "Gloucester",
@@ -1778,6 +2572,110 @@
    "text_source": "ocr",
    "first_seen": "2026-11-20T12:09:05+00:00",
    "days_before_meeting": 3.5,
+   "source": "agenda"
+  },
+  {
+   "id": "dcc059991f05",
+   "state": "MA",
+   "town": "Fitchburg",
+   "county": "Worcester",
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "The petition defines a large-scale data center as a facility primarily used for computer servers, data storage, or high-density computing infrastructure, including artificial intelligence, blockchain, or cryptocurrency operations, with a",
+   "source_url": "https://www.fitchburgma.gov/AgendaCenter/ViewFile/Agenda/_11242026-5499",
+   "listing_url": "https://www.fitchburgma.gov/AgendaCenter/Planning-Board-10",
+   "document_title": "Planning Board Regular Meeting Agenda November 24, 2026",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:01:23+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "a8868e22b40a",
+   "state": "MA",
+   "town": "Fitchburg",
+   "county": "Worcester",
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "moratorium",
+    "data_center",
+    "zoning_amendment"
+   ],
+   "snippet": "160-26 — Temporary Moratorium on Large-Scale Data Centers. The proposed amendment would establish a temporary moratorium for up to twelve months following its effective date or until permanent zoning amendments are adopted, whichever",
+   "source_url": "https://www.fitchburgma.gov/AgendaCenter/ViewFile/Agenda/_11242026-5499",
+   "listing_url": "https://www.fitchburgma.gov/AgendaCenter/Planning-Board-10",
+   "document_title": "Planning Board Regular Meeting Agenda November 24, 2026",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:01:23+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "8dda4b28110a",
+   "state": "MA",
+   "town": "Fitchburg",
+   "county": "Worcester",
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "moratorium",
+    "zoning_amendment"
+   ],
+   "snippet": "moratorium, for up to twelve months following its effective date or until permanent zoning amendments are adopted, whichever occurs first. During that period, municipal applications and approvals would be paused for the establishment of a",
+   "source_url": "https://www.fitchburgma.gov/AgendaCenter/ViewFile/Agenda/_11242026-5499",
+   "listing_url": "https://www.fitchburgma.gov/AgendaCenter/Planning-Board-10",
+   "document_title": "Planning Board Regular Meeting Agenda November 24, 2026",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:01:23+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "5f5234bfcc8a",
+   "state": "MA",
+   "town": "Fitchburg",
+   "county": "Worcester",
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "battery_storage",
+    "moratorium"
+   ],
+   "snippet": "159-26 — Temporary Moratorium on Locally Regulated Commercial Battery Energy Storage Systems (LRCBESS). The proposed amendment would establish a temporary moratorium, for up to twelve months following its effective date or until permanent",
+   "source_url": "https://www.fitchburgma.gov/AgendaCenter/ViewFile/Agenda/_11242026-5499",
+   "listing_url": "https://www.fitchburgma.gov/AgendaCenter/Planning-Board-10",
+   "document_title": "Planning Board Regular Meeting Agenda November 24, 2026",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:01:23+00:00",
+   "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "29dda97f935c",
+   "state": "MA",
+   "town": "Fitchburg",
+   "county": "Worcester",
+   "board": "Planning Board",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-24",
+   "topics": [
+    "battery_storage"
+   ],
+   "snippet": "municipal applications and approvals would be paused for the establishment of a new LRC-BESS, expansion of an existing LRC-BESS, or conversion of a structure or property to an LRC-BESS use. The petition defines an LRC-BESS generally as a",
+   "source_url": "https://www.fitchburgma.gov/AgendaCenter/ViewFile/Agenda/_11242026-5499",
+   "listing_url": "https://www.fitchburgma.gov/AgendaCenter/Planning-Board-10",
+   "document_title": "Planning Board Regular Meeting Agenda November 24, 2026",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:01:23+00:00",
+   "days_before_meeting": 2.5,
    "source": "agenda"
   },
   {
@@ -2201,6 +3099,46 @@
    "text_source": "pdf",
    "first_seen": "2026-11-20T12:16:20+00:00",
    "days_before_meeting": 2.5,
+   "source": "agenda"
+  },
+  {
+   "id": "ffadd4fb5bde",
+   "state": "MI",
+   "town": "York Charter Township",
+   "county": "Washtenaw",
+   "board": "Planning Commission Agendas & Minutes",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-23",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "Hydro-Geological studies and Air Quality standards for potential inclusion into the Data Center Ordinance. This notice is posted in compliance with the Open Meetings Act, Public Act 267 of 1976, as amended, (MCL 41.72a(2)(3)) and the",
+   "source_url": "https://www.twp-york.org/Boards and Commissions/Planning Commission/PC Special Meeting Notice 11.23.26.docx",
+   "listing_url": "https://www.twp-york.org/government/boards_commissions_/planning_commission/agendas___minutes.php",
+   "document_title": "Packet",
+   "text_source": "docx",
+   "first_seen": "2026-11-21T12:05:35+00:00",
+   "days_before_meeting": 1.5,
+   "source": "agenda"
+  },
+  {
+   "id": "82c685cc263b",
+   "state": "MI",
+   "town": "York Charter Township",
+   "county": "Washtenaw",
+   "board": "Planning Commission Agendas & Minutes",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-23",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "Hydro-Geological studies and Air Quality standards for potential inclusion into the Data Center Ordinance. Final Call to Public Next regular meeting: December 14th, 2026, at 7:00 p.m. Adjournment",
+   "source_url": "https://www.twp-york.org/PC Agenda 11-23-26.docx",
+   "listing_url": "https://www.twp-york.org/government/boards_commissions_/planning_commission/agendas___minutes.php",
+   "document_title": "Agenda",
+   "text_source": "docx",
+   "first_seen": "2026-11-21T12:05:35+00:00",
+   "days_before_meeting": 1.5,
    "source": "agenda"
   },
   {
@@ -4506,6 +5444,26 @@
    "text_source": "pdf",
    "first_seen": "2026-11-20T12:12:40+00:00",
    "days_before_meeting": -1.5,
+   "source": "agenda"
+  },
+  {
+   "id": "409f9b76431d",
+   "state": "MA",
+   "town": "Ware",
+   "county": "Hampshire",
+   "board": "Planning Board Meetings",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-19",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "& discussion for future proposal from 11-5-2026 Planning Board meeting e The role of Data Centers in the Town of Ware — Continued discussion of potential by-laws and proactive measures for the Town e Subdivision Regulations — Review of pg.",
+   "source_url": "https://www.townofware.com/PB Agenda 11-19-2026.pdf",
+   "listing_url": "https://www.townofware.com/departments/planning_department/PB_meeting_materials.php",
+   "document_title": "11-19 Agenda",
+   "text_source": "ocr",
+   "first_seen": "2026-11-21T12:02:50+00:00",
+   "days_before_meeting": -2.5,
    "source": "agenda"
   },
   {
@@ -7701,6 +8659,26 @@
    "text_source": "pdf",
    "first_seen": "2026-11-13T12:07:37+00:00",
    "days_before_meeting": 4.5,
+   "source": "agenda"
+  },
+  {
+   "id": "9caccdc3a99e",
+   "state": "MA",
+   "town": "Boston",
+   "county": "Suffolk",
+   "board": "City Council",
+   "board_key": "select_board",
+   "meeting_date": "2026-11-18",
+   "topics": [
+    "battery_storage"
+   ],
+   "snippet": "was received from Councilor Flynn regarding public safety and storage of lithium ion batteries in electric scooters. Placed on file. Action details Video 2026-2149 1 Report of Public Officer Communication was received from Councilors",
+   "source_url": "https://boston.legistar.com/MeetingDetail.aspx?LEGID=14289&GID=847&G=AC4A50E2-9128-4EA8-8ACF-04F7A6E02E82",
+   "listing_url": "https://boston.legistar.com/Calendar.aspx",
+   "document_title": "City Council 2026-11-18 agenda items",
+   "text_source": "html",
+   "first_seen": "2026-11-21T12:00:56+00:00",
+   "days_before_meeting": -3.5,
    "source": "agenda"
   },
   {
@@ -23977,6 +24955,26 @@
    "text_source": "docx",
    "first_seen": "2026-10-30T11:13:57+00:00",
    "days_before_meeting": 5.5,
+   "source": "agenda"
+  },
+  {
+   "id": "04fc066ff982",
+   "state": "MA",
+   "town": "Ware",
+   "county": "Hampshire",
+   "board": "Planning Board Meetings",
+   "board_key": "planning_board",
+   "meeting_date": "2026-11-05",
+   "topics": [
+    "data_center"
+   ],
+   "snippet": "& discussion for future proposal - Road Plow list for winter 2026/2027 - The role of Data Centers in the Town of Ware – discussion of potential by-laws and proactive measures for the Town - Subdivision Regulations – Review of Old Business",
+   "source_url": "https://www.townofware.com/11-5-2026 PB agenda.pdf",
+   "listing_url": "https://www.townofware.com/departments/planning_department/PB_meeting_materials.php",
+   "document_title": "11-5 Agenda",
+   "text_source": "pdf",
+   "first_seen": "2026-11-21T12:02:48+00:00",
+   "days_before_meeting": -16.5,
    "source": "agenda"
   },
   {
@@ -76042,64 +77040,6 @@
    "source": "agenda"
   },
   {
-   "id": "ab1d67bee1be",
-   "state": "MA",
-   "town": "Gill",
-   "county": "Franklin",
-   "board": "Town Meetings",
-   "board_key": "town_meeting",
-   "meeting_date": null,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "(A 2/3 majority vote is required to amend the Zoning Bylaws.) 1. Amend Section 2C, Table of Use Regulations to change the label of item 1.e from \"Accessory Apartment\" to \"Accessory Dwelling Unit\"; and 2. Create a new Section 4, Accessory",
-   "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
-   "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
-   "document_title": "2026-0504 ATM Warrant.pdf",
-   "text_source": "pdf",
-   "first_seen": "2026-10-10T18:41:19+00:00",
-   "source": "agenda"
-  },
-  {
-   "id": "a8c4462ca8a8",
-   "state": "MA",
-   "town": "Gill",
-   "county": "Franklin",
-   "board": "Town Meetings",
-   "board_key": "town_meeting",
-   "meeting_date": null,
-   "topics": [
-    "battery_storage",
-    "data_center"
-   ],
-   "snippet": "see if the Town will vote to revise its Zoning Bylaws to allow for Building-Integrated Energy Storage Systems (BESS) and Data Centers by amending or adding the following sections, or take any action relative thereto. (A 2/3 majority vote",
-   "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
-   "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
-   "document_title": "2026-0504 ATM Warrant.pdf",
-   "text_source": "pdf",
-   "first_seen": "2026-10-10T18:41:19+00:00",
-   "source": "agenda"
-  },
-  {
-   "id": "871b225a8e6f",
-   "state": "MA",
-   "town": "Gill",
-   "county": "Franklin",
-   "board": "Town Meetings",
-   "board_key": "town_meeting",
-   "meeting_date": null,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "Copies of the complete text of the proposed Zoning Bylaw amendment are available at the Town Hall during its regular business hours, on the Town website at www.gillmass.org/, and as handouts at Town Meeting. Article 5: To see if the Town",
-   "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
-   "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
-   "document_title": "2026-0504 ATM Warrant.pdf",
-   "text_source": "pdf",
-   "first_seen": "2026-10-10T18:41:19+00:00",
-   "source": "agenda"
-  },
-  {
    "id": "4048d38b3d02",
    "state": "MA",
    "town": "Gill",
@@ -76111,25 +77051,6 @@
     "zoning_amendment"
    ],
    "snippet": "(A 2/3 majority vote is required to amend the Zoning Bylaws.) 1. Delete in its entirety the existing Section 15, Flood Plain Regulations; and 2. Create a new Section 15, Floodplain Regulations to establish the purpose; district",
-   "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
-   "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
-   "document_title": "2026-0504 ATM Warrant.pdf",
-   "text_source": "pdf",
-   "first_seen": "2026-10-10T18:41:19+00:00",
-   "source": "agenda"
-  },
-  {
-   "id": "2f539047eb86",
-   "state": "MA",
-   "town": "Gill",
-   "county": "Franklin",
-   "board": "Town Meetings",
-   "board_key": "town_meeting",
-   "meeting_date": null,
-   "topics": [
-    "zoning_amendment"
-   ],
-   "snippet": "(A 2/3 majority vote is required to amend the Zoning Bylaws.) 1. Amend Section 2C, Table of Use Regulations to change the label of item 1.f from \"Trailer Park or Mobile Home\" to \"Manufactured Housing Community or Manufactured Home\"; and 2.",
    "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
    "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
    "document_title": "2026-0504 ATM Warrant.pdf",
@@ -76151,27 +77072,6 @@
     "zoning_amendment"
    ],
    "snippet": "Building-Integrated Energy Storage Systems (BESS) and Data Centers\" and is dated April 16, 2026. Copies of the complete text of the proposed Zoning Bylaw amendment are available at the Town Hall during its regular business hours, on the",
-   "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
-   "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
-   "document_title": "2026-0504 ATM Warrant.pdf",
-   "text_source": "pdf",
-   "first_seen": "2026-10-10T18:41:19+00:00",
-   "source": "agenda"
-  },
-  {
-   "id": "11ac767e7479",
-   "state": "MA",
-   "town": "Gill",
-   "county": "Franklin",
-   "board": "Town Meetings",
-   "board_key": "town_meeting",
-   "meeting_date": null,
-   "topics": [
-    "battery_storage",
-    "moratorium",
-    "data_center"
-   ],
-   "snippet": "Create a new Section 18, Building-Integrated Energy Storage Systems (BESS) and Data Centers to establish a one-year moratorium on Building-Integrated Energy Storage Systems (BESS) having an aggregate energy capacity equal to or greater",
    "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
    "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
    "document_title": "2026-0504 ATM Warrant.pdf",

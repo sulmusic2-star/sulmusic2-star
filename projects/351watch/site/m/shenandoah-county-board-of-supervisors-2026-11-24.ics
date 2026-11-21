@@ -1,0 +1,41 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-shenandoah-county-board-of-supervisors-2026-11-24@agendaahead
+DTSTAMP:20261121T120000Z
+DTSTART;TZID=America/New_York:20261124T190000
+DTEND;TZID=America/New_York:20261124T210000
+SUMMARY:Shenandoah County Board of Supervisors: Discusses data-center rules
+  (no vote listed).
+LOCATION:Shenandoah County\, VA
+DESCRIPTION:• Discusses data-center rules (no vote listed).\n• Discusse
+ s data-center rules (no vote listed).\n• Discusses data-center rules (no
+  vote listed).\n• Discusses an item on data-center rules (no vote listed
+ ).\n\nAgenda: https://www.shenandoahcountyva.gov/AgendaCenter/ViewFile/Age
+ nda/_11242026-755\nPage: https://agendaahead.vercel.app/m/shenandoah-count
+ y-board-of-supervisors-2026-11-24\nConfirm the time and place with the tow
+ n\; agendas can change.
+URL:https://agendaahead.vercel.app/m/shenandoah-county-board-of-supervisors
+ -2026-11-24
+END:VEVENT
+END:VCALENDAR

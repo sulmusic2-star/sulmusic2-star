@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:m-smithtown-board-of-zoning-appeals-2026-12-15@agendaahead
+DTSTAMP:20261121T120000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Smithtown Board of Zoning Appeals: Holds a hearing on a setback var
+ iance for a ground-mounted solar array.
+LOCATION:4 Oakfield Road\, Smithtown\, NY
+DESCRIPTION:• Holds a hearing on a setback variance for a ground-mounted 
+ solar array.\n\nAgenda: https://smithtownny.api.civicclerk.com/v1/Meetings
+ /GetMeetingFileStream(fileId=11615\,plainText=false)\nPage: https://agenda
+ ahead.vercel.app/m/smithtown-board-of-zoning-appeals-2026-12-15\nConfirm t
+ he time and place with the town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/smithtown-board-of-zoning-appeals-2026
+ -12-15
+END:VEVENT
+END:VCALENDAR
