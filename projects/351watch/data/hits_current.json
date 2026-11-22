@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-22T12:16:22+00:00",
+ "generated": "2026-11-22T19:35:10+00:00",
  "window": {
   "start": "2026-07-25",
   "end": "2027-03-22"
@@ -1704,7 +1704,7 @@
    "source": "agenda"
   },
   {
-   "id": "fe9afbf8c542",
+   "id": "3ed60ed530e4",
    "state": "NY",
    "town": "Mount Pleasant",
    "county": "Westchester",
@@ -1714,33 +1714,13 @@
    "topics": [
     "solar"
    ],
-   "snippet": "Budgetary Transfers RESOLUTION Councilman Sialiano 1. Purchase Order 30-26-20: Elan City Solar Radar Speed Sign Set RESOLUTION 2. Purchase Order 30-26-21: Garage Door Operator for Bay #1 at Traffic Safety Garage Councilwoman Wind VII. Town",
-   "source_url": "https://mountpleasantny.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2221,plainText=false)",
+   "snippet": "Transfers RESOLUTION 432-26 Councilman Sialiano 1. Purchase Order 30-26-20: Elan City Solar Radar Speed Sign Set RESOLUTION 433-26 2. Purchase Order 30-26-21: Garage Door Operator for Bay #1 at Traffic Safety Garage RESOLUTION 434-26",
+   "source_url": "https://mountpleasantny.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2230,plainText=false)",
    "listing_url": "https://mountpleasantny.portal.civicclerk.com/event/393/files",
-   "document_title": "Work Session Agenda 11.17.2026",
+   "document_title": "Town Board Agenda 11.24.2026",
    "text_source": "pdf",
-   "first_seen": "2026-11-20T12:15:23+00:00",
-   "days_before_meeting": 3.5,
-   "source": "agenda"
-  },
-  {
-   "id": "c93628412b3c",
-   "state": "NY",
-   "town": "Mount Pleasant",
-   "county": "Westchester",
-   "board": "Town Board",
-   "board_key": "select_board",
-   "meeting_date": "2026-11-24",
-   "topics": [
-    "wireless_telecom"
-   ],
-   "snippet": "No. 26 November 24, 2026 I. Work Session Presentations - November 17, 2026 1. II. III. Cell Tower Proposal for Highway Department TAG Towers of New York, Inc., Joy Mooney-Graziano Public Hearings 1. Continued Public Hearing to Amend Town",
-   "source_url": "https://mountpleasantny.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2221,plainText=false)",
-   "listing_url": "https://mountpleasantny.portal.civicclerk.com/event/393/files",
-   "document_title": "Work Session Agenda 11.17.2026",
-   "text_source": "pdf",
-   "first_seen": "2026-11-20T12:15:23+00:00",
-   "days_before_meeting": 3.5,
+   "first_seen": "2026-11-22T19:33:57+00:00",
+   "days_before_meeting": 1.2,
    "source": "agenda"
   },
   {
@@ -77040,6 +77020,64 @@
    "source": "agenda"
   },
   {
+   "id": "ab1d67bee1be",
+   "state": "MA",
+   "town": "Gill",
+   "county": "Franklin",
+   "board": "Town Meetings",
+   "board_key": "town_meeting",
+   "meeting_date": null,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "(A 2/3 majority vote is required to amend the Zoning Bylaws.) 1. Amend Section 2C, Table of Use Regulations to change the label of item 1.e from \"Accessory Apartment\" to \"Accessory Dwelling Unit\"; and 2. Create a new Section 4, Accessory",
+   "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
+   "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
+   "document_title": "2026-0504 ATM Warrant.pdf",
+   "text_source": "pdf",
+   "first_seen": "2026-10-10T18:41:19+00:00",
+   "source": "agenda"
+  },
+  {
+   "id": "a8c4462ca8a8",
+   "state": "MA",
+   "town": "Gill",
+   "county": "Franklin",
+   "board": "Town Meetings",
+   "board_key": "town_meeting",
+   "meeting_date": null,
+   "topics": [
+    "battery_storage",
+    "data_center"
+   ],
+   "snippet": "see if the Town will vote to revise its Zoning Bylaws to allow for Building-Integrated Energy Storage Systems (BESS) and Data Centers by amending or adding the following sections, or take any action relative thereto. (A 2/3 majority vote",
+   "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
+   "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
+   "document_title": "2026-0504 ATM Warrant.pdf",
+   "text_source": "pdf",
+   "first_seen": "2026-10-10T18:41:19+00:00",
+   "source": "agenda"
+  },
+  {
+   "id": "871b225a8e6f",
+   "state": "MA",
+   "town": "Gill",
+   "county": "Franklin",
+   "board": "Town Meetings",
+   "board_key": "town_meeting",
+   "meeting_date": null,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "Copies of the complete text of the proposed Zoning Bylaw amendment are available at the Town Hall during its regular business hours, on the Town website at www.gillmass.org/, and as handouts at Town Meeting. Article 5: To see if the Town",
+   "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
+   "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
+   "document_title": "2026-0504 ATM Warrant.pdf",
+   "text_source": "pdf",
+   "first_seen": "2026-10-10T18:41:19+00:00",
+   "source": "agenda"
+  },
+  {
    "id": "4048d38b3d02",
    "state": "MA",
    "town": "Gill",
@@ -77051,6 +77089,25 @@
     "zoning_amendment"
    ],
    "snippet": "(A 2/3 majority vote is required to amend the Zoning Bylaws.) 1. Delete in its entirety the existing Section 15, Flood Plain Regulations; and 2. Create a new Section 15, Floodplain Regulations to establish the purpose; district",
+   "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
+   "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
+   "document_title": "2026-0504 ATM Warrant.pdf",
+   "text_source": "pdf",
+   "first_seen": "2026-10-10T18:41:19+00:00",
+   "source": "agenda"
+  },
+  {
+   "id": "2f539047eb86",
+   "state": "MA",
+   "town": "Gill",
+   "county": "Franklin",
+   "board": "Town Meetings",
+   "board_key": "town_meeting",
+   "meeting_date": null,
+   "topics": [
+    "zoning_amendment"
+   ],
+   "snippet": "(A 2/3 majority vote is required to amend the Zoning Bylaws.) 1. Amend Section 2C, Table of Use Regulations to change the label of item 1.f from \"Trailer Park or Mobile Home\" to \"Manufactured Housing Community or Manufactured Home\"; and 2.",
    "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
    "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
    "document_title": "2026-0504 ATM Warrant.pdf",
@@ -77072,6 +77129,27 @@
     "zoning_amendment"
    ],
    "snippet": "Building-Integrated Energy Storage Systems (BESS) and Data Centers\" and is dated April 16, 2026. Copies of the complete text of the proposed Zoning Bylaw amendment are available at the Town Hall during its regular business hours, on the",
+   "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
+   "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
+   "document_title": "2026-0504 ATM Warrant.pdf",
+   "text_source": "pdf",
+   "first_seen": "2026-10-10T18:41:19+00:00",
+   "source": "agenda"
+  },
+  {
+   "id": "11ac767e7479",
+   "state": "MA",
+   "town": "Gill",
+   "county": "Franklin",
+   "board": "Town Meetings",
+   "board_key": "town_meeting",
+   "meeting_date": null,
+   "topics": [
+    "battery_storage",
+    "moratorium",
+    "data_center"
+   ],
+   "snippet": "Create a new Section 18, Building-Integrated Energy Storage Systems (BESS) and Data Centers to establish a one-year moratorium on Building-Integrated Energy Storage Systems (BESS) having an aggregate energy capacity equal to or greater",
    "source_url": "https://www.gillmass.org/files/2026-0504_ATM_Warrant.pdf",
    "listing_url": "https://www.gillmass.org/f/0/58/Town-Meetings",
    "document_title": "2026-0504 ATM Warrant.pdf",
