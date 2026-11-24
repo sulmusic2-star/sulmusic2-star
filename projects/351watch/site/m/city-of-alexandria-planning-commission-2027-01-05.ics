@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-city-of-alexandria-planning-commission-2027-01-05@agendaahead
+DTSTAMP:20261124T120000Z
+DTSTART;TZID=America/New_York:20270105T190000
+DTEND;TZID=America/New_York:20270105T210000
+SUMMARY:City of Alexandria Planning Commission: Holds a hearing on a zoning
+  change.
+LOCATION:Council Chambers\, or join online\, City of Alexandria\, VA
+DESCRIPTION:• Holds a hearing on a zoning change.\n\nAgenda: https://alex
+ andria.legistar.com/MeetingDetail.aspx?LEGID=2745&GID=239&G=188E7221-51C6-
+ 4DB4-965D-DA161BCFB1F6\nPage: https://agendaahead.vercel.app/m/city-of-ale
+ xandria-planning-commission-2027-01-05\nConfirm the time and place with th
+ e town\; agendas can change.
+URL:https://agendaahead.vercel.app/m/city-of-alexandria-planning-commission
+ -2027-01-05
+END:VEVENT
+END:VCALENDAR
