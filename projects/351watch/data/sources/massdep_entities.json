@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24T19:32:09+00:00",
+ "generated": "2026-11-25T12:11:12+00:00",
  "source": "massdep_wetlands",
  "scope": "energy and data-center related wetlands filings (same set as massdep_hits.json); top_third_party_payors_all_filings covers every filing",
  "link_types": {
@@ -17,7 +17,7 @@
   {
    "parent": "National Grid (New England Power / Mass. Electric)",
    "kind": "utility",
-   "filings": 38,
+   "filings": 39,
    "project_applicants": [
     "MASSACHUSETTS ELECTRIC COMPANY",
     "NEP",
@@ -98,10 +98,10 @@
     "Winchendon"
    ],
    "categories": {
-    "transmission_substation": 38
+    "transmission_substation": 39
    },
    "links": {
-    "applicant_name": 37,
+    "applicant_name": 38,
     "description_mention": 1
    },
    "consultants": [],
@@ -371,7 +371,7 @@
      "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
     },
     {
-     "dep_file_number": null,
+     "dep_file_number": "135-0316",
      "town": "Clinton",
      "applicant": "NEW ENGLAND POWER COMPANY (NEP)",
      "received_date": "2026-10-19",
@@ -409,6 +409,14 @@
      "received_date": "2026-11-12",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213928",
      "evidence": "applicant name 'NEP' matches National Grid (New England Power / Mass. Electric)"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Millbury",
+     "applicant": "NEW ENGLAND POWER COMPANY",
+     "received_date": "2026-11-24",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/214155",
+     "evidence": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)"
     }
    ],
    "distinct_applicants": 7,
@@ -419,13 +427,14 @@
   {
    "parent": "New Leaf Energy",
    "kind": "developer",
-   "filings": 8,
+   "filings": 9,
    "project_applicants": [
     "FEDERAL FURNACE ROAD SOLAR 1, LLC",
     "FEDERAL FURNANCE ROAD SOLAR 1, LLC",
     "GOLDEN POND SOLAR 1, LLC",
     "HIGH STREET SOLAR 1, LLC & HIGH STREET SOLAR 2, LLC",
     "NEW LEAF ENERGY, INC",
+    "NEW LEAF ENERGY, INC.",
     "WALNUT PLAIN ROAD SOLAR 1, LLC",
     "WAREHAM STREET SOLAR 2, LLC"
    ],
@@ -436,20 +445,23 @@
     "Carver: WAREHAM ST",
     "Plymouth: 737R FEDERAL FURNACE RD",
     "Rochester: HIGH ST",
-    "Rochester: WALNUT PLAIN RD"
+    "Rochester: WALNUT PLAIN RD",
+    "Royalston: 4 STOCKWELL RD"
    ],
    "towns": [
     "Carver",
     "Plymouth",
-    "Rochester"
+    "Rochester",
+    "Royalston"
    ],
    "categories": {
     "solar": 5,
-    "solar_and_storage": 3
+    "solar_and_storage": 3,
+    "developer_other": 1
    },
    "links": {
     "payor": 7,
-    "applicant_name": 1
+    "applicant_name": 2
    },
    "consultants": [],
    "dep_files": [
@@ -516,10 +528,18 @@
      "received_date": "2026-08-17",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/212715",
      "evidence": "filing fee paid by 'NEW LEAF ENERGY'"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Royalston",
+     "applicant": "NEW LEAF ENERGY, INC.",
+     "received_date": "2026-11-24",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/214147",
+     "evidence": "applicant name 'NEW LEAF ENERGY, INC.' matches New Leaf Energy"
     }
    ],
-   "distinct_applicants": 7,
-   "distinct_sites": 7,
+   "distinct_applicants": 8,
+   "distinct_sites": 8,
    "in_target_list": true,
    "target_segment": "solar; storage"
   },
@@ -1252,7 +1272,7 @@
    "parent_kind": "utility",
    "link": "applicant_name",
    "confidence": "high",
-   "filings": 20,
+   "filings": 21,
    "towns": [
     "Attleboro",
     "Ayer",
@@ -1274,7 +1294,7 @@
    "payors": [],
    "consultants": [],
    "categories": {
-    "transmission_substation": 20
+    "transmission_substation": 21
    },
    "evidence": [
     {
@@ -1476,6 +1496,16 @@
      "link": "applicant_name",
      "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213914"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Millbury",
+     "received_date": "2026-11-24",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW ENGLAND POWER COMPANY' matches National Grid (New England Power / Mass. Electric)",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/214155"
     }
    ],
    "shares_contact_with": [
@@ -1580,7 +1610,7 @@
      "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/213381"
     },
     {
-     "dep_file_number": null,
+     "dep_file_number": "135-0316",
      "town": "Clinton",
      "received_date": "2026-10-19",
      "filing_type": "Notice of Intent",
@@ -2122,6 +2152,50 @@
    ]
   },
   {
+   "applicant": "NEW LEAF ENERGY, INC",
+   "parent": "New Leaf Energy",
+   "parent_kind": "developer",
+   "link": "applicant_name",
+   "confidence": "high",
+   "filings": 2,
+   "towns": [
+    "Carver",
+    "Royalston"
+   ],
+   "payors": [],
+   "consultants": [],
+   "categories": {
+    "solar": 1,
+    "developer_other": 1
+   },
+   "evidence": [
+    {
+     "dep_file_number": "126-0708",
+     "town": "Carver",
+     "received_date": "2026-05-14",
+     "filing_type": "Notice of Intent",
+     "payor": "NEW LEAF ENERGY, INC",
+     "link": "applicant_name",
+     "how": "applicant name 'NEW LEAF ENERGY, INC' matches New Leaf Energy",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211471"
+    },
+    {
+     "dep_file_number": null,
+     "town": "Royalston",
+     "received_date": "2026-11-24",
+     "filing_type": "Notice of Intent (buffer zone only)",
+     "payor": null,
+     "link": "applicant_name",
+     "how": "applicant name 'NEW LEAF ENERGY, INC.' matches New Leaf Energy",
+     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/214147"
+    }
+   ],
+   "shares_contact_with": [
+    "FEDERAL FURNACE ROAD SOLAR 1, LLC",
+    "LOWELL STREET STORAGE 1, LLC"
+   ]
+  },
+  {
    "applicant": "[individual]",
    "parent": "National Grid (New England Power / Mass. Electric)",
    "parent_kind": "utility",
@@ -2520,38 +2594,6 @@
     }
    ],
    "shares_contact_with": []
-  },
-  {
-   "applicant": "NEW LEAF ENERGY, INC",
-   "parent": "New Leaf Energy",
-   "parent_kind": "developer",
-   "link": "applicant_name",
-   "confidence": "high",
-   "filings": 1,
-   "towns": [
-    "Carver"
-   ],
-   "payors": [],
-   "consultants": [],
-   "categories": {
-    "solar": 1
-   },
-   "evidence": [
-    {
-     "dep_file_number": "126-0708",
-     "town": "Carver",
-     "received_date": "2026-05-14",
-     "filing_type": "Notice of Intent",
-     "payor": "NEW LEAF ENERGY, INC",
-     "link": "applicant_name",
-     "how": "applicant name 'NEW LEAF ENERGY, INC' matches New Leaf Energy",
-     "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/211471"
-    }
-   ],
-   "shares_contact_with": [
-    "FEDERAL FURNACE ROAD SOLAR 1, LLC",
-    "LOWELL STREET STORAGE 1, LLC"
-   ]
   },
   {
    "applicant": "NSTAR ELECTRIC DBA EVERSOURCE",
@@ -3379,7 +3421,7 @@
  "top_third_party_payors_all_filings": [
   {
    "payor": "ZENITH ENG",
-   "filings": 47,
+   "filings": 48,
    "towns": 19,
    "kind": "consultant"
   },
@@ -3522,15 +3564,15 @@
    "kind": "consultant"
   },
   {
-   "payor": "BLUEFLAX DESIGN",
+   "payor": "BRACKEN ENG",
    "filings": 10,
-   "towns": 6,
+   "towns": 1,
    "kind": "consultant"
   },
   {
-   "payor": "BRACKEN ENG",
-   "filings": 9,
-   "towns": 1,
+   "payor": "BLUEFLAX DESIGN",
+   "filings": 10,
+   "towns": 6,
    "kind": "consultant"
   },
   {

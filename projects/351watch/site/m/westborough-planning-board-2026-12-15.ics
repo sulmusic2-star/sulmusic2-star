@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-westborough-planning-board-2026-12-15@agendaahead
+DTSTAMP:20261125T120000Z
+DTSTART;TZID=America/New_York:20261215T183000
+DTEND;TZID=America/New_York:20261215T203000
+SUMMARY:Westborough Planning Board: Discusses a Town Meeting article about 
+ zoning changes (no vote listed).
+LOCATION:Westborough\, MA
+DESCRIPTION:• Discusses a Town Meeting article about zoning changes (no v
+ ote listed).\n\nAgenda: https://www.westboroughma.gov/AgendaCenter/ViewFil
+ e/Agenda/_12152026-2853\nPage: https://agendaahead.vercel.app/m/westboroug
+ h-planning-board-2026-12-15\nConfirm the time and place with the town\; ag
+ endas can change.
+URL:https://agendaahead.vercel.app/m/westborough-planning-board-2026-12-15
+END:VEVENT
+END:VCALENDAR
