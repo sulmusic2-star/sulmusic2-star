@@ -1,56 +1,50 @@
 {
  "by_state": {
   "MA": {
-   "new_documents": 142,
-   "new_hits": 125,
-   "towns_attempted": 243,
-   "towns_succeeded": 241
+   "new_documents": 1,
+   "new_hits": 0,
+   "towns_attempted": 8,
+   "towns_succeeded": 8
   },
   "MD": {
-   "new_documents": 12,
-   "new_hits": 17,
-   "towns_attempted": 30,
-   "towns_succeeded": 30
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   },
   "MI": {
-   "new_documents": 17,
-   "new_hits": 9,
-   "towns_attempted": 101,
-   "towns_succeeded": 100
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   },
   "NY": {
-   "new_documents": 18,
-   "new_hits": 7,
-   "towns_attempted": 92,
-   "towns_succeeded": 91
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 3,
+   "towns_succeeded": 3
   },
   "OH": {
-   "new_documents": 4,
-   "new_hits": 1,
-   "towns_attempted": 33,
-   "towns_succeeded": 32
-  },
-  "RI": {
-   "new_documents": 15,
-   "new_hits": 4,
-   "towns_attempted": 39,
-   "towns_succeeded": 39
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   },
   "VA": {
-   "new_documents": 18,
-   "new_hits": 41,
-   "towns_attempted": 108,
-   "towns_succeeded": 106
+   "new_documents": 0,
+   "new_hits": 0,
+   "towns_attempted": 1,
+   "towns_succeeded": 1
   }
  },
  "date": "2026-11-27",
- "document_errors": 4,
- "documents_already_indexed": 3585,
+ "document_errors": 0,
+ "documents_already_indexed": 90,
  "documents_deferred": 0,
- "documents_listed": 3817,
- "documents_needing_ocr": 3,
- "documents_rematched": 0,
- "documents_retried": 2,
+ "documents_listed": 109,
+ "documents_needing_ocr": 0,
+ "documents_rematched": 18,
+ "documents_retried": 0,
  "documents_too_large": [
   {
    "error": "too large (53128537 > 41943040 bytes): https://www.bedfordma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2788",
@@ -452,88 +446,11 @@
    "url": "https://www.smithfieldva.gov/AgendaCenter/ViewFile/Agenda/_11102026-996"
   }
  ],
- "duration_seconds": 1230.7,
- "errors": [
-  {
-   "error": "listing generic: listing https://www.dunstable-ma.gov/planning-board returned HTTP 404",
-   "town": "MA:Dunstable"
-  },
-  {
-   "error": "listing generic: listing https://www.dunstable-ma.gov/conservation-commission returned HTTP 404",
-   "town": "MA:Dunstable"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/government/planning_board/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/departments/zoning_board_of_appeals/meeting_minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/departments/conservation_commission/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "listing generic: listing https://www.swanseama.gov/government/board_of_selectmen/agendas___minutes.php returned HTTP 404",
-   "town": "MA:Swansea"
-  },
-  {
-   "error": "document: extract failed (content-type application/msword): https://www.westport-ma.com/12-8-26 Agenda.doc",
-   "town": "MA:Westport"
-  },
-  {
-   "error": "listing agenda_page: listing https://summerfieldtwpmonroemi.gov/boar-of-trustees-meeting-agenda-september-21st/ returned HTTP 404",
-   "town": "MI:Summerfield Township"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/planning-board-2/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/zoning-board-of-appeals-2/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "listing generic: https://www.townofamsterdam.org/town-board/",
-   "town": "NY:Amsterdam"
-  },
-  {
-   "error": "listing agenda_page: https://unioncountydarbytwp.com/ (crawl-delay 30.0s above the 20 s cap)",
-   "town": "OH:Darby Township"
-  },
-  {
-   "error": "listing agenda_page: https://www.danvilleva.gov/m/newsflash/home/detail/6718",
-   "town": "VA:City of Danville"
-  },
-  {
-   "error": "listing agenda_page: https://www.danvilleva.gov/m/newsflash/home/detail/6718",
-   "town": "VA:City of Danville"
-  },
-  {
-   "error": "listing agenda_page: https://www.danvilleva.gov/m/newsflash/home/detail/6718",
-   "town": "VA:City of Danville"
-  },
-  {
-   "error": "document: extract failed (content-type image/png): https://www.norfolk.gov/AgendaCenter/ViewFile/Agenda/_12102026-1332",
-   "town": "VA:City of Norfolk"
-  },
-  {
-   "error": "document: extract failed (content-type image/png): https://www.norfolk.gov/AgendaCenter/ViewFile/Agenda/_12072026-1331",
-   "town": "VA:City of Norfolk"
-  },
-  {
-   "error": "document: too large (54642772 > 41943040 bytes): https://www.co.middlesex.va.us/AgendaCenter/ViewFile/Agenda/_12012026-783",
-   "town": "VA:Middlesex County"
-  },
-  {
-   "error": "listing agenda_page: listing https://meetings.municode.com/PublishPage/index?cid=WYTHEVILVA&ppid=dd3e12be-0db5-4371-8a7b-41369f93e324&p=1 returned HTTP 403",
-   "town": "VA:Town of Wytheville"
-  }
- ],
- "errors_total": 19,
- "finished": "2026-11-27T12:24:00+00:00",
- "hits_current": 4035,
+ "duration_seconds": 42.1,
+ "errors": [],
+ "errors_total": 0,
+ "finished": "2026-11-27T19:32:23+00:00",
+ "hits_current": 4040,
  "index": {
   "by_state": {
    "MA": 5757,
@@ -559,51 +476,37 @@
   },
   "documents": 9004,
   "hits": 4509,
-  "pruned": 26,
+  "pruned": 1,
   "towns": 621,
   "with_hits": 1900
  },
  "network": {
   "bytes_by_purpose": {
-   "document": 241668717,
-   "listing": 232311235,
-   "robots": 1805965
+   "document": 8387652,
+   "listing": 37545598,
+   "robots": 708
   },
-  "cache_hits": 361,
-  "errors": 14,
-  "requests": 2101,
+  "cache_hits": 0,
+  "errors": 0,
+  "requests": 62,
   "requests_by_purpose": {
-   "document": 225,
-   "listing": 1266,
-   "robots": 610
+   "document": 25,
+   "listing": 34,
+   "robots": 3
   },
-  "robots_blocked": 6,
+  "robots_blocked": 0,
   "slow_host_documents": {}
  },
- "new_alert_items": 118,
+ "new_alert_items": 5,
  "new_alert_items_by_topic": {
-  "40b_comprehensive_permit": 6,
-  "battery_storage": 9,
-  "clean_energy_siting": 8,
-  "data_center": 34,
-  "moratorium": 9,
-  "solar": 23,
-  "wetlands_filing": 1,
-  "wireless_telecom": 9,
-  "zoning_amendment": 46
+  "battery_storage": 2,
+  "data_center": 2,
+  "moratorium": 1,
+  "zoning_amendment": 3
  },
- "new_documents": 226,
- "new_hits": 204,
- "new_hits_by_topic": {
-  "40b_comprehensive_permit": 9,
-  "battery_storage": 26,
-  "clean_energy_siting": 9,
-  "data_center": 42,
-  "moratorium": 16,
-  "solar": 46,
-  "wireless_telecom": 11,
-  "zoning_amendment": 93
- },
+ "new_documents": 1,
+ "new_hits": 0,
+ "new_hits_by_topic": {},
  "options": {
   "matcher_version": "ca9b9d486f",
   "no_network_docs": false,
@@ -612,28 +515,39 @@
   "tesseract": true,
   "workers": 16
  },
- "started": "2026-11-27T12:03:30+00:00",
+ "previous_runs_today": [
+  {
+   "duration_seconds": 1230.7,
+   "new_documents": 226,
+   "new_hits": 204,
+   "requests": 2101,
+   "started": "2026-11-27T12:03:30+00:00",
+   "states": [
+    "MA",
+    "MD",
+    "MI",
+    "NY",
+    "OH",
+    "RI",
+    "VA"
+   ],
+   "towns_attempted": 646,
+   "towns_succeeded": 639
+  }
+ ],
+ "started": "2026-11-27T19:31:41+00:00",
  "states": [
   "MA",
   "MD",
   "MI",
   "NY",
   "OH",
-  "RI",
   "VA"
  ],
- "towns_attempted": 646,
- "towns_failed": [
-  "MA:Dunstable",
-  "MA:Swansea",
-  "MI:Summerfield Township",
-  "NY:Amsterdam",
-  "OH:Darby Township",
-  "VA:City of Danville",
-  "VA:Town of Wytheville"
- ],
+ "towns_attempted": 15,
+ "towns_failed": [],
  "towns_partial": [],
- "towns_succeeded": 639,
+ "towns_succeeded": 15,
  "window": {
   "end": "2027-03-27",
   "start": "2026-10-28"
