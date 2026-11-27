@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agenda Ahead//Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:m-plymouth-select-board-2026-12-01@agendaahead
+DTSTAMP:20261127T120000Z
+DTSTART;TZID=America/New_York:20261201T170000
+DTEND;TZID=America/New_York:20261201T190000
+SUMMARY:Plymouth Select Board: Discusses an affordable housing permit (40B)
+  for a housing project (no vote listed).
+LOCATION:Plymouth Town Hall\, or join online\, Plymouth\, MA
+DESCRIPTION:• Discusses an affordable housing permit (40B) for a housing 
+ project (no vote listed).\n\nAgenda: https://www.plymouth-ma.gov/AgendaCen
+ ter/ViewFile/Agenda/_12012026-4082\nPage: https://agendaahead.vercel.app/m
+ /plymouth-select-board-2026-12-01\nConfirm the time and place with the tow
+ n\; agendas can change.
+URL:https://agendaahead.vercel.app/m/plymouth-select-board-2026-12-01
+END:VEVENT
+END:VCALENDAR

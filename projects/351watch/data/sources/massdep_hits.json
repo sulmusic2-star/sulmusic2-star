@@ -1,15 +1,15 @@
 {
- "generated": "2026-11-25T12:11:12+00:00",
+ "generated": "2026-11-27T12:00:31+00:00",
  "source": "massdep_wetlands",
  "source_name": "MassDEP Wetlands Protection Act filings (EEA Data Portal, WIRe)",
  "window": {
   "start": "2025-10-10",
-  "end": "2026-11-25"
+  "end": "2026-11-27"
  },
  "states": [
   "MA"
  ],
- "filings_total": 5261,
+ "filings_total": 5272,
  "hits_count": 105,
  "notes": "meeting_date is the DEP filing date (the API has no hearing date); the Conservation Commission must open its hearing within 21 days of filing (310 CMR 10.05(5)(b)). Extra per-hit fields are under 'details'.",
  "hits": [
@@ -60,7 +60,7 @@
    }
   },
   {
-   "id": "8ba6e4529c51",
+   "id": "bd301ed89781",
    "state": "MA",
    "town": "Millbury",
    "county": "Worcester",
@@ -70,22 +70,22 @@
    "topics": [
     "wetlands_filing"
    ],
-   "snippet": "Buffer-zone NOI, New England Power Company: no description. 33 Providence Street.",
+   "snippet": "Buffer-zone NOI, New England Power Company: Construction of a new lab space, associated utilities, parking, and EV charging spaces. a stormwater level spreader will also be constructed as part of the site development… 33 Providence Street.",
    "source_url": "https://eeaonline.eea.state.ma.us/portal#!/wire/214155",
    "listing_url": "https://eeaonline.eea.state.ma.us/portal#!/search/wire",
-   "document_title": "MassDEP wetlands filing (file number pending) — Notice of Intent (buffer zone only), Millbury",
+   "document_title": "MassDEP wetlands filing 224-0898 — Notice of Intent (buffer zone only), Millbury",
    "text_source": "api",
    "first_seen": "2026-11-25T12:00:59+00:00",
    "days_before_meeting": -1.5,
    "source": "massdep_wetlands",
    "details": {
     "noi_id": "214155",
-    "dep_file_number": null,
+    "dep_file_number": "224-0898",
     "filing_type": "Notice of Intent (buffer zone only)",
     "project_type": "Commercial/Industrial",
     "received_date": "2026-11-24",
     "issued_date": null,
-    "status": "received",
+    "status": "file_number_issued",
     "soc_requested": false,
     "meeting_date_basis": "filing_date",
     "applicant": "NEW ENGLAND POWER COMPANY",
@@ -95,7 +95,7 @@
     "parent_confidence": "high",
     "consultant": null,
     "project_address": "33 PROVIDENCE STREET",
-    "description": null,
+    "description": "CONSTRUCTION OF A NEW LAB SPACE, ASSOCIATED UTILITIES, PARKING, AND EV CHARGING SPACES. A STORMWATER LEVEL SPREADER WILL ALSO BE CONSTRUCTED AS PART OF THE SITE DEVELOPMENT. ACTIVITIES ARE PROPOSED WITHIN BUFFER ZONE TO INLAND BANK.",
     "category": "transmission_substation",
     "confidence": "low",
     "signals": [
